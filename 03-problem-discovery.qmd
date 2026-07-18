@@ -52,6 +52,10 @@ Because each tool fails in its own way, **you triangulate**: you treat a belief 
 
 How much evidence is enough depends on the stakes. A throwaway prototype needs almost none: go build it and learn. Committing the rest of the semester to one product needs a preponderance: real interviews, a customer who lives the problem, some signal they would pay. That is exactly what the Sprint 2 conviction scoring is asking you to weigh. The posture throughout is to hold beliefs as probabilities, not verdicts: not "this is a great idea" but "I am maybe sixty percent sure," and let each conversation move the number.
 
+::: {.callout-note title="Thinking in probabilities"}
+This is the Bayesian habit, and it comes with one practical rule: **good evidence is evidence that would look different if you were wrong.** "Tell me about the last time you dealt with this" is strong evidence, because someone who does not really have the problem cannot answer it convincingly. "Would you use an app that does this?" is weak evidence, because people say yes whether the problem is real or not. Seek the evidence that actually moves the number; discount the flattery that does not. That single test is why the Mom Test works.
+:::
+
 The rest of this chapter is the *how*. Jobs-to-be-Done gives you a sharper hypothesis about what is true. The Mom Test gathers evidence that actually moves the number instead of flattery that does not.
 
 ### Jobs-to-be-Done Framework
