@@ -38,6 +38,7 @@ book:
         - 12-final-presentations.qmd
     - part: Playbook
       chapters:
+        - 93-why-this-class-works.qmd
         - 94-problem-discovery-framework.qmd
         - 95-eng-checklist.qmd
         - 96-code-base-review.qmd

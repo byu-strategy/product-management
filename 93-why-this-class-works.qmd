@@ -1,0 +1,49 @@
+---
+title: "Why This Class Works This Way"
+---
+
+This class is built on evidence about how people actually learn, not on tradition or guesswork. I am putting the reasoning here in the open so you can see why each piece of the course exists and get more out of it. If a part of the class feels harder than a normal lecture, that is usually the design working, not a mistake. Here is the thinking.
+
+## How you actually learn
+
+A handful of moves do most of the work. They are not intuitive, and most of them feel worse in the moment than the methods that don't work.
+
+- **Recall, don't re-read.** Pulling an idea out of your memory is the learning event. Re-reading and highlighting feel productive but mostly build a false sense of knowing.
+- **Space it out.** Practice spread across several days beats the same time crammed into one session. Cramming works for tomorrow and fails for everything after.
+- **Mix it up.** Practicing different kinds of problems together beats doing one kind in a block, even though blocking feels smoother.
+- **Build the model, not the pile of facts.** Learn the few principles that explain the many details. A good mental model is worth a hundred memorized facts.
+- **Explain it in your own words.** If you can teach it to someone else, or to Claude, you understand it. If you can't, you have found the gap.
+- **Find your wrong ideas and break them.** You already have theories about products, users, and markets. Some are wrong. The fastest way to learn is to surface them and test them to failure.
+- **Study a worked example, then practice at the edge.** See it done, then do the hard part yourself with quick feedback. Practice that stays comfortable is not developing you.
+- **Sleep.** Memory consolidates while you sleep. Trading sleep for one more hour of work usually costs you more than it buys.
+
+## Why the class is run as a practice
+
+We run class like an athletic practice because that is how skills are actually built.
+
+- **Reps over speeches.** The research on elite coaching, including a study that coded John Wooden's UCLA practices act by act, found that great coaching is mostly specific, immediate, task-focused information, not inspiration. Class time is for installing skills and reviewing film, not for me talking at you.
+- **The struggle is designed.** The hard parts are on purpose. Building something real, at the edge of what you can do, with feedback, is what moves you forward.
+- **Coach the standard, not the scoreboard.** We focus on how the work is done. Do that well and the outcomes follow.
+- **Fundamentals first.** The unglamorous basics, like git, shipping, and talking to users, are what everything else stands on.
+
+## Why the assessments look the way they do
+
+The single most important idea: practice and judgment are two different jobs, and they want opposite stakes.
+
+- **Practice should be safe to fail.** Quizzes, drills, and sprint check-ins exist to cause learning, not to rank you. They are low-stakes on purpose. The point is to make your errors early and cheap, where feedback can fix them. Treat them as your best preparation, not as busywork.
+- **Judgment rides on the real work.** Most of your grade is on building an actual product, the whole game in junior form, iterated with feedback. That is the thing worth certifying, and it is the thing employers and customers care about.
+- **No single high-stakes final.** Pressure consumes the working memory you need to perform, and it hurts your best thinking most. Weight is distributed and, where possible, retakeable, so one bad day does not define you.
+- **Feedback is about the work, not about you.** Comments aimed at the task help. Praise or criticism aimed at the self, like "you're smart" or "you're behind," mostly hurts. Expect specific, task-focused feedback.
+
+One honest warning: active, effortful learning often feels worse than a smooth lecture. Students in active classes reliably learn more while feeling like they learned less. If it feels harder, that is the method working.
+
+## Myths this class rejects
+
+- **Learning styles.** There is no credible evidence that matching teaching to a "visual" or "auditory" style improves learning. It is the most widespread myth in education.
+- **Re-reading and highlighting as study methods.** They create a feeling of knowing without durable learning.
+- **Cramming works.** It works for tomorrow's quiz and fails for everything after.
+- **Learning about versus doing.** Knowing the vocabulary of product management is not the same as being able to build and ship a product. This class is built around doing.
+
+## Where this comes from
+
+These principles are drawn from cognitive science and from the study of elite coaching, not from opinion. Anchors include Roediger and Karpicke on retrieval, Dunlosky and colleagues on which study strategies actually work, Sweller on cognitive load, Ericsson on deliberate practice, Perkins on learning the whole game, and Gallimore and Tharp's observational study of John Wooden. I keep a fuller, sourced version of these principles behind the course and revise it as the evidence changes. If you want to go deeper on any of it, ask.
