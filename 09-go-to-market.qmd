@@ -43,6 +43,18 @@ The rest of this chapter walks through each question with practical frameworks, 
 
 Let's get ready for launch.
 
+## Winning Support: Your Innovation Capital
+
+Reaching customers is one thing; getting people to *back* you is another. Users decide whether to trust a stranger's product, mentors decide whether to spend time on you, and, later, investors or a boss decide whether to fund you. Jeff Dyer and his colleagues call the ability to attract that support **innovation capital**, and they show it is something you build on purpose, from three sources:
+
+- **Human capital** — who you are as a builder: your skills, and your visible passion for the problem. You have been building this all semester.
+- **Social capital** — who you know: the users, mentors, classmates, and experts who will vouch for you or help you.
+- **Reputation capital** — what you have done: your track record. A shipped product with real users is reputation you can point to, and it is the cheapest kind to earn as a student. You just ship and show.
+
+Take an honest inventory of all three now. Your go-to-market is far stronger when you can show not only a product, but a credible builder, with a network and a track record, standing behind it. You will spend the final demo turning that capital into belief.
+
+*Innovation capital is from Jeff Dyer, Nathan Furr, and Curtis Lefrandt, Innovation Capital (Harvard Business Review Press, 2019).*
+
 ## Know Your Customer (Really)
 
 Most founders think they know their customer. They don't.

@@ -59,6 +59,20 @@ The problem? You're starting with a solution. You've already decided what to bui
 
 The difference seems subtle, but it's profound. Solution thinking leads you to build features. Problem thinking leads you to understand customers.
 
+### The Five Discovery Skills
+
+Where do good problems come from? Jeff Dyer and his colleagues studied disruptive innovators and found they are not born with a creativity gene, they *behave* in five particular ways, and those behaviors are mostly learnable (their research puts creativity at roughly one-third genetic, versus about four-fifths for raw IQ). The five skills:
+
+- **Questioning** — relentlessly asking why, why not, and what if, keeping a high ratio of questions to answers.
+- **Observing** — watching customers and their workarounds like an anthropologist, noticing what people actually do rather than what they say.
+- **Networking** — talking with people whose perspective differs from yours, to borrow ideas from other worlds.
+- **Experimenting** — trying things, taking them apart, running small tests.
+- **Associating** — the payoff skill: connecting the inputs from the other four into a new idea.
+
+This whole course is a program for practicing these. Your problem journal is Questioning and Observing; the interviews in the next chapter are Observing and Networking; your prototypes and MVP tests are Experimenting. That is the point of the practice model, and it is Dyer's finding too: these are skills you build with reps, not gifts you are born with.
+
+*The five discovery skills are from Jeff Dyer, Hal Gregersen, and Clayton Christensen, ["The Innovator's DNA,"](https://hbr.org/2009/12/the-innovators-dna) Harvard Business Review, December 2009.*
+
 ### You Are Your Best First Customer
 
 You don't necessarily need to conduct elaborate market research to find a problem worth solving. You're surrounded by problems every day, and you just need to find one you are passionate about fixing.

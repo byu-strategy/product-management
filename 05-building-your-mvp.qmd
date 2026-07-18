@@ -38,6 +38,12 @@ The keyword is *viable*. An MVP must actually work and provide value. It's not a
 
 ![Image source: The Lean Product Playbook by Dan Olsen](images/mvp.png)
 
+### Minimum Viable, or Minimum Awesome?
+
+Jeff Dyer and Nathan Furr push the MVP one step further, and it is worth taking. A merely *viable* product often tests badly: people are polite about something that barely works, so you cannot tell real demand from good manners. They argue instead for a **minimum awesome product**, still minimal, still one core action, but good enough at that one thing to genuinely delight. An awesome-at-one-thing product gives you honest signal: people either love it or they do not, which is exactly what you are trying to learn. So cut scope ruthlessly, then make the little that remains excellent.
+
+*The minimum awesome product is from Nathan Furr and Jeff Dyer, [The Innovator's Method](https://hbr.org/books/chapters/the-innovators-method) (Harvard Business Review Press, 2014).*
+
 ### MVP Scoping: The Art of Cutting
 
 Most founders include too much in their MVP. They think "just one more feature" will make it viable. Wrong. Every feature adds:

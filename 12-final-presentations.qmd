@@ -58,6 +58,19 @@ Your [Final Project](00-assessments.qmd#final-project) is a five-minute video th
 
 Remember *resulting*: you are graded on the quality of your decisions and your learning, not on signup counts. A thoughtful product with three engaged users and an honest story beats a rushed one claiming fifty.
 
+### Amplify: Make Them Believe
+
+A demo is not just information; it is persuasion. Jeff Dyer and his colleagues catalog the moves innovators use to win support for an idea, their **impression amplifiers**, and a few belong in your final pitch:
+
+- **Materialize.** Show the real, working product, not slides. A thing that runs is worth a hundred claims. This is why the demo must be live.
+- **Compare.** Anchor your product to something the audience already knows: "the [familiar product] for [your customer]." It makes an unfamiliar idea graspable in one line.
+- **Story.** Open on a specific person and a specific moment, not a market-size statistic. The story is what moves the elephant.
+- **Commit.** Show your own stake, the work you have put in and what you are willing to keep doing. Visible commitment makes others willing to bet on you.
+
+Used honestly, these help a good product get the hearing it deserves. Used to dress up a product that does not work, they become deception, the line the [Product Morality](product-morality.qmd) chapter draws (the book's own cautionary case is Theranos). Amplify the truth; never manufacture it.
+
+*The impression amplifiers are from Jeff Dyer, Nathan Furr, and Curtis Lefrandt, Innovation Capital (Harvard Business Review Press, 2019).*
+
 ### Rehearse
 
 Storytelling is a rep, not a talent. Practice the demo out loud, on camera, more than once. Time it. Watch it back and cut what does not serve the aim. Then tell it to one other person and fix what confused them before you record the final take.
