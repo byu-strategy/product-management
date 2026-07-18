@@ -33,6 +33,7 @@ book:
         - 08-measuring-what-matters.qmd
         - 09-go-to-market.qmd
         - 10-business-models.qmd
+        - product-morality.qmd
     - part: Demo
       chapters:
         - 12-final-presentations.qmd
