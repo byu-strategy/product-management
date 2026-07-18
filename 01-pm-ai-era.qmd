@@ -35,7 +35,16 @@ We run that machinery as a single loop, and it has a name: **AIRE**.
 - **Reason.** Make sense of what you gathered. Decide what to build and how.
 - **Enact.** Build it, ship it, and watch what happens. Then loop back, with a sharper aim, better information, and clearer reasoning.
 
-The course *is* this loop. Discovery is **Inform**. Writing specs and scoping an MVP is **Reason**. Building, shipping, and growing is **Enact**. And the **Aim**, what is worth building at all, is a question of values we take up directly in [Product Morality](product-morality.qmd). You will run the loop many times across the semester, once per sprint, because a single turn tells you little; the arc is what reveals whether you are getting good.
+The course *is* this loop, and the parts you see in the sidebar are its steps:
+
+| The loop | The part of the course |
+|---|---|
+| **Aim** | **Aim** — choose what is worth building, strategically and morally |
+| **Inform** | **Discover** — go learn what is true about the customer |
+| **Reason + Enact** | **Build** — decide what to build, then build it |
+| the loop, turning again | **Grow** — measure, learn, and ship on the live product |
+
+The **Aim**, what is worth building at all, is where strategy and values meet; it is taken up in [Product Strategy](product-strategy.qmd) and [Product Morality](product-morality.qmd). And you will run the whole loop many times across the semester, once per sprint, because a single turn tells you little; the arc is what reveals whether you are getting good.
 
 Two things about the loop are worth knowing up front.
 
