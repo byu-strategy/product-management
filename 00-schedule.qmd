@@ -5,69 +5,56 @@ editor: visual
 
 Below is the planned schedule. Dates, topics, and assignments may adjust as needed.
 
-**Class Format:** Each class is split: first half covers PM/Strategy, second half is hands-on building.
+**Class Format:** Class meets Mondays 3:30–4:45 PM in 2439 TNRB. Each class is run as a practice: short whistle segments (film review, chalk talk) followed by live drill time building with Claude Code. Most of your work happens between practices; class time is where we install skills and review film.
 
-**Note:** Class starts Jan 8. Feb 17 follows Monday instruction schedule (no T/Th class).
+**Note:** Fall classes begin Wed, Sep 2, but Labor Day (Sep 7) means our first in-person practice is Mon, Sep 14. Week of Sep 2 is an online setup week. We DO meet Mon, Nov 23 (Thanksgiving break begins Wed, Nov 25). Last day of class is Thu, Dec 10.
 
-| Wk | # | Date | PM / Strategy | Build | Assessments |
-|----|---|------|---------------|-------|-------------|
-| 1 | 1 | Thu, Jan 8 | Course overview, What is PM | Terminal basics, Claude Code setup | – |
-| 2 | 2 | Tue, Jan 13 | PM history, AI disruption | Git fundamentals | – |
-| 2 | 3 | Thu, Jan 15 | AI-powered PM, problem thinking | Deployment (Vercel / GH Pages) | [Q1: Ch 1](01-pm-ai-era.qmd) |
-| 3 | 4 | Tue, Jan 20 | Why products fail | CC: Markdown files (CLAUDE.md) | – |
-| 3 | 5 | Thu, Jan 22 | You as the customer | Frontend fundamentals (HTML/CSS) | [Q2: Ch 2](02-problems-worth-solving.qmd), [Sprint 1 Assigned](00-assessments.qmd#sprint-1-ship-showcase) |
-| 4 | 6 | Tue, Jan 27 | Jobs-to-be-Done framework | React basics | – |
-| 4 | 7 | Thu, Jan 29 | Problem interviews (Mom Test) | CC: Slash commands | [Q3: Ch 3](03-problem-discovery.qmd), **Sprint 1 Due**, [Sprint 2 Assigned](00-assessments.qmd#sprint-2-validate-commit) |
-| 5 | 8 | Tue, Feb 3 | Evaluating opportunities | Client-side state, forms | – |
-| 5 | 9 | Thu, Feb 5 | Committing to a problem | Supabase setup + auth, CC: Agents | [Q4: Ch 4](04-validating-opportunities.qmd) |
-| 6 | 10 | Tue, Feb 10 | MVP scoping, user stories, Guest: [Daniel Alberson](https://www.linkedin.com/in/alberson/) (Agentive) | Supabase database, tables, RLS | – |
-| 6 | 11 | Thu, Feb 12 | PRDs (AI-assisted) | CRUD operations, relations | [Q5: Ch 5](05-building-your-mvp.qmd) |
-| | | Tue, Feb 17 | | | **Sprint 2 Due (11:59pm)** |
-| 7 | 12 | Thu, Feb 19 | Usability testing, iteration | Supabase storage, CC: Skills | [Q6: Ch 6](06-testing-with-users.qmd) |
-| 8 | 13 | Tue, Feb 24 | Web vs mobile strategy, Guest: [Taylor Baker](https://www.linkedin.com/in/taylormbaker/) (Adobe) | Capacitor / PWA basics | [Sprint 3 Assigned](00-assessments.qmd#sprint-3-product-mvp), [Mid-Semester Survey Due](00-assessments.qmd#mid-semester-feedback-survey) |
-| 8 | 14 | Thu, Feb 26 | Platform decision framework, Guest: [Caleb Wilcox](https://www.linkedin.com/in/calebwilcox/) (Applause) | APIs & integrations, CC: Hooks | [Q7: Ch 7](07-platform-strategy.qmd) |
-| 9 | 15 | Tue, Mar 3 | Product metrics, Guest: [Feroz Samiyulla](https://www.linkedin.com/in/ferozsamiyulla/) (The Home Depot) | Analytics setup | – |
-| 9 | 16 | Thu, Mar 5 | Leading vs lagging indicators, Guest: [Ben Cullen](https://www.linkedin.com/in/ben-n-cullen/) (Palantir) | Event tracking, dashboards | [Q8: Ch 8](08-measuring-what-matters.qmd) |
-| 10 | 17 | Tue, Mar 10 | Go-to-market strategy | Landing pages, SEO basics | **Sprint 3 Due**, [Peer Code Review Assigned](00-assessments.qmd#peer-code-review) |
-| 10 | 18 | Thu, Mar 12 | Distribution channels | Edge functions | [Q9: Ch 9](09-go-to-market.qmd) |
-| 11 | 19 | Tue, Mar 17 | Business models | Build & feedback | [Peer Code Review Due](00-assessments.qmd#peer-code-review) |
-| 11 | 20 | Thu, Mar 19 | Pricing strategy | Build & feedback | [Q10: Ch 10](10-business-models.qmd), [Sprint 4 Assigned](00-assessments.qmd#sprint-4-progress-check) |
-| 12 | 21 | Tue, Mar 24 | Tech debt concepts | Build & feedback | – |
-| 12 | 22 | Thu, Mar 26 | Growth & retention | Build & feedback | **Sprint 4 Due**, [Sprint 5 Assigned](00-assessments.qmd#sprint-5-progress-check) |
-| 13 | 23 | Tue, Mar 31 | Build & feedback | Build & feedback | – |
-| 13 | 24 | Thu, Apr 2 | Build & feedback | Build & feedback | **Sprint 5 Due**, [Peer Product Testing Assigned](00-assessments.qmd#peer-product-testing) |
-| 14 | 25 | Tue, Apr 7 | Storytelling & pitch | Video prep, polish | – |
-| 14 | 26 | Thu, Apr 9 | Build & feedback | Build & feedback | [Peer Product Testing Due](00-assessments.qmd#peer-product-testing) |
-| 15 | 27 | Tue, Apr 14 | Course retrospective | Course wrap-up | [Final Project Due](00-assessments.qmd#final-project) |
+| Practice | Date | Emphasis (Chalk Talk) | Drill (Live Build) | Assessments |
+|----|------|----------------------|--------------------|-------------|
+| 0 | Week of Sep 2 (online) | Course overview, what is PM in the AI era | Claude Code setup, terminal basics, first deploy | Setup checklist |
+| 1 | Mon, Sep 14 | The practice model, PM history, AI disruption | Git fundamentals, company repo from template, CLAUDE.md | [Q1: Ch 1](01-pm-ai-era.qmd) |
+| 2 | Mon, Sep 21 | Problems worth solving, you as the customer | Frontend fundamentals (HTML/CSS), deployment | [Q2: Ch 2](02-problems-worth-solving.qmd), [Sprint 1 Assigned](00-assessments.qmd#sprint-1-ship-showcase) |
+| 3 | Mon, Sep 28 | Problem discovery, Jobs-to-be-Done, Mom Test | React basics, CC: slash commands | [Q3: Ch 3](03-problem-discovery.qmd), **Sprint 1 Due**, [Sprint 2 Assigned](00-assessments.qmd#sprint-2-validate-commit) |
+| 4 | Mon, Oct 5 | Evaluating opportunities, committing to a problem | Client-side state, forms, CC: agents | [Q4: Ch 4](04-validating-opportunities.qmd) |
+| 5 | Mon, Oct 12 | MVP scoping, user stories, PRDs (AI-assisted) | Supabase setup + auth | [Q5: Ch 5](05-building-your-mvp.qmd), **Sprint 2 Due**, [Sprint 3 Assigned](00-assessments.qmd#sprint-3-product-mvp) |
+| 6 | Mon, Oct 19 | Usability testing, iteration | Supabase database, CRUD, RLS | [Q6: Ch 6](06-testing-with-users.qmd) |
+| 7 | Mon, Oct 26 | Platform strategy, web vs mobile | APIs & integrations, CC: hooks and skills | [Q7: Ch 7](07-platform-strategy.qmd), [Mid-Semester Survey Due](00-assessments.qmd#mid-semester-feedback-survey) |
+| 8 | Mon, Nov 2 | Product metrics, leading vs lagging indicators | Analytics setup, event tracking | [Q8: Ch 8](08-measuring-what-matters.qmd), **Sprint 3 Due**, [Peer Code Review Assigned](00-assessments.qmd#peer-code-review) |
+| 9 | Mon, Nov 9 | Go-to-market strategy, distribution channels | Landing pages, SEO basics | [Q9: Ch 9](09-go-to-market.qmd), [Peer Code Review Due](00-assessments.qmd#peer-code-review), [Sprint 4 Assigned](00-assessments.qmd#sprint-4-progress-check) |
+| 10 | Mon, Nov 16 | Business models, pricing strategy | Build & feedback | [Q10: Ch 10](10-business-models.qmd) |
+| 11 | Mon, Nov 23 | Scrimmage: build & feedback | Build & feedback | **Sprint 4 Due**, [Sprint 5 Assigned](00-assessments.qmd#sprint-5-progress-check). Withdraw deadline is Tue, Nov 24. |
+| 12 | Mon, Nov 30 | Scrimmage: build & feedback | Build & feedback | **Sprint 5 Due**, [Peer Product Testing Assigned](00-assessments.qmd#peer-product-testing) |
+| 13 | Mon, Dec 7 | Storytelling & pitch, course retrospective | Video prep, polish | [Peer Product Testing Due](00-assessments.qmd#peer-product-testing) |
+| – | Thu, Dec 10 | Last day of class (no meeting) | | [Final Project Due](00-assessments.qmd#final-project) |
 
 ## Course Phases
 
-| Weeks | Phase | Focus |
-|-------|-------|-------|
-| 1-3 | Problems Worth Solving | Explore problems, build throwaway prototypes, validate |
-| 4-5 | Prototype & Validate | Commit to problem, build real MVP, get user feedback |
-| 6-7 | Product MVP | Build core feature, user testing, iterate |
-| 8-10 | Measure & Market | Metrics, GTM, business models, Sprint 3 wraps up |
-| 11-13 | Build & Polish | Self-managed sprints, peer testing, dedicated build time |
-| 14-15 | Wrap Up | Final videos, course retrospective |
+| Practices | Phase | Focus |
+|-----------|-------|-------|
+| 0–3 | Problems Worth Solving | Setup, explore problems, build throwaway prototypes |
+| 4–5 | Prototype & Validate | Commit to a problem, start the real MVP |
+| 6–8 | Product MVP | Build core feature, user testing, metrics |
+| 9–10 | Measure & Market | GTM, business models |
+| 11–12 | Build & Polish | Self-managed sprints, peer testing, dedicated build time |
+| 13 | Wrap Up | Final videos, course retrospective |
 
 ## Sprints
 
 | Sprint | Assigned | Due | Focus | Key Deliverables |
 |--------|----------|-----|-------|------------------|
-| 1 | Week 3 | Week 4 | Ship & Showcase | Portfolio live, 1 prototype, 5 problems |
-| 2 | Week 4 | Tue, Feb 17 | Validate & Commit | Worksheet, AI interview, customer interview, ICP |
-| 3 | Week 8 | Tue, Mar 10 | Product MVP | Spec docs, core feature, 3 user tests |
-| 4 | Week 11 | Week 12 | Progress Check | Self-managed, 5-min Loom video |
-| 5 | Week 12 | Week 13 | Progress Check | Self-managed, 5-min Loom video |
-| Final | – | Week 15 | Final Product | 5-min Loom video, product deployed |
+| 1 | Mon, Sep 21 | Mon, Sep 28 | Ship & Showcase | Portfolio live, 1 prototype, 5 problems |
+| 2 | Mon, Sep 28 | Mon, Oct 12 | Validate & Commit | Worksheet, AI interview, customer interview, ICP |
+| 3 | Mon, Oct 12 | Mon, Nov 2 | Product MVP | Spec docs, core feature, 3 user tests |
+| 4 | Mon, Nov 9 | Mon, Nov 23 | Progress Check | Self-managed, 5-min Loom video |
+| 5 | Mon, Nov 23 | Mon, Nov 30 | Progress Check | Self-managed, 5-min Loom video |
+| Final | – | Thu, Dec 10 | Final Product | 5-min Loom video, product deployed |
 
 ## Peer Assignments
 
 | Assignment | Due | Focus |
 |------------|-----|-------|
-| [Peer Code Review](00-assessments.qmd#peer-code-review) | Tue, Mar 17 | AI-assisted analysis of peer's codebase |
-| [Peer Product Testing](00-assessments.qmd#peer-product-testing) | Thu, Apr 9 | Be a real test user for peer's app |
+| [Peer Code Review](00-assessments.qmd#peer-code-review) | Mon, Nov 9 | AI-assisted analysis of peer's codebase |
+| [Peer Product Testing](00-assessments.qmd#peer-product-testing) | Mon, Dec 7 | Be a real test user for peer's app |
 
 ## Readings
 
@@ -75,15 +62,15 @@ Each chapter integrates PM/Strategy content with hands-on Build content. Read th
 
 | Chapter | Title | Quiz Date |
 |---------|-------|-----------|
-| 1 | [Product Management in the AI Era](01-pm-ai-era.qmd) | Thu, Jan 15 |
-| 2 | [Problems Worth Solving](02-problems-worth-solving.qmd) | Thu, Jan 22 |
-| 3 | [Problem Discovery](03-problem-discovery.qmd) | Thu, Jan 29 |
-| 4 | [Validating Opportunities](04-validating-opportunities.qmd) | Thu, Feb 5 |
-| 5 | [Building Your MVP](05-building-your-mvp.qmd) | Thu, Feb 12 |
-| 6 | [Testing with Users](06-testing-with-users.qmd) | Thu, Feb 19 |
-| 7 | [Platform Strategy](07-platform-strategy.qmd) | Thu, Feb 26 |
-| 8 | [Measuring What Matters](08-measuring-what-matters.qmd) | Thu, Mar 5 |
-| 9 | [Go-to-Market](09-go-to-market.qmd) | Thu, Mar 12 |
-| 10 | [Business Models](10-business-models.qmd) | Thu, Mar 19 |
+| 1 | [Product Management in the AI Era](01-pm-ai-era.qmd) | Mon, Sep 14 |
+| 2 | [Problems Worth Solving](02-problems-worth-solving.qmd) | Mon, Sep 21 |
+| 3 | [Problem Discovery](03-problem-discovery.qmd) | Mon, Sep 28 |
+| 4 | [Validating Opportunities](04-validating-opportunities.qmd) | Mon, Oct 5 |
+| 5 | [Building Your MVP](05-building-your-mvp.qmd) | Mon, Oct 12 |
+| 6 | [Testing with Users](06-testing-with-users.qmd) | Mon, Oct 19 |
+| 7 | [Platform Strategy](07-platform-strategy.qmd) | Mon, Oct 26 |
+| 8 | [Measuring What Matters](08-measuring-what-matters.qmd) | Mon, Nov 2 |
+| 9 | [Go-to-Market](09-go-to-market.qmd) | Mon, Nov 9 |
+| 10 | [Business Models](10-business-models.qmd) | Mon, Nov 16 |
 | 11 | [Sustainable Code](11-sustainable-code.qmd) | – |
 | 12 | [Final Presentations](12-final-presentations.qmd) | – |

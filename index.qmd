@@ -23,13 +23,13 @@ format:
 
 ## Course Numbers
 
-This course is cross-listed under three course numbers. All sections meet together as one class, use this site, and use Canvas as the LMS. Register under whichever number fits your program.
+This course is cross-listed under three course numbers. It is all the same class: everyone meets together Mondays 3:30–4:45 PM in 2439 TNRB, uses this site, and uses Canvas as the LMS. Register under whichever number fits your program.
 
-| Course | Section | Title | Credit Hours | Instruction Mode |
-|--------|---------|-------|--------------|------------------|
-| MSB 341 | 002 | Product Management | 3.0 | Blended |
-| IS 693R | 008 | Readings & Conference | 3.0 | Blended |
-| C S 498R | 005 | Undergraduate Special Projects | 3.0 | Classroom |
+| Course | Section | Title | Credit Hours |
+|--------|---------|-------|--------------|
+| MSB 341 | 002 | Product Management | 3.0 |
+| IS 693R | 008 | Readings & Conference | 3.0 |
+| C S 498R | 005 | Undergraduate Special Projects | 3.0 |
 
 ## Prerequisites
 
