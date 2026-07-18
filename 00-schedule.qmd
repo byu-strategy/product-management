@@ -38,6 +38,16 @@ Below is the planned schedule. Dates, topics, and assignments may adjust as need
 | 11–12 | Build & Polish | Self-managed sprints, peer testing, dedicated build time |
 | 13 | Wrap Up | Final videos, course retrospective |
 
+## Scrimmages
+
+Practices 11 and 12 are **scrimmages**: dedicated in-class sessions where you demo your product to a small group of peers, give and get feedback, and build on what you hear. A scrimmage is a working session, not a formal presentation:
+
+1. In small groups, each person gives a 3-minute live demo of their real, deployed product.
+2. The group responds: what worked, what confused them, what they would try next.
+3. You spend the rest of the session building on the most useful feedback, with your group nearby to react.
+
+Scrimmages exist because the first half of the course is mostly solo work. They are your standing chance to see what classmates are building, borrow ideas, and get fresh eyes on your product before the final. Bring something that runs.
+
 ## Sprints
 
 | Sprint | Assigned | Due | Focus | Key Deliverables |
