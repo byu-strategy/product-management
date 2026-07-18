@@ -12,6 +12,48 @@ This chapter teaches you the Jobs-to-be-Done framework for understanding custome
 
 ## Part 1: The Strategy
 
+### Discovery Is Truth-Seeking
+
+Before the frameworks, the mindset. Strip away the tools and a product manager has one core job: to know what is actually true about a customer and their problem before spending real time and money building. Discovery is how you do that job. Everything else in this chapter, Jobs-to-be-Done, the Mom Test, interview synthesis, is machinery for replacing what you *believe* about your users with what is *true* about them, as cheaply and quickly as possible.
+
+It helps to see where a belief can sit.
+
+![The left circle is everything you believe about your product; the right is everything actually true. Where they overlap, your beliefs are correct. The dashed line is evidence: above it you have enough to act, below it you are still guessing.](images/truth-seeking-venn.svg){fig-alt="A two-circle Venn diagram. The left circle is What You Believe, the right is What's True. A horizontal evidence line crosses both. Six regions: False Confidence (believe, false, high evidence), Unfounded Hunch (believe, false, low evidence), Validated Insight (believe and true, high evidence), Founded Bet (believe and true, low evidence), Available but Unseen (true, not believed, high evidence), and Undiscovered Need (true, not believed, low evidence)."}
+
+Those six regions each show up in real product work:
+
+| Region | What it is in product terms |
+|---|---|
+| **Validated Insight** | True, and you have strong evidence. You believed it, you tested it, it held. This is what you want under your roadmap before you commit. |
+| **Founded Bet** | True, but the evidence is still thin. A reasoned conviction you act on ahead of full proof. You cannot validate everything. |
+| **Unfounded Hunch** | You believe it, it is not true, little evidence. A guess you are fond of. Cheap to hold, cheap to drop, if you are honest. |
+| **False Confidence** | You believe it, it is not true, and you feel sure. "I *know* users want this." The most dangerous place to build from, because the certainty hides the mistake. |
+| **Available but Unseen** | True, evidence exists, you have not gone to get it. A competitor already solved it, or a user would tell you in five minutes. |
+| **Undiscovered Need** | True, but no one has evidence yet. The frontier. The biggest opportunities and the biggest risks both live here. |
+
+The job has a shape. **Grow the overlap** by making more of your beliefs true, which means killing the false ones. **Pull truths into it** by going and finding what you do not yet know. And **push your beliefs above the evidence line**, from founded bet toward validated insight, before you bet the semester on them.
+
+Two failure modes account for most dead products. The first is building from **False Confidence**: shipping a thing you were sure about and never checked. The second is never leaving **Available but Unseen**: a truth was one interview away and you built on a guess instead.
+
+#### Six ways of knowing, all flawed
+
+If the map tells you where a belief sits, the next question is how you gather the evidence to move it. You have six tools, and every one of them can lie to you.
+
+| Way of knowing | How a PM uses it | How it lies to you |
+|---|---|---|
+| **Logical reasoning** | Your own analysis, the internal logic of the idea | Armchair theorizing, confirmation bias. Feels airtight, has never met a user. |
+| **Trial and error** | Shipping, A/B tests, MVP experiments | Slow and costly, and you can optimize into a dead end. |
+| **Word of others** | Competitors, analysts, "best practices," the loudest stakeholder | Cargo-culting. Their context is not your context. |
+| **Sensory experience** | Watching real users, usability tests | Tiny samples, the observer effect. You see what you expect. |
+| **Intuition** | Product sense, taste | Your gut is not your user's gut. |
+| **Epiphany** | The insight in the shower | Seductive precisely because it is unvalidated. |
+
+Because each tool fails in its own way, **you triangulate**: you treat a belief as validated only when independent sources converge, an interview, plus a behavior in the data, plus a test that survives. The most common mistake is trusting a single source, usually your own logic or one enthusiastic user, and promoting it straight to certainty. That is the road to False Confidence.
+
+How much evidence is enough depends on the stakes. A throwaway prototype needs almost none: go build it and learn. Committing the rest of the semester to one product needs a preponderance: real interviews, a customer who lives the problem, some signal they would pay. That is exactly what the Sprint 2 conviction scoring is asking you to weigh. The posture throughout is to hold beliefs as probabilities, not verdicts: not "this is a great idea" but "I am maybe sixty percent sure," and let each conversation move the number.
+
+The rest of this chapter is the *how*. Jobs-to-be-Done gives you a sharper hypothesis about what is true. The Mom Test gathers evidence that actually moves the number instead of flattery that does not.
+
 ### Jobs-to-be-Done Framework
 
 The Jobs-to-be-Done (JTBD) framework, popularized by Clayton Christensen, shifts focus from *what customers buy* to *why they buy it*. The core insight: customers don't want products, they "hire" products to do a job.
