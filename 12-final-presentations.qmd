@@ -30,7 +30,7 @@ Prompts to fill the shelf: *Tell me about the first time you... the last time yo
 
 - **Find the five-second moment.** Every good story has a single instant the whole thing turns on. Know exactly where yours is and slow down when you reach it. If a story has no such moment, it is a report, not a story.
 - **Show change.** A story is a before and an after. The listener needs to feel the difference between how things were and how they became. No change, no story.
-- **Speak to the rider and the elephant.** Every listener is a rider (conscious, logical) on an elephant (subconscious, emotional). Facts persuade the rider. Stakes, specifics, and feeling move the elephant. You need both. For the rider, lead with your point ([the Pyramid Principle](#): conclusion first, then the support). For the elephant, make it concrete and human.
+- **Speak to the rider and the elephant.** Every listener is a rider (conscious, logical) on an elephant (subconscious, emotional). Facts persuade the rider. Stakes, specifics, and feeling move the elephant. You need both. For the rider, lead with your point (the Pyramid Principle: conclusion first, then the support). For the elephant, make it concrete and human.
 - **Mind your body.** Posture, eye contact, and pace carry as much as words. Slouch through a great story and it dies. Stand up in it.
 
 ### Storytelling in day-to-day product work
