@@ -1,0 +1,12 @@
+# Release Notes {.unnumbered}
+
+This course site is a living product. It gets better during the semester, and every meaningful update ships as a numbered release so you can see exactly what changed and when. The current version is shown in the footer of every page.
+
+New entries appear at the top.
+
+## v1.0.0 (2026-07-18)
+
+The course site is now versioned. From here on, every published update to the schedule, assignments, or course content will be listed on this page with a version number and date.
+
+- Added this release notes page, linked from the version number in the site footer.
+- Established the initial baseline: course information, schedule, assessments, twelve topic chapters, and resources.

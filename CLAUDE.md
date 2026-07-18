@@ -98,6 +98,7 @@ This course site is a product. A push to `main` publishes it live to students vi
 - **Conventional prefixes, one concern per commit.** `feat:` / `fix:` / `content:` / `chore:` / `docs:`. A schedule change and a new chapter section are two commits, not one.
 - **Stage explicit paths only.** Never `git add -A`, `git add .`, or `git commit -am`. The working tree often holds unrelated files (OneDrive artifacts, drafts, PDFs); never sweep them into a commit.
 - **Do NOT push.** Pushing publishes to students, so it is the human's deliberate act. When work is committed, say it is ready and stop. The `/push` skill is the only sanctioned push path; invoking it is push authorization for that one run only.
+- **Every push is a versioned release.** The site carries a version (vX.Y.Z) shown in the footer chip (`_footer.html`), which links to `00-release-notes.qmd`. The `/push` skill writes student-facing notes for everything shipping, bumps the version in both places (they must always match), tags the commit, then pushes. Patch bump by default; minor for a new chapter or major section.
 
 ## Working discipline (definition of done)
 

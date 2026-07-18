@@ -13,6 +13,7 @@ book:
         - index.qmd
         - 00-schedule.qmd
         - 00-assessments.qmd
+        - 00-release-notes.qmd
     - part: Topics
       chapters:
         - 01-pm-ai-era.qmd

@@ -67,6 +67,23 @@ table td {
   text-decoration: underline;
 }
 
+.version-chip {
+  display: inline-block;
+  padding: 1px 8px;
+  border: 1px solid #002E5D;
+  border-radius: 10px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #002E5D !important;
+  background-color: #fff;
+}
+
+.version-chip:hover {
+  background-color: #002E5D;
+  color: #fff !important;
+  text-decoration: none !important;
+}
+
 
 
 .tweet-center {
