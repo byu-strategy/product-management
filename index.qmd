@@ -9,7 +9,7 @@ format:
 
 # Syllabus
 
-*WINTER 2026*
+*FALL 2026*
 
 |                           |                            |
 |---------------------------|----------------------------|
@@ -17,9 +17,19 @@ format:
 | **TAs**                   | Nate McCauley, Taylor Wall |
 | **Office Hours**          | [Nate's Office Hours](https://calendly.com/nathanmccauley10/30min)  ,  [Taylor's Office Hours](https://calendly.com/taylorwall214/30min)|
 | **Office Hours Location** | 587 TNRB                   |
-| **LMS**                   | LearningSuite              |
-| **Class Time**            | TTh 3:30–4:45 PM           |
-| **Class Location**        | W310 TNRB                  |
+| **LMS**                   | Canvas                     |
+| **Class Time**            | Mondays 3:30–4:45 PM       |
+| **Class Location**        | 2439 TNRB                  |
+
+## Course Numbers
+
+This course is cross-listed under three course numbers. All sections meet together as one class, use this site, and use Canvas as the LMS. Register under whichever number fits your program.
+
+| Course | Section | Title | Credit Hours | Instruction Mode |
+|--------|---------|-------|--------------|------------------|
+| MSB 341 | 002 | Product Management | 3.0 | Blended |
+| IS 693R | 008 | Readings & Conference | 3.0 | Blended |
+| C S 498R | 005 | Undergraduate Special Projects | 3.0 | Classroom |
 
 ## Prerequisites
 
