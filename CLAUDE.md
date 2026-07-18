@@ -4,7 +4,25 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a Quarto book project for **STRAT 490R - Creating Digital Products with AI**, a BYU course taught by Scott Murff. The project generates a static website containing course materials, schedules, assessments, and chapter content.
+This is a Quarto book project for **MSB 341 - Product Management**, a BYU course taught by Scott Murff. The project generates a static website containing course materials, schedules, assessments, and chapter content.
+
+The course was previously numbered STRAT 490R ("Creating Digital Products with AI"); it reverted to a standard number for Fall 2026. It is cross-listed under three numbers that all meet together as one class: MSB 341 (sec 002), IS 693R (sec 008), and C S 498R (sec 005). The class meets Mondays 3:30 to 4:45 PM in 2439 TNRB and uses Canvas as the LMS.
+
+### Location and deployment
+
+- **Canonical repo:** `~/Documents/courses/product-management` (a fork of the older `strategy-prototyping` repo, moved off OneDrive). Full git history is preserved.
+- **GitHub:** `byu-strategy/product-management`. **Live site:** https://byu-strategy.github.io/product-management/
+- The old `strategy-prototyping` repo (on OneDrive, GitHub `byu-strategy/strategy-prototyping`) is the archived STRAT 490R version. Do not commit new course work there.
+
+### Teaching model (the practice model)
+
+Class is run like an athletic practice: Scott is the coach, students are full-stack product builder athletes, and Claude Code is the tool of instruction (every student has a Claude Max plan). Each Monday session is a "practice" with an emphasis, a daily scripture and quote, whistle segments (film review, chalk talk) for full attention, and live drill time building with Claude Code. Supporting artifacts in the repo:
+
+- `practice-plan-template.md`: the minute-by-minute daily plan template. Season benchmarks (sprints, quizzes, peer work) are published in `00-schedule.qmd`; individual practice plans are written the week of and published after class.
+- `company-template/`: scaffold for each student's one-person company repo (the repo is the whole company: product, specs, discovery, gtm, decisions, metrics, practice-log). Intended to become a GitHub template. Students add Scott as a collaborator.
+- `repo-analysis/`: `analyze.py` reads a roster and produces a team stat sheet (commit cadence, folder-category balance, artifact counts) for coaching and film selection. Never grade raw commit counts; use the sheet to pick coaching conversations, then read the artifacts.
+
+**Jargon rule:** use athletic language (practice, film, drill, scrimmage, reps, emphasis, huddle) for the in-room cadence and culture. Use industry terms (sprint, PRD, MVP, discovery, code review, retro) for anything assessed, documented, or resume-transferable. Schedule and assessments stay in industry terms; the practice plans and room framing use the athletic terms. Drop the metaphor whenever precision matters.
 
 ## Architecture
 
