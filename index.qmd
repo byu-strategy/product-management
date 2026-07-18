@@ -88,31 +88,18 @@ See the [Schedule section](00-schedule.qmd) for a weekly schedule of class topic
 
 ## Grading
 
-Below is the grading breakdown for each assessment in the course. Each point is weighted equally.
+Most of your grade rides on building a real product across the semester, not on exams. This is deliberate. The research this course is built on says the thing worth certifying is authentic performance, the whole game done and iterated with feedback, not recall on a test. Quizzes are low-stakes retrieval practice, and there is no single high-stakes final. For the reasoning behind this design, see [Why This Class Works This Way](93-why-this-class-works.qmd).
 
-| Type | Description<sup>1</sup> | \% of Grade | Points | Learning Outcome(s) Assessed |
-|----|----|----|----|----|
-| Quiz | [Quiz 1 - AI Product Management](01-pm-ai-era.qmd) | 2% | 10 | 1 |
-| Quiz | [Quiz 2 - Git and Deployment](02-git-deployment.qmd) | 2% | 10 | 1 |
-| Quiz | [Quiz 3 - Product Strategy and Innovation](04-product-innovation.qmd) | 2% | 10 | 2 |
-| Quiz | [Quiz 4 - Customer Validation](04-value-prop-design.qmd) | 2% | 10 | 2 |
-| Quiz | [Quiz 5 - Mid-semester Feedback Survey](00-assessments.qmd#mid-semester-feedback-survey) | 2% | 10 |  |
-| Quiz | [Quiz 6 - GitHub and Collaboration](02-git-deployment.qmd) | 2% | 10 | 4 |
-| Quiz | [Quiz 7 - APIs and How the Internet Works](07-internet-fundamentals.qmd) | 2% | 10 | 4 |
-| Quiz | [Quiz 8 - Principles of Software Engineering and Design](08-software-engineering.qmd) | 2% | 10 | 4 |
-| Quiz | [Quiz 9 - AI Tools](09-ai-dev-platforms.qmd) | 2% | 10 | 4 |
-| Quiz | [Quiz 10 - Product Metrics and Data Analysis](11-product-metrics.qmd) | 2% | 10 | 4 |
-| Sprint | [Sprint 1 – Deploy your first app](00-assessments.qmd#sprint-1-deploy-your-first-app) | 8% | 40 | 1 |
-| Sprint | [Sprint 2 – Identify a problem worth solving](00-assessments.qmd#sprint-2-identify-a-problem-worth-solving) | 8% | 40 | 2, 3 |
-| Sprint | [Sprint 3 – First MVP with Database and Payments](00-assessments.qmd#sprint-3-first-mvp-with-database-and-payments) | 8% | 40 | 4 |
-| Sprint | [Sprint 4 – Code Base Teardown & Architecture Analysis](00-assessments.qmd#sprint-4-code-base-teardown-architecture-analysis) | 8% | 40 | 4 |
-| Sprint | [Sprint 5 – TBD](00-assessments.qmd#sprint-5-tbd) | 8% | 40 | 4 |
-| Project | [Final Project](00-assessments.qmd#final-project) | 40% | 200 | 4 |
-|  | **TOTAL** | **100%** | **500** |  |
+| Component | Points | % of Grade |
+|-----------|--------|------------|
+| Sprints (5 × 50) | 250 | 50% |
+| Peer Code Review | 50 | 10% |
+| Peer Product Testing | 50 | 10% |
+| Final Product | 100 | 20% |
+| Quizzes (10 × 5) | 50 | 10% |
+| **TOTAL** | **500** | **100%** |
 
-::: {style="font-size:0.65em;"}
-**Note:** All assignments and quizzes are described in detail in the [Assessments section](00-assessments.qmd).
-:::
+Every assignment and quiz is described in detail in the [Assessments section](00-assessments.qmd).
 
 The course is **not** graded on a curve. It's possible for every student to earn an A.
 
