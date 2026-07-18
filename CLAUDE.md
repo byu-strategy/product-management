@@ -24,6 +24,12 @@ Class is run like an athletic practice: Scott is the coach, students are full-st
 
 **Jargon rule:** use athletic language (practice, film, drill, scrimmage, reps, emphasis, huddle) for the in-room cadence and culture. Use industry terms (sprint, PRD, MVP, discovery, code review, retro) for anything assessed, documented, or resume-transferable. Schedule and assessments stay in industry terms; the practice plans and room framing use the athletic terms. Drop the metaphor whenever precision matters.
 
+### Course spine and faith integration
+
+The course is organized around one loop, **AIRE**: Aim, Inform, Reason, Enact (introduced in Chapter 1). Discovery is Inform, specs and scoping are Reason, building and shipping are Enact, and the Aim (what is worth building) is the values question taken up in the Product Morality chapter. The decision engine is multiplicative, Information × Reasoning × Execution (grounding "why we grade decisions, not outcomes" in the grading philosophy), and the belief-truth diagram in Chapter 3 pictures the Inform/Reason half. Keep new content coherent with this spine.
+
+Faith is integrated, not bolted on. This is BYU: each practice opens with a scripture and a quote tied to the emphasis (the Wooden model, per Brigham Young's charge to Karl G. Maeser to teach nothing "without the Spirit of God"). Do not shy away from the faith dimension in course content; keep it truthful and tied to the product point, and still obey the copy voice (no em dashes, plain, no emoji). The reusable opener pairings live in `practice-plan-template.md`.
+
 ## Architecture
 
 ### Content Structure
