@@ -94,14 +94,26 @@ table td {
   margin-top: 0;
 }
 
-/* Version chip sits just beneath the course title, flush left */
+/* Minimalist version chip: soft gray fill, no border, muted text, short */
 .sidebar-title .version-chip {
   display: inline-block;
   margin-top: 0.35rem;
   white-space: nowrap;
-  font-size: 0.6rem;
-  padding: 0px 6px;
-  border-radius: 8px;
+  font-size: 0.62rem;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  padding: 3px 8px;
+  border: none;
+  border-radius: 999px;
+  color: #6b7280 !important;
+  background-color: #eef0f2;
+}
+
+.sidebar-title .version-chip:hover {
+  background-color: #e3e6ea;
+  color: #4b5563 !important;
+  text-decoration: none !important;
 }
 
 /* Cross-listed course numbers above the syllabus block on the page */
