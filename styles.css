@@ -84,6 +84,31 @@ table td {
   text-decoration: none !important;
 }
 
+/* Version chip sits just beneath the course title, flush left */
+.sidebar-title .version-chip {
+  display: inline-block;
+  margin-top: 0.35rem;
+  white-space: nowrap;
+}
+
+/* Cross-listed course numbers above the syllabus block on the page */
+.course-numbers-page {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #6c757d;
+  letter-spacing: 0.03em;
+  margin-bottom: 0.75rem;
+}
+
+/* Cross-listed course numbers under the sidebar title */
+.sidebar-course-numbers {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #6c757d;
+  letter-spacing: 0.02em;
+  margin: 0.15rem 0 0.4rem 0;
+}
+
 
 
 .tweet-center {
