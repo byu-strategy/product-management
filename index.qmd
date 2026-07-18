@@ -14,8 +14,8 @@ format:
 |                           |                            |
 |---------------------------|----------------------------|
 | **Instructor**            | Scott Murff                |
-| **TAs**                   | Nate McCauley, Taylor Wall |
-| **Office Hours**          | [Nate's Office Hours](https://calendly.com/nathanmccauley10/30min)  ,  [Taylor's Office Hours](https://calendly.com/taylorwall214/30min)|
+| **TAs**                   | Nate McCauley              |
+| **Office Hours**          | Wednesdays 3:30–4:45 PM    |
 | **Office Hours Location** | 587 TNRB                   |
 | **LMS**                   | Canvas                     |
 | **Class Time**            | Mondays 3:30–4:45 PM       |

@@ -493,7 +493,7 @@ After generating, review carefully. Ask yourself:
 - Are the success metrics things you can actually measure?
 - Does your CLAUDE.md give Claude Code enough context to help you build?
 
-**Deliverable:** GitHub URLs to your CLAUDE.md and spec documents committed to your repo. Share your report with sdmurff, nmccaul, and twall03 if private.
+**Deliverable:** GitHub URLs to your CLAUDE.md and spec documents committed to your repo. Share your report with sdmurff and nmccaul if private.
 
 #### Part 2: Build Your Core Feature
 
