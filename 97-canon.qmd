@@ -26,6 +26,17 @@ What has **not** changed: humans still have jobs to be done, still feel the same
 | Customer Development: "get out of the building" | Steve Blank, *The Four Steps to the Epiphany* (2005) | Ch 3–4 | AI can augment research; it cannot replace real customer contact |
 | The five discovery skills (Q/O/N/E → Associating) | Dyer, Gregersen & Christensen, "The Innovator's DNA," HBR (2009) | Ch 2 | Durable; these are the behaviors, not the tools |
 
+## Strategy (choosing the Aim)
+
+| Principle | Source | Where it lives | AI-era note |
+|---|---|---|---|
+| Strategy is choosing what *not* to do | Michael Porter | Product Strategy | Matters more: when anyone can build anything, the choice is the advantage |
+| Where to play / how to win | Roger Martin & A.G. Lafley, *Playing to Win* (2013) | Product Strategy | Durable |
+| Moats and durable advantage | Hamilton Helmer, *7 Powers* (2016) | Product Strategy | Sharper: cheap copying makes the moat the whole game |
+| DHM (delight, hard-to-copy, margin-enhancing) | Gibson Biddle | Product Strategy | Durable |
+| Product vision | Marty Cagan, *Inspired* | Product Strategy; Ch 1 | Durable |
+| Aiming well; virtue as the mean | Aristotle, *Nicomachean Ethics* | Product Morality | Durable |
+
 ## Discover
 
 | Principle | Source | Where it lives | AI-era note |

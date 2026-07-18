@@ -31,6 +31,8 @@ The graveyard of failed startups is filled with beautifully designed products th
 
 With AI tools dramatically lowering the cost of building software, the bottleneck has shifted. The hard part is no longer *can we build it?* but *should we build it?* Finding a problem worth solving is now the most valuable skill a product builder can develop.
 
+Paul Graham compressed the whole idea into Y Combinator's motto: *make something people want.* Not something clever, not something you happen to be able to build, something people actually want. Finding out what that is, is the entire discovery half of this course.
+
 ## Part 1: The Strategy
 
 ### Why Most Products Fail

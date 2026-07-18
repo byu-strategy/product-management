@@ -37,6 +37,14 @@ Prompts to fill the shelf: *Tell me about the first time you... the last time yo
 
 *The rider and the elephant is Jonathan Haidt's image (The Happiness Hypothesis, 2006), popularized for change by Chip and Dan Heath (Switch, 2010).*
 
+### Make It Stick
+
+Why do some ideas lodge in memory while others slide off? Chip and Dan Heath studied sticky ideas and found six traits, the acronym is **SUCCESs**: **S**imple (one core idea, ruthlessly), **U**nexpected (break a pattern, open a gap), **C**oncrete (specific images, not abstractions), **C**redible (a detail or number that earns belief), **E**motional (make them feel, not just think), and **S**tories (wrap it in a narrative). When your pitch is not landing, run it against the six and you will usually find the missing one.
+
+For structure, Nancy Duarte's advice is to move your audience deliberately between *what is* and *what could be*: open the gap between today's frustrating reality and the better future your product makes possible, then close on a clear call to action. Contrast is what creates momentum.
+
+*Sticky ideas (SUCCESs) from Chip and Dan Heath, Made to Stick (2007); story structure from Nancy Duarte, Resonate (2010).*
+
 ### Storytelling in day-to-day product work
 
 The demo is one setting. The skill generalizes across four variables you can name deliberately:

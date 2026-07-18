@@ -12,7 +12,7 @@ That second question, not "will it work" but "should we build it," is the **aim*
 
 ## Understanding human nature cuts both ways
 
-To build something people actually use, you have to understand how people actually work: the emotional elephant beneath the rational rider, the cognitive shortcuts and defaults, the cravings and the loops. That knowledge is exactly what makes a product feel effortless and worth returning to.
+To build something people actually use, you have to understand how people actually work: the emotional elephant beneath the rational rider (Daniel Kahneman's fast, automatic System 1 and slow, deliberate System 2), the cognitive shortcuts and defaults, the cravings and the loops. That knowledge is exactly what makes a product feel effortless and worth returning to.
 
 ![The rider reasons; the elephant feels and moves. Good design serves both. The same understanding can also be turned against the elephant.](images/elephant-rider.svg){fig-alt="An illustration of a small rider seated on a large elephant. The rider is labeled conscious and reasoning; the elephant is labeled emotional, automatic, and strong."}
 
@@ -26,7 +26,7 @@ People are not blank slates about right and wrong. Research on moral foundations
 
 Habit-forming products run a loop: a trigger, an action, a variable reward, and an investment that brings the user back. The mechanics are neutral. A fitness app and a slot machine use the same loop. The difference is entirely in the aim.
 
-The honest test is simple: **would your user, in a calm and reflective moment, be glad you designed it this way?** A habit that helps someone do the thing they already want to do is a gift. A habit engineered to override their judgment and consume time they never meant to give is a harm, no matter how good the retention numbers look. This is where [the metrics from Chapter 8](08-measuring-what-matters.qmd) can lie to you: engagement a user would disown on reflection is not success, it is extraction.
+The honest test is simple: **would your user, in a calm and reflective moment, be glad you designed it this way?** A habit that helps someone do the thing they already want to do is a gift. A habit engineered to override their judgment and consume time they never meant to give is a harm, no matter how good the retention numbers look. This is where engagement metrics can lie to you, the ones you will learn to track later in [Measuring What Matters](08-measuring-what-matters.qmd): engagement a user would disown on reflection is not success, it is extraction.
 
 ### Algorithms and amplification
 

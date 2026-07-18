@@ -260,6 +260,14 @@ A persona is a fictional but realistic representation of your target customer. I
 **Willingness to Pay:**
 Has budget authority up to $500/month for tools that save significant time.
 
+### Discovery Is Continuous
+
+Discovery is not a phase you finish before building. The best product teams keep talking to customers every week, indefinitely. Teresa Torres calls this **continuous discovery**, and it fits this course exactly: you run the loop again every sprint, not once at the start.
+
+She also gives a way to keep discovery organized, the **Opportunity Solution Tree**. Start from one desired **outcome** (the thing you want to move). Branch into the **opportunities**: the specific customer needs and pains you have discovered that could move it. Under each opportunity, branch into candidate **solutions**, and under each solution, the **experiments** that would test it. The tree keeps you honest: every solution has to hang off a real, discovered opportunity, or it does not belong on the tree.
+
+*Continuous discovery and the Opportunity Solution Tree are from Teresa Torres, Continuous Discovery Habits (2021).*
+
 ## Part 2: Building It
 
 ### Git Fundamentals
