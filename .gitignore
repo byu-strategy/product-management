@@ -70,4 +70,11 @@ $RECYCLE.BIN/
 # Temporary files
 *.tmp
 *.temp
+
+# Throwaway design mockups (see CLAUDE.md)
+.mockups/
+
+# Claude Code: personal/machine-local config stays out; skills and settings.json are shared
+.claude/settings.local.json
+.claude/worktrees/
 **/*.quarto_ipynb

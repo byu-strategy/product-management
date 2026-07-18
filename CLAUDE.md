@@ -70,3 +70,30 @@ quarto serve
 - Python code execution disabled by default (`execute: eval: false` in config)
 - When renaming chapter files, update all references in `_quarto.yml`, schedule, assessments, and cross-links
 - GitHub Actions workflow (`.github/workflows/publish.yml`) automatically builds and deploys to GitHub Pages on push to main
+
+## Commit and push regime
+
+This course site is a product. A push to `main` publishes it live to students via GitHub Pages, so committing and pushing are two different acts with two different owners.
+
+- **Commit straight to `main`, no feature branches.** Solo-maintainer workflow. Recovery is `git reset` while unpushed, `git revert` once pushed. Never rewrite pushed history.
+- **Commit often, without asking.** Committing is pre-authorized and always reversible. Commit after each unit of work; do not end a task with "want me to commit?".
+- **Conventional prefixes, one concern per commit.** `feat:` / `fix:` / `content:` / `chore:` / `docs:`. A schedule change and a new chapter section are two commits, not one.
+- **Stage explicit paths only.** Never `git add -A`, `git add .`, or `git commit -am`. The working tree often holds unrelated files (OneDrive artifacts, drafts, PDFs); never sweep them into a commit.
+- **Do NOT push.** Pushing publishes to students, so it is the human's deliberate act. When work is committed, say it is ready and stop. The `/push` skill is the only sanctioned push path; invoking it is push authorization for that one run only.
+
+## Working discipline (definition of done)
+
+- **Render before calling it ready.** Any change to `.qmd` content, `_quarto.yml`, or styling must pass `quarto render` cleanly before commit. A broken render pushed to main is a broken deploy.
+- **Check cross-references when files move or sections change.** Renames and anchor edits must be chased through `_quarto.yml`, the schedule, assessments, and cross-links; broken internal links are the top regression here.
+- **Verify proportional to risk.** A typo or copy tweak needs only a clean render. Navigation changes, schedule restructures, and styling changes earn a look at the rendered output (`quarto preview`) before commit.
+- **Never reformat or rewrite content you weren't asked to touch.** Keep diffs scoped to the task so review stays cheap.
+
+## Copy voice
+
+- **No em dashes, anywhere.** Not in course content, commit messages, code comments, or replies to Scott. Use a comma, colon, period, or "and" instead.
+- **Plain and factual.** Direct, not flowery or salesy. Scott adds the flourishes himself. This applies to all student-facing copy: syllabus text, assignment instructions, announcements.
+- **No emoji as UI or content decoration** unless explicitly asked.
+
+## Mockups and design iteration
+
+When asked for a design, layout, or "show me what X could look like" (site styling, slide themes, page layouts), build a high-fidelity, self-contained HTML mockup in `.mockups/` at the repo root (gitignored). Real fonts, spacing, and representative content. Finish by printing the clickable absolute `file://` path. Mockups are throwaway: once built into the site, they are done. Desktop only unless asked.
