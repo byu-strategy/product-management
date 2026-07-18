@@ -4,6 +4,13 @@ This course site is a living product. It gets better during the semester, and ev
 
 New entries appear at the top.
 
+## v1.1.1 (2026-07-18)
+
+Small additions to the discovery and storytelling material.
+
+- **Chapter 3** now has a "thinking in probabilities" note: hold beliefs about your customer as probabilities and seek evidence that would look different if you were wrong, which is why the Mom Test works.
+- **A rider-and-elephant illustration** was added to the Storytelling chapter and to Product Morality, to picture the two-part mind the analogy describes.
+
 ## v1.1.0 (2026-07-18)
 
 A large content release: a new chapter, a framework that ties the whole course together, and expanded discovery, storytelling, and grading material.
