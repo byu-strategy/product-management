@@ -90,6 +90,12 @@ Here's a simple template:
 A useful exercise is defining who your product is *not* for. This helps you avoid wasting time and money on the wrong audience. For example, if you're building a no-code tool for small businesses, enterprise CTOs are probably not your customer, even if they express interest.
 :::
 
+### Start With a Beachhead
+
+Do not try to reach everyone at once. Geoffrey Moore's *Crossing the Chasm* argues you should win a single narrow segment completely before you expand, a **beachhead**: a small market you can dominate, become the obvious choice for, and use as a base to move outward. For you as a student, the beachhead might be one dorm, one club, one type of small business in Provo. Own that first. A product that ten people love beats one that a thousand people shrug at.
+
+*The beachhead and the technology adoption lifecycle are from Geoffrey Moore, Crossing the Chasm (1991).*
+
 ### Jobs-to-be-Done Recap in 5 Minutes
 
 The **Jobs-to-be-Done (JTBD)** framework shifts your focus from demographics to *why* customers "hire" your product. People don't buy a product, they hire it to do a job.
@@ -441,6 +447,21 @@ Offer something valuable in exchange for an email. Examples:
 - Exclusive community access
 
 Use tools like ConvertKit, Mailchimp, or Beehiiv to collect and nurture emails.
+
+### The Levers of Persuasion
+
+People rarely decide on logic alone. Robert Cialdini's research names six levers that move real decisions, worth using honestly, and worth recognizing when they are used on you:
+
+- **Social proof** — people do what similar people do. Show that others like them already use and trust you.
+- **Authority** — credible expertise persuades. Signal what makes you credible on this problem.
+- **Scarcity** — limited access or time raises perceived value: early access, a waitlist, a cohort.
+- **Reciprocity** — give first (a useful tool, real help), and people are inclined to give back.
+- **Commitment and consistency** — a small yes leads to a bigger one. Start with a low-friction ask.
+- **Liking** — people say yes to those they like and who are like them. Be human, specific, and warm.
+
+These amplify a true offer; they do not substitute for one. Used to push a product that does not deliver, they become manipulation, the line drawn in [Product Morality](product-morality.qmd).
+
+*The six principles of persuasion are from Robert Cialdini, Influence (1984).*
 
 ### The Art of the Demo/Pitch
 

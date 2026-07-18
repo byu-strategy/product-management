@@ -14,7 +14,7 @@ This chapter teaches you the Jobs-to-be-Done framework for understanding custome
 
 ### Discovery Is Truth-Seeking
 
-Before the frameworks, the mindset. Strip away the tools and a product manager has one core job: to know what is actually true about a customer and their problem before spending real time and money building. Discovery is how you do that job. Everything else in this chapter, Jobs-to-be-Done, the Mom Test, interview synthesis, is machinery for replacing what you *believe* about your users with what is *true* about them, as cheaply and quickly as possible.
+Before the frameworks, the mindset. Strip away the tools and a product manager has one core job: to know what is actually true about a customer and their problem before spending real time and money building. Discovery is how you do that job. Everything else in this chapter, Jobs-to-be-Done, the Mom Test, interview synthesis, is machinery for replacing what you *believe* about your users with what is *true* about them, as cheaply and quickly as possible. Steve Blank gave this discipline its name, *customer development*, and its blunt motto: get out of the building. The facts you need are outside, with real people, not inside your head.
 
 It helps to see where a belief can sit.
 

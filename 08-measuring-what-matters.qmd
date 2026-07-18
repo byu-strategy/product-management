@@ -67,6 +67,14 @@ If churn is your problem (lagging), look for leading indicators that predict it:
 
 **The test:** Can this metric directly inform a decision? If not, it's probably vanity.
 
+### Measure Outcomes, Not Output
+
+There is a deeper vanity trap than any bad metric: measuring how much you *built* instead of whether it *worked*. Features shipped, tickets closed, lines of code, these are **output**. Whether users are better off, whether they came back, whether the problem actually got solved, is **outcome**. Marty Cagan and Melissa Perri call the habit of mistaking the first for the second the *build trap*: a team busily shipping, feeling productive, and delivering nothing that matters.
+
+In the AI era this trap is more dangerous, not less, because output has never been cheaper. You can ship a feature a day now. So hold yourself to outcomes: did the North Star move, did activation improve, did a real user get real value? Shipping is not the goal; changing an outcome is.
+
+*Outcomes over output, and the build trap, from Marty Cagan, Inspired / Empowered, and Melissa Perri, Escaping the Build Trap (2018).*
+
 ### The Pirate Metrics Framework (AARRR)
 
 Dave McClure's framework covers the entire user lifecycle:

@@ -36,6 +36,8 @@ A Minimum Viable Product isn't a stripped-down version of your final vision. It'
 
 The keyword is *viable*. An MVP must actually work and provide value. It's not a prototype or a demo. It's a real product, just minimal.
 
+The MVP and the build-measure-learn loop behind it come from Eric Ries, *The Lean Startup* (2011). The loop still holds, but the AI era has flipped its balance: building is cheap now, so *measure* and *learn*, deciding what to build and confirming it worked, are where the real work moved.
+
 ![Image source: The Lean Product Playbook by Dan Olsen](images/mvp.png)
 
 ### Minimum Viable, or Minimum Awesome?

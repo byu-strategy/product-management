@@ -35,6 +35,8 @@ Prompts to fill the shelf: *Tell me about the first time you... the last time yo
 
 ![Every listener is a small, reasoning rider on a large, emotional elephant. Facts move the rider; story and feeling move the elephant.](images/elephant-rider.svg){fig-alt="An illustration of a small rider seated on a large elephant. The rider is labeled conscious and reasoning; the elephant is labeled emotional, automatic, and strong."}
 
+*The rider and the elephant is Jonathan Haidt's image (The Happiness Hypothesis, 2006), popularized for change by Chip and Dan Heath (Switch, 2010).*
+
 ### Storytelling in day-to-day product work
 
 The demo is one setting. The skill generalizes across four variables you can name deliberately:

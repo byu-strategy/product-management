@@ -18,6 +18,14 @@ You built this thing. You know exactly where every button is, what every label m
 
 This is the **curse of knowledge**, once you know something, it's nearly impossible to imagine not knowing it. The only cure is watching people who don't know.
 
+### The Design Canon Behind This
+
+Two ideas from design shape what you are testing for. Don Norman's *The Design of Everyday Things* gives you **affordances**: good design makes the right action obvious, a door you push has a plate, a door you pull has a handle. When users hesitate, an affordance is usually missing. Steve Krug's *Don't Make Me Think* gives you the standard to test against: every moment a user has to stop and figure out your interface is friction you can remove.
+
+AI raises the stakes here. It will generate a screen that *looks* polished in seconds, but polish is not usability, and a good-looking interface can still make people think. Watching real users is exactly what reveals the difference, and no AI can do it in your place.
+
+*From Don Norman, The Design of Everyday Things (1988), and Steve Krug, Don't Make Me Think (2000).*
+
 ### What is Usability Testing?
 
 Usability testing is observing real users attempt to accomplish real tasks with your product. It's not a demo. It's not a survey. It's watching someone struggle (or succeed) while you stay quiet and take notes.
