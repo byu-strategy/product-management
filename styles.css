@@ -89,6 +89,9 @@ table td {
   display: inline-block;
   margin-top: 0.35rem;
   white-space: nowrap;
+  font-size: 0.6rem;
+  padding: 0px 6px;
+  border-radius: 8px;
 }
 
 /* Cross-listed course numbers above the syllabus block on the page */
