@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 660" font-family="Helvetica, Arial, sans-serif">
+  <rect x="0" y="0" width="1000" height="660" fill="#ffffff"/>
+
+  <text x="500" y="48" text-anchor="middle" font-size="26" font-weight="700" fill="#002E5D">Outcome is an area, not a perimeter</text>
+  <text x="500" y="76" text-anchor="middle" font-size="15" fill="#5a6672">Each factor is a side. Multiply the sides and you get the outcome. Take any side toward zero and the area collapses.</text>
+
+  <!-- ================= LEFT PANEL: every factor strong ================= -->
+  <text x="270" y="128" text-anchor="middle" font-size="16" font-weight="700" fill="#0057B8">Every factor strong</text>
+
+  <!-- axes -->
+  <line x1="150" y1="170" x2="150" y2="520" stroke="#9aa4ad" stroke-width="1.5"/>
+  <line x1="150" y1="520" x2="470" y2="520" stroke="#9aa4ad" stroke-width="1.5"/>
+
+  <!-- area rect (strong): from baseline y=520 up to y=200, width 150..420 -->
+  <rect x="150" y="200" width="270" height="320" fill="#0057B8" fill-opacity="0.16" stroke="#0057B8" stroke-width="2"/>
+  <text x="285" y="360" text-anchor="middle" font-size="19" font-weight="700" fill="#002E5D">Outcome</text>
+  <text x="285" y="384" text-anchor="middle" font-size="12.5" fill="#5a6672">(the full area)</text>
+
+  <!-- side labels -->
+  <text x="285" y="548" text-anchor="middle" font-size="13" fill="#3d4750">Belief  (Information × Reasoning)</text>
+  <text x="132" y="360" text-anchor="middle" font-size="13" fill="#3d4750" transform="rotate(-90 132 360)">Execution</text>
+
+  <!-- ================= RIGHT PANEL: one factor weak ================= -->
+  <text x="730" y="128" text-anchor="middle" font-size="16" font-weight="700" fill="#C0392B">One factor weak</text>
+
+  <!-- axes -->
+  <line x1="610" y1="170" x2="610" y2="520" stroke="#9aa4ad" stroke-width="1.5"/>
+  <line x1="610" y1="520" x2="930" y2="520" stroke="#9aa4ad" stroke-width="1.5"/>
+
+  <!-- area rect (collapsed): same width, tiny height -->
+  <rect x="610" y="494" width="270" height="26" fill="#C0392B" fill-opacity="0.18" stroke="#C0392B" stroke-width="2"/>
+  <text x="745" y="470" text-anchor="middle" font-size="19" font-weight="700" fill="#C0392B">Outcome ≈ 0</text>
+  <text x="745" y="450" text-anchor="middle" font-size="12.5" fill="#8a5252">the area is gone</text>
+
+  <!-- side labels -->
+  <text x="745" y="548" text-anchor="middle" font-size="13" fill="#3d4750">Belief  (Information × Reasoning)</text>
+  <text x="592" y="360" text-anchor="middle" font-size="13" fill="#C0392B" transform="rotate(-90 592 360)">Execution ≈ 0</text>
+
+  <!-- bottom caption -->
+  <text x="500" y="612" text-anchor="middle" font-size="13.5" fill="#5a6672">Additive thinking treats outcome as a <tspan font-style="italic">perimeter</tspan>, where a long side offsets a short one.</text>
+  <text x="500" y="634" text-anchor="middle" font-size="13.5" fill="#5a6672">It is an <tspan font-style="italic">area</tspan>: a rectangle with one short side has almost none, however long the others.</text>
+</svg>

@@ -24,6 +24,33 @@ Builder’s high is back...
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 ```
 
+## The Loop: How This Course Works
+
+Before the history and the frameworks, here is the one idea the whole course runs on. Strip product management down to its core and it is this: **figure out what is true, and act on it.** True about a customer, a problem, a market. Everything else, the interviews, the specs, the MVPs, the metrics, is machinery for that.
+
+We run that machinery as a single loop, and it has a name: **AIRE**.
+
+- **Aim.** What are you trying to build, and is it worth building? The goal, and the values behind it.
+- **Inform.** Go find out what is actually true about your customer and their problem. Gather evidence.
+- **Reason.** Make sense of what you gathered. Decide what to build and how.
+- **Enact.** Build it, ship it, and watch what happens. Then loop back, with a sharper aim, better information, and clearer reasoning.
+
+The course *is* this loop. Discovery is **Inform**. Writing specs and scoping an MVP is **Reason**. Building, shipping, and growing is **Enact**. And the **Aim**, what is worth building at all, is a question of values we take up directly in [Product Morality](product-morality.qmd). You will run the loop many times across the semester, once per sprint, because a single turn tells you little; the arc is what reveals whether you are getting good.
+
+Two things about the loop are worth knowing up front.
+
+First, **the middle three multiply, they do not add.** How good a decision turns out is roughly Information × Reasoning × Execution, and because those multiply, a zero anywhere sinks the whole. Brilliant reasoning on evidence you never gathered is a confident mistake. A great idea you never ship is worth nothing. Think of it as an area, not a perimeter: a rectangle with one short side has almost no area however long the others are.
+
+![Outcome is the area the factors enclose, not their perimeter. One weak factor collapses it.](images/outcome-as-area.svg){fig-alt="Two rectangles. The left, with all sides full, is a large shaded area labeled Outcome. The right, with the Execution side near zero, collapses to a thin sliver labeled Outcome near zero."}
+
+Second, **most of the loop is about telling what you believe from what is true.** You will always have beliefs about your customer. Some are right, some are wrong, and the work of Inform and Reason is to close the gap. [Chapter 3](03-problem-discovery.qmd) gives you a picture of exactly that: a map of where a belief can sit relative to the truth, and how to move it.
+
+### How we run class
+
+Class meets once a week, and we run it like a practice, in the sense a coach like John Wooden meant it: short bursts of full attention to install a skill, then live reps building with Claude Code. Each practice has one emphasis, and we open it with a scripture and a quote tied to that emphasis.
+
+The scripture is not decoration, and it is not separate from the craft. This is BYU, and we take seriously Brigham Young's charge to Karl G. Maeser as he left to found this university: to "not teach even the alphabet or the multiplication tables without the Spirit of God." All truth is God's truth, and seeking it honestly, about a customer, a market, or anything else, is a spiritual act as much as a technical one. Faith, in the oldest sense, is not the absence of evidence; it is belief carried all the way into action. That is the Enact in AIRE: a belief you will not act on is dead. We will treat the whole loop that way, as work worth doing well and worth doing in good faith.
+
 ## Part 1: The Strategy
 
 ### History of Product Management
