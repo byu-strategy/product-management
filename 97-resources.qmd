@@ -3,6 +3,12 @@ title: "Resources"
 editor: visual
 ---
 
+## Agent Team Kit
+
+Setup and working agreements for running many Claude Code agents on one shared repo. This is a living resource, refer back to it as it gets updated through the semester.
+
+- [Agent Team Kit repo](https://github.com/sdmurff/agent-team-kit)
+
 ## Thought Leaders
 
 ### Aakash Gupta
