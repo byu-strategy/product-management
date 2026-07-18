@@ -14,29 +14,36 @@ book:
         - 00-schedule.qmd
         - 00-assessments.qmd
         - 00-release-notes.qmd
-    - part: Topics
+    - part: Foundations
       chapters:
         - 01-pm-ai-era.qmd
+    - part: Discover
+      chapters:
         - 02-problems-worth-solving.qmd
         - 03-problem-discovery.qmd
         - 04-validating-opportunities.qmd
+    - part: Build
+      chapters:
         - 05-building-your-mvp.qmd
         - 06-testing-with-users.qmd
+        - 11-sustainable-code.qmd
+    - part: Grow the Business
+      chapters:
         - 07-platform-strategy.qmd
         - 08-measuring-what-matters.qmd
         - 09-go-to-market.qmd
         - 10-business-models.qmd
-        - 11-sustainable-code.qmd
-        - 12-final-presentations.qmd
-    - part: Resources
+    - part: Demo
       chapters:
-    # Resources and Appendices
-      - 94-problem-discovery-framework.qmd
-      - 95-eng-checklist.qmd
-      - 96-code-base-review.qmd
-      - 97-resources.qmd
-      - 98-tools.qmd
-      - 99-prompts.qmd
+        - 12-final-presentations.qmd
+    - part: Playbook
+      chapters:
+        - 94-problem-discovery-framework.qmd
+        - 95-eng-checklist.qmd
+        - 96-code-base-review.qmd
+        - 97-resources.qmd
+        - 98-tools.qmd
+        - 99-prompts.qmd
 
 bibliography: references.bib
 csl: informs.csl
