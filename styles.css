@@ -84,6 +84,16 @@ table td {
   text-decoration: none !important;
 }
 
+/* No sidebar logo is used; collapse the empty placeholder and its dead space */
+.sidebar-logo-link {
+  display: none;
+}
+
+.sidebar-header {
+  padding-top: 0.5rem;
+  margin-top: 0;
+}
+
 /* Version chip sits just beneath the course title, flush left */
 .sidebar-title .version-chip {
   display: inline-block;
