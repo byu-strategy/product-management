@@ -63,6 +63,16 @@ The ultimate validation: will someone exchange money to make this problem go awa
 - "That sounds like a good idea" (opinion, not commitment)
 - They have no budget authority for this type of purchase
 
+::: {.callout-tip title="Harden your evidence"}
+Three ways to keep your scores honest:
+
+- **Quantify willingness to pay from what they already spend.** Do not ask for a number they will invent. Add up what the problem *actually* costs them today: the price of the workaround, the hours lost, the substitute they already buy. That is real willingness to pay.
+- **Score intensity out of ten (the "Ouch Factor").** Force yourself to rate how much it hurts, 1 to 10, per person. Vague intensity hides weak opportunities.
+- **Watch both failure modes.** A *false positive* is polite agreement ("sure, I'd use that") for a problem no one really has. A *false negative* is a real pain you missed because you framed the question badly. Seek disconfirming evidence for the first; re-ask in different words to catch the second.
+
+*Ouch Factor, workaround-spend, and false-positive/negative framing from Nile Hatch, [Expeditionary Innovation](https://github.com/nilehatch/exp_innov/).*
+:::
+
 ### Opportunity Scoring
 
 Create a simple scorecard for each problem you're considering:
@@ -81,6 +91,18 @@ Create a simple scorecard for each problem you're considering:
 - **15-19**: Promising**: worth exploring further
 - **10-14**: Questionable**: dig deeper before committing
 - **Below 10**: Weak**: consider other problems
+
+### Can You Reach Them? The Access Test
+
+A real, painful, frequent problem is still not an opportunity if you cannot reach the people who have it. A powerful need you cannot access is not an opportunity; it is a wish. Before you commit, run a quick access test on three questions:
+
+1. **Location.** Can you find where these people already gather, online or off? If you cannot name the channel, that is a red flag.
+2. **Engagement.** Will they actually respond to you, answer questions, and try a prototype?
+3. **Reciprocity.** Do you have something to offer in return? Access is reciprocity, not just reach. People give you their time when the exchange feels fair.
+
+If you cannot reach a segment cheaply now, as a student, you will not reach them cheaply as a founder. Either find a reachable beachhead within the market or reconsider the problem.
+
+*The access test is adapted from Nile Hatch, [Expeditionary Innovation](https://github.com/nilehatch/exp_innov/).*
 
 ### The Commitment Decision
 

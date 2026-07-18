@@ -94,6 +94,14 @@ Your journal entries might look like:
 
 These small frustrations are seeds for products.
 
+### Diverge Before You Converge
+
+There is a rhythm to good discovery: **open wide before you narrow.** Generate many candidate problems before you judge any of them, then converge deliberately on the most promising. Most people do the opposite. They seize the first idea and spend months defending it, which is just premature convergence wearing a confident face.
+
+So resist the urge to pick early. Your problem journal is the diverging half: capture dozens of frictions without filtering. Casting a wide net, across different people, contexts, and moments, surfaces problems you would never have reasoned your way to from your desk. Only once you have a real pile do you start scoring and cutting (the next section). The wider you diverge, the better the thing you eventually converge on.
+
+*Diverge/converge discipline adapted from Nile Hatch, [Expeditionary Innovation](https://github.com/nilehatch/exp_innov/).*
+
 ### Evaluating Your Problems
 
 Not every problem is worth solving. Whether a problem is worth solving can be evaluted from these four factors:

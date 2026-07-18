@@ -91,6 +91,22 @@ Most products focus only on functional jobs. But emotional and social jobs often
 
 ![Image source: Jeff Dyer, Innovators DNA](images/jobs-to-be-done1.png)
 
+### The Five Kinds of Pain
+
+Jobs come in three types; the *pain* behind a job comes in five kinds, and naming them gives you a checklist of what to probe for. A single problem often hurts in more than one way:
+
+| Kind of pain | What it costs the person |
+|---|---|
+| **Physical** | effort, fatigue, discomfort |
+| **Functional** | time, steps, things that don't work |
+| **Financial** | money, waste, missed earnings |
+| **Emotional** | stress, anxiety, embarrassment, frustration |
+| **Social** | status, belonging, how others see them |
+
+When you interview, listen across all five. The pains people mention first are usually functional; the ones that actually drive them to pay are often emotional or social. This complements the Self-Determination lens in [Sprint 2](00-assessments.qmd#sprint-2-validate-commit) (autonomy, competence, relatedness): that lens explains *why* a pain matters; these five categories catalog *how* it hurts.
+
+*Five pain categories from Nile Hatch, [Expeditionary Innovation](https://github.com/nilehatch/exp_innov/).*
+
 ### Problem Interviews (The Mom Test)
 
 Once you have a hypothesis about the job customers are trying to do, you need to validate it with real conversations. This is where most people fail, they ask bad questions that produce misleading answers.
@@ -174,6 +190,12 @@ This forces specificity. You'll learn:
 ### Interview Synthesis
 
 After 5+ interviews, patterns emerge. Synthesize what you learned into actionable insights.
+
+::: {.callout-note title="How many interviews is enough?"}
+There is no magic number, but there is a signal: **stop when new interviews stop surprising you.** Early on, every conversation adds something. As you approach saturation, you start hearing the same problems, quotes, and workarounds you have already heard, and the information each new interview adds drops toward zero. When two or three in a row tell you nothing new, you have enough to act. If every interview still surprises you, keep going, your net is probably too narrow.
+
+*The saturation ("information entropy") stop rule is from Nile Hatch, [Expeditionary Innovation](https://github.com/nilehatch/exp_innov/).*
+:::
 
 #### Synthesis Template
 

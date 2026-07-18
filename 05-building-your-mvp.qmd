@@ -70,6 +70,17 @@ What's the one thing your product must do?
 
 Start with the outcome, not the feature list.
 
+### The Cheapest MVP Is a Test, Not a Build
+
+Before you build even the minimal thing, you can often test whether anyone wants it, faster and cheaper than writing code. Two classic techniques:
+
+- **The smoke test.** Put up a simple landing page that describes the product and asks people to sign up (or click "buy"). No product exists yet. If nobody clicks, you just saved yourself months. If people sign up, you have real demand evidence before building.
+- **Wizard of Oz.** Make the product *look* automated while you do the work manually behind the scenes. The user gets the real experience; you skip building the engine until you know the experience is wanted.
+
+Both let you test *desirability* (does anyone want this?) before you spend effort on *feasibility* (can we build it well?). Build the real thing once the demand is real.
+
+*Smoke test and Wizard of Oz framing from Nile Hatch, [Expeditionary Innovation](https://github.com/nilehatch/exp_innov/); both are established lean-startup techniques he assembles into the method.*
+
 ### User Stories
 
 A user story describes a feature from the user's perspective. They keep you focused on value, not just functionality.
@@ -181,6 +192,14 @@ Categorize features as:
 | **Won't have** | Explicitly out of scope (for now) |
 
 Be honest about what's truly "must have." Most features are "should have" at best.
+
+#### The $100 Test
+
+Here is a fast, honest way to force prioritization. Imagine you have exactly **$100 to "spend" across your candidate features.** You must allocate all of it, and you cannot spread it evenly. Put the money where the value is. The features that attract real dollars are your MVP; the ones that get a few cents are not.
+
+It works because it forces trade-offs that a flat must / should / could list lets you dodge, you feel the cost of every feature you fund. Run it on yourself, and better, run it with a few target users and watch where *they* put the money.
+
+*The $100 Test is from Nile Hatch, [Expeditionary Innovation](https://github.com/nilehatch/exp_innov/).*
 
 ## Part 2: Building It
 
