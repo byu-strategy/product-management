@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" font-family="Helvetica, Arial, sans-serif">
+  <rect x="0" y="0" width="900" height="560" fill="#ffffff"/>
+  <text x="450" y="44" text-anchor="middle" font-size="24" font-weight="700" fill="#002E5D">The Rider and the Elephant</text>
+  <text x="450" y="70" text-anchor="middle" font-size="14.5" fill="#5a6672">The mind has two parts. The small rider reasons; the great elephant feels and moves. Persuade both.</text>
+
+  <!-- ground -->
+  <line x1="120" y1="470" x2="780" y2="470" stroke="#c7ccd2" stroke-width="2"/>
+
+  <!-- ELEPHANT (silhouette, facing left) -->
+  <g fill="#3a5a7a">
+    <rect x="360" y="380" width="46" height="92" rx="16"/>
+    <rect x="440" y="384" width="46" height="88" rx="16"/>
+    <rect x="560" y="384" width="46" height="88" rx="16"/>
+    <rect x="640" y="380" width="46" height="92" rx="16"/>
+    <ellipse cx="520" cy="320" rx="195" ry="118"/>
+    <ellipse cx="315" cy="322" rx="112" ry="102"/>
+  </g>
+  <path d="M225,330 C 178,362 182,430 208,468" fill="none" stroke="#3a5a7a" stroke-width="34" stroke-linecap="round"/>
+  <ellipse cx="330" cy="300" rx="58" ry="72" fill="#2f4a66"/>
+  <path d="M710,318 C 748,332 742,372 726,392" fill="none" stroke="#3a5a7a" stroke-width="11" stroke-linecap="round"/>
+  <path d="M250,392 C 236,410 236,426 244,440" fill="none" stroke="#eef1f4" stroke-width="9" stroke-linecap="round"/>
+  <circle cx="288" cy="300" r="8" fill="#ffffff"/>
+  <circle cx="288" cy="300" r="3.5" fill="#1b2b3a"/>
+
+  <!-- RIDER -->
+  <g>
+    <path d="M520,232 q 34,-10 66,0 l -6,38 q -27,8 -54,0 z" fill="#C79A2E"/>
+    <circle cx="553" cy="196" r="24" fill="#E1A200"/>
+    <path d="M528,246 C 500,250 470,270 452,300" fill="none" stroke="#C79A2E" stroke-width="10" stroke-linecap="round"/>
+  </g>
+
+  <!-- labels -->
+  <text x="150" y="150" text-anchor="start" font-size="17" font-weight="700" fill="#002E5D">The Elephant</text>
+  <text x="150" y="172" text-anchor="start" font-size="12.5" fill="#5a6672">emotional · automatic · strong</text>
+
+  <text x="600" y="176" text-anchor="start" font-size="17" font-weight="700" fill="#8a5a00">The Rider</text>
+  <text x="600" y="198" text-anchor="start" font-size="12.5" fill="#8a6a2a">conscious · reasoning</text>
+
+  <!-- caption -->
+  <text x="450" y="520" text-anchor="middle" font-size="13" fill="#5a6672">Facts move the rider. Story, stakes, and feeling move the elephant. A product, or a pitch, needs both.</text>
+</svg>

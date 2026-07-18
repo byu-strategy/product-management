@@ -14,6 +14,8 @@ That second question, not "will it work" but "should we build it," is the **aim*
 
 To build something people actually use, you have to understand how people actually work: the emotional elephant beneath the rational rider, the cognitive shortcuts and defaults, the cravings and the loops. That knowledge is exactly what makes a product feel effortless and worth returning to.
 
+![The rider reasons; the elephant feels and moves. Good design serves both. The same understanding can also be turned against the elephant.](images/elephant-rider.svg){fig-alt="An illustration of a small rider seated on a large elephant. The rider is labeled conscious and reasoning; the elephant is labeled emotional, automatic, and strong."}
+
 It is also exactly what makes a product manipulative. The same understanding of human defaults that lets you remove friction lets you engineer compulsion. The line between a product that serves a person and one that exploits them runs right through the knowledge you are gaining in this class. Which is why the knowledge comes with a responsibility.
 
 ### Moral Foundations Theory
