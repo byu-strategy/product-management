@@ -1,5 +1,70 @@
 ---
-title: "Final Presentations"
+title: "Storytelling and the Final Demo"
 ---
 
-Student demos of products they have built throughout the semester.
+## Why This Matters
+
+You spent the semester finding a truth about a customer and building something in response to it. Now you have to make someone else care. That is a different skill, and it is not optional. The best product loses to a worse one that is explained better. Your [Final Project](00-assessments.qmd#final-project) is a five-minute video, which is to say it is a story, and the ability to tell it well is the same ability you use in a customer interview, a landing page, a sales call, a stakeholder update, and a job interview.
+
+This chapter teaches you to build a supply of stories, to tell them well, and to shape the one story that matters most this semester: the story of what you built and why.
+
+## Part 1: The Strategy
+
+### A story has a job
+
+A story is not decoration. It is a tool you pick up for a purpose, and the first question is always the purpose. The same three steps you use everywhere in this course apply:
+
+- **Aim.** What are you trying to communicate, and who are you trying to move? Persuade an investor, recruit a teammate, get a user to try the thing, help a stakeholder say yes.
+- **Approach.** Which story serves that aim? Pick from your database (below), do not invent one on the spot.
+- **Act.** Tell it, and watch whether it landed.
+
+If you cannot say what a story is *for*, you are not ready to tell it.
+
+### Build a story database
+
+Great storytellers do not improvise from nothing. They draw from a stocked shelf. Your standing assignment, starting now, is to **brainstorm and keep a running list of at least 20 personal stories** you can tell. Times you were lost, times you failed, the first time or the last time you did something, a near miss, a conflict you resolved, a moment something changed for you. Keep them in your company repo. You will reach for them in interviews, demos, and pitches for the rest of your career.
+
+Prompts to fill the shelf: *Tell me about the first time you... the last time you... the best ___ you ever had... a time you were completely lost... a time you helped someone who was stuck... a time you were sure and wrong.*
+
+### Techniques that make a story land
+
+- **Find the five-second moment.** Every good story has a single instant the whole thing turns on. Know exactly where yours is and slow down when you reach it. If a story has no such moment, it is a report, not a story.
+- **Show change.** A story is a before and an after. The listener needs to feel the difference between how things were and how they became. No change, no story.
+- **Speak to the rider and the elephant.** Every listener is a rider (conscious, logical) on an elephant (subconscious, emotional). Facts persuade the rider. Stakes, specifics, and feeling move the elephant. You need both. For the rider, lead with your point ([the Pyramid Principle](#): conclusion first, then the support). For the elephant, make it concrete and human.
+- **Mind your body.** Posture, eye contact, and pace carry as much as words. Slouch through a great story and it dies. Stand up in it.
+
+### Storytelling in day-to-day product work
+
+The demo is one setting. The skill generalizes across four variables you can name deliberately:
+
+| Variable | Options |
+|---|---|
+| **Setting (where/when)** | Async (email, Slack), live call, in-person |
+| **Method (what/how)** | Spoken, slides, a written doc, a recorded walkthrough, a live screenshare |
+| **Audience (who)** | A senior decision-maker, a peer, a stakeholder, a customer |
+| **Purpose (why)** | Align on next steps, win a decision, an interview, a pitch, a resource request |
+
+A demo to a senior decision-maker who needs to say yes is a different story, told differently, than a walkthrough for a peer who needs to give you feedback. Choose on purpose.
+
+## Part 2: The Final Demo
+
+Your [Final Project](00-assessments.qmd#final-project) is a five-minute video that tells the story of your product. It is graded on the product and on the telling. Structure it in three parts:
+
+1. **The problem (~1 min).** What truth about a customer did you find, and why does it matter? This is where you make the audience care. Open with a specific person and a specific moment, not a market-size statistic.
+2. **The live demo (~2.5 min).** Show the real, deployed product doing the real thing, with real data. Not slides, not localhost, not a walkthrough of features nobody asked about. Show the core action a user came for, working end to end.
+3. **The reflection (~1.5 min).** What did you learn, what would you do differently, what surprised you? Talk about what failed, not only what worked. Honesty here reads as strength, not weakness.
+
+Remember *resulting*: you are graded on the quality of your decisions and your learning, not on signup counts. A thoughtful product with three engaged users and an honest story beats a rushed one claiming fifty.
+
+### Rehearse
+
+Storytelling is a rep, not a talent. Practice the demo out loud, on camera, more than once. Time it. Watch it back and cut what does not serve the aim. Then tell it to one other person and fix what confused them before you record the final take.
+
+## Key Concepts
+
+- **A story has a job**: aim, approach, act. Know what it is for.
+- **Story database**: keep 20+ personal stories on the shelf, ready to use.
+- **Five-second moment**: the single instant the story turns on.
+- **Show change**: before and after, or it is not a story.
+- **Rider and elephant**: persuade the logic, move the emotion.
+- **The Final Demo**: problem, live demo, honest reflection, in five minutes.
