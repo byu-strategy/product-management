@@ -1,0 +1,88 @@
+---
+title: "The Canon"
+---
+
+This class is a synthesis. Almost none of the ideas here are mine; they are the best of what product people, entrepreneurs, designers, and thinkers have worked out over decades, organized onto one spine ([AIRE](01-pm-ai-era.qmd)) and put to work building real products with AI. This page names the sources, says where each idea lives in the course, and, because the ground is moving, flags what AI has changed and what it has not.
+
+If you build on someone's idea, credit them. That is both honest and how you learn whose work to go read next.
+
+## What AI changes, and what it does not
+
+A lot of product wisdom was written when building software was slow, expensive, and specialized. Some of that guidance is now dated. Three shifts matter most.
+
+- **Building got cheap, so the bottleneck moved.** The hard part is no longer *can we build it?* but *should we build it, and are we building the right thing?* Discovery and validation matter **more** now, not less, because it has never been easier to build the wrong thing quickly. "Write a detailed spec, then build" is giving way to "build a rough thing to think with." (Chapter 5 says this directly.)
+- **One person can now do the whole stack.** Frameworks written for cross-functional teams, hand-offs between PM, design, and engineering, still teach the right *thinking*, but you are playing every position at once. Read them for the judgment, not the org chart.
+- **AI can manufacture plausible-but-fake validation.** It will happily generate a persona, simulate an interview, and tell you your idea is great. That makes the old discipline, real people, real past behavior, more valuable, not less. AI accelerates hypotheses; humans give ground truth.
+
+What has **not** changed: humans still have jobs to be done, still feel the same pains, still decide with the elephant and justify with the rider, still trust people before products. Taste, judgment, and the choice of what is worth building are more decisive than ever, because everyone now has the same cheap building power.
+
+## Foundations and mindset
+
+| Principle | Source | Where it lives | AI-era note |
+|---|---|---|---|
+| Product management as a craft; outcomes over output; discovery vs. delivery | Marty Cagan, *Inspired* / *Empowered* (SVPG) | Ch 1; Ch 8 | The discovery/delivery split endures; the "empowered team" is now often a team of one plus AI |
+| Escaping the build trap (shipping features ≠ delivering value) | Melissa Perri, *Escaping the Build Trap* (2018) | Ch 8 | Sharper risk now: cheap building makes the build trap easier to fall into |
+| The Lean Startup: build-measure-learn, validated learning, pivot | Eric Ries, *The Lean Startup* (2011) | Ch 5; Ch 9 | Build cost collapsed; the loop still holds but "measure and learn" is now the expensive part |
+| Customer Development: "get out of the building" | Steve Blank, *The Four Steps to the Epiphany* (2005) | Ch 3–4 | AI can augment research; it cannot replace real customer contact |
+| The five discovery skills (Q/O/N/E → Associating) | Dyer, Gregersen & Christensen, "The Innovator's DNA," HBR (2009) | Ch 2 | Durable; these are the behaviors, not the tools |
+
+## Discover
+
+| Principle | Source | Where it lives | AI-era note |
+|---|---|---|---|
+| Jobs-to-be-Done ("hire" a product for a job) | Clayton Christensen, *Competing Against Luck* (2016); Tony Ulwick | Ch 2–3, Ch 9 | Durable |
+| The Mom Test: ask about past behavior, not hypotheticals | Rob Fitzpatrick, *The Mom Test* (2013) | Ch 3 | More important now: it filters the plausible fakes AI can generate |
+| Continuous discovery; the Opportunity Solution Tree | Teresa Torres, *Continuous Discovery Habits* (2021) | Ch 3–4 | Durable |
+| Disciplined discovery: diverge/converge, five kinds of pain, the Access Test | Nile Hatch, *Expeditionary Innovation* | Ch 2–4 | Durable |
+| Importance vs. satisfaction; the product-market-fit pyramid | Dan Olsen, *The Lean Product Playbook* (2015) | Ch 2, Ch 5 | Durable |
+| Discovery as truth-seeking (belief vs. truth, evidence) | Scott Murff, building on Ray Dalio, *Principles* (2017) | Ch 3 | Durable |
+
+## Build
+
+| Principle | Source | Where it lives | AI-era note |
+|---|---|---|---|
+| Minimum Viable Product | Ries / Blank (lean lineage) | Ch 5 | The "minimum" is cheaper than ever; "viable" is the trap, hence MAP below |
+| Minimum Awesome Product | Furr & Dyer, *The Innovator's Method* (2014) | Ch 5 | More relevant now: cheap building means you can afford "awesome at one thing" |
+| User stories with acceptance criteria | Kent Beck / Mike Cohn (Agile/XP) | Ch 5 | Now also the interface you hand your AI; write them well |
+| Prioritization: MoSCoW, ICE, the $100 Test | Dai Clegg (MoSCoW); Sean Ellis (ICE); Hatch ($100 Test) | Ch 5 | Durable; matters more as building more is easy |
+| Test demand before building: smoke test, Wizard of Oz | Lean-startup lineage, assembled by Hatch | Ch 5 | Still the cheapest test, even when building is cheap |
+| Usability: affordances and signifiers | Don Norman, *The Design of Everyday Things* (1988) | Ch 6 | AI generates usable-looking UIs fast; judging real usability matters more |
+| "Don't make me think" | Steve Krug, *Don't Make Me Think* (2000) | Ch 6 | Durable |
+| The curse of knowledge; watch real users | usability tradition; Chip & Dan Heath | Ch 6 | Durable |
+
+## Grow the business
+
+| Principle | Source | Where it lives | AI-era note |
+|---|---|---|---|
+| Crossing the chasm; the beachhead market | Geoffrey Moore, *Crossing the Chasm* (1991) | Ch 9 | Durable |
+| Traction: choose 1–2 channels (the 19 channels / bullseye) | Weinberg & Mares, *Traction* (2015) | Ch 9 | Durable; AI changes execution speed, not the choice |
+| Positioning | April Dunford, *Obviously Awesome* (2019) | Ch 9 | Durable |
+| Pirate Metrics: AARRR (acquisition, activation, retention, referral, revenue) | Dave McClure (2007) | Ch 8 | Durable |
+| North Star metric | Sean Ellis / Amplitude lineage | Ch 8 | Durable |
+| Business Model Canvas | Osterwalder & Pigneur (2010); JTBD refinement by Jeff Dyer | Ch 10 | Durable |
+| Influence: reciprocity, social proof, authority, scarcity, commitment, liking | Robert Cialdini, *Influence* (1984) | Ch 9, Ch 12 | Durable; deploy honestly (see Product Morality) |
+| Innovation Capital and the impression amplifiers | Dyer, Furr & Lefrandt, *Innovation Capital* (2019) | Ch 9, Ch 12 | Durable |
+| Habit loops (trigger, action, variable reward, investment) | Nir Eyal, *Hooked* (2014) | Product Morality | Use the reflection test; do not weaponize |
+
+## Demo and storytelling
+
+| Principle | Source | Where it lives | AI-era note |
+|---|---|---|---|
+| Sticky ideas: SUCCESs | Chip & Dan Heath, *Made to Stick* (2007) | Ch 12 | Durable |
+| The rider and the elephant | Jonathan Haidt, *The Happiness Hypothesis* (2006), via Chip & Dan Heath, *Switch* (2010) | Ch 12, Product Morality | Durable |
+| Story structure for persuasion | Nancy Duarte, *Resonate* (2010) | Ch 12 | Durable |
+| The Pyramid Principle (conclusion first) | Barbara Minto (1978) | Ch 12 | Durable |
+
+## Thinking and decisions (cross-cutting)
+
+| Principle | Source | Where it lives | AI-era note |
+|---|---|---|---|
+| Two systems: fast/intuitive vs. slow/deliberate; cognitive biases | Daniel Kahneman, *Thinking, Fast and Slow* (2011) | Ch 3, Product Morality | Durable; AI has its own biases too |
+| Resulting: judge the decision, not just the outcome | Annie Duke, *Thinking in Bets* (2018) | Grading philosophy; Ch 8 | Durable |
+| Truth-seeking; radical honesty; principles | Ray Dalio, *Principles* (2017) | Ch 3; grading philosophy | Durable |
+| Virtue as the mean; practical wisdom | Aristotle, *Nicomachean Ethics* | Product Morality | Durable |
+| "Make something people want"; "do things that don't scale" | Paul Graham / Y Combinator | Ch 2, Ch 9 | More true now: building is easy, wanting is the hard part |
+
+## How to use this page
+
+Do not try to read all of it at once. When a chapter borrows an idea, this page tells you whose shoulders you are standing on. Pick two or three sources a semester and go deep. And when you find a principle written before 2023, ask the question this class keeps asking: *does that still hold now that building is cheap and everyone has an AI?* Sometimes yes, sometimes not, and knowing the difference is the skill.

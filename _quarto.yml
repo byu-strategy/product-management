@@ -44,6 +44,8 @@ book:
         - 95-eng-checklist.qmd
         - 96-code-base-review.qmd
         - 97-resources.qmd
+        - 97-thought-leaders.qmd
+        - 97-canon.qmd
         - 98-tools.qmd
         - 99-prompts.qmd
 
