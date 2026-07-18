@@ -4,6 +4,15 @@ This course site is a living product. It gets better during the semester, and ev
 
 New entries appear at the top.
 
+## v1.1.2 (2026-07-18)
+
+New discovery and MVP tools, adapted with credit from Nile Hatch's *Expeditionary Innovation*.
+
+- **Problems Worth Solving:** a "diverge before you converge" section on generating many candidate problems before narrowing.
+- **Problem Discovery:** the five kinds of pain (physical, functional, financial, emotional, social) as a probing checklist, and a "how many interviews is enough?" note on interviewing to saturation.
+- **Validating Opportunities:** the Access Test (can you actually reach these customers?) and a "harden your evidence" note on willingness-to-pay, the Ouch Factor, and false positives.
+- **Building Your MVP:** the $100 Test for feature prioritization, and how to test demand before building (smoke test and Wizard of Oz).
+
 ## v1.1.1 (2026-07-18)
 
 Small additions to the discovery and storytelling material.
