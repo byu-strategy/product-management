@@ -1,1 +1,1 @@
-# strategy-prototyping
+# product-management
