@@ -8,6 +8,8 @@ You've built something. It works, at least on your machine. But here's an uncomf
 
 This chapter teaches you to run effective usability tests, synthesize feedback without overreacting, and iterate systematically. You'll also learn how to integrate external services through APIs, because most products need to connect to something outside themselves.
 
+This is [triangulation from Chapter 3](03-problem-discovery.qmd) in practice. One user is one blind man on the elephant, a single partial view. Watch enough of them and the real shape of the problem appears. No single tester, however loud or however pleased, is proof on their own.
+
 ## Part 1: The Strategy
 
 ### The Curse of Knowledge

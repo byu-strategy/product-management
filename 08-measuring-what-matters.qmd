@@ -10,6 +10,8 @@ You can't improve what you don't measure. But measuring the wrong things is wors
 
 This chapter teaches you to choose the right metrics, avoid vanity traps, and implement analytics that actually inform decisions. The goal isn't to track everything; it's to track what helps you build a better product.
 
+Read a metric as [evidence](03-problem-discovery.qmd), not a verdict. A number moves a belief up or down; it does not certify that you are right, or that you are worthy. And remember that outcomes carry luck: a good number can follow a poor decision and a bad number a sound one. Track what updates your beliefs about the product, not what flatters them.
+
 ## Part 1: The Strategy
 
 ### The Metrics Hierarchy

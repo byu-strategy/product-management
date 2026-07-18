@@ -37,6 +37,14 @@ The single most important idea: practice and judgment are two different jobs, an
 
 One honest warning: active, effortful learning often feels worse than a smooth lecture. Students in active classes reliably learn more while feeling like they learned less. If it feels harder, that is the method working.
 
+## Why we grade decisions, not outcomes
+
+There is a reason the final is scored on the quality of your product decisions and your learning, not on how many signups you got. The quality of an outcome is not the same as the quality of the decision behind it.
+
+A useful way to see it: the part of an outcome you control is roughly a product of three things, `Information × Reasoning × Execution`. Did you go get the right evidence, did you reason about it soundly, and did you ship with care. It is a product, not a sum, which means a zero anywhere sinks the whole thing. Brilliant reasoning on evidence you never gathered is a confident mistake. A great idea you never shipped is worth nothing. You cannot offset a weak factor with a strong one; your weakest link caps the result.
+
+But even a strong `Information × Reasoning × Execution` does not guarantee a good outcome, because outcomes are also moved by things you do not control: timing, luck, a competitor's move, the market. Judging a decision only by how it happened to turn out has a name, *resulting*, and it is a good way to learn the wrong lesson. A rushed product can get lucky signups; a thoughtful one can find three real users and a hard truth. We grade the part you control, because that is the part that makes you better.
+
 ## Myths this class rejects
 
 - **Learning styles.** There is no credible evidence that matching teaching to a "visual" or "auditory" style improves learning. It is the most widespread myth in education.

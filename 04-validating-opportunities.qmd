@@ -8,6 +8,8 @@ You've conducted interviews and identified a problem that people genuinely exper
 
 This chapter teaches you to evaluate whether a problem represents a *real business opportunity*, one worth committing your time and energy to solve. You'll learn frameworks for scoring opportunities, the discipline of commitment, and the technical foundations you need to start building your first real product.
 
+In the language of the [belief-truth map from Chapter 3](03-problem-discovery.qmd), this is where you push a belief from a *founded bet* toward *validated insight*, and where you hunt down *false confidence* before it costs you a semester. Scoring an opportunity is really asking how much evidence sits under your conviction, and whether that conviction is pointed at something true.
+
 ## Part 1: The Strategy
 
 ### The Opportunity Evaluation Framework
