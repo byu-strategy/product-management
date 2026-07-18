@@ -138,3 +138,20 @@ Reusable scripture-and-quote pairings for the opener, each tied to a product poi
 - Scripture: "And ye shall know the truth, and the truth shall make you free." (John 8:32)
 - Quote: "The quality of your decisions and the quality of your results are not perfectly correlated." (on *resulting*, after Annie Duke)
 - Product tie: read the metric as evidence that updates a belief, not as a verdict on your worth.
+
+---
+---
+
+# Season Rituals
+
+Recurring culture and growth mechanics, run by the coach across the season. These build the three things a class is quietly for: students knowing each other, a peer network, and a felt sense of progress.
+
+**Day-0 baseline (Practice 0).** Each student writes a short self-portrait in their repo: current skills and confidence (can you ship a web app today? git? talking to customers?), and what they want to be able to do by December. See `company-template/practice-log/000-baseline.md`. This is the "before" picture. It is not graded and not shared; it exists so the growth is visible later.
+
+**End-of-course bookend (Practice 13).** In the retrospective, students reopen their Day-0 baseline and their Sprint 1 prototype next to their final product, and write or record what changed. Active learning feels like less progress than it is; this is the antidote. It turns "the semester is over" into "look how far I came."
+
+**Day-1 introductions (Practice 1).** Everyone makes one intro slide (a photo, a few skills or things they like to talk about, one thing they want to learn before a milestone birthday) and gives a 90-second life story to the room. Later in the season, have students share the "unfair advantage" they surface in Sprint 2, so the cohort hears where each person's edge comes from.
+
+**Co-created norms (Practice 1).** Instead of handing down class rules, build them together in the first practice and commit to them: radical transparency, room to change your mind, become friends, ask questions freely, be fully present. Students keep norms they helped write.
+
+**Peer touchpoints (every practice).** The end-of-class huddle is where two or three students show their deploy URL to the room. Small, frequent, low-stakes exposure to each other's work does more for the cohort than one big showcase, and it feeds the [scrimmages](00-schedule.qmd) later in the season.
