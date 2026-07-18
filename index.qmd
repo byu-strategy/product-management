@@ -7,6 +7,10 @@ format:
   pdf: default
 ---
 
+::: {.course-numbers-page}
+MSB 341 · IS 693R · C S 498R
+:::
+
 # Syllabus
 
 *FALL 2026*
@@ -39,7 +43,7 @@ This course is cross-listed under three course numbers. It is all the same class
 
 A modern Laptop or desktop (Mac or Windows): - Operating Systems: macOS 10.15+ or Windows 10+ - Hardware: 4GB+ RAM (more is better)
 
-AI Tools: - We will be using [Claude Code](https://www.anthropic.com/claude-code) throughout the course. Using Claude Code requires a paid Claude account (\~\$20 per month for the duration of the semester). Your total cost will be about \$85 after tax.
+AI Tools: - We will be using [Claude Code](https://www.anthropic.com/claude-code) throughout the course. This requires the Claude Max plan, which is required for the course and costs \$100 per month. You can offset this cost by applying for a [Rollins Center Validation Grant](https://programs.byucet.org/dashboard/grant/4), which reimburses up to \$500 for customer discovery and validation work on your product.
 
 You should also get Gemini for [free](https://gemini.google/students/) as this will be a useful supplement to Claude Code.
 
