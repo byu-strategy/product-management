@@ -113,9 +113,10 @@ You may be one of several Claude Code sessions working in this repo at the same 
 
 ## Working discipline (definition of done)
 
-- **Render before calling it ready.** Any change to `.qmd` content, `_quarto.yml`, or styling must pass `quarto render` cleanly before commit. A broken render pushed to main is a broken deploy.
+- **Preview is the default working mode.** Keep `quarto preview` running the whole time you work. It renders the full book on startup, live-reloads on every save, and doubles as both the build check and the browser Scott watches. Start it in the background near the top of a working session, read its output to confirm each change renders cleanly, and prefer it over one-off `quarto render`. Scott wants preview open all the time.
+- **A full render is still the pre-push gate.** Preview rebuilds incrementally on save (often just the file being viewed), so it can miss whole-book breakage. Before a push, and for any change touching `_quarto.yml`, cross-references, or file renames, run a full `quarto render` (the `/push` skill already does this) to catch broken links across the book. A broken render pushed to main is a broken deploy.
 - **Check cross-references when files move or sections change.** Renames and anchor edits must be chased through `_quarto.yml`, the schedule, assessments, and cross-links; broken internal links are the top regression here.
-- **Verify proportional to risk.** A typo or copy tweak needs only a clean render. Navigation changes, schedule restructures, and styling changes earn a look at the rendered output (`quarto preview`) before commit.
+- **Verify proportional to risk.** A typo or copy tweak just needs a clean preview. Navigation changes, schedule restructures, and styling changes earn a real look in the browser before commit.
 - **Never reformat or rewrite content you weren't asked to touch.** Keep diffs scoped to the task so review stays cheap.
 
 ## Copy voice
