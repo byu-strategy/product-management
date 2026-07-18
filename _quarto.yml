@@ -17,27 +17,28 @@ book:
     - part: Foundations
       chapters:
         - 01-pm-ai-era.qmd
+    - part: Aim
+      chapters:
+        - product-strategy.qmd
+        - product-morality.qmd
+        - 02-problems-worth-solving.qmd
     - part: Discover
       chapters:
-        - 02-problems-worth-solving.qmd
         - 03-problem-discovery.qmd
         - 04-validating-opportunities.qmd
     - part: Build
       chapters:
         - 05-building-your-mvp.qmd
+        - 07-platform-strategy.qmd
         - 06-testing-with-users.qmd
         - 11-sustainable-code.qmd
-    - part: Grow the Business
+    - part: Grow
       chapters:
-        - 07-platform-strategy.qmd
         - 08-measuring-what-matters.qmd
         - 09-go-to-market.qmd
         - 10-business-models.qmd
-        - product-morality.qmd
-    - part: Demo
-      chapters:
         - 12-final-presentations.qmd
-    - part: Playbook
+    - part: References
       chapters:
         - 93-why-this-class-works.qmd
         - 94-problem-discovery-framework.qmd

@@ -1,0 +1,72 @@
+---
+title: "Product Strategy"
+---
+
+## Why This Matters
+
+Strategy is the set of choices that decide whether your product wins. Not the features, the choices: what game you are playing, who you are playing it for, how you will win, and, just as important, what you will *not* do. A product with no strategy is a pile of features hoping one of them matters.
+
+In the AI era this matters more, not less. When anyone can build almost any feature in an afternoon, features stop being an advantage; they are table stakes. The durable advantages move to the things AI cannot hand you for free: a sharp choice of where to play, a real moat, taste, trust, and distribution. Cheap building commoditizes building; it does not commoditize *judgment about what to build*. That judgment is strategy, and it is the Aim in [AIRE](01-pm-ai-era.qmd): pointing the whole loop at a target that is both winnable and worth winning.
+
+## Strategy is choosing what not to do
+
+Michael Porter's foundational point: the essence of strategy is choosing what *not* to do. Strategy is not a list of everything good you could do; it is a small set of hard choices that fit together, which you then defend against the constant temptation to do everything. If your "strategy" has no sacrifices in it, it is not a strategy. It is a wish list.
+
+## Where to play, and how to win
+
+Roger Martin and A.G. Lafley (*Playing to Win*) reduce strategy to a cascade of five linked choices:
+
+1. **What is your winning aspiration?** The purpose. What does winning look like?
+2. **Where will you play?** Which customers, segments, channels. (Your beachhead, from Go-to-Market, is a where-to-play choice.)
+3. **How will you win?** Your source of advantage in that arena: cheaper, far better at one job, a network others cannot match.
+4. **What capabilities must you have?** The few things you must be great at.
+5. **What management systems are required?** How you keep it running.
+
+For a student product, the first three are the ones that bite. Answer "where will you play" and "how will you win" in a sentence each, and you already have a strategy most startups never bother to write down.
+
+## Moats: why the win lasts
+
+Winning once is not enough; the win has to hold. Hamilton Helmer (*7 Powers*) catalogs the sources of durable advantage, or moats:
+
+- **Network effects** — the product gets more valuable as more people use it; each new user improves it for the others.
+- **Switching costs** — leaving is painful, so customers stay.
+- **Scale economies** — you get cheaper per unit as you grow.
+- **Brand** — trust and meaning competitors cannot quickly copy.
+- **Counter-positioning, cornered resources, and process power** — the subtler ones.
+
+Ask honestly: once you are winning, what stops the next student with the same AI tools from copying you next week? If the answer is "nothing," you have a feature, not a moat. In the AI era this question is sharper than ever, because copying has never been cheaper. Strategy is largely the work of building an answer to it.
+
+## A test worth memorizing: DHM
+
+Gibson Biddle, from leading product at Netflix, offers a compact test for a good product strategy: **DHM**. Does it **D**elight customers, in **H**ard-to-copy, **M**argin-enhancing ways? All three at once:
+
+- **Delight** — customers genuinely love it, not merely tolerate it.
+- **Hard to copy** — there is a moat, so the delight is defensible.
+- **Margin-enhancing** — it makes the business healthier, not just busier.
+
+A product can delight and still lose (easily copied), or be defensible and still lose (nobody cares). DHM forces all three.
+
+## Vision before strategy
+
+Under the strategy sits a **product vision**: the compelling picture of the better world your product creates, usually a few years out. Marty Cagan argues the vision is what recruits people, aligns decisions, and carries you through the hard middle. Strategy is how you get there; vision is where "there" is, and why it is worth the trip. Write the vision first, then let the strategy serve it.
+
+## Putting it to work
+
+Draft a one-page product strategy for your product:
+
+- **Vision** (one paragraph): the better world you are building toward.
+- **Where you play** (one sentence): your specific customer and beachhead.
+- **How you win** (one sentence): your source of advantage.
+- **Your moat** (one sentence): why the win lasts.
+- **What you will NOT do** (a short list): the sacrifices.
+
+Then pressure-test it with AI, but adversarially. Do not ask "is this a good strategy?", it will flatter you. Ask: "Attack this strategy. Where is the moat weakest? What would a competitor with the same AI tools do to beat it? What am I refusing to sacrifice that I should?" The job of a strategy is to survive that attack before the market runs it for real.
+
+## Key Concepts
+
+- **Strategy is choosing what not to do** (Michael Porter)
+- **Where to play / how to win** (Roger Martin & A.G. Lafley, *Playing to Win*)
+- **Moats / durable advantage** (Hamilton Helmer, *7 Powers*): network effects, switching costs, scale, brand
+- **DHM**: Delight, Hard to copy, Margin-enhancing (Gibson Biddle)
+- **Product vision before strategy** (Marty Cagan)
+- **The AI-era shift**: cheap building commoditizes features; strategy, moats, taste, and distribution are the durable advantages
