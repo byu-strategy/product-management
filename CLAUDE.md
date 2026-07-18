@@ -100,6 +100,17 @@ This course site is a product. A push to `main` publishes it live to students vi
 - **Do NOT push.** Pushing publishes to students, so it is the human's deliberate act. When work is committed, say it is ready and stop. The `/push` skill is the only sanctioned push path; invoking it is push authorization for that one run only.
 - **Every push is a versioned release.** The site carries a version (vX.Y.Z) shown in the footer chip (`_footer.html`), which links to `00-release-notes.qmd`. The `/push` skill writes student-facing notes for everything shipping, bumps the version in both places (they must always match), tags the commit, then pushes. Patch bump by default; minor for a new chapter or major section.
 
+## Concurrent agents on `main`
+
+You may be one of several Claude Code sessions working in this repo at the same time. A git-safety hook (`scripts/hooks/bash-guard.{sh,mjs}`, wired in `.claude/settings.json`) enforces the load-bearing parts; the rest is discipline. Cross-session state lives under `.git/.wg-agent/` (never tracked).
+
+- **Expect foreign changes.** The working tree may show uncommitted edits you did not make: a sibling session mid-task. Do not revert, stash, commit, or "tidy" another session's changes. If unsure whether a change is yours, leave it.
+- **Stage explicit paths, commit explicit paths.** The git index is shared across sessions, so a pathspec-less `git commit` commits the whole index, including files a sibling staged. Stage your files by name and commit them by name: `git commit -m "..." -- path/a path/b`. The hook blocks blanket forms (`git add -A`/`.`, `commit -am`) and pathspec-less commits when the index holds files this session didn't stage.
+- **Never run tree-wide destructive git.** `git reset --hard`, `git checkout -- .`, `git clean -f`, `git stash` act on the whole tree and destroy other sessions' work. Hook-blocked; scope to your own paths.
+- **Never force-push.** Hook-blocked everywhere, including worktrees.
+- The hook auto-relaxes inside a linked git worktree, where the tree is private.
+- `.claude/settings.json` is tracked so the hook wiring travels; personal config belongs in `.claude/settings.local.json` (gitignored).
+
 ## Working discipline (definition of done)
 
 - **Render before calling it ready.** Any change to `.qmd` content, `_quarto.yml`, or styling must pass `quarto render` cleanly before commit. A broken render pushed to main is a broken deploy.
