@@ -103,3 +103,38 @@
 | **Constraints** | 30 min. Claude Code only. Feature must be visible at your live URL. |
 | **Definition of done** | 3+ pushed commits, live deploy, one-line log entry in your repo |
 | **Coach's watch list** | (1) One giant commit at minute 28. (2) Prompting without a written goal. (3) Accepting Claude's first answer without reading the diff. |
+
+---
+---
+
+# Opener Bank: Truth-Seeking Theme
+
+Reusable scripture-and-quote pairings for the opener, each tied to a product point. The thread is product management as truth-seeking (see the belief-truth map in Chapter 3). Pull the one that fits the day's emphasis.
+
+**For a "go talk to users" practice (Ch 3, discovery)**
+
+- Emphasis: Your assumptions are beliefs, not facts. Go get evidence.
+- Scripture: "For now we see through a glass, darkly." (1 Corinthians 13:12)
+- Quote: "Truth, or more precisely an accurate understanding of reality, is the essential foundation for producing good outcomes." (Ray Dalio, *Principles*)
+- Product tie: the Mom Test. A hypothetical answer is a smudge on the glass; past behavior wipes it clean.
+
+**For a validation / commit practice (Ch 4)**
+
+- Emphasis: Believe it in proportion to the evidence.
+- Scripture: "Faith is not to have a perfect knowledge of things; therefore if ye have faith ye hope for things which are not seen, which are true." (Alma 32:21)
+- Quote: "It is the mark of an educated mind to rest satisfied with the degree of precision which the nature of the subject admits." (Aristotle)
+- Product tie: a founded bet is not false confidence. Cross the evidence threshold before you commit the semester.
+
+**For a user-research practice (Ch 6)**
+
+- Emphasis: One user is one blind man on the elephant. Triangulate.
+- Parable: the six men of Indostan, "each was partly in the right, and all were in the wrong." (John Godfrey Saxe)
+- Quote: "The truth must dazzle gradually, else every man be blind." (Emily Dickinson)
+- Product tie: why three to five tests start to reveal the shape, and why one loud user is not signal.
+
+**For a metrics or retro practice (Ch 8)**
+
+- Emphasis: Do not confuse a good outcome with a good decision.
+- Scripture: "And ye shall know the truth, and the truth shall make you free." (John 8:32)
+- Quote: "The quality of your decisions and the quality of your results are not perfectly correlated." (on *resulting*, after Annie Duke)
+- Product tie: read the metric as evidence that updates a belief, not as a verdict on your worth.
