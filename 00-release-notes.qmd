@@ -4,6 +4,21 @@ This course site is a living product. It gets better during the semester, and ev
 
 New entries appear at the top.
 
+## v1.1.0 (2026-07-18)
+
+A large content release: a new chapter, a framework that ties the whole course together, and expanded discovery, storytelling, and grading material.
+
+- **New chapter, Product Morality** (in Grow the Business): how to aim a product well, moral foundations, a reflection test for habit-forming products, and Aristotle's golden mean with a virtue table.
+- **Chapter 1 now opens with "The Loop: How This Course Works":** the AIRE loop the course runs on (Aim, Inform, Reason, Enact), why the decision factors multiply, and how each class runs as a practice.
+- **Chapter 3 now opens with "Discovery Is Truth-Seeking":** a belief-and-truth map with a new diagram, the six ways of knowing and why you triangulate, and how much evidence is enough before you commit.
+- **Storytelling and the Final Demo is now a full chapter:** building a story database, techniques that make a story land, and a three-part structure for the final video.
+- **New Playbook page, "Why This Class Works This Way,"** explaining the course design, including why the class is graded on decisions and learning rather than outcomes.
+- **Truth-seeking callbacks** added to Validating Opportunities, Testing with Users, and Measuring What Matters.
+- **Schedule:** scrimmages (Practices 11 and 12) are now described; Wednesday office hours; updated TA and course-number information.
+- **Navigation reorganized** into solo-builder phases: Foundations, Discover, Build, Grow, Demo, Playbook.
+- **Overview and Syllabus:** refreshed grading summary, cross-listed course numbers, and AI-tool requirements updated to the Claude Max plan.
+- Fixes and polish: resources updated, version chip restyled.
+
 ## v1.0.0 (2026-07-18)
 
 The course site is now versioned. From here on, every published update to the schedule, assignments, or course content will be listed on this page with a version number and date.
