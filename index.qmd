@@ -1,5 +1,5 @@
 ---
-title: "Syllabus"
+title: "Overview"
 author: "Scott Murff"
 date: "1/6/2026"
 format:
@@ -10,8 +10,6 @@ format:
 ::: {.course-numbers-page}
 MSB 341 · IS 693R · C S 498R
 :::
-
-# Syllabus
 
 *FALL 2026*
 
