@@ -19,15 +19,15 @@ editor: visual
 | Type | Description | Points | Learning Outcome(s)<sup>1</sup> |
 |------|-------------|--------|--------------------------------|
 | Quiz | [Quiz 1 - PM in the AI Era](01-pm-ai-era.qmd) | 5 | 1 |
-| Quiz | [Quiz 2 - Problems Worth Solving](02-problems-worth-solving.qmd) | 5 | 2 |
-| Quiz | [Quiz 3 - Problem Discovery](03-problem-discovery.qmd) | 5 | 2 |
-| Quiz | [Quiz 4 - Validating Opportunities](04-validating-opportunities.qmd) | 5 | 2 |
-| Quiz | [Quiz 5 - Building Your MVP](05-building-your-mvp.qmd) | 5 | 4 |
-| Quiz | [Quiz 6 - Testing with Users](06-testing-with-users.qmd) | 5 | 4 |
-| Quiz | [Quiz 7 - Platform Strategy](07-platform-strategy.qmd) | 5 | 4 |
-| Quiz | [Quiz 8 - Measuring What Matters](08-measuring-what-matters.qmd) | 5 | 4 |
-| Quiz | [Quiz 9 - Go-to-Market](09-go-to-market.qmd) | 5 | 4 |
-| Quiz | [Quiz 10 - Business Models](10-business-models.qmd) | 5 | 4 |
+| Quiz | [Quiz 2 - Product Strategy](product-strategy.qmd) | 5 | 2 |
+| Quiz | Quiz 3 - [Product Morality](product-morality.qmd) + [Problems Worth Solving](02-problems-worth-solving.qmd) | 5 | 2, 3 |
+| Quiz | [Quiz 4 - Problem Discovery](03-problem-discovery.qmd) | 5 | 2 |
+| Quiz | [Quiz 5 - Validating Opportunities](04-validating-opportunities.qmd) | 5 | 2 |
+| Quiz | [Quiz 6 - Building Your MVP](05-building-your-mvp.qmd) | 5 | 4 |
+| Quiz | Quiz 7 - [Testing with Users](06-testing-with-users.qmd) + [Platform Strategy](07-platform-strategy.qmd) | 5 | 4 |
+| Quiz | [Quiz 8 - Sustainable Code](11-sustainable-code.qmd) | 5 | 4 |
+| Quiz | [Quiz 9 - Measuring What Matters](08-measuring-what-matters.qmd) | 5 | 4 |
+| Quiz | Quiz 10 - [Go-to-Market](09-go-to-market.qmd) + [Business Models](10-business-models.qmd) | 5 | 4 |
 | Sprint | [Sprint 1 - Ship & Showcase](#sprint-1-ship-showcase) | 50 | 1 |
 | Sprint | [Sprint 2 - Validate & Commit](#sprint-2-validate-commit) | 50 | 2, 3 |
 | Sprint | [Sprint 3 - Product MVP](#sprint-3-product-mvp) | 50 | 4 |
@@ -80,7 +80,7 @@ Sprints are your primary way to demonstrate progress throughout the semester. Ea
 
 ### Sprint 1: Ship & Showcase {#sprint-1-ship-showcase}
 
-**50 points | Due: Thu, Jan 29**
+**50 points | Assigned: Mon, Sep 21 | Due: Mon, Sep 28**
 
 **Overview**
 
@@ -202,7 +202,7 @@ Points will be deducted for issues that detract from a professional presentation
 
 ### Sprint 2: Validate & Commit
 
-**50 points | Due: Tue, Feb 17, 11:59pm**
+**50 points | Assigned: Mon, Sep 28 | Due: Mon, Oct 12, 11:59pm**
 
 **Goal:** Identify and validate a problem worth solving and then commit to building it out for the rest of the semester.
 
@@ -422,7 +422,7 @@ Make a copy of the **[Sprint 2 Submission Template](https://docs.google.com/docu
 
 ### Sprint 3: Product MVP
 
-**50 points | Assigned: Tue, Feb 24 | Due: Tue, Mar 10**
+**50 points | Assigned: Mon, Oct 12 | Due: Mon, Nov 2**
 
 **Goal:** Build the core feature that delivers your value proposition, test it with real users, and decide on your platform strategy.
 
@@ -716,7 +716,7 @@ Submit your completed Google Doc link on LearningSuite. Use the [Sprint 3 Submis
 
 ### Sprint 4: Progress Check {#sprint-4-progress-check}
 
-**50 points | Assigned: Thu, Mar 19 | Due: Thu, Mar 26**
+**50 points | Assigned: Mon, Nov 9 | Due: Mon, Nov 23**
 
 **Goal:** Make meaningful progress on your product. You decide what to work on.
 
@@ -747,7 +747,7 @@ By now you have a working MVP, user feedback from Sprint 3, and ideas for what t
 
 ### Sprint 5: Progress Check {#sprint-5-progress-check}
 
-**50 points | Assigned: Thu, Mar 26 | Due: Thu, Apr 2**
+**50 points | Assigned: Mon, Nov 23 | Due: Mon, Nov 30**
 
 **Goal:** Continue building. Your final project is due in less than two weeks — this is your last progress check before the finish line.
 
@@ -784,7 +784,7 @@ Peer assignments teach you to give and receive constructive feedback, a critical
 
 ### Peer Code Review
 
-**50 points | Assigned: Tue, Mar 10 | Due: Tue, Mar 17**
+**50 points | Assigned: Mon, Nov 2 | Due: Mon, Nov 9**
 
 **Goal:** Apply code analysis skills to a peer's codebase and provide constructive feedback.
 
@@ -857,7 +857,7 @@ Your goal is to help your peer improve, not to criticize. Frame feedback as "Hav
 
 ### Peer Product Testing
 
-**50 points | Assigned: Thu, Apr 2 | Due: Thu, Apr 9**
+**50 points | Assigned: Mon, Nov 30 | Due: Mon, Dec 7**
 
 **Goal:** Be a real test user for a peer's product and provide actionable UX feedback.
 
@@ -901,7 +901,7 @@ Your job is to help your peer see their product through fresh eyes. Be honest bu
 
 ## Final Project
 
-**100 points | Due: Tue, Apr 14**
+**100 points | Due: Thu, Dec 10**
 
 **Goal:** Show me a finished product and tell me the story of building it.
 
@@ -952,7 +952,7 @@ This is your final presentation. In 5 minutes, cover:
 
 ### Mid-Semester Feedback Survey
 
-Complete this anonymous survey to earn 5 extra credit points. Take a screenshot of the confirmation page and submit it to LearningSuite by Tuesday, February 24 at 11:59 PM.
+Complete this anonymous survey to earn 5 extra credit points. Take a screenshot of the confirmation page and submit it to LearningSuite by Monday, October 26 at 11:59 PM.
 
 [Survey Link](https://docs.google.com/forms/d/e/1FAIpQLSdb0CSWraZE2oJ4LnE0-OC-sJVfQcycqh81cMb6XW3VcO7zhw/viewform?usp=header)
 
