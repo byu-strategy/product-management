@@ -45,14 +45,14 @@ Alice does not know where she wants to go, so for her it truly does not matter. 
 
 The course *is* this loop, and the parts you see in the sidebar are its steps:
 
-| The loop | The part of the course |
-|---|---|
-| **Aim** | **Aim** — choose what is worth building, strategically and morally |
-| **Inform** | **Discover** — go learn what is true about the customer |
-| **Reason + Enact** | **Build** — decide what to build, then build it |
-| the loop, turning again | **Grow** — measure, learn, and ship on the live product |
+| The loop | The question | The part of the course |
+|---|---|---|
+| **Aim** | what do you want? | **Aim**: choose what is worth building, strategically and morally |
+| **Inform** | what is true? | **Discover**: go learn what is true about the customer |
+| **Reason** | what's the best option? | **Build**: decide what to build, then build it |
+| **Enact** | what happened? | **Build**, then **Grow**: ship it, measure, and learn on the live product |
 
-The **Aim**, what is worth building at all, is where strategy and values meet; it is taken up in [Product Strategy](product-strategy.qmd) and [Product Morality](product-morality.qmd). And you will run the whole loop many times across the semester, once per sprint, because a single turn tells you little; the arc is what reveals whether you are getting good.
+The **Aim**, what is worth building at all, is where strategy and values meet. What value you create and for whom, and how much of it you can capture, is the [create-versus-capture](product-strategy.qmd#creating-value-and-capturing-it) choice in [Product Strategy](product-strategy.qmd); whether it is worth building at all is [Product Morality](product-morality.qmd). And you will run the whole loop many times across the semester, once per sprint, because a single turn tells you little; the arc is what reveals whether you are getting good.
 
 Two things about the loop are worth knowing up front.
 
