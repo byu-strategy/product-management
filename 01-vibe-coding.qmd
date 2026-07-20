@@ -15,7 +15,7 @@ There's a new kind of coding I call "vibe coding", where you fully give in to th
 
 </p>
 
-— Andrej Karpathy (@karpathy) <a href="https://twitter.com/karpathy/status/1886192184808149383">February 2, 2025</a>
+— Andrej Karpathy (\@karpathy) <a href="https://twitter.com/karpathy/status/1886192184808149383">February 2, 2025</a>
 
 </blockquote>
 :::
@@ -45,7 +45,7 @@ Vibe coding is here to stay. I'd been worried it might be a fad, but I talked to
 
 </p>
 
-— Paul Graham (@paulg) <a href="https://twitter.com/paulg/status/1956458026652799173?ref_src=twsrc%5Etfw"> August 15, 2025 </a>
+— Paul Graham (\@paulg) <a href="https://twitter.com/paulg/status/1956458026652799173?ref_src=twsrc%5Etfw"> August 15, 2025 </a>
 
 </blockquote>
 :::
@@ -71,9 +71,9 @@ This is a massive opportunity if the common refrain at legendary Silicon Valley 
 ::: tweet-center
 <blockquote class="twitter-tweet">
 <p lang="en" dir="ltr">
-"If a picture is worth 1000 words, a prototype is worth 1000 meetings." —saying at <a href="https://twitter.com/ideo?ref_src=twsrc%5Etfw">@ideo</a>
+"If a picture is worth 1000 words, a prototype is worth 1000 meetings." —saying at <a href="https://twitter.com/ideo?ref_src=twsrc%5Etfw">\@ideo</a>
 </p>
-— John Maeda (@johnmaeda) <a href="https://twitter.com/johnmaeda/status/518556402902925313?ref_src=twsrc%5Etfw">October 5, 2014</a>
+— John Maeda (\@johnmaeda) <a href="https://twitter.com/johnmaeda/status/518556402902925313?ref_src=twsrc%5Etfw">October 5, 2014</a>
 </blockquote>
 :::
 
@@ -88,11 +88,11 @@ Because of the speed, reduced costs in time and money, and the rapid customer di
 
 <p lang="en" dir="ltr">
 
-We are adding a coding section to all of our Product Managers interviews at <a href="https://twitter.com/Shopify?ref_src=twsrc%5Etfw">@Shopify</a>.<br><br> We'll start with APM interviews. We expect candidates to build a prototype of the product they suggested in the case interview.<br><br> There is no excuse for PMs not building prototypes.
+We are adding a coding section to all of our Product Managers interviews at <a href="https://twitter.com/Shopify?ref_src=twsrc%5Etfw">\@Shopify</a>.<br><br> We'll start with APM interviews. We expect candidates to build a prototype of the product they suggested in the case interview.<br><br> There is no excuse for PMs not building prototypes.
 
 </p>
 
-— Kaz Nejatian (@CanadaKaz) <a href="https://twitter.com/CanadaKaz/status/1955629733460562404?ref_src=twsrc%5Etfw"> August 13, 2025 </a>
+— Kaz Nejatian (\@CanadaKaz) <a href="https://twitter.com/CanadaKaz/status/1955629733460562404?ref_src=twsrc%5Etfw"> August 13, 2025 </a>
 
 </blockquote>
 :::
@@ -118,7 +118,7 @@ It remains to be seen how this will fully play out, but early indications sugges
 <p lang="en" dir="ltr">
 The fight over what a product manager does is going to among the first major AI organizational design problems faced by companies.<br><br>It is a job right at the center of what AI can do with first pass coding, marketing, design, ideation, etc. Who will own which pieces up for grabs. <a href="https://t.co/XkJQYOu9N9">https://t.co/XkJQYOu9N9</a>
 </p>
-— Ethan Mollick (@emollick) <a href="https://twitter.com/emollick/status/1984682445946421505?ref_src=twsrc%5Etfw">November 1, 2025</a>
+— Ethan Mollick (\@emollick) <a href="https://twitter.com/emollick/status/1984682445946421505?ref_src=twsrc%5Etfw">November 1, 2025</a>
 </blockquote>
 :::
 
@@ -137,7 +137,7 @@ Builder’s high is back...
 
 </p>
 
-— Madhu Guru (@realmadhuguru) <a href="https://twitter.com/realmadhuguru/status/1955451011323314641">August 13, 2025</a>
+— Madhu Guru (\@realmadhuguru) <a href="https://twitter.com/realmadhuguru/status/1955451011323314641">August 13, 2025</a>
 
 </blockquote>
 :::

@@ -6,10 +6,10 @@ title: "Building Your MVP"
 <blockquote class="twitter-tweet">
 
 <p lang="en" dir="ltr">
-At <a href="https://twitter.com/Google?ref_src=twsrc%5Etfw">@Google</a>, we are moving from a writing-first culture to a building-first one.<br><br>Writing was a proxy for clear thinking, optimized for scarce eng resources and long dev cycles - you had to get it right before you built.<br><br>Now, when time to vibe-code prototype ≈ time to write PRD,…
+At <a href="https://twitter.com/Google?ref_src=twsrc%5Etfw">\@Google</a>, we are moving from a writing-first culture to a building-first one.<br><br>Writing was a proxy for clear thinking, optimized for scarce eng resources and long dev cycles - you had to get it right before you built.<br><br>Now, when time to vibe-code prototype ≈ time to write PRD,…
 </p>
 
-— Madhu Guru (@realmadhuguru) <a href="https://twitter.com/realmadhuguru/status/1950336434126336154?ref_src=twsrc%5Etfw">July 29, 2025</a>
+— Madhu Guru (\@realmadhuguru) <a href="https://twitter.com/realmadhuguru/status/1950336434126336154?ref_src=twsrc%5Etfw">July 29, 2025</a>
 
 </blockquote>
 :::
