@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 660" font-family="Helvetica, Arial, sans-serif">
+  <rect x="0" y="0" width="1000" height="660" fill="#ffffff"/>
+
+  <text x="500" y="48" text-anchor="middle" font-size="26" font-weight="700" fill="#002E5D">The value stick</text>
+  <text x="500" y="76" text-anchor="middle" font-size="15" fill="#5a6672">Creation is the height of the whole stick. Capture is where the two interior lines sit.</text>
+
+  <!-- ================= created bracket (far left, full height) ================= -->
+  <text x="70" y="355" text-anchor="middle" font-size="14" font-weight="700" fill="#002E5D" transform="rotate(-90 70 355)">total value CREATED</text>
+  <path d="M 100 150 L 92 150 L 92 560 L 100 560" fill="none" stroke="#002E5D" stroke-width="1.5"/>
+
+  <!-- ================= left boundary labels ================= -->
+  <!-- WTP -->
+  <text x="352" y="146" text-anchor="end" font-size="14" font-weight="700" fill="#3d4750">Willingness to Pay</text>
+  <text x="352" y="163" text-anchor="end" font-size="11.5" fill="#8a939c">the most the customer would give</text>
+  <line x1="356" y1="150" x2="380" y2="150" stroke="#9aa4ad" stroke-width="1.5"/>
+  <!-- Price -->
+  <text x="352" y="255" text-anchor="end" font-size="14" font-weight="700" fill="#3d4750">Price</text>
+  <text x="352" y="272" text-anchor="end" font-size="11.5" fill="#8a939c">what you actually charge</text>
+  <line x1="356" y1="250" x2="380" y2="250" stroke="#9aa4ad" stroke-width="1.5"/>
+  <!-- Cost -->
+  <text x="352" y="465" text-anchor="end" font-size="14" font-weight="700" fill="#3d4750">Cost</text>
+  <text x="352" y="482" text-anchor="end" font-size="11.5" fill="#8a939c">what the inputs cost you</text>
+  <line x1="356" y1="460" x2="380" y2="460" stroke="#9aa4ad" stroke-width="1.5"/>
+  <!-- WTS -->
+  <text x="352" y="556" text-anchor="end" font-size="14" font-weight="700" fill="#3d4750">Willingness to Sell</text>
+  <text x="352" y="573" text-anchor="end" font-size="11.5" fill="#8a939c">the least suppliers would take</text>
+  <line x1="356" y1="560" x2="380" y2="560" stroke="#9aa4ad" stroke-width="1.5"/>
+
+  <!-- ================= the stick ================= -->
+  <!-- customer surplus -->
+  <rect x="380" y="150" width="240" height="100" fill="#0057B8" fill-opacity="0.10" stroke="#002E5D" stroke-width="1.5"/>
+  <text x="500" y="205" text-anchor="middle" font-size="14" fill="#3d4750">customer's delight</text>
+  <!-- firm's margin (capture, emphasized) -->
+  <rect x="380" y="250" width="240" height="210" fill="#0057B8" fill-opacity="0.30" stroke="#002E5D" stroke-width="1.5"/>
+  <text x="500" y="352" text-anchor="middle" font-size="17" font-weight="700" fill="#002E5D">your margin</text>
+  <text x="500" y="374" text-anchor="middle" font-size="12.5" fill="#3d4750">the value you capture</text>
+  <!-- supplier surplus -->
+  <rect x="380" y="460" width="240" height="100" fill="#5a6672" fill-opacity="0.14" stroke="#002E5D" stroke-width="1.5"/>
+  <text x="500" y="515" text-anchor="middle" font-size="14" fill="#3d4750">supplier's surplus</text>
+
+  <!-- ================= right capture brackets ================= -->
+  <!-- customer keeps -->
+  <path d="M 632 150 L 640 150 L 640 250 L 632 250" fill="none" stroke="#9aa4ad" stroke-width="1.5"/>
+  <text x="654" y="196" font-size="13" fill="#5a6672">value the</text>
+  <text x="654" y="212" font-size="13" fill="#5a6672">customer keeps</text>
+  <!-- you capture -->
+  <path d="M 632 250 L 640 250 L 640 460 L 632 460" fill="none" stroke="#0057B8" stroke-width="2"/>
+  <text x="654" y="349" font-size="14" font-weight="700" fill="#002E5D">value YOU</text>
+  <text x="654" y="367" font-size="14" font-weight="700" fill="#002E5D">capture</text>
+  <!-- supplier keeps -->
+  <path d="M 632 460 L 640 460 L 640 560 L 632 560" fill="none" stroke="#9aa4ad" stroke-width="1.5"/>
+  <text x="654" y="506" font-size="13" fill="#5a6672">value the</text>
+  <text x="654" y="522" font-size="13" fill="#5a6672">supplier keeps</text>
+
+  <!-- ================= bottom caption ================= -->
+  <text x="500" y="616" text-anchor="middle" font-size="13.5" fill="#5a6672">Widen the stick by raising willingness to pay or lowering willingness to sell. That is <tspan font-style="italic">creation</tspan>.</text>
+  <text x="500" y="638" text-anchor="middle" font-size="13.5" fill="#5a6672">Price is the only interior line you partly set, and it just slides value between the customer and you. That is <tspan font-style="italic">capture</tspan>.</text>
+</svg>
