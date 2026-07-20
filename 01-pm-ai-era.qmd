@@ -28,12 +28,20 @@ Builder’s high is back...
 
 Before the history and the frameworks, here is the one idea the whole course runs on. Strip product management down to its core and it is this: **figure out what is true, and act on it.** True about a customer, a problem, a market. Everything else, the interviews, the specs, the MVPs, the metrics, is machinery for that.
 
-We run that machinery as a single loop, and it has a name: **AIRE**.
+We run that machinery as a single loop, and it has a name: **AIRE**. Each step is a question, except the last, which is what happens when you have answered the first three:
 
-- **Aim.** What are you trying to build, and is it worth building? The goal, and the values behind it.
-- **Inform.** Go find out what is actually true about your customer and their problem. Gather evidence.
-- **Reason.** Make sense of what you gathered. Decide what to build and how.
-- **Enact.** Build it, ship it, and watch what happens. Then loop back, with a sharper aim, better information, and clearer reasoning.
+- **Aim.** *What do you want?* The goal, and the values behind it: what value you are trying to create, for whom, and how much you mean to capture.
+- **Inform.** *What is true?* Go find out what is actually true about your customer and their problem. Gather evidence.
+- **Reason.** *What's the best option?* Lay out the real alternatives and choose among them. If there was only ever one option, you have not reasoned, you have rationalized.
+- **Enact.** *What happened?* Build it, ship it, and watch. The answer becomes the next turn's evidence, so you loop back with a sharper aim, better information, and clearer reasoning.
+
+Say it in one breath: what do you want, what is true, what's the best option, what happened. Three questions and a turn.
+
+**Aim comes first, and that is not an accident.** Information is endless; without an aim you have no way to tell which facts matter, and discovery with no destination is just wandering. Lewis Carroll made the point in *Alice's Adventures in Wonderland*, when Alice reaches a fork and asks the Cheshire Cat which way to go. President Thomas S. Monson retold it this way:
+
+> The cat answers, "That depends where you want to go. If you do not know where you want to go, it doesn't matter which path you take."
+
+Alice does not know where she wants to go, so for her it truly does not matter. Monson's turn on the story is the whole reason Aim leads: "Unlike Alice, we know where we want to go, and it does matter which way we go, for by choosing our path, we choose our destination." Answer *what do you want* first, and every question after it has a criterion. Skip it, and any road looks as good as any other.
 
 The course *is* this loop, and the parts you see in the sidebar are its steps:
 
