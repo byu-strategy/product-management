@@ -4,6 +4,16 @@ This course site is a living product. It gets better during the semester, and ev
 
 New entries appear at the top.
 
+## v1.3.0 (2026-07-20)
+
+Every borrowed idea in the book is now cited to a real source, plus a new appendix on the economics behind strategy and a clearer opening to the AIRE loop.
+
+- **Citations across the whole book.** Each chapter now credits the books and papers behind its ideas, with a linked reference list at the foot of the chapter and a new **Works Cited** page collecting the full bibliography (67 sources). Every entry was checked against an authoritative catalog.
+- **New appendix, The Logic of Value.** Derives the economics under the value stick, how producer surplus, profit, and return above the cost of capital are one idea seen at different depths, with diagrams.
+- **Product Strategy:** a new section on creating value versus capturing it, with a value stick diagram showing where your margin sits between willingness to pay and willingness to sell.
+- **Chapter 1:** the AIRE loop is now framed as four plain questions (what do you want, what is true, what's the best option, what happened), opening with the Cheshire Cat as President Monson retold it.
+- **Fixes and polish:** embedded tweets now show author handles correctly.
+
 ## v1.2.0 (2026-07-20)
 
 A large release: a new Product Strategy chapter, the course reorganized around the AIRE loop, two new reference pages, and the schedule and assessments brought in line with the new structure.
