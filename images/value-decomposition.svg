@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 680" font-family="Helvetica, Arial, sans-serif">
+  <rect x="0" y="0" width="1000" height="680" fill="#ffffff"/>
+
+  <text x="500" y="42" text-anchor="middle" font-size="26" font-weight="700" fill="#002E5D">The value stick, fully decomposed</text>
+  <text x="500" y="70" text-anchor="middle" font-size="15" fill="#5a6672">WTP = VC + FC + NP + EP + CS. One quantity, from the customer's desire down to variable cost.</text>
+
+  <!-- ============ bar x 440..640 (w200). bottom 600, top 130 (h470) ============ -->
+  <!-- VC 160, FC 72, NP 51, EP 79, CS 108  (sum 470) -->
+  <!-- VC 600..440 -->
+  <rect x="440" y="440" width="200" height="160" fill="#5a6672" fill-opacity="0.14" stroke="#002E5D" stroke-width="1.5"/>
+  <text x="540" y="516" text-anchor="middle" font-size="14" font-weight="700" fill="#3d4750">Variable costs</text>
+  <text x="540" y="534" text-anchor="middle" font-size="11" fill="#8a939c">VC</text>
+  <!-- FC 440..368 -->
+  <rect x="440" y="368" width="200" height="72" fill="#0057B8" fill-opacity="0.12" stroke="#002E5D" stroke-width="1.5"/>
+  <text x="540" y="399" text-anchor="middle" font-size="13.5" font-weight="700" fill="#3d4750">Fixed costs</text>
+  <text x="540" y="416" text-anchor="middle" font-size="11" fill="#8a939c">FC</text>
+  <!-- NP 368..317 -->
+  <rect x="440" y="317" width="200" height="51" fill="#0057B8" fill-opacity="0.24" stroke="#002E5D" stroke-width="1.5"/>
+  <text x="540" y="340" text-anchor="middle" font-size="13" font-weight="700" fill="#3d4750">Normal profit</text>
+  <text x="540" y="357" text-anchor="middle" font-size="10.5" fill="#8a939c">NP · cost of capital</text>
+  <!-- EP 317..238 -->
+  <rect x="440" y="238" width="200" height="79" fill="#002E5D" fill-opacity="0.34" stroke="#002E5D" stroke-width="1.5"/>
+  <text x="540" y="274" text-anchor="middle" font-size="14" font-weight="700" fill="#002E5D">Economic profit</text>
+  <text x="540" y="292" text-anchor="middle" font-size="11" fill="#3d4750">EP · value you capture</text>
+  <!-- CS 238..130 -->
+  <rect x="440" y="130" width="200" height="108" fill="#0057B8" fill-opacity="0.10" stroke="#002E5D" stroke-width="1.5"/>
+  <text x="540" y="182" text-anchor="middle" font-size="14" font-weight="700" fill="#3d4750">Consumer surplus</text>
+  <text x="540" y="200" text-anchor="middle" font-size="11" fill="#8a939c">CS · value the customer keeps</text>
+
+  <!-- ============ left boundary lines (value-stick style) ============ -->
+  <!-- WTP top -->
+  <text x="412" y="126" text-anchor="end" font-size="13.5" font-weight="700" fill="#3d4750">Willingness to pay</text>
+  <text x="412" y="142" text-anchor="end" font-size="11" fill="#8a939c">the most the customer would give</text>
+  <line x1="416" y1="130" x2="440" y2="130" stroke="#9aa4ad" stroke-width="1.5"/>
+  <!-- Price line (between EP and CS) -->
+  <text x="412" y="234" text-anchor="end" font-size="13.5" font-weight="700" fill="#3d4750">Price</text>
+  <text x="412" y="250" text-anchor="end" font-size="11" fill="#8a939c">where revenue stops, CS begins</text>
+  <line x1="416" y1="238" x2="440" y2="238" stroke="#9aa4ad" stroke-width="1.5"/>
+  <!-- Variable-cost floor -->
+  <text x="412" y="596" text-anchor="end" font-size="13.5" font-weight="700" fill="#3d4750">Variable cost floor</text>
+  <text x="412" y="612" text-anchor="end" font-size="11" fill="#8a939c">the least it takes to make a unit</text>
+  <line x1="416" y1="600" x2="440" y2="600" stroke="#9aa4ad" stroke-width="1.5"/>
+
+  <!-- ============ far-left brackets: revenue & producer surplus ============ -->
+  <!-- Revenue: VC..EP (600..238) -->
+  <path d="M 250 238 L 242 238 L 242 600 L 250 600" fill="none" stroke="#9aa4ad" stroke-width="1.5"/>
+  <text x="230" y="415" text-anchor="middle" font-size="12.5" font-weight="700" fill="#5a6672" transform="rotate(-90 230 415)">Revenue = VC+FC+NP+EP</text>
+  <!-- Producer surplus: FC..EP (440..238) -->
+  <path d="M 320 238 L 312 238 L 312 440 L 320 440" fill="none" stroke="#9aa4ad" stroke-width="1.5"/>
+  <text x="300" y="339" text-anchor="middle" font-size="12.5" font-weight="700" fill="#5a6672" transform="rotate(-90 300 339)">Producer surplus</text>
+
+  <!-- ============ right brackets: the capture story ============ -->
+  <!-- Value created & shared = CS + EP : EP..CS (317..130) -->
+  <path d="M 654 130 L 664 130 L 664 317 L 654 317" fill="none" stroke="#0057B8" stroke-width="2"/>
+  <text x="680" y="214" font-size="14" font-weight="700" fill="#002E5D">Value created</text>
+  <text x="680" y="232" font-size="12.5" fill="#3d4750">and shared = CS + EP</text>
+  <text x="680" y="250" font-size="11" fill="#8a939c">above all costs and normal returns</text>
+
+  <!-- consumer keeps -->
+  <path d="M 730 130 L 738 130 L 738 238 L 730 238" fill="none" stroke="#9aa4ad" stroke-width="1.5"/>
+  <text x="752" y="188" font-size="12" fill="#5a6672">customer keeps (CS)</text>
+  <!-- you capture -->
+  <path d="M 730 238 L 738 238 L 738 317 L 730 317" fill="none" stroke="#0057B8" stroke-width="1.8"/>
+  <text x="752" y="282" font-size="12" font-weight="700" fill="#002E5D">you capture (EP)</text>
+
+  <!-- ============ caption ============ -->
+  <text x="500" y="648" text-anchor="middle" font-size="13.5" fill="#5a6672">The whole stick is willingness to pay. It splits into four cost-and-return tranches the firm must fund, plus the surplus</text>
+  <text x="500" y="668" text-anchor="middle" font-size="13.5" fill="#5a6672">the customer keeps. What the firm and customer share, above every cost and the normal return to capital, is CS + EP.</text>
+</svg>

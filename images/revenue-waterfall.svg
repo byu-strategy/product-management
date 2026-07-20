@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 660" font-family="Helvetica, Arial, sans-serif">
+  <rect x="0" y="0" width="1000" height="660" fill="#ffffff"/>
+
+  <text x="500" y="42" text-anchor="middle" font-size="26" font-weight="700" fill="#002E5D">Revenue is a priority stack</text>
+  <text x="500" y="70" text-anchor="middle" font-size="15" fill="#5a6672">R = VC + FC + NP + EP. Every dollar is absorbed by one tranche, in order of claim.</text>
+
+  <!-- ============ the stack: x 430..630 (w200). bottom 590, top 150 (h440) ============ -->
+  <!-- VC 194, FC 88, NP 62, EP 96 -->
+  <!-- VC  590..396 -->
+  <rect x="430" y="396" width="200" height="194" fill="#5a6672" fill-opacity="0.14" stroke="#002E5D" stroke-width="1.5"/>
+  <text x="530" y="486" text-anchor="middle" font-size="15" font-weight="700" fill="#3d4750">Variable costs</text>
+  <text x="530" y="506" text-anchor="middle" font-size="12" fill="#8a939c">suppliers, labor, materials</text>
+  <!-- FC 396..308 -->
+  <rect x="430" y="308" width="200" height="88" fill="#0057B8" fill-opacity="0.12" stroke="#002E5D" stroke-width="1.5"/>
+  <text x="530" y="347" text-anchor="middle" font-size="15" font-weight="700" fill="#3d4750">Fixed costs</text>
+  <text x="530" y="366" text-anchor="middle" font-size="12" fill="#8a939c">overhead, rent, depreciation</text>
+  <!-- NP 308..246 -->
+  <rect x="430" y="246" width="200" height="62" fill="#0057B8" fill-opacity="0.24" stroke="#002E5D" stroke-width="1.5"/>
+  <text x="530" y="273" text-anchor="middle" font-size="14" font-weight="700" fill="#3d4750">Normal profit</text>
+  <text x="530" y="291" text-anchor="middle" font-size="11.5" fill="#8a939c">required return to capital</text>
+  <!-- EP 246..150 -->
+  <rect x="430" y="150" width="200" height="96" fill="#002E5D" fill-opacity="0.34" stroke="#002E5D" stroke-width="1.5"/>
+  <text x="530" y="192" text-anchor="middle" font-size="15" font-weight="700" fill="#002E5D">Economic profit</text>
+  <text x="530" y="212" text-anchor="middle" font-size="12" fill="#3d4750">the residual, value captured</text>
+
+  <!-- ============ seniority axis on the left ============ -->
+  <line x1="150" y1="170" x2="150" y2="575" stroke="#9aa4ad" stroke-width="1.5"/>
+  <path d="M 145 568 L 150 578 L 155 568 Z" fill="#9aa4ad"/>
+  <text x="130" y="205" text-anchor="middle" font-size="12.5" fill="#5a6672" transform="rotate(-90 130 205)">paid last · junior</text>
+  <text x="130" y="545" text-anchor="middle" font-size="12.5" fill="#5a6672" transform="rotate(-90 130 545)">paid first · senior</text>
+  <text x="112" y="375" text-anchor="middle" font-size="12" font-weight="700" fill="#3d4750" transform="rotate(-90 112 375)">PRIORITY OF CLAIM</text>
+
+  <!-- ============ right brackets ============ -->
+  <!-- Revenue: full stack -->
+  <path d="M 646 150 L 656 150 L 656 590 L 646 590" fill="none" stroke="#9aa4ad" stroke-width="1.5"/>
+  <text x="670" y="366" font-size="13.5" font-weight="700" fill="#3d4750">Revenue</text>
+  <text x="670" y="384" font-size="11.5" fill="#8a939c">what the customer paid</text>
+
+  <!-- Producer surplus: FC..EP  (396..150) -->
+  <path d="M 700 150 L 710 150 L 710 396 L 700 396" fill="none" stroke="#0057B8" stroke-width="2"/>
+  <text x="724" y="266" font-size="13.5" font-weight="700" fill="#002E5D">Producer surplus</text>
+  <text x="724" y="284" font-size="11.5" fill="#5a6672">= R − VC</text>
+  <text x="724" y="300" font-size="11.5" fill="#8a939c">funds FC, NP, and EP</text>
+
+  <!-- ============ caption ============ -->
+  <text x="500" y="622" text-anchor="middle" font-size="13.5" fill="#5a6672">Profit is the residual claim: what is left once every senior tranche has been paid. In perfect competition, economic</text>
+  <text x="500" y="642" text-anchor="middle" font-size="13.5" fill="#5a6672">profit is competed to zero, while producer surplus stays positive, exactly covering fixed costs and the normal return.</text>
+</svg>

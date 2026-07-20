@@ -34,6 +34,8 @@ Each line recognizes one more cost than the line above it. Producer surplus reco
 | **Economic profit** | Revenue − (explicit + implicit) | All, including opportunity cost | Economics / strategy |
 | **Financial EP** | (ROIC − WACC) × capital | Opportunity cost of capital as WACC × capital | Finance / strategy |
 
+![One idea at four depths of cost recognition. A single revenue bar splits into four claims, and each profit measure is the span it keeps once the costs to its left are dropped. Economic profit is the residual sliver that finance restates as return above the cost of capital.](images/profit-continuum.svg){fig-alt="A horizontal revenue bar divided left to right into four segments: variable costs, fixed costs, normal profit, and economic profit. Below it, four bracketed spans show producer surplus keeping the last three segments, accounting profit keeping the last two, economic profit keeping only the final segment, and financial economic profit restating that same segment as ROIC minus WACC times capital."}
+
 The rest of this appendix walks the continuum: what producer surplus actually measures, the three claims that draw it down, the same fact read as a waterfall of revenue, and finally the consumer side, which closes the loop back to the value stick.
 
 ## What producer surplus actually measures
@@ -103,6 +105,8 @@ $$
 1 = \frac{VC}{R} + \frac{FC}{R} + \frac{NP}{R} + \frac{EP}{R}
 $$
 
+![Revenue as a capital stack. The four tranches are paid in order of priority, variable costs first, economic profit last. Producer surplus is everything above variable cost; profit is whatever survives once every senior claim is satisfied.](images/revenue-waterfall.svg){fig-alt="A vertical stacked bar representing revenue. From the bottom up: variable costs (paid first, senior), fixed costs, normal profit, and economic profit (paid last, junior, the residual). A left-hand axis marks increasing priority of claim toward the bottom. Right-hand brackets mark the full bar as revenue and the top three tranches as producer surplus, equal to revenue minus variable costs."}
+
 One caveat gates the whole chain. The firm produces at all only when price covers average variable cost. Below the shutdown point the firm makes nothing, and every term collapses to zero.
 
 $$
@@ -128,6 +132,8 @@ Read it left to right and it is the entire journey of a dollar of value: it orig
 $$
 \text{Value Created} = CS + EP
 $$
+
+![The value stick with its middle exploded into the tranches beneath it. Willingness to pay is the whole height. It splits into the four cost-and-return claims the firm must fund, variable cost, fixed cost, normal profit, economic profit, plus the consumer surplus the customer keeps. The value the firm and customer share, above every cost and the normal return, is CS plus EP.](images/value-decomposition.svg){fig-alt="A tall vertical bar spanning from a variable cost floor at the bottom to willingness to pay at the top. From bottom to top the bands are variable costs, fixed costs, normal profit, economic profit, and consumer surplus. A price line sits between economic profit and consumer surplus. Left brackets mark revenue and producer surplus; right brackets mark economic profit as the value the firm captures, consumer surplus as what the customer keeps, and the two together as value created and shared."}
 
 This is exactly the value stick, now derived rather than drawn. The full height of the stick, willingness to pay down to willingness to sell, is $CS + EP$ plus the normal returns that any firm would require. The interior lines that the strategy chapter draws by hand, price and cost, are where $CS$, $EP$, and the supplier's share meet.
 
