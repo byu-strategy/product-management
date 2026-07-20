@@ -4,6 +4,13 @@ This course site is a living product. It gets better during the semester, and ev
 
 New entries appear at the top.
 
+## v1.3.1 (2026-07-20)
+
+Every reference in the book is now a clickable link, plus three more cited sources in the economics appendix.
+
+- **Clickable citations.** Every entry in the reference lists and the Works Cited page now links straight to the source: the book's page in an open library catalog, the publisher's article page, or a permanent archive. One out-of-print book has no free record and stays as text.
+- **The Logic of Value appendix** now cites Marshall, Schumpeter, and Stewart for the economics it builds on (producer surplus, creative destruction, and economic value added).
+
 ## v1.3.0 (2026-07-20)
 
 Every borrowed idea in the book is now cited to a real source, plus a new appendix on the economics behind strategy and a clearer opening to the AIRE loop.
