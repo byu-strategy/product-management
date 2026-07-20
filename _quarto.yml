@@ -52,7 +52,7 @@ book:
         - 99-works-cited.qmd
 
 bibliography: references.bib
-csl: informs.csl
+csl: chicago-author-date.csl
 
 format:
   html:
