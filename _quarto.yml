@@ -49,6 +49,7 @@ book:
         - 97-canon.qmd
         - 98-tools.qmd
         - 99-prompts.qmd
+        - 99-works-cited.qmd
 
 bibliography: references.bib
 csl: informs.csl

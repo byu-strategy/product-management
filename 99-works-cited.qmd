@@ -1,0 +1,10 @@
+---
+title: "Works Cited"
+nocite: |
+  @*
+---
+
+The complete list of works cited across this book. Each chapter also lists the sources it cites at the foot of the chapter; this page collects them in one place.
+
+::: {#refs}
+:::
