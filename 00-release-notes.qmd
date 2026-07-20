@@ -4,6 +4,18 @@ This course site is a living product. It gets better during the semester, and ev
 
 New entries appear at the top.
 
+## v1.2.0 (2026-07-20)
+
+A large release: a new Product Strategy chapter, the course reorganized around the AIRE loop, two new reference pages, and the schedule and assessments brought in line with the new structure.
+
+- **New chapter, Product Strategy** (in the Aim part): what game you are playing, where to play and how to win, moats, and the DHM test for a strong strategy.
+- **The course is now organized into five parts around the AIRE loop:** Foundations, Aim, Discover, Build, Grow, and a References section. Product Morality now sits in Aim (what is worth building), and Platform Strategy moves into Build.
+- **Chapter 1 adds a table** showing how the AIRE loop (Aim, Inform, Reason, Enact) maps to the parts of the course.
+- **Two new reference pages:** The Canon, which credits the sources behind each major principle and flags what has changed in the AI era, and a Thought Leaders page.
+- **Attribution pass across the course:** principles are now credited to their sources, with new frameworks from Jeff Dyer added to Problems Worth Solving, Building Your MVP, Go-to-Market, and Storytelling.
+- **Schedule:** the weekly practice table is rebuilt around the new parts. Product Strategy gets its own practice, and the readings and quiz schedule is updated. There are still ten quizzes; three weeks now pair two shorter chapters under one quiz.
+- **Assessments:** the quiz-to-chapter mapping matches the new chapters, and all sprint, peer, final, and survey dates are corrected to the Fall 2026 calendar.
+
 ## v1.1.2 (2026-07-18)
 
 New discovery and MVP tools, adapted with credit from Nile Hatch's *Expeditionary Innovation*.
