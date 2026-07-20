@@ -38,6 +38,9 @@ book:
         - 09-go-to-market.qmd
         - 10-business-models.qmd
         - 12-final-presentations.qmd
+    - part: Appendix
+      chapters:
+        - A1-logic-of-value.qmd
     - part: References
       chapters:
         - 93-why-this-class-works.qmd
