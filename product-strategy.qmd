@@ -24,6 +24,37 @@ Roger Martin and A.G. Lafley (*Playing to Win*) reduce strategy to a cascade of 
 
 For a student product, the first three are the ones that bite. Answer "where will you play" and "how will you win" in a sentence each, and you already have a strategy most startups never bother to write down.
 
+## Creating value, and capturing it
+
+Strategy has to answer two different questions, and it is easy to collapse them into one. The first is whether your product *creates* value: is anyone genuinely better off for it existing? The second is whether you can *capture* any of that value: does enough of it come back to you to keep the business alive? These are not the same question, and a product can pass the first and fail the second.
+
+Adam Brandenburger and Harborne Stuart gave this a clean picture, the value stick. At the top sits the customer's willingness to pay. At the bottom sits the cost of what you use to build, your suppliers' and your own willingness to sell. The gap between them is the value your product *creates*. How that gap gets divided, how much the customer keeps as a good deal, how much suppliers take, and how much is left for you, is the value you *capture*.
+
+The trap is assuming creation is the hard part and capture takes care of itself. It does not. Peter Thiel's example is the sharpest: US airlines create enormous value and keep almost none of it, while a single search company creates less and keeps far more. David Teece made the same point about innovators decades earlier: you can invent something genuinely new, create real value, and watch imitators and the owners of the pieces you depend on take all the capture. Creating value is necessary. It is not sufficient.
+
+So where on the value stick do you land? That is a choice, but a *constrained* one. You do not simply decide to keep more of the gap. How much you can capture is set by structure you did not build and cannot wish away, and the first job of strategy is to read that structure honestly. In [AIRE](01-pm-ai-era.qmd) terms, the width of the band you can capture is something you *Inform* on, and where you position inside it is the *Aim*. Misreading the band is an information failure. Landing in a band that is genuinely thin, after reading it correctly, is not a mistake. It is a signal to go find a different band.
+
+## The five forces: how wide is the band?
+
+What sets the width of the band? Michael Porter's five forces, read this way, are a diagnostic of exactly that: how much of the value an industry creates it will actually let you keep. Under the practitioner's language, the variable is market power. Perfect competition drives price down to cost, hands the whole gap to customers, and leaves you almost nothing. Market power is what lets you hold price up toward willingness to pay and keep the gap.
+
+The five forces measure that power at two points:
+
+- **Rivalry, new entrants, and substitutes** decide whether the industry as a whole can hold price above cost, or whether competition and easy entry compete it away.
+- **Buyer power and supplier power** decide whether an adjacent player, a dominant customer or a must-have supplier, can bargain your share away even when the industry is otherwise attractive.
+
+All five are the same variable, market power, at different points in the chain, either yours to hold or someone else's to take. One caution: the five forces describe the *industry*, the attractiveness of the pond, not whether you are the best fish in it. Two products in the same structure can capture very differently based on their own advantage, which is where moats come in.
+
+## Blue oceans: widening the band
+
+There is a third move, and it is the one worth aiming for. Instead of accepting the band the current industry allows and fighting for position inside it, you can redraw the boundary so you are measured against a different structure entirely. W. Chan Kim and Renée Mauborgne call the crowded, well-mapped markets *red oceans*, where rivals fight over a fixed pie, and the uncontested space you create *blue oceans*, where for a while there are no direct rivals, no established substitutes, and no one has entered yet. You do not win the competition. You leave it.
+
+Their engine for this is *value innovation*: pursue differentiation and low cost at the same time instead of trading one for the other. On the value stick that means moving both ends at once, lifting willingness to pay while cutting cost, by dropping the factors your industry over-serves and adding factors it never offered. Cirque du Soleil cut the animals and star performers that made circuses expensive and added theatrical story and production that circuses never had, and landed in a space where neither circuses nor theater competed with it.
+
+In AIRE this is a discovery discipline pointed at the Aim rather than at the customer. Where the Mom Test informs you about needs *inside* a category, the blue ocean question informs you about where the category boundary could be *moved*: look across substitute industries, adjacent buyer groups, and complementary offerings for space no one is contesting. It is *Inform* in service of choosing a better place to play.
+
+But a blue ocean has a built-in problem, and it sets up everything that follows. By definition it has no barriers, you just created open space, which is the same as saying entry is wide open. If you cannot build a reason for the ocean to stay yours, imitators pour in, the water reddens, and your capture erodes back toward zero. Creating the uncontested space is only half the move. Keeping it is the other half, which is Thiel's real point: create a new market *and* own it. The first half is a blue ocean. The second is a moat.
+
 ## Moats: why the win lasts
 
 Winning once is not enough; the win has to hold. Hamilton Helmer (*7 Powers*) catalogs the sources of durable advantage, or moats:
@@ -66,6 +97,9 @@ Then pressure-test it with AI, but adversarially. Do not ask "is this a good str
 
 - **Strategy is choosing what not to do** (Michael Porter)
 - **Where to play / how to win** (Roger Martin & A.G. Lafley, *Playing to Win*)
+- **Create value vs. capture value, the value stick** (Adam Brandenburger & Harborne Stuart; sharpened by Peter Thiel, and by David Teece for innovators): creating value is necessary but not sufficient; capture is a separate, constrained choice.
+- **Five forces as a market-power reading** (Michael Porter): how wide a share of the created value the industry lets you keep.
+- **Blue ocean / value innovation** (W. Chan Kim & Renée Mauborgne): widen the band by redrawing the market boundary instead of fighting for position inside it.
 - **Moats / durable advantage** (Hamilton Helmer, *7 Powers*): network effects, switching costs, scale, brand
 - **DHM**: Delight, Hard to copy, Margin-enhancing (Gibson Biddle)
 - **Product vision before strategy** (Marty Cagan)
