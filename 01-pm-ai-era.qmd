@@ -37,11 +37,11 @@ We run that machinery as a single loop, and it has a name: **AIRE**. Each step i
 
 Say it in one breath: what do you want, what is true, what's the best option, what happened. Three questions and a turn.
 
-**Aim comes first, and that is not an accident.** Information is endless; without an aim you have no way to tell which facts matter, and discovery with no destination is just wandering. Lewis Carroll made the point in *Alice's Adventures in Wonderland*, when Alice reaches a fork and asks the Cheshire Cat which way to go. President Thomas S. Monson retold it this way:
+**Aim comes first, and that is not an accident.** Information is endless; without an aim you have no way to tell which facts matter, and discovery with no destination is just wandering. Lewis Carroll made the point in *Alice's Adventures in Wonderland* [@carroll1865], when Alice reaches a fork and asks the Cheshire Cat which way to go. President Thomas S. Monson retold it this way:
 
 > The cat answers, "That depends where you want to go. If you do not know where you want to go, it doesn't matter which path you take."
 
-Alice does not know where she wants to go, so for her it truly does not matter. Monson's turn on the story is the whole reason Aim leads: "Unlike Alice, we know where we want to go, and it does matter which way we go, for by choosing our path, we choose our destination." Answer *what do you want* first, and every question after it has a criterion. Skip it, and any road looks as good as any other.
+Alice does not know where she wants to go, so for her it truly does not matter. Monson's turn on the story is the whole reason Aim leads: "Unlike Alice, we know where we want to go, and it does matter which way we go, for by choosing our path, we choose our destination" [@monson2016]. Answer *what do you want* first, and every question after it has a criterion. Skip it, and any road looks as good as any other.
 
 The course *is* this loop, and the parts you see in the sidebar are its steps:
 
@@ -85,23 +85,23 @@ Some people take issue with the “CEO” comparison, since product managers typ
 
 Products can be hardware or software, but since software dominates in volume, product management is often associated with software, even though many of the principles can apply equally well to hardware. Today, many hardware products come with a software component or integrated app, at times blurring the line between hardware and software. The focus of this course is software products that can be built with the assistance of AI.
 
-Product Management, as a formal discipline and job title, traces its roots to Hewlett-Packard in the 1940s, where it emerged as a distinct driver of innovation in technology. Yet the concept predates HP: a 1931 Procter & Gamble memo introduced the role of “Brand Men,” whose responsibilities closely foreshadowed what would later be recognized as Product Management.
+Product Management, as a formal discipline and job title, traces its roots to Hewlett-Packard in the 1940s, where it emerged as a distinct driver of innovation in technology. Yet the concept predates HP: a 1931 Procter & Gamble memo introduced the role of “Brand Men,” whose responsibilities closely foreshadowed what would later be recognized as Product Management [@mcelroy1931].
 
 ![Image source: Wikimedia Commons](images/brand-men.jpg)
 
-Early influences such as the \[Scrum development process\](https://en.wikipedia.org/wiki/Scrum\_(software_development))) and the [Agile Manifesto](https://agilemanifesto.org/) reshaped how products are built, while initiatives like Google’s Associate Product Manager (APM) program and influential books helped standardize best practices. In recent years, PM has become one of the most sought-after careers, and today the field is entering a new era with the rise of the AI Product Manager.
+Early influences such as the \[Scrum development process\](https://en.wikipedia.org/wiki/Scrum\_(software_development))) and the [Agile Manifesto](https://agilemanifesto.org/) [@beck2001] reshaped how products are built, while initiatives like Google’s Associate Product Manager (APM) program and influential books helped standardize best practices. In recent years, PM has become one of the most sought-after careers, and today the field is entering a new era with the rise of the AI Product Manager.
 
 ![A History of Product Management; Aakash Gupta and Scott Murff](images/pm-history.png)
 
 The personal computer revolution of the 1980s brought computing into offices and homes. The rise of the internet in the 1990s connected the world and created entirely new industries, from e-commerce to online media. In the 2000s, broadband (i.e. high-speed internet access) and cloud computing made software cheaper to build, scale, and distribute, while the launch of the iPhone in 2007 ushered in the smartphone era putting powerful applications directly into billions of people’s hands.
 
-In 2011, Marc Andreessen, co-founder of the venture capital firm Andreessen Horowitz (a16z) (known for its influential early investments in companies like Facebook, Airbnb, and Coinbase) famously observed that [*Software Is Eating the World*](https://a16z.com/why-software-is-eating-the-world/).
+In 2011, Marc Andreessen, co-founder of the venture capital firm Andreessen Horowitz (a16z) (known for its influential early investments in companies like Facebook, Airbnb, and Coinbase) famously observed that [*Software Is Eating the World*](https://a16z.com/why-software-is-eating-the-world/) [@andreessen2011].
 
 AI now appears to be on track to “eat the world” again, this time at a much faster pace. The launch of ChatGPT on November 30, 2022, marked a turning point, catalyzing mass adoption of generative AI and enabling the rise of the AI Product Manager.
 
-Marc now predicts that [*AI Will Save the World*](https://a16z.com/ai-will-save-the-world/), but this certainly won't happen automatically. Because human nature is what it is, there will be plenty of people using AI in ways that are damaging to both individuals and society. Indeed, we are living in the time when:
+Marc now predicts that [*AI Will Save the World*](https://a16z.com/ai-will-save-the-world/) [@andreessen2023], but this certainly won't happen automatically. Because human nature is what it is, there will be plenty of people using AI in ways that are damaging to both individuals and society. Indeed, we are living in the time when:
 
-> “Discoveries latent with such potent power, either for the blessing or the destruction of human beings as to make men’s responsibility in controlling them the most gigantic ever placed in human hands. … This age is fraught with limitless perils, as well as untold possibilities.” *--David O. McKay, in Conference Report, Oct. 1966, 4.*
+> “Discoveries latent with such potent power, either for the blessing or the destruction of human beings as to make men’s responsibility in controlling them the most gigantic ever placed in human hands. … This age is fraught with limitless perils, as well as untold possibilities.” *--David O. McKay, in Conference Report, Oct. 1966, 4.* [@mckay1966]
 
 **You have the incredibly exciting and challenging opportunity to harness AI to improve the world. This class will help prepare you to seize that opportunity.**
 

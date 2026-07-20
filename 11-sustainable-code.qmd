@@ -16,7 +16,7 @@ This is **technical debt**, and every product accumulates it. This chapter teach
 
 Technical debt is the implicit cost of additional rework caused by choosing an expedient solution now instead of using a better approach that would take longer.
 
-The metaphor comes from finance: just like financial debt, technical debt:
+The metaphor comes from finance: just like financial debt, technical debt [@cunningham1992]:
 - **Accumulates interest**: The longer you wait to pay it down, the more expensive it becomes
 - **Can be strategic**: Sometimes borrowing makes sense
 - **Can be crippling**: Too much debt slows everything down
@@ -57,7 +57,7 @@ Not all tech debt is bad. Some is intentional and strategic.
 **Example:**
 > "I didn't realize there was already a date formatting utility, so I wrote another one. Now we have three different date formatters and they don't all produce the same output."
 
-### The Tech Debt Quadrant
+### The Tech Debt Quadrant [@fowler2009]
 
 | | Reckless | Prudent |
 |---|----------|---------|
@@ -85,13 +85,13 @@ The answer isn't "always" or "never". It depends on context.
 - The cost of refactoring exceeds the benefit
 - You have hard deadlines with real consequences
 
-**The Boy Scout Rule:** Leave the code better than you found it. When you're working in an area, clean up a little. Incremental improvements compound over time.
+**The Boy Scout Rule:** Leave the code better than you found it [@martinrc2008clean]. When you're working in an area, clean up a little. Incremental improvements compound over time.
 
 ### Growth and Retention Strategy
 
 As your product matures, focus shifts from acquisition to retention. Sustainable code enables sustainable growth.
 
-#### The User Lifecycle
+#### The User Lifecycle [@mcclure2007]
 
 ```
 Awareness → Acquisition → Activation → Retention → Revenue → Referral
@@ -144,7 +144,7 @@ The first experience determines whether users return.
 
 ### Code Quality Fundamentals
 
-#### The DRY Principle
+#### The DRY Principle [@hunt1999pragmatic]
 
 **DRY (Don't Repeat Yourself)** means each piece of knowledge should exist in exactly one place.
 
@@ -192,7 +192,7 @@ function showStudentBanner(user) {
 }
 ```
 
-#### Single Responsibility
+#### Single Responsibility [@martinrc2008clean]
 
 Each function, component, or module should do one thing.
 
@@ -315,7 +315,7 @@ Tests catch bugs before users do and give you confidence to refactor.
 | **Integration** | Components working together | Medium | Medium |
 | **End-to-End** | Full user flows | Slow | Broad |
 
-**The testing pyramid:** Lots of unit tests, fewer integration tests, even fewer E2E tests.
+**The testing pyramid:** Lots of unit tests, fewer integration tests, even fewer E2E tests [@cohn2009agile].
 
 #### Setting Up Jest
 

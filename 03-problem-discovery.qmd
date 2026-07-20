@@ -14,7 +14,7 @@ This chapter teaches you the Jobs-to-be-Done framework for understanding custome
 
 ### Discovery Is Truth-Seeking
 
-Before the frameworks, the mindset. Strip away the tools and a product manager has one core job: to know what is actually true about a customer and their problem before spending real time and money building. Discovery is how you do that job. Everything else in this chapter, Jobs-to-be-Done, the Mom Test, interview synthesis, is machinery for replacing what you *believe* about your users with what is *true* about them, as cheaply and quickly as possible. Steve Blank gave this discipline its name, *customer development*, and its blunt motto: get out of the building. The facts you need are outside, with real people, not inside your head.
+Before the frameworks, the mindset. Strip away the tools and a product manager has one core job: to know what is actually true about a customer and their problem before spending real time and money building. Discovery is how you do that job. Everything else in this chapter, Jobs-to-be-Done, the Mom Test, interview synthesis, is machinery for replacing what you *believe* about your users with what is *true* about them, as cheaply and quickly as possible. Steve Blank gave this discipline its name, *customer development*, and its blunt motto: get out of the building [@blank2005four]. The facts you need are outside, with real people, not inside your head.
 
 It helps to see where a belief can sit.
 
@@ -60,9 +60,9 @@ The rest of this chapter is the *how*. Jobs-to-be-Done gives you a sharper hypot
 
 ### Jobs-to-be-Done Framework
 
-The Jobs-to-be-Done (JTBD) framework, popularized by Clayton Christensen, shifts focus from *what customers buy* to *why they buy it*. The core insight: customers don't want products, they "hire" products to do a job.
+The Jobs-to-be-Done (JTBD) framework, popularized by Clayton Christensen [@christensen2016luck], shifts focus from *what customers buy* to *why they buy it*. The core insight: customers don't want products, they "hire" products to do a job.
 
-The classic example is the milkshake. A fast-food chain wanted to sell more milkshakes, so they improved the recipe. Sales didn't budge. Then they asked a different question: *What job are people hiring the milkshake to do?*
+The classic example is the milkshake [@christensen2016luck]. A fast-food chain wanted to sell more milkshakes, so they improved the recipe. Sales didn't budge. Then they asked a different question: *What job are people hiring the milkshake to do?*
 
 They discovered that most milkshakes were bought in the morning by commuters. The "job" wasn't *enjoy a delicious treat*. It was *make my boring commute more interesting while keeping me full until lunch*. Suddenly, the milkshake's competition wasn't other milkshakes; it was bananas, bagels, and donuts. The solution? Make it thicker (lasts longer), add fruit chunks (more interesting), and offer it at the drive-through (more convenient).
 
@@ -105,13 +105,13 @@ Jobs come in three types; the *pain* behind a job comes in five kinds, and namin
 
 When you interview, listen across all five. The pains people mention first are usually functional; the ones that actually drive them to pay are often emotional or social. This complements the Self-Determination lens in [Sprint 2](00-assessments.qmd#sprint-2-validate-commit) (autonomy, competence, relatedness): that lens explains *why* a pain matters; these five categories catalog *how* it hurts.
 
-*Five pain categories from Nile Hatch, [Expeditionary Innovation](https://github.com/nilehatch/exp_innov/).*
+*Five pain categories from Nile Hatch, [Expeditionary Innovation](https://github.com/nilehatch/exp_innov/) [@hatch_expeditionary].*
 
 ### Problem Interviews (The Mom Test)
 
 Once you have a hypothesis about the job customers are trying to do, you need to validate it with real conversations. This is where most people fail, they ask bad questions that produce misleading answers.
 
-Rob Fitzpatrick's book *The Mom Test* identifies the core problem: if you tell your mom about your business idea, she'll say it's great. She loves you. She doesn't want to hurt your feelings. And her feedback is useless.
+Rob Fitzpatrick's book *The Mom Test* [@fitzpatrick2013mom] identifies the core problem: if you tell your mom about your business idea, she'll say it's great. She loves you. She doesn't want to hurt your feelings. And her feedback is useless.
 
 The solution is to ask questions that even your mom couldn't lie about, questions about their actual behavior, not hypothetical futures.
 
@@ -194,7 +194,7 @@ After 5+ interviews, patterns emerge. Synthesize what you learned into actionabl
 ::: {.callout-note title="How many interviews is enough?"}
 There is no magic number, but there is a signal: **stop when new interviews stop surprising you.** Early on, every conversation adds something. As you approach saturation, you start hearing the same problems, quotes, and workarounds you have already heard, and the information each new interview adds drops toward zero. When two or three in a row tell you nothing new, you have enough to act. If every interview still surprises you, keep going, your net is probably too narrow.
 
-*The saturation ("information entropy") stop rule is from Nile Hatch, [Expeditionary Innovation](https://github.com/nilehatch/exp_innov/).*
+*The saturation ("information entropy") stop rule is from Nile Hatch, [Expeditionary Innovation](https://github.com/nilehatch/exp_innov/) [@hatch_expeditionary].*
 :::
 
 #### Synthesis Template
@@ -266,7 +266,7 @@ Discovery is not a phase you finish before building. The best product teams keep
 
 She also gives a way to keep discovery organized, the **Opportunity Solution Tree**. Start from one desired **outcome** (the thing you want to move). Branch into the **opportunities**: the specific customer needs and pains you have discovered that could move it. Under each opportunity, branch into candidate **solutions**, and under each solution, the **experiments** that would test it. The tree keeps you honest: every solution has to hang off a real, discovered opportunity, or it does not belong on the tree.
 
-*Continuous discovery and the Opportunity Solution Tree are from Teresa Torres, Continuous Discovery Habits (2021).*
+*Continuous discovery and the Opportunity Solution Tree are from Teresa Torres, Continuous Discovery Habits (2021) [@torres2021continuous].*
 
 ## Part 2: Building It
 

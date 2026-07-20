@@ -10,11 +10,11 @@ In the AI era this matters more, not less. When anyone can build almost any feat
 
 ## Strategy is choosing what not to do
 
-Michael Porter's foundational point: the essence of strategy is choosing what *not* to do. Strategy is not a list of everything good you could do; it is a small set of hard choices that fit together, which you then defend against the constant temptation to do everything. If your "strategy" has no sacrifices in it, it is not a strategy. It is a wish list.
+Michael Porter's foundational point: the essence of strategy is choosing what *not* to do [@porter1996strategy]. Strategy is not a list of everything good you could do; it is a small set of hard choices that fit together, which you then defend against the constant temptation to do everything. If your "strategy" has no sacrifices in it, it is not a strategy. It is a wish list.
 
 ## Where to play, and how to win
 
-Roger Martin and A.G. Lafley (*Playing to Win*) reduce strategy to a cascade of five linked choices:
+Roger Martin and A.G. Lafley (*Playing to Win*) [@lafley2013playing] reduce strategy to a cascade of five linked choices:
 
 1. **What is your winning aspiration?** The purpose. What does winning look like?
 2. **Where will you play?** Which customers, segments, channels. (Your beachhead, from Go-to-Market, is a where-to-play choice.)
@@ -40,7 +40,7 @@ So where on the value stick do you land? That is a choice, but a *constrained* o
 
 ## The five forces: how wide is the band?
 
-What sets the width of the band? Michael Porter's five forces, read this way, are a diagnostic of exactly that: how much of the value an industry creates it will actually let you keep. Under the practitioner's language, the variable is market power. Perfect competition drives price down to cost, hands the whole gap to customers, and leaves you almost nothing. Market power is what lets you hold price up toward willingness to pay and keep the gap.
+What sets the width of the band? Michael Porter's five forces [@porter1979competitive], read this way, are a diagnostic of exactly that: how much of the value an industry creates it will actually let you keep. Under the practitioner's language, the variable is market power. Perfect competition drives price down to cost, hands the whole gap to customers, and leaves you almost nothing. Market power is what lets you hold price up toward willingness to pay and keep the gap.
 
 The five forces measure that power at two points:
 
@@ -51,7 +51,7 @@ All five are the same variable, market power, at different points in the chain, 
 
 ## Blue oceans: widening the band
 
-There is a third move, and it is the one worth aiming for. Instead of accepting the band the current industry allows and fighting for position inside it, you can redraw the boundary so you are measured against a different structure entirely. W. Chan Kim and Renée Mauborgne call the crowded, well-mapped markets *red oceans*, where rivals fight over a fixed pie, and the uncontested space you create *blue oceans*, where for a while there are no direct rivals, no established substitutes, and no one has entered yet. You do not win the competition. You leave it.
+There is a third move, and it is the one worth aiming for. Instead of accepting the band the current industry allows and fighting for position inside it, you can redraw the boundary so you are measured against a different structure entirely. W. Chan Kim and Renée Mauborgne call the crowded, well-mapped markets *red oceans*, where rivals fight over a fixed pie, and the uncontested space you create *blue oceans*, where for a while there are no direct rivals, no established substitutes, and no one has entered yet [@kim2005blue]. You do not win the competition. You leave it.
 
 Their engine for this is *value innovation*: pursue differentiation and low cost at the same time instead of trading one for the other. On the value stick that means moving both ends at once, lifting willingness to pay while cutting cost, by dropping the factors your industry over-serves and adding factors it never offered. Cirque du Soleil cut the animals and star performers that made circuses expensive and added theatrical story and production that circuses never had, and landed in a space where neither circuses nor theater competed with it.
 
@@ -61,7 +61,7 @@ But a blue ocean has a built-in problem, and it sets up everything that follows.
 
 ## Moats: why the win lasts
 
-Winning once is not enough; the win has to hold. Hamilton Helmer (*7 Powers*) catalogs the sources of durable advantage, or moats:
+Winning once is not enough; the win has to hold. Hamilton Helmer (*7 Powers*) [@helmer2016powers] catalogs the sources of durable advantage, or moats:
 
 - **Network effects** — the product gets more valuable as more people use it; each new user improves it for the others.
 - **Switching costs** — leaving is painful, so customers stay.
@@ -73,7 +73,7 @@ Ask honestly: once you are winning, what stops the next student with the same AI
 
 ## A test worth memorizing: DHM
 
-Gibson Biddle, from leading product at Netflix, offers a compact test for a good product strategy: **DHM**. Does it **D**elight customers, in **H**ard-to-copy, **M**argin-enhancing ways? All three at once:
+Gibson Biddle, from leading product at Netflix, offers a compact test for a good product strategy: **DHM** [@biddle2018]. Does it **D**elight customers, in **H**ard-to-copy, **M**argin-enhancing ways? All three at once:
 
 - **Delight** — customers genuinely love it, not merely tolerate it.
 - **Hard to copy** — there is a moat, so the delight is defensible.
@@ -83,7 +83,7 @@ A product can delight and still lose (easily copied), or be defensible and still
 
 ## Vision before strategy
 
-Under the strategy sits a **product vision**: the compelling picture of the better world your product creates, usually a few years out. Marty Cagan argues the vision is what recruits people, aligns decisions, and carries you through the hard middle. Strategy is how you get there; vision is where "there" is, and why it is worth the trip. Write the vision first, then let the strategy serve it.
+Under the strategy sits a **product vision**: the compelling picture of the better world your product creates, usually a few years out. Marty Cagan argues the vision is what recruits people, aligns decisions, and carries you through the hard middle [@cagan2017inspired]. Strategy is how you get there; vision is where "there" is, and why it is worth the trip. Write the vision first, then let the strategy serve it.
 
 ## Putting it to work
 

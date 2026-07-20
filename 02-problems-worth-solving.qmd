@@ -37,7 +37,7 @@ Paul Graham compressed the whole idea into Y Combinator's motto: *make something
 
 ### Why Most Products Fail
 
-According to CB Insights' analysis of over 100 startup post-mortems, the number one reason startups fail is **"No Market Need"**, cited by 42% of failed founders. Not lack of funding. Not competition. Not bad teams. Simply building something people didn't want.
+According to CB Insights' analysis of over 100 startup post-mortems, the number one reason startups fail is **"No Market Need"**, cited by 42% of failed founders [@cbinsights2026]. Not lack of funding. Not competition. Not bad teams. Simply building something people didn't want.
 
 This happens because of what we call **The Idea Trap**: falling in love with a solution before understanding the problem. It looks like this:
 
@@ -73,7 +73,7 @@ Where do good problems come from? Jeff Dyer and his colleagues studied disruptiv
 
 This whole course is a program for practicing these. Your problem journal is Questioning and Observing; the interviews in the next chapter are Observing and Networking; your prototypes and MVP tests are Experimenting. That is the point of the practice model, and it is Dyer's finding too: these are skills you build with reps, not gifts you are born with.
 
-*The five discovery skills are from Jeff Dyer, Hal Gregersen, and Clayton Christensen, ["The Innovator's DNA,"](https://hbr.org/2009/12/the-innovators-dna) Harvard Business Review, December 2009.*
+*The five discovery skills are from Jeff Dyer, Hal Gregersen, and Clayton Christensen, ["The Innovator's DNA,"](https://hbr.org/2009/12/the-innovators-dna) Harvard Business Review, December 2009. [@dyer2009dna]*
 
 ### You Are Your Best First Customer
 
@@ -116,7 +116,7 @@ There is a rhythm to good discovery: **open wide before you narrow.** Generate m
 
 So resist the urge to pick early. Your problem journal is the diverging half: capture dozens of frictions without filtering. Casting a wide net, across different people, contexts, and moments, surfaces problems you would never have reasoned your way to from your desk. Only once you have a real pile do you start scoring and cutting (the next section). The wider you diverge, the better the thing you eventually converge on.
 
-*Diverge/converge discipline adapted from Nile Hatch, [Expeditionary Innovation](https://github.com/nilehatch/exp_innov/).*
+*Diverge/converge discipline adapted from Nile Hatch, [Expeditionary Innovation](https://github.com/nilehatch/exp_innov/). [@hatch_expeditionary]*
 
 ### Evaluating Your Problems
 
@@ -133,7 +133,7 @@ A problem that happens rarely but is extremely painful (like planning a wedding)
 
 ### The Importance-Satisfaction Framework
 
-Another helpful way to evaluate problems comes from Dan Olsen's *Lean Product Playbook*. Plot potential problems on a 2x2 matrix:
+Another helpful way to evaluate problems comes from Dan Olsen's *Lean Product Playbook* [@olsen2015lean]. Plot potential problems on a 2x2 matrix:
 
 - **Y-axis: Importance**: How much does this matter to the customer?
 - **X-axis: Satisfaction**: How well do current solutions address it?

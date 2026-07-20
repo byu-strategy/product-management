@@ -70,7 +70,7 @@ Three ways to keep your scores honest:
 - **Score intensity out of ten (the "Ouch Factor").** Force yourself to rate how much it hurts, 1 to 10, per person. Vague intensity hides weak opportunities.
 - **Watch both failure modes.** A *false positive* is polite agreement ("sure, I'd use that") for a problem no one really has. A *false negative* is a real pain you missed because you framed the question badly. Seek disconfirming evidence for the first; re-ask in different words to catch the second.
 
-*Ouch Factor, workaround-spend, and false-positive/negative framing from Nile Hatch, [Expeditionary Innovation](https://github.com/nilehatch/exp_innov/).*
+*Ouch Factor, workaround-spend, and false-positive/negative framing from Nile Hatch, [Expeditionary Innovation](https://github.com/nilehatch/exp_innov/).* [@hatch_expeditionary]
 :::
 
 ### Opportunity Scoring
@@ -102,7 +102,7 @@ A real, painful, frequent problem is still not an opportunity if you cannot reac
 
 If you cannot reach a segment cheaply now, as a student, you will not reach them cheaply as a founder. Either find a reachable beachhead within the market or reconsider the problem.
 
-*The access test is adapted from Nile Hatch, [Expeditionary Innovation](https://github.com/nilehatch/exp_innov/).*
+*The access test is adapted from Nile Hatch, [Expeditionary Innovation](https://github.com/nilehatch/exp_innov/).* [@hatch_expeditionary]
 
 ### The Commitment Decision
 
@@ -154,7 +154,7 @@ Once you commit to a problem, articulate your value proposition, a clear stateme
 > Unlike **manual spreadsheets or expensive enterprise solutions**
 > We **take 10 minutes to set up and cost 1/10th the price**
 
-![Image source: Strategyzer](images/value-prop.png)
+![Image source: Strategyzer](images/value-prop.png) [@osterwalder2014value]
 
 ## Part 2: Building It
 

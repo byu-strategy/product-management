@@ -10,7 +10,7 @@ You can't improve what you don't measure. But measuring the wrong things is wors
 
 This chapter teaches you to choose the right metrics, avoid vanity traps, and implement analytics that actually inform decisions. The goal isn't to track everything; it's to track what helps you build a better product.
 
-Read a metric as [evidence](03-problem-discovery.qmd), not a verdict. A number moves a belief up or down; it does not certify that you are right, or that you are worthy. And remember that outcomes carry luck: a good number can follow a poor decision and a bad number a sound one. Track what updates your beliefs about the product, not what flatters them.
+Read a metric as [evidence](03-problem-discovery.qmd), not a verdict. A number moves a belief up or down; it does not certify that you are right, or that you are worthy. And remember that outcomes carry luck: a good number can follow a poor decision and a bad number a sound one [@duke2018bets]. Track what updates your beliefs about the product, not what flatters them.
 
 ## Part 1: The Strategy
 
@@ -73,11 +73,11 @@ There is a deeper vanity trap than any bad metric: measuring how much you *built
 
 In the AI era this trap is more dangerous, not less, because output has never been cheaper. You can ship a feature a day now. So hold yourself to outcomes: did the North Star move, did activation improve, did a real user get real value? Shipping is not the goal; changing an outcome is.
 
-*Outcomes over output, and the build trap, from Marty Cagan, Inspired / Empowered, and Melissa Perri, Escaping the Build Trap (2018).*
+*Outcomes over output, and the build trap, from Marty Cagan, Inspired / Empowered [@cagan2017inspired], and Melissa Perri, Escaping the Build Trap (2018) [@perri2018buildtrap].*
 
 ### The Pirate Metrics Framework (AARRR)
 
-Dave McClure's framework covers the entire user lifecycle:
+Dave McClure's framework [@mcclure2007] covers the entire user lifecycle:
 
 | Stage | Question | Key Metrics |
 |-------|----------|-------------|
@@ -172,7 +172,7 @@ Track how users feel about your product.
 | **CSAT** | Satisfaction with experience | 1-5 or 1-10 |
 | **CES** | Effort to accomplish goal | 1-7 |
 
-**Net Promoter Score (NPS):**
+**Net Promoter Score (NPS)** [@reichheld2003onenumber]**:**
 - "How likely are you to recommend us?" (0-10)
 - Promoters (9-10), Passives (7-8), Detractors (0-6)
 - NPS = % Promoters - % Detractors

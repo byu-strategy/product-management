@@ -36,15 +36,15 @@ A Minimum Viable Product isn't a stripped-down version of your final vision. It'
 
 The keyword is *viable*. An MVP must actually work and provide value. It's not a prototype or a demo. It's a real product, just minimal.
 
-The MVP and the build-measure-learn loop behind it come from Eric Ries, *The Lean Startup* (2011). The loop still holds, but the AI era has flipped its balance: building is cheap now, so *measure* and *learn*, deciding what to build and confirming it worked, are where the real work moved.
+The MVP and the build-measure-learn loop behind it come from Eric Ries, *The Lean Startup* (2011) [@ries2011lean]. The loop still holds, but the AI era has flipped its balance: building is cheap now, so *measure* and *learn*, deciding what to build and confirming it worked, are where the real work moved.
 
-![Image source: The Lean Product Playbook by Dan Olsen](images/mvp.png)
+![Image source: The Lean Product Playbook by Dan Olsen [@olsen2015lean]](images/mvp.png)
 
 ### Minimum Viable, or Minimum Awesome?
 
 Jeff Dyer and Nathan Furr push the MVP one step further, and it is worth taking. A merely *viable* product often tests badly: people are polite about something that barely works, so you cannot tell real demand from good manners. They argue instead for a **minimum awesome product**, still minimal, still one core action, but good enough at that one thing to genuinely delight. An awesome-at-one-thing product gives you honest signal: people either love it or they do not, which is exactly what you are trying to learn. So cut scope ruthlessly, then make the little that remains excellent.
 
-*The minimum awesome product is from Nathan Furr and Jeff Dyer, [The Innovator's Method](https://hbr.org/books/chapters/the-innovators-method) (Harvard Business Review Press, 2014).*
+*The minimum awesome product is from Nathan Furr and Jeff Dyer, [The Innovator's Method](https://hbr.org/books/chapters/the-innovators-method) (Harvard Business Review Press, 2014) [@furr2014method].*
 
 ### MVP Scoping: The Art of Cutting
 
@@ -87,7 +87,7 @@ Before you build even the minimal thing, you can often test whether anyone wants
 
 Both let you test *desirability* (does anyone want this?) before you spend effort on *feasibility* (can we build it well?). Build the real thing once the demand is real.
 
-*Smoke test and Wizard of Oz framing from Nile Hatch, [Expeditionary Innovation](https://github.com/nilehatch/exp_innov/); both are established lean-startup techniques he assembles into the method.*
+*Smoke test and Wizard of Oz framing from Nile Hatch, [Expeditionary Innovation](https://github.com/nilehatch/exp_innov/); both are established lean-startup techniques he assembles into the method [@hatch_expeditionary].*
 
 ### User Stories
 
@@ -190,7 +190,7 @@ Higher scores = higher priority.
 
 #### MoSCoW Method
 
-Categorize features as:
+Categorize features as [@clegg1994]:
 
 | Category | Meaning |
 |----------|---------|
@@ -207,7 +207,7 @@ Here is a fast, honest way to force prioritization. Imagine you have exactly **$
 
 It works because it forces trade-offs that a flat must / should / could list lets you dodge, you feel the cost of every feature you fund. Run it on yourself, and better, run it with a few target users and watch where *they* put the money.
 
-*The $100 Test is from Nile Hatch, [Expeditionary Innovation](https://github.com/nilehatch/exp_innov/).*
+*The $100 Test is from Nile Hatch, [Expeditionary Innovation](https://github.com/nilehatch/exp_innov/) [@hatch_expeditionary].*
 
 ## Part 2: Building It
 

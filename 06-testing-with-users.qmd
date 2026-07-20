@@ -20,7 +20,7 @@ This is the **curse of knowledge**, once you know something, it's nearly impossi
 
 ### The Design Canon Behind This
 
-Two ideas from design shape what you are testing for. Don Norman's *The Design of Everyday Things* gives you **affordances**: good design makes the right action obvious, a door you push has a plate, a door you pull has a handle. When users hesitate, an affordance is usually missing. Steve Krug's *Don't Make Me Think* gives you the standard to test against: every moment a user has to stop and figure out your interface is friction you can remove.
+Two ideas from design shape what you are testing for. Don Norman's *The Design of Everyday Things* [@norman2013design] gives you **affordances**: good design makes the right action obvious, a door you push has a plate, a door you pull has a handle. When users hesitate, an affordance is usually missing. Steve Krug's *Don't Make Me Think* [@krug2014think] gives you the standard to test against: every moment a user has to stop and figure out your interface is friction you can remove.
 
 AI raises the stakes here. It will generate a screen that *looks* polished in seconds, but polish is not usability, and a good-looking interface can still make people think. Watching real users is exactly what reveals the difference, and no AI can do it in your place.
 
@@ -129,7 +129,7 @@ After 3-5 tests, you'll have a lot of notes. Time to find patterns.
 
 ### Iteration Frameworks
 
-#### The Build-Measure-Learn Loop
+#### The Build-Measure-Learn Loop [@ries2011lean]
 
 ```
 BUILD → MEASURE → LEARN → BUILD → ...

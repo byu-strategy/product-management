@@ -53,7 +53,7 @@ Reaching customers is one thing; getting people to *back* you is another. Users 
 
 Take an honest inventory of all three now. Your go-to-market is far stronger when you can show not only a product, but a credible builder, with a network and a track record, standing behind it. You will spend the final demo turning that capital into belief.
 
-*Innovation capital is from Jeff Dyer, Nathan Furr, and Curtis Lefrandt, Innovation Capital (Harvard Business Review Press, 2019).*
+*Innovation capital is from Jeff Dyer, Nathan Furr, and Curtis Lefrandt, Innovation Capital (Harvard Business Review Press, 2019) [@dyer2019innovation].*
 
 ## Know Your Customer (Really)
 
@@ -94,7 +94,7 @@ A useful exercise is defining who your product is *not* for. This helps you avoi
 
 Do not try to reach everyone at once. Geoffrey Moore's *Crossing the Chasm* argues you should win a single narrow segment completely before you expand, a **beachhead**: a small market you can dominate, become the obvious choice for, and use as a base to move outward. For you as a student, the beachhead might be one dorm, one club, one type of small business in Provo. Own that first. A product that ten people love beats one that a thousand people shrug at.
 
-*The beachhead and the technology adoption lifecycle are from Geoffrey Moore, Crossing the Chasm (1991).*
+*The beachhead and the technology adoption lifecycle are from Geoffrey Moore, Crossing the Chasm (1991) [@moore1991crossing].*
 
 ### Jobs-to-be-Done Recap in 5 Minutes
 
@@ -461,7 +461,7 @@ People rarely decide on logic alone. Robert Cialdini's research names six levers
 
 These amplify a true offer; they do not substitute for one. Used to push a product that does not deliver, they become manipulation, the line drawn in [Product Morality](product-morality.qmd).
 
-*The six principles of persuasion are from Robert Cialdini, Influence (1984).*
+*The six principles of persuasion are from Robert Cialdini, Influence (1984) [@cialdini1984influence].*
 
 ### The Art of the Demo/Pitch
 
@@ -687,9 +687,9 @@ You can find templates for all of these by asking ChatGPT:
 
 **Books:**
 
-- *Traction* by Gabriel Weinberg & Justin Mares → The 19 channels framework
-- *Obviously Awesome* by April Dunford → Positioning masterclass
-- *The Mom Test* by Rob Fitzpatrick → Customer interviews done right
+- *Traction* by Gabriel Weinberg & Justin Mares [@weinberg2015traction] → The 19 channels framework
+- *Obviously Awesome* by April Dunford [@dunford2019obviously] → Positioning masterclass
+- *The Mom Test* by Rob Fitzpatrick [@fitzpatrick2013mom] → Customer interviews done right
 
 **Blogs & Newsletters:**
 

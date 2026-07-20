@@ -4,7 +4,7 @@
 
 ## Introduction
 
-The Business Model Canvas is a strategic management tool that helps you describe, design, challenge, and pivot your business model. Created by Alexander Osterwalder and refined by Jeff Dyer, it provides a visual framework for understanding how your organization creates, delivers, and captures value.
+The Business Model Canvas is a strategic management tool that helps you describe, design, challenge, and pivot your business model. Created by Alexander Osterwalder [@osterwalder2010business] and refined by Jeff Dyer, it provides a visual framework for understanding how your organization creates, delivers, and captures value.
 
 This version incorporates Jeff Dyer's refinement which splits the central value proposition into two distinct components: **Jobs-To-Be-Done** (understanding what customers are hiring your product to do) and **Customer Value Proposition** (the specific solutions you provide). This creates a 10-component canvas that emphasizes customer-centricity and job-based thinking.
 
