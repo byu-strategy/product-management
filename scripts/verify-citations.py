@@ -11,11 +11,13 @@ Sources, in order of authority:
   - articles / anything with a DOI  -> CrossRef  (api.crossref.org)
   - HBR articles                    -> canonical hbr.org page (CrossRef only has
                                         reprint/anthology DOIs for these)
-  - books                           -> Open Library (openlibrary.org), linking to
-                                        the language-neutral WORK page
-                                        (openlibrary.org/works/OL...W), never a
-                                        specific edition, so links can't resolve
-                                        to a foreign-language edition
+  - books                           -> Google Books (English volumes, via API
+                                        key in .env.local), linking to the clean
+                                        books.google.com/books?id=<id> page.
+                                        Falls back to an Open Library work page
+                                        if Google Books has no English match.
+                                        Both reject summary/companion and
+                                        foreign-language editions.
   - online/@online                  -> the url already in the entry
 
 Outputs:
@@ -28,11 +30,27 @@ row can be re-checked by hand.
 
 Run: python3 scripts/verify-citations.py
 """
-import json, re, sys, time, urllib.parse, urllib.request, urllib.error
+import json, os, re, sys, time, urllib.parse, urllib.request, urllib.error
 
 BIB = "references.bib"
 UA = {"User-Agent": "MSB341-citation-audit/1.0 (mailto:sdmurff@gmail.com)"}
 MAILTO = "sdmurff@gmail.com"
+
+
+def load_books_key():
+    """Google Books API key: from the environment, else parsed out of
+    .env.local (which is gitignored, so the key never enters the repo)."""
+    key = os.environ.get("GOOGLE_BOOKS_API_KEY", "").strip()
+    if key:
+        return key
+    try:
+        for line in open(".env.local", encoding="utf-8"):
+            line = line.strip()
+            if line.startswith("GOOGLE_BOOKS_API_KEY="):
+                return line.split("=", 1)[1].strip().strip('"').strip("'")
+    except FileNotFoundError:
+        pass
+    return ""
 
 
 def get(url, timeout=25):
@@ -50,15 +68,10 @@ HBR_URLS = {
     "reichheld2003onenumber": "https://hbr.org/2003/12/the-one-number-you-need-to-grow",
 }
 
-# Open Library work pages that the search ranker can't reach on its own: the
-# title-search either returns nothing (Furr's book is cataloged under Christensen
-# as first author) or the correct work is outranked. Each verified by hand to be
-# the right English work. Same shape as HBR_URLS: canonical, pre-checked links.
-BOOK_URLS = {
-    "furr2014method": "https://openlibrary.org/works/OL17889801W",
-    "krug2014think": "https://openlibrary.org/works/OL21163225W",
-    "oberholzergee2021": "https://openlibrary.org/works/OL24465754W",
-}
+# Hand-verified book links for entries neither Google Books nor the Open Library
+# ranker resolves correctly on its own. Same shape as HBR_URLS: canonical,
+# pre-checked links. Populated only as the audit surfaces genuine misses.
+BOOK_URLS = {}
 
 
 def head_ok(url, timeout=25):
@@ -202,6 +215,71 @@ def verify_crossref(f):
             "found_family": fam, "link": link}
 
 
+JUNK = ("summary", "study guide", "analysis of", "conversation starters",
+        "workbook", "companion", "résumé", "resume of", "quicklet",
+        "sidekick", "key takeaways", "instaread", "chinese edition")
+
+
+def verify_googlebooks(f, key):
+    """Books: Google Books API (English volumes, authenticated with an API key
+    so there is no anonymous rate-limit wall). Among English results, reject
+    summary/companion volumes, prefer an author match, then take the edition
+    whose year is closest to the one we cite. Returns a clean, stable
+    books.google.com/books?id=<id> link."""
+    main = re.sub(r"[{}]", "", f.get("title", "").split(":")[0])
+    fam = first_family(f.get("author", ""))
+    q = urllib.parse.quote(f'intitle:"{main}" inauthor:{fam}')
+    url = (f"https://www.googleapis.com/books/v1/volumes?q={q}"
+           f"&langRestrict=en&country=US&maxResults=10&key={key}")
+    # Google Books enforces a per-user burst limit and answers 403
+    # (rateLimitExceeded) / 429 / 503 when exceeded. Back off and retry those
+    # so a burst doesn't silently drop the book to the Open Library fallback.
+    data = None
+    delay = 2
+    for attempt in range(5):
+        try:
+            data = get(url)
+            break
+        except urllib.error.HTTPError as e:
+            if e.code in (403, 429, 503) and attempt < 4:
+                time.sleep(delay)
+                delay *= 2
+                continue
+            return {"source": url, "err": f"HTTP {e.code}"}
+        except Exception as e:
+            return {"source": url, "err": str(e)}
+    items = data.get("items") or []
+    if not items:
+        return {"source": url + " (no en match)", "err": "no result"}
+    ours_year = int(re.sub(r"\D", "", f.get("year", "0") or "0") or 0)
+    ours_t = norm_title(f.get("title", ""))
+
+    def score(it):
+        vi = it.get("volumeInfo", {})
+        title_str = (vi.get("title", "") or "").lower()
+        dt = norm_title(vi.get("title", ""))
+        overlap = len(ours_t & dt) / max(1, len(ours_t))
+        junk = any(w in title_str for w in JUNK)
+        lang_ok = vi.get("language") == "en"
+        first_auth = (vi.get("authors", [""]) or [""])[0].split()[-1].lower() \
+            if vi.get("authors") else ""
+        author_ok = bool(fam) and first_auth and \
+            (fam == first_auth or fam in first_auth or first_auth in fam)
+        y = int(vi.get("publishedDate", "0")[:4]) if (vi.get("publishedDate") or "")[:4].isdigit() else 0
+        # rank: English, non-junk, author match, title overlap, closest year
+        return (0 if lang_ok else 1, 1 if junk else 0, 0 if author_ok else 1,
+                -overlap, abs(y - ours_year) if y else 999)
+
+    best = sorted(items, key=score)[0]
+    vi = best.get("volumeInfo", {})
+    y = vi.get("publishedDate", "")[:4]
+    return {"source": url,
+            "found_title": vi.get("title", ""),
+            "found_year": int(y) if y.isdigit() else None,
+            "found_family": (vi.get("authors", [""])[0]).split()[-1].lower() if vi.get("authors") else "",
+            "link": f"https://books.google.com/books?id={best.get('id')}"}
+
+
 def verify_openlibrary(f):
     """Books: Open Library search, linking to the language-neutral WORK page
     (openlibrary.org/works/OL...W) rather than a specific edition. The work
@@ -224,9 +302,6 @@ def verify_openlibrary(f):
         return {"source": url, "err": "no result"}
     ours_year = int(re.sub(r"\D", "", f.get("year", "0") or "0") or 0)
     ours_t = norm_title(f.get("title", ""))
-    JUNK = ("summary", "study guide", "analysis of", "conversation starters",
-            "workbook", "companion", "résumé", "resume of", "quicklet",
-            "sidekick", "key takeaways", "instaread", "chinese edition")
 
     def score(d):
         dt = norm_title(d.get("title", ""))
@@ -258,6 +333,10 @@ def verify_openlibrary(f):
 def main():
     text = open(BIB, encoding="utf-8").read()
     entries = parse_bib(text)
+    gbooks_key = load_books_key()
+    if not gbooks_key:
+        print("WARNING: no GOOGLE_BOOKS_API_KEY (env or .env.local); "
+              "books fall back to Open Library.", file=sys.stderr)
     rows, links = [], []
     for e in entries:
         f = e["fields"]
@@ -297,8 +376,14 @@ def main():
             r = verify_crossref(f)
             time.sleep(0.34)
         else:
-            r = verify_openlibrary(f)
-            time.sleep(0.3)
+            r = verify_googlebooks(f, gbooks_key) if gbooks_key else {"err": "no key"}
+            if r.get("err"):
+                # Google Books had no English match (or no key): fall back to an
+                # Open Library work page rather than leave the entry linkless.
+                r = verify_openlibrary(f)
+                time.sleep(0.3)
+            else:
+                time.sleep(1.0)
 
         if r.get("err"):
             rows.append((key, etype, r.get("source", ""), "ERROR: " + r["err"],
@@ -313,7 +398,10 @@ def main():
         av = "MATCH" if ours_fam and ours_fam == r.get("found_family") else \
              ("CLOSE" if ours_fam and r.get("found_family") and (ours_fam in r["found_family"] or r["found_family"] in ours_fam) else "DIFF")
         verdict = f"title:{tv} year:{yv}({r.get('found_year')}) author:{av}({r.get('found_family')})"
-        link = f.get("url") or r.get("link")
+        # Prefer the freshly re-sourced link (Google Books / CrossRef DOI / OL)
+        # over any url already sitting in the bib, so re-running actually
+        # re-proposes links rather than echoing back what we injected last time.
+        link = r.get("link") or f.get("url")
         rows.append((key, etype, r.get("source", ""), verdict,
                      ours_title, str(r.get("found_title", "")), str(ours_year),
                      link, tv))

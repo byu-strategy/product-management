@@ -25,6 +25,10 @@ env.bak/
 venv.bak/
 .venv/
 
+# Local secrets (API keys). Never commit.
+.env
+.env.local
+
 # Jupyter Notebooks
 .ipynb_checkpoints
 
