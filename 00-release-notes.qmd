@@ -4,6 +4,12 @@ This course site is a living product. It gets better during the semester, and ev
 
 New entries appear at the top.
 
+## v1.3.2 (2026-07-20)
+
+Book citations now link to Google Books.
+
+- **Every book in the reference lists and the Works Cited page now links to its Google Books page,** where you can preview it, buy it, or find it in a library. Each link was checked to open the correct English edition. The one book that previously had no link now has one, so every source in the book is clickable.
+
 ## v1.3.1 (2026-07-20)
 
 Every reference in the book is now a clickable link, plus three more cited sources in the economics appendix.
