@@ -17,8 +17,8 @@ MSB 341 · IS 693R · C S 498R
 |---------------------------|----------------------------|
 | **Instructor**            | Scott Murff                |
 | **TAs**                   | Nate McCauley              |
-| **Office Hours**          | Wednesdays 12:00–2:00 PM   |
-| **Office Hours Location** | 587 TNRB                   |
+| **Office Hours**          | Wednesdays 1:30–3:30 PM, Fridays 3:00–3:30 PM |
+| **Office Hours Location** | 587 TNRB. Wed 3:00–3:30 PM and all of Friday are by phone. |
 | **LMS**                   | Canvas                     |
 | **Class Time**            | Mondays 3:30–4:45 PM       |
 | **Class Location**        | 2439 TNRB                  |
