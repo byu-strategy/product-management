@@ -82,3 +82,7 @@ $RECYCLE.BIN/
 .claude/settings.local.json
 .claude/worktrees/
 **/*.quarto_ipynb
+
+# Symlinks into OneDrive (student data, heavy materials) - never in git
+_private
+_materials
