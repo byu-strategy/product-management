@@ -6,7 +6,7 @@ Quarto from rendering it. Nothing here is on the live site.
 ## The change
 
 The book moves from lifecycle parts (Foundations, Aim, Discover, Build, Grow) to the six
-Builder axes, two weeks each, 13 chapters for 13 class sessions. Every existing chapter
+Builder axes, two weeks each, 14 chapters across 13 class sessions, week 8 carrying two. Every existing chapter
 splits at its Part 1 / Part 2 seam and the halves refile by axis.
 
 Teaching an axis and using an axis are different. Each axis gets two weeks of instruction;
@@ -48,7 +48,9 @@ where Sprint 1 needs deployment in week 3 but deployment is taught in week 4.
 - `06-testing-with-users` P2: Claude Code Skills
 - `07-platform-strategy` P2: Claude Code Hooks
 - `05-building-your-mvp` P1: User Stories, Product Requirements Documents
-- `02-spec-driven-development`: SDD Workflow, Major SDD Approaches, CLAUDE.md config, File Structure, Workflow Rules, Why SDD Matters for PMs  (folded in, file retired)
+- `02-spec-driven-development` lines 179-688: SDD Workflow, Major SDD Approaches, Why SDD
+  Matters for PMs, Getting Started, PRD Building Blocks, CLAUDE.md config, Tips and Gotchas,
+  When to Use SDD vs Vibe Coding  (the full-stack primer at lines 37-178 goes to Ch 7 instead)
 
 Note: git splits. Basics here because Sprint 1 needs a repo in week 3. Branches and
 workflow move to Ch 8.
@@ -86,42 +88,53 @@ Thinnest axis. Ch 5 needs the most new writing of any chapter.
 
 ### Part 4. Application Architecture
 
-**Ch 7. Data, Auth, and APIs** (week 7)
+**Ch 7. Anatomy of an Application** (week 7)
+- `02-spec-driven-development` lines 37-178: Frontend (The User Interface), Backend (The
+  Business Logic), Database (The Memory), API (The Messenger), How They Work Together:
+  The Full Stack, Why This Matters, Don't Panic
+- **NEW WRITING**: tech stacks and languages. Scott has an image for this.
 - `04-validating-opportunities` P2: Supabase Introduction, Authentication with Supabase
+
+This is the conceptual foundation for the axis and it has been sitting orphaned inside the
+spec-driven-development file. Note the deliberate lateness: under "ship first with the agent,
+then learn what you shipped," students do not need to know what a backend is in week 1
+because Claude Code handles it. Week 7 is where they learn what they have been shipping.
+
+**Ch 8. Data and APIs** (week 8)
 - `05-building-your-mvp` P2: Supabase Database Fundamentals, RLS, CRUD, Relations and Queries
 - `06-testing-with-users` P2: Supabase Storage, APIs
 
-**Ch 8. Version Control, Testing, and Tech Debt** (week 8)
+**Ch 9. Version Control, Testing, and Tech Debt** (week 8, paired with Ch 8)
 - `03-problem-discovery` P2: Git Fundamentals (deep), Branches
 - `11-sustainable-code` P1: Technical Debt, Strategic vs Accidental, Tech Debt Quadrant, When to Pay Down
 - `11-sustainable-code` P2: Code Quality, Linting and Formatting, Testing Fundamentals, Refactoring Patterns, Supabase Realtime
 
 ### Part 5. AI Systems
 
-**Ch 9. How Models Work** (week 9)
+**Ch 10. How Models Work** (week 9)
 - `02-llms-prompt-engineering`: AI and Machine Learning, Prompting  (published at last, file retired into this)
 
 Carries LO1, which currently nothing assesses.
 
-**Ch 10. Models in Your Product** (week 10)
+**Ch 11. Models in Your Product** (week 10)
 - **NEW WRITING**: calling model APIs, structured output, cost and latency, failure modes
 - **NEW WRITING**: evals
 
 ### Part 6. Launch and Learn
 
-**Ch 11. Going to Market** (week 11)
+**Ch 12. Going to Market** (week 11)
 - `09-go-to-market`: entire chapter, restructured into the standard shape
 - `10-business-models`: entire chapter, restructured into the standard shape
 - `11-sustainable-code` P1: Growth and Retention Strategy, Onboarding Optimization  (currently misfiled in the tech debt chapter)
 - **NEW WRITING**: build half, landing pages and SEO (the schedule already promises this)
 - **NEW WRITING**: basic instrumentation. A landing page needs analytics on it the day it
-  ships, so event tracking setup moves here from Ch 12. Ch 12 then teaches what the numbers
+  ships, so event tracking setup moves here from Ch 13. Ch 13 then teaches what the numbers
   mean rather than how to collect them.
 
-**Ch 12. Measuring What Matters** (week 12)
-- `08-measuring-what-matters`: entire chapter, P1 and P2 (less the setup mechanics moved to Ch 11)
+**Ch 13. Measuring What Matters** (week 12)
+- `08-measuring-what-matters`: entire chapter, P1 and P2 (less the setup mechanics moved to Ch 12)
 
-**Ch 13. Storytelling and the Final Demo** (week 13)
+**Ch 14. Storytelling and the Final Demo** (week 13)
 - `12-final-presentations`: entire chapter
 
 ## Files retired
@@ -130,7 +143,7 @@ Carries LO1, which currently nothing assesses.
 |---|---|
 | `00-setup.qmd` | delete, stale STRAT 490R content |
 | `01-vibe-coding.qmd` | folded into Ch 1 |
-| `02-spec-driven-development.qmd` | folded into Ch 2 |
+| `02-spec-driven-development.qmd` | splits: primer to Ch 7, SDD workflow to Ch 2 |
 | `02-llms-prompt-engineering.qmd` | becomes Ch 9 |
 
 ## New writing required
@@ -138,7 +151,8 @@ Carries LO1, which currently nothing assesses.
 | Where | What | Size |
 |---|---|---|
 | Ch 5 | Visual design fundamentals | largest gap |
-| Ch 10 | Models in your product, evals | ~half a chapter |
+| Ch 7 | Tech stacks and languages (Scott has an image) | short |
+| Ch 11 | Models in your product, evals | ~half a chapter |
 | Ch 12 | GTM build half, landing pages and SEO | ~half a chapter |
 | Ch 1 | Six axes introduction | short |
 | Ch 3, 4, 12 | Key Concepts sections where missing | short |
@@ -152,6 +166,10 @@ the two that need real authoring.
    because Sprint 1 is Ship and Showcase and "you can ship before you understand" is the
    thesis of the course.
 2. Ch 4 is oversized. Split or compress.
+2a. Application Architecture now needs three chapters (7, 8, 9) in its two weeks, because
+   the full-stack primer earned its own. Week 8 carries two short chapters, which the
+   current schedule already does elsewhere. Alternative is giving the axis three weeks and
+   taking one from Discovery.
 3. Launch before measure, settled. The axis is Launch and Learn, in that order, and a
    student whose final product is due in week 13 needs acquisition runway more than
    perfect instrumentation order. Basic event tracking rides along with the landing page

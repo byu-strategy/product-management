@@ -14,13 +14,14 @@ throughout. Each chapter is its own commit.
 - [ ] Ch 4  Finding and Validating the Problem (assembly, oversized, may split)
 - [ ] Ch 5  Interface and Flow               (assembly + NEW design fundamentals)
 - [ ] Ch 6  Testing the Design               (assembly)
-- [ ] Ch 7  Data, Auth, and APIs             (assembly)
-- [ ] Ch 8  Version Control, Testing, Tech Debt (assembly)
-- [ ] Ch 9  How Models Work                  (publish the orphan, reshape)
-- [ ] Ch 10 Models in Your Product           (NEW writing)
-- [ ] Ch 11 Going to Market                  (assembly + NEW build half)
-- [ ] Ch 12 Measuring What Matters           (assembly)
-- [ ] Ch 13 Storytelling and the Final Demo  (assembly)
+- [ ] Ch 7  Anatomy of an Application        (assembly + NEW tech stacks)
+- [ ] Ch 8  Data and APIs                    (assembly)
+- [ ] Ch 9  Version Control, Testing, Tech Debt (assembly)
+- [ ] Ch 10 How Models Work                  (publish the orphan, reshape)
+- [ ] Ch 11 Models in Your Product           (NEW writing)
+- [ ] Ch 12 Going to Market                  (assembly + NEW build half)
+- [ ] Ch 13 Measuring What Matters           (assembly)
+- [ ] Ch 14 Storytelling and the Final Demo  (assembly)
 
 ## Phase B. Flip the book
 
@@ -48,6 +49,7 @@ throughout. Each chapter is its own commit.
 
 ## New writing required
 
+- [ ] Ch 7: tech stacks and languages (Scott has an image)
 - [ ] Ch 5: visual fundamentals, layout, type, component patterns, "client ready"
 - [ ] Ch 10: model APIs, structured output, cost and latency, failure modes, evals
 - [ ] Ch 11: landing pages, SEO, basic instrumentation
