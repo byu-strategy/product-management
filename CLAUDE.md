@@ -33,10 +33,14 @@ Faith is integrated, not bolted on. This is BYU: each class opens with a scriptu
 ## Architecture
 
 ### Content Structure
-- **Course Information**: `index.qmd`, `00-schedule.qmd`, `00-assessments.qmd` - Core course logistics and grading
-- **Topic Chapters**: Numbered `.qmd` files (01-14) covering course topics from AI/PM basics to final presentations
-- **Resources**: `97-resources.qmd`, `98-tools.qmd`, `99-prompts.qmd` - Supplementary materials
-- **Configuration**: `_quarto.yml` defines the book structure, chapters order, and output settings
+- **Syllabus**: `index.qmd`, `00-computer-setup.qmd`, `00-schedule.qmd`, `00-assessments.qmd`, `00-release-notes.qmd`
+- **Topic chapters**: `01-` through `15-`, in reading order, grouped into the six Builder axes
+  (Agentic Workflow, Discovery, Design, Application Architecture, AI Systems, Launch and Learn).
+  Two weeks per axis across 13 sessions. The file number IS the reading order; keep it that way.
+- **Resources**: `93-` through `99-` reference pages
+- **Configuration**: `_quarto.yml` defines the book structure, chapter order, and output settings
+- Design docs kept out of the book use a leading underscore so Quarto ignores them:
+  `_outline-refactor-map.md`, `_refactor-punchlist.md`, `_grading-architecture-scratch.md`
 
 ### Build System
 - **Primary tool**: Quarto (installed at `/usr/local/bin/quarto`)
@@ -60,10 +64,10 @@ quarto serve
 ```
 
 ### Chapter Management
-- All chapters are defined in `_quarto.yml` under the `book.chapters` section with three parts: "Course Information", "Topics", and "Resources"
+- All chapters are defined in `_quarto.yml` under `book.chapters`, grouped into Syllabus, the six axis parts, Appendix, and References
 - Chapter files follow naming convention: `##-topic-name.qmd`
 - When adding new chapters, update both the file and the YAML configuration
-- Two versions exist for some files since two different course sections are taught (e.g., `00-schedule-sandbox.qmd`). APM stands for Associate Product Manager and Sandbox refers to students building their own companies. 
+- Roughly half the class are **sandbox** students embedded on company teams in varying roles (engineer, GTM, pricing); the rest are solo builders. Course requirements are the same for both: the axes do not flex, the product and the user do.
 
 ### Creating Presentation Slides
 - The project supports RevealJS slide decks from chapter content
