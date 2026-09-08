@@ -195,7 +195,7 @@ Jobs come in three types; the *pain* behind a job comes in five kinds, and namin
 | **Emotional** | stress, anxiety, embarrassment, frustration |
 | **Social** | status, belonging, how others see them |
 
-When you interview, listen across all five. The pains people mention first are usually functional; the ones that actually drive them to pay are often emotional or social. This complements the Self-Determination lens in [Sprint 2](00-assessments.qmd#sprint-2-validate-commit) (autonomy, competence, relatedness): that lens explains *why* a pain matters; these five categories catalog *how* it hurts.
+When you interview, listen across all five. The pains people mention first are usually functional; the ones that actually drive them to pay are often emotional or social. This complements the Self-Determination lens in [Sprint 2](00-assessments.qmd#sprint-2) (autonomy, competence, relatedness): that lens explains *why* a pain matters; these five categories catalog *how* it hurts.
 
 *Five pain categories from Nile Hatch, [Expeditionary Innovation](https://github.com/nilehatch/exp_innov/) [@hatch_expeditionary].*
 
