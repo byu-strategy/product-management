@@ -86,12 +86,12 @@ Thinnest axis. Ch 5 needs the most new writing of any chapter.
 
 ### Part 4. Application Architecture
 
-**Ch 7. Data and Auth** (week 7)
+**Ch 7. Data, Auth, and APIs** (week 7)
 - `04-validating-opportunities` P2: Supabase Introduction, Authentication with Supabase
 - `05-building-your-mvp` P2: Supabase Database Fundamentals, RLS, CRUD, Relations and Queries
 - `06-testing-with-users` P2: Supabase Storage, APIs
 
-**Ch 8. Keeping It Healthy** (week 8)
+**Ch 8. Version Control, Testing, and Tech Debt** (week 8)
 - `03-problem-discovery` P2: Git Fundamentals (deep), Branches
 - `11-sustainable-code` P1: Technical Debt, Strategic vs Accidental, Tech Debt Quadrant, When to Pay Down
 - `11-sustainable-code` P2: Code Quality, Linting and Formatting, Testing Fundamentals, Refactoring Patterns, Supabase Realtime
@@ -109,14 +109,17 @@ Carries LO1, which currently nothing assesses.
 
 ### Part 6. Launch and Learn
 
-**Ch 11. Measuring What Matters** (week 11)
-- `08-measuring-what-matters`: entire chapter, P1 and P2
-- `11-sustainable-code` P1: Growth and Retention Strategy, Onboarding Optimization  (currently misfiled in the tech debt chapter)
-
-**Ch 12. Going to Market** (week 12)
+**Ch 11. Going to Market** (week 11)
 - `09-go-to-market`: entire chapter, restructured into the standard shape
 - `10-business-models`: entire chapter, restructured into the standard shape
+- `11-sustainable-code` P1: Growth and Retention Strategy, Onboarding Optimization  (currently misfiled in the tech debt chapter)
 - **NEW WRITING**: build half, landing pages and SEO (the schedule already promises this)
+- **NEW WRITING**: basic instrumentation. A landing page needs analytics on it the day it
+  ships, so event tracking setup moves here from Ch 12. Ch 12 then teaches what the numbers
+  mean rather than how to collect them.
+
+**Ch 12. Measuring What Matters** (week 12)
+- `08-measuring-what-matters`: entire chapter, P1 and P2 (less the setup mechanics moved to Ch 11)
 
 **Ch 13. Storytelling and the Final Demo** (week 13)
 - `12-final-presentations`: entire chapter
@@ -149,7 +152,11 @@ the two that need real authoring.
    because Sprint 1 is Ship and Showcase and "you can ship before you understand" is the
    thesis of the course.
 2. Ch 4 is oversized. Split or compress.
-3. Does Platform Strategy belong in Design (the surface) or Application Architecture
+3. Launch before measure, settled. The axis is Launch and Learn, in that order, and a
+   student whose final product is due in week 13 needs acquisition runway more than
+   perfect instrumentation order. Basic event tracking rides along with the landing page
+   in Ch 11 so nothing ships un-instrumented.
+4. Does Platform Strategy belong in Design (the surface) or Application Architecture
    (how it ships)? Filed under Design here.
-4. Chapter file naming. Proposal: `01-` through `13-` matching reading order, retiring
+5. Chapter file naming. Proposal: `01-` through `13-` matching reading order, retiring
    the current numbering where `07` renders before `06`.
