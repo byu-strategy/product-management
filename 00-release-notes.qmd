@@ -4,6 +4,23 @@ This course site is a living product. It gets better during the semester, and ev
 
 New entries appear at the top.
 
+## v2.1.0 (2026-09-08)
+
+Sprints are rewritten. Six sprints, two weeks each, and every one is the same assignment. Two new Claude Code skills plan and close them out.
+
+- **Every sprint is now the same assignment.** Same structure, same deliverables, same rubric, six times. What changes is what you decide to work on. The old sprints assumed everyone would be at the same stage at the same time: picking a problem in weeks 3 and 4, building an MVP in weeks 5 and 6. That is not how building works. You might spend two weeks on discovery, find out in week 7 that your idea is wrong, and go back to it. The assignment no longer presumes to know where you are.
+- **Two weeks each, all of them.** Sprints used to run one, two, or three weeks depending on which one. Now every sprint is two weeks: Sept 14, Sept 28, Oct 12, Oct 26, Nov 9, and Nov 23.
+- **New: `/sprint-plan`.** Run it on day one. It asks what you are going to do, pushes back if the goal is vague or unmeasurable, and writes your plan file. Commit it that day; the timestamp is part of the grade.
+- **New: `/sprint-review`.** Run it at the end. It finds the Claude Code sessions from your sprint, asks you which projects belonged to it, and writes you a report: when you worked, where you got stuck and how you got unstuck, what took the longest, and which builder axis your work advanced. It reads only the projects you confirm, and nothing leaves your computer. Read it before you write your retro; it is usually more accurate about where two weeks went than memory is.
+- **Predict your own difficulty.** Each plan asks how hard you expect the work to be, 1 to 5, and each retro asks how hard it actually was. **This is not graded in either direction.** It is there so you can practice estimating.
+- **The demo is 90 seconds.** Down from five minutes, and it is the demo only. Show the thing working with real content. No slides, no intro. Your written retro carries the reflection.
+- **No separate final project.** Sprint 6 is the last sprint and the culmination, worth 100 points instead of 50, with a three-minute demo covering the semester.
+- **"Shipped" no longer means only code.** A landing page published at a URL, a pricing model your team can use, copy that is actually in use, an automation that runs, research written up and acted on, or analytics returning real data all count. The standard is that it is real and someone other than you can reach it, use it, or see it.
+- **The portfolio is no longer required.** Build one if you want it. Sprint 1 still asks for your company repo and a short declaration of what you are building, who it is for, and who your user is.
+- **Confidential company work has an answer.** If your team's code or customers cannot be public, keep your repo private and add Professor Murff, deploy behind auth and give the graders an account, or use fake data. Nothing in this course has to be public.
+- **Across your six sprints your work must touch at least five of the six axes.** You choose when. The sprint review tags each one for you.
+- **Fixes and polish.** All submissions go to Canvas. The mid-semester survey is removed; the end-of-semester student ratings now carry the extra credit. Corrected a few chapter references left over from the reorganization.
+
 ## v2.0.0 (2026-09-08)
 
 The whole course is rebuilt around six builder skills, two weeks each. New chapters on how AI models work and how to put one inside your product. Quizzes are replaced by two testing center exams.
