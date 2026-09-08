@@ -8,14 +8,16 @@ title: "Computer Setup"
 
 **If at any point you get stuck or something does not work as expected,** take a screenshot or copy the text you see into ChatGPT, Claude, or Gemini and ask for help troubleshooting. If it is still not working, ask in the course Slack channel or email a TA.
 
-## 1. Sign up for Claude Max
+## 1. Sign up for a paid Claude account
 
-*Skip if you already have a Claude Max plan.*
+*Skip if you already have a paid Claude plan.*
 
 - [ ] Go to [claude.com/pricing](https://www.claude.com/pricing)
-- [ ] Sign up for **Claude Max** ($100/month)
+- [ ] Sign up for **Claude Pro** ($20/month) or **Claude Max** ($100/month)
 
-Claude Max is required for this course. You can offset the cost by applying for a [Rollins Center Validation Grant](https://programs.byucet.org/dashboard/grant/4), which reimburses up to $500 for customer discovery and validation work on your product.
+A paid Claude account is required for this course. You do not have to start at the top. **Claude Pro at $20 per month is enough to get going**, and it will carry you through the early weeks. Once your build work picks up you will start running into usage limits, and that is the signal to **upgrade to Claude Max at $100 per month**. You can upgrade at any time from your account settings and it takes effect immediately, so there is no reason to pay for Max before you need it.
+
+Either way, you can offset the cost by applying for a [Rollins Center Validation Grant](https://programs.byucet.org/dashboard/grant/4), which reimburses up to $500 for customer discovery and validation work on your product.
 
 ## 2. Create a free GitHub account
 
