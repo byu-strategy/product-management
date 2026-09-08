@@ -14,21 +14,21 @@ The course was previously numbered STRAT 490R ("Creating Digital Products with A
 - **GitHub:** `byu-strategy/product-management`. **Live site:** https://byu-strategy.github.io/product-management/
 - The old `strategy-prototyping` repo (on OneDrive, GitHub `byu-strategy/strategy-prototyping`) is the archived STRAT 490R version. Do not commit new course work there.
 
-### Teaching model (the practice model)
+### Teaching model
 
-Class is run like an athletic practice: Scott is the coach, students are full-stack product builder athletes, and Claude Code is the tool of instruction (every student has a Claude Max plan). Each Monday session is a "practice" with an emphasis, a daily scripture and quote, whistle segments (film review, chalk talk) for full attention, and live drill time building with Claude Code. Supporting artifacts in the repo:
+Scott coaches more than he lectures: students are full-stack product builders and Claude Code is the tool of instruction (every student has a paid Claude plan). Each Monday session has one emphasis, opens with a scripture and a quote, and pairs a short lecture segment with live build time in Claude Code. That stance shapes how Scott runs the room; see the jargon rule below for how little of it belongs in student-facing copy. Supporting artifacts in the repo:
 
 - `practice-plan-template.md`: the minute-by-minute daily plan template. Season benchmarks (sprints, quizzes, peer work) are published in `00-schedule.qmd`; individual practice plans are written the week of and published after class.
 - `company-template/`: scaffold for each student's one-person company repo (the repo is the whole company: product, specs, discovery, gtm, decisions, metrics, practice-log). Intended to become a GitHub template. Students add Scott as a collaborator.
 - `repo-analysis/`: `analyze.py` reads a roster and produces a team stat sheet (commit cadence, folder-category balance, artifact counts) for coaching and film selection. Never grade raw commit counts; use the sheet to pick coaching conversations, then read the artifacts.
 
-**Jargon rule:** use athletic language (practice, film, drill, scrimmage, reps, emphasis, huddle) for the in-room cadence and culture. Use industry terms (sprint, PRD, MVP, discovery, code review, retro) for anything assessed, documented, or resume-transferable. Schedule and assessments stay in industry terms; the practice plans and room framing use the athletic terms. Drop the metaphor whenever precision matters.
+**Jargon rule:** student-facing copy uses plain, familiar terms. Call a class session a **class** or a **session**, never a "practice". Use industry terms (sprint, PRD, MVP, discovery, code review, retro) for anything assessed, documented, or resume-transferable. The athletic framing is Scott's in-room coaching stance, not site vocabulary: keep it out of the site unless he asks for it. Ordinary English uses of the word "practice" ("retrieval practice", "best practices") are fine and are not the metaphor.
 
 ### Course spine and faith integration
 
 The course is organized around one loop, **AIRE**: Aim, Inform, Reason, Enact (introduced in Chapter 1). Discovery is Inform, specs and scoping are Reason, building and shipping are Enact, and the Aim (what is worth building) is the values question taken up in the Product Morality chapter. The decision engine is multiplicative, Information × Reasoning × Execution (grounding "why we grade decisions, not outcomes" in the grading philosophy), and the belief-truth diagram in Chapter 3 pictures the Inform/Reason half. Keep new content coherent with this spine.
 
-Faith is integrated, not bolted on. This is BYU: each practice opens with a scripture and a quote tied to the emphasis (the Wooden model, per Brigham Young's charge to Karl G. Maeser to teach nothing "without the Spirit of God"). Do not shy away from the faith dimension in course content; keep it truthful and tied to the product point, and still obey the copy voice (no em dashes, plain, no emoji). The reusable opener pairings live in `practice-plan-template.md`.
+Faith is integrated, not bolted on. This is BYU: each class opens with a scripture and a quote tied to the emphasis (the Wooden model, per Brigham Young's charge to Karl G. Maeser to teach nothing "without the Spirit of God"). Do not shy away from the faith dimension in course content; keep it truthful and tied to the product point, and still obey the copy voice (no em dashes, plain, no emoji). The reusable opener pairings live in `practice-plan-template.md`.
 
 ## Architecture
 

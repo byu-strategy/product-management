@@ -5,14 +5,14 @@ editor: visual
 
 Below is the planned schedule. Dates, topics, and assignments may adjust as needed.
 
-**Class Format:** Class meets Mondays 3:30–4:45 PM in 2439 TNRB. Each class is run as a practice: short whistle segments (film review, chalk talk) followed by live drill time building with Claude Code. Most of your work happens between practices; class time is where we install skills and review film.
+**Class Format:** Class meets Mondays 3:30–4:45 PM in 2439 TNRB. Each session pairs a short lecture segment with live build time in Claude Code. Most of your work happens between classes; class time is where we install skills and review what you built.
 
-**Note:** Fall classes begin Wed, Sep 2, but Labor Day (Sep 7) means our first in-person practice is Mon, Sep 14. Week of Sep 2 is an online setup week. We DO meet Mon, Nov 23 (Thanksgiving break begins Wed, Nov 25). Last day of class is Thu, Dec 10.
+**Note:** Fall classes begin Wed, Sep 2, but Labor Day (Sep 7) means our first in-person class is Mon, Sep 14. Week of Sep 2 is an online setup week. We DO meet Mon, Nov 23 (Thanksgiving break begins Wed, Nov 25). Last day of class is Thu, Dec 10.
 
-| Practice | Date | Part | Emphasis (Chalk Talk) | Drill (Live Build) | Assessments |
+| Class | Date | Part | Topic | Live Build | Assessments |
 |----|------|------|----------------------|--------------------|-------------|
 | 0 | Week of Sep 2 (online) | Setup | Course overview, what is PM in the AI era | Claude Code setup, terminal basics, first deploy | [Computer Setup](00-computer-setup.qmd) |
-| 1 | Mon, Sep 14 | Foundations | The practice model, PM history, the AIRE loop, AI disruption | Git fundamentals, company repo from template, CLAUDE.md | [Q1: PM in the AI Era](01-pm-ai-era.qmd) |
+| 1 | Mon, Sep 14 | Foundations | How the class works, PM history, the AIRE loop, AI disruption | Git fundamentals, company repo from template, CLAUDE.md | [Q1: PM in the AI Era](01-pm-ai-era.qmd) |
 | 2 | Mon, Sep 21 | Aim | Product strategy: where to play, how to win, moats | Frontend fundamentals (HTML/CSS), deployment | [Q2: Product Strategy](product-strategy.qmd), [Sprint 1 Assigned](00-assessments.qmd#sprint-1-ship-showcase) |
 | 3 | Mon, Sep 28 | Aim | What to build, and whether you should: product morality, problems worth solving | React basics, CC: slash commands | Q3: [Product Morality](product-morality.qmd) + [Problems Worth Solving](02-problems-worth-solving.qmd), **Sprint 1 Due**, [Sprint 2 Assigned](00-assessments.qmd#sprint-2-validate-commit) |
 | 4 | Mon, Oct 5 | Discover | Problem discovery, Jobs-to-be-Done, the Mom Test | Client-side state, forms, CC: agents | [Q4: Problem Discovery](03-problem-discovery.qmd) |
@@ -31,7 +31,7 @@ Below is the planned schedule. Dates, topics, and assignments may adjust as need
 
 The course runs on one loop, **AIRE**: Aim, Inform, Reason, Enact (introduced in [Chapter 1](01-pm-ai-era.qmd)). The parts below map to it: Aim is what is worth building, Discover is Inform, and Build folds Reason and Enact together as the loop turns into Grow.
 
-| Practices | Part | Focus |
+| Classes | Part | Focus |
 |-----------|------|-------|
 | 0–1 | Foundations | Setup, the AIRE loop, how the class runs |
 | 2–3 | Aim | Product strategy, product morality, problems worth solving |
@@ -43,7 +43,7 @@ The course runs on one loop, **AIRE**: Aim, Inform, Reason, Enact (introduced in
 
 ## Scrimmages
 
-Practices 11 and 12 are **scrimmages**: dedicated in-class sessions where you demo your product to a small group of peers, give and get feedback, and build on what you hear. A scrimmage is a working session, not a formal presentation:
+Classes 11 and 12 are **scrimmages**: dedicated in-class sessions where you demo your product to a small group of peers, give and get feedback, and build on what you hear. A scrimmage is a working session, not a formal presentation:
 
 1. In small groups, each person gives a 3-minute live demo of their real, deployed product.
 2. The group responds: what worked, what confused them, what they would try next.

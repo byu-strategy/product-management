@@ -17,9 +17,9 @@ A handful of moves do most of the work. They are not intuitive, and most of them
 - **Study a worked example, then practice at the edge.** See it done, then do the hard part yourself with quick feedback. Practice that stays comfortable is not developing you.
 - **Sleep.** Memory consolidates while you sleep. Trading sleep for one more hour of work usually costs you more than it buys.
 
-## Why the class is run as a practice
+## Why class is run the way it is
 
-We run class like an athletic practice because that is how skills are actually built.
+We run class as a working session rather than a lecture because that is how skills are actually built.
 
 - **Reps over speeches.** The research on elite coaching, including a study that coded John Wooden's UCLA practices act by act, found that great coaching is mostly specific, immediate, task-focused information, not inspiration. Class time is for installing skills and reviewing film, not for me talking at you.
 - **The struggle is designed.** The hard parts are on purpose. Building something real, at the edge of what you can do, with feedback, is what moves you forward.
@@ -28,9 +28,9 @@ We run class like an athletic practice because that is how skills are actually b
 
 ## Why the assessments look the way they do
 
-The single most important idea: practice and judgment are two different jobs, and they want opposite stakes.
+The single most important idea: low-stakes work and graded judgment are two different jobs, and they want opposite stakes.
 
-- **Practice should be safe to fail.** Quizzes, drills, and sprint check-ins exist to cause learning, not to rank you. They are low-stakes on purpose. The point is to make your errors early and cheap, where feedback can fix them. Treat them as your best preparation, not as busywork.
+- **Low-stakes work should be safe to fail.** Quizzes, drills, and sprint check-ins exist to cause learning, not to rank you. They are low-stakes on purpose. The point is to make your errors early and cheap, where feedback can fix them. Treat them as your best preparation, not as busywork.
 - **Judgment rides on the real work.** Most of your grade is on building an actual product, the whole game in junior form, iterated with feedback. That is the thing worth certifying, and it is the thing employers and customers care about.
 - **No single high-stakes final.** Pressure consumes the working memory you need to perform, and it hurts your best thinking most. Weight is distributed and, where possible, retakeable, so one bad day does not define you.
 - **Feedback is about the work, not about you.** Comments aimed at the task help. Praise or criticism aimed at the self, like "you're smart" or "you're behind," mostly hurts. Expect specific, task-focused feedback.

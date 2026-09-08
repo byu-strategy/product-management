@@ -2,7 +2,7 @@
 title: "Computer Setup"
 ---
 
-*Plan for about 20 minutes to install the software you need for this course. Complete this on your own before our first practice on Mon, Sep 14.*
+*Plan for about 20 minutes to install the software you need for this course. Complete this on your own before our first class on Mon, Sep 14.*
 
 **Laptop requirement:** You need your own Windows or macOS laptop with at least 4GB of RAM (more is better). Bring a charging cord, and a mouse if you like using one.
 
@@ -128,7 +128,7 @@ Press **Enter** to say "Yes" when asked to proceed. Claude Code works much like 
 
 ## 7. Optional: other AI coding agents
 
-You are now ready for the first practice. Instruction in this course is with Claude Code, but we will refer to other AI agents as well and demonstrate how they can be used. If you have accounts with other AI providers, install their agents too.
+You are now ready for the first class. Instruction in this course is with Claude Code, but we will refer to other AI agents as well and demonstrate how they can be used. If you have accounts with other AI providers, install their agents too.
 
 You may run the following commands from a new terminal window, or from within an active Claude Code session, in which case Claude will ask for permission and then run them for you.
 
