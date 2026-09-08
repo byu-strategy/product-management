@@ -4,6 +4,16 @@ This course site is a living product. It gets better during the semester, and ev
 
 New entries appear at the top.
 
+## v1.4.0 (2026-09-08)
+
+A new Computer Setup chapter, a new Builder Resources page, and updated office hours.
+
+- **New chapter, Computer Setup.** Everything to get your machine ready before the first build session, in one checklist you can work through start to finish. It also explains which Claude plan to buy: **Claude Pro at $20 per month is enough to start**, and you upgrade to Claude Max at $100 per month only once you start hitting usage limits. The chapter links the Rollins Center Validation Grant, which reimburses up to $500 for customer discovery work and can offset the cost.
+- **New page, Builder Resources.** The books, docs, courses, and tools behind each of the builder axes: Discovery, Design, Application Architecture, AI Systems, Agentic Workflow, and Launch and Learn. Start-here items are called out on every axis so you know what to read first.
+- **Thought Leaders now includes who to follow.** The page carries the product management voices as before, plus the accounts worth following while you build and the ones worth following to understand where the field is heading. Duplicates were removed so each person appears once.
+- **Office hours updated.** Wednesdays 1:30 to 3:30 PM and Fridays 3:00 to 3:30 PM, in 587 TNRB. Wednesday 3:00 to 3:30 PM and all of Friday are by phone.
+- **Fixes and polish.** Clearer wording in the schedule and in the opening chapters.
+
 ## v1.3.2 (2026-07-20)
 
 Book citations now link to Google Books.
