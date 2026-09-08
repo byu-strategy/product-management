@@ -74,5 +74,6 @@ throughout. Each chapter is its own commit.
 - [ ] Sprint rewrites: role-neutral language, the floor/goal taper, the
       confidentiality clause for sandbox students.
 - [ ] Exam item banks: 40 midterm, 60 final.
-- [ ] `company-template` as a real GitHub template; rename `practice-log`.
+- [x] Template renamed to `builder-template`, restructured, role-neutral, `practice-log` retired.
+- [ ] Publish `builder-template` as an actual GitHub template repo under byu-strategy.
 - [ ] Builder Axes index page (upgrade of `97-builder-resources.qmd`).

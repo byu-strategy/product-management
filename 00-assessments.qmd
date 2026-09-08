@@ -223,7 +223,7 @@ Nothing in this course has to be public.
 
 The standard sprint, plus two one-time items:
 
-1. **Your repo,** created from the course template, with Professor Murff added.
+1. **Your repo,** created from the [builder template](https://github.com/byu-strategy/builder-template), with Professor Murff added as a collaborator.
 2. **A context declaration** in that repo's `README.md`: what you are building, who it is for,
    your role if you are on a team, and who your user is. Later sprints are read against this.
    Revise it when it changes and note why.
