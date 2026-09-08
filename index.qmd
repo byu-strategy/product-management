@@ -69,10 +69,11 @@ This course develops students’ ability to integrate strategic thinking and tec
 
 | Learning Outcome | Supported BYU Aims |
 |----|----|
-| 1\. Understand the basics of how LLMs generate natural language. | Intellectually Enlarging |
-| 2\. Develop and articulate a product strategy. | Intellectually Enlarging, Lifelong Learning and Service |
-| 3\. Analyze the physical, mental, and spiritual impact your product is likely to have on its users. | Spiritually Strengthening, Character Building, Lifelong Learning and Service |
-| 4\. Create a digital product that delivers enduring value to a target customer group. | Intellectually Enlarging, Lifelong Learning and Service |
+| 1\. Explain how large language models generate text, and apply that understanding when building with them. | Intellectually Enlarging |
+| 2\. Develop and articulate a product strategy grounded in customer discovery. | Intellectually Enlarging, Lifelong Learning and Service |
+| 3\. Analyze the physical, mental, and spiritual impact a product is likely to have on its users, and choose accordingly. | Spiritually Strengthening, Character Building, Lifelong Learning and Service |
+| 4\. Build, ship, and maintain a working digital product that delivers enduring value to a target customer group. | Intellectually Enlarging, Lifelong Learning and Service |
+| 5\. Use AI coding agents to build and evaluate software, exercising judgment about when to trust, verify, or override the tool. | Intellectually Enlarging, Lifelong Learning and Service |
 
 ## Instructor Bio
 

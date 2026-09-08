@@ -18,22 +18,22 @@ editor: visual
 
 | Type | Description | Points | Learning Outcome(s)<sup>1</sup> |
 |------|-------------|--------|--------------------------------|
-| Quiz | [Quiz 1 - PM in the AI Era](01-pm-ai-era.qmd) | 5 | 1 |
+| Quiz | [Quiz 1 - PM in the AI Era](01-pm-ai-era.qmd) | 5 | 1, 5 |
 | Quiz | [Quiz 2 - Product Strategy](product-strategy.qmd) | 5 | 2 |
 | Quiz | Quiz 3 - [Product Morality](product-morality.qmd) + [Problems Worth Solving](02-problems-worth-solving.qmd) | 5 | 2, 3 |
-| Quiz | [Quiz 4 - Problem Discovery](03-problem-discovery.qmd) | 5 | 2 |
-| Quiz | [Quiz 5 - Validating Opportunities](04-validating-opportunities.qmd) | 5 | 2 |
+| Quiz | [Quiz 4 - Problem Discovery](03-problem-discovery.qmd) | 5 | 2, 5 |
+| Quiz | [Quiz 5 - Validating Opportunities](04-validating-opportunities.qmd) | 5 | 2, 4 |
 | Quiz | [Quiz 6 - Building Your MVP](05-building-your-mvp.qmd) | 5 | 4 |
 | Quiz | Quiz 7 - [Testing with Users](06-testing-with-users.qmd) + [Platform Strategy](07-platform-strategy.qmd) | 5 | 4 |
-| Quiz | [Quiz 8 - Sustainable Code](11-sustainable-code.qmd) | 5 | 4 |
+| Quiz | [Quiz 8 - Sustainable Code](11-sustainable-code.qmd) | 5 | 4, 5 |
 | Quiz | [Quiz 9 - Measuring What Matters](08-measuring-what-matters.qmd) | 5 | 4 |
 | Quiz | Quiz 10 - [Go-to-Market](09-go-to-market.qmd) + [Business Models](10-business-models.qmd) | 5 | 4 |
-| Sprint | [Sprint 1 - Ship & Showcase](#sprint-1-ship-showcase) | 50 | 1 |
+| Sprint | [Sprint 1 - Ship & Showcase](#sprint-1-ship-showcase) | 50 | 4, 5 |
 | Sprint | [Sprint 2 - Validate & Commit](#sprint-2-validate-commit) | 50 | 2, 3 |
-| Sprint | [Sprint 3 - Product MVP](#sprint-3-product-mvp) | 50 | 4 |
-| Sprint | [Sprint 4 - Progress Check](#sprint-4-progress-check) | 50 | 4 |
-| Sprint | [Sprint 5 - Progress Check](#sprint-5-progress-check) | 50 | 4 |
-| Peer | [Peer Code Review](#peer-code-review) | 50 | 4 |
+| Sprint | [Sprint 3 - Product MVP](#sprint-3-product-mvp) | 50 | 4, 5 |
+| Sprint | [Sprint 4 - Progress Check](#sprint-4-progress-check) | 50 | 4, 5 |
+| Sprint | [Sprint 5 - Progress Check](#sprint-5-progress-check) | 50 | 4, 5 |
+| Peer | [Peer Code Review](#peer-code-review) | 50 | 4, 5 |
 | Peer | [Peer Product Testing](#peer-product-testing) | 50 | 4 |
 | Project | [Final Product](#final-project) | 100 | 4 |
 |  | **TOTAL** | **500** |  |
@@ -45,10 +45,11 @@ editor: visual
 
 | Learning Outcome | Supported BYU Aims |
 |----------------------------------|--------------------------------------|
-| 1. Understand the basics of how LLMs generate natural language. | Intellectually Enlarging |
-| 2. Develop and articulate a product strategy. | Intellectually Enlarging, Lifelong Learning and Service |
-| 3. Analyze the physical, mental, and spiritual impact your product is likely to have on its users. | Spiritually Strengthening, Character Building, Lifelong Learning and Service |
-| 4. Create a digital product that delivers value to a target customer group. | Intellectually Enlarging, Lifelong Learning and Service |
+| 1. Explain how large language models generate text, and apply that understanding when building with them. | Intellectually Enlarging |
+| 2. Develop and articulate a product strategy grounded in customer discovery. | Intellectually Enlarging, Lifelong Learning and Service |
+| 3. Analyze the physical, mental, and spiritual impact a product is likely to have on its users, and choose accordingly. | Spiritually Strengthening, Character Building, Lifelong Learning and Service |
+| 4. Build, ship, and maintain a working digital product that delivers enduring value to a target customer group. | Intellectually Enlarging, Lifelong Learning and Service |
+| 5. Use AI coding agents to build and evaluate software, exercising judgment about when to trust, verify, or override the tool. | Intellectually Enlarging, Lifelong Learning and Service |
 
 :::
 
