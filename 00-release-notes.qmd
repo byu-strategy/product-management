@@ -4,6 +4,22 @@ This course site is a living product. It gets better during the semester, and ev
 
 New entries appear at the top.
 
+## v2.0.0 (2026-09-08)
+
+The whole course is rebuilt around six builder skills, two weeks each. New chapters on how AI models work and how to put one inside your product. Quizzes are replaced by two testing center exams.
+
+- **The book is now organized around the six Builder axes.** Agentic Workflow, Discovery, Design, Application Architecture, AI Systems, and Launch and Learn, two weeks each across the semester. Every chapter, every drill, and both exams line up with one of the six, so when your baseline chart says an axis is weak you know exactly where to go. You will rate yourself on all six in week 1 and again in week 13 and see how the shape changed.
+- **The order changed on purpose.** Agentic Workflow comes first, so you ship something in week one that you do not fully understand, and Application Architecture comes in week seven, where you find out what you shipped. Every chapter has been renumbered to match the order you read them in.
+- **New chapter, How Models Work.** What a large language model actually does when it turns your prompt into text: supervised learning, neural networks, tokens, context windows, and prompting. If you have been treating the model as magic, this is where that stops.
+- **New chapter, Models in Your Product.** Calling Claude from your own app: where the call lives and why your API key never goes in the browser, getting structured data back instead of prose you have to parse, streaming, what each call costs and how to price it before you ship, the ways model calls fail without raising an error, and how to build an eval so you know whether a change actually helped.
+- **New chapter, Anatomy of an Application.** Frontend, backend, database, and API, what each layer does and how they fit together, plus the tech stacks and languages this course uses and how to choose one for yourself.
+- **New chapter, Interface and Flow.** Frontend fundamentals, React, forms and state, responsive layout, and the platform decision between web, PWA, and native, all in one place.
+- **Quizzes are replaced by two exams.** Instead of ten in-class quizzes there is a **midterm** (Oct 20 to 26, covering the first six classes) and a **final** (Dec 14 to 17, cumulative). Both are in the testing center, on your own schedule within the window, closed book and proctored. Each is worth 5% of your grade, the same 50 points the quizzes were worth, so nothing else about grading changed. The final has ten questions per axis, so your score comes back as a six-sided profile you can compare against your own self assessment.
+- **Why the exams are closed book.** Nearly everything else you submit this semester is built with AI. These two sittings are the one place your own understanding is measured on its own. They are also deliberately low stakes: at 5% each, one rough morning is worth about two percent of your grade.
+- **Updated learning outcomes.** There are now five instead of four. The new one is about using AI coding agents well, including judgment about when to trust, verify, or override the tool, which is the most distinctive thing this course teaches and was not previously stated as an outcome.
+- **A clearer syllabus.** The course description now describes this course rather than the version taught under the old number, and names the real tools you will use. Required Materials leads with Claude Pro at $20 per month rather than requiring Max up front. The late work policy now covers testing center windows.
+- **Fixes and polish.** Growth and onboarding material moved out of the tech debt chapter into Going to Market where it belongs. Every chapter now opens with Why This Matters and closes with Key Concepts. Dates on the syllabus corrected to the Fall term.
+
 ## v1.4.0 (2026-09-08)
 
 A new Computer Setup chapter, a new Builder Resources page, and updated office hours.
