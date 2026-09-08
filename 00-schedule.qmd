@@ -12,16 +12,16 @@ Below is the planned schedule. Dates, topics, and assignments may adjust as need
 | Class | Date | Part | Topic | Live Build | Assessments |
 |----|------|------|----------------------|--------------------|-------------|
 | 0 | Week of Sep 2 (online) | Setup | Course overview, what is PM in the AI era | Claude Code setup, terminal basics, first deploy | [Computer Setup](00-computer-setup.qmd) |
-| 1 | Mon, Sep 14 | Foundations | How the class works, PM history, the AIRE loop, AI disruption | Git fundamentals, company repo from template, CLAUDE.md | [Q1: PM in the AI Era](01-pm-ai-era.qmd) |
-| 2 | Mon, Sep 21 | Aim | Product strategy: where to play, how to win, moats | Frontend fundamentals (HTML/CSS), deployment | [Q2: Product Strategy](product-strategy.qmd), [Sprint 1 Assigned](00-assessments.qmd#sprint-1-ship-showcase) |
-| 3 | Mon, Sep 28 | Aim | What to build, and whether you should: product morality, problems worth solving | React basics, CC: slash commands | Q3: [Product Morality](product-morality.qmd) + [Problems Worth Solving](02-problems-worth-solving.qmd), **Sprint 1 Due**, [Sprint 2 Assigned](00-assessments.qmd#sprint-2-validate-commit) |
-| 4 | Mon, Oct 5 | Discover | Problem discovery, Jobs-to-be-Done, the Mom Test | Client-side state, forms, CC: agents | [Q4: Problem Discovery](03-problem-discovery.qmd) |
-| 5 | Mon, Oct 12 | Discover | Validating opportunities, committing to a problem | Supabase setup + auth | [Q5: Validating Opportunities](04-validating-opportunities.qmd), **Sprint 2 Due**, [Sprint 3 Assigned](00-assessments.qmd#sprint-3-product-mvp) |
-| 6 | Mon, Oct 19 | Build | MVP scoping, user stories, PRDs (AI-assisted) | Supabase database, CRUD, RLS | [Q6: Building Your MVP](05-building-your-mvp.qmd) |
-| 7 | Mon, Oct 26 | Build | Usability testing and platform strategy (web vs mobile) | APIs & integrations, CC: hooks and skills | Q7: [Testing with Users](06-testing-with-users.qmd) + [Platform Strategy](07-platform-strategy.qmd), [Mid-Semester Survey Due](00-assessments.qmd#mid-semester-feedback-survey) |
-| 8 | Mon, Nov 2 | Build | Sustainable code: keeping what you built healthy | Refactoring, tests, code review with Claude Code | [Q8: Sustainable Code](11-sustainable-code.qmd), **Sprint 3 Due**, [Peer Code Review Assigned](00-assessments.qmd#peer-code-review) |
-| 9 | Mon, Nov 9 | Grow | Product metrics, leading vs lagging indicators | Analytics setup, event tracking | [Q9: Measuring What Matters](08-measuring-what-matters.qmd), [Peer Code Review Due](00-assessments.qmd#peer-code-review), [Sprint 4 Assigned](00-assessments.qmd#sprint-4-progress-check) |
-| 10 | Mon, Nov 16 | Grow | Go-to-market and business models: reaching users, making money | Landing pages, SEO basics | Q10: [Go-to-Market](09-go-to-market.qmd) + [Business Models](10-business-models.qmd) |
+| 1 | Mon, Sep 14 | Foundations | How the class works, PM history, the AIRE loop, AI disruption | Git fundamentals, company repo from template, CLAUDE.md | [Q1: PM in the AI Era](01-building-with-ai-agents.qmd) |
+| 2 | Mon, Sep 21 | Aim | Product strategy: where to play, how to win, moats | Frontend fundamentals (HTML/CSS), deployment | [Q2: Product Strategy](03-what-is-worth-building.qmd), [Sprint 1 Assigned](00-assessments.qmd#sprint-1-ship-showcase) |
+| 3 | Mon, Sep 28 | Aim | What to build, and whether you should: product morality, problems worth solving | React basics, CC: slash commands | Q3: [Product Morality](03-what-is-worth-building.qmd) + [Problems Worth Solving](04-finding-and-validating-the-problem.qmd), **Sprint 1 Due**, [Sprint 2 Assigned](00-assessments.qmd#sprint-2-validate-commit) |
+| 4 | Mon, Oct 5 | Discover | Problem discovery, Jobs-to-be-Done, the Mom Test | Client-side state, forms, CC: agents | [Q4: Problem Discovery](04-finding-and-validating-the-problem.qmd) |
+| 5 | Mon, Oct 12 | Discover | Validating opportunities, committing to a problem | Supabase setup + auth | [Q5: Validating Opportunities](04-finding-and-validating-the-problem.qmd), **Sprint 2 Due**, [Sprint 3 Assigned](00-assessments.qmd#sprint-3-product-mvp) |
+| 6 | Mon, Oct 19 | Build | MVP scoping, user stories, PRDs (AI-assisted) | Supabase database, CRUD, RLS | [Q6: Building Your MVP](04-finding-and-validating-the-problem.qmd) |
+| 7 | Mon, Oct 26 | Build | Usability testing and platform strategy (web vs mobile) | APIs & integrations, CC: hooks and skills | Q7: [Testing with Users](06-testing-the-design.qmd) + [Platform Strategy](05-interface-and-flow.qmd), [Mid-Semester Survey Due](00-assessments.qmd#mid-semester-feedback-survey) |
+| 8 | Mon, Nov 2 | Build | Sustainable code: keeping what you built healthy | Refactoring, tests, code review with Claude Code | [Q8: Sustainable Code](09-version-control-testing-and-tech-debt.qmd), **Sprint 3 Due**, [Peer Code Review Assigned](00-assessments.qmd#peer-code-review) |
+| 9 | Mon, Nov 9 | Grow | Product metrics, leading vs lagging indicators | Analytics setup, event tracking | [Q9: Measuring What Matters](14-measuring-what-matters.qmd), [Peer Code Review Due](00-assessments.qmd#peer-code-review), [Sprint 4 Assigned](00-assessments.qmd#sprint-4-progress-check) |
+| 10 | Mon, Nov 16 | Grow | Go-to-market and business models: reaching users, making money | Landing pages, SEO basics | Q10: [Go-to-Market](12-going-to-market.qmd) + [Business Models](13-business-models.qmd) |
 | 11 | Mon, Nov 23 | Scrimmage | Scrimmage: build & feedback | Build & feedback | **Sprint 4 Due**, [Sprint 5 Assigned](00-assessments.qmd#sprint-5-progress-check). Withdraw deadline is Tue, Nov 24. |
 | 12 | Mon, Nov 30 | Scrimmage | Scrimmage: build & feedback | Build & feedback | **Sprint 5 Due**, [Peer Product Testing Assigned](00-assessments.qmd#peer-product-testing) |
 | 13 | Mon, Dec 7 | Wrap Up | Storytelling & the final demo, course retrospective | Video prep, polish | [Peer Product Testing Due](00-assessments.qmd#peer-product-testing) |
@@ -29,7 +29,7 @@ Below is the planned schedule. Dates, topics, and assignments may adjust as need
 
 ## Course Phases
 
-The course runs on one loop, **AIRE**: Aim, Inform, Reason, Enact (introduced in [Chapter 1](01-pm-ai-era.qmd)). The parts below map to it: Aim is what is worth building, Discover is Inform, and Build folds Reason and Enact together as the loop turns into Grow.
+The course runs on one loop, **AIRE**: Aim, Inform, Reason, Enact (introduced in [Chapter 1](01-building-with-ai-agents.qmd)). The parts below map to it: Aim is what is worth building, Discover is Inform, and Build folds Reason and Enact together as the loop turns into Grow.
 
 | Classes | Part | Focus |
 |-----------|------|-------|
@@ -75,17 +75,17 @@ Each chapter integrates PM/Strategy content with hands-on Build content. Read th
 
 | Part | Chapter | Quiz Date |
 |------|---------|-----------|
-| Foundations | [Product Management in the AI Era](01-pm-ai-era.qmd) | Mon, Sep 14 |
-| Aim | [Product Strategy](product-strategy.qmd) | Mon, Sep 21 |
-| Aim | [Product Morality](product-morality.qmd) | Mon, Sep 28 |
-| Aim | [Problems Worth Solving](02-problems-worth-solving.qmd) | Mon, Sep 28 |
-| Discover | [Problem Discovery](03-problem-discovery.qmd) | Mon, Oct 5 |
-| Discover | [Validating Opportunities](04-validating-opportunities.qmd) | Mon, Oct 12 |
-| Build | [Building Your MVP](05-building-your-mvp.qmd) | Mon, Oct 19 |
-| Build | [Testing with Users](06-testing-with-users.qmd) | Mon, Oct 26 |
-| Build | [Platform Strategy](07-platform-strategy.qmd) | Mon, Oct 26 |
-| Build | [Sustainable Code](11-sustainable-code.qmd) | Mon, Nov 2 |
-| Grow | [Measuring What Matters](08-measuring-what-matters.qmd) | Mon, Nov 9 |
-| Grow | [Go-to-Market](09-go-to-market.qmd) | Mon, Nov 16 |
-| Grow | [Business Models](10-business-models.qmd) | Mon, Nov 16 |
-| Grow | [Storytelling and the Final Demo](12-final-presentations.qmd) | – |
+| Foundations | [Product Management in the AI Era](01-building-with-ai-agents.qmd) | Mon, Sep 14 |
+| Aim | [Product Strategy](03-what-is-worth-building.qmd) | Mon, Sep 21 |
+| Aim | [Product Morality](03-what-is-worth-building.qmd) | Mon, Sep 28 |
+| Aim | [Problems Worth Solving](04-finding-and-validating-the-problem.qmd) | Mon, Sep 28 |
+| Discover | [Problem Discovery](04-finding-and-validating-the-problem.qmd) | Mon, Oct 5 |
+| Discover | [Validating Opportunities](04-finding-and-validating-the-problem.qmd) | Mon, Oct 12 |
+| Build | [Building Your MVP](04-finding-and-validating-the-problem.qmd) | Mon, Oct 19 |
+| Build | [Testing with Users](06-testing-the-design.qmd) | Mon, Oct 26 |
+| Build | [Platform Strategy](05-interface-and-flow.qmd) | Mon, Oct 26 |
+| Build | [Sustainable Code](09-version-control-testing-and-tech-debt.qmd) | Mon, Nov 2 |
+| Grow | [Measuring What Matters](14-measuring-what-matters.qmd) | Mon, Nov 9 |
+| Grow | [Go-to-Market](12-going-to-market.qmd) | Mon, Nov 16 |
+| Grow | [Business Models](13-business-models.qmd) | Mon, Nov 16 |
+| Grow | [Storytelling and the Final Demo](15-storytelling-and-the-final-demo.qmd) | – |

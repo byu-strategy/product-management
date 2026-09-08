@@ -465,7 +465,7 @@ People rarely decide on logic alone. Robert Cialdini's research names six levers
 - **Commitment and consistency** — a small yes leads to a bigger one. Start with a low-friction ask.
 - **Liking** — people say yes to those they like and who are like them. Be human, specific, and warm.
 
-These amplify a true offer; they do not substitute for one. Used to push a product that does not deliver, they become manipulation, the line drawn in [Product Morality](product-morality.qmd).
+These amplify a true offer; they do not substitute for one. Used to push a product that does not deliver, they become manipulation, the line drawn in [Product Morality](03-what-is-worth-building.qmd).
 
 *The six principles of persuasion are from Robert Cialdini, Influence (1984) [@cialdini1984influence].*
 

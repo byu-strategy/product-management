@@ -75,7 +75,7 @@ A demo is not just information; it is persuasion. Jeff Dyer and his colleagues c
 - **Story.** Open on a specific person and a specific moment, not a market-size statistic. The story is what moves the elephant.
 - **Commit.** Show your own stake, the work you have put in and what you are willing to keep doing. Visible commitment makes others willing to bet on you.
 
-Used honestly, these help a good product get the hearing it deserves. Used to dress up a product that does not work, they become deception, the line the [Product Morality](product-morality.qmd) chapter draws (the book's own cautionary case is Theranos [@carreyrou2018badblood]). Amplify the truth; never manufacture it.
+Used honestly, these help a good product get the hearing it deserves. Used to dress up a product that does not work, they become deception, the line the [Product Morality](03-what-is-worth-building.qmd) chapter draws (the book's own cautionary case is Theranos [@carreyrou2018badblood]). Amplify the truth; never manufacture it.
 
 *The impression amplifiers are from Jeff Dyer, Nathan Furr, and Curtis Lefrandt, Innovation Capital (Harvard Business Review Press, 2019) [@dyer2019innovation].*
 

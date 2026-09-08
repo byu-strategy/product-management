@@ -2,7 +2,7 @@
 title: "The Canon"
 ---
 
-This class is a synthesis. Almost none of the ideas here are mine; they are the best of what product people, entrepreneurs, designers, and thinkers have worked out over decades, organized onto one spine ([AIRE](01-pm-ai-era.qmd)) and put to work building real products with AI. This page names the sources, says where each idea lives in the course, and, because the ground is moving, flags what AI has changed and what it has not.
+This class is a synthesis. Almost none of the ideas here are mine; they are the best of what product people, entrepreneurs, designers, and thinkers have worked out over decades, organized onto one spine ([AIRE](01-building-with-ai-agents.qmd)) and put to work building real products with AI. This page names the sources, says where each idea lives in the course, and, because the ground is moving, flags what AI has changed and what it has not.
 
 If you build on someone's idea, credit them. That is both honest and how you learn whose work to go read next.
 

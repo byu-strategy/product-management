@@ -18,16 +18,16 @@ editor: visual
 
 | Type | Description | Points | Learning Outcome(s)<sup>1</sup> |
 |------|-------------|--------|--------------------------------|
-| Quiz | [Quiz 1 - PM in the AI Era](01-pm-ai-era.qmd) | 5 | 1, 5 |
-| Quiz | [Quiz 2 - Product Strategy](product-strategy.qmd) | 5 | 2 |
-| Quiz | Quiz 3 - [Product Morality](product-morality.qmd) + [Problems Worth Solving](02-problems-worth-solving.qmd) | 5 | 2, 3 |
-| Quiz | [Quiz 4 - Problem Discovery](03-problem-discovery.qmd) | 5 | 2, 5 |
-| Quiz | [Quiz 5 - Validating Opportunities](04-validating-opportunities.qmd) | 5 | 2, 4 |
-| Quiz | [Quiz 6 - Building Your MVP](05-building-your-mvp.qmd) | 5 | 4 |
-| Quiz | Quiz 7 - [Testing with Users](06-testing-with-users.qmd) + [Platform Strategy](07-platform-strategy.qmd) | 5 | 4 |
-| Quiz | [Quiz 8 - Sustainable Code](11-sustainable-code.qmd) | 5 | 4, 5 |
-| Quiz | [Quiz 9 - Measuring What Matters](08-measuring-what-matters.qmd) | 5 | 4 |
-| Quiz | Quiz 10 - [Go-to-Market](09-go-to-market.qmd) + [Business Models](10-business-models.qmd) | 5 | 4 |
+| Quiz | [Quiz 1 - PM in the AI Era](01-building-with-ai-agents.qmd) | 5 | 1, 5 |
+| Quiz | [Quiz 2 - Product Strategy](03-what-is-worth-building.qmd) | 5 | 2 |
+| Quiz | Quiz 3 - [Product Morality](03-what-is-worth-building.qmd) + [Problems Worth Solving](04-finding-and-validating-the-problem.qmd) | 5 | 2, 3 |
+| Quiz | [Quiz 4 - Problem Discovery](04-finding-and-validating-the-problem.qmd) | 5 | 2, 5 |
+| Quiz | [Quiz 5 - Validating Opportunities](04-finding-and-validating-the-problem.qmd) | 5 | 2, 4 |
+| Quiz | [Quiz 6 - Building Your MVP](04-finding-and-validating-the-problem.qmd) | 5 | 4 |
+| Quiz | Quiz 7 - [Testing with Users](06-testing-the-design.qmd) + [Platform Strategy](05-interface-and-flow.qmd) | 5 | 4 |
+| Quiz | [Quiz 8 - Sustainable Code](09-version-control-testing-and-tech-debt.qmd) | 5 | 4, 5 |
+| Quiz | [Quiz 9 - Measuring What Matters](14-measuring-what-matters.qmd) | 5 | 4 |
+| Quiz | Quiz 10 - [Go-to-Market](12-going-to-market.qmd) + [Business Models](13-business-models.qmd) | 5 | 4 |
 | Sprint | [Sprint 1 - Ship & Showcase](#sprint-1-ship-showcase) | 50 | 4, 5 |
 | Sprint | [Sprint 2 - Validate & Commit](#sprint-2-validate-commit) | 50 | 2, 3 |
 | Sprint | [Sprint 3 - Product MVP](#sprint-3-product-mvp) | 50 | 4, 5 |
@@ -531,7 +531,7 @@ Break the work into pieces. Don't ask Claude Code to build everything at once. T
 
 #### Part 3: Conduct 3 User Tests
 
-Now that your core feature works, watch real people try to use it. For deeper background, see [Chapter 6](06-testing-with-users.qmd).
+Now that your core feature works, watch real people try to use it. For deeper background, see [Chapter 6](06-testing-the-design.qmd).
 
 **Why this matters:** You built this thing. You know exactly where every button is and what every label means. Your users don't. This is the **curse of knowledge** — once you know something, it's nearly impossible to imagine not knowing it. The only cure is watching people who don't know.
 
@@ -633,7 +633,7 @@ Synthesize these into:
 
 #### Part 4: Platform Strategy Decision
 
-Document your platform strategy decision. For deeper background, see [Chapter 7](07-platform-strategy.qmd).
+Document your platform strategy decision. For deeper background, see [Chapter 7](05-interface-and-flow.qmd).
 
 **The Platform Decision Framework** — start by answering these questions honestly:
 

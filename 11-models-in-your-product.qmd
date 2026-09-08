@@ -1,0 +1,250 @@
+---
+title: "Models in Your Product"
+---
+
+## Why This Matters
+
+Knowing how a model works and putting one inside a product are different skills. This chapter
+is the second. By the end you should be able to call Claude from your own application, get
+back something your code can actually use, know what each call costs, and have a way to tell
+whether the feature is working.
+
+The thing to understand before you start: a model call is not a function call. A function
+returns the same answer every time and either works or throws. A model returns something
+plausible every time, costs money every time, takes a second or two every time, and can be
+confidently wrong without failing. Every design decision in this chapter follows from that.
+
+## Where the Call Lives
+
+**Your API key never goes in the browser.** This is the single most common way students leak
+credentials. Anything shipped to the client is readable by anyone who opens developer tools,
+and a leaked key can be used until you notice the bill.
+
+In Next.js, that means model calls happen in a route handler, which runs on the server. Put
+the key in `.env.local` with no `NEXT_PUBLIC_` prefix, because that prefix is exactly what
+tells Next.js to ship a variable to the browser.
+
+```bash
+# .env.local  (git-ignored, never committed)
+ANTHROPIC_API_KEY=sk-ant-...
+```
+
+```typescript
+// app/api/summarize/route.ts
+import Anthropic from "@anthropic-ai/sdk";
+
+const client = new Anthropic(); // reads ANTHROPIC_API_KEY from the environment
+
+export async function POST(req: Request) {
+  const { text } = await req.json();
+
+  const response = await client.messages.create({
+    model: "claude-opus-5",
+    max_tokens: 1024,
+    system: "You summarize customer feedback. Be concise and specific.",
+    messages: [{ role: "user", content: text }],
+  });
+
+  const summary = response.content
+    .filter((block) => block.type === "text")
+    .map((block) => block.text)
+    .join("");
+
+  return Response.json({ summary });
+}
+```
+
+Two details worth noticing. `response.content` is a list of blocks, not a string, so you
+filter for the text ones rather than reaching for `content[0].text`. And the `system` prompt
+is where you put standing instructions, separate from the user's input, which keeps the two
+from getting confused with each other.
+
+## Getting Structured Output
+
+Most of the time you do not want prose. You want fields your code can read. Asking for JSON in
+the prompt and hoping is the amateur version, and it fails often enough to matter, usually by
+wrapping the JSON in a code fence or adding a sentence of preamble.
+
+Use structured outputs instead. You define the shape, the API guarantees the response matches
+it.
+
+```typescript
+// app/api/extract/route.ts
+import Anthropic from "@anthropic-ai/sdk";
+import { z } from "zod";
+import { zodOutputFormat } from "@anthropic-ai/sdk/helpers/zod";
+
+const client = new Anthropic();
+
+const Feedback = z.object({
+  sentiment: z.enum(["positive", "neutral", "negative"]),
+  themes: z.array(z.string()),
+  is_feature_request: z.boolean(),
+  urgency: z.number().min(1).max(5),
+});
+
+export async function POST(req: Request) {
+  const { text } = await req.json();
+
+  const response = await client.messages.parse({
+    model: "claude-opus-5",
+    max_tokens: 1024,
+    messages: [{ role: "user", content: text }],
+    output_config: { format: zodOutputFormat(Feedback) },
+  });
+
+  // parsed_output is null if parsing failed, so guard it
+  if (!response.parsed_output) {
+    return Response.json({ error: "Could not parse" }, { status: 502 });
+  }
+
+  return Response.json(response.parsed_output);
+}
+```
+
+This is the pattern behind most useful AI features. Classification, extraction, tagging,
+routing, scoring. The model does the judgment; your code gets a typed object back and treats
+it like any other data.
+
+## Streaming
+
+A model that takes four seconds to answer feels broken if the screen is blank for four
+seconds, and fine if words start appearing in four hundred milliseconds. Streaming does not
+make the response faster. It makes the wait legible.
+
+```typescript
+const stream = client.messages.stream({
+  model: "claude-opus-5",
+  max_tokens: 4096,
+  messages: [{ role: "user", content: prompt }],
+});
+
+for await (const event of stream) {
+  if (event.type === "content_block_delta" && event.delta.type === "text_delta") {
+    // push event.delta.text to the client
+  }
+}
+```
+
+Stream anything a user watches arrive. Do not bother streaming something your code consumes,
+like the structured extraction above, because nothing is waiting on it visually.
+
+## What It Costs
+
+You are billed per token, in both directions, and output tokens cost roughly five times what
+input tokens cost. A token is about three quarters of a word.
+
+| Model | Input, per 1M tokens | Output, per 1M tokens |
+|---|---|---|
+| Claude Opus 5 | $5.00 | $25.00 |
+| Claude Sonnet 5 | $2.00 | $10.00 |
+| Claude Haiku 4.5 | $1.00 | $5.00 |
+
+Every response tells you what it actually used:
+
+```typescript
+console.log(response.usage.input_tokens, response.usage.output_tokens);
+```
+
+And you can price a call before making it:
+
+```typescript
+const count = await client.messages.countTokens({
+  model: "claude-opus-5",
+  messages: [{ role: "user", content: text }],
+});
+console.log(count.input_tokens);
+```
+
+**Do the arithmetic before you ship.** A feature that costs two cents per call is free at
+demo scale and expensive at a thousand users a day. Multiply by your realistic usage and see
+whether the number is one you can live with. This is a product decision, not an engineering
+detail, and it belongs in your business model.
+
+**On choosing a model.** Start with Opus and move down only if measurement says you can. The
+temptation runs the other way, toward the cheapest model that seems to work, and it usually
+costs more in the end because the failures are subtle: slightly worse extraction, slightly
+more retries, slightly more support. Haiku is genuinely right for simple, high-volume,
+latency-sensitive work like classifying one short string. Reach for it deliberately, not
+reflexively.
+
+**Caching is the cheapest optimization you will ever make.** If every call sends the same
+long system prompt or the same reference document, mark it cached and repeated calls pay a
+fraction for that portion.
+
+```typescript
+const response = await client.messages.create({
+  model: "claude-opus-5",
+  max_tokens: 1024,
+  cache_control: { type: "ephemeral" },
+  system: longStandingInstructions,
+  messages: [{ role: "user", content: text }],
+});
+```
+
+## Where It Breaks
+
+Plan for these before your first user finds them.
+
+**It is slow, and unpredictably so.** A call can take a second or ten. Never put one in a
+path that blocks a page render. Stream it, background it, or show something useful while it
+runs.
+
+**It is not deterministic.** The same input can produce different output. Anything that has
+to be stable, an ID, a price, a permission check, must not come from a model.
+
+**It is confidently wrong.** The failure mode is not an exception, it is a plausible answer
+that happens to be false. If a wrong answer is expensive, put a human in the path or check
+the output against something you trust.
+
+**It can be steered by its input.** If your prompt includes text a user wrote, that user can
+try to instruct the model. Never let model output trigger a privileged action on its own.
+Treat everything that comes back as untrusted data, exactly like form input.
+
+**Calls fail.** Rate limits, timeouts, network errors. The SDK retries some of these for you,
+but your feature still needs an answer for what the user sees when it ultimately does not
+work.
+
+**It costs money on every retry.** A retry loop with a bug is a bill with no ceiling. Cap
+your retries.
+
+## Evals: Knowing Whether It Works
+
+Here is the part almost nobody does, and it is the highest-leverage thing in this chapter.
+
+You cannot tell whether an AI feature works by trying it a few times. It worked those few
+times. The question is whether it works across the range of inputs real users will send, and
+whether the prompt you just "improved" made it better or quietly worse.
+
+An **eval** is a test set for a non-deterministic system. It is not complicated:
+
+1. Collect twenty to fifty real inputs. Actual ones, from your product or your discovery
+   interviews, not invented ones. Include the weird cases.
+2. Write down what a good output looks like for each. A label, a required field, a rule the
+   answer must satisfy.
+3. Run all of them and count how many pass.
+4. Change one thing, the prompt or the model, and run it again.
+
+That fourth step is the whole point. Without a number, prompt engineering is superstition:
+you make a change, spot-check two examples, and convince yourself. With a number, you know
+whether you moved from 71 percent to 84 percent or made it worse.
+
+Start with twenty examples in a JSON file and a script that loops over them. That is enough
+to catch real regressions, and it is more evaluation rigor than most shipped AI features
+have.
+
+If your product has an AI feature, an eval set is part of the product. Put it in your repo
+next to the tests.
+
+## Key Concepts
+
+- **Server-side only**: the API key lives on the server, never in browser-shipped code. `NEXT_PUBLIC_` is how it leaks.
+- **Content blocks**: a response is a list of typed blocks, not a string.
+- **System prompt**: standing instructions, kept separate from user input.
+- **Structured output**: define a schema, get a guaranteed shape back. Do not parse prose.
+- **Streaming**: same total latency, far better perceived latency. Use it for anything a person watches.
+- **Token**: the billing unit, roughly three quarters of a word. Output costs about 5x input.
+- **Prompt caching**: repeated prefixes get large discounts.
+- **Non-determinism**: same input, different output. Never source a fact your system depends on from a model.
+- **Prompt injection**: user text inside a prompt is untrusted input, not instruction.
+- **Eval**: a scored test set that tells you whether a change helped. The difference between engineering and guessing.

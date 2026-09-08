@@ -15,30 +15,33 @@ book:
         - 00-schedule.qmd
         - 00-assessments.qmd
         - 00-release-notes.qmd
-    - part: Foundations
+    - part: Agentic Workflow
       chapters:
-        - 01-pm-ai-era.qmd
-    - part: Aim
+        - 01-building-with-ai-agents.qmd
+        - 02-directing-the-agent.qmd
+    - part: Discovery
       chapters:
-        - product-strategy.qmd
-        - product-morality.qmd
-        - 02-problems-worth-solving.qmd
-    - part: Discover
+        - 03-what-is-worth-building.qmd
+        - 04-finding-and-validating-the-problem.qmd
+    - part: Design
       chapters:
-        - 03-problem-discovery.qmd
-        - 04-validating-opportunities.qmd
-    - part: Build
+        - 05-interface-and-flow.qmd
+        - 06-testing-the-design.qmd
+    - part: Application Architecture
       chapters:
-        - 05-building-your-mvp.qmd
-        - 07-platform-strategy.qmd
-        - 06-testing-with-users.qmd
-        - 11-sustainable-code.qmd
-    - part: Grow
+        - 07-anatomy-of-an-application.qmd
+        - 08-data-and-apis.qmd
+        - 09-version-control-testing-and-tech-debt.qmd
+    - part: AI Systems
       chapters:
-        - 08-measuring-what-matters.qmd
-        - 09-go-to-market.qmd
-        - 10-business-models.qmd
-        - 12-final-presentations.qmd
+        - 10-how-models-work.qmd
+        - 11-models-in-your-product.qmd
+    - part: Launch and Learn
+      chapters:
+        - 12-going-to-market.qmd
+        - 13-business-models.qmd
+        - 14-measuring-what-matters.qmd
+        - 15-storytelling-and-the-final-demo.qmd
     - part: Appendix
       chapters:
         - A1-logic-of-value.qmd

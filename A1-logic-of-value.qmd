@@ -5,7 +5,7 @@ title: "The Logic of Value"
 ::: {.callout-note}
 ## What this appendix is
 
-This is the economics underneath the [value stick](product-strategy.qmd#creating-value-and-capturing-it). The strategy chapter uses the value stick as a teaching picture: willingness to pay at the top, willingness to sell at the bottom, create versus capture in between. This appendix derives the picture. It shows that producer surplus, accounting profit, economic profit, and the finance world's ROIC minus WACC are not four different ideas from four different disciplines. They are one idea, seen at four depths of cost recognition, and they connect all the way up to the consumer's willingness to pay.
+This is the economics underneath the [value stick](03-what-is-worth-building.qmd#creating-value-and-capturing-it). The strategy chapter uses the value stick as a teaching picture: willingness to pay at the top, willingness to sell at the bottom, create versus capture in between. This appendix derives the picture. It shows that producer surplus, accounting profit, economic profit, and the finance world's ROIC minus WACC are not four different ideas from four different disciplines. They are one idea, seen at four depths of cost recognition, and they connect all the way up to the consumer's willingness to pay.
 
 It runs deeper than the course needs. It is here as reference for anyone who wants the full derivation, and as the first of a set of standalone pieces that may later become chapters of a separate book on the logic of value.
 :::
@@ -141,7 +141,7 @@ This is exactly the value stick, now derived rather than drawn. The full height 
 
 This framework makes the role of strategy precise. Operations and finance decide how efficiently a firm creates value, how low it can push $VC$ and $FC$, how little capital it can tie up. None of that determines whether the firm keeps any of the value it creates. That is set entirely by the economic profit tier, and the economic profit tier is set by market power.
 
-In perfect competition, $EP \to 0$. The whole gap is handed to customers and suppliers, and the firm keeps only its normal return. Strategy is the discipline of creating and defending an edge, through differentiation, cost advantage, network effects, brand, or genuine innovation, that lets a firm hold price up toward willingness to pay and sustain $EP > 0$ over time. This is why the [strategy chapter](product-strategy.qmd#the-five-forces-how-wide-is-the-band) reads Porter's five forces as a diagnostic of exactly one thing: how wide the economic profit band is that the industry will let you keep.
+In perfect competition, $EP \to 0$. The whole gap is handed to customers and suppliers, and the firm keeps only its normal return. Strategy is the discipline of creating and defending an edge, through differentiation, cost advantage, network effects, brand, or genuine innovation, that lets a firm hold price up toward willingness to pay and sustain $EP > 0$ over time. This is why the [strategy chapter](03-what-is-worth-building.qmd#the-five-forces-how-wide-is-the-band) reads Porter's five forces as a diagnostic of exactly one thing: how wide the economic profit band is that the industry will let you keep.
 
 The framework also sharpens two familiar strategic moves.
 
