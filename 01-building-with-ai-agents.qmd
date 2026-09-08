@@ -1,0 +1,864 @@
+---
+title: "Building with AI Agents"
+---
+
+## Why This Matters
+
+This is a course about building products, and you are going to start building in week one,
+before you know what a backend is. That is not an accident. The instrument you build with
+is an AI agent, and learning to direct one well is the skill everything else in this course
+sits on top of.
+
+## The Loop: How This Course Works
+
+Before the history and the frameworks, here is the one idea the whole course runs on. Strip product management down to its core and it is this: **figure out what is true, and act on it.** True about a customer, a problem, a market. Everything else, the interviews, the specs, the MVPs, the metrics, is machinery for that.
+
+We run that machinery as a single loop, and it has a name: **AIRE**. Each step is a question, except the last, which is what happens when you have answered the first three:
+
+- **Aim.** *What do you want?* The goal, and the values behind it: what value you are trying to create, for whom, and how much you mean to capture.
+- **Inform.** *What is true?* Go find out what is actually true about your customer and their problem. Gather evidence.
+- **Reason.** *What's the best option?* Lay out the real alternatives and choose among them. If there was only ever one option, you have not reasoned, you have rationalized.
+- **Enact.** *What happened?* Build it, ship it, and watch. The answer becomes the next turn's evidence, so you loop back with a sharper aim, better information, and clearer reasoning.
+
+Say it in one breath: what do you want, what is true, what's the best option, what happened. Three questions and a turn.
+
+**Aim comes first, and that is not an accident.** Information is endless; without an aim you have no way to tell which facts matter, and discovery with no destination is just wandering. Lewis Carroll made the point in *Alice's Adventures in Wonderland* [@carroll1865], when Alice reaches a fork and asks the Cheshire Cat which way to go. President Thomas S. Monson retold it this way:
+
+> The cat answers, "That depends where you want to go. If you do not know where you want to go, it doesn't matter which path you take."
+
+Alice does not know where she wants to go, so for her it truly does not matter. Monson's turn on the story is the whole reason Aim leads: "Unlike Alice, we know where we want to go, and it does matter which way we go, for by choosing our path, we choose our destination" [@monson2016]. Answer *what do you want* first, and every question after it has a criterion. Skip it, and any road looks as good as any other.
+
+The course *is* this loop, and the parts you see in the sidebar are its steps:
+
+| The loop | The question | The part of the course |
+|---|---|---|
+| **Aim** | what do you want? | **Aim**: choose what is worth building, strategically and morally |
+| **Inform** | what is true? | **Discover**: go learn what is true about the customer |
+| **Reason** | what's the best option? | **Build**: decide what to build, then build it |
+| **Enact** | what happened? | **Build**, then **Grow**: ship it, measure, and learn on the live product |
+
+The **Aim**, what is worth building at all, is where strategy and values meet. What value you create and for whom, and how much of it you can capture, is the [create-versus-capture](product-strategy.qmd#creating-value-and-capturing-it) choice in [Product Strategy](product-strategy.qmd); whether it is worth building at all is [Product Morality](product-morality.qmd). And you will run the whole loop many times across the semester, once per sprint, because a single turn tells you little; the arc is what reveals whether you are getting good.
+
+Two things about the loop are worth knowing up front.
+
+First, **the middle three multiply, they do not add.** How good a decision turns out is roughly Information × Reasoning × Execution, and because those multiply, a zero anywhere sinks the whole. Brilliant reasoning on evidence you never gathered is a confident mistake. A great idea you never ship is worth nothing. Think of it as an area, not a perimeter: a rectangle with one short side has almost no area however long the others are.
+
+![Outcome is the area the factors enclose, not their perimeter. One weak factor collapses it.](images/outcome-as-area.svg){fig-alt="Two rectangles. The left, with all sides full, is a large shaded area labeled Outcome. The right, with the Execution side near zero, collapses to a thin sliver labeled Outcome near zero."}
+
+Second, **most of the loop is about telling what you believe from what is true.** You will always have beliefs about your customer. Some are right, some are wrong, and the work of Inform and Reason is to close the gap. [Chapter 3](03-problem-discovery.qmd) gives you a picture of exactly that: a map of where a belief can sit relative to the truth, and how to move it.
+
+### How we run class
+
+Class meets once a week: short bursts of full attention to install a skill, then live building with Claude Code. Each class has one emphasis, and we open it with a scripture and a quote tied to that emphasis.
+
+The scripture is not decoration, and it is not separate from the craft. This is BYU, and we take seriously Brigham Young's charge to Karl G. Maeser as he left to found this university: to "not teach even the alphabet or the multiplication tables without the Spirit of God." All truth is God's truth, and seeking it honestly, about a customer, a market, or anything else, is a spiritual act as much as a technical one. Faith, in the oldest sense, is not the absence of evidence; it is belief carried all the way into action. That is the Enact in AIRE: a belief you will not act on is dead. We will treat the whole loop that way, as work worth doing well and worth doing in good faith.
+
+## The Six Builder Axes
+
+This course tracks six skills. Together they are what a full-stack AI product builder can
+do, and they are the frame for everything that follows.
+
+| Axis | The question it answers |
+|---|---|
+| **Agentic Workflow** | How do I build with AI as my instrument? |
+| **Discovery** | What should I build, for whom, and should I? |
+| **Design** | What does the surface look like, and how does it flow? |
+| **Application Architecture** | How is it structured, shipped, and kept safe? |
+| **AI Systems** | What intelligence lives inside the product? |
+| **Launch and Learn** | How do people find it, and did it work? |
+
+Each axis gets two weeks. You will rate yourself on all six this week and again at the end
+of the semester, and you will get back a six-sided chart of your profile both times. The
+point of the baseline is not to judge you. It is so you know which axis is your weakest and
+can spend your discretionary effort there.
+
+Agentic Workflow comes first because you need the instrument before anything else is
+possible. You will ship something in week one that you do not fully understand, and that is
+deliberate. Understanding arrives later, and it arrives faster when you already have
+something running to understand.
+
+## History of Product Management
+
+At its simplest, product management is about identifying customer needs, aligning them with business goals, and working with cross-functional teams to build products that succeed in the market. The person responsible is the Product Manager (PM), often called the "CEO of the product."
+
+Some people take issue with the “CEO” comparison, since product managers typically influence without formal authority and often don’t have many direct reports. Still, like a CEO, the skills of a product manager are broad and typically include:
+
+-   Strategic thinking – setting vision, making trade-offs, and aligning with business goals
+-   Customer insight – understanding user needs and pain points
+-   Analytical ability – using data and critical thinking to guide decisions
+-   Technical & design fluency – collaborating effectively with engineers and designers
+-   Execution & organization – planning roadmaps, prioritizing, and delivering results
+-   Communication & leadership – influencing, storytelling, and managing stakeholders
+
+Products can be hardware or software, but since software dominates in volume, product management is often associated with software, even though many of the principles can apply equally well to hardware. Today, many hardware products come with a software component or integrated app, at times blurring the line between hardware and software. The focus of this course is software products that can be built with the assistance of AI.
+
+Product Management, as a formal discipline and job title, traces its roots to Hewlett-Packard in the 1940s, where it emerged as a distinct driver of innovation in technology. Yet the concept predates HP: a 1931 Procter & Gamble memo introduced the role of “Brand Men,” whose responsibilities closely foreshadowed what would later be recognized as Product Management [@mcelroy1931].
+
+![Image source: Wikimedia Commons](images/brand-men.jpg)
+
+Early influences such as the \[Scrum development process\](https://en.wikipedia.org/wiki/Scrum\_(software_development))) and the [Agile Manifesto](https://agilemanifesto.org/) [@beck2001] reshaped how products are built, while initiatives like Google’s Associate Product Manager (APM) program and influential books helped standardize best practices. In recent years, PM has become one of the most sought-after careers, and today the field is entering a new era with the rise of the AI Product Manager.
+
+![A History of Product Management; Aakash Gupta and Scott Murff](images/pm-history.png)
+
+The personal computer revolution of the 1980s brought computing into offices and homes. The rise of the internet in the 1990s connected the world and created entirely new industries, from e-commerce to online media. In the 2000s, broadband (i.e. high-speed internet access) and cloud computing made software cheaper to build, scale, and distribute, while the launch of the iPhone in 2007 ushered in the smartphone era putting powerful applications directly into billions of people’s hands.
+
+In 2011, Marc Andreessen, co-founder of the venture capital firm Andreessen Horowitz (a16z) (known for its influential early investments in companies like Facebook, Airbnb, and Coinbase) famously observed that [*Software Is Eating the World*](https://a16z.com/why-software-is-eating-the-world/) [@andreessen2011].
+
+AI now appears to be on track to “eat the world” again, this time at a much faster pace. The launch of ChatGPT on November 30, 2022, marked a turning point, catalyzing mass adoption of generative AI and enabling the rise of the AI Product Manager.
+
+Marc now predicts that [*AI Will Save the World*](https://a16z.com/ai-will-save-the-world/) [@andreessen2023], but this certainly won't happen automatically. Because human nature is what it is, there will be plenty of people using AI in ways that are damaging to both individuals and society. Indeed, we are living in the time when:
+
+> “Discoveries latent with such potent power, either for the blessing or the destruction of human beings as to make men’s responsibility in controlling them the most gigantic ever placed in human hands. … This age is fraught with limitless perils, as well as untold possibilities.” *--David O. McKay, in Conference Report, Oct. 1966, 4.* [@mckay1966]
+
+**You have the incredibly exciting and challenging opportunity to harness AI to improve the world. This class will help prepare you to seize that opportunity.**
+
+Over the past two decades, many companies adopted a *product trio* team structure for building software products. This structure brings together three complementary roles: the product manager, who defines the vision, strategy, and priorities; the designer, who ensures usability, aesthetics, and a seamless user experience; and one or more engineers, who turn ideas into functional, scalable solutions. By balancing business objectives, user needs, and technical feasibility, the trio has emerged as a proven way to foster cross-functional collaboration and accelerate product development.
+
+AI and the tools we will use in this course are having a major impact and disrupting what had become a stable organizational model. This is true because AI changes both the division of labor within the trio and the speed and scale at which individuals and teams can operate.
+
+## AI Product Management
+
+With AI, a PM can quickly generate wireframes, mockups, or even working product demos without waiting on design or engineering support. Instead of handing off abstract requirements, they can test tangible ideas with users in days, not weeks. This doesn’t eliminate the need for designers and engineers, but it shifts when and how they are engaged. Designers can focus on higher-fidelity experience and brand expression, while engineers concentrate on scalability, integration, and technical soundness.
+
+It remains to be seen how this will fully play out, but early indications suggest that shifts in how PMs, designers, and engineers work together are real and lasting. With the right AI tools some ambitious individuals may be able to wear all three hats to varying degrees.
+
+![](images/full-stack-from-to.png)
+
+Below are a selection of anecdotes from leaders in the field that provides some insight into how things are shifting.
+
+::: tweet-center
+<blockquote class="twitter-tweet">
+
+<p lang="en" dir="ltr">
+
+Vibe coding is here to stay. I'd been worried it might be a fad, but I talked to the founder of an infrastructure company who's in a position to see how well vibe-coded apps are doing, and he said a lot of them are making money.
+
+</p>
+
+— Paul Graham (\@paulg) <a href="https://twitter.com/paulg/status/1956458026652799173?ref_src=twsrc%5Etfw"> August 15, 2025 </a>
+
+</blockquote>
+:::
+
+```{=html}
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+```
+
+::: embed-center
+<iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7362122859722256384?collapsed=1" height="567" width="504" frameborder="0" allowfullscreen title="Embedded post">
+
+</iframe>
+:::
+
+#### AI-Powered PM
+
+An AI-Powered PM utilizes AI tools as a core part of their own workflow to enhance productivity and efficiency in tasks like prototyping and coding. 
+
+It's likely that eventually all PMs will eventually become AI-powered PMs. Individual companies will make this transition at varying speeds. It's happening at companies like Shopify and Coinbase.
+
+::: tweet-center
+<blockquote class="twitter-tweet">
+
+<p lang="en" dir="ltr">
+
+We are adding a coding section to all of our Product Managers interviews at <a href="https://twitter.com/Shopify?ref_src=twsrc%5Etfw">\@Shopify</a>.<br><br> We'll start with APM interviews. We expect candidates to build a prototype of the product they suggested in the case interview.<br><br> There is no excuse for PMs not building prototypes.
+
+</p>
+
+— Kaz Nejatian (\@CanadaKaz) <a href="https://twitter.com/CanadaKaz/status/1955629733460562404?ref_src=twsrc%5Etfw"> August 13, 2025 </a>
+
+</blockquote>
+:::
+
+```{=html}
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+```
+
+#### AI Product PM
+
+An AI Product PM builds products where AI is a core feature. This means they need a good understanding of what AI can and can’t do, how to measure its performance, and how to design around its limitations. They balance accuracy, speed, cost, and safety. They work closely with engineers and designers to shape the product, test ideas, and ship features.
+
+Becoming an AI Product PM is challenging because you must do everything a traditional PM does (defining problems, leading teams, and shipping products) while also deeply understanding how AI works. This means grasping its strengths, limits, risks, and how to design around them. Because the bar is so high, AI Product PMs have quickly become the best-compensated roles in product management.
+
+Pawel Huryn has put together a comprehensive roadmap for becoming an AI Product PM shown below:
+
+![AI Product Management Learning Roadmap from Paweł Huryn](images/ai-pm-roadmap.jpeg)
+
+## Where Vibe Coding Came From
+
+The term "Vibe Coding" was coined by [Andrej Karpathy](https://en.wikipedia.org/wiki/Andrej_Karpathy), a former OpenAI engineer, on Feb. 2, 2025 when he made the following post on X:
+
+::: tweet-center
+<blockquote class="twitter-tweet">
+
+<p lang="en" dir="ltr">
+
+There's a new kind of coding I call "vibe coding", where you fully give in to the vibes, embrace exponentials, and forget that the code even exists. It's possible because the LLMs (e.g. Cursor Composer w Sonnet) are getting too good. Also I just talk to Composer with SuperWhisper…
+
+</p>
+
+— Andrej Karpathy (\@karpathy) <a href="https://twitter.com/karpathy/status/1886192184808149383">February 2, 2025</a>
+
+</blockquote>
+:::
+
+```{=html}
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+```
+
+The term went viral and has quickly become common parlance to describe using AI chatbots and agents to write code for you, often done using voice dictation which is faster than typing. On Novemmber 5, 2025, Collins Dictionary name vibe coding the Word of the Year. Vibe coding essentially treats [English as a new coding language](https://x.com/karpathy/status/1617979122625712128?lang=en). 
+
+Despite, or perhaps because of it's rapid impact, Vibe coding hasn't been without controversy. 
+
+Skeptics argue that vibe coding encourages a shallow relationship with code where developers don't fully understand the systems they’re building. They warn that overreliance on AI-generated code could erode problem-solving skills, introduce bugs, and obscure accountability when things go wrong. For them, coding is as much about thinking as typing; it’s a craft built on precision, discipline, and debugging, not vibes.
+
+Supporters, on the other hand, view vibe coding as a the next step in a natural evolution of programming that has been going on for decades. Just as early compilers freed humans from low-level assembly code LLMs now free them from the need for typing every character of the detailed syntax required by modern programming languages. The essence of software creation, they argue, is translating intent into functionality and LLMs finally make it possible to do that directly in natural language. In this view, vibe coding doesn’t eliminate thinking but actually amplifies it by letting creators focus on design, logic, and impact rather than implementation details.
+
+In practice, vibe coding has already begun reshaping workflows. Developers often “talk” to their editors using tools like Cursor via voice dication tools like SuperWhisper. The AI then drafts, refactors, and explains code in real time, blurring the boundary between writing and thinking about code.
+
+Paul Graham, co-founder of the world's most influential start-up incubator, Y-combinator (YC), seems to be coming around:
+
+::: tweet-center
+<blockquote class="twitter-tweet">
+
+<p lang="en" dir="ltr">
+
+Vibe coding is here to stay. I'd been worried it might be a fad, but I talked to the founder of an infrastructure company who's in a position to see how well vibe-coded apps are doing, and he said a lot of them are making money.
+
+</p>
+
+— Paul Graham (\@paulg) <a href="https://twitter.com/paulg/status/1956458026652799173?ref_src=twsrc%5Etfw"> August 15, 2025 </a>
+
+</blockquote>
+:::
+
+```{=html}
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+```
+
+A few month's earlier in March of 2025, Jared Friedman, a YC managing partner shared in a conversation posted on YouTube that a quarter of the Winter 2025 batch of start-ups had 95% of their codebases generated by AI:
+
+{{< video https://www.youtube.com/embed/IACHfKmZMr8 >}}
+
+There are now a slew of new high-growth companies that have arisen that enable so called vibe coding which Dan Olsen has done a nice job of summarizing in the chart below:
+
+![](/images/dan-olsen-vibe-coding.jpeg)
+
+Dan's workshop is focused on the left hand side of the chart, while my workshop focuses on the right hand side of the chart. It's relatively easy and sometimes useful to mix and match tools from different sides of the chart.
+
+One very clear high-value opportunity that vibe coding has enabled for Product Managers is the ability to rapidly prototype in a way that was previously impossible. 
+
+This is a massive opportunity if the common refrain at legendary Silicon Valley product design firm [IDEO](https://www.ideo.com/) has any truth to it (spoiler, it does!):
+
+::: tweet-center
+<blockquote class="twitter-tweet">
+<p lang="en" dir="ltr">
+"If a picture is worth 1000 words, a prototype is worth 1000 meetings." —saying at <a href="https://twitter.com/ideo?ref_src=twsrc%5Etfw">\@ideo</a>
+</p>
+— John Maeda (\@johnmaeda) <a href="https://twitter.com/johnmaeda/status/518556402902925313?ref_src=twsrc%5Etfw">October 5, 2014</a>
+</blockquote>
+:::
+
+```{=html}
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+```
+
+Because of the speed, reduced costs in time and money, and the rapid customer discorvery it enables, the ability to build high-fidelity prototypes quickly using vibe coding tools is quickly becoming an expected skill of Product Managers: 
+
+::: tweet-center
+<blockquote class="twitter-tweet">
+
+<p lang="en" dir="ltr">
+
+We are adding a coding section to all of our Product Managers interviews at <a href="https://twitter.com/Shopify?ref_src=twsrc%5Etfw">\@Shopify</a>.<br><br> We'll start with APM interviews. We expect candidates to build a prototype of the product they suggested in the case interview.<br><br> There is no excuse for PMs not building prototypes.
+
+</p>
+
+— Kaz Nejatian (\@CanadaKaz) <a href="https://twitter.com/CanadaKaz/status/1955629733460562404?ref_src=twsrc%5Etfw"> August 13, 2025 </a>
+
+</blockquote>
+:::
+
+```{=html}
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+```
+
+Beyond prototyping, vibe coding with the developer focused tools we will use in this workshop (e.g. Claude Code) enable a whole host of other high value use cases for product manangers such as rapid data analysis, automations, and more effecicent and precise use of LLMs than is possible from standard chat interfaces like ChatGPT.
+
+## Where This Is Going
+
+Over the past two decades, many companies adopted a *product trio* team structure for building software products. This structure brings together three complementary roles: the product manager, who defines the vision, strategy, and priorities; the designer, who ensures usability, aesthetics, and a seamless user experience; and one or more engineers, who turn ideas into functional, scalable solutions. By balancing business objectives, user needs, and technical feasibility, the trio has emerged as a proven way to foster cross-functional collaboration and accelerate product development.
+
+AI in general, and specific tools we will use in this workshop are having a major impact and may have the potential to disrupt what had become a stable organizational model since AI changes both the division of labor within the trio and the speed and scale at which individuals and teams can operate.
+
+When a PM can quickly generate prototypes or even full-fledged shipable products without waiting on design or engineering support it could have a significant shift on when and how designers and engineers are engaged.
+
+It remains to be seen how this will fully play out, but early indications suggest that shifts in how PMs, designers, and engineers work together are real and lasting. 
+
+::: tweet-center
+<blockquote class="twitter-tweet">
+<p lang="en" dir="ltr">
+The fight over what a product manager does is going to among the first major AI organizational design problems faced by companies.<br><br>It is a job right at the center of what AI can do with first pass coding, marketing, design, ideation, etc. Who will own which pieces up for grabs. <a href="https://t.co/XkJQYOu9N9">https://t.co/XkJQYOu9N9</a>
+</p>
+— Ethan Mollick (\@emollick) <a href="https://twitter.com/emollick/status/1984682445946421505?ref_src=twsrc%5Etfw">November 1, 2025</a>
+</blockquote>
+:::
+
+```{=html}
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+```
+
+With the right AI tools some ambitious individuals may be able to credibly wear all three hats and become what we could call a [Full-Stack Product Builder](https://www.linkedin.com/pulse/bringing-full-stack-builder-life-tomer-cohen-gy5nf/).
+
+::: tweet-center
+<blockquote class="twitter-tweet">
+
+<p lang="en" dir="ltr">
+
+Builder’s high is back...
+
+</p>
+
+— Madhu Guru (\@realmadhuguru) <a href="https://twitter.com/realmadhuguru/status/1955451011323314641">August 13, 2025</a>
+
+</blockquote>
+:::
+
+```{=html}
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+```
+
+That is the ambition we have for you by participating in this workshop. We hope this will be a catalyst for you in becoming a full-stack product builder who uses AI to build amazing products that improve humanity. 
+
+Indeed, we are living in the time when:
+
+> “Discoveries latent with such potent power, either for the blessing or the destruction of human beings as to make men’s responsibility in controlling them the most gigantic ever placed in human hands. … This age is fraught with limitless perils, as well as untold possibilities.” *--David O. McKay, 1966*
+
+## Vibe Coding Terminology
+
+Despite its popularity, I really don't like the term "vibe coding" because it sounds unserious, and frankly, much of the time it is which explains why we see an explosion of engineers branding themselves as "Vibe Code Cleanup Specialists." These people are hired to clean-up so called [AI slop](https://en.wikipedia.org/wiki/AI_slop) which is AI generated code or content generated carlessly. 
+
+![](/images/vibe-clean-up.png)
+
+Don't be the reason your boss has bring in a Vibe Code Cleanup Specialist.
+
+Going forward I will use terms like "build with AI", "agentic coding," "ai-assisted coding", "AI builder", "full-stack product builder", and "AI engineer" to describe what we are striving to do and become. To do these terms justice we will follow a rigorous development process guiding AI to write code that will stand up to scrutiny in a world class engineering organization.
+
+## The Command Line
+
+In order to be a serious AI-Powered PM or AI Product PM, you need to get comfortable interacting with your computer via the [Terminal or command line](https://en.wikipedia.org/wiki/Command-line_interface).
+
+The command line, sometimes referred to as the CLI (Command Line Interface), is a text-based way to control your computer by typing instructions instead of using a mouse or touch interface. You access the command line through a program called a terminal, which displays a simple text-only window (typically black or white) with no buttons or icons.
+
+On macOS, this program is literally called Terminal. On Windows, you can use Command Prompt, PowerShell, or Git Bash to access a similar environment.
+
+When using Visual Studio Code, you can open a terminal within it, making it easy to run commands without switching between windows.
+
+When using the command line, instead of navigating through a graphical user interface (GUI) with windows and icons, you type commands directly into this terminal window and press Enter to execute them. The command line acts as your gateway to the underlying operating system, giving you direct access to files, programs, and system functions that might be buried deep within GUI menus or not available graphically at all.
+
+This approach offers several advantages: greater precision in file operations, faster execution of repetitive tasks, access to powerful automation tools, and the ability to combine simple commands into complex workflows. Developers and data scientists rely on the command line because it's faster and more powerful for tasks like creating projects, installing software, running code, and automating workflows.
+
+**ChatGPT and other LLM-powered generative AI tools have made learning the command line more important, not less.** The command line is where you unlock the real power of automation, enabling you to run scripts and streamline repetitive tasks. Many advanced system administration tasks, programming tools, and server management operations are primarily designed for command-line use, making terminal proficiency essential for developers and savvy product managers.
+
+Furthermore, the command line is the native environment for the industry-leading approaches to AI-assisted coding such as Claude Code, Codex, and Gemini CLI which we’ll be using throughout this class. By getting comfortable in the command line, you won’t just be learning an obscure developer skill; you’ll be stepping into the same environment where cutting-edge AI coding tools operate, giving you the ability to build, experiment, and ship AI products with confidence.
+
+Now, let's learn the command line by doing. Spend some time testing the following commands.
+
+These commands work seamlessly across **macOS** or **Windows** but there is a little bit of extra set up on Windows.
+
+**If You Are Using Windows, Do This First**
+
+**Step 1: Install Git Bash using `winget`**
+
+Within VS Code, open a Terminal and run:
+
+```bash
+winget install --id Git.Git -e --source winget
+```
+
+This installs **Git for Windows**, which includes **Git Bash**.
+
+After installation, verify that it worked:
+
+```bash
+git --version
+```
+
+If you see a version number (like `git version 2.46.0`), you’re ready to go.
+
+**Step 2: Set Git Bash as the Default Terminal in VS Code**
+
+1. Open **VS Code**.
+2. Press `Ctrl + Shift + P` to open the Command Palette.
+3. Type `Terminal: Select Default Profile` and press **Enter**.
+4. Choose **Git Bash** from the list.
+5. Open a new terminal tab (`Ctrl + ~`). It should now start with `bash$` or `MINGW64` instead of `PS`.
+
+Now your VS Code terminal behaves almost identical to macOS (with a few exceptions noted below), and you can copy-paste the commands below directly.
+
+**Print working directory you are currently in**
+
+```bash
+pwd
+```
+
+**List files in the current directory**
+
+```bash
+ls
+```
+
+**Change directory**
+
+```bash
+cd foldername
+```
+
+**Go up one level**
+
+```bash
+cd ..
+```
+
+**Go to your home directory**
+
+```bash
+cd ~
+```
+
+**Make a new directory**
+
+```bash
+mkdir my-project
+```
+
+**Open your new folder in Finder (Mac) or File Explorer (Windows)**
+On macOS, this uses the built-in `open` command. On Windows (Git Bash), `explorer.exe` opens File Explorer.
+
+```bash
+# macOS
+open my-project
+
+# Windows (Git Bash)
+explorer.exe my-project
+```
+
+**Create or overwrite a file with text**
+`>` acts like "Save As" and overwrites the file.
+
+```bash
+echo "Hello AI PMs" > hello.txt
+```
+
+**Append text to a file**
+`>>` acts like "Add to end" and appends text instead of overwriting.
+
+```bash
+echo "Second line" >> hello.txt
+```
+
+**Show file contents**
+
+```bash
+cat notes.txt
+```
+
+**Combine files into a new file**
+
+```bash
+cat part1.txt part2.txt > full.txt
+```
+
+**Copy a file**
+
+```bash
+cp notes.txt backup.txt
+```
+
+**Remove a file**
+
+```bash
+rm hello.txt
+```
+
+**Remove a folder (recursively, be careful!)**
+
+```bash
+rm -r my-project
+```
+
+**Open a website in Google Chrome**
+macOS uses `open -a`, while Windows (Git Bash) can call Chrome directly if it’s on the PATH.
+
+```bash
+# macOS
+open -a "Google Chrome" https://claude.ai
+
+# Windows (Git Bash)
+"/c/Program Files/Google/Chrome/Application/chrome.exe" https://claude.ai
+```
+
+**Open a Word document**
+On Windows (Git Bash), use the `start` command to launch Word if installed.
+
+```bash
+# macOS
+open -a "Microsoft Word" mydoc.docx
+
+# Windows (Git Bash)
+start winword mydoc.docx
+```
+
+**Summary Notes**
+
+* These commands work identically on macOS, Linux, and Windows when using **Git Bash** or **WSL**.
+* `>` overwrites a file (like “Save As”).
+* `>>` appends to a file (like “Add to end”).
+
+#### Gotchas
+
+-   Paths with spaces: quote them, e.g. cd "My Folder"
+-   Case sensitivity: macOS/Linux are usually case-sensitive; Windows is not.
+-   rm is more permanent than dragging something to the Trash/Recycle Bin. By default, it doesn’t send files to a “trash”, it permanently deletes them. Use with caution!
+
+#### Package management
+
+The next concept to tackle on the journey to becoming an AI powered Product Manager is **package management.** This is a tool your computer uses to install, update, and remove software through the command line. Instead of hunting down installers on websites and clicking through “Next, Next, Finish,” a package manager lets you type a single command to get the tool you need. This matters because it saves time, keeps your environment consistent, and makes it easy to update everything at once which is a helpful when building digital products that depend on multiple tools and libraries. Learning to use a package manager puts you in control of your setup, reduces errors, and helps you work like a professional.
+
+On Mac, *Homebrew* is the standard package manager and must be installed. 
+
+For Windows, *Winget* comes pre-installed.
+
+Run the following commands to install and/or check the version of your package manager.
+
+```{python eval=false}
+
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# Confirm installation by checking which version
+brew --version
+```
+
+```{python eval=false}
+# Windows
+
+# winget should be preinstalled on windows
+winget --version
+```
+
+Winget comes pre-installed on Windows 10 and 11 so there is generally no need to install it.
+
+## VS Code
+
+Next we'll get set up with Visual Studio Code (VS Code), a free, open-source code editor developed by Microsoft that has become one of the most popular development environments among programmers worldwide. Launched in 2015, VS Code combines the simplicity of a lightweight text editor with powerful IDE-like features including intelligent code completion, debugging capabilities, built-in version control integration, and an extensive marketplace of extensions that can add support for virtually any programming language or development workflow. Its cross-platform availability (Windows, macOS), fast performance, and highly customizable interface have made it a favorite among developers working on everything from web applications to machine learning projects. We will build applications within VS Code throughout the semester.
+
+Download and install VS Code from [code.visualstudio.com](https://code.visualstudio.com). During installation:
+
+- **Windows users**: Enable "Add to PATH" and "Open with Code" context menu options
+- **macOS users**: Drag VS Code to your Applications folder
+
+Alternatively, install via the command line using your package manager:
+
+```{python eval=false}
+# macOS - Install VS Code using Homebrew
+brew install --cask visual-studio-code
+```
+
+Note: The --cask flag tells Homebrew to install a GUI application rather than a command-line tool.
+
+```{python eval=false}
+# Windows - Install VS Code using Windows Package Manager
+winget install Microsoft.VisualStudioCode
+```
+
+## Claude Code
+
+Claude Code is a command-line tool that enables developers to delegate coding tasks directly to Claude AI from their terminal, creating an agentic coding experience where Claude can autonomously handle complex development workflows. Unlike traditional AI coding assistants that provide suggestions, Claude Code allows Claude to take full ownership of coding tasks, from analyzing requirements and planning implementation to writing, testing, and iterating on code across multiple files and directories. The tool is designed to integrate seamlessly into existing development workflows, allowing developers to describe what they want to build in natural language and have Claude execute the entire development process, including debugging, refactoring, and implementing best practices, while maintaining transparency through detailed logging and the ability for developers to review and approve changes at each step.
+
+Of course this won't build you a perfect, complicated application all by itself but it figuratively gives you a rocket pack, crane, and power tools while building a house.
+
+{{< video https://www.youtube.com/embed/GqjvaBUk3Tc >}}
+
+**Before installing Claude Code**, sign up for a Claude Pro subscription at [claude.ai/pricing](https://claude.ai/pricing) ($20/month or $17/month if billed annually). You'll need this to authenticate Claude Code.
+
+#### Installing Claude Code
+
+Open VS Code and launch a new terminal (Terminal → New Terminal). The terminal should appear as a new window pane within VS Code:
+
+![](images/terminal.jpg)
+
+Run the appropriate command for your operating system:
+
+**macOS:**
+```bash
+curl -fsSL https://claude.ai/install.sh | bash
+```
+
+**Windows (PowerShell):**
+```powershell
+irm https://claude.ai/install.ps1 | iex
+```
+
+Verify the installation:
+```bash
+claude --version
+```
+
+Launch Claude Code and authenticate with your Claude Pro account:
+```bash
+claude
+```
+
+Follow the prompts to complete authentication. After signing in through your browser, you should see something like this:
+
+![](images/claude-start.png)
+
+#### Installing Dependencies with Claude Code
+
+One of the powerful things about Claude Code is that it can help you set up your development environment. After launching Claude Code, ask it to install the essential tools:
+
+> Please help me install the following software or confirm they are already installed: 1) git, 2) node, 3) python
+
+Press **Enter** to say "Yes" when asked to proceed:
+
+![](images/claude-yes.jpg)
+
+Claude Code will detect your operating system and run the appropriate installation commands.
+
+::: {.callout-tip collapse="true" title="Manual installation of dependencies"}
+If you prefer to install dependencies manually or Claude Code encounters issues, here are the commands:
+
+**Node.js** (needed for other AI CLI tools):
+```bash
+# macOS
+brew install node
+
+# Windows
+winget install OpenJS.NodeJS.LTS
+
+# Check installation:
+node --version
+```
+
+**Python**:
+```bash
+# macOS
+brew install python
+
+# Windows
+winget install Python.Python.3
+
+python --version
+```
+
+**Git**:
+```bash
+# macOS
+brew install git
+
+# Windows
+winget install Git.Git
+
+git --version
+```
+:::
+
+#### Optional: Other AI CLI Agents
+
+You may also want to try other AI coding assistants. After Node.js is installed, you can add:
+
+- [Gemini CLI (free for students!) from Google](https://gemini.google/tw/students/)
+- [Codex from OpenAI](https://chatgpt.com/pricing/)
+- [GitHub Copilot](https://github.com/features/copilot)
+
+**Google Gemini CLI:**
+```bash
+npm install -g @google/gemini-cli
+gemini
+```
+
+![](images/gemini.png)
+
+**GitHub Copilot:**
+```bash
+npm install -g @github/copilot
+copilot
+```
+
+![](images/copilot.png)
+
+**OpenAI Codex:**
+```bash
+npm install -g @openai/codex
+codex
+```
+
+![](images/codex.png)
+
+## Code your first app
+
+Open VS Code and create a new directory where you will save your application files. 
+
+::: {.callout-tip collapse="true" title="File and folder naming principles"}
+AI will often help create file names for you, but when manually creating files or folders, the following guidelines are highly recommended:
+
+**General Naming Principles**
+
+- **Use lowercase** → avoids cross-platform issues.
+- **Hyphens (`-`) instead of spaces or underscores**.  
+  Example: `data-cleaning` instead of `Data_Cleaning` or `data cleaning`.
+- **Be descriptive but concise**.  
+  Example: `customer-surveys-2025.csv` is better than `cs25.csv`.
+- **Avoid special characters** → stick to letters, numbers, and hyphens.
+- **Stay consistent with tense and plurality** → e.g., always plural for folders (`scripts/`, `images/`).
+
+**Folders**
+
+Think of folders as **categories of content**. Common conventions:
+- `src/` → source code
+- `data/` → raw and/or processed datasets
+- `docs/` → documentation
+- `tests/` → unit/integration tests
+- `notebooks/` → Jupyter or research notebooks
+- `scripts/` → automation scripts
+- `configs/` → configuration files (YAML, JSON, etc.)
+- `assets/` → images, icons, other media
+
+**Files**
+
+Files should indicate **what they contain or do**, not just generic names.
+
+- **Code files:**  
+  `train-model.py`, `evaluate-model.py`, `preprocess-data.py`
+
+- **Configuration files:**  
+  `model-config.yaml`, `db-settings.json`
+
+- **Notebooks (keep order with numbers or dates):**  
+  `01-data-exploration.ipynb`, `02-feature-engineering.ipynb`
+
+- **Documentation:**  
+  `README.md` (always in the root folder), `CONTRIBUTING.md`, `CHANGELOG.md`
+:::
+
+Using the command line, make a new folder to contain your project files and navigate into it:
+
+```bash
+mkdir my-project
+ls                   # Confirm the new directory exists
+cd my-project
+```
+
+Start up Claude Code:
+
+```bash
+claude
+```
+
+After starting Claude Code, turn on [Explanatory Mode](https://docs.anthropic.com/en/docs/claude-code/output-styles) which will provide educational insights as you work and help you understand implementation choices and codebase patterns:
+
+```bash
+/output-style explanatory
+```
+
+Notice that changing the output style created a .claude file. 
+
+A .claude file is a configuration file used by Claude Code. These files help define project-specific settings and instructions for how Claude should approach coding tasks in your project.
+
+.claude files typically contain:
+
+- Project context and instructions - Information about your project's structure, coding standards, and specific requirements
+- File patterns and exclusions - Rules about which files Claude should or shouldn't modify
+- Custom prompts and guidelines - Specific instructions for how you want Claude to approach coding tasks in this particular project
+
+These files allow you to give Claude persistent context about your project so you don't have to re-explain your codebase structure, conventions, or preferences every time you use Claude Code. They essentially act as a "memory" for Claude about how to work effectively within your specific project.
+
+Now, copy paste the following prompt into the active Claude Code terminal session in order to build our first app with Claude Code.
+
+> Build me a simple todo list app using streamlit. Use a json file as the database.
+
+::: {.callout-tip collapse="true" title="What is streamlit?"}
+Streamlit is an open-source Python framework for quickly building interactive, data-driven web apps without needing to know front-end development (like HTML, CSS, or JavaScript).
+
+Key Features Include:
+
+- Simplicity: You can turn a Python script into a shareable web app with just a few lines of code.
+- Widgets: Built-in components (sliders, dropdowns, checkboxes, file uploaders, etc.) make it easy to collect user input.
+- Data Visualization Integration: Works seamlessly with libraries like Pandas, NumPy, Matplotlib, Plotly, and Altair.
+- Deployment: Apps can be hosted on Streamlit Community Cloud or deployed on your own servers.
+:::
+
+::: {.callout-tip collapse="true" title="What is JSON?"}
+JSON (JavaScript Object Notation) is a lightweight way of storing and sharing data. You can think of it like a digital "box" that holds information in a very organized way, using pairs of keys and values. For example:
+
+`{`\
+  `"name": "Alice",`\
+ `"age": 20,`\
+  `"isStudent": true`\
+`}`\
+
+In this example:
+
+- "name" is the key, and "Alice" is the value.
+- "age" is the key, and 20 is the value.
+- "isStudent" is the key, and true is the value.
+
+JSON is popular because it’s easy for humans to read and easy for computers to understand. It’s often used when apps, websites, or programs need to send information to each other.
+:::
+
+::: {.callout-tip collapse="true" title="How many lines of code does a production grade business application typically require?"}
+A production-grade business application for internal use typically ranges from 10,000 to 500,000+ lines of code, depending on several key factors: Small to Medium Internal Apps (10K-50K lines)
+
+Simple CRUD applications with basic workflows Departmental tools with limited integrations Small team usage (10-100 users)
+
+Medium Business Applications (50K-200K lines)
+
+Multi-module systems with complex business logic Integration with several external systems Company-wide usage (100-1000+ users) Advanced reporting and analytics features
+
+Large Enterprise Applications (200K-1M+ lines)
+
+Comprehensive business management systems Extensive integrations and APIs Multi-tenant or highly scalable architectures Complex compliance and security requirements
+
+Factors that significantly impact size:
+
+-   Complexity of business logic - Financial calculations, approval workflows, etc.
+
+-   Number of integrations - APIs, databases, third-party services
+
+-   User interface sophistication - Simple forms vs. rich dashboards Technology stack - Some frameworks require more boilerplate code
+
+-   Code quality practices - Well-structured code with proper separation of concerns Testing coverage - Test code can represent 30-50% of total codebase
+
+Modern considerations: Many internal applications today leverage low-code platforms, cloud services, and existing frameworks, which can reduce custom code requirements significantly. A modern internal app might accomplish what previously took 100K lines with just 20-30K lines by using pre-built components and services.
+:::
+
+## Code Your Second App
+
+Spend the next 15 minutes coming up with another application. For simplicity for now, continue using streamlit (i.e. include in your prompt that the application should be built using streamlit).
+
+## AI Dev Tools Landscape
+
+Claude Code is your primary tool for this course, but it's worth knowing about the broader ecosystem:
+
+| Tool | Type | Best For | Notes |
+|------|------|----------|-------|
+| **Claude Code** | CLI Agent | Full-stack development | Primary tool, agentic, can edit files directly |
+| **Cursor** | IDE | Integrated editing | VS Code fork with AI built in |
+| **Windsurf** | IDE | Context-aware editing | Good for larger codebases |
+| **Lovable** | No-code | Quick UI prototypes | Great for testing visual ideas fast |
+| **v0.dev** | UI Generator | UI from prompts | Vercel's AI design tool |
+| **Figma** | Design | Mockups, user flows | Industry standard for design |
+
+**For this class**, we'll primarily use Claude Code. But when you want to quickly visualize a UI idea before building it, tools like Lovable can generate a working prototype in seconds.
+
+## Key Concepts
+
+- **Product Management**: Identifying customer needs, aligning with business goals, building successful products
+- **Product Trio**: PM + Designer + Engineer collaboration model
+- **AI-Powered PM**: Using AI tools to enhance PM workflow (this course's focus)
+- **AI Product PM**: Building products where AI is a core feature
+- **Command Line / CLI**: Text-based interface to your computer
+- **Package Manager**: Tool for installing software (Homebrew, winget)
+- **VS Code**: Code editor we'll use throughout the course
+- **Claude Code**: Agentic AI coding assistant that runs in your terminal
+- **Explanatory Mode**: Claude Code setting that explains what it's doing

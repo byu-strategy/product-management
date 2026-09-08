@@ -1,0 +1,567 @@
+---
+title: "Business Models"
+---
+
+## Why This Matters
+
+A product that cannot pay for itself is a project. The business model is the argument for
+how value reaches you as well as your customer, and writing it down early surfaces the
+assumptions you did not know you were making.
+
+## Introduction
+
+The Business Model Canvas is a strategic management tool that helps you describe, design, challenge, and pivot your business model. Created by Alexander Osterwalder [@osterwalder2010business] and refined by Jeff Dyer, it provides a visual framework for understanding how your organization creates, delivers, and captures value.
+
+This version incorporates Jeff Dyer's refinement which splits the central value proposition into two distinct components: **Jobs-To-Be-Done** (understanding what customers are hiring your product to do) and **Customer Value Proposition** (the specific solutions you provide). This creates a 10-component canvas that emphasizes customer-centricity and job-based thinking.
+
+## Building Your Business Model Canvas
+
+Use the following prompts to systematically work through each component of the Business Model Canvas. These prompts will help you think critically about your business model and identify opportunities for innovation.
+
+**Important:** As you complete each prompt, save the output to a file called `business-model-canvas.md` in your project directory. Each section should be appended to this file in order. By the end of this process, you'll have a complete, well-formatted business model canvas document that you can reference and use to create presentations.
+
+The prompts are organized into four phases that follow the natural logic of business model development:
+
+- **Phase 1: Customer Focus** - Understanding who you serve and what value you provide
+- **Phase 2: Infrastructure** - Determining what you need to deliver that value
+- **Phase 3: Financial Viability** - Understanding your cost structure
+- **Phase 4: Synthesis** - Validating and visualizing your complete business model
+
+## Quick Start: Single-Prompt Business Model Canvas
+
+**Alternative Approach:** If you prefer to generate a complete business model canvas in one interaction rather than working through each component individually, use this comprehensive prompt:
+
+```markdown
+# Generate Complete Business Model Canvas
+
+Help me create a complete Business Model Canvas for my business in one comprehensive analysis.
+
+**Instructions:** Review my Claude.md file and codebase to understand my product/business.
+
+**Output Requirements:** Maximum 1200 words total. Create a complete, concise business model canvas covering all 10 components.
+
+Please analyze and provide:
+
+**1. Customer Segments** (100 words max):
+   - 2-4 primary segments with brief descriptions
+   - Priority recommendation for initial focus
+
+**2. Jobs-To-Be-Done** (150 words max):
+   - Primary functional job per segment
+   - Social/emotional dimensions
+   - Key opportunities where current solutions fall short
+
+**3. Customer Value Proposition** (150 words max):
+   - Core solution addressing the primary job
+   - Key differentiators from alternatives
+   - Main benefits/gains for customers
+
+**4. Channels** (100 words max):
+   - 3-5 most important acquisition, delivery, and support channels
+   - Why each channel fits our segments
+
+**5. Customer Relationships** (80 words max):
+   - Relationship type per segment
+   - Primary acquisition and retention tactics
+
+**6. Revenue Streams** (120 words max):
+   - Primary revenue model
+   - Pricing approach and rationale
+   - Revenue per segment with approximate price points
+
+**7. Key Resources** (100 words max):
+   - 3-6 most critical resources (physical/tech, intellectual, human, financial)
+   - Why each is critical
+
+**8. Key Activities** (80 words max):
+   - 3-5 most critical activities to deliver value
+   - Execution approach (internal/outsourced/automated)
+
+**9. Key Partnerships** (80 words max):
+   - 2-4 most important partnerships
+   - Value exchange for each
+
+**10. Cost Structure** (120 words max):
+   - Top 3-5 cost categories
+   - Fixed vs. variable split
+   - Cost strategy (lean vs. premium)
+   - Break-even estimate
+
+**11. Coherence & Validation** (120 words max):
+   - Overall assessment of model coherence
+   - Biggest risk and key strength
+   - Top 3 validation priorities
+
+Format each section with clear headers. Use bullet points for scannability. Focus on specifics over generics.
+
+**After receiving the response, save it to `business-model-canvas-short.md` in your project directory.**
+```
+
+**When to use this approach:**
+- You want a quick first draft to iterate on
+- You're familiar with Business Model Canvas concepts
+- You prefer a holistic view before diving into details
+
+**When to use the detailed step-by-step approach below:**
+- You're new to Business Model Canvas thinking
+- You want deeper analysis and guided thinking for each component
+- You prefer building incrementally with focused attention on each element
+
+---
+
+## Phase 1: Customer Focus
+
+### 1. Customer Segments Prompt
+
+```markdown
+# Customer Segments Analysis
+
+Help me identify and analyze the customer segments for my business.
+
+**Business/Product Description:** Review my Claude.md file and code base to understand my product.
+
+**Output Requirements:** Keep this concise - maximum 150 words total. Focus on clarity over comprehensiveness.
+
+Please provide:
+
+1. **Primary Segments** (2-4 segments maximum):
+   - Name each segment
+   - 1-2 sentence description per segment (demographics, needs, pain points)
+
+2. **Priority Recommendation**:
+   - Which segment to focus on initially and why (2-3 sentences)
+
+Format as a tight, scannable list. No lengthy explanations.
+
+**After receiving the response, save it to `business-model-canvas.md` under the heading "# Customer Segments"**
+```
+
+---
+
+### 2. Jobs-To-Be-Done Prompt
+
+```markdown
+# Jobs-To-Be-Done Analysis
+
+Help me identify the jobs customers are hiring my product to do.
+
+**Instructions:** First, read my existing `business-model-canvas.md` file to understand my customer segments.
+
+**Output Requirements:** Maximum 200 words total. Be specific and concise.
+
+For each primary customer segment, identify:
+
+1. **Primary Functional Job** (1 sentence): What core task/problem are they solving?
+
+2. **Social/Emotional Dimension** (1 sentence): How do they want to feel or be perceived?
+
+3. **Key Opportunity** (1 sentence): Where do current solutions fall short?
+
+Format as a tight bullet list per segment. Focus on the 1-2 most important jobs per segment, not exhaustive lists.
+
+**After receiving the response, save it to `business-model-canvas.md` under the heading "# Jobs-To-Be-Done"**
+```
+
+---
+
+### 3. Customer Value Proposition Prompt
+
+```markdown
+# Customer Value Proposition (CVP) Development
+
+Help me define the specific value propositions that address the jobs customers need done.
+
+**Instructions:** First, read my existing `business-model-canvas.md` file to understand my customer segments and their jobs-to-be-done.
+
+**Output Requirements:** Maximum 200 words total. Focus on unique value, not feature lists.
+
+For each primary segment, provide:
+
+1. **Core Solution** (1 sentence): What we offer and how it addresses the primary job
+
+2. **Key Differentiator** (1 sentence): What makes our solution uniquely better than alternatives
+
+3. **Main Benefit** (1 sentence): The primary gain or pain relief customers experience
+
+Format as concise bullets per segment. Emphasize outcomes over features.
+
+**After receiving the response, append it to `business-model-canvas.md` under the heading "# Customer Value Proposition"**
+```
+
+---
+
+### 4. Channels Prompt
+
+```markdown
+# Channels Strategy
+
+Help me design the channels through which we will reach and serve our customers.
+
+**Instructions:** First, read my existing `business-model-canvas.md` file to understand my customer segments, jobs-to-be-done, and customer value propositions.
+
+**Output Requirements:** Maximum 150 words total. List key channels only.
+
+Identify the 3-5 most important channels across:
+
+1. **Acquisition** (1-2 channels): How will customers discover and purchase?
+
+2. **Delivery** (1-2 channels): How will we deliver the product/service?
+
+3. **Support** (1 channel): Primary post-purchase support method?
+
+For each channel, provide 1 sentence explaining why it's appropriate for our segments.
+
+Keep it tactical and specific. No generic channel descriptions.
+
+**After receiving the response, append it to `business-model-canvas.md` under the heading "# Channels"**
+```
+
+---
+
+### 5. Customer Relationships Prompt
+
+```markdown
+# Customer Relationships Strategy
+
+Help me design the type of relationships we will establish with each customer segment.
+
+**Instructions:** First, read my existing `business-model-canvas.md` file to understand my customer segments, jobs-to-be-done, value propositions, and channels.
+
+**Output Requirements:** Maximum 100 words total. Focus on relationship type and key tactics.
+
+For each primary segment, specify:
+
+1. **Relationship Type** (choose one): Personal assistance, self-service, automated, community, or co-creation
+
+2. **Acquisition Tactic** (1 sentence): Primary method to get customers
+
+3. **Retention Tactic** (1 sentence): Primary method to keep customers
+
+Format as tight bullets. Be specific about tactics, not generic strategies.
+
+**After receiving the response, append it to `business-model-canvas.md` under the heading "# Customer Relationships"**
+```
+
+---
+
+### 6. Revenue Streams Prompt
+
+```markdown
+# Revenue Streams Analysis
+
+Help me identify and optimize the revenue streams for my business model.
+
+**Instructions:** First, read my existing `business-model-canvas.md` file to understand my customer segments, value propositions, channels, and customer relationships.
+
+**Output Requirements:** Maximum 150 words total. Focus on primary revenue model and pricing.
+
+Provide:
+
+1. **Primary Revenue Model** (choose one): Asset sale, subscription, usage fee, freemium, licensing, advertising, etc.
+
+2. **Pricing Approach** (1 sentence): How we price and why it fits our segments
+
+3. **Revenue per Segment** (1 sentence per segment): What each segment pays for and approximate price point
+
+Keep it focused on the core revenue mechanics. Skip lengthy projections.
+
+**After receiving the response, append it to `business-model-canvas.md` under the heading "# Revenue Streams"**
+```
+
+---
+
+## Phase 2: Infrastructure
+
+### 7. Key Resources Prompt
+
+```markdown
+# Key Resources Identification
+
+Help me identify the key resources required to make our business model work.
+
+**Instructions:** First, read my existing `business-model-canvas.md` file to understand my complete customer-focused business model.
+
+**Output Requirements:** Maximum 120 words total. List only critical resources.
+
+Identify the 3-6 most critical resources needed:
+
+1. **Physical/Tech** (if applicable): Key infrastructure, equipment, or technology
+
+2. **Intellectual** (if applicable): Proprietary IP, data, or expertise
+
+3. **Human** (if applicable): Critical roles or skills needed
+
+4. **Financial** (if applicable): Funding requirements
+
+For each resource, provide 1 sentence on why it's critical. Focus only on must-haves, not nice-to-haves.
+
+**After receiving the response, append it to `business-model-canvas.md` under the heading "# Key Resources"**
+```
+
+---
+
+### 8. Key Activities Prompt
+
+```markdown
+# Key Activities Analysis
+
+Help me identify the key activities required to execute our business model successfully.
+
+**Instructions:** First, read my existing `business-model-canvas.md` file to understand my business model and key resources.
+
+**Output Requirements:** Maximum 100 words total. List only the most critical activities.
+
+Identify the 3-5 most critical activities to deliver value:
+
+1. **Core Activities** (2-3 activities): The essential things we must do to deliver our value proposition
+
+2. **Execution Approach** (1 sentence per activity): Will this be done internally, outsourced, or automated?
+
+Keep it focused on must-do activities only. Skip extensive categorization.
+
+**After receiving the response, append it to `business-model-canvas.md` under the heading "# Key Activities"**
+```
+
+---
+
+### 9. Key Partnerships Prompt
+
+```markdown
+# Key Partnerships Strategy
+
+Help me identify strategic partnerships that will strengthen our business model.
+
+**Instructions:** First, read my existing `business-model-canvas.md` file to understand my key resources and activities.
+
+**Output Requirements:** Maximum 100 words total. List only critical partnerships.
+
+Identify the 2-4 most important partnerships (if any):
+
+1. **Partner Type & Purpose** (1 sentence per partnership): Who/what type of partner and why we need them
+
+2. **Value Exchange** (1 phrase per partnership): What they provide + what we provide
+
+If no critical partnerships are needed, state "None - will build all capabilities in-house" and explain briefly why.
+
+Keep it tight. Only list partnerships that are truly necessary.
+
+**After receiving the response, append it to `business-model-canvas.md` under the heading "# Key Partnerships"**
+```
+
+---
+
+## Phase 3: Financial Viability
+
+### 10. Cost Structure Prompt
+
+```markdown
+# Cost Structure Analysis
+
+Help me understand and optimize the cost structure for our business model.
+
+**Instructions:** First, read my existing `business-model-canvas.md` file to understand my key resources, activities, and partnerships.
+
+**Output Requirements:** Maximum 150 words total. Focus on major cost categories and break-even.
+
+Provide:
+
+1. **Top 3-5 Cost Categories** (1 phrase each): List the biggest costs (e.g., "Engineering salaries", "Cloud infrastructure", "Customer acquisition")
+
+2. **Fixed vs. Variable Split** (1 sentence): Approximate ratio and what drives variable costs
+
+3. **Cost Strategy** (1 sentence): Are we cost-driven (lean) or value-driven (premium)?
+
+4. **Break-Even Estimate** (1-2 sentences): Rough estimate of units/customers needed to break even and monthly burn rate
+
+Keep it high-level. Skip detailed optimization recommendations.
+
+**After receiving the response, append it to `business-model-canvas.md` under the heading "# Cost Structure"**
+```
+
+---
+
+## Phase 4: Synthesis & Validation
+
+### 11. Complete Business Model Review Prompt
+
+```markdown
+# Complete Business Model Canvas Review
+
+Help me review and optimize my complete business model canvas.
+
+**Instructions:** Read my complete `business-model-canvas.md` file which contains all ten components of my business model canvas.
+
+**Output Requirements:** Maximum 250 words total. Focus on critical gaps and next steps.
+
+Provide:
+
+1. **Coherence Assessment** (2-3 sentences): Does the model hang together? Any major gaps or contradictions? Do solutions address the jobs-to-be-done?
+
+2. **Biggest Risk** (1-2 sentences): What's the most critical assumption or weakness?
+
+3. **Key Strength** (1 sentence): What's the most defensible part of this model?
+
+4. **Financial Viability** (1-2 sentences): Can we make money? What are the unit economics?
+
+5. **Top 3 Validation Priorities** (3 bullets, 1 sentence each): What experiments or tests should we run first to validate/invalidate key assumptions?
+
+Keep it actionable and specific. Skip theoretical analysis.
+
+**After receiving the response, append it to `business-model-canvas.md` under the heading "# Business Model Review & Validation Plan"**
+```
+
+---
+
+### 12. Create Financial Model for Break-Even Analysis
+
+Once you've completed your business model canvas, use this prompt to create a financial model in Excel:
+
+```markdown
+# Create Financial Model for Break-Even & Sensitivity Analysis
+
+I need you to create an Excel financial model based on my business model canvas using the xlsx skill.
+
+**Instructions:** First, read my complete `business-model-canvas.md` file to understand my revenue streams, cost structure, and business model.
+
+**Your Task:**
+
+Create an Excel file named `financial-model.xlsx` with the following sheets:
+
+**Sheet 1: Assumptions**
+- Revenue assumptions from the canvas:
+  - Price per unit/customer by segment
+  - Expected conversion rates
+  - Growth assumptions (monthly/quarterly)
+  - Customer acquisition cost by segment
+  - Customer lifetime value estimates
+
+- Cost assumptions from the canvas:
+  - Fixed costs (monthly): salaries, rent, software, etc.
+  - Variable costs (per unit/customer): COGS, transaction fees, etc.
+  - Semi-variable costs: marketing, support scaling
+
+- Make all assumptions clearly labeled and in BLUE cells so they're easy to identify and modify
+
+**Sheet 2: Monthly Projections (12-24 months)**
+- Columns: Month, New Customers by Segment, Total Customers, Revenue by Stream, Total Revenue
+- Fixed Costs, Variable Costs, Total Costs
+- Gross Margin, Operating Margin, Net Profit/Loss
+- Cumulative Cash Flow
+- Break-Even Analysis (highlight when crossed)
+
+**Sheet 3: Break-Even Analysis**
+- Calculate break-even in units/customers
+- Calculate break-even in revenue
+- Calculate time to break-even (months)
+- Show contribution margin by segment
+- Create a break-even chart (Revenue vs. Costs over time)
+
+**Sheet 4: Sensitivity Analysis**
+- Create a data table showing how break-even changes with:
+  - Price variations (+/- 20% in 5% increments)
+  - Cost variations (+/- 20% in 5% increments)
+  - Customer acquisition cost variations
+  - Conversion rate variations
+
+- Use conditional formatting to highlight break-even points
+- Create a tornado chart or sensitivity chart showing which variables have the biggest impact
+
+**Formatting Requirements:**
+- Use clear headers and formatting
+- Color-code: Assumptions (BLUE), Revenue (GREEN), Costs (RED), Profit (GREEN/RED)
+- Include formulas (not hard-coded values)
+- Add data validation where appropriate
+- Include clear instructions/notes for updating assumptions
+- Make it easy to scenario-plan by changing blue assumption cells
+
+**Output:** Create `financial-model.xlsx` with all four sheets, formulas, and charts.
+
+Please read my `business-model-canvas.md` file now and create the financial model.
+```
+
+**After receiving the Excel file, save it to your project directory for break-even and sensitivity analysis.**
+
+---
+
+### 13. Create Business Model Canvas Presentation
+
+Once you've completed all prompts above and your `business-model-canvas.md` file is complete, use this final prompt to create a professional Business Model Canvas presentation slide:
+
+```markdown
+# Create Business Model Canvas Presentation Slide
+
+I need you to create a professional Business Model Canvas presentation slide using the pptx skill.
+
+**Context:** I have completed a comprehensive business model analysis with detailed information in the file `business-model-canvas.md`.
+
+**Your Task:**
+
+1. Read the entire `business-model-canvas.md` file to understand my complete business model
+2. Extract and synthesize the KEY insights from each of the ten business model components:
+   - Customer Segments
+   - Jobs-To-Be-Done
+   - Customer Value Proposition (CVP)
+   - Channels
+   - Customer Relationships
+   - Revenue Streams
+   - Key Resources
+   - Key Activities
+   - Key Partnerships
+   - Cost Structure
+
+3. Create a single PowerPoint slide using the pptx skill that presents a complete Business Model Canvas with:
+   - A clear title indicating the business/product name
+   - All ten building blocks arranged in the refined Business Model Canvas layout (with JTBD and CVP in the center)
+   - Concise, bullet-point summaries for each block (3-5 bullets max per block)
+   - Professional formatting with clear visual hierarchy
+   - Appropriate use of color to distinguish different sections
+   - Readable font sizes suitable for presentation
+
+4. For each block, uplevel the detailed analysis from the markdown file into:
+   - High-level strategic insights (not detailed explanations)
+   - Concrete, specific points (not generic statements)
+   - Action-oriented language where appropriate
+   - Maximum clarity and brevity
+
+**Design Guidelines:**
+- Use the Business Model Canvas layout shown in images/business-model-canvas.png which splits the center into Jobs-To-Be-Done and Customer Value Proposition sections. If you can't access this file, use the Jeff Dyer refined BMC layout with 10 blocks.
+- The center section should show JTBD (top) and CVP/Solution (bottom) as separate but connected blocks
+- Ensure all text is legible and not overcrowded
+- Use visual hierarchy to make the canvas easy to scan
+- Consider using different background colors for the ten blocks to improve readability
+- Include a footer with your company name or project name
+
+**Output:** Create a professional PPTX file named `business-model-canvas.pptx` with one comprehensive 10-component Business Model Canvas slide.
+
+Please read my `business-model-canvas.md` file now and create the presentation.
+```
+
+---
+
+## Getting Started
+
+Work through the prompts above in order, building your Business Model Canvas systematically. Each prompt builds on the previous ones, so keep your answers accessible to reference in later prompts.
+
+**Tips for success:**
+
+1. **Be specific:** Generic answers lead to generic business models. Include details about your specific business context.
+
+2. **Iterate:** Your first answers won't be perfect. Use the AI to refine and improve each component.
+
+3. **Stay customer-focused:** Always return to the question: "How does this create value for our customers?"
+
+4. **Test assumptions:** For each component, identify what assumptions you're making and how you could validate them.
+
+5. **Think holistically:** As you complete each section, consider how it affects the other components of your business model.
+
+6. **Use the complete review:** Once you've filled in all components, use the final prompt to get a comprehensive analysis and identify areas for improvement.
+
+## Key Concepts
+
+- **Business Model Canvas**: nine blocks describing how a business creates, delivers, and captures value.
+- **Customer segments**: who you serve, stated narrowly enough to act on.
+- **Value proposition**: the specific gain or pain relief you deliver.
+- **Revenue streams**: how value returns to you, and on what cadence.
+- **Cost structure**: what you must spend regardless of whether anyone buys.
+- **Unit economics**: what one customer costs to acquire and returns over time.
+- **Break-even**: the point where cumulative revenue overtakes cumulative cost.

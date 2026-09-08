@@ -1,0 +1,542 @@
+---
+title: "Interface and Flow"
+---
+
+## Why This Matters
+
+Your product is only as good as the part people touch. An agent will happily generate a
+working application that nobody can figure out how to use, and it will not tell you that it
+has. Judgment about the surface is yours.
+
+## Frontend Fundamentals
+
+Every web application has a frontend, the part users see and interact with. Modern frontends are built with HTML (structure), CSS (styling), and JavaScript (interactivity).
+
+#### HTML: The Structure
+
+HTML (HyperText Markup Language) defines the structure of a web page using elements:
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My App</title>
+  </head>
+  <body>
+    <h1>Welcome</h1>
+    <p>This is a paragraph.</p>
+    <button>Click me</button>
+  </body>
+</html>
+```
+
+Common HTML elements:
+- `<h1>` to `<h6>`**: Headings
+- `<p>`**: Paragraphs
+- `<a>`**: Links
+- `<button>`**: Buttons
+- `<input>`**: Form inputs
+- `<div>`**: Generic containers
+
+#### CSS: The Styling
+
+CSS (Cascading Style Sheets) controls how elements look:
+
+```css
+h1 {
+  color: blue;
+  font-size: 24px;
+}
+
+button {
+  background-color: green;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+```
+
+Modern apps often use CSS frameworks like **Tailwind CSS**, which provides utility classes:
+
+```html
+<button class="bg-green-500 text-white px-4 py-2 rounded">
+  Click me
+</button>
+```
+
+#### JavaScript: The Interactivity
+
+JavaScript makes pages interactive:
+
+```javascript
+const button = document.querySelector('button');
+button.addEventListener('click', () => {
+  alert('Button clicked!');
+});
+```
+
+## React Basics
+
+For complex applications, raw HTML/CSS/JavaScript becomes hard to manage. **React** is a JavaScript library that helps you build user interfaces from reusable components.
+
+#### Components
+
+A React component is a function that returns UI:
+
+```jsx
+function Welcome() {
+  return <h1>Hello, World!</h1>;
+}
+```
+
+Components can accept **props** (inputs) and manage **state** (data that changes):
+
+```jsx
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={() => setCount(count + 1)}>
+        Increment
+      </button>
+    </div>
+  );
+}
+```
+
+#### Why React?
+
+- **Reusable components**: Build once, use everywhere
+- **Declarative**: Describe what you want, not how to do it
+- **Ecosystem**: Huge community, lots of libraries
+- **Industry standard**: Used by Facebook, Netflix, Airbnb, etc.
+
+For this class, we'll use **Next.js**, a React framework that handles routing, server rendering, and deployment.
+
+## Client-Side State and Forms
+
+Most apps need forms to collect user input. Here's how state and forms work together:
+
+```jsx
+function ProblemForm() {
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log({ title, description });
+    // Save to database
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+        placeholder="Problem title"
+      />
+      <textarea
+        value={description}
+        onChange={(e) => setDescription(e.target.value)}
+        placeholder="Describe the problem"
+      />
+      <button type="submit">Save</button>
+    </form>
+  );
+}
+```
+
+## The Platform Decision Framework
+
+Before jumping to solutions, ask these questions:
+
+| Question | If Yes | If No |
+|----------|--------|-------|
+| Do users need this when away from computers? | Consider mobile | Web is fine |
+| Does it need device hardware (camera, GPS, sensors)? | Consider mobile | Web is fine |
+| Is your core user flow < 30 seconds? | Mobile-friendly matters | Desktop-first okay |
+| Do competitors have apps? | Understand why | May not need one |
+| Will users install another app? | Maybe mobile | Probably web |
+
+**The key insight:** Most products don't need native apps. Web works for most B2B tools, productivity apps, and content platforms. Mobile matters most for consumer apps with frequent, brief interactions.
+
+## Web vs. Mobile: The Real Tradeoffs
+
+#### Distribution
+
+**Web advantages:**
+- Instant access via URL (no installation)
+- SEO brings organic traffic
+- Updates deploy instantly
+- One codebase for all users
+- Works on any device with a browser
+
+**Mobile (App Store) advantages:**
+- Discovery through app stores
+- Home screen presence
+- Push notification reliability
+- "There's an app for that" legitimacy
+- Better retention for installed apps
+
+**The hard truth:** App store discovery is brutal. Unless you're in a category people actively search (fitness, dating, games), organic app store traffic is minimal. You'll need to drive users there yourself, which means you need web anyway.
+
+#### Development & Maintenance
+
+| Factor | Web Only | Web + Mobile |
+|--------|----------|--------------|
+| **Initial build time** | 1x | 2-3x |
+| **Ongoing maintenance** | 1 codebase | 2-3 codebases |
+| **Feature parity** | N/A | Constant challenge |
+| **Team size needed** | Smaller | Larger |
+| **Bug surface area** | Smaller | Much larger |
+
+**The hidden cost:** Mobile isn't just building once. It's maintaining multiple platforms forever. Every feature ships twice (or three times). Every bug exists in multiple places.
+
+#### User Behavior
+
+**Mobile makes sense when:**
+- Usage is frequent (daily+) and brief (< 2 minutes)
+- Location matters (maps, local search)
+- Camera/photos are core to the experience
+- Offline access is important
+- Push notifications drive engagement
+
+**Web makes more sense when:**
+- Tasks require focus (30+ minutes)
+- Heavy text input is common
+- Users are at desks (B2B, productivity)
+- File handling is important
+- SEO is a growth channel
+
+## The Platform Spectrum
+
+You don't have to choose between "web only" and "native app." There's a spectrum:
+
+```
+Web → Responsive Web → PWA → Capacitor/Ionic → React Native → Native
+<---------------- Easier ----------------->
+<---------------- More "native" ---------->
+```
+
+| Approach | Effort | Native Feel | Store Distribution |
+|----------|--------|-------------|-------------------|
+| **Responsive Web** | Low | Low | No |
+| **PWA** | Medium | Medium | Limited |
+| **Capacitor** | Medium | Medium-High | Yes |
+| **React Native** | High | High | Yes |
+| **Native (Swift/Kotlin)** | Highest | Highest | Yes |
+
+For most startups, the sweet spot is **Responsive Web → PWA → Capacitor** progression:
+
+1. **Start responsive**: Mobile-friendly web
+2. **Add PWA**: Installable, offline-capable
+3. **Wrap with Capacitor**: Ship to app stores when needed
+
+## Progressive Web Apps (PWAs)
+
+PWAs are web apps with superpowers. They can:
+- Be installed on home screens
+- Work offline
+- Send push notifications (mostly)
+- Feel like native apps
+
+**PWA requirements:**
+- HTTPS (required)
+- Service worker (for offline/caching)
+- Web app manifest (metadata for installation)
+
+**PWA limitations:**
+- iOS Safari support is limited
+- Push notifications restricted on iOS
+- Some native APIs unavailable
+- Can't be listed in app stores (usually)
+
+**When PWA is enough:**
+- Internal tools
+- B2B products
+- Content-heavy apps
+- Products where installation isn't critical
+
+## Capacitor: Web to Native
+
+Capacitor (by the Ionic team) wraps your web app in a native container. You get:
+- Full app store distribution
+- Access to native device APIs
+- One codebase, multiple platforms
+- Keep your existing React/Vue/Angular code
+
+**How it works:**
+```
+Your Web App (React, etc.)
+        ↓
+    Capacitor
+        ↓
+iOS App    Android App    Web App
+```
+
+**Capacitor is ideal when:**
+- You have a working web app
+- You need app store presence
+- Native API access is important
+- You want to maintain one codebase
+
+**Capacitor limitations:**
+- Performance-intensive apps may struggle
+- Complex animations can feel non-native
+- Some native APIs need custom plugins
+- UI doesn't automatically match platform conventions
+
+## When to Go Fully Native
+
+Sometimes web-based approaches aren't enough:
+
+**Consider native (Swift, Kotlin) when:**
+- Performance is critical (games, video, AR)
+- Complex gestures and animations are core
+- Deep OS integration is required
+- Your competitors set native expectations
+- You have the team and resources
+
+**Consider React Native when:**
+- You need native performance
+- Your team knows JavaScript/React
+- You want shared logic but native UI
+- Instagram/Facebook-level apps
+
+**The honest advice:** If you're asking "should I go native?", the answer is probably no. Native development requires specialized skills, more time, and larger teams. Start simpler, validate, then upgrade if needed.
+
+## Making the Decision
+
+#### The Startup Path
+
+**Phase 1: Validate (Week 1-8)**
+- Build responsive web
+- Focus on core value proposition
+- Test with users
+
+**Phase 2: Grow (Week 8-16)**
+- Add PWA capabilities
+- Improve mobile experience
+- Monitor usage patterns
+
+**Phase 3: Expand (If needed)**
+- Wrap with Capacitor for app stores
+- Or stay web-only if it's working
+
+#### Decision Matrix
+
+| Your Situation | Recommendation |
+|----------------|----------------|
+| Pre-product-market fit | Stay web only |
+| B2B / productivity | Responsive web + PWA |
+| Consumer, frequent use | PWA → Capacitor |
+| Hardware-dependent | Capacitor or native |
+| Gaming / media-heavy | Native or React Native |
+
+## Making Your App Mobile-Responsive
+
+Before anything else, your web app needs to work well on mobile screens.
+
+#### Responsive CSS Basics
+
+Use CSS media queries to adjust layouts:
+
+```css
+/* Default (mobile-first) */
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+/* Tablet and up */
+@media (min-width: 768px) {
+  .container {
+    flex-direction: row;
+    padding: 2rem;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}
+```
+
+#### Tailwind Responsive Utilities
+
+If you're using Tailwind CSS, responsive design is built in:
+
+```jsx
+<div className="flex flex-col md:flex-row lg:max-w-4xl">
+  <aside className="w-full md:w-64">Sidebar</aside>
+  <main className="flex-1">Content</main>
+</div>
+```
+
+Prefixes: `sm:` (640px), `md:` (768px), `lg:` (1024px), `xl:` (1280px)
+
+#### Mobile UX Essentials
+
+- **Touch targets**: Minimum 44×44px for buttons
+- **Font sizes**: 16px minimum to prevent zoom on iOS
+- **Forms**: Use appropriate input types (`type="email"`, `type="tel"`)
+- **Viewport**: Always include `<meta name="viewport" content="width=device-width, initial-scale=1">`
+
+## Setting Up a PWA
+
+#### 1. Create the Manifest
+
+Create `public/manifest.json`:
+
+```json
+{
+  "name": "My Product",
+  "short_name": "Product",
+  "description": "A brief description of your product",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
+```
+
+Link it in your HTML:
+
+```html
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#000000">
+```
+
+#### 2. Add a Service Worker
+
+For Next.js, use the `next-pwa` package:
+
+```bash
+npm install next-pwa
+```
+
+Update `next.config.js`:
+
+```javascript
+const withPWA = require('next-pwa')({
+  dest: 'public',
+  disable: process.env.NODE_ENV === 'development'
+});
+
+module.exports = withPWA({
+  // Your other Next.js config
+});
+```
+
+#### 3. Test Installation
+
+1. Deploy to HTTPS (Vercel handles this)
+2. Open in Chrome
+3. Look for install prompt or use DevTools → Application → Manifest
+
+## Capacitor Setup
+
+#### Initialize Capacitor
+
+```bash
+npm install @capacitor/core @capacitor/cli
+npx cap init
+```
+
+This creates `capacitor.config.ts`:
+
+```typescript
+import { CapacitorConfig } from '@capacitor/cli';
+
+const config: CapacitorConfig = {
+  appId: 'com.yourcompany.yourapp',
+  appName: 'Your App',
+  webDir: 'out',  // or 'build' or '.next' depending on your setup
+  server: {
+    androidScheme: 'https'
+  }
+};
+
+export default config;
+```
+
+#### Add Platforms
+
+```bash
+# Install platform packages
+npm install @capacitor/ios @capacitor/android
+
+# Add platforms
+npx cap add ios
+npx cap add android
+```
+
+#### Build and Sync
+
+```bash
+# Build your web app first
+npm run build
+
+# Copy web assets to native projects
+npx cap sync
+
+# Open in native IDEs
+npx cap open ios      # Opens Xcode
+npx cap open android  # Opens Android Studio
+```
+
+#### Using Native APIs
+
+Install Capacitor plugins for native features:
+
+```bash
+npm install @capacitor/camera @capacitor/filesystem
+```
+
+Use them in your code:
+
+```javascript
+import { Camera, CameraResultType } from '@capacitor/camera';
+
+async function takePhoto() {
+  const photo = await Camera.getPhoto({
+    quality: 90,
+    resultType: CameraResultType.Uri
+  });
+
+  // photo.webPath contains the image
+  return photo.webPath;
+}
+```
+
+## Key Concepts
+
+- **Platform Spectrum**: Web → PWA → Capacitor → React Native → Native
+- **Distribution Tradeoffs**: Web (URL, SEO) vs. App Store (discovery, install)
+- **PWA (Progressive Web App)**: Installable web apps with offline support
+- **Capacitor**: Wraps web apps for native app store distribution
+- **Service Worker**: Enables offline functionality and caching
+- **Web App Manifest**: Metadata for PWA installation
+- **Responsive Design**: Adapting layouts to different screen sizes
+- **Mobile-First**: Designing for mobile screens first, then scaling up
+- **Git Hooks**: Automated scripts that run at commit/push time
+- **Husky**: Tool for managing Git hooks in JavaScript projects
+- **Lint-Staged**: Running checks only on staged files for speed
