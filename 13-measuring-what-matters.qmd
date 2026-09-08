@@ -1,0 +1,495 @@
+---
+title: "Measuring What Matters"
+---
+
+## Why This Matters
+
+You can't improve what you don't measure. But measuring the wrong things is worse than measuring nothing. It leads you to optimize for metrics that don't matter while ignoring what does.
+
+This chapter teaches you to choose the right metrics, avoid vanity traps, and implement analytics that actually inform decisions. The goal isn't to track everything; it's to track what helps you build a better product.
+
+Read a metric as [evidence](03-problem-discovery.qmd), not a verdict. A number moves a belief up or down; it does not certify that you are right, or that you are worthy. And remember that outcomes carry luck: a good number can follow a poor decision and a bad number a sound one [@duke2018bets]. Track what updates your beliefs about the product, not what flatters them.
+
+## The Metrics Hierarchy
+
+Not all metrics are created equal. Think of them in layers:
+
+```
+                    North Star Metric
+                          ↑
+              Input Metrics (drivers)
+                          ↑
+        Operational Metrics (activities)
+                          ↑
+              Diagnostic Metrics (health checks)
+```
+
+**North Star Metric**: The one number that best captures the value you deliver to customers. For Airbnb, it's nights booked. For Slack, it's messages sent. For Spotify, it's time spent listening.
+
+**Input Metrics**: The levers you can pull that influence the North Star. These are what you actually optimize.
+
+**Operational Metrics**: Day-to-day activity indicators.
+
+**Diagnostic Metrics**: Health checks that tell you if something's broken.
+
+## Leading vs. Lagging Indicators
+
+| Type | Definition | Example |
+|------|------------|---------|
+| **Lagging** | Measures outcomes (what happened) | Revenue, churn rate |
+| **Leading** | Predicts outcomes (what will happen) | Feature adoption, NPS |
+
+**The insight:** Lagging indicators tell you the score. Leading indicators tell you how to change it.
+
+If churn is your problem (lagging), look for leading indicators that predict it:
+- Days since last login
+- Features used (or not used)
+- Support tickets filed
+- Declining engagement
+
+## Vanity Metrics vs. Actionable Metrics
+
+**Vanity metrics** make you feel good but don't help you make decisions:
+- Total registered users (includes inactive)
+- Page views (without context)
+- Social media followers
+- App downloads
+
+**Actionable metrics** inform decisions:
+- Active users (DAU/WAU/MAU)
+- Conversion rate
+- Retention cohorts
+- Time to value
+
+**The test:** Can this metric directly inform a decision? If not, it's probably vanity.
+
+## Measure Outcomes, Not Output
+
+There is a deeper vanity trap than any bad metric: measuring how much you *built* instead of whether it *worked*. Features shipped, tickets closed, lines of code, these are **output**. Whether users are better off, whether they came back, whether the problem actually got solved, is **outcome**. Marty Cagan and Melissa Perri call the habit of mistaking the first for the second the *build trap*: a team busily shipping, feeling productive, and delivering nothing that matters.
+
+In the AI era this trap is more dangerous, not less, because output has never been cheaper. You can ship a feature a day now. So hold yourself to outcomes: did the North Star move, did activation improve, did a real user get real value? Shipping is not the goal; changing an outcome is.
+
+*Outcomes over output, and the build trap, from Marty Cagan, Inspired / Empowered [@cagan2017inspired], and Melissa Perri, Escaping the Build Trap (2018) [@perri2018buildtrap].*
+
+## The Pirate Metrics Framework (AARRR)
+
+Dave McClure's framework [@mcclure2007] covers the entire user lifecycle:
+
+| Stage | Question | Key Metrics |
+|-------|----------|-------------|
+| **Acquisition** | How do users find you? | Traffic sources, CAC, sign-ups |
+| **Activation** | Do they have a good first experience? | Activation rate, time to value |
+| **Retention** | Do they come back? | Day 1/7/30 retention, churn |
+| **Revenue** | Do they pay? | Conversion, ARPU, LTV |
+| **Referral** | Do they tell others? | NPS, referral rate, virality |
+
+**Where to focus:** If you're pre-product-market fit, focus on Activation and Retention. Acquisition and Revenue come later.
+
+## Acquisition Metrics
+
+Measure how people discover and start using your product.
+
+| Metric | What It Measures | Formula |
+|--------|-----------------|---------|
+| **Traffic** | Visitors by source | Organic, paid, referral counts |
+| **Sign-ups** | New account creation | Registrations per period |
+| **CAC** | Cost to acquire a customer | Total acquisition spend / New customers |
+| **Activation Rate** | First value experience | Users who complete key action / Total new users |
+
+**Watch out for:** High acquisition + low activation = leaky bucket. Fix activation before spending more on acquisition.
+
+## Engagement Metrics
+
+Track how actively and frequently people interact with your product.
+
+| Metric | What It Measures | Formula |
+|--------|-----------------|---------|
+| **DAU/WAU/MAU** | Active users by timeframe | Unique users who performed core action |
+| **Stickiness** | Habit formation | DAU / MAU (higher = stickier) |
+| **Session length** | Depth of engagement | Average time per session |
+| **Feature adoption** | Feature usage | Users who used feature / Total active users |
+
+**DAU/MAU ratio benchmarks:**
+- 50%+ = Excellent (daily habit)
+- 20-50% = Good
+- 10-20% = Average
+- <10% = Concerning
+
+## Retention Metrics
+
+Measure how well your product keeps users coming back over time.
+
+| Metric | What It Measures | Formula |
+|--------|-----------------|---------|
+| **Retention rate** | Users who stayed | Users at end of period / Users at start |
+| **Churn rate** | Users who left | Lost users / Total users |
+| **Cohort retention** | Retention by signup date | % of cohort still active after N days |
+
+**Cohort analysis** is your most powerful retention tool. Instead of looking at all users together, group them by when they signed up and track each group separately.
+
+```
+Cohort: January signups
+Day 1:  100% (by definition)
+Day 7:   60%
+Day 30:  35%
+Day 90:  20%
+```
+
+**Retention curves tell a story:**
+- Steep initial drop → First experience problem
+- Continued decline → Core value problem
+- Flattening curve → Found your retained users
+- Rising curve → You're doing something special
+
+## Monetization Metrics
+
+Reflect your ability to generate revenue.
+
+| Metric | What It Measures | Formula |
+|--------|-----------------|---------|
+| **Conversion rate** | Free to paid | Paying users / Total users |
+| **ARPU** | Revenue per user | Revenue / Active users |
+| **LTV** | Lifetime customer value | ARPU × Average customer lifespan |
+| **LTV:CAC ratio** | Unit economics health | LTV / CAC (want 3:1 or better) |
+
+**The LTV:CAC ratio** is crucial:
+- < 1:1 = Losing money on each customer
+- 1-3:1 = Concerning, watch carefully
+- 3:1+ = Healthy, can invest in growth
+- 5:1+ = Very healthy, maybe under-investing
+
+## Customer Satisfaction Metrics
+
+Track how users feel about your product.
+
+| Metric | What It Measures | Scale |
+|--------|-----------------|-------|
+| **NPS** | Likelihood to recommend | -100 to +100 |
+| **CSAT** | Satisfaction with experience | 1-5 or 1-10 |
+| **CES** | Effort to accomplish goal | 1-7 |
+
+**Net Promoter Score (NPS)** [@reichheld2003onenumber]**:**
+- "How likely are you to recommend us?" (0-10)
+- Promoters (9-10), Passives (7-8), Detractors (0-6)
+- NPS = % Promoters - % Detractors
+
+**Benchmarks vary by industry:** A 30 NPS might be excellent for a bank but mediocre for a consumer app.
+
+## Data-Informed vs. Data-Driven
+
+**Data-driven:** "The data says X, so we do X."
+
+**Data-informed:** "The data says X, and combined with our judgment about Y, we'll do Z."
+
+The difference matters. Data can tell you *what* is happening, but rarely *why*. It can show *correlation* but not *causation*.
+
+**When to trust data:**
+- Large sample sizes
+- Clear causation (A/B tests)
+- Consistent patterns across time/segments
+
+**When to be skeptical:**
+- Small sample sizes
+- Cherry-picked time periods
+- Metrics that can be gamed
+- Correlation without causation
+
+## Choosing Your Metrics
+
+For your sprint, focus on these questions:
+
+1. **What's your North Star?** The one metric that best represents value delivered.
+2. **What are your input metrics?** 2-3 things you can influence that drive the North Star.
+3. **What's your activation event?** The moment users first get value.
+4. **How will you measure retention?** Day 1, Day 7, Day 30 are common.
+
+**Start simple.** It's better to track 5 metrics well than 50 poorly.
+
+## Analytics Architecture
+
+A typical analytics setup:
+
+```
+User Action
+    ↓
+Event Tracking (client-side)
+    ↓
+Analytics Service (Supabase, Mixpanel, PostHog)
+    ↓
+Dashboard (visualization)
+    ↓
+Decision
+```
+
+## Setting Up Analytics with Supabase
+
+Supabase can serve as your analytics backend. Create an events table:
+
+```sql
+CREATE TABLE analytics_events (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  user_id UUID REFERENCES auth.users(id),
+  event_name TEXT NOT NULL,
+  event_data JSONB DEFAULT '{}',
+  page_url TEXT,
+  session_id TEXT,
+  created_at TIMESTAMP DEFAULT NOW()
+);
+
+-- Index for fast queries
+CREATE INDEX idx_events_name ON analytics_events(event_name);
+CREATE INDEX idx_events_user ON analytics_events(user_id);
+CREATE INDEX idx_events_time ON analytics_events(created_at);
+```
+
+## Event Tracking Implementation
+
+Create an analytics utility:
+
+```javascript
+// lib/analytics.js
+import { supabase } from './supabase';
+
+let sessionId = null;
+
+function getSessionId() {
+  if (!sessionId) {
+    sessionId = crypto.randomUUID();
+  }
+  return sessionId;
+}
+
+export async function trackEvent(eventName, eventData = {}) {
+  const { data: { user } } = await supabase.auth.getUser();
+
+  const { error } = await supabase.from('analytics_events').insert({
+    user_id: user?.id,
+    event_name: eventName,
+    event_data: eventData,
+    page_url: window.location.href,
+    session_id: getSessionId()
+  });
+
+  if (error) {
+    console.error('Analytics error:', error);
+  }
+}
+```
+
+## Tracking Key Events
+
+Track events throughout your app:
+
+```javascript
+// Track sign-up
+await trackEvent('user_signed_up', {
+  method: 'email' // or 'google', 'github'
+});
+
+// Track activation (first value moment)
+await trackEvent('activation_completed', {
+  feature: 'first_problem_added'
+});
+
+// Track feature usage
+await trackEvent('feature_used', {
+  feature: 'problem_tracker',
+  action: 'added_problem'
+});
+
+// Track conversions
+await trackEvent('subscription_started', {
+  plan: 'pro',
+  monthly_value: 29
+});
+```
+
+## Common Event Schema
+
+Standardize your event names and properties:
+
+| Event | Properties | When to Fire |
+|-------|------------|--------------|
+| `page_viewed` | `page_name`, `referrer` | Every page load |
+| `user_signed_up` | `method` | Account creation |
+| `user_logged_in` | `method` | Successful login |
+| `activation_completed` | `feature` | First value moment |
+| `feature_used` | `feature`, `action` | Feature interactions |
+| `error_occurred` | `error_type`, `message` | Errors |
+
+## Querying Your Data
+
+Basic SQL queries for common metrics:
+
+**Daily Active Users:**
+```sql
+SELECT DATE(created_at) as date, COUNT(DISTINCT user_id) as dau
+FROM analytics_events
+WHERE created_at > NOW() - INTERVAL '30 days'
+GROUP BY DATE(created_at)
+ORDER BY date;
+```
+
+**Activation Rate:**
+```sql
+WITH signups AS (
+  SELECT user_id, MIN(created_at) as signup_date
+  FROM analytics_events
+  WHERE event_name = 'user_signed_up'
+  GROUP BY user_id
+),
+activations AS (
+  SELECT user_id
+  FROM analytics_events
+  WHERE event_name = 'activation_completed'
+)
+SELECT
+  COUNT(DISTINCT activations.user_id)::FLOAT /
+  COUNT(DISTINCT signups.user_id) as activation_rate
+FROM signups
+LEFT JOIN activations ON signups.user_id = activations.user_id;
+```
+
+**Retention by Cohort:**
+```sql
+WITH user_cohorts AS (
+  SELECT
+    user_id,
+    DATE_TRUNC('week', MIN(created_at)) as cohort_week
+  FROM analytics_events
+  WHERE event_name = 'user_signed_up'
+  GROUP BY user_id
+),
+user_activity AS (
+  SELECT
+    user_id,
+    DATE_TRUNC('week', created_at) as activity_week
+  FROM analytics_events
+  GROUP BY user_id, DATE_TRUNC('week', created_at)
+)
+SELECT
+  uc.cohort_week,
+  ua.activity_week,
+  COUNT(DISTINCT ua.user_id) as active_users
+FROM user_cohorts uc
+JOIN user_activity ua ON uc.user_id = ua.user_id
+WHERE ua.activity_week >= uc.cohort_week
+GROUP BY uc.cohort_week, ua.activity_week
+ORDER BY uc.cohort_week, ua.activity_week;
+```
+
+## Building a Simple Dashboard
+
+Create a dashboard component in React:
+
+```jsx
+import { useState, useEffect } from 'react';
+import { supabase } from '../lib/supabase';
+
+export function MetricsDashboard() {
+  const [metrics, setMetrics] = useState({
+    dau: 0,
+    signups: 0,
+    activations: 0
+  });
+
+  useEffect(() => {
+    async function fetchMetrics() {
+      // Daily Active Users (last 24 hours)
+      const { count: dau } = await supabase
+        .from('analytics_events')
+        .select('user_id', { count: 'exact', head: true })
+        .gte('created_at', new Date(Date.now() - 86400000).toISOString());
+
+      // Signups (last 7 days)
+      const { count: signups } = await supabase
+        .from('analytics_events')
+        .select('*', { count: 'exact', head: true })
+        .eq('event_name', 'user_signed_up')
+        .gte('created_at', new Date(Date.now() - 604800000).toISOString());
+
+      // Activations (last 7 days)
+      const { count: activations } = await supabase
+        .from('analytics_events')
+        .select('*', { count: 'exact', head: true })
+        .eq('event_name', 'activation_completed')
+        .gte('created_at', new Date(Date.now() - 604800000).toISOString());
+
+      setMetrics({ dau, signups, activations });
+    }
+
+    fetchMetrics();
+  }, []);
+
+  return (
+    <div className="grid grid-cols-3 gap-4">
+      <MetricCard title="Daily Active Users" value={metrics.dau} />
+      <MetricCard title="Signups (7d)" value={metrics.signups} />
+      <MetricCard title="Activations (7d)" value={metrics.activations} />
+    </div>
+  );
+}
+
+function MetricCard({ title, value }) {
+  return (
+    <div className="bg-white p-4 rounded-lg shadow">
+      <h3 className="text-sm text-gray-500">{title}</h3>
+      <p className="text-2xl font-bold">{value}</p>
+    </div>
+  );
+}
+```
+
+## Alternative: Third-Party Analytics
+
+For more features without building custom:
+
+| Service | Best For | Free Tier |
+|---------|----------|-----------|
+| **PostHog** | Product analytics, open source | 1M events/mo |
+| **Mixpanel** | Event-based analytics | 100K users/mo |
+| **Amplitude** | Product analytics at scale | 10M events/mo |
+| **Plausible** | Simple, privacy-focused | Paid only |
+| **Google Analytics** | Basic web analytics | Unlimited |
+
+## PostHog Integration Example
+
+```bash
+npm install posthog-js
+```
+
+```javascript
+// lib/posthog.js
+import posthog from 'posthog-js';
+
+export function initPostHog() {
+  if (typeof window !== 'undefined') {
+    posthog.init('your-project-key', {
+      api_host: 'https://app.posthog.com'
+    });
+  }
+}
+
+export function trackEvent(event, properties) {
+  posthog.capture(event, properties);
+}
+
+export function identifyUser(userId, traits) {
+  posthog.identify(userId, traits);
+}
+```
+
+## Key Concepts
+
+- **North Star Metric**: The one number that best captures value delivered
+- **Leading vs. Lagging Indicators**: Predictors vs. outcomes
+- **Vanity Metrics**: Feel-good numbers that don't inform decisions
+- **AARRR (Pirate Metrics)**: Acquisition, Activation, Retention, Revenue, Referral
+- **Cohort Analysis**: Tracking user groups over time
+- **DAU/MAU**: Daily/Monthly Active Users
+- **Stickiness**: DAU/MAU ratio (habit strength)
+- **LTV:CAC Ratio**: Unit economics health (want 3:1+)
+- **NPS (Net Promoter Score)**: Likelihood to recommend
+- **Data-Informed vs. Data-Driven**: Using data with judgment vs. blindly following data
+- **Event Tracking**: Recording user actions for analysis
+- **Activation Rate**: Users who reach first value / Total new users

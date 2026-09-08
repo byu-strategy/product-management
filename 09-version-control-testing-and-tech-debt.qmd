@@ -1,0 +1,653 @@
+---
+title: "Version Control, Testing, and Tech Debt"
+---
+
+## Why This Matters
+
+Code you cannot change is code you do not own. This chapter is about the practices that keep
+a codebase changeable: version control so you can undo anything, tests so you find out when
+you broke something, and a working theory of technical debt so you know which mess to clean
+and which to leave alone.
+
+## Git Fundamentals
+
+As your projects grow, you need version control. Git tracks every change you make, lets you experiment safely, and enables collaboration. GitHub stores your Git repositories online for backup and sharing.
+
+#### Understanding the Git Workflow
+
+A typical Git workflow has four stages:
+
+![](images/git-visual.jpg)
+
+| Stage | What It Is |
+|-------|------------|
+| **Working Directory** | The folder on your computer where you edit files |
+| **Staging Area** | A list of changes you want to include in your next save |
+| **Local Repository** | Your project's history, stored in a hidden `.git` folder |
+| **Remote Repository** | A copy of your project on GitHub (or similar) |
+
+#### Essential Git Commands
+
+| Command | What It Does |
+|---------|--------------|
+| `git init` | Create a new Git repository in current folder |
+| `git status` | See what's changed since last commit |
+| `git add .` | Stage all changes for commit |
+| `git commit -m "message"` | Save staged changes with a description |
+| `git log --oneline` | View commit history |
+| `git push` | Upload commits to GitHub |
+| `git pull` | Download changes from GitHub |
+
+#### Your First Git Workflow
+
+Let's practice with your problem tracker from last chapter:
+
+```bash
+# Navigate to your project
+cd problem-tracker
+
+# Initialize Git (only do this once per project)
+git init
+
+# See what files exist
+git status
+
+# Stage all files
+git add .
+
+# Commit with a message
+git commit -m "Initial commit: problem tracker app"
+
+# Check your history
+git log --oneline
+```
+
+#### Connecting to GitHub
+
+1. Create a new repository on [github.com](https://github.com) (don't initialize with README)
+2. Connect your local repo:
+
+```bash
+# Add GitHub as your remote
+git remote add origin https://github.com/YOUR-USERNAME/problem-tracker.git
+
+# Push your code
+git push -u origin main
+```
+
+Now your code is backed up online and you can share the link with anyone.
+
+## Branches: Safe Experimentation
+
+Branches let you try new features without breaking your main code.
+
+```bash
+# Create and switch to a new branch
+git switch -c feature-rating
+
+# Make changes, then commit
+git add .
+git commit -m "Add rating system for problems"
+
+# Switch back to main
+git switch main
+
+# Merge your feature branch
+git merge feature-rating
+```
+
+**Pro tip:** Always create a branch before making significant changes. If it doesn't work out, you can just delete the branch.
+
+## What is Technical Debt?
+
+Technical debt is the implicit cost of additional rework caused by choosing an expedient solution now instead of using a better approach that would take longer.
+
+The metaphor comes from finance: just like financial debt, technical debt [@cunningham1992]:
+- **Accumulates interest**: The longer you wait to pay it down, the more expensive it becomes
+- **Can be strategic**: Sometimes borrowing makes sense
+- **Can be crippling**: Too much debt slows everything down
+
+**Examples of technical debt:**
+- Duplicated code across multiple files
+- Hard-coded values that should be configurable
+- Missing tests for critical functionality
+- Components that do too many things
+- Outdated dependencies with security vulnerabilities
+- No error handling for edge cases
+
+## Strategic vs. Accidental Debt
+
+Not all tech debt is bad. Some is intentional and strategic.
+
+#### Strategic (Deliberate) Debt
+
+**When it makes sense:**
+- Racing to validate product-market fit
+- Meeting a hard deadline (demo, investor pitch)
+- Testing a hypothesis quickly
+- Competitive pressure requires speed
+
+**Example:**
+> "We know this data model won't scale past 10,000 users, but we need to launch next week to test demand. If it works, we'll rebuild the database layer."
+
+**The key:** You know you're taking on debt, and you have a plan to address it.
+
+#### Accidental (Inadvertent) Debt
+
+**How it happens:**
+- Developers didn't know a better approach
+- Requirements changed after implementation
+- Quick fixes that became permanent
+- Poor communication about system design
+
+**Example:**
+> "I didn't realize there was already a date formatting utility, so I wrote another one. Now we have three different date formatters and they don't all produce the same output."
+
+## The Tech Debt Quadrant [@fowler2009]
+
+| | Reckless | Prudent |
+|---|----------|---------|
+| **Deliberate** | "We don't have time for tests" | "Ship now, refactor later" |
+| **Inadvertent** | "What's a design pattern?" | "Now we know how we should have built it" |
+
+**Prudent deliberate debt** is often justified. It's a conscious business decision.
+
+**Reckless inadvertent debt** is the most dangerous, you don't even know you're accumulating it.
+
+## When to Pay Down Tech Debt
+
+The answer isn't "always" or "never". It depends on context.
+
+**Pay it down when:**
+- The debt is blocking new feature development
+- You're about to modify code in that area anyway
+- It's causing bugs or performance issues
+- Onboarding new developers is difficult
+- Security vulnerabilities are involved
+
+**Defer payment when:**
+- You're still validating product-market fit
+- The code might be deleted soon (pivoting)
+- The cost of refactoring exceeds the benefit
+- You have hard deadlines with real consequences
+
+**The Boy Scout Rule:** Leave the code better than you found it [@martinrc2008clean]. When you're working in an area, clean up a little. Incremental improvements compound over time.
+
+## Code Quality Fundamentals
+
+#### The DRY Principle [@hunt1999pragmatic]
+
+**DRY (Don't Repeat Yourself)** means each piece of knowledge should exist in exactly one place.
+
+**Before (repetitive):**
+```javascript
+// Three places with the same logic
+function validateStudentDiscount(user) {
+  if (!user.email) return false;
+  return user.email.endsWith('.edu');
+}
+
+function calculateStudentPrice(price, user) {
+  if (!user.email) return price;
+  if (user.email.endsWith('.edu')) {
+    return price * 0.8;
+  }
+  return price;
+}
+
+function showStudentBanner(user) {
+  if (user.email && user.email.endsWith('.edu')) {
+    return true;
+  }
+  return false;
+}
+```
+
+**After (DRY):**
+```javascript
+// One source of truth
+function isStudent(user) {
+  return user.email?.endsWith('.edu') ?? false;
+}
+
+function validateStudentDiscount(user) {
+  return isStudent(user);
+}
+
+function calculateStudentPrice(price, user) {
+  return isStudent(user) ? price * 0.8 : price;
+}
+
+function showStudentBanner(user) {
+  return isStudent(user);
+}
+```
+
+#### Single Responsibility [@martinrc2008clean]
+
+Each function, component, or module should do one thing.
+
+**Before (doing too much):**
+```javascript
+function handleUserSubmit(formData) {
+  // Validate
+  if (!formData.email) throw new Error('Email required');
+  if (!formData.name) throw new Error('Name required');
+
+  // Transform
+  const user = {
+    email: formData.email.toLowerCase(),
+    name: formData.name.trim(),
+    createdAt: new Date()
+  };
+
+  // Save
+  await supabase.from('users').insert(user);
+
+  // Send email
+  await sendWelcomeEmail(user.email);
+
+  // Track
+  await trackEvent('user_signed_up', { email: user.email });
+
+  // Redirect
+  router.push('/dashboard');
+}
+```
+
+**After (single responsibility):**
+```javascript
+async function handleUserSubmit(formData) {
+  const validatedData = validateUserForm(formData);
+  const user = await createUser(validatedData);
+  await onUserCreated(user);
+  router.push('/dashboard');
+}
+
+function validateUserForm(formData) {
+  if (!formData.email) throw new Error('Email required');
+  if (!formData.name) throw new Error('Name required');
+  return formData;
+}
+
+async function createUser(formData) {
+  const user = transformUserData(formData);
+  await supabase.from('users').insert(user);
+  return user;
+}
+
+async function onUserCreated(user) {
+  await Promise.all([
+    sendWelcomeEmail(user.email),
+    trackEvent('user_signed_up', { email: user.email })
+  ]);
+}
+```
+
+## Linting and Formatting
+
+Automated tools catch problems and maintain consistency without manual effort.
+
+#### ESLint Setup
+
+```bash
+npm install -D eslint @eslint/js
+npx eslint --init
+```
+
+Basic `.eslintrc.json`:
+```json
+{
+  "extends": ["next/core-web-vitals", "eslint:recommended"],
+  "rules": {
+    "no-unused-vars": "warn",
+    "no-console": "warn",
+    "prefer-const": "error"
+  }
+}
+```
+
+#### Prettier Setup
+
+```bash
+npm install -D prettier eslint-config-prettier
+```
+
+Create `.prettierrc`:
+```json
+{
+  "semi": true,
+  "singleQuote": true,
+  "tabWidth": 2,
+  "trailingComma": "es5"
+}
+```
+
+Add to `package.json`:
+```json
+{
+  "scripts": {
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  }
+}
+```
+
+## Testing Fundamentals
+
+Tests catch bugs before users do and give you confidence to refactor.
+
+#### Types of Tests
+
+| Type | What It Tests | Speed | Coverage |
+|------|---------------|-------|----------|
+| **Unit** | Individual functions | Fast | Narrow |
+| **Integration** | Components working together | Medium | Medium |
+| **End-to-End** | Full user flows | Slow | Broad |
+
+**The testing pyramid:** Lots of unit tests, fewer integration tests, even fewer E2E tests [@cohn2009agile].
+
+#### Setting Up Jest
+
+```bash
+npm install -D jest @testing-library/react @testing-library/jest-dom
+```
+
+Create `jest.config.js`:
+```javascript
+module.exports = {
+  testEnvironment: 'jsdom',
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
+  moduleNameMapper: {
+    '^@/(.*)$': '<rootDir>/$1'
+  }
+};
+```
+
+#### Writing Your First Tests
+
+```javascript
+// lib/utils.test.js
+import { formatCurrency, calculateDiscount } from './utils';
+
+describe('formatCurrency', () => {
+  it('formats positive numbers correctly', () => {
+    expect(formatCurrency(1234.56)).toBe('$1,234.56');
+  });
+
+  it('handles zero', () => {
+    expect(formatCurrency(0)).toBe('$0.00');
+  });
+
+  it('handles negative numbers', () => {
+    expect(formatCurrency(-50)).toBe('-$50.00');
+  });
+});
+
+describe('calculateDiscount', () => {
+  it('applies percentage discount', () => {
+    expect(calculateDiscount(100, 20)).toBe(80);
+  });
+
+  it('returns original price for zero discount', () => {
+    expect(calculateDiscount(100, 0)).toBe(100);
+  });
+
+  it('handles 100% discount', () => {
+    expect(calculateDiscount(100, 100)).toBe(0);
+  });
+});
+```
+
+#### Testing React Components
+
+```javascript
+// components/Counter.test.js
+import { render, screen, fireEvent } from '@testing-library/react';
+import Counter from './Counter';
+
+describe('Counter', () => {
+  it('renders initial count', () => {
+    render(<Counter initialCount={5} />);
+    expect(screen.getByText('Count: 5')).toBeInTheDocument();
+  });
+
+  it('increments when + clicked', () => {
+    render(<Counter initialCount={0} />);
+    fireEvent.click(screen.getByText('+'));
+    expect(screen.getByText('Count: 1')).toBeInTheDocument();
+  });
+
+  it('decrements when - clicked', () => {
+    render(<Counter initialCount={5} />);
+    fireEvent.click(screen.getByText('-'));
+    expect(screen.getByText('Count: 4')).toBeInTheDocument();
+  });
+});
+```
+
+## Refactoring Patterns
+
+Refactoring is improving code structure without changing behavior.
+
+#### Extract Function
+
+When code does too many things, extract pieces into separate functions.
+
+**Before:**
+```javascript
+function processOrder(order) {
+  // Calculate total
+  let total = 0;
+  for (const item of order.items) {
+    total += item.price * item.quantity;
+  }
+
+  // Apply discount
+  if (order.discountCode === 'SAVE20') {
+    total *= 0.8;
+  }
+
+  // Add tax
+  total *= 1.08;
+
+  // Format receipt
+  return `Order Total: $${total.toFixed(2)}`;
+}
+```
+
+**After:**
+```javascript
+function processOrder(order) {
+  const subtotal = calculateSubtotal(order.items);
+  const afterDiscount = applyDiscount(subtotal, order.discountCode);
+  const withTax = addTax(afterDiscount);
+  return formatReceipt(withTax);
+}
+
+function calculateSubtotal(items) {
+  return items.reduce((sum, item) => sum + item.price * item.quantity, 0);
+}
+
+function applyDiscount(amount, code) {
+  const discounts = { 'SAVE20': 0.8, 'SAVE10': 0.9 };
+  return amount * (discounts[code] || 1);
+}
+
+function addTax(amount, rate = 0.08) {
+  return amount * (1 + rate);
+}
+
+function formatReceipt(total) {
+  return `Order Total: $${total.toFixed(2)}`;
+}
+```
+
+#### Extract Component
+
+When a React component is too large, split it into smaller pieces.
+
+**Before (500+ line component):**
+```jsx
+function Dashboard() {
+  // 50 lines of state
+  // 100 lines of data fetching
+  // 200 lines of handlers
+  // 150 lines of JSX
+}
+```
+
+**After:**
+```jsx
+function Dashboard() {
+  return (
+    <DashboardLayout>
+      <DashboardHeader />
+      <MetricsGrid />
+      <RecentActivity />
+      <QuickActions />
+    </DashboardLayout>
+  );
+}
+```
+
+## Supabase Realtime
+
+Realtime features keep users engaged and create stickiness.
+
+#### Setting Up Realtime
+
+Enable realtime on your table:
+
+```sql
+-- Enable realtime for a table
+ALTER PUBLICATION supabase_realtime ADD TABLE messages;
+```
+
+Or in the Supabase dashboard: Table Editor → Your Table → Enable Realtime
+
+#### Subscribing to Changes
+
+```javascript
+import { useEffect, useState } from 'react';
+import { supabase } from '../lib/supabase';
+
+function MessageList({ roomId }) {
+  const [messages, setMessages] = useState([]);
+
+  useEffect(() => {
+    // Initial fetch
+    async function fetchMessages() {
+      const { data } = await supabase
+        .from('messages')
+        .select('*')
+        .eq('room_id', roomId)
+        .order('created_at');
+      setMessages(data || []);
+    }
+    fetchMessages();
+
+    // Subscribe to new messages
+    const subscription = supabase
+      .channel(`room:${roomId}`)
+      .on(
+        'postgres_changes',
+        {
+          event: 'INSERT',
+          schema: 'public',
+          table: 'messages',
+          filter: `room_id=eq.${roomId}`
+        },
+        (payload) => {
+          setMessages(prev => [...prev, payload.new]);
+        }
+      )
+      .subscribe();
+
+    // Cleanup on unmount
+    return () => {
+      subscription.unsubscribe();
+    };
+  }, [roomId]);
+
+  return (
+    <ul>
+      {messages.map(msg => (
+        <li key={msg.id}>{msg.content}</li>
+      ))}
+    </ul>
+  );
+}
+```
+
+#### Presence: Who's Online
+
+Show who else is viewing the same content:
+
+```javascript
+function PresenceIndicator({ roomId, currentUser }) {
+  const [onlineUsers, setOnlineUsers] = useState([]);
+
+  useEffect(() => {
+    const channel = supabase.channel(`presence:${roomId}`);
+
+    channel
+      .on('presence', { event: 'sync' }, () => {
+        const state = channel.presenceState();
+        const users = Object.values(state).flat();
+        setOnlineUsers(users);
+      })
+      .subscribe(async (status) => {
+        if (status === 'SUBSCRIBED') {
+          await channel.track({
+            user_id: currentUser.id,
+            user_name: currentUser.name,
+            online_at: new Date().toISOString()
+          });
+        }
+      });
+
+    return () => {
+      channel.unsubscribe();
+    };
+  }, [roomId, currentUser]);
+
+  return (
+    <div className="flex gap-2">
+      {onlineUsers.map(user => (
+        <span key={user.user_id} className="px-2 py-1 bg-green-100 rounded">
+          {user.user_name}
+        </span>
+      ))}
+    </div>
+  );
+}
+```
+
+#### Realtime Use Cases
+
+| Feature | How It Works |
+|---------|--------------|
+| **Live chat** | Subscribe to message inserts |
+| **Collaborative editing** | Broadcast cursor positions with presence |
+| **Notifications** | Subscribe to notifications table |
+| **Live dashboards** | Subscribe to metrics table updates |
+| **Activity feeds** | Subscribe to activity inserts |
+
+## Key Concepts
+
+- **Technical Debt**: Cost of rework from choosing quick solutions over better ones
+- **Strategic Debt**: Deliberate shortcuts with a plan to address them
+- **Accidental Debt**: Unintentional problems from lack of knowledge
+- **Boy Scout Rule**: Leave code better than you found it
+- **DRY (Don't Repeat Yourself)**: Single source of truth for each piece of knowledge
+- **Single Responsibility**: Each function/component does one thing
+- **Linting**: Automated code quality checks
+- **Formatting**: Consistent code style
+- **Unit Tests**: Testing individual functions
+- **Integration Tests**: Testing components working together
+- **Refactoring**: Improving structure without changing behavior
+- **Extract Function/Component**: Breaking large pieces into smaller ones
+- **Supabase Realtime**: Live database subscriptions
+- **Presence**: Tracking who's currently online

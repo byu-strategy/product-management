@@ -1,0 +1,274 @@
+---
+title: "Anatomy of an Application"
+---
+
+## Why This Matters
+
+You have been shipping since week one, and Claude Code has been making the architectural
+decisions for you. That was on purpose. You cannot learn everything before you build
+anything, and the fastest way to understand a stack is to already have one running.
+
+Now you find out what you have been shipping. When you write requirements and design
+documents for web or mobile applications, you are working with a handful of building
+blocks: a client, a server, an API, and a database. Knowing what each one does is the
+difference between directing an agent and hoping it guesses right.
+
+![](/images/eng-landscape.png)
+
+## Frontend (The User Interface)
+
+The **frontend** is everything users see and interact with, whether in a browser or on a smartphone. It's the buttons, forms, text, images, and animations. When you click "Add to Cart" on a shopping site, that button and the visual feedback you get, that's frontend.
+
+The frontend (web browser or mobile app) is sometimes called the "client". Hoever "client" can also mean any consumer of an API, for example a server-side job, a third-party service, or another backend that calls your API. When we say "client-side" or refer explicitly to the frontend, we mean code executing in the user's browser or device; when we discuss API interactions, "client" may refer to any caller of the API.
+
+**Technologies you'll encounter:**
+
+**Web:**
+
+- **HTML/CSS/JavaScript** - Structure, styling, and interactivity
+- **Frameworks** - React, Vue, Svelte (for complex interfaces)
+
+**Mobile:**
+
+- **Native** - Swift (iOS), Kotlin (Android) for platform-specific apps
+- **Cross-platform** - React Native, Flutter (one codebase for both iOS and Android)
+
+## Backend (The Business Logic)
+
+The **backend** consists of everything the user does not directly see. It handles the "business logic" which are the rules and operations that make your app work. When you submit a login form, the backend checks if your password is correct. When you add a to-do item, the backend validates it and saves it.
+
+**Technologies you'll encounter:**
+
+- **Server frameworks** - Node.js/Express, Python/Django, Ruby on Rails
+- **APIs** - The connection points between frontend and backend (more on this below)
+- **Backend Services** - Firebase, Supabase, AWS Amplify (backend-as-a-service for mobile apps)
+- **Authentication** - Login systems, user sessions, permissions
+
+## Database (The Memory)
+
+The **database** is where your application stores data permanently. Think of it as your app's long-term memory. Whether users access from a browser or mobile device, the database ensures their data persists.
+
+**Technologies you'll encounter:**
+
+- **SQL databases** - PostgreSQL, MySQL (data organized like spreadsheets with tables and rows)
+- **NoSQL databases** - MongoDB, Firebase Firestore (organized like nested documents)
+- **Mobile-friendly options** - Firebase, Supabase (real-time sync across devices)
+- **Local storage** - SQLite (on-device storage for mobile apps), IndexedDB (browser storage)
+
+For example, in a to-do list app, items are stored in a SQL database table that might look like:
+
+| id  | user_id | task_text        | completed | created_at          |
+|-----|---------|------------------|-----------|---------------------|
+| 1   | 42      | "Buy groceries"  | false     | 2025-01-15 10:30:00 |
+| 2   | 42      | "Call dentist"   | true      | 2025-01-15 11:45:00 |
+
+## API (The Messenger)
+
+**API** stands for Application Programming Interface which is unfortuate because it doesn't describe very clearly what an API does. An API is the messenger system carries information between the frontend and backend. If you need to display data onscreen (your frontend) then an API provides the rails to retreive this data from the database.
+
+**Examples** When you add a to-do item:
+
+1. **Frontend** sends a POST request to `/api/tasks` with the task text
+2. **Backend** receives the request, validates the data, saves to database
+3. **Backend** sends response back: `{ success: true, task: { id: 123, text: "Buy groceries" } }`
+4. **Frontend** receives response and updates the UI
+
+## How They Work Together: The Full Stack
+
+Here's how all four pieces work together when a user adds a to-do item (same flow for web and mobile):
+
+```{mermaid}
+sequenceDiagram
+    participant User
+    participant Frontend
+    participant API
+    participant Backend
+    participant Database
+
+    User->>Frontend: Types "Buy groceries" and taps/clicks Add
+    Frontend->>API: POST /api/tasks {"task_text": "Buy groceries"}
+    API->>Backend: Route request to task creation handler
+    Backend->>Backend: Validate task text is not empty
+    Backend->>Database: INSERT new task record
+    Database->>Backend: Return new task with id=123
+    Backend->>API: Return success response
+    API->>Frontend: { "success": true, "task": {...} }
+    Frontend->>User: Display new task in list
+```
+
+**This is called the "full stack"**: frontend (web/mobile), backend, database, and the APIs connecting them. When you become a **Full-Stack Product Builder**, you're able to specify requirements and design across all these layers for both web and mobile platforms.
+
+### Why This Matters for Writing Specs
+
+When you write specifications, you'll need to think about all these layers:
+
+**Bad spec (vague):**
+
+```markdown
+The app should let users create accounts
+```
+
+**Good spec (covers all layers):**
+```markdown
+## User Registration Feature
+
+### Requirements
+WHEN user submits registration form with valid email and password
+THEN system SHALL create account and send confirmation email
+
+### Design
+
+**Frontend (Web & Mobile):**
+- Registration form with email and password fields
+- Client-side validation: email format, password minimum 8 characters
+- Display loading state during submission
+- Web: /signup route | Mobile: RegisterScreen component
+
+**API:**
+- POST /api/auth/register
+- Request: { email, password }
+- Response: { success, user } or { success: false, error }
+
+**Backend:**
+- Validate email format and uniqueness
+- Hash password using bcrypt
+- Create user record
+- Send confirmation email via SendGrid
+- Return JWT token for authentication
+
+**Database:**
+- Users table with: id, email (unique), password_hash, created_at
+```
+
+See the difference? The good spec thinks through the entire stack for both web and mobile. This is what Claude Code (or any AI coding agent) needs to generate quality code.
+
+### Don't Panic
+
+This might feel like a lot if you're new to technical concepts. The good news: **you can learn super fast**. You just need enough understanding to start knowing what questions to ask.
+
+The core You'll start naturally thinking: "This feature needs a frontend form, an API endpoint to submit it, backend validation, and a database table to store the results."
+
+And here's the best part: **Claude Code can help you learn**. When you're unsure about how something should work technically, you can ask:
+
+```markdown
+I want to add user authentication to my app. Can you explain what
+database tables I'll need and what the API endpoints should look like?
+```
+
+The AI will explain the architecture and help you write the specs. You're not expected to know everything, you're expected to ask good questions and guide the implementation.
+
+## Tech Stacks and Languages
+
+A **stack** is the specific set of technologies you have chosen for each layer. People name
+stacks as shorthand for a whole set of decisions.
+
+| Layer | What it does | Common choices |
+|---|---|---|
+| Frontend | What the user sees and touches | React, Next.js, Vue, Svelte, plain HTML and CSS |
+| Backend | Business logic, the rules of your product | Node.js, Python, Ruby, Go |
+| Database | What the product remembers | Postgres, MySQL, SQLite, MongoDB |
+| Hosting | Where it runs so others can reach it | Vercel, Netlify, Railway, Fly.io, AWS |
+| Auth | Who is allowed to do what | Supabase Auth, Clerk, Auth0 |
+
+**The stack this course uses** is React and Next.js on the frontend, Supabase for the
+database and authentication, and Vercel for hosting. That combination is not the only
+reasonable one. It is chosen because it gets a real, multi-user, authenticated application
+onto the internet faster than anything else available to a solo builder, and because the
+free tiers are generous enough to carry a student product through a semester.
+
+**On languages.** You will mostly write, and mostly read, JavaScript and TypeScript,
+because that is the language of the browser. SQL turns up whenever you ask the database a
+question. Python appears when you are doing analysis or calling a model. You do not need
+fluency in any of them to ship. You need enough to read what the agent wrote and notice
+when it is wrong, which is a much lower bar and a much more useful one.
+
+**Choosing a stack.** Pick the boring one. Novel technology spends your attention on the
+tool instead of the product, and an agent writes better code in a popular stack because it
+has seen far more of it. The stack that is well documented, widely used, and already
+familiar to your tools is almost always the right call for a first product.
+
+## Supabase Introduction
+
+**Supabase** is an open-source backend platform that provides everything you need to build a real application:
+
+| Feature | What It Does |
+|---------|--------------|
+| **Database** | PostgreSQL database for storing data |
+| **Authentication** | User signup, login, OAuth |
+| **Storage** | File uploads and hosting |
+| **Realtime** | Live updates when data changes |
+| **Edge Functions** | Serverless code execution |
+
+Think of Supabase as "Firebase for people who like SQL." It's free for small projects and scales as you grow.
+
+#### Setting Up Supabase
+
+1. Go to [supabase.com](https://supabase.com) and create an account
+2. Create a new project
+3. Note your project URL and API key (you'll need these)
+
+#### Connecting Your App
+
+Install the Supabase client:
+
+```bash
+npm install @supabase/supabase-js
+```
+
+Create a client:
+
+```javascript
+import { createClient } from '@supabase/supabase-js';
+
+const supabase = createClient(
+  'https://your-project.supabase.co',
+  'your-anon-key'
+);
+```
+
+## Authentication with Supabase
+
+Authentication is how you verify who users are. Supabase makes this simple:
+
+#### Email/Password Auth
+
+```javascript
+// Sign up
+const { user, error } = await supabase.auth.signUp({
+  email: 'user@example.com',
+  password: 'secure-password'
+});
+
+// Sign in
+const { user, error } = await supabase.auth.signInWithPassword({
+  email: 'user@example.com',
+  password: 'secure-password'
+});
+
+// Sign out
+await supabase.auth.signOut();
+
+// Get current user
+const { data: { user } } = await supabase.auth.getUser();
+```
+
+#### OAuth (Google, GitHub, etc.)
+
+```javascript
+// Sign in with Google
+const { data, error } = await supabase.auth.signInWithOAuth({
+  provider: 'google'
+});
+```
+
+Configure OAuth providers in your Supabase dashboard under Authentication → Providers.
+
+## Key Concepts
+
+- **Frontend**: the interface running in the user's browser.
+- **Backend**: the logic running on a server, where rules and secrets live.
+- **Database**: durable storage; what survives a refresh.
+- **API**: the contract by which frontend and backend talk.
+- **Full stack**: all of the above, and now all of it is yours.
+- **Stack choice**: pick the boring, well-documented option; agents write it better.
+- **Authentication**: proving who a user is. Authorization is deciding what they may do.

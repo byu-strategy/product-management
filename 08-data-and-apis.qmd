@@ -1,0 +1,453 @@
+---
+title: "Data and APIs"
+---
+
+## Why This Matters
+
+Everything your product remembers lives in a database, and everything it borrows from the
+outside world arrives through an API. These two mechanics are most of what separates a
+prototype from a product. A prototype forgets when you refresh. A product does not.
+
+## Supabase Database Fundamentals
+
+Your MVP needs to persist data. Supabase provides a PostgreSQL database that's easy to use and scales with you.
+
+#### Understanding Tables
+
+A database table is like a spreadsheet:
+- **Rows** = individual records (one user, one task, one order)
+- **Columns** = fields (name, email, created_at)
+
+```sql
+-- Example: problems table
+CREATE TABLE problems (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  user_id UUID REFERENCES auth.users(id),
+  title TEXT NOT NULL,
+  description TEXT,
+  frequency TEXT CHECK (frequency IN ('daily', 'weekly', 'monthly', 'rarely')),
+  intensity INTEGER CHECK (intensity BETWEEN 1 AND 10),
+  created_at TIMESTAMP DEFAULT NOW()
+);
+```
+
+#### Creating Tables in Supabase
+
+1. Go to your Supabase dashboard
+2. Navigate to **Table Editor**
+3. Click **New Table**
+4. Define your columns with types
+
+**Common column types:**
+
+| Type | Use For |
+|------|---------|
+| `text` | Names, descriptions, any text |
+| `integer` | Whole numbers |
+| `boolean` | True/false values |
+| `timestamp` | Dates and times |
+| `uuid` | Unique identifiers |
+| `jsonb` | Flexible structured data |
+
+#### Schemas: Your Database Blueprint
+
+A schema defines all your tables and how they relate. For a problem tracker:
+
+```
+users (from Supabase Auth)
+├── id
+├── email
+└── created_at
+
+problems
+├── id
+├── user_id → users.id
+├── title
+├── description
+├── frequency
+├── intensity
+└── created_at
+
+interviews
+├── id
+├── problem_id → problems.id
+├── interviewee_role
+├── notes
+├── key_quotes
+└── conducted_at
+```
+
+## Row Level Security (RLS)
+
+RLS ensures users can only access their own data. Without it, any authenticated user could read everyone's data.
+
+#### Enabling RLS
+
+```sql
+-- Enable RLS on the table
+ALTER TABLE problems ENABLE ROW LEVEL SECURITY;
+
+-- Create policy: users can only see their own problems
+CREATE POLICY "Users can view own problems"
+ON problems FOR SELECT
+USING (auth.uid() = user_id);
+
+-- Users can insert problems for themselves
+CREATE POLICY "Users can insert own problems"
+ON problems FOR INSERT
+WITH CHECK (auth.uid() = user_id);
+
+-- Users can update their own problems
+CREATE POLICY "Users can update own problems"
+ON problems FOR UPDATE
+USING (auth.uid() = user_id);
+
+-- Users can delete their own problems
+CREATE POLICY "Users can delete own problems"
+ON problems FOR DELETE
+USING (auth.uid() = user_id);
+```
+
+**Always enable RLS on tables with user data.**
+
+## CRUD Operations
+
+CRUD = Create, Read, Update, Delete. These are the fundamental database operations.
+
+#### Using the Supabase Client
+
+```javascript
+import { createClient } from '@supabase/supabase-js';
+
+const supabase = createClient(
+  'https://your-project.supabase.co',
+  'your-anon-key'
+);
+
+// CREATE - Insert a new problem
+const { data, error } = await supabase
+  .from('problems')
+  .insert({
+    title: 'Expense tracking is tedious',
+    description: 'I spend 30 min every week categorizing receipts',
+    frequency: 'weekly',
+    intensity: 7
+  })
+  .select();
+
+// READ - Get all problems for current user
+const { data, error } = await supabase
+  .from('problems')
+  .select('*')
+  .order('created_at', { ascending: false });
+
+// READ - Get a specific problem
+const { data, error } = await supabase
+  .from('problems')
+  .select('*')
+  .eq('id', problemId)
+  .single();
+
+// UPDATE - Modify a problem
+const { data, error } = await supabase
+  .from('problems')
+  .update({ intensity: 9 })
+  .eq('id', problemId)
+  .select();
+
+// DELETE - Remove a problem
+const { error } = await supabase
+  .from('problems')
+  .delete()
+  .eq('id', problemId);
+```
+
+## Relations and Queries
+
+Real applications have related data. A user has many problems. A problem has many interviews.
+
+#### Defining Relations
+
+In Supabase, use foreign keys:
+
+```sql
+CREATE TABLE interviews (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  problem_id UUID REFERENCES problems(id) ON DELETE CASCADE,
+  -- ...other fields
+);
+```
+
+`ON DELETE CASCADE` means: if a problem is deleted, delete its interviews too.
+
+#### Querying Related Data
+
+```javascript
+// Get problems with their interviews
+const { data, error } = await supabase
+  .from('problems')
+  .select(`
+    *,
+    interviews (*)
+  `);
+
+// Result:
+// [
+//   {
+//     id: '...',
+//     title: 'Expense tracking',
+//     interviews: [
+//       { id: '...', notes: '...' },
+//       { id: '...', notes: '...' }
+//     ]
+//   }
+// ]
+```
+
+## Supabase Storage
+
+Your product probably needs to handle files, profile pictures, documents, uploads. Supabase Storage provides an S3-compatible file system that integrates with your database and auth.
+
+#### Setting Up Storage
+
+1. Go to your Supabase dashboard
+2. Navigate to **Storage**
+3. Click **New bucket**
+4. Choose a name and privacy setting
+
+**Bucket types:**
+- **Public**: Anyone can read (good for profile pictures)
+- **Private**: Auth required to access (good for user documents)
+
+#### Storage Policies
+
+Like RLS for your database, storage policies control who can upload and download files:
+
+```sql
+-- Allow users to upload to their own folder
+CREATE POLICY "Users can upload to own folder"
+ON storage.objects FOR INSERT
+WITH CHECK (
+  bucket_id = 'user-uploads' AND
+  (storage.foldername(name))[1] = auth.uid()::text
+);
+
+-- Allow users to read their own files
+CREATE POLICY "Users can read own files"
+ON storage.objects FOR SELECT
+USING (
+  bucket_id = 'user-uploads' AND
+  (storage.foldername(name))[1] = auth.uid()::text
+);
+```
+
+#### Uploading Files
+
+```javascript
+// Upload a file
+const { data, error } = await supabase.storage
+  .from('user-uploads')
+  .upload(`${user.id}/profile.jpg`, file, {
+    cacheControl: '3600',
+    upsert: true
+  });
+
+// Get a public URL
+const { data: urlData } = supabase.storage
+  .from('user-uploads')
+  .getPublicUrl(`${user.id}/profile.jpg`);
+```
+
+#### File Upload Component
+
+```jsx
+function ProfileUpload({ userId }) {
+  const [uploading, setUploading] = useState(false);
+
+  const handleUpload = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    setUploading(true);
+
+    const { error } = await supabase.storage
+      .from('avatars')
+      .upload(`${userId}/avatar.jpg`, file, {
+        upsert: true
+      });
+
+    if (error) {
+      alert('Upload failed: ' + error.message);
+    } else {
+      alert('Upload successful!');
+    }
+
+    setUploading(false);
+  };
+
+  return (
+    <input
+      type="file"
+      accept="image/*"
+      onChange={handleUpload}
+      disabled={uploading}
+    />
+  );
+}
+```
+
+## APIs: Connecting Your Product to the World
+
+Most products don't exist in isolation. They send emails, process payments, use AI, integrate with other tools. This happens through **APIs** (Application Programming Interfaces).
+
+#### What is an API?
+
+An API is a set of rules for how software talks to other software. Think of it like a waiter at a restaurant:
+
+- **Your app** (customer) makes a request
+- **The API** (waiter) delivers it to the kitchen
+- **The server** (kitchen) prepares the response
+- **The API** brings back what you ordered
+
+Instead of building everything yourself, you use APIs:
+- **Stripe API** for payments
+- **OpenAI API** for AI features
+- **SendGrid API** for emails
+- **Twilio API** for SMS
+
+#### HTTP: The Language of APIs
+
+APIs communicate using HTTP, the same protocol your browser uses. Key concepts:
+
+**HTTP Methods:**
+
+| Method | Purpose | Example |
+|--------|---------|---------|
+| `GET` | Retrieve data | Get user profile |
+| `POST` | Create new data | Create new order |
+| `PUT` | Update existing data | Update user settings |
+| `DELETE` | Remove data | Delete a post |
+
+**Status Codes:**
+
+| Code | Meaning | What to Do |
+|------|---------|------------|
+| `200` | Success | Process the response |
+| `201` | Created | Resource was created |
+| `400` | Bad Request | Fix your request |
+| `401` | Unauthorized | Check authentication |
+| `404` | Not Found | Resource doesn't exist |
+| `500` | Server Error | Try again later |
+
+#### Making API Requests
+
+```javascript
+// Using fetch (built into browsers)
+const response = await fetch('https://api.example.com/users', {
+  method: 'GET',
+  headers: {
+    'Authorization': 'Bearer your-api-key',
+    'Content-Type': 'application/json'
+  }
+});
+
+const data = await response.json();
+```
+
+#### API Authentication
+
+APIs need to know who's calling them. Common methods:
+
+**API Keys:**
+```javascript
+headers: {
+  'Authorization': 'Bearer sk-abc123xyz'
+}
+```
+
+**OAuth:** For accessing user data from other services (Google, GitHub).
+
+**JWT (JSON Web Tokens):** For your own APIs, stateless authentication.
+
+#### Third-Party API Integration Example
+
+Let's integrate with OpenAI to add AI summarization:
+
+```javascript
+// pages/api/summarize.js (Next.js API route)
+import OpenAI from 'openai';
+
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY
+});
+
+export default async function handler(req, res) {
+  if (req.method !== 'POST') {
+    return res.status(405).json({ error: 'Method not allowed' });
+  }
+
+  try {
+    const { text } = req.body;
+
+    const completion = await openai.chat.completions.create({
+      model: 'gpt-3.5-turbo',
+      messages: [
+        { role: 'user', content: `Summarize this: ${text}` }
+      ]
+    });
+
+    res.json({
+      summary: completion.choices[0].message.content
+    });
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to summarize' });
+  }
+}
+```
+
+#### API Security Essentials
+
+**Never expose API keys in frontend code.** Browser DevTools shows everything.
+
+**Do this:**
+```javascript
+// Call your own backend, which has the secret
+const response = await fetch('/api/summarize', {
+  method: 'POST',
+  body: JSON.stringify({ text })
+});
+```
+
+**Not this:**
+```javascript
+// DANGER: API key visible to anyone
+const openai = new OpenAI({
+  apiKey: 'sk-abc123' // ← This is now public!
+});
+```
+
+**Environment variables:**
+```bash
+# .env.local (never commit this file)
+OPENAI_API_KEY=sk-abc123
+STRIPE_SECRET_KEY=sk_live_abc
+```
+
+```javascript
+// Access in server-side code only
+const key = process.env.OPENAI_API_KEY;
+```
+
+## Key Concepts
+
+- **MVP (Minimum Viable Product)**: Smallest thing that delivers real value
+- **Single-Feature MVP**: Do one thing well before adding more
+- **User Stories**: Feature descriptions from the user's perspective
+- **Acceptance Criteria**: Specific conditions for "done"
+- **PRD (Product Requirements Document)**: Alignment document for what you're building
+- **ICE Framework**: Impact × Confidence / Effort for prioritization
+- **MoSCoW Method**: Must/Should/Could/Won't have categorization
+- **Database Tables**: Rows and columns storing your data
+- **RLS (Row Level Security)**: Ensuring users only access their own data
+- **CRUD Operations**: Create, Read, Update, Delete
+- **Foreign Keys**: Linking related tables together
