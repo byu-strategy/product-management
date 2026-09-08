@@ -9,47 +9,48 @@ Below is the planned schedule. Dates, topics, and assignments may adjust as need
 
 **Note:** Fall classes begin Wed, Sep 2, but Labor Day (Sep 7) means our first in-person class is Mon, Sep 14. Week of Sep 2 is an online setup week. We DO meet Mon, Nov 23 (Thanksgiving break begins Wed, Nov 25). Last day of class is Thu, Dec 10.
 
-| Class | Date | Part | Topic | Live Build | Assessments |
-|----|------|------|----------------------|--------------------|-------------|
-| 0 | Week of Sep 2 (online) | Setup | Course overview, what is PM in the AI era | Claude Code setup, terminal basics, first deploy | [Computer Setup](00-computer-setup.qmd) |
-| 1 | Mon, Sep 14 | Foundations | How the class works, PM history, the AIRE loop, AI disruption | Git fundamentals, company repo from template, CLAUDE.md | [Q1: PM in the AI Era](01-building-with-ai-agents.qmd) |
-| 2 | Mon, Sep 21 | Aim | Product strategy: where to play, how to win, moats | Frontend fundamentals (HTML/CSS), deployment | [Q2: Product Strategy](03-what-is-worth-building.qmd), [Sprint 1 Assigned](00-assessments.qmd#sprint-1-ship-showcase) |
-| 3 | Mon, Sep 28 | Aim | What to build, and whether you should: product morality, problems worth solving | React basics, CC: slash commands | Q3: [Product Morality](03-what-is-worth-building.qmd) + [Problems Worth Solving](04-finding-and-validating-the-problem.qmd), **Sprint 1 Due**, [Sprint 2 Assigned](00-assessments.qmd#sprint-2-validate-commit) |
-| 4 | Mon, Oct 5 | Discover | Problem discovery, Jobs-to-be-Done, the Mom Test | Client-side state, forms, CC: agents | [Q4: Problem Discovery](04-finding-and-validating-the-problem.qmd) |
-| 5 | Mon, Oct 12 | Discover | Validating opportunities, committing to a problem | Supabase setup + auth | [Q5: Validating Opportunities](04-finding-and-validating-the-problem.qmd), **Sprint 2 Due**, [Sprint 3 Assigned](00-assessments.qmd#sprint-3-product-mvp) |
-| 6 | Mon, Oct 19 | Build | MVP scoping, user stories, PRDs (AI-assisted) | Supabase database, CRUD, RLS | [Q6: Building Your MVP](04-finding-and-validating-the-problem.qmd) |
-| 7 | Mon, Oct 26 | Build | Usability testing and platform strategy (web vs mobile) | APIs & integrations, CC: hooks and skills | Q7: [Testing with Users](06-testing-the-design.qmd) + [Platform Strategy](05-interface-and-flow.qmd), [Mid-Semester Survey Due](00-assessments.qmd#mid-semester-feedback-survey) |
-| 8 | Mon, Nov 2 | Build | Sustainable code: keeping what you built healthy | Refactoring, tests, code review with Claude Code | [Q8: Sustainable Code](09-version-control-testing-and-tech-debt.qmd), **Sprint 3 Due**, [Peer Code Review Assigned](00-assessments.qmd#peer-code-review) |
-| 9 | Mon, Nov 9 | Grow | Product metrics, leading vs lagging indicators | Analytics setup, event tracking | [Q9: Measuring What Matters](14-measuring-what-matters.qmd), [Peer Code Review Due](00-assessments.qmd#peer-code-review), [Sprint 4 Assigned](00-assessments.qmd#sprint-4-progress-check) |
-| 10 | Mon, Nov 16 | Grow | Go-to-market and business models: reaching users, making money | Landing pages, SEO basics | Q10: [Go-to-Market](12-going-to-market.qmd) + [Business Models](13-business-models.qmd) |
-| 11 | Mon, Nov 23 | Scrimmage | Scrimmage: build & feedback | Build & feedback | **Sprint 4 Due**, [Sprint 5 Assigned](00-assessments.qmd#sprint-5-progress-check). Withdraw deadline is Tue, Nov 24. |
-| 12 | Mon, Nov 30 | Scrimmage | Scrimmage: build & feedback | Build & feedback | **Sprint 5 Due**, [Peer Product Testing Assigned](00-assessments.qmd#peer-product-testing) |
-| 13 | Mon, Dec 7 | Wrap Up | Storytelling & the final demo, course retrospective | Video prep, polish | [Peer Product Testing Due](00-assessments.qmd#peer-product-testing) |
-| – | Thu, Dec 10 | – | Last day of class (no meeting) | | [Final Project Due](00-assessments.qmd#final-project) |
+## The six axes
 
-## Course Phases
+The course is built around six builder skills, two weeks each. You will rate yourself on all six in week 1 and again at the end, and the chapters, the drills, and both exams are organized the same way.
 
-The course runs on one loop, **AIRE**: Aim, Inform, Reason, Enact (introduced in [Chapter 1](01-building-with-ai-agents.qmd)). The parts below map to it: Aim is what is worth building, Discover is Inform, and Build folds Reason and Enact together as the loop turns into Grow.
+| Axis | The question it answers | Weeks |
+|---|---|---|
+| **Agentic Workflow** | How do I build with AI as my instrument? | 1–2 |
+| **Discovery** | What should I build, for whom, and should I? | 3–4 |
+| **Design** | What does the surface look like, and how does it flow? | 5–6 |
+| **Application Architecture** | How is it structured, shipped, and kept safe? | 7–8 |
+| **AI Systems** | What intelligence lives inside the product? | 9–10 |
+| **Launch and Learn** | How do people find it, and did it work? | 11–12 |
 
-| Classes | Part | Focus |
-|-----------|------|-------|
-| 0–1 | Foundations | Setup, the AIRE loop, how the class runs |
-| 2–3 | Aim | Product strategy, product morality, problems worth solving |
-| 4–5 | Discover (Inform) | Problem discovery, customer validation, commit to a problem |
-| 6–8 | Build (Reason + Enact) | MVP scoping, user testing, platform strategy, sustainable code |
-| 9–10 | Grow | Metrics, go-to-market, business models |
-| 11–12 | Scrimmages | Self-managed sprints, peer testing, dedicated build time |
-| 13 | Wrap Up | Storytelling, final demo, course retrospective |
+Agentic Workflow comes first on purpose. You will ship something in week one that you do not fully understand, and you will spend week seven learning what you shipped.
 
-## Scrimmages
+## Weekly schedule
 
-Classes 11 and 12 are **scrimmages**: dedicated in-class sessions where you demo your product to a small group of peers, give and get feedback, and build on what you hear. A scrimmage is a working session, not a formal presentation:
+| Class | Date | Axis | Reading | Assessments |
+|----|------|------|---------|-------------|
+| 0 | Week of Sep 2 (online) | Setup | [Computer Setup](00-computer-setup.qmd) | Accounts and installs complete |
+| 1 | Mon, Sep 14 | Agentic Workflow | [Building with AI Agents](01-building-with-ai-agents.qmd) | Baseline hexagon survey |
+| 2 | Mon, Sep 21 | Agentic Workflow | [Directing the Agent](02-directing-the-agent.qmd) | [Sprint 1 Assigned](00-assessments.qmd#sprint-1-ship-showcase) |
+| 3 | Mon, Sep 28 | Discovery | [What Is Worth Building](03-what-is-worth-building.qmd) | **Sprint 1 Due**, [Sprint 2 Assigned](00-assessments.qmd#sprint-2-validate-commit) |
+| 4 | Mon, Oct 5 | Discovery | [Finding and Validating the Problem](04-finding-and-validating-the-problem.qmd) | |
+| 5 | Mon, Oct 12 | Design | [Interface and Flow](05-interface-and-flow.qmd) | **Sprint 2 Due**, [Sprint 3 Assigned](00-assessments.qmd#sprint-3-product-mvp) |
+| 6 | Mon, Oct 19 | Design | [Testing the Design](06-testing-the-design.qmd) | |
+| – | Oct 20 to 26 | – | Testing center | **[Midterm Exam](00-assessments.qmd#midterm-exam)** (covers classes 1–6) |
+| 7 | Mon, Oct 26 | App Architecture | [Anatomy of an Application](07-anatomy-of-an-application.qmd) | [Mid-Semester Survey Due](00-assessments.qmd#mid-semester-feedback-survey) |
+| 8 | Mon, Nov 2 | App Architecture | [Data and APIs](08-data-and-apis.qmd) + [Version Control, Testing, and Tech Debt](09-version-control-testing-and-tech-debt.qmd) | **Sprint 3 Due**, [Peer Code Review Assigned](00-assessments.qmd#peer-code-review) |
+| 9 | Mon, Nov 9 | AI Systems | [How Models Work](10-how-models-work.qmd) | [Peer Code Review Due](00-assessments.qmd#peer-code-review), [Sprint 4 Assigned](00-assessments.qmd#sprint-4-progress-check) |
+| 10 | Mon, Nov 16 | AI Systems | [Models in Your Product](11-models-in-your-product.qmd) | |
+| 11 | Mon, Nov 23 | Launch and Learn | [Going to Market](12-going-to-market.qmd) + [Business Models](13-business-models.qmd) | **Sprint 4 Due**, [Sprint 5 Assigned](00-assessments.qmd#sprint-5-progress-check). Withdraw deadline is Tue, Nov 24. |
+| 12 | Mon, Nov 30 | Launch and Learn | [Measuring What Matters](14-measuring-what-matters.qmd) | **Sprint 5 Due**, [Peer Product Testing Assigned](00-assessments.qmd#peer-product-testing) |
+| 13 | Mon, Dec 7 | Wrap Up | [Storytelling and the Final Demo](15-storytelling-and-the-final-demo.qmd) | [Peer Product Testing Due](00-assessments.qmd#peer-product-testing), closing hexagon survey |
+| – | Thu, Dec 10 | – | Last day of class (no meeting) | [Final Product Due](00-assessments.qmd#final-project) |
+| – | Dec 14 to 17 | – | Testing center | **[Final Exam](00-assessments.qmd#final-exam)** (cumulative, all six axes) |
 
-1. In small groups, each person gives a 3-minute live demo of their real, deployed product.
-2. The group responds: what worked, what confused them, what they would try next.
-3. You spend the rest of the session building on the most useful feedback, with your group nearby to react.
+## Demos and peer feedback
 
-Scrimmages exist because the first half of the course is mostly solo work. They are your standing chance to see what classmates are building, borrow ideas, and get fresh eyes on your product before the final. Bring something that runs.
+Every few weeks a portion of class is given over to small-group demos: you show your real, deployed product to three or four classmates, they tell you what worked and what confused them, and you spend the rest of the session building on what you heard.
+
+These are working sessions, not formal presentations. Bring something that runs. The first half of the course is mostly solo work, and these are your standing chance to see what classmates are building and get fresh eyes on your own product before the final.
 
 ## Sprints
 
@@ -69,23 +70,35 @@ Scrimmages exist because the first half of the course is mostly solo work. They 
 | [Peer Code Review](00-assessments.qmd#peer-code-review) | Mon, Nov 9 | AI-assisted analysis of peer's codebase |
 | [Peer Product Testing](00-assessments.qmd#peer-product-testing) | Mon, Dec 7 | Be a real test user for peer's app |
 
+## Exams
+
+Both exams are taken in the testing center on your own schedule within the window. They are closed book and proctored, which makes them the one place in this course where your own knowledge is measured without AI assistance. Each is worth 5% of your grade.
+
+| Exam | Window | Covers | Items |
+|------|--------|--------|-------|
+| Midterm | Oct 20 to 26 | Classes 1 through 6: Agentic Workflow, Discovery, Design | 40 |
+| Final | Dec 14 to 17 | Cumulative, all six axes | 60, ten per axis |
+
+The final is built with ten items per axis so your score comes back as a six-sided profile you can lay beside your self-assessment.
+
 ## Readings
 
-Each chapter integrates PM/Strategy content with hands-on Build content. Read the assigned chapter(s) before the quiz date. Three weeks pair two shorter chapters under one quiz.
+Read the assigned chapter before class. Two weeks pair two chapters under one session.
 
-| Part | Chapter | Quiz Date |
-|------|---------|-----------|
-| Foundations | [Product Management in the AI Era](01-building-with-ai-agents.qmd) | Mon, Sep 14 |
-| Aim | [Product Strategy](03-what-is-worth-building.qmd) | Mon, Sep 21 |
-| Aim | [Product Morality](03-what-is-worth-building.qmd) | Mon, Sep 28 |
-| Aim | [Problems Worth Solving](04-finding-and-validating-the-problem.qmd) | Mon, Sep 28 |
-| Discover | [Problem Discovery](04-finding-and-validating-the-problem.qmd) | Mon, Oct 5 |
-| Discover | [Validating Opportunities](04-finding-and-validating-the-problem.qmd) | Mon, Oct 12 |
-| Build | [Building Your MVP](04-finding-and-validating-the-problem.qmd) | Mon, Oct 19 |
-| Build | [Testing with Users](06-testing-the-design.qmd) | Mon, Oct 26 |
-| Build | [Platform Strategy](05-interface-and-flow.qmd) | Mon, Oct 26 |
-| Build | [Sustainable Code](09-version-control-testing-and-tech-debt.qmd) | Mon, Nov 2 |
-| Grow | [Measuring What Matters](14-measuring-what-matters.qmd) | Mon, Nov 9 |
-| Grow | [Go-to-Market](12-going-to-market.qmd) | Mon, Nov 16 |
-| Grow | [Business Models](13-business-models.qmd) | Mon, Nov 16 |
-| Grow | [Storytelling and the Final Demo](15-storytelling-and-the-final-demo.qmd) | – |
+| Axis | Chapter | Class |
+|------|---------|-------|
+| Agentic Workflow | [Building with AI Agents](01-building-with-ai-agents.qmd) | Mon, Sep 14 |
+| Agentic Workflow | [Directing the Agent](02-directing-the-agent.qmd) | Mon, Sep 21 |
+| Discovery | [What Is Worth Building](03-what-is-worth-building.qmd) | Mon, Sep 28 |
+| Discovery | [Finding and Validating the Problem](04-finding-and-validating-the-problem.qmd) | Mon, Oct 5 |
+| Design | [Interface and Flow](05-interface-and-flow.qmd) | Mon, Oct 12 |
+| Design | [Testing the Design](06-testing-the-design.qmd) | Mon, Oct 19 |
+| App Architecture | [Anatomy of an Application](07-anatomy-of-an-application.qmd) | Mon, Oct 26 |
+| App Architecture | [Data and APIs](08-data-and-apis.qmd) | Mon, Nov 2 |
+| App Architecture | [Version Control, Testing, and Tech Debt](09-version-control-testing-and-tech-debt.qmd) | Mon, Nov 2 |
+| AI Systems | [How Models Work](10-how-models-work.qmd) | Mon, Nov 9 |
+| AI Systems | [Models in Your Product](11-models-in-your-product.qmd) | Mon, Nov 16 |
+| Launch and Learn | [Going to Market](12-going-to-market.qmd) | Mon, Nov 23 |
+| Launch and Learn | [Business Models](13-business-models.qmd) | Mon, Nov 23 |
+| Launch and Learn | [Measuring What Matters](14-measuring-what-matters.qmd) | Mon, Nov 30 |
+| Wrap Up | [Storytelling and the Final Demo](15-storytelling-and-the-final-demo.qmd) | Mon, Dec 7 |

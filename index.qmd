@@ -1,7 +1,7 @@
 ---
 title: "Overview"
 author: "Scott Murff"
-date: "1/6/2026"
+date: "9/14/2026"
 format:
   html: default
   pdf: default
@@ -41,7 +41,7 @@ This course is cross-listed under three course numbers. It is all the same class
 
 A modern Laptop or desktop (Mac or Windows): - Operating Systems: macOS 10.15+ or Windows 10+ - Hardware: 4GB+ RAM (more is better)
 
-AI Tools: - We will be using [Claude Code](https://www.anthropic.com/claude-code) throughout the course. This requires the Claude Max plan, which is required for the course and costs \$100 per month. You can offset this cost by applying for a [Rollins Center Validation Grant](https://programs.byucet.org/dashboard/grant/4), which reimburses up to \$500 for customer discovery and validation work on your product.
+AI Tools: We use [Claude Code](https://www.anthropic.com/claude-code) throughout the course, which requires a paid Claude account. **Claude Pro at \$20 per month is enough to start.** Once your build work picks up you will hit usage limits, and that is the signal to upgrade to Claude Max at \$100 per month. You can offset either cost by applying for a [Rollins Center Validation Grant](https://programs.byucet.org/dashboard/grant/4), which reimburses up to \$500 for customer discovery and validation work on your product. Setup instructions are in [Computer Setup](00-computer-setup.qmd).
 
 You should also get Gemini for [free](https://gemini.google/students/) as this will be a useful supplement to Claude Code.
 
@@ -53,13 +53,20 @@ All other materials are available online at no cost.
 
 ## Description
 
-*Creating Digital Products with AI* immerses students in the evolving role of product managers in the era of AI-enabled innovation. This course combines strategic thinking with hands-on experimentation, giving students both the frameworks and the technical skills to envision, prototype, and launch AI-enhanced digital products.
+This course turns product managers into full-stack AI product builders. You will pick a
+problem worth solving, build a real digital product for it, put it in front of real users,
+and ship it, using AI coding agents as your primary instrument throughout.
 
-Students will explore foundational concepts in product strategy, customer-centric design, and rapid iteration while learning how AI is transforming each stage of the product lifecycle. Core topics include identifying unmet customer needs, defining and validating minimum viable products (MVPs), accelerating prototyping, and gathering actionable user feedback.
+The course is organized around six builder skills: **Agentic Workflow** (building with AI as
+your instrument), **Discovery** (what to build, for whom, and whether you should),
+**Design** (the surface and the flow), **Application Architecture** (how it is structured,
+shipped, and kept safe), **AI Systems** (the intelligence inside the product), and **Launch
+and Learn** (how people find it, and whether it worked). Each gets two weeks. You will rate
+yourself on all six in the first week and again in the last, and see how the shape changed.
 
-In addition to standard product management tools such as GitHub, Jira, and Figma, students will work extensively with cutting-edge AI tools like Lovable, Cursor, and Claude Code. These tools enable them to ideate, design, and build at unprecedented speed, while gaining an understanding of how AI blurs traditional boundaries between product management, engineering, and design.
-
-By the end of the semester, students will have developed, tested, and refined an AI-enabled product.
+Tooling is Claude Code, GitHub, Next.js, Supabase, and Vercel. You do not need to arrive
+knowing any of them. You will ship something in week one that you do not fully understand,
+and spend the rest of the semester learning what you shipped.
 
 ## Purpose
 
@@ -89,7 +96,7 @@ See the [Schedule section](00-schedule.qmd) for a weekly schedule of class topic
 
 ## Grading
 
-Most of your grade rides on building a real product across the semester, not on exams. This is deliberate. The research this course is built on says the thing worth certifying is authentic performance, the whole game done and iterated with feedback, not recall on a test. Quizzes are low-stakes retrieval practice, and there is no single high-stakes final. For the reasoning behind this design, see [Why This Class Works This Way](93-why-this-class-works.qmd).
+Most of your grade rides on building a real product across the semester, not on exams. This is deliberate. The research this course is built on says the thing worth certifying is authentic performance, the whole game done and iterated with feedback, not recall on a test. The two exams are proctored and closed book, which makes them the one place your own understanding is measured without AI assistance, and at 5% each they are deliberately low stakes. For the reasoning behind this design, see [Why This Class Works This Way](93-why-this-class-works.qmd).
 
 | Component | Points | % of Grade |
 |-----------|--------|------------|
@@ -97,10 +104,11 @@ Most of your grade rides on building a real product across the semester, not on 
 | Peer Code Review | 50 | 10% |
 | Peer Product Testing | 50 | 10% |
 | Final Product | 100 | 20% |
-| Quizzes (10 × 5) | 50 | 10% |
+| Midterm Exam | 25 | 5% |
+| Final Exam | 25 | 5% |
 | **TOTAL** | **500** | **100%** |
 
-Every assignment and quiz is described in detail in the [Assessments section](00-assessments.qmd).
+Every assignment and exam is described in detail in the [Assessments section](00-assessments.qmd).
 
 The course is **not** graded on a curve. It's possible for every student to earn an A.
 
@@ -125,7 +133,7 @@ The grading scale is show below:
 
 ### Late work policy
 
-**Quizzes**: By their nature, in-class quizzes cannot be accepted late.
+**Exams**: Both exams are taken in the testing center within a posted window. Windows cannot be extended, so schedule early rather than on the last day.
 
 **Homework**: May be turned in up to 9 days late for partial credit with a 10% penalty per day according to the following schedule:
 
@@ -144,7 +152,7 @@ The grading scale is show below:
 
 **Final Project**: The Final Project must be submitted by 11:59pm on the day of our final class period. Final Projects cannot be turned in late for credit.
 
-**Final Exam**: The Final Exam must be completed by the scheduled time. Final Exams cannot be taken late.
+**Final Exam**: The Final Exam must be completed within the testing center window, Dec 14 to 17. It cannot be taken late.
 
 ## Classroom Culture
 

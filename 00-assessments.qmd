@@ -11,23 +11,16 @@ editor: visual
 | Peer Code Review | 50 | 10% |
 | Peer Product Testing | 50 | 10% |
 | Final Product | 100 | 20% |
-| Quizzes (10 × 5) | 50 | 10% |
+| Midterm Exam | 25 | 5% |
+| Final Exam | 25 | 5% |
 | **TOTAL** | **500** | **100%** |
 
 ## List of All Assessments
 
 | Type | Description | Points | Learning Outcome(s)<sup>1</sup> |
 |------|-------------|--------|--------------------------------|
-| Quiz | [Quiz 1 - PM in the AI Era](01-building-with-ai-agents.qmd) | 5 | 1, 5 |
-| Quiz | [Quiz 2 - Product Strategy](03-what-is-worth-building.qmd) | 5 | 2 |
-| Quiz | Quiz 3 - [Product Morality](03-what-is-worth-building.qmd) + [Problems Worth Solving](04-finding-and-validating-the-problem.qmd) | 5 | 2, 3 |
-| Quiz | [Quiz 4 - Problem Discovery](04-finding-and-validating-the-problem.qmd) | 5 | 2, 5 |
-| Quiz | [Quiz 5 - Validating Opportunities](04-finding-and-validating-the-problem.qmd) | 5 | 2, 4 |
-| Quiz | [Quiz 6 - Building Your MVP](04-finding-and-validating-the-problem.qmd) | 5 | 4 |
-| Quiz | Quiz 7 - [Testing with Users](06-testing-the-design.qmd) + [Platform Strategy](05-interface-and-flow.qmd) | 5 | 4 |
-| Quiz | [Quiz 8 - Sustainable Code](09-version-control-testing-and-tech-debt.qmd) | 5 | 4, 5 |
-| Quiz | [Quiz 9 - Measuring What Matters](14-measuring-what-matters.qmd) | 5 | 4 |
-| Quiz | Quiz 10 - [Go-to-Market](12-going-to-market.qmd) + [Business Models](13-business-models.qmd) | 5 | 4 |
+| Exam | [Midterm Exam](#midterm-exam) | 25 | 1, 2, 3, 5 |
+| Exam | [Final Exam](#final-exam) | 25 | 1, 2, 3, 4, 5 |
 | Sprint | [Sprint 1 - Ship & Showcase](#sprint-1-ship-showcase) | 50 | 4, 5 |
 | Sprint | [Sprint 2 - Validate & Commit](#sprint-2-validate-commit) | 50 | 2, 3 |
 | Sprint | [Sprint 3 - Product MVP](#sprint-3-product-mvp) | 50 | 4, 5 |
@@ -55,15 +48,39 @@ editor: visual
 
 ---
 
-## Quizzes
+## Exams {#exams}
 
-In-class quizzes assess your understanding of the assigned reading. Each quiz is worth 5 points (1% of your grade).
+Two exams, each worth 25 points (5% of your grade). Both are taken in the **testing center**
+on your own schedule within the posted window. Both are closed book, proctored, and
+multiple choice.
 
-Quizzes occur at the beginning of class on the dates shown in the [schedule](00-schedule.qmd). They cover the chapter assigned for that week.
+Almost everything else you submit in this course is built with AI assistance, and that is
+the point. These two sittings are the exception. They are the one place your own
+understanding is measured on its own, which is why they exist and why they are worth
+holding yourself to.
 
-::: {.callout-note title="Why We Do Quizzes"}
-Research shows that writing down what you've just learned helps your brain remember it better. Psychologists call this the "testing effect" or "retrieval practice": when you pull ideas out of your head and put them into words, you strengthen your memory far more than by just rereading or listening.
-:::
+They are also deliberately low stakes. At 5% each, the difference between a rough exam and
+a strong one is about two percent of your course grade. That is enough to make preparing
+worth it and not enough for one bad morning to matter.
+
+### Midterm Exam {#midterm-exam}
+
+**25 points | Testing center, Oct 20 to 26 | 40 items**
+
+Covers classes 1 through 6: the Agentic Workflow, Discovery, and Design axes.
+
+### Final Exam {#final-exam}
+
+**25 points | Testing center, Dec 14 to 17 | 60 items**
+
+Cumulative across all six axes, ten items per axis. Because the item count is even across
+axes, your score comes back as a six-sided profile you can compare against the self
+assessment you filled out in week 1 and again in week 13. The gap between what you think you
+know and what you can produce under proctoring is usually the most useful thing on the page.
+
+Questions are application rather than recall. Expect "which of these is a leading indicator
+for this product" rather than "define leading indicator." Reading the chapters is the
+preparation; skimming them is not.
 
 ---
 
