@@ -11,7 +11,7 @@ Below is the planned schedule. Dates, topics, and assignments may adjust as need
 
 | Practice | Date | Part | Emphasis (Chalk Talk) | Drill (Live Build) | Assessments |
 |----|------|------|----------------------|--------------------|-------------|
-| 0 | Week of Sep 2 (online) | Setup | Course overview, what is PM in the AI era | Claude Code setup, terminal basics, first deploy | Setup checklist |
+| 0 | Week of Sep 2 (online) | Setup | Course overview, what is PM in the AI era | Claude Code setup, terminal basics, first deploy | [Computer Setup](00-computer-setup.qmd) |
 | 1 | Mon, Sep 14 | Foundations | The practice model, PM history, the AIRE loop, AI disruption | Git fundamentals, company repo from template, CLAUDE.md | [Q1: PM in the AI Era](01-pm-ai-era.qmd) |
 | 2 | Mon, Sep 21 | Aim | Product strategy: where to play, how to win, moats | Frontend fundamentals (HTML/CSS), deployment | [Q2: Product Strategy](product-strategy.qmd), [Sprint 1 Assigned](00-assessments.qmd#sprint-1-ship-showcase) |
 | 3 | Mon, Sep 28 | Aim | What to build, and whether you should: product morality, problems worth solving | React basics, CC: slash commands | Q3: [Product Morality](product-morality.qmd) + [Problems Worth Solving](02-problems-worth-solving.qmd), **Sprint 1 Due**, [Sprint 2 Assigned](00-assessments.qmd#sprint-2-validate-commit) |

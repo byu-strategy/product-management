@@ -1,0 +1,169 @@
+---
+title: "Computer Setup"
+---
+
+*Plan for about 20 minutes to install the software you need for this course. Complete this on your own before our first practice on Mon, Sep 14.*
+
+**Laptop requirement:** You need your own Windows or macOS laptop with at least 4GB of RAM (more is better). Bring a charging cord, and a mouse if you like using one.
+
+**If at any point you get stuck or something does not work as expected,** take a screenshot or copy the text you see into ChatGPT, Claude, or Gemini and ask for help troubleshooting. If it is still not working, ask in the course Slack channel or email a TA.
+
+## 1. Sign up for Claude Max
+
+*Skip if you already have a Claude Max plan.*
+
+- [ ] Go to [claude.com/pricing](https://www.claude.com/pricing)
+- [ ] Sign up for **Claude Max** ($100/month)
+
+Claude Max is required for this course. You can offset the cost by applying for a [Rollins Center Validation Grant](https://programs.byucet.org/dashboard/grant/4), which reimburses up to $500 for customer discovery and validation work on your product.
+
+## 2. Create a free GitHub account
+
+- [ ] Go to [github.com](https://github.com/)
+- [ ] Create a **free account**
+
+## 3. Create a free Supabase account
+
+- [ ] Go to [supabase.com](https://supabase.com/)
+- [ ] Sign up for a **free account**
+- [ ] You can sign up using your GitHub account for easier integration
+
+## 4. Create a free Vercel account
+
+- [ ] Go to [vercel.com](https://vercel.com/)
+- [ ] Sign up for a **free account**
+- [ ] You can sign up using your GitHub account for easier deployment
+
+## 5. Install Visual Studio Code (VS Code)
+
+- [ ] Download from [code.visualstudio.com](https://code.visualstudio.com/)
+- [ ] During installation, if prompted:
+  - [ ] Check **"Add to PATH"**
+  - [ ] Enable **"Open with Code"** context-menu option (Windows users)
+
+## 6. Start Claude Code within VS Code
+
+- [ ] Open the newly installed **VS Code** application
+- [ ] In the top menu bar, click **Terminal → New Terminal**
+  - This opens the **integrated terminal** at the bottom of VS Code
+  - The terminal is where you will run commands.
+    You should see something like:
+    ```
+    PS C:\Users\YourName>   ← Windows
+    or
+    yourname@MacBook-Pro ~ %   ← macOS
+    ```
+
+The terminal should appear as a new window pane within VS Code:
+
+![](images/terminal.jpg)
+
+### Install Claude Code from the terminal
+
+Now you will install the **Claude Code CLI (command-line interface)**. This tool connects VS Code directly to Claude.
+
+Run **one** of the following commands inside the VS Code terminal, depending on your operating system.
+
+::: {.callout-tip}
+**Troubleshooting tip:** If at any point you get stuck or something is not working as expected, take a screenshot or copy the error message and surrounding context into ChatGPT, Claude, or Gemini and ask for help troubleshooting. Follow the troubleshooting instructions and within one or two loops you should be unblocked. When errors arise, it is often because dependencies are not installed, so additional software needs to be installed first. AI chatbots will guide you through how to install these dependencies if needed.
+:::
+
+- [ ] Copy and paste this command into the terminal, then press **Enter**:
+
+**On Windows**
+
+```bash
+irm https://claude.ai/install.ps1 | iex
+```
+
+**On macOS**
+
+```bash
+curl -fsSL https://claude.ai/install.sh | bash
+```
+
+- [ ] Once installation finishes, check that it worked by typing this into the terminal and pressing **Enter**:
+
+```bash
+claude --version
+```
+
+- [ ] Confirm you see output similar to:
+
+```bash
+2.0.31 (Claude Code)
+```
+
+- [ ] Start Claude Code by running the following command in the terminal:
+
+```bash
+claude
+```
+
+You will be prompted to authenticate your Claude account and will be routed to a web browser tab where you sign in. Once complete, return to VS Code and you should see something like:
+
+![](images/claude-start.png)
+
+Claude Code is now installed. We will use it to install the rest of the software you need to build full-stack applications, and to get AI leverage on many other knowledge work tasks.
+
+Paste the following prompt into the terminal where Claude Code is active:
+
+> Please help me to install the following softwares or confirm they are already installed: 1) git, 2) node, 3) python
+
+Press **Enter** to say "Yes" when asked to proceed. Claude Code works much like a normal chat bot and will make the remaining installations with your approval.
+
+![](images/claude-yes.jpg)
+
+> **Note on using the terminal**
+>
+> The terminal is not quite like a normal text editor. You **cannot click anywhere in a line to move your cursor or edit text**.
+> Instead, use the **arrow keys** on your keyboard to move left and right within the command you are typing.
+> If you make a mistake, you can use:
+>
+> - **Backspace** (Windows) or **Delete** (Mac) to erase characters
+> - **↑ (up arrow)** to recall your last command
+> - **↓ (down arrow)** to move forward through your command history
+
+## 7. Optional: other AI coding agents
+
+You are now ready for the first practice. Instruction in this course is with Claude Code, but we will refer to other AI agents as well and demonstrate how they can be used. If you have accounts with other AI providers, install their agents too.
+
+You may run the following commands from a new terminal window, or from within an active Claude Code session, in which case Claude will ask for permission and then run them for you.
+
+**Gemini CLI from Google** (free for students, see [gemini.google/students](https://gemini.google/students/))
+
+```bash
+npm install -g @google/gemini-cli
+```
+
+**GitHub Copilot from Microsoft**
+
+```bash
+npm install -g @github/copilot
+```
+
+**Codex from OpenAI**
+
+```bash
+npm install -g @openai/codex
+```
+
+After installation you can start each agent with a terminal command in VS Code, the same way you started Claude Code.
+
+```bash
+gemini
+```
+
+![](images/gemini.png)
+
+```bash
+copilot
+```
+
+![](images/copilot.png)
+
+```bash
+codex
+```
+
+![](images/codex.png)

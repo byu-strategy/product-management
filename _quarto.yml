@@ -11,6 +11,7 @@ book:
     - part: Syllabus
       chapters:
         - index.qmd
+        - 00-computer-setup.qmd
         - 00-schedule.qmd
         - 00-assessments.qmd
         - 00-release-notes.qmd
