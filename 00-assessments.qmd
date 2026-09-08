@@ -650,7 +650,7 @@ Synthesize these into:
 
 #### Part 4: Platform Strategy Decision
 
-Document your platform strategy decision. For deeper background, see [Chapter 7](05-interface-and-flow.qmd).
+Document your platform strategy decision. For deeper background, see [Interface and Flow](05-interface-and-flow.qmd).
 
 **The Platform Decision Framework** — start by answering these questions honestly:
 
@@ -970,10 +970,10 @@ This is your final presentation. In 5 minutes, cover:
 
 ### Mid-Semester Feedback Survey
 
-Complete this anonymous survey to earn 5 extra credit points. Take a screenshot of the confirmation page and submit it to LearningSuite by Monday, October 26 at 11:59 PM.
+Complete this anonymous survey to earn 5 extra credit points. Take a screenshot of the confirmation page and submit it to Canvas by Monday, October 26 at 11:59 PM.
 
 [Survey Link](https://docs.google.com/forms/d/e/1FAIpQLSdb0CSWraZE2oJ4LnE0-OC-sJVfQcycqh81cMb6XW3VcO7zhw/viewform?usp=header)
 
 ### Student Ratings
 
-Complete the end-of-semester student ratings to have your lowest quiz score converted to a perfect score.
+Complete the end-of-semester student ratings to earn 5 extra credit points.
