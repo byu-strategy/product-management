@@ -4,7 +4,7 @@ title: "Storytelling and the Final Demo"
 
 ## Why This Matters
 
-You spent the semester finding a truth about a customer and building something in response to it. Now you have to make someone else care. That is a different skill, and it is not optional. The best product loses to a worse one that is explained better. Your [Final Project](00-assessments.qmd#final-project) is a five-minute video, which is to say it is a story, and the ability to tell it well is the same ability you use in a customer interview, a landing page, a sales call, a stakeholder update, and a job interview.
+You spent the semester finding a truth about a customer and building something in response to it. Now you have to make someone else care. That is a different skill, and it is not optional. The best product loses to a worse one that is explained better. Your [Sprint 6](00-assessments.qmd#sprint-6-launch-and-learn) is a five-minute video, which is to say it is a story, and the ability to tell it well is the same ability you use in a customer interview, a landing page, a sales call, a stakeholder update, and a job interview.
 
 This chapter teaches you to build a supply of stories, to tell them well, and to shape the one story that matters most this semester: the story of what you built and why.
 
@@ -58,7 +58,7 @@ A demo to a senior decision-maker who needs to say yes is a different story, tol
 
 ## The Final Demo
 
-Your [Final Project](00-assessments.qmd#final-project) is a five-minute video that tells the story of your product. It is graded on the product and on the telling. Structure it in three parts:
+Your [Sprint 6](00-assessments.qmd#sprint-6-launch-and-learn) is a five-minute video that tells the story of your product. It is graded on the product and on the telling. Structure it in three parts:
 
 1. **The problem (~1 min).** What truth about a customer did you find, and why does it matter? This is where you make the audience care. Open with a specific person and a specific moment, not a market-size statistic.
 2. **The live demo (~2.5 min).** Show the real, deployed product doing the real thing, with real data. Not slides, not localhost, not a walkthrough of features nobody asked about. Show the core action a user came for, working end to end.

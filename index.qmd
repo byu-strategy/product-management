@@ -100,10 +100,10 @@ Most of your grade rides on building a real product across the semester, not on 
 
 | Component | Points | % of Grade |
 |-----------|--------|------------|
-| Sprints (5 × 50) | 250 | 50% |
+| Sprints 1 to 5 (5 × 50) | 250 | 50% |
+| Sprint 6, the final build | 100 | 20% |
 | Peer Code Review | 50 | 10% |
 | Peer Product Testing | 50 | 10% |
-| Final Product | 100 | 20% |
 | Midterm Exam | 25 | 5% |
 | Final Exam | 25 | 5% |
 | **TOTAL** | **500** | **100%** |
@@ -150,7 +150,7 @@ The grading scale is show below:
 | 9         | -90%         |
 | 10        | No Credit    |
 
-**Final Project**: The Final Project must be submitted by 11:59pm on the day of our final class period. Final Projects cannot be turned in late for credit.
+**Sprint 6**: Sprint 6 must be submitted by 11:59pm on Thu, Dec 10. It cannot be turned in late for credit.
 
 **Final Exam**: The Final Exam must be completed within the testing center window, Dec 14 to 17. It cannot be taken late.
 

@@ -7,10 +7,10 @@ editor: visual
 
 | Component | Points | % of Grade |
 |-----------|--------|------------|
-| Sprints (5 × 50) | 250 | 50% |
+| Sprints 1 to 5 (5 × 50) | 250 | 50% |
+| Sprint 6, the final build | 100 | 20% |
 | Peer Code Review | 50 | 10% |
 | Peer Product Testing | 50 | 10% |
-| Final Product | 100 | 20% |
 | Midterm Exam | 25 | 5% |
 | Final Exam | 25 | 5% |
 | **TOTAL** | **500** | **100%** |
@@ -26,9 +26,9 @@ editor: visual
 | Sprint | [Sprint 3 - Product MVP](#sprint-3-product-mvp) | 50 | 4, 5 |
 | Sprint | [Sprint 4 - Progress Check](#sprint-4-progress-check) | 50 | 4, 5 |
 | Sprint | [Sprint 5 - Progress Check](#sprint-5-progress-check) | 50 | 4, 5 |
+| Sprint | [Sprint 6 - Launch and Learn](#sprint-6-launch-and-learn) | 100 | 2, 4, 5 |
 | Peer | [Peer Code Review](#peer-code-review) | 50 | 4, 5 |
 | Peer | [Peer Product Testing](#peer-product-testing) | 50 | 4 |
-| Project | [Final Product](#final-project) | 100 | 4 |
 |  | **TOTAL** | **500** |  |
 
 ::: {style="font-size:0.65em;"}
@@ -794,6 +794,55 @@ Same format as Sprint 4. Self-managed. You decide what to work on.
 
 ---
 
+### Sprint 6: Launch and Learn {#sprint-6-launch-and-learn}
+
+**100 points | Assigned: Mon, Nov 23 | Due: Thu, Dec 10**
+
+**Goal:** Get what you built in front of real people, find out what happened, and tell the story of building it.
+
+This is the last sprint and it covers the Launch and Learn axis. It is also the culmination: whatever you have been building all semester should be the best version of itself by the end of it, and you should be able to explain the journey to someone who was not there.
+
+Everyone in this class is building something different, in a different role. A solo builder is shipping their own product. Someone embedded on a team may be shipping a tool that serves their role on it. The bar is the same either way: something real, used by someone who is not you, and a clear account of what you learned.
+
+**Deliverables:**
+
+- What you built, live and deployed, reachable by someone else
+- A 5-minute Loom video
+
+**The 5-Minute Video**
+
+1. **The problem** (~1 min). What problem are you solving, for whom, and why does it matter?
+2. **Live demo** (~2.5 min). Walk through the real thing with real data. Do not narrate slides.
+3. **Reflection** (~1.5 min). What did you learn? What would you do differently? What surprised you?
+
+**Submit:** Your Loom URL on Canvas.
+
+**Grading Philosophy:** You are graded on effort and learning, not on user acquisition. A thoughtful build with 3 engaged users beats a rushed one claiming 50 signups.
+
+**Grading Rubric (100 points)**
+
+**The build (60 points)**
+
+| Score | What this looks like |
+|-------|---------------------|
+| **54-60** | Something a person outside this class would actually use. Core flow works reliably end to end. Visibly improved since Sprint 5. Deployed and stable. |
+| **42-53** | Works and delivers value but has rough edges. You can tell it is a class project. Some iteration visible. Deployed. |
+| **30-41** | Partially works. Incomplete flow or significant usability issues. Limited improvement since Sprint 5. |
+| **18-29** | Barely functions. More mockup than working software. Little progress beyond Sprint 5. |
+| **0-17** | Not functional or not submitted. |
+
+**5-Minute Loom Video (40 points)**
+
+| Score | What this looks like |
+|-------|---------------------|
+| **36-40** | Live demo with real data. Clear problem and solution narrative. Honest reflection that talks about failures, not just wins. |
+| **28-35** | Demo works, story is clear, but reflection is generic or the demo hits a few snags. |
+| **20-27** | Demo has real issues. Narrative is vague. Surface-level reflection. |
+| **10-19** | Video submitted but minimal substance. |
+| **0-9** | Not submitted. |
+
+---
+
 ## Peer Assignments
 
 Peer assignments teach you to give and receive constructive feedback, a critical professional skill. You'll be randomly paired with different classmates for each assignment.
@@ -914,55 +963,6 @@ Your goal is to help your peer improve, not to criticize. Frame feedback as "Hav
 ::: {.callout-tip title="Testing Mindset"}
 Your job is to help your peer see their product through fresh eyes. Be honest but kind. The best feedback is specific ("The button on the checkout page didn't respond when I clicked it") not vague ("The checkout was buggy").
 :::
-
----
-
-## Final Project
-
-**100 points | Due: Thu, Dec 10**
-
-**Goal:** Show me a finished product and tell me the story of building it.
-
-You've spent the semester discovering a problem, validating it, building an MVP, testing it with users, and iterating. This is the culmination — your product should be the best version of itself, and you should be able to tell a compelling story about the journey.
-
-**Deliverables:**
-
-- Your product live and deployed
-- A 5-minute Loom video (details below)
-
-**The 5-Minute Video**
-
-This is your final presentation. In 5 minutes, cover:
-
-1. **The problem** (~1 min) — What problem are you solving and why does it matter?
-2. **Live demo** (~2.5 min) — Walk through your product. Show real functionality with real data. Don't narrate slides — use the actual app.
-3. **Reflection** (~1.5 min) — What did you learn? What would you do differently? What surprised you about building a real product?
-
-**Submit:** Your Loom URL on Canvas.
-
-**Grading Philosophy:** You are graded on effort and learning, not user acquisition outcomes. A thoughtful product with 3 engaged users beats a rushed product claiming 50 signups.
-
-**Grading Rubric (100 points)**
-
-**Product (60 points)**
-
-| Score | What this looks like |
-|-------|---------------------|
-| **54-60** | A real product someone outside this class would use. Core flow works reliably end-to-end. Visibly improved since Sprint 3. Deployed and stable. |
-| **42-53** | Works and delivers value but has rough edges. You can tell it's a class project. Some iteration visible. Deployed. |
-| **30-41** | Partially works. Incomplete flow or significant usability issues. Limited improvement since Sprint 3. |
-| **18-29** | Barely functions. More mockup than product. Little progress beyond Sprint 3. |
-| **0-17** | Not functional or not submitted. |
-
-**5-Minute Loom Video (40 points)**
-
-| Score | What this looks like |
-|-------|---------------------|
-| **36-40** | Live demo with real data. Clear problem/solution narrative. Honest reflection — talks about failures, not just wins. Compelling and well-structured. |
-| **28-35** | Demo works, story is clear, but reflection is generic or demo hits a few snags. |
-| **20-27** | Demo has real issues. Narrative is vague. Surface-level reflection. |
-| **10-19** | Video submitted but minimal substance. |
-| **0-9** | Not submitted. |
 
 ---
 
