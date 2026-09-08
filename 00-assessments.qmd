@@ -98,7 +98,7 @@ Sprints are your primary way to demonstrate progress throughout the semester. Ea
 
 ### Sprint 1: Ship & Showcase {#sprint-1-ship-showcase}
 
-**50 points | Assigned: Mon, Sep 21 | Due: Mon, Sep 28**
+**50 points | Assigned: Mon, Sep 14 | Due: Mon, Sep 28**
 
 **Overview**
 
@@ -440,7 +440,7 @@ Make a copy of the **[Sprint 2 Submission Template](https://docs.google.com/docu
 
 ### Sprint 3: Product MVP
 
-**50 points | Assigned: Mon, Oct 12 | Due: Mon, Nov 2**
+**50 points | Assigned: Mon, Oct 12 | Due: Mon, Oct 26**
 
 **Goal:** Build the core feature that delivers your value proposition, test it with real users, and decide on your platform strategy.
 
@@ -453,7 +453,7 @@ Make a copy of the **[Sprint 2 Submission Template](https://docs.google.com/docu
 | Loom reflection video (2 min) | 5 |
 | **Total** | **50** |
 
-**What you turn in:** A single Google Doc link on LearningSuite using the [Sprint 3 Submission Template](https://docs.google.com/document/d/14DCFSVRxwG4djSrESHcmspmy3z37scMhkmGpJSkGyPc/copy). Your Google Doc collects all links (Updated Portfolio, GitHub, Vercel, Loom recordings) and written deliverables in one place.
+**What you turn in:** A single Google Doc link on Canvas using the [Sprint 3 Submission Template](https://docs.google.com/document/d/14DCFSVRxwG4djSrESHcmspmy3z37scMhkmGpJSkGyPc/copy). Your Google Doc collects all links (Updated Portfolio, GitHub, Vercel, Loom recordings) and written deliverables in one place.
 
 #### Part 1: Product Spec Documents (AI-Assisted)
 
@@ -709,7 +709,7 @@ By the Sprint 3 deadline, your portfolio should include:
 
 #### Turn In
 
-Submit your completed Google Doc link on LearningSuite. Use the [Sprint 3 Submission Template](https://docs.google.com/document/d/14DCFSVRxwG4djSrESHcmspmy3z37scMhkmGpJSkGyPc/copy). Your doc should contain all links and written deliverables in one place:
+Submit your completed Google Doc link on Canvas. Use the [Sprint 3 Submission Template](https://docs.google.com/document/d/14DCFSVRxwG4djSrESHcmspmy3z37scMhkmGpJSkGyPc/copy). Your doc should contain all links and written deliverables in one place:
 
 1. GitHub repo URL (share with TAs if private)
 2. Live product URL (Vercel)
@@ -734,7 +734,7 @@ Submit your completed Google Doc link on LearningSuite. Use the [Sprint 3 Submis
 
 ### Sprint 4: Progress Check {#sprint-4-progress-check}
 
-**50 points | Assigned: Mon, Nov 9 | Due: Mon, Nov 23**
+**50 points | Assigned: Mon, Oct 26 | Due: Mon, Nov 9**
 
 **Goal:** Make meaningful progress on your product. You decide what to work on.
 
@@ -749,7 +749,7 @@ By now you have a working MVP, user feedback from Sprint 3, and ideas for what t
 3. **Explain why** you chose to work on what you did
 4. **State what you're planning next**
 
-**Submit:** Your Loom URL on LearningSuite.
+**Submit:** Your Loom URL on Canvas.
 
 **Grading Rubric (50 points)**
 
@@ -765,9 +765,9 @@ By now you have a working MVP, user feedback from Sprint 3, and ideas for what t
 
 ### Sprint 5: Progress Check {#sprint-5-progress-check}
 
-**50 points | Assigned: Mon, Nov 23 | Due: Mon, Nov 30**
+**50 points | Assigned: Mon, Nov 9 | Due: Mon, Nov 23**
 
-**Goal:** Continue building. Your final project is due in less than two weeks — this is your last progress check before the finish line.
+**Goal:** Continue building. This is your last progress check before the finish line.
 
 Same format as Sprint 4. Self-managed. You decide what to work on.
 
@@ -780,7 +780,7 @@ Same format as Sprint 4. Self-managed. You decide what to work on.
 3. **Explain why** you chose to work on what you did
 4. **Describe your plan for the final submission** — what still needs to happen?
 
-**Submit:** Your Loom URL on LearningSuite.
+**Submit:** Your Loom URL on Canvas.
 
 **Grading Rubric (50 points)**
 
@@ -899,7 +899,7 @@ Your goal is to help your peer improve, not to criticize. Frame feedback as "Hav
    - 3 things you'd improve (most impactful first)
    - Would you use this product? Why or why not?
 
-**Submit:** Your Loom URL on LearningSuite. Share the video with your peer too — this is a gift to them.
+**Submit:** Your Loom URL on Canvas. Share the video with your peer too — this is a gift to them.
 
 **Grading Rubric (50 points)**
 
@@ -938,7 +938,7 @@ This is your final presentation. In 5 minutes, cover:
 2. **Live demo** (~2.5 min) — Walk through your product. Show real functionality with real data. Don't narrate slides — use the actual app.
 3. **Reflection** (~1.5 min) — What did you learn? What would you do differently? What surprised you about building a real product?
 
-**Submit:** Your Loom URL on LearningSuite.
+**Submit:** Your Loom URL on Canvas.
 
 **Grading Philosophy:** You are graded on effort and learning, not user acquisition outcomes. A thoughtful product with 3 engaged users beats a rushed product claiming 50 signups.
 

@@ -29,19 +29,19 @@ Agentic Workflow comes first on purpose. You will ship something in week one tha
 | Class | Date | Axis | Reading | Assessments |
 |----|------|------|---------|-------------|
 | 0 | Week of Sep 2 (online) | Setup | [Computer Setup](00-computer-setup.qmd) | Accounts and installs complete |
-| 1 | Mon, Sep 14 | Agentic Workflow | [Building with AI Agents](01-building-with-ai-agents.qmd) | Baseline hexagon survey |
-| 2 | Mon, Sep 21 | Agentic Workflow | [Directing the Agent](02-directing-the-agent.qmd) | [Sprint 1 Assigned](00-assessments.qmd#sprint-1-ship-showcase) |
+| 1 | Mon, Sep 14 | Agentic Workflow | [Building with AI Agents](01-building-with-ai-agents.qmd) | Baseline hexagon survey, [Sprint 1 Assigned](00-assessments.qmd#sprint-1-ship-showcase) |
+| 2 | Mon, Sep 21 | Agentic Workflow | [Directing the Agent](02-directing-the-agent.qmd) | |
 | 3 | Mon, Sep 28 | Discovery | [What Is Worth Building](03-what-is-worth-building.qmd) | **Sprint 1 Due**, [Sprint 2 Assigned](00-assessments.qmd#sprint-2-validate-commit) |
 | 4 | Mon, Oct 5 | Discovery | [Finding and Validating the Problem](04-finding-and-validating-the-problem.qmd) | |
 | 5 | Mon, Oct 12 | Design | [Interface and Flow](05-interface-and-flow.qmd) | **Sprint 2 Due**, [Sprint 3 Assigned](00-assessments.qmd#sprint-3-product-mvp) |
 | 6 | Mon, Oct 19 | Design | [Testing the Design](06-testing-the-design.qmd) | |
 | – | Oct 20 to 26 | – | Testing center | **[Midterm Exam](00-assessments.qmd#midterm-exam)** (covers classes 1–6) |
-| 7 | Mon, Oct 26 | App Architecture | [Anatomy of an Application](07-anatomy-of-an-application.qmd) | |
-| 8 | Mon, Nov 2 | App Architecture | [Data and APIs](08-data-and-apis.qmd) + [Version Control, Testing, and Tech Debt](09-version-control-testing-and-tech-debt.qmd) | **Sprint 3 Due**, [Peer Code Review Assigned](00-assessments.qmd#peer-code-review) |
-| 9 | Mon, Nov 9 | AI Systems | [How Models Work](10-how-models-work.qmd) | [Peer Code Review Due](00-assessments.qmd#peer-code-review), [Sprint 4 Assigned](00-assessments.qmd#sprint-4-progress-check) |
+| 7 | Mon, Oct 26 | App Architecture | [Anatomy of an Application](07-anatomy-of-an-application.qmd) | **Sprint 3 Due**, [Sprint 4 Assigned](00-assessments.qmd#sprint-4-progress-check) |
+| 8 | Mon, Nov 2 | App Architecture | [Data and APIs](08-data-and-apis.qmd) + [Version Control, Testing, and Tech Debt](09-version-control-testing-and-tech-debt.qmd) | [Peer Code Review Assigned](00-assessments.qmd#peer-code-review) |
+| 9 | Mon, Nov 9 | AI Systems | [How Models Work](10-how-models-work.qmd) | **Sprint 4 Due**, [Peer Code Review Due](00-assessments.qmd#peer-code-review), [Sprint 5 Assigned](00-assessments.qmd#sprint-5-progress-check) |
 | 10 | Mon, Nov 16 | AI Systems | [Models in Your Product](11-models-in-your-product.qmd) | |
-| 11 | Mon, Nov 23 | Launch and Learn | [Going to Market](12-going-to-market.qmd) + [Business Models](13-business-models.qmd) | **Sprint 4 Due**, [Sprint 5 Assigned](00-assessments.qmd#sprint-5-progress-check). Withdraw deadline is Tue, Nov 24. |
-| 12 | Mon, Nov 30 | Launch and Learn | [Measuring What Matters](14-measuring-what-matters.qmd) | **Sprint 5 Due**, [Peer Product Testing Assigned](00-assessments.qmd#peer-product-testing) |
+| 11 | Mon, Nov 23 | Launch and Learn | [Going to Market](12-going-to-market.qmd) + [Business Models](13-business-models.qmd) | **Sprint 5 Due**. Withdraw deadline is Tue, Nov 24. |
+| 12 | Mon, Nov 30 | Launch and Learn | [Measuring What Matters](14-measuring-what-matters.qmd) | [Peer Product Testing Assigned](00-assessments.qmd#peer-product-testing) |
 | 13 | Mon, Dec 7 | Wrap Up | [Storytelling and the Final Demo](15-storytelling-and-the-final-demo.qmd) | [Peer Product Testing Due](00-assessments.qmd#peer-product-testing), closing hexagon survey |
 | – | Thu, Dec 10 | – | Last day of class (no meeting) | [Final Product Due](00-assessments.qmd#final-project) |
 | – | Dec 14 to 17 | – | Testing center | **[Final Exam](00-assessments.qmd#final-exam)** (cumulative, all six axes) |
@@ -54,14 +54,16 @@ These are working sessions, not formal presentations. Bring something that runs.
 
 ## Sprints
 
-| Sprint | Assigned | Due | Focus | Key Deliverables |
-|--------|----------|-----|-------|------------------|
-| 1 | Mon, Sep 21 | Mon, Sep 28 | Ship & Showcase | Portfolio live, 1 prototype, 5 problems |
-| 2 | Mon, Sep 28 | Mon, Oct 12 | Validate & Commit | Worksheet, AI interview, customer interview, ICP |
-| 3 | Mon, Oct 12 | Mon, Nov 2 | Product MVP | Spec docs, core feature, 3 user tests |
-| 4 | Mon, Nov 9 | Mon, Nov 23 | Progress Check | Self-managed, 5-min Loom video |
-| 5 | Mon, Nov 23 | Mon, Nov 30 | Progress Check | Self-managed, 5-min Loom video |
-| Final | – | Thu, Dec 10 | Final Product | 5-min Loom video, product deployed |
+Every sprint runs two weeks, and each one spans one axis.
+
+| Sprint | Assigned | Due | Axis | Focus | Key Deliverables |
+|---|---|---|---|---|---|
+| 1 | Mon, Sep 14 | Mon, Sep 28 | Agentic Workflow | Ship & Showcase | Portfolio live, 1 prototype, 5 problems |
+| 2 | Mon, Sep 28 | Mon, Oct 12 | Discovery | Validate & Commit | Worksheet, AI interview, customer interview, ICP |
+| 3 | Mon, Oct 12 | Mon, Oct 26 | Design | Product MVP | Spec docs, core feature, 3 user tests |
+| 4 | Mon, Oct 26 | Mon, Nov 9 | App Architecture | Progress Check | Self-managed, 5-min Loom video |
+| 5 | Mon, Nov 9 | Mon, Nov 23 | AI Systems | Progress Check | Self-managed, 5-min Loom video |
+| Final | Mon, Nov 23 | Thu, Dec 10 | Launch and Learn | Final Product | 5-min Loom video, product deployed |
 
 ## Peer Assignments
 
