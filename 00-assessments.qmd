@@ -966,14 +966,6 @@ This is your final presentation. In 5 minutes, cover:
 
 ---
 
-## Feedback Surveys
-
-### Mid-Semester Feedback Survey
-
-Complete this anonymous survey to earn 5 extra credit points. Take a screenshot of the confirmation page and submit it to Canvas by Monday, October 26 at 11:59 PM.
-
-[Survey Link](https://docs.google.com/forms/d/e/1FAIpQLSdb0CSWraZE2oJ4LnE0-OC-sJVfQcycqh81cMb6XW3VcO7zhw/viewform?usp=header)
-
-### Student Ratings
+## Student Ratings
 
 Complete the end-of-semester student ratings to earn 5 extra credit points.

@@ -36,7 +36,7 @@ Agentic Workflow comes first on purpose. You will ship something in week one tha
 | 5 | Mon, Oct 12 | Design | [Interface and Flow](05-interface-and-flow.qmd) | **Sprint 2 Due**, [Sprint 3 Assigned](00-assessments.qmd#sprint-3-product-mvp) |
 | 6 | Mon, Oct 19 | Design | [Testing the Design](06-testing-the-design.qmd) | |
 | – | Oct 20 to 26 | – | Testing center | **[Midterm Exam](00-assessments.qmd#midterm-exam)** (covers classes 1–6) |
-| 7 | Mon, Oct 26 | App Architecture | [Anatomy of an Application](07-anatomy-of-an-application.qmd) | [Mid-Semester Survey Due](00-assessments.qmd#mid-semester-feedback-survey) |
+| 7 | Mon, Oct 26 | App Architecture | [Anatomy of an Application](07-anatomy-of-an-application.qmd) | |
 | 8 | Mon, Nov 2 | App Architecture | [Data and APIs](08-data-and-apis.qmd) + [Version Control, Testing, and Tech Debt](09-version-control-testing-and-tech-debt.qmd) | **Sprint 3 Due**, [Peer Code Review Assigned](00-assessments.qmd#peer-code-review) |
 | 9 | Mon, Nov 9 | AI Systems | [How Models Work](10-how-models-work.qmd) | [Peer Code Review Due](00-assessments.qmd#peer-code-review), [Sprint 4 Assigned](00-assessments.qmd#sprint-4-progress-check) |
 | 10 | Mon, Nov 16 | AI Systems | [Models in Your Product](11-models-in-your-product.qmd) | |
