@@ -1,0 +1,206 @@
+---
+title: "Testing the Design"
+---
+
+## Why This Matters
+
+You've built something. It works, at least on your machine. But here's an uncomfortable truth: you have no idea if it actually solves your users' problem until you watch real people try to use it.
+
+This chapter teaches you to run effective usability tests, synthesize feedback without overreacting, and iterate systematically. You'll also learn how to integrate external services through APIs, because most products need to connect to something outside themselves.
+
+This is [triangulation from Chapter 3](03-problem-discovery.qmd) in practice. One user is one blind man on the elephant, a single partial view. Watch enough of them and the real shape of the problem appears. No single tester, however loud or however pleased, is proof on their own.
+
+## The Curse of Knowledge
+
+You built this thing. You know exactly where every button is, what every label means, why the workflow goes left to right. Your users don't. They're seeing it for the first time, bringing different mental models, and expecting it to work like other things they've used.
+
+This is the **curse of knowledge**, once you know something, it's nearly impossible to imagine not knowing it. The only cure is watching people who don't know.
+
+## The Design Canon Behind This
+
+Two ideas from design shape what you are testing for. Don Norman's *The Design of Everyday Things* [@norman2013design] gives you **affordances**: good design makes the right action obvious, a door you push has a plate, a door you pull has a handle. When users hesitate, an affordance is usually missing. Steve Krug's *Don't Make Me Think* [@krug2014think] gives you the standard to test against: every moment a user has to stop and figure out your interface is friction you can remove.
+
+AI raises the stakes here. It will generate a screen that *looks* polished in seconds, but polish is not usability, and a good-looking interface can still make people think. Watching real users is exactly what reveals the difference, and no AI can do it in your place.
+
+*From Don Norman, The Design of Everyday Things (1988), and Steve Krug, Don't Make Me Think (2000).*
+
+## What is Usability Testing?
+
+Usability testing is observing real users attempt to accomplish real tasks with your product. It's not a demo. It's not a survey. It's watching someone struggle (or succeed) while you stay quiet and take notes.
+
+**What usability testing reveals:**
+- Where users get stuck or confused
+- What they expect vs. what they get
+- Whether your core value proposition actually lands
+- What terminology confuses them
+- Which features they ignore completely
+
+**What usability testing doesn't reveal:**
+- Whether they'll pay for it (that's validation)
+- Whether the market is big enough (that's research)
+- What features to build next (that's strategy)
+
+## Running a Usability Test
+
+#### Before the Session
+
+1. **Define your goals**: What questions are you trying to answer?
+2. **Prepare 3-5 tasks**: Specific things you want them to try
+3. **Recruit the right people**: They should match your target user
+4. **Set up recording**: Screen + audio (get permission)
+5. **Prepare your script**: Consistent intro and task instructions
+
+#### The Test Script Structure
+
+```
+INTRO (2 minutes)
+"Thanks for helping me test this. I'm trying to improve [product],
+and watching you use it helps me find problems. I'm testing the
+product, not you, there are no wrong answers. Please think out loud
+as you go. I'll mostly stay quiet and take notes."
+
+WARM-UP (2 minutes)
+"Tell me a little about yourself. Have you ever [relevant experience]?"
+
+TASKS (15-20 minutes)
+"Imagine you want to [scenario]. Go ahead and try to do that."
+[Stay quiet. Observe. Take notes.]
+
+FOLLOW-UP (5 minutes)
+"What was that experience like for you?"
+"What was most confusing?"
+"What would you change?"
+
+WRAP-UP (1 minute)
+"Thank you so much. This was really helpful."
+```
+
+#### During the Session
+
+**Do:**
+- Stay silent while they work
+- Let them struggle (it's painful, but necessary)
+- Take detailed notes on behavior, not just outcomes
+- Note where they pause, click wrong things, or seem uncertain
+- Ask "What are you thinking?" if they go quiet
+
+**Don't:**
+- Help them unless they're completely stuck
+- Explain why something works that way
+- Defend your design decisions
+- Lead with questions like "Did you see the button in the corner?"
+- Ask "Do you like it?" (opinions aren't data)
+
+## What to Observe
+
+| Observe | What It Tells You |
+|---------|-------------------|
+| **Task completion** | Can they do the core thing? |
+| **Time on task** | Is it faster or slower than expected? |
+| **Error rate** | Where do mistakes happen? |
+| **Recovery** | Can they fix their mistakes? |
+| **Verbal comments** | What frustrates or delights them? |
+| **Facial expressions** | Where do they show confusion? |
+| **Click patterns** | What do they try first? |
+
+## Synthesizing Feedback
+
+After 3-5 tests, you'll have a lot of notes. Time to find patterns.
+
+#### The Affinity Mapping Process
+
+1. **Write each observation on a sticky note** (or digital equivalent)
+2. **Group similar observations together**
+3. **Name each group** (these become your themes)
+4. **Prioritize by frequency and severity**
+
+#### Severity Scoring
+
+| Severity | Description | Example |
+|----------|-------------|---------|
+| **Critical** | Users cannot complete core task | Can't sign up |
+| **Major** | Task is difficult but possible | Takes 5 minutes to find main feature |
+| **Minor** | Annoying but doesn't block | Label is confusing |
+| **Cosmetic** | Polish issue | Icon looks dated |
+
+**Fix critical and major issues first.** Don't let minor issues distract you from what matters.
+
+## Iteration Frameworks
+
+#### The Build-Measure-Learn Loop [@ries2011lean]
+
+```
+BUILD → MEASURE → LEARN → BUILD → ...
+```
+
+Each cycle should be as fast as possible:
+- **Build**: Make a small, testable change
+- **Measure**: Observe users with the change
+- **Learn**: Decide what to do next
+
+**Common mistake:** Building too much before measuring. Ship smaller, learn faster.
+
+#### When to Pivot vs. Persevere
+
+**Consider pivoting when:**
+- Users consistently don't understand the value
+- The problem you're solving isn't painful enough
+- Multiple users suggest a different core use case
+- You've iterated 3+ times with no improvement
+
+**Consider persevering when:**
+- Users struggle but eventually succeed
+- Issues are about UX, not core value
+- Fixes are straightforward (labeling, placement)
+- Users express desire for the product
+
+#### Responding to Feedback Without Overreacting
+
+Not all feedback is equal. One user's opinion isn't a mandate.
+
+**Process feedback through these filters:**
+
+1. **Frequency**: Did multiple people say this?
+2. **Severity**: Does it block the core task?
+3. **Source**: Is this from your target user?
+4. **Alignment**: Does it fit your product vision?
+
+**Red flags that feedback is misleading:**
+- "I would want..." (hypothetical)
+- "My friend would love..." (secondhand)
+- Feature requests without a problem statement
+- Requests that conflict with your core value prop
+
+**Useful responses to feedback:**
+- "That's interesting, tell me more about when that would happen."
+- "What are you trying to accomplish when you need that?"
+- "How do you handle that today?"
+
+## Testing at Scale
+
+Once your product has users, you can test at scale:
+
+| Method | Best For | Sample Size |
+|--------|----------|-------------|
+| **Usability testing** | Deep understanding | 5-10 users |
+| **A/B testing** | Optimizing metrics | 1000+ users |
+| **Surveys** | Broad sentiment | 100+ users |
+| **Analytics** | Behavior patterns | All users |
+| **Session replay** | Specific issues | As needed |
+
+**Start with usability testing.** You need qualitative insights before you can optimize quantitatively.
+
+## Key Concepts
+
+- **Curse of Knowledge**: You can't see your product like new users do
+- **Usability Testing**: Observing users attempt tasks, not asking opinions
+- **Task Completion**: The core metric, can they do the thing?
+- **Severity Scoring**: Critical > Major > Minor > Cosmetic
+- **Build-Measure-Learn**: Fast iteration cycles
+- **Pivot vs. Persevere**: When to change direction vs. keep improving
+- **Supabase Storage**: File uploads with bucket policies
+- **HTTP Methods**: GET, POST, PUT, DELETE
+- **Status Codes**: 200 (success), 400 (client error), 500 (server error)
+- **API Keys**: Never expose in frontend code
+- **Environment Variables**: Secure storage for secrets
+- **Skills**: Reusable Claude Code workflows combining instructions and code
