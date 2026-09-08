@@ -213,8 +213,7 @@ If your team's code, data, or customers cannot be public:
 - Deploy behind auth and give the graders an account.
 - If neither works, build a sanitized version with fake data and note it in your plan file.
 
-Your portfolio is the only thing that must be public, and it can describe the work without
-linking the source.
+Nothing in this course has to be public.
 
 ---
 
@@ -222,12 +221,10 @@ linking the source.
 
 **50 points | Assigned: Mon, Sep 14 | Due: Mon, Sep 28**
 
-The standard sprint, plus three one-time items:
+The standard sprint, plus two one-time items:
 
-1. **Your portfolio, live.** Created from the course template and deployed. Personal photo,
-   real About page, no template text left.
-2. **Your repo,** created from the course template, with Professor Murff added.
-3. **A context declaration** in that repo's `README.md`: what you are building, who it is for,
+1. **Your repo,** created from the course template, with Professor Murff added.
+2. **A context declaration** in that repo's `README.md`: what you are building, who it is for,
    your role if you are on a team, and who your user is. Later sprints are read against this.
    Revise it when it changes and note why.
 

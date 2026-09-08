@@ -54,16 +54,20 @@ These are working sessions, not formal presentations. Bring something that runs.
 
 ## Sprints
 
-Six sprints, one per axis, two weeks each. There is no separate final project: Sprint 6 is the culmination and is worth 100 points rather than 50.
+Six sprints, two weeks each. Every sprint is the same assignment: plan on day one, build,
+review and demo at the end. What changes is what you decide to work on. Full instructions are
+in [Assessments](00-assessments.qmd#sprints).
 
-| Sprint | Assigned | Due | Axis | Focus | Key Deliverables |
-|---|---|---|---|---|---|
-| 1 | Mon, Sep 14 | Mon, Sep 28 | Agentic Workflow | Ship & Showcase | Portfolio live, 1 prototype, 5 problems |
-| 2 | Mon, Sep 28 | Mon, Oct 12 | Discovery | Validate & Commit | Worksheet, AI interview, customer interview, ICP |
-| 3 | Mon, Oct 12 | Mon, Oct 26 | Design | Product MVP | Spec docs, core feature, 3 user tests |
-| 4 | Mon, Oct 26 | Mon, Nov 9 | App Architecture | Progress Check | Self-managed, 5-min Loom video |
-| 5 | Mon, Nov 9 | Mon, Nov 23 | AI Systems | Progress Check | Self-managed, 5-min Loom video |
-| 6 | Mon, Nov 23 | Thu, Dec 10 | Launch and Learn | Launch and Learn | Deployed build, 5-min Loom video (100 pts) |
+| Sprint | Assigned | Due | Points |
+|---|---|---|--:|
+| [1](00-assessments.qmd#sprint-1) | Mon, Sep 14 | Mon, Sep 28 | 50 |
+| [2](00-assessments.qmd#sprint-2) | Mon, Sep 28 | Mon, Oct 12 | 50 |
+| [3](00-assessments.qmd#sprint-3) | Mon, Oct 12 | Mon, Oct 26 | 50 |
+| [4](00-assessments.qmd#sprint-4) | Mon, Oct 26 | Mon, Nov 9 | 50 |
+| [5](00-assessments.qmd#sprint-5) | Mon, Nov 9 | Mon, Nov 23 | 50 |
+| [6](00-assessments.qmd#sprint-6) | Mon, Nov 23 | Thu, Dec 10 | 100 |
+
+Across the six, your work must touch at least five of the six axes. You choose when.
 
 ## Peer Assignments
 
