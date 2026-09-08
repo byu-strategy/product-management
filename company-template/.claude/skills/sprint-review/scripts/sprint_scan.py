@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Scan local Claude Code session transcripts for a sprint window.
 
-Reads only what it is told to read. --list touches filenames and timestamps only;
-session content is opened solely for projects named with --projects.
-Nothing is sent anywhere.
+Reads only what it is told to read. --list reads each transcript's recorded working
+directory and nothing else; message content is opened solely for the projects named
+with --projects. Nothing is sent anywhere.
 """
 import argparse, json, os, sys, datetime as dt
 from collections import Counter, defaultdict
@@ -12,9 +12,26 @@ from pathlib import Path
 ROOT = Path.home() / ".claude" / "projects"
 
 
-def decode(name: str) -> str:
-    """Encoded project dir name back to a filesystem path (best effort)."""
-    return "/" + name.lstrip("-").replace("-", "/")
+def project_cwd(jsonl: Path, fallback: str) -> str:
+    """The real working directory, read from the first record that carries one.
+
+    The directory name under ~/.claude/projects encodes both "/" and "-" as "-",
+    so it cannot be decoded unambiguously. Each transcript records its own cwd.
+    """
+    try:
+        with open(jsonl, "r", errors="replace") as fh:
+            for i, line in enumerate(fh):
+                if i > 40:
+                    break
+                try:
+                    d = json.loads(line)
+                except Exception:
+                    continue
+                if d.get("cwd"):
+                    return d["cwd"]
+    except OSError:
+        pass
+    return fallback
 
 
 def sessions(since: dt.datetime):
@@ -35,8 +52,9 @@ def sessions(since: dt.datetime):
 
 def cmd_list(since):
     agg = defaultdict(lambda: {"n": 0, "first": None, "last": None})
-    for proj, _f, m in sessions(since):
-        a = agg[proj.name]
+    for proj, f, m in sessions(since):
+        key = project_cwd(f, "?" + proj.name)
+        a = agg[key]
         a["n"] += 1
         a["first"] = m if a["first"] is None else min(a["first"], m)
         a["last"] = m if a["last"] is None else max(a["last"], m)
@@ -45,8 +63,8 @@ def cmd_list(since):
         return
     rows = sorted(agg.items(), key=lambda kv: kv[1]["n"], reverse=True)
     print(f"{'sessions':>8}  {'first':<11} {'last':<11} project")
-    for name, a in rows:
-        print(f"{a['n']:>8}  {a['first']:%Y-%m-%d}  {a['last']:%Y-%m-%d}  {decode(name)}")
+    for path, a in rows:
+        print(f"{a['n']:>8}  {a['first']:%Y-%m-%d}  {a['last']:%Y-%m-%d}  {path}")
     print(f"\n{len(rows)} projects, {sum(a['n'] for _, a in rows)} sessions.")
 
 
@@ -101,7 +119,7 @@ def cmd_analyze(since, wanted):
     want = {w.rstrip("/") for w in wanted}
     picked = [
         (p, f, m) for p, f, m in sessions(since)
-        if any(decode(p.name).rstrip("/").startswith(w) for w in want)
+        if any(project_cwd(f, "?" + p.name).rstrip("/").startswith(w) for w in want)
     ]
     if not picked:
         print("No sessions matched those projects.")
