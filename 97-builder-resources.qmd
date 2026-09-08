@@ -478,56 +478,5 @@ When we get there, tell me plainly what I still cannot do.
 
 ## Who to follow
 
-Follow fewer accounts than you think. These are grouped by what they are useful for.
-
-One thing worth knowing before you build a feed: **Application Architecture has almost no
-social media presence.** Nobody posts in depth about schema design, deploys, or CI. Two separate
-searches turned up the same answer. For that axis, feeds will not help you and the docs and books
-above are the only path. It is also the axis the Foundry cohort is weakest on.
-
-### For building, the highest signal for Foundry work
-
-| Account | Why |
-|---|---|
-| [\@ClaudeDevs](https://x.com/ClaudeDevs) | Official Anthropic developer updates. Where Claude Code, API, and MCP changes get announced first |
-| [\@bcherny](https://x.com/bcherny) Boris Cherny | Head of Claude Code. Agents, tooling, engineering workflow |
-| [\@simonw](https://x.com/simonw) Simon Willison | Creator of Datasette, co-creator of Django. Near-daily practical posts. His [blog](https://simonwillison.net/) is the better resource, organized by tag |
-| [\@steipete](https://x.com/steipete) Peter Steinberger | Built and sold PSPDFKit, now works on agents full time. The frontier of multi-agent setups. Not a first read |
-| [\@emollick](https://x.com/emollick) Ethan Mollick | Wharton. Structured experiments on what AI is actually good and bad at. [One Useful Thing](https://www.oneusefulthing.org/) is the better subscription |
-| [Every](https://every.to/): [\@danshipper](https://x.com/danshipper), [\@kieranklaassen](https://x.com/kieranklaassen), [\@every](https://x.com/every) | They ship AI products in public, Cora and Spiral among them, then write up what happened. Kieran on compound engineering is the most specific writing anywhere on agentic workflow |
-| [\@HamelHusain](https://x.com/HamelHusain) Hamel Husain and [\@sh_reya](https://x.com/sh_reya) Shreya Shankar | The two people who turned evals into a teachable subject. Their free course is the AI Systems start-here item |
-| [\@chipro](https://x.com/chipro) Chip Huyen | Wrote AI Engineering. Production systems, cost and latency tradeoffs |
-| [\@swyx](https://x.com/swyx) | The connective tissue of the AI engineering scene, via Latent Space |
-| [\@amanrsanger](https://x.com/amanrsanger) Aman Sanger | Cursor founder. The one framework account that is load-bearing for this stack |
-| [\@alexalbert__](https://x.com/alexalbert__) Alex Albert | Anthropic, on prompting and agent behavior. The practice counterpart to \@ClaudeDevs announcements |
-
-### For product
-
-| Account | Why |
-|---|---|
-| [\@lennysan](https://x.com/lennysan) Lenny Rachitsky | Deeply researched product, growth, and career advice. Newsletter and podcast both worth it |
-| Marty Cagan, [SVPG](https://www.svpg.com/) | How strong product teams operate |
-| Teresa Torres, [Product Talk](https://www.producttalk.org/) | Continuous discovery |
-| Dan Olsen, [dan-olsen.com](https://dan-olsen.com/) | Lean product and product-market fit |
-| [\@paulg](https://x.com/paulg) Paul Graham | The [essays](https://www.paulgraham.com/articles.html) more than the account. Written for founders building their own thing, which makes them a better fit for Build than for the Lab |
-
-### For understanding where the field is going
-
-Useful for perspective, not for shipping this week.
-
-| Name | Handle | Who they are |
-|---|---|---|
-| Sam Altman | [\@sama](https://x.com/sama) | CEO, OpenAI |
-| Dario Amodei | [\@darioamodei](https://x.com/darioamodei) | CEO, Anthropic |
-| Demis Hassabis | [\@demishassabis](https://x.com/demishassabis) | CEO, Google DeepMind |
-| Greg Brockman | [\@gdb](https://x.com/gdb) | Co-founder, OpenAI |
-| Jensen Huang | [\@JensenHuang](https://x.com/JensenHuang) | CEO, NVIDIA. The compute side of the boom |
-| Marc Andreessen | [\@pmarca](https://x.com/pmarca) | Co-founder, a16z. Investment and long-horizon takes |
-| Andrej Karpathy | [\@karpathy](https://x.com/karpathy) | Researcher and educator. The clearest explainer of how LLMs work |
-| Andrew Ng | [\@AndrewYNg](https://x.com/AndrewYNg) | Founder of DeepLearning.AI. Applied ML and career advice |
-| Yann LeCun | [\@ylecun](https://x.com/ylecun) | Deep learning pioneer, NYU. Strong and useful dissenting opinions |
-| Fei-Fei Li | [\@drfeifei](https://x.com/drfeifei) | Stanford HAI. Created ImageNet. Human-centered AI |
-| Sebastian Raschka | [\@rasbt](https://x.com/rasbt) | Author and educator on LLM implementation |
-| Lex Fridman | [\@lexfridman](https://x.com/lexfridman) | Long-form interviews with AI researchers and founders |
-| Logan Kilpatrick | [\@OfficialLoganK](https://x.com/OfficialLoganK) | AI developer ecosystem and platform |
-| Kai-Fu Lee | [\@kaifulee](https://x.com/kaifulee) | Investor and author. Global and China AI perspective |
+Moved. The accounts worth following, alongside the product management voices, are on the
+[Thought Leaders](97-thought-leaders.qmd) page.

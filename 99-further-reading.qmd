@@ -46,6 +46,6 @@ An in-depth video exploring AI-assisted development workflows and techniques usi
 
 Looking for more resources? Check out:
 
-- [Thought Leaders](97-thought-leaders.qmd) - Key voices in the AI-assisted development space
+- [Thought Leaders](97-thought-leaders.qmd) - Product management voices, plus the accounts worth following on X
 - [Tools](98-tools.qmd) - Essential tools and platforms
 - [Prompts](99-prompts.qmd) - Prompt engineering resources
