@@ -4,6 +4,14 @@ This course site is a living product. It gets better during the semester, and ev
 
 New entries appear at the top.
 
+## v2.1.1 (2026-09-14)
+
+The builder template is live, so you can create your repo and plan Sprint 1 today.
+
+- **The builder template is on GitHub.** Sprint 1 now links straight to it: [byu-strategy/builder-template](https://github.com/byu-strategy/builder-template). Click **Use this template**, create your repo, and add Professor Murff as a collaborator. It comes with `/sprint-plan` and `/sprint-review` already installed.
+- **`/sprint-plan` reviews your whole plan before writing it.** After you answer all four questions, it checks whether the plan is a reasonable two-week sprint: a specific goal, a finish line someone else could check, a finish line that actually matches the goal, and work that is neither an afternoon nor a semester. It raises anything it finds once, and then the plan is yours.
+- **The difficulty scale covers all five levels.** Every rating from 1 to 5 now has a description, and each is worded as a prediction about the work ahead.
+
 ## v2.1.0 (2026-09-08)
 
 Sprints are rewritten. Six sprints, two weeks each, and every one is the same assignment. Two new Claude Code skills plan and close them out.
