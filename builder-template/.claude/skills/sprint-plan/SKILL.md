@@ -83,9 +83,9 @@ git add sprints/sprint-N-plan.md && git commit -m "Sprint N plan" && git push
 
 | | |
 |---|---|
-| 1 | I already knew how to do this before I started |
-| 3 | I had to learn something new, but the path was clear |
-| 5 | I did not know whether this was possible when I set the goal |
+| 1 | I already know how to do this |
+| 3 | I will have to learn something new, but the path is clear |
+| 5 | I do not know whether this is possible |
 
 ## Rules
 
