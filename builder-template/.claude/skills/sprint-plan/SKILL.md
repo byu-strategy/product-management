@@ -84,7 +84,9 @@ git add sprints/sprint-N-plan.md && git commit -m "Sprint N plan" && git push
 | | |
 |---|---|
 | 1 | I already know how to do this |
+| 2 | I know most of it, with a few small gaps to fill |
 | 3 | I will have to learn something new, but the path is clear |
+| 4 | I will have to learn a lot, and the path is not clear |
 | 5 | I do not know whether this is possible |
 
 ## Rules
