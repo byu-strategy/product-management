@@ -9,8 +9,8 @@ What situation forced a choice.
 
 ## Options considered
 
-1. **[Option A]** — pros / cons
-2. **[Option B]** — pros / cons
+1. **[Option A]**: pros / cons
+2. **[Option B]**: pros / cons
 
 ## Decision
 

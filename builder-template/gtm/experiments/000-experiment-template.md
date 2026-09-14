@@ -9,7 +9,7 @@ If [we do X], then [measurable outcome], because [belief from discovery/insights
 
 ## What we did
 
-Exactly what shipped/sent — link the copy in `gtm/copy/`.
+Exactly what shipped/sent. Link the copy in `gtm/copy/`.
 
 ## Numbers
 
@@ -19,4 +19,4 @@ Exactly what shipped/sent — link the copy in `gtm/copy/`.
 
 ## Verdict
 
-Keep / kill / iterate — and what changes in insights.md or the pipeline as a result.
+Keep / kill / iterate, and what changes in insights.md or the pipeline as a result.

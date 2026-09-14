@@ -19,4 +19,4 @@ What this deliberately does NOT include (the discipline lives here).
 
 - [ ] [User-visible behavior that proves it works]
 - [ ] Deployed to live URL
-- [ ] [How you'll know if anyone uses it — event, metric, ask]
+- [ ] [How you'll know if anyone uses it: event, metric, ask]

@@ -3,7 +3,7 @@
 > One sentence: what this is and who it is for.
 
 **Live:** [URL]
-**Built by:** [your name] — MSB 341 Product Management, BYU
+**Built by:** [your name], MSB 341 Product Management, BYU
 
 ## Context
 

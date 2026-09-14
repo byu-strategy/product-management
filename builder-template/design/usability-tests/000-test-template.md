@@ -1,4 +1,4 @@
-# Usability test — YYYY-MM-DD
+# Usability test: YYYY-MM-DD
 
 **Who:** [role or description, not a name]
 **Task I gave them:** [the thing you asked them to accomplish, in their words not yours]

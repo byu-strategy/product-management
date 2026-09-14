@@ -1,6 +1,6 @@
 # Pipeline
 
-> Lightweight CRM. Anonymized descriptors only — keep real names/emails in a private
+> Lightweight CRM. Anonymized descriptors only. Keep real names/emails in a private
 > place outside this repo. Update stage + next action every time you touch a lead.
 
 **Stages:** Lead → Contacted → Conversation → Trial/Proposal → Won / Lost

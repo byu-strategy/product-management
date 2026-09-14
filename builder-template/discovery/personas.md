@@ -1,6 +1,6 @@
 # Personas
 
-> One entry per customer type. Update as interviews sharpen the picture —
+> One entry per customer type. Update as interviews sharpen the picture:
 > this file should get *more specific* over the semester, not longer.
 
 ## [Persona name, e.g., "Solo practice owner"]
