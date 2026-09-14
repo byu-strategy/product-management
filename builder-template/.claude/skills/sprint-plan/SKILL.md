@@ -30,7 +30,8 @@ the six axes they have not touched yet. They need five of six by the end.
 ### 3. Interview
 
 Ask about the goal first, in the user's own terms. Then work through the rest. Ask one thing
-at a time; do not present a form.
+at a time; do not present a form. During the interview, ask again only when an answer is too
+vague to write down. Save judgments about size and fit for the review in step 4.
 
 - **Goal.** What will be true in two weeks that is not true now?
 - **Why this.** Why is this the right next thing for what they are building?
@@ -38,18 +39,26 @@ at a time; do not present a form.
   could check.
 - **Predicted difficulty.** 1 to 5 on the scale below.
 
-### 4. Push back before you write
+### 4. Review the whole plan before you write
 
-Do this once, briefly, and then accept their answer. You are not negotiating.
+Once all four answers are in, read them together and ask: is this a reasonable two-week
+sprint? Check every item below, not just the first one that fails.
 
 - **Vague goal.** "Improve the app" or "work on the frontend" is not a goal. Ask what
   specifically will be different.
-- **Unmeasurable.** If "done looks like" cannot be checked by another person, ask again.
-- **Too small.** If it reads like an afternoon of work, say so and ask what else belongs in
-  the two weeks.
+- **Unmeasurable.** If "done looks like" cannot be checked by another person, ask what they
+  would check.
+- **Done does not match the goal.** If meeting "done looks like" would not mean the goal was
+  met, point out the gap.
+- **Too small.** If it reads like a day or less of work with Claude Code, say so and ask what
+  else belongs in the two weeks. A tutorial-sized build is too small even if it is new to them.
 - **Too large.** If it reads like a semester, say so and ask what the two-week slice is.
 - **Ignores the last retro.** If the previous retro said something would change and this plan
-  ignores it, point that out once.
+  ignores it, point that out.
+
+Raise every problem you found in one message, briefly, each one once. Then accept their
+answers, revised or not. You are not negotiating, and the plan is theirs; its quality is
+graded. If nothing fails, say so in one line and go straight to writing the file.
 
 Do not push back on difficulty. It is self-reported and not graded.
 
