@@ -75,5 +75,5 @@ throughout. Each chapter is its own commit.
       confidentiality clause for sandbox students.
 - [ ] Exam item banks: 40 midterm, 60 final.
 - [x] Template renamed to `builder-template`, restructured, role-neutral, `practice-log` retired.
-- [ ] Publish `builder-template` as an actual GitHub template repo under byu-strategy.
+- [x] Publish `builder-template` as an actual GitHub template repo under byu-strategy.
 - [ ] Builder Axes index page (upgrade of `97-builder-resources.qmd`).
