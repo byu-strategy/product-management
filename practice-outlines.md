@@ -40,8 +40,8 @@ Every practice ends with the huddle: two or three students show their deploy URL
 - **Season ritual:** **Day-1 introductions** (one intro slide, 90-second life story to the room), **co-created norms** (build the class rules together and commit to them), and the **baseline hexagon survey** (self-rating on all six axes; the "before" picture for Practice 13).
 - **Film:** none yet. First tape gets logged this week.
 - **Install:** the practice model, the AIRE loop, the six axes, a short PM history, why AI disruption raises the value of judgment. How a sprint works: plan on day one, build, review and demo at the end.
-- **Drill:** create a repo from the [builder template](https://github.com/byu-strategy/builder-template), add Professor Murff as a collaborator, write the context declaration in `README.md`, run `/sprint-plan`, and commit Sprint 1's plan before leaving.
-- **Reading / due:** [Building with AI Agents](01-building-with-ai-agents.qmd). Sprint 1 plan committed today.
+- **Drill:** create a repo from the [builder template](https://github.com/byu-strategy/builder-template), add Professor Murff (`sdmurff`) and Nate (`nmccaul`) as collaborators, write the context declaration in `README.md`, run `/sprint-plan`, and commit Sprint 1's plan. The setup prompt in [Sprint 1](00-assessments.qmd#sprint-1) walks students through all of it.
+- **Reading / due:** [Building with AI Agents](01-building-with-ai-agents.qmd). Sprint 1 plan committed by Wed, Sep 16, 11:59 PM.
 
 ---
 

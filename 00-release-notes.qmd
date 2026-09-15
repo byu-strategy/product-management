@@ -8,9 +8,11 @@ New entries appear at the top.
 
 The builder template is live, so you can create your repo and plan Sprint 1 today.
 
-- **The builder template is on GitHub.** Sprint 1 now links straight to it: [byu-strategy/builder-template](https://github.com/byu-strategy/builder-template). Click **Use this template**, create your repo, and add Professor Murff as a collaborator. It comes with `/sprint-plan` and `/sprint-review` already installed.
+- **The builder template is on GitHub.** Sprint 1 now links straight to it: [byu-strategy/builder-template](https://github.com/byu-strategy/builder-template). Click **Use this template**, create your repo, and add Professor Murff (`sdmurff`) and the TA, Nate (`nmccaul`), as collaborators. It comes with `/sprint-plan` and `/sprint-review` already installed.
 - **`/sprint-plan` reviews your whole plan before writing it.** After you answer all four questions, it checks whether the plan is a reasonable two-week sprint: a specific goal, a finish line someone else could check, a finish line that actually matches the goal, and work that is neither an afternoon nor a semester. It raises anything it finds once, and then the plan is yours.
 - **The difficulty scale covers all five levels.** Every rating from 1 to 5 now has a description, and each is worded as a prediction about the work ahead.
+- **A setup prompt for Sprint 1.** The [Sprint 1](00-assessments.qmd#sprint-1) section has a prompt you paste into Claude Code. It walks you through creating your repo, adding collaborators, writing your context declaration, and committing your plan, and explains each step. The Sprint 1 plan is due Wednesday, September 16, 11:59 PM.
+- **The template fits every role.** Not everyone in this course ships software. The template's README, `CLAUDE.md`, and spec now describe work in any role, and the context declaration asks which hats you wear on your team. `/sprint-plan` reads your role and asks what shipped means for your kind of work.
 
 ## v2.1.0 (2026-09-08)
 

@@ -29,7 +29,7 @@ Agentic Workflow comes first on purpose. You will ship something in week one tha
 | Class | Date | Axis | Reading | Assessments |
 |----|------|------|---------|-------------|
 | 0 | Week of Sep 2 (online) | Setup | [Computer Setup](00-computer-setup.qmd) | Accounts and installs complete |
-| 1 | Mon, Sep 14 | Agentic Workflow | [Building with AI Agents](01-building-with-ai-agents.qmd) | Baseline hexagon survey, [Sprint 1 Assigned](00-assessments.qmd#sprint-1) |
+| 1 | Mon, Sep 14 | Agentic Workflow | [Building with AI Agents](01-building-with-ai-agents.qmd) | Baseline hexagon survey, [Sprint 1 Assigned](00-assessments.qmd#sprint-1) (plan due Wed, Sep 16, 11:59 PM) |
 | 2 | Mon, Sep 21 | Agentic Workflow | [Directing the Agent](02-directing-the-agent.qmd) | |
 | 3 | Mon, Sep 28 | Discovery | [What Is Worth Building](03-what-is-worth-building.qmd) | **Sprint 1 Due**, [Sprint 2 Assigned](00-assessments.qmd#sprint-2) |
 | 4 | Mon, Oct 5 | Discovery | [Finding and Validating the Problem](04-finding-and-validating-the-problem.qmd) | |

@@ -115,11 +115,12 @@ that someone else could check.
 ```
 
 **Commit it today.** The commit timestamp is the record. A plan committed at the end of the
-sprint is not a plan.
+sprint is not a plan. Sprint 1 is the one exception: its plan is due Wednesday, September 16,
+11:59 PM.
 
 #### The two weeks
 
-Build it. Work in your repo.
+Do the work, in your repo.
 
 #### The last day
 
@@ -211,7 +212,7 @@ If four sprints sit on one axis, adjust.
 
 If your team's code, data, or customers cannot be public:
 
-- Keep your repo private and add Professor Murff and the TA as collaborators.
+- Keep your repo private and add Professor Murff (`sdmurff`) and the TA, Nate (`nmccaul`), as collaborators.
 - Deploy behind auth and give the graders an account.
 - If neither works, build a sanitized version with fake data and note it in your plan file.
 
@@ -223,12 +224,179 @@ Nothing in this course has to be public.
 
 **50 points | Assigned: Mon, Sep 14 | Due: Mon, Sep 28**
 
+**Sprint 1 plan due: Wed, Sep 16, 11:59 PM.**
+
 The standard sprint, plus two one-time items:
 
-1. **Your repo,** created from the [builder template](https://github.com/byu-strategy/builder-template), with Professor Murff added as a collaborator.
-2. **A context declaration** in that repo's `README.md`: what you are building, who it is for,
-   your role if you are on a team, and who your user is. Later sprints are read against this.
+1. **Your repo,** created from the [builder template](https://github.com/byu-strategy/builder-template), with Professor Murff (`sdmurff`) and the TA, Nate (`nmccaul`), added as collaborators.
+2. **A context declaration** in that repo's `README.md`: your role (most roles combine several
+   hats), what you are working on, who it is for, and who uses your work. "Not decided" is
+   fine to start; choosing is a legitimate Sprint 1 goal. Later sprints are read against this.
    Revise it when it changes and note why.
+
+#### Set up with Claude Code
+
+A prompt walks you through all of it in Claude Code: creating your repo, adding the
+collaborators, writing your context declaration, and committing your Sprint 1 plan. Claude
+explains each step as it goes. Plan on about an hour.
+
+1. Finish [Computer Setup](00-computer-setup.qmd) through step 6, and know your GitHub username.
+2. Make a folder for class projects, such as `Documents/projects`. Avoid folders synced by
+   OneDrive, iCloud, Google Drive, or Dropbox.
+3. In VS Code, choose **File > Open Folder** and open that folder. Choose **Terminal > New
+   Terminal**, type `claude`, and press Enter.
+4. Expand the prompt below, click the copy button, paste it into Claude, and press Enter.
+
+Partway through, Claude asks you to reopen VS Code inside your new repo folder and paste the
+same prompt again. That is expected: it checks what is already done and picks up there.
+
+**If you get stuck,** post your question in the [course Slack](https://join.slack.com/t/byustrategyprogram/shared_invite/zt-49zknsqc4-iJK8onSDn5ZqKLnaasHXQA). Include the last error message Claude showed you and the task number you were on.
+
+::: {.callout-note collapse="true" title="Setup prompt: paste into Claude Code"}
+```bash
+I am a student in MSB 341 Product Management at BYU. Help me set up my course repo and write
+my first sprint plan. I may be new to git, GitHub, and the terminal, so teach me what is going
+on as we go.
+
+Deadline: Wednesday, September 16, 2026, 11:59 PM Mountain Time. The assignment is complete
+when sprints/sprint-1-plan.md is visible in my repo on GitHub.
+
+COURSE FACTS
+- Template repo: byu-strategy/builder-template
+- My repo: named <my NetID in lowercase>_msb341, owned by my personal GitHub account, private
+- Collaborators to add: sdmurff (instructor) and nmccaul (TA)
+
+HOW TO WORK WITH ME
+- First do CHECK FIRST below. Then make a task list from TASKS, mark anything already done as
+  complete, and show it to me. Update the list as tasks finish and show it at the end of each
+  task.
+- One task at a time. Before each task, explain in two or three plain sentences what we are
+  about to do and why. Define terms like repository, clone, commit, and push the first time
+  they come up.
+- Show each command before you run it and say in one sentence what it does. Run commands
+  yourself unless a task says I have to.
+- When you need something from me (a login, a choice, an answer), stop and wait.
+- End each task with a one-sentence recap of what changed.
+- If something fails, explain the error in plain language and fix it if you can. If you
+  cannot, tell me exactly what to post in the course Slack, and give me the link:
+  https://join.slack.com/t/byustrategyprogram/shared_invite/zt-49zknsqc4-iJK8onSDn5ZqKLnaasHXQA
+- Keep explanations short.
+
+CHECK FIRST (every time this prompt is pasted)
+I may paste this prompt twice: once in my projects folder and again inside my repo folder.
+Before making the task list, check:
+1. My operating system.
+2. Whether this folder is a git repo, and if so which GitHub repo it points to (git remote -v).
+3. Whether git and gh are installed, and whether gh is logged in (gh auth status).
+4. If gh is logged in: my GitHub username, whether my repo exists and is private, which of
+   sdmurff and nmccaul are collaborators or have pending invitations, and whether
+   sprints/sprint-1-plan.md exists in my repo on GitHub.
+Ask for my NetID if you need it. Tell me in a few lines what is already done.
+
+TASKS
+
+1. Check this folder.
+   Make sure the current folder is not inside OneDrive, iCloud Drive, Google Drive, or
+   Dropbox, because sync tools can corrupt git repos. If this folder is a git repo that is not
+   my own repo (for example byu-strategy/builder-template, cloned in class), explain that it
+   is the class's shared copy: I cannot push to it, and pointing it at my repo will not work
+   because the two have separate histories. Ask whether I changed any files in it; if I did,
+   remember its path for task 4. Then have me open a different folder, start claude, and paste
+   this prompt again.
+
+2. Install the tools.
+   Explain that git tracks versions of files and gh lets us work with GitHub from the
+   terminal. If git is missing: on a Mac, have me run xcode-select --install and wait for it;
+   on Windows, send me to https://git-scm.com. If gh is missing: on a Mac with Homebrew, run
+   brew install gh; on Windows, run winget install --id GitHub.cli --source winget. Otherwise
+   send me to https://cli.github.com to download the installer. Do not install Homebrew and do
+   not use sudo. If an install needs a new terminal to take effect, tell me to quit VS Code
+   fully, reopen it in this folder, start claude, and paste this prompt again.
+
+3. Log in to GitHub.
+   Explain that this connects the terminal to my GitHub account so pushes are allowed. I have
+   to run the login myself because it asks questions. Tell me to open a second terminal with
+   the + button in the terminal panel and run:
+     gh auth login --hostname github.com --git-protocol https --web
+   Tell me to copy the one-time code, press Enter, paste the code in the browser, and approve,
+   and to answer Y if asked "Authenticate Git with your GitHub credentials?". When I say I am
+   done, run gh auth setup-git, then gh auth status, and confirm I am logged in.
+
+4. Create my repo from the template.
+   Explain what a template is, why each student gets their own copy, and why it is private.
+   Ask for my NetID. If the repo already exists, skip creating it. Otherwise run:
+     gh repo create <netid>_msb341 --template byu-strategy/builder-template --private --clone
+   If the repo exists but is not in this folder, run gh repo clone <netid>_msb341. Check that
+   the new folder contains CLAUDE.md and a sprints folder. If the folder is empty, delete that
+   empty folder and run gh repo clone <netid>_msb341. If the repo is public, make it private
+   with gh repo edit <username>/<netid>_msb341 --visibility private
+   --accept-visibility-change-consequences. If task 1 found files I changed in a class copy,
+   copy those files (never the .git folder) into the new repo folder now.
+
+5. Share my repo with the instructors.
+   Explain that collaborators can see the repo, which is how my work reaches the instructors;
+   there is nothing separate to submit. Run:
+     gh api -X PUT repos/<username>/<netid>_msb341/collaborators/sdmurff
+     gh api -X PUT repos/<username>/<netid>_msb341/collaborators/nmccaul
+   Confirm both appear as collaborators or pending invitations. Pending is fine.
+
+6. Move into my repo.
+   Explain that Claude Code loads the repo's CLAUDE.md and the course commands /sprint-plan
+   and /sprint-review only when it is started inside the repo folder. Tell me exactly what to
+   do: type /exit, choose File > Open Folder in VS Code and open the <netid>_msb341 folder,
+   choose Terminal > New Terminal, type claude, and paste this same prompt again.
+
+7. Describe my role and my work.
+   Explain that README.md is the front page of the repo, that its Context section is the
+   record later sprints are graded against, and that /sprint-plan reads it. Explain that it is
+   expected to change as my work changes, and that the Sprint 1 version is due with Sprint 1 on
+   Monday, September 28. Explain that students in this course play different roles and not
+   everyone ships software, but everyone uses Claude Code to produce real work. In README.md,
+   replace [your name] with my name. Then ask me about the Context section one item at a time:
+   - My role, first. Most roles in this course combine several hats, so press me on it. If I
+     give a one-word title like "PM" or "marketing", ask what I will actually do week to week,
+     what my team needs that nobody else covers, and which parts of the work I will own. If I
+     am solo, I likely wear most of the hats; ask which ones I expect to spend the most time
+     on. Offer these as ideas and ask which apply:
+       product: discovery, user interviews, specs, prioritization
+       engineering: building features, data, deployment
+       design: flows, interface, testing with users
+       go-to-market: positioning, landing pages, campaigns, sales outreach
+       pricing and business model: pricing research, financial models
+       analytics: metrics, tracking, reporting
+       operations: agent workflows and automations that do repetitive work
+     The ideas are prompts, not answers. Do not assign me a role. Record the hats I choose, in
+     my words.
+   - What I am working on: my own product, or my part of a team's product. If I do not know
+     yet, write "Not decided" followed by the options I am weighing, and tell me that choosing
+     is a legitimate Sprint 1 goal.
+   - Who it is for: the customer or segment the work ultimately serves.
+   - Who uses my work: the specific person who will use what I make. For a team role this can
+     be my teammates, such as engineers using my specs or sales using my pricing.
+   Mark anything I cannot answer yet as "Not decided". Use my words; tighten them, but do not
+   invent a role, a project, or answers for me. Then explain commit and push, commit with the
+   message "Add project context", push, and confirm it went to <username>/<netid>_msb341.
+
+8. Write my Sprint 1 plan.
+   Explain that each sprint is two weeks and opens with a committed plan, that the plan's
+   quality is graded, and that the predicted difficulty is not. Then run the sprint-plan skill
+   and follow its instructions exactly. The answers must be mine: do not suggest a goal for
+   me. When the skill gives the commit command, run it.
+
+9. Confirm it is turned in.
+   Check on GitHub, not just on my computer, that sprints/sprint-1-plan.md is in my repo, that
+   the repo is private, and that sdmurff and nmccaul are collaborators or invited. Show the
+   finished task list and a short summary: my repo URL, the deadline, and that every sprint
+   starts with /sprint-plan and ends with /sprint-review.
+
+RULES
+- Never write my README answers or my sprint plan for me.
+- Never push to any repo other than <username>/<netid>_msb341.
+- Never ask for, show, or store passwords or tokens.
+- No real names, emails, or phone numbers of other people go in the repo.
+- Change git and gh settings only as these tasks require.
+```
+:::
 
 ### Sprint 2 {#sprint-2}
 

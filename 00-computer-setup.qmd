@@ -126,6 +126,10 @@ Press **Enter** to say "Yes" when asked to proceed. Claude Code works much like 
 > - **↑ (up arrow)** to recall your last command
 > - **↓ (down arrow)** to move forward through your command history
 
+::: {.callout-important}
+**Next:** set up your builder repo and plan Sprint 1 with the setup prompt in [Sprint 1](00-assessments.qmd#sprint-1).
+:::
+
 ## 7. Optional: other AI coding agents
 
 You are now ready for the first class. Instruction in this course is with Claude Code, but we will refer to other AI agents as well and demonstrate how they can be used. If you have accounts with other AI providers, install their agents too.
