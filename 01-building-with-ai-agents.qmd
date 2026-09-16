@@ -285,6 +285,40 @@ We are adding a coding section to all of our Product Managers interviews at <a h
 
 Beyond prototyping, vibe coding with the developer focused tools we will use in this workshop (e.g. Claude Code) enable a whole host of other high value use cases for product manangers such as rapid data analysis, automations, and more effecicent and precise use of LLMs than is possible from standard chat interfaces like ChatGPT.
 
+When building gets this cheap, the order of the work changes. The loop used to run idea, spec,
+design, build, ship, learn: you wrote the thing down because building it was the expensive step,
+so you wanted to be sure before anyone started. a16z calls what is happening now the inversion of
+that loop.
+
+![Image source: a16z](images/loop-inverts.jpg){fig-alt="Two circular diagrams. The old loop reads have an idea, write the spec, design it, build it, ship, learn. The inverted loop reads have an idea, build it, play with it, design it, ship, learn."}
+
+Madhu Guru described the same shift happening inside Google:
+
+::: tweet-center
+<blockquote class="twitter-tweet">
+
+<p lang="en" dir="ltr">
+At <a href="https://twitter.com/Google?ref_src=twsrc%5Etfw">\@Google</a>, we are moving from a writing-first culture to a building-first one.<br><br>Writing was a proxy for clear thinking, optimized for scarce eng resources and long dev cycles - you had to get it right before you built.<br><br>Now, when time to vibe-code prototype ≈ time to write PRD,…
+</p>
+
+— Madhu Guru (\@realmadhuguru) <a href="https://twitter.com/realmadhuguru/status/1950336434126336154?ref_src=twsrc%5Etfw">July 29, 2025</a>
+
+</blockquote>
+:::
+
+```{=html}
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+```
+
+In the inverted loop you build first and the artifact becomes the way you think. You play with a
+working thing, and only then do you design it, because now you have something real to react to.
+The prototype is the argument.
+
+Read this as a change in sequence, not a license to skip the writing. The spec does not disappear;
+it moves. You still write down what the thing is supposed to do, you just write it after you have
+learned something from a build instead of guessing beforehand, and you write it before the code is
+something you intend to keep. Chapter 2 is about that discipline.
+
 ## Where This Is Going
 
 Over the past two decades, many companies adopted a *product trio* team structure for building software products. This structure brings together three complementary roles: the product manager, who defines the vision, strategy, and priorities; the designer, who ensures usability, aesthetics, and a seamless user experience; and one or more engineers, who turn ideas into functional, scalable solutions. By balancing business objectives, user needs, and technical feasibility, the trio has emerged as a proven way to foster cross-functional collaboration and accelerate product development.

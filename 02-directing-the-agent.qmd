@@ -1071,6 +1071,50 @@ Have another person (or Claude in a fresh session) review your specs before impl
 
 In practice, you'll often start with vibe coding to explore, then transition to SDD once you know what you want to build.
 
+## What This Looks Like at Full Scale
+
+Everything in this chapter is one builder directing one agent. It is worth seeing what the same
+pattern looks like when an engineering organization runs it all day. In September 2026, Gergely
+Orosz published an account of what OpenAI internally calls its agentic software factory.
+
+![Image source: Gergely Orosz, The Pragmatic Engineer, "Inside OpenAI's agentic software factory," September 15, 2026](images/openai-agentic-factory.jpeg){fig-alt="A flow diagram. A software builder defines an outcome for Codex, which writes code using context from internal systems. Code goes to CI build and test, then to parallel agentic code review by specialist agents that classify risk. Low-risk changes go to agentic deploy; higher-risk changes get an engineer review first. Deployed changes are watched in production, with a Perf Factory agent detecting latency regressions and a Sevbot agent investigating incidents. Both feed fixes back to Codex."}
+
+Trace the diagram. A human, labeled the **software builder**, defines the outcome. Everything
+downstream is an agent. Codex writes the code, pulling context from the places the context actually
+lives: the repo, GitHub, Slack, Notion, internal data sources. CI builds and tests, and when it
+fails the agent fixes its own work and tries again rather than handing a red build back to a person.
+Review is done in parallel by specialist agents, one for data, one for infrastructure, one for
+security, which classify how risky the change is. Only the risky changes get routed to a human
+engineer. Low-risk changes go straight to an agent that deploys them, babysits the rollout, and
+builds its own monitoring dashboard. Two more agents watch production: a Perf Factory that catches
+latency regressions and proposes fixes, and Sevbot, which investigates incidents and proposes
+mitigations. Both loop back to the start.
+
+Some numbers from the same piece: use of Codex in non-engineering departments at OpenAI went from
+roughly zero to about 90 percent between February and May 2026, nearly everyone at the company now
+uses it weekly, and pull request volume across the company rose roughly tenfold in six months.
+
+Three things in that diagram are worth your attention as a PM.
+
+**The human's job is the outcome, not the code.** One oval at the top, and it is a definition of
+done. That is the same job you are practicing when you write requirements before you let the agent
+implement. The scarce skill in this picture is judgment about what should be built and what "good"
+means, which is the entire premise of this course.
+
+**Verification is the bottleneck, not generation.** Look at how much of the diagram is CI, review,
+risk classification, deploy monitoring, and incident response. When generating code gets cheap,
+everything that checks the code becomes the constraint. This is why your own loop has tests, code
+review, and a real deploy in it, and why Chapter 9 exists.
+
+**Risk classification decides where the human goes.** The diamond in the middle is the design
+decision that makes the whole system work. Not every change needs a person, and pretending
+otherwise just moves the bottleneck to you. Deciding which changes are worth your attention is a
+product judgment, and you should be making the same call in your own project.
+
+You are running a small version of this factory. Your CLAUDE.md is their internal context layer,
+your slash commands and skills are their internal Codex skills, your hooks are their CI gates, and
+your review of the agent's work is their risk classification. The difference is scale, not shape.
+
 ## Exercise: Add a Feature Using SDD
 
 Let's practice. Take the to-do list app you built in chapter 1 (or any project you're working on).

@@ -28,6 +28,20 @@ This comprehensive guide articulates a fundamental shift in software development
 
 [Watch on YouTube](https://www.youtube.com/watch?v=a9eR1xsfvHg) a video guide covering GitHub Spec Kit.
 
+**Inside OpenAI's Agentic Software Factory**
+
+**Author:** Gergely Orosz
+
+**Published:** September 15, 2026
+
+**Source:** The Pragmatic Engineer
+
+A reported look at how OpenAI builds software internally, where a human defines the outcome and agents handle implementation, CI, code review, deployment, performance regressions, and incident response. Useful as the full-scale version of the loop you run in Chapter 2: it shows that when generating code gets cheap, verification becomes the bottleneck, and that deciding which changes need a human is itself a design decision. Reports that Codex use in non-engineering departments at OpenAI went from near zero to about 90 percent between February and May 2026, and that pull request volume rose roughly tenfold in six months.
+
+[Read the full article](https://newsletter.pragmaticengineer.com/p/openai-software-factory)
+
+---
+
 ## Videos
 
 ### AI-Assisted Development with Claude Code
