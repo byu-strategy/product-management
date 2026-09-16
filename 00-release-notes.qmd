@@ -4,6 +4,21 @@ This course site is a living product. It gets better during the semester, and ev
 
 New entries appear at the top.
 
+## v2.2.0 (2026-09-15)
+
+Two new sections on how software actually gets built with agents, and diagrams throughout the book where chapters used to be walls of text.
+
+- **New in Chapter 1: what makes an agent an agent.** A chatbot and a coding agent run on the same model. What separates them is access: reading your files, running commands, executing code, and creating real deliverables. The new section sits right before the command line setup and explains why this course runs in a terminal instead of a browser tab.
+- **New in Chapter 2: what this looks like at full scale.** A walk through OpenAI's internal "agentic software factory," where a human defines the outcome and agents handle the code, the tests, the review, the deploy, and the incident response. Three things to take from it as a product manager: your job is the outcome, verification is the bottleneck once writing code gets cheap, and deciding which changes need a human is itself a design decision. You are running a small version of the same system.
+- **The product loop is inverting.** Chapter 1 now covers the shift from idea, spec, design, build to idea, build, play, design. The spec does not disappear, it moves: you write it after you have learned something from a build instead of guessing beforehand.
+- **Chapter 4 opens with the whole map.** Dan Olsen's Lean Product Process shows which parts of product-market fit are the market's to decide and which are yours. Chapter 4 is the market half; Chapters 5 and 6 are the product half.
+- **Chapter 5 starts with the UX iceberg.** Visual design is the only layer above the waterline, and it is the layer an agent is best at. Interaction design, information architecture, and conceptual design are underneath, and they are where usable and unusable products diverge.
+- **A warning about AI-generated personas.** Chapter 4's persona section now shows a real worked example and names the failure mode: asking an agent for a persona before you have talked to anyone produces a plausible character with no information in it, and it will confirm whatever you already believed.
+- **Chapter 11 starts with the autonomy spectrum.** How much rope to give a model, from a bare call you control completely to agents deciding their own steps. Your default should be a fixed process with a model call inside it.
+- **Inbound marketing has a second audience.** Chapter 12 now covers which sources models actually cite when buyers ask them instead of searching, and what that means for where you spend your effort.
+- **Diagrams where there were none.** Chapters 5, 7, 11, and 12 had no figures at all. They now have them, along with new diagrams in Chapters 1, 3, 4, and 9: the elements of value, a customer journey map, front-end and back-end architecture, and screenshots for the GitHub steps in Chapters 2 and 9.
+- **Further reading.** Added "Inside OpenAI's Agentic Software Factory" from The Pragmatic Engineer.
+
 ## v2.1.1 (2026-09-14)
 
 The builder template is live, so you can create your repo and plan Sprint 1 today.
