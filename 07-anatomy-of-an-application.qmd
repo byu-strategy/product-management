@@ -74,6 +74,8 @@ For example, in a to-do list app, items are stored in a SQL database table that 
 4. **Frontend** receives response and updates the UI
 
 ## How They Work Together: The Full Stack
+![Image source: Adityagaba via Medium](images/architecture.png){fig-alt="A diagram split into a front-end half and a back-end half. The front end shows a web app and a mobile app, with HTML, CSS, JavaScript, and Node logos beneath. An arrow connects them to a server in the back-end half, which connects in turn to a database, an API, and language logos for Java, Python, C plus plus, and PHP."}
+
 
 Here's how all four pieces work together when a user adds a to-do item (same flow for web and mobile):
 

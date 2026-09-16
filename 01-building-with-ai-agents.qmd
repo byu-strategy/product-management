@@ -344,6 +344,24 @@ The fight over what a product manager does is going to among the first major AI 
 
 With the right AI tools some ambitious individuals may be able to credibly wear all three hats and become what we could call a [Full-Stack Product Builder](https://www.linkedin.com/pulse/bringing-full-stack-builder-life-tomer-cohen-gy5nf/).
 
+The table below lists what product work actually consists of, question by question, and marks which
+role does each piece. The highlighted column is the full-stack product builder: the same discovery,
+planning, go-to-market, and analytics work a business PM does, plus the architecture and engineering
+execution rows that used to belong to someone else. Those added rows are the ones this course is
+built to cover.
+
+![The full-stack product builder column is the target of this course. Compare it to the columns beside it.](images/activities.png){fig-alt="A large table. Rows are grouped by the question they answer: what should we build, how should we build it, how do we build it, how do we align and communicate, how do we bring it to market, how do we measure success, how do we improve or retire it, how do we build product culture. Columns are roles: a highlighted full-stack product builder column, then business PM, technical PM, product marketing manager, project manager, engineering, designer, data scientist, and customer success manager. The full-stack column is checked for every row, including the architecture and engineering execution rows that other PM columns leave blank."}
+
+Boris Cherny, who created Claude Code, has said the team building it is staffed on this assumption:
+
+::: tweet-center
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">As always, a very thoughtful and well reasoned take. I read till the end.<br><br>I think the Claude Code team itself might be an  indicator of where things are headed. We have directional answers for some (not all) of the prompts:<br><br>1. We hire mostly generalists. We have a mix of senior…</p>&mdash; Boris Cherny (\@bcherny) <a href="https://twitter.com/bcherny/status/2015979257038831967?ref_src=twsrc%5Etfw">January 27, 2026</a></blockquote>
+:::
+
+```{=html}
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+```
+
 ::: tweet-center
 <blockquote class="twitter-tweet">
 
@@ -377,6 +395,18 @@ Despite its popularity, I really don't like the term "vibe coding" because it so
 Don't be the reason your boss has bring in a Vibe Code Cleanup Specialist.
 
 Going forward I will use terms like "build with AI", "agentic coding," "ai-assisted coding", "AI builder", "full-stack product builder", and "AI engineer" to describe what we are striving to do and become. To do these terms justice we will follow a rigorous development process guiding AI to write code that will stand up to scrutiny in a world class engineering organization.
+
+## What Makes an Agent an Agent
+
+Before the setup instructions, it is worth being precise about what you are installing, because
+"AI" covers two very different things. A web chatbot and a coding agent run on the same underlying
+models. What separates them is access.
+
+![The same model, four levels of access. Web chatbots sit at the top layer; agents work across all four.](images/agent-pyramid.svg){fig-alt="A four-layer pyramid. The small top layer is LLM, text in and text out. Below it, System Access: bash, files, terminal. Below that, Code Execution: write, run, debug, iterate. The wide base is Tools and Artifacts: docs, apps, APIs, deploy. A bracket marks the top layer alone as web chatbots, and a bracket spanning all four layers as AI agents."}
+
+A chatbot can write you a PRD. An agent can read your repo, write the code, run it, watch it fail,
+fix it, and deploy the result. That gap is the entire reason this course runs in a terminal instead
+of a browser tab, and it is why the next section starts with the command line.
 
 ## The Command Line
 

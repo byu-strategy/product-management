@@ -14,6 +14,17 @@ returns the same answer every time and either works or throws. A model returns s
 plausible every time, costs money every time, takes a second or two every time, and can be
 confidently wrong without failing. Every design decision in this chapter follows from that.
 
+Before deciding where a model call belongs in your product, decide how much rope it gets. The
+spectrum below runs from a bare model, where you hold all the control logic, to a multi-agent system
+where control is distributed across agents. Most product features should sit further left than the
+demo you saw that inspired them: autonomy buys you flexibility and costs you predictability.
+
+![Image source: AI Solutions course materials](images/ai-autonomy-spectrum.png){fig-alt="A four-column spectrum running from low to high autonomy and from narrow to complex task. Column one, LLM, control logic human, a standalone model with no external tools. Column two, AI System, control logic human defined in code, an LLM connected to tools or data following a fixed process, example RAG. Column three, AI Agent, control logic in the LLM, a model with tools and memory that reasons, acts, observes, and iterates. Column four, Multi-Agent System, control logic distributed among agents, a network of specialized agents collaborating."}
+
+Your default should be the second column. A fixed process with a model call inside it is testable,
+cheap, and explainable to a user when it goes wrong. Reach right only when the task genuinely
+branches in ways you cannot enumerate.
+
 ## Where the Call Lives
 
 **Your API key never goes in the browser.** This is the single most common way students leak

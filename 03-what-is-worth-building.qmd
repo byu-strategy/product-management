@@ -51,6 +51,31 @@ Roger Martin and A.G. Lafley (*Playing to Win*) [@lafley2013playing] reduce stra
 
 For a student product, the first three are the ones that bite. Answer "where will you play" and "how will you win" in a sentence each, and you already have a strategy most startups never bother to write down.
 
+One thing has changed about "where will you play." The old advice was to chase a large market,
+because the fixed cost of building was high enough that a small one could not repay it. That
+arithmetic is different now.
+
+::: tweet-center
+<blockquote class="twitter-tweet">
+
+<p lang="en" dir="ltr">
+
+Software development has historically been constrained by scarcity, high costs, specialized skills, and long timelines. So builders chased only big markets.<br><br> AI is making it cheap, fast, and easy to build, suddenly it's economically sane to solve niche workflows for small…
+
+</p>
+
+— Madhu Guru (\@realmadhuguru) <a href="https://twitter.com/realmadhuguru/status/1953253968228040778?ref_src=twsrc%5Etfw">August 7, 2025</a>
+
+</blockquote>
+:::
+
+```{=html}
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+```
+
+A market too small to be worth a funded team's time can be worth yours. That widens where you can
+play; it does not relax how you win.
+
 ## Creating value, and capturing it
 
 Strategy has to answer two different questions, and it is easy to collapse them into one. The first is whether your product *creates* value: is anyone genuinely better off for it existing? The second is whether you can *capture* any of that value: does enough of it come back to you to keep the business alive? These are not the same question, and a product can pass the first and fail the second.
@@ -64,6 +89,16 @@ The value stick is a picture, and it rests on real economics. If you want the fu
 The trap is assuming creation is the hard part and capture takes care of itself. It does not. Peter Thiel's example is the sharpest: US airlines create enormous value and keep almost none of it, while a single search company creates less and keeps far more [@thiel2014]. David Teece made the same point about innovators decades earlier: you can invent something genuinely new, create real value, and watch imitators and the owners of the pieces you depend on take all the capture [@teece1986]. Creating value is necessary. It is not sufficient.
 
 So where on the value stick do you land? That is a choice, but a *constrained* one. You do not simply decide to keep more of the gap. How much you can capture is set by structure you did not build and cannot wish away, and the first job of strategy is to read that structure honestly. In [AIRE](01-building-with-ai-agents.qmd) terms, the width of the band you can capture is something you *Inform* on, and where you position inside it is the *Aim*. Misreading the band is an information failure. Landing in a band that is genuinely thin, after reading it correctly, is not a mistake. It is a signal to go find a different band.
+
+Value is not one thing, and it is not only functional. Bain's Elements of Value catalogs thirty
+distinct kinds, stacked from functional at the base through emotional and life changing up to social
+impact. The higher elements are harder to copy and are what people actually pay a premium for, but
+they only count once the functional ones underneath are handled.
+
+![Image source: Almquist, Senior, and Bloch, "The Elements of Value," Harvard Business Review, 2016](images/elements-of-value.png){fig-alt="A pyramid of thirty value elements in four tiers. The base tier, functional, holds elements such as saves time, simplifies, makes money, reduces risk, organizes, integrates, connects, reduces effort, avoids hassles, reduces cost, quality, variety, sensory appeal, and informs. Above it, emotional, holds reduces anxiety, rewards me, nostalgia, design and aesthetics, badge value, wellness, therapeutic value, fun and entertainment, attractiveness, and provides access. Above that, life changing, holds provides hope, self-actualization, motivation, heirloom, and affiliation and belonging. The single top element is self-transcendence, under social impact."}
+
+Use it as a checklist against your own product. If every element you can honestly claim sits in the
+bottom row, you are competing on cost and convenience alone, which is the easiest position to copy.
 
 ## The five forces: how wide is the band?
 

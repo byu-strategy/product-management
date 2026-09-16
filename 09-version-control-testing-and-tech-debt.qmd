@@ -65,6 +65,8 @@ git log --oneline
 #### Connecting to GitHub
 
 1. Create a new repository on [github.com](https://github.com) (don't initialize with README)
+
+![The New button on your GitHub dashboard.](images/new-repo.jpg){fig-alt="The top of a GitHub dashboard. In the left sidebar under Top repositories, a green New button is outlined in red."}
 2. Connect your local repo:
 
 ```bash

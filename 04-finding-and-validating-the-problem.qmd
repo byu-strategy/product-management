@@ -10,6 +10,14 @@ Problem discovery is the process of moving from *I think this is a problem* to *
 
 This chapter teaches you the Jobs-to-be-Done framework for understanding customer motivations, the Mom Test approach for conducting honest interviews, and the Git skills you need to version control your work as your projects grow.
 
+Dan Olsen's Lean Product Process is a useful map of the whole trip. The bottom two layers are the
+market and are not yours to decide: who the customer is and which of their needs are underserved.
+The top three are the product and are entirely your choices: the value proposition, the feature set,
+and the UX. Product-market fit is the seam between them, and step 6 loops back through customer
+testing. This chapter is the bottom half. Chapters 5 and 6 are the top.
+
+![Image source: The Lean Product Playbook by Dan Olsen](images/lean-product-process.png){fig-alt="A pyramid split into a market half and a product half. The market base, from the bottom, is 1 target customer and 2 underserved needs. The product top, from the bottom, is 3 value proposition, 4 feature set, and 5 UX. A double arrow between the halves is labeled product-market fit, and a dashed arrow from the top loops back down to the base labeled 6 test with customers."}
+
 ## The Five Discovery Skills
 
 Where do good problems come from? Jeff Dyer and his colleagues studied disruptive innovators and found they are not born with a creativity gene, they *behave* in five particular ways, and those behaviors are mostly learnable (their research puts creativity at roughly one-third genetic, versus about four-fifths for raw IQ). The five skills:
@@ -103,6 +111,11 @@ For example:
 This framing keeps you focused on the customer's goal, not your solution. It reminds you that customers don't want your product, they want progress in their lives. Your product is just a means to that end.
 
 ![Image source: Jeff Dyer, Innovators DNA](images/jobs-to-be-done1.png)
+
+A job rarely happens in one moment. Mapping the whole experience, phase by phase, shows you where
+the pain actually spikes, which is usually not where you assumed. The dips are your opportunities.
+
+![Image source: Heart of the Customer](images/journey-map.png){fig-alt="A customer journey map for a persona named Paula. A band across the top divides the experience into three journey phases. Below it a line traces her emotional state from negative through positive and back down, annotated with quotes at each turn: concerned, supported, cared for, and annoyed at the final handoff. A row along the bottom lists opportunities identified at each phase."}
 
 ## Discovery Is Truth-Seeking
 
@@ -321,6 +334,16 @@ Your interpretation and next steps.
 ## Building Personas
 
 A persona is a fictional but realistic representation of your target customer. It synthesizes interview data into a memorable character that keeps your team aligned.
+
+A worked example, from Dan Olsen:
+
+![Image source: The Lean Product Playbook by Dan Olsen](images/persona.png){fig-alt="A one-page persona for The Busy Mom, Lisa Bennett, age 32, a married teacher with a bachelor's degree earning 55,000 dollars. A pull quote reads that her children's health is her top priority but raising two kids is a full-time job, so she needs an easy way to stay on top of their prescriptions and medical appointments. Paragraphs describe her family and her worry about forgetting to refill an asthma inhaler prescription. Three columns at the bottom list her goals, her technology use, and her interests."}
+
+Note what makes this one useful: the quote and the asthma inhaler come from a real interview, not
+from imagination. A persona is a summary of evidence you already collected. The failure mode, and
+it is the easy one now, is asking an agent to generate a persona before you have talked to anyone.
+That produces a plausible character with no information in it, and it will happily confirm whatever
+you already believed.
 
 #### Persona Template
 

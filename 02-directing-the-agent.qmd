@@ -162,6 +162,11 @@ For your portfolio and other static sites:
 3. Source: "Deploy from a branch" or "GitHub Actions"
 4. Your site appears at `username.github.io/repo-name`
 
+![The setting to change is under Settings, then Pages, then Source.](images/github-actions-deploy.jpg){fig-alt="A GitHub repository Settings page. Pages is highlighted in the left sidebar. In the Build and deployment section, the Source dropdown is open with GitHub Actions highlighted above the currently selected Deploy from a branch."}
+
+Pick "GitHub Actions" if your site has a build step, which anything beyond plain HTML will. Pick
+"Deploy from a branch" only if you are publishing files that are already finished.
+
 ## Claude Code: Slash Commands
 
 Slash commands are shortcuts for common Claude Code actions. They help you work faster and more consistently.

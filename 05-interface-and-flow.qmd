@@ -8,6 +8,17 @@ Your product is only as good as the part people touch. An agent will happily gen
 working application that nobody can figure out how to use, and it will not tell you that it
 has. Judgment about the surface is yours.
 
+It helps to be precise about what "the surface" means. Dan Olsen's UX iceberg splits it into four
+layers. Visual design is the only one above the waterline, and it is the one an agent is best at.
+The three underneath, interaction design, information architecture, and conceptual design, are where
+usable and unusable products actually diverge, and they are decided before a single style is chosen.
+
+![Image source: The Lean Product Playbook by Dan Olsen](images/ux-iceberg.png){fig-alt="An iceberg divided into four horizontal layers. Only the top layer, visual design, sits above the waterline. Below the surface, from top to bottom: interaction design, information architecture, and conceptual design as the largest layer at the base."}
+
+A polished screen sitting on a confused conceptual model is the most common way an AI-built
+application fails. The rest of this chapter is the machinery of the top layer; keep the bottom three
+in mind while you read it.
+
 ## Frontend Fundamentals
 
 Every web application has a frontend, the part users see and interact with. Modern frontends are built with HTML (structure), CSS (styling), and JavaScript (interactivity).

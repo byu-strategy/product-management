@@ -425,6 +425,18 @@ Find niche communities (Slack groups, Discord servers, subreddits) and *be helpf
 
 ### Building Inbound Momentum (Content, SEO Basics)
 
+Inbound now has a second audience. A growing share of buyers ask a model rather than a search
+engine, which means you also care about which sources those models cite. A Semrush study of 150,000
+citations in June 2025 found the answer skewed heavily toward a handful of community and reference
+sites.
+
+![Image source: Visual Capitalist, based on a Semrush study of 150,000 citations, June 2025](images/ai-data.webp){fig-alt="A ranked bar chart titled Where AI Gets Its Facts, showing the top domains cited by LLMs such as ChatGPT and Perplexity. Reddit leads at 40.1 percent, followed by Wikipedia at 26.3, YouTube at 23.5, Google at 23.3, Yelp at 21.0, Facebook at 20.0, and Amazon at 18.7, trailing down through TripAdvisor, Mapbox, OpenStreetMap, Instagram, MapQuest, Walmart, eBay, LinkedIn, Quora, Home Depot, Yahoo, Target, and Pinterest at 4.2 percent."}
+
+Read that as a channel list, not a curiosity. A genuinely helpful answer in the subreddit where your
+customers already are does double duty: it reaches them, and it is the kind of source a model repeats
+later. This does not change the underlying advice, which is still to be useful in public where your
+buyers gather. It changes where "public" is.
+
 Inbound means customers come to *you*. This takes longer to build but compounds over time.
 
 **1. Start a blog (and SEO basics)**
