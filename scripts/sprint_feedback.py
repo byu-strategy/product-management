@@ -179,6 +179,7 @@ def validate(base, items):
         graded = {c for c, _, _ in CATS if c != "plan"}  # the plan line is written by this script
         text = " ".join([*(v for k, v in (r.get("feedback") or {}).items() if k in graded),
                          (r.get("difficulty") or {}).get("note") or "",
+                         *((r.get("not_reviewed") or {}).get(k) or "" for k in ("summary", "detail")),
                          r.get("next_sprint") or ""])
         import re as _re
         # Quoted text is the student's own words or their app's output, so it is not checked.
@@ -243,6 +244,8 @@ th{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:#5b6475}
 td.pts{white-space:nowrap;font-weight:600;width:70px}
 .disclaimer{margin-top:18px;padding-top:10px;border-top:1px solid #e3e6ec;font-size:12px;color:#5b6475}
 .appendix{page-break-before:always;break-before:page}
+.callout{border-left:3px solid #9a6700;background:#fbf6ea;padding:8px 12px;margin:10px 0 14px;border-radius:0 6px 6px 0}
+.callout p{margin:4px 0 0}.callout b{font-size:14px}
 .howto ol{padding-left:20px;margin:6px 0}.howto li{margin-bottom:10px}
 .howto pre{font:12px/1.45 ui-monospace,SFMono-Regular,Menlo,monospace;background:#f3f4f7;padding:8px 10px;border-radius:6px;white-space:pre-wrap;margin:6px 0}
 .appendix .sub{margin-bottom:10px}
@@ -288,7 +291,7 @@ with the link", open each link in a private browser window to check it before yo
 </ol></section>"""
 
 
-def appendix(p, sprint, reviewed_on):
+def appendix(p, sprint, reviewed_on, not_reviewed=None):
     """What the feedback was based on, built from the packet itself: an exact record of what was
     read, not anyone's summary of it. No sampling schedule, no internals."""
     f = p.get("facts", {})
@@ -378,9 +381,12 @@ def appendix(p, sprint, reviewed_on):
 
 
     trs = "".join(f"<tr><td class=src>{k}</td><td>{val}</td></tr>" for k, val in rows)
+    nr = (not_reviewed or {}).get("detail")
+    nr_block = f"<div class=callout><b>What couldn't be reviewed</b><p>{e(nr)}</p></div>" if nr else ""
     return f"""<section class=appendix><h2>Appendix: what this feedback is based on</h2>
-<p class=sub>Reviewed {reviewed_on}. Everything below was read; nothing else was.</p>
+<p class=sub>Reviewed {reviewed_on}. Everything below was reviewed; nothing else was.</p>
 <table class=src>{trs}</table>
+{nr_block}
 <p><b>How <code>/sprint-review</code> works.</b> It runs on your own computer at the end of the sprint.
 It lists the Claude Code and Codex projects you worked in during the sprint, asks which ones
 belonged to it, and reads only those, along with your commits. It then writes a report of when
@@ -396,6 +402,7 @@ your work, please let Nate, the TA, know.</p></section>"""
 
 
 def student_page(r, p, row, sprint, points):
+    nr_sum = (r.get("not_reviewed") or {}).get("summary")
     pk = DATA / f"grading/sprint-{sprint}/{r['net_id']}.json"
     reviewed_on = dt.datetime.fromtimestamp(pk.stat().st_mtime).strftime("%b %-d, %Y") if pk.exists() else ""
     total = sum(final(row, c) for c, _, _ in CATS)
@@ -441,10 +448,11 @@ def student_page(r, p, row, sprint, points):
 <h1>Sprint {sprint} feedback, {e(p.get('preferred_first') or p.get('name', ''))}</h1>
 <p class=sub>MSB 341 Product Management</p>
 <p class=total>{fmt(total)} / {points}</p>
+{f'<div class=callout><p>{e(nr_sum)}</p></div>' if nr_sum else ''}
 <table><tr><th>Category</th><th>Score</th><th>What it was based on</th></tr>{trs}</table>
 {extra}
 {WHERE_WORK_LIVES}
-{appendix(p, sprint, reviewed_on)}</body></html>"""
+{appendix(p, sprint, reviewed_on, r.get("not_reviewed"))}</body></html>"""
 
 
 def review_page(base, items, rows, sprint, points):

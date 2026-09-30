@@ -188,6 +188,7 @@ most sprints have one to three. This becomes the hexagon on the student's feedba
                   "reachable": "...", "matches_plan": "...", "off_demo": "...", "readable": "..."},
   "feedback": {"shipped": "...", "review": "...", "demo": "..."},
   "next_sprint": "...",
+  "not_reviewed": {"summary": "... or null", "detail": "..."},
   "axes": {"Discovery": 0.7, "Launch and Learn": 0.3},
   "axes_why": "for Scott, one or two sentences on how plan, review, and artifacts combined",
   "difficulty": {"assessed": 3, "axis": "...", "baseline_on_axis": 0.0, "predicted": 0, "student_actual": 0,
@@ -217,6 +218,19 @@ em dashes, no mention of lateness or of the setup items.
   points were lost, exactly what was missing. Cite what the student can check: a file path, a
   commit, a moment in their own Loom ("at 0:40 the screen shows..."). For a full score, say
   what earned it in one sentence.
+- `not_reviewed`: what this grade could not review, for the student who thinks the grade is
+  wrong. Two parts:
+  - `detail`: two to four sentences. Name each thing that could not be reviewed (a private or
+    unshared repo, a video that would not open, a claim with nothing committed or linked behind
+    it, a link that failed), which score it affected and how, and what the student could do
+    about it ("sharing the repo with sdmurff", "an export or screenshot of those numbers"). Never
+    promise a regrade: say "let Nate know" or "could change the score". When nothing was
+    missing, one sentence: "Nothing: your plan, sprint review, [what they committed], and your
+    full demo were all reviewed."
+  - `summary`: one sentence for the top of the first page, only when something that affected a
+    score could not be reviewed; otherwise `null`. It ends with "Details and what to do are in
+    the appendix."
+  Same voice rules as the rest. Never mention confidence levels.
 - `next_sprint`: one to three suggestions for next sprint, offered, not prescribed. Start with
   "You might consider" and keep each suggestion specific and concrete, taken from the rubric or
   from their own report. "You might consider committing each finished document the day you

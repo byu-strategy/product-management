@@ -40,6 +40,7 @@ def _student(base, r, p, row, sprint, cats, final):
     return {
         "id": r["net_id"], "name": p.get("name", ""), "first": p.get("preferred_first", ""),
         "confidence": r.get("confidence", ""), "watch": bool(r.get("watch_loom")),
+        "not_reviewed": (r.get("not_reviewed") or {}).get("detail", ""),
         "approved": row.get("approved", "").strip().lower() == "yes",
         "total": float(row["final_total"]), "grader_total": float(row["grader_total"]),
         "cats": [{"key": c, "label": label, "max": mx, "score": final(row, c),
@@ -154,6 +155,7 @@ section>h3{font:600 12px var(--sans);letter-spacing:.12em;text-transform:upperca
 dl.checks{display:grid;grid-template-columns:130px 1fr;gap:6px 14px;margin:0}
 dl.checks dt{font-weight:600;text-transform:capitalize}dl.checks dd{margin:0}
 .hexbox svg{max-width:100%;height:auto;background:#fff;border-radius:8px}
+.nr{border-left:3px solid var(--warn);background:var(--panel);padding:8px 12px;margin:14px 0 0;border-radius:0 6px 6px 0}
 .diffrow{display:flex;gap:28px;flex-wrap:wrap;margin-bottom:8px}.diffrow div b{display:block;font:600 24px var(--serif)}
 .diffrow div span{font-size:11px;color:var(--mute);text-transform:uppercase;letter-spacing:.06em}
 .pdf{width:100%;max-width:820px;height:1000px;border:1px solid var(--line);border-radius:8px;background:#fff}
@@ -217,6 +219,7 @@ function show(i){cur=i;const s=S[i];history.replaceState(null,'','#'+s.id);
   ${s.watch?'<span class="badge warn">watch the Loom</span>':''}${s.late_days?`<span class="badge bad">${s.late_days} day(s) late</span>`:''}
   <span class="badge ${s.approved?'good':''}">${s.approved?'approved':'not approved'}</span></div></div>
   <div class=big>${fmt(s.total)}<small> / ${meta.points}</small><div class=keys style="margin-top:8px"><kbd>j</kbd> <kbd>k</kbd> next / previous</div></div></div>
+  ${s.not_reviewed?`<p class=nr><b>What couldn't be reviewed</b> (student sees this): ${esc(s.not_reviewed)}</p>`:''}
   <div class=links>${s.links.map(l=>`<a href="${esc(l.href)}" target=_blank>${esc(l.label)}</a>`).join('')}</div>
   <section><h3>Scores and why</h3>${cats}</section>
   ${s.hexagon?`<section><h3>Where this sprint landed</h3>${s.hexagon}<p class=sub>${esc(s.axes_why)}</p></section>`:''}
