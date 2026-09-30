@@ -48,18 +48,7 @@ SHORT = [["Discovery"], ["Design"], ["Application", "Architecture"], ["AI System
 ACCENT, GRID, INK, MUTED = "#4f46e5", "#d5d5df", "#1f1f24", "#6b6b76"
 
 
-def covered_axes(net_id, sprint):
-    """Axes that got at least a quarter of any sprint's work so far, this sprint included."""
-    got = set()
-    for k in range(1, sprint + 1):
-        f = DATA / f"grading/sprint-{k}/results/{net_id}.json"
-        if f.exists():
-            shares = json.loads(f.read_text()).get("axes") or {}
-            got |= {a for a, s in shares.items() if a in AXES and s >= 0.25}
-    return got
-
-
-def hexagon(shares, covered):
+def hexagon(shares):
     """The sprint's focus on the six axes: distance from the center is the share of the work."""
     import math
     cx, cy, R = 210, 160, 110
@@ -84,14 +73,14 @@ def hexagon(shares, covered):
         labels += (f'<text x="{x:.1f}" y="{y0:.1f}" text-anchor="{anchor}" font-size="11.5" font-weight="{weight}" '
                    f'fill="{INK if v > 0 else MUTED}">{tsp}'
                    f'<tspan x="{x:.1f}" dy="14" font-size="10.5" fill="{MUTED}" font-weight="400">'
-                   f'{round(v * 100)}%{" &#183; covered" if ax in covered else ""}</tspan></text>')
+                   f'{round(v * 100)}%</tspan></text>')
     return (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 330" width="480" height="377" role="img" '
             f'aria-label="Share of this sprint on each axis">{grid}{spokes}'
             f'<polygon points="{shape}" fill="{ACCENT}" fill-opacity="0.16" stroke="{ACCENT}" stroke-width="2" '
             f'stroke-linejoin="round"/>{dots}{labels}</svg>')
 
 
-def focus_caption(shares, covered):
+def focus_caption(shares):
     ranked = sorted(((s, a) for a, s in shares.items() if a in AXES and s > 0), reverse=True)
     if not ranked:
         return ""
@@ -100,9 +89,7 @@ def focus_caption(shares, covered):
     if rest:
         lead += ", with " + (rest[0] if len(rest) == 1 else ", ".join(rest[:-1]) + " and " + rest[-1])
     lead += "."
-    n = len(covered)
-    return (f"{lead} Axes covered so far, counting any axis that took at least a quarter of a sprint: "
-            f"{n} of 6. The course asks for at least 5 by the end of Sprint 6.")
+    return lead
 
 
 def plan_line(p):
@@ -231,9 +218,8 @@ def student_page(r, p, row, sprint, points):
         extra += f"<h2>What your sprint review found that your retro did not mention</h2><p>{e(r['review_missed'])}</p>"
     shares = r.get("axes") or {}
     if shares:
-        cov = covered_axes(r["net_id"], sprint)
-        extra = (f"<h2>Where this sprint landed</h2><div class=hex>{hexagon(shares, cov)}</div>"
-                 f"<p>{e(focus_caption(shares, cov))}</p>") + extra
+        extra = (f"<h2>Where this sprint landed</h2><div class=hex>{hexagon(shares)}</div>"
+                 f"<p>{e(focus_caption(shares))}</p>") + extra
     if (r.get("difficulty") or {}).get("note"):
         extra += f"<h2>How hard it was</h2><p>{e(r['difficulty']['note'])}</p>"
     if r.get("next_sprint"):

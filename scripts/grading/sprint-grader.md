@@ -160,8 +160,7 @@ work was closer to a 4: the Supabase auth took four days across 31 prompts.").
 Split the sprint's actual work across the six axes as shares that add up to 1: Discovery,
 Design, Application Architecture, AI Systems, Agentic Workflow, Launch and Learn. Judge from the
 work, not from the plan or the review's own axis tag. Include only axes with real work; most
-sprints have one to three. This becomes the hexagon on the student's feedback page, and any axis
-at 0.25 or more counts toward the rule that six sprints must touch at least five axes.
+sprints have one to three. This becomes the hexagon on the student's feedback page.
 
 ## Output, per student
 
