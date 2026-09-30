@@ -18,11 +18,11 @@ from post_grades import comment_text
 CANVAS = "https://byu.instructure.com"
 
 
-def _hex(shares):
+def _hex(shares, profile=None):
     if not shares:
         return ""
     from sprint_feedback import hexagon, focus_caption
-    return f'<div class=hexbox>{hexagon(shares)}<p class=why>{html.escape(focus_caption(shares))}</p></div>'
+    return f'<div class=hexbox>{hexagon(shares, profile)}<p class=why>{html.escape(focus_caption(shares))}</p></div>'
 
 
 def _student(base, r, p, row, sprint, cats, final):
@@ -54,7 +54,7 @@ def _student(base, r, p, row, sprint, cats, final):
         "comment": comment_text(row, sprint),
         "checks": r.get("demo_checks") or {},
         "difficulty": r.get("difficulty") or {},
-        "hexagon": _hex(r.get("axes") or {}), "axes_why": r.get("axes_why", ""),
+        "hexagon": _hex(r.get("axes") or {}, p.get("baseline")), "axes_why": r.get("axes_why", ""),
         "other_repos": [{"repo": o["repo"], "commits": len(o.get("commits", []))} for o in p.get("other_repos", [])],
         "unshared": f.get("repos_named_but_not_shared", []),
         "frames": frames,
