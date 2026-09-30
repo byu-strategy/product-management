@@ -122,8 +122,11 @@ extra.
 
 `reasons` are for Scott: one or two sentences each, specific, citing the packet.
 
-**Write it the way Scott would after watching the video himself.** The student-facing text is
-his feedback, in his voice, from a viewer's seat: "You open on the Loom home page and stay
+**Write all of it the way Scott would, in his voice.** Every student-facing line is his feedback
+to the student, first person where it fits ("I read your retro", "I checked the repo", "When I
+opened the link"). Precise references are wanted: commit hashes, file paths, dates, times, and
+moments in the video. It can be exact and a little clinical, but it must read as a person wrote
+it, never as a system report. For the demo, write from a viewer's seat: "You open on the Loom home page and stay
 there, so I never see the study guide", "At 0:40 you click through to the live page and the
 count goes up", "The last 20 seconds are you talking over the terminal." Refer to moments by
 their time in the video. Never mention frames, screenshots, stills, transcripts, captions,

@@ -47,14 +47,15 @@ def plan_line(p):
     when = sub.get("submitted_at")
     when = dt.datetime.fromisoformat(when).strftime("%b %-d at %-I:%M %p") if when else None
     if not f.get("plan_submitted"):
-        return "No plan was found."
+        return "I could not find a plan in your repo."
     if f.get("plan_fields_missing"):
-        return f"Your plan, committed {when}, is missing: {', '.join(f['plan_fields_missing'])}."
+        return f"Your plan, committed {when}, is missing {', '.join(f['plan_fields_missing'])}."
     late = f.get("plan_days_late", 0)
     if late:
-        return (f"Committed {when} with all four fields filled in, {late} day{'s' * (late > 1)} after "
-                f"the plan deadline, so {late} point{'s' * (late > 1)} came off under the late work policy.")
-    return f"Committed {when} with all four fields filled in. Graded for completion."
+        return (f"You committed your plan {when} with all four fields filled in. That was {late} "
+                f"day{'s' * (late > 1)} after the plan deadline, so {late} point{'s' * (late > 1)} "
+                f"came off under the late work policy.")
+    return f"You committed your plan {when} with all four fields filled in. Full credit."
 
 
 def load(sprint):
@@ -74,8 +75,8 @@ def load(sprint):
             other = p.get("facts", {}).get("non_loom_video")
             r["scores"]["demo"] = 0
             r["feedback"]["demo"] = (
-                "Your demo was not a Loom share link, so Demo is 0. The demo must be on Loom."
-                if other else "No Loom demo was submitted, so Demo is 0.")
+                "Your demo was not a Loom share link, so I could not count it. The demo has to be on "
+                "Loom; Demo is 0." if other else "I did not find a Loom demo in your submission, so Demo is 0.")
             r["reasons"]["demo"] = "Not a Loom link (" + (", ".join(other) or "no video") + "): 0 by rule."
         days = p.get("facts", {}).get("canvas_days_late", 0)
         if days:
@@ -167,14 +168,14 @@ def student_page(r, p, row, sprint, points):
     days = p.get("facts", {}).get("canvas_days_late", 0)
     if days:
         pct = min(100, 10 * days)
-        extra = (f"<h2>Late work</h2><p>This was submitted {days} day{'s' * (days > 1)} late. Canvas "
-                 f"applies the late work policy on top of the score above: minus {pct}%, so your "
-                 f"Canvas grade is {fmt(round(total * (1 - pct / 100), 1))} / {points}.</p>") + extra
+        extra = (f"<h2>Late work</h2><p>You submitted this {days} day{'s' * (days > 1)} late. Under the "
+                 f"late work policy Canvas takes {pct}% off the score above, so your Canvas grade is "
+                 f"{fmt(round(total * (1 - pct / 100), 1))} / {points}.</p>") + extra
     f = p.get("facts", {})
     if sprint == 1 and not f.get("demo_is_loom") and f.get("non_loom_video"):
-        extra += ("<h2>Use Loom from Sprint 2 on</h2><p>Your demo was not a Loom share link. That cost "
-                  "nothing in Sprint 1. From Sprint 2 on, the demo must be a Loom share link, and a demo "
-                  "anywhere else, or none, scores 0.</p>")
+        extra += ("<h2>Use Loom from Sprint 2 on</h2><p>Your demo was not on Loom. I did not take "
+                  "anything off for that in Sprint 1. From Sprint 2 on, the demo has to be a Loom share "
+                  "link, and a demo anywhere else, or none, scores 0.</p>")
     if sprint == 1 and p.get("repo"):
         open_items = []
         if f.get("readme_context_filled") is False:
@@ -184,7 +185,7 @@ def student_page(r, p, row, sprint, points):
             open_items.append("add Nate (nmccaul) as a collaborator on your repo")
         if open_items:
             extra += ("<h2>Sprint 1 setup, still open</h2><p>Please " + " and ".join(open_items) +
-                      " before Sprint 2 is due. No points were taken for this.</p>")
+                      " before Sprint 2 is due. I did not take points off for this.</p>")
     note = row.get("scott_note", "").strip()
     if note:
         extra += f"<h2>From Professor Murff</h2><p>{e(note)}</p>"
