@@ -247,7 +247,7 @@ the first category; the Review assignment is the other three.
 
 The plan is graded for completion, and your predicted difficulty is not graded. Aim high.
 From Sprint 2 on, "shipped" is weighed by how hard the work actually was for you, judged from
-the work itself and where you started on that axis: an ambitious goal you partly reach and
+the work itself: an ambitious goal you partly reach and
 account for in your retro can still earn full marks, and routine work you comfortably finish
 earns up to 15 of 20.
 

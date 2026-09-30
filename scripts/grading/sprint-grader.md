@@ -151,6 +151,11 @@ How it affects **shipped**:
 - **Sprint 2 on: both ways.** Ambitious work partly reached can earn full marks; routine work
   (assessed 1 or 2) comfortably finished earns at most 75% of shipped (15 of 20, 37 of 50).
 
+Never tell the student that their baseline or starting point was used, in `difficulty.note` or
+anywhere else they will read: no "baseline", "starting point", "where you started", or their
+axis score. Knowing it would invite students to underrate themselves on future surveys. Explain
+difficulty from the work alone.
+
 Write `difficulty.note` for the student: one or two sentences comparing their prediction, their
 own actual rating, and the work, in the same factual voice as the rest ("You predicted a 2; the
 work was closer to a 4: the Supabase auth took four days across 31 prompts.").
