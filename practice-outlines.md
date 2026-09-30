@@ -8,7 +8,7 @@ The course runs on six builder axes, two weeks each (Agentic Workflow, Discovery
 
 The openers below extend the truth-seeking opener bank in `practice-plan-template.md` across the whole season. The thread is product management as truth-seeking: Aim well, get evidence, believe in proportion to it, and act. Swap any pairing for one that fits the room that week.
 
-**Sprint days.** Every other practice (1, 3, 5, 7, 9, 11) opens a sprint. The previous sprint's review, retro, and 90-second demo are due that day, and students run `/sprint-plan` in class and commit the plan before they leave. The commit timestamp is what gets graded.
+**Sprint days.** Every other practice (1, 3, 5, 7, 9, 11) opens a sprint. The previous sprint's review, retro, and 60-second Loom demo are due that day, and students run `/sprint-plan` in class and commit the plan before they leave. The commit timestamp is what gets graded.
 
 Every practice ends with the huddle: two or three students show their deploy URL to the room. Small, frequent, low-stakes exposure to each other's work is the main peer-network mechanism, and it feeds the demo rounds.
 
