@@ -47,7 +47,7 @@ def plan_line(p):
     when = sub.get("submitted_at")
     when = dt.datetime.fromisoformat(when).strftime("%b %-d at %-I:%M %p") if when else None
     if not f.get("plan_submitted"):
-        return "I could not find a plan in your repo."
+        return "No plan was found in your repo."
     if f.get("plan_fields_missing"):
         return f"Your plan, committed {when}, is missing {', '.join(f['plan_fields_missing'])}."
     late = f.get("plan_days_late", 0)
@@ -75,8 +75,8 @@ def load(sprint):
             other = p.get("facts", {}).get("non_loom_video")
             r["scores"]["demo"] = 0
             r["feedback"]["demo"] = (
-                "Your demo was not a Loom share link, so I could not count it. The demo has to be on "
-                "Loom; Demo is 0." if other else "I did not find a Loom demo in your submission, so Demo is 0.")
+                "Your demo was not a Loom share link. The demo has to be on Loom, so Demo is 0."
+                if other else "No Loom demo was submitted, so Demo is 0.")
             r["reasons"]["demo"] = "Not a Loom link (" + (", ".join(other) or "no video") + "): 0 by rule."
         days = p.get("facts", {}).get("canvas_days_late", 0)
         if days:
@@ -106,6 +106,7 @@ def validate(base, items):
         machine = _re.findall(r"\b(frames?|screenshots?|stills|transcripts?|captions?|packets?|grader|"
                               r"the model|artificial intelligence|the ai|it appears|the video shows)\b",
                               text, _re.I)
+        machine += _re.findall(r"(?<!Type )\bI\b(?!-)|\bI'(?:m|ve|d|ll)\b|\b[Mm](?:y|e)\b", text)  # no first person
         if machine:
             problems.append(f"{n}: student feedback reads as machine-written ({', '.join(sorted(set(m.lower() for m in machine)))})")
         if "\u2014" in text:
@@ -173,8 +174,8 @@ def student_page(r, p, row, sprint, points):
                  f"{fmt(round(total * (1 - pct / 100), 1))} / {points}.</p>") + extra
     f = p.get("facts", {})
     if sprint == 1 and not f.get("demo_is_loom") and f.get("non_loom_video"):
-        extra += ("<h2>Use Loom from Sprint 2 on</h2><p>Your demo was not on Loom. I did not take "
-                  "anything off for that in Sprint 1. From Sprint 2 on, the demo has to be a Loom share "
+        extra += ("<h2>Use Loom from Sprint 2 on</h2><p>Your demo was not on Loom. That cost nothing "
+                  "in Sprint 1. From Sprint 2 on, the demo has to be a Loom share "
                   "link, and a demo anywhere else, or none, scores 0.</p>")
     if sprint == 1 and p.get("repo"):
         open_items = []
@@ -185,7 +186,7 @@ def student_page(r, p, row, sprint, points):
             open_items.append("add Nate (nmccaul) as a collaborator on your repo")
         if open_items:
             extra += ("<h2>Sprint 1 setup, still open</h2><p>Please " + " and ".join(open_items) +
-                      " before Sprint 2 is due. I did not take points off for this.</p>")
+                      " before Sprint 2 is due. No points were taken off for this.</p>")
     note = row.get("scott_note", "").strip()
     if note:
         extra += f"<h2>From Professor Murff</h2><p>{e(note)}</p>"

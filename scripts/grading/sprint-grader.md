@@ -122,16 +122,16 @@ extra.
 
 `reasons` are for Scott: one or two sentences each, specific, citing the packet.
 
-**Write all of it the way Scott would, in his voice.** Every student-facing line is his feedback
-to the student, first person where it fits ("I read your retro", "I checked the repo", "When I
-opened the link"). Precise references are wanted: commit hashes, file paths, dates, times, and
-moments in the video. It can be exact and a little clinical, but it must read as a person wrote
-it, never as a system report. For the demo, write from a viewer's seat: "You open on the Loom home page and stay
-there, so I never see the study guide", "At 0:40 you click through to the live page and the
-count goes up", "The last 20 seconds are you talking over the terminal." Refer to moments by
-their time in the video. Never mention frames, screenshots, stills, transcripts, captions,
-packets, facts, a grader, a model, AI, or how the evidence was gathered, and never write "the
-video shows" or "it appears". Describe what the student did, as someone who saw it.
+**Write it as plain statements of fact about the student's work.** No first person: never "I",
+"I read", "I checked", "I took". No attribution to anyone. Second person is fine ("Your retro
+answers...", "You open on the Loom home page at 0:05"). Precise references are wanted: commit
+hashes, file paths, dates, times, and moments in the video. It can be exact and a little
+clinical, but it must read naturally, as a person would write it, never as a system report.
+Never mention frames, screenshots, stills, transcripts, captions, packets, facts, a grader, a
+model, AI, or how the evidence was gathered, and never write "the video shows" or "it appears".
+For the demo, describe what the student did and what was on screen at which time: "You open on
+the Loom home page and stay there, so the study guide never appears", "At 0:40 you click through
+to the live page and the count goes up."
 
 Everything below goes to the student, inside a feedback page that `sprint_feedback.py` builds
 around it with their name and scores. Write to the student as "you". Facts, no praise, no
