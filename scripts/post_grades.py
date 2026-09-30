@@ -106,7 +106,11 @@ def main():
         return
 
     if not asg.get("post_manually"):
-        api.put(f"/assignments/{aid}", json={"assignment": {"post_manually": True}})
+        # REST ignores post_manually; the post policy is set through Canvas's GraphQL API.
+        base = cfg["url"].rstrip("/").replace("/api/v1", "")
+        requests.post(f"{base}/api/graphql", headers={"Authorization": f"Bearer {cfg['token']}"}, timeout=30,
+                      json={"query": 'mutation{setAssignmentPostPolicy(input:{assignmentId:"%s",postManually:true})'
+                                     '{postPolicy{postManually}}}' % aid})
         if not api.get(f"/assignments/{aid}").get("post_manually"):
             sys.exit("could not switch the assignment to manual posting; nothing posted")
         print("switched to manual posting: grades stay hidden until you Post them in Canvas")

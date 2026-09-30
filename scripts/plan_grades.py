@@ -22,6 +22,8 @@ Nothing here holds student data; the output stays in _data.
 """
 import argparse, base64, csv, datetime as dt, html, json, re, subprocess, sys
 from pathlib import Path
+
+import requests
 from zoneinfo import ZoneInfo
 
 sys.path.insert(0, str(Path.home() / ".claude/skills/canvas-lms/scripts"))
@@ -153,7 +155,11 @@ def main():
     if not todo:
         return
     if not asg.get("post_manually"):
-        api.put(f"/assignments/{aid}", json={"assignment": {"post_manually": True}})
+        # REST ignores post_manually; the post policy is set through Canvas's GraphQL API.
+        base = cfg["url"].rstrip("/").replace("/api/v1", "")
+        requests.post(f"{base}/api/graphql", headers={"Authorization": f"Bearer {cfg['token']}"}, timeout=30,
+                      json={"query": 'mutation{setAssignmentPostPolicy(input:{assignmentId:"%s",postManually:true})'
+                                     '{postPolicy{postManually}}}' % aid})
         if not api.get(f"/assignments/{aid}").get("post_manually"):
             sys.exit("could not switch the assignment to manual posting; nothing posted")
     new = not log_path.exists()
