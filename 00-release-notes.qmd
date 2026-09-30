@@ -4,6 +4,13 @@ This course site is a living product. It gets better during the semester, and ev
 
 New entries appear at the top.
 
+## v2.3.1 (2026-09-30)
+
+Two rules for sprint deliverables, both taking effect with Sprint 2.
+
+- **A demo that is not a Loom scores 0.** Record it on [Loom](https://www.loom.com) and submit the Loom share link. Google Drive, YouTube, uploaded files, and other hosts do not count. Sprint 1 demos on other hosts were not marked down.
+- **Canvas applies the late work policy automatically.** Anything submitted after its deadline loses 10% per day, as the syllabus has always said, and is worth nothing after 10 days. Sprint 6 cannot be turned in late. Deadlines are 11:59:59 PM, so a submission in the last minute is on time.
+
 ## v2.3.0 (2026-09-30)
 
 From Sprint 2 on, each sprint is two Canvas assignments, the plan is graded for completion, and you can change your plan during the sprint.
