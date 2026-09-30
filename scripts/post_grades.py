@@ -1,4 +1,4 @@
-"""Post approved sprint grades to Canvas, each with the student's feedback PDF attached.
+"""Post approved sprint grades to Canvas (the Review assignment; Sprint 1's single assignment), each with the student's feedback PDF attached.
 
 Run from the courses hub, after Scott has reviewed review.html and marked rows approved:
 
@@ -23,9 +23,8 @@ import requests
 
 sys.path.insert(0, str(Path.home() / ".claude/skills/canvas-lms/scripts"))
 from canvas_client import CanvasAPI, load_config
-
-COURSE_ID = 36977
-ASSIGNMENTS = {1: 1500870, 2: 1506686}
+sys.path.insert(0, str(Path(__file__).parent))
+from sprint_config import COURSE_ID, SPRINTS
 DATA = Path.home() / "hubs/courses/_data/product-management"
 LOG_COLS = ["net_id", "canvas_user_id", "score", "posted_at", "comment_file_id"]
 
@@ -88,7 +87,7 @@ def main():
             continue
         todo.append((r, pdf))
 
-    aid = ASSIGNMENTS[a.sprint]
+    aid = SPRINTS[a.sprint]["review"]
     cfg = load_config()
     api = CanvasAPI(cfg["url"], cfg["token"], COURSE_ID)
     asg = api.get(f"/assignments/{aid}")

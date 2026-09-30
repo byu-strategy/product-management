@@ -16,12 +16,14 @@ score for a category is its override when one is set, the grader's score otherwi
 
 Nothing here touches Canvas. Student data stays in _data. This file holds none.
 """
-import argparse, csv, html, json, subprocess, sys
+import argparse, csv, html, json, subprocess, sys, datetime as dt
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).parent))
+from sprint_config import categories, review_points
+
 DATA = Path.home() / "hubs/courses/_data/product-management"
-CATS = [("plan", "Plan, on time", 10), ("shipped", "You shipped it", 20),
-        ("review", "Sprint review", 10), ("demo", "Demo", 10)]
+CATS = []  # set in main() from sprint_config: Sprint 1 includes the plan, later sprints do not
 KEEP = ["override_plan", "override_shipped", "override_review", "override_demo",
         "approved", "scott_note"]
 COLS = (["net_id", "name", "preferred_first", "canvas_user_id", "confidence", "watch_loom",
@@ -39,13 +41,31 @@ def fmt(x):
     return f"{x:g}"
 
 
+def plan_line(p):
+    """Sprint 1's plan category, from the completion facts the packet computed."""
+    f, sub = p.get("facts", {}), p.get("plan_submission") or {}
+    when = sub.get("submitted_at")
+    when = dt.datetime.fromisoformat(when).strftime("%b %-d at %-I:%M %p") if when else None
+    if not f.get("plan_submitted"):
+        return "No plan was found."
+    if f.get("plan_fields_missing"):
+        return f"Your plan, committed {when}, is missing: {', '.join(f['plan_fields_missing'])}."
+    return f"Committed {when} with all four fields filled in. Graded for completion."
+
+
 def load(sprint):
     base = DATA / f"grading/sprint-{sprint}"
     out = []
     for f in sorted((base / "results").glob("*.json")):
         r = json.loads(f.read_text())
         pk = base / f"{r['net_id']}.json"
-        out.append((r, json.loads(pk.read_text()) if pk.exists() else {}))
+        p = json.loads(pk.read_text()) if pk.exists() else {}
+        if sprint == 1:  # the plan is inside Sprint 1's one assignment; its score is computed, not graded
+            r["scores"]["plan"] = p.get("facts", {}).get("plan_score", 0)
+            r["reasons"]["plan"] = r["feedback"]["plan"] = plan_line(p)
+            if p.get("facts", {}).get("plan_submitted") and not p["facts"].get("plan_on_time"):
+                r.setdefault("flags", []).insert(0, "late: plan committed after Sep 16, 11:59 PM")
+        out.append((r, p))
     return base, out
 
 
@@ -248,10 +268,12 @@ def main():
     ap.add_argument("--sprint", type=int, required=True)
     ap.add_argument("--no-pdf", action="store_true")
     a = ap.parse_args()
+    global CATS
+    CATS = categories(a.sprint)
     base, items = load(a.sprint)
     if not items:
         sys.exit(f"no results in {base / 'results'}")
-    points = sum(mx for _, _, mx in CATS) * (2 if a.sprint == 6 else 1)
+    points = review_points(a.sprint)
     validate(base, items)
     rows = write_csv(base, items)
     fb = base / "feedback"

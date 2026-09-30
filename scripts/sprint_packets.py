@@ -14,7 +14,7 @@ facts, so the model judges quality and never has to work out a date.
 Writes ~/hubs/courses/_data/product-management/grading/sprint-N/<net_id>.json. Student data
 goes only to _data, never to git. This file holds no student data.
 """
-import argparse, base64, csv, json, re, subprocess, sys, datetime as dt
+import argparse, base64, csv, html, json, re, subprocess, sys, datetime as dt
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
@@ -22,14 +22,10 @@ import requests, tempfile
 
 sys.path.insert(0, str(Path.home() / ".claude/skills/canvas-lms/scripts"))
 from canvas_client import CanvasAPI, load_config
+from sprint_config import COURSE_ID, PLAN_FIELDS, PLAN_POINTS, SPRINTS
 
-COURSE_ID = 36977
 TZ = ZoneInfo("America/Denver")
 DATA = Path.home() / "hubs/courses/_data/product-management"
-SPRINTS = {  # sprint -> Canvas assignment, plus the day-one plan deadline
-    1: {"assignment": 1500870, "plan_due": "2026-09-16 23:59"},
-    2: {"assignment": 1506686, "plan_due": None},
-}
 TA = "nmccaul"
 SHIPPED_CHARS = 20_000      # cap on artifact text per packet, about 5k tokens
 PER_FILE_CHARS = 6_000
@@ -59,6 +55,16 @@ def history(repo, path):
     """Commits touching path, oldest first: [(sha, local datetime)]."""
     log = gh(f"repos/{repo}/commits?path={path}&per_page=100") or []
     return [(c["sha"], local(c["commit"]["author"]["date"])) for c in reversed(log)]
+
+
+def has_field(text, name):
+    """A plan field with something after it, bold or not ("**Goal:** x" or "Goal: x")."""
+    return bool(re.search(rf"{re.escape(name)}\s*\**\s*:\s*\**\s*\S", text or "", re.I))
+
+
+def plain(html_text):
+    t = re.sub(r"<(br|/p|/li|/div)[^>]*>", "\n", html_text or "")
+    return html.unescape(re.sub(r"<[^>]+>", "", t)).strip()
 
 
 def field(text, name):
@@ -144,7 +150,7 @@ def shipped(repo, commits):
     return out
 
 
-def build(student, sub, cfg, due):
+def build(student, sub, plan_sub, cfg, due):
     net_id, repo_url = student["net_id"], student.get("repo_url", "")
     body = sub.get("body") or ""
     links = [h for h in re.findall(r'href="([^"]+)"', body) + re.findall(r"https?://[^\s<\"]+", body)
@@ -186,11 +192,11 @@ def build(student, sub, cfg, due):
         p["shipped_files"] = shipped(repo, commits)
 
         f["plan_committed"] = bool(ph)
-        if cfg["plan_due"] and ph:
-            f["plan_on_time"] = ph[0][1] <= dt.datetime.fromisoformat(cfg["plan_due"]).replace(tzinfo=TZ)
-        f["goal_changed_after_day_one"] = bool(ph) and field(plan_first, "Goal") != field(plan_now, "Goal")
-        f["done_looks_like_changed_after_day_one"] = bool(ph) and \
-            field(plan_first, "Done looks like") != field(plan_now, "Done looks like")
+        f["plan_changed_during_sprint"] = bool(ph) and any(
+            field(plan_first, k) != field(plan_now, k) for k in ("Goal", "Done looks like"))
+        f["plan_change_noted"] = has_field(plan_now, "Changes")
+        m = re.search(r"\*\*Where to see it:\*\*\s*(.+)", readme)
+        f["readme_where_to_see_it"] = m.group(1).strip() if m and "[URL" not in m.group(1) else None
         f["retro_filled"] = all(field(plan_now, k) for k in ("Actual difficulty", "Why it differed", "Retro"))
         f["review_committed"] = bool(rh)
         f["review_on_time"] = bool(rh) and rh[0][1] <= due
@@ -202,6 +208,26 @@ def build(student, sub, cfg, due):
         f["commits_after_due"] = sum(c["after_due"] for c in commits)
     else:
         f["repo_found"] = False
+
+    # The plan's 10 points: completion, computed here. Sprint 1's plan was the first commit of the
+    # plan file; from Sprint 2 on it is the Plan assignment's Canvas submission.
+    if cfg["plan"] is None:
+        plan_text = (p.get("plan") or {}).get("as_committed_day_one")
+        first = (p.get("plan") or {}).get("first_commit")
+        p["plan_submission"] = {"source": "repo, first commit", "submitted_at": first, "text": plan_text}
+        on_time = bool(first) and dt.datetime.fromisoformat(first) <= \
+            dt.datetime.fromisoformat(cfg["plan_due"]).replace(tzinfo=TZ)
+    else:
+        plan_text = plain(plan_sub.get("body"))
+        at = plan_sub.get("submitted_at")
+        p["plan_submission"] = {"source": "Canvas", "submitted_at": at and local(at).isoformat(),
+                                "text": plan_text or None}
+        on_time = bool(at) and not plan_sub.get("late")
+    missing = [k for k in PLAN_FIELDS if not has_field(plan_text, k)] if plan_text else list(PLAN_FIELDS)
+    f["plan_submitted"] = bool(plan_text)
+    f["plan_on_time"] = on_time
+    f["plan_fields_missing"] = missing
+    f["plan_score"] = PLAN_POINTS if plan_text and not missing else 0
 
     p["loom"] = loom(loom_links[0]) if loom_links else None
     if p["loom"]:
@@ -219,10 +245,12 @@ def main():
     cfg = SPRINTS[a.sprint] | {"sprint": a.sprint}
 
     api = CanvasAPI(*[load_config()[k] for k in ("url", "token")], COURSE_ID)
-    assignment = api.get(f"/assignments/{cfg['assignment']}")
+    assignment = api.get(f"/assignments/{cfg['review']}")
     due = local(assignment["due_at"])
     subs = {str(s["user_id"]): s for s in
-            api.get_all(f"/assignments/{cfg['assignment']}/submissions")}
+            api.get_all(f"/assignments/{cfg['review']}/submissions")}
+    plan_subs = {str(s["user_id"]): s for s in
+                 api.get_all(f"/assignments/{cfg['plan']}/submissions")} if cfg["plan"] else {}
     roster = list(csv.DictReader(open(DATA / "roster-msb341-fall2026.csv")))
     repos = {r["net_id"]: r for r in csv.DictReader(open(DATA / "github-roster.csv"))}
 
@@ -233,8 +261,9 @@ def main():
         if a.only and s["net_id"] not in a.only:
             continue
         s = s | {"repo_url": repos.get(s["net_id"], {}).get("repo_url", "")}
-        p = build(s, subs.get(str(s["canvas_user_id"]), {}), cfg, due)
-        p["assignment"] = {"id": cfg["assignment"], "name": assignment["name"],
+        p = build(s, subs.get(str(s["canvas_user_id"]), {}),
+                  plan_subs.get(str(s["canvas_user_id"]), {}), cfg, due)
+        p["assignment"] = {"id": cfg["review"], "name": assignment["name"],
                            "points": assignment["points_possible"], "due": due.isoformat()}
         (out / f"{s['net_id']}.json").write_text(json.dumps(p, indent=1))
         (out / f"{s['net_id']}.json").chmod(0o600)
