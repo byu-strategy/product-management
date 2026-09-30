@@ -4,6 +4,13 @@ This course site is a living product. It gets better during the semester, and ev
 
 New entries appear at the top.
 
+## v2.3.5 (2026-09-30)
+
+How sprint feedback questions work, and a wording fix.
+
+- **Questions about your sprint feedback go to Course Monitor.** Send a direct message to the Course Monitor app in the course Slack saying what you think was missed. Professor Murff reviews every message sent there, and you will get a short reply confirming it arrived. Questions sent by email or anywhere else may be missed.
+- **How difficulty is judged.** From Sprint 2, "shipped" is weighed by how hard the work was for you, judged from the work itself.
+
 ## v2.3.4 (2026-09-30)
 
 One less setup step.

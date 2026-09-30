@@ -251,6 +251,10 @@ the work itself: an ambitious goal you partly reach and
 account for in your retro can still earn full marks, and routine work you comfortably finish
 earns up to 15 of 20.
 
+**Questions about your sprint feedback** go only to the Course Monitor app in the course Slack:
+send it a direct message saying what you think was missed. Professor Murff reviews every message
+sent there. Questions sent by email or anywhere else may be missed.
+
 ### Confidential company work
 
 Many of you build inside a company whose code, data, or customers are not yours alone to share.
