@@ -197,6 +197,30 @@ reach it, use it, or see it.
 If your work does not fit any of these, say what shipping means for it in your plan file before
 the sprint starts.
 
+#### Any real artifact counts
+
+Your sprint can advance any of the six axes, and every one produces artifacts. Code is one kind
+among many. Any digital artifact that reflects real work counts, in whatever format it
+naturally takes:
+
+| Axis | Artifacts that count, for example |
+|---|---|
+| Agentic Workflow | A `CLAUDE.md`, slash commands and skills, subagent setups, specs, an automation that runs |
+| Discovery | Interview notes and synthesis, personas, a problem statement, survey results, a competitive teardown |
+| Design | Flows, wireframes and mockups, a Figma file, a usability test write-up, a live interface |
+| Application Architecture | Code, a deployed app on Vercel or elsewhere, a data model, an API, tests |
+| AI Systems | Prompts in the product, an eval set and its results, a working model call |
+| Launch and Learn | A landing page, a pitch deck, pricing or a financial model, sales copy, an analytics dashboard |
+
+Markdown files, Word documents, slide decks, spreadsheets, PDFs, images, and live links are all
+fine. Two tests apply to every one of them: it is real work (not a template or a placeholder),
+and someone else can open it. Commit it to a repo or list its link under **Where the work
+lives** in your README; for a Google Doc, Figma file, or anything else that lives behind a link,
+make sure the link opens for us.
+
+Interview notes and recordings are about real people. Commit notes and synthesis with names
+removed, and keep recordings out of the repo.
+
 ### The difficulty scale
 
 | | |

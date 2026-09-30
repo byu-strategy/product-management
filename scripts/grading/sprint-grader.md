@@ -29,6 +29,15 @@ live, not a mockup; a landing page is published at a URL; a pricing or financial
 real numbers and the team can use it; copy is published or in use; an automation runs;
 research is written up in the repo and someone acted on it; analytics return real data.
 
+**Any real artifact counts, on any of the six axes.** Go-to-market, research, design, and
+workflow are as legitimate as code: interview notes and synthesis, personas, a pitch deck, a
+pricing or financial model, a Word or PDF write-up, a Figma file or mockups, a `CLAUDE.md` or
+skills, an automation, an eval set, a deployed app. Judge what the artifact contains and whether
+it is real work, never its format. `shipped_files` includes extracted text from Word,
+PowerPoint, PDF, and Excel files, and some entries have an `image` path: open those images
+before judging shipped. A template, a placeholder, or a file with only headings is not real
+work.
+
 Difficulty is not graded in either direction. An ambitious goal the student partly reached and
 accounted for in the retro can still earn full marks; a safe goal comfortably hit earns nothing
 extra.

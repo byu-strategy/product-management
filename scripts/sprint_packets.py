@@ -106,7 +106,7 @@ def grab_frames(video, dest_dir, net_id, n=9, width=1568):
     is 1568 px wide, the largest a model reads without shrinking it, so terminal and document
     text stays legible (about 2k tokens a frame). Only the frames are kept, next to the packet."""
     dest_dir.mkdir(parents=True, exist_ok=True)
-    for old in dest_dir.glob(f"{net_id}-*.jpg"):
+    for old in dest_dir.glob(f"{net_id}-[0-9]*.jpg"):  # video frames only, not artifact images
         old.unlink()
     out = []
     secs = float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration",
@@ -177,20 +177,96 @@ def check_link(url):
         return {"url": url, "status": None, "error": type(ex).__name__}
 
 
-def shipped(repo, commits, budget=SHIPPED_CHARS):
-    """Files added or changed by the sprint's commits, with capped text for the grader."""
+DOCS = re.compile(r"\.(docx|pptx|pdf|xlsx)$", re.I)
+IMAGES = re.compile(r"\.(png|jpe?g|webp|gif)$", re.I)
+
+
+def raw(repo, path):
+    """A file's bytes, any size up to GitHub's 100 MB, private repos included."""
+    p = subprocess.run(["gh", "api", "-H", "Accept: application/vnd.github.raw",
+                        f"repos/{repo}/contents/{path}"], capture_output=True)
+    return p.stdout if p.returncode == 0 else None
+
+
+def doc_text(name, data):
+    """Readable text from a Word, PowerPoint, PDF, or Excel file, so a deck or a model is judged
+    on what it says, not skipped as a binary."""
+    import io, zipfile
+    ext = name.lower().rsplit(".", 1)[-1]
+    try:
+        if ext == "docx":
+            import docx
+            d = docx.Document(io.BytesIO(data))
+            parts = [p.text for p in d.paragraphs if p.text.strip()]
+            for tb in d.tables:
+                parts += [" | ".join(c.text.strip() for c in row.cells) for row in tb.rows]
+            return "\n".join(parts)
+        if ext == "pptx":
+            z = zipfile.ZipFile(io.BytesIO(data))
+            slides = sorted((n for n in z.namelist() if re.match(r"ppt/slides/slide\d+\.xml$", n)),
+                            key=lambda n: int(re.search(r"(\d+)", n.rsplit("/", 1)[1]).group(1)))
+            return "\n".join(f"[slide {k}] " + " ".join(html.unescape(x) for x in
+                             re.findall(r"<a:t>([^<]*)</a:t>", z.read(s).decode("utf-8", "replace")))
+                             for k, s in enumerate(slides, 1))
+        if ext == "pdf":
+            import fitz
+            doc = fitz.open(stream=data, filetype="pdf")
+            return f"[{doc.page_count} pages]\n" + "\n".join(pg.get_text() for pg in doc)
+        if ext == "xlsx":
+            import openpyxl
+            wb = openpyxl.load_workbook(io.BytesIO(data), data_only=True, read_only=True)
+            out = []
+            for ws in wb.worksheets:
+                out.append(f"[sheet {ws.title}]")
+                for row in ws.iter_rows(max_row=40, values_only=True):
+                    if any(v is not None for v in row):
+                        out.append(" | ".join("" if v is None else str(v) for v in row[:15]))
+            return "\n".join(out)
+    except Exception as ex:
+        return f"[could not read {ext}: {type(ex).__name__}]"
+    return ""
+
+
+def shipped(repo, commits, budget=SHIPPED_CHARS, image_dir=None, net_id=None, max_images=3):
+    """Files added or changed by the sprint's commits, with capped text for the grader. Text files,
+    Word, PowerPoint, PDF, and Excel are read; up to three images (mockups, charts, screenshots
+    of the work) are saved for the grader to look at."""
     files = {}
     for c in commits:
         for f in (gh(f"repos/{repo}/commits/{c['sha']}") or {}).get("files", []):
             if f["status"] != "removed" and not SKIP.search(f["filename"]):
                 files[f["filename"]] = f["status"]
-    out = []
+    out, images = [], 0
     for name, status in files.items():
-        # One API call per file is slow on big repos, so fetch only files whose text fits the budget.
-        meta = gh(f"repos/{repo}/contents/{name}") or {} if TEXT.search(name) and budget > 0 else {}
-        item = {"path": name, "status": status, "bytes": meta.get("size")}
-        if meta.get("content"):
-            text = base64.b64decode(meta["content"]).decode("utf-8", "replace")
+        item = {"path": name, "status": status}
+        text = None
+        if TEXT.search(name) and budget > 0:
+            # One API call per file is slow on big repos, so fetch only files whose text fits the budget.
+            meta = gh(f"repos/{repo}/contents/{name}") or {}
+            item["bytes"] = meta.get("size")
+            if meta.get("content"):
+                text = base64.b64decode(meta["content"]).decode("utf-8", "replace")
+        elif DOCS.search(name) and budget > 0:
+            data = raw(repo, name)
+            if data:
+                item["bytes"] = len(data)
+                text = doc_text(name, data)
+        elif IMAGES.search(name) and image_dir and images < max_images:
+            data = raw(repo, name)
+            if data:
+                image_dir.mkdir(parents=True, exist_ok=True)
+                src = image_dir / f"{net_id}-art-{images + 1}{Path(name).suffix.lower()}"
+                dest = src.with_suffix(".jpg")
+                src.write_bytes(data)
+                ok = subprocess.run(["ffmpeg", "-loglevel", "error", "-y", "-i", str(src), "-vf",
+                                     "scale='min(1568,iw)':-2", "-q:v", "3", str(dest)]).returncode == 0
+                if src != dest:
+                    src.unlink(missing_ok=True)
+                if ok:
+                    dest.chmod(0o600)
+                    item["image"] = str(dest)
+                    images += 1
+        if text:
             take = min(PER_FILE_CHARS, budget)
             item["text"] = text[:take] + ("\n[... truncated]" if len(text) > take else "")
             budget -= len(item["text"])
@@ -238,7 +314,7 @@ def build(student, sub, plan_sub, cfg, due):
                     "after_due": local(c["commit"]["author"]["date"]) > due,
                     "message": c["commit"]["message"].split("\n")[0]} for c in reversed(log)]
         p["commits"] = [{k: v for k, v in c.items() if k != "sha"} | {"sha": c["sha"][:7]} for c in commits]
-        p["shipped_files"] = shipped(repo, commits)
+        p["shipped_files"] = shipped(repo, commits, image_dir=cfg["out"] / "frames", net_id=net_id)
 
         f["plan_committed"] = bool(ph)
         f["plan_changed_during_sprint"] = bool(ph) and any(

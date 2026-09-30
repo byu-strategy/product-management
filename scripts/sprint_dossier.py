@@ -73,6 +73,8 @@ def _student(base, r, p, row, sprint, cats, final):
         "link_checks": p.get("link_checks", []),
         "files": [{"path": x["path"], "status": x["status"], "bytes": x.get("bytes")}
                   for x in p.get("shipped_files", [])],
+        "artifacts": [{"src": Path(x["image"]).relative_to(base).as_posix(), "path": x["path"]}
+                      for x in p.get("shipped_files", []) if x.get("image")],
     }
 
 
@@ -211,6 +213,7 @@ function show(i){cur=i;const s=S[i];history.replaceState(null,'','#'+s.id);
   ${diff}${repos}
   ${s.flags.length?`<section><h3>Flags</h3><ul class=flags>${s.flags.map(f=>`<li class="${/^late/.test(f)?'late':''}">${esc(f)}</li>`).join('')}</ul></section>`:''}
   ${lc?`<section><h3>Links checked when the packet was built</h3>${lc}</section>`:''}
+  ${s.artifacts.length?`<section><h3>Images from the work</h3><div class=frames>${s.artifacts.map(a=>`<figure class=frame><img loading=lazy src="${esc(a.src)}" data-cap="${esc(a.path)}" alt="${esc(a.path)}"><div class=cap>${esc(a.path)}</div></figure>`).join('')}</div></section>`:''}
   <section><h3>Demo, frame by frame</h3>${frames}</section>
   ${checks?`<section><h3>Demo checks</h3>${checks}</section>`:''}
   <section><h3>The feedback PDF, exactly as it will be sent</h3>${paper}</section>
