@@ -401,8 +401,9 @@ and for where your effort went.</p>
 <p class=disclaimer>This sprint feedback was generated with the assistance of Claude Code by reviewing
 everything you turned in. If you have a question about it, or believe something is incorrect or
 does not accurately represent your work, send a direct message to
-<a href="{ASK_LINK}">Course Monitor in the course Slack</a> with your NetID and what you think was
-missed. Professor Murff reviews every message.</p></section>"""
+<a href="{ASK_LINK}">the Course Monitor app in the course Slack</a> saying what you think was missed.
+Professor Murff reviews every message sent there. <b>Send grading questions only to Course
+Monitor:</b> questions sent by email or anywhere else may be missed.</p></section>"""
 
 
 def student_page(r, p, row, sprint, points):
