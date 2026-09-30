@@ -4,6 +4,13 @@ This course site is a living product. It gets better during the semester, and ev
 
 New entries appear at the top.
 
+## v2.2.1 (2026-09-30)
+
+Starting with Sprint 2, the demo is shorter and has to be on Loom, and the Canvas submission is two links.
+
+- **The demo is 60 seconds, on Loom.** Down from 90 seconds. Record it on [Loom](https://www.loom.com) and submit the Loom share link. Google Drive, YouTube, and uploaded video files are not accepted. The Sprint 6 demo is still three minutes.
+- **Submit two links on Canvas.** Your plan file on GitHub (`sprints/sprint-N-plan.md`) and your Loom demo. Sprint 1 asked for your repo URL instead.
+
 ## v2.2.0 (2026-09-15)
 
 Two new sections on how software actually gets built with agents, and diagrams throughout the book where chapters used to be walls of text.
