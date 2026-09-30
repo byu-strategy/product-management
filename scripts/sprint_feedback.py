@@ -252,7 +252,7 @@ def student_page(r, p, row, sprint, points):
     if shares:
         profile = p.get("baseline")
         note = (" The line is your builder profile from the September baseline survey, your own 1 to 5 "
-                "rating on each axis; the sprint does not change it.") if profile else ""
+                "rating on each axis.") if profile else ""
         extra = (f"<h2>Where this sprint landed</h2><div class=hex>{hexagon(shares, profile)}</div>"
                  f"<p>{e(focus_caption(shares))}{e(note)}</p>") + extra
     if (r.get("difficulty") or {}).get("note"):
