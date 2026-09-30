@@ -384,10 +384,17 @@ def build(student, sub, plan_sub, cfg, due):
     readme_text = p.get("readme") or ""
     m = re.search(r"## Where the work lives\n(.*?)(?=\n## |\Z)", readme_text, re.S)
     where = m.group(1) if m else ""
-    named = {u.lower() for u in re.findall(r"github\.com/([\w.-]+/[\w.-]+)", where + " " + " ".join(links))}
+    named = {re.sub(r"\.git$", "", u.lower()) for u in
+             re.findall(r"github\.com/([\w.-]+/[\w.-]+)", where + " " + " ".join(links))}
     course = (repo_url or "").replace("https://github.com/", "").strip("/").lower()
     mine = {r for r, owner in cfg["shared"].items() if owner.lower() == (student.get("github_username") or "#").lower()}
     others = [r for r in cfg["shared"] if r.lower() != course and (r in mine or r.lower() in named)]
+    # A repo the student names that is not shared with sdmurff may still be public: read it if so.
+    shared_lower = {r.lower() for r in cfg["shared"]}
+    for r in sorted(named - shared_lower - {course}):
+        info = gh(f"repos/{r}")
+        if info and not info.get("private"):
+            others.append(info["full_name"])
     start = dt.datetime.fromisoformat(p["plan"]["first_commit"]) if (p.get("plan") or {}).get("first_commit") \
         else due - dt.timedelta(days=14)
     p["other_repos"] = []
@@ -399,7 +406,7 @@ def build(student, sub, plan_sub, cfg, due):
         p["other_repos"].append({"repo": f"https://github.com/{r}",
                                  "commits": [{k: v for k, v in c.items() if k != "sha"} | {"sha": c["sha"][:7]} for c in cs],
                                  "files": shipped(r, cs, budget=8_000) if cs else []})
-    unshared = sorted(named - {r.lower() for r in cfg["shared"]} - {course})
+    unshared = sorted(named - shared_lower - {course} - {o.lower() for o in others})
     f["repos_named_but_not_shared"] = unshared
     targets += [u.rstrip(").,") for u in re.findall(r"https?://\S+", where) if "github.com" not in u]
     p["link_checks"] = [check_link(u) for u in dict.fromkeys(targets)]
