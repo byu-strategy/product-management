@@ -179,12 +179,19 @@ def validate(base, items):
                          r.get("review_missed") or "", (r.get("difficulty") or {}).get("note") or "",
                          r.get("next_sprint") or ""])
         import re as _re
-        machine = _re.findall(r"\b(frames?|screenshots?|stills|transcripts?|captions?|packets?|grader|"
-                              r"the model|artificial intelligence|the ai|it appears|the video shows)\b",
-                              text, _re.I)
-        machine += _re.findall(r"(?<!Type )\bI\b(?!-)|\bI'(?:m|ve|d|ll)\b|\b[Mm](?:y|e)\b", text)  # no first person
+        # Quoted text is the student's own words or their app's output, so it is not checked.
+        plain_text = _re.sub(r"'[^']*'|\"[^\"]*\"|\u2018[^\u2019]*\u2019|\u201c[^\u201d]*\u201d", " ", text)
+        machine = _re.findall(r"\b(frames?|transcripts?|packets?|grader|artificial intelligence|it appears|"
+                              r"the video shows)\b", plain_text, _re.I)
+        machine += _re.findall(r"(?<!Type )\bI\b(?!-)|\bI'(?:m|ve|d|ll)\b|\b[Mm](?:y|e)\b", plain_text)  # no first person
         if machine:
             problems.append(f"{n}: student feedback reads as machine-written ({', '.join(sorted(set(m.lower() for m in machine)))})")
+        # Words that are usually about the student's own project, but worth a look.
+        soft = sorted(set(w.lower() for w in _re.findall(r"\b(screenshots?|captions?|stills|the model|the ai)\b",
+                                                         plain_text, _re.I)))
+        if soft:
+            r.setdefault("flags", []).append("voice check: feedback mentions " + ", ".join(soft) +
+                                             "; confirm it refers to the student's own work")
         if "\u2014" in text:
             problems.append(f"{n}: em dash in student feedback")
         if any(w in text.lower() for w in (" late", "after the deadline", "after due", "seconds after")):
