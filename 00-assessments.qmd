@@ -87,6 +87,8 @@ preparation; skimming them is not.
 ## Sprints
 
 Six sprints, two weeks each. Sprints 1 through 5 are worth 50 points. Sprint 6 is worth 100.
+From Sprint 2 on, each sprint is two Canvas assignments: the **Plan** (10 points, due the first
+Wednesday) and the **Review** (40 points, or 90 for Sprint 6, due the day the sprint ends).
 
 Every sprint is the same assignment: same structure, same deliverables, same rubric. What
 changes is what you decide to work on. A sprint is a timebox, not a phase.
@@ -114,9 +116,21 @@ that someone else could check.
 **Predicted difficulty:** 1 to 5.
 ```
 
-**Commit it today.** The commit timestamp is the record. A plan committed at the end of the
-sprint is not a plan. Sprint 1 is the one exception: its plan is due Wednesday, September 16,
-11:59 PM.
+**Submit it on Canvas by Wednesday, 11:59 PM.** Paste the four fields into that sprint's Plan
+assignment, and commit the file to your repo, because `/sprint-review` reads it. On time with
+all four fields filled in earns all 10 points.
+
+**You can change the plan.** Plans change once you learn something, and that is normal. Edit the
+file and add a line saying what changed and why:
+
+```markdown
+**Changes:** Sep 24: dropped the slide template and added a competitor benchmark, because the
+licensing research had to come first.
+```
+
+Changes cost nothing. At the end, your work is read against the plan as it stands, and your
+retro says how it moved. A change with no note is the one thing to avoid: without it, nobody
+reading your plan can tell what you set out to do.
 
 #### The two weeks
 
@@ -138,21 +152,26 @@ It reads only the projects you confirm. Nothing leaves your machine except the r
 
 **Why it differed:** One sentence.
 
-**Retro:** Did you hit the goal? If not, what happened? What changes next sprint?
+**Retro:** Did you hit the goal? If not, what happened? If the plan changed, why? What changes
+next sprint?
 ```
 
 **3. Record a 60 to 90 second demo on [Loom](https://www.loom.com).** Show the thing working, with real content. No slides, no intro,
 no reflection. A minute or so of the actual thing. Loom only: not Google Drive, YouTube, or an uploaded
 file. Submit the Loom share link.
 
-**4. Submit two links on Canvas:** your plan file on GitHub (`sprints/sprint-N-plan.md`) and your Loom demo. Sprint 1 asked for your repo URL instead.
+**4. Submit two links in that sprint's Review assignment on Canvas:** your review report on
+GitHub (`sprints/sprint-N-review.md`) and your Loom demo. Before you do, make sure the **Where
+to see it** line in your README points at what you shipped. Sprint 1 was one Canvas assignment
+and asked for your repo URL instead.
 
 ### What you have to have
 
 - **You shipped something.** It exists now, it did not two weeks ago, and someone other than
   you can reach it, use it, or see it.
 - **It is in your repo,** not only on your laptop or in a Google Doc.
-- **The plan file,** committed day one and completed at the end.
+- **The plan,** submitted on Canvas by Wednesday, committed, kept current with any changes
+  noted, and completed with your retro at the end.
 - **The sprint review report,** committed.
 - **The Loom demo, 60 to 90 seconds.**
 
@@ -189,17 +208,19 @@ Difficulty is not graded in either direction. Rate it honestly.
 
 ### Grading rubric
 
-50 points, or 100 for Sprint 6. The same four categories every sprint.
+50 points, or 100 for Sprint 6. The same four categories every sprint. The Plan assignment is
+the first category; the Review assignment is the other three.
 
-| Category | Points | What earns full marks |
-|---|--:|---|
-| **Plan, on time** | 10 | Committed day one. Specific, testable, and the right next thing for where you are. Worth two weeks. |
-| **You shipped it** | 20 | Real, finished, and someone else can reach it, use it, or see it. |
-| **Sprint review** | 10 | Report committed. Your retro engages with what it actually says. |
-| **Demo** | 10 | 60 to 90 seconds on Loom, the real thing, working, with real content. |
+| Category | Points | Sprint 6 | What earns full marks |
+|---|--:|--:|---|
+| **Plan, on time** | 10 | 10 | Submitted on Canvas by Wednesday, 11:59 PM, with all four fields filled in. Graded for completion. |
+| **You shipped it** | 20 | 50 | Real, finished, and someone else can reach it, use it, or see it. Read against your plan as it stands at the end. |
+| **Sprint review** | 10 | 20 | Report committed. Your retro engages with what it actually says, including how and why the plan changed. |
+| **Demo** | 10 | 20 | 60 to 90 seconds on Loom, the real thing, working, with real content. |
 
-The plan is graded on quality. Difficulty is not. An ambitious goal you miss and account for
-clearly scores higher than a safe goal you comfortably hit.
+The plan is graded for completion, and difficulty is not graded at all. Aim high. An ambitious
+goal you partly reach and account for in your retro can still earn full marks; a safe goal you
+comfortably hit earns nothing extra.
 
 ### Axis coverage
 
@@ -379,8 +400,9 @@ TASKS
    message "Add project context", push, and confirm it went to <username>/<netid>_msb341.
 
 8. Write my Sprint 1 plan.
-   Explain that each sprint is two weeks and opens with a committed plan, that the plan's
-   quality is graded, and that the predicted difficulty is not. Then run the sprint-plan skill
+   Explain that each sprint is two weeks and opens with a plan submitted on Canvas by
+   Wednesday, that the plan is graded for completion, and that the predicted difficulty is not
+   graded. Then run the sprint-plan skill
    and follow its instructions exactly. The answers must be mine: do not suggest a goal for
    me. When the skill gives the commit command, run it.
 
@@ -401,31 +423,33 @@ RULES
 
 ### Sprint 2 {#sprint-2}
 
-**50 points | Assigned: Mon, Sep 28 | Due: Mon, Oct 12**
+**50 points (Plan 10, Review 40) | Assigned: Mon, Sep 28 | Plan due: Fri, Oct 2 | Due: Mon, Oct 12**
 
-The standard sprint.
+The standard sprint. Its plan is due Friday rather than Wednesday, because the plan moved to its
+own Canvas assignment partway through the sprint's first week. If your Sprint 2 plan is already
+committed, paste it into the Sprint 2 Plan assignment.
 
 ### Sprint 3 {#sprint-3}
 
-**50 points | Assigned: Mon, Oct 12 | Due: Mon, Oct 26**
+**50 points (Plan 10, Review 40) | Assigned: Mon, Oct 12 | Plan due: Wed, Oct 14 | Due: Mon, Oct 26**
 
 The standard sprint.
 
 ### Sprint 4 {#sprint-4}
 
-**50 points | Assigned: Mon, Oct 26 | Due: Mon, Nov 9**
+**50 points (Plan 10, Review 40) | Assigned: Mon, Oct 26 | Plan due: Wed, Oct 28 | Due: Mon, Nov 9**
 
 The standard sprint.
 
 ### Sprint 5 {#sprint-5}
 
-**50 points | Assigned: Mon, Nov 9 | Due: Mon, Nov 23**
+**50 points (Plan 10, Review 40) | Assigned: Mon, Nov 9 | Plan due: Wed, Nov 11 | Due: Mon, Nov 23**
 
 The standard sprint.
 
 ### Sprint 6 {#sprint-6}
 
-**100 points | Assigned: Mon, Nov 23 | Due: Thu, Dec 10**
+**100 points (Plan 10, Review 90) | Assigned: Mon, Nov 23 | Plan due: Wed, Nov 25 | Due: Thu, Dec 10**
 
 The standard sprint, worth double, with a higher bar. By Dec 10 what you have built should be
 the best version of itself. The demo runs to three minutes instead of 60 to 90 seconds and covers

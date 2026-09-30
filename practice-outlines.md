@@ -8,7 +8,7 @@ The course runs on six builder axes, two weeks each (Agentic Workflow, Discovery
 
 The openers below extend the truth-seeking opener bank in `practice-plan-template.md` across the whole season. The thread is product management as truth-seeking: Aim well, get evidence, believe in proportion to it, and act. Swap any pairing for one that fits the room that week.
 
-**Sprint days.** Every other practice (1, 3, 5, 7, 9, 11) opens a sprint. The previous sprint's review, retro, and 60 to 90 second Loom demo are due that day, and students run `/sprint-plan` in class and commit the plan before they leave. The commit timestamp is what gets graded.
+**Sprint days.** Every other practice (1, 3, 5, 7, 9, 11) opens a sprint. The previous sprint's review, retro, and 60 to 90 second Loom demo are due that day, and students run `/sprint-plan` in class. The plan is due on Canvas that Wednesday at 11:59 PM, graded for completion, and students may change it during the sprint as long as they note what changed.
 
 Every practice ends with the huddle: two or three students show their deploy URL to the room. Small, frequent, low-stakes exposure to each other's work is the main peer-network mechanism, and it feeds the demo rounds.
 
@@ -39,7 +39,7 @@ Every practice ends with the huddle: two or three students show their deploy URL
 - **Coach's story:** McKinsey, principal product manager. Ground "what a PM actually does" in a real day (story catalog).
 - **Season ritual:** **Day-1 introductions** (one intro slide, 90-second life story to the room), **co-created norms** (build the class rules together and commit to them), and the **baseline hexagon survey** (self-rating on all six axes; the "before" picture for Practice 13).
 - **Film:** none yet. First tape gets logged this week.
-- **Install:** the practice model, the AIRE loop, the six axes, a short PM history, why AI disruption raises the value of judgment. How a sprint works: plan on day one, build, review and demo at the end.
+- **Install:** the practice model, the AIRE loop, the six axes, a short PM history, why AI disruption raises the value of judgment. How a sprint works: plan by Wednesday, build, review and demo at the end.
 - **Drill:** create a repo from the [builder template](https://github.com/byu-strategy/builder-template), add Professor Murff (`sdmurff`) and Nate (`nmccaul`) as collaborators, write the context declaration in `README.md`, run `/sprint-plan`, and commit Sprint 1's plan. The setup prompt in [Sprint 1](00-assessments.qmd#sprint-1) walks students through all of it.
 - **Reading / due:** [Building with AI Agents](01-building-with-ai-agents.qmd). Sprint 1 plan committed by Wed, Sep 16, 11:59 PM.
 
