@@ -155,6 +155,14 @@ Write `difficulty.note` for the student: one or two sentences comparing their pr
 own actual rating, and the work, in the same factual voice as the rest ("You predicted a 2; the
 work was closer to a 4: the Supabase auth took four days across 31 prompts.").
 
+## Axes
+
+Split the sprint's actual work across the six axes as shares that add up to 1: Discovery,
+Design, Application Architecture, AI Systems, Agentic Workflow, Launch and Learn. Judge from the
+work, not from the plan or the review's own axis tag. Include only axes with real work; most
+sprints have one to three. This becomes the hexagon on the student's feedback page, and any axis
+at 0.25 or more counts toward the rule that six sprints must touch at least five axes.
+
 ## Output, per student
 
 ```json
@@ -171,6 +179,7 @@ work was closer to a 4: the Supabase auth took four days across 31 prompts.").
   "feedback": {"shipped": "...", "review": "...", "demo": "..."},
   "review_missed": "...",
   "next_sprint": "...",
+  "axes": {"Discovery": 0.7, "Launch and Learn": 0.3},
   "difficulty": {"assessed": 3, "axis": "...", "baseline_on_axis": 0.0, "predicted": 0, "student_actual": 0,
                  "why": "for Scott, one or two sentences", "effect_on_shipped": "none | raised by N | capped",
                  "note": "for the student"}

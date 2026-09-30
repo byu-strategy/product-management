@@ -41,6 +41,70 @@ def fmt(x):
     return f"{x:g}"
 
 
+# Same axis order, orientation, and colors as the builder profile charts students received.
+AXES = ["Discovery", "Design", "Application Architecture", "AI Systems", "Agentic Workflow", "Launch and Learn"]
+SHORT = [["Discovery"], ["Design"], ["Application", "Architecture"], ["AI Systems"], ["Agentic", "Workflow"],
+         ["Launch", "and Learn"]]
+ACCENT, GRID, INK, MUTED = "#4f46e5", "#d5d5df", "#1f1f24", "#6b6b76"
+
+
+def covered_axes(net_id, sprint):
+    """Axes that got at least a quarter of any sprint's work so far, this sprint included."""
+    got = set()
+    for k in range(1, sprint + 1):
+        f = DATA / f"grading/sprint-{k}/results/{net_id}.json"
+        if f.exists():
+            shares = json.loads(f.read_text()).get("axes") or {}
+            got |= {a for a, s in shares.items() if a in AXES and s >= 0.25}
+    return got
+
+
+def hexagon(shares, covered):
+    """The sprint's focus on the six axes: distance from the center is the share of the work."""
+    import math
+    cx, cy, R = 210, 160, 110
+    ang = [math.pi / 2 - i * 2 * math.pi / 6 for i in range(6)]
+    pt = lambda r, a: (cx + r * math.cos(a), cy - r * math.sin(a))
+    grid = "".join(
+        f'<polygon points="{" ".join(f"{x:.1f},{y:.1f}" for x, y in (pt(R * k / 4, a) for a in ang))}" '
+        f'fill="none" stroke="{GRID}" stroke-width="{1.2 if k == 4 else 0.8}"/>' for k in (1, 2, 3, 4))
+    spokes = "".join(f'<line x1="{cx}" y1="{cy}" x2="{pt(R, a)[0]:.1f}" y2="{pt(R, a)[1]:.1f}" '
+                     f'stroke="{GRID}" stroke-width="0.8"/>' for a in ang)
+    vals = [max(0.0, min(1.0, float(shares.get(ax, 0)))) for ax in AXES]
+    shape = " ".join(f"{x:.1f},{y:.1f}" for x, y in (pt(R * v, a) for v, a in zip(vals, ang)))
+    dots = "".join(f'<circle cx="{pt(R * v, a)[0]:.1f}" cy="{pt(R * v, a)[1]:.1f}" r="4" fill="{ACCENT}"/>'
+                   for v, a in zip(vals, ang) if v > 0)
+    labels = ""
+    for ax, lines, v, a in zip(AXES, SHORT, vals, ang):
+        x, y = pt(R + 22, a)
+        anchor = "middle" if abs(math.cos(a)) < 0.2 else ("start" if math.cos(a) > 0 else "end")
+        y0 = y - (len(lines) - 1) * 7 + (4 if math.sin(a) < -0.2 else (-6 if math.sin(a) > 0.9 else 0))
+        weight = 600 if v > 0 else 400
+        tsp = "".join(f'<tspan x="{x:.1f}" dy="{0 if i == 0 else 14}">{html.escape(l)}</tspan>' for i, l in enumerate(lines))
+        labels += (f'<text x="{x:.1f}" y="{y0:.1f}" text-anchor="{anchor}" font-size="11.5" font-weight="{weight}" '
+                   f'fill="{INK if v > 0 else MUTED}">{tsp}'
+                   f'<tspan x="{x:.1f}" dy="14" font-size="10.5" fill="{MUTED}" font-weight="400">'
+                   f'{round(v * 100)}%{" &#183; covered" if ax in covered else ""}</tspan></text>')
+    return (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 330" width="480" height="377" role="img" '
+            f'aria-label="Share of this sprint on each axis">{grid}{spokes}'
+            f'<polygon points="{shape}" fill="{ACCENT}" fill-opacity="0.16" stroke="{ACCENT}" stroke-width="2" '
+            f'stroke-linejoin="round"/>{dots}{labels}</svg>')
+
+
+def focus_caption(shares, covered):
+    ranked = sorted(((s, a) for a, s in shares.items() if a in AXES and s > 0), reverse=True)
+    if not ranked:
+        return ""
+    lead = f"This sprint was mostly {ranked[0][1]} ({round(ranked[0][0] * 100)}%)"
+    rest = [f"{a} ({round(s * 100)}%)" for s, a in ranked[1:]]
+    if rest:
+        lead += ", with " + (rest[0] if len(rest) == 1 else ", ".join(rest[:-1]) + " and " + rest[-1])
+    lead += "."
+    n = len(covered)
+    return (f"{lead} Axes covered so far, counting any axis that took at least a quarter of a sprint: "
+            f"{n} of 6. The course asks for at least 5 by the end of Sprint 6.")
+
+
 def plan_line(p):
     """Sprint 1's plan category, from the completion facts the packet computed."""
     f, sub = p.get("facts", {}), p.get("plan_submission") or {}
@@ -151,6 +215,7 @@ table{border-collapse:collapse;width:100%;margin:8px 0 24px}
 th,td{text-align:left;vertical-align:top;padding:10px 8px;border-bottom:1px solid #e3e6ec}
 th{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:#5b6475}
 td.pts{white-space:nowrap;font-weight:600;width:70px}
+.hex{text-align:center;margin:4px 0 6px}.hex svg{max-width:100%;height:auto}
 h2{font-size:15px;margin:22px 0 6px}p{margin:0 0 10px}
 .total{font-size:28px;font-weight:700}
 """
@@ -164,6 +229,11 @@ def student_page(r, p, row, sprint, points):
     extra = ""
     if r.get("review_missed"):
         extra += f"<h2>What your sprint review found that your retro did not mention</h2><p>{e(r['review_missed'])}</p>"
+    shares = r.get("axes") or {}
+    if shares:
+        cov = covered_axes(r["net_id"], sprint)
+        extra = (f"<h2>Where this sprint landed</h2><div class=hex>{hexagon(shares, cov)}</div>"
+                 f"<p>{e(focus_caption(shares, cov))}</p>") + extra
     if (r.get("difficulty") or {}).get("note"):
         extra += f"<h2>How hard it was</h2><p>{e(r['difficulty']['note'])}</p>"
     if r.get("next_sprint"):
