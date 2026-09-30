@@ -162,14 +162,17 @@ file. Submit the Loom share link. A demo that is not a Loom scores 0.
 
 **4. Submit two links in that sprint's Review assignment on Canvas:** your review report on
 GitHub (`sprints/sprint-N-review.md`) and your Loom demo. Before you do, make sure the **Where
-to see it** line in your README points at what you shipped. Sprint 1 was one Canvas assignment
+the work lives** section of your README lists every repo and live link someone would need to
+check what you shipped. Sprint 1 was one Canvas assignment
 and asked for your repo URL instead.
 
 ### What you have to have
 
 - **You shipped something.** It exists now, it did not two weeks ago, and someone other than
   you can reach it, use it, or see it.
-- **It is in your repo,** not only on your laptop or in a Google Doc.
+- **Someone can check it.** It is in your course repo, in another repo listed in your README
+  (shared with us if you can), or live at a link. Work nobody can check, anywhere, does not
+  count as shipped.
 - **The plan,** submitted on Canvas by Wednesday, committed, kept current with any changes
   noted, and completed with your retro at the end.
 - **The sprint review report,** committed.
@@ -214,13 +217,15 @@ the first category; the Review assignment is the other three.
 | Category | Points | Sprint 6 | What earns full marks |
 |---|--:|--:|---|
 | **Plan, on time** | 10 | 10 | Submitted on Canvas by Wednesday, 11:59 PM, with all four fields filled in. Graded for completion. |
-| **You shipped it** | 20 | 50 | Real, finished, and someone else can reach it, use it, or see it. Read against your plan as it stands at the end. |
+| **You shipped it** | 20 | 50 | Real, finished, and someone else can reach it, use it, or see it. Read against your plan as it stands at the end, and weighed by how hard the work was for you. |
 | **Sprint review** | 10 | 20 | Report committed. Your retro engages with what it actually says, including how and why the plan changed. |
 | **Demo** | 10 | 20 | 60 to 90 seconds on Loom, the real thing, working, with real content. A demo that is not a Loom scores 0. |
 
-The plan is graded for completion, and difficulty is not graded at all. Aim high. An ambitious
-goal you partly reach and account for in your retro can still earn full marks; a safe goal you
-comfortably hit earns nothing extra.
+The plan is graded for completion, and your predicted difficulty is not graded. Aim high.
+From Sprint 2 on, "shipped" is weighed by how hard the work actually was for you, judged from
+the work itself and where you started on that axis: an ambitious goal you partly reach and
+account for in your retro can still earn full marks, and routine work you comfortably finish
+earns up to 15 of 20.
 
 ### Axis coverage
 
@@ -232,11 +237,17 @@ If four sprints sit on one axis, adjust.
 
 ### Confidential company work
 
-If your team's code, data, or customers cannot be public:
+Many of you build inside a company whose code, data, or customers are not yours alone to share.
+You never have to share a company repo. Any of these works:
 
-- Keep your repo private and add Professor Murff (`sdmurff`) and the TA, Nate (`nmccaul`), as collaborators.
-- Deploy behind auth and give the graders an account.
-- If neither works, build a sanitized version with fake data and note it in your plan file.
+- Share the repo with Professor Murff (`sdmurff`) and the TA, Nate (`nmccaul`), if you and your
+  team are comfortable with that. Your course repo can stay private either way.
+- Leave it unshared and list it under **Where the work lives** in your README. `/sprint-review`
+  reads its commit history on your own computer and puts a summary in your report: dates,
+  messages, and file names, never code.
+- Show the result instead: the live product, a store listing, an account for the graders, or
+  your Loom. For most work that is the strongest evidence anyway.
+- If none of that works, build a sanitized version with fake data and note it in your plan file.
 
 Nothing in this course has to be public.
 
