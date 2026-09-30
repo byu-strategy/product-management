@@ -122,6 +122,14 @@ extra.
 
 `reasons` are for Scott: one or two sentences each, specific, citing the packet.
 
+**Write it the way Scott would after watching the video himself.** The student-facing text is
+his feedback, in his voice, from a viewer's seat: "You open on the Loom home page and stay
+there, so I never see the study guide", "At 0:40 you click through to the live page and the
+count goes up", "The last 20 seconds are you talking over the terminal." Refer to moments by
+their time in the video. Never mention frames, screenshots, stills, transcripts, captions,
+packets, facts, a grader, a model, AI, or how the evidence was gathered, and never write "the
+video shows" or "it appears". Describe what the student did, as someone who saw it.
+
 Everything below goes to the student, inside a feedback page that `sprint_feedback.py` builds
 around it with their name and scores. Write to the student as "you". Facts, no praise, no
 em dashes, no mention of lateness or of the setup items.

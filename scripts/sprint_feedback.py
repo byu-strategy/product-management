@@ -101,6 +101,12 @@ def validate(base, items):
         text = " ".join([*(v for k, v in (r.get("feedback") or {}).items() if k in graded),
                          r.get("review_missed") or "",
                          r.get("next_sprint") or ""])
+        import re as _re
+        machine = _re.findall(r"\b(frames?|screenshots?|stills|transcripts?|captions?|packets?|grader|"
+                              r"the model|artificial intelligence|the ai|it appears|the video shows)\b",
+                              text, _re.I)
+        if machine:
+            problems.append(f"{n}: student feedback reads as machine-written ({', '.join(sorted(set(m.lower() for m in machine)))})")
         if "\u2014" in text:
             problems.append(f"{n}: em dash in student feedback")
         if any(w in text.lower() for w in (" late", "after the deadline", "after due", "seconds after")):
