@@ -258,7 +258,7 @@ def student_page(r, p, row, sprint, points):
     if (r.get("difficulty") or {}).get("note"):
         extra += f"<h2>How hard it was</h2><p>{e(r['difficulty']['note'])}</p>"
     if r.get("next_sprint"):
-        extra += f"<h2>For next sprint</h2><p>{e(r['next_sprint'])}</p>"
+        extra += f"<h2>Something to consider for next sprint</h2><p>{e(r['next_sprint'])}</p>"
     days = p.get("facts", {}).get("canvas_days_late", 0)
     if days:
         pct = min(100, 10 * days)

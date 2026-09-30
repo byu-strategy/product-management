@@ -215,6 +215,7 @@ em dashes, no mention of lateness or of the setup items.
   what earned it in one sentence.
 - `review_missed`: the most useful thing the `/sprint-review` report found that the retro did
   not respond to, in one sentence. `null` if the retro covered it.
-- `next_sprint`: exactly one change for next sprint, specific and checkable, taken from the
-  rubric or from their own report. Not a list, not encouragement. "Commit each finished
-  document the day you finish it" is right; "stay organized" is not.
+- `next_sprint`: one to three suggestions for next sprint, offered, not prescribed. Start with
+  "You might consider" and keep each suggestion specific and concrete, taken from the rubric or
+  from their own report. "You might consider committing each finished document the day you
+  finish it" is right; "Commit each document" (an order) and "stay organized" (vague) are not.

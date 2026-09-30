@@ -31,8 +31,8 @@ LOG_COLS = ["net_id", "canvas_user_id", "score", "posted_at", "comment_file_id"]
 
 def comment_text(row, sprint):
     return (f"{row['preferred_first'] or row['name']}, your Sprint {sprint} score is "
-            f"{row['final_total']}. The attached PDF covers each category and one thing to change "
-            f"for next sprint.")
+            f"{row['final_total']}. The attached PDF covers each category and something to "
+            f"consider for next sprint.")
 
 
 def upload(cfg, aid, uid, pdf):
