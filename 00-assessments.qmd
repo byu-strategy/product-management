@@ -256,7 +256,7 @@ earns up to 15 of 20.
 Many of you build inside a company whose code, data, or customers are not yours alone to share.
 You never have to share a company repo. Any of these works:
 
-- Share the repo with Professor Murff (`sdmurff`) and the TA, Nate (`nmccaul`), if you and your
+- Share the repo with Professor Murff (`sdmurff`) if you and your
   team are comfortable with that. Your course repo can stay private either way.
 - Leave it unshared and list it under **Where the work lives** in your README. `/sprint-review`
   reads its commit history on your own computer and puts a summary in your report: dates,
@@ -277,7 +277,7 @@ Nothing in this course has to be public.
 
 The standard sprint, plus two one-time items:
 
-1. **Your repo,** created from the [builder template](https://github.com/byu-strategy/builder-template), with Professor Murff (`sdmurff`) and the TA, Nate (`nmccaul`), added as collaborators.
+1. **Your repo,** created from the [builder template](https://github.com/byu-strategy/builder-template), with Professor Murff (`sdmurff`) added as a collaborator.
 2. **A context declaration** in that repo's `README.md`: your role (most roles combine several
    hats), what you are working on, who it is for, and who uses your work. "Not decided" is
    fine to start; choosing is a legitimate Sprint 1 goal. Later sprints are read against this.
@@ -313,7 +313,7 @@ when sprints/sprint-1-plan.md is visible in my repo on GitHub.
 COURSE FACTS
 - Template repo: byu-strategy/builder-template
 - My repo: named <my NetID in lowercase>_msb341, owned by my personal GitHub account, private
-- Collaborators to add: sdmurff (instructor) and nmccaul (TA)
+- Collaborator to add: sdmurff (instructor)
 
 HOW TO WORK WITH ME
 - First do CHECK FIRST below. Then make a task list from TASKS, mark anything already done as
@@ -338,7 +338,7 @@ Before making the task list, check:
 2. Whether this folder is a git repo, and if so which GitHub repo it points to (git remote -v).
 3. Whether git and gh are installed, and whether gh is logged in (gh auth status).
 4. If gh is logged in: my GitHub username, whether my repo exists and is private, which of
-   sdmurff and nmccaul are collaborators or have pending invitations, and whether
+   sdmurff is a collaborator or has a pending invitation, and whether
    sprints/sprint-1-plan.md exists in my repo on GitHub.
 Ask for my NetID if you need it. Tell me in a few lines what is already done.
 
@@ -386,8 +386,7 @@ TASKS
    Explain that collaborators can see the repo, which is how my work reaches the instructors;
    there is nothing separate to submit. Run:
      gh api -X PUT repos/<username>/<netid>_msb341/collaborators/sdmurff
-     gh api -X PUT repos/<username>/<netid>_msb341/collaborators/nmccaul
-   Confirm both appear as collaborators or pending invitations. Pending is fine.
+   Confirm it appears as a collaborator or a pending invitation. Pending is fine.
 
 6. Move into my repo.
    Explain that Claude Code loads the repo's CLAUDE.md and the course commands /sprint-plan
@@ -435,7 +434,7 @@ TASKS
 
 9. Confirm it is turned in.
    Check on GitHub, not just on my computer, that sprints/sprint-1-plan.md is in my repo, that
-   the repo is private, and that sdmurff and nmccaul are collaborators or invited. Show the
+   the repo is private, and that sdmurff is a collaborator or invited. Show the
    finished task list and a short summary: my repo URL, the deadline, and that every sprint
    starts with /sprint-plan and ends with /sprint-review.
 

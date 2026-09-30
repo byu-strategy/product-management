@@ -16,7 +16,7 @@ score for a category is its override when one is set, the grader's score otherwi
 
 Nothing here touches Canvas. Student data stays in _data. This file holds none.
 """
-import argparse, csv, html, json, subprocess, sys, datetime as dt
+import argparse, csv, html, json, re, subprocess, sys, datetime as dt
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
@@ -154,6 +154,8 @@ def load(sprint):
                 "Your demo was not a Loom share link. The demo has to be on Loom, so Demo is 0."
                 if other else "No Loom demo was submitted, so Demo is 0.")
             r["reasons"]["demo"] = "Not a Loom link (" + (", ".join(other) or "no video") + "): 0 by rule."
+        # Adding the TA as a collaborator was dropped as a requirement (2026-09-30).
+        r["flags"] = [x for x in r.get("flags", []) if not re.search(r"\bTA\b|nmccaul|collaborator", x)]
         days = p.get("facts", {}).get("canvas_days_late", 0)
         if days:
             r.setdefault("flags", []).insert(0, f"late: Canvas submission {days} day(s) late, "
@@ -276,8 +278,6 @@ def student_page(r, p, row, sprint, points):
         if f.get("readme_context_filled") is False:
             open_items.append("fill in the context declaration in your README (your role, what you "
                               "are working on, who it is for, and who uses your work)")
-        if f.get("ta_is_collaborator") is False:
-            open_items.append("add Nate (nmccaul) as a collaborator on your repo")
         if open_items:
             extra += ("<h2>Sprint 1 setup, still open</h2><p>Please " + " and ".join(open_items) +
                       " before Sprint 2 is due. No points were taken off for this.</p>")

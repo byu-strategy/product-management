@@ -26,7 +26,6 @@ from sprint_config import COURSE_ID, PLAN_FIELDS, PLAN_POINTS, SPRINTS
 
 TZ = ZoneInfo("America/Denver")
 DATA = Path.home() / "hubs/courses/_data/product-management"
-TA = "nmccaul"
 SHIPPED_CHARS = 20_000      # cap on artifact text per packet, about 5k tokens
 PER_FILE_CHARS = 6_000
 SKIP = re.compile(r"^(sprints/|\.claude/|\.gitignore$|README\.md$|CLAUDE\.md$)|000-.*template")
@@ -302,7 +301,6 @@ def build(student, sub, plan_sub, cfg, due):
         plan_now = file_at(repo, plan_path)
         review = file_at(repo, review_path)
         readme = file_at(repo, "README.md") or ""
-        collabs = gh(f"repos/{repo}/collaborators", ".[].login") or ""
         p["plan"] = {"first_commit": ph[0][1].isoformat() if ph else None, "commits": len(ph),
                      "as_committed_day_one": plan_first, "now": plan_now}
         p["review"] = {"first_commit": rh[0][1].isoformat() if rh else None, "commits": len(rh),
@@ -329,7 +327,6 @@ def build(student, sub, plan_sub, cfg, due):
         m = re.search(r"\*\*Window:\*\*\s*\S+\s+to\s+(\S+)", review or "")
         f["review_window_end"] = m.group(1) if m else None
         f["readme_context_filled"] = "[Your product" not in readme and "[the hats you wear" not in readme
-        f["ta_is_collaborator"] = TA in collabs.split()
         f["commits_after_due"] = sum(c["after_due"] for c in commits)
     else:
         f["repo_found"] = False

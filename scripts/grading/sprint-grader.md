@@ -120,8 +120,8 @@ extra.
   cause of a lower score or anywhere in `feedback`. Flag it only. Scott applies the late policy.
 - **Plan completion** (`plan_score`, `plan_on_time`, `plan_fields_missing`) is not yours to
   score. Do not mention it in `feedback`.
-- **Sprint 1 setup items** (`readme_context_filled`, `ta_is_collaborator`): flag only, no
-  deduction. Scott has not set a policy yet.
+- **Sprint 1 setup item** (`readme_context_filled`): flag only, no deduction. Adding the TA as
+  a collaborator is no longer required; never flag or mention it.
 - Never guess. If something needed is missing from the packet, say so in `flags` and lower
   `confidence`.
 
