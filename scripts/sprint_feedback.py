@@ -283,7 +283,7 @@ If the repo belongs to a company or an organization you do not administer, you d
 share it: list it anyway, and <code>/sprint-review</code> will summarize its commits (dates and
 messages, never code).</li>
 <li><b>Make every link open.</b> Set Google Docs, Figma files, and decks to "Anyone with the link can
-view", or share them with Professor Murff at <code>sdmurff@gmail.com</code>. If you set "Anyone
+view", or share them with <code>aifoundry.byu@gmail.com</code>. If you set "Anyone
 with the link", open each link in a private browser window to check it before you submit.</li>
 </ol></section>"""
 
