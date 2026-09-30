@@ -69,6 +69,14 @@ def load(sprint):
             r["reasons"]["plan"] = r["feedback"]["plan"] = plan_line(p)
             if p.get("facts", {}).get("plan_submitted") and not p["facts"].get("plan_on_time"):
                 r.setdefault("flags", []).insert(0, "late: plan committed after Sep 16, 11:59 PM")
+        # Loom only, from Sprint 2 on: any other demo scores 0, set here so no grader can soften it.
+        if sprint >= 2 and not p.get("facts", {}).get("demo_is_loom"):
+            other = p.get("facts", {}).get("non_loom_video")
+            r["scores"]["demo"] = 0
+            r["feedback"]["demo"] = (
+                "Your demo was not a Loom share link, so Demo is 0. The demo must be on Loom."
+                if other else "No Loom demo was submitted, so Demo is 0.")
+            r["reasons"]["demo"] = "Not a Loom link (" + (", ".join(other) or "no video") + "): 0 by rule."
         days = p.get("facts", {}).get("canvas_days_late", 0)
         if days:
             r.setdefault("flags", []).insert(0, f"late: Canvas submission {days} day(s) late, "
@@ -157,6 +165,10 @@ def student_page(r, p, row, sprint, points):
                  f"applies the late work policy on top of the score above: minus {pct}%, so your "
                  f"Canvas grade is {fmt(round(total * (1 - pct / 100), 1))} / {points}.</p>") + extra
     f = p.get("facts", {})
+    if sprint == 1 and not f.get("demo_is_loom") and f.get("non_loom_video"):
+        extra += ("<h2>Use Loom from Sprint 2 on</h2><p>Your demo was not a Loom share link. That cost "
+                  "nothing in Sprint 1. From Sprint 2 on, the demo must be a Loom share link, and a demo "
+                  "anywhere else, or none, scores 0.</p>")
     if sprint == 1 and p.get("repo"):
         open_items = []
         if f.get("readme_context_filled") is False:

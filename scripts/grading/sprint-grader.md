@@ -69,8 +69,9 @@ extra.
   most 7 if the student mostly narrates, and set `watch_loom` true. Set `watch_loom` true
   whenever the frames do not settle the score. Length: up to about two minutes costs nothing;
   longer, at most minus 1. Sprint 1 did not require Loom specifically, so another video host
-  costs nothing in Sprint 1; from Sprint 2 on, a non-Loom video is flagged for Scott, not scored
-  down by you.
+  costs nothing in Sprint 1; grade it from whatever frames and transcript the packet has. From
+  Sprint 2 on, a demo that is not a Loom scores 0; the script sets that, so do not grade it or
+  mention the host.
 
   Write one `demo_notes` entry per frame (its time and what is on screen, specific enough that
   the student recognizes the moment), then answer each `demo_checks` item from the frames and

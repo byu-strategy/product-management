@@ -158,7 +158,7 @@ next sprint?
 
 **3. Record a 60 to 90 second demo on [Loom](https://www.loom.com).** Show the thing working, with real content. No slides, no intro,
 no reflection. A minute or so of the actual thing. Loom only: not Google Drive, YouTube, or an uploaded
-file. Submit the Loom share link.
+file. Submit the Loom share link. A demo that is not a Loom scores 0.
 
 **4. Submit two links in that sprint's Review assignment on Canvas:** your review report on
 GitHub (`sprints/sprint-N-review.md`) and your Loom demo. Before you do, make sure the **Where
@@ -216,7 +216,7 @@ the first category; the Review assignment is the other three.
 | **Plan, on time** | 10 | 10 | Submitted on Canvas by Wednesday, 11:59 PM, with all four fields filled in. Graded for completion. |
 | **You shipped it** | 20 | 50 | Real, finished, and someone else can reach it, use it, or see it. Read against your plan as it stands at the end. |
 | **Sprint review** | 10 | 20 | Report committed. Your retro engages with what it actually says, including how and why the plan changed. |
-| **Demo** | 10 | 20 | 60 to 90 seconds on Loom, the real thing, working, with real content. |
+| **Demo** | 10 | 20 | 60 to 90 seconds on Loom, the real thing, working, with real content. A demo that is not a Loom scores 0. |
 
 The plan is graded for completion, and difficulty is not graded at all. Aim high. An ambitious
 goal you partly reach and account for in your retro can still earn full marks; a safe goal you
