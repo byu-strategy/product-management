@@ -141,8 +141,8 @@ It reads only the projects you confirm. Nothing leaves your machine except the r
 **Retro:** Did you hit the goal? If not, what happened? What changes next sprint?
 ```
 
-**3. Record a 60-second demo on [Loom](https://www.loom.com).** Show the thing working, with real content. No slides, no intro,
-no reflection. Sixty seconds of the actual thing. Loom only: not Google Drive, YouTube, or an uploaded
+**3. Record a 60 to 90 second demo on [Loom](https://www.loom.com).** Show the thing working, with real content. No slides, no intro,
+no reflection. A minute or so of the actual thing. Loom only: not Google Drive, YouTube, or an uploaded
 file. Submit the Loom share link.
 
 **4. Submit two links on Canvas:** your plan file on GitHub (`sprints/sprint-N-plan.md`) and your Loom demo. Sprint 1 asked for your repo URL instead.
@@ -154,7 +154,7 @@ file. Submit the Loom share link.
 - **It is in your repo,** not only on your laptop or in a Google Doc.
 - **The plan file,** committed day one and completed at the end.
 - **The sprint review report,** committed.
-- **The 60-second Loom demo.**
+- **The Loom demo, 60 to 90 seconds.**
 
 ### What "shipped" means for different work
 
@@ -196,7 +196,7 @@ Difficulty is not graded in either direction. Rate it honestly.
 | **Plan, on time** | 10 | Committed day one. Specific, testable, and the right next thing for where you are. Worth two weeks. |
 | **You shipped it** | 20 | Real, finished, and someone else can reach it, use it, or see it. |
 | **Sprint review** | 10 | Report committed. Your retro engages with what it actually says. |
-| **Demo** | 10 | Sixty seconds on Loom, the real thing, working, with real content. |
+| **Demo** | 10 | 60 to 90 seconds on Loom, the real thing, working, with real content. |
 
 The plan is graded on quality. Difficulty is not. An ambitious goal you miss and account for
 clearly scores higher than a safe goal you comfortably hit.
@@ -428,7 +428,7 @@ The standard sprint.
 **100 points | Assigned: Mon, Nov 23 | Due: Thu, Dec 10**
 
 The standard sprint, worth double, with a higher bar. By Dec 10 what you have built should be
-the best version of itself. The demo runs to three minutes instead of sixty seconds and covers
+the best version of itself. The demo runs to three minutes instead of 60 to 90 seconds and covers
 the semester rather than the sprint: the problem, a live demo, and what you learned.
 
 ---
