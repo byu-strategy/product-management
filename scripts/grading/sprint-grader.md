@@ -157,10 +157,16 @@ work was closer to a 4: the Supabase auth took four days across 31 prompts.").
 
 ## Axes
 
-Split the sprint's actual work across the six axes as shares that add up to 1: Discovery,
-Design, Application Architecture, AI Systems, Agentic Workflow, Launch and Learn. Judge from the
-work, not from the plan or the review's own axis tag. Include only axes with real work; most
-sprints have one to three. This becomes the hexagon on the student's feedback page.
+Split the sprint's work across the six axes as shares that add up to 1: Discovery, Design,
+Application Architecture, AI Systems, Agentic Workflow, Launch and Learn. Use everything, all
+together: the plan as it stands at the end (what the sprint was for), the `/sprint-review`
+report (where the time and prompts actually went, its axis tag, and any work it lists outside
+the scanned sessions), the artifacts in `shipped_files` and `other_repos`, and the demo. Each
+sees part of the sprint: the plan says what it aimed at, the review measures where the effort
+went, the artifacts show what came out. Where they agree, that settles it. Where they disagree,
+weight effort and output over intent (a plan to do discovery that produced a deployed app
+leans Application Architecture), and say so in `axes_why`. Include only axes with real work;
+most sprints have one to three. This becomes the hexagon on the student's feedback page.
 
 ## Output, per student
 
@@ -179,6 +185,7 @@ sprints have one to three. This becomes the hexagon on the student's feedback pa
   "review_missed": "...",
   "next_sprint": "...",
   "axes": {"Discovery": 0.7, "Launch and Learn": 0.3},
+  "axes_why": "for Scott, one or two sentences on how plan, review, and artifacts combined",
   "difficulty": {"assessed": 3, "axis": "...", "baseline_on_axis": 0.0, "predicted": 0, "student_actual": 0,
                  "why": "for Scott, one or two sentences", "effect_on_shipped": "none | raised by N | capped",
                  "note": "for the student"}

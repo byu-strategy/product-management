@@ -18,6 +18,13 @@ from post_grades import comment_text
 CANVAS = "https://byu.instructure.com"
 
 
+def _hex(shares):
+    if not shares:
+        return ""
+    from sprint_feedback import hexagon, focus_caption
+    return f'<div class=hexbox>{hexagon(shares)}<p class=why>{html.escape(focus_caption(shares))}</p></div>'
+
+
 def _student(base, r, p, row, sprint, cats, final):
     loom = p.get("loom") or {}
     repo = p.get("repo") or ""
@@ -47,6 +54,7 @@ def _student(base, r, p, row, sprint, cats, final):
         "comment": comment_text(row, sprint),
         "checks": r.get("demo_checks") or {},
         "difficulty": r.get("difficulty") or {},
+        "hexagon": _hex(r.get("axes") or {}), "axes_why": r.get("axes_why", ""),
         "other_repos": [{"repo": o["repo"], "commits": len(o.get("commits", []))} for o in p.get("other_repos", [])],
         "unshared": f.get("repos_named_but_not_shared", []),
         "frames": frames,
@@ -145,6 +153,7 @@ section>h3{font:600 12px var(--sans);letter-spacing:.12em;text-transform:upperca
 .frame .cap{padding:8px 10px;font-size:12.5px}.frame .t{font:600 12px var(--sans);color:var(--acc);margin-right:6px}
 dl.checks{display:grid;grid-template-columns:130px 1fr;gap:6px 14px;margin:0}
 dl.checks dt{font-weight:600;text-transform:capitalize}dl.checks dd{margin:0}
+.hexbox svg{max-width:100%;height:auto;background:#fff;border-radius:8px}
 .diffrow{display:flex;gap:28px;flex-wrap:wrap;margin-bottom:8px}.diffrow div b{display:block;font:600 24px var(--serif)}
 .diffrow div span{font-size:11px;color:var(--mute);text-transform:uppercase;letter-spacing:.06em}
 .pdf{width:100%;max-width:820px;height:1000px;border:1px solid var(--line);border-radius:8px;background:#fff}
@@ -210,6 +219,7 @@ function show(i){cur=i;const s=S[i];history.replaceState(null,'','#'+s.id);
   <div class=big>${fmt(s.total)}<small> / ${meta.points}</small><div class=keys style="margin-top:8px"><kbd>j</kbd> <kbd>k</kbd> next / previous</div></div></div>
   <div class=links>${s.links.map(l=>`<a href="${esc(l.href)}" target=_blank>${esc(l.label)}</a>`).join('')}</div>
   <section><h3>Scores and why</h3>${cats}</section>
+  ${s.hexagon?`<section><h3>Where this sprint landed</h3>${s.hexagon}<p class=sub>${esc(s.axes_why)}</p></section>`:''}
   ${diff}${repos}
   ${s.flags.length?`<section><h3>Flags</h3><ul class=flags>${s.flags.map(f=>`<li class="${/^late/.test(f)?'late':''}">${esc(f)}</li>`).join('')}</ul></section>`:''}
   ${lc?`<section><h3>Links checked when the packet was built</h3>${lc}</section>`:''}
