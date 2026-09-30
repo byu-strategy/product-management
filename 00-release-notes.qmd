@@ -4,6 +4,15 @@ This course site is a living product. It gets better during the semester, and ev
 
 New entries appear at the top.
 
+## v2.3.2 (2026-09-30)
+
+What counts as shipped, where your work can live, and how difficulty now figures in.
+
+- **Your work has to be checkable, and it can live anywhere.** Shipped work can be in your course repo, in another repo listed in your README, or live at a link. Work nobody can check, anywhere, does not count as shipped.
+- **You never have to share a company repo.** Share it with Professor Murff and Nate if your team is comfortable with that. If not, list it under **Where the work lives** in your README and `/sprint-review` will summarize its commits (dates, messages, and file names, never code), or show the result through the live product, a store listing, or your Loom. See [Confidential company work](00-assessments.qmd#confidential-company-work).
+- **Your README has a new section, Where the work lives.** List every repo and live link someone would need to check what you shipped. Refresh your builder template skills to get the updated `/sprint-review`, which also reads Codex sessions now.
+- **From Sprint 2, "shipped" is weighed by how hard the work was for you.** Ambitious work you partly reach and account for in your retro can still earn full marks. Routine work you comfortably finish earns up to 15 of 20. Your predicted difficulty is still not graded.
+
 ## v2.3.1 (2026-09-30)
 
 Two rules for sprint deliverables, both taking effect with Sprint 2.
