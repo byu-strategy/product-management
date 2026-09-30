@@ -367,6 +367,13 @@ def appendix(p, sprint, reviewed_on, not_reviewed=None):
         parts += [f"<code>{e(u)}</code>: listed but not shared, so not read" for u in unshared]
         rows.append(("Other repos", "; ".join(parts) + "."))
 
+    dfiles = p.get("drive_files") or []
+    if dfiles:
+        rows.append(("Google files", "; ".join(
+            (f"{e(d.get('title') or d['url'])}: reviewed" + (" (the first part)" if d["text"].endswith("[... truncated]") else "")
+             if d["ok"] else f"{e(d['url'])}: not viewable by link or shared with aifoundry.byu@gmail.com, so not reviewed")
+            for d in dfiles) + "."))
+
     checks = p.get("link_checks") or []
     if checks:
         rows.append(("Links", "; ".join(f"{e(l['url'])}: {'opened' if l.get('status') == 200 else 'did not open'}"

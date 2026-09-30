@@ -58,6 +58,10 @@ extra.
   For a certification that means evidence like a certificate, badges, an exam result, or a log
   of completed modules, committed to the repo or linked; say exactly what evidence would count. The axis may not fit; say so rather than
   forcing one.
+- **`drive_files`** hold the text of Google Docs, Sheets, and Slides the student linked, fetched
+  through the course's Google account. Treat them as committed artifacts. A file with `ok: false`
+  was not shared with that account or set to "Anyone with the link": not checkable, never "not
+  done", and say how to share it (with aifoundry.byu@gmail.com).
 - **`link_checks`** record whether each submitted link and the README's "Where to see it"
   loaded when the packet was built (status, final URL, page title). A link that returned 200
   with a plausible title counts as reachable; one that failed does not. In Sprint 1, a demo on

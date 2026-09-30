@@ -418,6 +418,17 @@ def build(student, sub, plan_sub, cfg, due):
     targets += [u.rstrip(").,") for u in re.findall(r"https?://\S+", where) if "github.com" not in u]
     p["link_checks"] = [check_link(u) for u in dict.fromkeys(targets)]
     p["baseline"] = cfg["baseline"].get(net_id)
+
+    # Google Docs, Sheets, Slides, and Drive files can't be read from here: they are fetched through
+    # the Drive connector (signed in as aifoundry.byu@gmail.com) by drive_fill.py before grading.
+    sources = " ".join(links) + " " + where + " " + ((p.get("review") or {}).get("text") or "") + " " + \
+        ((p.get("plan") or {}).get("now") or "")
+    google = {}
+    for u in re.findall(r"https?://(?:docs|drive)\.google\.com/[^\s)\"'<>\]]+", sources):
+        m = re.search(r"/d/([\w-]{20,})|[?&]id=([\w-]{20,})", u)
+        if m:
+            google.setdefault(m.group(1) or m.group(2), u)
+    p["google_links"] = [{"file_id": k, "url": v} for k, v in google.items()]
     return p
 
 
