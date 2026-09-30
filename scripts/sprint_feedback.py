@@ -50,6 +50,10 @@ def plan_line(p):
         return "No plan was found."
     if f.get("plan_fields_missing"):
         return f"Your plan, committed {when}, is missing: {', '.join(f['plan_fields_missing'])}."
+    late = f.get("plan_days_late", 0)
+    if late:
+        return (f"Committed {when} with all four fields filled in, {late} day{'s' * (late > 1)} after "
+                f"the plan deadline, so {late} point{'s' * (late > 1)} came off under the late work policy.")
     return f"Committed {when} with all four fields filled in. Graded for completion."
 
 
@@ -65,6 +69,10 @@ def load(sprint):
             r["reasons"]["plan"] = r["feedback"]["plan"] = plan_line(p)
             if p.get("facts", {}).get("plan_submitted") and not p["facts"].get("plan_on_time"):
                 r.setdefault("flags", []).insert(0, "late: plan committed after Sep 16, 11:59 PM")
+        days = p.get("facts", {}).get("canvas_days_late", 0)
+        if days:
+            r.setdefault("flags", []).insert(0, f"late: Canvas submission {days} day(s) late, "
+                                                f"Canvas deducts {min(100, 10 * days)}% automatically")
         out.append((r, p))
     return base, out
 
@@ -81,7 +89,9 @@ def validate(base, items):
                 problems.append(f"{n}: {c} score {s!r} outside 0-{mx}")
             if not (r.get("feedback") or {}).get(c):
                 problems.append(f"{n}: no student feedback for {c}")
-        text = " ".join([*(r.get("feedback") or {}).values(), r.get("review_missed") or "",
+        graded = {c for c, _, _ in CATS if c != "plan"}  # the plan line is written by this script
+        text = " ".join([*(v for k, v in (r.get("feedback") or {}).items() if k in graded),
+                         r.get("review_missed") or "",
                          r.get("next_sprint") or ""])
         if "\u2014" in text:
             problems.append(f"{n}: em dash in student feedback")
@@ -140,6 +150,12 @@ def student_page(r, p, row, sprint, points):
         extra += f"<h2>What your sprint review found that your retro did not mention</h2><p>{e(r['review_missed'])}</p>"
     if r.get("next_sprint"):
         extra += f"<h2>For next sprint</h2><p>{e(r['next_sprint'])}</p>"
+    days = p.get("facts", {}).get("canvas_days_late", 0)
+    if days:
+        pct = min(100, 10 * days)
+        extra = (f"<h2>Late work</h2><p>This was submitted {days} day{'s' * (days > 1)} late. Canvas "
+                 f"applies the late work policy on top of the score above: minus {pct}%, so your "
+                 f"Canvas grade is {fmt(round(total * (1 - pct / 100), 1))} / {points}.</p>") + extra
     note = row.get("scott_note", "").strip()
     if note:
         extra += f"<h2>From Professor Murff</h2><p>{e(note)}</p>"

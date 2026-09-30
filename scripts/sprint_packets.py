@@ -160,7 +160,8 @@ def build(student, sub, plan_sub, cfg, due):
     p = {"net_id": net_id, "name": student["name"], "preferred_first": student["preferred_first"],
          "canvas_user_id": student["canvas_user_id"],
          "canvas": {"submitted_at": sub.get("submitted_at") and local(sub["submitted_at"]).isoformat(),
-                    "late": sub.get("late"), "links": links},
+                    "late": sub.get("late"), "seconds_late": sub.get("seconds_late") or 0,
+                    "links": links},
          "repo": repo_url or None, "facts": {}}
     f = p["facts"]
     f["canvas_submitted"] = bool(sub.get("submitted_at"))
@@ -215,8 +216,12 @@ def build(student, sub, plan_sub, cfg, due):
         plan_text = (p.get("plan") or {}).get("as_committed_day_one")
         first = (p.get("plan") or {}).get("first_commit")
         p["plan_submission"] = {"source": "repo, first commit", "submitted_at": first, "text": plan_text}
-        on_time = bool(first) and dt.datetime.fromisoformat(first) <= \
-            dt.datetime.fromisoformat(cfg["plan_due"]).replace(tzinfo=TZ)
+        plan_due = dt.datetime.fromisoformat(cfg["plan_due"]).replace(second=59, tzinfo=TZ)
+        on_time = bool(first) and dt.datetime.fromisoformat(first) <= plan_due
+        # Syllabus late policy, 10% of the category per day or part of a day. From Sprint 2 on,
+        # Canvas applies it to the Plan assignment itself; Sprint 1's plan was a commit, so here.
+        late_s = (dt.datetime.fromisoformat(first) - plan_due).total_seconds() if first else 0
+        f["plan_days_late"] = max(0, -(-int(late_s) // 86400))
     else:
         plan_text = plain(plan_sub.get("body"))
         at = plan_sub.get("submitted_at")
@@ -228,6 +233,9 @@ def build(student, sub, plan_sub, cfg, due):
     f["plan_on_time"] = on_time
     f["plan_fields_missing"] = missing
     f["plan_score"] = PLAN_POINTS if plan_text and not missing else 0
+    if cfg["plan"] is None and f["plan_score"]:
+        f["plan_score"] = max(0, PLAN_POINTS - f.get("plan_days_late", 0))
+    f["canvas_days_late"] = -(-int(p["canvas"]["seconds_late"]) // 86400) if sub.get("late") else 0
 
     p["loom"] = loom(loom_links[0]) if loom_links else None
     if p["loom"]:
