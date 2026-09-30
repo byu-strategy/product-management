@@ -182,7 +182,6 @@ most sprints have one to three. This becomes the hexagon on the student's feedba
   "demo_checks": {"on_screen": "...", "working": "...", "real_content": "...",
                   "reachable": "...", "matches_plan": "...", "off_demo": "...", "readable": "..."},
   "feedback": {"shipped": "...", "review": "...", "demo": "..."},
-  "review_missed": "...",
   "next_sprint": "...",
   "axes": {"Discovery": 0.7, "Launch and Learn": 0.3},
   "axes_why": "for Scott, one or two sentences on how plan, review, and artifacts combined",
@@ -213,8 +212,6 @@ em dashes, no mention of lateness or of the setup items.
   points were lost, exactly what was missing. Cite what the student can check: a file path, a
   commit, a moment in their own Loom ("at 0:40 the screen shows..."). For a full score, say
   what earned it in one sentence.
-- `review_missed`: the most useful thing the `/sprint-review` report found that the retro did
-  not respond to, in one sentence. `null` if the retro covered it.
 - `next_sprint`: one to three suggestions for next sprint, offered, not prescribed. Start with
   "You might consider" and keep each suggestion specific and concrete, taken from the rubric or
   from their own report. "You might consider committing each finished document the day you

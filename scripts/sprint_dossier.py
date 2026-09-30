@@ -48,7 +48,7 @@ def _student(base, r, p, row, sprint, cats, final):
                  for c, label, mx in cats],
         "flags": r.get("flags", []),
         "late_days": f.get("canvas_days_late", 0),
-        "review_missed": r.get("review_missed"), "next_sprint": r.get("next_sprint"),
+        "next_sprint": r.get("next_sprint"),
         "scott_note": row.get("scott_note", ""),
         "pdf": f"feedback/{r['net_id']}.pdf",
         "comment": comment_text(row, sprint),

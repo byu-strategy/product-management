@@ -176,7 +176,7 @@ def validate(base, items):
                 problems.append(f"{n}: no student feedback for {c}")
         graded = {c for c, _, _ in CATS if c != "plan"}  # the plan line is written by this script
         text = " ".join([*(v for k, v in (r.get("feedback") or {}).items() if k in graded),
-                         r.get("review_missed") or "", (r.get("difficulty") or {}).get("note") or "",
+                         (r.get("difficulty") or {}).get("note") or "",
                          r.get("next_sprint") or ""])
         import re as _re
         # Quoted text is the student's own words or their app's output, so it is not checked.
@@ -246,8 +246,6 @@ def student_page(r, p, row, sprint, points):
         f"<tr><td>{label}</td><td class=pts>{fmt(final(row, c))}/{mx}</td>"
         f"<td>{e(r['feedback'][c])}</td></tr>" for c, label, mx in CATS)
     extra = ""
-    if r.get("review_missed"):
-        extra += f"<h2>What your sprint review found that your retro did not mention</h2><p>{e(r['review_missed'])}</p>"
     shares = r.get("axes") or {}
     if shares:
         profile = p.get("baseline")
