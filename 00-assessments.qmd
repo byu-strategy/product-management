@@ -144,7 +144,7 @@ It reads only the projects you confirm. Nothing leaves your machine except the r
 **3. Record a 90-second demo.** Show the thing working, with real content. No slides, no intro,
 no reflection. Ninety seconds of the actual thing.
 
-**4. Submit three links on Canvas:** your plan file on GitHub (`sprints/sprint-N-plan.md`), your Loom demo, and what you shipped (the live app, page, or file someone else can reach). Sprint 1 asked for your repo URL instead.
+**4. Submit two links on Canvas:** your plan file on GitHub (`sprints/sprint-N-plan.md`) and your Loom demo. Sprint 1 asked for your repo URL instead.
 
 ### What you have to have
 
