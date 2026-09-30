@@ -123,7 +123,8 @@ def plan_line(p):
     when = sub.get("submitted_at")
     when = dt.datetime.fromisoformat(when).strftime("%b %-d at %-I:%M %p") if when else None
     if not f.get("plan_submitted"):
-        return "No plan was found in your repo."
+        return ("Your plan could not be reviewed: your course repo was not shared with Professor Murff."
+                if not p.get("repo") else "No plan was found in your repo.")
     if f.get("plan_fields_missing"):
         return f"Your plan, committed {when}, is missing {', '.join(f['plan_fields_missing'])}."
     late = f.get("plan_days_late", 0)
@@ -184,7 +185,7 @@ def validate(base, items):
         import re as _re
         # Quoted text is the student's own words or their app's output, so it is not checked.
         plain_text = _re.sub(r"'[^']*'|\"[^\"]*\"|\u2018[^\u2019]*\u2019|\u201c[^\u201d]*\u201d", " ", text)
-        machine = _re.findall(r"\b(frames?|grader|artificial intelligence|it appears|the video shows)\b",
+        machine = _re.findall(r"\b(frames?|grader|artificial intelligence|it appears (?:that|to)|appears to be|the video shows)\b",
                               plain_text, _re.I)
         machine += _re.findall(r"(?<!Type )\bI\b(?!-)|\bI'(?:m|ve|d|ll)\b", plain_text)  # no first person
         # The baseline survey informs difficulty, but saying so invites students to underrate themselves.
