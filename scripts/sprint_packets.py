@@ -44,6 +44,12 @@ def gh(path, jq=None):
     return p.stdout if jq else json.loads(p.stdout)
 
 
+def gh_list(path):
+    """Every item of a paginated list endpoint, not just the first 100."""
+    p = subprocess.run(["gh", "api", "--paginate", path, "--jq", ".[] | tojson"], capture_output=True, text=True)
+    return [json.loads(l) for l in p.stdout.splitlines() if l.strip()] if p.returncode == 0 else []
+
+
 def file_at(repo, path, ref=None):
     q = f"repos/{repo}/contents/{path}" + (f"?ref={ref}" if ref else "")
     c = gh(q, ".content")
@@ -52,7 +58,7 @@ def file_at(repo, path, ref=None):
 
 def history(repo, path):
     """Commits touching path, oldest first: [(sha, local datetime)]."""
-    log = gh(f"repos/{repo}/commits?path={path}&per_page=100") or []
+    log = gh_list(f"repos/{repo}/commits?path={path}&per_page=100")
     return [(c["sha"], local(c["commit"]["author"]["date"])) for c in reversed(log)]
 
 
@@ -83,6 +89,10 @@ def loom(url):
         out |= {"title": d.get("title"), "seconds": round(d.get("duration") or 0),
                 "loom_summary": d.get("description")}
     page = requests.get(out["url"], headers={"User-Agent": "Mozilla/5.0"}, timeout=30).text
+    # oEmbed reports the raw recording; a trimmed Loom plays shorter. Viewers see playable_duration.
+    pd = re.search(r'"playable_duration":([\d.]+)', page)
+    if pd:
+        out["seconds"] = round(float(pd.group(1)))
     ch = re.search(r'"chapters":"((?:[^"\\]|\\.)*)"', page)
     out["chapters"] = json.loads(f'"{ch.group(1)}"') if ch else None
     cap = re.search(r'"captions_source_url":"([^"]+)"', page)
@@ -307,7 +317,7 @@ def build(student, sub, plan_sub, cfg, due):
                        "text": review}
         p["readme"] = readme[:4000]
         start = ph[0][1] if ph else due - dt.timedelta(days=14)
-        log = gh(f"repos/{repo}/commits?since={start.astimezone(dt.timezone.utc).isoformat()}&per_page=100") or []
+        log = gh_list(f"repos/{repo}/commits?since={start.astimezone(dt.timezone.utc).isoformat()}&per_page=100")
         commits = [{"sha": c["sha"], "when": local(c["commit"]["author"]["date"]).isoformat(),
                     "after_due": local(c["commit"]["author"]["date"]) > due,
                     "message": c["commit"]["message"].split("\n")[0]} for c in reversed(log)]
@@ -396,7 +406,7 @@ def build(student, sub, plan_sub, cfg, due):
         else due - dt.timedelta(days=14)
     p["other_repos"] = []
     for r in others[:4]:
-        log = gh(f"repos/{r}/commits?since={start.astimezone(dt.timezone.utc).isoformat()}&per_page=100") or []
+        log = gh_list(f"repos/{r}/commits?since={start.astimezone(dt.timezone.utc).isoformat()}&per_page=100")
         cs = [{"sha": c["sha"], "when": local(c["commit"]["author"]["date"]).isoformat(),
                "after_due": local(c["commit"]["author"]["date"]) > due,
                "message": c["commit"]["message"].split("\n")[0]} for c in reversed(log)]
