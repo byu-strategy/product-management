@@ -99,35 +99,82 @@ def loom(url):
     return out
 
 
-def frames(vid, dest_dir, net_id, n=9, width=1568):
-    """n full-resolution frames from the Loom, evenly spaced, one JPEG each.
+def grab_frames(video, dest_dir, net_id, n=9, width=1568):
+    """n full-resolution frames from a local video file, evenly spaced, one JPEG each.
 
     The transcript says what the student said; the frames show what was on screen. Each frame
     is 1568 px wide, the largest a model reads without shrinking it, so terminal and document
-    text stays legible (about 2k tokens a frame). The video goes to a temp file and is deleted;
-    only the frames are kept, next to the packet."""
-    r = requests.post(f"https://www.loom.com/api/campaigns/sessions/{vid}/transcoded-url",
-                      json={}, timeout=30)
-    if not r.ok or "url" not in r.json():
-        return None
+    text stays legible (about 2k tokens a frame). Only the frames are kept, next to the packet."""
     dest_dir.mkdir(parents=True, exist_ok=True)
     for old in dest_dir.glob(f"{net_id}-*.jpg"):
         old.unlink()
     out = []
+    secs = float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration",
+                                 "-of", "csv=p=0", str(video)], capture_output=True, text=True).stdout or 90)
+    for i in range(n):
+        at = secs * (i + 0.5) / n
+        dest = dest_dir / f"{net_id}-{i + 1}.jpg"
+        if subprocess.run(["ffmpeg", "-loglevel", "error", "-y", "-ss", f"{at:.2f}", "-i", str(video),
+                           "-frames:v", "1", "-vf", f"scale='min({width},iw)':-2", "-q:v", "2",
+                           str(dest)]).returncode == 0 and dest.exists():
+            dest.chmod(0o600)
+            out.append({"at_seconds": round(at), "path": str(dest)})
+    return out or None
+
+
+def frames(vid, dest_dir, net_id):
+    """Frames from a Loom, by its id. The video goes to a temp file and is deleted."""
+    r = requests.post(f"https://www.loom.com/api/campaigns/sessions/{vid}/transcoded-url",
+                      json={}, timeout=30)
+    if not r.ok or "url" not in r.json():
+        return None
     with tempfile.NamedTemporaryFile(suffix=".mp4") as mp4:
         mp4.write(requests.get(r.json()["url"], timeout=300).content)
         mp4.flush()
-        secs = float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration",
-                                     "-of", "csv=p=0", mp4.name], capture_output=True, text=True).stdout or 90)
-        for i in range(n):
-            at = secs * (i + 0.5) / n
-            dest = dest_dir / f"{net_id}-{i + 1}.jpg"
-            if subprocess.run(["ffmpeg", "-loglevel", "error", "-y", "-ss", f"{at:.2f}", "-i", mp4.name,
-                               "-frames:v", "1", "-vf", f"scale='min({width},iw)':-2", "-q:v", "2",
-                               str(dest)]).returncode == 0 and dest.exists():
-                dest.chmod(0o600)
-                out.append({"at_seconds": round(at), "path": str(dest)})
-    return out or None
+        return grab_frames(mp4.name, dest_dir, net_id)
+
+
+def other_video(url, dest_dir, net_id):
+    """Sprint 1 allowed any video host. Pull frames and captions the same way through yt-dlp
+    (YouTube, public Drive files, direct video links). Anything private or behind a login
+    (most SharePoint links) fails and is reported as such, for Scott to watch."""
+    out = {"url": url}
+    with tempfile.TemporaryDirectory() as tmp:
+        p = subprocess.run(["yt-dlp", "-q", "--no-warnings", "-f", "mp4/bestvideo[height<=1080]+bestaudio/best",
+                            "--merge-output-format", "mp4", "--write-auto-subs", "--write-subs",
+                            "--sub-langs", "en.*", "--sub-format", "vtt", "--print", "after_move:%(duration)s",
+                            "-o", f"{tmp}/v.%(ext)s", url], capture_output=True, text=True, timeout=600)
+        vids = [f for f in Path(tmp).glob("v.*") if f.suffix in (".mp4", ".webm", ".mkv", ".mov")]
+        if not vids:
+            out["error"] = (p.stderr.strip().splitlines() or ["could not download"])[-1][:200]
+            return out
+        try:
+            out["seconds"] = round(float(p.stdout.strip().splitlines()[-1]))
+        except (ValueError, IndexError):
+            pass
+        subs = sorted(Path(tmp).glob("v*.vtt"))
+        if subs:
+            lines, seen = [], set()
+            for l in subs[0].read_text(errors="replace").splitlines():
+                l = re.sub(r"<[^>]+>", "", l).strip()
+                if l and l != "WEBVTT" and "-->" not in l and not l.isdigit() and l not in seen \
+                        and not l.startswith(("Kind:", "Language:")):
+                    seen.add(l)
+                    lines.append(l)
+            out["transcript"] = " ".join(lines)
+        out["frames"] = grab_frames(vids[0], dest_dir, net_id)
+    return out
+
+
+def check_link(url):
+    """Does a shipped link load? Status, final URL, and page title; no judgment."""
+    try:
+        r = requests.get(url, timeout=20, headers={"User-Agent": "Mozilla/5.0"}, allow_redirects=True)
+        m = re.search(r"<title[^>]*>(.*?)</title>", r.text[:20000], re.S | re.I)
+        return {"url": url, "status": r.status_code, "final_url": r.url,
+                "title": html.unescape(m.group(1).strip())[:120] if m else None}
+    except requests.RequestException as ex:
+        return {"url": url, "status": None, "error": type(ex).__name__}
 
 
 def shipped(repo, commits):
@@ -243,6 +290,19 @@ def build(student, sub, plan_sub, cfg, due):
         f["loom_seconds"] = p["loom"].get("seconds")
         vid = p["loom"]["url"].rsplit("/", 1)[1]
         p["loom"]["frames"] = frames(vid, cfg["out"] / "frames", net_id)
+    elif f["non_loom_video"] and cfg["sprint"] == 1:
+        v = other_video(f["non_loom_video"][0], cfg["out"] / "frames", net_id)
+        p["loom"] = v | {"host": "not Loom"}
+        f["loom_seconds"] = v.get("seconds")
+        f["other_video_readable"] = bool(v.get("frames"))
+
+    # Links a grader would otherwise have to take on faith: everything on Canvas that is not the
+    # demo or a GitHub page, and the README's "Where to see it".
+    targets = [l for l in links if "loom.com" not in l and "github.com" not in l
+               and l not in f["non_loom_video"] and "localhost" not in l]
+    if f.get("readme_where_to_see_it", "") and str(f["readme_where_to_see_it"]).startswith("http"):
+        targets.append(f["readme_where_to_see_it"].split()[0].strip("<>()"))
+    p["link_checks"] = [check_link(u) for u in dict.fromkeys(targets)]
     return p
 
 

@@ -51,7 +51,8 @@ def _student(base, r, p, row, sprint, cats, final):
             {"label": "Repo", "href": repo} if repo else None,
             {"label": "Review file", "href": f"{repo}/blob/HEAD/sprints/sprint-{sprint}-review.md"} if repo else None,
             {"label": "Plan file", "href": f"{repo}/blob/HEAD/sprints/sprint-{sprint}-plan.md"} if repo else None,
-            {"label": f"Loom, {loom.get('seconds')}s", "href": loom["url"]} if loom.get("url") else None,
+            {"label": f"{'Video (not Loom)' if loom.get('host') else 'Loom'}, {loom.get('seconds')}s",
+             "href": loom["url"]} if loom.get("url") else None,
             {"label": "Where to see it", "href": f["readme_where_to_see_it"]}
             if (f.get("readme_where_to_see_it") or "").startswith("http") else None,
             {"label": "SpeedGrader", "href": f"{CANVAS}/courses/{COURSE_ID}/gradebook/speed_grader"
@@ -66,6 +67,7 @@ def _student(base, r, p, row, sprint, cats, final):
             "Loom transcript": loom.get("transcript") or "",
         },
         "commits": p.get("commits", []),
+        "link_checks": p.get("link_checks", []),
         "files": [{"path": x["path"], "status": x["status"], "bytes": x.get("bytes")}
                   for x in p.get("shipped_files", [])],
     }
@@ -182,6 +184,8 @@ function show(i){cur=i;const s=S[i];history.replaceState(null,'','#'+s.id);
  const paper=`<p class=sub>Canvas comment: <q>${esc(s.comment)}</q>, with this PDF attached.
   <a href="${esc(s.pdf)}" target=_blank>Open the PDF in its own tab</a>.</p>
   <iframe class=pdf src="${esc(s.pdf)}#view=FitH" title="Feedback PDF for ${esc(s.name)}"></iframe>`;
+ const lc=s.link_checks.length?`<table class=mini>${s.link_checks.map(l=>`<tr><td><a href="${esc(l.url)}" target=_blank>${esc(l.url)}</a></td>
+  <td>${l.status===200?'<b style="color:var(--good)">200</b>':`<b style="color:var(--bad)">${esc(l.status??l.error)}</b>`}</td><td>${esc(l.title??'')}</td></tr>`).join('')}</table>`:'';
  const ev=Object.entries(s.evidence).filter(([,v])=>v).map(([k,v])=>`<details><summary>${esc(k)}</summary><pre>${esc(v)}</pre></details>`).join('')
   +(s.commits.length?`<details><summary>Commits in the window (${s.commits.length})</summary><table class=mini>${s.commits.map(c=>`<tr><td>${esc(c.sha)}</td><td>${esc(c.when.replace('T',' ').slice(0,16))}</td><td>${esc(c.message)}${c.after_due?' <b>(after due)</b>':''}</td></tr>`).join('')}</table></details>`:'')
   +(s.files.length?`<details><summary>Files the sprint added or changed (${s.files.length})</summary><table class=mini>${s.files.map(f=>`<tr><td>${esc(f.path)}</td><td>${esc(f.status)}</td><td>${f.bytes??''}</td></tr>`).join('')}</table></details>`:'');
@@ -193,6 +197,7 @@ function show(i){cur=i;const s=S[i];history.replaceState(null,'','#'+s.id);
   <div class=links>${s.links.map(l=>`<a href="${esc(l.href)}" target=_blank>${esc(l.label)}</a>`).join('')}</div>
   <section><h3>Scores and why</h3>${cats}</section>
   ${s.flags.length?`<section><h3>Flags</h3><ul class=flags>${s.flags.map(f=>`<li class="${/^late/.test(f)?'late':''}">${esc(f)}</li>`).join('')}</ul></section>`:''}
+  ${lc?`<section><h3>Links checked when the packet was built</h3>${lc}</section>`:''}
   <section><h3>Demo, frame by frame</h3>${frames}</section>
   ${checks?`<section><h3>Demo checks</h3>${checks}</section>`:''}
   <section><h3>The feedback PDF, exactly as it will be sent</h3>${paper}</section>

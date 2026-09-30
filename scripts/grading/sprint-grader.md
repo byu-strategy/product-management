@@ -50,6 +50,11 @@ extra.
   of completed modules, committed to the repo or linked. Claims with no checkable evidence are
   not shipped; say exactly what evidence would count. The axis may not fit; say so rather than
   forcing one.
+- **`link_checks`** record whether each submitted link and the README's "Where to see it"
+  loaded when the packet was built (status, final URL, page title). A link that returned 200
+  with a plausible title counts as reachable; one that failed does not. In Sprint 1, a demo on
+  another host has `loom.host` "not Loom" and is graded from its frames and captions like a
+  Loom; if `other_video_readable` is false, set `watch_loom` true.
 - **Shipped** must be in the repo or reachable at a link. Work that exists only on the
   student's laptop or in a doc nobody can reach does not count. Judge from `shipped_files`,
   `commits`, `facts.readme_where_to_see_it`, links in `canvas.links`, and the review. The review
