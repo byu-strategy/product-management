@@ -67,8 +67,6 @@ in [Assessments](00-assessments.qmd#sprints).
 | [5](00-assessments.qmd#sprint-5) | Mon, Nov 9 | Wed, Nov 11 | Mon, Nov 23 | 50 |
 | [6](00-assessments.qmd#sprint-6) | Mon, Nov 23 | Wed, Nov 25 | Thu, Dec 10 | 100 |
 
-Across the six, your work must touch at least five of the six axes. You choose when.
-
 ## Peer Assignments
 
 | Assignment | Due | Focus |

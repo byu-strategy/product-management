@@ -251,14 +251,6 @@ the work itself and where you started on that axis: an ambitious goal you partly
 account for in your retro can still earn full marks, and routine work you comfortably finish
 earns up to 15 of 20.
 
-### Axis coverage
-
-Across your six sprints, your work must touch at least five of the six axes. You choose when.
-
-`/sprint-review` tags each sprint with the axis your work actually advanced, so you do not have
-to declare it up front. If the tag is wrong, say so in your retro. Check your tags in November.
-If four sprints sit on one axis, adjust.
-
 ### Confidential company work
 
 Many of you build inside a company whose code, data, or customers are not yours alone to share.
