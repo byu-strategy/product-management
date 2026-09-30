@@ -156,6 +156,17 @@ def student_page(r, p, row, sprint, points):
         extra = (f"<h2>Late work</h2><p>This was submitted {days} day{'s' * (days > 1)} late. Canvas "
                  f"applies the late work policy on top of the score above: minus {pct}%, so your "
                  f"Canvas grade is {fmt(round(total * (1 - pct / 100), 1))} / {points}.</p>") + extra
+    f = p.get("facts", {})
+    if sprint == 1 and p.get("repo"):
+        open_items = []
+        if f.get("readme_context_filled") is False:
+            open_items.append("fill in the context declaration in your README (your role, what you "
+                              "are working on, who it is for, and who uses your work)")
+        if f.get("ta_is_collaborator") is False:
+            open_items.append("add Nate (nmccaul) as a collaborator on your repo")
+        if open_items:
+            extra += ("<h2>Sprint 1 setup, still open</h2><p>Please " + " and ".join(open_items) +
+                      " before Sprint 2 is due. No points were taken for this.</p>")
     note = row.get("scott_note", "").strip()
     if note:
         extra += f"<h2>From Professor Murff</h2><p>{e(note)}</p>"
@@ -168,114 +179,10 @@ def student_page(r, p, row, sprint, points):
 {extra}</body></html>"""
 
 
-REVIEW_CSS = """
-:root{--bg:#f6f7f9;--card:#fff;--ink:#1d2330;--mute:#5b6475;--line:#e3e6ec;--hi:#fff7e0;--bad:#b42318;--ok:#067647;--acc:#2f5bd3}
-@media (prefers-color-scheme:dark){:root{--bg:#12151b;--card:#1a1f27;--ink:#e6e9ef;--mute:#98a1b3;--line:#2a313c;--hi:#2c2610;--bad:#f97066;--ok:#47cd89;--acc:#7c9cf0}}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.5 -apple-system,Segoe UI,Helvetica,Arial,sans-serif}
-header{padding:20px 24px 8px}h1{font-size:20px;margin:0}.mute{color:var(--mute)}
-.bar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;padding:8px 24px 12px}
-input,select{font:inherit;padding:6px 10px;border:1px solid var(--line);border-radius:6px;background:var(--card);color:var(--ink)}
-.wrap{padding:0 24px 40px;overflow-x:auto}
-table{border-collapse:collapse;width:100%;background:var(--card);border:1px solid var(--line)}
-th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
-th{position:sticky;top:0;background:var(--card);cursor:pointer;user-select:none;font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--mute);white-space:nowrap}
-th.num,td.num{text-align:right}tr.row{cursor:pointer}tr.row:hover{background:var(--hi)}
-.ov{color:var(--acc);font-weight:600}.low{color:var(--bad);font-weight:600}.high{color:var(--ok)}
-.tag{display:inline-block;padding:1px 7px;border-radius:10px;border:1px solid var(--line);font-size:12px;margin:1px 2px 1px 0}
-tr.detail>td{background:var(--bg);padding:16px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 14px}
-.card h3{margin:0 0 8px;font-size:13px;text-transform:uppercase;letter-spacing:.04em;color:var(--mute)}
-.frames{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px}
-.frames figure{margin:0}.frames img{width:100%;border:1px solid var(--line);border-radius:4px}
-.frames figcaption{font-size:12px;color:var(--mute)}
-dl{margin:0}dt{font-weight:600;margin-top:6px}dd{margin:0 0 4px}
-.empty{padding:30px;text-align:center;color:var(--mute)}
-"""
-
-REVIEW_JS = """
-const q=document.getElementById('q'),conf=document.getElementById('conf'),watch=document.getElementById('watch'),count=document.getElementById('count');
-const body=document.querySelector('tbody');
-function apply(){let n=0;const t=q.value.toLowerCase();
- document.querySelectorAll('tr.row').forEach(r=>{const ok=(!t||r.dataset.s.includes(t))&&(!conf.value||r.dataset.c===conf.value)&&(!watch.checked||r.dataset.w==='1');
-  r.hidden=!ok;const d=r.nextElementSibling;if(!ok)d.hidden=true;if(ok)n++;});
- count.textContent=n+' of '+document.querySelectorAll('tr.row').length+' students';document.getElementById('none').hidden=n>0;}
-[q,conf,watch].forEach(x=>x.addEventListener('input',apply));
-document.querySelectorAll('tr.row').forEach(r=>r.addEventListener('click',()=>{const d=r.nextElementSibling;d.hidden=!d.hidden;}));
-let dir={};document.querySelectorAll('th[data-k]').forEach((th,i)=>th.addEventListener('click',()=>{const k=th.dataset.k,num=th.classList.contains('num');dir[k]=!dir[k];
- const pairs=[...document.querySelectorAll('tr.row')].map(r=>[r,r.nextElementSibling]);
- pairs.sort((a,b)=>{let x=a[0].dataset[k],y=b[0].dataset[k];if(num){x=+x;y=+y}return (x>y?1:x<y?-1:0)*(dir[k]?1:-1)});
- pairs.forEach(([r,d])=>{body.appendChild(r);body.appendChild(d)});}));
-apply();
-"""
-
-
 def review_page(base, items, rows, sprint, points):
-    order = {"low": 0, "medium": 1, "high": 2}
-    items = sorted(items, key=lambda it: (order.get(it[0].get("confidence"), 0),
-                                          float(rows[it[0]["net_id"]]["final_total"])))
-    trs = []
-    for r, p in items:
-        row = rows[r["net_id"]]
-        cells = ""
-        for c, _, mx in CATS:
-            v, ov = final(row, c), str(row.get(f"override_{c}", "")).strip()
-            cells += (f"<td class='num{' ov' if ov else ''}' title='grader {r['scores'][c]}'>"
-                      f"{fmt(v)}</td>")
-        confc = {"low": "low", "high": "high"}.get(r.get("confidence"), "")
-        loom = p.get("loom") or {}
-        frames = "".join(
-            f"<figure><a href='{e(Path(fr['path']).relative_to(base).as_posix())}' target=_blank>"
-            f"<img loading=lazy src='{e(Path(fr['path']).relative_to(base).as_posix())}'></a>"
-            f"<figcaption>{fr['at_seconds'] // 60}:{fr['at_seconds'] % 60:02d}</figcaption></figure>"
-            for fr in (loom.get("frames") or []))
-        notes = "".join(f"<dt>{e(n['at'])}</dt><dd>{e(n['sees'])}</dd>" for n in r.get("demo_notes", []))
-        checks = "".join(f"<dt>{e(k.replace('_', ' '))}</dt><dd>{e(v)}</dd>"
-                         for k, v in (r.get("demo_checks") or {}).items())
-        reasons = "".join(f"<dt>{label} ({fmt(final(row, c))}/{mx}, grader {r['scores'][c]})</dt>"
-                          f"<dd>{e(r['reasons'][c])}</dd>" for c, label, mx in CATS)
-        flags = "".join(f"<li>{e(f)}</li>" for f in r.get("flags", []))
-        search = " ".join([r["net_id"], p.get("name", ""), " ".join(r.get("flags", []))]).lower()
-        links = " · ".join(x for x in [
-            f"<a href='{e(p['repo'])}' target=_blank>repo</a>" if p.get("repo") else "",
-            f"<a href='{e(loom['url'])}' target=_blank>Loom ({loom.get('seconds')}s)</a>" if loom else "",
-            f"<a href='feedback/{e(r['net_id'])}.html' target=_blank>student feedback page</a>"] if x)
-        trs.append(
-            f"<tr class=row data-s='{e(search)}' data-c='{e(r.get('confidence', ''))}' "
-            f"data-w='{1 if r.get('watch_loom') else 0}' data-name='{e(p.get('name', ''))}' "
-            f"data-total='{row['final_total']}' data-conf='{order.get(r.get('confidence'), 0)}' "
-            f"data-flags='{len(r.get('flags', []))}'>"
-            f"<td>{e(p.get('name', ''))}<div class=mute>{e(r['net_id'])}</div></td>"
-            f"<td class={confc}>{e(r.get('confidence', ''))}{' · watch' if r.get('watch_loom') else ''}</td>"
-            f"{cells}<td class=num><b>{row['final_total']}</b></td>"
-            f"<td class=num>{len(r.get('flags', []))}</td>"
-            f"<td>{'yes' if row.get('approved', '').strip().lower() == 'yes' else ''}</td></tr>"
-            f"<tr class=detail hidden><td colspan=10><p>{links}</p><div class=grid>"
-            f"<div class=card><h3>Why these scores</h3><dl>{reasons}</dl></div>"
-            f"<div class=card><h3>Flags</h3><ul>{flags or '<li>none</li>'}</ul>"
-            f"<h3>Demo checks</h3><dl>{checks or '<dd>no video</dd>'}</dl></div>"
-            f"<div class=card><h3>What the student will read</h3><dl>"
-            + "".join(f"<dt>{label}</dt><dd>{e(r['feedback'][c])}</dd>" for c, label, _ in CATS)
-            + (f"<dt>Review found, retro missed</dt><dd>{e(r['review_missed'])}</dd>" if r.get("review_missed") else "")
-            + (f"<dt>For next sprint</dt><dd>{e(r['next_sprint'])}</dd>" if r.get("next_sprint") else "")
-            + f"</dl></div></div>"
-            + (f"<div class=card style='margin-top:16px'><h3>Loom frames</h3><div class=frames>{frames}</div>"
-               f"<h3 style='margin-top:12px'>Frame notes</h3><dl>{notes}</dl></div>" if frames else "")
-            + "</td></tr>")
-    approved = sum(1 for r in rows.values() if r.get("approved", "").strip().lower() == "yes")
-    page = f"""<!doctype html><html><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1">
-<title>Sprint {sprint} grades</title><style>{REVIEW_CSS}</style></head><body>
-<header><h1>Sprint {sprint} grades</h1><p class=mute>{len(items)} graded · {approved} approved ·
-lowest confidence first · click a row for evidence · change a grade in grades.csv or tell Claude</p></header>
-<div class=bar><input id=q placeholder="Search name, NetID, flag" size=30>
-<select id=conf><option value="">All confidence</option><option>low</option><option>medium</option><option>high</option></select>
-<label><input type=checkbox id=watch> Loom to watch</label><span id=count class=mute></span></div>
-<div class=wrap><table><thead><tr><th data-k=name>Student</th><th data-k=conf>Confidence</th>
-{''.join(f"<th class=num>{label.split(',')[0]} /{mx}</th>" for _, label, mx in CATS)}
-<th class=num data-k=total>Total /{points}</th><th class=num data-k=flags>Flags</th><th>Approved</th></tr></thead>
-<tbody>{''.join(trs)}</tbody></table><div id=none class=empty hidden>No students match.</div></div>
-<script>{REVIEW_JS}</script></body></html>"""
-    (base / "review.html").write_text(page)
+    """Scott's grading dossier: every student, their scores, and the evidence behind them."""
+    from sprint_dossier import render
+    (base / "review.html").write_text(render(base, items, rows, sprint, points, CATS, final))
     (base / "review.html").chmod(0o600)
 
 

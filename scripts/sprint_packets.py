@@ -139,9 +139,10 @@ def shipped(repo, commits):
                 files[f["filename"]] = f["status"]
     out = []
     for name, status in files.items():
-        meta = gh(f"repos/{repo}/contents/{name}") or {}
+        # One API call per file is slow on big repos, so fetch only files whose text fits the budget.
+        meta = gh(f"repos/{repo}/contents/{name}") or {} if TEXT.search(name) and budget > 0 else {}
         item = {"path": name, "status": status, "bytes": meta.get("size")}
-        if TEXT.search(name) and budget > 0 and meta.get("content"):
+        if meta.get("content"):
             text = base64.b64decode(meta["content"]).decode("utf-8", "replace")
             take = min(PER_FILE_CHARS, budget)
             item["text"] = text[:take] + ("\n[... truncated]" if len(text) > take else "")
