@@ -234,6 +234,7 @@ table{border-collapse:collapse;width:100%;margin:8px 0 24px}
 th,td{text-align:left;vertical-align:top;padding:10px 8px;border-bottom:1px solid #e3e6ec}
 th{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:#5b6475}
 td.pts{white-space:nowrap;font-weight:600;width:70px}
+.disclaimer{margin-top:28px;padding-top:10px;border-top:1px solid #e3e6ec;font-size:12px;color:#5b6475}
 .hex{text-align:center;margin:4px 0 6px}.hex svg{max-width:100%;height:auto}
 h2{font-size:15px;margin:22px 0 6px}p{margin:0 0 10px}
 .total{font-size:28px;font-weight:700}
@@ -287,7 +288,10 @@ def student_page(r, p, row, sprint, points):
 <p class=sub>MSB 341 Product Management</p>
 <p class=total>{fmt(total)} / {points}</p>
 <table><tr><th>Category</th><th>Score</th><th>What it was based on</th></tr>{trs}</table>
-{extra}</body></html>"""
+{extra}
+<p class=disclaimer>This sprint feedback was generated with the assistance of Claude Code by reviewing
+everything you turned in. If you believe something is incorrect or does not accurately represent
+your work, please let Nate, the TA, know.</p></body></html>"""
 
 
 def review_page(base, items, rows, sprint, points):
