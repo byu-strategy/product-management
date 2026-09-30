@@ -177,9 +177,9 @@ def check_link(url):
         return {"url": url, "status": None, "error": type(ex).__name__}
 
 
-def shipped(repo, commits):
+def shipped(repo, commits, budget=SHIPPED_CHARS):
     """Files added or changed by the sprint's commits, with capped text for the grader."""
-    files, budget = {}, SHIPPED_CHARS
+    files = {}
     for c in commits:
         for f in (gh(f"repos/{repo}/commits/{c['sha']}") or {}).get("files", []):
             if f["status"] != "removed" and not SKIP.search(f["filename"]):
@@ -302,7 +302,32 @@ def build(student, sub, plan_sub, cfg, due):
                and l not in f["non_loom_video"] and "localhost" not in l]
     if f.get("readme_where_to_see_it", "") and str(f["readme_where_to_see_it"]).startswith("http"):
         targets.append(f["readme_where_to_see_it"].split()[0].strip("<>()"))
+    # Work often lives outside the course repo: a company repo, a second project. Read every
+    # other repo the student has shared with sdmurff (they own it, or listed or linked it), and
+    # check every live link in the README's "Where the work lives" section.
+    readme_text = p.get("readme") or ""
+    m = re.search(r"## Where the work lives\n(.*?)(?=\n## |\Z)", readme_text, re.S)
+    where = m.group(1) if m else ""
+    named = {u.lower() for u in re.findall(r"github\.com/([\w.-]+/[\w.-]+)", where + " " + " ".join(links))}
+    course = (repo_url or "").replace("https://github.com/", "").strip("/").lower()
+    mine = {r for r, owner in cfg["shared"].items() if owner.lower() == (student.get("github_username") or "#").lower()}
+    others = [r for r in cfg["shared"] if r.lower() != course and (r in mine or r.lower() in named)]
+    start = dt.datetime.fromisoformat(p["plan"]["first_commit"]) if (p.get("plan") or {}).get("first_commit") \
+        else due - dt.timedelta(days=14)
+    p["other_repos"] = []
+    for r in others[:4]:
+        log = gh(f"repos/{r}/commits?since={start.astimezone(dt.timezone.utc).isoformat()}&per_page=100") or []
+        cs = [{"sha": c["sha"], "when": local(c["commit"]["author"]["date"]).isoformat(),
+               "after_due": local(c["commit"]["author"]["date"]) > due,
+               "message": c["commit"]["message"].split("\n")[0]} for c in reversed(log)]
+        p["other_repos"].append({"repo": f"https://github.com/{r}",
+                                 "commits": [{k: v for k, v in c.items() if k != "sha"} | {"sha": c["sha"][:7]} for c in cs],
+                                 "files": shipped(r, cs, budget=8_000) if cs else []})
+    unshared = sorted(named - {r.lower() for r in cfg["shared"]} - {course})
+    f["repos_named_but_not_shared"] = unshared
+    targets += [u.rstrip(").,") for u in re.findall(r"https?://\S+", where) if "github.com" not in u]
     p["link_checks"] = [check_link(u) for u in dict.fromkeys(targets)]
+    p["baseline"] = cfg["baseline"].get(net_id)
     return p
 
 
@@ -326,10 +351,17 @@ def main():
     out = DATA / f"grading/sprint-{a.sprint}"
     out.mkdir(parents=True, exist_ok=True)
     cfg["out"] = out
+    # Every repo shared with sdmurff, owner by name, and each student's baseline axis scores.
+    listing = subprocess.run(["gh", "api", "user/repos?affiliation=collaborator&per_page=100", "--paginate",
+                              "--jq", ".[] | [.full_name, .owner.login] | @tsv"], capture_output=True, text=True).stdout
+    cfg["shared"] = dict(l.split("\t") for l in listing.splitlines() if "\t" in l)
+    bl = DATA / "baseline-charts-fall2026/students.json"
+    cfg["baseline"] = {s["net_id"]: s["means"] for s in json.loads(bl.read_text())} if bl.exists() else {}
     for s in roster:
         if a.only and s["net_id"] not in a.only:
             continue
-        s = s | {"repo_url": repos.get(s["net_id"], {}).get("repo_url", "")}
+        s = s | {"repo_url": repos.get(s["net_id"], {}).get("repo_url", ""),
+                 "github_username": repos.get(s["net_id"], {}).get("github_username", "")}
         p = build(s, subs.get(str(s["canvas_user_id"]), {}),
                   plan_subs.get(str(s["canvas_user_id"]), {}), cfg, due)
         p["assignment"] = {"id": cfg["review"], "name": assignment["name"],

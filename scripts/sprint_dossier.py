@@ -46,6 +46,9 @@ def _student(base, r, p, row, sprint, cats, final):
         "pdf": f"feedback/{r['net_id']}.pdf",
         "comment": comment_text(row, sprint),
         "checks": r.get("demo_checks") or {},
+        "difficulty": r.get("difficulty") or {},
+        "other_repos": [{"repo": o["repo"], "commits": len(o.get("commits", []))} for o in p.get("other_repos", [])],
+        "unshared": f.get("repos_named_but_not_shared", []),
         "frames": frames,
         "links": [x for x in [
             {"label": "Repo", "href": repo} if repo else None,
@@ -140,6 +143,8 @@ section>h3{font:600 12px var(--sans);letter-spacing:.12em;text-transform:upperca
 .frame .cap{padding:8px 10px;font-size:12.5px}.frame .t{font:600 12px var(--sans);color:var(--acc);margin-right:6px}
 dl.checks{display:grid;grid-template-columns:130px 1fr;gap:6px 14px;margin:0}
 dl.checks dt{font-weight:600;text-transform:capitalize}dl.checks dd{margin:0}
+.diffrow{display:flex;gap:28px;flex-wrap:wrap;margin-bottom:8px}.diffrow div b{display:block;font:600 24px var(--serif)}
+.diffrow div span{font-size:11px;color:var(--mute);text-transform:uppercase;letter-spacing:.06em}
 .pdf{width:100%;max-width:820px;height:1000px;border:1px solid var(--line);border-radius:8px;background:#fff}
 .paper{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:18px 22px;max-width:760px}
 .paper h4{font:600 13px var(--sans);margin:14px 0 4px}.paper p{margin:0 0 8px}
@@ -160,7 +165,7 @@ const $=q=>document.querySelector(q),esc=s=>String(s??'').replace(/[&<>"]/g,c=>(
 const fmt=n=>(Math.round(n*10)/10).toString();
 let order=S.map((_,i)=>i),sortKey='conf',dir=1,cur=null;
 const confRank={low:0,medium:1,high:2};
-function key(s,k){return k==='name'?s.name:k==='total'?s.total:k==='conf'?confRank[s.confidence]*1000+s.total:k==='flags'?s.flags.length:s.cats.find(c=>c.key===k)?.score}
+function key(s,k){if(k==='diff')return s.difficulty.assessed||0;return k==='name'?s.name:k==='total'?s.total:k==='conf'?confRank[s.confidence]*1000+s.total:k==='flags'?s.flags.length:s.cats.find(c=>c.key===k)?.score}
 function visible(s){const q=$('#q').value.toLowerCase();
  return (!q||(s.name+' '+s.id+' '+s.flags.join(' ')).toLowerCase().includes(q))&&(!$('#conf').value||s.confidence===$('#conf').value)
  &&(!$('#watch').checked||s.watch)&&(!$('#late').checked||s.late_days>0)&&(!$('#unapp').checked||!s.approved)}
@@ -169,6 +174,7 @@ function roster(){order.sort((a,b)=>{const x=key(S[a],sortKey),y=key(S[b],sortKe
  $('#tb').innerHTML=rows.map(i=>{const s=S[i];return `<tr data-i="${i}" class="${cur===i?'on':''}"><td><div>${esc(s.name)}</div><div class=sub>${esc(s.id)}</div></td>
  <td><span class="dot c-${esc(s.confidence)}"></span>${esc(s.confidence)}${s.watch?'<div class=sub>watch Loom</div>':''}</td>
  ${meta.cats.map(c=>{const x=s.cats.find(y=>y.key===c.key);return `<td class=num>${fmt(x.score)}${x.override?'*':''}</td>`}).join('')}
+ <td class=num title="predicted / assessed">${s.difficulty.assessed?`${s.difficulty.predicted??'?'}→${s.difficulty.assessed}`:''}</td>
  <td class=num><b>${fmt(s.total)}</b></td><td class=num>${s.flags.length||''}</td><td>${s.approved?'yes':''}</td></tr>`}).join('');
  $('#count').textContent=`${rows.length} of ${S.length} students`;$('#none').hidden=rows.length>0;
  document.querySelectorAll('#tb tr').forEach(tr=>tr.onclick=()=>show(+tr.dataset.i));
@@ -184,6 +190,12 @@ function show(i){cur=i;const s=S[i];history.replaceState(null,'','#'+s.id);
  const paper=`<p class=sub>Canvas comment: <q>${esc(s.comment)}</q>, with this PDF attached.
   <a href="${esc(s.pdf)}" target=_blank>Open the PDF in its own tab</a>.</p>
   <iframe class=pdf src="${esc(s.pdf)}#view=FitH" title="Feedback PDF for ${esc(s.name)}"></iframe>`;
+ const d=s.difficulty,diff=d.assessed?`<section><h3>Difficulty</h3><div class=diffrow>
+  <div><b>${d.predicted??'–'}</b><span>predicted</span></div><div><b>${d.student_actual??'–'}</b><span>their actual</span></div>
+  <div><b style="color:var(--acc)">${d.assessed}</b><span>assessed</span></div><div><b>${d.baseline_on_axis??'–'}</b><span>baseline, ${esc(d.axis||'')}</span></div></div>
+  <p class=why>${esc(d.why||'')}</p><p class=sub>Effect on shipped: ${esc(d.effect_on_shipped||'none')}</p></section>`:'';
+ const repos=(s.other_repos.length||s.unshared.length)?`<section><h3>Other repos</h3><table class=mini>${s.other_repos.map(o=>`<tr><td><a href="${esc(o.repo)}" target=_blank>${esc(o.repo.replace('https://github.com/',''))}</a></td><td>${o.commits} commits in window</td></tr>`).join('')}
+  ${s.unshared.map(u=>`<tr><td>${esc(u)}</td><td>named, not shared</td></tr>`).join('')}</table></section>`:'';
  const lc=s.link_checks.length?`<table class=mini>${s.link_checks.map(l=>`<tr><td><a href="${esc(l.url)}" target=_blank>${esc(l.url)}</a></td>
   <td>${l.status===200?'<b style="color:var(--good)">200</b>':`<b style="color:var(--bad)">${esc(l.status??l.error)}</b>`}</td><td>${esc(l.title??'')}</td></tr>`).join('')}</table>`:'';
  const ev=Object.entries(s.evidence).filter(([,v])=>v).map(([k,v])=>`<details><summary>${esc(k)}</summary><pre>${esc(v)}</pre></details>`).join('')
@@ -196,6 +208,7 @@ function show(i){cur=i;const s=S[i];history.replaceState(null,'','#'+s.id);
   <div class=big>${fmt(s.total)}<small> / ${meta.points}</small><div class=keys style="margin-top:8px"><kbd>j</kbd> <kbd>k</kbd> next / previous</div></div></div>
   <div class=links>${s.links.map(l=>`<a href="${esc(l.href)}" target=_blank>${esc(l.label)}</a>`).join('')}</div>
   <section><h3>Scores and why</h3>${cats}</section>
+  ${diff}${repos}
   ${s.flags.length?`<section><h3>Flags</h3><ul class=flags>${s.flags.map(f=>`<li class="${/^late/.test(f)?'late':''}">${esc(f)}</li>`).join('')}</ul></section>`:''}
   ${lc?`<section><h3>Links checked when the packet was built</h3>${lc}</section>`:''}
   <section><h3>Demo, frame by frame</h3>${frames}</section>
@@ -248,7 +261,7 @@ def render(base, items, rows, sprint, points, cats, final):
 <label class=chk><input type=checkbox id=watch>Loom to watch</label><label class=chk><input type=checkbox id=late>Late</label>
 <label class=chk><input type=checkbox id=unapp>Not approved</label><div class=count id=count></div></div>
 <div class=tablewrap><table class=list><thead><tr><th data-k=name>Student</th><th data-k=conf>Confidence</th>{heads}
-<th class=num data-k=total>Total</th><th class=num data-k=flags>Flags</th><th>OK</th></tr></thead><tbody id=tb></tbody></table>
+<th class=num data-k=diff title="predicted to assessed">Diff</th><th class=num data-k=total>Total</th><th class=num data-k=flags>Flags</th><th>OK</th></tr></thead><tbody id=tb></tbody></table>
 <div class=empty id=none hidden>No students match these filters.</div></div></div>
 <div class=dossier id=dossier></div></main>
 <div class=lightbox id=lb hidden><img alt=""><div></div></div>

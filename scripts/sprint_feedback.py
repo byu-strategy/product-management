@@ -100,7 +100,7 @@ def validate(base, items):
                 problems.append(f"{n}: no student feedback for {c}")
         graded = {c for c, _, _ in CATS if c != "plan"}  # the plan line is written by this script
         text = " ".join([*(v for k, v in (r.get("feedback") or {}).items() if k in graded),
-                         r.get("review_missed") or "",
+                         r.get("review_missed") or "", (r.get("difficulty") or {}).get("note") or "",
                          r.get("next_sprint") or ""])
         import re as _re
         machine = _re.findall(r"\b(frames?|screenshots?|stills|transcripts?|captions?|packets?|grader|"
@@ -164,6 +164,8 @@ def student_page(r, p, row, sprint, points):
     extra = ""
     if r.get("review_missed"):
         extra += f"<h2>What your sprint review found that your retro did not mention</h2><p>{e(r['review_missed'])}</p>"
+    if (r.get("difficulty") or {}).get("note"):
+        extra += f"<h2>How hard it was</h2><p>{e(r['difficulty']['note'])}</p>"
     if r.get("next_sprint"):
         extra += f"<h2>For next sprint</h2><p>{e(r['next_sprint'])}</p>"
     days = p.get("facts", {}).get("canvas_days_late", 0)

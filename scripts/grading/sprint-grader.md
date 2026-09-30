@@ -61,6 +61,15 @@ extra.
   What the retro and the demo describe earns credit even with nothing committed; checkable
   evidence (a module log, badges, results) earns more. A vague account ("more learning to do")
   earns about half.
+- **Work can live outside the course repo.** Students on teams and founders often build in a
+  company repo. `other_repos` holds every other repo the student shared with Scott (commits and
+  files in the window); `repos_named_but_not_shared` lists repos they named but did not share,
+  which is allowed; the review's "Where the work lives" section may summarize those commits.
+  Weigh all of it. Keep two cases apart: **not checkable** (the work may exist, but nothing
+  anyone can open shows it) and **not done** (the evidence shows it was not built). Only
+  checkable work counts as shipped, but in feedback say "not checkable" and name what would
+  make it checkable (share the repo, list it in the README, a live link, a Loom of it working);
+  never imply it was not done.
 - **Shipped** must be in the repo or reachable at a link. Work that exists only on the
   student's laptop or in a doc nobody can reach does not count. Judge from `shipped_files`,
   `commits`, `facts.readme_where_to_see_it`, links in `canvas.links`, and the review. The review
@@ -107,6 +116,36 @@ extra.
 - Never guess. If something needed is missing from the packet, say so in `flags` and lower
   `confidence`.
 
+## Difficulty
+
+Assess how hard the sprint's work actually was **for this student**, independently of what
+they predicted, on the course's scale:
+
+| | |
+|---|---|
+| 1 | Something they already knew how to do |
+| 2 | Mostly known, a few small gaps |
+| 3 | Something new to learn, with a clear path |
+| 4 | A lot to learn, and the path was not clear |
+| 5 | Unclear whether it was possible at all |
+
+Judge from the work itself (what was built or produced, how much, and how novel), where they
+got stuck and for how long, and where they started: `baseline` holds their self-rated 1 to 5
+score on each axis before the course. The same deployed app with auth is a 4 for someone at 1.1
+on Application Architecture and a 2 for someone at 4.5. Their `Predicted difficulty` and
+`Actual difficulty` are context, never the answer; never simply agree with them.
+
+How it affects **shipped**:
+
+- **Sprint 1: raise only.** An ambitious goal (assessed 4 or 5) partly reached and accounted
+  for in the retro can earn full marks. Difficulty never lowers a Sprint 1 score.
+- **Sprint 2 on: both ways.** Ambitious work partly reached can earn full marks; routine work
+  (assessed 1 or 2) comfortably finished earns at most 75% of shipped (15 of 20, 37 of 50).
+
+Write `difficulty.note` for the student: one or two sentences comparing their prediction, their
+own actual rating, and the work, in the same factual voice as the rest ("You predicted a 2; the
+work was closer to a 4: the Supabase auth took four days across 31 prompts.").
+
 ## Output, per student
 
 ```json
@@ -122,7 +161,10 @@ extra.
                   "reachable": "...", "matches_plan": "...", "off_demo": "...", "readable": "..."},
   "feedback": {"shipped": "...", "review": "...", "demo": "..."},
   "review_missed": "...",
-  "next_sprint": "..."
+  "next_sprint": "...",
+  "difficulty": {"assessed": 3, "axis": "...", "baseline_on_axis": 0.0, "predicted": 0, "student_actual": 0,
+                 "why": "for Scott, one or two sentences", "effect_on_shipped": "none | raised by N | capped",
+                 "note": "for the student"}
 }
 ```
 
