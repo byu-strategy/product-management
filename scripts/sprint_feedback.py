@@ -181,20 +181,22 @@ def validate(base, items):
         import re as _re
         # Quoted text is the student's own words or their app's output, so it is not checked.
         plain_text = _re.sub(r"'[^']*'|\"[^\"]*\"|\u2018[^\u2019]*\u2019|\u201c[^\u201d]*\u201d", " ", text)
-        machine = _re.findall(r"\b(frames?|transcripts?|packets?|grader|artificial intelligence|it appears|"
-                              r"the video shows)\b", plain_text, _re.I)
-        machine += _re.findall(r"(?<!Type )\bI\b(?!-)|\bI'(?:m|ve|d|ll)\b|\b[Mm](?:y|e)\b", plain_text)  # no first person
+        machine = _re.findall(r"\b(frames?|grader|artificial intelligence|it appears|the video shows)\b",
+                              plain_text, _re.I)
+        machine += _re.findall(r"(?<!Type )\bI\b(?!-)|\bI'(?:m|ve|d|ll)\b", plain_text)  # no first person
         if machine:
             problems.append(f"{n}: student feedback reads as machine-written ({', '.join(sorted(set(m.lower() for m in machine)))})")
         # Words that are usually about the student's own project, but worth a look.
-        soft = sorted(set(w.lower() for w in _re.findall(r"\b(screenshots?|captions?|stills|the model|the ai)\b",
-                                                         plain_text, _re.I)))
+        soft = sorted(set(w.lower() for w in _re.findall(
+            r"\b(screenshots?|captions?|stills|transcripts?|packets?|the model|the ai|my|me)\b", plain_text, _re.I)))
         if soft:
             r.setdefault("flags", []).append("voice check: feedback mentions " + ", ".join(soft) +
                                              "; confirm it refers to the student's own work")
         if "\u2014" in text:
             problems.append(f"{n}: em dash in student feedback")
-        if any(w in text.lower() for w in (" late", "after the deadline", "after due", "seconds after")):
+        if _re.search(r"\b(submitted|committed|turned in|pushed)\b[^.]{0,40}\blate\b|\blate (submission|penalty|work)\b|"
+                      r"\bafter the (deadline|due date)\b|\bpast the deadline\b|\bseconds after\b|\bafter due\b",
+                      plain_text, _re.I):
             problems.append(f"{n}: student feedback mentions lateness")
     missing = packets - {r["net_id"] for r, _ in items}
     if missing:
