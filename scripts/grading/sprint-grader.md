@@ -224,7 +224,7 @@ em dashes, no mention of lateness or of the setup items.
     unshared repo, a video that would not open, a claim with nothing committed or linked behind
     it, a link that failed), which score it affected and how, and what the student could do
     about it ("sharing the repo with sdmurff", "an export or screenshot of those numbers"). Never
-    promise a regrade: say "let Nate know" or "could change the score". When nothing was
+    promise a regrade: say "message Course Monitor in Slack" or "could change the score". When nothing was
     missing, one sentence: "Nothing: your plan, sprint review, [what they committed], and your
     full demo were all reviewed."
   - `summary`: one sentence for the top of the first page, only when something that affected a

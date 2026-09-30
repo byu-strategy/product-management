@@ -266,6 +266,7 @@ def _mmss(s):
     return f"{int(s) // 60}:{int(s) % 60:02d}" if s else None
 
 
+ASK_LINK = "https://slack.com/app_redirect?app=A0C2TDWPL4U&team=T097CK3UKB7"  # opens a DM with Course Monitor
 WHERE_WORK_LIVES = """<section class=howto><h2>If your work lives outside your course repo</h2>
 <p>Only what is in your course repo, or listed there, can count toward your sprint. If any of your
 work happens somewhere else (a company or team repo, a second project, a live app, a Google Doc,
@@ -398,8 +399,10 @@ and for where your effort went.</p>
 <p><b>Not seen:</b> your Claude Code and Codex sessions (they stay on your computer; only your
 <code>/sprint-review</code> report was read), anything not committed or linked, and any repo you did not share.</p>
 <p class=disclaimer>This sprint feedback was generated with the assistance of Claude Code by reviewing
-everything you turned in. If you believe something is incorrect or does not accurately represent
-your work, please let Nate, the TA, know.</p></section>"""
+everything you turned in. If you have a question about it, or believe something is incorrect or
+does not accurately represent your work, send a direct message to
+<a href="{ASK_LINK}">Course Monitor in the course Slack</a> with your NetID and what you think was
+missed. Professor Murff reviews every message.</p></section>"""
 
 
 def student_page(r, p, row, sprint, points):
