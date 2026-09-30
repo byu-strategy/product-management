@@ -129,9 +129,12 @@ def plan_line(p):
         return f"Your plan, committed {when}, is missing {', '.join(f['plan_fields_missing'])}."
     late = f.get("plan_days_late", 0)
     if late:
-        return (f"You committed your plan {when} with all four fields filled in. That was {late} "
-                f"day{'s' * (late > 1)} after the plan deadline, so {late} point{'s' * (late > 1)} "
-                f"came off under the late work policy.")
+        days = f"{late} day{'s' * (late > 1)} after the plan deadline"
+        if late >= 10:
+            return (f"You committed your plan {when} with all four fields filled in. That was {days}; "
+                    f"under the late work policy, work 10 or more days late earns no credit.")
+        return (f"You committed your plan {when} with all four fields filled in. That was {days}, "
+                f"so {10 * late}% came off under the late work policy.")
     return f"You committed your plan {when} with all four fields filled in. Full credit."
 
 
