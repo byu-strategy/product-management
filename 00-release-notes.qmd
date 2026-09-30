@@ -4,6 +4,16 @@ This course site is a living product. It gets better during the semester, and ev
 
 New entries appear at the top.
 
+## v2.3.0 (2026-09-30)
+
+From Sprint 2 on, each sprint is two Canvas assignments, the plan is graded for completion, and you can change your plan during the sprint.
+
+- **The plan is its own assignment.** Run `/sprint-plan`, commit the file, and paste the four fields (Goal, Why this, Done looks like, Predicted difficulty) into that sprint's Plan assignment on Canvas by the first Wednesday at 11:59 PM. On time with all four fields filled in earns all 10 points. Sprint 2's plan is due Friday, Oct 2, since this changed partway through its first week.
+- **You can change your plan.** Edit the plan file and add a `**Changes:**` line with the date, what changed, and why. Changes cost nothing. Your work is read against the plan as it stands at the end, and your retro says how it moved.
+- **The Review assignment is the other 40 points** (90 for Sprint 6: shipped 50, review 20, demo 20). Submit two links: your `sprints/sprint-N-review.md` on GitHub and your Loom. Keep the **Where to see it** line in your README pointing at what you shipped.
+- **The demo is 60 to 90 seconds, on Loom.** This corrects v2.2.1, which said 60. A few seconds over is fine.
+- **The schedule shows every plan due date,** in the sprint table and on each sprint's first class.
+
 ## v2.2.1 (2026-09-30)
 
 Starting with Sprint 2, the demo is shorter and has to be on Loom, and the Canvas submission is two links.
