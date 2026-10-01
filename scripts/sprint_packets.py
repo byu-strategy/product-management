@@ -330,7 +330,19 @@ def build(student, sub, plan_sub, cfg, due):
         f["plan_change_noted"] = has_field(plan_now, "Changes")
         m = re.search(r"\*\*Where to see it:\*\*\s*(.+)", readme)
         f["readme_where_to_see_it"] = m.group(1).strip() if m and "[URL" not in m.group(1) else None
-        f["retro_filled"] = all(field(plan_now, k) for k in ("Actual difficulty", "Why it differed", "Retro"))
+        # Sprint 1 put the retro at the end of the plan file. From Sprint 2 it is the "Your retro"
+        # section at the bottom of the review file, five prompts the student answers.
+        old_style = all(field(plan_now, k) for k in ("Actual difficulty", "Why it differed", "Retro"))
+        m = re.search(r"##\s*Your retro\s*(.*)", review or "", re.S)
+        answered = ""
+        if m:
+            answered = re.sub(r"\*Written by you.*?\*|\*\*[^*]+\?\*\*|\*\*Actual difficulty:\*\*|"
+                              r"Yes, partly, or no, and one sentence on why\.|One or two things from the report above"
+                              r" that you didn't expect\s+or would not have noticed yourself\.|Skip if it didn't\.|"
+                              r"1 to 5, and one sentence on why it differed from the difficulty you\s+predicted\.|"
+                              r"One specific thing\.", "", m.group(1), flags=re.S)
+        f["retro_location"] = "review file" if m else "plan file" if old_style else None
+        f["retro_filled"] = old_style or len(re.sub(r"\s+", " ", answered).strip()) > 120
         f["review_committed"] = bool(rh)
         f["review_on_time"] = bool(rh) and rh[0][1] <= due
         f["review_edited_after_first_commit"] = len(rh) > 1

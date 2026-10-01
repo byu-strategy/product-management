@@ -17,8 +17,8 @@ score or comment on plan quality.
 
 | Category | Sprints 1 to 5 | Sprint 6 | Full marks |
 |---|--:|--:|---|
-| **You shipped it** (`shipped`) | 20 | 50 | Real, finished, and someone other than the student can reach it, use it, or see it. Read against the plan as it stands at the end. |
-| **Sprint review** (`review`) | 10 | 20 | Report committed. The retro engages with what the report actually says, including how and why the plan changed. |
+| **Shipped** (`shipped`) | 20 | 50 | Real, finished, and someone other than the student can reach it, use it, or see it. Read against the plan as it stands at the end. |
+| **Review** (`review`) | 10 | 20 | Report committed, with the retro answering each prompt and responding to something specific in the report. |
 | **Demo** (`demo`) | 10 | 20 | A minute or so, the real thing, working, with real content. |
 
 The packet's `assignment.points` and sprint number tell you which column applies. Caps below
@@ -88,10 +88,13 @@ extra.
   `commits`, `facts.readme_where_to_see_it`, links in `canvas.links`, and the review. The review
   was written by the student's own agent and the student can edit it: it is evidence, not
   proof. Prefer the repo.
-- **Sprint review:** 0 if not committed. Retro fields empty (`retro_filled` false): at most
-  half. Full marks need the retro to answer the template (did you hit the goal, what happened,
-  why the plan changed if it did, what changes next sprint) and to engage with something
-  specific the report found. A review whose window ended well before the due date
+- **Review:** the `/sprint-review` report plus the student's retro. From Sprint 2 the retro is
+  the "Your retro" section at the bottom of the review file (`retro_location`), five prompts:
+  did you hit the goal, what did the report show you, why the plan changed if it did, actual
+  difficulty and why it differed, and what will you change next sprint. In Sprint 1 it was the
+  three fields at the end of the plan file. 0 if no report is committed. Retro empty
+  (`retro_filled` false): at most half. Full marks need every prompt answered and a response to
+  something specific the report found. A review whose window ended well before the due date
   (`review_window_end`) covers only part of the sprint: at most 80%.
 - **Demo:** judge from `loom.frames` (nine full-resolution screenshots spread evenly across
   the video, each with its time; open every one) together with the transcript, title, and

@@ -19,15 +19,15 @@ SPRINTS = {
 }
 
 # The categories a grader scores, with their maxima.
-GRADED = {n: [("shipped", "You shipped it", 20), ("review", "Sprint review", 10), ("demo", "Demo", 10)]
+GRADED = {n: [("shipped", "Shipped", 20), ("review", "Review", 10), ("demo", "Demo", 10)]
           for n in range(1, 6)}
-GRADED[6] = [("shipped", "You shipped it", 50), ("review", "Sprint review", 20), ("demo", "Demo", 20)]
+GRADED[6] = [("shipped", "Shipped", 50), ("review", "Review", 20), ("demo", "Demo", 20)]
 
 
 def categories(sprint):
     """Every category on the assignment being posted. Sprint 1's plan sits inside its one assignment."""
     cats = GRADED[sprint]
-    return ([("plan", "Plan, on time", PLAN_POINTS)] + cats) if sprint == 1 else cats
+    return ([("plan", "Plan", PLAN_POINTS)] + cats) if sprint == 1 else cats
 
 
 def review_points(sprint):

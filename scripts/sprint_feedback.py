@@ -251,6 +251,8 @@ td.pts{white-space:nowrap;font-weight:600;width:70px}
 .callout{border-left:3px solid #9a6700;background:#fbf6ea;padding:8px 12px;margin:10px 0 14px;border-radius:0 6px 6px 0}
 .callout p{margin:4px 0 0}.callout b{font-size:14px}
 .howto ol{padding-left:20px;margin:6px 0}
+table.turnin{font-size:12.5px;margin:4px 0 14px}table.turnin th,table.turnin td{padding:6px 6px;vertical-align:top}
+table.turnin td:last-child,table.turnin th:last-child{text-align:right}
 .todo{position:relative;padding-left:24px}.todo .box{position:absolute;left:0;top:4px;width:13px;height:13px;border:1.5px solid #5b6475;border-radius:3px}.howto li{margin-bottom:10px}
 .howto pre{font:12px/1.45 ui-monospace,SFMono-Regular,Menlo,monospace;background:#f3f4f7;padding:8px 10px;border-radius:6px;white-space:pre-wrap;margin:6px 0}
 .appendix .sub{margin-bottom:10px}
@@ -276,10 +278,17 @@ NEXT_SPRINT_TODO = """<section class=howto><h2>Before your next sprint</h2>
 <code>/sprint-review</code> were improved after Sprint 1 (among other things, <code>/sprint-review</code>
 now reads Codex sessions and summarizes work in your other repos). Your repo still has the old
 copies. Open Claude Code in your course repo folder and paste this:</p>
-<pre>Update my course skills from the class template. Download the latest .claude/skills/sprint-plan
-and .claude/skills/sprint-review folders from https://github.com/byu-strategy/builder-template
-(main branch) and replace mine with them. Do not change anything else. Then commit with the
-message "Refresh course skills" and push.</pre>
+<pre>Update my course skills from the class template. Download the latest .claude/skills/sprint-plan and .claude/skills/sprint-review folders from https://github.com/byu-strategy/builder-template (main branch) and replace mine with them. Do not change anything else. Then commit with the message "Refresh course skills" and push.</pre>
+<p class=todo><span class=box></span><b>Know what you turn in, and how.</b> From Sprint 2 the retro
+moves: <code>/sprint-review</code> leaves five prompts under <b>Your retro</b> at the bottom of the
+review file, and you answer them there instead of at the end of your plan file.</p>
+<table class=turnin>
+<tr><th>Deliverable</th><th>Where it lives</th><th>How you turn it in</th><th>When</th><th>Points</th></tr>
+<tr><td><b>Plan</b></td><td><code>sprints/sprint-N-plan.md</code></td><td>Paste the four fields into <b>Sprint N Plan</b> on Canvas, and commit the file</td><td>First Wednesday, 11:59 PM</td><td>10</td></tr>
+<tr><td><b>Shipped</b></td><td>Your course repo, another repo, or a live link</td><td>Nothing separate: list every place it lives under <b>Where the work lives</b> in your README</td><td>Last day</td><td>20</td></tr>
+<tr><td><b>Review</b></td><td><code>sprints/sprint-N-review.md</code>: the <code>/sprint-review</code> report, with your retro at the bottom</td><td>Commit it, and paste its GitHub link into <b>Sprint N Wrap-up</b> on Canvas</td><td>Last day</td><td>10</td></tr>
+<tr><td><b>Demo</b></td><td>Loom, 60 to 90 seconds</td><td>Paste the Loom share link into <b>Sprint N Wrap-up</b> on Canvas</td><td>Last day</td><td>10</td></tr>
+</table>
 <p class=todo><span class=box></span><b>List where your work lives,</b> if any of it is outside your
 course repo. Steps below.</p></section>"""
 
@@ -345,7 +354,8 @@ def appendix(p, sprint, reviewed_on, not_reviewed=None):
         rows.append(("Sprint plan", "No plan found in your repo." if p.get("repo") else unreadable))
 
     rv = p.get("review") or {}
-    rows.append(("Sprint review", f"<code>sprints/sprint-{sprint}-review.md</code>, committed {_when(rv['first_commit'])}. Read in full."
+    rows.append(("Review", f"<code>sprints/sprint-{sprint}-review.md</code>, committed {_when(rv['first_commit'])}. Read in full"
+                 + (", including your retro at the bottom." if f.get("retro_location") == "review file" else ".")
                  if rv.get("first_commit") else "No sprint review found in your repo." if p.get("repo") else unreadable))
 
     repo = (p.get("repo") or "").replace("https://github.com/", "")
@@ -418,7 +428,7 @@ It lists the Claude Code and Codex projects you worked in during the sprint, ask
 belonged to it, and reads only those, along with your commits. It then writes a report of when
 you worked, where you got stuck and how you got unstuck, what took the most time, which axis the
 work advanced, and how the work compared to your plan. Nothing leaves your computer except that
-report, and only when you commit it. The report is the main evidence for the Sprint review score
+report, and only when you commit it. The report is the main evidence for the Review score
 and for where your effort went.</p>
 <p><b>Not seen:</b> your Claude Code and Codex sessions (they stay on your computer; only your
 <code>/sprint-review</code> report was read), anything not committed or linked, and any repo you did not share.</p>
