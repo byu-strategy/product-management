@@ -191,8 +191,8 @@ file. Submit the Loom share link. A demo that is not a Loom scores 0.
 **4. Submit two links in that sprint's Wrap-up assignment on Canvas:** your review file on
 GitHub (`sprints/sprint-N-review.md`, with your retro at the bottom) and your Loom demo. Before
 you do, make sure the **Where the work lives** section of your README lists every repo and live
-link someone would need to check what you shipped. Sprint 1 was one Canvas assignment, asked for
-your repo URL instead, and had the retro at the end of the plan file.
+link someone would need to check what you shipped. Sprint 1 was one Canvas assignment and asked
+for your repo URL instead.
 
 ### What you have to have
 
