@@ -4,6 +4,12 @@ This course site is a living product. It gets better during the semester, and ev
 
 New entries appear at the top.
 
+## v2.4.2 (2026-09-30)
+
+Your retro is now part of `/sprint-review`.
+
+- **`/sprint-review` asks your retro questions.** After it shows you the report on your sprint, it asks five short questions: did you hit the goal, what did the report show you, why did the plan change if it did, how hard was it really, and what will you change next sprint. Answer in your own words; it saves your answers exactly as you write them with the report in `sprints/sprint-N-review.md`, then commits it. There is nothing separate to write. Refresh your course skills to get this version.
+
 ## v2.4.1 (2026-09-30)
 
 How to turn in your plan, made plain.
