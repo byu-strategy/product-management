@@ -247,6 +247,8 @@ table{border-collapse:collapse;width:100%;margin:8px 0 24px}
 th,td{text-align:left;vertical-align:top;padding:10px 8px;border-bottom:1px solid #e3e6ec}
 th{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:#5b6475}
 td.pts{white-space:nowrap;font-weight:600;width:70px}
+.header-note{font-size:12px;line-height:1.5;color:#3d4452;background:#f3f4f7;border-radius:6px;padding:9px 12px;margin:0 0 18px}
+.header-note a{color:#2f5bd3}
 .disclaimer{margin-top:18px;padding-top:10px;border-top:1px solid #e3e6ec;font-size:12px;color:#5b6475}
 .appendix{page-break-before:always;break-before:page}
 .callout{border-left:3px solid #9a6700;background:#fbf6ea;padding:8px 12px;margin:10px 0 14px;border-radius:0 6px 6px 0}
@@ -283,7 +285,7 @@ copies. Open Claude Code in your course repo folder and paste this:</p>
 <p class=todo><span class=box></span><b>If your plan changes mid-sprint, run <code>/sprint-plan</code> again.</b>
 It asks what is changing and why, updates the plan with a dated note, and commits it. Nothing to
 resubmit on Canvas: your plan link shows the current file.</p>
-<p class=todo><span class=box></span><b>On the last day, run <code>/sprint-review</code>.</b> It writes a
+<p class=todo><span class=box></span><b>On or before the last day, by 11:59 PM, run <code>/sprint-review</code>.</b> It writes a
 report on your sprint, then asks you five short retro questions about it and saves your answers
 with the report in <code>sprints/sprint-N-review.md</code>. Commit and push the file, then submit
 its link and your Loom on Canvas.</p>
@@ -291,9 +293,9 @@ its link and your Loom on Canvas.</p>
 <table class=turnin>
 <tr><th>Deliverable</th><th>Where it lives</th><th>How you turn it in</th><th>When</th><th>Points</th></tr>
 <tr><td><b>Plan</b></td><td><code>sprints/sprint-N-plan.md</code></td><td>Commit it, and paste its GitHub link into <b>Sprint N Plan</b> on Canvas. To change it later, run <code>/sprint-plan</code> again; no resubmitting</td><td>First Wednesday, 11:59 PM</td><td>10</td></tr>
-<tr><td><b>Output</b></td><td>What you finished, in any form: in your course repo, another repo, a link, or your demo</td><td>Nothing separate: list every place it lives under <b>Where the work lives</b> in your README</td><td>Last day</td><td>20</td></tr>
-<tr><td><b>Review</b></td><td><code>sprints/sprint-N-review.md</code>: the <code>/sprint-review</code> report, with your retro at the bottom</td><td>Commit it, and paste its GitHub link into <b>Sprint N Wrap-up</b> on Canvas</td><td>Last day</td><td>10</td></tr>
-<tr><td><b>Demo</b></td><td>Loom, 60 to 90 seconds</td><td>Paste the Loom share link into <b>Sprint N Wrap-up</b> on Canvas</td><td>Last day</td><td>10</td></tr>
+<tr><td><b>Output</b></td><td>What you finished, in any form: in your course repo, another repo, a link, or your demo</td><td>Nothing separate: list every place it lives under <b>Where the work lives</b> in your README</td><td>On or before the last day, by 11:59 PM</td><td>20</td></tr>
+<tr><td><b>Review</b></td><td><code>sprints/sprint-N-review.md</code>: the <code>/sprint-review</code> report, with your retro at the bottom</td><td>Commit it, and paste its GitHub link into <b>Sprint N Wrap-up</b> on Canvas</td><td>On or before the last day, by 11:59 PM</td><td>10</td></tr>
+<tr><td><b>Demo</b></td><td>Loom, 60 to 90 seconds</td><td>Paste the Loom share link into <b>Sprint N Wrap-up</b> on Canvas</td><td>On or before the last day, by 11:59 PM</td><td>10</td></tr>
 </table>
 <p class=todo><span class=box></span><b>List where your work lives,</b> if any of it is outside your
 course repo. Steps below.</p></section>"""
@@ -438,14 +440,7 @@ report, and only when you commit it. The report is the main evidence for the Rev
 and for where your effort went.</p>
 <p><b>Not seen:</b> your Claude Code and Codex sessions (they stay on your computer; only your
 <code>/sprint-review</code> report was read), anything not committed or linked, and any repo you did not share.</p>
-<p class=disclaimer>This sprint feedback was generated with the assistance of Claude Code by reviewing
-everything you turned in. If you have a question about it, or believe something is incorrect or
-does not accurately represent your work, send a direct message to
-<a href="{ASK_LINK}">the Course Monitor app in the course Slack</a> saying what you think was missed.
-If the link does not open it, open Slack, search for <b>Course Monitor</b> (it is listed under
-Apps), and send it a message from its Messages tab. Please do not @mention it in the class channel,
-where everyone can see your question. Professor Murff reviews every message sent there. <b>Send grading questions only to Course
-Monitor:</b> questions sent by email or anywhere else may be missed.</p></section>"""
+</section>"""
 
 
 def student_page(r, p, row, sprint, points):
@@ -492,6 +487,14 @@ def student_page(r, p, row, sprint, points):
         extra += f"<h2>From Professor Murff</h2><p>{e(note)}</p>"
     return f"""<!doctype html><html><head><meta charset=utf-8><title>Sprint {sprint} feedback</title>
 <style>{STUDENT_CSS}</style></head><body>
+<div class=header-note>This sprint feedback was generated with the assistance of Claude Code by reviewing
+everything you turned in. If you have a question about it, or believe something is incorrect or
+does not accurately represent your work, send a direct message to
+<a href="{ASK_LINK}">the Course Monitor app in the course Slack</a> saying what you think was missed.
+If the link does not open it, open Slack, search for <b>Course Monitor</b> (it is listed under
+Apps), and send it a message from its Messages tab. Please do not @mention it in the class channel,
+where everyone can see your question. Professor Murff reviews every message sent there. <b>Send grading questions only to Course
+Monitor:</b> questions sent by email or anywhere else may be missed.</div>
 <h1>Sprint {sprint} feedback, {e(p.get('preferred_first') or p.get('name', ''))}</h1>
 <p class=sub>MSB 341 Product Management</p>
 <p class=total>{fmt(total)} / {points}</p>
