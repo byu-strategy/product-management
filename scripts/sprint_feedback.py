@@ -279,6 +279,9 @@ NEXT_SPRINT_TODO = """<section class=howto><h2>Before your next sprint</h2>
 now reads Codex sessions and summarizes work in your other repos). Your repo still has the old
 copies. Open Claude Code in your course repo folder and paste this:</p>
 <pre>Update my course skills from the class template. Download the latest .claude/skills/sprint-plan and .claude/skills/sprint-review folders from https://github.com/byu-strategy/builder-template (main branch) and replace mine with them. Do not change anything else. Then commit with the message "Refresh course skills" and push.</pre>
+<p class=todo><span class=box></span><b>If your plan changes mid-sprint, run <code>/sprint-plan</code> again.</b>
+It asks what is changing and why, updates the plan with a dated note, and commits it. Nothing to
+resubmit on Canvas: your plan link shows the current file.</p>
 <p class=todo><span class=box></span><b>On the last day, run <code>/sprint-review</code>.</b> It writes a
 report on your sprint, then asks you five short retro questions about it and saves your answers
 with the report in <code>sprints/sprint-N-review.md</code>. Commit and push the file, then submit
@@ -286,7 +289,7 @@ its link and your Loom on Canvas.</p>
 <p class=todo><span class=box></span><b>Know what you turn in, and how:</b></p>
 <table class=turnin>
 <tr><th>Deliverable</th><th>Where it lives</th><th>How you turn it in</th><th>When</th><th>Points</th></tr>
-<tr><td><b>Plan</b></td><td><code>sprints/sprint-N-plan.md</code></td><td>Commit it, and paste its GitHub link into <b>Sprint N Plan</b> on Canvas</td><td>First Wednesday, 11:59 PM</td><td>10</td></tr>
+<tr><td><b>Plan</b></td><td><code>sprints/sprint-N-plan.md</code></td><td>Commit it, and paste its GitHub link into <b>Sprint N Plan</b> on Canvas. To change it later, run <code>/sprint-plan</code> again; no resubmitting</td><td>First Wednesday, 11:59 PM</td><td>10</td></tr>
 <tr><td><b>Shipped</b></td><td>Your course repo, another repo, or a live link</td><td>Nothing separate: list every place it lives under <b>Where the work lives</b> in your README</td><td>Last day</td><td>20</td></tr>
 <tr><td><b>Review</b></td><td><code>sprints/sprint-N-review.md</code>: the <code>/sprint-review</code> report, with your retro at the bottom</td><td>Commit it, and paste its GitHub link into <b>Sprint N Wrap-up</b> on Canvas</td><td>Last day</td><td>10</td></tr>
 <tr><td><b>Demo</b></td><td>Loom, 60 to 90 seconds</td><td>Paste the Loom share link into <b>Sprint N Wrap-up</b> on Canvas</td><td>Last day</td><td>10</td></tr>

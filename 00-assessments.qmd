@@ -103,7 +103,7 @@ Every sprint has the same four deliverables.
 
 | Deliverable | What it is | Where it lives | How you turn it in | When | Points |
 |---|---|---|---|---|--:|
-| **Plan** | What you will do, why, how you will know it is done, and how hard you expect it to be. `/sprint-plan` helps you write it. | `sprints/sprint-N-plan.md` in your course repo | Commit it, and paste its GitHub link into **Sprint N Plan** on Canvas | First Wednesday, 11:59 PM | 10 |
+| **Plan** | What you will do, why, how you will know it is done, and how hard you expect it to be. `/sprint-plan` helps you write it. | `sprints/sprint-N-plan.md` in your course repo | Commit it, and paste its GitHub link into **Sprint N Plan** on Canvas. To change it later, run `/sprint-plan` again; no resubmitting | First Wednesday, 11:59 PM | 10 |
 | **Shipped** | The work itself: real, finished, and reachable by someone else | Your course repo, another repo, or a live link | Nothing separate to submit. List every place it lives under **Where the work lives** in your README | Last day | 20 |
 | **Review** | What `/sprint-review` produces: a report on your sprint, then your answers to its five retro questions | `sprints/sprint-N-review.md` in your course repo | Commit it, and paste its GitHub link into **Sprint N Wrap-up** on Canvas | Last day | 10 |
 | **Demo** | 60 to 90 seconds on Loom of the work, working | Loom | Paste the Loom share link into **Sprint N Wrap-up** on Canvas | Last day | 10 |
@@ -139,15 +139,17 @@ link into that sprint's Plan assignment. On time, with Goal, Why this, Done look
 Predicted difficulty all filled in, earns all 10 points. You do not resubmit when the plan
 changes: the link always shows the current file.
 
-**You can change the plan.** Plans change once you learn something, and that is normal. Edit the
-file and add a line saying what changed and why:
+**You can change the plan.** Plans change once you learn something, and that is normal. To change
+yours, run `/sprint-plan` again during the sprint. It asks what is changing and why, updates the
+plan, adds a dated note like this one, and commits it:
 
 ```markdown
 **Changes:** Sep 24: dropped the slide template and added a competitor benchmark, because the
 licensing research had to come first.
 ```
 
-Changes cost nothing. At the end, your work is read against the plan as it stands, and your
+There is nothing to resubmit on Canvas: your plan link always shows the current file. Changes
+cost nothing. At the end, your work is read against the plan as it stands, and your
 retro says how it moved. A change with no note is the one thing to avoid: without it, nobody
 reading your plan can tell what you set out to do.
 
