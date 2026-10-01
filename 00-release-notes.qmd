@@ -4,6 +4,13 @@ This course site is a living product. It gets better during the semester, and ev
 
 New entries appear at the top.
 
+## v2.4.1 (2026-09-30)
+
+How to turn in your plan, made plain.
+
+- **Turn in your plan as a link.** Commit and push `sprints/sprint-N-plan.md`, then paste its GitHub link into **Sprint N Plan** on Canvas. You do not paste the plan's text, and you do not resubmit when the plan changes: the link always shows the current file. If you already pasted your Sprint 2 plan's text, that still counts.
+- **The Wrap-up assignments name the Review category** (the report plus your retro) and point to the **Where the work lives** section of your README.
+
 ## v2.4.0 (2026-09-30)
 
 Every sprint now has four deliverables with one name each, a clear place to turn each in, and a new home for your retro.
