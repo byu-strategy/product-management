@@ -198,7 +198,8 @@ def validate(base, items):
             problems.append(f"{n}: student feedback reads as machine-written ({', '.join(sorted(set(m.lower() for m in machine)))})")
         # Words that are usually about the student's own project, but worth a look.
         soft = sorted(set(w.lower() for w in _re.findall(
-            r"\b(screenshots?|captions?|stills|transcripts?|packets?|the model|the ai|my|me)\b", plain_text, _re.I)))
+            r"\b(screenshots?|captions?|stills|transcripts?|packets?|the model|the ai|my|me|shipped|shipping)\b",
+            plain_text, _re.I)))
         if soft:
             r.setdefault("flags", []).append("voice check: feedback mentions " + ", ".join(soft) +
                                              "; confirm it refers to the student's own work")
