@@ -129,7 +129,7 @@ licensing research had to come first.
 ```
 
 Changes cost nothing. At the end, your work is read against the plan as it stands, and your
-retro says how it moved. A change with no note is the one thing to avoid: without it, nobody
+retro (the reflection you add to the plan file on the last day, below) says how it moved. A change with no note is the one thing to avoid: without it, nobody
 reading your plan can tell what you set out to do.
 
 #### The two weeks
@@ -145,7 +145,9 @@ time, and which of the six axes your work advanced. Commit the report.
 
 It reads only the projects you confirm. Nothing leaves your machine except the report.
 
-**2. Finish the plan file.** Read the review first, then add:
+**2. Write your retro.** Your retro, short for retrospective, is your own reflection on the
+sprint: what you set out to do, what actually happened, and what you will change. It goes at the
+end of your plan file. Read your sprint review report first, then add:
 
 ```markdown
 **Actual difficulty:** 1 to 5.

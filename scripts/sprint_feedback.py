@@ -326,7 +326,7 @@ def appendix(p, sprint, reviewed_on, not_reviewed=None):
         rows.append(("Sprint plan", f"<code>{path}</code>: first committed {_when(plan['first_commit'])}"
                      + (f", then revised ({n} commits). The first and final versions were both read." if n > 1
                         else ". Read in full.")
-                     + (" Your retro was read from this file." if f.get("retro_filled") else "")))
+                     + (" Your retro (the reflection at the end of this file) was read too." if f.get("retro_filled") else "")))
     else:
         rows.append(("Sprint plan", "No plan found in your repo." if p.get("repo") else unreadable))
 
