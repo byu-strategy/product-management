@@ -105,12 +105,13 @@ Every sprint has the same four deliverables.
 |---|---|---|---|---|--:|
 | **Plan** | What you will do, why, how you will know it is done, and how hard you expect it to be. `/sprint-plan` helps you write it. | `sprints/sprint-N-plan.md` in your course repo | Commit it, and paste its GitHub link into **Sprint N Plan** on Canvas | First Wednesday, 11:59 PM | 10 |
 | **Shipped** | The work itself: real, finished, and reachable by someone else | Your course repo, another repo, or a live link | Nothing separate to submit. List every place it lives under **Where the work lives** in your README | Last day | 20 |
-| **Review** | The report `/sprint-review` writes about your sprint, with your retro at the bottom | `sprints/sprint-N-review.md` in your course repo | Commit it, and paste its GitHub link into **Sprint N Wrap-up** on Canvas | Last day | 10 |
+| **Review** | What `/sprint-review` produces: a report on your sprint, then your answers to its five retro questions | `sprints/sprint-N-review.md` in your course repo | Commit it, and paste its GitHub link into **Sprint N Wrap-up** on Canvas | Last day | 10 |
 | **Demo** | 60 to 90 seconds on Loom of the work, working | Loom | Paste the Loom share link into **Sprint N Wrap-up** on Canvas | Last day | 10 |
 
-**Retro** is the part of the review you write. `/sprint-review` writes the report; your retro,
-short for retrospective, is your response to it: whether you hit the goal, what the report showed
-you, why the plan changed if it did, how hard it actually was, and what you will change next.
+**Retro**, short for retrospective, is your part of the review: your answers to the five
+questions `/sprint-review` asks after it shows you the report. Did you hit the goal, what did
+the report show you, why did the plan change if it did, how hard was it really, and what will you
+change next sprint. It saves your answers word for word with the report.
 
 Sprint 6 is worth 100: Plan 10, Shipped 50, Review 20, Demo 20.
 
@@ -158,31 +159,20 @@ Do the work, in your repo.
 
 **1. Run `/sprint-review`.** It shows you every project you worked in during the sprint window
 and asks which ones were this sprint. It then reads those sessions and your commits and writes
-you a report: when you worked, where you got stuck and how you got unstuck, what took the most
-time, and which of the six axes your work advanced.
+a report: when you worked, where you got stuck and how you got unstuck, what took the most time,
+and which of the six axes your work advanced. It reads only the projects you confirm, and
+nothing leaves your machine except the report.
 
-It reads only the projects you confirm. Nothing leaves your machine except the report.
+**2. Answer its five retro questions.** After showing you the report, `/sprint-review` asks:
 
-**2. Write your retro.** Read the report, then answer the five prompts `/sprint-review` leaves
-under **Your retro** at the bottom of the same file:
+1. Did you hit the goal? Yes, partly, or no, and why.
+2. What did the report show you that you didn't expect, or wouldn't have noticed yourself?
+3. If the plan changed, why?
+4. Actual difficulty, 1 to 5, and why it differed from what you predicted.
+5. What will you change next sprint?
 
-```markdown
-## Your retro
-
-**Did you hit the goal?** Yes, partly, or no, and one sentence on why.
-
-**What did the report show you?** One or two things from the report above that you didn't expect
-or would not have noticed yourself.
-
-**If the plan changed, why?** Skip if it didn't.
-
-**Actual difficulty:** 1 to 5, and one sentence on why it differed from the difficulty you
-predicted.
-
-**What will you change next sprint?** One specific thing.
-```
-
-Then commit and push the review file.
+Answer in your own words. It saves your answers exactly as you write them at the bottom of
+`sprints/sprint-N-review.md`, then commits and pushes the file.
 
 **3. Record a 60 to 90 second demo on [Loom](https://www.loom.com).** Show the thing working, with real content. No slides, no intro,
 no reflection. A minute or so of the actual thing. Loom only: not Google Drive, YouTube, or an uploaded
@@ -203,7 +193,8 @@ for your repo URL instead.
   count as shipped.
 - **The plan,** submitted on Canvas by Wednesday, committed, and kept current with any changes
   noted.
-- **The review,** committed: the `/sprint-review` report with your retro answered at the bottom.
+- **The review,** committed: the `/sprint-review` report with your answers to its five retro
+  questions at the bottom.
 - **The Loom demo, 60 to 90 seconds.**
 
 ### What "shipped" means for different work
@@ -270,7 +261,7 @@ the first category; the Wrap-up assignment is the other three.
 |---|--:|--:|---|
 | **Plan** | 10 | 10 | Its GitHub link submitted on Canvas by Wednesday, 11:59 PM, with Goal, Why this, Done looks like, and Predicted difficulty all filled in. Graded for completion. |
 | **Shipped** | 20 | 50 | Real, finished, and someone else can reach it, use it, or see it. Read against your plan as it stands at the end, and weighed by how hard the work was for you. |
-| **Review** | 10 | 20 | Report committed, with your retro answering each prompt and responding to something specific in the report. |
+| **Review** | 10 | 20 | Report committed, with your retro answering all five questions and responding to something specific in the report. |
 | **Demo** | 10 | 20 | 60 to 90 seconds on Loom, the real thing, working, with real content. A demo that is not a Loom scores 0. |
 
 The plan is graded for completion, and your predicted difficulty is not graded. Aim high.

@@ -279,11 +279,10 @@ NEXT_SPRINT_TODO = """<section class=howto><h2>Before your next sprint</h2>
 now reads Codex sessions and summarizes work in your other repos). Your repo still has the old
 copies. Open Claude Code in your course repo folder and paste this:</p>
 <pre>Update my course skills from the class template. Download the latest .claude/skills/sprint-plan and .claude/skills/sprint-review folders from https://github.com/byu-strategy/builder-template (main branch) and replace mine with them. Do not change anything else. Then commit with the message "Refresh course skills" and push.</pre>
-<p class=todo><span class=box></span><b>Answer the retro questions at the end of your review.</b> On the
-last day, <code>/sprint-review</code> writes a report on your sprint in
-<code>sprints/sprint-N-review.md</code>. At the bottom it adds five short questions under
-<b>Your retro</b>. Read the report, answer the questions in your own words, then commit and push
-the file.</p>
+<p class=todo><span class=box></span><b>On the last day, run <code>/sprint-review</code>.</b> It writes a
+report on your sprint, then asks you five short retro questions about it and saves your answers
+with the report in <code>sprints/sprint-N-review.md</code>. Commit and push the file, then submit
+its link and your Loom on Canvas.</p>
 <p class=todo><span class=box></span><b>Know what you turn in, and how:</b></p>
 <table class=turnin>
 <tr><th>Deliverable</th><th>Where it lives</th><th>How you turn it in</th><th>When</th><th>Points</th></tr>
