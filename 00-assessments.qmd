@@ -103,7 +103,7 @@ Every sprint has the same four deliverables.
 
 | Deliverable | What it is | Where it lives | How you turn it in | When | Points |
 |---|---|---|---|---|--:|
-| **Plan** | What you will do, why, how you will know it is done, and how hard you expect it to be. `/sprint-plan` helps you write it. | `sprints/sprint-N-plan.md` in your course repo | Paste the four fields into **Sprint N Plan** on Canvas, and commit the file | First Wednesday, 11:59 PM | 10 |
+| **Plan** | What you will do, why, how you will know it is done, and how hard you expect it to be. `/sprint-plan` helps you write it. | `sprints/sprint-N-plan.md` in your course repo | Commit it, and paste its GitHub link into **Sprint N Plan** on Canvas | First Wednesday, 11:59 PM | 10 |
 | **Shipped** | The work itself: real, finished, and reachable by someone else | Your course repo, another repo, or a live link | Nothing separate to submit. List every place it lives under **Where the work lives** in your README | Last day | 20 |
 | **Review** | The report `/sprint-review` writes about your sprint, with your retro at the bottom | `sprints/sprint-N-review.md` in your course repo | Commit it, and paste its GitHub link into **Sprint N Wrap-up** on Canvas | Last day | 10 |
 | **Demo** | 60 to 90 seconds on Loom of the work, working | Loom | Paste the Loom share link into **Sprint N Wrap-up** on Canvas | Last day | 10 |
@@ -133,9 +133,10 @@ that someone else could check.
 **Predicted difficulty:** 1 to 5.
 ```
 
-**Submit it on Canvas by Wednesday, 11:59 PM.** Paste the four fields into that sprint's Plan
-assignment, and commit the file to your repo, because `/sprint-review` reads it. On time with
-all four fields filled in earns all 10 points.
+**Submit it on Canvas by Wednesday, 11:59 PM.** Commit and push the file, then paste its GitHub
+link into that sprint's Plan assignment. On time, with Goal, Why this, Done looks like, and
+Predicted difficulty all filled in, earns all 10 points. You do not resubmit when the plan
+changes: the link always shows the current file.
 
 **You can change the plan.** Plans change once you learn something, and that is normal. Edit the
 file and add a line saying what changed and why:
@@ -267,7 +268,7 @@ the first category; the Wrap-up assignment is the other three.
 
 | Category | Points | Sprint 6 | What earns full marks |
 |---|--:|--:|---|
-| **Plan** | 10 | 10 | Submitted on Canvas by Wednesday, 11:59 PM, with all four fields filled in. Graded for completion. |
+| **Plan** | 10 | 10 | Its GitHub link submitted on Canvas by Wednesday, 11:59 PM, with Goal, Why this, Done looks like, and Predicted difficulty all filled in. Graded for completion. |
 | **Shipped** | 20 | 50 | Real, finished, and someone else can reach it, use it, or see it. Read against your plan as it stands at the end, and weighed by how hard the work was for you. |
 | **Review** | 10 | 20 | Report committed, with your retro answering each prompt and responding to something specific in the report. |
 | **Demo** | 10 | 20 | 60 to 90 seconds on Loom, the real thing, working, with real content. A demo that is not a Loom scores 0. |

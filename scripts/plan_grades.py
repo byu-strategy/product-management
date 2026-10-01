@@ -34,13 +34,28 @@ from sprint_config import COURSE_ID, PLAN_FIELDS, PLAN_POINTS, SPRINTS
 TZ = ZoneInfo("America/Denver")
 DATA = Path.home() / "hubs/courses/_data/product-management"
 COLS = ["net_id", "name", "preferred_first", "canvas_user_id", "submitted_at", "late",
-        "fields_missing", "score", "has_feedback"]
+        "fields_missing", "score", "has_feedback", "how"]
 e = html.escape
 
 
 def plain(body):
     t = re.sub(r"<(br|/p|/li|/div)[^>]*>", "\n", body or "")
     return html.unescape(re.sub(r"<[^>]+>", "", t)).strip()
+
+
+def plan_from_submission(body):
+    """The plan a student turned in: the file behind a GitHub link (the standard way), or text
+    pasted into the box (how the first Sprint 2 submissions came in). Returns (text, how)."""
+    text = plain(body)
+    m = re.search(r"github\.com/([\w.-]+)/([\w.-]+)/blob/([^/\s]+)/(\S+?\.md)", body or "")
+    if m:
+        owner, repo, ref, path = m.groups()
+        p = subprocess.run(["gh", "api", "-H", "Accept: application/vnd.github.raw",
+                            f"repos/{owner}/{repo}/contents/{path}?ref={ref}"], capture_output=True, text=True)
+        if p.returncode == 0 and p.stdout.strip():
+            return p.stdout, f"linked file {owner}/{repo}/{path}"
+        return "", f"link to {owner}/{repo}/{path} could not be opened"
+    return text, "pasted text"
 
 
 def has_field(text, name):
@@ -106,7 +121,7 @@ def main():
     rows = []
     for s in roster:
         sub = subs.get(str(s["canvas_user_id"]), {})
-        text = plain(sub.get("body")) if sub.get("submitted_at") else ""
+        text, how = plan_from_submission(sub.get("body")) if sub.get("submitted_at") else ("", "")
         missing = [k for k in PLAN_FIELDS if not has_field(text, k)] if text else []
         at = sub.get("submitted_at")
         fb_path = base / "feedback" / f"{s['net_id']}.json"
@@ -117,7 +132,7 @@ def main():
                .strftime("%a %b %-d %-I:%M %p") if at else "",
                "late": "yes" if sub.get("late") else "", "fields_missing": ", ".join(missing),
                "score": (PLAN_POINTS if not missing else 0) if text else "",
-               "has_feedback": "yes" if fb else "", "_feedback": fb}
+               "has_feedback": "yes" if fb else "", "_feedback": fb, "how": how}
         rows.append(row)
         if text:
             pk = base / f"{s['net_id']}.json"
@@ -140,8 +155,8 @@ def main():
           f"{sum(1 for r in sub_rows if r['late'])} late, "
           f"{sum(1 for r in sub_rows if r['has_feedback'])} with feedback")
     for r in sub_rows:
-        if r["fields_missing"]:
-            print(f"  incomplete {r['net_id']}: missing {r['fields_missing']}")
+        if r["fields_missing"] or "could not" in r["how"]:
+            print(f"  incomplete {r['net_id']}: {r['how']}; missing {r['fields_missing'] or 'nothing'}")
     print(f"  {base / 'plan-review.html'}")
 
     log_path = base / "posted.csv"

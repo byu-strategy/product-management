@@ -284,7 +284,7 @@ moves: <code>/sprint-review</code> leaves five prompts under <b>Your retro</b> a
 review file, and you answer them there instead of at the end of your plan file.</p>
 <table class=turnin>
 <tr><th>Deliverable</th><th>Where it lives</th><th>How you turn it in</th><th>When</th><th>Points</th></tr>
-<tr><td><b>Plan</b></td><td><code>sprints/sprint-N-plan.md</code></td><td>Paste the four fields into <b>Sprint N Plan</b> on Canvas, and commit the file</td><td>First Wednesday, 11:59 PM</td><td>10</td></tr>
+<tr><td><b>Plan</b></td><td><code>sprints/sprint-N-plan.md</code></td><td>Commit it, and paste its GitHub link into <b>Sprint N Plan</b> on Canvas</td><td>First Wednesday, 11:59 PM</td><td>10</td></tr>
 <tr><td><b>Shipped</b></td><td>Your course repo, another repo, or a live link</td><td>Nothing separate: list every place it lives under <b>Where the work lives</b> in your README</td><td>Last day</td><td>20</td></tr>
 <tr><td><b>Review</b></td><td><code>sprints/sprint-N-review.md</code>: the <code>/sprint-review</code> report, with your retro at the bottom</td><td>Commit it, and paste its GitHub link into <b>Sprint N Wrap-up</b> on Canvas</td><td>Last day</td><td>10</td></tr>
 <tr><td><b>Demo</b></td><td>Loom, 60 to 90 seconds</td><td>Paste the Loom share link into <b>Sprint N Wrap-up</b> on Canvas</td><td>Last day</td><td>10</td></tr>
@@ -340,7 +340,7 @@ def appendix(p, sprint, reviewed_on, not_reviewed=None):
     plan = p.get("plan") or {}
     ps = p.get("plan_submission") or {}
     path = f"sprints/sprint-{sprint}-plan.md"
-    if sprint >= 2 and ps.get("source") == "Canvas":
+    if sprint >= 2 and str(ps.get("source", "")).startswith("Canvas"):
         rows.append(("Sprint plan", (f"Submitted on Canvas {_when(ps['submitted_at'])}. " if ps.get("submitted_at")
                                      else "No plan submitted on Canvas. ")
                      + (f"<code>{path}</code> in your repo, as it stood at the end, was also read." if plan.get("now") else "")))

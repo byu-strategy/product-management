@@ -366,10 +366,11 @@ def build(student, sub, plan_sub, cfg, due):
         late_s = (dt.datetime.fromisoformat(first) - plan_due).total_seconds() if first else 0
         f["plan_days_late"] = max(0, -(-int(late_s) // 86400))
     else:
-        plan_text = plain(plan_sub.get("body"))
+        from plan_grades import plan_from_submission
+        plan_text, how = plan_from_submission(plan_sub.get("body")) if plan_sub.get("submitted_at") else ("", "")
         at = plan_sub.get("submitted_at")
-        p["plan_submission"] = {"source": "Canvas", "submitted_at": at and local(at).isoformat(),
-                                "text": plan_text or None}
+        p["plan_submission"] = {"source": f"Canvas ({how})" if how else "Canvas",
+                                "submitted_at": at and local(at).isoformat(), "text": plan_text or None}
         on_time = bool(at) and not plan_sub.get("late")
     missing = [k for k in PLAN_FIELDS if not has_field(plan_text, k)] if plan_text else list(PLAN_FIELDS)
     f["plan_submitted"] = bool(plan_text)
