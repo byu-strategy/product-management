@@ -4,6 +4,14 @@ This course site is a living product. It gets better during the semester, and ev
 
 New entries appear at the top.
 
+## v2.4.4 (2026-09-30)
+
+"Shipped" is now **Output**, and it no longer has to reach anyone.
+
+- **Output is what you finished this sprint, in whatever form the work takes:** code, research, a design, a model, copy, a deck, an automation. It does not have to be public, launched, or used by anyone; plenty of valuable work is never shown to anyone else. It only has to be real, finished, and checkable by the course, privately: in your repo, shared with Professor Murff, summarized by `/sprint-review`, or shown working in your demo. See [What output means for different work](00-assessments.qmd#what-output-means-for-different-work).
+- **The four deliverables are now Plan, Output, Review, and Demo,** in the turn-in table, the rubric, and on Canvas.
+- **Sprint 1 is graded generously.** Work that was local-only, private, or not yet in anyone's hands counts in full.
+
 ## v2.4.3 (2026-09-30)
 
 How to change your plan mid-sprint.
