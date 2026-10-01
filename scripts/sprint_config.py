@@ -19,9 +19,9 @@ SPRINTS = {
 }
 
 # The categories a grader scores, with their maxima.
-GRADED = {n: [("shipped", "Shipped", 20), ("review", "Review", 10), ("demo", "Demo", 10)]
+GRADED = {n: [("shipped", "Output", 20), ("review", "Review", 10), ("demo", "Demo", 10)]
           for n in range(1, 6)}
-GRADED[6] = [("shipped", "Shipped", 50), ("review", "Review", 20), ("demo", "Demo", 20)]
+GRADED[6] = [("shipped", "Output", 50), ("review", "Review", 20), ("demo", "Demo", 20)]
 
 
 def categories(sprint):

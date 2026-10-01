@@ -290,7 +290,7 @@ its link and your Loom on Canvas.</p>
 <table class=turnin>
 <tr><th>Deliverable</th><th>Where it lives</th><th>How you turn it in</th><th>When</th><th>Points</th></tr>
 <tr><td><b>Plan</b></td><td><code>sprints/sprint-N-plan.md</code></td><td>Commit it, and paste its GitHub link into <b>Sprint N Plan</b> on Canvas. To change it later, run <code>/sprint-plan</code> again; no resubmitting</td><td>First Wednesday, 11:59 PM</td><td>10</td></tr>
-<tr><td><b>Shipped</b></td><td>Your course repo, another repo, or a live link</td><td>Nothing separate: list every place it lives under <b>Where the work lives</b> in your README</td><td>Last day</td><td>20</td></tr>
+<tr><td><b>Output</b></td><td>What you finished, in any form: in your course repo, another repo, a link, or your demo</td><td>Nothing separate: list every place it lives under <b>Where the work lives</b> in your README</td><td>Last day</td><td>20</td></tr>
 <tr><td><b>Review</b></td><td><code>sprints/sprint-N-review.md</code>: the <code>/sprint-review</code> report, with your retro at the bottom</td><td>Commit it, and paste its GitHub link into <b>Sprint N Wrap-up</b> on Canvas</td><td>Last day</td><td>10</td></tr>
 <tr><td><b>Demo</b></td><td>Loom, 60 to 90 seconds</td><td>Paste the Loom share link into <b>Sprint N Wrap-up</b> on Canvas</td><td>Last day</td><td>10</td></tr>
 </table>

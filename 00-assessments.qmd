@@ -104,7 +104,7 @@ Every sprint has the same four deliverables.
 | Deliverable | What it is | Where it lives | How you turn it in | When | Points |
 |---|---|---|---|---|--:|
 | **Plan** | What you will do, why, how you will know it is done, and how hard you expect it to be. `/sprint-plan` helps you write it. | `sprints/sprint-N-plan.md` in your course repo | Commit it, and paste its GitHub link into **Sprint N Plan** on Canvas. To change it later, run `/sprint-plan` again; no resubmitting | First Wednesday, 11:59 PM | 10 |
-| **Shipped** | The work itself: real, finished, and reachable by someone else | Your course repo, another repo, or a live link | Nothing separate to submit. List every place it lives under **Where the work lives** in your README | Last day | 20 |
+| **Output** | What you finished this sprint, in whatever form the work takes: code, research, a design, a model, copy, a deck, an automation | Your course repo, another repo, a link, or your demo | Nothing separate to submit. List every place it lives under **Where the work lives** in your README | Last day | 20 |
 | **Review** | What `/sprint-review` produces: a report on your sprint, then your answers to its five retro questions | `sprints/sprint-N-review.md` in your course repo | Commit it, and paste its GitHub link into **Sprint N Wrap-up** on Canvas | Last day | 10 |
 | **Demo** | 60 to 90 seconds on Loom of the work, working | Loom | Paste the Loom share link into **Sprint N Wrap-up** on Canvas | Last day | 10 |
 
@@ -113,7 +113,7 @@ questions `/sprint-review` asks after it shows you the report. Did you hit the g
 the report show you, why did the plan change if it did, how hard was it really, and what will you
 change next sprint. It saves your answers word for word with the report.
 
-Sprint 6 is worth 100: Plan 10, Shipped 50, Review 20, Demo 20.
+Sprint 6 is worth 100: Plan 10, Output 50, Review 20, Demo 20.
 
 ### How every sprint works
 
@@ -183,42 +183,43 @@ file. Submit the Loom share link. A demo that is not a Loom scores 0.
 **4. Submit two links in that sprint's Wrap-up assignment on Canvas:** your review file on
 GitHub (`sprints/sprint-N-review.md`, with your retro at the bottom) and your Loom demo. Before
 you do, make sure the **Where the work lives** section of your README lists every repo and live
-link someone would need to check what you shipped. Sprint 1 was one Canvas assignment and asked
+link someone would need to check your output. Sprint 1 was one Canvas assignment and asked
 for your repo URL instead.
 
 ### What you have to have
 
-- **You shipped something.** It exists now, it did not two weeks ago, and someone other than
-  you can reach it, use it, or see it.
-- **Someone can check it.** It is in your course repo, in another repo listed in your README
-  (shared with us if you can), or live at a link. Work nobody can check, anywhere, does not
-  count as shipped.
+- **Output.** Something real and finished exists now that did not two weeks ago. It does not
+  have to be public, launched, or used by anyone: plenty of valuable work is never shown to
+  anyone else.
+- **The course can check it, privately.** It is in your course repo, in another repo shared with
+  Professor Murff or summarized by `/sprint-review`, at a link, or shown working in your demo.
+  Work nobody can check, anywhere, cannot be graded.
 - **The plan,** submitted on Canvas by Wednesday, committed, and kept current with any changes
   noted.
 - **The review,** committed: the `/sprint-review` report with your answers to its five retro
   questions at the bottom.
 - **The Loom demo, 60 to 90 seconds.**
 
-### What "shipped" means for different work
+### What output means for different work
 
-Not every sprint produces code. What counts is that the thing is real and someone else can
-reach it, use it, or see it.
+Output is whatever your sprint produced, on any of the six axes. Code is one kind among many.
+What counts is that it is real, finished for this sprint, and checkable by the course.
 
-| If your sprint was | Shipped means |
+| If your sprint was | Output means |
 |---|---|
-| A product feature | Deployed and working in the live app |
-| Frontend or design work | The new interface is live, not a mockup |
-| A landing page or campaign | The page is published at a URL |
-| Pricing or financial modeling | The model exists, runs on real numbers, and your team can use it |
-| Marketing or sales copy | The copy is published or in use, not sitting in a doc |
-| An automation or workflow | It runs, and you can show it running |
-| Research or discovery | The findings are written up in your repo and someone acted on them |
-| Analytics or measurement | The tracking is live and returning real data |
+| A product feature | It works, in your repo or deployed, and your demo shows it working |
+| Frontend or design work | The interface or the designs exist, not just a description of them |
+| A landing page or campaign | The page or campaign is built, published or ready to publish |
+| Pricing or financial modeling | The model exists and runs on real numbers |
+| Marketing or sales copy | The copy is written and finished, not an outline |
+| An automation or workflow | It runs, and your demo shows it running |
+| Research or discovery | The findings are written up, with what you concluded from them |
+| Analytics or measurement | The tracking is set up and returning real data |
 
-If your work does not fit any of these, say what shipping means for it in your plan file before
+If your work does not fit any of these, say what output means for it in your plan file before
 the sprint starts.
 
-#### Any real artifact counts
+#### Any real artifact counts as output
 
 Your sprint can advance any of the six axes, and every one produces artifacts. Code is one kind
 among many. Any digital artifact that reflects real work counts, in whatever format it
@@ -235,9 +236,10 @@ naturally takes:
 
 Markdown files, Word documents, slide decks, spreadsheets, PDFs, images, and live links are all
 fine. Two tests apply to every one of them: it is real work (not a template or a placeholder),
-and someone else can open it. Commit it to a repo or list its link under **Where the work
-lives** in your README; for a Google Doc, Figma file, or anything else that lives behind a link,
-make sure the link opens for us.
+and the course can check it. It does not have to be public. Commit it to a repo or list it under
+**Where the work lives** in your README; for a Google Doc, Figma file, or anything else behind a
+link, make sure it opens for us (set it to "Anyone with the link can view" or share it with
+aifoundry.byu@gmail.com).
 
 Interview notes and recordings are about real people. Commit notes and synthesis with names
 removed, and keep recordings out of the repo.
@@ -262,12 +264,12 @@ the first category; the Wrap-up assignment is the other three.
 | Category | Points | Sprint 6 | What earns full marks |
 |---|--:|--:|---|
 | **Plan** | 10 | 10 | Its GitHub link submitted on Canvas by Wednesday, 11:59 PM, with Goal, Why this, Done looks like, and Predicted difficulty all filled in. Graded for completion. |
-| **Shipped** | 20 | 50 | Real, finished, and someone else can reach it, use it, or see it. Read against your plan as it stands at the end, and weighed by how hard the work was for you. |
+| **Output** | 20 | 50 | Real, finished, and checkable by the course; it does not have to be public or used by anyone. Read against your plan as it stands at the end, and weighed by how hard the work was for you. |
 | **Review** | 10 | 20 | Report committed, with your retro answering all five questions and responding to something specific in the report. |
 | **Demo** | 10 | 20 | 60 to 90 seconds on Loom, the real thing, working, with real content. A demo that is not a Loom scores 0. |
 
 The plan is graded for completion, and your predicted difficulty is not graded. Aim high.
-From Sprint 2 on, "shipped" is weighed by how hard the work actually was for you, judged from
+From Sprint 2 on, output is weighed by how hard the work actually was for you, judged from
 the work itself: an ambitious goal you partly reach and
 account for in your retro can still earn full marks, and routine work you comfortably finish
 earns up to 15 of 20.

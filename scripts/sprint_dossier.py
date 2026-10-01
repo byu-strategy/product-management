@@ -206,7 +206,7 @@ function show(i){cur=i;const s=S[i];history.replaceState(null,'','#'+s.id);
  const d=s.difficulty,diff=d.assessed?`<section><h3>Difficulty</h3><div class=diffrow>
   <div><b>${d.predicted??'–'}</b><span>predicted</span></div><div><b>${d.student_actual??'–'}</b><span>their actual</span></div>
   <div><b style="color:var(--acc)">${d.assessed}</b><span>assessed</span></div><div><b>${d.baseline_on_axis??'–'}</b><span>baseline, ${esc(d.axis||'')}</span></div></div>
-  <p class=why>${esc(d.why||'')}</p><p class=sub>Effect on shipped: ${esc(d.effect_on_shipped||'none')}</p></section>`:'';
+  <p class=why>${esc(d.why||'')}</p><p class=sub>Effect on Output: ${esc(d.effect_on_shipped||'none')}</p></section>`:'';
  const repos=(s.other_repos.length||s.unshared.length)?`<section><h3>Other repos</h3><table class=mini>${s.other_repos.map(o=>`<tr><td><a href="${esc(o.repo)}" target=_blank>${esc(o.repo.replace('https://github.com/',''))}</a></td><td>${o.commits} commits in window</td></tr>`).join('')}
   ${s.unshared.map(u=>`<tr><td>${esc(u)}</td><td>named, not shared</td></tr>`).join('')}</table></section>`:'';
  const lc=s.link_checks.length?`<table class=mini>${s.link_checks.map(l=>`<tr><td><a href="${esc(l.url)}" target=_blank>${esc(l.url)}</a></td>

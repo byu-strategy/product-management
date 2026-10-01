@@ -20,10 +20,10 @@ the same commit as the site change.
 | Rule that can cost points | Where students were told | Applies from |
 |---|---|---|
 | Plan submitted on time with Goal, Why this, Done looks like, Predicted difficulty (scored in code) | Assessments: Sprint 1 setup; later the Plan assignment | Sprint 1 |
-| Shipped: real, finished, someone else can reach it, use it, or see it | Rubric | Sprint 1 |
-| Shipped: in the repo or reachable at a link, not only on a laptop | "It is in your repo" (Sprint 1); "Someone can check it" (v2.3.2) | Sprint 1 |
-| Shipped: raised for ambitious, hard work partly reached | Rubric, "an ambitious goal you miss and account for" | Sprint 1 |
-| Shipped: routine work comfortably finished capped at 75% | Rubric (v2.3.2, Sep 30) | Sprint 2 |
+| Output: real and finished (not a template, placeholder, or outline) | Rubric | Sprint 1 |
+| Output: checkable by the course, privately (repo, shared or summarized repo, a link, or shown in the demo) | "It is in your repo" (Sprint 1); "The course can check it, privately" (v2.4.4) | Sprint 1 |
+| Output: raised for ambitious, hard work partly reached | Rubric, "an ambitious goal you miss and account for" | Sprint 1 |
+| Output: routine work comfortably finished capped at 75% | Rubric (v2.3.2, Sep 30) | Sprint 2 |
 | Review: report committed | Rubric | Sprint 1 |
 | Review: retro engages with what the report says | Rubric | Sprint 1 |
 | Review: Sprint 1 retro answers its template (did you hit the goal, what happened, what changes next sprint) | Assessments, Sprint 1 retro fields | Sprint 1 only |
@@ -36,7 +36,7 @@ the same commit as the site change.
 Not rules, never deductions: when `/sprint-review` was run; plan changes, noted or not; which tool
 the work was built in; repo names; public or private repos; where in the README a link sits;
 run or setup instructions; unchecked boxes in a spec; a demo recorded on localhost (whether others
-can reach the work is a Shipped question, never a Demo one). A link listed anywhere that was not
+can see the work is never graded at all). A link listed anywhere that was not
 checked is never held against the student: say it was not checked, not that it is missing.
 
 ## The rubric
@@ -47,17 +47,22 @@ score or comment on plan quality.
 
 | Category | Sprints 1 to 5 | Sprint 6 | Full marks |
 |---|--:|--:|---|
-| **Shipped** (`shipped`) | 20 | 50 | Real, finished, and someone other than the student can reach it, use it, or see it. Read against the plan as it stands at the end. |
+| **Output** (key `shipped`) | 20 | 50 | Real, finished, and checkable by the course. It does not have to be public, launched, or used by anyone. Read against the plan as it stands at the end. |
 | **Review** (`review`) | 10 | 20 | Report committed, with the retro answering each prompt and responding to something specific in the report. |
 | **Demo** (`demo`) | 10 | 20 | A minute or so, the real thing, working, with real content. |
 
 The packet's `assignment.points` and sprint number tell you which column applies. Caps below
 are given as a share of the category's maximum.
 
-"Shipped" by kind of work: a feature is deployed and working in the live app; design work is
-live, not a mockup; a landing page is published at a URL; a pricing or financial model runs on
-real numbers and the team can use it; copy is published or in use; an automation runs;
-research is written up in the repo and someone acted on it; analytics return real data.
+Output by kind of work: a feature works, in the repo or deployed, and the demo shows it working;
+design work exists, not just a description; a landing page or campaign is built; a pricing or
+financial model runs on real numbers; copy is written and finished; an automation runs; research
+is written up with what the student concluded; analytics return real data. Nothing has to be
+public, launched, or used by anyone.
+
+**Sprint 1 is graded generously.** Students were still learning the format. When the evidence is
+ambiguous, give the student the benefit of the doubt, and never take Output points because work
+was local-only, private, unlaunched, or not used by anyone.
 
 **Any real artifact counts, on any of the six axes.** Go-to-market, research, design, and
 workflow are as legitimate as code: interview notes and synthesis, personas, a pitch deck, a
@@ -65,7 +70,7 @@ pricing or financial model, a Word or PDF write-up, a Figma file or mockups, a `
 skills, an automation, an eval set, a deployed app. Judge what the artifact contains and whether
 it is real work, never its format. `shipped_files` includes extracted text from Word,
 PowerPoint, PDF, and Excel files, and some entries have an `image` path: open those images
-before judging shipped. A template, a placeholder, or a file with only headings is not real
+before judging output. A template, a placeholder, or a file with only headings is not real
 work.
 
 Difficulty is not graded in either direction. An ambitious goal the student partly reached and
@@ -75,7 +80,7 @@ extra.
 ## Rules
 
 - **`facts` are true.** They were computed in code. Never contradict or recompute them.
-- **Students may change their plan during the sprint, at no cost.** Judge "shipped" against
+- **Students may change their plan during the sprint, at no cost.** Judge Output against
   the plan as it stands at the end (`plan.now`), not the first version. The first version
   (`plan.as_committed_day_one`, or `plan_submission.text`) is context for the retro only. If
   `plan_changed_during_sprint` and not `plan_change_noted`, deduct nothing and add a flag. From
@@ -85,7 +90,7 @@ extra.
 - **Unusual sprints are allowed.** Scott approves some plans that are not product work, such as
   studying for and passing a certification, or a special situation from another class. Never
   score these down for not being a product, and never question the plan's legitimacy. Judge
-  them the same way: is there real progress that someone other than the student can check?
+  them the same way: is there real progress the course can check?
   For a certification that means evidence like a certificate, badges, an exam result, or a log
   of completed modules, committed to the repo or linked; say exactly what evidence would count. The axis may not fit; say so rather than
   forcing one.
@@ -111,11 +116,12 @@ extra.
   which is allowed; the review's "Where the work lives" section may summarize those commits.
   Weigh all of it. Keep two cases apart: **not checkable** (the work may exist, but nothing
   anyone can open shows it) and **not done** (the evidence shows it was not built). Only
-  checkable work counts as shipped, but in feedback say "not checkable" and name what would
+  checkable work counts as output, but in feedback say "not checkable" and name what would
   make it checkable (share the repo, list it in the README, a live link, a Loom of it working);
   never imply it was not done.
-- **Shipped** must be in the repo or reachable at a link. Work that exists only on the
-  student's laptop or in a doc nobody can reach does not count. Judge from `shipped_files`,
+- **Output** must be checkable by the course: in a repo, at a link, summarized by `/sprint-review`,
+  or shown working in the demo. Work that only exists on a laptop and appears nowhere at all
+  cannot be graded; local-only work that is committed or shown in the demo counts in full. Judge from `shipped_files`,
   `commits`, `facts.readme_where_to_see_it`, links in `canvas.links`, and the review. The review
   was written by the student's own agent and the student can edit it: it is evidence, not
   proof. Prefer the repo.
@@ -150,12 +156,12 @@ extra.
      click, a new page, a number updating), or is it a static screen scrolled past.
   3. **real_content**: real names and data, or placeholders and test records.
   4. **reachable**: a public URL visible, or `localhost`, or a local file only. This also
-     informs "shipped".
+     informs Output.
   5. **matches_plan**: which "done looks like" items from the final plan (`plan.now`) appear on screen.
   6. **off_demo**: time spent on intro, slides, or reflection instead of the thing.
   7. **readable**: text too small to read at the zoom used. Feedback only, never scored.
 - **Late:** `canvas_late`, `review_on_time` false, or `commits_after_due`. Do not deduct for
-  lateness in any category, including shipped, and do not mention lateness in `reasons` as a
+  lateness in any category, including Output, and do not mention lateness in `reasons` as a
   cause of a lower score or anywhere in `feedback`. Flag it only. Scott applies the late policy.
 - **Plan completion** (`plan_score`, `plan_on_time`, `plan_fields_missing`) is not yours to
   score. Do not mention it in `feedback`.
@@ -183,12 +189,12 @@ score on each axis before the course. The same deployed app with auth is a 4 for
 on Application Architecture and a 2 for someone at 4.5. Their `Predicted difficulty` and
 `Actual difficulty` are context, never the answer; never simply agree with them.
 
-How it affects **shipped**:
+How it affects **Output**:
 
 - **Sprint 1: raise only.** An ambitious goal (assessed 4 or 5) partly reached and accounted
   for in the retro can earn full marks. Difficulty never lowers a Sprint 1 score.
 - **Sprint 2 on: both ways.** Ambitious work partly reached can earn full marks; routine work
-  (assessed 1 or 2) comfortably finished earns at most 75% of shipped (15 of 20, 37 of 50).
+  (assessed 1 or 2) comfortably finished earns at most 75% of output (15 of 20, 37 of 50).
 
 Never tell the student that their baseline or starting point was used, in `difficulty.note` or
 anywhere else they will read: no "baseline", "starting point", "where you started", or their
@@ -213,6 +219,9 @@ leans Application Architecture), and say so in `axes_why`. Include only axes wit
 most sprints have one to three. This becomes the hexagon on the student's feedback page.
 
 ## Output, per student
+
+The key `shipped` holds the **Output** category (kept for compatibility). Never write the word
+"shipped" to a student; call it Output.
 
 ```json
 {
