@@ -4,6 +4,12 @@ This course site is a living product. It gets better during the semester, and ev
 
 New entries appear at the top.
 
+## v2.4.3 (2026-09-30)
+
+How to change your plan mid-sprint.
+
+- **To change your plan, run `/sprint-plan` again.** During a sprint, it asks whether you want to change your current plan. Tell it what is changing and why; it updates the plan, adds a dated note under **Changes**, and commits it. There is nothing to resubmit on Canvas: your plan link always shows the current file. Refresh your course skills to get this version.
+
 ## v2.4.2 (2026-09-30)
 
 Your retro is now part of `/sprint-review`.
