@@ -61,6 +61,9 @@ def main():
     g = ap.add_mutually_exclusive_group()
     g.add_argument("--send", action="store_true")
     g.add_argument("--test", metavar="NET_ID")
+    ap.add_argument("--replace", action="store_true",
+                    help="re-post rows already posted (rebuilt PDFs): delete this script's earlier feedback "
+                         "comment for each student, then post the new one, so nobody gets two")
     a = ap.parse_args()
 
     base = DATA / f"grading/sprint-{a.sprint}"
@@ -78,7 +81,7 @@ def main():
         if not a.test and r.get("approved", "").strip().lower() != "yes":
             skipped.append((r["net_id"], "not approved"))
             continue
-        if posted.get(r["net_id"]) == r["final_total"]:
+        if posted.get(r["net_id"]) == r["final_total"] and not a.replace:
             skipped.append((r["net_id"], f"already posted {r['final_total']}"))
             continue
         pdf = base / "feedback" / f"{r['net_id']}.pdf"
@@ -120,19 +123,29 @@ def main():
         w = csv.DictWriter(fh, LOG_COLS)
         if new:
             w.writeheader()
+        base = cfg["url"].rstrip("/")
+        base = base if base.endswith("/api/v1") else base + "/api/v1"
         for r, pdf in todo:
             uid = r["canvas_user_id"]
+            if a.replace:  # remove only the earlier comment that carried this student's feedback PDF
+                sub = api.get(f"/assignments/{aid}/submissions/{uid}", params={"include[]": ["submission_comments"]})
+                for c in sub.get("submission_comments", []):
+                    if any(x.get("display_name") == pdf.name for x in c.get("attachments", [])):
+                        requests.delete(f"{base}/courses/{COURSE_ID}/assignments/{aid}/submissions/{uid}/comments/{c['id']}",
+                                        headers={"Authorization": f"Bearer {cfg['token']}"}, timeout=30)
             fid = upload(cfg, aid, uid, pdf)
             api.put(f"/assignments/{aid}/submissions/{uid}", json={
                 "submission": {"posted_grade": r["final_total"]},
                 "comment": {"text_comment": comment_text(r, a.sprint), "file_ids": [fid]}})
             got = api.get(f"/assignments/{aid}/submissions/{uid}")
-            ok = str(got.get("score")) in (r["final_total"], f"{float(r['final_total']):.1f}")
+            # Canvas applies the late policy itself, so its score can be lower by points_deducted.
+            ok = abs((got.get("score") or 0) + (got.get("points_deducted") or 0) - float(r["final_total"])) < 0.01
             w.writerow({"net_id": r["net_id"], "canvas_user_id": uid, "score": r["final_total"],
                         "posted_at": dt.datetime.now().isoformat(timespec="seconds"),
                         "comment_file_id": fid})
             fh.flush()
-            print(f"  posted {r['net_id']:10} {r['final_total']:>5}  canvas reads {got.get('score')}"
+            late = f" (late policy: -{got['points_deducted']:g})" if got.get("points_deducted") else ""
+            print(f"  posted {r['net_id']:10} {r['final_total']:>5}  canvas reads {got.get('score')}{late}"
                   f"{'' if ok else '  MISMATCH'}")
     log_path.chmod(0o600)
     print("Grades are hidden until you click Post in Canvas (Gradebook, the assignment's menu).")
