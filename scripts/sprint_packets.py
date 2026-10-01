@@ -428,7 +428,10 @@ def build(student, sub, plan_sub, cfg, due):
                                  "files": shipped(r, cs, budget=8_000) if cs else []})
     unshared = sorted(named - shared_lower - {course} - {o.lower() for o in others})
     f["repos_named_but_not_shared"] = unshared
-    targets += [u.rstrip(").,") for u in re.findall(r"https?://\S+", where) if "github.com" not in u]
+    # Every live link anywhere in the README, not only the "Where the work lives" section: students
+    # put them under Live:, Where to see it, or in prose, and an unchecked link is our gap, not theirs.
+    targets += [u.rstrip(").,>]*_'\"") for u in re.findall(r"https?://[^\s)\]>\"'`]+", readme_text)
+                if "github.com" not in u and "loom.com" not in u and "shields.io" not in u]
     p["link_checks"] = [check_link(u) for u in dict.fromkeys(targets)]
     p["baseline"] = cfg["baseline"].get(net_id)
 

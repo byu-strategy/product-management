@@ -34,7 +34,10 @@ the same commit as the site change.
 | Late work, 10% per day (Canvas and code, never the grader) | Syllabus late work policy | Sprint 1 |
 
 Not rules, never deductions: when `/sprint-review` was run; plan changes, noted or not; which tool
-the work was built in; repo names; public or private repos.
+the work was built in; repo names; public or private repos; where in the README a link sits;
+run or setup instructions; unchecked boxes in a spec; a demo recorded on localhost (whether others
+can reach the work is a Shipped question, never a Demo one). A link listed anywhere that was not
+checked is never held against the student: say it was not checked, not that it is missing.
 
 ## The rubric
 
