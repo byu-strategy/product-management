@@ -4,6 +4,10 @@ This course site is a living product. It gets better during the semester, and ev
 
 New entries appear at the top.
 
+## v2.4.6 (2026-09-30)
+
+- **Wrap-ups are due on or before the Monday each sprint ends, by 11:59 PM.** Sprint 6 is the exception: its wrap-up is due Thursday, December 10. Plans are due the first Wednesday of each sprint.
+
 ## v2.4.5 (2026-09-30)
 
 - **Wrap-up deliverables are due on or before the last day of the sprint, by 11:59 PM.** You do not have to wait for the last day: if your sprint's work is done early, run `/sprint-review` and submit then.
