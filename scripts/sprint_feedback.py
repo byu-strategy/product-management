@@ -250,7 +250,8 @@ td.pts{white-space:nowrap;font-weight:600;width:70px}
 .appendix{page-break-before:always;break-before:page}
 .callout{border-left:3px solid #9a6700;background:#fbf6ea;padding:8px 12px;margin:10px 0 14px;border-radius:0 6px 6px 0}
 .callout p{margin:4px 0 0}.callout b{font-size:14px}
-.howto ol{padding-left:20px;margin:6px 0}.howto li{margin-bottom:10px}
+.howto ol{padding-left:20px;margin:6px 0}
+.todo{position:relative;padding-left:24px}.todo .box{position:absolute;left:0;top:4px;width:13px;height:13px;border:1.5px solid #5b6475;border-radius:3px}.howto li{margin-bottom:10px}
 .howto pre{font:12px/1.45 ui-monospace,SFMono-Regular,Menlo,monospace;background:#f3f4f7;padding:8px 10px;border-radius:6px;white-space:pre-wrap;margin:6px 0}
 .appendix .sub{margin-bottom:10px}
 table.src{font-size:13px}table.src td{padding:7px 8px}td.src{white-space:nowrap;font-weight:600;width:130px}
@@ -270,6 +271,19 @@ def _mmss(s):
 
 
 ASK_LINK = "https://slack.com/app_redirect?app=A0C2TDWPL4U&team=T097CK3UKB7"  # opens a DM with Course Monitor
+NEXT_SPRINT_TODO = """<section class=howto><h2>Before your next sprint</h2>
+<p class=todo><span class=box></span><b>Update your course skills.</b> <code>/sprint-plan</code> and
+<code>/sprint-review</code> were improved after Sprint 1 (among other things, <code>/sprint-review</code>
+now reads Codex sessions and summarizes work in your other repos). Your repo still has the old
+copies. Open Claude Code in your course repo folder and paste this:</p>
+<pre>Update my course skills from the class template. Download the latest .claude/skills/sprint-plan
+and .claude/skills/sprint-review folders from https://github.com/byu-strategy/builder-template
+(main branch) and replace mine with them. Do not change anything else. Then commit with the
+message "Refresh course skills" and push.</pre>
+<p class=todo><span class=box></span><b>List where your work lives,</b> if any of it is outside your
+course repo. Steps below.</p></section>"""
+
+
 WHERE_WORK_LIVES = """<section class=howto><h2>If your work lives outside your course repo</h2>
 <p>Only what is in your course repo, or listed there, can count toward your sprint. If any of your
 work happens somewhere else (a company or team repo, a second project, a live app, a Google Doc,
@@ -412,7 +426,9 @@ and for where your effort went.</p>
 everything you turned in. If you have a question about it, or believe something is incorrect or
 does not accurately represent your work, send a direct message to
 <a href="{ASK_LINK}">the Course Monitor app in the course Slack</a> saying what you think was missed.
-Professor Murff reviews every message sent there. <b>Send grading questions only to Course
+If the link does not open it, open Slack, search for <b>Course Monitor</b> (it is listed under
+Apps), and send it a message from its Messages tab. Please do not @mention it in the class channel,
+where everyone can see your question. Professor Murff reviews every message sent there. <b>Send grading questions only to Course
 Monitor:</b> questions sent by email or anywhere else may be missed.</p></section>"""
 
 
@@ -466,6 +482,7 @@ def student_page(r, p, row, sprint, points):
 {f'<div class=callout><p>{e(nr_sum)}</p></div>' if nr_sum else ''}
 <table><tr><th>Category</th><th>Score</th><th>What it was based on</th></tr>{trs}</table>
 {extra}
+{NEXT_SPRINT_TODO}
 {WHERE_WORK_LIVES}
 {appendix(p, sprint, reviewed_on, r.get("not_reviewed"))}</body></html>"""
 
