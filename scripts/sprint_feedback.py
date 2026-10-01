@@ -131,11 +131,11 @@ def plan_line(p):
     if late:
         days = f"{late} day{'s' * (late > 1)} after the plan deadline"
         if late >= 10:
-            return (f"You committed your plan {when} with all four fields filled in. That was {days}; "
+            return (f"You committed your plan {when} with Goal, Why this, Done looks like, and Predicted difficulty filled in. That was {days}; "
                     f"under the late work policy, work 10 or more days late earns no credit.")
-        return (f"You committed your plan {when} with all four fields filled in. That was {days}, "
+        return (f"You committed your plan {when} with Goal, Why this, Done looks like, and Predicted difficulty filled in. That was {days}, "
                 f"so {10 * late}% came off under the late work policy.")
-    return f"You committed your plan {when} with all four fields filled in. Full credit."
+    return f"You committed your plan {when} with Goal, Why this, Done looks like, and Predicted difficulty filled in. Full credit."
 
 
 def load(sprint):
@@ -193,7 +193,7 @@ def validate(base, items):
         machine += _re.findall(r"(?<!Type )\bI\b(?!-)|\bI'(?:m|ve|d|ll)\b", plain_text)  # no first person
         # The baseline survey informs difficulty, but saying so invites students to underrate themselves.
         machine += _re.findall(r"\b(baseline|starting point|where you started|self-rating|self-rated|"
-                               r"starting at \d|at \d\.\d+ on)\b", plain_text, _re.I)
+                               r"starting at \d|at \d\.\d+ on|starting where you)\b", plain_text, _re.I)
         if machine:
             problems.append(f"{n}: student feedback reads as machine-written ({', '.join(sorted(set(m.lower() for m in machine)))})")
         # Words that are usually about the student's own project, but worth a look.

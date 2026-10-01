@@ -9,6 +9,33 @@ Read `~/hubs/courses/_data/product-management/grading/worked-examples.md` if it 
 real submissions with scores Scott approved. Hold every student to the same standard: similar
 evidence gets a similar score. Never mention those students in anything you write.
 
+## Only published rules cost points
+
+Every deduction must trace to a rule students were told **before the sprint being graded
+started**. The packet's `assignment.name` gives the sprint. The table below is the complete list.
+Anything else you notice (a weak habit, a better practice) may appear in feedback as a suggestion,
+never as lost points. When Scott adds a rule, it is added here with the sprint it starts in, in
+the same commit as the site change.
+
+| Rule that can cost points | Where students were told | Applies from |
+|---|---|---|
+| Plan submitted on time with Goal, Why this, Done looks like, Predicted difficulty (scored in code) | Assessments: Sprint 1 setup; later the Plan assignment | Sprint 1 |
+| Shipped: real, finished, someone else can reach it, use it, or see it | Rubric | Sprint 1 |
+| Shipped: in the repo or reachable at a link, not only on a laptop | "It is in your repo" (Sprint 1); "Someone can check it" (v2.3.2) | Sprint 1 |
+| Shipped: raised for ambitious, hard work partly reached | Rubric, "an ambitious goal you miss and account for" | Sprint 1 |
+| Shipped: routine work comfortably finished capped at 75% | Rubric (v2.3.2, Sep 30) | Sprint 2 |
+| Review: report committed | Rubric | Sprint 1 |
+| Review: retro engages with what the report says | Rubric | Sprint 1 |
+| Review: Sprint 1 retro answers its template (did you hit the goal, what happened, what changes next sprint) | Assessments, Sprint 1 retro fields | Sprint 1 only |
+| Review: retro answers all five `/sprint-review` questions | Assessments (v2.4.0 to v2.4.2, Sep 30) | Sprint 2 |
+| Demo: the real thing, working, with real content | Rubric | Sprint 1 |
+| Demo: length, more than about two minutes, at most minus 1 | Rubric ("Ninety seconds", then "60 to 90 seconds") | Sprint 1 |
+| Demo: not a Loom scores 0 (set in code) | Assessments and Wrap-up pages (v2.3.1, Sep 30) | Sprint 2 |
+| Late work, 10% per day (Canvas and code, never the grader) | Syllabus late work policy | Sprint 1 |
+
+Not rules, never deductions: when `/sprint-review` was run; plan changes, noted or not; which tool
+the work was built in; repo names; public or private repos.
+
 ## The rubric
 
 A sprint has four categories. You score three of them. The plan's 10 points are for completion
@@ -48,9 +75,10 @@ extra.
 - **Students may change their plan during the sprint, at no cost.** Judge "shipped" against
   the plan as it stands at the end (`plan.now`), not the first version. The first version
   (`plan.as_committed_day_one`, or `plan_submission.text`) is context for the retro only. If
-  `plan_changed_during_sprint` and not `plan_change_noted`, deduct nothing: add a flag, and in
-  the student's `feedback.review` say that the change was not noted in the plan file. A retro
-  that explains the change counts as accounting for it.
+  `plan_changed_during_sprint` and not `plan_change_noted`, deduct nothing and add a flag. From
+  Sprint 2 only, say once in `feedback.review` that the change was not noted (running
+  `/sprint-plan` again records it). In Sprint 1 the Changes note did not exist yet: never mention
+  it to the student.
 - **Unusual sprints are allowed.** Scott approves some plans that are not product work, such as
   studying for and passing a certification, or a special situation from another class. Never
   score these down for not being a product, and never question the plan's legitimacy. Judge
@@ -94,8 +122,9 @@ extra.
   difficulty and why it differed, and what will you change next sprint. In Sprint 1 it was the
   three fields at the end of the plan file. 0 if no report is committed. Retro empty
   (`retro_filled` false): at most half. Full marks need every prompt answered and a response to
-  something specific the report found. A review whose window ended well before the due date
-  (`review_window_end`) covers only part of the sprint: at most 80%.
+  something specific the report found. When the review was run is not graded: a student may
+  finish early, and a report covering 10 days is judged on what it covers. Never deduct for or
+  mention the review window.
 - **Demo:** judge from `loom.frames` (nine full-resolution screenshots spread evenly across
   the video, each with its time; open every one) together with the transcript, title, and
   chapters. The frames show what was on screen; the transcript shows what was said. No video
