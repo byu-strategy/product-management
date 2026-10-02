@@ -4,6 +4,11 @@ This course site is a living product. It gets better during the semester, and ev
 
 New entries appear at the top.
 
+## v2.4.7 (2026-10-02)
+
+- **Sprint 1 grades are posted.** Open Sprint 1 in Canvas and read the comment on your submission: it has a PDF with your feedback, what was reviewed, and what to do before your next sprint.
+- **The Sprint 2 plan is due Saturday, October 3, at 11:59 PM,** this one time, because Sprint 1 grades came out late.
+
 ## v2.4.6 (2026-09-30)
 
 - **Wrap-ups are due on or before the Monday each sprint ends, by 11:59 PM.** Sprint 6 is the exception: its wrap-up is due Thursday, December 10. Plans are due the first Wednesday of each sprint.

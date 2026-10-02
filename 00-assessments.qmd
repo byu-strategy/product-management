@@ -476,11 +476,11 @@ RULES
 
 ### Sprint 2 {#sprint-2}
 
-**50 points (Plan 10, Wrap-up 40) | Assigned: Mon, Sep 28 | Plan due: Fri, Oct 2 | Due: Mon, Oct 12**
+**50 points (Plan 10, Wrap-up 40) | Assigned: Mon, Sep 28 | Plan due: Sat, Oct 3 | Due: Mon, Oct 12**
 
-The standard sprint. Its plan is due Friday rather than Wednesday, because the plan moved to its
-own Canvas assignment partway through the sprint's first week. If your Sprint 2 plan is already
-committed, paste it into the Sprint 2 Plan assignment.
+The standard sprint. Its plan is due Saturday, October 3, rather than Wednesday, because the plan moved to its
+own Canvas assignment partway through the sprint's first week and Sprint 1 grades came out late. If your Sprint 2 plan is already
+committed, paste its GitHub link into the Sprint 2 Plan assignment.
 
 ### Sprint 3 {#sprint-3}
 
