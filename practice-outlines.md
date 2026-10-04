@@ -4,7 +4,7 @@ The season skeleton: one outline per practice, in order. Each gives the axis, th
 
 This is the pre-season plan, not the finished plan. Write the full minute-by-minute the week of, from `practice-plan-template.md`. Pull the coach's story from `story-catalog.md`. Season benchmarks (sprints, exams, peer work) are the source of truth in `00-schedule.qmd`; if a date here disagrees with the schedule, the schedule wins.
 
-The course runs on six builder axes, two weeks each (Agentic Workflow, Discovery, Design, Application Architecture, AI Systems, Launch and Learn), and six two-week sprints. There are no weekly quizzes; own understanding is measured by the midterm (Oct 20 to 22) and final (Dec 14 to 16) in the testing center.
+The course runs on six builder axes, two weeks each (Agentic Workflow, Discovery, Design, Application Architecture, AI Systems, Launch and Learn), and six two-week sprints. There are no weekly quizzes; own understanding is measured by the midterm (Oct 20 to 22) and final (Dec 8 to 9) in the testing center.
 
 The openers below extend the truth-seeking opener bank in `practice-plan-template.md` across the whole season. The thread is product management as truth-seeking: Aim well, get evidence, believe in proportion to it, and act. Swap any pairing for one that fits the room that week.
 
@@ -231,10 +231,12 @@ Covers practices 1 through 6: Agentic Workflow, Discovery, Design. 40 items.
 
 ---
 
+## Final Exam · Dec 8 to 9 · Testing center
+
+Cumulative, all six axes, 90 items (15 per axis). Scores come back as a six-sided profile to lay beside the hexagon surveys.
+
+---
+
 ## Thu, Dec 10 · Last day of class
 
 No meeting. **Sprint 6 due.** Plan, review, retro, and a three-minute demo covering the semester.
-
-## Final Exam · Dec 14 to 16 · Testing center
-
-Cumulative, all six axes, 90 items (15 per axis). Scores come back as a six-sided profile to lay beside the hexagon surveys.

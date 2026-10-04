@@ -43,8 +43,8 @@ Agentic Workflow comes first on purpose. You will ship something in week one tha
 | 11 | Mon, Nov 23 | Launch and Learn | [Going to Market](12-going-to-market.qmd) + [Business Models](13-business-models.qmd) | **Sprint 5 Due**, [Sprint 6 Assigned](00-assessments.qmd#sprint-6) (plan due Wed, Nov 25, 11:59 PM). Withdraw deadline is Tue, Nov 24. |
 | 12 | Mon, Nov 30 | Launch and Learn | [Measuring What Matters](14-measuring-what-matters.qmd) | [Peer Product Testing Assigned](00-assessments.qmd#peer-product-testing) |
 | 13 | Mon, Dec 7 | Wrap Up | [Storytelling and the Final Demo](15-storytelling-and-the-final-demo.qmd) | [Peer Product Testing Due](00-assessments.qmd#peer-product-testing), closing hexagon survey |
+| – | Dec 8 to 9 | – | Testing center | **[Final Exam](00-assessments.qmd#final-exam)** (cumulative, all six axes) |
 | – | Thu, Dec 10 | – | Last day of class (no meeting) | [Sprint 6 Due](00-assessments.qmd#sprint-6) |
-| – | Dec 14 to 16 | – | Testing center | **[Final Exam](00-assessments.qmd#final-exam)** (cumulative, all six axes) |
 
 ## Demos and peer feedback
 
@@ -76,12 +76,12 @@ in [Assessments](00-assessments.qmd#sprints).
 
 ## Exams
 
-Both exams are taken in the testing center on your own schedule within the window. Each window opens at 8:00 AM on its first day and closes at 9:00 PM on its last; the testing center charges a $5 late fee after 2:00 PM on the last day. They are closed book and proctored, which makes them the one place in this course where your own knowledge is measured without AI assistance. Each is worth 5% of your grade.
+Both exams are taken in the testing center on your own schedule within the window. Each window opens at 8:00 AM on its first day and closes at 9:00 PM on its last, and the testing center charges a $5 late fee on the last day (after 2:00 PM for the midterm, after 1:00 PM for the final). They are closed book and proctored, which makes them the one place in this course where your own knowledge is measured without AI assistance. Each is worth 5% of your grade.
 
 | Exam | Window | Covers | Items |
 |------|--------|--------|-------|
 | Midterm | Tue, Oct 20 to Thu, Oct 22 | Classes 1 through 6: Agentic Workflow, Discovery, Design | 40 |
-| Final | Mon, Dec 14 to Wed, Dec 16 | Cumulative, all six axes | 90, 15 per axis |
+| Final | Tue, Dec 8 to Wed, Dec 9 | Cumulative, all six axes | 90, 15 per axis |
 
 The final is built with 15 items per axis so your score comes back as a six-sided profile you can lay beside your self-assessment.
 
