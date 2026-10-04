@@ -76,7 +76,7 @@ in [Assessments](00-assessments.qmd#sprints).
 
 ## Exams
 
-Both exams are taken in the testing center on your own schedule within the window. Each window opens at 8:00 AM on its first day and closes at 9:00 PM on its last, and the testing center charges a $5 late fee on the last day (after 2:00 PM for the midterm, after 1:00 PM for the final). They are closed book and proctored, which makes them the one place in this course where your own knowledge is measured without AI assistance. Each is worth 5% of your grade.
+Both exams are taken in the testing center on your own schedule within the window. Each window opens at 8:00 AM on its first day and closes at 9:00 PM on its last, and the testing center charges a $5 late fee after 2:00 PM on the last day. They are closed book and proctored, which makes them the one place in this course where your own knowledge is measured without AI assistance. Each is worth 5% of your grade.
 
 | Exam | Window | Covers | Items |
 |------|--------|--------|-------|

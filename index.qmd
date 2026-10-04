@@ -133,7 +133,7 @@ The grading scale is show below:
 
 ### Late work policy
 
-**Exams**: Both exams are taken in the testing center within a posted window. The midterm window is Tue, Oct 20 to Thu, Oct 22, and the final window is Tue, Dec 8 to Wed, Dec 9. Each opens at 8:00 AM on its first day and closes at 9:00 PM on its last, and the testing center charges a $5 late fee on the last day (after 2:00 PM for the midterm, after 1:00 PM for the final). Windows cannot be extended, so schedule early rather than on the last day.
+**Exams**: Both exams are taken in the testing center within a posted window. The midterm window is Tue, Oct 20 to Thu, Oct 22, and the final window is Tue, Dec 8 to Wed, Dec 9. Each opens at 8:00 AM on its first day and closes at 9:00 PM on its last, and the testing center charges a $5 late fee after 2:00 PM on the last day. Windows cannot be extended, so schedule early rather than on the last day.
 
 **Homework**: May be turned in up to 9 days late for partial credit with a 10% penalty per day according to the following schedule:
 
