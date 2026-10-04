@@ -4,6 +4,14 @@ This course site is a living product. It gets better during the semester, and ev
 
 New entries appear at the top.
 
+## v2.4.8 (2026-10-03)
+
+The midterm and final exam windows are set, and both are shorter than first posted.
+
+- **Midterm: Tue, Oct 20, 8:00 AM to Thu, Oct 22, 9:00 PM,** in the testing center. It was Oct 20 to 26. The testing center charges a $5 late fee after 2:00 PM on Thursday.
+- **Final: Tue, Dec 8, 8:00 AM to Wed, Dec 9, 9:00 PM,** in the testing center. It was Dec 14 to 17 and is now before the last day of class, not during finals week. The testing center charges a $5 late fee after 1:00 PM on Wednesday.
+- **The final has 90 questions, 15 per axis,** instead of 60. More questions per axis make your six-sided score profile more reliable. Plan on up to two and a half hours.
+
 ## v2.4.7 (2026-10-02)
 
 - **Sprint 1 grades are posted.** Open Sprint 1 in Canvas and read the comment on your submission: it has a PDF with your feedback, what was reviewed, and what to do before your next sprint.
