@@ -4,6 +4,10 @@ This course site is a living product. It gets better during the semester, and ev
 
 New entries appear at the top.
 
+## v2.4.9 (2026-10-03)
+
+- **Correction: the final exam late fee starts at 2:00 PM on Wed, Dec 9,** not 1:00 PM as v2.4.8 said. Both exams now follow the same rule: the window closes at 9:00 PM on its last day, and the $5 late fee starts at 2:00 PM that day.
+
 ## v2.4.8 (2026-10-03)
 
 The midterm and final exam windows are set, and both are shorter than first posted.
