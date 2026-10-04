@@ -65,13 +65,13 @@ worth it and not enough for one bad morning to matter.
 
 ### Midterm Exam {#midterm-exam}
 
-**25 points | Testing center, Oct 20 to 26 | 40 items**
+**25 points | Testing center, Tue, Oct 20 to Thu, Oct 22 | 40 items**
 
 Covers classes 1 through 6: the Agentic Workflow, Discovery, and Design axes.
 
 ### Final Exam {#final-exam}
 
-**25 points | Testing center, Dec 14 to 17 | 90 items**
+**25 points | Testing center, Mon, Dec 14 to Wed, Dec 16 | 90 items**
 
 Cumulative across all six axes, 15 items per axis. Because the item count is even across
 axes, your score comes back as a six-sided profile you can compare against the self

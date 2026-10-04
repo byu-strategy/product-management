@@ -4,7 +4,7 @@ The season skeleton: one outline per practice, in order. Each gives the axis, th
 
 This is the pre-season plan, not the finished plan. Write the full minute-by-minute the week of, from `practice-plan-template.md`. Pull the coach's story from `story-catalog.md`. Season benchmarks (sprints, exams, peer work) are the source of truth in `00-schedule.qmd`; if a date here disagrees with the schedule, the schedule wins.
 
-The course runs on six builder axes, two weeks each (Agentic Workflow, Discovery, Design, Application Architecture, AI Systems, Launch and Learn), and six two-week sprints. There are no weekly quizzes; own understanding is measured by the midterm (Oct 20 to 26) and final (Dec 14 to 17) in the testing center.
+The course runs on six builder axes, two weeks each (Agentic Workflow, Discovery, Design, Application Architecture, AI Systems, Launch and Learn), and six two-week sprints. There are no weekly quizzes; own understanding is measured by the midterm (Oct 20 to 22) and final (Dec 14 to 16) in the testing center.
 
 The openers below extend the truth-seeking opener bank in `practice-plan-template.md` across the whole season. The thread is product management as truth-seeking: Aim well, get evidence, believe in proportion to it, and act. Swap any pairing for one that fits the room that week.
 
@@ -112,7 +112,7 @@ Every practice ends with the huddle: two or three students show their deploy URL
 - **Scripture / parable:** the six men of Indostan and the elephant (John Godfrey Saxe), "each was partly in the right, and all were in the wrong." One user is one blind man on the elephant; triangulate.
 - **Quote:** "The truth must dazzle gradually, else every man be blind." (Emily Dickinson) Three to five tests start to reveal the shape.
 - **Coach's story:** open. Pick from `story-catalog.md`.
-- **Season ritual:** huddle. Midterm reminder: testing center, Oct 20 to 26, covers practices 1 through 6.
+- **Season ritual:** huddle. Midterm reminder: testing center, Tue, Oct 20 to Thu, Oct 22, covers practices 1 through 6.
 - **Film:** a usability-test recording, count how often the builder wanted to jump in and help.
 - **Install:** the curse of knowledge, running a usability test, what to observe, synthesizing feedback, iteration.
 - **Drill:** run a usability test on a classmate's product, swap, and log both in `design/usability-tests/`.
@@ -120,7 +120,7 @@ Every practice ends with the huddle: two or three students show their deploy URL
 
 ---
 
-## Midterm · Oct 20 to 26 · Testing center
+## Midterm · Oct 20 to 22 · Testing center
 
 Covers practices 1 through 6: Agentic Workflow, Discovery, Design. 40 items.
 
@@ -235,6 +235,6 @@ Covers practices 1 through 6: Agentic Workflow, Discovery, Design. 40 items.
 
 No meeting. **Sprint 6 due.** Plan, review, retro, and a three-minute demo covering the semester.
 
-## Final Exam · Dec 14 to 17 · Testing center
+## Final Exam · Dec 14 to 16 · Testing center
 
 Cumulative, all six axes, 90 items (15 per axis). Scores come back as a six-sided profile to lay beside the hexagon surveys.

@@ -133,7 +133,7 @@ The grading scale is show below:
 
 ### Late work policy
 
-**Exams**: Both exams are taken in the testing center within a posted window. Windows cannot be extended, so schedule early rather than on the last day.
+**Exams**: Both exams are taken in the testing center within a posted window. Each window is three days: it opens at 8:00 AM on the first day and closes at 9:00 PM on the last, and the testing center charges a $5 late fee after 2:00 PM on the last day. Windows cannot be extended, so schedule early rather than on the last day.
 
 **Homework**: May be turned in up to 9 days late for partial credit with a 10% penalty per day according to the following schedule:
 
@@ -152,7 +152,7 @@ The grading scale is show below:
 
 **Sprint 6**: Sprint 6 must be submitted by 11:59pm on Thu, Dec 10. It cannot be turned in late for credit.
 
-**Final Exam**: The Final Exam must be completed within the testing center window, Dec 14 to 17. It cannot be taken late.
+**Final Exam**: The Final Exam must be completed within the testing center window, Mon, Dec 14 to Wed, Dec 16. It cannot be taken late.
 
 ## Classroom Culture
 
