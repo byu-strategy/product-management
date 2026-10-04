@@ -237,4 +237,4 @@ No meeting. **Sprint 6 due.** Plan, review, retro, and a three-minute demo cover
 
 ## Final Exam · Dec 14 to 17 · Testing center
 
-Cumulative, all six axes, 60 items (ten per axis). Scores come back as a six-sided profile to lay beside the hexagon surveys.
+Cumulative, all six axes, 90 items (15 per axis). Scores come back as a six-sided profile to lay beside the hexagon surveys.

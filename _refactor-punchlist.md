@@ -73,7 +73,7 @@ throughout. Each chapter is its own commit.
       (`01-pm-ai-era-slides.qmd`, `05-go-to-market-slides.qmd`).
 - [ ] Sprint rewrites: role-neutral language, the floor/goal taper, the
       confidentiality clause for sandbox students.
-- [ ] Exam item banks: 40 midterm, 60 final.
+- [ ] Exam item banks: 40 midterm, 90 final (15 per axis).
 - [x] Template renamed to `builder-template`, restructured, role-neutral, `practice-log` retired.
 - [x] Publish `builder-template` as an actual GitHub template repo under byu-strategy.
 - [ ] Builder Axes index page (upgrade of `97-builder-resources.qmd`).

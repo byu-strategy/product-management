@@ -81,9 +81,9 @@ Both exams are taken in the testing center on your own schedule within the windo
 | Exam | Window | Covers | Items |
 |------|--------|--------|-------|
 | Midterm | Oct 20 to 26 | Classes 1 through 6: Agentic Workflow, Discovery, Design | 40 |
-| Final | Dec 14 to 17 | Cumulative, all six axes | 60, ten per axis |
+| Final | Dec 14 to 17 | Cumulative, all six axes | 90, 15 per axis |
 
-The final is built with ten items per axis so your score comes back as a six-sided profile you can lay beside your self-assessment.
+The final is built with 15 items per axis so your score comes back as a six-sided profile you can lay beside your self-assessment.
 
 ## Readings
 

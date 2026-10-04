@@ -71,9 +71,9 @@ Covers classes 1 through 6: the Agentic Workflow, Discovery, and Design axes.
 
 ### Final Exam {#final-exam}
 
-**25 points | Testing center, Dec 14 to 17 | 60 items**
+**25 points | Testing center, Dec 14 to 17 | 90 items**
 
-Cumulative across all six axes, ten items per axis. Because the item count is even across
+Cumulative across all six axes, 15 items per axis. Because the item count is even across
 axes, your score comes back as a six-sided profile you can compare against the self
 assessment you filled out in week 1 and again in week 13. The gap between what you think you
 know and what you can produce under proctoring is usually the most useful thing on the page.
