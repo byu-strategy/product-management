@@ -103,9 +103,9 @@ Every sprint has the same four deliverables.
 
 | Deliverable | What it is | Where it lives | How you turn it in | When | Points |
 |---|---|---|---|---|--:|
-| **Plan** | What you will do, why, how you will know it is done, and how hard you expect it to be. `/sprint-plan` helps you write it. | `sprints/sprint-N-plan.md` in your course repo | Commit it, and paste its GitHub link into **Sprint N Plan** on Canvas. To change it later, run `/sprint-plan` again; no resubmitting | First Wednesday, 11:59 PM | 10 |
+| **Plan** | What you will do, why, how you will know it is done, and how hard you expect it to be. [`/sprint-plan`](https://github.com/byu-strategy/builder-template/blob/main/.claude/skills/sprint-plan/SKILL.md) helps you write it. | `sprints/sprint-N-plan.md` in your course repo | Commit it, and paste its GitHub link into **Sprint N Plan** on Canvas. To change it later, run `/sprint-plan` again; no resubmitting | First Wednesday, 11:59 PM | 10 |
 | **Output** | What you finished this sprint, in whatever form the work takes: code, research, a design, a model, copy, a deck, an automation | Your course repo, another repo, a link, or your demo | Nothing separate to submit. List every place it lives under **Where the work lives** in your README | On or before the Monday the sprint ends, by 11:59 PM | 20 |
-| **Review** | What `/sprint-review` produces: a report on your sprint, then your answers to its five retro questions | `sprints/sprint-N-review.md` in your course repo | Commit it, and paste its GitHub link into **Sprint N Wrap-up** on Canvas | On or before the Monday the sprint ends, by 11:59 PM | 10 |
+| **Review** | What [`/sprint-review`](https://github.com/byu-strategy/builder-template/blob/main/.claude/skills/sprint-review/SKILL.md) produces: a report on your sprint, then your answers to its five retro questions | `sprints/sprint-N-review.md` in your course repo | Commit it, and paste its GitHub link into **Sprint N Wrap-up** on Canvas | On or before the Monday the sprint ends, by 11:59 PM | 10 |
 | **Demo** | 60 to 90 seconds on Loom of the work, working | Loom | Paste the Loom share link into **Sprint N Wrap-up** on Canvas | On or before the Monday the sprint ends, by 11:59 PM | 10 |
 
 **Retro**, short for retrospective, is your part of the review: your answers to the five
@@ -117,9 +117,14 @@ Sprint 6 is worth 100: Plan 10, Output 50, Review 20, Demo 20, and its wrap-up i
 
 ### How every sprint works
 
+Two Claude Code skills run the sprint: [`/sprint-plan`](https://github.com/byu-strategy/builder-template/blob/main/.claude/skills/sprint-plan/SKILL.md) at the start and [`/sprint-review`](https://github.com/byu-strategy/builder-template/blob/main/.claude/skills/sprint-review/SKILL.md) at the end. Both live in the
+[`.claude/skills`](https://github.com/byu-strategy/builder-template/tree/main/.claude/skills) folder of the
+[builder template](https://github.com/byu-strategy/builder-template), so your course repo already has them.
+Click either name to read exactly what it does.
+
 #### Day one
 
-Run `/sprint-plan`. It asks you what you are going to do and writes `sprints/sprint-N-plan.md`:
+Run [`/sprint-plan`](https://github.com/byu-strategy/builder-template/blob/main/.claude/skills/sprint-plan/SKILL.md). It asks you what you are going to do and writes `sprints/sprint-N-plan.md`:
 
 ```markdown
 # Sprint N Plan
@@ -159,7 +164,7 @@ Do the work, in your repo.
 
 #### On or before the Monday the sprint ends, by 11:59 PM
 
-**1. Run `/sprint-review`.** It shows you every project you worked in during the sprint window
+**1. Run [`/sprint-review`](https://github.com/byu-strategy/builder-template/blob/main/.claude/skills/sprint-review/SKILL.md).** It shows you every project you worked in during the sprint window
 and asks which ones were this sprint. It then reads those sessions and your commits and writes
 a report: when you worked, where you got stuck and how you got unstuck, what took the most time,
 and which of the six axes your work advanced. It reads only the projects you confirm, and
