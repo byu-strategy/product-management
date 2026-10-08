@@ -45,13 +45,15 @@ We track six skills, called the Builder axes:
   1. Discovery, what to build and for whom
   2. Design, the surface and the flow
   3. Application Architecture, how the app is structured, shipped, and kept
-     safe
-  4. AI Systems, the intelligence inside the product: context windows,
-     prompting, tool use, RAG, hallucination and verification, evals, cost
+     safe, including wiring a model in: API calls, retrieval pipelines, cost
      and latency
-  5. Agentic Workflow, AI as the way you build: coding agents, agent loops,
-     project instruction files, memory, skills, hooks, subagents, MCP, and
-     reviewing code an agent wrote
+  4. AI Systems, how the models work and why they behave the way they do:
+     neural networks, next-word prediction, pretraining, fine-tuning and
+     RLHF, embeddings and RAG, context windows, hallucination
+  5. Agentic Workflow, putting AI to work: coding agents, project
+     instruction files, memory, skills, hooks, subagents, MCP, reviewing
+     code an agent wrote, and building AI into the product with prompts,
+     tool use, agent loops, and evals
   6. Launch and Learn, instrumentation, metrics, activation and retention,
      experiments, positioning and pricing
 
@@ -120,13 +122,15 @@ We track six skills, called the Builder axes:
   1. Discovery, what to build and for whom
   2. Design, the surface and the flow
   3. Application Architecture, how the app is structured, shipped, and kept
-     safe
-  4. AI Systems, the intelligence inside the product: context windows,
-     prompting, tool use, RAG, hallucination and verification, evals, cost
+     safe, including wiring a model in: API calls, retrieval pipelines, cost
      and latency
-  5. Agentic Workflow, AI as the way you build: coding agents, agent loops,
-     project instruction files, memory, skills, hooks, subagents, MCP, and
-     reviewing code an agent wrote
+  4. AI Systems, how the models work and why they behave the way they do:
+     neural networks, next-word prediction, pretraining, fine-tuning and
+     RLHF, embeddings and RAG, context windows, hallucination
+  5. Agentic Workflow, putting AI to work: coding agents, project
+     instruction files, memory, skills, hooks, subagents, MCP, reviewing
+     code an agent wrote, and building AI into the product with prompts,
+     tool use, agent loops, and evals
   6. Launch and Learn, instrumentation, metrics, activation and retention,
      experiments, positioning and pricing
 
@@ -198,13 +202,15 @@ We track six skills, called the Builder axes:
   1. Discovery, what to build and for whom
   2. Design, the surface and the flow
   3. Application Architecture, how the app is structured, shipped, and kept
-     safe
-  4. AI Systems, the intelligence inside the product: context windows,
-     prompting, tool use, RAG, hallucination and verification, evals, cost
+     safe, including wiring a model in: API calls, retrieval pipelines, cost
      and latency
-  5. Agentic Workflow, AI as the way you build: coding agents, agent loops,
-     project instruction files, memory, skills, hooks, subagents, MCP, and
-     reviewing code an agent wrote
+  4. AI Systems, how the models work and why they behave the way they do:
+     neural networks, next-word prediction, pretraining, fine-tuning and
+     RLHF, embeddings and RAG, context windows, hallucination
+  5. Agentic Workflow, putting AI to work: coding agents, project
+     instruction files, memory, skills, hooks, subagents, MCP, reviewing
+     code an agent wrote, and building AI into the product with prompts,
+     tool use, agent loops, and evals
   6. Launch and Learn, instrumentation, metrics, activation and retention,
      experiments, positioning and pricing
 
@@ -245,19 +251,18 @@ When we get there, tell me plainly what I still cannot do.
 
 ## AI Systems
 
-The intelligence inside the product.
+How the models work, and why they behave the way they do: the understanding underneath every AI
+feature you build.
 
 | Resource | Format | Why |
 |---|---|---|
 | **Start here:** [Deep Dive into LLMs like ChatGPT](https://www.youtube.com/watch?v=7xTGNNLPyMI), Andrej Karpathy | Video, 3.5h | Pretraining through hallucination, tool use, and RLHF, pitched at builders rather than researchers |
+| [Neural networks](https://www.3blue1brown.com/topics/neural-networks), 3Blue1Brown | Video series, free | Neural networks, gradient descent, and transformers drawn out visually, ending with how a GPT predicts the next word |
+| [Intro to Large Language Models](https://www.youtube.com/watch?v=zjkBMFhNj_g), Andrej Karpathy | Video, 1h | The one-hour version: what a model is, how it is trained, and why it behaves as it does |
+| [The Illustrated Transformer](https://jalammar.github.io/illustrated-transformer/), Jay Alammar | Article, free | Attention and the transformer, one diagram at a time |
+| [How Models Work](10-how-models-work.qmd) | Chapter | The course chapter: next-word prediction, training, and why the same prompt gives different answers |
 | [Context windows](https://platform.claude.com/docs/en/build-with-claude/context-windows) and [prompt caching](https://platform.claude.com/docs/en/build-with-claude/prompt-caching), Anthropic | Docs | What actually counts against the window, and the most direct lever you have on cost and latency |
-| [Tool use with Claude](https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview) | Docs | Canonical reference for function calling and the agentic loop |
-| [Interactive prompt engineering tutorial](https://github.com/anthropics/prompt-eng-interactive-tutorial) and [Claude Cookbooks](https://github.com/anthropics/claude-cookbooks) | Notebooks, free | Runnable examples for RAG, tool use, evals, caching, and cost |
-| [Patterns for Building LLM-based Systems and Products](https://eugeneyan.com/writing/llm-patterns/), Eugene Yan | Article, free | The single best map of the field: evals, RAG, caching, guardrails, defensive UX |
-| [AI Evals email course](https://ai.hamel.dev/eval-course), Hamel Husain and Shreya Shankar | Course, free | Seventeen parts plus two free ebooks. Evals are the axis item nobody has, and this is the on-ramp |
 | [AI Engineering](https://www.oreilly.com/library/view/ai-engineering/9781098166298/), Chip Huyen | Book | The standard reference for the job title. Free chapter notes at [aie-book](https://github.com/chiphuyen/aie-book) |
-| [Effective context engineering for AI agents](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents), Anthropic | Article | Context engineering as the discipline that succeeded prompt engineering |
-| [Why AI evals are the hottest new skill for product builders](https://www.youtube.com/watch?v=BsWxPI9UM4c), Hamel Husain, Sep 2025 | Podcast | The best introduction to why evals matter, from the person who teaches them |
 | [AI Engineering 101](https://www.youtube.com/watch?v=qbvY0dQgSJ4), Chip Huyen, Oct 2025 | Podcast | The book's author covering the same ground in an hour |
 
 **Create your own curated study plan from these resources.** Copy this into Claude Code.
@@ -276,20 +281,23 @@ We track six skills, called the Builder axes:
   1. Discovery, what to build and for whom
   2. Design, the surface and the flow
   3. Application Architecture, how the app is structured, shipped, and kept
-     safe
-  4. AI Systems, the intelligence inside the product: context windows,
-     prompting, tool use, RAG, hallucination and verification, evals, cost
+     safe, including wiring a model in: API calls, retrieval pipelines, cost
      and latency
-  5. Agentic Workflow, AI as the way you build: coding agents, agent loops,
-     project instruction files, memory, skills, hooks, subagents, MCP, and
-     reviewing code an agent wrote
+  4. AI Systems, how the models work and why they behave the way they do:
+     neural networks, next-word prediction, pretraining, fine-tuning and
+     RLHF, embeddings and RAG, context windows, hallucination
+  5. Agentic Workflow, putting AI to work: coding agents, project
+     instruction files, memory, skills, hooks, subagents, MCP, reviewing
+     code an agent wrote, and building AI into the product with prompts,
+     tool use, agent loops, and evals
   6. Launch and Learn, instrumentation, metrics, activation and retention,
      experiments, positioning and pricing
 
 I rated myself 1 to 5 on every axis and got back a six-sided chart of my
 profile. I am working on one axis at a time, starting with my weakest.
 
-You are my tutor for AI Systems: the intelligence inside the product.
+You are my tutor for AI Systems: how the models work, and why they behave the
+way they do.
 
 First, ask me at most four questions to find out where I actually am. Do not
 skip this and do not ask more than four.
@@ -299,12 +307,10 @@ estimate for each step. Read each source yourself before you teach from it.
 
 Sources:
 https://www.youtube.com/watch?v=7xTGNNLPyMI
+https://www.3blue1brown.com/topics/neural-networks
+https://www.youtube.com/watch?v=zjkBMFhNj_g
+https://jalammar.github.io/illustrated-transformer/
 https://platform.claude.com/docs/en/build-with-claude/context-windows
-https://platform.claude.com/docs/en/build-with-claude/prompt-caching
-https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview
-https://eugeneyan.com/writing/llm-patterns/
-https://ai.hamel.dev/eval-course
-https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents
 
 How to teach me:
 - One concept per session, thirty minutes maximum. Say where we stopped.
@@ -315,14 +321,15 @@ How to teach me:
 - If a source is out of date or wrong, tell me. Do not summarize uncritically.
 - Skip anything I already know. Prove it by asking, not by assuming.
 
-We are done when I can explain where your AI feature could be wrong, how you
-would find out, and roughly what one use of it costs.
+We are done when I can explain, without notes, how a model turns a prompt into
+an answer, why it sometimes makes things up, and when I would reach for RAG
+instead of fine-tuning.
 When we get there, tell me plainly what I still cannot do.
 ```
 
 ## Agentic Workflow
 
-AI as the way you build. This axis moves fastest, so favor docs and primary sources over books.
+Putting AI to work, as the way you build and inside the product you build. This axis moves fastest, so favor docs and primary sources over books.
 
 | Resource | Format | Why |
 |---|---|---|
@@ -337,6 +344,12 @@ AI as the way you build. This axis moves fastest, so favor docs and primary sour
 | [Vibe coding and agentic engineering are getting closer than I'd like](https://simonwillison.net/2026/May/6/vibe-coding-and-agentic-engineering/), Simon Willison | Article | An honest admission that review discipline is eroding, from one of its advocates |
 | [What happens after coding is solved](https://www.youtube.com/watch?v=We7BZVKbCVw), Boris Cherny, Feb 2026 | Podcast | The head of Claude Code on where agentic development is going. The most watched episode on this list |
 | [Claude Code and Cowork](https://www.youtube.com/watch?v=Ybrl4FYM57c), Fiona Fung, Jun 2026 | Podcast | The follow-up, four months later, on how the workflow changed again |
+| [Tool use with Claude](https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview) | Docs | Canonical reference for function calling and the agentic loop |
+| [Interactive prompt engineering tutorial](https://github.com/anthropics/prompt-eng-interactive-tutorial) and [Claude Cookbooks](https://github.com/anthropics/claude-cookbooks) | Notebooks, free | Runnable examples for RAG, tool use, evals, caching, and cost |
+| [Patterns for Building LLM-based Systems and Products](https://eugeneyan.com/writing/llm-patterns/), Eugene Yan | Article, free | The single best map of the field: evals, RAG, caching, guardrails, defensive UX |
+| [AI Evals email course](https://ai.hamel.dev/eval-course), Hamel Husain and Shreya Shankar | Course, free | Seventeen parts plus two free ebooks. Evals are the axis item nobody has, and this is the on-ramp |
+| [Effective context engineering for AI agents](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents), Anthropic | Article | Context engineering as the discipline that succeeded prompt engineering |
+| [Why AI evals are the hottest new skill for product builders](https://www.youtube.com/watch?v=BsWxPI9UM4c), Hamel Husain, Sep 2025 | Podcast | The best introduction to why evals matter, from the person who teaches them |
 
 **Create your own curated study plan from these resources.** Copy this into Claude Code.
 It reads the sources above, finds out what you already know, and teaches against your own
@@ -354,20 +367,23 @@ We track six skills, called the Builder axes:
   1. Discovery, what to build and for whom
   2. Design, the surface and the flow
   3. Application Architecture, how the app is structured, shipped, and kept
-     safe
-  4. AI Systems, the intelligence inside the product: context windows,
-     prompting, tool use, RAG, hallucination and verification, evals, cost
+     safe, including wiring a model in: API calls, retrieval pipelines, cost
      and latency
-  5. Agentic Workflow, AI as the way you build: coding agents, agent loops,
-     project instruction files, memory, skills, hooks, subagents, MCP, and
-     reviewing code an agent wrote
+  4. AI Systems, how the models work and why they behave the way they do:
+     neural networks, next-word prediction, pretraining, fine-tuning and
+     RLHF, embeddings and RAG, context windows, hallucination
+  5. Agentic Workflow, putting AI to work: coding agents, project
+     instruction files, memory, skills, hooks, subagents, MCP, reviewing
+     code an agent wrote, and building AI into the product with prompts,
+     tool use, agent loops, and evals
   6. Launch and Learn, instrumentation, metrics, activation and retention,
      experiments, positioning and pricing
 
 I rated myself 1 to 5 on every axis and got back a six-sided chart of my
 profile. I am working on one axis at a time, starting with my weakest.
 
-You are my tutor for Agentic Workflow: AI as the way you build.
+You are my tutor for Agentic Workflow: putting AI to work, as the way I build
+and inside the product.
 
 First, ask me at most four questions to find out where I actually am. Do not
 skip this and do not ask more than four.
@@ -383,6 +399,9 @@ https://www.anthropic.com/engineering/writing-tools-for-agents
 https://www.anthropic.com/engineering/multi-agent-research-system
 https://martinfowler.com/articles/pushing-ai-autonomy.html
 https://modelcontextprotocol.io
+https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview
+https://eugeneyan.com/writing/llm-patterns/
+https://ai.hamel.dev/eval-course
 
 How to teach me:
 - One concept per session, thirty minutes maximum. Say where we stopped.
@@ -394,7 +413,8 @@ How to teach me:
 - Skip anything I already know. Prove it by asking, not by assuming.
 
 We are done when I can set your project up so an agent does good work in it,
-and review what it wrote well enough to catch what it got wrong.
+review what it wrote well enough to catch what it got wrong, and put an AI
+feature in your product with an eval that tells you when it is wrong.
 When we get there, tell me plainly what I still cannot do.
 ```
 
@@ -431,13 +451,15 @@ We track six skills, called the Builder axes:
   1. Discovery, what to build and for whom
   2. Design, the surface and the flow
   3. Application Architecture, how the app is structured, shipped, and kept
-     safe
-  4. AI Systems, the intelligence inside the product: context windows,
-     prompting, tool use, RAG, hallucination and verification, evals, cost
+     safe, including wiring a model in: API calls, retrieval pipelines, cost
      and latency
-  5. Agentic Workflow, AI as the way you build: coding agents, agent loops,
-     project instruction files, memory, skills, hooks, subagents, MCP, and
-     reviewing code an agent wrote
+  4. AI Systems, how the models work and why they behave the way they do:
+     neural networks, next-word prediction, pretraining, fine-tuning and
+     RLHF, embeddings and RAG, context windows, hallucination
+  5. Agentic Workflow, putting AI to work: coding agents, project
+     instruction files, memory, skills, hooks, subagents, MCP, reviewing
+     code an agent wrote, and building AI into the product with prompts,
+     tool use, agent loops, and evals
   6. Launch and Learn, instrumentation, metrics, activation and retention,
      experiments, positioning and pricing
 

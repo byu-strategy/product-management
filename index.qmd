@@ -57,11 +57,12 @@ This course turns product managers into full-stack AI product builders. You will
 problem worth solving, build a real digital product for it, put it in front of real users,
 and ship it, using AI coding agents as your primary instrument throughout.
 
-The course is organized around six builder skills: **Agentic Workflow** (building with AI as
-your instrument), **Discovery** (what to build, for whom, and whether you should),
-**Design** (the surface and the flow), **Application Architecture** (how it is structured,
-shipped, and kept safe), **AI Systems** (the intelligence inside the product), and **Launch
-and Learn** (how people find it, and whether it worked). Each gets two weeks. You will rate
+The course is organized around six builder skills: **Agentic Workflow** (putting AI to work,
+as the way you build and inside the product you build), **Discovery** (what to build, for
+whom, and whether you should), **Design** (the surface and the flow), **Application
+Architecture** (how it is structured, shipped, and kept safe), **AI Systems** (how the models
+work, and why they behave the way they do), and **Launch and Learn** (how people find it, and
+whether it worked). Each gets two weeks. You will rate
 yourself on all six in the first week and again in the last, and see how the shape changed.
 
 Tooling is Claude Code, GitHub, Next.js, Supabase, and Vercel. You do not need to arrive
