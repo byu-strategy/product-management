@@ -10,7 +10,7 @@ The course was previously numbered STRAT 490R ("Creating Digital Products with A
 
 ### Location and deployment
 
-- **Canonical repo:** `~/Documents/courses/product-management` (a fork of the older `strategy-prototyping` repo, moved off OneDrive). Full git history is preserved.
+- **Canonical repo:** `~/courses/product-management` (moved from `~/Documents/courses/product-management`, whose copy is stale since 2026-08-29; a fork of the older `strategy-prototyping` repo, moved off OneDrive). Full git history is preserved.
 - **GitHub:** `byu-strategy/product-management`. **Live site:** https://byu-strategy.github.io/product-management/
 - The old `strategy-prototyping` repo (on OneDrive, GitHub `byu-strategy/strategy-prototyping`) is the archived STRAT 490R version. Do not commit new course work there.
 
@@ -91,7 +91,7 @@ quarto serve
 ## Important Notes
 
 - The project uses Quarto's book format with HTML output
-- Bibliography references use `references.bib` with `informs.csl` style
+- Bibliography references use `references.bib` with `chicago-author-date.csl` style (set in `_quarto.yml`); verify every new entry against CrossRef, Open Library or the publisher, and escape tweet handles as `\@handle`
 - Custom CSS styling in `styles.css` for book pages
 - Custom SCSS styling in `custom.scss` for RevealJS slides (BYU color scheme)
 - Header/footer includes via `_header.html` and `_footer.html`
