@@ -194,9 +194,7 @@ The loop is the point of the method:
 
 #### The Build-Measure-Learn Loop [@ries2011lean]
 
-```
-BUILD → MEASURE → LEARN → BUILD → ...
-```
+![One round of usability testing is one turn of the Build-Measure-Learn loop. What passes between the steps is the changed screen, the notes from five sessions, and the one or two problems the notes say to fix next. Loop after Eric Ries [@ries2011lean].](images/diagrams/ch06-build-measure-learn.svg){#fig-build-measure-learn fig-alt="Three boxes from left to right. Build, with a hammer icon: you and your agent make a small fix. An arrow labeled changed screen leads to Measure, highlighted, with an eye icon: five new users try the same tasks. An arrow labeled notes from 5 sessions leads to Learn, with a numbered-list icon: you group the notes and rank problems by frequency and severity. A return arrow from Learn back to Build is labeled top 1 or 2 problems to fix." width="100%"}
 
 Each cycle should be as fast as possible:
 - **Build**: Make a small, testable change

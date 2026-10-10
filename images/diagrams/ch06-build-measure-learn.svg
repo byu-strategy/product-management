@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 366" role="img" aria-labelledby="t d" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+<title id="t">One usability round as one turn of Build-Measure-Learn</title>
+<desc id="d">Three steps left to right. Build: you and your agent make a small change. An arrow carrying the changed screen leads to Measure, highlighted: five new users try the same tasks. An arrow carrying notes from five sessions leads to Learn: you group the notes and rank them by severity. A return arrow from Learn back to Build carries the top one or two problems to fix, closing the loop.</desc>
+<defs>
+<filter id="sh" filterUnits="userSpaceOnUse" x="0" y="0" width="1000" height="366"><feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#0A2E4D" flood-opacity="0.13"/></filter>
+<linearGradient id="stepG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F1F6FB"/><stop offset="1" stop-color="#E1EAF5"/></linearGradient>
+<linearGradient id="royalG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1A6BCB"/><stop offset="1" stop-color="#0057B8"/></linearGradient>
+<marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5A6672"/></marker>
+</defs>
+<rect width="1000" height="366" rx="8" fill="#FAFBFC"/>
+<rect x="30" y="40" width="220" height="216" rx="10" fill="url(#stepG)" stroke="#B9D0EA" stroke-width="1.5" filter="url(#sh)"/>
+<g transform="translate(120,66) scale(1.667)" fill="none" stroke="#002E5D" stroke-width="1.32" stroke-linecap="round" stroke-linejoin="round"><path d="m15 12-8.373 8.373a1 1 0 1 1-3-3L12 9" />
+  <path d="m18 15 4-4" />
+  <path d="m21.5 11.5-1.914-1.914A2 2 0 0 1 19 8.172V7l-2.26-2.26a6 6 0 0 0-4.202-1.756L9 2.96l.92.82A6.18 6.18 0 0 1 12 8.4V10l2 2h1.172a2 2 0 0 1 1.414.586L18.5 14.5" /></g>
+
+<text x="140" y="152" font-size="22" font-weight="700" fill="#002E5D" text-anchor="middle">Build</text>
+<text x="140" y="188" font-size="17" fill="#5A6672" text-anchor="middle">You and your agent</text>
+<text x="140" y="212" font-size="17" fill="#5A6672" text-anchor="middle">make a small fix</text>
+<rect x="390" y="40" width="220" height="216" rx="10" fill="url(#royalG)" stroke="none" stroke-width="1.5" filter="url(#sh)"/>
+<g transform="translate(480,66) scale(1.667)" fill="none" stroke="#FFFFFF" stroke-width="1.32" stroke-linecap="round" stroke-linejoin="round"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" />
+  <circle cx="12" cy="12" r="3" /></g>
+
+<text x="500" y="152" font-size="22" font-weight="700" fill="#FFFFFF" text-anchor="middle">Measure</text>
+<text x="500" y="188" font-size="17" fill="#DCE6F2" text-anchor="middle">Five new users try</text>
+<text x="500" y="212" font-size="17" fill="#DCE6F2" text-anchor="middle">the same tasks</text>
+<rect x="750" y="40" width="220" height="216" rx="10" fill="url(#stepG)" stroke="#B9D0EA" stroke-width="1.5" filter="url(#sh)"/>
+<g transform="translate(840,66) scale(1.667)" fill="none" stroke="#002E5D" stroke-width="1.32" stroke-linecap="round" stroke-linejoin="round"><path d="M10 12h11" />
+  <path d="M10 18h11" />
+  <path d="M10 6h11" />
+  <path d="M4 10h2" />
+  <path d="M4 6h1v4" />
+  <path d="M6 18H4c0-1 2-2 2-3s-1-1.5-2-1" /></g>
+
+<text x="860" y="152" font-size="22" font-weight="700" fill="#002E5D" text-anchor="middle">Learn</text>
+<text x="860" y="188" font-size="17" fill="#5A6672" text-anchor="middle">You group the notes</text>
+<text x="860" y="212" font-size="17" fill="#5A6672" text-anchor="middle">and rank problems by</text>
+<text x="860" y="236" font-size="17" fill="#5A6672" text-anchor="middle">frequency and severity</text>
+<line x1="258" y1="148.0" x2="380" y2="148.0" stroke="#5A6672" stroke-width="2" marker-end="url(#a)"/>
+<text x="320.0" y="108.0" font-size="17" font-weight="600" fill="#2C3E50" text-anchor="middle">Changed</text>
+<text x="320.0" y="130.0" font-size="17" font-weight="600" fill="#2C3E50" text-anchor="middle">screen</text>
+<line x1="618" y1="148.0" x2="740" y2="148.0" stroke="#5A6672" stroke-width="2" marker-end="url(#a)"/>
+<text x="680.0" y="108.0" font-size="17" font-weight="600" fill="#2C3E50" text-anchor="middle">Notes from</text>
+<text x="680.0" y="130.0" font-size="17" font-weight="600" fill="#2C3E50" text-anchor="middle">5 sessions</text>
+<path d="M860,264 L860,304 Q860,316 848,316 L152,316 Q140,316 140,304 L140,266" fill="none" stroke="#5A6672" stroke-width="2" marker-end="url(#a)"/>
+<rect x="370" y="299" width="260" height="34" fill="#FAFBFC"/>
+<text x="500" y="322" font-size="17" font-weight="600" fill="#2C3E50" text-anchor="middle">Top 1 or 2 problems to fix</text>
+</svg>
