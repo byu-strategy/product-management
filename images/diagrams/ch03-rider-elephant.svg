@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 530" role="img" aria-labelledby="t d" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 556" role="img" aria-labelledby="t d" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
   <title id="t">The rider and the elephant</title>
   <desc id="d">A line drawing of a large elephant walking to the right with a small rider on its back holding the reins. The rider is labeled deliberate reasoning. The elephant is labeled emotion and intuition. Ahead of them the path forks. A dashed branch rising to the upper right is labeled the route the rider chooses; a solid branch continuing straight ahead is labeled the route the elephant takes. The elephant is walking onto the straight branch: when the two disagree, the elephant goes its own way.</desc>
   <defs>
@@ -23,7 +23,7 @@
     </marker>
     <clipPath id="cBody"><path d="M282,352 C262,320 262,280 282,252 C310,214 370,194 430,192 C480,190 520,198 548,212 C560,190 600,182 628,196 C656,210 668,238 666,268 C664,300 660,330 668,362 C676,394 690,420 706,432 C716,440 716,452 704,454 C688,456 670,444 660,428 C644,402 636,372 632,344 C630,330 622,322 612,322 C602,330 596,342 594,356 C594,390 596,430 598,466 L548,466 C546,436 544,410 542,392 C510,400 460,404 430,402 C428,426 428,448 428,466 L378,466 C376,440 374,410 372,388 C340,384 300,374 282,352 Z"/></clipPath>
   </defs>
-  <rect width="1000" height="530" rx="8" fill="#FAFBFC"/>
+  <rect width="1000" height="556" rx="8" fill="#FAFBFC"/>
 
   <!-- ground and the fork ahead -->
   <line x1="120" y1="466" x2="722" y2="466" stroke="#C3CCD6" stroke-width="2" stroke-linecap="round"/>
@@ -77,6 +77,7 @@
   <text x="206" y="230" text-anchor="end" font-size="17" fill="#2C3E50">emotion and</text>
   <text x="206" y="252" text-anchor="end" font-size="17" fill="#2C3E50">intuition</text>
 
-  <text x="950" y="362" text-anchor="end" font-size="17" font-weight="600" fill="#0057B8">Route the rider chooses</text>
-  <text x="950" y="500" text-anchor="end" font-size="17" font-weight="600" fill="#002E5D">Route the elephant takes</text>
+  <text x="950" y="340" text-anchor="end" font-size="17" font-weight="600" fill="#0057B8">Where reason says to go</text>
+  <text x="950" y="500" text-anchor="end" font-size="17" font-weight="600" fill="#002E5D">Where emotion goes</text>
+  <text x="950" y="524" text-anchor="end" font-size="16" fill="#5A6672">when they disagree, the elephant usually wins</text>
 </svg>
