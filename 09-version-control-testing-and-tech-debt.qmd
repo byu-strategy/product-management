@@ -63,6 +63,16 @@ commits every changed file. Click the `+` on your file's row first, or turn off
 `git.enableSmartCommit` in Settings. The Agent Team Kit's
 [hands-on edits guide](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/docs/HANDS-ON-EDITS.md) covers both.
 
+Two more rules from the kit apply when sessions share a folder. **Format only the files you
+changed.** A command that formats the whole repo, such as `npx prettier --write .`, changes the
+spacing in files nobody worked on, buries your change in a long diff, and can pull the other
+session's edits into your commit
+([format only touched files](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/memory-pack/format-only-touched-files.md)).
+**Do not let an agent fix its last commit with `git commit --amend` or a rebase.** Both act on
+whatever commit is newest. If the other session committed in between, the amend rewrites that
+session's commit. Make a new commit instead
+([never amend on a shared branch](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/memory-pack/never-amend-on-shared-main.md)).
+
 ::: {.callout-tip title="Try it"}
 Ask Claude Code: *"Show my last ten commits and, for each, one line on what it changed."* Pick
 one that is three or more commits back and ask what the app would lose if you returned to it.
@@ -401,7 +411,13 @@ every setting production has (set to staging values), the same tables (the same 
 its own database. Each difference from production is a place where "it worked on staging" may not
 hold on your live site, so keep the differences few and written down: usually the database and
 its keys, plus anything that reaches people outside your team, such as email (sent only to your
-team's addresses) and payments (in the payment provider's test mode). A staging site with old
+team's addresses) and payments (in the payment provider's test mode). Enforce those differences
+in one place: send every email, payment, and request to an outside service through one function
+that, on staging, lets through only your team's addresses and the providers' test modes. A check
+repeated in each place that sends email will be missing from the next feature that sends one
+([fence outward writes at one
+chokepoint](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/memory-pack/fence-outward-writes-at-one-chokepoint.md)).
+A staging site with old
 tables, missing settings, or demo accounts unlike any real account tells you little about
 production. The Agent Team Kit's [staging twin
 spec](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/docs/STAGING-TWIN-SPEC.md)
@@ -629,33 +645,56 @@ once now, so the first time you need the logs is not during a real outage.
 
 ## Key Concepts
 
-- **Commit**: a saved snapshot of the project, with a message.
-- **Branch**: a parallel line of commits, where changes are built without touching `main`.
-- **Pull request**: the review gate where a branch's diff is checked, previewed, and approved
-  before it merges.
-- **Diff**: the lines a change adds, removes, or edits.
-- **Automated checks**: tests, type check, lint, and build, run on every pull request.
+- **Commit**: a saved snapshot of the whole project, with a message saying what changed and why.
+  Small commits with clear messages are points you can return to.
+- **Stage only your own files**: when two sessions share a folder, `git add .` stages the other
+  session's work too. Stage files by name, format only the files you changed, and make a new
+  commit instead of `--amend`.
+- **Branch**: a separate line of commits where a change is built without touching `main`.
+- **Pull request**: a request on GitHub to merge a branch into `main`. While it is open, the
+  checks run, Vercel builds a preview, and a reviewer reads the diff; nothing reaches `main` or
+  the live site until the merge.
+- **Diff**: every line a change adds, removes, or edits, compared with `main`. Some problems,
+  such as a weakened row-level security policy, are invisible in the running app and plain in
+  the diff.
+- **Automated checks**: tests, type check, lint, and build, run on every pull request. Tests run
+  the code; the type check and lint read it without running it; the build fails here if it
+  would fail on Vercel.
 - **Trunk-based development**: one shared `main` (the trunk) that is always releasable, with
   every change merged into it within a day or two, by committing straight to it (solo, small
-  changes) or, the course default, through a short-lived branch and a pull request.
-- **Trunk**: the one shared branch everyone's work goes into; in your repo, `main`.
+  changes, checks run first) or, the course default, through a short-lived branch and a pull
+  request.
+- **Long-lived branch and merge conflict**: a branch kept open for more than a couple of days
+  drifts from `main`; where both changed the same lines, git stops with a merge conflict and a
+  person has to choose. Short branches keep each diff small enough to review.
 - **Pull `main`**: copy the newest commits on `main` from GitHub to your laptop before creating a
   branch, so the branch starts from everyone's latest work.
-- **Merge conflict**: two branches changed the same lines, and git needs a person to choose.
-- **Feature flag**: a setting that keeps merged but unfinished code hidden from users, or decides
-  which users see a deployed feature.
-- **Preview deployment**: a working copy of the app for one branch, separate from production.
 - **Environment**: one running copy of the app, defined by which code runs, where it runs, and
-  which settings (environment variables) it reads; the settings decide which database it uses.
+  which settings (environment variables) it reads. You have three: your laptop, Preview, and
+  Production.
 - **Development server vs. production build**: `npm run dev` compiles pages as you open them and
   shows detailed errors; `npm run build` compiles the whole app the way Vercel does, and can fail
   where the development server worked.
+- **The settings decide the database**: an environment uses whichever Supabase project its
+  variables name. If your laptop or previews hold production's keys, they read and write real
+  users' data.
 - **Staging**: an environment kept as close to production as possible, with its own data, for
-  trying a change before users see it.
-- **Release**: turning a deployed feature on for some or all users, with a feature flag.
+  trying a change before users see it. Each difference from production is a place where "it
+  worked on staging" may not hold.
+- **Feature flag**: a value the code checks to decide which users get new behavior. It lets
+  unfinished work merge switched off, and it lets a deployed feature reach some users before
+  others. Remove it once the feature is on for everyone.
+- **Release**: turning a deployed feature on for some or all users, with a feature flag. It
+  needs no new deploy.
+- **Staging or a flag**: a change that takes effect for everyone the moment it deploys (a
+  migration, an upgrade) goes to staging first; a change whose worst case harms only your team's
+  data, or can be undone, can go behind a flag in production.
 - **Seed data**: made-up rows loaded into a development or staging database.
-- **Instant Rollback and `git revert`**: two ways back from a bad deploy; neither undoes data.
-- **Logs and error reports**: browser console, Vercel runtime logs, Supabase logs, an error
-  reporter such as Sentry.
+- **Instant Rollback and `git revert`**: Instant Rollback points your domain back at an earlier
+  deployment in seconds; `git revert` makes a new commit that undoes an old one. Neither undoes
+  data, so migrations add before they remove.
+- **Logs and error reports**: the browser console, Vercel runtime logs, Supabase logs, and an
+  error reporter such as Sentry. A useful log line says what happened, where, and an id, never
+  personal data or tokens.
 
 <!-- learn -->

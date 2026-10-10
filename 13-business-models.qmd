@@ -663,13 +663,36 @@ Please read my `business-model-canvas.md` file now and create the presentation.
 
 ## Key Concepts
 
-- **Business model**: how you create value for a customer, deliver it, and capture part of it at a cost below what you capture.
-- **Business Model Canvas**: ten blocks (Osterwalder's nine, with the value proposition split into Jobs-To-Be-Done and Customer Value Proposition) describing how a business creates, delivers, and captures value.
-- **Customer segments**: who you serve, stated narrowly enough to act on.
-- **Value proposition**: the specific gain or pain relief you deliver.
-- **Revenue model**: the rule that turns use into money; each one requires something to be true.
-- **Fixed and variable costs**: costs that stay the same as you grow, and costs that grow with each user or use, including model calls.
-- **Contribution margin**: price minus variable cost per customer.
-- **Unit economics**: what one customer costs to acquire and to serve, and what they return over time.
-- **Break-even**: fixed costs divided by contribution margin per customer.
-- **Margin-based LTV**: contribution margin per month times months retained.
+- **Business model**: how you create value for a specific customer, deliver it through some
+  channel, and capture part of it as revenue, at a cost lower than what you capture.
+- **Business Model Canvas**: a one-page tool with ten blocks (Osterwalder's nine, with the value
+  proposition split by Jeff Dyer into Jobs-To-Be-Done and Customer Value Proposition). The
+  customer side asks who pays and how; the operations side asks what you must do and have, and
+  what it costs.
+- **Jobs-To-Be-Done and Customer Value Proposition**: the job customers are hiring your product
+  to do, and the specific solution you offer to do it.
+- **Blocks constrain each other**: each choice forces others. A self-serve channel needs
+  onboarding that works without you; a subscription makes retention matter most; a model call
+  as the core activity adds cost with every use. A canvas whose blocks contradict each other
+  cannot work.
+- **Every block is a hypothesis**: mark each entry as evidence (an interview, a payment, usage
+  logs) or a guess, and test next the guesses that would sink the model if wrong.
+- **Revenue model**: the rule that turns use into money (subscription, usage-based, freemium,
+  one-time, advertising, commission). Each works only if something specific is true about your
+  customer and your costs.
+- **Fixed and variable costs**: costs that stay the same as you grow, and costs that grow with
+  each user or use, including model calls and payment fees.
+- **Contribution margin**: price minus variable cost per customer; what each customer
+  contributes toward fixed costs.
+- **Unit economics**: look at one customer. If each brings in more than they cost to serve, you
+  need enough of them to cover fixed costs; if each costs more, more customers make it worse.
+- **Break-even**: fixed costs divided by contribution margin per customer. A few heavy users can
+  move it, so measure the distribution of usage as well as the average.
+- **Margin-based LTV**: contribution margin per month times the average months a customer stays.
+  Using revenue instead of margin overstates it, by a lot for an AI product.
+- **Customer acquisition cost (CAC)**: what you spend, in money and time, to get one paying
+  customer. If CAC is higher than LTV, every new customer loses money.
+- **Drafting the canvas with AI**: a model can draft every block and check that they agree, but
+  where your notes say nothing it fills the block with something plausible. Ask of every block,
+  "how do I know this?"
+

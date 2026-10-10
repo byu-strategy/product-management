@@ -544,21 +544,46 @@ event `profile_updated` that includes the user's new phone number. Then search y
 
 ## Key Concepts
 
-- **Table, row, column**: a noun of your product, one instance of it, one fact about each.
-- **Primary key / foreign key**: a row's unique id, and a column pointing at another table's id.
-- **Schema**: the whole design of tables and relationships; the hardest thing to change later.
-- **Migration**: a saved SQL file that makes one schema change, applied in order.
+- **Table, row, column**: a noun of your product, one instance of it, and one fact recorded
+  about every row, with a type.
+- **Primary key / foreign key**: a row's unique id, and a column holding another table's primary
+  key. The table on the "many" side of a relationship holds the foreign key.
+- **Schema**: the whole design of tables and relationships. It is the hardest thing to change
+  later, because real rows have to be migrated, so sketch it before you build.
+- **Migration**: a SQL file in your repo that makes one schema change, applied in order. Unlike a
+  click in the Table Editor, it is reviewable, repeatable on a fresh database, and in git.
+- **Develop against a disposable copy**: once real people use the app, develop against a second
+  Supabase project or a local copy filled with made-up data, and keep production keys out of
+  `.env.local`.
 - **Query blocks**: `SELECT` columns, `FROM` a table, `WHERE` filter, `ORDER BY` sort, `LIMIT`,
-  `JOIN`.
-- **CRUD**: Create, Read, Update, Delete.
-- **Index**: a sorted lookup list on a column that makes finding rows fast.
-- **RLS (Row Level Security)**: policies in the database that decide which rows each user may
-  touch; the access control in a Supabase app.
-- **HTTP methods and status codes**: what a request asks for, and how it went (2xx, 4xx, 5xx).
-- **Rate limit (429)**: a cap on how many requests you may send in a period.
-- **Public vs. secret keys**: publishable keys ship to the browser; secret keys stay on the server.
-- **Environment variables**: settings kept outside the code; `NEXT_PUBLIC_` ones reach the browser.
-- **Sensitive data**: personal, student, and client data, which may go only where its rules allow,
-  including prompts and logs.
+  and `JOIN`. A query that matches nothing returns an empty list, which is not an error.
+- **Join**: one result row for each matching pair across two tables; rows with no match drop
+  out unless you use a `LEFT JOIN`.
+- **CRUD**: Create, Read, Update, Delete. Update and delete pick rows with the same `WHERE`, so a
+  missing filter changes or erases every row.
+- **Index**: a sorted lookup list on a column that makes reads fast and each write slightly
+  slower; the first suspect when a page slows as data grows.
+- **RLS (Row Level Security)**: policies in the database that decide which rows each request may
+  touch, as if an extra `WHERE` were added to every query. In a Supabase app it is the only
+  place access can be enforced.
+- **RLS on with no policies**: nobody can read anything through the publishable key, the usual
+  cause of an empty list. A read the rules block returns 200 with an empty list, not an error.
+- **Request and response**: a request has a method, an address, headers, and sometimes a body; a
+  response has a status code and usually a body.
+- **Status codes**: 2xx means it worked, 4xx means the request was the problem (401 not signed
+  in, 403 not allowed, 429 rate limit), and 5xx means the server was the problem. Each calls
+  for a different message to the user.
+- **Requests fail**: a network error or timeout returns no status code at all. `fetch` throws
+  only when no answer came back, so code must check `response.ok` and show the user what
+  happened without losing what they typed.
+- **Public vs. secret keys**: publishable keys ship to the browser and can do only what your
+  rules allow; secret keys bypass your rules or spend your money, so they stay on the server.
+  A call that carries a secret key goes from your server, never the browser.
+- **Environment variables**: settings kept outside the code, in `.env.local` and Vercel's
+  settings; `NEXT_PUBLIC_` ones are copied into the browser.
+- **Rotate a leaked key**: deleting it from the code is not enough. Create a new key in the
+  provider's dashboard and revoke the old one.
+- **Sensitive data**: personal, student, and client data may go only where its rules allow.
+  Sending data to a model, a log, or an analytics event copies it to that company's servers.
 
 <!-- learn -->

@@ -492,18 +492,45 @@ decide, using the lists above, whether to pay it down now or later.
 - **Test runner and test suite**: the program that finds test files by name and runs them
   (Vitest, Jest, Playwright), and all the tests in a project. Test files in `node_modules`
   belong to your dependencies and are not run.
+- **Tests in the agent loop**: running the suite is the agent's check step. Red partway through
+  a session is normal; what matters is whether the last run is green, and whether it got there
+  by fixing the code or by changing a test.
 - **Unit, integration, end-to-end tests**: one function from your app run directly, with no
-  browser, server, or database; a request to a real server route that writes to a test database;
-  a real browser clicking through the whole running app. The **testing pyramid**: many of the
-  first, fewest of the last.
-- **Permission, regression, snapshot, and smoke tests**: a user cannot reach others' rows; a fixed
-  bug stays fixed; output unchanged since approved; the deployed app is up.
-- **Mock and flaky test**: a stand-in for a real dependency; a test that fails at random.
-- **Technical debt**: the cost of rework from choosing a quick solution over a better one.
-- **Strategic vs. accidental debt**: a deliberate loan with a plan, or a mess nobody chose.
-- **Boy Scout Rule**: leave code better than you found it.
-- **DRY and single responsibility**: one place for each piece of knowledge, one job per piece
-  of code.
-- **Refactoring**: improving structure without changing behavior.
+  browser, server, or database; a request to a real server route that writes to a test
+  database, never the live one; a real browser clicking through the whole running app. The
+  more of the app a test runs, the slower it is and the more kinds of failure it can find.
+- **Permission, regression, snapshot, and smoke tests**: a user cannot reach others' rows (signed
+  in with the publishable key, never the secret key); a fixed bug stays fixed; output unchanged
+  since approved; the deployed app works at all.
+- **Regression test that fails first**: for every bug, have the agent write a test that
+  reproduces it and show it failing, then fix the code so it passes.
+- **Mock and flaky test**: a stand-in for a real service that always returns the same answer, so
+  the test checks your assumption about that service; a test that passes or fails at random,
+  which should be fixed or deleted.
+- **Testing pyramid**: many unit tests, fewer integration tests, fewest end-to-end tests. A
+  starting set for a student product is unit tests on rules, permission tests on every table
+  with user data, and one end-to-end test of the demo path.
+- **What a passing suite means**: none of the checks someone wrote failed. Untested behavior is
+  unchecked, coverage counts lines run whether or not anything was checked, and code and tests
+  can share the same misunderstanding.
+- **Your part in testing**: ask for tests on money, grades, permissions, and the main path; read
+  the test names as a spec; read test changes first in a diff; and when changing shared code,
+  test every feature that calls it.
+- **Technical debt**: the extra work you will have to do later because you chose a quick
+  solution now. Like a loan, it accumulates interest: every later change in that code takes
+  longer. An agent borrows faster because it writes code faster.
+- **Strategic vs. accidental debt**: debt you take on knowingly, with a plan to repay it, or debt
+  nobody chose, from not knowing a better way, changed requirements, or quick fixes that stayed.
+- **Tech debt quadrant**: deliberate or inadvertent (did you know?) crossed with reckless or
+  prudent (was it thought through?). Prudent deliberate debt is often justified; reckless
+  inadvertent debt is the most dangerous.
+- **When to pay it down**: when it blocks features, when you are changing that code anyway, when
+  it causes bugs, or when security is involved. Defer while you are still testing demand, when
+  the code may be deleted, or when cleanup costs more than it saves.
+- **Boy Scout Rule**: leave code better than you found it, a little at a time.
+- **DRY and single responsibility**: one place for each piece of knowledge, one job per function
+  or component, so the next change touches one place.
+- **Refactoring**: changing code's structure without changing what it does; safe only when tests
+  or a careful preview confirm the behavior stayed the same.
 
 <!-- learn -->

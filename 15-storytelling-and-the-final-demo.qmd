@@ -154,11 +154,34 @@ Write your demo as five lines: the person, the problem, the moment it works, the
 
 ## Key Concepts
 
-- **A story has a job**: aim, approach, act. Know what it is for.
-- **Story database**: keep a list of 20+ personal stories, ready to use.
-- **Five-second moment**: the single instant the story turns on.
-- **Show change**: before and after, or it is not a story.
-- **Rider and elephant**: persuade the logic, move the emotion.
-- **The demo as an argument**: the person and the problem, the moment it works, the evidence, then what you learned, in three minutes.
-- **Innovation capital**: human, social, and reputation capital that make people willing to back you.
-- **Impression amplifiers**: materialize, compare, story, commit; used honestly.
+- **A story has a job**: aim (what you want to communicate, and to whom), approach (which story
+  serves that aim), act (tell it and watch whether it landed). If you cannot say what a story is
+  for, you are not ready to tell it.
+- **Story database**: a running list of at least 20 personal stories, kept in your repo, ready
+  for interviews, demos, and pitches.
+- **Five-second moment**: the single instant a story turns on. Know where it is and slow down
+  there.
+- **Show change**: a story is a before and an after; without a change, it is a report.
+- **Rider and elephant**: every listener has deliberate reasoning (the rider) and emotion and
+  intuition (the elephant). Facts persuade the rider; stakes, specifics, and feeling move the
+  elephant. Lead with your point, and make it concrete and human.
+- **SUCCESs**: the six traits of ideas people remember: Simple, Unexpected, Concrete, Credible,
+  Emotional, and Stories. When a pitch is not working, find the missing one.
+- **What is and what could be**: Duarte's structure moves between today's reality and the better
+  future your product makes possible, and closes on a call to action.
+- **Four variables of a story**: setting, method, audience, and purpose. Choose each on purpose;
+  a demo for a decision-maker differs from a walkthrough for a peer.
+- **The demo as an argument**: one claim (this product does a real job for a real person),
+  supported in order by the person and the problem, the moment it works on the deployed
+  product, the evidence, then what you learned, in three minutes.
+- **Evidence at student scale**: small, real numbers are strong evidence; invented or inflated
+  ones are not. Grading rests on the quality of your decisions and learning, whatever the size of
+  the numbers.
+- **Innovation capital**: the ability to attract support, built from human capital (your skills
+  and passion), social capital (who will vouch for you), and reputation capital (what you have
+  done).
+- **Impression amplifiers**: materialize (show the working product), compare (anchor to
+  something familiar), story, and commit (show your stake). Used to make something false look
+  true, they become deception.
+- **Rehearse**: practice out loud, on camera, timed; watch it back, cut what does not serve the
+  aim, and fix what confused a test listener.

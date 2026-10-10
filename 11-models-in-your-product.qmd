@@ -569,19 +569,49 @@ bigger than the noise? Which test cases changed? Commit the eval, the prompt, an
 
 ## Key Concepts
 
-- **Server-side only**: the API key lives on the server, never in browser-shipped code. `NEXT_PUBLIC_` is how it leaks.
-- **Content blocks**: a response is a list of typed blocks, not a string.
-- **System prompt**: standing instructions, kept separate from user input.
-- **Prompts are product code**: instructions, examples, and output format live in versioned files and change only with an eval run.
-- **Stateless API**: each call sees only what you send; your app owns the conversation history.
-- **Structured output**: define a schema, get a guaranteed shape back. Do not parse prose.
-- **Streaming**: same total wait, but the user sees words appear almost at once. Use it for anything a person watches.
-- **RAG**: embed, store, retrieve the nearest chunks, answer from them. Wrong retrieval gives confident wrong answers.
-- **Tool use and agent loops**: the model asks, your code runs. Every loop needs a budget, a stop condition, and a human decision point.
-- **Token**: the billing unit, roughly three quarters of a word. Output costs about 5x input. Prices live on the pricing page.
-- **Prompt caching**: repeated prefixes get large discounts.
-- **Non-determinism**: same input, different output. Never source a fact your system depends on from a model.
-- **Prompt injection**: user text, documents, web pages, and tool results inside a prompt are untrusted input, not instruction.
-- **Eval**: a scored test set that tells you whether a change helped. The difference between engineering and guessing.
+- **A model call is not a function call**: it returns something plausible every time, costs
+  money every time, takes a second or more, and can be confidently wrong without failing.
+- **Autonomy spectrum**: from a bare model to a multi-agent system, more autonomy adds
+  flexibility and reduces predictability. Default to a fixed process with a model call inside
+  it, and move right only when the task branches in ways you cannot list.
+- **Server-side only**: the API key lives in a route handler's environment variable, never in
+  browser code. A `NEXT_PUBLIC_` prefix is what would ship it to the browser.
+- **System prompt and content blocks**: the system prompt holds standing instructions, separate
+  from the user's input; a response is a list of typed blocks, so filter for the text ones.
+- **Prompts are product code**: instructions, examples, and output format live in versioned
+  files, and each change is tested against an eval.
+- **Stateless API**: each call sees only the messages you send; your app owns the conversation
+  history, and every turn costs more as the input grows.
+- **Structured output**: define a schema and the API guarantees the response matches its shape.
+  The contents are still the model's judgment, so a valid object can hold a wrong value.
+- **Streaming**: the same total wait, with words appearing almost at once. Use it for anything a
+  person watches, and give the user a way to start, a live sign of progress, and a Stop that
+  cancels the request.
+- **RAG**: chunk, embed, and store your documents; for each question, retrieve the nearest
+  chunks and answer from them. When retrieval fetches the wrong chunks, the answer is wrong with
+  confidence, so test retrieval on its own.
+- **Tool use and agent loops**: the model asks for a tool, and your code decides whether to run
+  it. Every loop needs a budget, a stop condition, and a point where a human decides.
+- **Cost**: billed per token in and out, with output costing about five times input. Multiply
+  tokens per call by calls per user per day by users by price before you ship.
+- **Choosing a model**: start with the most capable model and move down only if your eval score
+  says you can.
+- **Prompt caching**: mark a repeated prefix, such as a long system prompt, as cached, and
+  repeated calls pay a fraction of the price for it.
+- **Where it breaks**: calls are slow and vary, output is not deterministic, answers can be
+  confidently wrong, calls fail, and every retry costs money. Never take an ID, price, or
+  permission check from a model.
+- **Indirect prompt injection**: text from users, documents, web pages, and tool results can try
+  to instruct the model. Treat it as untrusted data, and keep the defenses in code: least
+  privilege, approval before actions, no secrets in the prompt.
+- **Eval**: a fixed list of test cases, each with an expected answer or pass rule written before
+  the run; the number that pass is the score. Without it, you cannot tell whether a prompt change
+  helped.
+- **Graders**: code checks an exact answer; a person or a second model (a model as judge) checks
+  a pass rule that takes judgment. Check how often a judge agrees with your own grades before
+  trusting it.
+- **Baseline, regression, and noise**: the score before a change, a case that passed before and
+  fails after, and how much the score moves when nothing changed. Read every row, and count a
+  change only if it moves the score past the noise.
 
 <!-- learn -->

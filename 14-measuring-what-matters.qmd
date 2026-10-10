@@ -564,19 +564,53 @@ question ("How would you feel if you could no longer use this product?") is list
 
 ## Key Concepts
 
-- **North Star Metric**: the one number that rises only when customers get value.
-- **Guardrail metrics**: numbers that must not get worse while you push the North Star (AI cost per user, error rate).
-- **Success definition**: value metric, threshold, guardrails, and a date, written before launch.
-- **Outcomes vs. output**: whether it worked versus how much you built; the build trap.
-- **Vanity vs. actionable metrics**; **leading vs. lagging indicators**.
-- **Event**: who, what, when, and details, for each step of the core task.
-- **Row-level security on event data**: users may insert only their own events; nobody reads them from the browser.
+- **Outcomes vs. output**: whether users are better off versus how much you built. Mistaking
+  shipping for success is the build trap, and cheap AI-written output makes it easier to fall
+  into.
+- **North Star Metric**: the one number that best captures the value customers get. The test:
+  could it go up while the product got worse? If so, it counts activity.
+- **Input, operational, and diagnostic metrics**: drivers you can change that move the North
+  Star, day-to-day activity, and health checks that show something is broken.
+- **Guardrail metrics**: numbers that must not get worse while you push the North Star, such as
+  AI cost per active user and error rate.
+- **Success definition**: value metric, threshold, guardrails, and a judgment date, committed
+  before launch. Without the threshold and date, any result can be read as a success.
+- **Vanity vs. actionable metrics**: numbers that feel good versus numbers that can change what
+  you do next week.
+- **Leading vs. lagging indicators**: early signals that predict an outcome versus the outcome
+  measured after the fact, such as revenue or churn.
+- **Event**: one row recording who, what, when, and details. Log the four to six events that
+  trace your core task from start to finish, and check that real rows arrive.
+- **Row-level security on event data**: signed-in users may insert only their own events, and
+  nobody reads them from the browser. Signed-out visitors' events go through an analytics
+  service or a server route.
 - **AARRR (Pirate Metrics)**: Acquisition, Activation, Retention, Revenue, Referral.
-- **Activation rate**: users who reach first value / users who signed up.
-- **Cohort retention**: share of a start-week group still active N weeks later; Day 0 is 100% by definition.
-- **DAU/MAU and stickiness**: distinct people, not events.
-- **Randomized test (A/B test)**: random assignment isolates cause; before-and-after does not.
-- **Holdout group**: a random set of users who do not get the change, compared in the same weeks.
-- **Keep, change, or kill**: retire features that few use, cost upkeep, and do not serve the core task.
-- **Margin-based LTV and LTV:CAC**: lifetime contribution margin compared with cost to acquire.
-- **NPS**: likelihood to recommend; weak at small sample sizes.
+- **Activation and activation rate**: activation is the moment a new user first gets the value
+  the product promises; the rate is users who reached it divided by users who signed up.
+- **Leaky bucket**: high acquisition with low activation. Fix the step with the lowest rate,
+  usually activation, before buying more traffic; onboarding is that step.
+- **Cohort retention**: of the people who started in the same period, the share still active N
+  periods later; Day 0 is 100% by definition. Never compute it from totals at the end and start.
+- **Churn**: users active last period who are not active this period, divided by users active
+  last period.
+- **Why totals mislead**: a stream of new signups can make total active users rise while each
+  cohort keeps a smaller share than the one before.
+- **Retention curve shapes**: a steep first drop points to the first experience, continued
+  decline to the core value, and a flattening curve means you found people who keep using it.
+- **DAU/MAU and stickiness**: counts of distinct people (`DISTINCT user_id`) who did the core
+  action, never counts of events. Stickiness is DAU divided by MAU.
+- **Cause versus coincidence**: a before-and-after change can come from the calendar, a
+  campaign, or noise, and the data alone cannot tell them apart.
+- **Randomized test (A/B test)**: users are assigned to A or B at random in the same weeks, so
+  the change is the only systematic difference, and a gap larger than chance is its effect.
+- **Learning with 20 users**: look only for big effects, hold out a random group in the same
+  weeks, watch people use it, and say "can't tell yet" when the data cannot decide.
+- **Data-informed decisions**: combine the numbers with what interviews and sessions show, unless
+  the data came from a clean test with enough people.
+- **Keep, change, or kill**: every feature carries upkeep. Retire one that few use, that costs
+  upkeep, and that does not serve the core task; log a feature before you judge it.
+- **Margin-based LTV and LTV:CAC**: lifetime contribution margin, net of the cost to serve,
+  compared with cost to acquire. A common rule of thumb is LTV at least three times CAC.
+- **NPS**: percent promoters minus percent detractors on "how likely are you to recommend us?"
+  At student scale one answer moves it five points or more, so read the comments.
+

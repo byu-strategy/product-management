@@ -543,7 +543,8 @@ variable set in `.env.local` and in Vercel's settings.
 ## Writing Specs That Cover Every Layer
 
 When you direct an agent, a spec that names each layer gets you code that puts each piece in
-the right place.
+the right place. [Specs](06b-specs.qmd) covers how to write a spec in full; this section adds
+one rule from this chapter: name the layer each piece belongs to.
 
 **Bad spec (vague):**
 
@@ -579,8 +580,8 @@ THEN system SHALL create account and send confirmation email
 - Row level security: a user can read and update only their own profile
 ```
 
-The Requirements line uses EARS, the WHEN ... THEN ... SHALL form from [Directing the
-Agent](02-directing-the-agent.qmd), which makes each requirement testable. The good spec says
+The Requirements line uses EARS, the WHEN ... THEN ... SHALL form from
+[Specs](06b-specs.qmd#major-sdd-approaches), which makes each requirement testable. The good spec says
 where each rule is enforced. The browser checks are there for speed; the
 enforcing checks run where the user cannot reach them.
 
@@ -733,31 +734,50 @@ Chapter 8 has a drill for testing it.
 
 ## Key Concepts
 
-- **Three places**: the browser (the user's), the server (yours, keeps secrets), the database
-  (remembers).
-- **The trust rule**: anything in the browser can be read and changed by the user; checks that
-  matter and secrets live on the server or in the database.
-- **Frontend / client**: code that runs on the user's machine.
-- **Backend / server**: code that runs on a computer you control.
-- **Database**: durable storage; what survives a refresh.
-- **API and endpoint**: the requests a place agrees to answer, each at its own address.
+- **Three places**: the browser belongs to the user, the server runs your code and holds the
+  secret keys, and the database stores each record until it is deleted.
+- **The trust rule**: anything in the browser can be read and changed by the user, so a check
+  that runs only there can be skipped and a key shipped there is public. Checks that matter run
+  again on the server or in the database, and secrets stay on the server.
+- **Frontend, backend, database**: the frontend (client) is what the user sees and touches,
+  running in the browser; the backend (server) is code on a computer you control; the database
+  is durable storage.
+- **API and endpoint**: an API is the set of requests a place agrees to answer, and an endpoint
+  is one of them, a method and an address with a defined input and output. The published
+  documentation states those, so it is the contract between caller and provider.
+- **API key**: a secret string a paid service gives your account; sent with each request, it
+  says whose account is calling and gets the bill, so it stays on your server.
+- **Publishable key, token, secret key**: the publishable key identifies your app and is public,
+  limited by row-level security; the token identifies one signed-in user and expires in about
+  an hour; the secret key gives your server full access and never leaves it. Older code calls them the anon key and the service role key.
+- **Full stack**: the frontend, the backend, the database, and the requests connecting them. As
+  a product builder you decide what lives where, even when the agent types it.
 - **The screen is a function of state**: code changes state through its setter, and React
   computes the screen again from the new state. The handler never edits the screen.
 - **Component and props**: a function that returns a piece of the screen, and the inputs it
-  receives.
+  receives from the component that places it.
 - **Event and handler**: a user action, and the function that runs when it happens.
 - **`async` and `await`**: a function that waits for a slow reply, and the line where it waits.
-- **Module, import, export**: each file shares named pieces that other files import.
-- **Server component vs. client component**: pages and layouts run on the server by default;
-  a file marked `"use client"` is downloaded to the browser, with everything it imports.
+- **Module, import, export**: each file exports named pieces that other files import.
+- **Server component vs. client component**: pages and layouts run on the server by default and
+  their code never reaches the browser; a file marked `"use client"` is downloaded to the
+  browser, with everything it imports.
+- **`NEXT_PUBLIC_` variables**: Next.js copies only environment variables whose names start with
+  `NEXT_PUBLIC_` into browser code, so a secret never gets that prefix.
 - **File conventions**: in `app/`, `page.tsx` is a screen, `route.ts` is an endpoint, and the
   folder path is the address; `layout.tsx` wraps the pages below it.
 - **Not in git**: `node_modules/` (rebuilt from `package-lock.json`), `.next/` (rebuilt on
   every run), and `.env.local` (secrets).
-- **Full stack**: all of the above, and now all of it is yours.
-- **Stack choice**: pick the boring, well-documented option; agents write it better.
-- **Publishable (anon) key vs. secret (service role) key**: one is public by design and limited
-  by row-level security; the other bypasses them and stays on the server.
-- **Authentication vs. authorization**: proving who a user is, and deciding what they may do.
+- **Specs that name the layer**: a spec that says where each rule is enforced (browser,
+  server, auth, database) gets code that puts each piece in the right place. Browser checks are
+  for speed; enforcing checks run where the user cannot reach them.
+- **Stack choice**: pick the boring, well-documented option; its failure modes are known, and
+  agents write better code in a popular stack.
+- **Supabase**: a hosted Postgres database with a generated API, sign-in, and storage. Browser
+  code can query the database directly, which moves the job of protecting data into the
+  database itself.
+- **Authentication vs. authorization**: authentication proves who a user is; authorization
+  decides what they may do to each row. Enforce authorization where the data lives, never only
+  by hiding something on screen.
 
 <!-- learn -->

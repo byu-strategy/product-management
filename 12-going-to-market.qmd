@@ -416,7 +416,10 @@ Launching in rings needs a second switch: a **release flag** (the feature flag f
 [Chapter 9](09-version-control-testing-and-tech-debt.qmd)) that decides who sees a deployed
 feature. The simplest version is a Supabase table listing which users have which feature. With the
 flag on only for you, the new code is live and nobody else sees it; turn it on for your twenty
-beta users, then for everyone, with no new deploy (@fig-deploy-vs-release).
+beta users, then for everyone, with no new deploy (@fig-deploy-vs-release). The Agent Team Kit
+separates three moments: a push runs the checks, a deploy puts the code on the server, and a flag
+releases it to people
+([deploy is not release](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/memory-pack/deploy-is-not-release.md)).
 
 ![Merging deploys the code once. Each ring is then reached by changing the flag, with no new deploy. Filled rings are the people who see the feature.](images/diagrams/ch12-deploy-vs-release.svg){#fig-deploy-vs-release fig-alt="Two rows. Top row, Deploy, code reaches the server: a merge to main leads by an arrow labeled Vercel deploys to the live site, with a note reading new feature, flag off. A dashed line runs from the live site down to a bracket labeled one deploy, spanning the bottom row. Bottom row, Release, people see it: three identical sets of concentric rings, inner ring You, middle ring Beta users, outer ring Everyone. In the first set only You is filled; in the second, You and Beta users; in the third, all three. Arrows between the sets are labeled change the flag." width="100%"}
 
@@ -427,8 +430,7 @@ can still be called. Turning a
 flag off stops new use and undoes nothing already done; an email sent or a payment taken while the
 beta ring had the feature stays sent and taken
 ([flag or staging is whose data](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/memory-pack/flag-or-staging-is-whose-data.md)). And remove
-the flag, with the code path it switched off, once the feature is on for everyone
-([deploy is not release](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/memory-pack/deploy-is-not-release.md)).
+the flag, with the code path it switched off, once the feature is on for everyone.
 [Chapter 9](09-version-control-testing-and-tech-debt.qmd#staging-or-a-flag) compares a flag with a staging
 environment and says when to use each.
 
@@ -489,14 +491,55 @@ at the data.
 
 ## Key Concepts
 
-- **Ideal Customer Profile**: the specific, reachable group you are actually for.
-- **Beachhead**: the narrow first market you can win before widening.
-- **Positioning**: why a specific person picks you over their current habit, in their words.
-- **Competitive alternative**: what the customer would do if you did not exist, usually not a competitor.
-- **Gut check with a model**: a model's opinion of your copy; not an A/B test.
-- **Value-based pricing**: price from what the problem costs the customer today.
-- **Cost per user**: cost per AI action times actions per month; heavy users can cost more than they pay.
-- **Gross margin per user**: price minus cost to serve, as a share of price.
-- **Do things that don't scale**: recruit the first users by hand to learn what will scale.
-- **Channel**: the repeatable path by which strangers become users.
-- **Product-led vs sales-led**: does the product sell itself, or does a person sell it?
+- **Go-to-market (GTM)**: four questions in order: who it is for, why they would pick you, how
+  the first ones hear about it, and what you charge.
+- **Ideal Customer Profile (ICP)**: a description of the customer who gets the most value and is
+  easiest to reach: who, their situation, their current habit, where they gather, and what they
+  pay for today.
+- **Beachhead**: the narrowest group you can reach by hand and win completely before widening.
+- **Positioning**: why a specific person picks you over their current habit, said in their own
+  words. Dunford's blocks start from the competitive alternative, then unique attributes, value,
+  who cares most, and market category.
+- **Competitive alternative**: what the customer would do if you did not exist, usually a
+  spreadsheet, a group text, or doing nothing.
+- **Positioning statement**: "For [customer] who [pain], [product] is a [category] that
+  [benefit]. Unlike [alternatives], we [differentiator]." An internal reference that all
+  messaging comes from.
+- **"So what?" test**: ask "So what?" of every sentence of your messaging until the answer is a
+  customer benefit.
+- **Gut check with a model**: a model's opinion of your copy, a guess based on its training
+  text. Only an A/B test with real people shows which message they respond to.
+- **Ceiling, reference, floor**: a price sits between the value of the problem to the customer
+  and your cost to serve, with what they pay for alternatives as a reference. Find the ceiling
+  from what the problem already costs them, never by asking what they would pay.
+- **Value-based pricing**: price from what the problem is worth to the customer, then check it
+  against your cost to serve.
+- **Cost per user and gross margin**: cost per AI action times actions per month; gross margin
+  is price minus cost to serve, divided by price. On a flat price, a heavy user of an AI product
+  can cost more than they pay.
+- **Flat vs. usage pricing**: a flat subscription is simple and carries the heavy-user risk;
+  usage pricing tracks your cost; many AI products use a flat price with an allowance. A free
+  tier needs a usage cap.
+- **Do things that don't scale**: recruit the first users by hand, one at a time, to learn what
+  makes people say yes. A sprint target: 20 named people contacted, 5 using it.
+- **Six principles of persuasion**: social proof, authority, scarcity, reciprocity, commitment
+  and consistency, and liking. They amplify a true offer; used to push a product that does not
+  deliver, they become manipulation.
+- **Channel**: a repeatable path by which strangers become users. Pick one or two where your
+  customer already is, and give each a fair test.
+- **Product-led vs. sales-led**: product-led growth lets users sign up and reach value alone;
+  sales-led growth needs a person to reach out, demo, and close, which fits a complex product or
+  a large deal.
+- **Models as an audience**: buyers increasingly ask a model, and models cite community and
+  reference sites, so being useful in public where buyers gather reaches both.
+- **Instrument before launch**: write down what "working" means and track the core task before
+  anyone sees the link.
+- **Launch in rings**: private beta, public beta, then wider launch.
+- **Deploy is not release**: a merge deploys the code; a release flag decides who sees it, so
+  each ring is reached by changing the flag, with no new deploy. Check the flag on the server.
+- **When to change your GTM**: when people sign up but do not reach value, a channel brings
+  almost no one after a fair test, customers describe you in different words, or acquiring a
+  customer costs more than they bring in.
+- **AI on launch data**: a model can group feedback into themes, quoting the responses behind
+  each, and draft queries; it cannot tell you why a number moved.
+

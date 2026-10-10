@@ -470,18 +470,43 @@ A transformer is many such layers, with attention between them.
 
 ## Key Concepts
 
-- **Token**: the piece of text a model reads and writes, about three quarters of an English word. The unit of cost, speed, and every limit.
-- **Embedding**: a vector that places a token (or a document) on a map of meaning; similar meanings sit close together.
-- **Attention and the transformer**: the mechanism that lets each token draw on earlier context, stacked in repeated blocks.
-- **Next-token prediction**: the model scores every possible next token and picks one, over and over.
-- **Sampling and temperature**: the pick is a weighted draw, so the same input can give different output.
-- **Pretraining**: self-supervised training on huge text; gives knowledge and patterns up to a **training cutoff**.
-- **Instruction tuning and RLHF**: later training that turns a text completer into an assistant, and teaches it to please, including **sycophancy**.
-- **Hallucination**: fluent, confident output that is false; the model has no built-in sense of not knowing.
-- **Context window**: the model's working memory; the model is stateless, and nothing carries between calls unless it is sent again.
-- **Harness**: the software around a model that reads its text and takes actions.
-- **Jagged frontier**: strong at some tasks, weak at nearby ones; test your own task.
-- **Prompting**: shaping the input so the likely continuation is the output you want.
-- **Parameters, loss, gradient descent**: the numbers a model learns, the measure of its error, and the procedure that lowers it.
+- **Machine learning and deep learning**: machine learning is the part of AI where a computer
+  learns from examples of inputs paired with outputs instead of following written rules; deep
+  learning uses large neural networks. LLMs are deep learning models trained on text.
+- **Token**: a piece of text with an ID number from a fixed vocabulary, about three quarters of
+  an English word. The unit of cost, speed, and every limit.
+- **Embedding**: a list of numbers that places a token (or a whole document) on a map of
+  meaning, so similar meanings sit close together. It also powers search by meaning, as in RAG.
+- **Attention and the transformer**: attention lets each token draw on every earlier token, so
+  its numbers reflect its context; a transformer stacks attention in repeated blocks. Attention
+  runs over the whole context, so a longer prompt costs more and takes longer.
+- **Next-token prediction**: the model scores every possible next token, turns the scores into
+  probabilities, picks one, appends it, and runs again until it stops.
+- **Sampling and temperature**: the pick is a weighted draw, so the same input can give
+  different output; temperature sets how random the draw is. Design on the assumption that
+  output varies.
+- **Pretraining**: self-supervised training on huge amounts of text, where each next token is
+  its own label. It sets the **parameters** (weights) and gives knowledge up to a **training
+  cutoff**; no person checked whether the text was true.
+- **Base model**: the result of pretraining. It completes text and can follow a few examples in
+  the prompt (few-shot learning), but it is not yet an assistant.
+- **Instruction tuning and RLHF**: later training on example conversations and on people's
+  preferences between answers, which turns a text completer into an assistant. It changes
+  behavior far more than knowledge.
+- **Sycophancy**: because people rate agreement a little higher than correction, the model
+  learns to agree. Ask for the case against, and judge disagreement on the evidence.
+- **Hallucination**: fluent, confident output that is false. The model produces the most
+  plausible continuation, and nothing inside it checks whether plausible is true, so anything
+  that matters gets checked against a source.
+- **Context window**: the model's working memory, counted in tokens. The model is stateless:
+  nothing carries between calls unless the app sends it again.
+- **Harness**: the software around a model that reads its text and takes actions. The model only
+  writes text; capabilities, risks, permissions, and hooks live in the harness.
+- **Jagged frontier**: models are strong at some tasks and fail at nearby tasks that look no
+  harder, and the edge moves with each release. Test your own task.
+- **Prompting**: a prompt is the start of a text, shaped so the most plausible continuation is
+  the output you want, with background, a role, examples, or a template filled with live data.
+- **Parameters, loss, gradient descent**: the numbers a model learns, the measure of its error,
+  and the procedure that adjusts every parameter a small step to lower the error.
 
 <!-- learn -->
