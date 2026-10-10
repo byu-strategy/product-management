@@ -62,6 +62,10 @@ book:
 bibliography: references.bib
 csl: chicago-author-date.csl
 
+# Turns each <!-- learn --> marker into a copyable /learn line for its section (_extensions/learn)
+filters:
+  - learn
+
 format:
   html:
     include-in-header: _header.html
