@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 500" role="img" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+<title>Staging and a feature flag, side by side</title>
+<desc>Two panels with the same three rows: who sees the new code, what runs, whose data. Staging, a separate copy of the app: your team sees it; a staging app at a staging URL; a staging database with test data. Feature flag, a switch inside production: two of eight users have the flag on and see it, six have it off; the production app at your domain; the production database with real users' data.</desc>
+<defs>
+  <linearGradient id="gCard" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#FFFFFF"/><stop offset="100%" stop-color="#F3F6F9"/></linearGradient>
+  <linearGradient id="gBlue" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#F0F5FB"/><stop offset="100%" stop-color="#DCE7F4"/></linearGradient>
+  <linearGradient id="gPanel" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#F6F8FA"/><stop offset="100%" stop-color="#EDF0F3"/></linearGradient>
+  <linearGradient id="gNavy" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0E3F6A"/><stop offset="100%" stop-color="#001A36"/></linearGradient>
+  <linearGradient id="gGray" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#F4F6F8"/><stop offset="100%" stop-color="#E3E7EB"/></linearGradient>
+  <linearGradient id="gRed" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#FBF3F3"/><stop offset="100%" stop-color="#F3E1E1"/></linearGradient>
+  <filter id="sh" x="-10%" y="-10%" width="120%" height="135%"><feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#002E5D" flood-opacity="0.13"/></filter>
+  <marker id="ahG" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0.5 L10,5 L0,9.5 z" fill="#8A939C"/></marker>
+  <marker id="ahN" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0.5 L10,5 L0,9.5 z" fill="#002E5D"/></marker>
+  <marker id="ahR" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0.5 L10,5 L0,9.5 z" fill="#B03A3A"/></marker>
+  <marker id="ahA" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0.5 L10,5 L0,9.5 z" fill="#0057B8"/></marker>
+</defs>
+<rect x="0" y="0" width="1000" height="500" rx="8" fill="#FAFBFC"/>
+<text x="24" y="158" font-size="15" font-weight="600" letter-spacing="1" fill="#8A939C">WHO SEES</text>
+<text x="24" y="177" font-size="15" font-weight="600" letter-spacing="1" fill="#8A939C">THE NEW CODE</text>
+<text x="24" y="295" font-size="15" font-weight="600" letter-spacing="1" fill="#8A939C">WHAT RUNS</text>
+<text x="24" y="425" font-size="15" font-weight="600" letter-spacing="1" fill="#8A939C">WHOSE DATA</text>
+<rect x="176" y="18" width="390" height="464" rx="10" fill="url(#gPanel)"/>
+<text x="204" y="56" font-size="20" font-weight="700" letter-spacing="0.5" fill="#002E5D">STAGING</text>
+<text x="204" y="82" font-size="17" fill="#5A6672">a separate copy of the app</text>
+<line x1="371.0" y1="206" x2="371.0" y2="248" stroke="#8A939C" stroke-width="2" marker-end="url(#ahG)"/>
+<line x1="371.0" y1="330" x2="371.0" y2="376" stroke="#8A939C" stroke-width="2" marker-end="url(#ahG)"/>
+<g transform="translate(315,126) scale(1.333)" fill="none" stroke="#0057B8" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5" />
+  <path d="M20 21a8 8 0 0 0-16 0" /></g>
+<g transform="translate(363,126) scale(1.333)" fill="none" stroke="#0057B8" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5" />
+  <path d="M20 21a8 8 0 0 0-16 0" /></g>
+<text x="371.0" y="186" font-size="17" font-weight="600" text-anchor="middle" fill="#0057B8">your team</text>
+<rect x="221.0" y="250" width="300" height="80" rx="10" fill="url(#gCard)" stroke="#D9DEE4" stroke-width="1.5" filter="url(#sh)"/>
+<circle cx="265.0" cy="290" r="24" fill="url(#gBlue)" stroke="#B9D0EA" stroke-width="1.5"/>
+<g transform="translate(251,276) scale(1.167)" fill="none" stroke="#002E5D" stroke-width="1.89" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2" />
+  <path d="M6.453 15h11.094" />
+  <path d="M8.5 2h7" /></g>
+<text x="305.0" y="286" font-size="19" font-weight="700" fill="#002E5D">Staging app</text>
+<text x="305.0" y="310" font-size="16" fill="#5A6672">staging URL</text>
+<rect x="221.0" y="380" width="300" height="80" rx="10" fill="url(#gGray)" stroke="#D9DEE4" stroke-width="1.5" filter="url(#sh)"/>
+<g transform="translate(251,406) scale(1.167)" fill="none" stroke="#5A6672" stroke-width="1.89" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3" />
+  <path d="M3 5V19A9 3 0 0 0 21 19V5" />
+  <path d="M3 12A9 3 0 0 0 21 12" /></g>
+<text x="305.0" y="416" font-size="19" font-weight="700" fill="#002E5D">Staging database</text>
+<text x="305.0" y="440" font-size="16" fill="#5A6672">test data</text>
+<rect x="586" y="18" width="390" height="464" rx="10" fill="url(#gPanel)"/>
+<text x="614" y="56" font-size="20" font-weight="700" letter-spacing="0.5" fill="#002E5D">FEATURE FLAG</text>
+<text x="614" y="82" font-size="17" fill="#5A6672">a switch inside production</text>
+<line x1="781.0" y1="206" x2="781.0" y2="248" stroke="#8A939C" stroke-width="2" marker-end="url(#ahG)"/>
+<line x1="781.0" y1="330" x2="781.0" y2="376" stroke="#8A939C" stroke-width="2" marker-end="url(#ahG)"/>
+<g transform="translate(618,126) scale(1.333)" fill="none" stroke="#0057B8" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5" />
+  <path d="M20 21a8 8 0 0 0-16 0" /></g>
+<g transform="translate(660,126) scale(1.333)" fill="none" stroke="#0057B8" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5" />
+  <path d="M20 21a8 8 0 0 0-16 0" /></g>
+<g transform="translate(702,126) scale(1.333)" fill="none" stroke="#8A939C" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5" />
+  <path d="M20 21a8 8 0 0 0-16 0" /></g>
+<g transform="translate(744,126) scale(1.333)" fill="none" stroke="#8A939C" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5" />
+  <path d="M20 21a8 8 0 0 0-16 0" /></g>
+<g transform="translate(786,126) scale(1.333)" fill="none" stroke="#8A939C" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5" />
+  <path d="M20 21a8 8 0 0 0-16 0" /></g>
+<g transform="translate(828,126) scale(1.333)" fill="none" stroke="#8A939C" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5" />
+  <path d="M20 21a8 8 0 0 0-16 0" /></g>
+<g transform="translate(870,126) scale(1.333)" fill="none" stroke="#8A939C" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5" />
+  <path d="M20 21a8 8 0 0 0-16 0" /></g>
+<g transform="translate(912,126) scale(1.333)" fill="none" stroke="#8A939C" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5" />
+  <path d="M20 21a8 8 0 0 0-16 0" /></g>
+<text x="655.0" y="186" font-size="17" font-weight="600" text-anchor="middle" fill="#0057B8">flag on</text>
+<text x="823.0" y="186" font-size="17" font-weight="600" text-anchor="middle" fill="#8A939C">flag off</text>
+<rect x="631.0" y="250" width="300" height="80" rx="10" fill="url(#gCard)" stroke="#D9DEE4" stroke-width="1.5" filter="url(#sh)"/>
+<circle cx="675.0" cy="290" r="24" fill="url(#gBlue)" stroke="#B9D0EA" stroke-width="1.5"/>
+<g transform="translate(661,276) scale(1.167)" fill="none" stroke="#0057B8" stroke-width="1.89" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="12" x="2" y="6" rx="6" ry="6" />
+  <circle cx="16" cy="12" r="2" /></g>
+<text x="715.0" y="286" font-size="19" font-weight="700" fill="#002E5D">Production app</text>
+<text x="715.0" y="310" font-size="16" fill="#5A6672">your domain</text>
+<rect x="631.0" y="380" width="300" height="80" rx="10" fill="url(#gNavy)" stroke="#002E5D" stroke-width="1.5" filter="url(#sh)"/>
+<g transform="translate(661,406) scale(1.167)" fill="none" stroke="#FFFFFF" stroke-width="1.89" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3" />
+  <path d="M3 5V19A9 3 0 0 0 21 19V5" />
+  <path d="M3 12A9 3 0 0 0 21 12" /></g>
+<text x="715.0" y="416" font-size="19" font-weight="700" fill="#FFFFFF">Production database</text>
+<text x="715.0" y="440" font-size="16" fill="#B9D0EA">real users' data</text>
+</svg>

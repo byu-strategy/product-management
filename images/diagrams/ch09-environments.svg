@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 540" role="img" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+<title>Each environment reads its own settings, and the settings choose the database</title>
+<desc>Four columns: where it runs, code, settings, database. Your laptop at localhost:3000 runs any branch with npm run dev and reads the local file .env.local. Preview, at a preview URL, runs one branch built by Vercel and reads Vercel's Preview variables. Production, at your domain, runs main built by Vercel and reads Vercel's Production variables. Production's settings point at the production database, which holds real users' data. The laptop and preview settings each point either at their own database, shown by a gray arrow, or, with production keys, at the production database, shown by a red dashed arrow.</desc>
+<defs>
+  <linearGradient id="gCard" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#FFFFFF"/><stop offset="100%" stop-color="#F3F6F9"/></linearGradient>
+  <linearGradient id="gBlue" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#F0F5FB"/><stop offset="100%" stop-color="#DCE7F4"/></linearGradient>
+  <linearGradient id="gPanel" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#F6F8FA"/><stop offset="100%" stop-color="#EDF0F3"/></linearGradient>
+  <linearGradient id="gNavy" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0E3F6A"/><stop offset="100%" stop-color="#001A36"/></linearGradient>
+  <linearGradient id="gGray" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#F4F6F8"/><stop offset="100%" stop-color="#E3E7EB"/></linearGradient>
+  <linearGradient id="gRed" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#FBF3F3"/><stop offset="100%" stop-color="#F3E1E1"/></linearGradient>
+  <filter id="sh" x="-10%" y="-10%" width="120%" height="135%"><feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#002E5D" flood-opacity="0.13"/></filter>
+  <marker id="ahG" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0.5 L10,5 L0,9.5 z" fill="#8A939C"/></marker>
+  <marker id="ahN" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0.5 L10,5 L0,9.5 z" fill="#002E5D"/></marker>
+  <marker id="ahR" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0.5 L10,5 L0,9.5 z" fill="#B03A3A"/></marker>
+  <marker id="ahA" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0.5 L10,5 L0,9.5 z" fill="#0057B8"/></marker>
+</defs>
+<rect x="0" y="0" width="1000" height="540" rx="8" fill="#FAFBFC"/>
+<text x="24" y="62" font-size="15" font-weight="600" letter-spacing="1" fill="#8A939C">WHERE IT RUNS</text>
+<text x="250" y="62" font-size="15" font-weight="600" letter-spacing="1" fill="#8A939C">CODE</text>
+<text x="452" y="62" font-size="15" font-weight="600" letter-spacing="1" fill="#8A939C">SETTINGS</text>
+<text x="842" y="62" font-size="15" font-weight="600" letter-spacing="1" fill="#8A939C">DATABASE</text>
+<line x1="24" y1="80" x2="976" y2="80" stroke="#D9DEE4" stroke-width="1.5"/>
+<circle cx="54" cy="158" r="28" fill="url(#gBlue)" stroke="#B9D0EA" stroke-width="1.5"/>
+<g transform="translate(39,143) scale(1.25)" fill="none" stroke="#002E5D" stroke-width="1.76" stroke-linecap="round" stroke-linejoin="round"><path d="M20 16V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9m16 0H4m16 0 1.28 2.55a1 1 0 0 1-.9 1.45H3.62a1 1 0 0 1-.9-1.45L4 16" /></g>
+<text x="94" y="154" font-size="19" font-weight="700" fill="#002E5D">Your laptop</text>
+<text x="94" y="178" font-size="15" font-family="Menlo, Monaco, 'Courier New', monospace" fill="#5A6672">localhost:3000</text>
+<rect x="250" y="118" width="180" height="80" rx="10" fill="url(#gCard)" stroke="#D9DEE4" stroke-width="1.5" filter="url(#sh)"/>
+<text x="268" y="152" font-size="18" font-weight="700" fill="#2C3E50">any branch</text>
+<text x="268" y="178" font-size="15" font-family="Menlo, Monaco, 'Courier New', monospace" fill="#5A6672">npm run dev</text>
+<rect x="452" y="118" width="180" height="80" rx="10" fill="url(#gCard)" stroke="#D9DEE4" stroke-width="1.5" filter="url(#sh)"/>
+<text x="470" y="148" font-size="16" fill="#5A6672">local file</text>
+<text x="470" y="176" font-size="18" font-weight="700" font-family="Menlo, Monaco, 'Courier New', monospace" fill="#2C3E50">.env.local</text>
+<path d="M632 144 C 662 144, 640 124, 664 124" fill="none" stroke="#8A939C" stroke-width="2" marker-end="url(#ahG)"/>
+<circle cx="690" cy="124" r="20" fill="url(#gGray)" stroke="#D9DEE4" stroke-width="1.5"/>
+<g transform="translate(679,113) scale(0.9167)" fill="none" stroke="#5A6672" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3" />
+  <path d="M3 5V19A9 3 0 0 0 21 19V5" />
+  <path d="M3 12A9 3 0 0 0 21 12" /></g>
+<text x="720" y="130" font-size="16" font-weight="600" fill="#5A6672">own database</text>
+<path d="M632 174 H 836" fill="none" stroke="#B03A3A" stroke-width="2.5" stroke-dasharray="7 6" marker-end="url(#ahR)"/>
+<circle cx="54" cy="308" r="28" fill="url(#gBlue)" stroke="#B9D0EA" stroke-width="1.5"/>
+<g transform="translate(39,293) scale(1.25)" fill="none" stroke="#002E5D" stroke-width="1.76" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="18" r="3" />
+  <circle cx="6" cy="6" r="3" />
+  <path d="M13 6h3a2 2 0 0 1 2 2v7" />
+  <line x1="6" x2="6" y1="9" y2="21" /></g>
+<text x="94" y="304" font-size="19" font-weight="700" fill="#002E5D">Preview</text>
+<text x="94" y="328" font-size="16" fill="#5A6672">preview URL</text>
+<rect x="250" y="268" width="180" height="80" rx="10" fill="url(#gCard)" stroke="#D9DEE4" stroke-width="1.5" filter="url(#sh)"/>
+<text x="268" y="302" font-size="18" font-weight="700" fill="#2C3E50">one branch</text>
+<text x="268" y="328" font-size="16" fill="#5A6672">built by Vercel</text>
+<rect x="452" y="268" width="180" height="80" rx="10" fill="url(#gCard)" stroke="#D9DEE4" stroke-width="1.5" filter="url(#sh)"/>
+<text x="470" y="298" font-size="16" fill="#5A6672">Vercel variables</text>
+<text x="470" y="326" font-size="18" font-weight="700" fill="#2C3E50">Preview</text>
+<path d="M632 294 C 662 294, 640 274, 664 274" fill="none" stroke="#8A939C" stroke-width="2" marker-end="url(#ahG)"/>
+<circle cx="690" cy="274" r="20" fill="url(#gGray)" stroke="#D9DEE4" stroke-width="1.5"/>
+<g transform="translate(679,263) scale(0.9167)" fill="none" stroke="#5A6672" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3" />
+  <path d="M3 5V19A9 3 0 0 0 21 19V5" />
+  <path d="M3 12A9 3 0 0 0 21 12" /></g>
+<text x="720" y="280" font-size="16" font-weight="600" fill="#5A6672">own database</text>
+<path d="M632 324 H 836" fill="none" stroke="#B03A3A" stroke-width="2.5" stroke-dasharray="7 6" marker-end="url(#ahR)"/>
+<circle cx="54" cy="458" r="28" fill="url(#gBlue)" stroke="#B9D0EA" stroke-width="1.5"/>
+<g transform="translate(39,443) scale(1.25)" fill="none" stroke="#002E5D" stroke-width="1.76" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" />
+  <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+  <path d="M2 12h20" /></g>
+<text x="94" y="454" font-size="19" font-weight="700" fill="#002E5D">Production</text>
+<text x="94" y="478" font-size="16" fill="#5A6672">your domain</text>
+<rect x="250" y="418" width="180" height="80" rx="10" fill="url(#gCard)" stroke="#D9DEE4" stroke-width="1.5" filter="url(#sh)"/>
+<text x="268" y="452" font-size="18" font-weight="700" font-family="Menlo, Monaco, 'Courier New', monospace" fill="#2C3E50">main</text>
+<text x="268" y="478" font-size="16" fill="#5A6672">built by Vercel</text>
+<rect x="452" y="418" width="180" height="80" rx="10" fill="url(#gCard)" stroke="#D9DEE4" stroke-width="1.5" filter="url(#sh)"/>
+<text x="470" y="448" font-size="16" fill="#5A6672">Vercel variables</text>
+<text x="470" y="476" font-size="18" font-weight="700" fill="#2C3E50">Production</text>
+<path d="M632 458 H 836" fill="none" stroke="#002E5D" stroke-width="2.5" marker-end="url(#ahN)"/>
+<text x="652" y="202" font-size="16" font-weight="600" fill="#B03A3A">with production keys</text>
+<text x="652" y="352" font-size="16" font-weight="600" fill="#B03A3A">with production keys</text>
+<rect x="842" y="104" width="134" height="402" rx="12" fill="url(#gGray)" stroke="#D9DEE4" stroke-width="1.5" filter="url(#sh)"/>
+<circle cx="909.0" cy="252" r="30" fill="url(#gNavy)" stroke="#002E5D" stroke-width="1.5"/>
+<g transform="translate(895,238) scale(1.167)" fill="none" stroke="#FFFFFF" stroke-width="1.89" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3" />
+  <path d="M3 5V19A9 3 0 0 0 21 19V5" />
+  <path d="M3 12A9 3 0 0 0 21 12" /></g>
+<text x="909.0" y="310" font-size="19" font-weight="700" text-anchor="middle" fill="#002E5D">Production</text>
+<text x="909.0" y="334" font-size="19" font-weight="700" text-anchor="middle" fill="#002E5D">database</text>
+<text x="909.0" y="378" font-size="16" text-anchor="middle" fill="#2C3E50">real users'</text>
+<text x="909.0" y="400" font-size="16" text-anchor="middle" fill="#2C3E50">data</text>
+</svg>

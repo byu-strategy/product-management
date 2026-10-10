@@ -422,6 +422,8 @@ beta ring had the feature stays sent and taken
 ([flag or staging is whose data](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/memory-pack/flag-or-staging-is-whose-data.md)). And remove
 the flag, with the code path it switched off, once the feature is on for everyone
 ([deploy is not release](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/memory-pack/deploy-is-not-release.md)).
+[Chapter 9](09-version-control-testing-and-tech-debt.qmd#staging-or-a-flag) compares a flag with a staging
+environment and says when to use each.
 
 You can launch more than once. A new feature or a major update is a new reason to tell people.
 

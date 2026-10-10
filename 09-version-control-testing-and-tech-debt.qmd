@@ -495,6 +495,231 @@ build, and lint on every PR, then open a PR and watch the check appear.
 
 <!-- learn -->
 
+## Environments: Where Your Code Runs and Which Data It Touches
+
+**The model:** an **environment** is one running copy of your app. Three things define it: which
+code runs (which branch or commit), where it runs (your laptop or Vercel), and which settings it
+reads (its environment variables). The settings include the database address and keys, so the
+database an environment reads and writes is a separate choice from the code it runs. You make
+that choice in the settings, one environment at a time.
+
+### The three environments you already have
+
+Vercel names three environments by default: Local Development, Preview, and Production
+([Vercel: Environments](https://vercel.com/docs/deployments/environments)). You have been using all three since Chapter 7.
+
+| Environment | Which code | Where and how it runs | Which settings it reads |
+|---|---|---|---|
+| **Your laptop** (local) | Whatever branch you have checked out, including edits you have not committed | `npm run dev` starts a **development server** on your machine at `localhost:3000`. Your pages and your server code both run on the laptop | `.env.local`, a file in the project folder that git ignores |
+| **Preview** | The latest commit on one branch or pull request | Vercel builds that commit and serves it at a preview URL. Every push to a branch other than `main`, and every pull request, gets one | Vercel's **Preview** environment variables |
+| **Production** | `main` | Vercel builds `main` and serves it at your domain | Vercel's **Production** environment variables |
+
+Two details about Vercel matter here. Each preview has a URL for that branch, which always shows
+the branch's latest commit, and a URL for each commit. And a change to an environment variable in
+the Vercel dashboard applies only to deployments made after the change, so after you change one,
+redeploy ([Vercel: Environment variables](https://vercel.com/docs/environment-variables)).
+
+**A development server and a production build behave differently.** `npm run dev` runs
+`next dev`, which compiles each page the first time you open it, updates the page in the browser
+when you save a file, and shows detailed error messages. Vercel runs `next build` instead, which
+compiles the whole app at once into an optimized production build; `npm start` (`next start`)
+runs that build on your laptop ([Next.js CLI](https://nextjs.org/docs/app/api-reference/cli/next); [local development](https://nextjs.org/docs/app/guides/local-development)). Some mistakes appear only in the
+build. `next build` stops on a TypeScript type error, for example, even when every page worked in
+the development server ([Next.js: TypeScript](https://nextjs.org/docs/app/api-reference/config/typescript)). Values in variables that start with `NEXT_PUBLIC_`
+are written into the browser code when the app is built, so a build keeps the values it was built
+with ([Next.js: environment variables](https://nextjs.org/docs/app/guides/environment-variables)). Before you push, run `npm run build` on your laptop; that is the Build row in
+[Automated Checks](#automated-checks-tests-types-and-lint).
+
+### Which database? The settings decide
+
+Your code reads the Supabase address and keys from environment
+variables (`NEXT_PUBLIC_SUPABASE_URL`, the publishable key, and on the server the secret key, from
+Chapter 7) and talks to whichever project those values name. That has one consequence that is
+easy to miss: **if you copied your one Supabase project's keys into `.env.local` and into
+Vercel's Preview variables, your laptop and every preview read and write the production
+database.** A test row you add on your laptop appears in front of real users. A seed script run on
+your laptop writes into the live tables. A preview of an unfinished branch, opened by a reviewer,
+changes real users' rows. Your laptop often also holds the secret key, which skips row-level
+security, so a mistake there reaches every user's data.
+
+![Each environment runs some version of the code and reads its own settings. The settings hold the database address and keys, so the laptop and every preview reach the production database whenever they hold production's keys (red), and reach a database of their own when they hold its keys instead.](images/diagrams/ch09-environments.svg){#fig-environments fig-alt="A diagram with four columns: where it runs, code, settings, database. Three rows. Your laptop, at localhost:3000: the code is any branch, run with npm run dev; the settings come from a local file, .env.local. Preview, at a preview URL: the code is one branch, built by Vercel; the settings are Vercel's Preview variables. Production, at your domain: the code is main, built by Vercel; the settings are Vercel's Production variables. On the right is one tall box: Production database, real users' data. Production's settings connect to it with a solid dark arrow. The laptop row and the preview row each have two arrows: a short gray arrow to a small database labeled own database, and a red dashed arrow, labeled with production keys, to the production database." width="100%"}
+
+Chapter 8 gave the rule: once real people use your app, stop developing against its database.
+There are several ways to give the laptop and the previews a database of their own:
+
+| Option | What it is | What to know | Good for |
+|---|---|---|---|
+| **One project for everything** | Laptop, previews, and production all use the production database | Nothing to set up | Only until the first real user signs up |
+| **A second Supabase project** | A separate hosted project. You apply the same migrations to it, so it has the same tables, and fill it with made-up **seed data** | Supabase's free plan allows two active projects; a free project is paused after a week without activity ([Supabase pricing](https://supabase.com/pricing)) | Your laptop and your previews; it can also serve as staging (below) |
+| **Local Supabase** | `supabase start` runs Postgres, sign-in, and storage on your laptop. `supabase db reset` rebuilds the database from your migrations and loads the seed file `supabase/seed.sql` | Needs Docker or a compatible container app. Previews on Vercel cannot reach a database on your laptop ([Supabase local development](https://supabase.com/docs/guides/local-development)) | Your laptop and your tests |
+| **Supabase branching** | Supabase creates a separate database for each pull request from your migrations. It starts with no production data | Paid plans only, billed per branch per hour ([Supabase branching](https://supabase.com/docs/guides/deployment/branching)) | A team on a paid plan that wants one database per preview |
+
+Whichever you choose, put that project's address and keys in `.env.local` and in Vercel's Preview
+variables, and keep the production keys only in Vercel's Production variables. Then ask the agent
+to confirm which project each environment points at (the Try it below).
+
+One more reason the database choice matters: rolling back code does not roll back data. All
+production deployments share one database, so after an [Instant
+Rollback](#rolling-back-a-bad-deploy) the old code runs against whatever the bad deploy wrote.
+
+### Staging: a copy of production for trying a change
+
+**Staging** is an environment kept as close to production as you can make it, with its own data,
+where you try a change before any user sees it. What makes it useful is how closely it matches
+production. It should run the same kind of build (built by Vercel, the way production is), with
+every setting production has (set to staging values), the same tables (the same migrations), and
+its own database. Each difference from production is a place where "it worked on staging" may not
+hold on your live site, so keep the differences few and written down: usually the database and
+its keys, plus anything that reaches people outside your team, such as email (sent only to your
+team's addresses) and payments (in the payment provider's test mode). A staging site with old
+tables, missing settings, or demo accounts unlike any real account tells you little about
+production. The Agent Team Kit's [staging twin
+spec](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/docs/STAGING-TWIN-SPEC.md)
+describes a full version, with a tool that compares the two environments' settings before every
+staging deploy; the short form is in [staging is a twin of
+production](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/memory-pack/staging-is-a-twin-not-a-demo.md).
+
+There are several ways to set it up on Vercel, and none is the one right answer:
+
+- **Previews pointed at a staging database.** Set Vercel's Preview variables to your second
+  Supabase project. Every pull request's preview is then a staging site for that one change. This
+  costs nothing extra and works on every plan.
+- **A long-lived `staging` branch with its own address.** Create a branch named `staging`, assign
+  a domain such as `staging.yourapp.com` to that branch, and add Preview variables scoped to that
+  branch; a branch-specific value replaces the general Preview value of the same name. Merge into
+  `staging` to try a change, then merge into `main` to release it. Vercel's docs list this for all
+  plans, including the free Hobby plan ([Vercel: Environments](https://vercel.com/docs/deployments/environments#setting-up-a-staging-environment)).
+- **A custom environment named `staging`.** Vercel's Pro and Enterprise plans let you create an
+  environment beside Preview and Production, with its own branch, domain, and variables. The Pro
+  plan allows one per project.
+- **A staged production deployment.** Vercel can build a production deployment without pointing
+  your domain at it, so you can check it at its own URL and then promote it. It uses the
+  Production variables, so it reads and writes the production database. It checks the build, and
+  it gives no protection to the data.
+
+What goes in the staging database: made-up seed data, or your own team's accounts and what they
+own. Do not copy other users' personal data into staging (Chapter 8, Secrets and Sensitive Data).
+When a change passes staging, release the same commit you tried. On a busy `main`, later commits
+may have arrived since you tested, and they would go to production untried
+([promote the staged commit](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/memory-pack/promote-the-staged-commit.md)).
+
+### Feature flags: one deploy, and a setting for who sees it
+
+A **feature flag** (the trunk-based rule 4 above, and the release flag of Chapter 12) is a value
+the code checks before it shows new behavior. The new code is deployed to production for everyone,
+and the flag decides, for each request, whether this user gets the new behavior. Turning the flag
+on for someone is a **release**; it needs no new deploy. Turning it off stops the new behavior at
+the next request.
+
+Three ways to build one, from simplest to most capable:
+
+| Where the flag's value is kept | How it works | Changing it |
+|---|---|---|
+| **An environment variable**, such as `FEATURE_RATINGS=on` | On or off for everyone in one environment. You can have it on in Preview and off in Production | Change the variable in Vercel and redeploy |
+| **A table in your database**, such as `feature_flags` with a flag name and the users or groups it is on for | Your server reads the table on each request, so the flag can be on for you, then for twenty beta users, then for everyone | Edit a row; the next request sees it |
+| **A hosted flags service** | The same idea with a dashboard, percentage rollouts, and a history of changes | Click in the dashboard |
+
+A database table is enough for a student product; no service is required. Check the flag on the
+server as well as in the interface, because a hidden button over a working route can still be
+called (Chapter 12). Keep environment variables for switches meant to stay, such as one that turns
+off an expensive AI feature during an outage
+([environment flags are for what stays](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/memory-pack/env-flags-are-for-what-stays.md)).
+Do not use a release flag for something permanent, such as what a paid plan includes or what an
+admin may see; those are permissions, and they belong in your data and row-level security
+([pick the lever by lifetime and owner](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/memory-pack/pick-the-lever-by-lifetime-and-owner.md)).
+When the feature is on for everyone, remove the flag and the old code path, and check first that
+no other part of the code still runs with the flag off
+([removing a flag](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/memory-pack/removing-a-flag-check-silent-callers.md)).
+The kit's [release flags spec](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/docs/RELEASE-FLAGS-SPEC.md)
+covers the full design.
+
+### Staging or a flag?
+
+They answer different questions, about different people's data.
+
+![Staging runs the new code in a separate copy that only your team uses, against test data. A feature flag runs it in production for the users the flag is on for, against real users' data.](images/diagrams/ch09-staging-vs-flags.svg){#fig-staging-vs-flags fig-alt="Two panels side by side with the same three rows, labeled on the left: who sees the new code, what runs, and whose data. Left panel, Staging, a separate copy of the app: two blue user icons labeled your team; an arrow down to a card, Staging app, staging URL; an arrow down to a card, Staging database, test data. Right panel, Feature flag, a switch inside production: eight user icons, the first two blue and labeled flag on, the other six gray and labeled flag off; an arrow down to a card, Production app, your domain, with a switch icon; an arrow down to a dark card, Production database, real users' data." width="100%"}
+
+| | Staging | Feature flag |
+|---|---|---|
+| Where the new code runs | A separate copy of the app | Production |
+| Whose data it reads and writes | Test data, or your team's own accounts | Real users' data |
+| Who sees it | Your team | The users the flag is on for |
+| What it can tell you | Whether the change works in a production-like setup before anyone uses it, including changes a flag cannot hide | Whether real users can use it and want it, with real data and real traffic |
+| How you undo it | Nothing reached production; fix it and try again | Turn the flag off. New use stops at the next request; rows already written and emails already sent stay |
+
+To choose, ask two questions about the change
+([flag or staging is whose data](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/memory-pack/flag-or-staging-is-whose-data.md)):
+
+1. **Does it take effect for everyone the moment it deploys?** A migration, a dependency upgrade, a
+   changed environment variable, or an edit to code every page uses runs before any flag is
+   checked, so a flag cannot hide it. Try it on staging first.
+2. **If the first people who get it hit the worst case, whose data is harmed, and can it be
+   undone?** If the harm lands on your own team's data or can be reversed, a flag is enough: turn
+   it on for yourself in production. If it could do something that cannot be undone to someone
+   outside your team, such as email real users or charge a card, try it on staging first, then
+   release it behind a flag.
+
+A change that only renames or moves code needs tests; there is nothing to release. Many teams use
+both: staging for the deploy, a flag for the release.
+
+### Worked example: a ratings feature, from laptop to everyone
+
+The problem tracker from Chapter 8 gets a 1 to 5 rating on each problem. The repo uses a second
+Supabase project as its staging database, and Vercel's Preview variables point at it.
+
+1. **Laptop.** The agent creates the branch `feature-rating`. `.env.local` points at a local
+   Supabase started with `supabase start`. The agent writes a migration that adds a `rating`
+   column, and `supabase db reset` applies it and loads the seed data. The new star widget is
+   wrapped in a check of a `ratings` flag, and the seed data turns that flag on for the test
+   account. You click through with `npm run dev`, then run `npm run build`.
+2. **Preview, on the staging database.** The agent applies the migration to the staging project
+   (`supabase db push` with that project linked), pushes the branch, and opens a pull request.
+   Vercel builds the preview, which reads the Preview variables and so uses the staging database.
+   The checks run; you click through the preview URL. Because the change includes a migration,
+   this is the step where the migration first runs on a database with the same tables as
+   production.
+3. **Production, flag off.** The migration only adds a column, so the code already in production
+   keeps working after it runs. Apply it to production, then merge. Vercel deploys `main`. The
+   flag is off for everyone except you, so users see no change. Sign in on your domain and check
+   the feature with your own account.
+4. **Release.** Add your twenty beta users to the `ratings` flag. Watch the Vercel and Supabase
+   logs for a few days, then turn it on for everyone.
+5. **Clean up.** In a small pull request, delete the flag check and the old path, and remove the
+   flag's row.
+
+If step 3 breaks the live site, Instant Rollback returns the old code, and the new column stays
+in the database. The old code ignores a column it does not use, which is why migrations add before
+they remove.
+
+Words used in this section:
+
+| Term | What it means |
+|---|---|
+| Environment | One running copy of the app: which code, where it runs, which settings it reads |
+| Local | Running on your own laptop |
+| Development server | What `npm run dev` starts: compiles pages as you open them, updates on save, detailed errors |
+| Build | What `npm run build` (`next build`) makes: the whole app compiled once for production; Vercel runs it on every deploy |
+| Preview deployment | A copy of the app built by Vercel for one branch or pull request, at its own URL |
+| Production | The copy at your domain that real users use, built from `main` |
+| Environment variable | A setting the code reads at run time or build time, such as a database address or key, set per environment (`.env.local` on your laptop, Preview and Production in Vercel) |
+| Staging | An environment kept as close to production as possible, with its own data, for trying a change before users see it |
+| Feature flag | A value the code checks to decide which users get new behavior |
+| Release | Turning a deployed feature on for some or all users |
+| Rollback | Pointing your domain back at an earlier deployment; it changes code and leaves data as it is |
+| Seed data | Made-up rows loaded into a development or staging database so the app has something to show |
+
+::: {.callout-tip title="Try it"}
+Ask Claude Code: *"Which Supabase project does my `.env.local` point at? Compare its project
+reference with the one in Vercel's Production variables and tell me whether my laptop uses the
+production database. Do not print any key."* Then: *"List my Vercel environment variables for
+Development, Preview, and Production (names only, no values) and tell me which database each
+environment uses."* If the laptop or the previews use production, pick one option from the
+database table above and ask the agent to set it up. For your next feature, decide before you
+build it whether it needs staging, a flag, or both, using the two questions above.
+:::
+
+<!-- learn -->
+
 ## Rolling Back a Bad Deploy
 
 **The model:** every deploy needs a way back. Fixing forward under pressure, with users hitting
@@ -679,8 +904,18 @@ decide, using the lists above, whether to pay it down now or later.
 - **Trunk-based development**: one shared `main` (the trunk) that is always releasable, with
   short-lived branches merged back within a day or two.
 - **Merge conflict**: two branches changed the same lines, and git needs a person to choose.
-- **Feature flag**: a setting that keeps merged but unfinished code hidden from users.
+- **Feature flag**: a setting that keeps merged but unfinished code hidden from users, or decides
+  which users see a deployed feature.
 - **Preview deployment**: a working copy of the app for one branch, separate from production.
+- **Environment**: one running copy of the app, defined by which code runs, where it runs, and
+  which settings (environment variables) it reads; the settings decide which database it uses.
+- **Development server vs. production build**: `npm run dev` compiles pages as you open them and
+  shows detailed errors; `npm run build` compiles the whole app the way Vercel does, and can fail
+  where the development server worked.
+- **Staging**: an environment kept as close to production as possible, with its own data, for
+  trying a change before users see it.
+- **Release**: turning a deployed feature on for some or all users, with a feature flag.
+- **Seed data**: made-up rows loaded into a development or staging database.
 - **Test**: a short program that runs some of your code with a chosen input and compares the
   result with the expected answer (arrange, act, assert); the **assertion** is the comparison.
 - **Test runner and test suite**: the program that finds test files by name and runs them
