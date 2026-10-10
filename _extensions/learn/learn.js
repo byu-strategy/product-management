@@ -1,5 +1,7 @@
 // Adds a small "Learn" button beside each heading marked data-learn by learn.lua.
-// Clicking it copies the /learn command for that section and shows a short note.
+// Clicking it copies a prompt for that section and shows a short note. The prompt is plain text,
+// not "/learn <link>": an uninstalled slash command never reaches Claude, while plain text does,
+// so Claude can run the learn skill if it is installed and install it first if it is not.
 (function () {
   var ICON = '<svg viewBox="0 0 13 7" width="20" height="11" shape-rendering="crispEdges" aria-hidden="true"><g fill="#D97757"><rect x="2" y="0" width="9" height="1"/><rect x="2" y="1" width="9" height="1"/><rect x="2" y="2" width="1" height="1"/><rect x="4" y="2" width="5" height="1"/><rect x="10" y="2" width="1" height="1"/><rect x="0" y="3" width="13" height="1"/><rect x="2" y="4" width="9" height="1"/><rect x="2" y="5" width="9" height="1"/><rect x="2" y="6" width="1" height="1"/><rect x="4" y="6" width="1" height="1"/><rect x="8" y="6" width="1" height="1"/><rect x="10" y="6" width="1" height="1"/></g><rect x="3" y="2" width="1" height="1" fill="#1F1F1F"/><rect x="9" y="2" width="1" height="1" fill="#1F1F1F"/></svg>';
 
@@ -32,16 +34,23 @@
     btn._t = setTimeout(function () { btn.classList.remove("learn-copied", "learn-failed"); btn.querySelector(".learn-icon").innerHTML = ICON; btn.querySelector(".learn-label").textContent = "Learn in Claude"; }, 2600);
   }
 
+  var INSTALL = "https://github.com/byu-strategy/builder-template#get-learn-in-an-existing-repo";
+  function prompt(url) {
+    return "Teach me this section of the course book with the learn skill: " + url + "\n\n" +
+      "If the learn skill is not installed in this repo, install it first with the command under " +
+      "\"Get /learn in an existing repo\" at " + INSTALL + ", then start the lesson.";
+  }
+
   function init() {
     document.querySelectorAll("[data-learn]").forEach(function (el) {
       var h = /^H[1-6]$/.test(el.tagName) ? el : el.querySelector("h2");
       if (!h || h.querySelector(".learn-btn")) return;
-      var cmd = el.getAttribute("data-learn");
+      var cmd = prompt(el.getAttribute("data-learn").replace(/^\/learn\s+/, ""));
       var btn = document.createElement("button");
       btn.type = "button";
       btn.className = "learn-btn";
-      btn.title = "Copy a /learn command for this section, then paste it into Claude Code";
-      btn.setAttribute("aria-label", "Copy the /learn command for this section");
+      btn.title = "Copy a prompt for this section, then paste it into Claude Code";
+      btn.setAttribute("aria-label", "Copy a Claude Code prompt to learn this section");
       btn.innerHTML = '<span class="learn-icon">' + ICON + '</span><span class="learn-label">Learn in Claude</span><span class="learn-note" role="status" aria-live="polite"></span>';
       btn.addEventListener("click", function () {
         copy(cmd).then(

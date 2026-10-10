@@ -2,8 +2,9 @@
 learn.lua: give each section that ends with a `<!-- learn -->` comment a small "Learn" button
 beside its `##` heading.
 
-The button copies one line, `/learn <page url>#<anchor>`, which the student pastes into Claude
-Code to run the builder-template /learn skill on that section. learn.js draws the button and does
+The heading carries `/learn <page url>#<anchor>`. learn.js turns that into a plain-text prompt
+(run the learn skill on this section, and install it from builder-template first if it is
+missing), draws the button, and does
 the copying; this filter only marks the heading with `data-learn`, so the table of contents and the
 heading text are untouched.
 

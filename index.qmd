@@ -53,7 +53,8 @@ All other materials are available online at no cost.
 
 ::: {.callout-tip title="Learning a section with Claude"}
 Most sections of the course book have a small **Learn in Claude** button beside the heading. Click it to
-copy a `/learn` command for that section, then paste it into Claude Code in your course repo.
+copy a prompt for that section, then paste it into Claude Code in your course repo. If your repo
+does not have the `/learn` skill yet, Claude installs it first.
 Claude tutors you on that section, worked on your own product, for as long as you choose, and
 saves a short log to your `learning/` folder.
 :::
