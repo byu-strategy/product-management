@@ -1,6 +1,6 @@
 <svg viewBox="0 0 1000 630" xmlns="http://www.w3.org/2000/svg" role="img" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
 <title>What a test is, and what the test runner does</title>
-<desc>Top: one test, as a mechanism. A test file named format.test.ts has three numbered lines. 1, Arrange: const amount = 0. 2, Act: formatCurrency(amount), which sends the input 0 to your code, the formatCurrency function. 3, Assert: expect(got).toBe('$0.00'), which supplies the expected answer. Your code returns its output, '$0.00', as got. A compare box holds got and expected side by side. If they are the same, the test passes, shown in green; if they are different, it fails, shown in red. Bottom: the test runner. The command npm test starts the runner, which finds every file whose name ends in .test.ts, twelve shown, and runs them. Eleven pass and one fails. The runner prints a summary: 47 passed, 1 failed. The numbers are illustrative.</desc>
+<desc>Top: one test, as a mechanism. A test file named format.test.ts has three numbered lines. 1, choose an input, zero dollars: const amount = 0. 2, run your code on it and keep the answer: formatCurrency(amount), which sends the input 0 to your code, the formatCurrency function. 3, state the answer it must give: expect(got).toBe('$0.00'), which supplies the expected answer. Your code returns its output, '$0.00', as got. A compare box holds got and expected side by side. If they are the same, the test passes, shown in green; if they are different, it fails, shown in red. Bottom: the test runner. The command npm test starts the runner, which finds every file whose name ends in .test.ts, twelve shown, and runs them. Eleven pass and one fails. The runner prints a summary: 47 passed, 1 failed. The numbers are illustrative.</desc>
 <defs>
 <marker id="aN" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#002E5D"/></marker>
 <marker id="aB" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#0057B8"/></marker>
@@ -19,15 +19,15 @@
 <line x1="30" y1="104" x2="470" y2="104" stroke="#D9DEE4" stroke-width="1.5"/>
 <circle cx="62" cy="144" r="14" fill="#002E5D"/>
 <text x="62" y="150" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">1</text>
-<text x="86" y="138" font-size="15" font-weight="600" fill="#5A6672" text-anchor="start">Arrange</text>
+<text x="86" y="138" font-size="15" font-weight="600" fill="#5A6672" text-anchor="start">Choose an input: zero dollars</text>
 <text x="86" y="162" font-size="16" font-weight="600" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace">const amount = 0</text>
 <circle cx="62" cy="204" r="14" fill="#002E5D"/>
 <text x="62" y="210" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">2</text>
-<text x="86" y="198" font-size="15" font-weight="600" fill="#5A6672" text-anchor="start">Act</text>
+<text x="86" y="198" font-size="15" font-weight="600" fill="#5A6672" text-anchor="start">Run your code on it, keep the answer</text>
 <text x="86" y="222" font-size="16" font-weight="600" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace">const got = formatCurrency(amount)</text>
 <circle cx="62" cy="264" r="14" fill="#002E5D"/>
 <text x="62" y="270" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">3</text>
-<text x="86" y="258" font-size="15" font-weight="600" fill="#5A6672" text-anchor="start">Assert</text>
+<text x="86" y="258" font-size="15" font-weight="600" fill="#5A6672" text-anchor="start">State the answer it must give</text>
 <text x="86" y="282" font-size="16" font-weight="600" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace">expect(got).toBe('$0.00')</text>
 <rect x="530" y="168" width="200" height="84" rx="10" fill="url(#gB)" stroke="#002E5D" stroke-width="1.5" filter="url(#sh)"/>
 <g transform="translate(548,182) scale(0.9167)" fill="none" stroke="#002E5D" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m18 16 4-4-4-4" />
@@ -40,9 +40,9 @@
 <rect x="790" y="140" width="180" height="170" rx="10" fill="#FFFFFF" stroke="#0057B8" stroke-width="2" filter="url(#sh)"/>
 <text x="880.0" y="168" font-size="15" font-weight="600" fill="#5A6672" text-anchor="middle">compare</text>
 <line x1="806" y1="182" x2="954" y2="182" stroke="#D9DEE4" stroke-width="1.5"/>
-<text x="808" y="216" font-size="15" font-weight="400" fill="#5A6672" text-anchor="start">got</text>
+<text x="808" y="216" font-size="15" font-weight="400" fill="#5A6672" text-anchor="start">returned</text>
 <text x="952" y="216" font-size="17" font-weight="700" fill="#002E5D" text-anchor="end" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace">'$0.00'</text>
-<text x="808" y="276" font-size="15" font-weight="400" fill="#5A6672" text-anchor="start">expected</text>
+<text x="808" y="276" font-size="15" font-weight="400" fill="#5A6672" text-anchor="start">must be</text>
 <text x="952" y="276" font-size="17" font-weight="700" fill="#002E5D" text-anchor="end" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace">'$0.00'</text>
 <line x1="730" y1="210" x2="782" y2="210" stroke="#002E5D" stroke-width="2" marker-end="url(#aN)"/>
 <line x1="470" y1="270" x2="782" y2="270" stroke="#002E5D" stroke-width="2" marker-end="url(#aN)"/>

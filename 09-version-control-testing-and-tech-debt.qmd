@@ -228,8 +228,10 @@ runs.
 
 ### One test, taken apart
 
-Here is a complete test file for a function that formats prices, `formatCurrency`. It uses
-Vitest, a test runner common in Next.js projects:
+Start with a situation. Your app shows a balance on every account page, using a function
+called `formatCurrency` that turns a number into a price. A new user has a balance of zero, and
+the page must show `$0.00`, never `$0` or `0`. A test is a few lines of code that check this for
+you, every time anyone changes the code:
 
 ```typescript
 // lib/format.test.ts
@@ -237,21 +239,32 @@ import { expect, test } from 'vitest';
 import { formatCurrency } from './format';
 
 test('formats zero with two decimal places', () => {
-  const amount = 0;                     // 1. Arrange: set up the input
-  const got = formatCurrency(amount);   // 2. Act: run your code
-  expect(got).toBe('$0.00');            // 3. Assert: compare with the expected answer
+  const amount = 0;
+  const got = formatCurrency(amount);
+  expect(got).toBe('$0.00');
 });
 ```
 
-Every test has the same three steps, usually called **arrange, act, assert**. Arrange sets up a
-known starting point (here, the number 0). Act runs the code being tested. Assert states what the
-result must be. The line `expect(got).toBe('$0.00')` is an **assertion**: if `got` is `'$0.00'`,
-the test passes; if a later change makes `formatCurrency(0)` return `'$0'`, the test fails and the
-runner prints both values so you can see the difference. The text in quotes after `test(` is the
-test's **name**, a sentence saying what the code must do. A test file usually holds several tests,
-one per behavior: zero, a large number with a comma, a negative amount.
+You do not need to write this, but you should be able to read it. Line by line:
 
-![Top: one test runs your code with a known input and compares what it got with the answer it expected. Bottom: the test runner runs every test file and prints the totals. Numbers are illustrative; each file holds several tests.](images/diagrams/ch09-test-anatomy.svg){#fig-test-anatomy fig-alt="Top: a test file named format.test.ts with three numbered lines. 1, Arrange: const amount = 0. 2, Act: const got = formatCurrency(amount); an arrow carries the input 0 to a box labeled your code, formatCurrency(). 3, Assert: expect(got).toBe('$0.00'); an arrow carries the expected value to a compare box outlined in blue. Your code's output also goes to the compare box. The box shows got '$0.00' and expected '$0.00'. Below it the result branches: same, pass, in green; different, fail, in red. Bottom, in a band labeled test runner: a dark command box reading npm test, an arrow to a grid of twelve test file icons labeled files named *.test.ts, eleven with check marks and one red with an x, and an arrow to a printed summary: 47 passed, 1 failed." width="100%"}
+| Code | What it means |
+|---|---|
+| `import { expect, test } from 'vitest';` | Bring in the testing tools from Vitest, a test runner common in Next.js projects |
+| `import { formatCurrency } from './format';` | Bring in the function being tested, from the file `format.ts` next to this one |
+| `test('formats zero with two decimal places', () => {` | Start one test. The text in quotes is its **name**: a sentence saying what the code must do |
+| `const amount = 0;` | Make a named value, `amount`, and set it to 0. `const` means "a name for a value that will not change" |
+| `const got = formatCurrency(amount);` | Run your function with 0 as its input, and keep what it returns under the name `got` |
+| `expect(got).toBe('$0.00');` | The check: what the function returned must be exactly `'$0.00'`. If it is, the test passes; if not, it fails |
+| `});` | End of this test |
+
+Every test has the same three steps: choose an input, run your code on it, and state the answer
+it must give. (Programmers call them **arrange, act, assert**, a name you will see in test files
+and in Claude Code's explanations.) The last line is the **assertion**. If a later change makes
+`formatCurrency(0)` return `'$0'`, the test fails, and the runner prints both values (`'$0'`
+received, `'$0.00'` expected) so you can see what changed. A test file usually holds several
+tests, one per behavior: zero, a large number with a comma (`$1,234.56`), a negative amount.
+
+![Top: one test runs your code with a chosen input and compares what it returned with the answer it must give. Bottom: the test runner runs every test file and prints the totals. Numbers are illustrative; each file holds several tests.](images/diagrams/ch09-test-anatomy.svg){#fig-test-anatomy fig-alt="Top: a test file named format.test.ts with three numbered lines. 1, Arrange: const amount = 0. 2, Act: const got = formatCurrency(amount); an arrow carries the input 0 to a box labeled your code, formatCurrency(). 3, Assert: expect(got).toBe('$0.00'); an arrow carries the expected value to a compare box outlined in blue. Your code's output also goes to the compare box. The box shows returned '$0.00' and must be '$0.00'. Below it the result branches: same, pass, in green; different, fail, in red. Bottom, in a band labeled test runner: a dark command box reading npm test, an arrow to a grid of twelve test file icons labeled files named *.test.ts, eleven with check marks and one red with an x, and an arrow to a printed summary: 47 passed, 1 failed." width="100%"}
 
 ### The runner, and the files in your repo
 
