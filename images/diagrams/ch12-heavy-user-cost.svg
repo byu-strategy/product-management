@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 590" role="img" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+  <title>Model cost per user against a flat price</title>
+  <desc>A bar chart of QuizMe's monthly model cost per user, at 0.018 dollars per quiz, against a dashed line for the flat price of 4 dollars a month. A typical user takes 15 quizzes a month and costs 27 cents, leaving 3.73 dollars under the price. A heavy user in finals week takes 10 quizzes a day for 30 days, 300 in all, and costs 5.40 dollars; the part of that bar above the price line, 1.40 dollars, is money lost on that user before hosting and payment fees.</desc>
+  <defs>
+    <filter id="sh" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="1.5" stdDeviation="2.5" flood-color="#002E5D" flood-opacity="0.13"/>
+    </filter>
+    <linearGradient id="bar" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#12447A"/><stop offset="100%" stop-color="#002E5D"/>
+    </linearGradient>
+    <linearGradient id="loss" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#C24848"/><stop offset="100%" stop-color="#A33434"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="1000" height="590" rx="8" fill="#FAFBFC"/>
+
+  <text x="40" y="56" font-size="28" font-weight="700" fill="#002E5D">Your best users can be your most expensive</text>
+  <text x="40" y="88" font-size="18" fill="#5A6672">QuizMe's model cost per user per month, at $0.018 a quiz, on a flat $4.00 price</text>
+
+  <g transform="translate(0,-60)">
+  <!-- axis and grid ($0 at y=560, 60px per dollar) -->
+  <g stroke="#D9DEE4" stroke-width="1">
+    <line x1="150" y1="500" x2="660" y2="500"/>
+    <line x1="150" y1="440" x2="660" y2="440"/>
+    <line x1="150" y1="380" x2="660" y2="380"/>
+    <line x1="150" y1="260" x2="660" y2="260"/>
+    <line x1="150" y1="200" x2="660" y2="200"/>
+  </g>
+  <line x1="150" y1="560" x2="660" y2="560" stroke="#8A939C" stroke-width="1.5"/>
+  <g font-size="16" fill="#5A6672" text-anchor="end">
+    <text x="138" y="566">$0</text>
+    <text x="138" y="506">$1</text>
+    <text x="138" y="446">$2</text>
+    <text x="138" y="386">$3</text>
+    <text x="138" y="326">$4</text>
+    <text x="138" y="266">$5</text>
+    <text x="138" y="206">$6</text>
+  </g>
+
+  <!-- typical user: margin ghost, then the cost bar -->
+  <rect x="200" y="320" width="150" height="224" rx="6" fill="#E6EEF7" stroke="#6495ED" stroke-width="1.5" stroke-dasharray="6 5"/>
+  <text x="275" y="418" text-anchor="middle" font-size="26" font-weight="700" fill="#002E5D">$3.73</text>
+  <text x="275" y="444" text-anchor="middle" font-size="16" fill="#5A6672">left after</text>
+  <text x="275" y="464" text-anchor="middle" font-size="16" fill="#5A6672">model cost</text>
+  <rect x="200" y="544" width="150" height="16" rx="3" fill="url(#bar)" filter="url(#sh)"/>
+  <text x="275" y="532" text-anchor="middle" font-size="18" font-weight="700" fill="#002E5D">$0.27</text>
+
+  <!-- heavy user -->
+  <rect x="460" y="320" width="150" height="240" fill="url(#bar)" filter="url(#sh)"/>
+  <path d="M460,320 L460,244 Q460,236 468,236 L602,236 Q610,236 610,244 L610,320 Z" fill="url(#loss)" filter="url(#sh)"/>
+  <text x="535" y="226" text-anchor="middle" font-size="20" font-weight="700" fill="#B03A3A">$5.40</text>
+  <text x="535" y="446" text-anchor="middle" font-size="16" fill="#FFFFFF" fill-opacity="0.85">covered</text>
+  <text x="535" y="466" text-anchor="middle" font-size="16" fill="#FFFFFF" fill-opacity="0.85">by the price</text>
+
+  <!-- price line -->
+  <line x1="150" y1="320" x2="660" y2="320" stroke="#2C3E50" stroke-width="2" stroke-dasharray="8 6"/>
+  <text x="680" y="316" font-size="19" font-weight="700" fill="#002E5D">Flat price</text>
+  <text x="680" y="340" font-size="17" fill="#2C3E50">$4.00 a month</text>
+
+  <!-- loss label -->
+  <text x="680" y="252" font-size="22" font-weight="700" fill="#B03A3A">$1.40 more than</text>
+  <text x="680" y="276" font-size="22" font-weight="700" fill="#B03A3A">they pay</text>
+
+  <!-- x labels -->
+  <text x="275" y="594" text-anchor="middle" font-size="19" font-weight="600" fill="#002E5D">Typical user</text>
+  <text x="275" y="618" text-anchor="middle" font-size="16" fill="#5A6672">15 quizzes a month</text>
+  <text x="535" y="594" text-anchor="middle" font-size="19" font-weight="600" fill="#002E5D">Heavy user</text>
+  <text x="535" y="618" text-anchor="middle" font-size="16" fill="#5A6672">10 a day for 30 days</text>
+
+  </g>
+</svg>

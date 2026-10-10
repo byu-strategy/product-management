@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 630" role="img" aria-labelledby="t d" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+<title id="t">Why five users per round</title>
+<desc id="d">A line chart of the share of usability problems found against the number of users tested, from 0 to 15. The curve rises steeply at first and flattens: five users find about 85 percent of the problems, and users 6 to 15 mostly repeat problems already seen. Below the chart, three rounds of five users each are joined by arrows labeled Fix, showing that fifteen sessions are better spent as three rounds with a fix between each, so each retest checks that the fix worked.</desc>
+<defs>
+  <filter id="sh" x="-10%" y="-10%" width="120%" height="130%">
+    <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#002E5D" flood-opacity="0.13"/>
+  </filter>
+  <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+    <path d="M0,0 L10,5 L0,10 z" fill="#5A6672"/>
+  </marker>
+  <marker id="arrR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+    <path d="M0,0 L10,5 L0,10 z" fill="#0057B8"/>
+  </marker>
+  <marker id="arrN" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+    <path d="M0,0 L10,5 L0,10 z" fill="#002E5D"/>
+  </marker>
+  <linearGradient id="bgG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FBFCFD"/><stop offset="1" stop-color="#EFF3F8"/></linearGradient>
+  <linearGradient id="stepG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F1F6FB"/><stop offset="1" stop-color="#E1EAF5"/></linearGradient>
+  <linearGradient id="navyG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0B4178"/><stop offset="1" stop-color="#002E5D"/></linearGradient>
+  <linearGradient id="royalG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1A6BCB"/><stop offset="1" stop-color="#0057B8"/></linearGradient>
+  <linearGradient id="phoneG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#FBFCFE"/></linearGradient>
+<linearGradient id="areaG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#B9D0EA" stop-opacity="0.7"/><stop offset="1" stop-color="#E6EEF7" stop-opacity="0.2"/></linearGradient>
+</defs>
+<rect x="0" y="0" width="1000" height="630" rx="8" fill="url(#bgG)"/>
+<text x="50" y="34" font-size="17" font-weight="600" fill="#002E5D">Share of usability problems found</text>
+<line x1="110" y1="370" x2="930" y2="370" stroke="#AEB6BF" stroke-width="1.5"/>
+<text x="96" y="376" font-size="16" fill="#5A6672" text-anchor="end">0%</text>
+<line x1="110" y1="298.5" x2="930" y2="298.5" stroke="#D9DEE4" stroke-width="1.2"/>
+<text x="96" y="304.5" font-size="16" fill="#5A6672" text-anchor="end">25%</text>
+<line x1="110" y1="227.0" x2="930" y2="227.0" stroke="#D9DEE4" stroke-width="1.2"/>
+<text x="96" y="233.0" font-size="16" fill="#5A6672" text-anchor="end">50%</text>
+<line x1="110" y1="155.5" x2="930" y2="155.5" stroke="#D9DEE4" stroke-width="1.2"/>
+<text x="96" y="161.5" font-size="16" fill="#5A6672" text-anchor="end">75%</text>
+<line x1="110" y1="84.0" x2="930" y2="84.0" stroke="#D9DEE4" stroke-width="1.2"/>
+<text x="96" y="90.0" font-size="16" fill="#5A6672" text-anchor="end">100%</text>
+<text x="110.0" y="400" font-size="16" fill="#5A6672" text-anchor="middle">0</text>
+<text x="383.3333333333333" y="400" font-size="16" fill="#5A6672" text-anchor="middle">5</text>
+<text x="656.6666666666666" y="400" font-size="16" fill="#5A6672" text-anchor="middle">10</text>
+<text x="930.0" y="400" font-size="16" fill="#5A6672" text-anchor="middle">15</text>
+<text x="520.0" y="432" font-size="17" font-weight="600" fill="#002E5D" text-anchor="middle">Users tested</text>
+<path d="M110.0,370.0 L115.5,359.6 L120.9,349.5 L126.4,339.9 L131.9,330.6 L137.3,321.6 L142.8,312.9 L148.3,304.6 L153.7,296.5 L159.2,288.8 L164.7,281.3 L170.1,274.2 L175.6,267.2 L181.1,260.6 L186.5,254.1 L192.0,247.9 L197.5,242.0 L202.9,236.2 L208.4,230.7 L213.9,225.3 L219.3,220.2 L224.8,215.2 L230.3,210.4 L235.7,205.8 L241.2,201.4 L246.7,197.1 L252.1,193.0 L257.6,189.0 L263.1,185.2 L268.5,181.5 L274.0,178.0 L279.5,174.5 L284.9,171.2 L290.4,168.1 L295.9,165.0 L301.3,162.0 L306.8,159.2 L312.3,156.5 L317.7,153.8 L323.2,151.3 L328.7,148.8 L334.1,146.5 L339.6,144.2 L345.1,142.0 L350.5,139.9 L356.0,137.9 L361.5,135.9 L366.9,134.0 L372.4,132.2 L377.9,130.4 L383.3,128.7 L388.8,127.1 L394.3,125.5 L399.7,124.0 L405.2,122.6 L410.7,121.2 L416.1,119.8 L421.6,118.5 L427.1,117.2 L432.5,116.0 L438.0,114.9 L443.5,113.7 L448.9,112.7 L454.4,111.6 L459.9,110.6 L465.3,109.6 L470.8,108.7 L476.3,107.8 L481.7,106.9 L487.2,106.1 L492.7,105.3 L498.1,104.5 L503.6,103.8 L509.1,103.1 L514.5,102.4 L520.0,101.7 L525.5,101.0 L530.9,100.4 L536.4,99.8 L541.9,99.3 L547.3,98.7 L552.8,98.2 L558.3,97.6 L563.7,97.1 L569.2,96.7 L574.7,96.2 L580.1,95.8 L585.6,95.3 L591.1,94.9 L596.5,94.5 L602.0,94.1 L607.5,93.8 L612.9,93.4 L618.4,93.1 L623.9,92.7 L629.3,92.4 L634.8,92.1 L640.3,91.8 L645.7,91.5 L651.2,91.3 L656.7,91.0 L662.1,90.7 L667.6,90.5 L673.1,90.3 L678.5,90.0 L684.0,89.8 L689.5,89.6 L694.9,89.4 L700.4,89.2 L705.9,89.0 L711.3,88.8 L716.8,88.7 L722.3,88.5 L727.7,88.3 L733.2,88.2 L738.7,88.0 L744.1,87.9 L749.6,87.7 L755.1,87.6 L760.5,87.5 L766.0,87.3 L771.5,87.2 L776.9,87.1 L782.4,87.0 L787.9,86.9 L793.3,86.8 L798.8,86.7 L804.3,86.6 L809.7,86.5 L815.2,86.4 L820.7,86.3 L826.1,86.2 L831.6,86.1 L837.1,86.1 L842.5,86.0 L848.0,85.9 L853.5,85.8 L858.9,85.8 L864.4,85.7 L869.9,85.6 L875.3,85.6 L880.8,85.5 L886.3,85.5 L891.7,85.4 L897.2,85.4 L902.7,85.3 L908.1,85.3 L913.6,85.2 L919.1,85.2 L924.5,85.1 L930.0,85.1 L930.0,370.0 L110.0,370.0 Z" fill="url(#areaG)"/>
+<rect x="383.3333333333333" y="84" width="546.6666666666667" height="286" rx="0" fill="#E9ECEF" opacity="0.45"/>
+<path d="M110.0,370.0 L115.5,359.6 L120.9,349.5 L126.4,339.9 L131.9,330.6 L137.3,321.6 L142.8,312.9 L148.3,304.6 L153.7,296.5 L159.2,288.8 L164.7,281.3 L170.1,274.2 L175.6,267.2 L181.1,260.6 L186.5,254.1 L192.0,247.9 L197.5,242.0 L202.9,236.2 L208.4,230.7 L213.9,225.3 L219.3,220.2 L224.8,215.2 L230.3,210.4 L235.7,205.8 L241.2,201.4 L246.7,197.1 L252.1,193.0 L257.6,189.0 L263.1,185.2 L268.5,181.5 L274.0,178.0 L279.5,174.5 L284.9,171.2 L290.4,168.1 L295.9,165.0 L301.3,162.0 L306.8,159.2 L312.3,156.5 L317.7,153.8 L323.2,151.3 L328.7,148.8 L334.1,146.5 L339.6,144.2 L345.1,142.0 L350.5,139.9 L356.0,137.9 L361.5,135.9 L366.9,134.0 L372.4,132.2 L377.9,130.4 L383.3,128.7 L388.8,127.1 L394.3,125.5 L399.7,124.0 L405.2,122.6 L410.7,121.2 L416.1,119.8 L421.6,118.5 L427.1,117.2 L432.5,116.0 L438.0,114.9 L443.5,113.7 L448.9,112.7 L454.4,111.6 L459.9,110.6 L465.3,109.6 L470.8,108.7 L476.3,107.8 L481.7,106.9 L487.2,106.1 L492.7,105.3 L498.1,104.5 L503.6,103.8 L509.1,103.1 L514.5,102.4 L520.0,101.7 L525.5,101.0 L530.9,100.4 L536.4,99.8 L541.9,99.3 L547.3,98.7 L552.8,98.2 L558.3,97.6 L563.7,97.1 L569.2,96.7 L574.7,96.2 L580.1,95.8 L585.6,95.3 L591.1,94.9 L596.5,94.5 L602.0,94.1 L607.5,93.8 L612.9,93.4 L618.4,93.1 L623.9,92.7 L629.3,92.4 L634.8,92.1 L640.3,91.8 L645.7,91.5 L651.2,91.3 L656.7,91.0 L662.1,90.7 L667.6,90.5 L673.1,90.3 L678.5,90.0 L684.0,89.8 L689.5,89.6 L694.9,89.4 L700.4,89.2 L705.9,89.0 L711.3,88.8 L716.8,88.7 L722.3,88.5 L727.7,88.3 L733.2,88.2 L738.7,88.0 L744.1,87.9 L749.6,87.7 L755.1,87.6 L760.5,87.5 L766.0,87.3 L771.5,87.2 L776.9,87.1 L782.4,87.0 L787.9,86.9 L793.3,86.8 L798.8,86.7 L804.3,86.6 L809.7,86.5 L815.2,86.4 L820.7,86.3 L826.1,86.2 L831.6,86.1 L837.1,86.1 L842.5,86.0 L848.0,85.9 L853.5,85.8 L858.9,85.8 L864.4,85.7 L869.9,85.6 L875.3,85.6 L880.8,85.5 L886.3,85.5 L891.7,85.4 L897.2,85.4 L902.7,85.3 L908.1,85.3 L913.6,85.2 L919.1,85.2 L924.5,85.1 L930.0,85.1" fill="none" stroke="#002E5D" stroke-width="3" stroke-linejoin="round"/>
+<circle cx="164.7" cy="281.3" r="5" fill="#fff" stroke="#002E5D" stroke-width="2"/>
+<circle cx="219.3" cy="220.2" r="5" fill="#fff" stroke="#002E5D" stroke-width="2"/>
+<circle cx="274.0" cy="178.0" r="5" fill="#fff" stroke="#002E5D" stroke-width="2"/>
+<circle cx="328.7" cy="148.8" r="5" fill="#fff" stroke="#002E5D" stroke-width="2"/>
+<circle cx="383.3" cy="128.7" r="7" fill="#0057B8" stroke="#0057B8" stroke-width="2"/>
+<circle cx="438.0" cy="114.9" r="5" fill="#fff" stroke="#002E5D" stroke-width="2"/>
+<circle cx="492.7" cy="105.3" r="5" fill="#fff" stroke="#002E5D" stroke-width="2"/>
+<circle cx="547.3" cy="98.7" r="5" fill="#fff" stroke="#002E5D" stroke-width="2"/>
+<circle cx="602.0" cy="94.1" r="5" fill="#fff" stroke="#002E5D" stroke-width="2"/>
+<circle cx="656.7" cy="91.0" r="5" fill="#fff" stroke="#002E5D" stroke-width="2"/>
+<circle cx="711.3" cy="88.8" r="5" fill="#fff" stroke="#002E5D" stroke-width="2"/>
+<circle cx="766.0" cy="87.3" r="5" fill="#fff" stroke="#002E5D" stroke-width="2"/>
+<circle cx="820.7" cy="86.3" r="5" fill="#fff" stroke="#002E5D" stroke-width="2"/>
+<circle cx="875.3" cy="85.6" r="5" fill="#fff" stroke="#002E5D" stroke-width="2"/>
+<circle cx="930.0" cy="85.1" r="5" fill="#fff" stroke="#002E5D" stroke-width="2"/>
+<line x1="383.3333333333333" y1="137.73129658139996" x2="383.3333333333333" y2="370" stroke="#0057B8" stroke-width="1.5" stroke-dasharray="4 4"/>
+<rect x="423.33333333333326" y="168.73129658139996" width="230" height="62" rx="8" fill="url(#navyG)" filter="url(#sh)"/>
+<text x="538.3333333333333" y="195.73129658139996" font-size="18" font-weight="700" fill="#fff" text-anchor="middle">5 users</text>
+<text x="538.3333333333333" y="218.73129658139996" font-size="17" fill="#DCE6F2" text-anchor="middle">find about 85%</text>
+<line x1="423.33333333333326" y1="188.73129658139996" x2="392.3333333333333" y2="132.73129658139996" stroke="#002E5D" stroke-width="1.5"/>
+<text x="656.6666666666666" y="278.2" font-size="17" fill="#5A6672" text-anchor="middle">Users 6 to 15 mostly</text>
+<text x="656.6666666666666" y="301.2" font-size="17" fill="#5A6672" text-anchor="middle">repeat what you have seen</text>
+<text x="50" y="486" font-size="19" font-weight="700" fill="#002E5D">Fifteen sessions? Run three rounds of five, with a fix between</text>
+<rect x="50" y="520" width="236" height="76" rx="10" fill="url(#stepG)" stroke="#B9D0EA" stroke-width="1.5" filter="url(#sh)"/>
+<g transform="translate(70,530) scale(1.4167)" fill="none" stroke="#002E5D" stroke-width="1.624" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+  <circle cx="12" cy="7" r="4" /></g>
+<g transform="translate(110,530) scale(1.4167)" fill="none" stroke="#002E5D" stroke-width="1.624" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+  <circle cx="12" cy="7" r="4" /></g>
+<g transform="translate(150,530) scale(1.4167)" fill="none" stroke="#002E5D" stroke-width="1.624" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+  <circle cx="12" cy="7" r="4" /></g>
+<g transform="translate(190,530) scale(1.4167)" fill="none" stroke="#002E5D" stroke-width="1.624" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+  <circle cx="12" cy="7" r="4" /></g>
+<g transform="translate(230,530) scale(1.4167)" fill="none" stroke="#002E5D" stroke-width="1.624" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+  <circle cx="12" cy="7" r="4" /></g>
+<text x="168.0" y="588" font-size="15" font-weight="600" fill="#5A6672" text-anchor="middle">Round 1</text>
+<line x1="294" y1="558" x2="394" y2="558" stroke="#0057B8" stroke-width="2" marker-end="url(#arrR)"/>
+<text x="344.0" y="548" font-size="17" font-weight="700" fill="#0057B8" text-anchor="middle">Fix</text>
+<rect x="402" y="520" width="236" height="76" rx="10" fill="url(#stepG)" stroke="#B9D0EA" stroke-width="1.5" filter="url(#sh)"/>
+<g transform="translate(422,530) scale(1.4167)" fill="none" stroke="#002E5D" stroke-width="1.624" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+  <circle cx="12" cy="7" r="4" /></g>
+<g transform="translate(462,530) scale(1.4167)" fill="none" stroke="#002E5D" stroke-width="1.624" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+  <circle cx="12" cy="7" r="4" /></g>
+<g transform="translate(502,530) scale(1.4167)" fill="none" stroke="#002E5D" stroke-width="1.624" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+  <circle cx="12" cy="7" r="4" /></g>
+<g transform="translate(542,530) scale(1.4167)" fill="none" stroke="#002E5D" stroke-width="1.624" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+  <circle cx="12" cy="7" r="4" /></g>
+<g transform="translate(582,530) scale(1.4167)" fill="none" stroke="#002E5D" stroke-width="1.624" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+  <circle cx="12" cy="7" r="4" /></g>
+<text x="520.0" y="588" font-size="15" font-weight="600" fill="#5A6672" text-anchor="middle">Round 2</text>
+<line x1="646" y1="558" x2="746" y2="558" stroke="#0057B8" stroke-width="2" marker-end="url(#arrR)"/>
+<text x="696.0" y="548" font-size="17" font-weight="700" fill="#0057B8" text-anchor="middle">Fix</text>
+<rect x="754" y="520" width="236" height="76" rx="10" fill="url(#stepG)" stroke="#B9D0EA" stroke-width="1.5" filter="url(#sh)"/>
+<g transform="translate(774,530) scale(1.4167)" fill="none" stroke="#002E5D" stroke-width="1.624" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+  <circle cx="12" cy="7" r="4" /></g>
+<g transform="translate(814,530) scale(1.4167)" fill="none" stroke="#002E5D" stroke-width="1.624" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+  <circle cx="12" cy="7" r="4" /></g>
+<g transform="translate(854,530) scale(1.4167)" fill="none" stroke="#002E5D" stroke-width="1.624" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+  <circle cx="12" cy="7" r="4" /></g>
+<g transform="translate(894,530) scale(1.4167)" fill="none" stroke="#002E5D" stroke-width="1.624" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+  <circle cx="12" cy="7" r="4" /></g>
+<g transform="translate(934,530) scale(1.4167)" fill="none" stroke="#002E5D" stroke-width="1.624" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+  <circle cx="12" cy="7" r="4" /></g>
+<text x="872.0" y="588" font-size="15" font-weight="600" fill="#5A6672" text-anchor="middle">Round 3</text>
+</svg>

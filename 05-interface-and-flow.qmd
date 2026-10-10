@@ -89,6 +89,8 @@ ENTRY  Home screen ("My shifts")
  CANCEL at any step before pickup -> shift returns to me, nothing sent
 ```
 
+![The same flow as a picture. The happy path is one line through five steps; three of the four ways it can end are off that path, and each needs a designed landing.](images/diagrams/ch05-shiftswap-flow.svg){#fig-shiftswap-flow fig-alt="Flow diagram of posting a shift on ShiftSwap. Entry at the My shifts home screen, then step 1 tap the Thursday shift, step 2 tap Give away this shift, step 3 add an optional note, step 4 confirm so the shift is posted. A dashed bracket under steps 1 to 4 leads to an exit: cancel before anyone picks it up, the shift returns and nothing is sent. From step 4 a decision asks whether someone picks it up within 48 hours. If yes, step 5 sends the manager an approval request, then a decision asks whether the manager approves; yes leads to the success exit, both notified and schedules updated. If the manager says no, the shift returns with the manager's reason. If nobody picks it up, the student gets a reminder 24 hours before the shift with an Ask a specific coworker option. The happy path is drawn in navy; the three off-path exits are outlined in blue." width="100%"}
+
 Mapping it this way surfaces questions a screen mockup hides. Who counts as an "eligible"
 coworker? What does the original student see while waiting for approval? What happens if two
 people tap "Pick up" at the same moment? Each of those is a design decision, and each one an
@@ -146,6 +148,8 @@ The revision used the levers. "Give away this shift" became the one full-width f
 bottom, within thumb reach. "Swap for another shift" became an outlined button beneath it. "Message
 manager" and "Add to calendar" moved into a small text-link row at the top. Nothing was removed; the
 ranking changed, and the pause went away.
+
+![The shift detail screen before and after. Blurred, the four equal buttons form one band; after the revision, the only thing that survives the blur is the primary action.](images/diagrams/ch05-hierarchy-before-after.svg){#fig-hierarchy-before-after fig-alt="Two phone mockups of the ShiftSwap shift detail screen, each with a blurred copy labeled Squinted. Before: the shift details sit above a row of four same-size, same-blue buttons labeled Give away, Swap, Message manager, and Add to calendar; blurred, the four buttons merge into one blue band. After: Message manager and Add to calendar are small text links near the top, Give away this shift is a full-width filled button at the bottom, and Swap for another shift is an outlined button below it; blurred, only the Give away button stands out." width="100%"}
 
 A quick check from the course's deck rubric works on screens too: the **squint test**. Squint (or
 blur a screenshot) until you cannot read the words. Whatever is still visible is what users will see
@@ -211,6 +215,8 @@ progress feedback or they leave the task.
   out of date.
 - **Partial** (shifts loaded, but the manager's approval status did not): the shifts show, and the
   pending trade shows "Approval status unavailable" with its own **Refresh**.
+
+![The same screen in its four states off the happy path. Each one says what is true right now and offers the next thing to do.](images/diagrams/ch05-four-states.svg){#fig-four-states fig-alt="Four phone mockups of ShiftSwap's My shifts screen. Empty: a calendar icon, the heading Your shifts will show up here, a line saying to add them from a photo of the posted schedule or type them in, and two buttons, Scan schedule and Add a shift. Loading: gray placeholder cards shaped like shift cards. Error: a message, We couldn't load your shifts. Check your connection and try again, with a Try again button, and two faded shift cards under the label May be out of date. Partial: normal shift cards plus one pending trade outlined in blue, reading Approval status unavailable, with its own Refresh button." width="100%"}
 
 Each state answers the same two questions: what is true right now, and what can I do next?
 
@@ -291,6 +297,8 @@ reference for what those conventions are on Apple platforms.
 | **Tokens** | The raw choices: color palette, type scale, spacing scale, corner radius | Primary color, 4 text sizes, spacing in steps of 4px |
 | **Components** | Reusable pieces built from tokens, each with defined variants and states | Button (primary, secondary, ghost; default, hover, disabled, loading) |
 | **Patterns** | Components combined to solve a recurring problem | "Confirm before a destructive action," "form with inline errors" |
+
+![Each layer is built only from the one before it: a handful of tokens become a few components, and patterns are assembled from those components. Written into CLAUDE.md, the decisions carry over to every screen the agent builds.](images/diagrams/ch05-design-system.svg){#fig-design-system fig-alt="Three cards connected by arrows. Tokens, the raw choices: four color swatches labeled Primary, Text, Muted, and Border; a type scale of four sizes; and a spacing scale of 4, 8, 16, 24, and 32. Components, built from tokens: a button in Primary, Secondary, and Ghost variants, and in Default, Disabled, and Loading states. Patterns, components combined: a confirm dialog titled Give away Thursday's shift, with Cancel and Give away buttons, assembled from components rather than hand-rolled. A band underneath reads: Written down once, in CLAUDE.md, so the agent reuses the same decisions on every new screen." width="100%"}
 
 Refactoring UI's advice to **limit your choices** is the same idea at small scale: pick a short
 spacing scale and type scale up front and use only those, so you never decide "14px or 15px?" again.
@@ -409,6 +417,8 @@ sometimes misread a handwritten 7 as a 1. The design:
 4. Nothing is added to the schedule until the student taps **Save 5 shifts**. After saving, an
    **Undo** appears for ten seconds.
 5. The model never posts, trades, or approves a shift. Those stay human actions.
+
+![The schedule scan's review screen, with each of the five building blocks marked. The Friday row shows the point: the photo says 7 to 10, the model read 1:00, and the design makes that easy to catch before anything is saved.](images/diagrams/ch05-uncertain-ai.svg){#fig-uncertain-ai fig-alt="A phone mockup titled Review scanned shifts with five numbered callouts. 1, set expectations: a note reads Check before saving. It can misread handwriting. 2, show the evidence: each of five shift rows shows a crop of the handwritten paper schedule beside the value read from it. 3, draft, not action: a Draft label reads 5 shifts found, none saved, each row has an edit pencil, and the Friday row, whose crop says Fri 7-10 but whose value reads 1:00 to 10:00 PM, is outlined and marked Check this. 4, easy to dismiss and undo: a Discard draft link, and after saving a 5 shifts saved message with an Undo button for ten seconds. 5, human on what matters: nothing saves until the student taps Save 5 shifts, and the model never posts, trades, or approves a shift." width="100%"}
 
 ::: {.callout-tip title="Try it"}
 Pick the AI feature in your product (or one you plan). **Predict** the most likely wrong output

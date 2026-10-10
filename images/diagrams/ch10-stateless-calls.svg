@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 612" role="img" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+  <title>The model remembers nothing between calls</title>
+  <desc>Your app keeps the conversation history and resends all of it on every call. Three API calls side by side: call 1 sends one message, call 2 sends three (the first message, the model's reply, and the new question), call 3 sends all five. The newest message in each call is highlighted; the rest are resent. Each stack goes into the model, which starts empty every time.</desc>
+  <defs>
+    <linearGradient id="card" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF"/><stop offset="100%" stop-color="#F3F6F9"/>
+    </linearGradient>
+    <linearGradient id="tint" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#EEF3F9"/><stop offset="100%" stop-color="#DCE7F3"/>
+    </linearGradient>
+    <linearGradient id="zone" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F1F5FA"/><stop offset="100%" stop-color="#E6EEF7"/>
+    </linearGradient>
+    <linearGradient id="navyg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0E3F6A"/><stop offset="100%" stop-color="#001F40"/>
+    </linearGradient>
+    <linearGradient id="royalg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1A6CC8"/><stop offset="100%" stop-color="#004A9E"/>
+    </linearGradient>
+    <linearGradient id="royalh" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#1A6CC8"/><stop offset="100%" stop-color="#004A9E"/>
+    </linearGradient>
+    <linearGradient id="navyh" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#5D7A96"/><stop offset="100%" stop-color="#2F4D6B"/>
+    </linearGradient>
+    <linearGradient id="greeng" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3A8F5D"/><stop offset="100%" stop-color="#256A41"/>
+    </linearGradient>
+    <linearGradient id="redg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#C04848"/><stop offset="100%" stop-color="#9C3131"/>
+    </linearGradient>
+    <filter id="sh" x="-15%" y="-15%" width="130%" height="140%">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#0a2e4d" flood-opacity="0.13"/>
+    </filter>
+    <filter id="shs" x="-15%" y="-15%" width="130%" height="140%">
+      <feDropShadow dx="0" dy="1.5" stdDeviation="2.5" flood-color="#0a2e4d" flood-opacity="0.12"/>
+    </filter>
+    <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+      <path d="M0,0.5 L10,5 L0,9.5 z" fill="#8A939C"/>
+    </marker>
+    <marker id="ahr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0.5 L10,5 L0,9.5 z" fill="#0057B8"/>
+    </marker>
+    <marker id="ahn" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+      <path d="M0,0.5 L10,5 L0,9.5 z" fill="#002E5D"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="1000" height="612" rx="8" fill="#FAFBFC"/>
+  <rect x="40" y="22" width="920" height="72" rx="12" fill="url(#zone)" stroke="#C9D7E6" stroke-width="1" filter="url(#shs)"/>
+  <circle cx="86" cy="58" r="24" fill="#FFFFFF"/>
+  <g transform="translate(71.6 43.6) scale(1.2000)" fill="none" stroke="#002E5D" stroke-width="2.000" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3" /> <path d="M3 5V19A9 3 0 0 0 21 19V5" /> <path d="M3 12A9 3 0 0 0 21 12" /></g>
+  <text x="124" y="53" font-size="19" font-weight="700" fill="#002E5D" text-anchor="start">Your app keeps the history</text>
+  <text x="124" y="77" font-size="16" font-weight="400" fill="#5A6672" text-anchor="start">and resends all of it on every call</text>
+  <text x="175" y="128" font-size="15" font-weight="700" fill="#5A6672" text-anchor="middle" letter-spacing="1.2">CALL 1</text>
+  <path d="M 175.0 138 L 175.0 388" fill="none" stroke="#6495ED" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)" stroke-dasharray="2 6"/>
+  <rect x="40" y="396" width="270" height="44" rx="8" fill="#0E3F6A" filter="url(#sh)"/>
+  <rect x="40" y="396" width="270" height="44" rx="8" fill="url(#royalg)"/>
+  <g transform="translate(54.2 407.2) scale(0.9000)" fill="none" stroke="#FFFFFF" stroke-width="2.667" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" /> <circle cx="12" cy="7" r="4" /></g>
+  <text x="88" y="424" font-size="16" font-weight="600" fill="#FFFFFF" text-anchor="start">My product is Tandem.</text>
+  <path d="M 175.0 452 L 175.0 486" fill="none" stroke="#8A939C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+  <rect x="85" y="494" width="180" height="96" rx="12" fill="url(#card)" stroke="#C7D3DF" stroke-width="1" filter="url(#sh)"/>
+  <g transform="translate(106 524) scale(1.5000)" fill="none" stroke="#002E5D" stroke-width="1.600" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8" /> <rect width="16" height="12" x="4" y="8" rx="2" /> <path d="M2 14h2" /> <path d="M20 14h2" /> <path d="M15 13v2" /> <path d="M9 13v2" /></g>
+  <text x="156" y="538" font-size="20" font-weight="700" fill="#002E5D" text-anchor="start">Model</text>
+  <text x="156" y="561" font-size="15" font-weight="400" fill="#5A6672" text-anchor="start">starts empty</text>
+  <text x="500" y="128" font-size="15" font-weight="700" fill="#5A6672" text-anchor="middle" letter-spacing="1.2">CALL 2</text>
+  <path d="M 500.0 138 L 500.0 280" fill="none" stroke="#6495ED" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)" stroke-dasharray="2 6"/>
+  <rect x="365" y="288" width="270" height="44" rx="8" fill="#FFFFFF" stroke="#D3DCE5" stroke-width="1" filter="url(#shs)"/>
+  <g transform="translate(379.2 299.2) scale(0.9000)" fill="none" stroke="#5A6672" stroke-width="2.667" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" /> <circle cx="12" cy="7" r="4" /></g>
+  <text x="413" y="316" font-size="16" font-weight="400" fill="#2C3E50" text-anchor="start">My product is Tandem.</text>
+  <rect x="365" y="342" width="270" height="44" rx="8" fill="url(#tint)" stroke="#D3DCE5" stroke-width="1" filter="url(#shs)"/>
+  <g transform="translate(379.2 353.2) scale(0.9000)" fill="none" stroke="#5A6672" stroke-width="2.667" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8" /> <rect width="16" height="12" x="4" y="8" rx="2" /> <path d="M2 14h2" /> <path d="M20 14h2" /> <path d="M15 13v2" /> <path d="M9 13v2" /></g>
+  <text x="413" y="370" font-size="16" font-weight="400" fill="#2C3E50" text-anchor="start">Nice. What does it do?</text>
+  <rect x="365" y="396" width="270" height="44" rx="8" fill="#0E3F6A" filter="url(#sh)"/>
+  <rect x="365" y="396" width="270" height="44" rx="8" fill="url(#royalg)"/>
+  <g transform="translate(379.2 407.2) scale(0.9000)" fill="none" stroke="#FFFFFF" stroke-width="2.667" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" /> <circle cx="12" cy="7" r="4" /></g>
+  <text x="413" y="424" font-size="16" font-weight="600" fill="#FFFFFF" text-anchor="start">What is it called?</text>
+  <path d="M 500.0 452 L 500.0 486" fill="none" stroke="#8A939C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+  <rect x="410" y="494" width="180" height="96" rx="12" fill="url(#card)" stroke="#C7D3DF" stroke-width="1" filter="url(#sh)"/>
+  <g transform="translate(431 524) scale(1.5000)" fill="none" stroke="#002E5D" stroke-width="1.600" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8" /> <rect width="16" height="12" x="4" y="8" rx="2" /> <path d="M2 14h2" /> <path d="M20 14h2" /> <path d="M15 13v2" /> <path d="M9 13v2" /></g>
+  <text x="481" y="538" font-size="20" font-weight="700" fill="#002E5D" text-anchor="start">Model</text>
+  <text x="481" y="561" font-size="15" font-weight="400" fill="#5A6672" text-anchor="start">starts empty</text>
+  <text x="825" y="128" font-size="15" font-weight="700" fill="#5A6672" text-anchor="middle" letter-spacing="1.2">CALL 3</text>
+  <path d="M 825.0 138 L 825.0 172" fill="none" stroke="#6495ED" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)" stroke-dasharray="2 6"/>
+  <rect x="690" y="180" width="270" height="44" rx="8" fill="#FFFFFF" stroke="#D3DCE5" stroke-width="1" filter="url(#shs)"/>
+  <g transform="translate(704.2 191.2) scale(0.9000)" fill="none" stroke="#5A6672" stroke-width="2.667" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" /> <circle cx="12" cy="7" r="4" /></g>
+  <text x="738" y="208" font-size="16" font-weight="400" fill="#2C3E50" text-anchor="start">My product is Tandem.</text>
+  <rect x="690" y="234" width="270" height="44" rx="8" fill="url(#tint)" stroke="#D3DCE5" stroke-width="1" filter="url(#shs)"/>
+  <g transform="translate(704.2 245.2) scale(0.9000)" fill="none" stroke="#5A6672" stroke-width="2.667" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8" /> <rect width="16" height="12" x="4" y="8" rx="2" /> <path d="M2 14h2" /> <path d="M20 14h2" /> <path d="M15 13v2" /> <path d="M9 13v2" /></g>
+  <text x="738" y="262" font-size="16" font-weight="400" fill="#2C3E50" text-anchor="start">Nice. What does it do?</text>
+  <rect x="690" y="288" width="270" height="44" rx="8" fill="#FFFFFF" stroke="#D3DCE5" stroke-width="1" filter="url(#shs)"/>
+  <g transform="translate(704.2 299.2) scale(0.9000)" fill="none" stroke="#5A6672" stroke-width="2.667" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" /> <circle cx="12" cy="7" r="4" /></g>
+  <text x="738" y="316" font-size="16" font-weight="400" fill="#2C3E50" text-anchor="start">What is it called?</text>
+  <rect x="690" y="342" width="270" height="44" rx="8" fill="url(#tint)" stroke="#D3DCE5" stroke-width="1" filter="url(#shs)"/>
+  <g transform="translate(704.2 353.2) scale(0.9000)" fill="none" stroke="#5A6672" stroke-width="2.667" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8" /> <rect width="16" height="12" x="4" y="8" rx="2" /> <path d="M2 14h2" /> <path d="M20 14h2" /> <path d="M15 13v2" /> <path d="M9 13v2" /></g>
+  <text x="738" y="370" font-size="16" font-weight="400" fill="#2C3E50" text-anchor="start">It is called Tandem.</text>
+  <rect x="690" y="396" width="270" height="44" rx="8" fill="#0E3F6A" filter="url(#sh)"/>
+  <rect x="690" y="396" width="270" height="44" rx="8" fill="url(#royalg)"/>
+  <g transform="translate(704.2 407.2) scale(0.9000)" fill="none" stroke="#FFFFFF" stroke-width="2.667" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" /> <circle cx="12" cy="7" r="4" /></g>
+  <text x="738" y="424" font-size="16" font-weight="600" fill="#FFFFFF" text-anchor="start">Write a tagline.</text>
+  <path d="M 825.0 452 L 825.0 486" fill="none" stroke="#8A939C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+  <rect x="735" y="494" width="180" height="96" rx="12" fill="url(#card)" stroke="#C7D3DF" stroke-width="1" filter="url(#sh)"/>
+  <g transform="translate(756 524) scale(1.5000)" fill="none" stroke="#002E5D" stroke-width="1.600" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8" /> <rect width="16" height="12" x="4" y="8" rx="2" /> <path d="M2 14h2" /> <path d="M20 14h2" /> <path d="M15 13v2" /> <path d="M9 13v2" /></g>
+  <text x="806" y="538" font-size="20" font-weight="700" fill="#002E5D" text-anchor="start">Model</text>
+  <text x="806" y="561" font-size="15" font-weight="400" fill="#5A6672" text-anchor="start">starts empty</text>
+</svg>

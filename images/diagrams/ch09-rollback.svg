@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 480" role="img" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+  <title>Rollback moves the domain, not the data</title>
+  <desc>Your live domain sits above three production deployments. Deploy 3 is broken. Before, the domain pointed at deploy 3, shown as a faded dashed arrow. Instant Rollback points it back at deploy 2, the last good one, shown as a solid accent arrow. All three deploys connect to one database below, shared by every deploy, so a rollback does not undo what deploy 3 changed in the data.</desc>
+  <defs>
+    <linearGradient id="gCard" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#FFFFFF"/><stop offset="100%" stop-color="#F3F6F9"/></linearGradient>
+    <linearGradient id="gBlue" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#F0F5FB"/><stop offset="100%" stop-color="#DCE7F4"/></linearGradient>
+    <linearGradient id="gGray" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#F4F6F8"/><stop offset="100%" stop-color="#E3E7EB"/></linearGradient>
+    <linearGradient id="gNavy" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0E3F6A"/><stop offset="100%" stop-color="#001A36"/></linearGradient>
+    <linearGradient id="gRoyal" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#2A7AD6"/><stop offset="100%" stop-color="#0049A0"/></linearGradient>
+    <linearGradient id="gGreen" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#F1F8F3"/><stop offset="100%" stop-color="#E0EFE5"/></linearGradient>
+    <linearGradient id="gRed" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#FBF3F3"/><stop offset="100%" stop-color="#F3E1E1"/></linearGradient>
+    <filter id="sh" x="-10%" y="-10%" width="120%" height="135%"><feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#002E5D" flood-opacity="0.13"/></filter>
+    <filter id="shS" x="-10%" y="-10%" width="120%" height="135%"><feDropShadow dx="0" dy="1.5" stdDeviation="2.5" flood-color="#002E5D" flood-opacity="0.12"/></filter>
+    <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0.5 L10,5 L0,9.5 z" fill="#8A939C"/></marker>
+    <marker id="ahD" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0.5 L10,5 L0,9.5 z" fill="#5A6672"/></marker>
+    <marker id="ahA" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0.5 L10,5 L0,9.5 z" fill="#0057B8"/></marker>
+    <marker id="ahN" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0.5 L10,5 L0,9.5 z" fill="#002E5D"/></marker>
+  </defs>
+  <rect x="0" y="0" width="1000" height="480" rx="8" fill="#FAFBFC"/>
+  <circle cx="500" cy="74" r="38" fill="url(#gBlue)" stroke="#B9D0EA" stroke-width="1.5" filter="url(#sh)"/>
+  <g transform="translate(482.0,56.0) scale(1.500)" fill="none" stroke="#002E5D" stroke-width="1.73" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" /> <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" /> <path d="M2 12h20" /></g>
+  <text x="556" y="70" font-size="18" font-weight="700" fill="#002E5D">your live domain</text>
+  <text x="556" y="94" font-size="16" fill="#8A939C">what users reach</text>
+  <line x1="190" y1="300" x2="190" y2="356" stroke="#D9DEE4" stroke-width="2" stroke-dasharray="2 6" stroke-linecap="round"/>
+  <line x1="500" y1="300" x2="500" y2="356" stroke="#D9DEE4" stroke-width="2" stroke-dasharray="2 6" stroke-linecap="round"/>
+  <line x1="810" y1="300" x2="810" y2="356" stroke="#D9DEE4" stroke-width="2" stroke-dasharray="2 6" stroke-linecap="round"/>
+  <rect x="85.0" y="220" width="210" height="80" rx="12" fill="url(#gCard)" stroke="#D9DEE4" stroke-width="1.5" filter="url(#sh)"/>
+  <g transform="translate(107.0,248.0) scale(1.000)" fill="none" stroke="#8A939C" stroke-width="2.30" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" /> <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" /> <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0" /> <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" /></g>
+  <text x="145.0" y="267" font-size="19" font-weight="700" fill="#5A6672">Deploy 1</text>
+  <rect x="395.0" y="220" width="210" height="80" rx="12" fill="url(#gCard)" stroke="#0057B8" stroke-width="2.5" filter="url(#sh)"/>
+  <g transform="translate(417.0,248.0) scale(1.000)" fill="none" stroke="#0057B8" stroke-width="2.30" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" /> <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" /> <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0" /> <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" /></g>
+  <text x="455.0" y="254" font-size="19" font-weight="700" fill="#002E5D">Deploy 2</text>
+  <text x="455.0" y="278" font-size="16" fill="#0057B8">last good</text>
+  <rect x="705.0" y="220" width="210" height="80" rx="12" fill="url(#gRed)" stroke="#E3C2C2" stroke-width="1.5" filter="url(#sh)"/>
+  <g transform="translate(727.0,248.0) scale(1.000)" fill="none" stroke="#B03A3A" stroke-width="2.30" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" /> <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" /> <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0" /> <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" /></g>
+  <text x="765.0" y="254" font-size="19" font-weight="700" fill="#B03A3A">Deploy 3</text>
+  <text x="765.0" y="278" font-size="16" fill="#B03A3A">broken</text>
+  <path d="M530 100 L770 212" fill="none" stroke="#8A939C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="6 6" marker-end="url(#ah)"/>
+  <text x="700" y="140" font-size="16" fill="#8A939C">before</text>
+  <path d="M500 116 V212" fill="none" stroke="#0057B8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ahA)"/>
+  <text x="486" y="160" font-size="17" font-weight="700" text-anchor="end" fill="#0057B8">Instant Rollback</text>
+  <text x="486" y="182" font-size="16" text-anchor="end" fill="#0057B8">seconds</text>
+  <rect x="85" y="356" width="830" height="96" rx="14" fill="url(#gGray)" stroke="#D9DEE4" stroke-width="1.5" filter="url(#sh)"/>
+  <circle cx="145" cy="404" r="30" fill="url(#gNavy)" stroke="#002E5D" stroke-width="1.5" filter="url(#sh)"/>
+  <g transform="translate(131.0,390.0) scale(1.167)" fill="none" stroke="#FFFFFF" stroke-width="2.23" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3" /> <path d="M3 5V19A9 3 0 0 0 21 19V5" /> <path d="M3 12A9 3 0 0 0 21 12" /></g>
+  <text x="193" y="396" font-size="19" font-weight="700" fill="#002E5D">One database, shared by every deploy</text>
+  <text x="193" y="422" font-size="17" fill="#2C3E50">Rollback does not undo what deploy 3 changed in the data.</text>
+</svg>

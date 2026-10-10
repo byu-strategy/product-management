@@ -261,6 +261,8 @@ new traffic, and it helps every future visitor too. High acquisition with low ac
 **leaky bucket**: fix activation before spending more on acquisition. Pre-product-market fit,
 Activation and Retention are where to focus.
 
+![QuizMe's funnel. The step from signup to a first quiz keeps only 20 percent, so it is the first one to fix: doubling activation there gives the same 16 week-2 users as doubling traffic, with no new visitors.](images/diagrams/ch14-activation-funnel.svg){#fig-activation-funnel fig-alt="A centered funnel of four bars sized by people: 200 arrived at the landing page, 80 signed up, 16 completed a first quiz, and 8 completed a quiz in week 2. Between the bars, the share that continued: 40 percent, 20 percent, and 50 percent. The step from signing up to a first quiz is highlighted as the biggest leak: 80 percent of signups never got value." width="100%"}
+
 ### Onboarding is the activation step
 
 Good onboarding gets users to the first value moment fast, teaches by doing, and removes every
@@ -319,6 +321,8 @@ Once the signups stop, the total falls.
 - Continued decline → core value problem
 - Flattening curve → you have found people who keep using it
 - Rising curve → returning users bring others or use it more
+
+![Four shapes a cohort's retention curve can take. The one to look for is the curve that flattens: some share of the cohort keeps coming back.](images/diagrams/ch14-retention-curves.svg){#fig-retention-curves fig-alt="A line chart of the share of a cohort still active against weeks since signup, weeks 0 to 8, with four illustrative curves that all start at 100 percent. The highlighted curve flattens near 30 percent, labeled you found people who stay. In gray: a rising curve dips to about 40 percent and climbs, labeled they bring others or use it more; a steep first drop falls below 20 percent in week 1 and stays there, labeled first experience problem; and a curve that keeps falling to nearly zero, labeled core value problem." width="100%"}
 
 For benchmarks, see Lenny Rachitsky and Casey Winters, "What is good retention?" in
 [Builder Resources](97-builder-resources.qmd); at student scale the curve's shape tells you more.
@@ -431,6 +435,8 @@ which, the class assignment, the club post, and everything else you did not thin
 groups about equally. The only systematic difference between the groups is the flow. So a
 difference in outcomes, if it is larger than chance would produce, was caused by the flow.
 
+![A before-and-after comparison credits the new flow with everything that changed that week. A randomized test spreads the other changes across both groups, so the flow is the only systematic difference.](images/diagrams/ch14-before-after-vs-ab.svg){#fig-before-after-vs-ab fig-alt="Two panels. Left, before and after: last week, with the old flow, activation was 20 percent; this week it is 35 percent, but this week also had a class assignment, a club chat post, and the noise of 20 signups, so four explanations compete for one number. Right, a randomized test: a coin assigns each new user to group A with the old flow or group B with the new flow, in the same weeks; the class assignment, the club post, and everything else land in both groups, so only the flow differs, and a gap larger than chance is its effect." width="100%"}
+
 Ron Kohavi, Diane Tang, and Ya Xu's *Trustworthy Online Controlled Experiments* is the standard
 reference [@kohavi2020trustworthy]. One of its lessons matters most at your scale: detecting the
 small improvements large companies test for takes thousands of users per group, which is why
@@ -488,6 +494,8 @@ A feature review takes ten minutes with your events:
 | Flashcard export | 5% | Broke twice in two sprints | No | Kill |
 | Study streaks | 30% | Low | Weakly | Change: test whether it brings people back |
 | Dark mode | Not logged | Low | No | Can't tell: log it first |
+
+![The feature review as a grid of usage against upkeep. A feature few people use that is costly to carry, and is not the core task, is a candidate to kill; a feature you have not logged has no place on the grid yet.](images/diagrams/ch14-keep-change-kill.svg){#fig-keep-change-kill fig-alt="A two-by-two grid with share of active users who used a feature on the horizontal axis, from few to most, and upkeep cost on the vertical axis, from low to high. Top left, candidate to kill if it is not the core task: flashcard export, 5 percent, broke twice in two sprints. Top right, keep and invest, improvements pay off here: quiz from notes, 90 percent, model cost per quiz. Bottom left, change it, then test: study streaks, 30 percent, low upkeep. Bottom right, keep: used widely, cheap to carry. Off the grid, in a dashed box labeled can't tell: dark mode, not logged yet; add an event, then decide." width="100%"}
 
 A feature few people use, that breaks often, and that does not serve the core task is a candidate
 to remove. A feature most active users touch is where improvements pay off. A feature you cannot

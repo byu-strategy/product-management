@@ -1,0 +1,269 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 470" role="img" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+  <title>An eval set scores the same cases before and after a change</title>
+  <desc>Twenty fixed real inputs, each with a pass rule, scored in four runs. Three runs of the same prompt pass 14, 13, and 15 of 20: the spread is noise from sampling. After one prompt change the set passes 17 of 20, above the noise range. A number line marks the noise band from 13 to 15 and the new score at 17. Illustrative numbers.</desc>
+  <defs>
+    <linearGradient id="card" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF"/><stop offset="100%" stop-color="#F3F6F9"/>
+    </linearGradient>
+    <linearGradient id="tint" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#EEF3F9"/><stop offset="100%" stop-color="#DCE7F3"/>
+    </linearGradient>
+    <linearGradient id="zone" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F1F5FA"/><stop offset="100%" stop-color="#E6EEF7"/>
+    </linearGradient>
+    <linearGradient id="navyg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0E3F6A"/><stop offset="100%" stop-color="#001F40"/>
+    </linearGradient>
+    <linearGradient id="royalg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1A6CC8"/><stop offset="100%" stop-color="#004A9E"/>
+    </linearGradient>
+    <linearGradient id="royalh" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#1A6CC8"/><stop offset="100%" stop-color="#004A9E"/>
+    </linearGradient>
+    <linearGradient id="navyh" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#5D7A96"/><stop offset="100%" stop-color="#2F4D6B"/>
+    </linearGradient>
+    <linearGradient id="greeng" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3A8F5D"/><stop offset="100%" stop-color="#256A41"/>
+    </linearGradient>
+    <linearGradient id="redg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#C04848"/><stop offset="100%" stop-color="#9C3131"/>
+    </linearGradient>
+    <filter id="sh" x="-15%" y="-15%" width="130%" height="140%">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#0a2e4d" flood-opacity="0.13"/>
+    </filter>
+    <filter id="shs" x="-15%" y="-15%" width="130%" height="140%">
+      <feDropShadow dx="0" dy="1.5" stdDeviation="2.5" flood-color="#0a2e4d" flood-opacity="0.12"/>
+    </filter>
+    <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+      <path d="M0,0.5 L10,5 L0,9.5 z" fill="#8A939C"/>
+    </marker>
+    <marker id="ahr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0.5 L10,5 L0,9.5 z" fill="#0057B8"/>
+    </marker>
+    <marker id="ahn" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+      <path d="M0,0.5 L10,5 L0,9.5 z" fill="#002E5D"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="1000" height="470" rx="8" fill="#FAFBFC"/>
+  <text x="150" y="44" font-size="15" font-weight="700" fill="#5A6672" text-anchor="start" letter-spacing="1.2">SAME 20 CASES, EACH WITH A PASS RULE</text>
+  <text x="162.5" y="74" font-size="14" font-weight="500" fill="#8A939C" text-anchor="middle">1</text>
+  <text x="193.5" y="74" font-size="14" font-weight="500" fill="#8A939C" text-anchor="middle">2</text>
+  <text x="224.5" y="74" font-size="14" font-weight="500" fill="#8A939C" text-anchor="middle">3</text>
+  <text x="255.5" y="74" font-size="14" font-weight="500" fill="#8A939C" text-anchor="middle">4</text>
+  <text x="286.5" y="74" font-size="14" font-weight="500" fill="#8A939C" text-anchor="middle">5</text>
+  <text x="317.5" y="74" font-size="14" font-weight="500" fill="#8A939C" text-anchor="middle">6</text>
+  <text x="348.5" y="74" font-size="14" font-weight="500" fill="#8A939C" text-anchor="middle">7</text>
+  <text x="379.5" y="74" font-size="14" font-weight="500" fill="#8A939C" text-anchor="middle">8</text>
+  <text x="410.5" y="74" font-size="14" font-weight="500" fill="#8A939C" text-anchor="middle">9</text>
+  <text x="441.5" y="74" font-size="14" font-weight="500" fill="#8A939C" text-anchor="middle">10</text>
+  <text x="472.5" y="74" font-size="14" font-weight="500" fill="#8A939C" text-anchor="middle">11</text>
+  <text x="503.5" y="74" font-size="14" font-weight="500" fill="#8A939C" text-anchor="middle">12</text>
+  <text x="534.5" y="74" font-size="14" font-weight="500" fill="#8A939C" text-anchor="middle">13</text>
+  <text x="565.5" y="74" font-size="14" font-weight="500" fill="#8A939C" text-anchor="middle">14</text>
+  <text x="596.5" y="74" font-size="14" font-weight="500" fill="#8A939C" text-anchor="middle">15</text>
+  <text x="627.5" y="74" font-size="14" font-weight="500" fill="#8A939C" text-anchor="middle">16</text>
+  <text x="658.5" y="74" font-size="14" font-weight="500" fill="#8A939C" text-anchor="middle">17</text>
+  <text x="689.5" y="74" font-size="14" font-weight="500" fill="#8A939C" text-anchor="middle">18</text>
+  <text x="720.5" y="74" font-size="14" font-weight="500" fill="#8A939C" text-anchor="middle">19</text>
+  <text x="751.5" y="74" font-size="14" font-weight="500" fill="#8A939C" text-anchor="middle">20</text>
+  <text x="40" y="114" font-size="1" font-weight="400" fill="#2C3E50" text-anchor="start"></text>
+  <text x="40" y="107" font-size="17" font-weight="600" fill="#002E5D" text-anchor="start">Run 1</text>
+  <rect x="150" y="88" width="25" height="25" rx="5" fill="url(#greeng)"/>
+  <path d="M 157 101 L 161 105.5 L 168.5 96.5" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="181" y="88" width="25" height="25" rx="5" fill="url(#greeng)"/>
+  <path d="M 188 101 L 192 105.5 L 199.5 96.5" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="213" y="89" width="23" height="23" rx="5" fill="#FFFFFF" stroke="#B03A3A" stroke-width="2"/>
+  <path d="M 220.5 96.5 L 228.5 104.5 M 228.5 96.5 L 220.5 104.5" fill="none" stroke="#B03A3A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="243" y="88" width="25" height="25" rx="5" fill="url(#greeng)"/>
+  <path d="M 250 101 L 254 105.5 L 261.5 96.5" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="274" y="88" width="25" height="25" rx="5" fill="url(#greeng)"/>
+  <path d="M 281 101 L 285 105.5 L 292.5 96.5" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="305" y="88" width="25" height="25" rx="5" fill="url(#greeng)"/>
+  <path d="M 312 101 L 316 105.5 L 323.5 96.5" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="337" y="89" width="23" height="23" rx="5" fill="#FFFFFF" stroke="#B03A3A" stroke-width="2"/>
+  <path d="M 344.5 96.5 L 352.5 104.5 M 352.5 96.5 L 344.5 104.5" fill="none" stroke="#B03A3A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="367" y="88" width="25" height="25" rx="5" fill="url(#greeng)"/>
+  <path d="M 374 101 L 378 105.5 L 385.5 96.5" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="398" y="88" width="25" height="25" rx="5" fill="url(#greeng)"/>
+  <path d="M 405 101 L 409 105.5 L 416.5 96.5" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="430" y="89" width="23" height="23" rx="5" fill="#FFFFFF" stroke="#B03A3A" stroke-width="2"/>
+  <path d="M 437.5 96.5 L 445.5 104.5 M 445.5 96.5 L 437.5 104.5" fill="none" stroke="#B03A3A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="460" y="88" width="25" height="25" rx="5" fill="url(#greeng)"/>
+  <path d="M 467 101 L 471 105.5 L 478.5 96.5" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="491" y="88" width="25" height="25" rx="5" fill="url(#greeng)"/>
+  <path d="M 498 101 L 502 105.5 L 509.5 96.5" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="523" y="89" width="23" height="23" rx="5" fill="#FFFFFF" stroke="#B03A3A" stroke-width="2"/>
+  <path d="M 530.5 96.5 L 538.5 104.5 M 538.5 96.5 L 530.5 104.5" fill="none" stroke="#B03A3A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="553" y="88" width="25" height="25" rx="5" fill="url(#greeng)"/>
+  <path d="M 560 101 L 564 105.5 L 571.5 96.5" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="584" y="88" width="25" height="25" rx="5" fill="url(#greeng)"/>
+  <path d="M 591 101 L 595 105.5 L 602.5 96.5" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="616" y="89" width="23" height="23" rx="5" fill="#FFFFFF" stroke="#B03A3A" stroke-width="2"/>
+  <path d="M 623.5 96.5 L 631.5 104.5 M 631.5 96.5 L 623.5 104.5" fill="none" stroke="#B03A3A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="646" y="88" width="25" height="25" rx="5" fill="url(#greeng)"/>
+  <path d="M 653 101 L 657 105.5 L 664.5 96.5" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="677" y="88" width="25" height="25" rx="5" fill="url(#greeng)"/>
+  <path d="M 684 101 L 688 105.5 L 695.5 96.5" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="709" y="89" width="23" height="23" rx="5" fill="#FFFFFF" stroke="#B03A3A" stroke-width="2"/>
+  <path d="M 716.5 96.5 L 724.5 104.5 M 724.5 96.5 L 716.5 104.5" fill="none" stroke="#B03A3A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="739" y="88" width="25" height="25" rx="5" fill="url(#greeng)"/>
+  <path d="M 746 101 L 750 105.5 L 757.5 96.5" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="822" y="108" font-size="22" font-weight="700" fill="#002E5D" text-anchor="end">14</text>
+  <text x="828" y="108" font-size="16" font-weight="400" fill="#5A6672" text-anchor="start">/ 20</text>
+  <text x="40" y="147" font-size="17" font-weight="600" fill="#002E5D" text-anchor="start">Run 2</text>
+  <rect x="150" y="128" width="25" height="25" rx="5" fill="url(#greeng)"/>
+  <path d="M 157 141 L 161 145.5 L 168.5 136.5" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="181" y="128" width="25" height="25" rx="5" fill="url(#greeng)"/>
+  <path d="M 188 141 L 192 145.5 L 199.5 136.5" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="213" y="129" width="23" height="23" rx="5" fill="#FFFFFF" stroke="#B03A3A" stroke-width="2"/>
+  <path d="M 220.5 136.5 L 228.5 144.5 M 228.5 136.5 L 220.5 144.5" fill="none" stroke="#B03A3A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="243" y="128" width="25" height="25" rx="5" fill="url(#greeng)"/>
+  <path d="M 250 141 L 254 145.5 L 261.5 136.5" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="274" y="128" width="25" height="25" rx="5" fill="url(#greeng)"/>
+  <path d="M 281 141 L 285 145.5 L 292.5 136.5" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="305" y="128" width="25" height="25" rx="5" fill="url(#greeng)"/>
+  <path d="M 312 141 L 316 145.5 L 323.5 136.5" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="337" y="129" width="23" height="23" rx="5" fill="#FFFFFF" stroke="#B03A3A" stroke-width="2"/>
+  <path d="M 344.5 136.5 L 352.5 144.5 M 352.5 136.5 L 344.5 144.5" fill="none" stroke="#B03A3A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="367" y="128" width="25" height="25" rx="5" fill="url(#greeng)"/>
+  <path d="M 374 141 L 378 145.5 L 385.5 136.5" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="398" y="128" width="25" height="25" rx="5" fill="url(#greeng)"/>
+  <path d="M 405 141 L 409 145.5 L 416.5 136.5" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="430" y="129" width="23" height="23" rx="5" fill="#FFFFFF" stroke="#B03A3A" stroke-width="2"/>
+  <path d="M 437.5 136.5 L 445.5 144.5 M 445.5 136.5 L 437.5 144.5" fill="none" stroke="#B03A3A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="460" y="128" width="25" height="25" rx="5" fill="url(#greeng)"/>
+  <path d="M 467 141 L 471 145.5 L 478.5 136.5" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="491" y="128" width="25" height="25" rx="5" fill="url(#greeng)"/>
+  <path d="M 498 141 L 502 145.5 L 509.5 136.5" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="523" y="129" width="23" height="23" rx="5" fill="#FFFFFF" stroke="#B03A3A" stroke-width="2"/>
+  <path d="M 530.5 136.5 L 538.5 144.5 M 538.5 136.5 L 530.5 144.5" fill="none" stroke="#B03A3A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="554" y="129" width="23" height="23" rx="5" fill="#FFFFFF" stroke="#B03A3A" stroke-width="2"/>
+  <path d="M 561.5 136.5 L 569.5 144.5 M 569.5 136.5 L 561.5 144.5" fill="none" stroke="#B03A3A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="584" y="128" width="25" height="25" rx="5" fill="url(#greeng)"/>
+  <path d="M 591 141 L 595 145.5 L 602.5 136.5" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="616" y="129" width="23" height="23" rx="5" fill="#FFFFFF" stroke="#B03A3A" stroke-width="2"/>
+  <path d="M 623.5 136.5 L 631.5 144.5 M 631.5 136.5 L 623.5 144.5" fill="none" stroke="#B03A3A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="646" y="128" width="25" height="25" rx="5" fill="url(#greeng)"/>
+  <path d="M 653 141 L 657 145.5 L 664.5 136.5" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="677" y="128" width="25" height="25" rx="5" fill="url(#greeng)"/>
+  <path d="M 684 141 L 688 145.5 L 695.5 136.5" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="709" y="129" width="23" height="23" rx="5" fill="#FFFFFF" stroke="#B03A3A" stroke-width="2"/>
+  <path d="M 716.5 136.5 L 724.5 144.5 M 724.5 136.5 L 716.5 144.5" fill="none" stroke="#B03A3A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="739" y="128" width="25" height="25" rx="5" fill="url(#greeng)"/>
+  <path d="M 746 141 L 750 145.5 L 757.5 136.5" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="822" y="148" font-size="22" font-weight="700" fill="#002E5D" text-anchor="end">13</text>
+  <text x="828" y="148" font-size="16" font-weight="400" fill="#5A6672" text-anchor="start">/ 20</text>
+  <text x="40" y="187" font-size="17" font-weight="600" fill="#002E5D" text-anchor="start">Run 3</text>
+  <rect x="150" y="168" width="25" height="25" rx="5" fill="url(#greeng)"/>
+  <path d="M 157 181 L 161 185.5 L 168.5 176.5" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="181" y="168" width="25" height="25" rx="5" fill="url(#greeng)"/>
+  <path d="M 188 181 L 192 185.5 L 199.5 176.5" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="213" y="169" width="23" height="23" rx="5" fill="#FFFFFF" stroke="#B03A3A" stroke-width="2"/>
+  <path d="M 220.5 176.5 L 228.5 184.5 M 228.5 176.5 L 220.5 184.5" fill="none" stroke="#B03A3A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="243" y="168" width="25" height="25" rx="5" fill="url(#greeng)"/>
+  <path d="M 250 181 L 254 185.5 L 261.5 176.5" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="274" y="168" width="25" height="25" rx="5" fill="url(#greeng)"/>
+  <path d="M 281 181 L 285 185.5 L 292.5 176.5" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="305" y="168" width="25" height="25" rx="5" fill="url(#greeng)"/>
+  <path d="M 312 181 L 316 185.5 L 323.5 176.5" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="336" y="168" width="25" height="25" rx="5" fill="url(#greeng)"/>
+  <path d="M 343 181 L 347 185.5 L 354.5 176.5" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="367" y="168" width="25" height="25" rx="5" fill="url(#greeng)"/>
+  <path d="M 374 181 L 378 185.5 L 385.5 176.5" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="398" y="168" width="25" height="25" rx="5" fill="url(#greeng)"/>
+  <path d="M 405 181 L 409 185.5 L 416.5 176.5" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="430" y="169" width="23" height="23" rx="5" fill="#FFFFFF" stroke="#B03A3A" stroke-width="2"/>
+  <path d="M 437.5 176.5 L 445.5 184.5 M 445.5 176.5 L 437.5 184.5" fill="none" stroke="#B03A3A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="460" y="168" width="25" height="25" rx="5" fill="url(#greeng)"/>
+  <path d="M 467 181 L 471 185.5 L 478.5 176.5" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="491" y="168" width="25" height="25" rx="5" fill="url(#greeng)"/>
+  <path d="M 498 181 L 502 185.5 L 509.5 176.5" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="523" y="169" width="23" height="23" rx="5" fill="#FFFFFF" stroke="#B03A3A" stroke-width="2"/>
+  <path d="M 530.5 176.5 L 538.5 184.5 M 538.5 176.5 L 530.5 184.5" fill="none" stroke="#B03A3A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="553" y="168" width="25" height="25" rx="5" fill="url(#greeng)"/>
+  <path d="M 560 181 L 564 185.5 L 571.5 176.5" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="584" y="168" width="25" height="25" rx="5" fill="url(#greeng)"/>
+  <path d="M 591 181 L 595 185.5 L 602.5 176.5" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="616" y="169" width="23" height="23" rx="5" fill="#FFFFFF" stroke="#B03A3A" stroke-width="2"/>
+  <path d="M 623.5 176.5 L 631.5 184.5 M 631.5 176.5 L 623.5 184.5" fill="none" stroke="#B03A3A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="646" y="168" width="25" height="25" rx="5" fill="url(#greeng)"/>
+  <path d="M 653 181 L 657 185.5 L 664.5 176.5" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="677" y="168" width="25" height="25" rx="5" fill="url(#greeng)"/>
+  <path d="M 684 181 L 688 185.5 L 695.5 176.5" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="709" y="169" width="23" height="23" rx="5" fill="#FFFFFF" stroke="#B03A3A" stroke-width="2"/>
+  <path d="M 716.5 176.5 L 724.5 184.5 M 724.5 176.5 L 716.5 184.5" fill="none" stroke="#B03A3A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="739" y="168" width="25" height="25" rx="5" fill="url(#greeng)"/>
+  <path d="M 746 181 L 750 185.5 L 757.5 176.5" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="822" y="188" font-size="22" font-weight="700" fill="#002E5D" text-anchor="end">15</text>
+  <text x="828" y="188" font-size="16" font-weight="400" fill="#5A6672" text-anchor="start">/ 20</text>
+  <rect x="28" y="226" width="944" height="49" rx="10" fill="url(#zone)" stroke="#C9D7E6" stroke-width="1" filter="url(#shs)"/>
+  <text x="40" y="257" font-size="17" font-weight="700" fill="#0057B8" text-anchor="start">After</text>
+  <text x="40" y="240" font-size="1" font-weight="400" fill="#2C3E50" text-anchor="start"></text>
+  <rect x="150" y="238" width="25" height="25" rx="5" fill="url(#greeng)"/>
+  <path d="M 157 251 L 161 255.5 L 168.5 246.5" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="181" y="238" width="25" height="25" rx="5" fill="url(#greeng)"/>
+  <path d="M 188 251 L 192 255.5 L 199.5 246.5" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="212" y="238" width="25" height="25" rx="5" fill="url(#greeng)"/>
+  <path d="M 219 251 L 223 255.5 L 230.5 246.5" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="243" y="238" width="25" height="25" rx="5" fill="url(#greeng)"/>
+  <path d="M 250 251 L 254 255.5 L 261.5 246.5" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="274" y="238" width="25" height="25" rx="5" fill="url(#greeng)"/>
+  <path d="M 281 251 L 285 255.5 L 292.5 246.5" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="305" y="238" width="25" height="25" rx="5" fill="url(#greeng)"/>
+  <path d="M 312 251 L 316 255.5 L 323.5 246.5" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="337" y="239" width="23" height="23" rx="5" fill="#FFFFFF" stroke="#B03A3A" stroke-width="2"/>
+  <path d="M 344.5 246.5 L 352.5 254.5 M 352.5 246.5 L 344.5 254.5" fill="none" stroke="#B03A3A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="367" y="238" width="25" height="25" rx="5" fill="url(#greeng)"/>
+  <path d="M 374 251 L 378 255.5 L 385.5 246.5" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="398" y="238" width="25" height="25" rx="5" fill="url(#greeng)"/>
+  <path d="M 405 251 L 409 255.5 L 416.5 246.5" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="429" y="238" width="25" height="25" rx="5" fill="url(#greeng)"/>
+  <path d="M 436 251 L 440 255.5 L 447.5 246.5" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="460" y="238" width="25" height="25" rx="5" fill="url(#greeng)"/>
+  <path d="M 467 251 L 471 255.5 L 478.5 246.5" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="491" y="238" width="25" height="25" rx="5" fill="url(#greeng)"/>
+  <path d="M 498 251 L 502 255.5 L 509.5 246.5" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="523" y="239" width="23" height="23" rx="5" fill="#FFFFFF" stroke="#B03A3A" stroke-width="2"/>
+  <path d="M 530.5 246.5 L 538.5 254.5 M 538.5 246.5 L 530.5 254.5" fill="none" stroke="#B03A3A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="553" y="238" width="25" height="25" rx="5" fill="url(#greeng)"/>
+  <path d="M 560 251 L 564 255.5 L 571.5 246.5" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="584" y="238" width="25" height="25" rx="5" fill="url(#greeng)"/>
+  <path d="M 591 251 L 595 255.5 L 602.5 246.5" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="615" y="238" width="25" height="25" rx="5" fill="url(#greeng)"/>
+  <path d="M 622 251 L 626 255.5 L 633.5 246.5" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="646" y="238" width="25" height="25" rx="5" fill="url(#greeng)"/>
+  <path d="M 653 251 L 657 255.5 L 664.5 246.5" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="677" y="238" width="25" height="25" rx="5" fill="url(#greeng)"/>
+  <path d="M 684 251 L 688 255.5 L 695.5 246.5" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="709" y="239" width="23" height="23" rx="5" fill="#FFFFFF" stroke="#B03A3A" stroke-width="2"/>
+  <path d="M 716.5 246.5 L 724.5 254.5 M 724.5 246.5 L 716.5 254.5" fill="none" stroke="#B03A3A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="739" y="238" width="25" height="25" rx="5" fill="url(#greeng)"/>
+  <path d="M 746 251 L 750 255.5 L 757.5 246.5" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="822" y="258" font-size="22" font-weight="700" fill="#0057B8" text-anchor="end">17</text>
+  <text x="828" y="258" font-size="16" font-weight="400" fill="#5A6672" text-anchor="start">/ 20</text>
+  <path d="M 860 90 L 868 90 L 868 191 L 860 191" fill="none" stroke="#8A939C" stroke-width="1.5"/>
+  <text x="878" y="137" font-size="15" font-weight="400" fill="#5A6672" text-anchor="start">same</text>
+  <text x="878" y="155" font-size="15" font-weight="400" fill="#5A6672" text-anchor="start">prompt</text>
+  <line x1="150" y1="360" x2="770" y2="360" stroke="#D9DEE4" stroke-width="2"/>
+  <line x1="150.0" y1="354" x2="150.0" y2="366" stroke="#8A939C" stroke-width="1.5"/>
+  <text x="150" y="388" font-size="14" font-weight="500" fill="#8A939C" text-anchor="middle">10</text>
+  <line x1="212.0" y1="356" x2="212.0" y2="364" stroke="#8A939C" stroke-width="1.5"/>
+  <line x1="274.0" y1="356" x2="274.0" y2="364" stroke="#8A939C" stroke-width="1.5"/>
+  <line x1="336.0" y1="356" x2="336.0" y2="364" stroke="#8A939C" stroke-width="1.5"/>
+  <line x1="398.0" y1="356" x2="398.0" y2="364" stroke="#8A939C" stroke-width="1.5"/>
+  <line x1="460.0" y1="354" x2="460.0" y2="366" stroke="#8A939C" stroke-width="1.5"/>
+  <text x="460" y="388" font-size="14" font-weight="500" fill="#8A939C" text-anchor="middle">15</text>
+  <line x1="522.0" y1="356" x2="522.0" y2="364" stroke="#8A939C" stroke-width="1.5"/>
+  <line x1="584.0" y1="356" x2="584.0" y2="364" stroke="#8A939C" stroke-width="1.5"/>
+  <line x1="646.0" y1="356" x2="646.0" y2="364" stroke="#8A939C" stroke-width="1.5"/>
+  <line x1="708.0" y1="356" x2="708.0" y2="364" stroke="#8A939C" stroke-width="1.5"/>
+  <line x1="770.0" y1="354" x2="770.0" y2="366" stroke="#8A939C" stroke-width="1.5"/>
+  <text x="770" y="388" font-size="14" font-weight="500" fill="#8A939C" text-anchor="middle">20</text>
+  <rect x="336.0" y="346" width="124.0" height="28" rx="14" fill="#E9ECEF" stroke="#C3CAD2" stroke-width="1.5"/>
+  <text x="398" y="334" font-size="15" font-weight="600" fill="#5A6672" text-anchor="middle">noise</text>
+  <circle cx="584.0" cy="360" r="11" fill="url(#royalg)" filter="url(#shs)"/>
+  <text x="584" y="334" font-size="15" font-weight="700" fill="#0057B8" text-anchor="middle">after</text>
+  <text x="40" y="365" font-size="15" font-weight="700" fill="#002E5D" text-anchor="start" letter-spacing="1.2">PASSES</text>
+  <text x="500" y="444" font-size="17" font-weight="600" fill="#2C3E50" text-anchor="middle">A change counts only if it moves the score past the noise.</text>
+</svg>

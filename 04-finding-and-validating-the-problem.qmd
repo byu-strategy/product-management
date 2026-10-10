@@ -252,6 +252,8 @@ contest between four forces [@moesta2020demand]:
 | **Anxiety** about the new solution | against switching | "What if it gets a payment wrong and I chase a member who already paid?" |
 | **Habit** of the present | against switching | Everyone already Venmos the treasurer; the spreadsheet works, mostly |
 
+![Four forces act on every switch. Push and pull move the treasurer toward the new page; anxiety and habit hold the treasurer in place. Forces of progress from Bob Moesta.](images/diagrams/ch04-forces-of-progress.svg){#fig-forces-of-progress fig-alt="On the left, a panel with a spreadsheet icon labeled Today, Venmo plus a sign-up sheet. On the right, a panel with a checklist icon labeled New page, shows who has paid. Between them, two blue arrows point right: Push, Sunday spent matching payments, and Pull, who has paid, updated for you. Below them, two gray arrows point left: Anxiety, what if it gets a payment wrong, and Habit, everyone already Venmos the treasurer. A line at the bottom reads: they switch only when push plus pull is greater than anxiety plus habit." width="100%"}
+
 A person switches only when push plus pull outweighs anxiety plus habit. Most first products are
 all pull: the builder pictures the new thing and forgets that the old thing has a grip. The cost
 of switching is real: learning a new tool, moving data, getting others to change too, and the
@@ -338,6 +340,8 @@ becomes evidence when they show up for the beta.
 Each rung is stronger because it costs the person more to fake. Saying "I'd use that" costs
 nothing, so people say it to be polite. Doing something costs time and effort. Paying costs money
 or reputation, which people guard.
+
+![Each rung costs the person more to fake, so it counts for more. Under each rung is the kind of question that gets you evidence on it.](images/diagrams/ch04-evidence-ladder.svg){#fig-evidence-ladder fig-alt="Three steps rising from left to right. The lowest, Said, gray with a speech bubble icon, costs nothing; example: I'd totally use that. The middle, Did, light blue with a clock icon, costs time and effort; example: rebuilds the sheet every month. The highest, Paid, deep blue with a dollar coin icon, costs money; example: put down a 5 dollar deposit. A curved arrow rising over the steps reads harder to fake. Under the steps, the question that lands on each rung: ask about someday, would you use it, under Said; ask about the last time, walk me through it, under Did; ask what it costs now, what have you spent on it, under Paid." width="100%"}
 
 | Rung | What counts | Example | How it can still mislead you |
 |---|---|---|---|
@@ -663,6 +667,10 @@ A worked example. You launched a study-group finder; 120 students signed up and 
 week. Why is retention low?
 
 ```{mermaid}
+%%| label: fig-issue-tree
+%%| fig-cap: "An issue tree for low retention. The three first-level branches cover every sign-up exactly once, so the data can point to the branch that holds the problem."
+%%| fig-alt: "A tree branching left to right from the question why do only 15 of 120 sign-ups use it weekly. Three branches: never activated, meaning never joined a group, which splits into did not understand what to do and no group existed for their class; activated, then left, which splits into group never met, group met but was not useful, and their need ended because the exam passed; and still active, which leads to what do these 15 have in common."
+%%{init: {'theme':'base','themeVariables':{'fontFamily':'Inter, Helvetica Neue, Helvetica, Arial, sans-serif','fontSize':'16px','primaryColor':'#E6EEF7','primaryBorderColor':'#002E5D','primaryTextColor':'#2C3E50','lineColor':'#5A6672','secondaryColor':'#F4F6F8','tertiaryColor':'#FAFBFC','actorBkg':'#E6EEF7','actorBorder':'#002E5D','git0':'#002E5D','git1':'#0057B8','git2':'#6495ED','gitBranchLabel0':'#ffffff','gitBranchLabel1':'#ffffff'}}}%%
 flowchart LR
   Q["Why do only 15 of 120<br/>sign-ups use it weekly?"] --> A["Never activated<br/>(never joined a group)"]
   Q --> B["Activated, then left"]
@@ -754,6 +762,8 @@ A worked example. Idea: a dues tracker for student club treasurers.
 | Treasurers can learn it in under five minutes | Usability | Medium | No, fixable |
 | A club will pay $5 a month | Viability | High | Not this semester; a free tool is fine for now |
 
+![The dues tracker's assumptions, placed by how uncertain they are and what happens if they are false. Value goes first; the Venmo check is cheap, so run it the same week. Risk categories from Marty Cagan.](images/diagrams/ch04-riskiest-assumption.svg){#fig-riskiest-assumption fig-alt="A two by two grid. Left to right is how uncertain are we, low to high. The top row is fatal if false; the bottom row is fixable if false. The top right quadrant is shaded and labeled riskiest: test first. It holds number 1, value, matching payments hurts enough to switch, drawn as a solid blue dot, and number 2, feasibility, they can connect their Venmo history, drawn as an outlined dot. The bottom right quadrant, unsure but survivable, holds viability, a club pays 5 dollars a month. The bottom left quadrant, safe to leave for later, holds usability, they learn it in five minutes, near the middle line. The top left quadrant, fatal but already known, is empty." width="100%"}
+
 Two assumptions are high-uncertainty and fatal: value and the Venmo data. Value comes first,
 because if treasurers don't care, the data question never matters. But the feasibility one is
 cheap to check (an hour of reading and a spike) and could kill the idea in its current form, so
@@ -807,6 +817,8 @@ assumption, on the highest rung, in the fewest hours? For the dues tracker, a co
 wins: ask three treasurers to send you their Venmo export each Sunday and send back a "who has
 paid" list you built by hand. In two weeks you learn whether they send it (did), whether they
 read the list, and whether they would pay for it, with no code at all.
+
+![The four smallest tests in rough order of effort, and the highest evidence rung each can reach. A working app shown to friends stays on the said rung for value, however much it cost to build.](images/diagrams/ch04-smallest-test.svg){#fig-smallest-test fig-alt="A chart with three rows for the evidence rungs, Paid at the top, Did in the middle, Said at the bottom, and four columns along an effort axis from fewer hours to more hours: smoke test, concierge, Wizard of Oz, presell. The smoke test has a point on Did labeled sign-up joined to a point on Paid labeled pre-order; the pre-order point is highlighted in blue with the note highest rung, fewest hours. The concierge has a solid point on Did labeled done by hand and an open point on Paid labeled if you charge, joined by a dashed line. Wizard of Oz has one point on Did labeled looks automated. Presell has one point on Paid labeled deposit. Across the Said row is a red-outlined box with a laptop icon: a working app shown to friends, said-rung evidence for value, however long it took to build." width="100%"}
 
 Building is cheap now, so sometimes the build *is* the cheapest test, especially for usability
 and feasibility. But a working app tested on friends sits on the said rung for value. Whatever

@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600" role="img" aria-labelledby="t d" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+  <title id="t">The evidence ladder: said, did, paid</title>
+  <desc id="d">Three steps rising from left to right. Said, the lowest, costs nothing; example: I'd totally use that. Did, the middle, costs time and effort; example: rebuilds the sheet every month. Paid, the highest, costs money; example: put down a five dollar deposit. A curved arrow over the steps reads harder to fake. Under each step is the question that lands on it: would you use it lands on said, walk me through the last time lands on did, and what have you spent on this so far lands on paid.</desc>
+  <defs>
+    <linearGradient id="gSaid" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F1F3F5"/>
+      <stop offset="100%" stop-color="#DDE2E7"/>
+    </linearGradient>
+    <linearGradient id="gDid" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#EEF4FB"/>
+      <stop offset="100%" stop-color="#C9DBEF"/>
+    </linearGradient>
+    <linearGradient id="gPaid" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0E63C4"/>
+      <stop offset="100%" stop-color="#003F87"/>
+    </linearGradient>
+    <filter id="sh" filterUnits="userSpaceOnUse" x="0" y="0" width="1000" height="600">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#0A2E4D" flood-opacity="0.15"/>
+    </filter>
+    <marker id="ah" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#0057B8"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="1000" height="600" rx="8" fill="#FAFBFC"/>
+
+  <!-- rising arrow -->
+  <path d="M140,310 C320,262 570,130 880,92" fill="none" stroke="#0057B8" stroke-width="2.5" marker-end="url(#ah)"/>
+  <text x="380" y="176" font-size="19" font-weight="600" fill="#0057B8" transform="rotate(-19 380 176)">Harder to fake</text>
+
+  <!-- steps -->
+  <rect x="80" y="340" width="260" height="140" rx="10" fill="#FAFBFC" filter="url(#sh)"/>
+  <rect x="80" y="340" width="260" height="140" rx="10" fill="url(#gSaid)"/>
+  <rect x="370" y="240" width="260" height="240" rx="10" fill="#FAFBFC" filter="url(#sh)"/>
+  <rect x="370" y="240" width="260" height="240" rx="10" fill="url(#gDid)"/>
+  <rect x="660" y="140" width="260" height="340" rx="10" fill="#FAFBFC" filter="url(#sh)"/>
+  <rect x="660" y="140" width="260" height="340" rx="10" fill="url(#gPaid)"/>
+
+  <!-- SAID: speech bubble -->
+  <g transform="translate(286,360) scale(1.5)" fill="none" stroke="#8A939C" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></g>
+  <text x="104" y="384" font-size="28" font-weight="700" fill="#2C3E50">Said</text>
+  <text x="104" y="412" font-size="17" fill="#5A6672">costs nothing</text>
+  <text x="104" y="454" font-size="17" font-style="italic" fill="#2C3E50">"I'd totally use that."</text>
+
+  <!-- DID: clock -->
+  <g transform="translate(577,258) scale(1.5)" fill="none" stroke="#0057B8" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></g>
+  <text x="394" y="284" font-size="28" font-weight="700" fill="#002E5D">Did</text>
+  <text x="394" y="312" font-size="17" fill="#5A6672">costs time and effort</text>
+  <text x="394" y="354" font-size="17" fill="#2C3E50">Rebuilds the sheet</text>
+  <text x="394" y="376" font-size="17" fill="#2C3E50">every month</text>
+
+  <!-- PAID: coin -->
+  <g transform="translate(867,158) scale(1.5)" fill="none" stroke="#FFFFFF" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 18V6"/></g>
+  <text x="684" y="184" font-size="28" font-weight="700" fill="#FFFFFF">Paid</text>
+  <text x="684" y="212" font-size="17" fill="#CFE0F5">costs money</text>
+  <text x="684" y="254" font-size="17" fill="#FFFFFF">Put down a</text>
+  <text x="684" y="276" font-size="17" fill="#FFFFFF">$5 deposit</text>
+
+  <!-- ground -->
+  <line x1="60" y1="500" x2="940" y2="500" stroke="#D9DEE4" stroke-width="2"/>
+
+  <!-- questions that land on each rung -->
+  <text x="210" y="532" text-anchor="middle" font-size="15" font-weight="700" fill="#8A939C" letter-spacing="1">ASK ABOUT SOMEDAY</text>
+  <text x="210" y="560" text-anchor="middle" font-size="17" font-style="italic" fill="#5A6672">"Would you use it?"</text>
+
+  <text x="500" y="532" text-anchor="middle" font-size="15" font-weight="700" fill="#002E5D" letter-spacing="1">ASK ABOUT THE LAST TIME</text>
+  <text x="500" y="560" text-anchor="middle" font-size="17" font-style="italic" fill="#2C3E50">"Walk me through it."</text>
+
+  <text x="790" y="532" text-anchor="middle" font-size="15" font-weight="700" fill="#002E5D" letter-spacing="1">ASK WHAT IT COSTS NOW</text>
+  <text x="790" y="560" text-anchor="middle" font-size="17" font-style="italic" fill="#2C3E50">"What have you spent on it?"</text>
+</svg>

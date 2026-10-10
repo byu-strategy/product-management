@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 690" role="img" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+  <title>A query, block by block</title>
+  <desc>The query SELECT title, intensity FROM problems WHERE owner = 'ana' AND intensity >= 5 ORDER BY intensity DESC, shown one block at a time on a six-row problems table. FROM starts with all six rows. WHERE keeps rows 1 and 2; rows 3, 4 and 5 fail because the owner is not Ana, and row 6 fails because its intensity of 3 is below 5. SELECT keeps only the title and intensity columns. ORDER BY intensity DESC puts Group chat scheduling chaos, 8, before Expense tracking is tedious, 7. The result is two rows.</desc>
+  <defs>
+    <linearGradient id="gCard" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#FFFFFF"/><stop offset="100%" stop-color="#F3F6F9"/></linearGradient>
+    <linearGradient id="gBlue" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#F0F5FB"/><stop offset="100%" stop-color="#DCE7F4"/></linearGradient>
+    <linearGradient id="gGray" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#F4F6F8"/><stop offset="100%" stop-color="#E3E7EB"/></linearGradient>
+    <linearGradient id="gNavy" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0E3F6A"/><stop offset="100%" stop-color="#001A36"/></linearGradient>
+    <linearGradient id="gRoyal" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#2A7AD6"/><stop offset="100%" stop-color="#0049A0"/></linearGradient>
+    <linearGradient id="gGreen" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#F1F8F3"/><stop offset="100%" stop-color="#E0EFE5"/></linearGradient>
+    <linearGradient id="gRed" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#FBF3F3"/><stop offset="100%" stop-color="#F3E1E1"/></linearGradient>
+    <filter id="sh" x="-10%" y="-10%" width="120%" height="135%"><feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#002E5D" flood-opacity="0.13"/></filter>
+    <filter id="shS" x="-10%" y="-10%" width="120%" height="135%"><feDropShadow dx="0" dy="1.5" stdDeviation="2.5" flood-color="#002E5D" flood-opacity="0.12"/></filter>
+    <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0.5 L10,5 L0,9.5 z" fill="#8A939C"/></marker>
+    <marker id="ahD" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0.5 L10,5 L0,9.5 z" fill="#5A6672"/></marker>
+    <marker id="ahA" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0.5 L10,5 L0,9.5 z" fill="#0057B8"/></marker>
+    <marker id="ahN" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0.5 L10,5 L0,9.5 z" fill="#002E5D"/></marker>
+  </defs>
+  <rect x="0" y="0" width="1000" height="690" rx="8" fill="#FAFBFC"/>
+  <rect x="30" y="40" width="312" height="92" rx="10" fill="url(#gCard)" stroke="#D9DEE4" stroke-width="1.5" filter="url(#sh)"/>
+  <circle cx="56" cy="70" r="15" fill="#002E5D"/>
+  <text x="56" y="76" font-size="16" font-weight="700" text-anchor="middle" fill="#FFFFFF">1</text>
+  <text x="84" y="77" font-size="17" font-weight="700" font-family="Menlo, Consolas, monospace" fill="#002E5D">FROM problems</text>
+  <text x="84" y="105" font-size="16" fill="#5A6672">start with the whole table</text>
+  <rect x="30" y="150" width="312" height="140" rx="10" fill="url(#gCard)" stroke="#D9DEE4" stroke-width="1.5" filter="url(#sh)"/>
+  <circle cx="56" cy="180" r="15" fill="#002E5D"/>
+  <text x="56" y="186" font-size="16" font-weight="700" text-anchor="middle" fill="#FFFFFF">2</text>
+  <text x="84" y="187" font-size="17" font-weight="700" font-family="Menlo, Consolas, monospace" fill="#002E5D">WHERE owner = 'ana'</text>
+  <text x="84" y="212" font-size="17" font-weight="700" font-family="Menlo, Consolas, monospace" fill="#002E5D">AND intensity &gt;= 5</text>
+  <text x="84" y="240" font-size="16" fill="#5A6672">keep the rows that</text>
+  <text x="84" y="261" font-size="16" fill="#5A6672">pass both tests</text>
+  <rect x="380" y="40" width="527" height="252" rx="10" fill="url(#gCard)" stroke="#D9DEE4" stroke-width="1.5" filter="url(#sh)"/>
+  <path d="M381 76 V50 Q381 41 390 41 H897 Q906 41 906 50 V76 Z" fill="url(#gGray)"/>
+  <text x="394" y="64" font-size="15" font-weight="700" font-family="Menlo, Consolas, monospace" fill="#5A6672">id</text>
+  <text x="442" y="64" font-size="15" font-weight="700" font-family="Menlo, Consolas, monospace" fill="#5A6672">owner</text>
+  <text x="524" y="64" font-size="15" font-weight="700" font-family="Menlo, Consolas, monospace" fill="#5A6672">title</text>
+  <text x="806" y="64" font-size="15" font-weight="700" font-family="Menlo, Consolas, monospace" fill="#5A6672">intensity</text>
+  <rect x="381.5" y="76" width="524" height="36" fill="#E6EEF7"/>
+  <text x="394" y="100" font-size="17" font-weight="600" fill="#002E5D">1</text>
+  <text x="442" y="100" font-size="17" font-weight="600" fill="#002E5D">ana</text>
+  <text x="524" y="100" font-size="17" font-weight="600" fill="#002E5D">Expense tracking is tedious</text>
+  <text x="806" y="100" font-size="17" font-weight="600" fill="#002E5D">7</text>
+  <rect x="381.5" y="112" width="524" height="36" fill="#E6EEF7"/>
+  <line x1="390" y1="112" x2="897" y2="112" stroke="#E9ECEF" stroke-width="1.5"/>
+  <text x="394" y="136" font-size="17" font-weight="600" fill="#002E5D">2</text>
+  <text x="442" y="136" font-size="17" font-weight="600" fill="#002E5D">ana</text>
+  <text x="524" y="136" font-size="17" font-weight="600" fill="#002E5D">Group chat scheduling chaos</text>
+  <text x="806" y="136" font-size="17" font-weight="600" fill="#002E5D">8</text>
+  <line x1="390" y1="148" x2="897" y2="148" stroke="#E9ECEF" stroke-width="1.5"/>
+  <text x="394" y="172" font-size="17" fill="#A3ABB3">3</text>
+  <text x="442" y="172" font-size="17" fill="#A3ABB3">ben</text>
+  <text x="524" y="172" font-size="17" fill="#A3ABB3">Lost receipts</text>
+  <text x="806" y="172" font-size="17" fill="#A3ABB3">4</text>
+  <line x1="390" y1="166" x2="897" y2="166" stroke="#A3ABB3" stroke-width="1.5"/>
+  <text x="919" y="172" font-size="15" fill="#8A939C">not ana</text>
+  <line x1="390" y1="184" x2="897" y2="184" stroke="#E9ECEF" stroke-width="1.5"/>
+  <text x="394" y="208" font-size="17" fill="#A3ABB3">4</text>
+  <text x="442" y="208" font-size="17" fill="#A3ABB3">ben</text>
+  <text x="524" y="208" font-size="17" fill="#A3ABB3">Finding a study room</text>
+  <text x="806" y="208" font-size="17" fill="#A3ABB3">6</text>
+  <line x1="390" y1="202" x2="897" y2="202" stroke="#A3ABB3" stroke-width="1.5"/>
+  <text x="919" y="208" font-size="15" fill="#8A939C">not ana</text>
+  <line x1="390" y1="220" x2="897" y2="220" stroke="#E9ECEF" stroke-width="1.5"/>
+  <text x="394" y="244" font-size="17" fill="#A3ABB3">5</text>
+  <text x="442" y="244" font-size="17" fill="#A3ABB3">cara</text>
+  <text x="524" y="244" font-size="17" fill="#A3ABB3">Splitting rent</text>
+  <text x="806" y="244" font-size="17" fill="#A3ABB3">9</text>
+  <line x1="390" y1="238" x2="897" y2="238" stroke="#A3ABB3" stroke-width="1.5"/>
+  <text x="919" y="244" font-size="15" fill="#8A939C">not ana</text>
+  <line x1="390" y1="256" x2="897" y2="256" stroke="#E9ECEF" stroke-width="1.5"/>
+  <text x="394" y="280" font-size="17" fill="#A3ABB3">6</text>
+  <text x="442" y="280" font-size="17" fill="#A3ABB3">ana</text>
+  <text x="524" y="280" font-size="17" fill="#A3ABB3">Forgetting to call home</text>
+  <text x="806" y="280" font-size="17" fill="#A3ABB3">3</text>
+  <line x1="390" y1="274" x2="897" y2="274" stroke="#A3ABB3" stroke-width="1.5"/>
+  <text x="919" y="280" font-size="15" fill="#8A939C">3 &lt; 5</text>
+  <path d="M580 300 V326" fill="none" stroke="#8A939C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+  <rect x="30" y="336" width="312" height="92" rx="10" fill="url(#gCard)" stroke="#D9DEE4" stroke-width="1.5" filter="url(#sh)"/>
+  <circle cx="56" cy="366" r="15" fill="#002E5D"/>
+  <text x="56" y="372" font-size="16" font-weight="700" text-anchor="middle" fill="#FFFFFF">3</text>
+  <text x="84" y="373" font-size="17" font-weight="700" font-family="Menlo, Consolas, monospace" fill="#002E5D">SELECT title, intensity</text>
+  <text x="84" y="401" font-size="16" fill="#5A6672">keep only these columns</text>
+  <rect x="380" y="338" width="397" height="108" rx="10" fill="url(#gCard)" stroke="#D9DEE4" stroke-width="1.5" filter="url(#sh)"/>
+  <path d="M381 374 V348 Q381 339 390 339 H767 Q776 339 776 348 V374 Z" fill="url(#gGray)"/>
+  <text x="394" y="362" font-size="15" font-weight="700" font-family="Menlo, Consolas, monospace" fill="#5A6672">title</text>
+  <text x="676" y="362" font-size="15" font-weight="700" font-family="Menlo, Consolas, monospace" fill="#5A6672">intensity</text>
+  <text x="394" y="398" font-size="17" fill="#2C3E50">Expense tracking is tedious</text>
+  <text x="676" y="398" font-size="17" fill="#2C3E50">7</text>
+  <line x1="390" y1="410" x2="767" y2="410" stroke="#E9ECEF" stroke-width="1.5"/>
+  <text x="394" y="434" font-size="17" fill="#2C3E50">Group chat scheduling chaos</text>
+  <text x="676" y="434" font-size="17" fill="#2C3E50">8</text>
+  <path d="M580 454 V480" fill="none" stroke="#8A939C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+  <rect x="30" y="490" width="312" height="92" rx="10" fill="url(#gCard)" stroke="#D9DEE4" stroke-width="1.5" filter="url(#sh)"/>
+  <circle cx="56" cy="520" r="15" fill="#002E5D"/>
+  <text x="56" y="526" font-size="16" font-weight="700" text-anchor="middle" fill="#FFFFFF">4</text>
+  <text x="84" y="527" font-size="17" font-weight="700" font-family="Menlo, Consolas, monospace" fill="#002E5D">ORDER BY intensity DESC</text>
+  <text x="84" y="555" font-size="16" fill="#5A6672">highest first</text>
+  <rect x="380" y="492" width="397" height="108" rx="10" fill="url(#gCard)" stroke="#0057B8" stroke-width="2.5" filter="url(#sh)"/>
+  <path d="M381 528 V502 Q381 493 390 493 H767 Q776 493 776 502 V528 Z" fill="url(#gRoyal)"/>
+  <text x="394" y="516" font-size="15" font-weight="700" font-family="Menlo, Consolas, monospace" fill="#FFFFFF">title</text>
+  <text x="676" y="516" font-size="15" font-weight="700" font-family="Menlo, Consolas, monospace" fill="#FFFFFF">intensity</text>
+  <text x="394" y="552" font-size="17" font-weight="600" fill="#002E5D">Group chat scheduling chaos</text>
+  <text x="676" y="552" font-size="17" font-weight="600" fill="#002E5D">8</text>
+  <line x1="390" y1="564" x2="767" y2="564" stroke="#E9ECEF" stroke-width="1.5"/>
+  <text x="394" y="588" font-size="17" font-weight="600" fill="#002E5D">Expense tracking is tedious</text>
+  <text x="676" y="588" font-size="17" font-weight="600" fill="#002E5D">7</text>
+  <text x="800" y="550" font-size="19" font-weight="700" fill="#0057B8">Result:</text>
+  <text x="800" y="574" font-size="19" font-weight="700" fill="#0057B8">2 rows</text>
+  <text x="30" y="642" font-size="16" fill="#5A6672">Written with SELECT first, but run in this order: table, filter, columns, sort, then limit.</text>
+</svg>

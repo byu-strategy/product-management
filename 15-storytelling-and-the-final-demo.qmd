@@ -87,6 +87,8 @@ the telling.
 | **The evidence** | 30 seconds | What users actually did: your funnel, a cohort curve, three people's behavior, a quote from someone who came back. This is what [Measuring What Matters](14-measuring-what-matters.qmd) was for. |
 | **What you learned** | 30 seconds | What failed, what surprised you, what you would do differently, and what you would keep, change, or kill next. Honesty here reads as strength. |
 
+![The three-minute demo drawn to scale. The moment it works gets almost half the time; the evidence and what you learned close the argument.](images/diagrams/ch15-demo-argument.svg){#fig-demo-argument fig-alt="A timeline of the three-minute final demo with each part to scale: the person and the problem, 40 seconds; the moment it works, highlighted, 80 seconds, from 0:40 to 2:00; the evidence, 30 seconds; what you learned, 30 seconds. Under each part is the QuizMe example: Maya has a quiz every Friday and rereads and hopes; she uploads this week's notes, gets ten questions, misses three on equilibrium, and knows what to study; 20 invited, 8 finished a quiz, 5 came back; cut a signup step and killed the unused flashcard export." width="100%"}
+
 **Evidence at student scale.** Small numbers are fine; invented or inflated ones are not. "Twelve
 people tried it, five completed a quiz in their second week, and here is the curve" is strong
 evidence. "Three students used it before every quiz for a month, and here is what one of them

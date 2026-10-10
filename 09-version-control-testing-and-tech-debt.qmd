@@ -68,6 +68,8 @@ Then look at the messages: could a teammate tell from them what happened this we
 **pull request** (PR) is a request to merge that branch into `main`, and it is the gate where
 the change is shown, checked, and approved before it reaches users.
 
+![Work happens on a branch while main and the live site stay untouched. The only way back to main is through the pull request.](images/diagrams/ch09-pull-request-gate.svg){#fig-pull-request-gate fig-alt="A git graph. A dark main line runs along the bottom, labeled main, and stays untouched. A lighter branch labeled feature-rating leaves main, collects two commits with the note build and break safely, then passes through a card outlined in blue titled Pull request, listing the diff, automated checks, preview URL, and review. After the card the branch merges back into main, and an arrow labeled deploys leads to the live site." width="100%"}
+
 Because Vercel deploys whatever is on `main` to your live site, `main` should only ever
 receive changes that have passed the gate. One change, start to finish:
 
@@ -178,6 +180,8 @@ bad deploy ran a migration that dropped a column, or wrote wrong values into a t
 the old code now runs against changed data. This is one more reason the schema deserves care
 (Chapter 8): make migrations that add things before ones that remove them, and back up before
 a migration that deletes.
+
+![Instant Rollback moves the domain back to the last good deploy in seconds. All three deploys share one database, so the data stays as deploy 3 left it.](images/diagrams/ch09-rollback.svg){#fig-rollback fig-alt="A globe icon labeled your live domain, what users reach, sits above three deployment cards: Deploy 1; Deploy 2, last good, outlined in blue; Deploy 3, broken, tinted red. A faded dashed arrow labeled before runs from the domain to Deploy 3. A solid blue arrow labeled Instant Rollback, seconds, runs from the domain to Deploy 2. All three deploys connect by dotted lines to one wide card below: One database, shared by every deploy. Rollback does not undo what deploy 3 changed in the data." width="100%"}
 
 ::: {.callout-tip title="Try it"}
 On a preview or a throwaway change: merge something harmless, then roll it back in the Vercel

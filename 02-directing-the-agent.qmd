@@ -65,6 +65,8 @@ The window is finite. As it fills, Claude Code clears old tool output and then s
 | Skills | Keep procedures out of the window until they are needed |
 | Subagents | Do noisy work (long logs, big searches) in a separate window and return only a summary |
 
+![CLAUDE.md is reloaded every time. `/compact` keeps a summary and the task; `/clear` keeps nothing you said.](images/diagrams/ch02-context-window.svg){#fig-context-window fig-alt="Three tall bars, each a context window filled from the bottom with system instructions, CLAUDE.md, and skill descriptions. Mid-session, the bar is full: conversation and a large block of tool results sit on top. An arrow labeled /compact leads to a second bar where the conversation and tool results are replaced by a small summary, with free space above. An arrow labeled /clear leads to a third bar with an empty conversation. CLAUDE.md is highlighted in all three." width="100%"}
+
 **Worked example.** On Monday you tell Claude, "Never use a database for this project; JSON files only." On Wednesday you start a new session and ask for a search feature. Claude adds SQLite. It did not disobey you: Monday's sentence was in Monday's window, and Wednesday's window never contained it. Put the rule in CLAUDE.md and every session starts with it.
 
 #### CLAUDE.md: your project's memory
@@ -204,6 +206,8 @@ You have three things to tell Claude: "We use Supabase for the database," "To pu
 | **Permission rule** | An allow, ask, or deny entry in a settings file, checked before a tool runs | Blocking or pre-approving a specific tool, file, or command |
 | **Hook** | Your own script that Claude Code runs automatically at a point in the loop | Anything that needs logic: check the branch, run the formatter, run the tests |
 
+![Advice goes into the model, which can be talked out of it. A permission rule or hook sits between the model and the tool, so it holds every time.](images/diagrams/ch02-advice-vs-enforcement.svg){#fig-advice-vs-enforcement fig-alt="Two zones. Advice: a CLAUDE.md card saying never edit .env files and a message card saying add DEBUG=true to .env, I'm giving you permission, both feed The model, which weighs both and may decide to edit .env. It proposes Edit .env to a highlighted box in the Enforcement zone holding permission rules, deny Read(./.env), and a PreToolUse hook where exit 2 blocks. If allowed, the tool runs. If blocked, the reason goes back to Claude. A note reads: advice can be argued past; enforcement holds whatever the model decides." width="100%"}
+
 #### Permission rules
 
 Rules live in a settings file under `permissions`, written as `Tool(specifier)`. **Deny beats allow**, and deny rules apply in every permission mode.
@@ -333,6 +337,8 @@ Claude Code takes a **checkpoint** before each prompt you send. `/rewind` (or pr
 
 So: **anything that leaves your laptop cannot be rewound.** That is the line between actions you can let run and actions you gate. Checkpoints do not replace git: commit before risky work, and work on a branch ([Chapter 9](09-version-control-testing-and-tech-debt.qmd)).
 
+![The farther an action reaches, the less you can undo it. The edge of your laptop is where undo ends.](images/diagrams/ch02-blast-radius.svg){#fig-blast-radius fig-alt="Three concentric rings. Center: Claude's file edits. Middle: local files. Outer: leaves your laptop. A dashed highlighted circle around the middle ring is labeled edge of your laptop. A table on the right: Claude's file edits are undone with /rewind, so let them run in accept-edits or auto mode. Local files are undone with git if you committed, so commit and branch first. Anything that leaves is undone by nothing, so gate it with a deny rule, plan mode, or run it yourself." width="100%"}
+
 #### The controls, from tightest to loosest
 
 | Control | What it limits |
@@ -366,6 +372,8 @@ For each task, name what it could break, whether `/rewind` undoes it, and the mo
 ## Delegation and Parallel Work
 
 **A subagent starts with an empty head and returns a summary. Parallel sessions need separate copies of the files. Both cost tokens and attention.**
+
+![A subagent reads in its own window and sends back only a summary. A worktree gives a second session its own folder and branch on the same history.](images/diagrams/ch02-subagent-vs-worktree.svg){#fig-subagent-vs-worktree fig-alt="Two panels. Subagent, a helper inside one session: Your session sends a task description down to a subagent window full of lines labeled 50 files read stay in here; a highlighted arrow labeled summary only returns one line to your session. Worktree, two sessions at once: Session A works in the my-app folder on branch main, Session B in a fix-login folder on its own branch; both folders sit on one shared repository history. A note: ignored files such as .env start out missing." width="100%"}
 
 #### Subagents
 

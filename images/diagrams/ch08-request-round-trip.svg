@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 640" role="img" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+  <title>A request's round trip, and where it can fail</title>
+  <desc>Sequence diagram with three participants: the browser, your server, and the database. The browser sends POST /api/problems to the server. The server checks who is asking and whether the input is valid, inserts the row into the database, gets the new row back, and answers 201 Created. The browser checks response.ok and says what happened. Three numbered markers show where it can fail: 1, on the way to the server, no network or a timeout means no answer at all; 2, at the server's checks, a 400, 401, 403, 404 or 429 means the request was the problem; 3, on the way back, a 500 means the server was the problem.</desc>
+  <defs>
+    <linearGradient id="gCard" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#FFFFFF"/><stop offset="100%" stop-color="#F3F6F9"/></linearGradient>
+    <linearGradient id="gBlue" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#F0F5FB"/><stop offset="100%" stop-color="#DCE7F4"/></linearGradient>
+    <linearGradient id="gGray" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#F4F6F8"/><stop offset="100%" stop-color="#E3E7EB"/></linearGradient>
+    <linearGradient id="gNavy" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0E3F6A"/><stop offset="100%" stop-color="#001A36"/></linearGradient>
+    <linearGradient id="gRoyal" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#2A7AD6"/><stop offset="100%" stop-color="#0049A0"/></linearGradient>
+    <linearGradient id="gGreen" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#F1F8F3"/><stop offset="100%" stop-color="#E0EFE5"/></linearGradient>
+    <linearGradient id="gRed" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#FBF3F3"/><stop offset="100%" stop-color="#F3E1E1"/></linearGradient>
+    <filter id="sh" x="-10%" y="-10%" width="120%" height="135%"><feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#002E5D" flood-opacity="0.13"/></filter>
+    <filter id="shS" x="-10%" y="-10%" width="120%" height="135%"><feDropShadow dx="0" dy="1.5" stdDeviation="2.5" flood-color="#002E5D" flood-opacity="0.12"/></filter>
+    <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0.5 L10,5 L0,9.5 z" fill="#8A939C"/></marker>
+    <marker id="ahD" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0.5 L10,5 L0,9.5 z" fill="#5A6672"/></marker>
+    <marker id="ahA" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0.5 L10,5 L0,9.5 z" fill="#0057B8"/></marker>
+    <marker id="ahN" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0.5 L10,5 L0,9.5 z" fill="#002E5D"/></marker>
+  </defs>
+  <rect x="0" y="0" width="1000" height="640" rx="8" fill="#FAFBFC"/>
+  <line x1="120" y1="160" x2="120" y2="612" stroke="#D9DEE4" stroke-width="2"/>
+  <circle cx="120" cy="82" r="36" fill="url(#gBlue)" stroke="#B9D0EA" stroke-width="1.5" filter="url(#sh)"/>
+  <g transform="translate(103.0,65.0) scale(1.417)" fill="none" stroke="#002E5D" stroke-width="1.84" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2" /> <path d="M10 4v4" /> <path d="M2 8h20" /> <path d="M6 4v4" /></g>
+  <text x="120" y="146" font-size="18" font-weight="700" text-anchor="middle" fill="#002E5D">Browser</text>
+  <line x1="370" y1="160" x2="370" y2="612" stroke="#D9DEE4" stroke-width="2"/>
+  <circle cx="370" cy="82" r="36" fill="url(#gBlue)" stroke="#B9D0EA" stroke-width="1.5" filter="url(#sh)"/>
+  <g transform="translate(353.0,65.0) scale(1.417)" fill="none" stroke="#002E5D" stroke-width="1.84" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="8" x="2" y="2" rx="2" ry="2" /> <rect width="20" height="8" x="2" y="14" rx="2" ry="2" /> <line x1="6" x2="6.01" y1="6" y2="6" /> <line x1="6" x2="6.01" y1="18" y2="18" /></g>
+  <text x="370" y="146" font-size="18" font-weight="700" text-anchor="middle" fill="#002E5D">Your server</text>
+  <line x1="600" y1="160" x2="600" y2="612" stroke="#D9DEE4" stroke-width="2"/>
+  <circle cx="600" cy="82" r="36" fill="url(#gBlue)" stroke="#B9D0EA" stroke-width="1.5" filter="url(#sh)"/>
+  <g transform="translate(583.0,65.0) scale(1.417)" fill="none" stroke="#002E5D" stroke-width="1.84" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3" /> <path d="M3 5V19A9 3 0 0 0 21 19V5" /> <path d="M3 12A9 3 0 0 0 21 12" /></g>
+  <text x="600" y="146" font-size="18" font-weight="700" text-anchor="middle" fill="#002E5D">Database</text>
+  <text x="686" y="146" font-size="15" font-weight="700" letter-spacing="1.2" fill="#8A939C">CAN COME BACK INSTEAD</text>
+  <path d="M124 210 H364" fill="none" stroke="#002E5D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ahN)"/>
+  <text x="231.0" y="196" font-size="15" font-weight="600" text-anchor="middle" font-family="Menlo, Consolas, monospace" fill="#002E5D">POST /api/problems</text>
+  <circle cx="326" cy="210" r="13" fill="url(#gRoyal)" stroke="#FFFFFF" stroke-width="2.5" filter="url(#shS)"/>
+  <text x="326" y="215" font-size="14" font-weight="700" text-anchor="middle" fill="#FFFFFF">1</text>
+  <rect x="686" y="179" width="284" height="62" rx="12" fill="url(#gCard)" stroke="#D9DEE4" stroke-width="1.5" filter="url(#shS)"/>
+  <circle cx="714" cy="210" r="13" fill="url(#gRoyal)" stroke="#FFFFFF" stroke-width="2.5" filter="url(#shS)"/>
+  <text x="714" y="215" font-size="14" font-weight="700" text-anchor="middle" fill="#FFFFFF">1</text>
+  <text x="740" y="206" font-size="16" font-weight="700" fill="#002E5D">No network, or timeout</text>
+  <text x="740" y="228" font-size="15" fill="#5A6672">no answer at all</text>
+  <rect x="362" y="258" width="16" height="80" rx="4" fill="url(#gBlue)" stroke="#B9D0EA" stroke-width="1.5"/>
+  <text x="392" y="290" font-size="16" fill="#5A6672">who is asking?</text>
+  <text x="392" y="312" font-size="16" fill="#5A6672">is the input valid?</text>
+  <circle cx="370" cy="298" r="13" fill="url(#gRoyal)" stroke="#FFFFFF" stroke-width="2.5" filter="url(#shS)"/>
+  <text x="370" y="303" font-size="14" font-weight="700" text-anchor="middle" fill="#FFFFFF">2</text>
+  <rect x="686" y="267" width="284" height="62" rx="12" fill="url(#gCard)" stroke="#D9DEE4" stroke-width="1.5" filter="url(#shS)"/>
+  <circle cx="714" cy="298" r="13" fill="url(#gRoyal)" stroke="#FFFFFF" stroke-width="2.5" filter="url(#shS)"/>
+  <text x="714" y="303" font-size="14" font-weight="700" text-anchor="middle" fill="#FFFFFF">2</text>
+  <text x="740" y="294" font-size="16" font-weight="700" fill="#002E5D">400, 401, 403, 404, 429</text>
+  <text x="740" y="316" font-size="15" fill="#5A6672">the request was the problem</text>
+  <path d="M380 372 H594" fill="none" stroke="#002E5D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ahN)"/>
+  <text x="485.0" y="360" font-size="16" text-anchor="middle" fill="#2C3E50">insert the row</text>
+  <path d="M596 424 H384" fill="none" stroke="#5A6672" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="6 5" marker-end="url(#ahD)"/>
+  <text x="485.0" y="412" font-size="16" text-anchor="middle" fill="#2C3E50">the new row</text>
+  <path d="M366 484 H126" fill="none" stroke="#5A6672" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="6 5" marker-end="url(#ahD)"/>
+  <text x="259.0" y="470" font-size="15" font-weight="600" text-anchor="middle" font-family="Menlo, Consolas, monospace" fill="#002E5D">201 Created</text>
+  <circle cx="164" cy="484" r="13" fill="url(#gRoyal)" stroke="#FFFFFF" stroke-width="2.5" filter="url(#shS)"/>
+  <text x="164" y="489" font-size="14" font-weight="700" text-anchor="middle" fill="#FFFFFF">3</text>
+  <rect x="686" y="453" width="284" height="62" rx="12" fill="url(#gCard)" stroke="#D9DEE4" stroke-width="1.5" filter="url(#shS)"/>
+  <circle cx="714" cy="484" r="13" fill="url(#gRoyal)" stroke="#FFFFFF" stroke-width="2.5" filter="url(#shS)"/>
+  <text x="714" y="489" font-size="14" font-weight="700" text-anchor="middle" fill="#FFFFFF">3</text>
+  <text x="740" y="480" font-size="16" font-weight="700" fill="#002E5D">500</text>
+  <text x="740" y="502" font-size="15" fill="#5A6672">the server was the problem</text>
+  <rect x="28" y="530" width="184" height="62" rx="12" fill="url(#gBlue)" stroke="#B9D0EA" stroke-width="1.5" filter="url(#shS)"/>
+  <text x="120" y="557" font-size="15" font-weight="600" text-anchor="middle" font-family="Menlo, Consolas, monospace" fill="#002E5D">check response.ok,</text>
+  <text x="120" y="579" font-size="16" text-anchor="middle" fill="#2C3E50">say what happened</text>
+</svg>

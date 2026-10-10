@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 560" role="img" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+  <title>Retrieval-augmented generation and where it fails</title>
+  <desc>Two lanes. Once, ahead of time: documents are split into chunks, each chunk is embedded as a vector, and text plus vector are stored. Every question: the question is embedded, the nearest chunks are fetched from the store, the model reads the chunks and the question, and it writes an answer with its source. Three red markers show where it fails: 1, the right document was never loaded; 2, the nearest chunks are the wrong ones; 3, the model answers fluently from whatever it got. A band at the bottom gives the check: test retrieval on its own.</desc>
+  <defs>
+    <linearGradient id="card" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF"/><stop offset="100%" stop-color="#F3F6F9"/>
+    </linearGradient>
+    <linearGradient id="tint" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#EEF3F9"/><stop offset="100%" stop-color="#DCE7F3"/>
+    </linearGradient>
+    <linearGradient id="zone" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F1F5FA"/><stop offset="100%" stop-color="#E6EEF7"/>
+    </linearGradient>
+    <linearGradient id="navyg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0E3F6A"/><stop offset="100%" stop-color="#001F40"/>
+    </linearGradient>
+    <linearGradient id="royalg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1A6CC8"/><stop offset="100%" stop-color="#004A9E"/>
+    </linearGradient>
+    <linearGradient id="royalh" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#1A6CC8"/><stop offset="100%" stop-color="#004A9E"/>
+    </linearGradient>
+    <linearGradient id="navyh" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#5D7A96"/><stop offset="100%" stop-color="#2F4D6B"/>
+    </linearGradient>
+    <linearGradient id="greeng" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3A8F5D"/><stop offset="100%" stop-color="#256A41"/>
+    </linearGradient>
+    <linearGradient id="redg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#C04848"/><stop offset="100%" stop-color="#9C3131"/>
+    </linearGradient>
+    <filter id="sh" x="-15%" y="-15%" width="130%" height="140%">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#0a2e4d" flood-opacity="0.13"/>
+    </filter>
+    <filter id="shs" x="-15%" y="-15%" width="130%" height="140%">
+      <feDropShadow dx="0" dy="1.5" stdDeviation="2.5" flood-color="#0a2e4d" flood-opacity="0.12"/>
+    </filter>
+    <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+      <path d="M0,0.5 L10,5 L0,9.5 z" fill="#8A939C"/>
+    </marker>
+    <marker id="ahr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0.5 L10,5 L0,9.5 z" fill="#0057B8"/>
+    </marker>
+    <marker id="ahn" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+      <path d="M0,0.5 L10,5 L0,9.5 z" fill="#002E5D"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="1000" height="560" rx="8" fill="#FAFBFC"/>
+  <text x="40" y="46" font-size="15" font-weight="700" fill="#5A6672" text-anchor="start" letter-spacing="1.2">ONCE, AHEAD OF TIME</text>
+  <text x="197.6" y="282" font-size="15" font-weight="700" fill="#5A6672" text-anchor="start" letter-spacing="1.2">EVERY QUESTION</text>
+  <rect x="40" y="64" width="132" height="112" rx="12" fill="url(#card)" stroke="#D3DCE5" stroke-width="1" filter="url(#sh)"/>
+  <g transform="translate(88 88) scale(1.5000)" fill="none" stroke="#002E5D" stroke-width="1.600" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" /> <path d="M14 2v4a2 2 0 0 0 2 2h4" /> <path d="M10 9H8" /> <path d="M16 13H8" /> <path d="M16 17H8" /></g>
+  <text x="106" y="156" font-size="18" font-weight="700" fill="#002E5D" text-anchor="middle">Documents</text>
+  <rect x="197.6" y="64" width="132" height="112" rx="12" fill="url(#card)" stroke="#D3DCE5" stroke-width="1" filter="url(#sh)"/>
+  <g transform="translate(245.6 88) scale(1.5000)" fill="none" stroke="#002E5D" stroke-width="1.600" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3" /> <path d="M8.12 8.12 12 12" /> <path d="M20 4 8.12 15.88" /> <circle cx="6" cy="18" r="3" /> <path d="M14.8 14.8 20 20" /></g>
+  <text x="263.6" y="156" font-size="18" font-weight="700" fill="#002E5D" text-anchor="middle">Chunk</text>
+  <rect x="355.2" y="64" width="132" height="112" rx="12" fill="url(#card)" stroke="#D3DCE5" stroke-width="1" filter="url(#sh)"/>
+  <g transform="translate(403.2 88) scale(1.5000)" fill="none" stroke="#002E5D" stroke-width="1.600" stroke-linecap="round" stroke-linejoin="round"><circle cx="7.5" cy="7.5" r=".5" fill="currentColor" /> <circle cx="18.5" cy="5.5" r=".5" fill="currentColor" /> <circle cx="11.5" cy="11.5" r=".5" fill="currentColor" /> <circle cx="7.5" cy="16.5" r=".5" fill="currentColor" /> <circle cx="17.5" cy="14.5" r=".5" fill="currentColor" /> <path d="M3 3v16a2 2 0 0 0 2 2h16" /></g>
+  <text x="421.2" y="156" font-size="18" font-weight="700" fill="#002E5D" text-anchor="middle">Embed</text>
+  <rect x="512.8" y="64" width="132" height="112" rx="12" fill="url(#card)" stroke="#D3DCE5" stroke-width="1" filter="url(#sh)"/>
+  <g transform="translate(560.8 88) scale(1.5000)" fill="none" stroke="#002E5D" stroke-width="1.600" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3" /> <path d="M3 5V19A9 3 0 0 0 21 19V5" /> <path d="M3 12A9 3 0 0 0 21 12" /></g>
+  <text x="578.8" y="156" font-size="18" font-weight="700" fill="#002E5D" text-anchor="middle">Store</text>
+  <path d="M 177.0 120.0 L 191.6 120.0" fill="none" stroke="#8A939C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+  <path d="M 334.6 120.0 L 349.2 120.0" fill="none" stroke="#8A939C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+  <path d="M 492.2 120.0 L 506.79999999999995 120.0" fill="none" stroke="#8A939C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+  <rect x="197.6" y="300" width="132" height="112" rx="12" fill="url(#card)" stroke="#D3DCE5" stroke-width="1" filter="url(#sh)"/>
+  <g transform="translate(245.6 324) scale(1.5000)" fill="none" stroke="#002E5D" stroke-width="1.600" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" /> <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" /> <path d="M12 17h.01" /></g>
+  <text x="263.6" y="392" font-size="18" font-weight="700" fill="#002E5D" text-anchor="middle">Question</text>
+  <rect x="355.2" y="300" width="132" height="112" rx="12" fill="url(#card)" stroke="#D3DCE5" stroke-width="1" filter="url(#sh)"/>
+  <g transform="translate(403.2 324) scale(1.5000)" fill="none" stroke="#002E5D" stroke-width="1.600" stroke-linecap="round" stroke-linejoin="round"><circle cx="7.5" cy="7.5" r=".5" fill="currentColor" /> <circle cx="18.5" cy="5.5" r=".5" fill="currentColor" /> <circle cx="11.5" cy="11.5" r=".5" fill="currentColor" /> <circle cx="7.5" cy="16.5" r=".5" fill="currentColor" /> <circle cx="17.5" cy="14.5" r=".5" fill="currentColor" /> <path d="M3 3v16a2 2 0 0 0 2 2h16" /></g>
+  <text x="421.2" y="392" font-size="18" font-weight="700" fill="#002E5D" text-anchor="middle">Embed</text>
+  <rect x="512.8" y="300" width="132" height="112" rx="12" fill="url(#card)" stroke="#D3DCE5" stroke-width="1" filter="url(#sh)"/>
+  <g transform="translate(560.8 324) scale(1.5000)" fill="none" stroke="#002E5D" stroke-width="1.600" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8" /> <path d="m21 21-4.3-4.3" /></g>
+  <text x="578.8" y="392" font-size="18" font-weight="700" fill="#002E5D" text-anchor="middle">Search</text>
+  <rect x="670.4" y="300" width="132" height="112" rx="12" fill="#0E3F6A" filter="url(#sh)"/>
+  <rect x="670.4" y="300" width="132" height="112" rx="12" fill="url(#navyg)"/>
+  <g transform="translate(718.4 324) scale(1.5000)" fill="none" stroke="#FFFFFF" stroke-width="1.600" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8" /> <rect width="16" height="12" x="4" y="8" rx="2" /> <path d="M2 14h2" /> <path d="M20 14h2" /> <path d="M15 13v2" /> <path d="M9 13v2" /></g>
+  <text x="736.4" y="392" font-size="18" font-weight="700" fill="#FFFFFF" text-anchor="middle">Model</text>
+  <rect x="828" y="300" width="132" height="112" rx="12" fill="url(#card)" stroke="#D3DCE5" stroke-width="1" filter="url(#sh)"/>
+  <g transform="translate(876 324) scale(1.5000)" fill="none" stroke="#002E5D" stroke-width="1.600" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /> <path d="M8 12a2 2 0 0 0 2-2V8H8" /> <path d="M14 12a2 2 0 0 0 2-2V8h-2" /></g>
+  <text x="894" y="392" font-size="18" font-weight="700" fill="#002E5D" text-anchor="middle">Answer</text>
+  <path d="M 334.6 356.0 L 349.2 356.0" fill="none" stroke="#8A939C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+  <path d="M 492.2 356.0 L 506.79999999999995 356.0" fill="none" stroke="#8A939C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+  <path d="M 649.8 356.0 L 664.4 356.0" fill="none" stroke="#8A939C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+  <path d="M 807.4 356.0 L 822.0 356.0" fill="none" stroke="#8A939C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+  <path d="M 578.8 182 L 578.8 292" fill="none" stroke="#002E5D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ahn)"/>
+  <text x="590.8" y="252" font-size="15" font-weight="600" fill="#5A6672" text-anchor="start">nearest</text>
+  <text x="590.8" y="270" font-size="15" font-weight="400" fill="#5A6672" text-anchor="start">by meaning</text>
+  <circle cx="168" cy="68" r="14" fill="url(#redg)" filter="url(#shs)"/>
+  <text x="168" y="73.5" font-size="16" font-weight="700" fill="#FFFFFF" text-anchor="middle">1</text>
+  <text x="106" y="202" font-size="15" font-weight="600" fill="#B03A3A" text-anchor="middle">never loaded</text>
+  <circle cx="640.8" cy="304" r="14" fill="url(#redg)" filter="url(#shs)"/>
+  <text x="640.8" y="309.5" font-size="16" font-weight="700" fill="#FFFFFF" text-anchor="middle">2</text>
+  <text x="578.8" y="438" font-size="15" font-weight="600" fill="#B03A3A" text-anchor="middle">wrong chunks</text>
+  <circle cx="956" cy="304" r="14" fill="url(#redg)" filter="url(#shs)"/>
+  <text x="956" y="309.5" font-size="16" font-weight="700" fill="#FFFFFF" text-anchor="middle">3</text>
+  <text x="894" y="438" font-size="15" font-weight="600" fill="#B03A3A" text-anchor="middle">answers anyway</text>
+  <rect x="40" y="486" width="920" height="54" rx="12" fill="url(#zone)" stroke="#C9D7E6" stroke-width="1" filter="url(#shs)"/>
+  <g transform="translate(63.6 498.6) scale(1.2000)" fill="none" stroke="#0057B8" stroke-width="2.000" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8" /> <path d="m21 21-4.3-4.3" /></g>
+  <text x="106" y="519" font-size="17" font-weight="700" fill="#002E5D" text-anchor="start">Test retrieval on its own:</text>
+  <text x="330" y="519" font-size="17" font-weight="400" fill="#2C3E50" text-anchor="start">for each test question, did the right chunk come back?</text>
+</svg>

@@ -8,3 +8,7 @@ The complete list of works cited across this book. Each chapter also lists the s
 
 ::: {#refs}
 :::
+
+## Figure credits
+
+Diagrams drawn for this book use icons from [Lucide](https://lucide.dev), used under the [ISC license](https://lucide.dev/license). Figures adapted from Sebastian Raschka's *Build a Large Language Model (From Scratch)* are credited in their captions.

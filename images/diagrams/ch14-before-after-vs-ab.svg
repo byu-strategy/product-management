@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1000 650" role="img" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+  <title>Before-and-after comparison versus a randomized test</title>
+  <desc>Two panels. On the left, a before-and-after comparison: last week, with the old flow, activation was 20 percent; this week it is 35 percent, but four explanations compete: the new flow, a class assignment, a club group chat post, and the noise of only 20 signups a week. The data cannot say which one moved the number. On the right, a randomized test: in the same weeks, a coin assigns each new user to group A, the old flow, or group B, the new flow. The class assignment, the club post, and everything else land on both groups about equally, so the flow is the only systematic difference, and a gap between A and B larger than chance would produce was caused by the flow.</desc>
+  <defs>
+    <filter id="sh" x="-15%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#0A2E4D" flood-opacity="0.12"/>
+    </filter>
+    <linearGradient id="card" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF"/><stop offset="100%" stop-color="#F6F8FA"/>
+    </linearGradient>
+    <linearGradient id="royal" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1A6FCC"/><stop offset="100%" stop-color="#0057B8"/>
+    </linearGradient>
+    <linearGradient id="coin" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2A5C8F"/><stop offset="100%" stop-color="#002E5D"/>
+    </linearGradient>
+    <marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8A939C"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="1000" height="650" rx="8" fill="#FAFBFC"/>
+  <circle cx="64" cy="66" r="24" fill="#E6EEF7"/>
+  <g transform="translate(49,51) scale(1.25)" fill="none" stroke="#002E5D" stroke-width="1.60" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></g>
+  <circle cx="552" cy="66" r="24" fill="#E6EEF7"/>
+  <g transform="translate(537,51) scale(1.25)" fill="none" stroke="#002E5D" stroke-width="1.60" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2"/><path d="M6.453 15h11.094"/><path d="M8.5 2h7"/></g>
+  <text x="102" y="60" font-size="24" font-weight="700" fill="#002E5D">Before and after</text>
+  <text x="102" y="86" font-size="17" fill="#5A6672">This week against last week</text>
+  <text x="590" y="60" font-size="24" font-weight="700" fill="#002E5D">Randomized test</text>
+  <text x="590" y="86" font-size="17" fill="#5A6672">The same weeks, split by a coin</text>
+  <line x1="500" y1="40" x2="500" y2="616" stroke="#E1E5EA" stroke-width="1.5"/>
+  <rect x="40" y="200" width="200" height="316" rx="10" fill="url(#card)" stroke="#E1E5EA" stroke-width="1" filter="url(#sh)"/>
+  <text x="140" y="236" text-anchor="middle" font-size="19" font-weight="700" fill="#002E5D">Last week</text>
+  <rect x="276" y="200" width="200" height="316" rx="10" fill="url(#card)" stroke="#E1E5EA" stroke-width="1" filter="url(#sh)"/>
+  <text x="376" y="236" text-anchor="middle" font-size="19" font-weight="700" fill="#002E5D">This week</text>
+  <text x="140" y="286" text-anchor="middle" font-size="34" font-weight="700" fill="#002E5D">20%</text>
+  <text x="140" y="308" text-anchor="middle" font-size="15" fill="#8A939C">activation</text>
+  <text x="376" y="286" text-anchor="middle" font-size="34" font-weight="700" fill="#002E5D">35%</text>
+  <text x="376" y="308" text-anchor="middle" font-size="15" fill="#8A939C">activation</text>
+  <line x1="246" y1="274" x2="270" y2="274" stroke="#8A939C" stroke-width="2" marker-end="url(#ar)"/>
+  <rect x="58" y="328" width="164" height="36" rx="8" fill="#FFFFFF" stroke="#0057B8" stroke-width="1.5"/>
+  <text x="140.0" y="352" text-anchor="middle" font-size="16" font-weight="600" fill="#0057B8">Old flow</text>
+  <rect x="294" y="328" width="164" height="36" rx="8" fill="url(#royal)"/>
+  <text x="376.0" y="352" text-anchor="middle" font-size="16" font-weight="700" fill="#FFFFFF">New flow</text>
+  <rect x="294" y="372" width="164" height="36" rx="8" fill="#EDF0F3"/>
+  <text x="376.0" y="396" text-anchor="middle" font-size="16" fill="#5A6672">Class assignment</text>
+  <rect x="294" y="416" width="164" height="36" rx="8" fill="#EDF0F3"/>
+  <text x="376.0" y="440" text-anchor="middle" font-size="16" fill="#5A6672">Club chat post</text>
+  <rect x="294" y="460" width="164" height="36" rx="8" fill="#EDF0F3"/>
+  <text x="376.0" y="484" text-anchor="middle" font-size="16" fill="#5A6672">Noise: 20 signups</text>
+  <line x1="140" y1="150" x2="376" y2="150" stroke="#C5CCD3" stroke-width="2"/>
+  <line x1="140" y1="166" x2="140" y2="190" stroke="#C5CCD3" stroke-width="1.5" stroke-dasharray="3 4"/>
+  <line x1="376" y1="166" x2="376" y2="190" stroke="#C5CCD3" stroke-width="1.5" stroke-dasharray="3 4"/>
+  <circle cx="140" cy="150" r="6" fill="#FAFBFC" stroke="#8A939C" stroke-width="2"/>
+  <circle cx="376" cy="150" r="6" fill="#FAFBFC" stroke="#8A939C" stroke-width="2"/>
+  <rect x="250" y="142" width="16" height="16" rx="2" transform="rotate(45 258 150)" fill="#0057B8"/>
+  <text x="258" y="128" text-anchor="middle" font-size="15" font-weight="600" fill="#0057B8">new flow ships</text>
+  <circle cx="744" cy="140" r="30" fill="url(#coin)" filter="url(#sh)"/>
+  <circle cx="744" cy="140" r="23" fill="none" stroke="#FFFFFF" stroke-opacity="0.35" stroke-width="1.5"/>
+  <text x="744" y="146" text-anchor="middle" font-size="15" font-weight="700" fill="#FFFFFF">coin</text>
+  <path d="M718,158 C684,176 644,178 630,192" fill="none" stroke="#8A939C" stroke-width="2" marker-end="url(#ar)"/>
+  <path d="M770,158 C804,176 844,178 858,192" fill="none" stroke="#8A939C" stroke-width="2" marker-end="url(#ar)"/>
+  <rect x="530" y="200" width="200" height="316" rx="10" fill="url(#card)" stroke="#E1E5EA" stroke-width="1" filter="url(#sh)"/>
+  <text x="630" y="236" text-anchor="middle" font-size="19" font-weight="700" fill="#002E5D">Group A</text>
+  <rect x="758" y="200" width="200" height="316" rx="10" fill="url(#card)" stroke="#0057B8" stroke-width="2" filter="url(#sh)"/>
+  <text x="858" y="236" text-anchor="middle" font-size="19" font-weight="700" fill="#002E5D">Group B</text>
+  <g transform="translate(562.0,258) scale(1.0)" fill="none" stroke="#8A939C" stroke-width="2.00" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></g>
+  <g transform="translate(590.0,258) scale(1.0)" fill="none" stroke="#8A939C" stroke-width="2.00" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></g>
+  <g transform="translate(618.0,258) scale(1.0)" fill="none" stroke="#8A939C" stroke-width="2.00" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></g>
+  <g transform="translate(646.0,258) scale(1.0)" fill="none" stroke="#8A939C" stroke-width="2.00" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></g>
+  <g transform="translate(674.0,258) scale(1.0)" fill="none" stroke="#8A939C" stroke-width="2.00" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></g>
+  <g transform="translate(790.0,258) scale(1.0)" fill="none" stroke="#8A939C" stroke-width="2.00" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></g>
+  <g transform="translate(818.0,258) scale(1.0)" fill="none" stroke="#8A939C" stroke-width="2.00" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></g>
+  <g transform="translate(846.0,258) scale(1.0)" fill="none" stroke="#8A939C" stroke-width="2.00" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></g>
+  <g transform="translate(874.0,258) scale(1.0)" fill="none" stroke="#8A939C" stroke-width="2.00" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></g>
+  <g transform="translate(902.0,258) scale(1.0)" fill="none" stroke="#8A939C" stroke-width="2.00" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></g>
+  <rect x="548" y="328" width="164" height="36" rx="8" fill="#FFFFFF" stroke="#0057B8" stroke-width="1.5"/>
+  <text x="630.0" y="352" text-anchor="middle" font-size="16" font-weight="600" fill="#0057B8">Old flow</text>
+  <rect x="776" y="328" width="164" height="36" rx="8" fill="url(#royal)"/>
+  <text x="858.0" y="352" text-anchor="middle" font-size="16" font-weight="700" fill="#FFFFFF">New flow</text>
+  <rect x="548" y="372" width="164" height="36" rx="8" fill="#EDF0F3"/>
+  <text x="630.0" y="396" text-anchor="middle" font-size="16" fill="#5A6672">Class assignment</text>
+  <rect x="776" y="372" width="164" height="36" rx="8" fill="#EDF0F3"/>
+  <text x="858.0" y="396" text-anchor="middle" font-size="16" fill="#5A6672">Class assignment</text>
+  <rect x="548" y="416" width="164" height="36" rx="8" fill="#EDF0F3"/>
+  <text x="630.0" y="440" text-anchor="middle" font-size="16" fill="#5A6672">Club chat post</text>
+  <rect x="776" y="416" width="164" height="36" rx="8" fill="#EDF0F3"/>
+  <text x="858.0" y="440" text-anchor="middle" font-size="16" fill="#5A6672">Club chat post</text>
+  <rect x="548" y="460" width="164" height="36" rx="8" fill="#EDF0F3"/>
+  <text x="630.0" y="484" text-anchor="middle" font-size="16" fill="#5A6672">Everything else</text>
+  <rect x="776" y="460" width="164" height="36" rx="8" fill="#EDF0F3"/>
+  <text x="858.0" y="484" text-anchor="middle" font-size="16" fill="#5A6672">Everything else</text>
+  <circle cx="54" cy="570" r="13" fill="#B03A3A"/>
+  <path d="M48,564 L60,576 M60,564 L48,576" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round"/>
+  <text x="78" y="576" font-size="19" font-weight="700" fill="#B03A3A">Four explanations, one number</text>
+  <text x="78" y="604" font-size="17" fill="#2C3E50">The data cannot say which one moved it.</text>
+  <circle cx="542" cy="570" r="13" fill="#2C7A4C"/>
+  <path d="M535,570 L540,575 L549,564" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="566" y="576" font-size="19" font-weight="700" fill="#2C7A4C">Only the flow differs</text>
+  <text x="566" y="604" font-size="17" fill="#2C3E50">A gap larger than chance is its effect.</text>
+</svg>

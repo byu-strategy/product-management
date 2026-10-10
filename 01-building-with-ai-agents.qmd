@@ -354,6 +354,8 @@ of a browser tab.
 
 Every agent turn has three phases. Claude Code's documentation names them **gather context, take action, and verify results**, and the loop repeats until the task is done or you interrupt.
 
+![Each turn goes around the loop: gather context, act, check. When a result is wrong, ask which phase failed.](images/diagrams/ch01-agent-loop.svg){#fig-agent-loop fig-alt="A circular loop of three phases joined by clockwise arrows around a center labeled The model decides the next step. Gather context, at the top, means read and search. Act, at the lower right, means edit, write, and run. Check, at the lower left, means the tests or the app. From Check, an arrow exits to a box reading Passes: stop, report. To the side, a person icon labeled You notes Esc to interrupt, add context, or redirect." width="100%"}
+
 | Phase | What the agent does | The tools it uses | What goes wrong here |
 |---|---|---|---|
 | **Gather context** | Reads files, searches the code, reads your instructions | Read, search, CLAUDE.md, web fetch | It never looked at the file that mattered, or your instruction was not in front of it |
@@ -483,6 +485,8 @@ Instruction in this course uses Claude Code, but the same model applies to other
 | **Web** ([claude.ai/code](https://claude.ai/code)) | A session that runs in Anthropic's cloud on a fresh clone of your GitHub repo | A long task that should keep running after you close the laptop |
 
 What carries across: the terminal, the VS Code extension, and the desktop app read the **same configuration files** on your machine: `CLAUDE.md`, skills, hooks, MCP servers, and `settings.json`. Learn them once in the terminal and you have learned them for the app. A web session is different because it runs on another computer: it sees what is committed to your repo (the project `CLAUDE.md` and `.claude/settings.json`, for example) and not what lives only on your laptop (`~/.claude/settings.json`, `.claude/settings.local.json`, your `.env`).
+
+![The three local surfaces share one set of configuration files. A web session sees only what you pushed to GitHub.](images/diagrams/ch01-one-engine-surfaces.svg){#fig-one-engine-surfaces fig-alt="Two panels. Your laptop: Terminal, VS Code extension, and Desktop app cards each point down to one bar, The same configuration files: CLAUDE.md, skills, hooks, MCP, settings. A highlighted arrow labeled git push runs from that bar to a card in the cloud panel, Your GitHub repo, what you pushed. From the repo, an arrow labeled fresh clone points up to Web session, claude.ai/code. A note says not there: ~/.claude/settings.json, settings.local.json, .env." width="100%"}
 
 Three gotchas students hit:
 

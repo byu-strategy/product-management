@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 560" role="img" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+  <title>QuizMe's first two weeks as a funnel</title>
+  <desc>A centered funnel of four bars sized by people: 200 arrived at the landing page, 80 signed up, 16 completed a first quiz, and 8 completed a quiz in week 2. Between the bars, the share that continued: 40 percent, then 20 percent, then 50 percent. The step from signing up to a first quiz is highlighted as the biggest leak: 80 percent of the people who signed up never got value.</desc>
+  <defs>
+    <linearGradient id="bar" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1D4F82"/>
+      <stop offset="100%" stop-color="#002E5D"/>
+    </linearGradient>
+    <linearGradient id="flow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#E3E7EC"/>
+      <stop offset="100%" stop-color="#EEF1F4"/>
+    </linearGradient>
+    <linearGradient id="leak" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0057B8" stop-opacity="0.34"/>
+      <stop offset="100%" stop-color="#0057B8" stop-opacity="0.10"/>
+    </linearGradient>
+    <filter id="sh" x="-10%" y="-30%" width="120%" height="170%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#0A2E4D" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+  <rect x="0" y="0" width="1000" height="560" rx="8" fill="#FAFBFC"/>
+
+  <text x="40" y="58" font-size="28" font-weight="700" fill="#002E5D">Signups are not adoption</text>
+  <text x="40" y="88" font-size="18" fill="#5A6672">QuizMe's first two weeks</text>
+  <text x="960" y="118" text-anchor="end" font-size="14" font-weight="600" letter-spacing="1.2" fill="#8A939C">PEOPLE</text>
+
+  <!-- connectors -->
+  <polygon points="280,182 800,182 644,240 436,240" fill="url(#flow)"/>
+  <polygon points="436,292 644,292 561,350 519,350" fill="url(#leak)"/>
+  <polygon points="519,402 561,402 550.5,460 529.5,460" fill="url(#flow)"/>
+
+  <!-- bars -->
+  <rect x="280" y="130" width="520" height="52" rx="6" fill="url(#bar)" filter="url(#sh)"/>
+  <rect x="436" y="240" width="208" height="52" rx="6" fill="url(#bar)" filter="url(#sh)"/>
+  <rect x="519" y="350" width="42" height="52" rx="5" fill="url(#bar)" filter="url(#sh)"/>
+  <rect x="529.5" y="460" width="21" height="52" rx="4" fill="url(#bar)" filter="url(#sh)"/>
+
+  <!-- step labels -->
+  <g font-size="20" font-weight="600" fill="#002E5D">
+    <text x="40" y="163">Arrived</text>
+    <text x="40" y="273">Signed up</text>
+    <text x="40" y="383">First quiz</text>
+    <text x="40" y="493">Came back</text>
+  </g>
+  <text x="40" y="514" font-size="15" fill="#8A939C">quiz in week 2</text>
+
+  <!-- counts -->
+  <g font-size="24" font-weight="700" fill="#002E5D" text-anchor="end">
+    <text x="960" y="165">200</text>
+    <text x="960" y="275">80</text>
+    <text x="960" y="385">16</text>
+    <text x="960" y="495">8</text>
+  </g>
+
+  <!-- step conversion -->
+  <text x="960" y="218" text-anchor="end" font-size="17" fill="#8A939C">40% continue</text>
+  <text x="960" y="438" text-anchor="end" font-size="17" fill="#8A939C">50% continue</text>
+
+  <text x="960" y="328" text-anchor="end" font-size="20" font-weight="700" fill="#0057B8">20% continue</text>
+  <text x="430" y="316" text-anchor="end" font-size="19" font-weight="700" fill="#0057B8">The biggest leak</text>
+  <text x="430" y="338" text-anchor="end" font-size="16" fill="#2C3E50">80% of signups never got value</text>
+</svg>

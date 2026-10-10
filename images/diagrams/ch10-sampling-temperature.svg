@@ -1,0 +1,129 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 560" role="img" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+  <title>Sampling and temperature</title>
+  <desc>The text so far is 'The cat sat on the'. Two bar charts give the probability of each possible next token. At low temperature (0.2), mat gets about 91 percent, rug 9, and the rest under 1. At temperature 1, mat gets 40 percent, rug 25, floor 15, couch 10, bed 6, other 4. Below each chart, five runs of the same prompt: at low temperature all five say mat; at temperature 1 they say mat, rug, mat, floor, mat.</desc>
+  <defs>
+    <linearGradient id="card" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF"/><stop offset="100%" stop-color="#F3F6F9"/>
+    </linearGradient>
+    <linearGradient id="tint" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#EEF3F9"/><stop offset="100%" stop-color="#DCE7F3"/>
+    </linearGradient>
+    <linearGradient id="zone" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F1F5FA"/><stop offset="100%" stop-color="#E6EEF7"/>
+    </linearGradient>
+    <linearGradient id="navyg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0E3F6A"/><stop offset="100%" stop-color="#001F40"/>
+    </linearGradient>
+    <linearGradient id="royalg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1A6CC8"/><stop offset="100%" stop-color="#004A9E"/>
+    </linearGradient>
+    <linearGradient id="royalh" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#1A6CC8"/><stop offset="100%" stop-color="#004A9E"/>
+    </linearGradient>
+    <linearGradient id="navyh" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#5D7A96"/><stop offset="100%" stop-color="#2F4D6B"/>
+    </linearGradient>
+    <linearGradient id="greeng" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3A8F5D"/><stop offset="100%" stop-color="#256A41"/>
+    </linearGradient>
+    <linearGradient id="redg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#C04848"/><stop offset="100%" stop-color="#9C3131"/>
+    </linearGradient>
+    <filter id="sh" x="-15%" y="-15%" width="130%" height="140%">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#0a2e4d" flood-opacity="0.13"/>
+    </filter>
+    <filter id="shs" x="-15%" y="-15%" width="130%" height="140%">
+      <feDropShadow dx="0" dy="1.5" stdDeviation="2.5" flood-color="#0a2e4d" flood-opacity="0.12"/>
+    </filter>
+    <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+      <path d="M0,0.5 L10,5 L0,9.5 z" fill="#8A939C"/>
+    </marker>
+    <marker id="ahr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0.5 L10,5 L0,9.5 z" fill="#0057B8"/>
+    </marker>
+    <marker id="ahn" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+      <path d="M0,0.5 L10,5 L0,9.5 z" fill="#002E5D"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="1000" height="560" rx="8" fill="#FAFBFC"/>
+  <rect x="300" y="26" width="400" height="52" rx="26" fill="url(#card)" stroke="#D3DCE5" stroke-width="1" filter="url(#shs)"/>
+  <text x="500" y="59" font-size="20" font-weight="600" fill="#002E5D" text-anchor="middle">The cat sat on the  ...</text>
+  <path d="M 440 80 C 440 100, 260 96, 260 116" fill="none" stroke="#8A939C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+  <path d="M 560 80 C 560 100, 740 96, 740 116" fill="none" stroke="#8A939C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+  <rect x="40" y="122" width="440" height="418" rx="10" fill="url(#card)" stroke="#D3DCE5" stroke-width="1" filter="url(#sh)"/>
+  <text x="260" y="160" font-size="20" font-weight="700" fill="#002E5D" text-anchor="middle">Low temperature</text>
+  <text x="130" y="203" font-size="17" font-weight="500" fill="#2C3E50" text-anchor="end">mat</text>
+  <rect x="144" y="188" width="252" height="20" rx="4" fill="#E9ECEF"/>
+  <rect x="144" y="188" width="228.3" height="20" rx="4" fill="url(#navyh)"/>
+  <text x="408" y="203" font-size="16" font-weight="600" fill="#5A6672" text-anchor="start">91%</text>
+  <text x="130" y="241" font-size="17" font-weight="500" fill="#2C3E50" text-anchor="end">rug</text>
+  <rect x="144" y="226" width="252" height="20" rx="4" fill="#E9ECEF"/>
+  <rect x="144" y="226" width="21.8" height="20" rx="4" fill="url(#navyh)"/>
+  <text x="408" y="241" font-size="16" font-weight="600" fill="#5A6672" text-anchor="start">9%</text>
+  <text x="130" y="279" font-size="17" font-weight="500" fill="#2C3E50" text-anchor="end">floor</text>
+  <rect x="144" y="264" width="252" height="20" rx="4" fill="#E9ECEF"/>
+  <rect x="144" y="264" width="3.0" height="20" rx="4" fill="url(#navyh)"/>
+  <text x="408" y="279" font-size="16" font-weight="600" fill="#5A6672" text-anchor="start">&lt;1%</text>
+  <text x="130" y="317" font-size="17" font-weight="500" fill="#2C3E50" text-anchor="end">couch</text>
+  <rect x="144" y="302" width="252" height="20" rx="4" fill="#E9ECEF"/>
+  <rect x="144" y="302" width="3.0" height="20" rx="4" fill="url(#navyh)"/>
+  <text x="408" y="317" font-size="16" font-weight="600" fill="#5A6672" text-anchor="start">&lt;1%</text>
+  <text x="130" y="355" font-size="17" font-weight="500" fill="#2C3E50" text-anchor="end">bed</text>
+  <rect x="144" y="340" width="252" height="20" rx="4" fill="#E9ECEF"/>
+  <rect x="144" y="340" width="3.0" height="20" rx="4" fill="url(#navyh)"/>
+  <text x="408" y="355" font-size="16" font-weight="600" fill="#5A6672" text-anchor="start">&lt;1%</text>
+  <text x="130" y="393" font-size="17" font-weight="500" fill="#2C3E50" text-anchor="end">other</text>
+  <rect x="144" y="378" width="252" height="20" rx="4" fill="#E9ECEF"/>
+  <rect x="144" y="378" width="3.0" height="20" rx="4" fill="url(#navyh)"/>
+  <text x="408" y="393" font-size="16" font-weight="600" fill="#5A6672" text-anchor="start">&lt;1%</text>
+  <line x1="64" y1="420" x2="456" y2="420" stroke="#D9DEE4" stroke-width="1"/>
+  <text x="260" y="450" font-size="15" font-weight="700" fill="#8A939C" text-anchor="middle" letter-spacing="1.2">FIVE RUNS, SAME PROMPT</text>
+  <rect x="56" y="470" width="72" height="40" rx="20" fill="#FFFFFF" stroke="#B9D0EA" stroke-width="1.5" filter="url(#shs)"/>
+  <text x="92" y="496" font-size="17" font-weight="600" fill="#002E5D" text-anchor="middle">mat</text>
+  <rect x="140" y="470" width="72" height="40" rx="20" fill="#FFFFFF" stroke="#B9D0EA" stroke-width="1.5" filter="url(#shs)"/>
+  <text x="176" y="496" font-size="17" font-weight="600" fill="#002E5D" text-anchor="middle">mat</text>
+  <rect x="224" y="470" width="72" height="40" rx="20" fill="#FFFFFF" stroke="#B9D0EA" stroke-width="1.5" filter="url(#shs)"/>
+  <text x="260" y="496" font-size="17" font-weight="600" fill="#002E5D" text-anchor="middle">mat</text>
+  <rect x="308" y="470" width="72" height="40" rx="20" fill="#FFFFFF" stroke="#B9D0EA" stroke-width="1.5" filter="url(#shs)"/>
+  <text x="344" y="496" font-size="17" font-weight="600" fill="#002E5D" text-anchor="middle">mat</text>
+  <rect x="392" y="470" width="72" height="40" rx="20" fill="#FFFFFF" stroke="#B9D0EA" stroke-width="1.5" filter="url(#shs)"/>
+  <text x="428" y="496" font-size="17" font-weight="600" fill="#002E5D" text-anchor="middle">mat</text>
+  <rect x="520" y="122" width="440" height="418" rx="10" fill="url(#card)" stroke="#D3DCE5" stroke-width="1" filter="url(#sh)"/>
+  <text x="740" y="160" font-size="20" font-weight="700" fill="#002E5D" text-anchor="middle">Temperature 1</text>
+  <text x="610" y="203" font-size="17" font-weight="500" fill="#2C3E50" text-anchor="end">mat</text>
+  <rect x="624" y="188" width="252" height="20" rx="4" fill="#E9ECEF"/>
+  <rect x="624" y="188" width="100.8" height="20" rx="4" fill="url(#navyh)"/>
+  <text x="888" y="203" font-size="16" font-weight="600" fill="#5A6672" text-anchor="start">40%</text>
+  <text x="610" y="241" font-size="17" font-weight="500" fill="#2C3E50" text-anchor="end">rug</text>
+  <rect x="624" y="226" width="252" height="20" rx="4" fill="#E9ECEF"/>
+  <rect x="624" y="226" width="63.0" height="20" rx="4" fill="url(#navyh)"/>
+  <text x="888" y="241" font-size="16" font-weight="600" fill="#5A6672" text-anchor="start">25%</text>
+  <text x="610" y="279" font-size="17" font-weight="500" fill="#2C3E50" text-anchor="end">floor</text>
+  <rect x="624" y="264" width="252" height="20" rx="4" fill="#E9ECEF"/>
+  <rect x="624" y="264" width="37.8" height="20" rx="4" fill="url(#navyh)"/>
+  <text x="888" y="279" font-size="16" font-weight="600" fill="#5A6672" text-anchor="start">15%</text>
+  <text x="610" y="317" font-size="17" font-weight="500" fill="#2C3E50" text-anchor="end">couch</text>
+  <rect x="624" y="302" width="252" height="20" rx="4" fill="#E9ECEF"/>
+  <rect x="624" y="302" width="25.2" height="20" rx="4" fill="url(#navyh)"/>
+  <text x="888" y="317" font-size="16" font-weight="600" fill="#5A6672" text-anchor="start">10%</text>
+  <text x="610" y="355" font-size="17" font-weight="500" fill="#2C3E50" text-anchor="end">bed</text>
+  <rect x="624" y="340" width="252" height="20" rx="4" fill="#E9ECEF"/>
+  <rect x="624" y="340" width="15.1" height="20" rx="4" fill="url(#navyh)"/>
+  <text x="888" y="355" font-size="16" font-weight="600" fill="#5A6672" text-anchor="start">6%</text>
+  <text x="610" y="393" font-size="17" font-weight="500" fill="#2C3E50" text-anchor="end">other</text>
+  <rect x="624" y="378" width="252" height="20" rx="4" fill="#E9ECEF"/>
+  <rect x="624" y="378" width="10.1" height="20" rx="4" fill="url(#navyh)"/>
+  <text x="888" y="393" font-size="16" font-weight="600" fill="#5A6672" text-anchor="start">4%</text>
+  <line x1="544" y1="420" x2="936" y2="420" stroke="#D9DEE4" stroke-width="1"/>
+  <text x="740" y="450" font-size="15" font-weight="700" fill="#8A939C" text-anchor="middle" letter-spacing="1.2">FIVE RUNS, SAME PROMPT</text>
+  <rect x="536" y="470" width="72" height="40" rx="20" fill="#FFFFFF" stroke="#B9D0EA" stroke-width="1.5" filter="url(#shs)"/>
+  <text x="572" y="496" font-size="17" font-weight="600" fill="#002E5D" text-anchor="middle">mat</text>
+  <rect x="620" y="470" width="72" height="40" rx="20" fill="url(#royalg)" stroke="none" stroke-width="1.5" filter="url(#shs)"/>
+  <text x="656" y="496" font-size="17" font-weight="600" fill="#FFFFFF" text-anchor="middle">rug</text>
+  <rect x="704" y="470" width="72" height="40" rx="20" fill="#FFFFFF" stroke="#B9D0EA" stroke-width="1.5" filter="url(#shs)"/>
+  <text x="740" y="496" font-size="17" font-weight="600" fill="#002E5D" text-anchor="middle">mat</text>
+  <rect x="788" y="470" width="72" height="40" rx="20" fill="url(#royalg)" stroke="none" stroke-width="1.5" filter="url(#shs)"/>
+  <text x="824" y="496" font-size="17" font-weight="600" fill="#FFFFFF" text-anchor="middle">floor</text>
+  <rect x="872" y="470" width="72" height="40" rx="20" fill="#FFFFFF" stroke="#B9D0EA" stroke-width="1.5" filter="url(#shs)"/>
+  <text x="908" y="496" font-size="17" font-weight="600" fill="#002E5D" text-anchor="middle">mat</text>
+</svg>

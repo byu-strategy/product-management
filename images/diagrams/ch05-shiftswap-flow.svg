@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 715" role="img" aria-labelledby="t d" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+<title id="t">ShiftSwap: posting a shift, with every exit</title>
+<desc id="d">A flow diagram of the ShiftSwap task 'get my Thursday shift covered'. Entry at the My shifts home screen, then four steps: tap the Thursday shift, tap Give away this shift, add an optional note, confirm so the shift is posted. A decision asks whether a coworker picks it up within 48 hours. If yes, step 5 sends the manager an approval request, and a second decision asks whether the manager approves. If yes, the flow exits successfully: both students are notified and schedules update. If the manager declines, the shift returns to the student with the manager's reason. If nobody picks it up, the student gets a reminder 24 hours before the shift with an option to ask a specific coworker. Cancelling at any point before pickup returns the shift and sends nothing. Only one of the four exits is the happy path.</desc>
+<defs>
+  <filter id="sh" x="-10%" y="-10%" width="120%" height="130%">
+    <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#002E5D" flood-opacity="0.13"/>
+  </filter>
+  <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+    <path d="M0,0 L10,5 L0,10 z" fill="#5A6672"/>
+  </marker>
+  <marker id="arrR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+    <path d="M0,0 L10,5 L0,10 z" fill="#0057B8"/>
+  </marker>
+  <marker id="arrN" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+    <path d="M0,0 L10,5 L0,10 z" fill="#002E5D"/>
+  </marker>
+  <linearGradient id="bgG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FBFCFD"/><stop offset="1" stop-color="#EFF3F8"/></linearGradient>
+  <linearGradient id="stepG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F1F6FB"/><stop offset="1" stop-color="#E1EAF5"/></linearGradient>
+  <linearGradient id="navyG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0B4178"/><stop offset="1" stop-color="#002E5D"/></linearGradient>
+  <linearGradient id="royalG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1A6BCB"/><stop offset="1" stop-color="#0057B8"/></linearGradient>
+  <linearGradient id="phoneG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#FBFCFE"/></linearGradient>
+
+</defs>
+<rect x="0" y="0" width="1000" height="715" rx="8" fill="url(#bgG)"/>
+<rect x="30" y="40" width="170" height="96" rx="8" fill="#fff" stroke="#002E5D" stroke-width="1.5" filter="url(#sh)"/>
+<text x="115.0" y="67" font-size="15" font-weight="600" fill="#5A6672" text-anchor="middle" letter-spacing="1">ENTRY</text>
+<text x="115.0" y="96" font-size="19" font-weight="600" fill="#002E5D" text-anchor="middle">My shifts</text>
+<text x="115.0" y="120" font-size="19" font-weight="600" fill="#002E5D" text-anchor="middle">home screen</text>
+<rect x="220" y="40" width="170" height="96" rx="8" fill="url(#stepG)" stroke="#B9D0EA" stroke-width="1.5" filter="url(#sh)"/>
+<text x="305.0" y="67" font-size="15" font-weight="600" fill="#5A6672" text-anchor="middle" letter-spacing="1">STEP 1</text>
+<text x="305.0" y="96" font-size="19" font-weight="600" fill="#002E5D" text-anchor="middle">Tap the</text>
+<text x="305.0" y="120" font-size="19" font-weight="600" fill="#002E5D" text-anchor="middle">Thursday shift</text>
+<rect x="410" y="40" width="170" height="96" rx="8" fill="url(#stepG)" stroke="#B9D0EA" stroke-width="1.5" filter="url(#sh)"/>
+<text x="495.0" y="67" font-size="15" font-weight="600" fill="#5A6672" text-anchor="middle" letter-spacing="1">STEP 2</text>
+<text x="495.0" y="96" font-size="19" font-weight="600" fill="#002E5D" text-anchor="middle">Tap Give away</text>
+<text x="495.0" y="120" font-size="19" font-weight="600" fill="#002E5D" text-anchor="middle">this shift</text>
+<rect x="600" y="40" width="170" height="96" rx="8" fill="url(#stepG)" stroke="#B9D0EA" stroke-width="1.5" filter="url(#sh)"/>
+<text x="685.0" y="67" font-size="15" font-weight="600" fill="#5A6672" text-anchor="middle" letter-spacing="1">STEP 3</text>
+<text x="685.0" y="96" font-size="19" font-weight="600" fill="#002E5D" text-anchor="middle">Add a note</text>
+<text x="685.0" y="120" font-size="19" font-weight="600" fill="#002E5D" text-anchor="middle">(optional)</text>
+<rect x="790" y="40" width="170" height="96" rx="8" fill="url(#stepG)" stroke="#B9D0EA" stroke-width="1.5" filter="url(#sh)"/>
+<text x="875.0" y="67" font-size="15" font-weight="600" fill="#5A6672" text-anchor="middle" letter-spacing="1">STEP 4</text>
+<text x="875.0" y="96" font-size="19" font-weight="600" fill="#002E5D" text-anchor="middle">Confirm: shift</text>
+<text x="875.0" y="120" font-size="19" font-weight="600" fill="#002E5D" text-anchor="middle">is posted</text>
+<line x1="202" y1="88.0" x2="218" y2="88.0" stroke="#002E5D" stroke-width="2" marker-end="url(#arrN)"/>
+<line x1="392" y1="88.0" x2="408" y2="88.0" stroke="#002E5D" stroke-width="2" marker-end="url(#arrN)"/>
+<line x1="582" y1="88.0" x2="598" y2="88.0" stroke="#002E5D" stroke-width="2" marker-end="url(#arrN)"/>
+<line x1="772" y1="88.0" x2="788" y2="88.0" stroke="#002E5D" stroke-width="2" marker-end="url(#arrN)"/>
+<path d="M220,144 L220,152 L850,152 L850,144" fill="none" stroke="#0057B8" stroke-width="1.5" stroke-dasharray="5 4"/>
+<line x1="535" y1="152" x2="535" y2="182" stroke="#0057B8" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#arrR)"/>
+<rect x="330" y="184" width="410" height="64" rx="8" fill="#fff" stroke="#0057B8" stroke-width="2" filter="url(#sh)"/>
+<text x="535" y="210" font-size="17" font-weight="700" fill="#0057B8" text-anchor="middle">CANCEL before anyone picks it up</text>
+<text x="535" y="234" font-size="17" fill="#2C3E50" text-anchor="middle">Shift returns to me, nothing sent</text>
+<line x1="875" y1="138" x2="875" y2="295" stroke="#002E5D" stroke-width="2" marker-end="url(#arrN)"/>
+<polygon points="875,298 985,370 875,442 765,370" fill="#fff" stroke="#002E5D" stroke-width="2" filter="url(#sh)"/>
+<text x="875" y="352" font-size="14" font-weight="600" fill="#5A6672" text-anchor="middle" letter-spacing="1">DECISION</text>
+<text x="875" y="376" font-size="18" font-weight="600" fill="#002E5D" text-anchor="middle">Picked up</text>
+<text x="875" y="398" font-size="18" font-weight="600" fill="#002E5D" text-anchor="middle">in 48 hours?</text>
+<rect x="545" y="322" width="180" height="96" rx="8" fill="url(#stepG)" stroke="#B9D0EA" stroke-width="1.5" filter="url(#sh)"/>
+<text x="635.0" y="349" font-size="15" font-weight="600" fill="#5A6672" text-anchor="middle" letter-spacing="1">STEP 5</text>
+<text x="635.0" y="378" font-size="19" font-weight="600" fill="#002E5D" text-anchor="middle">Manager gets an</text>
+<text x="635.0" y="402" font-size="19" font-weight="600" fill="#002E5D" text-anchor="middle">approval request</text>
+<line x1="763" y1="370" x2="727" y2="370" stroke="#002E5D" stroke-width="2" marker-end="url(#arrN)"/>
+<text x="745.0" y="360" font-size="16" font-weight="600" fill="#002E5D" text-anchor="middle">yes</text>
+<polygon points="385,298 485,370 385,442 285,370" fill="#fff" stroke="#002E5D" stroke-width="2" filter="url(#sh)"/>
+<text x="385" y="352" font-size="14" font-weight="600" fill="#5A6672" text-anchor="middle" letter-spacing="1">DECISION</text>
+<text x="385" y="376" font-size="18" font-weight="600" fill="#002E5D" text-anchor="middle">Manager</text>
+<text x="385" y="398" font-size="18" font-weight="600" fill="#002E5D" text-anchor="middle">approves?</text>
+<line x1="543" y1="370" x2="487" y2="370" stroke="#002E5D" stroke-width="2" marker-end="url(#arrN)"/>
+<rect x="30" y="318" width="185" height="104" rx="8" fill="url(#navyG)" filter="url(#sh)"/>
+<text x="122.5" y="346" font-size="15" font-weight="700" fill="#B9D0EA" text-anchor="middle" letter-spacing="1">EXIT: SUCCESS</text>
+<text x="122.5" y="374" font-size="18" font-weight="600" fill="#fff" text-anchor="middle">Both notified,</text>
+<text x="122.5" y="398" font-size="18" font-weight="600" fill="#fff" text-anchor="middle">schedules updated</text>
+<line x1="283" y1="370" x2="217" y2="370" stroke="#002E5D" stroke-width="2" marker-end="url(#arrN)"/>
+<text x="250.0" y="360" font-size="16" font-weight="600" fill="#002E5D" text-anchor="middle">yes</text>
+<line x1="385" y1="444" x2="385" y2="527" stroke="#0057B8" stroke-width="2" marker-end="url(#arrR)"/>
+<text x="395" y="472" font-size="16" font-weight="600" fill="#0057B8">no</text>
+<rect x="255.0" y="530" width="260" height="86" rx="8" fill="#fff" stroke="#0057B8" stroke-width="2" filter="url(#sh)"/>
+<text x="385" y="557" font-size="15" font-weight="700" fill="#0057B8" text-anchor="middle" letter-spacing="1">EXIT</text>
+<text x="385" y="583" font-size="17" fill="#2C3E50" text-anchor="middle">Shift returns to me</text>
+<text x="385" y="607" font-size="17" fill="#2C3E50" text-anchor="middle">with the manager's reason</text>
+<line x1="875" y1="444" x2="875" y2="527" stroke="#0057B8" stroke-width="2" marker-end="url(#arrR)"/>
+<text x="885" y="472" font-size="16" font-weight="600" fill="#0057B8">no</text>
+<rect x="720.0" y="530" width="250" height="110" rx="8" fill="#fff" stroke="#0057B8" stroke-width="2" filter="url(#sh)"/>
+<text x="845" y="557" font-size="15" font-weight="700" fill="#0057B8" text-anchor="middle" letter-spacing="1">EXIT</text>
+<text x="845" y="583" font-size="17" fill="#2C3E50" text-anchor="middle">Reminder 24 hours</text>
+<text x="845" y="607" font-size="17" fill="#2C3E50" text-anchor="middle">before the shift, with</text>
+<text x="845" y="631" font-size="17" fill="#2C3E50" text-anchor="middle">“Ask a specific coworker”</text>
+<rect x="30" y="664" width="26" height="20" rx="4" fill="#E6EEF7" stroke="#B9D0EA" stroke-width="1.5"/>
+<text x="66" y="680" font-size="16" fill="#5A6672">Step</text>
+<polygon points="133,662 147,674 133,686 119,674" fill="#fff" stroke="#002E5D" stroke-width="1.5"/>
+<text x="158" y="680" font-size="16" fill="#5A6672">Decision</text>
+<rect x="250" y="664" width="26" height="20" rx="4" fill="#002E5D"/>
+<text x="286" y="680" font-size="16" fill="#5A6672">Happy-path exit</text>
+<rect x="430" y="664" width="26" height="20" rx="4" fill="#fff" stroke="#0057B8" stroke-width="2"/>
+<text x="466" y="680" font-size="16" fill="#5A6672">Off-path exit: three of the four ways this flow ends</text>
+</svg>

@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 592" role="img" aria-labelledby="t d" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+<title id="t">A design system: decide once</title>
+<desc id="d">A design system shown as three layers from left to right. Tokens, the raw choices: four colors (primary, text, muted, border), a type scale of four sizes, and a spacing scale of 4, 8, 16, 24 and 32. Components, built from tokens: a button in primary, secondary and ghost variants, and in default, disabled and loading states. Patterns, components combined: a confirm dialog asking 'Give away Thursday's shift?' with Cancel and Give away buttons, assembled from existing components rather than hand-rolled. A band underneath says the decisions are written down once in CLAUDE.md so the agent reuses them on every new screen.</desc>
+<defs>
+  <filter id="sh" x="-10%" y="-10%" width="120%" height="130%">
+    <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#002E5D" flood-opacity="0.13"/>
+  </filter>
+  <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+    <path d="M0,0 L10,5 L0,10 z" fill="#5A6672"/>
+  </marker>
+  <marker id="arrR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+    <path d="M0,0 L10,5 L0,10 z" fill="#0057B8"/>
+  </marker>
+  <marker id="arrN" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+    <path d="M0,0 L10,5 L0,10 z" fill="#002E5D"/>
+  </marker>
+  <linearGradient id="bgG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FBFCFD"/><stop offset="1" stop-color="#EFF3F8"/></linearGradient>
+  <linearGradient id="stepG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F1F6FB"/><stop offset="1" stop-color="#E1EAF5"/></linearGradient>
+  <linearGradient id="navyG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0B4178"/><stop offset="1" stop-color="#002E5D"/></linearGradient>
+  <linearGradient id="royalG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1A6BCB"/><stop offset="1" stop-color="#0057B8"/></linearGradient>
+  <linearGradient id="phoneG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#FBFCFE"/></linearGradient>
+
+</defs>
+<rect x="0" y="0" width="1000" height="592" rx="8" fill="url(#bgG)"/>
+<rect x="30" y="30" width="280" height="440" rx="10" fill="url(#phoneG)" stroke="#D9DEE4" stroke-width="1.5" filter="url(#sh)"/>
+<circle cx="64" cy="68" r="15" fill="url(#navyG)"/>
+<text x="64" y="74" font-size="16" font-weight="700" fill="#fff" text-anchor="middle">1</text>
+<text x="90" y="67" font-size="21" font-weight="700" fill="#002E5D">Tokens</text>
+<text x="90" y="89" font-size="15" fill="#5A6672">the raw choices</text>
+<line x1="50" y1="108" x2="290" y2="108" stroke="#D9DEE4" stroke-width="1.5"/>
+<rect x="360" y="30" width="280" height="440" rx="10" fill="url(#phoneG)" stroke="#D9DEE4" stroke-width="1.5" filter="url(#sh)"/>
+<circle cx="394" cy="68" r="15" fill="url(#navyG)"/>
+<text x="394" y="74" font-size="16" font-weight="700" fill="#fff" text-anchor="middle">2</text>
+<text x="420" y="67" font-size="21" font-weight="700" fill="#002E5D">Components</text>
+<text x="420" y="89" font-size="15" fill="#5A6672">built from tokens</text>
+<line x1="380" y1="108" x2="620" y2="108" stroke="#D9DEE4" stroke-width="1.5"/>
+<rect x="690" y="30" width="280" height="440" rx="10" fill="url(#phoneG)" stroke="#D9DEE4" stroke-width="1.5" filter="url(#sh)"/>
+<circle cx="724" cy="68" r="15" fill="url(#navyG)"/>
+<text x="724" y="74" font-size="16" font-weight="700" fill="#fff" text-anchor="middle">3</text>
+<text x="750" y="67" font-size="21" font-weight="700" fill="#002E5D">Patterns</text>
+<text x="750" y="89" font-size="15" fill="#5A6672">components combined</text>
+<line x1="710" y1="108" x2="950" y2="108" stroke="#D9DEE4" stroke-width="1.5"/>
+<line x1="318" y1="250.0" x2="352" y2="250.0" stroke="#002E5D" stroke-width="2" marker-end="url(#arrN)"/>
+<line x1="648" y1="250.0" x2="682" y2="250.0" stroke="#002E5D" stroke-width="2" marker-end="url(#arrN)"/>
+<text x="52" y="142" font-size="14.5" font-weight="700" fill="#5A6672" letter-spacing="1">COLOR</text>
+<circle cx="74" cy="174" r="19" fill="#0057B8" stroke="#fff" stroke-width="2" filter="url(#sh)"/>
+<text x="74" y="216" font-size="15" fill="#2C3E50" text-anchor="middle">Primary</text>
+<circle cx="136" cy="174" r="19" fill="#002E5D" stroke="#fff" stroke-width="2" filter="url(#sh)"/>
+<text x="136" y="216" font-size="15" fill="#2C3E50" text-anchor="middle">Text</text>
+<circle cx="198" cy="174" r="19" fill="#5A6672" stroke="#fff" stroke-width="2" filter="url(#sh)"/>
+<text x="198" y="216" font-size="15" fill="#2C3E50" text-anchor="middle">Muted</text>
+<circle cx="260" cy="174" r="19" fill="#D9DEE4" stroke="#fff" stroke-width="2" filter="url(#sh)"/>
+<text x="260" y="216" font-size="15" fill="#2C3E50" text-anchor="middle">Border</text>
+<text x="52" y="254" font-size="14.5" font-weight="700" fill="#5A6672" letter-spacing="1">TYPE SCALE</text>
+<text x="52" y="302" font-size="34" font-weight="700" fill="#002E5D">Aa</text>
+<text x="110.5" y="302" font-size="26" font-weight="700" fill="#002E5D">Aa</text>
+<text x="159.0" y="302" font-size="20" font-weight="700" fill="#002E5D">Aa</text>
+<text x="200.0" y="302" font-size="16" font-weight="700" fill="#002E5D">Aa</text>
+<text x="52" y="338" font-size="14.5" font-weight="700" fill="#5A6672" letter-spacing="1">SPACING</text>
+<rect x="52" y="401.6" width="30" height="6.4" rx="3" fill="#B9D0EA"/>
+<text x="67" y="430" font-size="15" fill="#2C3E50" text-anchor="middle">4</text>
+<rect x="98" y="395.2" width="30" height="12.8" rx="3" fill="#B9D0EA"/>
+<text x="113" y="430" font-size="15" fill="#2C3E50" text-anchor="middle">8</text>
+<rect x="144" y="382.4" width="30" height="25.6" rx="3" fill="#B9D0EA"/>
+<text x="159" y="430" font-size="15" fill="#2C3E50" text-anchor="middle">16</text>
+<rect x="190" y="369.6" width="30" height="38.400000000000006" rx="3" fill="#B9D0EA"/>
+<text x="205" y="430" font-size="15" fill="#2C3E50" text-anchor="middle">24</text>
+<rect x="236" y="356.8" width="30" height="51.2" rx="3" fill="#B9D0EA"/>
+<text x="251" y="430" font-size="15" fill="#2C3E50" text-anchor="middle">32</text>
+<text x="382" y="142" font-size="14.5" font-weight="700" fill="#5A6672" letter-spacing="1">BUTTON: VARIANTS</text>
+<rect x="382" y="156" width="236" height="42" rx="8" fill="url(#royalG)"/>
+<text x="500.0" y="183" font-size="17" font-weight="600" fill="#fff" text-anchor="middle">Primary</text>
+<rect x="382" y="208" width="236" height="42" rx="8" fill="#fff" stroke="#0057B8" stroke-width="1.5"/>
+<text x="500.0" y="235" font-size="17" font-weight="600" fill="#0057B8" text-anchor="middle">Secondary</text>
+<text x="500.0" y="282" font-size="17" font-weight="600" fill="#0057B8" text-anchor="middle">Ghost</text>
+<text x="622" y="183" font-size="15" fill="#2C3E50"></text>
+<text x="382" y="324" font-size="14.5" font-weight="700" fill="#5A6672" letter-spacing="1">BUTTON: STATES</text>
+<g><rect x="382.0" y="338" width="73.33333333333333" height="40" rx="8" fill="url(#royalG)"/></g>
+<text x="418.6666666666667" y="364" font-size="15" font-weight="600" fill="#fff" text-anchor="middle">Post</text>
+<text x="418.6666666666667" y="402" font-size="15" fill="#2C3E50" text-anchor="middle">Default</text>
+<g opacity="0.4"><rect x="463.3333333333333" y="338" width="73.33333333333333" height="40" rx="8" fill="url(#royalG)"/></g>
+<text x="500.0" y="364" font-size="15" font-weight="600" fill="#fff" text-anchor="middle" opacity="0.4">Post</text>
+<text x="500.0" y="402" font-size="15" fill="#2C3E50" text-anchor="middle">Disabled</text>
+<g><rect x="544.6666666666666" y="338" width="73.33333333333333" height="40" rx="8" fill="url(#royalG)"/></g>
+<g transform="translate(571.3333333333333,348) scale(0.8333)" fill="none" stroke="#fff" stroke-width="2.640" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-6.219-8.56" /></g>
+<text x="581.3333333333333" y="402" font-size="15" fill="#2C3E50" text-anchor="middle">Loading</text>
+<text x="712" y="142" font-size="14.5" font-weight="700" fill="#5A6672" letter-spacing="1">CONFIRM BEFORE</text>
+<text x="712" y="162" font-size="14.5" font-weight="700" fill="#5A6672" letter-spacing="1">A DESTRUCTIVE ACTION</text>
+<rect x="712" y="182" width="236" height="206" rx="10" fill="#fff" stroke="#D9DEE4" stroke-width="1.5" filter="url(#sh)"/>
+<text x="730" y="218" font-size="19" font-weight="700" fill="#002E5D">Give away</text>
+<text x="730" y="242" font-size="19" font-weight="700" fill="#002E5D">Thursday's shift?</text>
+<text x="730" y="272" font-size="15" fill="#5A6672">Eligible coworkers can</text>
+<text x="730" y="292" font-size="15" fill="#5A6672">pick it up right away.</text>
+<rect x="730" y="322" width="95.0" height="42" rx="8" fill="#fff" stroke="#0057B8" stroke-width="1.5"/>
+<text x="777.5" y="349" font-size="16" font-weight="600" fill="#0057B8" text-anchor="middle">Cancel</text>
+<rect x="835.0" y="322" width="95.0" height="42" rx="8" fill="url(#royalG)"/>
+<text x="882.5" y="349" font-size="16" font-weight="600" fill="#fff" text-anchor="middle">Give away</text>
+<text x="712" y="418" font-size="15" fill="#5A6672">Assembled from components,</text>
+<text x="712" y="438" font-size="15" fill="#5A6672">never hand-rolled</text>
+<rect x="30" y="498" width="940" height="64" rx="10" fill="url(#stepG)" stroke="#B9D0EA" stroke-width="1.5"/>
+<rect x="48" y="508" width="44" height="44" rx="8" fill="#fff" stroke="#B9D0EA" stroke-width="1.2"/>
+<g transform="translate(58,518) scale(1.0000)" fill="none" stroke="#002E5D" stroke-width="1.800" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
+  <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+  <path d="M10 9H8" />
+  <path d="M16 13H8" />
+  <path d="M16 17H8" /></g>
+<text x="108" y="526" font-size="18" font-weight="700" fill="#002E5D">Written down once, in CLAUDE.md</text>
+<text x="108" y="548" font-size="16" fill="#2C3E50">so the agent reuses the same decisions on every new screen.</text>
+</svg>

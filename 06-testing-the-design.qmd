@@ -58,6 +58,8 @@ Jakob Nielsen's rule of thumb, from a model he built with Thomas Landauer [@niel
 - Each additional user mostly repeats problems you have already seen, so new findings fall off fast.
 - So the better use of fifteen sessions is three rounds of five, with a fix between each round. Fixes can fail or create new problems, and only a retest shows that.
 
+![New findings fall off fast: five users find about 85 percent of the problems, and the next ten mostly repeat them. Fifteen sessions buy more as three rounds of five with a fix between. Curve after Nielsen and Landauer's model [@nielsen1993mathematical].](images/diagrams/ch06-five-users.svg){#fig-five-users fig-alt="A line chart of the share of usability problems found against users tested, from 0 to 15. The curve rises steeply, reaches about 85 percent at five users, which is highlighted, and flattens toward 100 percent; the region from 6 to 15 users is shaded and labeled Users 6 to 15 mostly repeat what you have seen. Below, three boxes of five user icons labeled Round 1, Round 2, and Round 3 are joined by arrows labeled Fix." width="100%"}
+
 The rule assumes your testers are the same kind of user. If you have two very different groups (students who post shifts and managers who approve them, say), test three or four from each.
 
 An analogy: proofreading. The first fresh reader catches many of the typos; the fifth mostly finds the same ones. Where it breaks: typos are visible to anyone, while a usability problem only appears to someone with the user's goal and background, which is why the testers have to be real users.

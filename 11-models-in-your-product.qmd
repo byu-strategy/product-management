@@ -263,6 +263,8 @@ student gets a fluent, cited, wrong answer. **When retrieval fetches the wrong p
 answer is wrong with confidence.** So you test retrieval on its own: for each test question, did
 the right chunk come back at all?
 
+![RAG has two lanes: prepare the documents once, then retrieve and answer for every question. The red markers are where the course-help bot goes wrong, and each one still produces a fluent answer.](images/diagrams/ch11-rag-failure-points.svg){#fig-rag-failure-points fig-alt="Two lanes of cards with icons. Once, ahead of time: Documents, Chunk, Embed, Store. Every question: Question, Embed, Search, Model, Answer. An arrow from Store down to Search is labeled nearest by meaning. Three red numbered markers show failures: 1 on Documents, never loaded; 2 on Search, wrong chunks; 3 on Answer, answers anyway. A band at the bottom reads: test retrieval on its own, for each test question, did the right chunk come back?" width="100%"}
+
 ::: {.callout-tip title="Try it"}
 For a RAG feature in your product (or the course-help bot above), write three questions: one
 the documents answer, one they answer only partly, and one they do not answer at all. Predict
@@ -287,6 +289,8 @@ needs three stopping rules:
 1. **A budget**: a maximum number of steps (or tokens, or dollars).
 2. **A stop condition**: the model says it is done, or the task's own success check passes.
 3. **A point where a human decides**: anything costly or hard to undo waits for a person.
+
+![The model only writes text; your code decides and acts. Each pass through the loop counts against the budget, a costly action waits for a person, and the loop ends when the model stops asking for tools.](images/diagrams/ch11-agent-loop-stopping-rules.svg){#fig-agent-loop fig-alt="Two zones. On the left, labeled the model writes text, a dark Model card. On the right, labeled your code acts, a Run the tool card. A blue arc labeled tool request runs from the model to the tool, passing through a person icon marked 3: costly or hard to undo, a person approves first. A gray arc returns from the tool to the model, labeled result, as a new message, with a pill marked 1 reading step 3 of 8. From the model, an arrow marked 2 leads left to an answer card, labeled no tool request. A legend: 1 budget, 2 stop condition, 3 a human decides." width="100%"}
 
 The loop, with all three marked:
 
@@ -448,6 +452,8 @@ reason. Without them, you only know the output is different. That fourth step is
 point. Without a number, prompt engineering is superstition: you make a change, spot-check two
 examples, and convince yourself. With a number, you know whether you moved from, say, 71
 percent to 84 percent or made it worse.
+
+![An eval runs the same cases every time. Three runs of an unchanged prompt show how much the score moves by chance; a change counts only if it moves the score past that range. Illustrative numbers.](images/diagrams/ch11-eval-before-after.svg){#fig-eval-before-after fig-alt="A grid of 20 numbered cases, each a green check for pass or a red cross for fail, in four rows. Runs 1, 2, and 3 use the same prompt and pass 14, 13, and 15 of 20; a bracket marks them as the same prompt. The After row, highlighted, follows one prompt change and passes 17 of 20. Below, a number line from 10 to 20 shows a gray noise band from 13 to 15 and a blue dot labeled after at 17. Caption line: a change counts only if it moves the score past the noise." width="100%"}
 
 Start with twenty examples in a JSON file and a script that loops over them. That is enough
 to catch real regressions, and it is more evaluation rigor than most shipped AI features

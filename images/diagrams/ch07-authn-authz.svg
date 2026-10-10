@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 620" role="img" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+  <title>Authentication, then authorization</title>
+  <desc>Two steps across a dashed line that separates the user's browser, which the user controls, from your side, which they cannot reach. Step 1, authentication, who is this: the browser's sign-in form sends email and password to Supabase Auth, which issues a session token that the browser keeps and sends with every request. Step 2, authorization, may this person do this to this row: a request carrying the token reaches the database, where a policy returns the user's own rows and refuses everyone else's. The lock on the database is the focal point.</desc>
+  <defs>
+    <linearGradient id="gCard" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#FFFFFF"/><stop offset="100%" stop-color="#F3F6F9"/></linearGradient>
+    <linearGradient id="gBlue" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#F0F5FB"/><stop offset="100%" stop-color="#DCE7F4"/></linearGradient>
+    <linearGradient id="gGray" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#F4F6F8"/><stop offset="100%" stop-color="#E3E7EB"/></linearGradient>
+    <linearGradient id="gNavy" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0E3F6A"/><stop offset="100%" stop-color="#001A36"/></linearGradient>
+    <linearGradient id="gRoyal" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#2A7AD6"/><stop offset="100%" stop-color="#0049A0"/></linearGradient>
+    <linearGradient id="gGreen" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#F1F8F3"/><stop offset="100%" stop-color="#E0EFE5"/></linearGradient>
+    <linearGradient id="gRed" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#FBF3F3"/><stop offset="100%" stop-color="#F3E1E1"/></linearGradient>
+    <filter id="sh" x="-10%" y="-10%" width="120%" height="135%"><feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#002E5D" flood-opacity="0.13"/></filter>
+    <filter id="shS" x="-10%" y="-10%" width="120%" height="135%"><feDropShadow dx="0" dy="1.5" stdDeviation="2.5" flood-color="#002E5D" flood-opacity="0.12"/></filter>
+    <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0.5 L10,5 L0,9.5 z" fill="#8A939C"/></marker>
+    <marker id="ahD" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0.5 L10,5 L0,9.5 z" fill="#5A6672"/></marker>
+    <marker id="ahA" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0.5 L10,5 L0,9.5 z" fill="#0057B8"/></marker>
+    <marker id="ahN" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0.5 L10,5 L0,9.5 z" fill="#002E5D"/></marker>
+  </defs>
+  <rect x="0" y="0" width="1000" height="620" rx="8" fill="#FAFBFC"/>
+  <text x="175" y="44" font-size="15" font-weight="700" text-anchor="middle" letter-spacing="1.2" fill="#5A6672">THE USER'S BROWSER</text>
+  <text x="175" y="68" font-size="16" text-anchor="middle" fill="#8A939C">they can change anything</text>
+  <text x="700" y="44" font-size="15" font-weight="700" text-anchor="middle" letter-spacing="1.2" fill="#5A6672">YOUR SIDE</text>
+  <text x="700" y="68" font-size="16" text-anchor="middle" fill="#8A939C">they cannot reach it</text>
+  <line x1="360" y1="30" x2="360" y2="600" stroke="#8A939C" stroke-width="2" stroke-dasharray="2 7" stroke-linecap="round"/>
+  <circle cx="45" cy="112" r="15" fill="#002E5D"/>
+  <text x="45" y="118" font-size="16" font-weight="700" text-anchor="middle" fill="#FFFFFF">1</text>
+  <text x="72" y="119" font-size="21" font-weight="700" fill="#002E5D">Authentication</text>
+  <text x="72" y="147" font-size="17" fill="#5A6672">Who is this?</text>
+  <circle cx="175" cy="228" r="42" fill="url(#gBlue)" stroke="#B9D0EA" stroke-width="1.5" filter="url(#sh)"/>
+  <g transform="translate(155.1,208.1) scale(1.662)" fill="none" stroke="#002E5D" stroke-width="1.56" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2" /> <path d="M10 4v4" /> <path d="M2 8h20" /> <path d="M6 4v4" /></g>
+  <text x="175" y="300" font-size="18" font-weight="600" text-anchor="middle" fill="#2C3E50">Sign-in form</text>
+  <circle cx="545" cy="228" r="42" fill="url(#gBlue)" stroke="#B9D0EA" stroke-width="1.5" filter="url(#sh)"/>
+  <g transform="translate(525.0,208.1) scale(1.662)" fill="none" stroke="#002E5D" stroke-width="1.56" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /> <circle cx="9" cy="7" r="4" /> <polyline points="16 11 18 13 22 9" /></g>
+  <text x="545" y="300" font-size="18" font-weight="600" text-anchor="middle" fill="#2C3E50">Supabase Auth</text>
+  <path d="M227 228 H493" fill="none" stroke="#8A939C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+  <rect x="700" y="201" width="240" height="54" rx="27" fill="url(#gNavy)" stroke="#002E5D" stroke-width="1" filter="url(#sh)"/>
+  <g transform="translate(721.0,216.0) scale(1.000)" fill="none" stroke="#B9D0EA" stroke-width="2.40" stroke-linecap="round" stroke-linejoin="round"><path d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z" /> <circle cx="16.5" cy="7.5" r=".5" fill="currentColor" /></g>
+  <text x="838" y="235" font-size="19" font-weight="600" text-anchor="middle" fill="#FFFFFF">session token</text>
+  <path d="M597 228 H692" fill="none" stroke="#8A939C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+  <text x="820" y="288" font-size="16" text-anchor="middle" fill="#5A6672">the browser keeps it and</text>
+  <text x="820" y="310" font-size="16" text-anchor="middle" fill="#5A6672">sends it with every request</text>
+  <circle cx="45" cy="388" r="15" fill="#002E5D"/>
+  <text x="45" y="394" font-size="16" font-weight="700" text-anchor="middle" fill="#FFFFFF">2</text>
+  <text x="72" y="395" font-size="21" font-weight="700" fill="#002E5D">Authorization</text>
+  <text x="72" y="423" font-size="17" fill="#5A6672">May this person do this to this row?</text>
+  <circle cx="175" cy="508" r="42" fill="url(#gBlue)" stroke="#B9D0EA" stroke-width="1.5" filter="url(#sh)"/>
+  <g transform="translate(155.1,488.1) scale(1.662)" fill="none" stroke="#002E5D" stroke-width="1.56" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2" /> <path d="M10 4v4" /> <path d="M2 8h20" /> <path d="M6 4v4" /></g>
+  <text x="175" y="580" font-size="18" font-weight="600" text-anchor="middle" fill="#2C3E50">Any request</text>
+  <path d="M227 508 H483" fill="none" stroke="#8A939C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+  <rect x="292" y="490" width="112" height="36" rx="18" fill="url(#gNavy)" stroke="#002E5D" stroke-width="1" filter="url(#shS)"/>
+  <g transform="translate(305.5,499.5) scale(0.708)" fill="none" stroke="#B9D0EA" stroke-width="3.11" stroke-linecap="round" stroke-linejoin="round"><path d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z" /> <circle cx="16.5" cy="7.5" r=".5" fill="currentColor" /></g>
+  <text x="358" y="514" font-size="16" font-weight="600" text-anchor="middle" fill="#FFFFFF">token</text>
+  <circle cx="545" cy="508" r="54" fill="url(#gNavy)" stroke="#002E5D" stroke-width="1.5" filter="url(#sh)"/>
+  <g transform="translate(521.0,484.0) scale(2.000)" fill="none" stroke="#FFFFFF" stroke-width="1.30" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3" /> <path d="M3 5V19A9 3 0 0 0 21 19V5" /> <path d="M3 12A9 3 0 0 0 21 12" /></g>
+  <circle cx="587" cy="548" r="27" fill="url(#gRoyal)" stroke="#FFFFFF" stroke-width="3.5" filter="url(#sh)"/>
+  <g transform="translate(574.0,534.0) scale(1.083)" fill="none" stroke="#FFFFFF" stroke-width="2.40" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2" /> <path d="M7 11V7a5 5 0 0 1 10 0v4" /></g>
+  <text x="545" y="602" font-size="19" font-weight="700" text-anchor="middle" fill="#0057B8">Database policy</text>
+  <path d="M607 494 L692 468" fill="none" stroke="#8A939C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+  <path d="M611 522 L692 548" fill="none" stroke="#8A939C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+  <rect x="700" y="440" width="240" height="50" rx="25" fill="url(#gGreen)" stroke="#BFDCC8" stroke-width="1.5" filter="url(#shS)"/>
+  <g transform="translate(716.0,453.0) scale(1.000)" fill="none" stroke="#2C7A4C" stroke-width="2.40" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" /> <path d="m9 12 2 2 4-4" /></g>
+  <text x="752" y="471" font-size="18" font-weight="600" fill="#2C7A4C">their own rows</text>
+  <rect x="700" y="526" width="240" height="50" rx="25" fill="url(#gRed)" stroke="#E3C2C2" stroke-width="1.5" filter="url(#shS)"/>
+  <g transform="translate(716.0,539.0) scale(1.000)" fill="none" stroke="#B03A3A" stroke-width="2.40" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" /> <path d="m15 9-6 6" /> <path d="m9 9 6 6" /></g>
+  <text x="752" y="557" font-size="18" font-weight="600" fill="#B03A3A">everyone else's rows</text>
+</svg>

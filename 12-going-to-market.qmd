@@ -207,6 +207,8 @@ a monthly quiz allowance with paid top-ups, usage-based pricing, caching the rep
 instructions (chapter 11), or a cheaper model for the parts where measurement shows it is good
 enough.
 
+![On a flat $4.00 price, the typical QuizMe user leaves $3.73 after model cost, while a heavy user in finals week costs $5.40 and loses you $1.40, before hosting and payment fees.](images/diagrams/ch12-heavy-user-cost.svg){#fig-heavy-user-cost fig-alt="A bar chart of QuizMe's monthly model cost per user at 0.018 dollars per quiz, against a dashed line for the flat price of 4 dollars a month. The typical user, 15 quizzes a month, costs 27 cents, leaving 3.73 dollars under the price. The heavy user, 10 quizzes a day for 30 days, costs 5.40 dollars; the red part of that bar above the price line is 1.40 dollars more than the user pays." width="100%"}
+
 **Flat subscription versus usage pricing.** A flat subscription is simple to buy and predictable
 for the customer, and it carries the heavy-user risk. Usage pricing (credits, per-action, tiers
 with allowances) tracks your cost but makes the customer think about every click. Many AI

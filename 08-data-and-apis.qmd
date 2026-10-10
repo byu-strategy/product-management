@@ -70,6 +70,8 @@ interviews
 └── conducted_at
 ```
 
+![Each foreign key points at the primary key of another table. The "many" side holds the pointer.](images/diagrams/ch08-schema.svg){#fig-schema fig-alt="Three table cards side by side. users (from Supabase Auth): id, email, created_at. problems: id, user_id, title, description, frequency, intensity, created_at. interviews: id, problem_id, interviewee_role, notes, key_quotes, conducted_at. Every id is marked primary key. problems.user_id and interviews.problem_id are marked foreign key and highlighted, with blue arrows pointing to users.id and problems.id. Each arrow is labeled many at the foreign key end and 1 at the primary key end. Notes: one user has many problems, so each problem holds a user_id; one problem has many interviews, so each interview holds a problem_id." width="100%"}
+
 The same design written as SQL is worth being able to read. Each line is a column, its type,
 and its rule:
 
@@ -159,6 +161,8 @@ ORDER BY intensity DESC;
 
 The filter keeps rows 1 and 2 (row 6 fails the intensity test), the sort puts 8 before 7, and
 the result is two rows: *Group chat scheduling chaos, 8* and *Expense tracking is tedious, 7*.
+
+![The same query, one block at a time. The filter does most of the work; the result is two rows.](images/diagrams/ch08-query-blocks.svg){#fig-query-blocks fig-alt="Four numbered query blocks on the left, each beside the table it produces. 1, FROM problems: start with the whole six-row table. 2, WHERE owner = 'ana' AND intensity >= 5: rows 1 and 2 are highlighted; rows 3, 4 and 5 are struck through with the note not ana, and row 6 is struck through with the note 3 < 5. 3, SELECT title, intensity: the two rows keep only those columns, Expense tracking is tedious 7, then Group chat scheduling chaos 8. 4, ORDER BY intensity DESC: the result table, outlined in blue, lists Group chat scheduling chaos 8 first and Expense tracking is tedious 7 second, labeled Result: 2 rows. A note says the query is written with SELECT first but run in this order: table, filter, columns, sort, then limit." width="100%"}
 
 Your app's code says the same thing in the Supabase client's words, block for block:
 
@@ -317,6 +321,8 @@ means the server was the problem.
 
 Two failures have no status code at all: the network drops (the request never arrives) and the
 request hangs until it times out. A spinner that never stops is usually one of these.
+
+![One save, from click to answer. The numbered points are where it can fail instead, and only the first comes back with no status code.](images/diagrams/ch08-request-round-trip.svg){#fig-request-round-trip fig-alt="A sequence diagram with three columns headed by icons: Browser, Your server, Database. The browser sends POST /api/problems to the server. The server checks who is asking and whether the input is valid, sends insert the row to the database, and gets the new row back. The server answers the browser with 201 Created, and the browser checks response.ok and says what happened. Three blue numbered markers show where it can fail, listed under Can come back instead: 1, on the request, no network or a timeout, no answer at all; 2, at the server's checks, 400, 401, 403, 404 or 429, the request was the problem; 3, on the response, 500, the server was the problem." width="100%"}
 
 ::: {.callout-note title="Analogy: a waiter"}
 Your app is the customer, the API is the waiter, the server is the kitchen. You order from a

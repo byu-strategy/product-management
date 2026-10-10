@@ -31,7 +31,7 @@ local function callout(url)
     type = "tip",
     title = "Learn this section with Claude",
     content = pandoc.Blocks({
-      pandoc.Para({ pandoc.Str("Paste this into Claude Code for a 30 to 60 minute session on this section, worked on your own product.") }),
+      pandoc.Para({ pandoc.Str("Paste this into Claude Code to learn this section from first principles, on your own product, as quick or as deep as you have time for.") }),
       pandoc.CodeBlock(line, pandoc.Attr("", { "default", "learn-command" })),
     }),
   })

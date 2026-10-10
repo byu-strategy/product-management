@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 420" role="img" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+  <title>The problem tracker's schema</title>
+  <desc>Three tables drawn as cards: users with id, email and created_at; problems with id, user_id, title, description, frequency, intensity and created_at; interviews with id, problem_id, interviewee_role, notes, key_quotes and conducted_at. Each id is a primary key. problems.user_id is a foreign key pointing to users.id, so one user has many problems. interviews.problem_id is a foreign key pointing to problems.id, so one problem has many interviews.</desc>
+  <defs>
+    <linearGradient id="gCard" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#FFFFFF"/><stop offset="100%" stop-color="#F3F6F9"/></linearGradient>
+    <linearGradient id="gBlue" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#F0F5FB"/><stop offset="100%" stop-color="#DCE7F4"/></linearGradient>
+    <linearGradient id="gGray" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#F4F6F8"/><stop offset="100%" stop-color="#E3E7EB"/></linearGradient>
+    <linearGradient id="gNavy" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0E3F6A"/><stop offset="100%" stop-color="#001A36"/></linearGradient>
+    <linearGradient id="gRoyal" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#2A7AD6"/><stop offset="100%" stop-color="#0049A0"/></linearGradient>
+    <linearGradient id="gGreen" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#F1F8F3"/><stop offset="100%" stop-color="#E0EFE5"/></linearGradient>
+    <linearGradient id="gRed" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#FBF3F3"/><stop offset="100%" stop-color="#F3E1E1"/></linearGradient>
+    <filter id="sh" x="-10%" y="-10%" width="120%" height="135%"><feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#002E5D" flood-opacity="0.13"/></filter>
+    <filter id="shS" x="-10%" y="-10%" width="120%" height="135%"><feDropShadow dx="0" dy="1.5" stdDeviation="2.5" flood-color="#002E5D" flood-opacity="0.12"/></filter>
+    <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0.5 L10,5 L0,9.5 z" fill="#8A939C"/></marker>
+    <marker id="ahD" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0.5 L10,5 L0,9.5 z" fill="#5A6672"/></marker>
+    <marker id="ahA" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0.5 L10,5 L0,9.5 z" fill="#0057B8"/></marker>
+    <marker id="ahN" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0.5 L10,5 L0,9.5 z" fill="#002E5D"/></marker>
+  </defs>
+  <rect x="0" y="0" width="1000" height="420" rx="8" fill="#FAFBFC"/>
+  <rect x="30" y="40" width="270" height="170" rx="10" fill="url(#gCard)" stroke="#D9DEE4" stroke-width="1.5" filter="url(#sh)"/>
+  <path d="M30 90 V50 Q30 40 40 40 H290 Q300 40 300 50 V90 Z" fill="url(#gNavy)"/>
+  <text x="50" y="72" font-size="21" font-weight="700" fill="#FFFFFF">users</text>
+  <text x="282" y="71" font-size="15" text-anchor="end" fill="#B9D0EA">from Supabase Auth</text>
+  <rect x="188" y="99" width="98" height="23" rx="11.5" fill="#FFFFFF" stroke="#B9D0EA" stroke-width="1.5"/>
+  <text x="237" y="115" font-size="15" font-weight="600" text-anchor="middle" fill="#002E5D">primary key</text>
+  <text x="50" y="116" font-size="18" font-weight="700" font-family="Menlo, Consolas, monospace" fill="#002E5D">id</text>
+  <line x1="44" y1="130" x2="286" y2="130" stroke="#E9ECEF" stroke-width="1.5"/>
+  <text x="50" y="156" font-size="18" font-family="Menlo, Consolas, monospace" fill="#5A6672">email</text>
+  <line x1="44" y1="170" x2="286" y2="170" stroke="#E9ECEF" stroke-width="1.5"/>
+  <text x="50" y="196" font-size="18" font-family="Menlo, Consolas, monospace" fill="#5A6672">created_at</text>
+  <rect x="365" y="40" width="270" height="330" rx="10" fill="url(#gCard)" stroke="#D9DEE4" stroke-width="1.5" filter="url(#sh)"/>
+  <path d="M365 90 V50 Q365 40 375 40 H625 Q635 40 635 50 V90 Z" fill="url(#gNavy)"/>
+  <text x="385" y="72" font-size="21" font-weight="700" fill="#FFFFFF">problems</text>
+  <rect x="523" y="99" width="98" height="23" rx="11.5" fill="#FFFFFF" stroke="#B9D0EA" stroke-width="1.5"/>
+  <text x="572" y="115" font-size="15" font-weight="600" text-anchor="middle" fill="#002E5D">primary key</text>
+  <text x="385" y="116" font-size="18" font-weight="700" font-family="Menlo, Consolas, monospace" fill="#002E5D">id</text>
+  <line x1="379" y1="130" x2="621" y2="130" stroke="#E9ECEF" stroke-width="1.5"/>
+  <rect x="366" y="130" width="268" height="40" fill="#E6EEF7"/>
+  <rect x="523" y="139" width="98" height="23" rx="11.5" fill="url(#gRoyal)" stroke="#0057B8" stroke-width="1"/>
+  <text x="572" y="155" font-size="15" font-weight="600" text-anchor="middle" fill="#FFFFFF">foreign key</text>
+  <text x="385" y="156" font-size="18" font-weight="700" font-family="Menlo, Consolas, monospace" fill="#0057B8">user_id</text>
+  <line x1="379" y1="170" x2="621" y2="170" stroke="#E9ECEF" stroke-width="1.5"/>
+  <text x="385" y="196" font-size="18" font-family="Menlo, Consolas, monospace" fill="#5A6672">title</text>
+  <line x1="379" y1="210" x2="621" y2="210" stroke="#E9ECEF" stroke-width="1.5"/>
+  <text x="385" y="236" font-size="18" font-family="Menlo, Consolas, monospace" fill="#5A6672">description</text>
+  <line x1="379" y1="250" x2="621" y2="250" stroke="#E9ECEF" stroke-width="1.5"/>
+  <text x="385" y="276" font-size="18" font-family="Menlo, Consolas, monospace" fill="#5A6672">frequency</text>
+  <line x1="379" y1="290" x2="621" y2="290" stroke="#E9ECEF" stroke-width="1.5"/>
+  <text x="385" y="316" font-size="18" font-family="Menlo, Consolas, monospace" fill="#5A6672">intensity</text>
+  <line x1="379" y1="330" x2="621" y2="330" stroke="#E9ECEF" stroke-width="1.5"/>
+  <text x="385" y="356" font-size="18" font-family="Menlo, Consolas, monospace" fill="#5A6672">created_at</text>
+  <rect x="700" y="40" width="270" height="290" rx="10" fill="url(#gCard)" stroke="#D9DEE4" stroke-width="1.5" filter="url(#sh)"/>
+  <path d="M700 90 V50 Q700 40 710 40 H960 Q970 40 970 50 V90 Z" fill="url(#gNavy)"/>
+  <text x="720" y="72" font-size="21" font-weight="700" fill="#FFFFFF">interviews</text>
+  <rect x="858" y="99" width="98" height="23" rx="11.5" fill="#FFFFFF" stroke="#B9D0EA" stroke-width="1.5"/>
+  <text x="907" y="115" font-size="15" font-weight="600" text-anchor="middle" fill="#002E5D">primary key</text>
+  <text x="720" y="116" font-size="18" font-weight="700" font-family="Menlo, Consolas, monospace" fill="#002E5D">id</text>
+  <line x1="714" y1="130" x2="956" y2="130" stroke="#E9ECEF" stroke-width="1.5"/>
+  <rect x="701" y="130" width="268" height="40" fill="#E6EEF7"/>
+  <rect x="858" y="139" width="98" height="23" rx="11.5" fill="url(#gRoyal)" stroke="#0057B8" stroke-width="1"/>
+  <text x="907" y="155" font-size="15" font-weight="600" text-anchor="middle" fill="#FFFFFF">foreign key</text>
+  <text x="720" y="156" font-size="18" font-weight="700" font-family="Menlo, Consolas, monospace" fill="#0057B8">problem_id</text>
+  <line x1="714" y1="170" x2="956" y2="170" stroke="#E9ECEF" stroke-width="1.5"/>
+  <text x="720" y="196" font-size="18" font-family="Menlo, Consolas, monospace" fill="#5A6672">interviewee_role</text>
+  <line x1="714" y1="210" x2="956" y2="210" stroke="#E9ECEF" stroke-width="1.5"/>
+  <text x="720" y="236" font-size="18" font-family="Menlo, Consolas, monospace" fill="#5A6672">notes</text>
+  <line x1="714" y1="250" x2="956" y2="250" stroke="#E9ECEF" stroke-width="1.5"/>
+  <text x="720" y="276" font-size="18" font-family="Menlo, Consolas, monospace" fill="#5A6672">key_quotes</text>
+  <line x1="714" y1="290" x2="956" y2="290" stroke="#E9ECEF" stroke-width="1.5"/>
+  <text x="720" y="316" font-size="18" font-family="Menlo, Consolas, monospace" fill="#5A6672">conducted_at</text>
+  <path d="M365 150 H338 Q332 150 332 144 V116 Q332 110 326 110 H304" fill="none" stroke="#0057B8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ahA)"/>
+  <text x="309" y="100" font-size="17" font-weight="700" fill="#0057B8">1</text>
+  <text x="360" y="175" font-size="16" font-weight="600" text-anchor="end" fill="#0057B8">many</text>
+  <path d="M700 150 H673 Q667 150 667 144 V116 Q667 110 661 110 H639" fill="none" stroke="#0057B8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ahA)"/>
+  <text x="644" y="100" font-size="17" font-weight="700" fill="#0057B8">1</text>
+  <text x="695" y="175" font-size="16" font-weight="600" text-anchor="end" fill="#0057B8">many</text>
+  <text x="30" y="254" font-size="16" fill="#5A6672">One user has many problems,</text>
+  <text x="30" y="278" font-size="16" fill="#5A6672">so each problem holds a user_id.</text>
+  <text x="700" y="374" font-size="16" fill="#5A6672">One problem has many interviews,</text>
+  <text x="700" y="398" font-size="16" fill="#5A6672">so each interview holds a problem_id.</text>
+</svg>

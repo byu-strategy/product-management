@@ -157,6 +157,8 @@ a different path. Anthropic's API documentation notes that even at temperature 0
 not fully deterministic, and its newest models no longer let you set temperature below the
 default at all. Treat variation as a design fact.
 
+![The same probabilities, two temperatures. At low temperature nearly every run picks the top token; at temperature 1 the less likely tokens get drawn too, so repeated runs differ. Illustrative numbers.](images/diagrams/ch10-sampling-temperature.svg){#fig-sampling-temperature fig-alt="The text so far is The cat sat on the. Two bar charts give the probability of each possible next token. At low temperature, 0.2, mat gets about 91 percent, rug 9 percent, and floor, couch, bed, and other each under 1 percent. At temperature 1, mat gets 40 percent, rug 25, floor 15, couch 10, bed 6, and other 4. Below each chart are five runs of the same prompt: at low temperature all five say mat; at temperature 1 they say mat, rug, mat, floor, mat, with rug and floor highlighted." width="100%"}
+
 ::: {.callout-tip title="Try it"}
 Send the identical prompt five times in fresh chats: "Suggest a name for a campus app that
 matches students with study partners, and explain why in one sentence." Predict first: how many
@@ -295,6 +297,8 @@ your project's conventions, it is because it loads `CLAUDE.md` into the context 
 every session. This is why `/clear` wipes the slate and `/compact` replaces a long history with a
 summary (Chapter 2): they are edits to working memory, the only memory there is.
 
+![Each call starts empty. The conversation exists only because the app resends the whole history every time, so call 3 carries five messages to say one new thing.](images/diagrams/ch10-stateless-calls.svg){#fig-stateless-calls fig-alt="A band across the top reads: your app keeps the history and resends all of it on every call. Below it, three API calls side by side. Call 1 sends one message: My product is Tandem. Call 2 sends three: that first message, the model reply Nice, what does it do, and the new question What is it called. Call 3 sends all five, ending with the new message Write a tagline. The newest message in each call is highlighted in blue; the others are resent. Each stack flows into a Model box labeled starts empty." width="100%"}
+
 Three predictions follow. A long conversation gets slower and more expensive with each turn,
 because every turn resends everything. When the window fills, something has to be dropped or
 summarized, and what was dropped is gone. And an agent that "forgot" your instruction usually
@@ -338,6 +342,8 @@ percent of the time; those using AI were right roughly 60 to 70 percent of the t
 the model's plausible but wrong analysis at face value. Mollick's [Centaurs and Cyborgs on the Jagged
 Frontier](https://www.oneusefulthing.org/p/centaurs-and-cyborgs-on-the-jagged) is the short
 readable version.
+
+![The jagged frontier: tasks that look equally hard fall on either side of an uneven edge, and the edge moves with each release. The right panel shows the one BCG task designed to sit just outside it [@dellacqua2023jagged].](images/diagrams/ch10-jagged-frontier.svg){#fig-jagged-frontier fig-alt="On the left, a map of tasks divided by a jagged line. Inside the shaded region, where the model does well: write a React component, summarize a meeting. Just outside, where it fails: a fact past the cutoff, long arithmetic, exact counting. A dashed line next to the edge marks where the next release may put it. On the right, the BCG experiment with 758 consultants: on one task just outside the frontier, 84 percent got it right without AI and 60 to 70 percent using GPT-4. Many trusted a plausible, wrong answer." width="100%"}
 
 Jaggedness follows from the build. A model is strong where its training text was rich and the
 task matches patterns it saw (writing a React component, summarizing a meeting). It is weak

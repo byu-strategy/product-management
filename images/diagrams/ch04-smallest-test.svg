@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 576" role="img" aria-labelledby="t d" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+  <title id="t">The smallest tests by effort and evidence rung</title>
+  <desc id="d">Three rows for the evidence rungs, paid at the top, did in the middle, said at the bottom. Four columns, in rough order of effort from fewer hours to more: smoke test, concierge, Wizard of Oz, presell. The smoke test reaches did with a sign-up and paid with a pre-order; its pre-order point is highlighted as the highest rung for the fewest hours. The concierge reaches did, and paid if you charge. Wizard of Oz reaches did. Presell reaches paid. Across the said row, a red-outlined note: a working app shown to friends is said-rung evidence for value, however long it took to build.</desc>
+  <defs>
+    <linearGradient id="gPaid" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#E6EEF7"/>
+      <stop offset="100%" stop-color="#D7E4F2"/>
+    </linearGradient>
+    <linearGradient id="gDid" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F3F7FB"/>
+      <stop offset="100%" stop-color="#E8EFF7"/>
+    </linearGradient>
+    <linearGradient id="gSaid" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#F4F6F8"/>
+    </linearGradient>
+    <radialGradient id="gDot" cx="0.4" cy="0.35" r="0.7">
+      <stop offset="0%" stop-color="#1F5C9E"/>
+      <stop offset="100%" stop-color="#002E5D"/>
+    </radialGradient>
+    <radialGradient id="gHalo" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%" stop-color="#0057B8" stop-opacity="0.28"/>
+      <stop offset="100%" stop-color="#0057B8" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="sh" filterUnits="userSpaceOnUse" x="0" y="0" width="1000" height="620">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#0A2E4D" flood-opacity="0.14"/>
+    </filter>
+    <marker id="ax" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8A939C"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="1000" height="576" rx="8" fill="#FAFBFC"/>
+
+  <!-- plot card -->
+  <rect x="150" y="30" width="820" height="420" rx="10" fill="#FAFBFC" filter="url(#sh)"/>
+  <path d="M160,30 H960 a10,10 0 0 1 10,10 V170 H150 V40 a10,10 0 0 1 10,-10 Z" fill="url(#gPaid)"/>
+  <rect x="150" y="170" width="820" height="140" fill="url(#gDid)"/>
+  <path d="M150,310 H970 V440 a10,10 0 0 1 -10,10 H160 a10,10 0 0 1 -10,-10 Z" fill="url(#gSaid)"/>
+  <line x1="150" y1="170" x2="970" y2="170" stroke="#D9DEE4" stroke-width="1.5"/>
+  <line x1="150" y1="310" x2="970" y2="310" stroke="#D9DEE4" stroke-width="1.5"/>
+  <rect x="150" y="30" width="820" height="420" rx="10" fill="none" stroke="#D9DEE4" stroke-width="1.5"/>
+
+  <!-- rung labels -->
+  <text x="130" y="108" text-anchor="end" font-size="22" font-weight="700" fill="#002E5D">Paid</text>
+  <text x="130" y="248" text-anchor="end" font-size="22" font-weight="700" fill="#002E5D">Did</text>
+  <text x="130" y="388" text-anchor="end" font-size="22" font-weight="700" fill="#8A939C">Said</text>
+
+  <!-- focal: most learning per hour -->
+  <circle cx="260" cy="100" r="58" fill="url(#gHalo)"/>
+  <text x="290" y="64" font-size="16" font-weight="700" fill="#0057B8">Highest rung, fewest hours</text>
+
+  <!-- SMOKE TEST -->
+  <line x1="260" y1="100" x2="260" y2="240" stroke="#002E5D" stroke-width="3"/>
+  <circle cx="260" cy="100" r="13" fill="#0057B8" filter="url(#sh)"/>
+  <circle cx="260" cy="240" r="11" fill="url(#gDot)" filter="url(#sh)"/>
+  <text x="284" y="106" font-size="17" fill="#2C3E50">pre-order</text>
+  <text x="282" y="246" font-size="17" fill="#2C3E50">sign-up</text>
+
+  <!-- CONCIERGE -->
+  <line x1="460" y1="100" x2="460" y2="240" stroke="#002E5D" stroke-width="2" stroke-dasharray="5 5"/>
+  <circle cx="460" cy="100" r="11" fill="#FFFFFF" stroke="#002E5D" stroke-width="2.5"/>
+  <circle cx="460" cy="240" r="11" fill="url(#gDot)" filter="url(#sh)"/>
+  <text x="482" y="106" font-size="17" fill="#5A6672">if you charge</text>
+  <text x="482" y="246" font-size="17" fill="#2C3E50">done by hand</text>
+
+  <!-- WIZARD OF OZ -->
+  <circle cx="660" cy="240" r="11" fill="url(#gDot)" filter="url(#sh)"/>
+  <text x="682" y="246" font-size="17" fill="#2C3E50">looks automated</text>
+
+  <!-- PRESELL -->
+  <circle cx="860" cy="100" r="11" fill="url(#gDot)" filter="url(#sh)"/>
+  <text x="882" y="106" font-size="17" fill="#2C3E50">deposit</text>
+
+  <!-- SAID: the working app -->
+  <rect x="190" y="342" width="740" height="76" rx="10" fill="#FFFFFF" stroke="#B03A3A" stroke-width="1.5"/>
+  <!-- pictogram: laptop -->
+  <g transform="translate(215,359) scale(1.75)" fill="none" stroke="#B03A3A" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 16V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9m16 0H4m16 0 1.28 2.55a1 1 0 0 1-.9 1.45H3.62a1 1 0 0 1-.9-1.45L4 16"/></g>
+  <text x="280" y="373" font-size="18" font-weight="700" fill="#B03A3A">A working app shown to friends</text>
+  <text x="280" y="399" font-size="17" fill="#2C3E50">Said-rung evidence for value, however long it took to build</text>
+
+  <!-- x axis -->
+  <line x1="150" y1="474" x2="962" y2="474" stroke="#8A939C" stroke-width="2" marker-end="url(#ax)"/>
+  <text x="260" y="508" text-anchor="middle" font-size="19" font-weight="600" fill="#002E5D">Smoke test</text>
+  <text x="460" y="508" text-anchor="middle" font-size="19" font-weight="600" fill="#002E5D">Concierge</text>
+  <text x="660" y="508" text-anchor="middle" font-size="19" font-weight="600" fill="#002E5D">Wizard of Oz</text>
+  <text x="860" y="508" text-anchor="middle" font-size="19" font-weight="600" fill="#002E5D">Presell</text>
+  <text x="150" y="546" font-size="16" fill="#5A6672">Fewer hours</text>
+  <text x="970" y="546" text-anchor="end" font-size="16" fill="#5A6672">More hours</text>
+  <text x="560" y="546" text-anchor="middle" font-size="16" fill="#8A939C">effort, in rough order</text>
+</svg>

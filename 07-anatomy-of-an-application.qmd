@@ -29,6 +29,8 @@ and you can catch it when it puts something in the wrong place.
 **The model:** the browser belongs to the user, who can see and change anything there. The
 server is yours and keeps secrets. The database remembers.
 
+![The dashed line is where the user's control ends. Anything left of it can be read and changed, so secrets and the checks that matter sit to the right.](images/diagrams/ch07-where-code-runs.svg){#fig-where-code-runs fig-alt="Three places drawn as icons in a row: the browser, your server, and the database. A dashed blue line between the browser and the server is labeled the user controls on the left and you control on the right. Under the browser: sees and changes all of it; no secrets, no checks that matter. Under the server: secret keys live here; the checks that matter. Under the database: remembers after a refresh; row rules on every request. A solid arrow labeled requests runs from browser to server to database, and a dashed arc from the browser straight to the database is labeled Supabase: direct, through row rules." width="100%"}
+
 | Place | Also called | Who controls it | What belongs there | What must never be there |
 |---|---|---|---|---|
 | The user's browser or phone | Frontend, client, client-side | The user | Screens, buttons, forms, quick checks that save the user a round trip | Secret keys, the only copy of a rule that matters (prices, permissions, grades) |
@@ -278,6 +280,8 @@ Chapter 8 covers the rules that make a public key safe.
 
 **The model:** authentication proves identity. Authorization decides access. Enforce access
 where the data lives, never only on the screen.
+
+![Authentication happens at sign-in. Authorization happens on every request, in the database, where the user cannot reach.](images/diagrams/ch07-authn-authz.svg){#fig-authn-authz fig-alt="Two rows split by a dashed line between the user's browser, which they can change, and your side, which they cannot reach. Row 1, Authentication, who is this: a sign-in form in the browser sends to Supabase Auth, which issues a session token that the browser keeps and sends with every request. Row 2, Authorization, may this person do this to this row: any request carries the token across the line to the database, marked with a blue lock and labeled Database policy, which returns the user's own rows (green check) and refuses everyone else's rows (red cross)." width="100%"}
 
 | Block | Question it answers | In this course's stack |
 |---|---|---|
