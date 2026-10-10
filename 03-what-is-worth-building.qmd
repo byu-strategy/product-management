@@ -6,7 +6,7 @@ title: "What Is Worth Building"
 
 Building is cheap now, so the expensive mistake is building the wrong thing. Before you can
 build well, you have to decide what deserves to exist. This chapter is the Aim end of the
-loop: whether there is a real problem worth solving, what game you are playing, how a product
+loop: whether there is a real problem worth solving, where you will compete and how you mean to win, how a product
 creates and captures value, and whether the thing you are considering is good for the people
 who will use it. Those belong together: a product that solves no real problem, cannot hold
 any of the value it creates, or harms the people who use it has failed the same test.
@@ -17,13 +17,14 @@ any of the value it creates, or harms the people who use it has failed the same 
 
 CB Insights reads the post-mortems of failed startups and tallies the reasons founders give. Its
 March 2026 analysis covered 431 venture-backed companies that shut down since 2023. "Ran out of
-capital" topped the list at 70%, followed by poor product-market fit at 43%, bad timing at 29%,
-and unsustainable unit economics at 19% (most companies cited more than one reason)
+capital" topped the list at 70%, followed by poor product-market fit (the product did not meet a
+need that enough customers would pay for) at 43%, bad timing at 29%,
+and unsustainable unit economics (each customer cost more to win and serve than they paid) at 19% (most companies cited more than one reason)
 [@cbinsights2026]. The report adds an interpretation: running out of money is almost
 always the last event in a failure and rarely its cause. The money ran out because the product did not fit a market
 that wanted it badly enough to pay.
 
-For a builder, poor product-market fit means a team spent its runway building
+For a builder, poor product-market fit means a team spent its runway (the money and months it had before the money ran out) building
 something too few people needed. That mistake gets easier when an agent can build an
 app in an afternoon: you can now build the wrong thing faster than before.
 
@@ -89,6 +90,12 @@ critique your rewrites, but tell it to flag any word that implies a solution.
 
 <!-- learn -->
 
+## Vision before strategy
+
+Before the strategy comes a **product vision**: a description of the better world your product creates, usually a few years out. Marty Cagan argues the vision is what recruits people, aligns decisions, and keeps a team going through the difficult middle of the work [@cagan2017inspired]. Strategy is how you get there; vision is the destination and the reason to go. Write the vision first, then let the strategy serve it.
+
+<!-- learn -->
+
 ## Strategy is choosing what not to do
 
 Michael Porter's foundational point: the essence of strategy is choosing what *not* to do [@porter1996strategy]. Strategy is a small set of hard choices that fit together, which you then defend against the constant temptation to do everything. A list of every good thing you could do does not qualify. If your "strategy" contains no sacrifices, it is a wish list.
@@ -138,15 +145,17 @@ play. How you win is just as demanding as before.
 
 Strategy has to answer two different questions, and it is easy to collapse them into one. The first is whether your product *creates* value: is anyone better off for it existing? The second is whether you can *capture* any of that value: does enough of it come back to you to keep the business alive? They are separate questions, and a product can pass the first and fail the second.
 
-Adam Brandenburger and Harborne Stuart formalized this, defining value created as willingness to pay minus willingness to sell [@brandenburger1996]. Felix Oberholzer-Gee later turned that into the diagram now commonly used to teach it, the value stick [@oberholzergee2021]. At the top sits the customer's willingness to pay. At the bottom sits the cost of what you use to build, your suppliers' and your own willingness to sell. The gap between them is the value your product *creates*. How that gap gets divided, how much the customer keeps as a good deal, how much suppliers take, and how much is left for you, is the value you *capture*.
+Adam Brandenburger and Harborne Stuart formalized this, defining value created as willingness to pay minus willingness to sell [@brandenburger1996]. **Willingness to pay** is the most a customer would pay for your product before walking away. **Willingness to sell** is the least a supplier would accept to provide what you need to make it, including your own time. Felix Oberholzer-Gee later turned that into the diagram now commonly used to teach it, the value stick [@oberholzergee2021]. At the top sits the customer's willingness to pay. At the bottom sits the cost of what you use to build, your suppliers' and your own willingness to sell. The gap between them is the value your product *creates*. How that gap gets divided, how much the customer keeps as a good deal, how much suppliers take, and how much is left for you, is the value you *capture*.
 
-![The value stick. The whole height, willingness to pay down to willingness to sell, is the value created. The two interior lines, Price and Cost, divide it into what the customer keeps, what you capture, and what suppliers keep.](images/value-stick.svg){fig-alt="A vertical bar. Its top edge is labeled Willingness to Pay and its bottom edge Willingness to Sell; the full height is bracketed as total value created. Two interior lines, Price near the top and Cost near the bottom, split the bar into three bands: customer's delight at the top, the firm's margin in the middle labeled the value you capture, and supplier's surplus at the bottom."}
+![The value stick. The whole height, willingness to pay down to willingness to sell, is the value created. The two interior lines, Price and Cost, divide it into what the customer keeps, what you capture, and what suppliers keep. Raising willingness to pay or lowering willingness to sell makes the stick taller, which creates value. Price is the only interior line you partly set, and moving it shifts value between the customer and you, which changes how much you capture.](images/diagrams/ch03-value-stick.svg){#fig-value-stick fig-alt="A vertical bar. Its top edge is labeled willingness to pay, the most the customer would give, and its bottom edge willingness to sell, the least suppliers would take. Two interior lines, price (what you actually charge) near the top and cost (what the inputs cost you) near the bottom, split the bar into three bands: customer's delight at the top, bracketed as the value the customer keeps; your margin in the middle, the largest band and highlighted, bracketed as the value you capture; and supplier's surplus at the bottom, bracketed as the value the supplier keeps. A larger bracket on the right spans the whole bar and is labeled total value created." width="100%"}
+
+**A worked example, with made-up numbers.** Take the due-date app from [Problem vs. Solution Thinking](#problem-vs.-solution-thinking). A student would pay at most $10 a month for it: that is the top of the stick. Your hosting provider would accept as little as $2 per user per month to run it: that is the bottom (to keep it simple, count your own time as free). The app creates $8 a month of value per user. Now set a price of $6, and suppose hosting actually charges you $3. The student keeps $4 ($10 minus $6), you capture $3 ($6 minus $3), and the hosting provider keeps $1 ($3 minus $2). The three shares add up to the $8 created.
 
 The value stick is a diagram of standard economics. If you want the full derivation, how producer surplus, accounting profit, economic profit, and finance's return above the cost of capital are all one idea measured at different levels of detail, and how they connect up to willingness to pay, it is worked out in the appendix, [The Logic of Value](A1-logic-of-value.qmd).
 
 A common mistake is to assume that creating value is the hard part and capture will follow. It does not. Peter Thiel gives an example: US airlines create enormous value and keep almost none of it, while a single search company creates less and keeps far more [@thiel2014]. David Teece made the same point about innovators decades earlier: you can invent something new, create real value, and watch imitators and the owners of the pieces you depend on capture all of it [@teece1986]. Creating value is necessary. It is not sufficient.
 
-So where on the value stick do you land? That is a choice, but a *constrained* one. You do not simply decide to keep more of the gap. How much you can capture is set by industry structure you did not build and cannot change by deciding to, and the first job of strategy is to assess that structure accurately. In [AIRE](01-building-with-ai-agents.qmd) terms, the width of the band you can capture is something you *Inform* on, and where you position inside it is the *Aim*. Misjudging the band is an information failure. If you judge the band correctly and it is thin, you have made no mistake; you have learned that you should look for a different band.
+So where on the value stick do you land? That is a choice, but a *constrained* one. You do not simply decide to keep more of the gap. How much you can capture is set by industry structure you did not build and cannot change by deciding to, and the first job of strategy is to assess that structure accurately. Call the part of the stick between price and cost, your margin, the **band**. In [AIRE](01-building-with-ai-agents.qmd#the-loop-how-this-course-works) terms, the width of the band you can capture is something you *Inform* on, and where you position inside it is the *Aim*. Misjudging the band is an information failure. If you judge the band correctly and it is thin, you have made no mistake; you have learned that you should look for a different band.
 
 Value comes in many kinds, and many of them are not functional. Bain's Elements of Value catalogs thirty
 distinct kinds, stacked from functional at the base through emotional and life changing up to social
@@ -171,6 +180,12 @@ The five forces measure that power at two points:
 
 All five are the same variable, market power, at different points in the chain, held either by you or by someone else. One caution: the five forces describe how attractive the *industry* is, and say nothing about whether your product is the strongest in it. Two products in the same structure can capture very differently based on their own advantage, which is the subject of moats below.
 
+![The five forces drawn on the value stick. Both sticks have the same willingness to pay and willingness to sell. Rivalry, new entrants, substitutes, and buyer power push price down; supplier power pushes cost up. Where the forces are strong, little of the stick is left as your margin. Five forces after Porter [-@porter1979competitive]; value stick after Oberholzer-Gee [-@oberholzergee2021].](images/diagrams/ch03-five-forces-band.svg){#fig-five-forces-band fig-alt="Two value sticks side by side, with the same willingness to pay at the top and the same willingness to sell at the bottom. Each stick is split by a Price line and a Cost line into customer's delight at the top, your margin in the middle, and supplier's surplus at the bottom. Under weak forces, price sits close to willingness to pay and cost sits close to willingness to sell, so your margin is most of the stick, and the two arrows pushing on price and cost are short. Under strong forces, a long arrow labeled rivalry, new entrants, substitutes, and buyer power pushes price down, and a long arrow labeled supplier power pushes cost up, so your margin is a thin band in the middle." width="100%"}
+
+The two sticks create the same total value. The forces change only how it is divided: what the
+forces push out of your margin goes to customers as a lower price or to suppliers as a higher
+cost. Perfect competition is the limit case, where price is pushed all the way down to cost.
+
 <!-- learn -->
 
 ## Blue oceans: widening the band
@@ -179,9 +194,11 @@ There is a third move, and it is the one to aim for. Instead of accepting the ba
 
 Their method for this is *value innovation*: pursue differentiation and low cost at the same time instead of trading one for the other. On the value stick that means moving both ends at once, lifting willingness to pay while cutting cost, by dropping the factors your industry over-serves and adding factors it never offered. Cirque du Soleil cut the animals and star performers that made circuses expensive and added theatrical story and production that circuses never had, and landed in a space where neither circuses nor theater competed with it.
 
-In AIRE this is discovery applied to the Aim instead of to the customer. Where the Mom Test informs you about needs *inside* a category, the blue ocean question informs you about where the category boundary could be *moved*: look across substitute industries, adjacent buyer groups, and complementary offerings for space no one is contesting. It is *Inform* in service of choosing a better place to play.
+In AIRE this is discovery applied to the Aim instead of to the customer. Where the Mom Test (the customer-interview method in [Finding and Validating the Problem](04-finding-and-validating-the-problem.qmd)) informs you about needs *inside* a category, the blue ocean question informs you about where the category boundary could be *moved*: look across substitute industries, adjacent buyer groups, and complementary offerings for space no one is contesting. It is *Inform* in service of choosing a better place to play.
 
 A blue ocean has an inherent problem, which the rest of this chapter addresses. By definition it has no barriers: you just created open space, which means entry is open to anyone. If you cannot build a reason for the space to stay yours, imitators enter, it becomes a red ocean, and your capture falls back toward zero. Creating the uncontested space is only half the move. Keeping it is the other half, which is Thiel's point: create a new market *and* own it. The first half is a blue ocean. The second is a moat.
+
+![A blue ocean on the value stick. Value innovation raises willingness to pay and lowers willingness to sell at the same time, which makes the stick taller and leaves room for a wide margin. Without a moat, imitators enter and push price back down toward cost. With a moat, the margin stays wide. Blue ocean and value innovation from Kim and Mauborgne [-@kim2005blue].](images/diagrams/ch03-blue-ocean-moat.svg){#fig-blue-ocean-moat fig-alt="Four value sticks drawn on one scale, left to right. Red ocean: a short stick whose price and cost lines sit close together, so your margin is a thin band. An arrow labeled value innovation leads to Blue ocean: a taller stick whose top, willingness to pay, has moved up past the red ocean's top, marked add what the industry never offered, and whose bottom, willingness to sell, has moved down past the red ocean's bottom, marked drop what the industry over-serves. Its margin is wide. From the blue ocean, an arrow labeled imitators enter leads to Without a moat: the same tall stick, but price has fallen close to cost, which has not moved, and the margin is thin again. A curved arrow labeled imitators kept out leads over it to With a moat: the same tall stick with the same wide margin as the blue ocean." width="100%"}
 
 <!-- learn -->
 
@@ -193,7 +210,9 @@ Winning once is not enough; the advantage has to last. Hamilton Helmer (*7 Power
 - **Switching costs**: leaving is painful, so customers stay.
 - **Scale economies**: you get cheaper per unit as you grow.
 - **Brand**: trust and meaning competitors cannot quickly copy.
-- **Counter-positioning, cornered resources, and process power**: the subtler ones.
+- **Counter-positioning**: a newcomer uses a better business model that established companies will not copy, because copying it would hurt the business they already have.
+- **Cornered resource**: exclusive access to something valuable, such as a patent, key people, or data no one else has.
+- **Process power**: ways of working, built up inside a company over years, that make its product better or cheaper and that others cannot copy quickly.
 
 Ask honestly: once you are winning, what stops the next student with the same AI tools from copying you next week? If the answer is "nothing," you have a feature with no moat. With AI tools this question matters more than before, because copying costs less than it ever has. Strategy is largely the work of building an answer to it.
 
@@ -208,12 +227,6 @@ Gibson Biddle, from leading product at Netflix, offers a compact test for a good
 - **Margin-enhancing**: it improves the business's margins, beyond adding volume.
 
 A product can delight and still lose (easily copied), or be defensible and still lose (nobody cares). DHM forces all three.
-
-<!-- learn -->
-
-## Vision before strategy
-
-Under the strategy sits a **product vision**: a description of the better world your product creates, usually a few years out. Marty Cagan argues the vision is what recruits people, aligns decisions, and keeps a team going through the difficult middle of the work [@cagan2017inspired]. Strategy is how you get there; vision is the destination and the reason to go. Write the vision first, then let the strategy serve it.
 
 <!-- learn -->
 
@@ -233,9 +246,9 @@ Then pressure-test it with AI, but adversarially. Do not ask "is this a good str
 
 ## Understanding human nature cuts both ways
 
-To build something people actually use, you have to understand how people actually work: the emotional elephant beneath the rational rider [@haidt2006happiness] (Daniel Kahneman's fast, automatic System 1 and slow, deliberate System 2 [@kahneman2011thinking]), the cognitive shortcuts and defaults, the cravings and the loops. That knowledge is exactly what makes a product feel effortless and worth returning to.
+To build something people actually use, you have to understand how people actually work. Jonathan Haidt describes the mind as a small rider on a large elephant [@haidt2006happiness]. The rider is conscious reasoning. The elephant is emotion and habit: automatic, strong, and usually the one that decides where the two go. Daniel Kahneman draws the same split as a fast, automatic System 1 and a slow, deliberate System 2 [@kahneman2011thinking]. (The picture simplifies: the two are not separate parts of the brain, and the rider can train the elephant over time.) People also lean on mental shortcuts, accept defaults, and fall into habit loops. That knowledge is exactly what makes a product feel effortless and worth returning to.
 
-![The rider reasons; the elephant feels and moves. A product has to work for both. The same understanding can also be turned against the elephant.](images/elephant-rider.svg){fig-alt="An illustration of a small rider seated on a large elephant. The rider is labeled conscious and reasoning; the elephant is labeled emotional, automatic, and strong."}
+![The rider (deliberate reasoning) can steer only when the elephant (emotion and intuition) is willing; when the two disagree, the elephant usually takes its own route. A product has to work for both, and the same understanding can be turned against the elephant. Adapted from Jonathan Haidt, *The Happiness Hypothesis* [@haidt2006happiness].](images/diagrams/ch03-rider-elephant.svg){#fig-rider-elephant fig-alt="A line drawing of a large elephant walking to the right with a small rider on its back holding the reins. The rider is labeled deliberate reasoning; the elephant is labeled emotion and intuition. Ahead of them the path forks. A dashed branch rising to the upper right is labeled route the rider chooses; a solid branch straight ahead is labeled route the elephant takes, and the elephant is walking onto the straight branch." width="100%"}
 
 It is also exactly what makes a product manipulative. The same understanding of human defaults that lets you remove friction lets you engineer compulsion. The knowledge you are gaining in this class can produce a product that serves a person or one that exploits them. That is why the knowledge comes with a responsibility.
 
@@ -245,7 +258,7 @@ People are not blank slates about right and wrong. Research on moral foundations
 
 ### Hooked: engagement or exploitation
 
-Habit-forming products run a loop: a trigger, an action, a variable reward, and an investment that brings the user back [@eyal2014hooked]. The mechanics are neutral. A fitness app and a slot machine use the same loop. The difference is entirely in the aim.
+Habit-forming products run a loop: a trigger, an action, a variable reward (one that changes unpredictably each time, like new posts in a feed), and an investment (something the user puts in, such as data or followers, that brings them back) [@eyal2014hooked]. The mechanics are neutral. A fitness app and a slot machine use the same loop. The difference is entirely in the aim.
 
 The honest test is simple: **would your user, in a calm and reflective moment, be glad you designed it this way?** A habit that helps someone do the thing they already want to do benefits them. A habit engineered to override their judgment and consume time they never meant to give is a harm, no matter how good the retention numbers look. This is where engagement metrics, the ones you will learn to track later in [Measuring What Matters](14-measuring-what-matters.qmd), can mislead you: engagement a user would disown on reflection is extraction, and it should not be counted as success.
 

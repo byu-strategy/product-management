@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 540" role="img" aria-labelledby="t d" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+  <title id="t">One idea at four depths of cost recognition</title>
+  <desc id="d">A horizontal revenue bar, bracketed above as revenue equals VC plus FC plus NP plus EP, is divided left to right into four segments: variable costs (VC), fixed costs (FC), normal profit (NP), and economic profit (EP). Dashed guides drop from the segment boundaries to four rows below. Producer surplus, the microeconomics measure, revenue minus variable costs, keeps FC, NP, and EP. Accounting profit, the accounting measure, revenue minus explicit costs, keeps NP and EP. Economic profit, the economics measure after all costs, keeps only EP. Financial economic profit, the finance measure, ROIC minus WACC times capital, is a dashed box over the same EP span labeled same amount.</desc>
+  <defs>
+    <linearGradient id="gVC" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#F1F3F5"/><stop offset="100%" stop-color="#DDE2E7"/></linearGradient>
+    <linearGradient id="gFC" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#F3F7FC"/><stop offset="100%" stop-color="#DCE7F4"/></linearGradient>
+    <linearGradient id="gNP" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#CFE0F2"/><stop offset="100%" stop-color="#A9C6E8"/></linearGradient>
+    <linearGradient id="gEP" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0E63C4"/><stop offset="100%" stop-color="#003F87"/></linearGradient>
+    <filter id="sh" filterUnits="userSpaceOnUse" x="0" y="0" width="1000" height="540">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#0A2E4D" flood-opacity="0.13"/>
+    </filter>
+    <clipPath id="cBar"><rect x="250" y="70" width="720" height="84" rx="8"/></clipPath>
+    <clipPath id="cPS"><rect x="566" y="206" width="404" height="46" rx="8"/></clipPath>
+    <clipPath id="cAP"><rect x="710" y="286" width="260" height="46" rx="8"/></clipPath>
+  </defs>
+  <rect x="0" y="0" width="1000" height="540" rx="8" fill="#FAFBFC"/>
+
+  <!-- identity bracket over the bar -->
+  <path d="M250,56 L250,46 L970,46 L970,56" fill="none" stroke="#002E5D" stroke-width="1.5"/>
+  <text x="610" y="34" text-anchor="middle" font-size="18" font-weight="600" fill="#002E5D">Revenue = VC + FC + NP + EP</text>
+
+  <!-- dashed guides from the segment boundaries -->
+  <g stroke="#C5CCD3" stroke-width="1.5" stroke-dasharray="3 5">
+    <line x1="566" y1="154" x2="566" y2="206"/>
+    <line x1="710" y1="154" x2="710" y2="286"/>
+    <line x1="810" y1="154" x2="810" y2="446"/>
+    <line x1="970" y1="154" x2="970" y2="446"/>
+  </g>
+
+  <!-- the revenue bar -->
+  <text x="232" y="119" text-anchor="end" font-size="21" font-weight="700" fill="#002E5D">Revenue</text>
+  <rect x="250" y="70" width="720" height="84" rx="8" fill="#FAFBFC" filter="url(#sh)"/>
+  <g clip-path="url(#cBar)">
+    <rect x="250" y="70" width="316" height="84" fill="url(#gVC)"/>
+    <rect x="566" y="70" width="144" height="84" fill="url(#gFC)"/>
+    <rect x="710" y="70" width="100" height="84" fill="url(#gNP)"/>
+    <rect x="810" y="70" width="160" height="84" fill="url(#gEP)"/>
+    <g stroke="#FFFFFF" stroke-width="2">
+      <line x1="566" y1="70" x2="566" y2="154"/>
+      <line x1="710" y1="70" x2="710" y2="154"/>
+      <line x1="810" y1="70" x2="810" y2="154"/>
+    </g>
+  </g>
+  <rect x="250" y="70" width="720" height="84" rx="8" fill="none" stroke="#002E5D" stroke-width="1.5"/>
+
+  <text x="408" y="108" text-anchor="middle" font-size="18" font-weight="600" fill="#2C3E50">Variable costs</text>
+  <text x="408" y="131" text-anchor="middle" font-size="15" fill="#5A6672">VC</text>
+  <text x="638" y="108" text-anchor="middle" font-size="18" font-weight="600" fill="#2C3E50">Fixed costs</text>
+  <text x="638" y="131" text-anchor="middle" font-size="15" fill="#5A6672">FC</text>
+  <text x="760" y="97" text-anchor="middle" font-size="17" font-weight="600" fill="#002E5D">Normal</text>
+  <text x="760" y="117" text-anchor="middle" font-size="17" font-weight="600" fill="#002E5D">profit</text>
+  <text x="760" y="139" text-anchor="middle" font-size="15" fill="#2C4A6E">NP</text>
+  <text x="890" y="97" text-anchor="middle" font-size="17" font-weight="700" fill="#FFFFFF">Economic</text>
+  <text x="890" y="117" text-anchor="middle" font-size="17" font-weight="700" fill="#FFFFFF">profit</text>
+  <text x="890" y="139" text-anchor="middle" font-size="15" fill="#CFE0F5">EP</text>
+
+  <!-- row 1: producer surplus keeps FC + NP + EP -->
+  <text x="548" y="226" text-anchor="end" font-size="19" font-weight="600" fill="#2C3E50">Producer surplus</text>
+  <text x="548" y="248" text-anchor="end" font-size="15" fill="#5A6672">microeconomics · R − VC</text>
+  <rect x="566" y="206" width="404" height="46" rx="8" fill="#FAFBFC" filter="url(#sh)"/>
+  <g clip-path="url(#cPS)">
+    <rect x="566" y="206" width="144" height="46" fill="url(#gFC)"/>
+    <rect x="710" y="206" width="100" height="46" fill="url(#gNP)"/>
+    <rect x="810" y="206" width="160" height="46" fill="url(#gEP)"/>
+    <line x1="710" y1="206" x2="710" y2="252" stroke="#FFFFFF" stroke-width="2"/>
+    <line x1="810" y1="206" x2="810" y2="252" stroke="#FFFFFF" stroke-width="2"/>
+  </g>
+  <text x="638" y="235" text-anchor="middle" font-size="16" font-weight="600" fill="#2C3E50">FC</text>
+  <text x="760" y="235" text-anchor="middle" font-size="16" font-weight="600" fill="#002E5D">NP</text>
+  <text x="890" y="235" text-anchor="middle" font-size="16" font-weight="700" fill="#FFFFFF">EP</text>
+
+  <!-- row 2: accounting profit keeps NP + EP -->
+  <text x="692" y="306" text-anchor="end" font-size="19" font-weight="600" fill="#2C3E50">Accounting profit</text>
+  <text x="692" y="328" text-anchor="end" font-size="15" fill="#5A6672">accounting · R − explicit costs</text>
+  <rect x="710" y="286" width="260" height="46" rx="8" fill="#FAFBFC" filter="url(#sh)"/>
+  <g clip-path="url(#cAP)">
+    <rect x="710" y="286" width="100" height="46" fill="url(#gNP)"/>
+    <rect x="810" y="286" width="160" height="46" fill="url(#gEP)"/>
+    <line x1="810" y1="286" x2="810" y2="332" stroke="#FFFFFF" stroke-width="2"/>
+  </g>
+  <text x="760" y="315" text-anchor="middle" font-size="16" font-weight="600" fill="#002E5D">NP</text>
+  <text x="890" y="315" text-anchor="middle" font-size="16" font-weight="700" fill="#FFFFFF">EP</text>
+
+  <!-- row 3: economic profit keeps EP -->
+  <text x="792" y="386" text-anchor="end" font-size="19" font-weight="700" fill="#002E5D">Economic profit</text>
+  <text x="792" y="408" text-anchor="end" font-size="15" fill="#5A6672">economics · after all costs</text>
+  <rect x="810" y="366" width="160" height="46" rx="8" fill="url(#gEP)" filter="url(#sh)"/>
+  <text x="890" y="395" text-anchor="middle" font-size="16" font-weight="700" fill="#FFFFFF">EP</text>
+
+  <!-- row 4: financial EP restates the same amount -->
+  <text x="792" y="466" text-anchor="end" font-size="19" font-weight="700" fill="#002E5D">Financial EP</text>
+  <text x="792" y="488" text-anchor="end" font-size="15" fill="#5A6672">finance · (ROIC − WACC) × capital</text>
+  <rect x="810" y="446" width="160" height="46" rx="8" fill="#FFFFFF" stroke="#0057B8" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="890" y="475" text-anchor="middle" font-size="16" font-weight="600" fill="#0057B8">same amount</text>
+</svg>

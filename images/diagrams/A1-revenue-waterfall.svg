@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 560" role="img" aria-labelledby="t d" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+  <title id="t">Revenue as a priority stack</title>
+  <desc id="d">A vertical stacked bar representing revenue. From the bottom up: variable costs (VC: suppliers, labor, materials), fixed costs (FC: overhead, rent, depreciation), normal profit (NP: required return to capital), and economic profit (EP: the residual, value captured). An axis on the left labeled priority of claim points down, from paid last, junior, at the top to paid first, senior, at the bottom. On the right, an inner bracket spans the whole bar and is labeled revenue, what the customer paid, equal to VC plus FC plus NP plus EP. An outer bracket spans the top three tranches and is labeled producer surplus, equal to R minus VC, which funds FC, NP, and EP.</desc>
+  <defs>
+    <linearGradient id="gVC" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#F1F3F5"/><stop offset="100%" stop-color="#DDE2E7"/></linearGradient>
+    <linearGradient id="gFC" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#F3F7FC"/><stop offset="100%" stop-color="#DCE7F4"/></linearGradient>
+    <linearGradient id="gNP" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#CFE0F2"/><stop offset="100%" stop-color="#A9C6E8"/></linearGradient>
+    <linearGradient id="gEP" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0E63C4"/><stop offset="100%" stop-color="#003F87"/></linearGradient>
+    <filter id="sh" filterUnits="userSpaceOnUse" x="0" y="0" width="1000" height="560">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#0A2E4D" flood-opacity="0.13"/>
+    </filter>
+    <clipPath id="cStack"><rect x="390" y="40" width="270" height="480" rx="8"/></clipPath>
+    <marker id="ah" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8A939C"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="1000" height="560" rx="8" fill="#FAFBFC"/>
+  <g transform="translate(-55,0)">
+
+  <!-- priority of claim axis -->
+  <line x1="336" y1="60" x2="336" y2="494" stroke="#8A939C" stroke-width="2" marker-end="url(#ah)"/>
+  <text x="318" y="72" text-anchor="end" font-size="18" font-weight="600" fill="#2C3E50">Paid last</text>
+  <text x="318" y="94" text-anchor="end" font-size="15" fill="#5A6672">junior</text>
+  <text x="318" y="272" text-anchor="end" font-size="15" font-weight="700" letter-spacing="1" fill="#8A939C">PRIORITY</text>
+  <text x="318" y="294" text-anchor="end" font-size="15" font-weight="700" letter-spacing="1" fill="#8A939C">OF CLAIM</text>
+  <text x="318" y="484" text-anchor="end" font-size="18" font-weight="600" fill="#2C3E50">Paid first</text>
+  <text x="318" y="506" text-anchor="end" font-size="15" fill="#5A6672">senior</text>
+
+  <!-- the stack: EP 40-144, NP 144-212, FC 212-308, VC 308-520 -->
+  <rect x="390" y="40" width="270" height="480" rx="8" fill="#FAFBFC" filter="url(#sh)"/>
+  <g clip-path="url(#cStack)">
+    <rect x="390" y="40" width="270" height="104" fill="url(#gEP)"/>
+    <rect x="390" y="144" width="270" height="68" fill="url(#gNP)"/>
+    <rect x="390" y="212" width="270" height="96" fill="url(#gFC)"/>
+    <rect x="390" y="308" width="270" height="212" fill="url(#gVC)"/>
+    <g stroke="#FFFFFF" stroke-width="2">
+      <line x1="390" y1="144" x2="660" y2="144"/>
+      <line x1="390" y1="212" x2="660" y2="212"/>
+      <line x1="390" y1="308" x2="660" y2="308"/>
+    </g>
+  </g>
+  <rect x="390" y="40" width="270" height="480" rx="8" fill="none" stroke="#002E5D" stroke-width="1.5"/>
+
+  <text x="525" y="87" text-anchor="middle" font-size="19" font-weight="700" fill="#FFFFFF">Economic profit (EP)</text>
+  <text x="525" y="110" text-anchor="middle" font-size="15" fill="#CFE0F5">the residual, value captured</text>
+  <text x="525" y="173" text-anchor="middle" font-size="18" font-weight="600" fill="#002E5D">Normal profit (NP)</text>
+  <text x="525" y="195" text-anchor="middle" font-size="15" fill="#2C4A6E">required return to capital</text>
+  <text x="525" y="255" text-anchor="middle" font-size="19" font-weight="600" fill="#2C3E50">Fixed costs (FC)</text>
+  <text x="525" y="278" text-anchor="middle" font-size="15" fill="#5A6672">overhead, rent, depreciation</text>
+  <text x="525" y="409" text-anchor="middle" font-size="19" font-weight="600" fill="#2C3E50">Variable costs (VC)</text>
+  <text x="525" y="432" text-anchor="middle" font-size="15" fill="#5A6672">suppliers, labor, materials</text>
+
+  <!-- revenue: inner bracket, whole stack -->
+  <path d="M672,40 L682,40 L682,520 L672,520" fill="none" stroke="#8A939C" stroke-width="2"/>
+  <text x="700" y="398" font-size="19" font-weight="600" fill="#2C3E50">Revenue</text>
+  <text x="700" y="421" font-size="15" fill="#5A6672">what the customer paid</text>
+  <text x="700" y="443" font-size="15" fill="#5A6672">= VC + FC + NP + EP</text>
+
+  <!-- producer surplus: outer bracket, FC through EP -->
+  <path d="M694,40 L708,40 L708,308 L694,308" fill="none" stroke="#0057B8" stroke-width="2.5"/>
+  <text x="726" y="156" font-size="19" font-weight="700" fill="#002E5D">Producer surplus</text>
+  <text x="726" y="180" font-size="16" fill="#2C3E50">= R − VC</text>
+  <text x="726" y="203" font-size="15" fill="#5A6672">funds FC, NP, and EP</text>
+  </g>
+</svg>

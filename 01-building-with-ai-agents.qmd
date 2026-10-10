@@ -29,7 +29,7 @@ In short: what do you want, what is true, what's the best option, what happened.
 
 Alice does not know where she wants to go, so for her it does not matter. Monson's reading of the story is the reason Aim comes first: "Unlike Alice, we know where we want to go, and it does matter which way we go, for by choosing our path, we choose our destination" [@monson2016]. Answer *what do you want* first, and every question after it has a criterion. Skip it, and any road looks as good as any other.
 
-The course *is* this loop, and the parts you see in the sidebar are its steps:
+The course *is* this loop. Each step matches one stage of the work you will do this semester:
 
 | The loop | The question | The part of the course |
 |---|---|---|
@@ -42,11 +42,11 @@ The **Aim**, what is worth building at all, is where strategy and values meet. W
 
 Two things about the loop are worth knowing up front.
 
-First, **the middle three multiply, they do not add.** How good a decision turns out is roughly Information × Reasoning × Execution, and because those multiply, a zero in any one makes the whole product zero. Brilliant reasoning on evidence you never gathered is a confident mistake. A great idea you never ship is worth nothing. Think of it as the area of a rectangle, where the sides multiply: a rectangle with one short side has almost no area however long the others are.
+First, **the last three multiply, they do not add.** How good a decision turns out is roughly Information × Reasoning × Execution (Inform, Reason, and Enact), and because those multiply, a zero in any one makes the whole product zero. Brilliant reasoning on evidence you never gathered is a confident mistake. A great idea you never ship is worth nothing. Think of it as the area of a rectangle, where the sides multiply: a rectangle with one short side has almost no area however long the others are.
 
-![Outcome is the area the factors enclose, so the factors multiply. One factor near zero brings the outcome near zero.](images/outcome-as-area.svg){fig-alt="Two rectangles. The left, with all sides full, is a large shaded area labeled Outcome. The right, with the Execution side near zero, shrinks to a thin strip labeled Outcome near zero."}
+![Outcome is the area the factors enclose, so the factors multiply. One factor near zero brings the outcome near zero. If the factors added, a long side could make up for a short one; because they multiply, it cannot.](images/diagrams/ch01-outcome-as-area.svg){#fig-outcome-as-area fig-alt="Two panels on the same axes. In each, the horizontal side is Belief, which is Information times Reasoning, and the vertical side is Execution. The left panel, every factor strong, is a large filled rectangle labeled Outcome, the full area. The right panel, one factor weak, has the same Belief side but Execution near zero, so the rectangle shrinks to a thin strip labeled Outcome near zero, almost no area left." width="100%"}
 
-Second, **most of the loop is about telling what you believe from what is true.** You will always have beliefs about your customer. Some are right, some are wrong, and the work of Inform and Reason is to close the gap. [Chapter 3](04-finding-and-validating-the-problem.qmd) gives you a diagram of that: a map of where a belief can sit relative to the truth, and how to move it.
+Second, **most of the loop is about telling what you believe from what is true.** You will always have beliefs about your customer. Some are right, some are wrong, and the work of Inform and Reason is to close the gap. [Finding and Validating the Problem](04-finding-and-validating-the-problem.qmd) gives you a diagram of that: a map of where a belief can sit relative to the truth, and how to move it.
 
 AIRE is the loop *you* run, across a sprint. Later in this chapter you will meet a second, much faster loop: the one the *agent* runs on every turn (gather context, act, check). Keep the two apart. AIRE decides what is worth building; the agent loop is how a piece of it gets built.
 
@@ -61,7 +61,10 @@ The scripture is not decoration, and it is not separate from the craft. This is 
 ## The Six Builder Axes
 
 This course tracks six skills. Together they are what a full-stack AI product builder can
-do, and they are the frame for everything that follows.
+do: one person who, with AI's help, can take a product from an idea to live software that
+customers use (the term is explained under [Where This Is Going](#where-this-is-going)). The six
+skills are the frame for everything that follows, and each part of the book in the sidebar is one
+of them.
 
 ![](images/builder-model.png){width=60%}
 
@@ -74,7 +77,7 @@ do, and they are the frame for everything that follows.
 | **AI Systems** | How do the models work, and why do they behave the way they do? |
 | **Launch and Learn** | How do people find it, and did it work? |
 
-Each axis gets two weeks. You will rate yourself on all six this week and again at the end
+Each axis gets two weeks. You will rate yourself on all six this week (that first rating is your baseline) and again at the end
 of the semester, and you will get back a six-sided chart of your profile both times. The
 point of the baseline is not to judge you. It is so you know which axis is your weakest and
 can spend your discretionary effort there.
@@ -88,7 +91,7 @@ already have something running to study.
 
 ## History of Product Management
 
-Product management is the work of identifying customer needs, aligning them with business goals, and leading a cross-functional team to build a product that succeeds in the market. The person responsible is the Product Manager (PM), sometimes called the "CEO of the product." The comparison is loose: PMs usually lead without formal authority and have few direct reports. The skills are broad, though:
+Product management is the work of identifying customer needs, aligning them with business goals, and leading a cross-functional team (people from different functions, such as engineering, design, and marketing) to build a product that succeeds in the market. The person responsible is the Product Manager (PM), sometimes called the "CEO of the product." The comparison is loose: PMs usually lead without formal authority and have few direct reports. The skills are broad, though:
 
 -   Strategic thinking: setting vision, making trade-offs, aligning with business goals
 -   Customer insight: understanding user needs and pain points
@@ -103,9 +106,9 @@ Product management as a job title traces to Hewlett-Packard in the 1940s. The id
 
 ![Image source: Wikimedia Commons](images/brand-men.jpg)
 
-Later influences, including the [Scrum development process](https://en.wikipedia.org/wiki/Scrum_(software_development)), the [Agile Manifesto](https://agilemanifesto.org/) [@beck2001], Google's Associate Product Manager (APM) program, and a number of influential books, standardized how the work is done.
+Later influences, including the [Scrum development process](https://en.wikipedia.org/wiki/Scrum_(software_development)) (work organized into short, fixed cycles called sprints, the same rhythm this course uses), the [Agile Manifesto](https://agilemanifesto.org/) [@beck2001] (a 2001 statement of principles favoring working software, delivered in small frequent steps, over long up-front plans), Google's Associate Product Manager (APM) program, and a number of influential books, standardized how the work is done.
 
-![A History of Product Management; Aakash Gupta and Scott Murff](images/pm-history.png)
+![A history of product management. The axis is drawn to scale from 1980; most of the events fall after 2000. Adapted from Aakash Gupta, *The History of Product Management* [@gupta2022history], and Scott Murff.](images/diagrams/ch01-pm-history.svg){#fig-pm-history fig-alt="A timeline drawn to scale from 1980 to 2025, with a break before it for the 1940s. 1940s: product manager becomes a job title at Hewlett-Packard. 1980s: Intuit and Microsoft create product management roles. 1986: Harvard Business Review publishes The New New Product Development Game. 1995: Ken Schwaber presents SCRUM Development Process. 2001: the Agile Manifesto is published. 2002: Google starts its Associate Product Manager program. 2008: Marty Cagan publishes Inspired. 2014: Product School is founded. 2015: Dan Olsen publishes The Lean Product Playbook. 2018: Carnegie Mellon starts a master's degree in product management. 2019: U.S. News ranks product manager the top hot job for new MBA graduates. 2022, highlighted: ChatGPT launches, and AI product managers follow. Most of the events fall after 2000." width="100%"}
 
 Each computing wave widened the field: personal computers in the 1980s, the internet in the 1990s, broadband and cloud computing in the 2000s, and the iPhone in 2007. In 2011, Marc Andreessen of the venture firm Andreessen Horowitz (a16z) wrote that [*Software Is Eating the World*](https://a16z.com/why-software-is-eating-the-world/) [@andreessen2011]. The launch of ChatGPT on November 30, 2022 began the next wave, and with it the AI Product Manager. Andreessen now argues that [*AI Will Save the World*](https://a16z.com/ai-will-save-the-world/) [@andreessen2023]. It will not do so on its own; people will use the same tools to do harm. We are living in the time when:
 
@@ -119,7 +122,7 @@ For two decades many companies built software with a *product trio*: a product m
 
 ## AI Product Management
 
-With AI, a PM can produce wireframes, mockups, and working demos without waiting on design or engineering, and can put a tangible idea in front of users in days. Designers and engineers are still needed; what changes is when they are engaged. Some ambitious individuals will do all three jobs.
+With AI, a PM can produce wireframes (rough sketches of a screen's layout), mockups (detailed pictures of finished screens), and working demos without waiting on design or engineering, and can put a tangible idea in front of users in days. Designers and engineers are still needed; what changes is when they are engaged. Some ambitious individuals will do all three jobs.
 
 ![](images/full-stack-from-to.png)
 
@@ -185,7 +188,7 @@ There's a new kind of coding I call "vibe coding", where you fully give in to th
 
 The term spread fast as a name for having AI write your code, often by voice. Collins Dictionary made it its 2025 Word of the Year. Karpathy had earlier described [English as the new programming language](https://x.com/karpathy/status/1617979122625712128?lang=en).
 
-The practice is contested. Skeptics say it encourages a shallow relationship with code: builders who do not understand their systems, more bugs, and unclear accountability when something breaks. Supporters see the next step in a long trend. Compilers freed programmers from assembly; language models free them from typing every character of syntax, so they can spend their attention on intent, design, and impact. Both camps are partly right, and this course is built on the overlap: let the agent write the syntax, and keep the understanding for yourself.
+The practice is contested. Skeptics say it encourages a shallow relationship with code: builders who do not understand their systems, more bugs, and unclear accountability when something breaks. Supporters see the next step in a long trend. Compilers (programs that translate readable code into the instructions a computer chip runs) freed programmers from writing those low-level instructions, called assembly, by hand; language models free them from typing every character of syntax, so they can spend their attention on intent, design, and impact. Both camps are partly right, and this course is built on the overlap: let the agent write the syntax, and keep the understanding for yourself.
 
 Paul Graham, co-founder of Y Combinator (YC), came around:
 
@@ -211,7 +214,7 @@ In March 2025, YC managing partner Jared Friedman said that a quarter of the Win
 
 {{< video https://www.youtube.com/embed/IACHfKmZMr8 >}}
 
-Many companies now sell tools for this. Dan Olsen's chart sorts them from less technical to more technical: browser-based app builders on the left, then IDE extensions, desktop apps, and command-line agents such as Claude Code on the right. This course works on the right side, and tools from the left side are often useful too.
+Many companies now sell tools for this. Dan Olsen's chart sorts them from less technical to more technical: browser-based app builders on the left, then IDE extensions (add-ons to a code editor such as VS Code; IDE stands for integrated development environment), desktop apps, and command-line agents such as Claude Code, which you run by typing in a terminal, on the right. This course works on the right side, and tools from the left side are often useful too.
 
 ![](/images/dan-olsen-vibe-coding.jpeg)
 
@@ -232,9 +235,11 @@ The clearest gain for a PM is fast, high-fidelity prototyping. A saying at the d
 
 Shopify's interview change (above) shows the skill is becoming expected. Beyond prototypes, a developer tool like Claude Code also gives a PM fast data analysis, automation, and more precise use of models than a chat window allows.
 
-When building gets this cheap, the order of the work changes. The loop used to run idea, spec,
-design, build, ship, learn: you wrote the thing down because building it was the expensive step,
-so you wanted to be sure before anyone started. a16z calls what is happening now the inversion of
+When building gets this cheap, the order of the work changes. A **spec** (short for
+specification) is a written description of what a product or feature should do; the standard form
+in product management is the product requirements document, or **PRD**. Product work used to run
+in this order: idea, spec, design, build, ship, learn. You wrote the thing down first because
+building it was the expensive step, so you wanted to be sure before anyone started. a16z calls what is happening now the inversion of
 that loop.
 
 ![Image source: a16z](images/loop-inverts.jpg){fig-alt="Two circular diagrams. The old loop reads have an idea, write the spec, design it, build it, ship, learn. The inverted loop reads have an idea, build it, play with it, design it, ship, learn."}
@@ -288,7 +293,7 @@ With the right tools, one person can credibly do all three trio roles and become
 
 The table below lists what product work actually consists of, question by question, and marks which
 role does each piece. The highlighted column is the full-stack product builder: the same discovery,
-planning, go-to-market, and analytics work a business PM does, plus the architecture and engineering
+planning, go-to-market (getting the product to customers and selling it), and analytics work a business PM does, plus the architecture and engineering
 execution rows that used to belong to someone else. Those added rows are the ones this course is
 built to cover.
 
@@ -340,11 +345,11 @@ This course uses terms like "building with AI," "agentic coding," "AI builder," 
 
 ## What Makes an Agent an Agent
 
-**An agent is a model in a loop with tools.** A web chatbot and a coding agent run on the same underlying models. What separates them is access: the chatbot can only send text back to you, while the agent can read your files, run commands, and see what happened.
+**An agent is a model in a loop with tools.** The **model** is a large language model (LLM), such as Claude: a program that takes in text and writes text back. A web chatbot and a coding agent run on the same underlying models. What separates them is access: the chatbot can only send text back to you, while the agent can read your files, run commands, and see what happened.
 
 ![The same model, four levels of access. Web chatbots sit at the top layer; agents work across all four.](images/agent-pyramid.svg){fig-alt="A four-layer pyramid. The small top layer is LLM, text in and text out. Below it, System Access: bash, files, terminal. Below that, Code Execution: write, run, debug, iterate. The wide base is Tools and Artifacts: docs, apps, APIs, deploy. A bracket marks the top layer alone as web chatbots, and a bracket spanning all four layers as AI agents."}
 
-A chatbot can write you a PRD. An agent can read your repo, write the code, run it, watch it fail,
+A chatbot can write you a PRD. An agent can read your repo (short for repository, the folder that holds your project's code), write the code, run it, watch it fail,
 fix it, and deploy the result. That gap is why this course runs in a terminal instead
 of a browser tab.
 
@@ -364,9 +369,9 @@ Two building blocks make this work. The **model** reasons and decides the next s
 
 **Worked example.** You tell Claude Code: "The delete button on my to-do app doesn't work." A good run looks like this:
 
-1. *Context:* it reads `app.py`, finds the delete handler, and reads `todos.json`.
+1. *Context:* it reads `app.py` (the app's code), finds the delete handler (the code that runs when the button is clicked), and reads `todos.json` (the file where the to-dos are saved).
 2. *Act:* it notices the handler removes the item from the list but never saves the file, and adds the save.
-3. *Check:* it runs the app (or a small test), deletes an item, reloads, and confirms the item is gone.
+3. *Check:* it runs the app (or a small test, a short program that checks one behavior automatically), deletes an item, reloads, and confirms the item is gone.
 4. The check passes, so it stops and reports.
 
 Now three bad runs, one per phase. It "fixes" the wrong button because it never opened `app.py` (context). It rewrites the whole file and breaks the add feature (act). It announces "Fixed!" without ever reloading the app (check). The loop gives you a debugging checklist for the agent itself: **when a result is wrong, ask which phase failed.** Did it lack context, take the wrong action, or skip the check? Each has a different fix: give it the file or the rule, narrow the request, or give it a way to verify.
@@ -415,9 +420,11 @@ this mechanism:
   permissions and hooks act on tool calls, so they can stop any action before it runs.
 - **The model knows only what tool results put in front of it.** If it never called `Read` on
   the file that mattered, it is guessing about that file.
-- **More tools means more ability.** An MCP server adds tools to the list. Connect the
-  Playwright server and the model gains tools that open a browser and click (Chapter 2).
-- **Your own product can work the same way.** When you give a model tools through the API, your
+- **More tools means more ability.** An MCP server, a small program that connects Claude Code to
+  another system, adds tools to the list. Connect the Playwright server and the model gains tools
+  that open a browser and click (Chapter 2).
+- **Your own product can work the same way.** When you give a model tools through the API (the
+  interface your own code uses to send requests to a model), your
   code plays Claude Code's part: it receives the call, decides whether to run it, and sends the
   result back (Chapter 11).
 
@@ -530,7 +537,7 @@ Instruction in this course uses Claude Code, but the same model applies to other
 | **Desktop app** | The Code tab in the Claude desktop app | You want a visual diff viewer, an app preview, and several sessions side by side |
 | **Web** ([claude.ai/code](https://claude.ai/code)) | A session that runs in Anthropic's cloud on a fresh clone of your GitHub repo | A long task that should keep running after you close the laptop |
 
-What carries across: the terminal, the VS Code extension, and the desktop app read the **same configuration files** on your machine: `CLAUDE.md`, skills, hooks, MCP servers, and `settings.json`. Learn them once in the terminal and you have learned them for the app. A web session is different because it runs on another computer: it sees what is committed to your repo (the project `CLAUDE.md` and `.claude/settings.json`, for example) and not what lives only on your laptop (`~/.claude/settings.json`, `.claude/settings.local.json`, your `.env`).
+What carries across: the terminal, the VS Code extension, and the desktop app read the **same configuration files** on your machine: `CLAUDE.md`, skills, hooks, MCP servers, and `settings.json`. Chapter 2 explains each of these; for now, what matters is that all three surfaces share them. Learn them once in the terminal and you have learned them for the app. A web session is different because it runs on another computer: it sees what you have committed to your repo (saved as a version with git) and pushed (uploaded to GitHub), such as the project `CLAUDE.md` and `.claude/settings.json`. It does not see what lives only on your laptop: `~/.claude/settings.json`, `.claude/settings.local.json`, and your `.env` (the file that holds your secret keys and passwords).
 
 ![The three local surfaces share your configuration files and Claude's auto memory. A web session sees only what you pushed to GitHub; auto memory is stored in your home folder, outside the repo, so it stays on the computer where Claude wrote it.](images/diagrams/ch01-one-engine-surfaces.svg){#fig-one-engine-surfaces fig-alt="Two panels. Your laptop: Terminal, VS Code extension, and Desktop app cards each point down to one shaded area holding two boxes. The first is a dark bar, The same configuration files: CLAUDE.md, skills, hooks, MCP, settings. Below it is a separate box, Auto memory, stored under ~/.claude/projects/ in your home folder, labeled stays on this laptop. A highlighted arrow labeled git push runs from the configuration bar to a card in the cloud panel, Your GitHub repo, what you pushed; no arrow leaves auto memory. From the repo, an arrow labeled fresh clone points up to Web session, claude.ai/code. A note says not there: auto memory, ~/.claude/settings.json, settings.local.json, .env." width="100%"}
 

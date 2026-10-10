@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 620" role="img" aria-labelledby="t d" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+  <title id="t">The value stick, fully decomposed</title>
+  <desc id="d">A tall vertical bar from a variable cost floor at the bottom to willingness to pay at the top. From bottom to top its bands are variable costs (VC), fixed costs (FC), normal profit (NP, the cost of capital), economic profit (EP, the value you capture), and consumer surplus (CS, the value the customer keeps). Labels on the left mark three boundaries: willingness to pay, the most the customer would give, at the top; price, where revenue stops and CS begins, between economic profit and consumer surplus; and the variable cost floor, the least it takes to make a unit, at the bottom. Two brackets on the far left mark revenue, equal to VC plus FC plus NP plus EP, from the floor up to price, and producer surplus, from the top of variable costs up to price. On the right, small brackets mark consumer surplus as what the customer keeps and economic profit as what you capture, and a larger bracket over both marks value created and shared, equal to CS plus EP, above all costs and normal returns.</desc>
+  <defs>
+    <linearGradient id="gVC" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#F1F3F5"/><stop offset="100%" stop-color="#DDE2E7"/></linearGradient>
+    <linearGradient id="gFC" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#F3F7FC"/><stop offset="100%" stop-color="#DCE7F4"/></linearGradient>
+    <linearGradient id="gNP" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#CFE0F2"/><stop offset="100%" stop-color="#A9C6E8"/></linearGradient>
+    <linearGradient id="gEP" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0E63C4"/><stop offset="100%" stop-color="#003F87"/></linearGradient>
+    <linearGradient id="gCS" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#FFFFFF"/><stop offset="100%" stop-color="#F3F5F8"/></linearGradient>
+    <filter id="sh" filterUnits="userSpaceOnUse" x="0" y="0" width="1000" height="620">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#0A2E4D" flood-opacity="0.13"/>
+    </filter>
+    <clipPath id="cBar"><rect x="410" y="50" width="190" height="500" rx="8"/></clipPath>
+  </defs>
+  <rect x="0" y="0" width="1000" height="620" rx="8" fill="#FAFBFC"/>
+
+  <!-- the stick: CS 50-165, EP 165-249, NP 249-303, FC 303-380, VC 380-550 -->
+  <rect x="410" y="50" width="190" height="500" rx="8" fill="#FAFBFC" filter="url(#sh)"/>
+  <g clip-path="url(#cBar)">
+    <rect x="410" y="50" width="190" height="115" fill="url(#gCS)"/>
+    <rect x="410" y="165" width="190" height="84" fill="url(#gEP)"/>
+    <rect x="410" y="249" width="190" height="54" fill="url(#gNP)"/>
+    <rect x="410" y="303" width="190" height="77" fill="url(#gFC)"/>
+    <rect x="410" y="380" width="190" height="170" fill="url(#gVC)"/>
+    <g stroke="#FFFFFF" stroke-width="2">
+      <line x1="410" y1="249" x2="600" y2="249"/>
+      <line x1="410" y1="303" x2="600" y2="303"/>
+      <line x1="410" y1="380" x2="600" y2="380"/>
+    </g>
+  </g>
+  <rect x="410" y="50" width="190" height="500" rx="8" fill="none" stroke="#002E5D" stroke-width="1.5"/>
+  <line x1="410" y1="165" x2="600" y2="165" stroke="#002E5D" stroke-width="2"/>
+
+  <text x="505" y="103" text-anchor="middle" font-size="18" font-weight="600" fill="#2C3E50">Consumer surplus</text>
+  <text x="505" y="125" text-anchor="middle" font-size="15" fill="#5A6672">CS</text>
+  <text x="505" y="202" text-anchor="middle" font-size="18" font-weight="700" fill="#FFFFFF">Economic profit</text>
+  <text x="505" y="224" text-anchor="middle" font-size="15" fill="#CFE0F5">EP</text>
+  <text x="505" y="273" text-anchor="middle" font-size="17" font-weight="600" fill="#002E5D">Normal profit</text>
+  <text x="505" y="292" text-anchor="middle" font-size="15" fill="#2C4A6E">NP · cost of capital</text>
+  <text x="505" y="337" text-anchor="middle" font-size="18" font-weight="600" fill="#2C3E50">Fixed costs</text>
+  <text x="505" y="359" text-anchor="middle" font-size="15" fill="#5A6672">FC</text>
+  <text x="505" y="461" text-anchor="middle" font-size="18" font-weight="600" fill="#2C3E50">Variable costs</text>
+  <text x="505" y="483" text-anchor="middle" font-size="15" fill="#5A6672">VC</text>
+
+  <!-- boundary labels on the left, with leader lines to the stick -->
+  <g stroke="#C5CCD3" stroke-width="1.5" stroke-dasharray="4 4">
+    <line x1="330" y1="50" x2="408" y2="50"/>
+    <line x1="330" y1="165" x2="408" y2="165"/>
+    <line x1="330" y1="550" x2="408" y2="550"/>
+  </g>
+  <text x="320" y="56" text-anchor="end" font-size="18" font-weight="600" fill="#2C3E50">Willingness to pay</text>
+  <text x="320" y="77" text-anchor="end" font-size="15" fill="#5A6672">the most the customer would give</text>
+
+  <text x="320" y="171" text-anchor="end" font-size="18" font-weight="600" fill="#2C3E50">Price</text>
+  <text x="320" y="192" text-anchor="end" font-size="15" fill="#5A6672">where revenue stops,</text>
+  <text x="320" y="211" text-anchor="end" font-size="15" fill="#5A6672">CS begins</text>
+
+  <text x="320" y="556" text-anchor="end" font-size="18" font-weight="600" fill="#2C3E50">Variable cost floor</text>
+  <text x="320" y="577" text-anchor="end" font-size="15" fill="#5A6672">the least it takes to make a unit</text>
+
+  <!-- producer surplus: outer left bracket, top of VC up to price -->
+  <path d="M358,165 L348,165 L348,380 L358,380" fill="none" stroke="#8A939C" stroke-width="2"/>
+  <text x="334" y="278" text-anchor="end" font-size="18" font-weight="600" fill="#2C3E50">Producer</text>
+  <text x="334" y="300" text-anchor="end" font-size="18" font-weight="600" fill="#2C3E50">surplus</text>
+
+  <!-- revenue: inner left bracket, floor up to price -->
+  <path d="M390,165 L380,165 L380,550 L390,550" fill="none" stroke="#8A939C" stroke-width="2"/>
+  <text x="366" y="448" text-anchor="end" font-size="18" font-weight="600" fill="#2C3E50">Revenue</text>
+  <text x="366" y="470" text-anchor="end" font-size="15" fill="#5A6672">= VC + FC + NP + EP</text>
+
+  <!-- right: what each side keeps -->
+  <path d="M612,50 L622,50 L622,161 L612,161" fill="none" stroke="#8A939C" stroke-width="2"/>
+  <text x="636" y="104" font-size="16" fill="#2C3E50">Customer keeps</text>
+  <text x="636" y="124" font-size="16" fill="#2C3E50">(CS)</text>
+  <path d="M612,169 L622,169 L622,249 L612,249" fill="none" stroke="#0057B8" stroke-width="2.5"/>
+  <text x="636" y="203" font-size="16" font-weight="700" fill="#0057B8">You capture</text>
+  <text x="636" y="223" font-size="16" font-weight="700" fill="#0057B8">(EP)</text>
+
+  <!-- value created and shared = CS + EP -->
+  <path d="M780,50 L792,50 L792,249 L780,249" fill="none" stroke="#002E5D" stroke-width="2.5"/>
+  <text x="810" y="118" font-size="19" font-weight="700" fill="#002E5D">Value created</text>
+  <text x="810" y="141" font-size="19" font-weight="700" fill="#002E5D">and shared</text>
+  <text x="810" y="165" font-size="17" fill="#2C3E50">= CS + EP</text>
+  <text x="810" y="189" font-size="15" fill="#5A6672">above all costs</text>
+  <text x="810" y="208" font-size="15" fill="#5A6672">and normal returns</text>
+</svg>

@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 560" role="img" aria-labelledby="t d" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+  <title id="t">The five forces set how wide your margin is</title>
+  <desc id="d">Two value sticks side by side, with the same willingness to pay at the top and the same willingness to sell at the bottom. Each stick is split by a Price line and a Cost line into customer's delight at the top, your margin in the middle, and supplier's surplus at the bottom. Under weak forces, price sits close to willingness to pay and cost sits close to willingness to sell, so your margin is most of the stick. Under strong forces, a long arrow labeled rivalry, new entrants, substitutes, and buyer power pushes price down, and a long arrow labeled supplier power pushes cost up, so your margin is a thin band in the middle. Under weak forces the same two arrows are short.</desc>
+  <defs>
+    <linearGradient id="gDel" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#F3F7FC"/><stop offset="100%" stop-color="#E6EEF7"/></linearGradient>
+    <linearGradient id="gMar" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0E63C4"/><stop offset="100%" stop-color="#003F87"/></linearGradient>
+    <linearGradient id="gSup" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#EEF0F2"/><stop offset="100%" stop-color="#E1E5E9"/></linearGradient>
+    <marker id="ah" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0057B8"/></marker>
+  </defs>
+  <rect x="0" y="0" width="1000" height="560" rx="8" fill="#FAFBFC"/>
+  <rect x="250" y="90" width="190" height="60" fill="url(#gDel)"/>
+  <rect x="250" y="150" width="190" height="280" fill="url(#gMar)"/>
+  <rect x="250" y="430" width="190" height="60" fill="url(#gSup)"/>
+  <rect x="250" y="90" width="190" height="400" fill="none" stroke="#002E5D" stroke-width="1.5"/>
+  <line x1="250" y1="150" x2="440" y2="150" stroke="#002E5D" stroke-width="2"/>
+  <line x1="250" y1="430" x2="440" y2="430" stroke="#002E5D" stroke-width="2"/>
+  <text x="345.0" y="126.0" font-size="16" font-weight="400" fill="#5A6672" text-anchor="middle">Customer's delight</text>
+  <text x="345.0" y="297.0" font-size="19" font-weight="600" fill="#FFFFFF" text-anchor="middle">Your margin</text>
+  <text x="345.0" y="466.0" font-size="16" font-weight="400" fill="#5A6672" text-anchor="middle">Supplier's surplus</text>
+  <text x="236" y="156" font-size="17" font-weight="600" fill="#2C3E50" text-anchor="end">Price</text>
+  <text x="236" y="436" font-size="17" font-weight="600" fill="#2C3E50" text-anchor="end">Cost</text>
+  <rect x="580" y="90" width="190" height="170" fill="url(#gDel)"/>
+  <rect x="580" y="260" width="190" height="70" fill="url(#gMar)"/>
+  <rect x="580" y="330" width="190" height="160" fill="url(#gSup)"/>
+  <rect x="580" y="90" width="190" height="400" fill="none" stroke="#002E5D" stroke-width="1.5"/>
+  <line x1="580" y1="260" x2="770" y2="260" stroke="#002E5D" stroke-width="2"/>
+  <line x1="580" y1="330" x2="770" y2="330" stroke="#002E5D" stroke-width="2"/>
+  <text x="675.0" y="181.0" font-size="16" font-weight="400" fill="#5A6672" text-anchor="middle">Customer's delight</text>
+  <text x="675.0" y="302.0" font-size="19" font-weight="600" fill="#FFFFFF" text-anchor="middle">Your margin</text>
+  <text x="675.0" y="416.0" font-size="16" font-weight="400" fill="#5A6672" text-anchor="middle">Supplier's surplus</text>
+  <text x="566" y="266" font-size="17" font-weight="600" fill="#2C3E50" text-anchor="end">Price</text>
+  <text x="566" y="336" font-size="17" font-weight="600" fill="#2C3E50" text-anchor="end">Cost</text>
+  <line x1="150" y1="90" x2="770" y2="90" stroke="#8A939C" stroke-width="1.5" stroke-dasharray="4 4"/>
+  <text x="140" y="86" font-size="17" font-weight="600" fill="#2C3E50" text-anchor="end">Willingness</text>
+  <text x="140" y="107" font-size="17" font-weight="600" fill="#2C3E50" text-anchor="end">to pay</text>
+  <line x1="150" y1="490" x2="770" y2="490" stroke="#8A939C" stroke-width="1.5" stroke-dasharray="4 4"/>
+  <text x="140" y="486" font-size="17" font-weight="600" fill="#2C3E50" text-anchor="end">Willingness</text>
+  <text x="140" y="507" font-size="17" font-weight="600" fill="#2C3E50" text-anchor="end">to sell</text>
+  <text x="345.0" y="52" font-size="21" font-weight="700" fill="#002E5D" text-anchor="middle">Weak forces</text>
+  <text x="675.0" y="52" font-size="21" font-weight="700" fill="#002E5D" text-anchor="middle">Strong forces</text>
+  <line x1="462" y1="94" x2="462" y2="144" stroke="#0057B8" stroke-width="3" marker-end="url(#ah)"/>
+  <line x1="462" y1="486" x2="462" y2="436" stroke="#0057B8" stroke-width="3" marker-end="url(#ah)"/>
+  <line x1="792" y1="94" x2="792" y2="254" stroke="#0057B8" stroke-width="3" marker-end="url(#ah)"/>
+  <line x1="792" y1="486" x2="792" y2="336" stroke="#0057B8" stroke-width="3" marker-end="url(#ah)"/>
+  <text x="814" y="126" font-size="18" font-weight="500" fill="#0057B8" text-anchor="start">Rivalry</text>
+  <text x="814" y="154" font-size="18" font-weight="500" fill="#0057B8" text-anchor="start">New entrants</text>
+  <text x="814" y="182" font-size="18" font-weight="500" fill="#0057B8" text-anchor="start">Substitutes</text>
+  <text x="814" y="226" font-size="18" font-weight="500" fill="#0057B8" text-anchor="start">Buyer power</text>
+  <text x="814" y="418" font-size="18" font-weight="500" fill="#0057B8" text-anchor="start">Supplier power</text>
+</svg>

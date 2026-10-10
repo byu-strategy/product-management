@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 560" role="img" aria-labelledby="t d" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+  <title id="t">The value stick</title>
+  <desc id="d">A vertical bar. Its top edge is labeled willingness to pay, the most the customer would give, and its bottom edge willingness to sell, the least suppliers would take. Two interior lines split it into three bands: price, what you actually charge, near the top, and cost, what the inputs cost you, near the bottom. The top band is customer's delight, bracketed as the value the customer keeps. The middle band, the largest and highlighted, is your margin, the value you capture. The bottom band is supplier's surplus, bracketed as the value the supplier keeps. A large bracket on the right spans the whole bar, from willingness to pay down to willingness to sell, and is labeled total value created.</desc>
+  <defs>
+    <linearGradient id="gDel" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#F3F7FC"/><stop offset="100%" stop-color="#E6EEF7"/></linearGradient>
+    <linearGradient id="gMar" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0E63C4"/><stop offset="100%" stop-color="#003F87"/></linearGradient>
+    <linearGradient id="gSup" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#EEF0F2"/><stop offset="100%" stop-color="#E1E5E9"/></linearGradient>
+    <filter id="sh" filterUnits="userSpaceOnUse" x="0" y="0" width="1000" height="560">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#0A2E4D" flood-opacity="0.13"/>
+    </filter>
+    <clipPath id="cBar"><rect x="370" y="60" width="220" height="440" rx="8"/></clipPath>
+  </defs>
+  <rect x="0" y="0" width="1000" height="560" rx="8" fill="#FAFBFC"/>
+
+  <!-- the stick: delight 60-167, margin 167-393, supplier 393-500 -->
+  <rect x="370" y="60" width="220" height="440" rx="8" fill="#FAFBFC" filter="url(#sh)"/>
+  <g clip-path="url(#cBar)">
+    <rect x="370" y="60" width="220" height="107" fill="url(#gDel)"/>
+    <rect x="370" y="167" width="220" height="226" fill="url(#gMar)"/>
+    <rect x="370" y="393" width="220" height="107" fill="url(#gSup)"/>
+  </g>
+  <rect x="370" y="60" width="220" height="440" rx="8" fill="none" stroke="#002E5D" stroke-width="1.5"/>
+  <line x1="370" y1="167" x2="590" y2="167" stroke="#002E5D" stroke-width="2"/>
+  <line x1="370" y1="393" x2="590" y2="393" stroke="#002E5D" stroke-width="2"/>
+
+  <text x="480" y="119" text-anchor="middle" font-size="17" fill="#5A6672">Customer's delight</text>
+  <text x="480" y="276" text-anchor="middle" font-size="21" font-weight="600" fill="#FFFFFF">Your margin</text>
+  <text x="480" y="300" text-anchor="middle" font-size="15" fill="#CFE0F5">the value you capture</text>
+  <text x="480" y="452" text-anchor="middle" font-size="17" fill="#5A6672">Supplier's surplus</text>
+
+  <!-- the four lines, labeled on the left -->
+  <g stroke="#C5CCD3" stroke-width="1.5" stroke-dasharray="4 4">
+    <line x1="352" y1="60" x2="368" y2="60"/>
+    <line x1="352" y1="167" x2="368" y2="167"/>
+    <line x1="352" y1="393" x2="368" y2="393"/>
+    <line x1="352" y1="500" x2="368" y2="500"/>
+  </g>
+  <text x="342" y="66" text-anchor="end" font-size="18" font-weight="600" fill="#2C3E50">Willingness to pay</text>
+  <text x="342" y="87" text-anchor="end" font-size="15" fill="#5A6672">the most the customer would give</text>
+  <text x="342" y="173" text-anchor="end" font-size="18" font-weight="600" fill="#2C3E50">Price</text>
+  <text x="342" y="194" text-anchor="end" font-size="15" fill="#5A6672">what you actually charge</text>
+  <text x="342" y="399" text-anchor="end" font-size="18" font-weight="600" fill="#2C3E50">Cost</text>
+  <text x="342" y="420" text-anchor="end" font-size="15" fill="#5A6672">what the inputs cost you</text>
+  <text x="342" y="506" text-anchor="end" font-size="18" font-weight="600" fill="#2C3E50">Willingness to sell</text>
+  <text x="342" y="527" text-anchor="end" font-size="15" fill="#5A6672">the least suppliers would take</text>
+
+  <!-- who keeps each band -->
+  <path d="M602,60 L612,60 L612,163 L602,163" fill="none" stroke="#8A939C" stroke-width="2"/>
+  <text x="628" y="109" font-size="16" fill="#2C3E50">Value the</text>
+  <text x="628" y="129" font-size="16" fill="#2C3E50">customer keeps</text>
+  <path d="M602,171 L612,171 L612,389 L602,389" fill="none" stroke="#0057B8" stroke-width="2.5"/>
+  <text x="628" y="276" font-size="18" font-weight="700" fill="#0057B8">Value you</text>
+  <text x="628" y="298" font-size="18" font-weight="700" fill="#0057B8">capture</text>
+  <path d="M602,397 L612,397 L612,500 L602,500" fill="none" stroke="#8A939C" stroke-width="2"/>
+  <text x="628" y="442" font-size="16" fill="#2C3E50">Value the</text>
+  <text x="628" y="462" font-size="16" fill="#2C3E50">supplier keeps</text>
+
+  <!-- total value created: the whole height -->
+  <path d="M780,60 L792,60 L792,500 L780,500" fill="none" stroke="#002E5D" stroke-width="2.5"/>
+  <text x="810" y="274" font-size="19" font-weight="700" fill="#002E5D">Total value</text>
+  <text x="810" y="298" font-size="19" font-weight="700" fill="#002E5D">created</text>
+</svg>

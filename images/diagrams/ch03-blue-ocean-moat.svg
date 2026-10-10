@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 620" role="img" aria-labelledby="t d" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+  <title id="t">A blue ocean widens the margin; a moat keeps it wide</title>
+  <desc id="d">Four value sticks drawn on one scale, left to right. Red ocean: a short stick whose price and cost lines sit close together, so your margin is a thin band. An arrow labeled value innovation leads to Blue ocean: a taller stick whose top, willingness to pay, has moved up past the red ocean's top, marked add what the industry never offered, and whose bottom, willingness to sell, has moved down past the red ocean's bottom, marked drop what the industry over-serves. Its margin is wide. From the blue ocean, an arrow labeled imitators enter leads to Without a moat: the same tall stick, but price has fallen close to cost, which has not moved, and the margin is thin again. A curved arrow labeled imitators kept out leads over it to With a moat: the same tall stick with the same wide margin as the blue ocean.</desc>
+  <defs>
+    <linearGradient id="gDel" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#F3F7FC"/><stop offset="100%" stop-color="#E6EEF7"/></linearGradient>
+    <linearGradient id="gMar" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0E63C4"/><stop offset="100%" stop-color="#003F87"/></linearGradient>
+    <linearGradient id="gSup" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#EEF0F2"/><stop offset="100%" stop-color="#E1E5E9"/></linearGradient>
+    <marker id="ah" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0057B8"/></marker>
+    <marker id="ahg" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5A6672"/></marker>
+  </defs>
+  <rect x="0" y="0" width="1000" height="620" rx="8" fill="#FAFBFC"/>
+  <line x1="260" y1="220" x2="542" y2="220" stroke="#8A939C" stroke-width="1.5" stroke-dasharray="4 4"/>
+  <line x1="260" y1="440" x2="542" y2="440" stroke="#8A939C" stroke-width="1.5" stroke-dasharray="4 4"/>
+  <rect x="150" y="220" width="110" height="50" fill="url(#gDel)"/>
+  <rect x="150" y="270" width="110" height="70" fill="url(#gMar)"/>
+  <rect x="150" y="340" width="110" height="100" fill="url(#gSup)"/>
+  <rect x="150" y="220" width="110" height="220" fill="none" stroke="#002E5D" stroke-width="1.5"/>
+  <line x1="150" y1="270" x2="260" y2="270" stroke="#002E5D" stroke-width="2"/>
+  <line x1="150" y1="340" x2="260" y2="340" stroke="#002E5D" stroke-width="2"/>
+  <text x="205.0" y="311.0" font-size="16" font-weight="600" fill="#FFFFFF" text-anchor="middle">Your margin</text>
+  <rect x="420" y="130" width="110" height="60" fill="url(#gDel)"/>
+  <rect x="420" y="190" width="110" height="260" fill="url(#gMar)"/>
+  <rect x="420" y="450" width="110" height="80" fill="url(#gSup)"/>
+  <rect x="420" y="130" width="110" height="400" fill="none" stroke="#002E5D" stroke-width="1.5"/>
+  <line x1="420" y1="190" x2="530" y2="190" stroke="#002E5D" stroke-width="2"/>
+  <line x1="420" y1="450" x2="530" y2="450" stroke="#002E5D" stroke-width="2"/>
+  <text x="475.0" y="326.0" font-size="16" font-weight="600" fill="#FFFFFF" text-anchor="middle">Your margin</text>
+  <rect x="680" y="130" width="110" height="265" fill="url(#gDel)"/>
+  <rect x="680" y="395" width="110" height="55" fill="url(#gMar)"/>
+  <rect x="680" y="450" width="110" height="80" fill="url(#gSup)"/>
+  <rect x="680" y="130" width="110" height="400" fill="none" stroke="#002E5D" stroke-width="1.5"/>
+  <line x1="680" y1="395" x2="790" y2="395" stroke="#002E5D" stroke-width="2"/>
+  <line x1="680" y1="450" x2="790" y2="450" stroke="#002E5D" stroke-width="2"/>
+  <text x="735.0" y="428.5" font-size="16" font-weight="600" fill="#FFFFFF" text-anchor="middle">Your margin</text>
+  <rect x="860" y="130" width="110" height="60" fill="url(#gDel)"/>
+  <rect x="860" y="190" width="110" height="260" fill="url(#gMar)"/>
+  <rect x="860" y="450" width="110" height="80" fill="url(#gSup)"/>
+  <rect x="860" y="130" width="110" height="400" fill="none" stroke="#002E5D" stroke-width="1.5"/>
+  <line x1="860" y1="190" x2="970" y2="190" stroke="#002E5D" stroke-width="2"/>
+  <line x1="860" y1="450" x2="970" y2="450" stroke="#002E5D" stroke-width="2"/>
+  <text x="915.0" y="326.0" font-size="16" font-weight="600" fill="#FFFFFF" text-anchor="middle">Your margin</text>
+  <text x="136" y="217" font-size="16" font-weight="600" fill="#2C3E50" text-anchor="end">Willingness</text>
+  <text x="136" y="236" font-size="16" font-weight="600" fill="#2C3E50" text-anchor="end">to pay</text>
+  <text x="136" y="437" font-size="16" font-weight="600" fill="#2C3E50" text-anchor="end">Willingness</text>
+  <text x="136" y="456" font-size="16" font-weight="600" fill="#2C3E50" text-anchor="end">to sell</text>
+  <text x="136" y="286" font-size="16" font-weight="600" fill="#2C3E50" text-anchor="end">Price</text>
+  <text x="136" y="336" font-size="16" font-weight="600" fill="#2C3E50" text-anchor="end">Cost</text>
+  <line x1="406" y1="216" x2="406" y2="138" stroke="#0057B8" stroke-width="2.5" marker-end="url(#ah)"/>
+  <line x1="406" y1="444" x2="406" y2="522" stroke="#0057B8" stroke-width="2.5" marker-end="url(#ah)"/>
+  <text x="392" y="150" font-size="16" font-weight="500" fill="#0057B8" text-anchor="end">Add what the</text>
+  <text x="392" y="170" font-size="16" font-weight="500" fill="#0057B8" text-anchor="end">industry never</text>
+  <text x="392" y="190" font-size="16" font-weight="500" fill="#0057B8" text-anchor="end">offered</text>
+  <text x="392" y="478" font-size="16" font-weight="500" fill="#0057B8" text-anchor="end">Drop what the</text>
+  <text x="392" y="498" font-size="16" font-weight="500" fill="#0057B8" text-anchor="end">industry</text>
+  <text x="392" y="518" font-size="16" font-weight="500" fill="#0057B8" text-anchor="end">over-serves</text>
+  <line x1="276" y1="322" x2="380" y2="322" stroke="#5A6672" stroke-width="2" marker-end="url(#ahg)"/>
+  <text x="328.0" y="288" font-size="16" font-weight="600" fill="#5A6672" text-anchor="middle">Value</text>
+  <text x="328.0" y="308" font-size="16" font-weight="600" fill="#5A6672" text-anchor="middle">innovation</text>
+  <line x1="544" y1="320" x2="666" y2="320" stroke="#5A6672" stroke-width="2" marker-end="url(#ahg)"/>
+  <text x="605.0" y="288" font-size="16" font-weight="600" fill="#5A6672" text-anchor="middle">Imitators</text>
+  <text x="605.0" y="308" font-size="16" font-weight="600" fill="#5A6672" text-anchor="middle">enter</text>
+  <path d="M475.0,120 C475.0,64 915.0,64 915.0,116" fill="none" stroke="#5A6672" stroke-width="2" marker-end="url(#ahg)"/>
+  <text x="695.0" y="52" font-size="16" font-weight="600" fill="#5A6672" text-anchor="middle">Imitators kept out</text>
+  <text x="205.0" y="580" font-size="19" font-weight="700" fill="#002E5D" text-anchor="middle">Red ocean</text>
+  <text x="475.0" y="580" font-size="19" font-weight="700" fill="#002E5D" text-anchor="middle">Blue ocean</text>
+  <text x="735.0" y="580" font-size="19" font-weight="700" fill="#002E5D" text-anchor="middle">Without a moat</text>
+  <text x="915.0" y="580" font-size="19" font-weight="700" fill="#002E5D" text-anchor="middle">With a moat</text>
+</svg>
