@@ -176,10 +176,10 @@ Slash commands are shortcuts for common Claude Code actions. They help you work 
 | Command | What It Does |
 |---------|--------------|
 | `/help` | Show available commands |
-| `/clear` | Clear conversation history |
-| `/compact` | Toggle compact mode |
-| `/config` | Open configuration |
-| `/status` | Show current project state |
+| `/clear` | Start a new conversation with empty context (CLAUDE.md still loads) |
+| `/compact` | Summarize the conversation so far to free up context, and keep going on the same task |
+| `/config` | Open settings (theme, model, and other preferences) |
+| `/status` | Show version, model, and account |
 
 #### Creating Custom Slash Commands
 
@@ -238,7 +238,7 @@ As your projects get more complex, you can leverage Claude Code's ability to wor
 
 #### What Are Agents?
 
-Agents are subprocesses that Claude Code can spawn to handle specific tasks. Instead of doing everything sequentially, Claude can work on multiple things at once:
+Agents (Claude Code calls them **subagents**) are helpers that Claude Code can spawn to handle specific tasks. Instead of doing everything sequentially, Claude can work on multiple things at once:
 
 - One agent researches how to implement authentication
 - Another agent sets up the database schema
@@ -258,9 +258,13 @@ Claude will break this into subtasks and potentially work on multiple parts simu
 
 #### Managing Context
 
-Agents share context with the main Claude session but can work independently. To keep things organized:
+Each subagent works in its own, separate context window. It does not see your conversation with
+Claude. Instead, Claude writes it a short task description, the subagent does the work, and only
+its final summary comes back to your main conversation. That is the point: a subagent can read
+fifty files or a long test log without filling up your main conversation. It also means a
+subagent knows only what it was told, so:
 
-1. **Use CLAUDE.md**: Define your project structure and conventions
+1. **Use CLAUDE.md**: subagents do load it, so put project structure and conventions there
 2. **Be specific**: "Create the auth flow following the pattern in /lib/auth"
 3. **Review incrementally**: Check agent work as it completes
 
@@ -296,15 +300,22 @@ Skills let you teach Claude Code how to do specific tasks, once, then invoke the
 
 #### Creating a Custom Skill
 
-Skills live in `.claude/skills/` in your project:
+Each skill is a folder in `.claude/skills/` in your project, with a file named `SKILL.md` inside
+it. The folder name becomes the command:
 
 ```bash
-mkdir -p .claude/skills
+mkdir -p .claude/skills/test-synthesis
 ```
 
-Create a skill file `.claude/skills/test-synthesis.md`:
+Create `.claude/skills/test-synthesis/SKILL.md`. The lines between the `---` markers at the top
+are the skill's settings. The `description` matters most: Claude reads it to decide when the
+skill applies, so a vague description means Claude never uses the skill on its own.
 
 ```markdown
+---
+description: Synthesizes usability test notes into findings and recommendations. Use when the user shares test session notes.
+---
+
 # Test Synthesis Skill
 
 When invoked, analyze the provided usability test notes and generate:
@@ -343,13 +354,21 @@ Now use it:
 
 #### Skills vs. Slash Commands
 
-| Feature | Slash Commands | Skills |
+Claude Code has merged the two: a file at `.claude/commands/deploy.md` and a skill at
+`.claude/skills/deploy/SKILL.md` both create `/deploy`, and both work. Use a skill for anything new,
+because a skill is a folder and can carry more:
+
+| Feature | Command file | Skill |
 |---------|----------------|--------|
-| **Location** | `.claude/commands/` | `.claude/skills/` |
-| **Purpose** | Quick prompts | Complex workflows |
-| **Can include code** | No | Yes |
-| **Can span multiple files** | No | Yes |
-| **Shareable** | Copy the file | Package and distribute |
+| **Location** | `.claude/commands/name.md` | `.claude/skills/name/SKILL.md` |
+| **Supporting files** (reference docs, scripts) | No | Yes, in the same folder |
+| **Claude can use it on its own** when the description matches | Yes | Yes |
+| **You can stop Claude using it on its own** | Yes | Yes (`disable-model-invocation: true`) |
+| **Shareable** | Copy the file | Copy the folder, or package as a plugin |
+
+Why a skill instead of putting the same instructions in CLAUDE.md: CLAUDE.md is read on every
+turn, so every line costs context all the time. A skill's full instructions load only when it is
+used.
 
 #### Useful Skills to Create
 
@@ -366,26 +385,91 @@ Now use it:
 Skills can be shared across projects:
 
 ```bash
-# Copy to global location
-cp .claude/skills/my-skill.md ~/.claude/skills/
+# Copy to your personal skills folder, available in every project
+cp -r .claude/skills/my-skill ~/.claude/skills/
 
 # Or package as a plugin (covered in Chapter 10)
 ```
 
 ## Claude Code: Hooks
 
-Hooks are automated actions that run at specific points in your development workflow. They help maintain code quality without manual checks.
+A hook is a command that runs **automatically** when something happens, every time, whatever
+Claude decides. That is the difference from CLAUDE.md. CLAUDE.md is guidance Claude usually
+follows; a hook is enforcement. If a rule must hold every single time (never edit `.env`, always
+format after an edit, never finish with failing tests), it belongs in a hook.
 
-#### What Are Hooks?
+Two different things are both called "hooks," and it helps to keep them apart:
 
-Claude Code hooks are shell commands or scripts that run automatically when certain events happen:
+- **Claude Code hooks** fire on Claude's own actions: before or after it uses a tool, when it
+  finishes a response, when a session starts.
+- **Git hooks** fire on Git's actions: before a commit, before a push. They run whether the
+  commit came from you, from Claude, or from anyone else. Husky (below) is a popular way to set
+  them up.
 
-- **Pre-commit**: Before code is committed
-- **Post-commit**: After code is committed
-- **Pre-push**: Before code is pushed
-- **File change**: When specific files are modified
+#### Claude Code hooks
 
-#### Setting Up Git Hooks with Husky
+The events you will use most:
+
+| Event | When it fires | Typical use |
+|---|---|---|
+| `PreToolUse` | Before Claude uses a tool (edit a file, run a command) | Block something dangerous |
+| `PostToolUse` | After a tool succeeds | Format or check a file Claude just edited |
+| `Stop` | When Claude finishes responding | Make Claude keep going until the tests pass |
+| `SessionStart` | When a session starts | Load facts like the current branch |
+
+Hooks are set in a settings file: `.claude/settings.json` to share with your team (commit it), or
+`~/.claude/settings.json` for all your projects. This one runs a script before every file edit:
+
+```json
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          { "type": "command", "command": "${CLAUDE_PROJECT_DIR}/.claude/hooks/protect-env.sh" }
+        ]
+      }
+    ]
+  }
+}
+```
+
+The `matcher` says which tools the hook watches. Claude Code sends the hook a description of what
+Claude is about to do, as JSON, and the script decides. Create
+`.claude/hooks/protect-env.sh` and make it runnable with `chmod +x .claude/hooks/protect-env.sh`:
+
+```bash
+#!/bin/bash
+# Block Claude from editing .env files
+FILE=$(jq -r '.tool_input.file_path')
+
+if [[ "$FILE" == *".env"* ]]; then
+  echo "Blocked: .env files hold secrets and must not be edited by Claude" >&2
+  exit 2
+fi
+exit 0
+```
+
+**The exit code is the decision.** Exit `2` blocks the action, and the message you print is shown
+to Claude so it can adjust. Exit `0` means "no objection." Any other exit code, including the
+usual error code `1`, is treated as the hook itself failing: Claude Code shows a warning and **the
+action goes ahead.** A policy hook that exits 1 does not block anything.
+
+Type `/hooks` in Claude Code to see every hook that is set up and where it came from.
+
+#### Common Claude Code hook patterns
+
+**Format every file Claude edits** (`PostToolUse`, matcher `Edit|Write`): run your formatter on
+the file. A formatter is a tool that rewrites code into a consistent style, such as Prettier.
+
+**Keep Claude working until the tests pass** (`Stop`): run the tests; if they fail, print why and
+exit `2`, and Claude continues instead of stopping.
+
+**Block commits to main** (`PreToolUse`, matcher `Bash`): if the command is a `git commit` and the
+current branch is `main`, exit `2`.
+
+#### Git hooks with Husky
 
 Husky is the standard way to manage Git hooks in JavaScript projects:
 
@@ -394,17 +478,10 @@ npm install -D husky
 npx husky init
 ```
 
-This creates `.husky/` directory with hook files.
-
-#### Pre-commit Hook Example
-
-Create `.husky/pre-commit`:
+This creates a `.husky/` directory with hook files. Create `.husky/pre-commit`:
 
 ```bash
-#!/usr/bin/env sh
-. "$(dirname -- "$0")/_/husky.sh"
-
-# Run linting
+# Run linting (a check for common code mistakes)
 npm run lint
 
 # Run type checking
@@ -414,11 +491,11 @@ npm run type-check
 npm test
 ```
 
-Now these run automatically before every commit. If any fail, the commit is blocked.
+Now these run before every commit, from anyone. If one fails (any non-zero exit for Git hooks),
+the commit is blocked.
 
-#### Lint-Staged for Faster Checks
-
-Running all checks on every file is slow. Lint-staged runs checks only on files being committed:
+Running every check on every file is slow. lint-staged runs checks only on the files being
+committed:
 
 ```bash
 npm install -D lint-staged
@@ -440,60 +517,10 @@ Add to `package.json`:
 }
 ```
 
-Update `.husky/pre-commit`:
+And make `.husky/pre-commit` run it:
 
 ```bash
-#!/usr/bin/env sh
-. "$(dirname -- "$0")/_/husky.sh"
-
 npx lint-staged
-```
-
-#### Claude Code Hook Configuration
-
-Claude Code can also run hooks. Create `.claude/hooks/` in your project:
-
-```bash
-mkdir -p .claude/hooks
-```
-
-Create `.claude/hooks/pre-edit.sh`:
-
-```bash
-#!/bin/bash
-# Run before Claude edits files
-
-# Ensure we're not editing protected files
-if [[ "$1" == *".env"* ]]; then
-  echo "Error: Cannot edit .env files"
-  exit 1
-fi
-```
-
-#### Common Hook Patterns
-
-**Formatting on commit:**
-```bash
-npm run format
-git add -u  # Re-stage formatted files
-```
-
-**Prevent commits to main:**
-```bash
-branch=$(git rev-parse --abbrev-ref HEAD)
-if [ "$branch" = "main" ]; then
-  echo "Cannot commit directly to main"
-  exit 1
-fi
-```
-
-**Run tests on push:**
-```bash
-npm test
-if [ $? -ne 0 ]; then
-  echo "Tests failed. Push aborted."
-  exit 1
-fi
 ```
 
 ## User Stories
@@ -989,7 +1016,7 @@ This creates traceability from code back to requirements.
 
 ## CLAUDE.md: Your SDD Configuration
 
-You can configure Claude Code to automatically follow your SDD workflow by adding instructions to your project's `CLAUDE.md` file or your global `~/.claude/CLAUDE.md`.
+You can give Claude Code your SDD workflow as standing instructions by adding them to your project's `CLAUDE.md` file or your global `~/.claude/CLAUDE.md`.
 
 Here's a starter template:
 
@@ -1027,7 +1054,7 @@ All specs are stored in `.claude/specs/{feature-name}/`
 - All user inputs must be validated server-side
 ```
 
-With this in place, Claude Code will automatically follow your preferred SDD process across all features.
+With this in place, Claude Code reads your SDD process at the start of every session and follows it closely. CLAUDE.md is guidance, not a guarantee: for a rule that must hold every time, such as "never skip the tests," add a hook.
 
 ## SDD in Practice: Tips and Gotchas
 
