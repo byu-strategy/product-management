@@ -1,69 +1,92 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 640" role="img" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
-  <title>A request's round trip, and where it can fail</title>
-  <desc>A save, traced from the browser to your server to the database and back. The browser sends a save request; the server checks who is asking and whether the input is valid; the server inserts the row into the database and gets the new row back; the server answers saved. Three numbered points mark where it can fail instead. 1, never arrived: no network, or the request timed out, so there is no answer at all. 2, refused, at the server's checks: not allowed (including not signed in), or bad input. 3, server broke, during the database step: a bug, or the database failed. Under the browser: tell the user which one happened.</desc>
-  <defs>
-    <linearGradient id="gCard" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#FFFFFF"/><stop offset="100%" stop-color="#F3F6F9"/></linearGradient>
-    <linearGradient id="gBlue" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#F0F5FB"/><stop offset="100%" stop-color="#DCE7F4"/></linearGradient>
-    <linearGradient id="gGray" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#F4F6F8"/><stop offset="100%" stop-color="#E3E7EB"/></linearGradient>
-    <linearGradient id="gNavy" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0E3F6A"/><stop offset="100%" stop-color="#001A36"/></linearGradient>
-    <linearGradient id="gRoyal" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#2A7AD6"/><stop offset="100%" stop-color="#0049A0"/></linearGradient>
-    <linearGradient id="gGreen" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#F1F8F3"/><stop offset="100%" stop-color="#E0EFE5"/></linearGradient>
-    <linearGradient id="gRed" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#FBF3F3"/><stop offset="100%" stop-color="#F3E1E1"/></linearGradient>
-    <filter id="sh" x="-10%" y="-10%" width="120%" height="135%"><feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#002E5D" flood-opacity="0.13"/></filter>
-    <filter id="shS" x="-10%" y="-10%" width="120%" height="135%"><feDropShadow dx="0" dy="1.5" stdDeviation="2.5" flood-color="#002E5D" flood-opacity="0.12"/></filter>
-    <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0.5 L10,5 L0,9.5 z" fill="#8A939C"/></marker>
-    <marker id="ahD" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0.5 L10,5 L0,9.5 z" fill="#5A6672"/></marker>
-    <marker id="ahA" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0.5 L10,5 L0,9.5 z" fill="#0057B8"/></marker>
-    <marker id="ahN" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0.5 L10,5 L0,9.5 z" fill="#002E5D"/></marker>
-  </defs>
-  <rect x="0" y="0" width="1000" height="640" rx="8" fill="#FAFBFC"/>
-  <line x1="120" y1="160" x2="120" y2="612" stroke="#D9DEE4" stroke-width="2"/>
-  <circle cx="120" cy="82" r="36" fill="url(#gBlue)" stroke="#B9D0EA" stroke-width="1.5" filter="url(#sh)"/>
-  <g transform="translate(103.0,65.0) scale(1.417)" fill="none" stroke="#002E5D" stroke-width="1.84" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2" /> <path d="M10 4v4" /> <path d="M2 8h20" /> <path d="M6 4v4" /></g>
-  <text x="120" y="146" font-size="18" font-weight="700" text-anchor="middle" fill="#002E5D">Browser</text>
-  <line x1="370" y1="160" x2="370" y2="612" stroke="#D9DEE4" stroke-width="2"/>
-  <circle cx="370" cy="82" r="36" fill="url(#gBlue)" stroke="#B9D0EA" stroke-width="1.5" filter="url(#sh)"/>
-  <g transform="translate(353.0,65.0) scale(1.417)" fill="none" stroke="#002E5D" stroke-width="1.84" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="8" x="2" y="2" rx="2" ry="2" /> <rect width="20" height="8" x="2" y="14" rx="2" ry="2" /> <line x1="6" x2="6.01" y1="6" y2="6" /> <line x1="6" x2="6.01" y1="18" y2="18" /></g>
-  <text x="370" y="146" font-size="18" font-weight="700" text-anchor="middle" fill="#002E5D">Your server</text>
-  <line x1="600" y1="160" x2="600" y2="612" stroke="#D9DEE4" stroke-width="2"/>
-  <circle cx="600" cy="82" r="36" fill="url(#gBlue)" stroke="#B9D0EA" stroke-width="1.5" filter="url(#sh)"/>
-  <g transform="translate(583.0,65.0) scale(1.417)" fill="none" stroke="#002E5D" stroke-width="1.84" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3" /> <path d="M3 5V19A9 3 0 0 0 21 19V5" /> <path d="M3 12A9 3 0 0 0 21 12" /></g>
-  <text x="600" y="146" font-size="18" font-weight="700" text-anchor="middle" fill="#002E5D">Database</text>
-  <text x="686" y="146" font-size="15" font-weight="700" letter-spacing="1.2" fill="#8A939C">WHERE IT CAN FAIL</text>
-  <path d="M124 210 H364" fill="none" stroke="#002E5D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ahN)"/>
-  <text x="231.0" y="196" font-size="15" font-weight="600" text-anchor="middle" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" fill="#002E5D">save request</text>
-  <circle cx="326" cy="210" r="13" fill="url(#gRoyal)" stroke="#FFFFFF" stroke-width="2.5" filter="url(#shS)"/>
-  <text x="326" y="215" font-size="15" font-weight="700" text-anchor="middle" fill="#FFFFFF">1</text>
-  <rect x="686" y="179" width="284" height="62" rx="12" fill="url(#gCard)" stroke="#D9DEE4" stroke-width="1.5" filter="url(#shS)"/>
-  <circle cx="714" cy="210" r="13" fill="url(#gRoyal)" stroke="#FFFFFF" stroke-width="2.5" filter="url(#shS)"/>
-  <text x="714" y="215" font-size="15" font-weight="700" text-anchor="middle" fill="#FFFFFF">1</text>
-  <text x="740" y="206" font-size="16" font-weight="700" fill="#002E5D">Never arrived</text>
-  <text x="740" y="228" font-size="15" fill="#5A6672">no network, or timed out</text>
-  <rect x="362" y="258" width="16" height="80" rx="4" fill="url(#gBlue)" stroke="#B9D0EA" stroke-width="1.5"/>
-  <text x="392" y="290" font-size="16" fill="#5A6672">who is asking?</text>
-  <text x="392" y="312" font-size="16" fill="#5A6672">is the input valid?</text>
-  <circle cx="370" cy="298" r="13" fill="url(#gRoyal)" stroke="#FFFFFF" stroke-width="2.5" filter="url(#shS)"/>
-  <text x="370" y="303" font-size="15" font-weight="700" text-anchor="middle" fill="#FFFFFF">2</text>
-  <rect x="686" y="267" width="284" height="62" rx="12" fill="url(#gCard)" stroke="#D9DEE4" stroke-width="1.5" filter="url(#shS)"/>
-  <circle cx="714" cy="298" r="13" fill="url(#gRoyal)" stroke="#FFFFFF" stroke-width="2.5" filter="url(#shS)"/>
-  <text x="714" y="303" font-size="15" font-weight="700" text-anchor="middle" fill="#FFFFFF">2</text>
-  <text x="740" y="294" font-size="16" font-weight="700" fill="#002E5D">Refused</text>
-  <text x="740" y="316" font-size="15" fill="#5A6672">not allowed, or bad input</text>
-  <path d="M380 372 H594" fill="none" stroke="#002E5D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ahN)"/>
-  <text x="485.0" y="360" font-size="16" text-anchor="middle" fill="#2C3E50">insert the row</text>
-  <path d="M596 424 H384" fill="none" stroke="#5A6672" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="6 5" marker-end="url(#ahD)"/>
-  <text x="485.0" y="412" font-size="16" text-anchor="middle" fill="#2C3E50">the new row</text>
-  <path d="M366 484 H126" fill="none" stroke="#5A6672" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="6 5" marker-end="url(#ahD)"/>
-  <text x="259.0" y="470" font-size="15" font-weight="600" text-anchor="middle" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" fill="#002E5D">saved</text>
-  <rect x="362" y="358" width="16" height="80" rx="4" fill="url(#gBlue)" stroke="#B9D0EA" stroke-width="1.5"/>
-  <circle cx="370" cy="398" r="13" fill="url(#gRoyal)" stroke="#FFFFFF" stroke-width="2.5" filter="url(#shS)"/>
-  <text x="370" y="403" font-size="15" font-weight="700" text-anchor="middle" fill="#FFFFFF">3</text>
-  <rect x="686" y="367" width="284" height="62" rx="12" fill="url(#gCard)" stroke="#D9DEE4" stroke-width="1.5" filter="url(#shS)"/>
-  <circle cx="714" cy="398" r="13" fill="url(#gRoyal)" stroke="#FFFFFF" stroke-width="2.5" filter="url(#shS)"/>
-  <text x="714" y="403" font-size="15" font-weight="700" text-anchor="middle" fill="#FFFFFF">3</text>
-  <text x="740" y="394" font-size="16" font-weight="700" fill="#002E5D">Server broke</text>
-  <text x="740" y="416" font-size="15" fill="#5A6672">a bug, or the database failed</text>
-  <rect x="28" y="530" width="184" height="62" rx="12" fill="url(#gBlue)" stroke="#B9D0EA" stroke-width="1.5" filter="url(#shS)"/>
-  <text x="120" y="557" font-size="15" font-weight="600" text-anchor="middle" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" fill="#002E5D">tell the user</text>
-  <text x="120" y="579" font-size="16" text-anchor="middle" fill="#2C3E50">which one happened</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 930" role="img" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+<title>One request to save a task, and every answer that can come back</title>
+<desc>A sequence diagram with three columns, the browser, your server, and the database, plus a column on the left showing the message the user sees. At the top, the browser sends a request to your server: POST /api/tasks, an Authorization header carrying the token, and a body with the task text Buy groceries. If no response comes back because the network is down or the request timed out, the user sees: No connection. Try again. Your server then checks three things in order. If the token is not valid, it answers 401 Unauthorized and the user sees: Please sign in again. If the user is not allowed, it answers 403 Forbidden and the user sees: You do not have access. If the input is not valid, it answers 400 Bad Request and the user sees: Task cannot be empty. If all three pass, the server inserts the row into the database and gets back the new row or an error. If the save failed, it answers 500 Internal Server Error and the user sees: Something went wrong. If it worked, the server answers 201 Created with a body holding the new task, id 123, and the user sees the new task in the list.</desc>
+<defs>
+<linearGradient id="gBlue" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#F0F5FB"/><stop offset="100%" stop-color="#DCE7F4"/></linearGradient>
+<linearGradient id="gCard" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#FFFFFF"/><stop offset="100%" stop-color="#F3F6F9"/></linearGradient>
+<filter id="sh" x="-10%" y="-10%" width="120%" height="135%"><feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#002E5D" flood-opacity="0.13"/></filter>
+<filter id="shS" x="-10%" y="-10%" width="120%" height="135%"><feDropShadow dx="0" dy="1.5" stdDeviation="2.5" flood-color="#002E5D" flood-opacity="0.12"/></filter>
+<marker id="ahN" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0.5 L10,5 L0,9.5 z" fill="#002E5D"/></marker>
+<marker id="ahD" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0.5 L10,5 L0,9.5 z" fill="#5A6672"/></marker>
+<marker id="ahR" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0.5 L10,5 L0,9.5 z" fill="#B03A3A"/></marker>
+<marker id="ahA" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0.5 L10,5 L0,9.5 z" fill="#0057B8"/></marker>
+</defs>
+<rect x="0" y="0" width="1000" height="930" rx="8" fill="#FAFBFC"/>
+<line x1="330" y1="150" x2="330" y2="906" stroke="#D9DEE4" stroke-width="2"/>
+<circle cx="330" cy="66" r="36" fill="url(#gBlue)" stroke="#B9D0EA" stroke-width="1.5" filter="url(#sh)"/>
+<g transform="translate(313,49) scale(1.417)" fill="none" stroke="#002E5D" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2" />
+  <path d="M10 4v4" />
+  <path d="M2 8h20" />
+  <path d="M6 4v4" /></g>
+<text x="330" y="130" font-size="19" font-weight="700" text-anchor="middle" fill="#002E5D" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">Browser</text>
+<line x1="690" y1="150" x2="690" y2="906" stroke="#D9DEE4" stroke-width="2"/>
+<circle cx="690" cy="66" r="36" fill="url(#gBlue)" stroke="#B9D0EA" stroke-width="1.5" filter="url(#sh)"/>
+<g transform="translate(673,49) scale(1.417)" fill="none" stroke="#002E5D" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="8" x="2" y="2" rx="2" ry="2" />
+  <rect width="20" height="8" x="2" y="14" rx="2" ry="2" />
+  <line x1="6" x2="6.01" y1="6" y2="6" />
+  <line x1="6" x2="6.01" y1="18" y2="18" /></g>
+<text x="690" y="130" font-size="19" font-weight="700" text-anchor="middle" fill="#002E5D" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">Your server</text>
+<line x1="915" y1="150" x2="915" y2="906" stroke="#D9DEE4" stroke-width="2"/>
+<circle cx="915" cy="66" r="36" fill="url(#gBlue)" stroke="#B9D0EA" stroke-width="1.5" filter="url(#sh)"/>
+<g transform="translate(898,49) scale(1.417)" fill="none" stroke="#002E5D" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3" />
+  <path d="M3 5V19A9 3 0 0 0 21 19V5" />
+  <path d="M3 12A9 3 0 0 0 21 12" /></g>
+<text x="915" y="130" font-size="19" font-weight="700" text-anchor="middle" fill="#002E5D" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">Database</text>
+<text x="30" y="130" font-size="15" font-weight="700" text-anchor="start" fill="#8A939C" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" letter-spacing="1.2">THE USER SEES</text>
+<rect x="346" y="162" width="328" height="104" rx="10" fill="#FFFFFF" stroke="#002E5D" stroke-width="1.5" filter="url(#shS)"/>
+<text x="362" y="192" font-size="15" font-weight="700" text-anchor="start" fill="#002E5D" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace">POST /api/tasks</text>
+<text x="312" y="192" font-size="15" font-weight="400" text-anchor="end" fill="#8A939C" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">method, address</text>
+<text x="362" y="221" font-size="15" font-weight="400" text-anchor="start" fill="#2C3E50" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace">Authorization: Bearer eyJhbGci...</text>
+<text x="312" y="221" font-size="15" font-weight="400" text-anchor="end" fill="#8A939C" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">header</text>
+<text x="362" y="250" font-size="15" font-weight="400" text-anchor="start" fill="#2C3E50" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace">{ "task_text": "Buy groceries" }</text>
+<text x="312" y="250" font-size="15" font-weight="400" text-anchor="end" fill="#8A939C" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">body</text>
+<path d="M334 290 H684" stroke="#002E5D" stroke-width="2" fill="none" marker-end="url(#ahN)"/>
+<rect x="682" y="300" width="16" height="420" rx="4" fill="url(#gBlue)" stroke="#B9D0EA" stroke-width="1.5"/>
+<circle cx="330" cy="350" r="17" fill="#FFFFFF" stroke="#D9DEE4" stroke-width="1.5"/>
+<g transform="translate(319,339) scale(0.9167)" fill="none" stroke="#5A6672" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" />
+  <polyline points="12 6 12 12 16 14" /></g>
+<text x="360" y="356" font-size="16" font-weight="400" text-anchor="start" fill="#5A6672" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">no response: network down, or timed out</text>
+<rect x="24" y="329" width="262" height="36" rx="8" fill="#FFFFFF" stroke="#D9DEE4" stroke-width="1.5" filter="url(#shS)"/>
+<text x="40" y="352" font-size="16" font-weight="500" text-anchor="start" fill="#2C3E50" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">No connection. Try again.</text>
+<text x="708" y="426" font-size="17" font-weight="600" text-anchor="start" fill="#2C3E50" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">Token valid?</text>
+<path d="M680 420 H336" stroke="#B03A3A" stroke-width="1.75" stroke-dasharray="6 5" fill="none" marker-end="url(#ahR)"/>
+<rect x="429.2" y="393" width="161.6" height="26" rx="13" fill="#FFFFFF" stroke="#B03A3A" stroke-width="1.5"/>
+<text x="510.0" y="411" font-size="15" font-weight="700" text-anchor="middle" fill="#B03A3A" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">401 Unauthorized</text>
+<text x="668" y="411" font-size="15" font-weight="600" text-anchor="end" fill="#B03A3A" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">no</text>
+<rect x="24" y="399" width="262" height="36" rx="8" fill="#FFFFFF" stroke="#D9DEE4" stroke-width="1.5" filter="url(#shS)"/>
+<text x="40" y="422" font-size="16" font-weight="500" text-anchor="start" fill="#2C3E50" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">Please sign in again.</text>
+<text x="708" y="496" font-size="17" font-weight="600" text-anchor="start" fill="#2C3E50" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">Allowed?</text>
+<path d="M680 490 H336" stroke="#B03A3A" stroke-width="1.75" stroke-dasharray="6 5" fill="none" marker-end="url(#ahR)"/>
+<rect x="442.1" y="463" width="135.8" height="26" rx="13" fill="#FFFFFF" stroke="#B03A3A" stroke-width="1.5"/>
+<text x="510.0" y="481" font-size="15" font-weight="700" text-anchor="middle" fill="#B03A3A" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">403 Forbidden</text>
+<text x="668" y="481" font-size="15" font-weight="600" text-anchor="end" fill="#B03A3A" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">no</text>
+<rect x="24" y="469" width="262" height="36" rx="8" fill="#FFFFFF" stroke="#D9DEE4" stroke-width="1.5" filter="url(#shS)"/>
+<text x="40" y="492" font-size="16" font-weight="500" text-anchor="start" fill="#2C3E50" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">You don't have access.</text>
+<text x="708" y="566" font-size="17" font-weight="600" text-anchor="start" fill="#2C3E50" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">Input valid?</text>
+<path d="M680 560 H336" stroke="#B03A3A" stroke-width="1.75" stroke-dasharray="6 5" fill="none" marker-end="url(#ahR)"/>
+<rect x="433.5" y="533" width="153.0" height="26" rx="13" fill="#FFFFFF" stroke="#B03A3A" stroke-width="1.5"/>
+<text x="510.0" y="551" font-size="15" font-weight="700" text-anchor="middle" fill="#B03A3A" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">400 Bad Request</text>
+<text x="668" y="551" font-size="15" font-weight="600" text-anchor="end" fill="#B03A3A" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">no</text>
+<rect x="24" y="539" width="262" height="36" rx="8" fill="#FFFFFF" stroke="#D9DEE4" stroke-width="1.5" filter="url(#shS)"/>
+<text x="40" y="562" font-size="16" font-weight="500" text-anchor="start" fill="#2C3E50" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">Task can't be empty.</text>
+<path d="M700 610 H909" stroke="#002E5D" stroke-width="2" fill="none" marker-end="url(#ahN)"/>
+<text x="802.5" y="600" font-size="16" font-weight="400" text-anchor="middle" fill="#2C3E50" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">insert the row</text>
+<path d="M911 652 H704" stroke="#5A6672" stroke-width="2" stroke-dasharray="6 5" fill="none" marker-end="url(#ahD)"/>
+<text x="802.5" y="642" font-size="16" font-weight="400" text-anchor="middle" fill="#2C3E50" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">new row, or an error</text>
+<text x="708" y="706" font-size="17" font-weight="600" text-anchor="start" fill="#2C3E50" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">Saved?</text>
+<path d="M680 700 H336" stroke="#B03A3A" stroke-width="1.75" stroke-dasharray="6 5" fill="none" marker-end="url(#ahR)"/>
+<rect x="390.5" y="673" width="239.0" height="26" rx="13" fill="#FFFFFF" stroke="#B03A3A" stroke-width="1.5"/>
+<text x="510.0" y="691" font-size="15" font-weight="700" text-anchor="middle" fill="#B03A3A" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">500 Internal Server Error</text>
+<text x="668" y="691" font-size="15" font-weight="600" text-anchor="end" fill="#B03A3A" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">no</text>
+<rect x="24" y="679" width="262" height="36" rx="8" fill="#FFFFFF" stroke="#D9DEE4" stroke-width="1.5" filter="url(#shS)"/>
+<text x="40" y="702" font-size="16" font-weight="500" text-anchor="start" fill="#2C3E50" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">Something went wrong.</text>
+<rect x="346" y="740" width="328" height="104" rx="10" fill="#FFFFFF" stroke="#0057B8" stroke-width="2" filter="url(#shS)"/>
+<text x="362" y="770" font-size="15" font-weight="700" text-anchor="start" fill="#0057B8" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">201 Created</text>
+<text x="312" y="770" font-size="15" font-weight="400" text-anchor="end" fill="#8A939C" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">status code</text>
+<text x="362" y="799" font-size="15" font-weight="400" text-anchor="start" fill="#2C3E50" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">{ "id": 123,</text>
+<text x="312" y="799" font-size="15" font-weight="400" text-anchor="end" fill="#8A939C" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">body</text>
+<text x="362" y="828" font-size="15" font-weight="400" text-anchor="start" fill="#2C3E50" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">  "task_text": "Buy groceries" }</text>
+<path d="M680 876 H336" stroke="#0057B8" stroke-width="2.25" fill="none" marker-end="url(#ahA)"/>
+<rect x="24" y="855" width="262" height="36" rx="8" fill="#E6EEF7" stroke="#B9D0EA" stroke-width="1.5" filter="url(#shS)"/>
+<text x="40" y="878" font-size="16" font-weight="500" text-anchor="start" fill="#002E5D" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">The new task in the list</text>
 </svg>
