@@ -1,7 +1,7 @@
 // Adds a small "Learn" button beside each heading marked data-learn by learn.lua.
 // Clicking it copies the /learn command for that section and shows a short note.
 (function () {
-  var ICON = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/></svg>';
+  var ICON = '<svg viewBox="0 0 13 7" width="20" height="11" shape-rendering="crispEdges" aria-hidden="true"><g fill="#D97757"><rect x="2" y="0" width="9" height="1"/><rect x="2" y="1" width="9" height="1"/><rect x="2" y="2" width="1" height="1"/><rect x="4" y="2" width="5" height="1"/><rect x="10" y="2" width="1" height="1"/><rect x="0" y="3" width="13" height="1"/><rect x="2" y="4" width="9" height="1"/><rect x="2" y="5" width="9" height="1"/><rect x="2" y="6" width="1" height="1"/><rect x="4" y="6" width="1" height="1"/><rect x="8" y="6" width="1" height="1"/><rect x="10" y="6" width="1" height="1"/></g><rect x="3" y="2" width="1" height="1" fill="#1F1F1F"/><rect x="9" y="2" width="1" height="1" fill="#1F1F1F"/></svg>';
 
   function copy(text) {
     if (navigator.clipboard && window.isSecureContext) {
