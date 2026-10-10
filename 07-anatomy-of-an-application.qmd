@@ -132,8 +132,8 @@ list of them is your server's API, which your browser calls.
 
 ![Image source: Adityagaba via Medium](images/architecture.png){fig-alt="A diagram split into a front-end half and a back-end half. The front end shows a web app and a mobile app, with HTML, CSS, JavaScript, and Node logos beneath. An arrow connects them to a server in the back-end half, which connects in turn to a database, an API, and language logos for Java, Python, C plus plus, and PHP."}
 
-Here is what happens when a user adds a to-do item. The API is the entry point of
-your server, so it has no box of its own.
+Here is what happens when a user adds a to-do item. In the sequence below, your server's API
+is its set of routes, such as `POST /api/tasks`, so it is drawn as part of the server.
 
 ```{mermaid}
 sequenceDiagram
