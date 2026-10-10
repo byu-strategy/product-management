@@ -5,42 +5,19 @@ title: "Directing the Agent"
 ## Why This Matters
 
 You have a working app and almost no control over how it got built. This chapter is about
-control: the files that give an agent standing context, the commands that make a repeated
-task one word, and the discipline of writing down what you want before anyone builds it.
-The gap between a student who ships once and a student who ships all semester is almost
-entirely here.
+control, and control comes down to three questions you answer for every agent you direct:
 
-## Terminal Practice
+1. **What can it see?** The agent knows only what is in its context window.
+2. **What may it do?** Instructions advise; hooks and permission rules enforce; modes, sandboxes, and worktrees limit the damage.
+3. **How will you know it worked?** Its own report is a claim. Your check is the evidence.
 
-Last chapter, you learned the basics of the command line. Let's reinforce those skills with some practice exercises.
+The second half of the chapter is about the discipline that makes all three easier: writing down
+what you want before anyone builds it. The gap between a student who ships once and a student who
+ships all semester is almost entirely here.
 
-**Exercise 1: Create a project structure**
+Terminal practice from earlier versions of this chapter now lives in [Chapter 1](01-building-with-ai-agents.qmd).
 
-```bash
-# Create a new project folder
-mkdir problem-tracker
-cd problem-tracker
-
-# Create subdirectories
-mkdir notes prototypes research
-
-# Create your first problem journal entry
-echo "Day 1: Problems I noticed today" > notes/journal.txt
-```
-
-**Exercise 2: Navigate and inspect**
-
-```bash
-# List everything you created
-ls -la
-
-# Check your journal
-cat notes/journal.txt
-
-# Add another entry
-echo "- Spent 10 min finding a parking spot downtown" >> notes/journal.txt
-cat notes/journal.txt
-```
+<!-- learn -->
 
 ## Conversational Coding
 
@@ -57,19 +34,42 @@ Then iterate:
 
 > Now I want to rate each problem on frequency (daily, weekly, monthly, rarely). Add a dropdown for that.
 
-This conversational approach gives you more control and helps you learn what Claude is doing at each step.
+Each small request is one short trip around the agent loop, and you check the result before the next one. Conversation is how you *explore*. Once you know what you want to keep, you write it down as a spec (later in this chapter), so the next session, or the next agent, does not have to rediscover it from a chat log.
 
-## Claude Code: Markdown Files
+<!-- learn -->
 
-One of Claude Code's most powerful features is its ability to understand context through **markdown files**. Let's explore how to give Claude persistent knowledge about your project.
+## It Knows Only What It Can See
 
-#### CLAUDE.md: Your Project's Memory
+**The context window is the agent's entire world.** Whatever is not in it does not exist for the agent: not the conversation you had yesterday, not the decision you made in your head, not the file it never opened. Every response is produced from what is in the window right now.
 
-A `CLAUDE.md` file (or `.claude/CLAUDE.md`) is a special file that Claude Code automatically reads when you start a session. It tells Claude about your project, including what you're building, your preferences, and any important context.
+#### What fills the window
 
-Create one for your problem tracker:
+| Building block | When it enters | You control it with |
+|---|---|---|
+| Claude Code's own system instructions | Every session | (fixed) |
+| **CLAUDE.md** files | Start of every session, and again after `/clear` | Editing the file |
+| Skill names and descriptions | Start of every session; a skill's full instructions load only when it is used | Writing skills |
+| Your messages and Claude's replies | As you talk | What you say |
+| Tool results: files it read, command output, search results | Each time it uses a tool | What you ask it to read; subagents (below) |
 
-Then in Claude Code:
+The window is finite. As it fills, Claude Code clears old tool output and then summarizes the conversation automatically, and instructions from early in the conversation can get lost in the summary. That is the practical reason for CLAUDE.md: **anything that must survive goes in a file the agent re-reads, not in a chat message.**
+
+#### The controls
+
+| Command or file | What it does to the window |
+|---|---|
+| `CLAUDE.md` | Puts standing facts and rules in every session |
+| `/context` | Shows what is filling the window right now |
+| `/compact` | Summarizes the conversation so far to free space, and keeps going on the same task. `/compact focus on the API changes` tells it what to keep |
+| `/clear` | Starts a new, empty conversation. CLAUDE.md still loads; everything you said does not |
+| Skills | Keep procedures out of the window until they are needed |
+| Subagents | Do noisy work (long logs, big searches) in a separate window and return only a summary |
+
+**Worked example.** On Monday you tell Claude, "Never use a database for this project; JSON files only." On Wednesday you start a new session and ask for a search feature. Claude adds SQLite. It did not disobey you: Monday's sentence was in Monday's window, and Wednesday's window never contained it. Put the rule in CLAUDE.md and every session starts with it.
+
+#### CLAUDE.md: your project's memory
+
+`CLAUDE.md` is a Markdown file Claude Code reads automatically at the start of every session. It is where you write down what you would otherwise re-explain: what you are building, the tech stack, conventions, and commands. Ask Claude to write one:
 
 > Create a CLAUDE.md file that describes a problem tracking application I'm building to help me identify startup ideas
 
@@ -85,229 +85,67 @@ A personal tool for capturing and evaluating problems that could become product 
 - Python with Streamlit for the frontend
 - JSON file for data persistence
 
-## Key Features
-- Daily problem journaling
-- Problem evaluation scoring (frequency, intensity, WTP)
-- Categorization and tagging
-
 ## Development Notes
 - Keep the UI simple since this is for personal use
 - Focus on fast capture over elaborate analysis
 ```
 
-This context persists across sessions. Every time you start Claude Code in this directory, it knows what you're building.
+`/init` generates a starter CLAUDE.md by reading your codebase, and `/memory` opens it for editing. Keep it short: the docs suggest under 200 lines, because every line costs context on every turn and long files are followed less reliably.
 
-#### Project-Specific vs. Global Settings
+#### Where CLAUDE.md files live
 
-Claude Code supports settings at multiple levels:
+| Location | Scope | Use it for |
+|---|---|---|
+| `./CLAUDE.md` (or `./.claude/CLAUDE.md`) in the project root | This project; commit it so your team shares it | Tech stack, conventions, build and test commands |
+| `./CLAUDE.local.md` | This project, just you (keep it out of git) | Personal notes about this project |
+| `~/.claude/CLAUDE.md` | All your projects | Your personal preferences and style |
 
-| Location | Scope | Use Case |
-|----------|-------|----------|
-| `.claude/CLAUDE.md` | This project only | Project-specific instructions, tech stack, conventions |
-| `~/.claude/CLAUDE.md` | All your projects | Personal preferences, common patterns |
-| `.claude/settings.json` | This project | Technical configuration |
+All the files that apply are **combined**, not replaced: a project file adds to your personal one, and the more specific file is read last. Settings are a different thing and live in different files (`.claude/settings.json` and friends); you will meet them under permissions and hooks below.
 
-For now, focus on project-specific CLAUDE.md files. As you build more projects, you might create a global one with your preferred coding style.
+::: {.callout-tip title="Try it"}
+Run `/context` in a session and find your CLAUDE.md in the list. Then: (1) tell Claude a project rule in chat, run `/clear`, and ask it what the rule is. (2) Put the rule in CLAUDE.md, run `/clear`, and ask again. Explain the difference in one sentence.
+:::
 
-## Deploying a Prototype
-
-Let's deploy a simple problem tracker to make it real. In your problem-tracker directory start Claude from the terminal:
-
-```bash
-claude
-```
-
-Then:
-
-> Build a simple Streamlit app for tracking problems. It should let me add a problem (title, description, frequency rating), see a list of all problems I've added, and save everything to a JSON file. Keep it minimal since this is just for me to capture ideas.
-
-Streamlit is an even lighter weight than Vercel to delpoy an app quickly. Claude Code will help you install any missing dependencies.
-
-After Claude creates the app, run it:
-
-```bash
-streamlit run app.py
-```
-
-This opens your app in a browser. Add a few problems from your journal. Congratulations, you've built your first problem-tracking tool!
-
-To share it (or access from your phone), you can deploy to Streamlit Community Cloud:
-
-1. Push your code to GitHub
-2. Go to [share.streamlit.io](https://share.streamlit.io)
-3. Connect your repo and deploy
-
-Now you can capture problems wherever you are. You don't really have to use this tool and this excercise was just to illustrate another way to ship simple apps quickly using streamlit.
-
-## Deployment with Vercel / GitHub Pages
-
-Once your code is on GitHub, deployment is simple.
-
-#### Option 1: Vercel (Recommended for Apps)
-
-1. Go to [vercel.com](https://vercel.com) and sign up with GitHub
-2. Click "Add New" → "Project"
-3. Import your GitHub repository
-4. Vercel automatically detects your framework and deploys
-5. Get a live URL like `problem-tracker.vercel.app`
-
-Every time you push to GitHub, Vercel automatically redeploys. Zero configuration needed.
-
-#### Option 2: GitHub Pages (Great for Static Sites)
-
-For your portfolio and other static sites:
-
-1. Go to your repository on GitHub
-2. Settings → Pages
-3. Source: "Deploy from a branch" or "GitHub Actions"
-4. Your site appears at `username.github.io/repo-name`
-
-![The setting to change is under Settings, then Pages, then Source.](images/github-actions-deploy.jpg){fig-alt="A GitHub repository Settings page. Pages is highlighted in the left sidebar. In the Build and deployment section, the Source dropdown is open with GitHub Actions highlighted above the currently selected Deploy from a branch."}
-
-Pick "GitHub Actions" if your site has a build step, which anything beyond plain HTML will. Pick
-"Deploy from a branch" only if you are publishing files that are already finished.
+<!-- learn -->
 
 ## Claude Code: Slash Commands
 
-Slash commands are shortcuts for common Claude Code actions. They help you work faster and more consistently.
-
-#### Built-in Commands
+A slash command is recognized at the start of a message; anything after it is its argument. The built-ins you will use most:
 
 | Command | What It Does |
 |---------|--------------|
 | `/help` | Show available commands |
+| `/init` | Write a starter CLAUDE.md for this project |
+| `/memory` | Open your CLAUDE.md files for editing |
+| `/context` | Show what is filling the context window |
 | `/clear` | Start a new conversation with empty context (CLAUDE.md still loads) |
 | `/compact` | Summarize the conversation so far to free up context, and keep going on the same task |
+| `/plan` | Switch into plan mode (read-only planning; see below) |
+| `/rewind` | Roll back Claude's file edits and/or the conversation to an earlier point |
+| `/permissions` | Manage allow, ask, and deny rules |
+| `/mcp` | Manage connections to outside tools (MCP servers) |
+| `/hooks` | Show every hook that is set up and where it came from |
 | `/config` | Open settings (theme, model, and other preferences) |
 | `/status` | Show version, model, and account |
 
-#### Creating Custom Slash Commands
+#### Your own commands
 
-The real power is creating your own commands. Store them in `.claude/commands/` in your project:
+You can also save a prompt you use often and run it by name. Claude Code now treats these as **skills** (next section): a file at `.claude/commands/interview.md` still works and creates `/interview`, but new ones should be skills. Text you type after the command replaces `$ARGUMENTS` in the file, so `/interview [paste notes]` runs your saved synthesis prompt on those notes. Files in `~/.claude/` (your home folder) are available in every project; files in the project's `.claude/` only there.
 
-```bash
-mkdir -p .claude/commands
-```
+Useful ones for a PM: `persona` (a persona from interview data), `jtbd` (a problem restated as a job to be done), `commit` (a commit message for staged changes), `review` (a code review).
 
-Create a file `.claude/commands/interview.md`:
-
-```markdown
-# Interview Synthesis Prompt
-
-Analyze the following interview notes and create a synthesis document with:
-
-1. **Problem Statement** - One clear sentence
-2. **Key Insights** - 3-5 bullet points of patterns
-3. **Notable Quotes** - Direct quotes that capture emotion
-4. **Validation Status** - Is this problem validated? Why/why not?
-5. **Next Steps** - What should we do with this information?
-
-Interview notes:
-$ARGUMENTS
-```
-
-Now you can use it:
-
-```bash
-claude
-/interview [paste your interview notes here]
-```
-
-#### Useful Custom Commands
-
-Create these to speed up your workflow:
-
-**`persona.md`**: Generate a persona from interview data
-**`jtbd.md`**: Convert a problem description to JTBD format
-**`commit.md`**: Write a good commit message for staged changes
-**`review.md`**: Review code for best practices
-
-#### Storing Reusable Prompts
-
-For prompts you use across projects, put them in your global Claude directory:
-
-```bash
-mkdir -p ~/.claude/commands
-```
-
-Files here are available in any project. Great for commands like `/debug` or `/explain` that you use everywhere.
-
-## Claude Code: Agents
-
-As your projects get more complex, you can leverage Claude Code's ability to work on multiple tasks in parallel using **agents**.
-
-#### What Are Agents?
-
-Agents (Claude Code calls them **subagents**) are helpers that Claude Code can spawn to handle specific tasks. Instead of doing everything sequentially, Claude can work on multiple things at once:
-
-- One agent researches how to implement authentication
-- Another agent sets up the database schema
-- A third agent creates the UI components
-
-#### Using Agents Effectively
-
-To activate agentic behavior, give Claude Code complex, multi-part tasks:
-
-> Set up a complete Next.js project with:
-> 1. Supabase authentication (email + Google OAuth)
-> 2. A protected dashboard page
-> 3. A landing page for logged-out users
-> 4. Basic navigation between pages
-
-Claude will break this into subtasks and potentially work on multiple parts simultaneously.
-
-#### Managing Context
-
-Each subagent works in its own, separate context window. It does not see your conversation with
-Claude. Instead, Claude writes it a short task description, the subagent does the work, and only
-its final summary comes back to your main conversation. That is the point: a subagent can read
-fifty files or a long test log without filling up your main conversation. It also means a
-subagent knows only what it was told, so:
-
-1. **Use CLAUDE.md**: subagents do load it, so put project structure and conventions there
-2. **Be specific**: "Create the auth flow following the pattern in /lib/auth"
-3. **Review incrementally**: Check agent work as it completes
-
-#### Task Decomposition
-
-Break large tasks into smaller, parallelizable pieces:
-
-**Instead of:**
-> "Build my entire app"
-
-**Do this:**
-> "Let's build the authentication system first. Start with:
-> 1. Supabase client setup in /lib/supabase.ts
-> 2. Auth context in /contexts/AuthContext.tsx
-> 3. Login page at /login
-> 4. Protected route wrapper component"
-
-This gives Claude a clear scope and lets you verify each piece works before moving on.
+<!-- learn -->
 
 ## Claude Code: Skills
 
-Skills are Claude Code's most powerful feature for reusable workflows. A skill combines instructions and code into a portable, shareable package.
-
-#### What Are Skills?
-
-Skills let you teach Claude Code how to do specific tasks, once, then invoke them anytime with a slash command:
-
-```bash
-/summarize-feedback   # Run your custom skill
-/generate-test-data   # Another custom skill
-/review-component     # And another
-```
+A skill is a reusable procedure you teach Claude once: a folder with a `SKILL.md` file of instructions, plus any reference files or scripts it needs. You run it with `/skill-name`, or Claude loads it on its own when your request matches the skill's description.
 
 #### Creating a Custom Skill
 
 Each skill is a folder in `.claude/skills/` in your project, with a file named `SKILL.md` inside
-it. The folder name becomes the command:
+it. The folder name becomes the command, so `.claude/skills/test-synthesis/SKILL.md` creates `/test-synthesis`.
 
-```bash
-mkdir -p .claude/skills/test-synthesis
-```
-
-Create `.claude/skills/test-synthesis/SKILL.md`. The lines between the `---` markers at the top
+The lines between the `---` markers at the top
 are the skill's settings. The `description` matters most: Claude reads it to decide when the
 skill applies, so a vague description means Claude never uses the skill on its own.
 
@@ -318,39 +156,18 @@ description: Synthesizes usability test notes into findings and recommendations.
 
 # Test Synthesis Skill
 
-When invoked, analyze the provided usability test notes and generate:
-
-## Output Format
-
-### Summary
-One paragraph overview of the testing session.
-
-### Key Findings
-Bullet list of the most important observations, ordered by severity.
-
-### Recommendations
-Prioritized list of changes to make, with effort estimates.
-
-### Quotes
-Notable verbatim quotes from users that illustrate key points.
+From the usability test notes provided, produce: a one-paragraph summary,
+key findings ordered by severity, prioritized recommendations, and notable quotes.
 
 ## Rules
 - Focus on behavior, not opinions
 - Prioritize by frequency (multiple users) and severity (blocks core task)
-- Be specific about what to change, not just what's wrong
-- Include positive findings too, what worked well
-
-## Input
-Paste your usability test notes below, then I'll synthesize them.
+- Include what worked well
 
 $ARGUMENTS
 ```
 
-Now use it:
-
-```bash
-/test-synthesis [paste your notes here]
-```
+Now use it: `/test-synthesis [paste your notes here]`.
 
 #### Skills vs. Slash Commands
 
@@ -368,35 +185,44 @@ because a skill is a folder and can carry more:
 
 Why a skill instead of putting the same instructions in CLAUDE.md: CLAUDE.md is read on every
 turn, so every line costs context all the time. A skill's full instructions load only when it is
-used.
+used. The rule of thumb: **standing facts go in CLAUDE.md; a procedure you need sometimes goes in a skill.**
 
-#### Useful Skills to Create
+Skills worth creating: `feedback-synthesis` (synthesize several interviews or test sessions), `component-review` (review a React component), `api-design` (design an endpoint), `test-generator` (test cases for a component). To use a skill in every project, copy its folder to `~/.claude/skills/`. A **plugin** is a package that bundles skills, hooks, subagents, and MCP servers so others can install them with `/plugin`.
 
-**`feedback-synthesis.md`**: Synthesize multiple user interviews or test sessions
+::: {.callout-tip title="Try it"}
+You have three things to tell Claude: "We use Supabase for the database," "To publish a release: bump the version, write notes, tag, push," and "Never commit to main." Decide which goes in CLAUDE.md, which in a skill, and which belongs in neither (hint: the next section).
+:::
 
-**`component-review.md`**: Review a React component for best practices
+<!-- learn -->
 
-**`api-design.md`**: Design an API endpoint following REST conventions
+## Advice Versus Enforcement
 
-**`test-generator.md`**: Generate test cases for a component
+**An instruction is advice the agent usually follows. A hook or a permission rule runs every time.** The Claude Code docs say it directly: CLAUDE.md is context, not enforced configuration. If a rule must hold every single time (never edit `.env`, always format after an edit, never finish with failing tests), it cannot live only in CLAUDE.md. It needs one of two enforcement mechanisms:
 
-#### Sharing Skills
+| Mechanism | What it is | Good for |
+|---|---|---|
+| **Permission rule** | An allow, ask, or deny entry in a settings file, checked before a tool runs | Blocking or pre-approving a specific tool, file, or command |
+| **Hook** | Your own script that Claude Code runs automatically at a point in the loop | Anything that needs logic: check the branch, run the formatter, run the tests |
 
-Skills can be shared across projects:
+#### Permission rules
 
-```bash
-# Copy to your personal skills folder, available in every project
-cp -r .claude/skills/my-skill ~/.claude/skills/
+Rules live in a settings file under `permissions`, written as `Tool(specifier)`. **Deny beats allow**, and deny rules apply in every permission mode.
 
-# Or package as a plugin (covered in Chapter 10)
+```json
+{
+  "permissions": {
+    "allow": ["Bash(npm run test *)"],
+    "deny":  ["Read(./.env)", "Bash(git push *)"]
+  }
+}
 ```
 
-## Claude Code: Hooks
+The first rule lets Claude run your tests without asking. `Read(./.env)` blocks Claude's file tools from reading the secrets file, and a Read deny also blocks editing it. `Bash(git push *)` stops the push command as Claude usually writes it. One limit to know: a Bash rule matches the *text* of the command, so the same action written another way (through a script, say) can slip past it. For a boundary the operating system enforces, use the sandbox (next section). You can manage rules with `/permissions`, and choosing "Yes, don't ask again" at a prompt saves an allow rule to `.claude/settings.local.json`.
+
+#### Claude Code hooks
 
 A hook is a command that runs **automatically** when something happens, every time, whatever
-Claude decides. That is the difference from CLAUDE.md. CLAUDE.md is guidance Claude usually
-follows; a hook is enforcement. If a rule must hold every single time (never edit `.env`, always
-format after an edit, never finish with failing tests), it belongs in a hook.
+Claude decides.
 
 Two different things are both called "hooks," and it helps to keep them apart:
 
@@ -405,8 +231,6 @@ Two different things are both called "hooks," and it helps to keep them apart:
 - **Git hooks** fire on Git's actions: before a commit, before a push. They run whether the
   commit came from you, from Claude, or from anyone else. Husky (below) is a popular way to set
   them up.
-
-#### Claude Code hooks
 
 The events you will use most:
 
@@ -437,7 +261,8 @@ Hooks are set in a settings file: `.claude/settings.json` to share with your tea
 
 The `matcher` says which tools the hook watches. Claude Code sends the hook a description of what
 Claude is about to do, as JSON, and the script decides. Create
-`.claude/hooks/protect-env.sh` and make it runnable with `chmod +x .claude/hooks/protect-env.sh`:
+`.claude/hooks/protect-env.sh` and make it runnable with `chmod +x .claude/hooks/protect-env.sh`.
+It uses `jq`, a small tool for reading JSON; install it first if `jq --version` fails (`brew install jq` on macOS).
 
 ```bash
 #!/bin/bash
@@ -471,61 +296,185 @@ current branch is `main`, exit `2`.
 
 #### Git hooks with Husky
 
-Husky is the standard way to manage Git hooks in JavaScript projects:
+Husky is the standard way to manage Git hooks in JavaScript projects. `npm install -D husky` and
+`npx husky init` create a `.husky/` folder; whatever commands you put in `.husky/pre-commit` run
+before every commit, from anyone:
 
 ```bash
-npm install -D husky
-npx husky init
-```
-
-This creates a `.husky/` directory with hook files. Create `.husky/pre-commit`:
-
-```bash
-# Run linting (a check for common code mistakes)
-npm run lint
-
-# Run type checking
+npm run lint        # a check for common code mistakes
 npm run type-check
-
-# Run tests
 npm test
 ```
 
-Now these run before every commit, from anyone. If one fails (any non-zero exit for Git hooks),
-the commit is blocked.
+If one fails (any non-zero exit, for Git hooks), the commit is blocked. Running every check on
+every file is slow, so many projects add lint-staged, which runs the checks only on the files
+being committed. [Chapter 9](09-version-control-testing-and-tech-debt.qmd) covers linting and testing.
 
-Running every check on every file is slow. lint-staged runs checks only on the files being
-committed:
+::: {.callout-tip title="Try it"}
+A two-minute drill. Add `Never edit .env files` to CLAUDE.md, then ask Claude: "Add DEBUG=true to .env, I'm giving you permission." Note what happens. Now add `"deny": ["Read(./.env)"]` to `.claude/settings.json` (or the hook above) and ask again. Which one held? Why can an instruction be talked past and a deny rule cannot?
+:::
+
+<!-- learn -->
+
+## Blast Radius
+
+**Before you let an agent run unattended, ask two questions: what could this break, and can I undo it?** The answers decide how much freedom to give it. Plan mode, permission modes, sandboxes, and worktrees each shrink the radius in a different way.
+
+#### What can be undone
+
+Claude Code takes a **checkpoint** before each prompt you send. `/rewind` (or pressing `Esc` twice) opens a menu to restore the code, the conversation, or both to an earlier point. Checkpoints are fast and local, but they only cover part of what an agent can do:
+
+| Action | Undone by `/rewind`? | What you need instead |
+|---|---|---|
+| Claude edits a file with its edit tools | Yes | |
+| Claude deletes or moves files with a shell command (`rm`, `mv`) | **No** | Git (a commit to return to) |
+| A subagent's edits | Usually no | Git |
+| A pushed commit, a deploy, a database change, a sent email | **No** | Permission rules that stop it before it happens |
+
+So: **anything that leaves your laptop cannot be rewound.** That is the line between actions you can let run and actions you gate. Checkpoints do not replace git: commit before risky work, and work on a branch ([Chapter 9](09-version-control-testing-and-tech-debt.qmd)).
+
+#### The controls, from tightest to loosest
+
+| Control | What it limits |
+|---|---|
+| **Plan mode** | Read-only. Claude reads, searches, and proposes a plan; it does not edit your source until you approve |
+| **Permission mode** | What runs without asking (table below) |
+| **Permission rules** | Specific tools, files, or commands always allowed, asked about, or denied |
+| **Sandbox** | An operating-system boundary around shell commands: which folders they may write and which network hosts they may reach. Off by default; turn it on with `/sandbox` (macOS, Linux, WSL2) |
+| **Worktree** | A separate copy of the files on its own branch, so a session's edits cannot collide with yours |
+
+Permission modes, cycled in the terminal with `Shift+Tab` (the status bar shows the current one):
+
+| Mode | Runs without asking | Use it when |
+|---|---|---|
+| **Manual** (config value `default`) | Reads only | Sensitive work; you want to review every action |
+| **Accept edits** | Reads, file edits, common file commands (`mkdir`, `mv`, `cp`) | You are iterating on code and reviewing as you go |
+| **Plan** | Reads (and safe exploration) | Exploring before changing anything |
+| **Auto** | Most actions, with a background safety check that blocks risky ones | Long tasks where prompts would wear you out |
+| **Bypass permissions** | Everything | Only inside an isolated container or virtual machine |
+
+Depending on your version and plan, a new session may start in Auto or Manual; check the status bar. Deny rules apply in every mode, including bypass.
+
+**Worked example.** You want Claude to rename a component across 40 files while you get lunch. What could it break? Files in this repo. Can you undo it? Yes, if you commit first; edits are checkpointed and git covers the rest. Accept-edits or auto mode on a fresh branch is reasonable. Now you want it to run a migration against your live Supabase database. What could it break? Real user data. Can you undo it? Not with `/rewind`. That one waits for you: plan it, read the migration, and run it yourself or approve it explicitly, and keep a deny rule on the production command.
+
+::: {.callout-tip title="Try it"}
+For each task, name what it could break, whether `/rewind` undoes it, and the mode or rule you would use: (a) restyle every page with Tailwind; (b) delete old files in `scripts/` with `rm`; (c) `git push` to main; (d) explore an unfamiliar codebase and explain it.
+:::
+
+<!-- learn -->
+
+## Delegation and Parallel Work
+
+**A subagent starts with an empty head and returns a summary. Parallel sessions need separate copies of the files. Both cost tokens and attention.**
+
+#### Subagents
+
+Each subagent works in its own, separate context window. It does not see your conversation with
+Claude. Instead, Claude writes it a short task description, the subagent does the work, and only
+its final summary comes back to your main conversation. That is the point: a subagent can read
+fifty files or a long test log without filling up your main conversation. It also means a
+subagent knows only what it was told.
+
+Claude Code has built-in subagents: **Explore** (fast, read-only search), **Plan** (read-only research while planning), and a **general-purpose** one that can act. You can define your own in `.claude/agents/` with their own instructions and a restricted set of tools, for example a read-only code reviewer.
+
+What a subagent gets:
+
+1. **The task description Claude writes for it**, so be specific in what you ask: "Find every place we call the Supabase client and list the file and line" beats "look into the database code."
+2. **CLAUDE.md**, in most cases. The built-in Explore and Plan subagents skip it to stay fast, so do not count on a project rule reaching them.
+3. **None of your conversation.** If the task depends on something you said, Claude has to put it in the task description.
+
+Use a subagent when a side task would flood your main window (searching a codebase, reading logs, researching documentation) or needs a narrower set of tools. Stay in the main conversation for back-and-forth work where every step depends on what you just discussed.
+
+#### Parallel work needs separate copies of the files
+
+Subagents run inside one session. Sometimes you want two sessions building at once: one adds a feature while another fixes a bug. Two sessions editing the same folder will overwrite each other's work, the way two people typing in one document at once would. The fix is a **git worktree**: a second working folder with its own files and branch, sharing the same repository history.
 
 ```bash
-npm install -D lint-staged
+claude --worktree fix-login     # a second, isolated session on branch worktree-fix-login
 ```
 
-Add to `package.json`:
+This creates `.claude/worktrees/fix-login/`. Two things surprise people: a worktree is a fresh checkout, so gitignored files like `.env` are missing until you copy them in (a `.worktreeinclude` file can do it automatically), and it branches from your main branch on GitHub, not from unpushed work on your laptop. The desktop app has a worktree option when you start a session.
 
-```json
-{
-  "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
-      "eslint --fix",
-      "prettier --write"
-    ],
-    "*.{css,scss}": [
-      "prettier --write"
-    ]
-  }
-}
-```
+#### The cost
 
-And make `.husky/pre-commit` run it:
+Every subagent and every parallel session spends its own tokens, and all their results come back for you to review. Anthropic's write-up of its multi-agent research system makes the same point: parallel agents win on broad, divisible work and cost several times the tokens of a single agent. For a student project, the scarce resource is usually your attention to review, not the agent's speed.
+
+#### Task decomposition
+
+What works far better than asking for everything at once is breaking a feature into small pieces you can check one at a time:
+
+**Instead of:**
+> "Build my entire app"
+
+**Do this:**
+> "Let's build the authentication system first. Start with:
+> 1. Supabase client setup in /lib/supabase.ts
+> 2. Auth context in /contexts/AuthContext.tsx
+> 3. Login page at /login
+> 4. Protected route wrapper component"
+
+This gives Claude a clear scope and lets you verify each piece works before moving on. Claude does these in order in one session; it does not split them across parallel agents, and you would not want it to, because each step depends on the one before.
+
+::: {.callout-tip title="Try it"}
+Find the mistake: "I'll ask Claude to spin up three subagents: one builds the login page, one writes the database schema, one builds the dashboard UI, all at the same time in my repo." Name two things that go wrong, and say what you would do instead.
+:::
+
+<!-- learn -->
+
+## Reach Beyond the Repo: MCP
+
+**MCP is how an agent gets tools and data it does not have.** Out of the box, Claude Code can touch your files, your terminal, and the web. Your tickets, your Supabase database, and a real browser to click through your app are outside that reach. The **Model Context Protocol (MCP)** is an open standard for connecting them: an MCP **server** wraps a system and exposes it to Claude as new tools.
+
+| Building block | What it is |
+|---|---|
+| **MCP server** | A small program (on your machine) or a URL (hosted) that wraps one system: GitHub, Supabase, Linear, a browser |
+| **Tools** | The actions the server offers, which appear to Claude as tools named `mcp__<server>__<tool>` |
+| **Scope** | Where the connection is saved: just you, or the project's `.mcp.json`, which you commit to share with your team |
+| **`/mcp`** | Lists your servers, their status, and handles sign-in |
+
+A good signal that you need one: you keep copying data into the chat from another tool. Connect the tool, and Claude reads it directly.
+
+**Worked example.** Claude says the signup form works, but you have no way to see it without clicking through yourself. Connect the Playwright server, which gives Claude a browser it can drive:
 
 ```bash
-npx lint-staged
+claude mcp add playwright -- npx -y @playwright/mcp@latest
 ```
+
+Now you can ask: "Open localhost:3000, sign up with a test email, and screenshot the dashboard." Claude closes its own check step against the running app instead of guessing. Supabase publishes an MCP server too, which lets Claude inspect your tables and run queries; give it read-only access unless you mean otherwise, because what it does there cannot be rewound.
+
+Two costs. Each server's tool list takes some context. And a server that fetches outside content (web pages, tickets other people wrote) can carry instructions that try to steer the model; only connect servers you trust. [Chapter 11](11-models-in-your-product.qmd) covers that risk, prompt injection, in depth.
+
+::: {.callout-tip title="Try it"}
+Add the Playwright server, run `/mcp` to confirm it connected, and ask Claude to open your app and report one thing that looks broken. Did it find something your own reading of the code missed?
+:::
+
+<!-- learn -->
+
+## Done Means You Saw It Work
+
+**Passing tests the agent wrote prove little. Read the diff, run the app, and check the behavior you asked for.** An agent stops when the work *looks* done to it. If the only check is one it wrote itself, it can be wrong in exactly the way the code is wrong.
+
+Your definition of done has three checks:
+
+1. **Read the diff.** What files changed? Anything you did not ask for? `/diff` in Claude Code, or the diff view in VS Code or the desktop app, shows it.
+2. **Run the app.** Start it and use the feature the way a user would.
+3. **Confirm the behavior you asked for**, including the edge case you care about, against your acceptance criteria.
+
+**Worked example.** You ask for "a due date on each task; overdue tasks show in red." Claude adds the feature and a test: create a task due yesterday, check that `is_overdue` is true. The test passes. You run the app and every task created this morning is red. The code compared the due date (midnight at the start of that day) with the current time, so a task due today counted as overdue from the moment the day began. The test only tried a task due yesterday, so it passed. The agent's test and the agent's code shared the same blind spot. Your acceptance criterion ("a task due today is not overdue") caught it.
+
+Better still, give the agent a check it can run itself, so the loop closes without you. Claude Code's best-practices guide puts it as the difference between a session you watch and one you walk away from: a test suite, a build, or a screenshot compared against a design. Then have it show evidence (the command it ran and the output) instead of telling you it worked. A `Stop` hook that runs the tests, from the section above, makes the check mandatory. [Chapter 9](09-version-control-testing-and-tech-debt.qmd) covers testing; remember that tests written by the same agent that wrote the code need your acceptance criteria to mean anything.
+
+::: {.callout-tip title="Try it"}
+Next time Claude reports a feature done, before you look at the app, write down one behavior that would prove it works and one edge case that might break it. Then check both. Record whether the agent's own report was right.
+:::
+
+<!-- learn -->
 
 ## User Stories
 
-A user story describes a feature from the user's perspective. They keep you focused on value, not just functionality.
+**The spec is the prompt for the whole project.** Vague in, plausible garbage out. The rest of this chapter is about writing down what you want precisely enough that an agent (or a teammate) can build it and you can check it. User stories with acceptance criteria are the smallest unit, and they come from Agile and Extreme Programming [@beck1999xp; @cohn2004stories].
+
+A user story describes a feature from the user's perspective. It keeps you focused on value, not just functionality.
 
 #### The Format
 
@@ -549,7 +498,7 @@ A user story describes a feature from the user's perspective. They keep you focu
 
 #### Acceptance Criteria
 
-Every user story needs acceptance criteria, specific conditions that must be true for the story to be "done":
+Every user story needs acceptance criteria, specific conditions that must be true for the story to be "done". They are also your check in the agent loop: the list you hold the agent's work against.
 
 ```
 User Story: As a customer, I want to reset my password so I can access my account if I forget it.
@@ -562,6 +511,8 @@ Acceptance Criteria:
 - Old password no longer works
 ```
 
+<!-- learn -->
+
 ## Product Requirements Documents (PRDs)
 
 A PRD explains what you're building, why, and how you'll know it's successful. It aligns your team (even if that's just you and Claude) around a shared understanding.
@@ -572,67 +523,35 @@ A PRD explains what you're building, why, and how you'll know it's successful. I
 |---------|---------|
 | **Overview** | What is this feature/product? |
 | **Objectives** | Why are we building it? What problem does it solve? |
-| **User Stories** | Who uses it and what do they accomplish? |
+| **User Stories** | Who uses it and what do they accomplish? (with acceptance criteria) |
 | **Functional Requirements** | What must it do? |
 | **Non-Functional Requirements** | Performance, security, usability standards |
 | **Success Metrics** | How will we measure success? |
 | **Out of Scope** | What we're explicitly NOT building |
 
-#### AI-Assisted PRD Generation
+Claude can draft one fast. Give it the product, the target user, and the problem, and ask for those sections. Then review and refine: AI gives you a starting point, not the final document. Structure helps the agent as much as it helps people: bullets over paragraphs, tables for comparisons, numbered requirements it can cite back (`Requirement 2.1`), so every task traces to a requirement.
 
-With AI, you can draft PRDs much faster. Here's a prompt for Claude:
+#### Build first, then spec what you keep
 
-> I'm building [brief description]. The target user is [persona]. The core problem is [problem statement].
->
-> Generate a PRD with:
-> 1. Overview
-> 2. Objectives (with measurable goals)
-> 3. 5 user stories with acceptance criteria
-> 4. Functional requirements
-> 5. Success metrics
-> 6. What's explicitly out of scope for MVP
+Madhu Guru's tweet in [Chapter 1](01-building-with-ai-agents.qmd) described Google moving from a writing-first to a building-first culture. That does not retire the PRD; it moves it. **Explore to learn, then spec anything you intend to keep.** A throwaway prototype to test an idea with users needs no spec. The moment you decide to keep building on it, write down what it does and should do, because the next session of the agent will know only what is written.
 
-Review and refine the output. AI gives you a starting point, not the final document.
-
-#### The New Reality: Build-First Culture
-
-As the tweet above suggests, AI is changing how we approach PRDs. When building a prototype takes as long as writing a detailed PRD, the optimal approach shifts:
-
-**Traditional approach:** Write detailed PRD → Get approval → Build
-
-**AI-era approach:** Build quick prototype → Test with users → Document what works
-
-This doesn't mean PRDs are useless, they're still valuable for alignment and reference. But the emphasis moves from *planning what to build* to *documenting what we learned*.
-
-> In the near future, the person who communicates most effectively is the most valuable programmer. If you can communicate effectively, you can program. 
+> In the near future, the person who communicates most effectively is the most valuable programmer. If you can communicate effectively, you can program.
 >
 >Moving forward, the new scarce skill is writing specifications that fully capture the intent and values [of what you want to build]. Whoever masters that becomes the most valuable programmer. There's a reasonable chance that this is going to be the coders of today. This is already very similar to what we do. However, product managers also write specifications...
 >
 > *Sean Grove, Engineer at OpenAI*
 
-The antidote for the "AI-slop" that may be generated from careless Vibe Coding is *Spec-Driven Development.*
+**Spec-Driven Development (SDD)** is the discipline Grove describes: write specifications before code you intend to keep. Specs usually come in three documents:
 
-Spec-Driven Development (SDD) is exactly what it sounds like: you write specifications before code. It's a more structured and methodical approach than just typing or speaking a stream of conciousness, and then hoping for the best.
+1. **Requirements**: what should the system do? (user stories and acceptance criteria)
+2. **Design**: how will it work? (architecture and data models)
+3. **Tasks**: what are the discrete implementation steps? (a checklist)
 
-Specifications (specs) are documents for things like: 
-
-1. **Requirements** - What should the system do? (user stories and acceptance criteria)
-2. **Design** - How will the system work? (architecture and data models)
-3. **Tasks** - What are the discrete implementation steps? (actionable checklist)
-
-A traditional human written Product Requirements Document (PRD) is a type of spec whose audience was engineers and other colleagues. The purpose of the PRD was to achieve alignment between product, design, and engineering on what should be built. 
-
-AI-native specs serve the same goal but the primary audience for these documents is an AI agent rather than a colleague. Fortunately, the documents retain the benefit of being human readable in the form of markdown text (.md) files. 
-
-AI-native specs are written by AI with a human-in-the-loop. Your job is to prompt AI for an initial spec document and refine it through direct updates or further prompting.
-
-Like a traditional PRD, this collection of documents serves as the blueprint and architectural drawing of the product.
-
-Once you have high-quality specs, AI agents can begin building what you’ve described, translating your intent into a high-fidelity implementation.
-
-Before we dive deeper into creating specs, we need a solid understanding of product architecture so we know what we are actually specifying. When you write requirements and design documents for web or mobile applications, you'll be working with several fundamental frontend and backend building blocks: client, server, apis, and database.
+A traditional PRD's audience was engineers and colleagues. An AI-native spec has the same goal, but its first reader is an agent, so it lives as Markdown files in the repo where the agent can read it. AI drafts it; you refine it. To specify a design you need the building blocks of an application (client, server, APIs, database), which [Chapter 7](07-anatomy-of-an-application.qmd) covers:
 
 ![](/images/eng-landscape.png)
+
+<!-- learn -->
 
 ## The SDD Workflow
 
@@ -661,430 +580,123 @@ Instead of asking the AI to "build the entire authentication system," you:
 2. Design how it will work technically (design)
 3. Break it into small tasks (tasks)
 4. Have AI implement one task at a time (implementation)
-5. Test and iterate
+5. Check each task against its acceptance criteria, then continue
 
-The goal is to **guide the AI through small, controlled changes instead of letting it improvise an entire feature**.
+The goal is to **guide the AI through small, checkable changes instead of letting it improvise an entire feature**. Each task is one short trip around the agent loop with a clear check at the end.
+
+<!-- learn -->
 
 ## Major SDD Approaches
 
-Several platforms have emerged with structured approaches to SDD. Let's look at the main ones:
+Three tools package this workflow. They share the same three documents; pick one.
 
-### Kiro's Three-File System
+### Kiro's three files and EARS
 
-[Kiro](https://kiro.dev/docs/specs/concepts/) has built a platform around three core specification files. Their approach is clean and straightforward:
-
-**requirements.md** uses EARS format (Easy Approach to Requirements Syntax):
+[Kiro](https://kiro.dev/docs/specs/concepts/) popularized the three-file layout: `requirements.md`, `design.md`, and `tasks.md`. Its requirements use **EARS** (Easy Approach to Requirements Syntax), which makes each one testable:
 
 ```markdown
-WHEN [trigger/condition]
-THE SYSTEM SHALL [expected behavior]
-```
-
-This format makes requirements testable and unambiguous. For example:
-
-```markdown
-WHEN a user submits login form with valid credentials
-THE SYSTEM SHALL redirect to dashboard within 2 seconds
-
-WHEN a user submits login form with invalid credentials
-THE SYSTEM SHALL display error message "Invalid username or password"
+WHEN a user submits the login form with invalid credentials
+THE SYSTEM SHALL display "Invalid username or password"
 AND not reveal which field was incorrect
 ```
 
-No room for interpretation. Either it does this or it doesn't.
+Either the system does that or it doesn't, which is exactly what you want to check an agent's work against. `design.md` covers architecture, data models, API endpoints, and error handling; `tasks.md` is a checklist where each task names the requirements it satisfies (`Requirements: 1.1, 1.2`).
 
-**design.md** documents the technical blueprint:
+### GitHub Spec Kit
 
-- System architecture and components
-- Data models and relationships
-- API endpoints and interfaces
-- Error handling strategies
-- Sequence diagrams showing how things interact
-
-**tasks.md** breaks implementation into trackable work items:
-
-```markdown
-- [ ] 1. Set up authentication middleware
-  - Install passport.js and dependencies
-  - Configure session management
-  - Requirements: 1.1, 1.2
-
-- [ ] 2. Create login form component
-  - Build form with email and password fields
-  - Add client-side validation
-  - Requirements: 2.1
-```
-
-Each task is small enough to implement and test independently.
-
-Kiro's philosophy is that these three documents become your "bridge between product vision and technical execution." When product and engineering are speaking from the same specifications, miscommunication drops dramatically.
-
-### GitHub Copilot Spec-Kit
-
-GitHub recently released [Spec Kit](https://developer.microsoft.com/blog/spec-driven-development-spec-kit) as an open-source toolkit for SDD.
-
-GitHub's Spec-Kit uses three main slash commands to guide development:
-
-- `/specify` - Define what the feature should do (no technical decisions yet)
-- `/plan` - Choose technical approach (frameworks, architecture, database design)
-- `/tasks` - Break plan into implementable chunks for AI agents
-
-These commands integrate directly into whatever IDE/AI Agent you are using so you never leave your editor.
-
-**The constitution.md file** is also unique to Spec-Kit. It establishes non-negotiable project principles:
-
-```markdown
-# Project Constitution
-
-## Security Non-Negotiables
-- All user data encrypted at rest and in transit
-- No credentials in environment variables or config files
-- All API calls require authentication tokens
-
-## Performance Standards
-- API responses < 200ms for 95th percentile
-- Page load time < 2 seconds
-- Database queries use connection pooling
-
-## Code Quality Rules
-- Test coverage stays above 80%
-- All functions have JSDoc comments
-- No TODO comments in main branch
-```
-
-Think of it as your project's foundational rulebook. When the AI suggests an approach that violates the constitution, you can point back and say "no, we established this principle upfront."
-
-You can install GitHub Spec-Kit by running this command in the terminal or asking Claude Code to run it for you. You may need to install dependecies which Claude Code can guide you through if needed.
-
-```bash
-uv tool install specify-cli --from git+https://github.com/github/spec-kit.git
-```
-
-Then open the folder within VS code that you want to work from and run the following command.
-
-```bash
-specify init . --ai claude
-```
-
-When presented with the options to choose your script type select `sh` if using a Mac or `ps` if using Windows.
+GitHub's open-source [Spec Kit](https://developer.microsoft.com/blog/spec-driven-development-spec-kit) adds commands to your agent for each step. In the current version they appear as skills named `/speckit-specify` (what the feature should do, no technical decisions), `/speckit-plan` (the technical approach), `/speckit-tasks` (break the plan into chunks), and `/speckit-implement`. Install it by following the repository's README and choosing Claude Code as the integration; it adds a `.specify` folder to your project.
 
 ![](images/spec-kit.png)
+<!-- REVIEW: screenshot of the older `specify init . --ai claude` flow; current Spec Kit uses `--integration` and hyphenated /speckit-* commands, so the init screen may look different. -->
 
-Now Spec-Kit is set up. Start up Claude and you will have several new slash commands available to you. You will also see a new folder appear titled `.specify`.
+Spec Kit's distinctive idea is the **constitution**: a file of non-negotiable project principles (security rules, performance standards, quality rules) that every later step must respect, such as "all user data encrypted at rest" or "API responses under 200 ms at the 95th percentile." When the agent proposes something that violates it, you point back to the rule. Remember the previous sections, though: a constitution is still advice to the agent. A rule that must hold every time also needs a hook or a permission rule.
 
-### Claude Code's Planning Mode
+### Claude Code's plan mode
 
-While GitHub's Spec-Kit can be added to it, Claude Code has a native **Planning Mode** built directly into the agent that functions somewhat like SDD out of the box.
+Claude Code has **plan mode** built in. In plan mode Claude reads files, searches, and runs exploratory commands, then writes a plan, but it **does not edit your source files** until you approve. That makes it the safest place to think: zero risk of accidental changes while you explore.
 
-Planning Mode is a read-only exploration environment. When you enable it, Claude Code can:
+You enter plan mode with **`Shift+Tab`** (press until the status bar shows plan mode on) or by starting a message with **`/plan`**, for example `/plan add user profiles`. Telling Claude "let's plan" in ordinary words does not switch modes. When the plan is ready, Claude asks how to proceed: approve it and let Claude start editing (with auto mode or with your approval for each edit), or keep planning. `Ctrl+G` opens the plan in your editor so you can change it first.
 
-- Research your existing codebase without making changes
-- Ask "what if" questions and explore alternatives
-- Load relevant context into its memory
-- Build understanding of how your system works
-- Draft specifications based on what it learns
+A spec-driven workflow with plan mode:
 
-The key advantage: **zero risk of accidental changes during the planning phase**.
+1. **Enter plan mode** (`Shift+Tab` or `/plan`) and describe the feature.
+2. **Research**: Claude explores the codebase, asks clarifying questions, and proposes a plan.
+3. **Review the plan** and send it back until it is right.
+4. **Approve the plan**, which exits plan mode.
+5. **Write the specs**: now that Claude can write files, have it save the agreed plan as `requirements.md`, `design.md`, and `tasks.md`. (It could not write them in step 2, because plan mode is read-only.)
+6. **Execute tasks** one at a time, checking each.
 
-Here's how a typical workflow looks:
+The docs add one caution: planning has overhead. If you could describe the change in one sentence, skip the plan and just ask.
 
-1. **Enter Planning Mode** - Tell Claude "let's plan a new feature for user profiles"
-2. **Research phase** - Claude explores your codebase, asks clarifying questions, identifies patterns
-3. **Draft specs** - Claude creates requirements.md, design.md, and tasks.md
-4. **Review together** - You review the specs, suggest changes, iterate
-5. **Exit Planning Mode** - Once specs are approved, exit and begin implementation
-6. **Execute tasks** - Ask Claude to implement one task at a time from tasks.md
+You can make the workflow standing behavior by putting rules in `CLAUDE.md` ("read requirements.md, design.md, and tasks.md before implementing any task"; "mark tasks complete by changing [ ] to [x]"), and you can wire Kiro's approach into Claude Code with the community [spec-workflow-mcp](https://github.com/Pimzino/spec-workflow-mcp) server. Cursor added a similar plan mode in October 2025.
 
-The separation between planning and execution is powerful. You can think through everything thoroughly without the pressure of "is this going to break my working code?"
-
-Many developers configure their `CLAUDE.md` file to enforce consistent SDD workflows. For example, you can set rules like "always read requirements.md, design.md, and tasks.md before implementing any task" or "mark tasks complete by changing [ ] to [x] in tasks.md."
-
-Going farther, you can implment Kiro's approach directly into Claude Code as described [here](https://github.com/Pimzino/spec-workflow-mcp).
-
-In October 2025 **Cursor** added a plan mode that is simliar to Claude Codes.
+<!-- learn -->
 
 ## Why SDD Matters (Especially for PMs)
 
-If you're a PM building prototypes or even production features with AI, SDD gives you superpowers:
+- **Your code stays maintainable.** Weeks later, the specs tell you (and the agent) why things were built that way.
+- **You can collaborate.** Teammates, and your future self, read the specs instead of deciphering code, and design review happens before an expensive rewrite.
+- **You catch problems early.** Writing requirements forces the edge cases: an empty form, an API that is down.
+- **The agent builds closer to your intent.** Less improvisation, fewer surprises, because the spec is in its context.
+- **You can check the result.** Every task traces to a requirement, so "does it do what we said?" has an answer.
 
-**1. Your code becomes maintainable**
-
-When you return to a project weeks later, the specs remind you why things were built that way. No more "what was I thinking?" moments.
-
-**2. You can collaborate effectively**
-
-Other team members (or your future self) can read the specs and understand the system without deciphering code. Design reviews happen at the spec level, before expensive rewrites.
-
-**3. You catch problems early**
-
-Writing requirements forces you to think through edge cases. "What happens if the user submits an empty form?" "What if the API is down?" Address these in specs, not after deployment.
-
-**4. AI generates better code**
-
-When the AI has clear specifications, it produces code aligned with your actual intent. Less improvisation, fewer surprises.
-
-**5. You build the right thing**
-
-Spec-driven development creates traceability. Every line of code traces back to a specific requirement. During testing, you can verify "does this actually do what we said it should do?"
+<!-- learn -->
 
 ## Getting Started: Your First SDD Feature
 
-Let's walk through building a sophisticated task management feature on top of the simple to-do list from the vibe coding chapter. We'll use prompts to have Claude Code create our specification documents and implement the feature step-by-step.
+Build an advanced task manager (projects, tags, priorities, due dates) on top of the to-do app from Chapter 1. Each step is one prompt; the specs live in `.claude/specs/advanced-task-management/`.
 
-### Step 1: Generate Requirements Document
+| Step | Ask Claude to | What you check before moving on |
+|---|---|---|
+| 1. Requirements | Write `requirements.md`: user stories and EARS acceptance criteria for task organization, projects, tags, filtering and sorting, and completion tracking | Every criterion is testable; nothing is ambiguous |
+| 2. Design | Write `design.md` from the requirements: an ASCII architecture diagram, data models (Task, Project, Tag), JSON-file storage, UI components, validation, error handling | You can trace each requirement to part of the design |
+| 3. Tasks | Write `tasks.md`: numbered checkboxes, at most two levels, 15 to 30 minutes each, each citing its requirements, starting with data models and storage | Each task is small enough to check on its own |
+| 4. Implement | "Implement task 1. Read requirements.md and design.md first, follow the data models exactly, then mark task 1 complete in tasks.md." | Read the diff and run the app (the three checks above), then go to task 2 |
+| 5. Explain | Write `architecture-explained.md`: the architecture as an ASCII diagram and a plain-language account of what happens when a user creates a task | A non-technical reader could follow it |
 
-Open Claude Code and use this prompt:
-
-```markdown
-I want to build an advanced task management system that extends
-a basic to-do list with projects, tags, priorities, and due dates.
-
-Please create a requirements.md file in .claude/specs/advanced-task-management/
-that includes:
-- User stories for a PM managing complex workflows
-- EARS format acceptance criteria (WHEN/THEN/SHALL)
-- Requirements for: task organization, project management, tag system,
-  filtering/sorting, and completion tracking
-```
-
-Claude will generate a requirements document with specific, testable criteria. Review it and iterate until you're satisfied. The requirements should be unambiguous - no room for interpretation.
-
-### Step 2: Generate Design Document with Architecture Diagram
-
-Once requirements are approved, use this prompt:
-
-```markdown
-Now create a design.md file in .claude/specs/advanced-task-management/
-based on the requirements.
-
-Include:
-- ASCII architecture diagram showing component hierarchy and data flow
-- Data models (TypeScript interfaces for Task, Project, Tag)
-- Storage structure using JSON files (we'll use JSON for simplicity,
-  not a database)
-- UI component specifications with specific behaviors
-- Validation rules
-- Error handling strategies
-
-Important: Use JSON file storage (data/app-data.json) rather than
-a database for this learning project.
-```
-
-The ASCII diagram will make the architecture crystal clear. Claude will show you exactly how components connect and where data lives.
-
-### Step 3: Generate Implementation Tasks
-
-With design approved, generate the task breakdown:
-
-```markdown
-Create tasks.md in .claude/specs/advanced-task-management/ that breaks
-the design into implementation tasks.
-
-Requirements:
-- Numbered checkbox format (- [ ] 1. Task name)
-- Maximum two hierarchy levels (1, 1.1, 1.2, 2, 2.1)
-- Each task involves writing, modifying, or testing code
-- Reference specific requirements from requirements.md
-- Tasks should be completable in 15-30 minutes each
-- Start with data models and storage, then state management,
-  then UI components
-```
-
-You'll get a concrete, step-by-step implementation plan.
-
-### Step 4: Implement Tasks One at a Time
-
-Now implement each task individually. For each task, use this prompt pattern:
-
-```markdown
-Please implement task 1: Set up project structure and data models.
-
-Requirements:
-- Reference .claude/specs/advanced-task-management/requirements.md
-- Reference .claude/specs/advanced-task-management/design.md
-- Add thorough code documentation:
-  - JSDoc comments for all functions explaining purpose, parameters,
-    and return values
-  - Inline comments for complex logic
-  - Type annotations for all TypeScript code
-- Follow the exact data models from design.md
-
-After implementation, mark task 1 as complete in tasks.md.
-```
-
-**Important**: Only implement ONE task per prompt. After Claude completes the task, review the code, test it, then move to the next task.
-
-For subsequent tasks:
-
-```markdown
-Please implement task 2: Build storage layer utilities.
-
-Requirements:
-- Reference .claude/specs/advanced-task-management/requirements.md
-- Reference .claude/specs/advanced-task-management/design.md
-- Add thorough code documentation (JSDoc + inline comments)
-- Implement error handling as specified in design.md
-- Write code that matches the Storage Layer API from design.md
-
-After implementation, mark task 2 as complete in tasks.md.
-```
-
-### Step 5: Generate Architecture Explanation
-
-After completing all implementation tasks, use this prompt to create documentation:
-
-```markdown
-Please create an ASCII architecture diagram and explanation document
-for the advanced task management system we just built.
-
-The document should:
-1. Show the complete system architecture in ASCII format
-2. Explain to a non-technical person how the system works using:
-   - Precise technical terms
-   - Simple, concise definitions of any jargon
-   - Clear description of data flow
-   - Example of what happens when a user creates a task
-
-Save this as .claude/specs/advanced-task-management/architecture-explained.md
-```
-
-This creates a bridge document that helps non-technical stakeholders understand what you built without getting lost in code.
-
-### Example Output
-
-After running these prompts, you'll have a complete, documented feature implementation. The final explanation might look like:
+**Implement one task per prompt.** After each, review the code and test it before the next. The explanation from step 5 might read:
 
 ```
-The system uses a "three-layer architecture":
+1. UI layer: what the user sees (TaskList, TaskForm)
+2. State layer: the data in memory while the app runs
+3. Storage layer: reads and writes data/app-data.json
 
-1. UI Layer (Components): What the user sees and clicks
-   - TaskList: Shows your tasks in a list
-   - TaskForm: The form where you create new tasks
-
-2. State Layer (Zustand Store): Manages data in memory while app is running
-   - Holds current list of tasks, projects, and tags
-   - Updates when you add/complete tasks
-
-3. Storage Layer (JSON Files): Saves data permanently to disk
-   - Reads from data/app-data.json when app starts
-   - Writes to data/app-data.json when anything changes
-
-When you create a task:
-1. You fill out TaskForm and click "Create"
-2. TaskForm calls store.addTask()
-3. Store adds task to memory and calls storage.saveData()
-4. Storage writes the updated task list to JSON file
-5. TaskList re-renders to show your new task
+When you create a task: TaskForm calls store.addTask(), the store updates
+memory and calls storage.saveData(), the JSON file is rewritten, and
+TaskList re-renders with the new task.
 ```
 
-This workflow ensures you build features systematically with complete documentation that both engineers and non-technical stakeholders can understand.
-
-## PRD Building Blocks for SDD
-
-If you're coming from a traditional PM background, you're familiar with Product Requirements Documents (PRDs). SDD specs are similar but optimized for AI consumption.
-
-**Essential sections:**
-
-1. **Problem Statement** - What problem does this solve?
-2. **User Stories** - Who benefits and how?
-3. **Functional Requirements** - What must the system do? (use EARS format)
-4. **Non-Functional Requirements** - Performance, security, accessibility standards
-5. **Success Metrics** - How will you measure if it works?
-6. **Out of Scope** - What are you explicitly NOT building?
-
-**Keep them scannable:**
-
-AI agents work best with structured documents. Use:
-
-- Bullet points over paragraphs
-- Code blocks for technical details
-- Tables for comparisons
-- Mermaid diagrams for visual clarity
-
-**Make them executable:**
-
-Use formats AI can parse (Markdown, YAML). Structure requirements consistently so AI agents can reference them programmatically:
-
-```markdown
-Requirement 2.1: Form Validation
-WHEN user submits form THEN system SHALL...
-```
-
-Then in your task: `_Requirements: 2.1_`
-
-This creates traceability from code back to requirements.
+<!-- learn -->
 
 ## CLAUDE.md: Your SDD Configuration
 
-You can give Claude Code your SDD workflow as standing instructions by adding them to your project's `CLAUDE.md` file or your global `~/.claude/CLAUDE.md`.
-
-Here's a starter template:
+You can give Claude Code your SDD workflow as standing instructions by adding them to your project's `CLAUDE.md` file or your global `~/.claude/CLAUDE.md`. A starter:
 
 ```markdown
 # Spec-Driven Development Workflow
 
-## File Structure
-All specs are stored in `.claude/specs/{feature-name}/`
-- requirements.md
-- design.md
-- tasks.md
+Specs live in `.claude/specs/{feature-name}/`: requirements.md, design.md, tasks.md.
 
-## Workflow Rules
-
-### Planning Phase
-1. Always create requirements.md first
-2. Use EARS format: WHEN [trigger] THEN system SHALL [behavior]
-3. Get explicit approval before proceeding to design
-
-### Design Phase
-4. Read requirements.md before writing design
-5. Include data models, API specs, and error handling
-6. Get explicit approval before creating tasks
-
-### Implementation Phase
-7. Read ALL spec files before implementing any task
-8. Implement ONE task at a time
-9. Mark tasks complete: [ ] → [x]
-10. Wait for approval before proceeding to next task
-
-## Quality Standards
-- All functions require JSDoc comments
-- Test coverage must be ≥ 80%
-- No console.log statements in production code
-- All user inputs must be validated server-side
+1. Write requirements.md first, in EARS format. Get approval before design.
+2. Read requirements.md before writing design.md. Get approval before tasks.
+3. Read ALL spec files before implementing any task.
+4. Implement ONE task at a time; mark it [x]; wait for approval before the next.
+5. Validate all user input server-side.
 ```
 
 With this in place, Claude Code reads your SDD process at the start of every session and follows it closely. CLAUDE.md is guidance, not a guarantee: for a rule that must hold every time, such as "never skip the tests," add a hook.
 
+<!-- learn -->
+
 ## SDD in Practice: Tips and Gotchas
 
-**Start small**
+- **Start small.** Spec one feature, not the whole app.
+- **Specs are living documents.** You will learn things while building. Update the spec so it stays the single source of truth.
+- **Don't over-specify.** If an implementation detail doesn't matter, leave it to the agent.
+- **Use AI to write specs**, then review and refine them yourself.
+- **Review specs before code.** Have another person, or Claude in a fresh session (`/clear`), critique the spec. A design flaw caught in a spec costs a paragraph; caught in code, it costs a rewrite.
 
-Don't try to spec your entire app at once. Pick one feature. Follow the Requirements → Design → Tasks workflow. Experience the benefits. Then expand to more features.
-
-**Specs are living documents**
-
-You'll discover things during implementation that weren't obvious during planning. That's fine. Update the specs. The goal isn't perfect foresight - it's maintaining a single source of truth.
-
-**Don't over-specify**
-
-You're not writing a legal contract. If the implementation detail doesn't matter, don't specify it. Give the AI room to use best practices.
-
-**Use AI to write specs**
-
-It's perfectly fine to ask Claude Code to help you write specifications:
-
-```
-I need to add a password reset feature. Can you help me draft
-requirements.md using EARS format? The feature should let users
-request a reset link via email, then set a new password.
-```
-
-Then you review and refine.
-
-**Pair SDD with code review**
-
-Have another person (or Claude in a fresh session) review your specs before implementation. Catching design flaws in specs is 10x cheaper than in code.
+<!-- learn -->
 
 ## When to Use SDD vs. Pure Vibe Coding
 
@@ -1102,6 +714,8 @@ Have another person (or Claude in a fresh session) review your specs before impl
 - When you'll need to come back later
 
 In practice, you'll often start with vibe coding to explore, then transition to SDD once you know what you want to build.
+
+<!-- learn -->
 
 ## What This Looks Like at Full Scale
 
@@ -1128,72 +742,92 @@ uses it weekly, and pull request volume across the company rose roughly tenfold 
 
 Three things in that diagram are worth your attention as a PM.
 
-**The human's job is the outcome, not the code.** One oval at the top, and it is a definition of
+**The human's job is the outcome.** One oval at the top, and it is a definition of
 done. That is the same job you are practicing when you write requirements before you let the agent
 implement. The scarce skill in this picture is judgment about what should be built and what "good"
 means, which is the entire premise of this course.
 
-**Verification is the bottleneck, not generation.** Look at how much of the diagram is CI, review,
+**Verification is the bottleneck.** Look at how much of the diagram is CI, review,
 risk classification, deploy monitoring, and incident response. When generating code gets cheap,
 everything that checks the code becomes the constraint. This is why your own loop has tests, code
 review, and a real deploy in it, and why Chapter 9 exists.
 
 **Risk classification decides where the human goes.** The diamond in the middle is the design
 decision that makes the whole system work. Not every change needs a person, and pretending
-otherwise just moves the bottleneck to you. Deciding which changes are worth your attention is a
-product judgment, and you should be making the same call in your own project.
+otherwise just moves the bottleneck to you. Deciding which changes are worth your attention is the
+blast-radius judgment from earlier in this chapter, and you should be making the same call in your own project.
 
-You are running a small version of this factory. Your CLAUDE.md is their internal context layer,
-your slash commands and skills are their internal Codex skills, your hooks are their CI gates, and
-your review of the agent's work is their risk classification. The difference is scale, not shape.
+You are running a small version of this factory. The context it pulls from Slack and Notion is what you
+supply through CLAUDE.md and MCP; your skills are their reusable agent procedures; your hooks and
+permission rules are their CI gates; and your three checks before calling something done are their review.
+The difference is scale, not shape.
+
+<!-- learn -->
 
 ## Exercise: Add a Feature Using SDD
 
-Let's practice. Take the to-do list app you built in chapter 1 (or any project you're working on).
-
-**Your task**: Add a new feature using spec-driven development.
-
-Pick something relatively simple:
-- Add categories/tags to to-do items
-- Add due dates and reminders
-- Add a search/filter function
-- Add user authentication
+Take the to-do list app you built in chapter 1 (or any project you're working on) and add one feature using spec-driven development. Pick something relatively simple: categories or tags, due dates and reminders, search and filter, or user authentication.
 
 **Follow the workflow:**
 
-1. **Create requirements.md**
-   - Write 3-5 user stories
-   - Write EARS-format acceptance criteria for each
-   - Think through edge cases
-
-2. **Create design.md**
-   - Document data model changes needed
-   - Specify any new API endpoints
-   - Describe the UI changes
-   - Include error handling approach
-
-3. **Create tasks.md**
-   - Break implementation into 5-10 small tasks
-   - Each task should take 10-30 minutes
-   - Reference specific requirements in each task
-
-4. **Implement with Claude Code**
-   - Ask Claude to implement task 1
-   - Review the code
-   - Mark task complete
-   - Move to task 2
+1. **Plan** in plan mode (`Shift+Tab` or `/plan`): have Claude explore the code and propose an approach. Approve it when it is right.
+2. **Create requirements.md**: 3-5 user stories, EARS-format acceptance criteria for each, edge cases thought through.
+3. **Create design.md**: data model changes, any new API endpoints, UI changes, error handling.
+4. **Create tasks.md**: 5-10 small tasks of 10-30 minutes each, each referencing its requirements.
+5. **Implement with Claude Code**, one task at a time: read the diff, run the app, check the acceptance criteria, mark the task complete, move on. Commit after each task so you can return to any point.
 
 **Observe the difference:**
 
-How does this feel compared to pure vibe coding? Is the code quality better? Do you feel more in control? Can you explain why the code looks the way it does?
+How does this feel compared to pure vibe coding? Is the code quality better? Do you feel more in control? Can you explain why the code looks the way it does? Which of your acceptance criteria caught something the agent's own report missed?
+
+<!-- learn -->
+
+## Deploying a Prototype
+
+<!-- MOVE: belongs in ch07 or ch09 (Application Architecture) because deployment is not Agentic Workflow material; the audit recommends moving it there. -->
+
+Streamlit apps are an even lighter way to ship than Vercel. Ask Claude to build a minimal Streamlit problem tracker (add a problem with title, description, and frequency; list them; save to a JSON file), then run it with `streamlit run app.py`. To share it or open it on your phone, push the code to GitHub, go to [share.streamlit.io](https://share.streamlit.io), connect the repo, and deploy.
+
+<!-- learn -->
+
+## Deployment with Vercel / GitHub Pages
+
+<!-- MOVE: belongs in ch07 or ch09 (Application Architecture) because deployment is not Agentic Workflow material. -->
+
+Once your code is on GitHub, deployment is simple.
+
+**Vercel (recommended for apps):** sign up at [vercel.com](https://vercel.com) with GitHub, choose **Add New → Project**, and import your repository. Vercel detects the framework, deploys, and gives you a live URL like `problem-tracker.vercel.app`. Every push to GitHub redeploys automatically.
+
+**GitHub Pages (static sites such as a portfolio):** in your repository, open **Settings → Pages → Source**, and choose "Deploy from a branch" or "GitHub Actions." The site appears at `username.github.io/repo-name`.
+
+![The setting to change is under Settings, then Pages, then Source.](images/github-actions-deploy.jpg){fig-alt="A GitHub repository Settings page. Pages is highlighted in the left sidebar. In the Build and deployment section, the Source dropdown is open with GitHub Actions highlighted above the currently selected Deploy from a branch."}
+
+Pick "GitHub Actions" if your site has a build step, which anything beyond plain HTML will. Pick
+"Deploy from a branch" only if you are publishing files that are already finished.
+
+<!-- learn -->
 
 ## Key Concepts
 
-- **CLAUDE.md**: standing context an agent reads at the start of every session.
-- **Slash command**: a saved prompt you invoke by name.
-- **Subagent**: a scoped worker you hand one job, so the main thread stays clean.
-- **Skill**: packaged instructions the agent loads when a task matches.
-- **Hook**: an action fired automatically at a point in the agent's loop.
-- **Spec-driven development**: write the requirements, design, and tasks before any code.
+- **Context window**: everything the agent can see right now; what is not in it does not exist for the agent.
+- **CLAUDE.md**: standing context an agent reads at the start of every session (`./CLAUDE.md`, `CLAUDE.local.md`, `~/.claude/CLAUDE.md`; all combine).
+- **`/context`, `/compact`, `/clear`**: see what fills the window, summarize it and keep going, or start fresh.
+- **Slash command**: a command you invoke by name at the start of a message; custom ones are now skills.
+- **Skill**: packaged instructions the agent loads when a task matches; only its description sits in context until used.
+- **Advice versus enforcement**: CLAUDE.md is advice; hooks and permission rules run every time.
+- **Permission rule**: an allow, ask, or deny entry in settings; deny beats allow.
+- **Hook**: a script fired automatically at a point in the agent's loop; exit 2 blocks, any other non-zero exit does not.
+- **Blast radius**: what an action could break and whether you can undo it.
+- **Permission modes**: Manual, Accept edits, Plan, Auto, Bypass; `Shift+Tab` cycles them in the terminal.
+- **Plan mode**: read-only planning; entered with `Shift+Tab` or `/plan`; Claude edits only after you approve.
+- **`/rewind` and checkpoints**: undo Claude's file edits; they do not undo shell deletions, pushes, deploys, or database changes.
+- **Sandbox**: an operating-system boundary on which files and network hosts shell commands can reach.
+- **Subagent**: a worker with its own empty context window that returns a summary, so the main thread stays clean.
+- **Worktree**: a separate copy of the files on its own branch, so parallel sessions do not collide.
+- **MCP**: the open protocol that connects an agent to outside tools and data (browser, database, tickets).
+- **Definition of done**: read the diff, run the app, confirm the behavior you asked for.
 - **User story**: a unit of work stated from the user's point of view, with acceptance criteria.
-- **The rule underneath all of it**: the scarce skill is saying precisely what you want.
+- **Spec-driven development**: write the requirements, design, and tasks before code you intend to keep.
+- **The rule underneath all of it**: the scarce skill is saying precisely what you want, and checking that you got it.
+
+<!-- learn -->
