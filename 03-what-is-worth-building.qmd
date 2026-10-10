@@ -4,14 +4,28 @@ title: "What Is Worth Building"
 
 ## Why This Matters
 
-Before you can build well, you have to decide what deserves to exist. This chapter is the
-Aim end of the loop: what game you are playing, how a product creates and captures value,
-and whether the thing you are considering is good for the people who will use it. Those are
-one question, not two.
+Building is cheap now, so the expensive mistake is building the wrong thing. Before you can
+build well, you have to decide what deserves to exist. This chapter is the Aim end of the
+loop: whether there is a real problem worth solving, what game you are playing, how a product
+creates and captures value, and whether the thing you are considering is good for the people
+who will use it. Those belong together: a product that solves no real problem, cannot hold
+any of the value it creates, or harms the people who use it has failed the same test.
+
+<!-- learn -->
 
 ## Why Most Products Fail
 
-According to CB Insights' analysis of over 100 startup post-mortems, the number one reason startups fail is **"No Market Need"**, cited by 42% of failed founders [@cbinsights2026]. Not lack of funding. Not competition. Not bad teams. Simply building something people didn't want.
+CB Insights reads the post-mortems of failed startups and tallies the reasons founders give. Its
+March 2026 analysis covered 431 venture-backed companies that shut down since 2023. "Ran out of
+capital" topped the list at 70%, followed by poor product-market fit at 43%, bad timing at 29%,
+and unsustainable unit economics at 19% (most companies cited more than one reason)
+[@cbinsights2026]. The report's own reading is the useful part: running out of money is almost
+always how the story ends, not why. The money ran out because the product did not fit a market
+that wanted it badly enough to pay.
+
+Read that through a builder's eyes. Poor product-market fit means a team spent its runway building
+something too few people needed. That mistake gets easier, not harder, when an agent can build an
+app in an afternoon: you can now build the wrong thing faster than ever.
 
 This happens because of what we call **The Idea Trap**: falling in love with a solution before understanding the problem. It looks like this:
 
@@ -19,7 +33,20 @@ This happens because of what we call **The Idea Trap**: falling in love with a s
 
 The problem? You're starting with a solution. You've already decided what to build before asking whether anyone actually needs it. This is backwards.
 
+<!-- learn -->
+
 ## Problem vs. Solution Thinking
+
+**The model:** a real problem exists without your product. Describe it so that a person who has
+never heard your idea would recognize it from their own life.
+
+That one-line test, call it the **stranger test**, separates the two kinds of statement:
+
+- A **solution statement** names a thing to build. Only someone who has heard your pitch can
+  agree or disagree with it.
+- A **problem statement** names a person, a situation, and what goes wrong for them today. A
+  stranger who lives it says "yes, that happens to me," and one who does not says "no, it
+  doesn't," which is just as useful.
 
 **Solution thinking** starts with technology or features:
 
@@ -29,22 +56,51 @@ The problem? You're starting with a solution. You've already decided what to bui
 
 **Problem thinking** starts with pain:
 
-- "Professionals waste 5+ hours weekly scheduling meetings"
+- "Professionals who meet with outside clients lose time to email back-and-forth just to find a meeting slot"
 - "Voters distrust election integrity and want verifiable results"
 - "Pet owners struggle to find trustworthy sitters when they travel"
 
 The difference seems subtle, but it's profound. Solution thinking leads you to build features. Problem thinking leads you to understand customers.
 
+**A worked example.** A student starts with "an AI app that builds study schedules." That fails the
+stranger test: nobody has an AI-study-schedule problem. Strip out the product and ask what happens
+today: "Students taking five classes find out a big assignment is due tomorrow because the due
+dates live in five different Canvas courses and syllabi." A stranger can check that against their
+own week. It also opens answers the original idea would have hidden: a calendar export, a weekly
+email, a habit of checking one page. Some of those need no AI at all.
+
+A quick check you can run on any statement: if it contains an app, a feature, a technology, or the
+words "a way to," it is probably a solution in disguise.
+
+::: {.callout-tip title="Try it"}
+Rewrite each of these so it mentions no product, feature, or technology, only a person, a
+situation, and what goes wrong:
+
+1. "An app that splits the bill at dinner."
+2. "A Slack bot that reminds my team about standups."
+3. "AI that writes cover letters."
+4. "A marketplace for renting textbooks."
+5. "A dashboard for club treasurers."
+
+Then run the stranger test on your own current idea. If your rewrite still only makes sense to
+someone who has heard your pitch, you have not found the problem yet. You can ask Claude to
+critique your rewrites, but tell it to flag any word that implies a solution.
+:::
+
+<!-- learn -->
+
 ## Strategy is choosing what not to do
 
 Michael Porter's foundational point: the essence of strategy is choosing what *not* to do [@porter1996strategy]. Strategy is not a list of everything good you could do; it is a small set of hard choices that fit together, which you then defend against the constant temptation to do everything. If your "strategy" has no sacrifices in it, it is not a strategy. It is a wish list.
+
+<!-- learn -->
 
 ## Where to play, and how to win
 
 Roger Martin and A.G. Lafley (*Playing to Win*) [@lafley2013playing] reduce strategy to a cascade of five linked choices:
 
 1. **What is your winning aspiration?** The purpose. What does winning look like?
-2. **Where will you play?** Which customers, segments, channels. (Your beachhead, from Go-to-Market, is a where-to-play choice.)
+2. **Where will you play?** Which customers, segments, channels. (Your beachhead, the narrow first customer in [Finding and Validating the Problem](04-finding-and-validating-the-problem.qmd), is a where-to-play choice.)
 3. **How will you win?** Your source of advantage in that arena: cheaper, far better at one job, a network others cannot match.
 4. **What capabilities must you have?** The few things you must be great at.
 5. **What management systems are required?** How you keep it running.
@@ -76,6 +132,8 @@ Software development has historically been constrained by scarcity, high costs, 
 A market too small to be worth a funded team's time can be worth yours. That widens where you can
 play; it does not relax how you win.
 
+<!-- learn -->
+
 ## Creating value, and capturing it
 
 Strategy has to answer two different questions, and it is easy to collapse them into one. The first is whether your product *creates* value: is anyone genuinely better off for it existing? The second is whether you can *capture* any of that value: does enough of it come back to you to keep the business alive? These are not the same question, and a product can pass the first and fail the second.
@@ -100,16 +158,20 @@ they only count once the functional ones underneath are handled.
 Use it as a checklist against your own product. If every element you can honestly claim sits in the
 bottom row, you are competing on cost and convenience alone, which is the easiest position to copy.
 
+<!-- learn -->
+
 ## The five forces: how wide is the band?
 
 What sets the width of the band? Michael Porter's five forces [@porter1979competitive], read this way, are a diagnostic of exactly that: how much of the value an industry creates it will actually let you keep. Under the practitioner's language, the variable is market power. Perfect competition drives price down to cost, hands the whole gap to customers, and leaves you almost nothing. Market power is what lets you hold price up toward willingness to pay and keep the gap.
 
 The five forces measure that power at two points:
 
-- **Rivalry, new entrants, and substitutes** decide whether the industry as a whole can hold price above cost, or whether competition and easy entry compete it away.
+- **Rivalry, new entrants, and substitutes** decide whether the industry as a whole can hold price above cost, or whether competition and easy entry compete it away. For a new product the strongest substitute is usually the customer's current habit: the spreadsheet, the group text, or doing nothing.
 - **Buyer power and supplier power** decide whether an adjacent player, a dominant customer or a must-have supplier, can bargain your share away even when the industry is otherwise attractive.
 
 All five are the same variable, market power, at different points in the chain, either yours to hold or someone else's to take. One caution: the five forces describe the *industry*, the attractiveness of the pond, not whether you are the best fish in it. Two products in the same structure can capture very differently based on their own advantage, which is where moats come in.
+
+<!-- learn -->
 
 ## Blue oceans: widening the band
 
@@ -121,31 +183,39 @@ In AIRE this is a discovery discipline pointed at the Aim rather than at the cus
 
 But a blue ocean has a built-in problem, and it sets up everything that follows. By definition it has no barriers, you just created open space, which is the same as saying entry is wide open. If you cannot build a reason for the ocean to stay yours, imitators pour in, the water reddens, and your capture erodes back toward zero. Creating the uncontested space is only half the move. Keeping it is the other half, which is Thiel's real point: create a new market *and* own it. The first half is a blue ocean. The second is a moat.
 
+<!-- learn -->
+
 ## Moats: why the win lasts
 
 Winning once is not enough; the win has to hold. Hamilton Helmer (*7 Powers*) [@helmer2016powers] catalogs the sources of durable advantage, or moats:
 
-- **Network effects** — the product gets more valuable as more people use it; each new user improves it for the others.
-- **Switching costs** — leaving is painful, so customers stay.
-- **Scale economies** — you get cheaper per unit as you grow.
-- **Brand** — trust and meaning competitors cannot quickly copy.
-- **Counter-positioning, cornered resources, and process power** — the subtler ones.
+- **Network effects**: the product gets more valuable as more people use it; each new user improves it for the others.
+- **Switching costs**: leaving is painful, so customers stay.
+- **Scale economies**: you get cheaper per unit as you grow.
+- **Brand**: trust and meaning competitors cannot quickly copy.
+- **Counter-positioning, cornered resources, and process power**: the subtler ones.
 
 Ask honestly: once you are winning, what stops the next student with the same AI tools from copying you next week? If the answer is "nothing," you have a feature, not a moat. In the AI era this question is sharper than ever, because copying has never been cheaper. Strategy is largely the work of building an answer to it.
+
+<!-- learn -->
 
 ## A test worth memorizing: DHM
 
 Gibson Biddle, from leading product at Netflix, offers a compact test for a good product strategy: **DHM** [@biddle2018]. Does it **D**elight customers, in **H**ard-to-copy, **M**argin-enhancing ways? All three at once:
 
-- **Delight** — customers genuinely love it, not merely tolerate it.
-- **Hard to copy** — there is a moat, so the delight is defensible.
-- **Margin-enhancing** — it makes the business healthier, not just busier.
+- **Delight**: customers genuinely love it, not merely tolerate it.
+- **Hard to copy**: there is a moat, so the delight is defensible.
+- **Margin-enhancing**: it makes the business healthier, not just busier.
 
 A product can delight and still lose (easily copied), or be defensible and still lose (nobody cares). DHM forces all three.
+
+<!-- learn -->
 
 ## Vision before strategy
 
 Under the strategy sits a **product vision**: the compelling picture of the better world your product creates, usually a few years out. Marty Cagan argues the vision is what recruits people, aligns decisions, and carries you through the hard middle [@cagan2017inspired]. Strategy is how you get there; vision is where "there" is, and why it is worth the trip. Write the vision first, then let the strategy serve it.
+
+<!-- learn -->
 
 ## Putting it to work
 
@@ -158,6 +228,8 @@ Draft a one-page product strategy for your product:
 - **What you will NOT do** (a short list): the sacrifices.
 
 Then pressure-test it with AI, but adversarially. Do not ask "is this a good strategy?", it will flatter you. Ask: "Attack this strategy. Where is the moat weakest? What would a competitor with the same AI tools do to beat it? What am I refusing to sacrifice that I should?" The job of a strategy is to survive that attack before the market runs it for real.
+
+<!-- learn -->
 
 ## Understanding human nature cuts both ways
 
@@ -180,6 +252,8 @@ The honest test is simple: **would your user, in a calm and reflective moment, b
 ### Algorithms and amplification
 
 The moment your product recommends, ranks, or personalizes, it stops being a neutral tool and starts shaping what people see, want, and believe. An algorithm optimized purely for engagement will reliably discover that outrage, anxiety, and compulsion engage. If you build one, you own what it amplifies. Optimizing for a number without asking what that number does to a person is not a technical decision; it is a moral one you made by declining to make it.
+
+<!-- learn -->
 
 ## Aiming well: virtue and the golden mean
 
@@ -217,8 +291,13 @@ The Sprint 2 framework gives you a practical way to check your aim. For the need
 
 Not every product touches all three. The question is directional: for the needs you do touch, are you on the right side of them? A product that expands agency, supports becoming, and deepens connection is aimed well, and it tends to earn the durable trust that cheaper tactics never can.
 
+<!-- learn -->
+
 ## Key Concepts
 
+- **Why products fail** (CB Insights, 2026): running out of capital is how most failed startups end (70%); poor product-market fit (43%) is the most common reason the money ran out.
+- **The Idea Trap**: falling in love with a solution before understanding the problem.
+- **Problem vs. solution thinking, and the stranger test**: a real problem exists without your product; describe it so someone who never heard your idea would recognize it.
 - **Strategy is choosing what not to do** (Michael Porter)
 - **Where to play / how to win** (Roger Martin & A.G. Lafley, *Playing to Win*)
 - **Create value vs. capture value, the value stick** (Adam Brandenburger & Harborne Stuart; sharpened by Peter Thiel, and by David Teece for innovators): creating value is necessary but not sufficient; capture is a separate, constrained choice.
@@ -236,3 +315,5 @@ Not every product touches all three. The question is directional: for the needs 
 - **You own what your algorithm amplifies.**
 - **The golden mean**: most product virtues are a mean between a vice of excess and a vice of deficiency.
 - **Habits build character**: a product that shapes habits is shaping who its users become.
+
+<!-- learn -->
