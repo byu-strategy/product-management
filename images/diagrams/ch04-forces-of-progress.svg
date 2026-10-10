@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600" role="img" aria-labelledby="t d" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
   <title id="t">The four forces of a switch</title>
-  <desc id="d">On the left, the person's current habit: how they do it today. On the right, your product: the new way. Two blue arrows point right, toward switching: push, frustration with how it works today, and pull, what the new way promises. Two gray arrows point left, against switching: anxiety, worry the new way will let them down, and habit, comfort of what they already know. At the bottom: they switch only when push plus pull is greater than anxiety plus habit.</desc>
+  <desc id="d">On the left, the person's current habit: how they do it today. On the right, your product: the new way. Two blue arrows point right, toward switching: push, frustration with how it works today, and pull, what the new way promises. Two gray arrows point left, against switching: anxiety, worry the new way will not work for them, and habit, comfort of what they already know. At the bottom: they switch only when push plus pull is greater than anxiety plus habit.</desc>
   <defs>
     <linearGradient id="gBlue" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%" stop-color="#0E63C4"/>
@@ -62,7 +62,7 @@
   <text x="272" y="211" font-size="17" fill="#D6E4F3">What the new way promises</text>
 
   <text x="728" y="315" text-anchor="end" font-size="21" font-weight="700" fill="#FFFFFF">Anxiety</text>
-  <text x="728" y="337" text-anchor="end" font-size="17" fill="#F1F3F5">Worry the new way will let them down</text>
+  <text x="728" y="337" text-anchor="end" font-size="17" fill="#F1F3F5">Worry the new way won't work for them</text>
   <text x="728" y="417" text-anchor="end" font-size="21" font-weight="700" fill="#FFFFFF">Habit</text>
   <text x="728" y="439" text-anchor="end" font-size="17" fill="#F1F3F5">Comfort of what they already know</text>
 

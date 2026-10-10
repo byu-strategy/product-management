@@ -65,7 +65,7 @@
   <rect x="540" y="214" width="250" height="212" rx="10" fill="url(#ae-card)" stroke="#0057B8" stroke-width="2.5" filter="url(#ae-shadow)"/>
   <text x="665" y="248" text-anchor="middle" font-size="19" font-weight="700" fill="#002E5D">Permission rules</text>
   <text x="665" y="276" text-anchor="middle" font-size="15" fill="#2C3E50" font-family="Menlo, Consolas, monospace">deny: Read(./.env)</text>
-  <text x="665" y="300" text-anchor="middle" font-size="15" fill="#5A6672">deny beats allow</text>
+  <text x="665" y="300" text-anchor="middle" font-size="15" fill="#5A6672">deny overrides allow</text>
   <line x1="566" y1="320" x2="764" y2="320" stroke="#D9DEE4" stroke-width="1.5"/>
   <text x="665" y="352" text-anchor="middle" font-size="19" font-weight="700" fill="#002E5D">PreToolUse hook</text>
   <text x="665" y="378" text-anchor="middle" font-size="17" fill="#2C3E50">your script decides;</text>

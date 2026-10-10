@@ -42,7 +42,7 @@ The **Aim**, what is worth building at all, is where strategy and values meet. W
 
 Two things about the loop are worth knowing up front.
 
-First, **the middle three multiply, they do not add.** How good a decision turns out is roughly Information × Reasoning × Execution, and because those multiply, a zero in any one makes the whole product zero. Brilliant reasoning on evidence you never gathered is a confident mistake. A great idea you never ship is worth nothing. Think of it as an area, not a perimeter: a rectangle with one short side has almost no area however long the others are.
+First, **the middle three multiply, they do not add.** How good a decision turns out is roughly Information × Reasoning × Execution, and because those multiply, a zero in any one makes the whole product zero. Brilliant reasoning on evidence you never gathered is a confident mistake. A great idea you never ship is worth nothing. Think of it as the area of a rectangle, where the sides multiply: a rectangle with one short side has almost no area however long the others are.
 
 ![Outcome is the area the factors enclose, so the factors multiply. One factor near zero brings the outcome near zero.](images/outcome-as-area.svg){fig-alt="Two rectangles. The left, with all sides full, is a large shaded area labeled Outcome. The right, with the Execution side near zero, shrinks to a thin strip labeled Outcome near zero."}
 

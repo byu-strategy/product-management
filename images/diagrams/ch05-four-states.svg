@@ -95,8 +95,8 @@
 <rect x="28" y="404" width="96" height="10" rx="5" fill="#E9ECEF"/>
 </g></g>
 <text x="379.0" y="540" font-size="21" font-weight="700" fill="#002E5D" text-anchor="middle">Loading</text>
-<text x="379.0" y="566" font-size="16" fill="#5A6672" text-anchor="middle">Shows the shape of</text>
-<text x="379.0" y="587" font-size="16" fill="#5A6672" text-anchor="middle">what is coming</text>
+<text x="379.0" y="566" font-size="16" fill="#5A6672" text-anchor="middle">Gray placeholders</text>
+<text x="379.0" y="587" font-size="16" fill="#5A6672" text-anchor="middle">shaped like shift cards</text>
 <g transform="translate(511.0,30)" filter="url(#sh)"><rect x="0" y="0" width="220" height="470" rx="22" fill="url(#phoneG)" stroke="#D9DEE4" stroke-width="1.5"/>
 <rect x="80.0" y="10" width="60" height="18" rx="9" fill="#1F2933"/>
 <text x="26" y="27" font-size="15" font-weight="600" fill="#2C3E50">9:41</text>
@@ -142,7 +142,7 @@
 </g></g>
 <text x="621.0" y="540" font-size="21" font-weight="700" fill="#002E5D" text-anchor="middle">Error</text>
 <text x="621.0" y="566" font-size="16" fill="#5A6672" text-anchor="middle">Says what happened,</text>
-<text x="621.0" y="587" font-size="16" fill="#5A6672" text-anchor="middle">keeps what it has</text>
+<text x="621.0" y="587" font-size="16" fill="#5A6672" text-anchor="middle">still shows saved shifts</text>
 <g transform="translate(753.0,30)" filter="url(#sh)"><rect x="0" y="0" width="220" height="470" rx="22" fill="url(#phoneG)" stroke="#D9DEE4" stroke-width="1.5"/>
 <rect x="80.0" y="10" width="60" height="18" rx="9" fill="#1F2933"/>
 <text x="26" y="27" font-size="15" font-weight="600" fill="#2C3E50">9:41</text>

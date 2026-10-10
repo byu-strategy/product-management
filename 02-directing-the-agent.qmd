@@ -249,7 +249,7 @@ You have three things to tell Claude: "We use Supabase for the database," "To pu
 
 #### Permission rules
 
-Rules live in a settings file under `permissions`, written as `Tool(specifier)`. **Deny beats allow**, and deny rules apply in every permission mode.
+Rules live in a settings file under `permissions`, written as `Tool(specifier)`. **Deny overrides allow**, and deny rules apply in every permission mode.
 
 ```json
 {
@@ -937,7 +937,7 @@ Pick "GitHub Actions" if your site has a build step, which anything beyond plain
 - **Slash command**: a command you invoke by name at the start of a message; custom ones are now skills.
 - **Skill**: packaged instructions the agent loads when a task matches; only its description sits in context until used.
 - **Advice versus enforcement**: CLAUDE.md is advice; hooks and permission rules run every time.
-- **Permission rule**: an allow, ask, or deny entry in settings; deny beats allow.
+- **Permission rule**: an allow, ask, or deny entry in settings; deny overrides allow.
 - **Hook**: a script fired automatically at a point in the agent's loop; exit 2 blocks, any other non-zero exit does not.
 - **Blast radius**: what an action could break and whether you can undo it.
 - **Permission modes**: Manual, Accept edits, Plan, Auto, Bypass; `Shift+Tab` cycles them in the terminal.

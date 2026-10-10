@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 660" font-family="Helvetica, Arial, sans-serif">
   <rect x="0" y="0" width="1000" height="660" fill="#ffffff"/>
 
-  <text x="500" y="48" text-anchor="middle" font-size="26" font-weight="700" fill="#002E5D">Outcome is an area, not a perimeter</text>
-  <text x="500" y="76" text-anchor="middle" font-size="15" fill="#5a6672">Each factor is a side. Multiply the sides and you get the outcome. Take any side toward zero and the area collapses.</text>
+  <text x="500" y="48" text-anchor="middle" font-size="26" font-weight="700" fill="#002E5D">Outcome is an area: the sides multiply</text>
+  <text x="500" y="76" text-anchor="middle" font-size="15" fill="#5a6672">Each factor is a side. Multiply the sides and you get the outcome. Take any side toward zero and the area goes to zero.</text>
 
   <!-- ================= LEFT PANEL: every factor strong ================= -->
   <text x="270" y="128" text-anchor="middle" font-size="16" font-weight="700" fill="#0057B8">Every factor strong</text>
@@ -30,7 +30,7 @@
   <!-- area rect (collapsed): same width, tiny height -->
   <rect x="610" y="494" width="270" height="26" fill="#C0392B" fill-opacity="0.18" stroke="#C0392B" stroke-width="2"/>
   <text x="745" y="470" text-anchor="middle" font-size="19" font-weight="700" fill="#C0392B">Outcome ≈ 0</text>
-  <text x="745" y="450" text-anchor="middle" font-size="12.5" fill="#8a5252">the area is gone</text>
+  <text x="745" y="450" text-anchor="middle" font-size="12.5" fill="#8a5252">almost no area left</text>
 
   <!-- side labels -->
   <text x="745" y="548" text-anchor="middle" font-size="13" fill="#3d4750">Belief  (Information × Reasoning)</text>

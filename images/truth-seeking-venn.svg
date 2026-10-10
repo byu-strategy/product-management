@@ -10,7 +10,7 @@
 
   <!-- Title -->
   <text x="500" y="46" text-anchor="middle" font-size="27" font-weight="700" fill="#002E5D">Your Beliefs vs. the Truth About Your Customer</text>
-  <text x="500" y="74" text-anchor="middle" font-size="15" fill="#5a6672">Every product belief sits somewhere on this map. The job is to move it toward the middle, and upward.</text>
+  <text x="500" y="74" text-anchor="middle" font-size="15" fill="#5a6672">Every product belief sits in one of these six regions.</text>
 
   <!-- Circle group labels -->
   <text x="300" y="126" text-anchor="middle" font-size="16" font-weight="700" letter-spacing="1.5" fill="#002E5D">WHAT YOU BELIEVE</text>
@@ -81,5 +81,5 @@
   </g>
 
   <!-- Bottom caption -->
-  <text x="500" y="762" text-anchor="middle" font-size="13.5" fill="#5a6672">Move beliefs into the overlap (make them true) and above the line (get evidence) before you build.</text>
+  <text x="500" y="762" text-anchor="middle" font-size="13.5" fill="#5a6672">Move beliefs into the overlap (believe what is true) and above the line (get evidence) before you build.</text>
 </svg>

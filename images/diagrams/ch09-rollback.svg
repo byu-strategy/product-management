@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 480" role="img" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
-  <title>Rollback moves the domain, not the data</title>
+  <title>Rollback moves the domain; the data stays as it is</title>
   <desc>Your live domain sits above three production deployments. Deploy 3 is broken. Before, the domain pointed at deploy 3, shown as a faded dashed arrow. Instant Rollback points it back at deploy 2, the last good one, shown as a solid accent arrow. All three deploys connect to one database below, shared by every deploy, so a rollback does not undo what deploy 3 changed in the data.</desc>
   <defs>
     <linearGradient id="gCard" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#FFFFFF"/><stop offset="100%" stop-color="#F3F6F9"/></linearGradient>

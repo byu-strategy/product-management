@@ -49,15 +49,16 @@ Every one of these comes up below. Come back here when one stops you.
 ## Three Places Code Runs and Data Lives
 
 **The model:** the browser belongs to the user, who can see and change anything there. The
-server is yours and keeps secrets. The database remembers.
+server runs your code on Vercel's computers and holds the secret keys. The database, on
+Supabase's computers, stores each record until it is deleted.
 
 ![The dashed line is where the user's control ends. Anything left of it can be read and changed, so the secret keys and the checks on who may do what sit to the right.](images/diagrams/ch07-where-code-runs.svg){#fig-where-code-runs fig-alt="Three places drawn as icons in a row: the browser, your server, and the database. A dashed blue line between the browser and the server is labeled the user controls on the left and you control the code and keys on the right. Under the browser, the user's device: the user can read and change all of it; it holds no secrets, and its checks can be skipped. Under the server, which runs on Vercel's computers: holds the secret keys; checks who may do what. Under the database, which runs on Supabase's computers: stores each record until it is deleted; row-level security checks every request. A solid arrow labeled requests runs from browser to server to database, and a dashed arc from the browser straight to the database is labeled Supabase: browser queries the database directly." width="100%"}
 
 | Place | Also called | Who controls it | What belongs there | What must never be there |
 |---|---|---|---|---|
-| The user's browser or phone | Frontend, client, client-side | The user | Screens, buttons, forms, quick checks that save the user a round trip | Secret keys, the only copy of a rule that matters (prices, permissions, grades) |
+| The user's browser or phone | Frontend, client, client-side | The user | Screens, buttons, forms, quick checks that save the user a round trip | Secret keys, the only copy of a rule that protects money or data (prices, permissions, grades) |
 | Your server | Backend, server-side | You | Business logic (the rules of your product), secret keys, calls to paid services such as a model or Stripe | Nothing the user should not trigger without a check |
-| The database | Storage, persistence | You, through its rules | Everything the product must remember after a refresh: users, records, history | Data with no rule about who may read it |
+| The database | Storage, persistence | You, through its rules | Everything the product must keep between visits: users, records, history | Data with no rule about who may read it |
 
 A few terms you will hear constantly:
 

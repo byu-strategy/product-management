@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 612" role="img" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
-  <title>The model remembers nothing between calls</title>
-  <desc>A band across the top: your app stores the conversation and sends all of it with every call. Three API calls side by side. Call 1 sends one message: Tandem is my study app. Call 2 sends three: that first message, the model reply Who is it for, and the new message College freshmen. Call 3 sends all five, ending with the new message Write a tagline with its name, which the model can answer only because the name from call 1 was resent. The newest message in each call is highlighted; the others are resent. Each stack flows into an AI model box labeled no memory.</desc>
+  <title>The model keeps nothing between calls</title>
+  <desc>A band across the top: your app stores the conversation and sends all of it with every call. Three API calls side by side. Call 1 sends one message: Tandem is my study app. Call 2 sends three: that first message, the model reply Who is it for, and the new message College freshmen. Call 3 sends all five, ending with the new message Write a tagline with its name, which the model can answer only because the name from call 1 was resent. The newest message in each call is highlighted; the others are resent. Each stack flows into an AI model box labeled saves nothing: the model keeps nothing from one call to the next.</desc>
   <defs>
     <linearGradient id="card" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%" stop-color="#FFFFFF"/><stop offset="100%" stop-color="#F3F6F9"/>
@@ -61,7 +61,7 @@
   <rect x="85" y="494" width="180" height="96" rx="12" fill="url(#card)" stroke="#C7D3DF" stroke-width="1" filter="url(#sh)"/>
   <g transform="translate(106 524) scale(1.5000)" fill="none" stroke="#002E5D" stroke-width="1.600" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8" /> <rect width="16" height="12" x="4" y="8" rx="2" /> <path d="M2 14h2" /> <path d="M20 14h2" /> <path d="M15 13v2" /> <path d="M9 13v2" /></g>
   <text x="156" y="538" font-size="20" font-weight="700" fill="#002E5D" text-anchor="start">AI model</text>
-  <text x="156" y="561" font-size="15" font-weight="400" fill="#5A6672" text-anchor="start">no memory</text>
+  <text x="156" y="561" font-size="15" font-weight="400" fill="#5A6672" text-anchor="start">saves nothing</text>
   <text x="500" y="128" font-size="15" font-weight="700" fill="#5A6672" text-anchor="middle" letter-spacing="1.2">CALL 2</text>
   <path d="M 500.0 138 L 500.0 280" fill="none" stroke="#6495ED" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)" stroke-dasharray="2 6"/>
   <rect x="365" y="288" width="270" height="44" rx="8" fill="#FFFFFF" stroke="#D3DCE5" stroke-width="1" filter="url(#shs)"/>
@@ -78,7 +78,7 @@
   <rect x="410" y="494" width="180" height="96" rx="12" fill="url(#card)" stroke="#C7D3DF" stroke-width="1" filter="url(#sh)"/>
   <g transform="translate(431 524) scale(1.5000)" fill="none" stroke="#002E5D" stroke-width="1.600" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8" /> <rect width="16" height="12" x="4" y="8" rx="2" /> <path d="M2 14h2" /> <path d="M20 14h2" /> <path d="M15 13v2" /> <path d="M9 13v2" /></g>
   <text x="481" y="538" font-size="20" font-weight="700" fill="#002E5D" text-anchor="start">AI model</text>
-  <text x="481" y="561" font-size="15" font-weight="400" fill="#5A6672" text-anchor="start">no memory</text>
+  <text x="481" y="561" font-size="15" font-weight="400" fill="#5A6672" text-anchor="start">saves nothing</text>
   <text x="825" y="128" font-size="15" font-weight="700" fill="#5A6672" text-anchor="middle" letter-spacing="1.2">CALL 3</text>
   <path d="M 825.0 138 L 825.0 172" fill="none" stroke="#6495ED" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)" stroke-dasharray="2 6"/>
   <rect x="690" y="180" width="270" height="44" rx="8" fill="#FFFFFF" stroke="#D3DCE5" stroke-width="1" filter="url(#shs)"/>
@@ -101,5 +101,5 @@
   <rect x="735" y="494" width="180" height="96" rx="12" fill="url(#card)" stroke="#C7D3DF" stroke-width="1" filter="url(#sh)"/>
   <g transform="translate(756 524) scale(1.5000)" fill="none" stroke="#002E5D" stroke-width="1.600" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8" /> <rect width="16" height="12" x="4" y="8" rx="2" /> <path d="M2 14h2" /> <path d="M20 14h2" /> <path d="M15 13v2" /> <path d="M9 13v2" /></g>
   <text x="806" y="538" font-size="20" font-weight="700" fill="#002E5D" text-anchor="start">AI model</text>
-  <text x="806" y="561" font-size="15" font-weight="400" fill="#5A6672" text-anchor="start">no memory</text>
+  <text x="806" y="561" font-size="15" font-weight="400" fill="#5A6672" text-anchor="start">saves nothing</text>
 </svg>
