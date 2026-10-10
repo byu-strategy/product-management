@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 470" role="img" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+<title>Deploy is not release</title>
+<desc>Two rows. Top row, Deploy, code reaches the server: a merge to main leads by an arrow labeled Vercel deploys to the live site, where a note reads new feature, flag off. A dashed line runs from the live site down to a bracket labeled one deploy, which spans the whole bottom row. Bottom row, Release, people see it: three identical sets of concentric rings, inner ring You, middle ring Beta users, outer ring Everyone. Filled rings are the people who see the new feature. In the first set only You is filled; in the second, You and Beta users; in the third, all three. Arrows between the sets are labeled change the flag.</desc>
+<defs>
+<linearGradient id="gNavy" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0E3F6A"/><stop offset="100%" stop-color="#001A36"/></linearGradient>
+<linearGradient id="gBlue" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#F0F5FB"/><stop offset="100%" stop-color="#DCE7F4"/></linearGradient>
+<filter id="sh" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#002E5D" flood-opacity="0.13"/></filter>
+<marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0.5 L10,5 L0,9.5 z" fill="#8A939C"/></marker>
+<marker id="ahA" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0.5 L10,5 L0,9.5 z" fill="#0057B8"/></marker>
+</defs>
+<rect x="0" y="0" width="1000" height="470" rx="8" fill="#FAFBFC"/>
+<text x="40" y="92" font-size="21" font-weight="700" fill="#002E5D">Deploy</text>
+<text x="40" y="116" font-size="16" fill="#5A6672">code reaches</text>
+<text x="40" y="136" font-size="16" fill="#5A6672">the server</text>
+<text x="40" y="318" font-size="21" font-weight="700" fill="#002E5D">Release</text>
+<text x="40" y="342" font-size="16" fill="#5A6672">people</text>
+<text x="40" y="362" font-size="16" fill="#5A6672">see it</text>
+<line x1="40" y1="190" x2="960" y2="190" stroke="#D9DEE4" stroke-width="1.5"/>
+<circle cx="300" cy="100" r="34" fill="url(#gNavy)" filter="url(#sh)"/>
+<g transform="translate(282,82) scale(1.5)" fill="none" stroke="#FFFFFF" stroke-width="1.47" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="18" r="3" /> <circle cx="6" cy="6" r="3" /> <path d="M6 21V9a9 9 0 0 0 9 9" /></g>
+<text x="300" y="160" font-size="17" font-weight="600" text-anchor="middle" fill="#002E5D">merge to main</text>
+<path d="M346 100 H528" stroke="#8A939C" stroke-width="2" fill="none" marker-end="url(#ah)"/>
+<text x="437" y="88" font-size="16" text-anchor="middle" fill="#5A6672">Vercel deploys</text>
+<circle cx="580" cy="100" r="38" fill="url(#gBlue)" stroke="#B9D0EA" stroke-width="1.5" filter="url(#sh)"/>
+<g transform="translate(562,82) scale(1.5)" fill="none" stroke="#002E5D" stroke-width="1.47" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" /> <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" /> <path d="M2 12h20" /></g>
+<text x="580" y="162" font-size="17" font-weight="600" text-anchor="middle" fill="#002E5D">live site</text>
+<rect x="655" y="80" width="210" height="40" rx="20" fill="#FFFFFF" stroke="#D9DEE4" stroke-width="1.5"/>
+<text x="760" y="106" font-size="16" text-anchor="middle" fill="#2C3E50">new feature, flag off</text>
+<path d="M580 172 V196" stroke="#8A939C" stroke-width="1.5" stroke-dasharray="4 5" fill="none"/>
+<circle cx="330" cy="320" r="90" fill="#FFFFFF" stroke="#B9D0EA" stroke-width="1.5"/>
+<circle cx="330" cy="320" r="60" fill="#FFFFFF" stroke="#B9D0EA" stroke-width="1.5"/>
+<circle cx="330" cy="320" r="30" fill="#0057B8" stroke="#FFFFFF" stroke-width="2.5"/>
+<text x="330" y="326" font-size="15" font-weight="600" text-anchor="middle" fill="#FFFFFF">You</text>
+<text x="330" y="278" font-size="15" font-weight="400" text-anchor="middle" fill="#5A6672">Beta users</text>
+<text x="330" y="248" font-size="15" font-weight="400" text-anchor="middle" fill="#5A6672">Everyone</text>
+<circle cx="580" cy="320" r="90" fill="#FFFFFF" stroke="#B9D0EA" stroke-width="1.5"/>
+<circle cx="580" cy="320" r="60" fill="#0057B8" stroke="#FFFFFF" stroke-width="2.5"/>
+<circle cx="580" cy="320" r="30" fill="#0057B8" stroke="#FFFFFF" stroke-width="2.5"/>
+<text x="580" y="326" font-size="15" font-weight="600" text-anchor="middle" fill="#FFFFFF">You</text>
+<text x="580" y="278" font-size="15" font-weight="600" text-anchor="middle" fill="#FFFFFF">Beta users</text>
+<text x="580" y="248" font-size="15" font-weight="400" text-anchor="middle" fill="#5A6672">Everyone</text>
+<circle cx="830" cy="320" r="90" fill="#0057B8" stroke="#FFFFFF" stroke-width="2.5"/>
+<circle cx="830" cy="320" r="60" fill="#0057B8" stroke="#FFFFFF" stroke-width="2.5"/>
+<circle cx="830" cy="320" r="30" fill="#0057B8" stroke="#FFFFFF" stroke-width="2.5"/>
+<text x="830" y="326" font-size="15" font-weight="600" text-anchor="middle" fill="#FFFFFF">You</text>
+<text x="830" y="278" font-size="15" font-weight="600" text-anchor="middle" fill="#FFFFFF">Beta users</text>
+<text x="830" y="248" font-size="15" font-weight="600" text-anchor="middle" fill="#FFFFFF">Everyone</text>
+<path d="M240 214 V204 H920 V214" stroke="#8A939C" stroke-width="1.5" fill="none"/>
+<rect x="533" y="194" width="94" height="22" fill="#FAFBFC"/>
+<text x="580" y="210" font-size="15" text-anchor="middle" fill="#5A6672">one deploy</text>
+<path d="M426 320 H480" stroke="#0057B8" stroke-width="2" fill="none" marker-end="url(#ahA)"/>
+<path d="M676 320 H730" stroke="#0057B8" stroke-width="2" fill="none" marker-end="url(#ahA)"/>
+<text x="455" y="360" font-size="15" text-anchor="middle" fill="#0057B8">change</text>
+<text x="455" y="378" font-size="15" text-anchor="middle" fill="#0057B8">the flag</text>
+<text x="705" y="360" font-size="15" text-anchor="middle" fill="#0057B8">change</text>
+<text x="705" y="378" font-size="15" text-anchor="middle" fill="#0057B8">the flag</text>
+</svg>

@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 490" role="img" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
   <title>Where code runs</title>
-  <desc>Three places, each a column. The browser, which the user controls: they can see and change all of it, so it holds no secrets and no checks that matter. Your server: secret keys live there, and so do the checks that matter. The database: it remembers what survives a refresh, and its row-level security applies to every request. A dashed line between the browser and the server marks where the user's control ends. Requests go from browser to server to database; in a Supabase app the browser can also query the database directly, through row-level security.</desc>
+  <desc>Three places, each a column. The browser, which the user controls: they can see and change all of it, so it holds no secrets, and any check there can be skipped. Your server: it holds the secret keys and checks who may do what. The database: it stores the data that must last, and row-level security checks every request. A dashed line between the browser and the server marks where the user's control ends. Requests go from browser to server to database; in a Supabase app the browser can also query the database directly, through row-level security.</desc>
   <defs>
     <linearGradient id="gCard" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#FFFFFF"/><stop offset="100%" stop-color="#F3F6F9"/></linearGradient>
     <linearGradient id="gBlue" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#F0F5FB"/><stop offset="100%" stop-color="#DCE7F4"/></linearGradient>
@@ -31,28 +31,28 @@
   <text x="114" y="322" font-size="16" fill="#2C3E50">sees and changes</text>
   <text x="114" y="343" font-size="16" fill="#2C3E50">all of it</text>
   <g transform="translate(83.0,367.0) scale(0.917)" fill="none" stroke="#5A6672" stroke-width="2.40" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" /> <path d="m15 9-6 6" /> <path d="m9 9 6 6" /></g>
-  <text x="114" y="378" font-size="16" fill="#2C3E50">no secrets, no checks</text>
-  <text x="114" y="399" font-size="16" fill="#2C3E50">that matter</text>
+  <text x="114" y="378" font-size="16" fill="#2C3E50">holds no secrets;</text>
+  <text x="114" y="399" font-size="16" fill="#2C3E50">its checks can be skipped</text>
   <circle cx="500" cy="178" r="46" fill="url(#gBlue)" stroke="#B9D0EA" stroke-width="1.5" filter="url(#sh)"/>
   <g transform="translate(479.0,157.0) scale(1.750)" fill="none" stroke="#002E5D" stroke-width="1.49" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="8" x="2" y="2" rx="2" ry="2" /> <rect width="20" height="8" x="2" y="14" rx="2" ry="2" /> <line x1="6" x2="6.01" y1="6" y2="6" /> <line x1="6" x2="6.01" y1="18" y2="18" /></g>
   <text x="500" y="260" font-size="21" font-weight="700" text-anchor="middle" fill="#002E5D">Server</text>
   <text x="500" y="284" font-size="16" text-anchor="middle" fill="#8A939C">yours</text>
   <g transform="translate(403.0,311.0) scale(0.917)" fill="none" stroke="#5A6672" stroke-width="2.40" stroke-linecap="round" stroke-linejoin="round"><path d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z" /> <circle cx="16.5" cy="7.5" r=".5" fill="currentColor" /></g>
-  <text x="434" y="322" font-size="16" fill="#2C3E50">secret keys</text>
-  <text x="434" y="343" font-size="16" fill="#2C3E50">live here</text>
+  <text x="434" y="322" font-size="16" fill="#2C3E50">holds the</text>
+  <text x="434" y="343" font-size="16" fill="#2C3E50">secret keys</text>
   <g transform="translate(403.0,367.0) scale(0.917)" fill="none" stroke="#5A6672" stroke-width="2.40" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" /> <path d="m9 12 2 2 4-4" /></g>
-  <text x="434" y="378" font-size="16" fill="#2C3E50">the checks</text>
-  <text x="434" y="399" font-size="16" fill="#2C3E50">that matter</text>
+  <text x="434" y="378" font-size="16" fill="#2C3E50">checks who may</text>
+  <text x="434" y="399" font-size="16" fill="#2C3E50">do what</text>
   <circle cx="820" cy="178" r="46" fill="url(#gBlue)" stroke="#B9D0EA" stroke-width="1.5" filter="url(#sh)"/>
   <g transform="translate(799.0,157.0) scale(1.750)" fill="none" stroke="#002E5D" stroke-width="1.49" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3" /> <path d="M3 5V19A9 3 0 0 0 21 19V5" /> <path d="M3 12A9 3 0 0 0 21 12" /></g>
   <text x="820" y="260" font-size="21" font-weight="700" text-anchor="middle" fill="#002E5D">Database</text>
   <text x="820" y="284" font-size="16" text-anchor="middle" fill="#8A939C">yours</text>
   <g transform="translate(723.0,311.0) scale(0.917)" fill="none" stroke="#5A6672" stroke-width="2.40" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" /> <path d="M3 3v5h5" /> <path d="M12 7v5l4 2" /></g>
-  <text x="754" y="322" font-size="16" fill="#2C3E50">remembers after</text>
-  <text x="754" y="343" font-size="16" fill="#2C3E50">a refresh</text>
+  <text x="754" y="322" font-size="16" fill="#2C3E50">stores the data</text>
+  <text x="754" y="343" font-size="16" fill="#2C3E50">that must last</text>
   <g transform="translate(723.0,367.0) scale(0.917)" fill="none" stroke="#5A6672" stroke-width="2.40" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2" /> <path d="M7 11V7a5 5 0 0 1 10 0v4" /></g>
-  <text x="754" y="378" font-size="16" fill="#2C3E50">row-level security on</text>
-  <text x="754" y="399" font-size="16" fill="#2C3E50">every request</text>
+  <text x="754" y="378" font-size="16" fill="#2C3E50">row-level security</text>
+  <text x="754" y="399" font-size="16" fill="#2C3E50">checks every request</text>
   <path d="M232 178 H440" fill="none" stroke="#8A939C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
   <text x="400" y="166" font-size="16" text-anchor="middle" fill="#5A6672">requests</text>
   <path d="M552 178 H760" fill="none" stroke="#8A939C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>

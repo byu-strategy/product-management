@@ -1,0 +1,64 @@
+<svg viewBox="0 0 1000 520" xmlns="http://www.w3.org/2000/svg" role="img" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+<title>Kinds of tests, by how much of the real app each one runs</title>
+<desc>Three columns, the parts of the app: Browser, the user's machine; Your server, Next.js on Vercel; Supabase, sign-in and database. Three rows of tests, each drawn as a bar across the parts it really runs. Unit, fastest: the test calls one function, validateProblem, shown under the server column; the browser and database are not involved. It catches wrong logic. Integration, slower: the test sends a request to the real route /api/problems on your server, which reads and writes a test database in Supabase; the bar spans server and Supabase. It catches a wrong query or policy. End-to-end, slowest: the test clicks through a real browser, which talks to the running app and a test database; the bar spans browser, server and Supabase. It catches a broken flow.</desc>
+<defs>
+<marker id="aN" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#002E5D"/></marker>
+<filter id="sh" x="-10%" y="-20%" width="120%" height="150%"><feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#002E5D" flood-opacity="0.12"/></filter>
+<linearGradient id="gB" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F3F7FC"/><stop offset="1" stop-color="#DCE7F4"/></linearGradient>
+</defs>
+<rect width="1000" height="520" rx="8" fill="#FAFBFC"/>
+<circle cx="360" cy="70" r="32" fill="#E6EEF7"/>
+<g transform="translate(343,53) scale(1.417)" fill="none" stroke="#002E5D" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="3" rx="2" />
+  <line x1="8" x2="16" y1="21" y2="21" />
+  <line x1="12" x2="12" y1="17" y2="21" /></g>
+<text x="360" y="130" font-size="19" font-weight="700" fill="#002E5D" text-anchor="middle">Browser</text>
+<text x="360" y="152" font-size="15" font-weight="400" fill="#5A6672" text-anchor="middle">the user's machine</text>
+<line x1="360" y1="172" x2="360" y2="490" stroke="#D9DEE4" stroke-width="2"/>
+<circle cx="548" cy="70" r="32" fill="#E6EEF7"/>
+<g transform="translate(531,53) scale(1.417)" fill="none" stroke="#002E5D" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="8" x="2" y="2" rx="2" ry="2" />
+  <rect width="20" height="8" x="2" y="14" rx="2" ry="2" />
+  <line x1="6" x2="6.01" y1="6" y2="6" />
+  <line x1="6" x2="6.01" y1="18" y2="18" /></g>
+<text x="548" y="130" font-size="19" font-weight="700" fill="#002E5D" text-anchor="middle">Your server</text>
+<text x="548" y="152" font-size="15" font-weight="400" fill="#5A6672" text-anchor="middle">Next.js on Vercel</text>
+<line x1="548" y1="172" x2="548" y2="490" stroke="#D9DEE4" stroke-width="2"/>
+<circle cx="736" cy="70" r="32" fill="#E6EEF7"/>
+<g transform="translate(719,53) scale(1.417)" fill="none" stroke="#002E5D" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3" />
+  <path d="M3 5V19A9 3 0 0 0 21 19V5" />
+  <path d="M3 12A9 3 0 0 0 21 12" /></g>
+<text x="736" y="130" font-size="19" font-weight="700" fill="#002E5D" text-anchor="middle">Supabase</text>
+<text x="736" y="152" font-size="15" font-weight="400" fill="#5A6672" text-anchor="middle">sign-in + database</text>
+<line x1="736" y1="172" x2="736" y2="490" stroke="#D9DEE4" stroke-width="2"/>
+<text x="856" y="152" font-size="15" font-weight="600" fill="#5A6672" text-anchor="start">catches</text>
+<text x="30" y="236" font-size="20" font-weight="700" fill="#002E5D" text-anchor="start">Unit</text>
+<text x="30" y="258" font-size="15" font-weight="400" fill="#5A6672" text-anchor="start">fastest</text>
+<line x1="176" y1="238" x2="444" y2="238" stroke="#002E5D" stroke-width="2" marker-end="url(#aN)"/>
+<text x="310.0" y="228" font-size="15" font-weight="600" fill="#5A6672" text-anchor="middle">calls</text>
+<rect x="452" y="209" width="192" height="58" rx="12" fill="url(#gB)" stroke="#0057B8" stroke-width="1.75" filter="url(#sh)"/>
+<rect x="464" y="219" width="168" height="38" rx="8" fill="#FFFFFF" stroke="#B9D0EA" stroke-width="1.5"/>
+<text x="548" y="244" font-size="15" font-weight="600" fill="#002E5D" text-anchor="middle" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace">validateProblem()</text>
+<text x="856" y="244.0" font-size="17" font-weight="600" fill="#2C3E50" text-anchor="start">wrong logic</text>
+<text x="30" y="336" font-size="20" font-weight="700" fill="#002E5D" text-anchor="start">Integration</text>
+<text x="30" y="358" font-size="15" font-weight="400" fill="#5A6672" text-anchor="start">slower</text>
+<line x1="176" y1="338" x2="444" y2="338" stroke="#002E5D" stroke-width="2" marker-end="url(#aN)"/>
+<text x="310.0" y="328" font-size="15" font-weight="600" fill="#5A6672" text-anchor="middle">request</text>
+<rect x="452" y="309" width="380" height="58" rx="12" fill="url(#gB)" stroke="#0057B8" stroke-width="1.75" filter="url(#sh)"/>
+<rect x="464" y="319" width="168" height="38" rx="8" fill="#FFFFFF" stroke="#B9D0EA" stroke-width="1.5"/>
+<text x="548" y="344" font-size="15" font-weight="600" fill="#002E5D" text-anchor="middle" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace">/api/problems</text>
+<rect x="652" y="319" width="168" height="38" rx="8" fill="#FFFFFF" stroke="#B9D0EA" stroke-width="1.5"/>
+<text x="736" y="344" font-size="16" font-weight="600" fill="#002E5D" text-anchor="middle">test database</text>
+<text x="856" y="333.0" font-size="17" font-weight="600" fill="#2C3E50" text-anchor="start">wrong query</text>
+<text x="856" y="355.0" font-size="17" font-weight="600" fill="#2C3E50" text-anchor="start">or policy</text>
+<text x="30" y="436" font-size="20" font-weight="700" fill="#002E5D" text-anchor="start">End-to-end</text>
+<text x="30" y="458" font-size="15" font-weight="400" fill="#5A6672" text-anchor="start">slowest</text>
+<line x1="176" y1="438" x2="256" y2="438" stroke="#002E5D" stroke-width="2" marker-end="url(#aN)"/>
+<text x="216.0" y="428" font-size="15" font-weight="600" fill="#5A6672" text-anchor="middle">clicks</text>
+<rect x="264" y="409" width="568" height="58" rx="12" fill="url(#gB)" stroke="#0057B8" stroke-width="1.75" filter="url(#sh)"/>
+<rect x="276" y="419" width="168" height="38" rx="8" fill="#FFFFFF" stroke="#B9D0EA" stroke-width="1.5"/>
+<text x="360" y="444" font-size="16" font-weight="600" fill="#002E5D" text-anchor="middle">real browser</text>
+<rect x="464" y="419" width="168" height="38" rx="8" fill="#FFFFFF" stroke="#B9D0EA" stroke-width="1.5"/>
+<text x="548" y="444" font-size="16" font-weight="600" fill="#002E5D" text-anchor="middle">running app</text>
+<rect x="652" y="419" width="168" height="38" rx="8" fill="#FFFFFF" stroke="#B9D0EA" stroke-width="1.5"/>
+<text x="736" y="444" font-size="16" font-weight="600" fill="#002E5D" text-anchor="middle">test database</text>
+<text x="856" y="444.0" font-size="17" font-weight="600" fill="#2C3E50" text-anchor="start">broken flow</text>
+</svg>

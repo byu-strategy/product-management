@@ -405,6 +405,24 @@ guardrails, a date) and put event tracking on your core task. The how is in
 - **Public beta:** open it to your beachhead (the course, the club), labeled as a beta.
 - **Wider launch:** a post in the communities you have been helpful in, Product Hunt, LinkedIn.
 
+**Deploy is not release.** On Vercel, merging to `main` puts the code on the live site at once.
+Launching in rings needs a second switch: a **release flag** (the feature flag from
+[Chapter 9](09-version-control-testing-and-tech-debt.qmd)) that decides who sees a deployed
+feature. The simplest version is a Supabase table listing which users have which feature. With the
+flag on only for you, the new code is live and nobody else sees it; turn it on for your twenty
+beta users, then for everyone, with no new deploy (@fig-deploy-vs-release).
+
+![Merging deploys the code once. Each ring is then reached by changing the flag, with no new deploy. Filled rings are the people who see the feature.](images/diagrams/ch12-deploy-vs-release.svg){#fig-deploy-vs-release fig-alt="Two rows. Top row, Deploy, code reaches the server: a merge to main leads by an arrow labeled Vercel deploys to the live site, with a note reading new feature, flag off. A dashed line runs from the live site down to a bracket labeled one deploy, spanning the bottom row. Bottom row, Release, people see it: three identical sets of concentric rings, inner ring You, middle ring Beta users, outer ring Everyone. In the first set only You is filled; in the second, You and Beta users; in the third, all three. Arrows between the sets are labeled change the flag." width="100%"}
+
+The [Agent Team Kit](https://github.com/ai-foundry-byu/agent-team-kit)'s [release flags spec](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/docs/RELEASE-FLAGS-SPEC.md) goes further than a
+student product needs, but three of its rules apply at any size. Check the flag on the server as
+well as in the interface: a hidden button over a working endpoint can still be called. Turning a
+flag off stops new use and undoes nothing already done; an email sent or a payment taken while the
+beta ring had the feature stays sent and taken
+([flag or staging is whose data](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/memory-pack/flag-or-staging-is-whose-data.md)). And remove
+the flag, with the code path it switched off, once the feature is on for everyone
+([deploy is not release](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/memory-pack/deploy-is-not-release.md)).
+
 You can launch more than once. A new feature or a major update is a new reason to tell people.
 
 ### When to change your GTM

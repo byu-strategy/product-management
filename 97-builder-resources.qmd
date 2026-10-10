@@ -178,6 +178,10 @@ How the application is structured, shipped, and kept safe.
 | [Supabase docs](https://supabase.com/docs) and the [auth guide](https://supabase.com/docs/guides/auth) | Docs | Postgres, auth, storage, realtime in one set. The auth guide covers row level security, which most tutorials skip |
 | [Designing Data-Intensive Applications, 2nd ed.](https://martin.kleppmann.com/2026/03/24/designing-data-intensive-applications-2e.html), Kleppmann and Riccomini | Book, 2026 | The reference for how data systems really behave. The second edition rewrites the consistency chapter and adds coverage of cloud systems |
 | [Pro Git](https://git-scm.com/book/en/v2) | Book, free | Complete and free. Read chapters 1 to 3 and stop until you need more |
+| [Trunk Based Development](https://trunkbaseddevelopment.com/), Paul Hammant | Website, free | How teams keep one shared main branch releasable: small branches merged within a day or two, unfinished work behind feature flags. Start with the short-lived feature branches page |
+| [The Practical Test Pyramid](https://martinfowler.com/articles/practical-test-pyramid.html), Ham Vocke | Article, free | Unit, integration, and end-to-end tests worked through in real code, and why a suite should have many of the small ones and few of the large |
+| [Testing guide](https://nextjs.org/docs/app/guides/testing), Next.js | Docs | The test types for a Next.js app and setup guides for Vitest, Jest, and Playwright. Ask the agent to follow it when it sets up tests |
+| [Playwright docs](https://playwright.dev/docs/intro) | Docs | End-to-end tests that click through your app in a real browser. Start with writing tests and the code generator, which records your clicks as a test |
 | [OWASP Top 10:2025](https://owasp.org/Top10/2025/) | Standard | The 2025 edition adds software supply chain failures. If a syllabus cites the 2021 list, it is out of date |
 | [Web Security Academy](https://portswigger.net/web-security), PortSwigger | Labs, free | Hands-on labs for the attacks OWASP describes. Reading about SQL injection is not the same as doing one |
 | [Use The Index, Luke!](https://use-the-index-luke.com/), Markus Winand | Book, free | SQL indexing for developers. Almost nothing else covers this well |
@@ -233,6 +237,7 @@ https://use-the-index-luke.com/
 https://owasp.org/Top10/2025/
 https://portswigger.net/web-security
 https://git-scm.com/book/en/v2
+https://trunkbaseddevelopment.com/
 
 How to teach me:
 - One concept per session, thirty minutes maximum. Say where we stopped.
@@ -355,6 +360,7 @@ Putting AI to work, as the way you build and inside the product you build. This 
 | [AI Evals email course](https://ai.hamel.dev/eval-course), Hamel Husain and Shreya Shankar | Course, free | Seventeen parts plus two free ebooks. Evals are the axis item nobody has, and this is the place to start |
 | [Effective context engineering for AI agents](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents), Anthropic | Article | Context engineering as the discipline that succeeded prompt engineering |
 | [Why AI evals are the hottest new skill for product builders](https://www.youtube.com/watch?v=BsWxPI9UM4c), Hamel Husain, Sep 2025 | Podcast | The best introduction to why evals matter, from the person who teaches them |
+| [Agent Team Kit](https://github.com/ai-foundry-byu/agent-team-kit), BYU AI Foundry | Repo | Hooks, skills, and one-lesson-per-file practices from building production apps with several Claude Code agents at once. Start with the README's comparison of the two ways to run parallel sessions, then the `memory-pack` folder |
 
 **Create your own curated study plan from these resources.** Copy this into Claude Code.
 It reads the sources above, finds out what you already know, and teaches against your own

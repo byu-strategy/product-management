@@ -1,0 +1,111 @@
+<svg viewBox="0 0 1000 630" xmlns="http://www.w3.org/2000/svg" role="img" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+<title>What a test is, and what the test runner does</title>
+<desc>Top: one test, as a mechanism. A test file named format.test.ts has three numbered lines. 1, Arrange: const amount = 0. 2, Act: formatCurrency(amount), which sends the input 0 to your code, the formatCurrency function. 3, Assert: expect(got).toBe('$0.00'), which supplies the expected answer. Your code returns its output, '$0.00', as got. A compare box holds got and expected side by side. If they are the same, the test passes, shown in green; if they are different, it fails, shown in red. Bottom: the test runner. The command npm test starts the runner, which finds every file whose name ends in .test.ts, twelve shown, and runs them. Eleven pass and one fails. The runner prints a summary: 47 passed, 1 failed. The numbers are illustrative.</desc>
+<defs>
+<marker id="aN" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#002E5D"/></marker>
+<marker id="aB" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#0057B8"/></marker>
+<marker id="aG" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#5A6672"/></marker>
+<filter id="sh" x="-10%" y="-10%" width="120%" height="130%"><feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#002E5D" flood-opacity="0.12"/></filter>
+<linearGradient id="gW" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F4F7FA"/></linearGradient>
+<linearGradient id="gB" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F3F7FC"/><stop offset="1" stop-color="#E6EEF7"/></linearGradient>
+</defs>
+<rect width="1000" height="630" rx="8" fill="#FAFBFC"/>
+<rect x="30" y="40" width="440" height="270" rx="10" fill="url(#gW)" stroke="#D9DEE4" stroke-width="1.5" filter="url(#sh)"/>
+<g transform="translate(52,60) scale(1.083)" fill="none" stroke="#002E5D" stroke-width="2.03" stroke-linecap="round" stroke-linejoin="round"><path d="M10 12.5 8 15l2 2.5" />
+  <path d="m14 12.5 2 2.5-2 2.5" />
+  <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+  <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7z" /></g>
+<text x="88" y="81" font-size="18" font-weight="700" fill="#002E5D" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace">format.test.ts</text>
+<line x1="30" y1="104" x2="470" y2="104" stroke="#D9DEE4" stroke-width="1.5"/>
+<circle cx="62" cy="144" r="14" fill="#002E5D"/>
+<text x="62" y="150" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">1</text>
+<text x="86" y="138" font-size="15" font-weight="600" fill="#5A6672" text-anchor="start">Arrange</text>
+<text x="86" y="162" font-size="16" font-weight="600" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace">const amount = 0</text>
+<circle cx="62" cy="204" r="14" fill="#002E5D"/>
+<text x="62" y="210" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">2</text>
+<text x="86" y="198" font-size="15" font-weight="600" fill="#5A6672" text-anchor="start">Act</text>
+<text x="86" y="222" font-size="16" font-weight="600" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace">const got = formatCurrency(amount)</text>
+<circle cx="62" cy="264" r="14" fill="#002E5D"/>
+<text x="62" y="270" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">3</text>
+<text x="86" y="258" font-size="15" font-weight="600" fill="#5A6672" text-anchor="start">Assert</text>
+<text x="86" y="282" font-size="16" font-weight="600" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace">expect(got).toBe('$0.00')</text>
+<rect x="530" y="168" width="200" height="84" rx="10" fill="url(#gB)" stroke="#002E5D" stroke-width="1.5" filter="url(#sh)"/>
+<g transform="translate(548,182) scale(0.9167)" fill="none" stroke="#002E5D" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m18 16 4-4-4-4" />
+  <path d="m6 8-4 4 4 4" />
+  <path d="m14.5 4-5 16" /></g>
+<text x="578" y="199" font-size="15" font-weight="600" fill="#5A6672" text-anchor="start">Your code</text>
+<text x="548" y="233" font-size="17" font-weight="700" fill="#002E5D" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace">formatCurrency()</text>
+<line x1="470" y1="204" x2="520" y2="204" stroke="#002E5D" stroke-width="2" marker-end="url(#aN)"/>
+<text x="495" y="194" font-size="17" font-weight="600" fill="#2C3E50" text-anchor="middle" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace">0</text>
+<rect x="790" y="140" width="180" height="170" rx="10" fill="#FFFFFF" stroke="#0057B8" stroke-width="2" filter="url(#sh)"/>
+<text x="880.0" y="168" font-size="15" font-weight="600" fill="#5A6672" text-anchor="middle">compare</text>
+<line x1="806" y1="182" x2="954" y2="182" stroke="#D9DEE4" stroke-width="1.5"/>
+<text x="808" y="216" font-size="15" font-weight="400" fill="#5A6672" text-anchor="start">got</text>
+<text x="952" y="216" font-size="17" font-weight="700" fill="#002E5D" text-anchor="end" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace">'$0.00'</text>
+<text x="808" y="276" font-size="15" font-weight="400" fill="#5A6672" text-anchor="start">expected</text>
+<text x="952" y="276" font-size="17" font-weight="700" fill="#002E5D" text-anchor="end" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace">'$0.00'</text>
+<line x1="730" y1="210" x2="782" y2="210" stroke="#002E5D" stroke-width="2" marker-end="url(#aN)"/>
+<line x1="470" y1="270" x2="782" y2="270" stroke="#002E5D" stroke-width="2" marker-end="url(#aN)"/>
+<path d="M880.0 310 L880.0 336" stroke="#5A6672" stroke-width="2" fill="none"/>
+<path d="M830 336 L930 336" stroke="#5A6672" stroke-width="2" fill="none"/>
+<path d="M830 336 L830 352" stroke="#5A6672" stroke-width="2" fill="none" marker-end="url(#aG)"/>
+<path d="M930 336 L930 352" stroke="#5A6672" stroke-width="2" fill="none" marker-end="url(#aG)"/>
+<g transform="translate(815,360) scale(1.25)" fill="none" stroke="#2C7A4C" stroke-width="1.76" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" />
+  <path d="m9 12 2 2 4-4" /></g>
+<text x="830" y="412" font-size="18" font-weight="700" fill="#2C7A4C" text-anchor="middle">pass</text>
+<text x="830" y="434" font-size="15" font-weight="400" fill="#5A6672" text-anchor="middle">same</text>
+<g transform="translate(915,360) scale(1.25)" fill="none" stroke="#B03A3A" stroke-width="1.76" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" />
+  <path d="m15 9-6 6" />
+  <path d="m9 9 6 6" /></g>
+<text x="930" y="412" font-size="18" font-weight="700" fill="#B03A3A" text-anchor="middle">fail</text>
+<text x="930" y="434" font-size="15" font-weight="400" fill="#5A6672" text-anchor="middle">different</text>
+<rect x="30" y="462" width="940" height="146" rx="10" fill="#F2F6FB"/>
+<text x="52" y="494" font-size="15" font-weight="700" fill="#5A6672" text-anchor="start">Test runner</text>
+<rect x="52" y="514" width="150" height="48" rx="8" fill="#002E5D"/>
+<g transform="translate(66,526) scale(1)" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5" />
+  <line x1="12" x2="20" y1="19" y2="19" /></g>
+<text x="98" y="545" font-size="17" font-weight="700" fill="#FFFFFF" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace">npm test</text>
+<line x1="202" y1="538" x2="326" y2="538" stroke="#002E5D" stroke-width="2" marker-end="url(#aN)"/>
+<g transform="translate(340,492) scale(1.25)" fill="none" stroke="#002E5D" stroke-width="1.76" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
+  <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+  <path d="m9 15 2 2 4-4" /></g>
+<g transform="translate(386,492) scale(1.25)" fill="none" stroke="#002E5D" stroke-width="1.76" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
+  <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+  <path d="m9 15 2 2 4-4" /></g>
+<g transform="translate(432,492) scale(1.25)" fill="none" stroke="#002E5D" stroke-width="1.76" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
+  <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+  <path d="m9 15 2 2 4-4" /></g>
+<g transform="translate(478,492) scale(1.25)" fill="none" stroke="#002E5D" stroke-width="1.76" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
+  <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+  <path d="m9 15 2 2 4-4" /></g>
+<g transform="translate(524,492) scale(1.25)" fill="none" stroke="#002E5D" stroke-width="1.76" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
+  <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+  <path d="m9 15 2 2 4-4" /></g>
+<g transform="translate(570,492) scale(1.25)" fill="none" stroke="#002E5D" stroke-width="1.76" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
+  <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+  <path d="m9 15 2 2 4-4" /></g>
+<g transform="translate(340,538) scale(1.25)" fill="none" stroke="#002E5D" stroke-width="1.76" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
+  <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+  <path d="m9 15 2 2 4-4" /></g>
+<g transform="translate(386,538) scale(1.25)" fill="none" stroke="#002E5D" stroke-width="1.76" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
+  <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+  <path d="m9 15 2 2 4-4" /></g>
+<g transform="translate(432,538) scale(1.25)" fill="none" stroke="#002E5D" stroke-width="1.76" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
+  <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+  <path d="m9 15 2 2 4-4" /></g>
+<g transform="translate(478,538) scale(1.25)" fill="none" stroke="#B03A3A" stroke-width="1.76" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
+  <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+  <path d="m14.5 12.5-5 5" />
+  <path d="m9.5 12.5 5 5" /></g>
+<g transform="translate(524,538) scale(1.25)" fill="none" stroke="#002E5D" stroke-width="1.76" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
+  <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+  <path d="m9 15 2 2 4-4" /></g>
+<g transform="translate(570,538) scale(1.25)" fill="none" stroke="#002E5D" stroke-width="1.76" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
+  <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+  <path d="m9 15 2 2 4-4" /></g>
+<text x="470.0" y="594" font-size="15" font-weight="400" fill="#5A6672" text-anchor="middle">files named *.test.ts</text>
+<line x1="626" y1="538" x2="742" y2="538" stroke="#002E5D" stroke-width="2" marker-end="url(#aN)"/>
+<rect x="752" y="492" width="198" height="92" rx="8" fill="#FFFFFF" stroke="#D9DEE4" stroke-width="1.5"/>
+<text x="772" y="528" font-size="17" font-weight="700" fill="#2C7A4C" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace">47 passed</text>
+<text x="772" y="560" font-size="17" font-weight="700" fill="#B03A3A" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace">1 failed</text>
+</svg>

@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 750" role="img" aria-labelledby="t d" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
 <title id="t">Designing the schedule scan for an AI that can be wrong</title>
-<desc id="d">A phone screen titled 'Review scanned shifts' from ShiftSwap's schedule scan, with five numbered callouts. 1, set expectations: a note at the top says 'Check before saving. It can misread handwriting.' 2, show the evidence: each of five shift rows shows a cropped image of the handwritten paper schedule next to the value the model read. 3, draft, not action: the list is labeled 'Draft, 5 shifts found, none saved', every value has an edit pencil, and the Friday row, where the handwriting says 7 to 10 but the model read 1:00 to 10:00 PM, is outlined and marked 'Check this'. 4, easy to dismiss and undo: a Discard draft link, and after saving a '5 shifts saved' message with an Undo button for ten seconds. 5, human on what matters: nothing saves until the student taps 'Save 5 shifts', and the model never posts, trades, or approves a shift.</desc>
+<desc id="d">A phone screen titled 'Review scanned shifts' from ShiftSwap's schedule scan, with five numbered callouts. 1, set expectations: a note at the top says 'Check before saving. It can misread handwriting.' 2, show the evidence: each of five shift rows shows a cropped image of the handwritten paper schedule next to the value the model read. 3, draft, not action: the list is labeled 'Draft, 5 shifts found, none saved', every value has an edit pencil, and the Friday row, where the handwriting says 7 to 10 but the model read 1:00 to 10:00 PM, is outlined and marked 'Check this'. 4, easy to dismiss and undo: a Discard draft link, and after saving a '5 shifts saved' message with an Undo button for ten seconds. 5, a person confirms costly actions: nothing saves until the student taps 'Save 5 shifts', and the model never posts, trades, or approves a shift.</desc>
 <defs>
   <filter id="sh" x="-10%" y="-10%" width="120%" height="130%">
     <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#002E5D" flood-opacity="0.13"/>
@@ -117,7 +117,7 @@
 <g transform="translate(738,498) scale(0.7500)" fill="none" stroke="#B9D0EA" stroke-width="2.667" stroke-linecap="round" stroke-linejoin="round"><path d="M9 14 4 9l5-5" />
   <path d="M4 9h10.5a5.5 5.5 0 0 1 5.5 5.5a5.5 5.5 0 0 1-5.5 5.5H11" /></g>
 <circle cx="490" cy="590" r="15" fill="url(#navyG)" stroke="#fff" stroke-width="2.5"/><text x="490" y="596" font-size="16" font-weight="700" fill="#fff" text-anchor="middle">5</text>
-<text x="518" y="596" font-size="20" font-weight="700" fill="#002E5D">Human on what matters</text>
+<text x="518" y="596" font-size="20" font-weight="700" fill="#002E5D">A person confirms</text>
 <text x="518" y="622" font-size="17" fill="#2C3E50">Nothing saves until the student</text>
 <text x="518" y="644" font-size="17" fill="#2C3E50">taps Save. The model never posts,</text>
 <text x="518" y="666" font-size="17" fill="#2C3E50">trades, or approves a shift.</text>

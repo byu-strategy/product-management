@@ -31,7 +31,7 @@ application fails. This chapter works from the bottom of the iceberg up:
 | Words are interface | Labels, buttons, and errors tell people what to do; specific beats clever |
 | Decide once | A design system makes each decision one time; familiar patterns beat novel ones |
 | Accessible by default | Contrast, keyboard, and screen readers are the baseline |
-| Designing for an uncertain AI | When output can be wrong, show sources, allow edits and undo, keep a human on what matters |
+| Designing for an uncertain AI | When output can be wrong, show sources, allow edits and undo, have a person confirm costly actions |
 | Directing an agent on design | Say exactly what to change, why, and with a reference |
 
 The ninth design idea, **watch, do not ask**, is the subject of [Testing the
@@ -204,6 +204,15 @@ screen(state):
 The loading row follows Nielsen's long-standing response-time limits: about 0.1 second feels
 instant, about 1 second keeps the user's train of thought, and past about 10 seconds people need
 progress feedback or they leave the task.
+
+**Buttons that change data need a loading state of their own.** If a Save button shows no sign of
+being pressed while its request runs, people assume the click missed and click again, and the
+action runs twice: two posts, two charges, two emails. Give every button that saves, sends, or
+deletes two kinds of feedback: a visible change the moment it is pressed, and, while the request
+runs, a spinner in place of the label at the button's original width (so nothing around it moves),
+with the button disabled until the request finishes. Build it once, in your shared Button
+component, so every screen gets it. The [Agent Team Kit](https://github.com/ai-foundry-byu/agent-team-kit) keeps this as a standing rule for
+the agents that build its apps ([every mutating button gives feedback](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/memory-pack/every-mutating-button-gives-feedback.md)).
 
 #### Worked example: "My shifts" in four states
 
@@ -401,7 +410,7 @@ AI products [@amershi2019guidelines]; the building blocks below follow several o
 | **Show the evidence** | Show the source behind the answer: the quoted passage, the region of the image it read | Make clear why the system did what it did |
 | **Draft, not action** | AI output arrives as an editable draft the user approves; it does not act on its own | Support efficient correction |
 | **Easy to dismiss and undo** | One tap to reject a suggestion or undo what it did | Support efficient dismissal |
-| **Human on what matters** | The higher the cost of a mistake, the more explicit the human confirmation | Chapter 11: if a wrong answer is expensive, put a human in the path |
+| **A person confirms costly actions** | The higher the cost of a mistake, the more explicit the human confirmation | Chapter 11: if a wrong answer is expensive, put a human in the path |
 
 Streaming the answer as it is generated, covered in Chapter 11, is the loading state for AI: it
 shows progress during a wait that can run many seconds.
@@ -420,7 +429,7 @@ sometimes misread a handwritten 7 as a 1. The design:
    **Undo** appears for ten seconds.
 5. The model never posts, trades, or approves a shift. Those stay human actions.
 
-![The schedule scan's review screen, with each of the five building blocks marked. The Friday row shows the point: the photo says 7 to 10, the model read 1:00, and the design makes that easy to catch before anything is saved.](images/diagrams/ch05-uncertain-ai.svg){#fig-uncertain-ai fig-alt="A phone mockup titled Review scanned shifts with five numbered callouts. 1, set expectations: a note reads Check before saving. It can misread handwriting. 2, show the evidence: each of five shift rows shows a crop of the handwritten paper schedule beside the value read from it. 3, draft, not action: a Draft label reads 5 shifts found, none saved, each row has an edit pencil, and the Friday row, whose crop says Fri 7-10 but whose value reads 1:00 to 10:00 PM, is outlined and marked Check this. 4, easy to dismiss and undo: a Discard draft link, and after saving a 5 shifts saved message with an Undo button for ten seconds. 5, human on what matters: nothing saves until the student taps Save 5 shifts, and the model never posts, trades, or approves a shift." width="100%"}
+![The schedule scan's review screen, with each of the five building blocks marked. The Friday row shows the point: the photo says 7 to 10, the model read 1:00, and the design makes that easy to catch before anything is saved.](images/diagrams/ch05-uncertain-ai.svg){#fig-uncertain-ai fig-alt="A phone mockup titled Review scanned shifts with five numbered callouts. 1, set expectations: a note reads Check before saving. It can misread handwriting. 2, show the evidence: each of five shift rows shows a crop of the handwritten paper schedule beside the value read from it. 3, draft, not action: a Draft label reads 5 shifts found, none saved, each row has an edit pencil, and the Friday row, whose crop says Fri 7-10 but whose value reads 1:00 to 10:00 PM, is outlined and marked Check this. 4, easy to dismiss and undo: a Discard draft link, and after saving a 5 shifts saved message with an Undo button for ten seconds. 5, a person confirms costly actions: nothing saves until the student taps Save 5 shifts, and the model never posts, trades, or approves a shift." width="100%"}
 
 ::: {.callout-tip title="Try it"}
 Pick the AI feature in your product (or one you plan). **Predict** the most likely wrong output
@@ -457,6 +466,13 @@ is often the best reference you can give.
 |---|---|
 | "Improve the UX of the shifts page." | "The shifts page has no empty state; a new user sees a blank white area. Add an empty state: one sentence, 'Your shifts will show up here,' and two buttons, Scan schedule (primary) and Add a shift (secondary), using our Button component." |
 | "Make the errors better." | "When the save fails, we show the raw error text. Show 'Couldn't save your shift. Check your connection and try again,' next to the Save button, keep the form values, and add a Try again button." |
+| "Redesign settings as one page." | "Replace the four settings tabs with one page in three sections. Before you build it, list every component, link, and label from the tabbed version that the new page no longer needs, including the tab bar, and delete them in the same change. Show me the list first." |
+
+The last row matters because agents add more readily than they remove. A redesign built on top of
+the old screen often keeps pieces of the old design that no longer have a purpose, and you find
+them one screenshot at a time. Asking first for the list of what the redesign removes (the Agent
+Team Kit calls it a [subtraction audit](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/memory-pack/subtraction-audit-on-redesign.md)) catches
+them before the build.
 
 #### Taste is a skill
 
@@ -665,7 +681,7 @@ the largest ecosystem, including shadcn/ui.
 - **Accessibility baseline (WCAG)**: 4.5:1 text contrast, full keyboard use, visible focus, labeled
   inputs, semantic HTML
 - **Designing for uncertain AI**: set expectations, show evidence, output as editable draft, easy
-  dismiss and undo, human on consequential decisions
+  dismiss and undo, a person confirms costly actions
 - **Precise design direction**: where, what is wrong, why, what to change, and a reference
 - **Platform spectrum**: Web → Responsive Web → PWA → Capacitor → React Native → Native
 - **Distribution tradeoffs**: web (URL, SEO, instant updates) vs. app store (discovery, install,

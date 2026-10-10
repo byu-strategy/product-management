@@ -51,7 +51,7 @@ Every one of these comes up below. Come back here when one stops you.
 **The model:** the browser belongs to the user, who can see and change anything there. The
 server is yours and keeps secrets. The database remembers.
 
-![The dashed line is where the user's control ends. Anything left of it can be read and changed, so secrets and the checks that matter sit to the right.](images/diagrams/ch07-where-code-runs.svg){#fig-where-code-runs fig-alt="Three places drawn as icons in a row: the browser, your server, and the database. A dashed blue line between the browser and the server is labeled the user controls on the left and you control on the right. Under the browser: sees and changes all of it; no secrets, no checks that matter. Under the server: secret keys live here; the checks that matter. Under the database: remembers after a refresh; row-level security on every request. A solid arrow labeled requests runs from browser to server to database, and a dashed arc from the browser straight to the database is labeled Supabase: direct, through row-level security." width="100%"}
+![The dashed line is where the user's control ends. Anything left of it can be read and changed, so the secret keys and the checks on who may do what sit to the right.](images/diagrams/ch07-where-code-runs.svg){#fig-where-code-runs fig-alt="Three places drawn as icons in a row: the browser, your server, and the database. A dashed blue line between the browser and the server is labeled the user controls on the left and you control on the right. Under the browser: the user sees and can change all of it; it holds no secrets, and its checks can be skipped. Under the server: holds the secret keys; checks who may do what. Under the database: stores the data that must last; row-level security checks every request. A solid arrow labeled requests runs from browser to server to database, and a dashed arc from the browser straight to the database is labeled Supabase: direct, through row-level security." width="100%"}
 
 | Place | Also called | Who controls it | What belongs there | What must never be there |
 |---|---|---|---|---|
@@ -160,6 +160,98 @@ opens a to-do app, signs in, loads their tasks, and asks an AI feature for help.
 Two things follow. Because the browser talks to the database directly in step 3, the
 database's own rules are the only guard on ordinary data. And anything that needs a secret, such
 as a model call, a payment, or an email, goes through your server, as in step 4.
+
+#### Three credentials: publishable key, token, secret key
+
+The figure shows three things that look alike, since each is a long string sent with a request.
+They answer different questions.
+
+| | Publishable key | Token | Secret key |
+|---|---|---|---|
+| **What it identifies** | Your app (which Supabase project) | One signed-in user | Your server, with full access |
+| **Who gets it, and when** | Every visitor, inside the page code | The browser, from Supabase Auth at sign-in | Only your server, from an environment variable |
+| **Who can see it** | Anyone (it is in the code the browser downloads) | That user's browser | Nobody outside your server |
+| **What it allows** | Reaching your project; row-level security still decides what each request sees | Row-level security knows who is asking and returns that user's rows | Everything: Supabase's secret key skips row-level security; a paid service's key spends your money |
+| **How long it lasts** | Until you replace it | About an hour, then the browser gets a new one automatically | Until you replace it |
+| **If someone copies it** | Nothing extra; it was public already | They can act as that user until it expires | They can read or change all data, or run up your bill. Replace it immediately |
+
+Step 4 uses a paid service's key (an Anthropic API key, for example), which is a different
+secret from Supabase's secret key. Both follow the same rule: they live only on your server.
+
+#### The actual messages
+
+Here is what travels in steps 2 to 4, slightly shortened. You will not write these by hand; the
+Supabase library and your server code build them. Seeing them makes clear what each credential
+is for. Each request has an address, a few **headers** (labeled lines that carry keys and
+tokens), and a **body** (the data).
+
+**Step 2, sign in.** The browser sends the email and password, with the publishable key to say
+which project:
+
+```http
+POST https://abcd1234.supabase.co/auth/v1/token?grant_type=password
+apikey: sb_publishable_7xKq...
+
+{ "email": "maya@example.com", "password": "********" }
+```
+
+Supabase Auth checks the password and replies with a token:
+
+```json
+{ "access_token": "eyJhbGciOiJIUzI1NiIs...", "expires_in": 3600,
+  "user": { "id": "8f14e45f-ceea-467a-9575-0a5b1b2a3c4d", "email": "maya@example.com" } }
+```
+
+Supabase signs the token, so it cannot be edited without breaking the signature. Inside it are
+the user's id (`"sub": "8f14e45f-..."`) and an expiry time.
+
+**Step 3, load your tasks.** The browser asks the database directly, carrying both the
+publishable key and the token:
+
+```http
+GET https://abcd1234.supabase.co/rest/v1/tasks?select=id,task_text,completed
+apikey: sb_publishable_7xKq...
+Authorization: Bearer eyJhbGciOiJIUzI1NiIs...
+```
+
+The request asks for every task. Row-level security reads the user id from the token, applies
+the rule "a user may read rows where `user_id` is their own id," and returns only Maya's rows:
+
+```json
+[ { "id": 1, "task_text": "Buy groceries", "completed": false },
+  { "id": 2, "task_text": "Call dentist", "completed": true } ]
+```
+
+**Step 4, use an AI feature.** The browser sends the request and the token to your server. It
+never contacts Anthropic itself:
+
+```http
+POST https://your-app.vercel.app/api/suggest
+Authorization: Bearer eyJhbGciOiJIUzI1NiIs...
+
+{ "task_text": "Call dentist" }
+```
+
+Your server checks the token, then makes its own request to Anthropic with the secret key, read
+from an environment variable:
+
+```http
+POST https://api.anthropic.com/v1/messages
+x-api-key: sk-ant-api03-...
+anthropic-version: 2023-06-01
+
+{ "model": "claude-sonnet-5-5", "max_tokens": 200,
+  "messages": [ { "role": "user", "content": "Suggest a first step for: Call dentist" } ] }
+```
+
+Anthropic replies to your server, and your server sends the browser only what it needs:
+
+```json
+{ "suggestion": "Look up the office's phone number and hours." }
+```
+
+The secret key appears in exactly one message, the one between your server and Anthropic. The
+browser never sees it.
 
 **This is the "full stack"**: frontend, backend, database, and the requests connecting them.
 As a full-stack product builder, you decide what lives where, even when the agent types it.

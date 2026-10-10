@@ -256,10 +256,23 @@ Once your product has users, you can test at scale:
 | **Surveys** | Broad sentiment | 100+ users |
 | **Analytics** | Behavior patterns | All users |
 | **Session replay** | Specific issues | As needed |
+| **In-app feedback button** | Bugs and confusion, reported when they happen | Any user who clicks it |
+| **Agent walk-through** | Steps where the app does something a user would not expect | Before each round with people |
 
 <!-- REVIEW: the A/B (1000+) and survey (100+) sample sizes are rules of thumb with no source; the right A/B size depends on the effect you want to detect. Consider pointing to ch14 instead of giving a number. -->
 
 **Start with usability testing.** You need qualitative insights before you can optimize quantitatively. Analytics and A/B testing come back in [Measuring What Matters](14-measuring-what-matters.qmd).
+
+The last two rows suit a product built with agents. A feedback button that sends, along with the
+user's sentence, the page they were on, a screenshot, and the recent errors gives an agent enough
+to reproduce the problem without going back to the user. The Agent Team Kit's
+[feedback loop spec](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/docs/FEEDBACK-LOOP-SPEC.md) describes how to build one, and its
+[`fix-bug`](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/skills/fix-bug/SKILL.md) skill is the agent's side of it. An agent walk-through,
+such as the kit's [`ux-critique`](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/skills/ux-critique/SKILL.md) skill, has an agent use the app
+in a browser, predict at each step what should happen, and record where the app does something
+else. It is cheap enough to run before every round of testing. It does not replace the five users:
+the agent already knows what the app is for, which is the curse of knowledge from the start of
+this chapter.
 
 A note on the [Peer Product Testing](00-assessments.qmd#peer-product-testing) assignment: classmates are useful testers for finding where an interface confuses a first-time user, but most are not your target user. Treat a peer test as practice and a first pass, and still test with real users before you trust a result about your market.
 

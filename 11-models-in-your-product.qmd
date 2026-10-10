@@ -221,6 +221,14 @@ for await (const event of stream) {
 Stream anything a user watches arrive. Do not bother streaming something your code consumes,
 like the structured extraction above, because nothing is waiting on it visually.
 
+Streaming covers part of a rule the [Agent Team Kit](https://github.com/ai-foundry-byu/agent-team-kit) applies to every screen where a model
+works for the user ([AI surface full lifecycle](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/memory-pack/ai-surface-full-lifecycle.md)):
+an explicit way to start; a live sign that it is still working, moving and showing the time
+elapsed, so the user can tell working from stuck; and a Stop that cancels the request itself.
+Hiding the output while the request keeps running is not a stop. Build the Stop into the first
+version, because adding cancellation later is harder: the stream above has an `abort()` method,
+and your route handler can pass the request's abort signal through to it.
+
 <!-- learn -->
 
 ## Grounding Answers in Your Data

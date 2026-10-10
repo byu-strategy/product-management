@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 584" role="img" aria-labelledby="tbd-t tbd-d" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+<title id="tbd-t">Trunk-based development versus long-lived branches</title>
+<desc id="tbd-d">Two panels on the same three-week time axis. Top, trunk-based: one main line, the trunk, with many small branches that leave main and merge back within hours to two days; several are open at the same time, above and below the line. Bottom, long-lived branches: two branches, feature-rating and feature-search, leave main in week 1 and drift further from it for almost three weeks while main keeps changing. Both come back at the end in one large merge, marked in red, where their changes conflict.</desc>
+<defs>
+<linearGradient id="tbd-panel" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#F6F8FA"/><stop offset="100%" stop-color="#EDF0F3"/></linearGradient>
+<linearGradient id="tbd-navy" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0E3F6A"/><stop offset="100%" stop-color="#001A36"/></linearGradient>
+<linearGradient id="tbd-red" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#FBF3F3"/><stop offset="100%" stop-color="#F3E1E1"/></linearGradient>
+<filter id="tbd-sh" x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#002E5D" flood-opacity="0.13"/></filter>
+<marker id="tbd-ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0.5 L10,5 L0,9.5 z" fill="#8A939C"/></marker>
+</defs>
+<rect x="0" y="0" width="1000" height="584" rx="8" fill="#FAFBFC"/>
+<rect x="16" y="16" width="968" height="212" rx="10" fill="url(#tbd-panel)"/>
+<rect x="16" y="242" width="968" height="272" rx="10" fill="url(#tbd-panel)"/>
+<line x1="150.0" y1="214" x2="150.0" y2="112" stroke="#DCE1E6" stroke-width="1.5" stroke-dasharray="3 5"/>
+<line x1="150.0" y1="500" x2="150.0" y2="338" stroke="#DCE1E6" stroke-width="1.5" stroke-dasharray="3 5"/>
+<line x1="416.7" y1="214" x2="416.7" y2="112" stroke="#DCE1E6" stroke-width="1.5" stroke-dasharray="3 5"/>
+<line x1="416.7" y1="500" x2="416.7" y2="338" stroke="#DCE1E6" stroke-width="1.5" stroke-dasharray="3 5"/>
+<line x1="683.3" y1="214" x2="683.3" y2="112" stroke="#DCE1E6" stroke-width="1.5" stroke-dasharray="3 5"/>
+<line x1="683.3" y1="500" x2="683.3" y2="338" stroke="#DCE1E6" stroke-width="1.5" stroke-dasharray="3 5"/>
+<line x1="950.0" y1="214" x2="950.0" y2="112" stroke="#DCE1E6" stroke-width="1.5" stroke-dasharray="3 5"/>
+<line x1="950.0" y1="500" x2="950.0" y2="338" stroke="#DCE1E6" stroke-width="1.5" stroke-dasharray="3 5"/>
+<text x="283.3" y="548" font-size="16" text-anchor="middle" fill="#5A6672">Week 1</text>
+<text x="550.0" y="548" font-size="16" text-anchor="middle" fill="#5A6672">Week 2</text>
+<text x="816.7" y="548" font-size="16" text-anchor="middle" fill="#5A6672">Week 3</text>
+<line x1="150" y1="524" x2="950" y2="524" stroke="#C9D0D7" stroke-width="1.5"/>
+<line x1="150.0" y1="518" x2="150.0" y2="530" stroke="#C9D0D7" stroke-width="1.5"/>
+<line x1="416.7" y1="518" x2="416.7" y2="530" stroke="#C9D0D7" stroke-width="1.5"/>
+<line x1="683.3" y1="518" x2="683.3" y2="530" stroke="#C9D0D7" stroke-width="1.5"/>
+<line x1="950.0" y1="518" x2="950.0" y2="530" stroke="#C9D0D7" stroke-width="1.5"/>
+<text x="40" y="52" font-size="20" font-weight="700" fill="#002E5D" letter-spacing="0.5">TRUNK-BASED</text>
+<text x="40" y="78" font-size="17" fill="#5A6672">each branch: hours to two days</text>
+<rect x="40" y="143" width="72" height="30" rx="15" fill="url(#tbd-navy)"/>
+<text x="76" y="163" font-size="15" font-weight="600" text-anchor="middle" font-family="Menlo, Consolas, monospace" fill="#FFFFFF">main</text>
+<line x1="136" y1="158" x2="960" y2="158" stroke="#002E5D" stroke-width="5" stroke-linecap="round"/>
+<path d="M160.7 158 C160.7 130 166.7 122 184.7 122 H184.7 C202.7 122 208.7 130 208.7 158" fill="none" stroke="#6495ED" stroke-width="3.5" stroke-linecap="round"/>
+<circle cx="184.7" cy="122" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
+<path d="M182.0 158 C182.0 186 188.0 194 206.0 194 H238.0 C256.0 194 262.0 186 262.0 158" fill="none" stroke="#6495ED" stroke-width="3.5" stroke-linecap="round"/>
+<circle cx="222.0" cy="194" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
+<path d="M230.0 158 C230.0 130 236.0 122 254.0 122 H264.7 C282.7 122 288.7 130 288.7 158" fill="none" stroke="#6495ED" stroke-width="3.5" stroke-linecap="round"/>
+<circle cx="259.3" cy="122" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
+<path d="M304.7 158 C304.7 130 310.7 122 328.7 122 H360.7 C378.7 122 384.7 130 384.7 158" fill="none" stroke="#6495ED" stroke-width="3.5" stroke-linecap="round"/>
+<circle cx="344.7" cy="122" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
+<path d="M326.0 158 C326.0 186 330.0 194 342.0 194 H342.0 C354.0 194 358.0 186 358.0 158" fill="none" stroke="#6495ED" stroke-width="3.5" stroke-linecap="round"/>
+<circle cx="342.0" cy="194" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
+<path d="M395.3 158 C395.3 186 401.3 194 419.3 194 H424.7 C442.7 194 448.7 186 448.7 158" fill="none" stroke="#6495ED" stroke-width="3.5" stroke-linecap="round"/>
+<circle cx="422.0" cy="194" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
+<path d="M432.7 158 C432.7 130 438.7 122 456.7 122 H488.7 C506.7 122 512.7 130 512.7 158" fill="none" stroke="#6495ED" stroke-width="3.5" stroke-linecap="round"/>
+<circle cx="472.7" cy="122" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
+<path d="M491.3 158 C491.3 186 496.7 194 512.7 194 H512.7 C528.7 194 534.0 186 534.0 158" fill="none" stroke="#6495ED" stroke-width="3.5" stroke-linecap="round"/>
+<circle cx="512.7" cy="194" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
+<path d="M544.7 158 C544.7 130 550.7 122 568.7 122 H600.7 C618.7 122 624.7 130 624.7 158" fill="none" stroke="#6495ED" stroke-width="3.5" stroke-linecap="round"/>
+<circle cx="584.7" cy="122" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
+<path d="M571.3 158 C571.3 186 577.3 194 595.3 194 H622.0 C640.0 194 646.0 186 646.0 158" fill="none" stroke="#6495ED" stroke-width="3.5" stroke-linecap="round"/>
+<circle cx="608.7" cy="194" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
+<path d="M662.0 158 C662.0 130 668.0 122 686.0 122 H686.0 C704.0 122 710.0 130 710.0 158" fill="none" stroke="#6495ED" stroke-width="3.5" stroke-linecap="round"/>
+<circle cx="686.0" cy="122" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
+<path d="M694.0 158 C694.0 186 700.0 194 718.0 194 H760.7 C778.7 194 784.7 186 784.7 158" fill="none" stroke="#6495ED" stroke-width="3.5" stroke-linecap="round"/>
+<circle cx="739.3" cy="194" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
+<path d="M742.0 158 C742.0 130 748.0 122 766.0 122 H782.0 C800.0 122 806.0 130 806.0 158" fill="none" stroke="#6495ED" stroke-width="3.5" stroke-linecap="round"/>
+<circle cx="774.0" cy="122" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
+<path d="M822.0 158 C822.0 186 828.0 194 846.0 194 H846.0 C864.0 194 870.0 186 870.0 158" fill="none" stroke="#6495ED" stroke-width="3.5" stroke-linecap="round"/>
+<circle cx="846.0" cy="194" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
+<path d="M843.3 158 C843.3 130 849.3 122 867.3 122 H904.7 C922.7 122 928.7 130 928.7 158" fill="none" stroke="#6495ED" stroke-width="3.5" stroke-linecap="round"/>
+<circle cx="886.0" cy="122" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
+<circle cx="208.7" cy="158" r="5.5" fill="#002E5D" stroke="#FFFFFF" stroke-width="2"/>
+<circle cx="262.0" cy="158" r="5.5" fill="#002E5D" stroke="#FFFFFF" stroke-width="2"/>
+<circle cx="288.7" cy="158" r="5.5" fill="#002E5D" stroke="#FFFFFF" stroke-width="2"/>
+<circle cx="384.7" cy="158" r="5.5" fill="#002E5D" stroke="#FFFFFF" stroke-width="2"/>
+<circle cx="358.0" cy="158" r="5.5" fill="#002E5D" stroke="#FFFFFF" stroke-width="2"/>
+<circle cx="448.7" cy="158" r="5.5" fill="#002E5D" stroke="#FFFFFF" stroke-width="2"/>
+<circle cx="512.7" cy="158" r="5.5" fill="#002E5D" stroke="#FFFFFF" stroke-width="2"/>
+<circle cx="534.0" cy="158" r="5.5" fill="#002E5D" stroke="#FFFFFF" stroke-width="2"/>
+<circle cx="624.7" cy="158" r="5.5" fill="#002E5D" stroke="#FFFFFF" stroke-width="2"/>
+<circle cx="646.0" cy="158" r="5.5" fill="#002E5D" stroke="#FFFFFF" stroke-width="2"/>
+<circle cx="710.0" cy="158" r="5.5" fill="#002E5D" stroke="#FFFFFF" stroke-width="2"/>
+<circle cx="784.7" cy="158" r="5.5" fill="#002E5D" stroke="#FFFFFF" stroke-width="2"/>
+<circle cx="806.0" cy="158" r="5.5" fill="#002E5D" stroke="#FFFFFF" stroke-width="2"/>
+<circle cx="870.0" cy="158" r="5.5" fill="#002E5D" stroke="#FFFFFF" stroke-width="2"/>
+<circle cx="928.7" cy="158" r="5.5" fill="#002E5D" stroke="#FFFFFF" stroke-width="2"/>
+<text x="40" y="278" font-size="20" font-weight="700" fill="#002E5D" letter-spacing="0.5">LONG-LIVED BRANCHES</text>
+<text x="40" y="304" font-size="17" fill="#5A6672">each branch: weeks</text>
+<rect x="40" y="405" width="72" height="30" rx="15" fill="url(#tbd-navy)"/>
+<text x="76" y="425" font-size="15" font-weight="600" text-anchor="middle" font-family="Menlo, Consolas, monospace" fill="#FFFFFF">main</text>
+<line x1="136" y1="420" x2="960" y2="420" stroke="#002E5D" stroke-width="5" stroke-linecap="round"/>
+<circle cx="283.3" cy="420" r="5.5" fill="#002E5D" stroke="#FFFFFF" stroke-width="2"/>
+<circle cx="443.3" cy="420" r="5.5" fill="#002E5D" stroke="#FFFFFF" stroke-width="2"/>
+<circle cx="592.7" cy="420" r="5.5" fill="#002E5D" stroke="#FFFFFF" stroke-width="2"/>
+<circle cx="747.3" cy="420" r="5.5" fill="#002E5D" stroke="#FFFFFF" stroke-width="2"/>
+<path d="M192.7 420 C192.7 404.0 208.7 397.3 226.7 396.0 L856.0 350.0 C892.0 350.0 902.0 350.0 902.0 406.0" fill="none" stroke="#6495ED" stroke-width="3.5" stroke-linecap="round"/>
+<circle cx="271.6" cy="392.7" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
+<circle cx="361.5" cy="386.1" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
+<circle cx="451.4" cy="379.6" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
+<circle cx="541.3" cy="373.0" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
+<circle cx="631.2" cy="366.4" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
+<circle cx="721.1" cy="359.9" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
+<circle cx="811.0" cy="353.3" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
+<rect x="266.3" y="340.0" width="151.4" height="28" rx="14" fill="#FFFFFF" stroke="#6495ED" stroke-width="1.5"/>
+<text x="342.0" y="359.0" font-size="15" font-weight="600" text-anchor="middle" font-family="Menlo, Consolas, monospace" fill="#0057B8">feature-rating</text>
+<path d="M235.3 420 C235.3 436.0 251.3 442.8 269.3 444.0 L856.0 484.0 C892.0 484.0 902.0 484.0 902.0 434.0" fill="none" stroke="#6495ED" stroke-width="3.5" stroke-linecap="round"/>
+<circle cx="311.2" cy="446.9" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
+<circle cx="395.0" cy="452.6" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
+<circle cx="478.9" cy="458.3" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
+<circle cx="562.7" cy="464.0" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
+<circle cx="646.5" cy="469.7" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
+<circle cx="730.3" cy="475.4" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
+<circle cx="814.1" cy="481.1" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
+<rect x="351.6" y="473.9" width="151.4" height="28" rx="14" fill="#FFFFFF" stroke="#6495ED" stroke-width="1.5"/>
+<text x="427.3" y="492.9" font-size="15" font-weight="600" text-anchor="middle" font-family="Menlo, Consolas, monospace" fill="#0057B8">feature-search</text>
+<circle cx="902.0" cy="420" r="22" fill="url(#tbd-red)" stroke="#B03A3A" stroke-width="2.5" filter="url(#tbd-sh)"/>
+<g transform="translate(890,407) scale(1)" fill="none" stroke="#B03A3A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" />
+  <path d="M12 9v4" />
+  <path d="M12 17h.01" /></g>
+<text x="866.0" y="390" font-size="16" font-weight="600" text-anchor="end" fill="#B03A3A">one big merge</text>
+<text x="866.0" y="409" font-size="16" font-weight="600" text-anchor="end" fill="#B03A3A">with conflicts</text>
+</svg>
