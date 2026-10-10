@@ -373,6 +373,54 @@ Now three bad runs, one per phase. It "fixes" the wrong button because it never 
 
 You are part of the loop too. You can interrupt at any point (press `Esc`), add context, or redirect. A good builder treats the agent like a fast, capable new hire with no memory who takes you literally: brief it well, check its work, and do not assume it knows what you did not tell it. The analogy breaks in one useful place: unlike a new hire, the agent does not learn from yesterday unless you write the lesson down where it will read it (Chapter 2).
 
+### Tools: how the agent acts on your computer
+
+**The model only writes text. Every file it reads, every edit, and every command happens because
+Claude Code ran a tool the model asked for.** A **tool** is a function Claude Code offers the
+model: a name, a description of what it does, and the inputs it takes. `Read` takes a file path.
+`Edit` takes a file path, the text to replace, and the new text. `Bash` takes a command.
+
+![One tool call. Claude Code sends the model the list of tools it can call. The model writes a tool call and stops. Claude Code checks the call against your hooks and permissions, runs it, and adds the result to the conversation, where the model reads it and decides the next step.](images/diagrams/ch01-one-tool-call.svg){#fig-one-tool-call fig-alt="Four numbered steps. Step 1, a card labeled tools it can call, Claude Code sends this list: Read(file_path), Edit(file_path, old, new), Bash(command), plus tools from MCP servers. An arrow leads down to a dark Model card, decides the next step. Step 2, the model writes a tool call card: Edit, file app.py, old todos.remove(item), new todos.remove(item) save(todos); then it stops and waits. An arrow leads into a panel labeled Claude Code, on your computer, with step 3 as three stacked cards: Hook, can block the call; Permission, allow, ask you, or deny; Run the tool, app.py changes on disk. Step 4, a Result card, Updated app.py or an error message, with an arrow back to the model labeled added to the conversation, the model reads it and decides again." width="100%"}
+
+One tool call, step by step, using the delete-button fix from the worked example above:
+
+1. **The list.** With every request, Claude Code sends the model the tools it can call and what
+   each one takes. The model can only use what is on this list.
+2. **The call.** The model writes a tool call: text in a fixed format naming the tool and its
+   inputs (`Edit`, the file `app.py`, the old line, the new lines). Then it stops writing and
+   waits. Nothing has changed on your computer yet.
+3. **The checks, then the run.** Claude Code, the program running on your computer, receives
+   the call. A hook can block it, and a permission rule either allows it, asks you, or denies
+   it (Chapter 2 covers both). Only then does Claude Code run the tool, and the file changes.
+4. **The result.** What the tool returned (a file's contents, a command's output, or an error
+   message) is added to the conversation as text. The model reads it and decides the next
+   step: another tool call, or a reply to you.
+
+The tools you will see most often in Claude Code:
+
+| Tool | What it does | Asks permission by default |
+|---|---|---|
+| `Read` | Reads a file | No |
+| `Edit` | Replaces specific text in a file | Yes |
+| `Write` | Creates a file, or overwrites one | Yes |
+| `Bash` | Runs a terminal command: tests, installs, git, searches | Yes |
+| `WebFetch`, `WebSearch` | Reads a web page; searches the web | Yes |
+| `Agent` | Starts a subagent with its own context window (Chapter 2) | No |
+| `Skill` | Runs a skill (Chapter 2) | Yes |
+
+Source: the [Claude Code tools reference](https://code.claude.com/docs/en/tools-reference). Four things follow from
+this mechanism:
+
+- **You can see and control every action.** Each tool call appears in the transcript, and
+  permissions and hooks act on tool calls, so they can stop any action before it runs.
+- **The model knows only what tool results put in front of it.** If it never called `Read` on
+  the file that mattered, it is guessing about that file.
+- **More tools means more ability.** An MCP server adds tools to the list. Connect the
+  Playwright server and the model gains tools that open a browser and click (Chapter 2).
+- **Your own product can work the same way.** When you give a model tools through the API, your
+  code plays Claude Code's part: it receives the call, decides whether to run it, and sends the
+  result back (Chapter 11).
+
 ::: {.callout-tip title="Try it"}
 Ask Claude Code to make a small change in your project, then watch the transcript instead of the result. Label each step it takes as context, action, or check. Did it check its own work before saying it was done? If not, what check would you have asked for?
 :::
