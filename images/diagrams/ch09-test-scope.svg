@@ -1,64 +1,100 @@
-<svg viewBox="0 0 1000 520" xmlns="http://www.w3.org/2000/svg" role="img" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
-<title>Kinds of tests, by how much of the real app each one runs</title>
-<desc>Three columns, the parts of the app: Browser, the user's machine; Your server, Next.js on Vercel; Supabase, sign-in and database. Three rows of tests, each drawn as a bar across the parts it really runs. Unit, fastest: the test calls one function, validateProblem, shown under the server column; the browser and database are not involved. It catches wrong logic. Integration, slower: the test sends a request to the real route /api/problems on your server, which reads and writes a test database in Supabase; the bar spans server and Supabase. It catches a wrong query or policy. End-to-end, slowest: the test clicks through a real browser, which sends requests to the running app and a test database; the bar spans browser, server and Supabase. It catches a broken flow.</desc>
+<svg viewBox="0 0 1000 700" xmlns="http://www.w3.org/2000/svg" role="img" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+<title>Kinds of tests: what each test file runs</title>
+<desc>A grid. On the left, a column headed The test, a separate file. In the middle, a shaded area headed Your app, with three columns: Browser, the user's machine; Your server, Next.js on Vercel; Supabase, sign-in and database. On the right, a column headed Finds, when it fails. Three rows. Unit test, fastest, milliseconds: the test file validate.test.ts sends a problem with intensity 12 straight to validateProblem(), your code that checks a new problem, shown under the server column; the browser and database are not used. It finds a wrong rule in one function. Integration test, slower: the test file problems.test.ts sends a request to save a new problem to /api/problems, your server route, which writes to a test database, not the live one; the outline covers the server and Supabase columns. It finds a save that fails or stores the wrong row. End-to-end test, slowest, seconds each: the test file signup.spec.ts clicks and types in a real browser opened by the test, which uses the running app and a test database; the outline covers all three columns. It finds a step a user cannot finish.</desc>
 <defs>
 <marker id="aN" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#002E5D"/></marker>
 <filter id="sh" x="-10%" y="-20%" width="120%" height="150%"><feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#002E5D" flood-opacity="0.12"/></filter>
 <linearGradient id="gB" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F3F7FC"/><stop offset="1" stop-color="#DCE7F4"/></linearGradient>
 </defs>
-<rect width="1000" height="520" rx="8" fill="#FAFBFC"/>
-<circle cx="360" cy="70" r="32" fill="#E6EEF7"/>
-<g transform="translate(343,53) scale(1.417)" fill="none" stroke="#002E5D" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="3" rx="2" />
+<rect width="1000" height="700" rx="8" fill="#FAFBFC"/>
+<rect x="264" y="22" width="564" height="656" rx="10" fill="#EEF3F9"/>
+<text x="546" y="50" font-size="15" font-weight="700" fill="#002E5D" text-anchor="middle" letter-spacing="1.5">YOUR APP</text>
+<circle cx="112" cy="96" r="30" fill="#E6EEF7"/>
+<g transform="translate(96,80) scale(1.333)" fill="none" stroke="#002E5D" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M10 12.5 8 15l2 2.5" />
+  <path d="m14 12.5 2 2.5-2 2.5" />
+  <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+  <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7z" /></g>
+<text x="112" y="150" font-size="19" font-weight="700" fill="#002E5D" text-anchor="middle">The test</text>
+<text x="112" y="171" font-size="15" font-weight="400" fill="#5A6672" text-anchor="middle">a separate file</text>
+<circle cx="362.0" cy="96" r="30" fill="#E6EEF7"/>
+<g transform="translate(346,80) scale(1.333)" fill="none" stroke="#002E5D" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="3" rx="2" />
   <line x1="8" x2="16" y1="21" y2="21" />
   <line x1="12" x2="12" y1="17" y2="21" /></g>
-<text x="360" y="130" font-size="19" font-weight="700" fill="#002E5D" text-anchor="middle">Browser</text>
-<text x="360" y="152" font-size="15" font-weight="400" fill="#5A6672" text-anchor="middle">the user's machine</text>
-<line x1="360" y1="172" x2="360" y2="490" stroke="#D9DEE4" stroke-width="2"/>
-<circle cx="548" cy="70" r="32" fill="#E6EEF7"/>
-<g transform="translate(531,53) scale(1.417)" fill="none" stroke="#002E5D" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="8" x="2" y="2" rx="2" ry="2" />
+<text x="362.0" y="150" font-size="19" font-weight="700" fill="#002E5D" text-anchor="middle">Browser</text>
+<text x="362.0" y="171" font-size="15" font-weight="400" fill="#5A6672" text-anchor="middle">the user's machine</text>
+<circle cx="546.0" cy="96" r="30" fill="#E6EEF7"/>
+<g transform="translate(530,80) scale(1.333)" fill="none" stroke="#002E5D" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="8" x="2" y="2" rx="2" ry="2" />
   <rect width="20" height="8" x="2" y="14" rx="2" ry="2" />
   <line x1="6" x2="6.01" y1="6" y2="6" />
   <line x1="6" x2="6.01" y1="18" y2="18" /></g>
-<text x="548" y="130" font-size="19" font-weight="700" fill="#002E5D" text-anchor="middle">Your server</text>
-<text x="548" y="152" font-size="15" font-weight="400" fill="#5A6672" text-anchor="middle">Next.js on Vercel</text>
-<line x1="548" y1="172" x2="548" y2="490" stroke="#D9DEE4" stroke-width="2"/>
-<circle cx="736" cy="70" r="32" fill="#E6EEF7"/>
-<g transform="translate(719,53) scale(1.417)" fill="none" stroke="#002E5D" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3" />
+<text x="546.0" y="150" font-size="19" font-weight="700" fill="#002E5D" text-anchor="middle">Your server</text>
+<text x="546.0" y="171" font-size="15" font-weight="400" fill="#5A6672" text-anchor="middle">Next.js on Vercel</text>
+<circle cx="730.0" cy="96" r="30" fill="#E6EEF7"/>
+<g transform="translate(714,80) scale(1.333)" fill="none" stroke="#002E5D" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3" />
   <path d="M3 5V19A9 3 0 0 0 21 19V5" />
   <path d="M3 12A9 3 0 0 0 21 12" /></g>
-<text x="736" y="130" font-size="19" font-weight="700" fill="#002E5D" text-anchor="middle">Supabase</text>
-<text x="736" y="152" font-size="15" font-weight="400" fill="#5A6672" text-anchor="middle">sign-in + database</text>
-<line x1="736" y1="172" x2="736" y2="490" stroke="#D9DEE4" stroke-width="2"/>
-<text x="856" y="152" font-size="15" font-weight="600" fill="#5A6672" text-anchor="start">catches</text>
-<text x="30" y="236" font-size="20" font-weight="700" fill="#002E5D" text-anchor="start">Unit</text>
-<text x="30" y="258" font-size="15" font-weight="400" fill="#5A6672" text-anchor="start">fastest</text>
-<line x1="176" y1="238" x2="444" y2="238" stroke="#002E5D" stroke-width="2" marker-end="url(#aN)"/>
-<text x="310.0" y="228" font-size="15" font-weight="600" fill="#5A6672" text-anchor="middle">calls</text>
-<rect x="452" y="209" width="192" height="58" rx="12" fill="url(#gB)" stroke="#0057B8" stroke-width="1.75" filter="url(#sh)"/>
-<rect x="464" y="219" width="168" height="38" rx="8" fill="#FFFFFF" stroke="#B9D0EA" stroke-width="1.5"/>
-<text x="548" y="244" font-size="15" font-weight="600" fill="#002E5D" text-anchor="middle" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace">validateProblem()</text>
-<text x="856" y="244.0" font-size="17" font-weight="600" fill="#2C3E50" text-anchor="start">wrong logic</text>
-<text x="30" y="336" font-size="20" font-weight="700" fill="#002E5D" text-anchor="start">Integration</text>
-<text x="30" y="358" font-size="15" font-weight="400" fill="#5A6672" text-anchor="start">slower</text>
-<line x1="176" y1="338" x2="444" y2="338" stroke="#002E5D" stroke-width="2" marker-end="url(#aN)"/>
-<text x="310.0" y="328" font-size="15" font-weight="600" fill="#5A6672" text-anchor="middle">request</text>
-<rect x="452" y="309" width="380" height="58" rx="12" fill="url(#gB)" stroke="#0057B8" stroke-width="1.75" filter="url(#sh)"/>
-<rect x="464" y="319" width="168" height="38" rx="8" fill="#FFFFFF" stroke="#B9D0EA" stroke-width="1.5"/>
-<text x="548" y="344" font-size="15" font-weight="600" fill="#002E5D" text-anchor="middle" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace">/api/problems</text>
-<rect x="652" y="319" width="168" height="38" rx="8" fill="#FFFFFF" stroke="#B9D0EA" stroke-width="1.5"/>
-<text x="736" y="344" font-size="16" font-weight="600" fill="#002E5D" text-anchor="middle">test database</text>
-<text x="856" y="333.0" font-size="17" font-weight="600" fill="#2C3E50" text-anchor="start">wrong query</text>
-<text x="856" y="355.0" font-size="17" font-weight="600" fill="#2C3E50" text-anchor="start">or policy</text>
-<text x="30" y="436" font-size="20" font-weight="700" fill="#002E5D" text-anchor="start">End-to-end</text>
-<text x="30" y="458" font-size="15" font-weight="400" fill="#5A6672" text-anchor="start">slowest</text>
-<line x1="176" y1="438" x2="256" y2="438" stroke="#002E5D" stroke-width="2" marker-end="url(#aN)"/>
-<text x="216.0" y="428" font-size="15" font-weight="600" fill="#5A6672" text-anchor="middle">clicks</text>
-<rect x="264" y="409" width="568" height="58" rx="12" fill="url(#gB)" stroke="#0057B8" stroke-width="1.75" filter="url(#sh)"/>
-<rect x="276" y="419" width="168" height="38" rx="8" fill="#FFFFFF" stroke="#B9D0EA" stroke-width="1.5"/>
-<text x="360" y="444" font-size="16" font-weight="600" fill="#002E5D" text-anchor="middle">real browser</text>
-<rect x="464" y="419" width="168" height="38" rx="8" fill="#FFFFFF" stroke="#B9D0EA" stroke-width="1.5"/>
-<text x="548" y="444" font-size="16" font-weight="600" fill="#002E5D" text-anchor="middle">running app</text>
-<rect x="652" y="419" width="168" height="38" rx="8" fill="#FFFFFF" stroke="#B9D0EA" stroke-width="1.5"/>
-<text x="736" y="444" font-size="16" font-weight="600" fill="#002E5D" text-anchor="middle">test database</text>
-<text x="856" y="444.0" font-size="17" font-weight="600" fill="#2C3E50" text-anchor="start">broken flow</text>
+<text x="730.0" y="150" font-size="19" font-weight="700" fill="#002E5D" text-anchor="middle">Supabase</text>
+<text x="730.0" y="171" font-size="15" font-weight="400" fill="#5A6672" text-anchor="middle">sign-in + database</text>
+<text x="846" y="150" font-size="19" font-weight="700" fill="#002E5D" text-anchor="start">Finds</text>
+<text x="846" y="171" font-size="15" font-weight="400" fill="#5A6672" text-anchor="start">when it fails</text>
+<line x1="30" y1="192" x2="970" y2="192" stroke="#D9DEE4" stroke-width="1.5"/>
+<text x="30" y="232" font-size="20" font-weight="700" fill="#002E5D" text-anchor="start">Unit test</text>
+<text x="126" y="232" font-size="15" font-weight="400" fill="#5A6672" text-anchor="start">fastest: milliseconds</text>
+<g transform="translate(94,270) scale(1.5)" fill="none" stroke="#002E5D" stroke-width="1.47" stroke-linecap="round" stroke-linejoin="round"><path d="M10 12.5 8 15l2 2.5" />
+  <path d="m14 12.5 2 2.5-2 2.5" />
+  <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+  <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7z" /></g>
+<text x="112" y="330" font-size="15" font-weight="600" fill="#002E5D" text-anchor="middle" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace">validate.test.ts</text>
+<rect x="460" y="258" width="172" height="68" rx="12" fill="url(#gB)" stroke="#0057B8" stroke-width="1.75" filter="url(#sh)"/>
+<rect x="464" y="265" width="164" height="54" rx="8" fill="#FFFFFF" stroke="#B9D0EA" stroke-width="1.5"/>
+<text x="546.0" y="288" font-size="15" font-weight="600" fill="#002E5D" text-anchor="middle" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace">validateProblem()</text>
+<text x="546.0" y="309" font-size="15" font-weight="400" fill="#5A6672" text-anchor="middle">checks a new problem</text>
+<line x1="138" y1="292" x2="454" y2="292" stroke="#002E5D" stroke-width="2" marker-end="url(#aN)"/>
+<text x="296.0" y="261" font-size="15" font-weight="600" fill="#2C3E50" text-anchor="middle">a problem with</text>
+<text x="296.0" y="280" font-size="15" font-weight="600" fill="#2C3E50" text-anchor="middle">intensity 12</text>
+<text x="846" y="287" font-size="16" font-weight="600" fill="#2C3E50" text-anchor="start">a wrong rule in</text>
+<text x="846" y="307" font-size="16" font-weight="600" fill="#2C3E50" text-anchor="start">one function</text>
+<line x1="30" y1="354" x2="970" y2="354" stroke="#D9DEE4" stroke-width="1"/>
+<text x="30" y="388" font-size="20" font-weight="700" fill="#002E5D" text-anchor="start">Integration test</text>
+<text x="190" y="388" font-size="15" font-weight="400" fill="#5A6672" text-anchor="start">slower</text>
+<g transform="translate(94,426) scale(1.5)" fill="none" stroke="#002E5D" stroke-width="1.47" stroke-linecap="round" stroke-linejoin="round"><path d="M10 12.5 8 15l2 2.5" />
+  <path d="m14 12.5 2 2.5-2 2.5" />
+  <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+  <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7z" /></g>
+<text x="112" y="486" font-size="15" font-weight="600" fill="#002E5D" text-anchor="middle" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace">problems.test.ts</text>
+<rect x="460" y="414" width="356" height="68" rx="12" fill="url(#gB)" stroke="#0057B8" stroke-width="1.75" filter="url(#sh)"/>
+<rect x="464" y="421" width="164" height="54" rx="8" fill="#FFFFFF" stroke="#B9D0EA" stroke-width="1.5"/>
+<text x="546.0" y="444" font-size="15" font-weight="600" fill="#002E5D" text-anchor="middle" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace">/api/problems</text>
+<text x="546.0" y="465" font-size="15" font-weight="400" fill="#5A6672" text-anchor="middle">your server route</text>
+<rect x="648" y="421" width="164" height="54" rx="8" fill="#FFFFFF" stroke="#B9D0EA" stroke-width="1.5"/>
+<text x="730.0" y="444" font-size="16" font-weight="600" fill="#002E5D" text-anchor="middle">test database</text>
+<text x="730.0" y="465" font-size="15" font-weight="400" fill="#5A6672" text-anchor="middle">not the live one</text>
+<line x1="138" y1="448" x2="454" y2="448" stroke="#002E5D" stroke-width="2" marker-end="url(#aN)"/>
+<text x="296.0" y="417" font-size="15" font-weight="600" fill="#2C3E50" text-anchor="middle">a request to save</text>
+<text x="296.0" y="436" font-size="15" font-weight="600" fill="#2C3E50" text-anchor="middle">a new problem</text>
+<text x="846" y="433" font-size="16" font-weight="600" fill="#2C3E50" text-anchor="start">a save that fails</text>
+<text x="846" y="453" font-size="16" font-weight="600" fill="#2C3E50" text-anchor="start">or stores the</text>
+<text x="846" y="473" font-size="16" font-weight="600" fill="#2C3E50" text-anchor="start">wrong row</text>
+<line x1="30" y1="510" x2="970" y2="510" stroke="#D9DEE4" stroke-width="1"/>
+<text x="30" y="544" font-size="20" font-weight="700" fill="#002E5D" text-anchor="start">End-to-end test</text>
+<text x="196" y="544" font-size="15" font-weight="400" fill="#5A6672" text-anchor="start">slowest: seconds each</text>
+<g transform="translate(94,582) scale(1.5)" fill="none" stroke="#002E5D" stroke-width="1.47" stroke-linecap="round" stroke-linejoin="round"><path d="M10 12.5 8 15l2 2.5" />
+  <path d="m14 12.5 2 2.5-2 2.5" />
+  <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+  <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7z" /></g>
+<text x="112" y="642" font-size="15" font-weight="600" fill="#002E5D" text-anchor="middle" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace">signup.spec.ts</text>
+<rect x="276" y="570" width="540" height="68" rx="12" fill="url(#gB)" stroke="#0057B8" stroke-width="1.75" filter="url(#sh)"/>
+<rect x="280" y="577" width="164" height="54" rx="8" fill="#FFFFFF" stroke="#B9D0EA" stroke-width="1.5"/>
+<text x="362.0" y="600" font-size="16" font-weight="600" fill="#002E5D" text-anchor="middle">real browser</text>
+<text x="362.0" y="621" font-size="15" font-weight="400" fill="#5A6672" text-anchor="middle">opened by the test</text>
+<rect x="464" y="577" width="164" height="54" rx="8" fill="#FFFFFF" stroke="#B9D0EA" stroke-width="1.5"/>
+<text x="546.0" y="600" font-size="16" font-weight="600" fill="#002E5D" text-anchor="middle">running app</text>
+<text x="546.0" y="621" font-size="15" font-weight="400" fill="#5A6672" text-anchor="middle">started for testing</text>
+<rect x="648" y="577" width="164" height="54" rx="8" fill="#FFFFFF" stroke="#B9D0EA" stroke-width="1.5"/>
+<text x="730.0" y="600" font-size="16" font-weight="600" fill="#002E5D" text-anchor="middle">test database</text>
+<text x="730.0" y="621" font-size="15" font-weight="400" fill="#5A6672" text-anchor="middle">not the live one</text>
+<line x1="138" y1="604" x2="270" y2="604" stroke="#002E5D" stroke-width="2" marker-end="url(#aN)"/>
+<text x="204.0" y="592" font-size="15" font-weight="600" fill="#2C3E50" text-anchor="middle">clicks, types</text>
+<text x="846" y="599" font-size="16" font-weight="600" fill="#2C3E50" text-anchor="start">a step a user</text>
+<text x="846" y="619" font-size="16" font-weight="600" fill="#2C3E50" text-anchor="start">cannot finish</text>
 </svg>

@@ -1,115 +1,183 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 584" role="img" aria-labelledby="tbd-t tbd-d" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
-<title id="tbd-t">Trunk-based development versus long-lived branches</title>
-<desc id="tbd-d">Two panels on the same three-week time axis. Top, trunk-based: one main line, the trunk, with many small branches that leave main and merge back within hours to two days; several are open at the same time, above and below the line. Bottom, long-lived branches: two branches, feature-rating and feature-search, leave main in week 1 and drift further from it for almost three weeks while main keeps changing. Both come back at the end in one large merge, marked in red, where their changes conflict.</desc>
-<defs>
-<linearGradient id="tbd-panel" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#F6F8FA"/><stop offset="100%" stop-color="#EDF0F3"/></linearGradient>
-<linearGradient id="tbd-navy" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0E3F6A"/><stop offset="100%" stop-color="#001A36"/></linearGradient>
-<linearGradient id="tbd-red" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#FBF3F3"/><stop offset="100%" stop-color="#F3E1E1"/></linearGradient>
-<filter id="tbd-sh" x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#002E5D" flood-opacity="0.13"/></filter>
-<marker id="tbd-ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0.5 L10,5 L0,9.5 z" fill="#8A939C"/></marker>
-</defs>
-<rect x="0" y="0" width="1000" height="584" rx="8" fill="#FAFBFC"/>
-<rect x="16" y="16" width="968" height="212" rx="10" fill="url(#tbd-panel)"/>
-<rect x="16" y="242" width="968" height="272" rx="10" fill="url(#tbd-panel)"/>
-<line x1="150.0" y1="214" x2="150.0" y2="112" stroke="#DCE1E6" stroke-width="1.5" stroke-dasharray="3 5"/>
-<line x1="150.0" y1="500" x2="150.0" y2="338" stroke="#DCE1E6" stroke-width="1.5" stroke-dasharray="3 5"/>
-<line x1="416.7" y1="214" x2="416.7" y2="112" stroke="#DCE1E6" stroke-width="1.5" stroke-dasharray="3 5"/>
-<line x1="416.7" y1="500" x2="416.7" y2="338" stroke="#DCE1E6" stroke-width="1.5" stroke-dasharray="3 5"/>
-<line x1="683.3" y1="214" x2="683.3" y2="112" stroke="#DCE1E6" stroke-width="1.5" stroke-dasharray="3 5"/>
-<line x1="683.3" y1="500" x2="683.3" y2="338" stroke="#DCE1E6" stroke-width="1.5" stroke-dasharray="3 5"/>
-<line x1="950.0" y1="214" x2="950.0" y2="112" stroke="#DCE1E6" stroke-width="1.5" stroke-dasharray="3 5"/>
-<line x1="950.0" y1="500" x2="950.0" y2="338" stroke="#DCE1E6" stroke-width="1.5" stroke-dasharray="3 5"/>
-<text x="283.3" y="548" font-size="16" text-anchor="middle" fill="#5A6672">Week 1</text>
-<text x="550.0" y="548" font-size="16" text-anchor="middle" fill="#5A6672">Week 2</text>
-<text x="816.7" y="548" font-size="16" text-anchor="middle" fill="#5A6672">Week 3</text>
-<line x1="150" y1="524" x2="950" y2="524" stroke="#C9D0D7" stroke-width="1.5"/>
-<line x1="150.0" y1="518" x2="150.0" y2="530" stroke="#C9D0D7" stroke-width="1.5"/>
-<line x1="416.7" y1="518" x2="416.7" y2="530" stroke="#C9D0D7" stroke-width="1.5"/>
-<line x1="683.3" y1="518" x2="683.3" y2="530" stroke="#C9D0D7" stroke-width="1.5"/>
-<line x1="950.0" y1="518" x2="950.0" y2="530" stroke="#C9D0D7" stroke-width="1.5"/>
-<text x="40" y="52" font-size="20" font-weight="700" fill="#002E5D" letter-spacing="0.5">TRUNK-BASED</text>
-<text x="40" y="78" font-size="17" fill="#5A6672">each branch: hours to two days</text>
-<rect x="40" y="143" width="72" height="30" rx="15" fill="url(#tbd-navy)"/>
-<text x="76" y="163" font-size="15" font-weight="600" text-anchor="middle" font-family="Menlo, Consolas, monospace" fill="#FFFFFF">main</text>
-<line x1="136" y1="158" x2="960" y2="158" stroke="#002E5D" stroke-width="5" stroke-linecap="round"/>
-<path d="M160.7 158 C160.7 130 166.7 122 184.7 122 H184.7 C202.7 122 208.7 130 208.7 158" fill="none" stroke="#6495ED" stroke-width="3.5" stroke-linecap="round"/>
-<circle cx="184.7" cy="122" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
-<path d="M182.0 158 C182.0 186 188.0 194 206.0 194 H238.0 C256.0 194 262.0 186 262.0 158" fill="none" stroke="#6495ED" stroke-width="3.5" stroke-linecap="round"/>
-<circle cx="222.0" cy="194" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
-<path d="M230.0 158 C230.0 130 236.0 122 254.0 122 H264.7 C282.7 122 288.7 130 288.7 158" fill="none" stroke="#6495ED" stroke-width="3.5" stroke-linecap="round"/>
-<circle cx="259.3" cy="122" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
-<path d="M304.7 158 C304.7 130 310.7 122 328.7 122 H360.7 C378.7 122 384.7 130 384.7 158" fill="none" stroke="#6495ED" stroke-width="3.5" stroke-linecap="round"/>
-<circle cx="344.7" cy="122" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
-<path d="M326.0 158 C326.0 186 330.0 194 342.0 194 H342.0 C354.0 194 358.0 186 358.0 158" fill="none" stroke="#6495ED" stroke-width="3.5" stroke-linecap="round"/>
-<circle cx="342.0" cy="194" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
-<path d="M395.3 158 C395.3 186 401.3 194 419.3 194 H424.7 C442.7 194 448.7 186 448.7 158" fill="none" stroke="#6495ED" stroke-width="3.5" stroke-linecap="round"/>
-<circle cx="422.0" cy="194" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
-<path d="M432.7 158 C432.7 130 438.7 122 456.7 122 H488.7 C506.7 122 512.7 130 512.7 158" fill="none" stroke="#6495ED" stroke-width="3.5" stroke-linecap="round"/>
-<circle cx="472.7" cy="122" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
-<path d="M491.3 158 C491.3 186 496.7 194 512.7 194 H512.7 C528.7 194 534.0 186 534.0 158" fill="none" stroke="#6495ED" stroke-width="3.5" stroke-linecap="round"/>
-<circle cx="512.7" cy="194" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
-<path d="M544.7 158 C544.7 130 550.7 122 568.7 122 H600.7 C618.7 122 624.7 130 624.7 158" fill="none" stroke="#6495ED" stroke-width="3.5" stroke-linecap="round"/>
-<circle cx="584.7" cy="122" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
-<path d="M571.3 158 C571.3 186 577.3 194 595.3 194 H622.0 C640.0 194 646.0 186 646.0 158" fill="none" stroke="#6495ED" stroke-width="3.5" stroke-linecap="round"/>
-<circle cx="608.7" cy="194" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
-<path d="M662.0 158 C662.0 130 668.0 122 686.0 122 H686.0 C704.0 122 710.0 130 710.0 158" fill="none" stroke="#6495ED" stroke-width="3.5" stroke-linecap="round"/>
-<circle cx="686.0" cy="122" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
-<path d="M694.0 158 C694.0 186 700.0 194 718.0 194 H760.7 C778.7 194 784.7 186 784.7 158" fill="none" stroke="#6495ED" stroke-width="3.5" stroke-linecap="round"/>
-<circle cx="739.3" cy="194" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
-<path d="M742.0 158 C742.0 130 748.0 122 766.0 122 H782.0 C800.0 122 806.0 130 806.0 158" fill="none" stroke="#6495ED" stroke-width="3.5" stroke-linecap="round"/>
-<circle cx="774.0" cy="122" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
-<path d="M822.0 158 C822.0 186 828.0 194 846.0 194 H846.0 C864.0 194 870.0 186 870.0 158" fill="none" stroke="#6495ED" stroke-width="3.5" stroke-linecap="round"/>
-<circle cx="846.0" cy="194" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
-<path d="M843.3 158 C843.3 130 849.3 122 867.3 122 H904.7 C922.7 122 928.7 130 928.7 158" fill="none" stroke="#6495ED" stroke-width="3.5" stroke-linecap="round"/>
-<circle cx="886.0" cy="122" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
-<circle cx="208.7" cy="158" r="5.5" fill="#002E5D" stroke="#FFFFFF" stroke-width="2"/>
-<circle cx="262.0" cy="158" r="5.5" fill="#002E5D" stroke="#FFFFFF" stroke-width="2"/>
-<circle cx="288.7" cy="158" r="5.5" fill="#002E5D" stroke="#FFFFFF" stroke-width="2"/>
-<circle cx="384.7" cy="158" r="5.5" fill="#002E5D" stroke="#FFFFFF" stroke-width="2"/>
-<circle cx="358.0" cy="158" r="5.5" fill="#002E5D" stroke="#FFFFFF" stroke-width="2"/>
-<circle cx="448.7" cy="158" r="5.5" fill="#002E5D" stroke="#FFFFFF" stroke-width="2"/>
-<circle cx="512.7" cy="158" r="5.5" fill="#002E5D" stroke="#FFFFFF" stroke-width="2"/>
-<circle cx="534.0" cy="158" r="5.5" fill="#002E5D" stroke="#FFFFFF" stroke-width="2"/>
-<circle cx="624.7" cy="158" r="5.5" fill="#002E5D" stroke="#FFFFFF" stroke-width="2"/>
-<circle cx="646.0" cy="158" r="5.5" fill="#002E5D" stroke="#FFFFFF" stroke-width="2"/>
-<circle cx="710.0" cy="158" r="5.5" fill="#002E5D" stroke="#FFFFFF" stroke-width="2"/>
-<circle cx="784.7" cy="158" r="5.5" fill="#002E5D" stroke="#FFFFFF" stroke-width="2"/>
-<circle cx="806.0" cy="158" r="5.5" fill="#002E5D" stroke="#FFFFFF" stroke-width="2"/>
-<circle cx="870.0" cy="158" r="5.5" fill="#002E5D" stroke="#FFFFFF" stroke-width="2"/>
-<circle cx="928.7" cy="158" r="5.5" fill="#002E5D" stroke="#FFFFFF" stroke-width="2"/>
-<text x="40" y="278" font-size="20" font-weight="700" fill="#002E5D" letter-spacing="0.5">LONG-LIVED BRANCHES</text>
-<text x="40" y="304" font-size="17" fill="#5A6672">each branch: weeks</text>
-<rect x="40" y="405" width="72" height="30" rx="15" fill="url(#tbd-navy)"/>
-<text x="76" y="425" font-size="15" font-weight="600" text-anchor="middle" font-family="Menlo, Consolas, monospace" fill="#FFFFFF">main</text>
-<line x1="136" y1="420" x2="960" y2="420" stroke="#002E5D" stroke-width="5" stroke-linecap="round"/>
-<circle cx="283.3" cy="420" r="5.5" fill="#002E5D" stroke="#FFFFFF" stroke-width="2"/>
-<circle cx="443.3" cy="420" r="5.5" fill="#002E5D" stroke="#FFFFFF" stroke-width="2"/>
-<circle cx="592.7" cy="420" r="5.5" fill="#002E5D" stroke="#FFFFFF" stroke-width="2"/>
-<circle cx="747.3" cy="420" r="5.5" fill="#002E5D" stroke="#FFFFFF" stroke-width="2"/>
-<path d="M192.7 420 C192.7 404.0 208.7 397.3 226.7 396.0 L856.0 350.0 C892.0 350.0 902.0 350.0 902.0 406.0" fill="none" stroke="#6495ED" stroke-width="3.5" stroke-linecap="round"/>
-<circle cx="271.6" cy="392.7" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
-<circle cx="361.5" cy="386.1" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
-<circle cx="451.4" cy="379.6" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
-<circle cx="541.3" cy="373.0" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
-<circle cx="631.2" cy="366.4" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
-<circle cx="721.1" cy="359.9" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
-<circle cx="811.0" cy="353.3" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
-<rect x="266.3" y="340.0" width="151.4" height="28" rx="14" fill="#FFFFFF" stroke="#6495ED" stroke-width="1.5"/>
-<text x="342.0" y="359.0" font-size="15" font-weight="600" text-anchor="middle" font-family="Menlo, Consolas, monospace" fill="#0057B8">feature-rating</text>
-<path d="M235.3 420 C235.3 436.0 251.3 442.8 269.3 444.0 L856.0 484.0 C892.0 484.0 902.0 484.0 902.0 434.0" fill="none" stroke="#6495ED" stroke-width="3.5" stroke-linecap="round"/>
-<circle cx="311.2" cy="446.9" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
-<circle cx="395.0" cy="452.6" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
-<circle cx="478.9" cy="458.3" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
-<circle cx="562.7" cy="464.0" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
-<circle cx="646.5" cy="469.7" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
-<circle cx="730.3" cy="475.4" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
-<circle cx="814.1" cy="481.1" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
-<rect x="351.6" y="473.9" width="151.4" height="28" rx="14" fill="#FFFFFF" stroke="#6495ED" stroke-width="1.5"/>
-<text x="427.3" y="492.9" font-size="15" font-weight="600" text-anchor="middle" font-family="Menlo, Consolas, monospace" fill="#0057B8">feature-search</text>
-<circle cx="902.0" cy="420" r="22" fill="url(#tbd-red)" stroke="#B03A3A" stroke-width="2.5" filter="url(#tbd-sh)"/>
-<g transform="translate(890,407) scale(1)" fill="none" stroke="#B03A3A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 852" role="img" aria-labelledby="tbd-t tbd-d" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+<title id="tbd-t">Trunk-based development, solo and on a team</title>
+<desc id="tbd-d">Four panels on one shared time axis of three days. Each panel has a dark main line, and each row of branches belongs to one named maker. Panel 1, solo, straight to main: you commit directly on main, seven commits over three days, with no branches. Panel 2, solo with two Claude Code sessions: session 1 and session 2 each work in their own row; each makes two short branches, and each branch leaves main and merges back the same day. Panel 3, a team of two: Ana makes ratings-1 on day 1 and ratings-2 from day 2 into day 3; Ben makes fix-signup from day 1 into day 2 and signup-email on day 3. Every branch merges into the same main within a day or two. Ana starts ratings-2 just after Ben merges fix-signup, so her branch includes his fix; Ben starts signup-email just after Ana merges ratings-2. Panel 4, a team of two with long-lived branches, for contrast: Ana and Ben each keep one branch open for all three days, collecting many commits, while main gets nothing; both merge at the end of day 3 at one point marked in red, merge conflicts.</desc>
+<defs><linearGradient id="tbd-panel" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#F6F8FA"/><stop offset="100%" stop-color="#EDF0F3"/></linearGradient><linearGradient id="tbd-navy" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0E3F6A"/><stop offset="100%" stop-color="#001A36"/></linearGradient><linearGradient id="tbd-red" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#FBF3F3"/><stop offset="100%" stop-color="#F3E1E1"/></linearGradient><filter id="tbd-sh" x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#002E5D" flood-opacity="0.13"/></filter><marker id="tbd-ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0.5 L10,5 L0,9.5 z" fill="#5A6672"/></marker></defs>
+<rect x="0" y="0" width="1000" height="852" rx="8" fill="#FAFBFC"/>
+<rect x="16" y="16" width="968" height="132" rx="10" fill="url(#tbd-panel)"/>
+<rect x="16" y="160" width="968" height="196" rx="10" fill="url(#tbd-panel)"/>
+<rect x="16" y="368" width="968" height="222" rx="10" fill="url(#tbd-panel)"/>
+<rect x="16" y="602" width="968" height="186" rx="10" fill="url(#tbd-panel)"/>
+<line x1="240.0" y1="66" x2="240.0" y2="138" stroke="#DCE1E6" stroke-width="1.5" stroke-dasharray="3 5"/>
+<line x1="480.0" y1="66" x2="480.0" y2="138" stroke="#DCE1E6" stroke-width="1.5" stroke-dasharray="3 5"/>
+<line x1="720.0" y1="66" x2="720.0" y2="138" stroke="#DCE1E6" stroke-width="1.5" stroke-dasharray="3 5"/>
+<line x1="960.0" y1="66" x2="960.0" y2="138" stroke="#DCE1E6" stroke-width="1.5" stroke-dasharray="3 5"/>
+<line x1="240.0" y1="210" x2="240.0" y2="346" stroke="#DCE1E6" stroke-width="1.5" stroke-dasharray="3 5"/>
+<line x1="480.0" y1="210" x2="480.0" y2="346" stroke="#DCE1E6" stroke-width="1.5" stroke-dasharray="3 5"/>
+<line x1="720.0" y1="210" x2="720.0" y2="346" stroke="#DCE1E6" stroke-width="1.5" stroke-dasharray="3 5"/>
+<line x1="960.0" y1="210" x2="960.0" y2="346" stroke="#DCE1E6" stroke-width="1.5" stroke-dasharray="3 5"/>
+<line x1="240.0" y1="418" x2="240.0" y2="580" stroke="#DCE1E6" stroke-width="1.5" stroke-dasharray="3 5"/>
+<line x1="480.0" y1="418" x2="480.0" y2="580" stroke="#DCE1E6" stroke-width="1.5" stroke-dasharray="3 5"/>
+<line x1="720.0" y1="418" x2="720.0" y2="580" stroke="#DCE1E6" stroke-width="1.5" stroke-dasharray="3 5"/>
+<line x1="960.0" y1="418" x2="960.0" y2="580" stroke="#DCE1E6" stroke-width="1.5" stroke-dasharray="3 5"/>
+<line x1="240.0" y1="652" x2="240.0" y2="778" stroke="#DCE1E6" stroke-width="1.5" stroke-dasharray="3 5"/>
+<line x1="480.0" y1="652" x2="480.0" y2="778" stroke="#DCE1E6" stroke-width="1.5" stroke-dasharray="3 5"/>
+<line x1="720.0" y1="652" x2="720.0" y2="778" stroke="#DCE1E6" stroke-width="1.5" stroke-dasharray="3 5"/>
+<line x1="960.0" y1="652" x2="960.0" y2="778" stroke="#DCE1E6" stroke-width="1.5" stroke-dasharray="3 5"/>
+<text x="40" y="50" font-size="19" font-weight="700" fill="#002E5D">Solo, straight to main</text>
+<rect x="40" y="105" width="72" height="30" rx="15" fill="url(#tbd-navy)"/>
+<text x="76" y="125" font-size="15" font-weight="600" text-anchor="middle" font-family="Menlo, Consolas, monospace" fill="#FFFFFF">main</text>
+<line x1="230" y1="120" x2="968" y2="120" stroke="#002E5D" stroke-width="5" stroke-linecap="round"/>
+<circle cx="54" cy="72" r="15" fill="#FFFFFF" stroke="#C9D7E8" stroke-width="1.5"/>
+<g transform="translate(45,63) scale(0.75)" fill="none" stroke="#002E5D" stroke-width="2.93" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+  <circle cx="12" cy="7" r="4" /></g>
+<text x="78" y="78" font-size="18" font-weight="600" fill="#2C3E50">You</text>
+<path d="M288.0 66 V106" fill="none" stroke="#8A939C" stroke-width="1.5" marker-end="url(#tbd-ah)"/>
+<circle cx="288.0" cy="120" r="7" fill="#002E5D" stroke="#FFFFFF" stroke-width="2.5"/>
+<path d="M372.0 66 V106" fill="none" stroke="#8A939C" stroke-width="1.5" marker-end="url(#tbd-ah)"/>
+<circle cx="372.0" cy="120" r="7" fill="#002E5D" stroke="#FFFFFF" stroke-width="2.5"/>
+<path d="M444.0 66 V106" fill="none" stroke="#8A939C" stroke-width="1.5" marker-end="url(#tbd-ah)"/>
+<circle cx="444.0" cy="120" r="7" fill="#002E5D" stroke="#FFFFFF" stroke-width="2.5"/>
+<path d="M552.0 66 V106" fill="none" stroke="#8A939C" stroke-width="1.5" marker-end="url(#tbd-ah)"/>
+<circle cx="552.0" cy="120" r="7" fill="#002E5D" stroke="#FFFFFF" stroke-width="2.5"/>
+<path d="M660.0 66 V106" fill="none" stroke="#8A939C" stroke-width="1.5" marker-end="url(#tbd-ah)"/>
+<circle cx="660.0" cy="120" r="7" fill="#002E5D" stroke="#FFFFFF" stroke-width="2.5"/>
+<path d="M780.0 66 V106" fill="none" stroke="#8A939C" stroke-width="1.5" marker-end="url(#tbd-ah)"/>
+<circle cx="780.0" cy="120" r="7" fill="#002E5D" stroke="#FFFFFF" stroke-width="2.5"/>
+<path d="M888.0 66 V106" fill="none" stroke="#8A939C" stroke-width="1.5" marker-end="url(#tbd-ah)"/>
+<circle cx="888.0" cy="120" r="7" fill="#002E5D" stroke="#FFFFFF" stroke-width="2.5"/>
+<text x="40" y="194" font-size="19" font-weight="700" fill="#002E5D">Solo, two Claude Code sessions</text>
+<rect x="40" y="263" width="72" height="30" rx="15" fill="url(#tbd-navy)"/>
+<text x="76" y="283" font-size="15" font-weight="600" text-anchor="middle" font-family="Menlo, Consolas, monospace" fill="#FFFFFF">main</text>
+<line x1="230" y1="278" x2="968" y2="278" stroke="#002E5D" stroke-width="5" stroke-linecap="round"/>
+<circle cx="54" cy="222" r="15" fill="#FFFFFF" stroke="#C9D7E8" stroke-width="1.5"/>
+<g transform="translate(45,213) scale(0.75)" fill="none" stroke="#002E5D" stroke-width="2.93" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5" />
+  <line x1="12" x2="20" y1="19" y2="19" /></g>
+<text x="78" y="228" font-size="18" font-weight="600" fill="#2C3E50">Session 1</text>
+<circle cx="54" cy="328" r="15" fill="#FFFFFF" stroke="#C9D7E8" stroke-width="1.5"/>
+<g transform="translate(45,319) scale(0.75)" fill="none" stroke="#002E5D" stroke-width="2.93" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5" />
+  <line x1="12" x2="20" y1="19" y2="19" /></g>
+<text x="78" y="334" font-size="18" font-weight="600" fill="#2C3E50">Session 2</text>
+<path d="M259.2 278 C259.2 250.0 263.2 222 275.2 222 H372.8 C384.8 222 388.8 250.0 388.8 278" fill="none" stroke="#0057B8" stroke-width="3.5" stroke-linecap="round"/>
+<circle cx="307.7" cy="222" r="4.5" fill="#FFFFFF" stroke="#0057B8" stroke-width="2.5"/>
+<circle cx="340.3" cy="222" r="4.5" fill="#FFFFFF" stroke="#0057B8" stroke-width="2.5"/>
+<circle cx="259.2" cy="278" r="5" fill="#FFFFFF" stroke="#002E5D" stroke-width="2.5"/>
+<path d="M516.0 278 C516.0 250.0 520.0 222 532.0 222 H668.0 C680.0 222 684.0 250.0 684.0 278" fill="none" stroke="#0057B8" stroke-width="3.5" stroke-linecap="round"/>
+<circle cx="566.0" cy="222" r="4.5" fill="#FFFFFF" stroke="#0057B8" stroke-width="2.5"/>
+<circle cx="600.0" cy="222" r="4.5" fill="#FFFFFF" stroke="#0057B8" stroke-width="2.5"/>
+<circle cx="634.0" cy="222" r="4.5" fill="#FFFFFF" stroke="#0057B8" stroke-width="2.5"/>
+<circle cx="516.0" cy="278" r="5" fill="#FFFFFF" stroke="#002E5D" stroke-width="2.5"/>
+<path d="M744.0 278 C744.0 250.0 748.0 222 760.0 222 H836.0 C848.0 222 852.0 250.0 852.0 278" fill="none" stroke="#0057B8" stroke-width="3.5" stroke-linecap="round"/>
+<circle cx="785.3" cy="222" r="4.5" fill="#FFFFFF" stroke="#0057B8" stroke-width="2.5"/>
+<circle cx="810.7" cy="222" r="4.5" fill="#FFFFFF" stroke="#0057B8" stroke-width="2.5"/>
+<circle cx="744.0" cy="278" r="5" fill="#FFFFFF" stroke="#002E5D" stroke-width="2.5"/>
+<path d="M300.0 278 C300.0 303.0 304.0 328 316.0 328 H416.0 C428.0 328 432.0 303.0 432.0 278" fill="none" stroke="#6495ED" stroke-width="3.5" stroke-linecap="round"/>
+<circle cx="349.3" cy="328" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
+<circle cx="382.7" cy="328" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
+<circle cx="300.0" cy="278" r="5" fill="#FFFFFF" stroke="#002E5D" stroke-width="2.5"/>
+<path d="M492.0 278 C492.0 303.0 496.0 328 508.0 328 H608.0 C620.0 328 624.0 303.0 624.0 278" fill="none" stroke="#6495ED" stroke-width="3.5" stroke-linecap="round"/>
+<circle cx="541.3" cy="328" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
+<circle cx="574.7" cy="328" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
+<circle cx="492.0" cy="278" r="5" fill="#FFFFFF" stroke="#002E5D" stroke-width="2.5"/>
+<path d="M768.0 278 C768.0 303.0 772.0 328 784.0 328 H920.0 C932.0 328 936.0 303.0 936.0 278" fill="none" stroke="#6495ED" stroke-width="3.5" stroke-linecap="round"/>
+<circle cx="818.0" cy="328" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
+<circle cx="852.0" cy="328" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
+<circle cx="886.0" cy="328" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
+<circle cx="768.0" cy="278" r="5" fill="#FFFFFF" stroke="#002E5D" stroke-width="2.5"/>
+<circle cx="388.8" cy="278" r="7" fill="#002E5D" stroke="#FFFFFF" stroke-width="2.5"/>
+<circle cx="684.0" cy="278" r="7" fill="#002E5D" stroke="#FFFFFF" stroke-width="2.5"/>
+<circle cx="852.0" cy="278" r="7" fill="#002E5D" stroke="#FFFFFF" stroke-width="2.5"/>
+<circle cx="432.0" cy="278" r="7" fill="#002E5D" stroke="#FFFFFF" stroke-width="2.5"/>
+<circle cx="624.0" cy="278" r="7" fill="#002E5D" stroke="#FFFFFF" stroke-width="2.5"/>
+<circle cx="936.0" cy="278" r="7" fill="#002E5D" stroke="#FFFFFF" stroke-width="2.5"/>
+<text x="40" y="402" font-size="19" font-weight="700" fill="#002E5D">Team of two</text>
+<rect x="40" y="479" width="72" height="30" rx="15" fill="url(#tbd-navy)"/>
+<text x="76" y="499" font-size="15" font-weight="600" text-anchor="middle" font-family="Menlo, Consolas, monospace" fill="#FFFFFF">main</text>
+<line x1="230" y1="494" x2="968" y2="494" stroke="#002E5D" stroke-width="5" stroke-linecap="round"/>
+<circle cx="54" cy="444" r="15" fill="#FFFFFF" stroke="#C9D7E8" stroke-width="1.5"/>
+<g transform="translate(45,435) scale(0.75)" fill="none" stroke="#002E5D" stroke-width="2.93" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+  <circle cx="12" cy="7" r="4" /></g>
+<text x="78" y="450" font-size="18" font-weight="600" fill="#2C3E50">Ana</text>
+<circle cx="54" cy="544" r="15" fill="#FFFFFF" stroke="#C9D7E8" stroke-width="1.5"/>
+<g transform="translate(45,535) scale(0.75)" fill="none" stroke="#002E5D" stroke-width="2.93" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+  <circle cx="12" cy="7" r="4" /></g>
+<text x="78" y="550" font-size="18" font-weight="600" fill="#2C3E50">Ben</text>
+<path d="M264.0 494 C264.0 469.0 268.0 444 280.0 444 H428.0 C440.0 444 444.0 469.0 444.0 494" fill="none" stroke="#0057B8" stroke-width="3.5" stroke-linecap="round"/>
+<circle cx="317.0" cy="444" r="4.5" fill="#FFFFFF" stroke="#0057B8" stroke-width="2.5"/>
+<circle cx="354.0" cy="444" r="4.5" fill="#FFFFFF" stroke="#0057B8" stroke-width="2.5"/>
+<circle cx="391.0" cy="444" r="4.5" fill="#FFFFFF" stroke="#0057B8" stroke-width="2.5"/>
+<circle cx="264.0" cy="494" r="5" fill="#FFFFFF" stroke="#002E5D" stroke-width="2.5"/>
+<text x="354.0" y="432" font-size="15" font-weight="600" text-anchor="middle" font-family="Menlo, Consolas, monospace" fill="#0057B8">ratings-1</text>
+<path d="M348.0 494 C348.0 519.0 352.0 544 364.0 544 H516.8 C528.8 544 532.8 519.0 532.8 494" fill="none" stroke="#6495ED" stroke-width="3.5" stroke-linecap="round"/>
+<circle cx="402.2" cy="544" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
+<circle cx="440.4" cy="544" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
+<circle cx="478.6" cy="544" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
+<circle cx="348.0" cy="494" r="5" fill="#FFFFFF" stroke="#002E5D" stroke-width="2.5"/>
+<text x="440.4" y="568" font-size="15" font-weight="600" text-anchor="middle" font-family="Menlo, Consolas, monospace" fill="#6495ED">fix-signup</text>
+<path d="M600.0 494 C600.0 469.0 604.0 444 616.0 444 H800.0 C812.0 444 816.0 469.0 816.0 494" fill="none" stroke="#0057B8" stroke-width="3.5" stroke-linecap="round"/>
+<circle cx="662.0" cy="444" r="4.5" fill="#FFFFFF" stroke="#0057B8" stroke-width="2.5"/>
+<circle cx="708.0" cy="444" r="4.5" fill="#FFFFFF" stroke="#0057B8" stroke-width="2.5"/>
+<circle cx="754.0" cy="444" r="4.5" fill="#FFFFFF" stroke="#0057B8" stroke-width="2.5"/>
+<circle cx="600.0" cy="494" r="5" fill="#FFFFFF" stroke="#002E5D" stroke-width="2.5"/>
+<text x="708.0" y="432" font-size="15" font-weight="600" text-anchor="middle" font-family="Menlo, Consolas, monospace" fill="#0057B8">ratings-2</text>
+<path d="M844.8 494 C844.8 519.0 848.8 544 860.8 544 H929.6 C941.6 544 945.6 519.0 945.6 494" fill="none" stroke="#6495ED" stroke-width="3.5" stroke-linecap="round"/>
+<circle cx="883.7" cy="544" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
+<circle cx="906.7" cy="544" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
+<circle cx="844.8" cy="494" r="5" fill="#FFFFFF" stroke="#002E5D" stroke-width="2.5"/>
+<text x="895.2" y="568" font-size="15" font-weight="600" text-anchor="middle" font-family="Menlo, Consolas, monospace" fill="#6495ED">signup-email</text>
+<circle cx="444.0" cy="494" r="7" fill="#002E5D" stroke="#FFFFFF" stroke-width="2.5"/>
+<circle cx="532.8" cy="494" r="7" fill="#002E5D" stroke="#FFFFFF" stroke-width="2.5"/>
+<circle cx="816.0" cy="494" r="7" fill="#002E5D" stroke="#FFFFFF" stroke-width="2.5"/>
+<circle cx="945.6" cy="494" r="7" fill="#002E5D" stroke="#FFFFFF" stroke-width="2.5"/>
+<path d="M566.4 504 V545" fill="none" stroke="#8A939C" stroke-width="1.5"/>
+<circle cx="566.4" cy="494" r="4.5" fill="#5A6672"/>
+<text x="576.4" y="550" font-size="17" fill="#5A6672">Ana pulls main, gets Ben's fix</text>
+<text x="40" y="636" font-size="19" font-weight="700" fill="#002E5D">Team of two, long-lived branches</text>
+<rect x="40" y="695" width="72" height="30" rx="15" fill="url(#tbd-navy)"/>
+<text x="76" y="715" font-size="15" font-weight="600" text-anchor="middle" font-family="Menlo, Consolas, monospace" fill="#FFFFFF">main</text>
+<line x1="230" y1="710" x2="968" y2="710" stroke="#002E5D" stroke-width="5" stroke-linecap="round"/>
+<circle cx="54" cy="664" r="15" fill="#FFFFFF" stroke="#C9D7E8" stroke-width="1.5"/>
+<g transform="translate(45,655) scale(0.75)" fill="none" stroke="#002E5D" stroke-width="2.93" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+  <circle cx="12" cy="7" r="4" /></g>
+<text x="78" y="670" font-size="18" font-weight="600" fill="#2C3E50">Ana</text>
+<circle cx="54" cy="756" r="15" fill="#FFFFFF" stroke="#C9D7E8" stroke-width="1.5"/>
+<g transform="translate(45,747) scale(0.75)" fill="none" stroke="#002E5D" stroke-width="2.93" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+  <circle cx="12" cy="7" r="4" /></g>
+<text x="78" y="762" font-size="18" font-weight="600" fill="#2C3E50">Ben</text>
+<path d="M264.0 710 C264.0 687.0 268.0 664 280.0 664 H905.2 C923.2 664 931.2 687.0 931.2 710" fill="none" stroke="#0057B8" stroke-width="3.5" stroke-linecap="round"/>
+<circle cx="311.1" cy="664" r="4.5" fill="#FFFFFF" stroke="#0057B8" stroke-width="2.5"/>
+<circle cx="373.2" cy="664" r="4.5" fill="#FFFFFF" stroke="#0057B8" stroke-width="2.5"/>
+<circle cx="435.3" cy="664" r="4.5" fill="#FFFFFF" stroke="#0057B8" stroke-width="2.5"/>
+<circle cx="497.4" cy="664" r="4.5" fill="#FFFFFF" stroke="#0057B8" stroke-width="2.5"/>
+<circle cx="559.5" cy="664" r="4.5" fill="#FFFFFF" stroke="#0057B8" stroke-width="2.5"/>
+<circle cx="621.7" cy="664" r="4.5" fill="#FFFFFF" stroke="#0057B8" stroke-width="2.5"/>
+<circle cx="683.8" cy="664" r="4.5" fill="#FFFFFF" stroke="#0057B8" stroke-width="2.5"/>
+<circle cx="745.9" cy="664" r="4.5" fill="#FFFFFF" stroke="#0057B8" stroke-width="2.5"/>
+<circle cx="808.0" cy="664" r="4.5" fill="#FFFFFF" stroke="#0057B8" stroke-width="2.5"/>
+<circle cx="870.1" cy="664" r="4.5" fill="#FFFFFF" stroke="#0057B8" stroke-width="2.5"/>
+<circle cx="264.0" cy="710" r="5" fill="#FFFFFF" stroke="#002E5D" stroke-width="2.5"/>
+<path d="M292.8 710 C292.8 733.0 296.8 756 308.8 756 H905.2 C923.2 756 931.2 733.0 931.2 710" fill="none" stroke="#6495ED" stroke-width="3.5" stroke-linecap="round"/>
+<circle cx="338.4" cy="756" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
+<circle cx="397.7" cy="756" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
+<circle cx="456.9" cy="756" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
+<circle cx="516.1" cy="756" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
+<circle cx="575.4" cy="756" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
+<circle cx="634.6" cy="756" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
+<circle cx="693.9" cy="756" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
+<circle cx="753.1" cy="756" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
+<circle cx="812.3" cy="756" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
+<circle cx="871.6" cy="756" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
+<circle cx="292.8" cy="710" r="5" fill="#FFFFFF" stroke="#002E5D" stroke-width="2.5"/>
+<circle cx="931.2" cy="710" r="20" fill="url(#tbd-red)" stroke="#B03A3A" stroke-width="2.5" filter="url(#tbd-sh)"/>
+<g transform="translate(920.2,698) scale(0.9167)" fill="none" stroke="#B03A3A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" />
   <path d="M12 9v4" />
   <path d="M12 17h.01" /></g>
-<text x="866.0" y="390" font-size="16" font-weight="600" text-anchor="end" fill="#B03A3A">one big merge</text>
-<text x="866.0" y="409" font-size="16" font-weight="600" text-anchor="end" fill="#B03A3A">with conflicts</text>
+<text x="901.2" y="697" font-size="17" font-weight="600" text-anchor="end" fill="#B03A3A">merge conflicts</text>
+<line x1="240" y1="808" x2="960" y2="808" stroke="#C9D0D7" stroke-width="1.5"/>
+<line x1="240.0" y1="802" x2="240.0" y2="814" stroke="#C9D0D7" stroke-width="1.5"/>
+<line x1="480.0" y1="802" x2="480.0" y2="814" stroke="#C9D0D7" stroke-width="1.5"/>
+<line x1="720.0" y1="802" x2="720.0" y2="814" stroke="#C9D0D7" stroke-width="1.5"/>
+<line x1="960.0" y1="802" x2="960.0" y2="814" stroke="#C9D0D7" stroke-width="1.5"/>
+<text x="360.0" y="834" font-size="17" text-anchor="middle" fill="#5A6672">Day 1</text>
+<text x="600.0" y="834" font-size="17" text-anchor="middle" fill="#5A6672">Day 2</text>
+<text x="840.0" y="834" font-size="17" text-anchor="middle" fill="#5A6672">Day 3</text>
 </svg>

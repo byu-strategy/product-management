@@ -154,21 +154,97 @@ sentence on what the change does and one on anything in the diff you did not exp
 
 ## Trunk-Based Development: Small Branches, Merged Often
 
-**The model:** keep one shared line of work that could be released at any moment, and make
-every branch small enough to merge back into it within a day or two. This practice is called
-**trunk-based development**, and the shared line is called the **trunk**. In your repo, the
-trunk is `main`. Paul Hammant's site *Trunk Based Development* [@hammant_tbd] describes the
-practice in detail; this section follows it.
+**The model:** keep one shared line of work that could be released at any moment, and get every
+change into it within a day or two. This practice is called **trunk-based development**, and the
+shared line is called the **trunk**. In your repo, the trunk is `main`. Paul Hammant's site
+*Trunk Based Development* [@hammant_tbd] describes the practice in detail; this section follows
+it.
 
-The alternative is a **long-lived branch**: a feature built on its own branch for weeks and
-merged only when it is finished. While that branch is open, `main` keeps changing, so the two
-drift apart. When the branch finally comes back, the merge has to reconcile weeks of changes on
-both sides at once. Wherever both sides changed the same lines, git stops with a **merge
-conflict**, and someone has to decide by hand which version is right. With two long-lived
-branches open, each also has to be reconciled with the other, and problems that appear only
-when the two are combined show up together, at the end.
+The site describes two ways to get work into the trunk. In the first, each developer **commits
+straight to the trunk**, with no branch: they pull the latest trunk, run the full build on their
+own computer, and push only if it passes. The site describes this as the style of very small
+teams whose members know what the others are working on. In the second, each change goes on a
+**short-lived feature branch**, worked on by one developer (or two when pair programming), that
+lasts no more than a couple of days and comes back to the trunk as a pull request, where a build
+server runs the checks before the change lands. The site says a team of 16 or more people is
+more productive with short-lived branches. Both styles are trunk-based: the trunk is the
+one place everyone's work meets, and nothing stays away from it for long.
 
-![The same three weeks, two ways to branch. Top: every branch is back in main within two days, and several are open at once. Bottom: two branches move further from main for weeks and come back in one large merge, where their changes conflict.](images/diagrams/ch09-trunk-based.svg){#fig-trunk-based fig-alt="Two panels on one shared time axis of three weeks. Top panel, trunk-based, each branch lasting hours to two days: a dark main line runs across all three weeks. Fifteen small light-blue branches leave main and rejoin it, each spanning at most two days; they alternate above and below the line, so two or three are open at the same time, and each rejoins main at a dark merge dot. Bottom panel, long-lived branches, each branch lasting weeks: a dark main line with four commits of its own spread across the weeks. A branch labeled feature-rating leaves main early in week 1 and slopes steadily upward, away from main, collecting commits; a branch labeled feature-search leaves soon after and slopes steadily downward. Both return to main at the same point near the end of week 3, marked with a red warning circle labeled one big merge with conflicts." width="100%"}
+This course uses short-lived branches even when you work alone, because the pull request is
+where GitHub Actions runs the checks and Vercel builds the preview (@fig-pull-request-gate), and
+it gives you a diff to read before anything reaches the live site.
+
+The alternative to both styles is a **long-lived branch**: a feature built on its own branch for
+more than a couple of days, often for weeks, and merged only when it is finished. While that
+branch is open, `main` keeps changing, so the two drift apart. When the branch finally comes
+back, the merge has to reconcile all the changes on both sides at once. Wherever both sides
+changed the same lines, git stops with a **merge conflict**, and someone has to decide by hand
+which version is right. With two long-lived branches open, each also has to be reconciled with
+the other, and problems that appear only when the two are combined show up together, at the end.
+
+![Three days of trunk-based work, solo and on a team, and one contrast. Each row is one maker: you, a Claude Code session, Ana, or Ben. Working alone, you can commit straight to main. With two sessions or two people, each task is a short branch merged into the same main the same day or the next, and each new branch starts from the latest main. Bottom: Ana and Ben keep one branch each open for all three days and merge them at once, with conflicts.](images/diagrams/ch09-trunk-based.svg){#fig-trunk-based fig-alt="Four panels stacked on one shared time axis of three days, labeled Day 1, Day 2, and Day 3. In every panel a dark line labeled main runs left to right, and each row above or below it is labeled with the person or session that made the branches in that row. Filled dark dots on main are commits on main; hollow dots on a branch are commits on that branch. Panel 1, solo, straight to main: a row labeled You sits above main, and seven short arrows point from it down to seven commits on main, spread over the three days, with no branches. Panel 2, solo, two Claude Code sessions: a row labeled Session 1 above main and a row labeled Session 2 below it. Each session makes three short branches, one per day; each leaves main and merges back the same day, and on each day the two sessions' branches overlap in time. Panel 3, team of two: Ana's row above main, Ben's row below. Ana's branch ratings-1 runs through most of Day 1 and merges at the end of it. Ben's branch fix-signup starts midway through Day 1 and merges early on Day 2. A marker on main just after that merge reads: Ana pulls main, gets Ben's fix. Ana's branch ratings-2 then starts there and merges late on Day 2. Ben's branch signup-email starts on Day 3, after that merge, and merges the same day. Panel 4, team of two, long-lived branches: Ana's branch and Ben's branch both leave main at the start of Day 1, collect ten commits each over all three days while main gets no commits, and both merge into main at one point at the end of Day 3, marked with a red warning circle labeled merge conflicts." width="100%"}
+
+### What it looks like solo
+
+The top panel of @fig-trunk-based is the simplest form: you, alone, committing to `main`. Each
+commit is pushed to GitHub, and Vercel deploys it to the live site.
+
+The second panel is how you will usually work alone in this course: one person with two Claude
+Code sessions, each in its own worktree (Chapter 2), and each working on its own branch. On Day 1,
+session 1 builds a search box on one branch while session 2 fixes the empty state of the home page
+on another. When a session finishes its task, it pushes the branch and opens a pull request; you
+read the diff and the preview and merge it, the same day. Before a session starts its next task,
+ask it to pull `main` from GitHub and create the new branch from it, so the new branch starts
+from a `main` that already holds both sessions' merged work. A session that keeps one branch
+open for the whole week is a long-lived branch, even though nobody else is in the repo.
+
+### What it looks like on a team
+
+The third panel is a team of two, Ana and Ben, sharing one repository on GitHub, each with a copy
+on their own laptop. Ana is adding ratings; Ben is fixing a bug in sign-up.
+
+- **Day 1.** Ana creates `ratings-1` and adds the `rating` column and the code that saves a
+  rating. She opens a pull request at the end of the day, Ben reads the diff, and Ana merges it.
+  Midway through the day Ben creates `fix-signup` for the sign-up bug.
+- **Day 2.** Ben opens his pull request in the morning, Ana reads it, and Ben merges it. Before
+  starting her next task, Ana pulls `main`: git copies the newest commits from GitHub to her
+  laptop, so her copy now includes Ben's fix. She creates `ratings-2` from it, for the screen
+  that shows each problem's average rating, and merges it late in the day.
+- **Day 3.** Ben pulls `main`, which now includes both of Ana's branches, and creates
+  `signup-email` from it.
+
+Every branch changed a few files and lasted a day or less, so the other person's work was never
+more than a day old in anyone's copy. When two branches do touch the same lines, the merge
+conflict is a few lines long, and the person merging can tell which version is right. The bottom
+panel is the same two people with one branch each, kept open for three days: neither sees the
+other's work until both merge at the end of Day 3, and every place the two branches changed the
+same lines is a conflict to settle at once.
+
+### Straight to main, or a short branch?
+
+Committing straight to `main` is reasonable when all three of these hold: you work alone, with no
+second session running in the repo; the change is small, such as fixing a typo in a page; and you
+run the checks on your laptop first (`npm test` and `npm run build`). Vercel deploys a commit on
+`main` as soon as it reaches GitHub, so there is no preview and nobody reads the diff before users
+see it.
+
+The default in this course is a short branch with a pull request, for every change and even when
+you work alone. The pull request runs the checks on GitHub's computers instead of relying on you to
+remember them, builds a preview you can click through, and shows the full diff, which is where a
+line like `USING (true)` gets caught. When a second person or a second Claude Code session works
+in the repo, use a short branch every time.
+
+Words used in this section:
+
+| Term | What it means |
+|---|---|
+| Trunk | The one shared branch everyone's work goes into; in your repo, `main` |
+| Trunk-based development | Getting every change into the trunk within a day or two, by committing to it or by a short-lived branch |
+| Commit straight to the trunk | Committing on `main` with no branch and no pull request |
+| Short-lived feature branch | A branch for one task, made by one person or one session, merged through a pull request within a day or two |
+| Long-lived branch | A branch kept open for more than a couple of days, often weeks, and merged only when the feature is finished |
+| Pull `main` | Copying the newest commits on `main` from GitHub to your laptop (`git pull`), so a new branch starts from everyone's latest work |
+| Merge conflict | Two branches changed the same lines, and git stops until a person chooses which version to keep |
 
 The practice has four rules:
 
@@ -179,9 +255,8 @@ The practice has four rules:
    longer than two days risks becoming a long-lived branch, and it asks everyone to get work
    into the trunk at least once every 24 hours.
 3. **Every merge still passes the gate.** A short branch goes through the pull request and its
-   checks like any other. The site notes that very small teams sometimes commit straight to the
-   trunk with no branch; in this course keep the pull request, because that is where the checks
-   and the preview run.
+   checks like any other. Committing straight to `main` skips that gate, so keep it for the
+   narrow case described above: alone, a small change, checks run on your laptop first.
 4. **Unfinished work merges behind a feature flag.** A feature too large for one or two days is
    merged in small pieces, switched off. A **feature flag** is a setting the code checks before
    showing a feature (for example, `if (flags.ratings)`). With the flag off, the new code is on
@@ -199,10 +274,9 @@ using it. Turn the flag on for current users before that deploy goes out
 minutes, and a thousand-line diff is too long to review line by line. The `USING (true)` line
 in the pull request example above is easy to see in a diff of thirty lines and easy to miss in a diff
 of a thousand. One task per branch keeps each diff small enough to read. The same holds for
-parallel work: in Chapter 2 you ran a second session in a worktree, on its own branch. Have each
-worktree session finish one small task and merge it the same day. Two sessions that each run for
-a week are two long-lived branches, and they end in the merge shown in the bottom panel of
-@fig-trunk-based. Small merges also keep rollback (later in this chapter) simple: when a deploy
+parallel sessions: two worktree sessions that each keep one branch for a week are two long-lived
+branches, and they end in the kind of merge shown in the bottom panel of @fig-trunk-based. Small
+merges also keep rollback (later in this chapter) simple: when a deploy
 breaks, it changed one thing, so you know which commit to `git revert`. Revert is for a change
 that broke something. The site is specific that code which is not ready should not be merged
 and then backed out; it belongs behind a flag.
@@ -228,8 +302,10 @@ runs.
 
 ### One test, taken apart
 
-Start with a situation. Your app shows a balance on every account page, using a function
-called `formatCurrency` that turns a number into a price. A new user has a balance of zero, and
+Start with a situation. Your app shows a balance on every account page, using a **function**
+called `formatCurrency` that turns a number into a price. (A function, from Chapter 7, is a named
+piece of your app's code that takes an input and gives back a result; a line of code runs it by
+writing its name followed by parentheses, which programmers call **calling** it.) A new user has a balance of zero, and
 the page must show `$0.00`, never `$0` or `0`. A test is a few lines of code that check this for
 you, every time anyone changes the code:
 
@@ -264,7 +340,7 @@ and in Claude Code's explanations.) The last line is the **assertion**. If a lat
 received, `'$0.00'` expected) so you can see what changed. A test file usually holds several
 tests, one per behavior: zero, a large number with a comma (`$1,234.56`), a negative amount.
 
-![Top: one test runs your code with a chosen input and compares what it returned with the answer it must give. Bottom: the test runner runs every test file and prints the totals. Numbers are illustrative; each file holds several tests.](images/diagrams/ch09-test-anatomy.svg){#fig-test-anatomy fig-alt="Top: a test file named format.test.ts with three numbered lines. 1, Arrange: const amount = 0. 2, Act: const got = formatCurrency(amount); an arrow carries the input 0 to a box labeled your code, formatCurrency(). 3, Assert: expect(got).toBe('$0.00'); an arrow carries the expected value to a compare box outlined in blue. Your code's output also goes to the compare box. The box shows returned '$0.00' and must be '$0.00'. Below it the result branches: same, pass, in green; different, fail, in red. Bottom, in a band labeled test runner: a dark command box reading npm test, an arrow to a grid of twelve test file icons labeled files named *.test.ts, eleven with check marks and one red with an x, and an arrow to a printed summary: 47 passed, 1 failed." width="100%"}
+![Top: one test runs your code with a chosen input and compares what it returned with the answer it must give. Bottom: the test runner runs every test file and prints the totals. Numbers are illustrative; each file holds several tests.](images/diagrams/ch09-test-anatomy.svg){#fig-test-anatomy fig-alt="Top: a test file named format.test.ts with three numbered lines. 1, Choose an input, zero dollars: const amount = 0. 2, Run your code on it, keep the answer: const got = formatCurrency(amount); an arrow carries the input 0 to a box labeled your code, formatCurrency(). 3, State the answer it must give: expect(got).toBe('$0.00'); an arrow carries the expected value to a compare box outlined in blue. Your code's output also goes to the compare box. The box shows returned '$0.00' and must be '$0.00'. Below it the result branches: same, pass, in green; different, fail, in red. Bottom, in a band labeled test runner: a dark command box reading npm test, an arrow to a grid of twelve test file icons labeled files named *.test.ts, eleven with check marks and one red with an x, and an arrow to a printed summary: 47 passed, 1 failed." width="100%"}
 
 ### The runner, and the files in your repo
 
@@ -277,8 +353,11 @@ Next.js and Supabase project:
 | **Playwright** | End-to-end tests in a real browser | Files ending in `.spec.ts` or `.test.ts` inside the test folder named in `playwright.config.ts`, often `tests/` or `e2e/` | `npx playwright test` |
 | **Node's built-in runner** | Unit tests, with nothing to install | The files the command names | `node --test` |
 
-`npm test` runs whatever command the `"test"` line in `package.json` names, so open that file to
-see what it does in your repo.
+Unit, integration, and end-to-end tests are explained under [Kinds of tests](#kinds-of-tests)
+below. In a file name, `.test` and `.spec` mean the same thing (`spec` is short for
+specification): both mark a file of tests, which the app itself never runs. `npm test` runs
+whatever command the `"test"` line in `package.json` (the file that lists your project's packages
+and its named commands) names, so open that file to see what it does in your repo.
 
 **Why there seem to be a thousand test files.** Search a project for "test" and most of what you
 find belongs to other people. The folder `node_modules` holds the code of every package your app
@@ -293,54 +372,100 @@ git ls-files | grep -E '\.(test|spec)\.'
 ```
 
 **Why Claude Code keeps running them.** Running tests is the check step of the agent loop
-(Chapter 1). After an edit, the agent runs the suite to find out whether the change broke
+(Chapter 1). After an edit, the agent runs the **test suite** (all the tests in the project) to find out
+whether the change broke
 something that used to work, reads any failure, fixes the code, and runs it again. Red output
-partway through a session is normal. What matters is the last run before it says it is done, and
-whether it got to green by fixing the code or by changing a test. You can require green: a
+(failing tests) partway through a session is normal. What matters is the last run before it says
+it is done, and whether it got to green (every test passing) by fixing the code or by changing a test. You can require green: a
 `Stop` hook (Chapter 2) can keep the agent working until the tests pass.
 
 ### Kinds of tests
 
 The kinds differ in how much of the real app a test runs. The examples use the problem tracker
 from Chapter 8: users log problems with a title and an intensity from 1 to 10, and row-level
-security lets each user see only their own.
+security lets each user see only their own. Two pieces of that app's code appear in the examples:
 
-![Each kind of test is drawn across the parts of the app it really runs. A unit test runs one function; an integration test runs a real route against a test database; an end-to-end test drives a real browser through the whole running app. The more a test runs, the slower it is.](images/diagrams/ch09-test-scope.svg){#fig-test-scope fig-alt="Three columns for the parts of the app, with icons: Browser, the user's machine; Your server, Next.js on Vercel; Supabase, sign-in and database. A fourth column on the right is headed catches. Three rows of tests, each a blue-outlined bar covering only the columns that test runs. Unit, fastest: an arrow labeled calls leads to a bar under the server column holding validateProblem(); it catches wrong logic. Integration, slower: an arrow labeled request leads to a bar covering the server and Supabase, holding /api/problems and test database; it catches a wrong query or policy. End-to-end, slowest: an arrow labeled clicks leads to a bar covering all three columns, holding real browser, running app, and test database; it catches a broken flow." width="100%"}
+- `validateProblem` is a function in the app (not in a test) that checks a new problem before it
+  is saved: the title is not empty, and the intensity is a whole number from 1 to 10.
+- `/api/problems` is the address the app's pages send a new problem to, and a **route** is the
+  code on your server that answers requests sent to that address (Chapter 7 calls these API
+  routes; Chapter 8 calls the address an endpoint). When it gets a new problem, it saves it as a
+  row in the database.
 
-**Unit test: one function, alone.** A unit test calls a single function directly, with no
-browser, no server, and no database. It runs in milliseconds, so a project can have hundreds.
+Each test is a separate file that sits beside the app's code and runs some of it. The figure
+shows, for each kind, the test file on the left and the parts of the app it actually runs.
+
+![Each row is one kind of test. On the left is the test file; the outlined boxes are the parts of your app that test runs, and the columns it does not cover are not started at all. The more of the app a test runs, the slower it is and the more kinds of failure it can find.](images/diagrams/ch09-test-scope.svg){#fig-test-scope fig-alt="A grid. On the left, a column headed The test, a separate file. In the middle, a shaded area headed Your app, with three columns: Browser, the user's machine; Your server, Next.js on Vercel; Supabase, sign-in and database. On the right, a column headed Finds, when it fails. Three rows. Unit test, fastest, milliseconds: the test file validate.test.ts sends a problem with intensity 12 straight to a box under the server column, validateProblem(), which checks a new problem; the browser and database columns are empty. It finds a wrong rule in one function. Integration test, slower: the test file problems.test.ts sends a request to save a new problem to an outlined bar covering the server and Supabase columns, holding /api/problems, your server route, and test database, not the live one. It finds a save that fails or stores the wrong row. End-to-end test, slowest, seconds each: the test file signup.spec.ts sends clicks and typing to an outlined bar covering all three columns, holding real browser, opened by the test; running app, started for testing; and test database, not the live one. It finds a step a user cannot finish." width="100%"}
+
+| Kind | The situation | What the test does | What it would catch | How fast |
+|---|---|---|---|---|
+| **Unit** | A user types 12 as the intensity. `validateProblem` must refuse it | Runs `validateProblem` directly with intensity 12 and checks that the answer is "no." No browser, server, or database is started | A wrong rule in that one function, such as a limit typed as 100 instead of 10 | Milliseconds, so a project can have hundreds |
+| **Integration** | Ana saves a problem. The new row in the database must belong to Ana | Sends a request to `/api/problems` signed in as Ana, then reads the test database to see whose row was saved | A route that fails to save, saves the wrong fields, or saves the row under the wrong user | Slower: each test waits for the server and the database |
+| **End-to-end** | A new user must be able to sign up and log a first problem | Opens a real browser on the running app, fills in the sign-up form, adds a problem, and checks that it appears on the page | A step a user cannot finish, such as a button that does nothing or a page that never loads | Seconds per test |
+
+The three examples below are the code behind each row. In each, the `import` lines at the top
+(like the two in the first example) are left out.
+
+**Unit test: one function, alone.** The situation: a user types 12 into the intensity field, and
+the app must refuse it, because intensity runs from 1 to 10. A **unit test** runs a single
+function from your app directly, with no browser, no server, and no database.
 
 ```typescript
+// lib/validate.test.ts
 test('rejects an intensity above 10', () => {
   const result = validateProblem({ title: 'Lost receipts', intensity: 12 });
   expect(result.ok).toBe(false);
 });
 ```
 
-**Integration test: several real pieces together.** An integration test checks that pieces work
-together: here, that the real `/api/problems` route saves a row to a real database. It runs against
-a **test database**: a separate Supabase project, or a local copy started with `supabase start`
-(which needs Docker). Never point tests at your live database; they create and delete rows.
+| Code | What it means |
+|---|---|
+| `test('rejects an intensity above 10', () => {` | Start one test, named for what the code must do |
+| `const result = validateProblem({ title: 'Lost receipts', intensity: 12 });` | Run the app's `validateProblem` function on one problem, and keep its answer under the name `result`. The part in curly braces is the problem written as code: each field's name, a colon, and its value. Here the title is "Lost receipts" and the intensity is 12 |
+| `expect(result.ok).toBe(false);` | The check. In this app, `validateProblem` answers with a field named `ok`: `true` if the problem may be saved, `false` if not. For intensity 12, `ok` must be `false` |
+| `});` | End of this test |
+
+**Integration test: several real pieces together.** The situation: Ana saves a problem, and the
+row that lands in the database must be marked as hers, or row-level security will hide it from
+her (or show it to someone else). An **integration test** checks that several real pieces work
+together: here, that the real `/api/problems` route saves a row to a real database. It runs
+against a **test database**: a separate Supabase project, or a local copy started with
+`supabase start` (which needs Docker, a program that runs Supabase's database and services on
+your laptop). Never point tests at your live database; they create and delete rows.
 
 ```typescript
-test('POST /api/problems saves the problem for the signed-in user', async () => {
-  const res = await postAs(ana, '/api/problems', { title: 'Lost receipts', intensity: 4 });
-  expect(res.status).toBe(201);
+// tests/problems.test.ts
+test('saving a problem stores it under the signed-in user', async () => {
+  const response = await postAs(ana, '/api/problems', { title: 'Lost receipts', intensity: 4 });
+  expect(response.status).toBe(201);
   const { data } = await testDb.from('problems').select('user_id').eq('title', 'Lost receipts');
   expect(data).toEqual([{ user_id: ana.id }]);
 });
 ```
 
-`postAs` and `testDb` are helpers the agent writes once in the test setup: one sends a request
-signed in as a test user, the other reads the test database.
+This test uses three names that are not part of your app or of Vitest. `ana`, `postAs`, and
+`testDb` are short **helpers**: a few lines the agent writes once, in a setup file the tests
+share, so that each test does not repeat them.
 
-**End-to-end test: the whole app, through a real browser.** An **end-to-end** (E2E) test does
-what a user does. Playwright opens a real browser, goes to your running app, types, clicks, and
-checks what appears on screen. This is the same browser automation as the Playwright server from
-Chapter 2, with one difference: there, Claude clicks around once; a Playwright test file is saved
-in the repo and repeats the same steps every time it runs.
+| Code | What it means |
+|---|---|
+| `test('saving a problem stores it under the signed-in user', async () => {` | Start one test. `async` marks a test that has to wait for answers from elsewhere (here, the server and the database) |
+| `const response = await postAs(ana, '/api/problems', { title: 'Lost receipts', intensity: 4 });` | Helper `postAs` sends a request to `/api/problems` signed in as `ana`, a test user the setup file creates. The request carries a new problem. `await` means "wait for the server's response before going to the next line." Keep the response under the name `response` |
+| `expect(response.status).toBe(201);` | Check 1: the response's status code must be 201, the code for "created" (Chapter 8) |
+| `const { data } = await testDb.from('problems').select('user_id').eq('title', 'Lost receipts');` | Helper `testDb` is a connection to the test database. The line reads it: from the `problems` table, get the `user_id` column of every row whose title is "Lost receipts." Supabase answers with the rows under the name `data` |
+| `expect(data).toEqual([{ user_id: ana.id }]);` | Check 2: exactly one row came back, and its `user_id` is Ana's id. The square brackets are a list, here a list holding one row |
+| `});` | End of this test |
+
+**End-to-end test: the whole app, through a real browser.** The situation: a new user must be
+able to sign up and log a first problem, the path your demo depends on. An **end-to-end** test
+(often written **E2E**) does what a user does. **Playwright**, a test runner made for this,
+opens a real browser, goes to your running app, types, clicks, and checks what appears on screen.
+This is the same browser automation as the Playwright server from Chapter 2, with one difference:
+there, Claude clicks around once; a Playwright test file is saved in the repo and repeats the
+same steps every time it runs.
 
 ```typescript
+// e2e/signup.spec.ts
 test('a new user can sign up and log a problem', async ({ page }) => {
   await page.goto('/signup');
   await page.getByLabel('Email').fill('new-user@example.com');
@@ -352,26 +477,43 @@ test('a new user can sign up and log a problem', async ({ page }) => {
 });
 ```
 
+| Code | What it means |
+|---|---|
+| `test('a new user can sign up and log a problem', async ({ page }) => {` | Start one test. Playwright hands the test `page`: a tab in a real browser that the test controls |
+| `await page.goto('/signup');` | Open the app's sign-up page |
+| `await page.getByLabel('Email').fill('new-user@example.com');` | Find the field labeled "Email," the way a user would, and type a made-up address into it |
+| `await page.getByLabel('Password').fill('a-long-test-password');` | Find the field labeled "Password" and type a made-up password |
+| `await page.getByRole('button', { name: 'Sign up' }).click();` | Find the button that reads "Sign up" and click it |
+| `await page.getByLabel('Title').fill('Lost receipts');` | On the page that opens next, type "Lost receipts" into the field labeled "Title" |
+| `await page.getByRole('button', { name: 'Add problem' }).click();` | Click the "Add problem" button |
+| `await expect(page.getByText('Lost receipts')).toBeVisible();` | The check: the text "Lost receipts" must be showing on the page. Playwright waits a few seconds for it to appear before it fails the test |
+| `});` | End of this test |
+
 Each run takes seconds, and it needs the app running and a test Supabase project (with email
-confirmation turned off, or the test cannot finish signing up). The Next.js documentation
-recommends end-to-end tests over unit tests for async Server Components, which some unit-testing
-tools do not yet fully support.
+confirmation turned off, or the test cannot finish signing up). The test database must also be
+emptied between runs, or the test must use a different email each time, because the second
+sign-up with the same address would fail; the agent sets this up. The Next.js documentation
+recommends end-to-end tests over unit tests for pages that wait for data on the server (async
+Server Components), because some unit-testing tools do not yet fully support them.
 
-Four more kinds you will see, each a use of the three above:
+Four more kinds you will see. Each is a unit, integration, or end-to-end test written for one
+particular purpose:
 
-| Kind | What it checks | Problem-tracker example |
-|---|---|---|
-| **Permission test** | That a user cannot reach data they should not | Ana creates a problem; signed in as Ben, a query for it returns an empty list, and an update changes nothing |
-| **Regression test** | That a bug you fixed stays fixed | Intensity 10 was rejected because the code checked `< 10`. The test saves a problem with intensity 10 |
-| **Snapshot or visual test** | That output has not changed since it was last approved | Vitest's `toMatchSnapshot()` saves the rendered problem list and compares later runs with it; Playwright's `toHaveScreenshot()` does the same with a picture of the page |
-| **Smoke test** | That the deployed app is up at all, in under a minute | After a deploy: the home page loads, and a test user can sign in |
+| Kind | The situation | What it checks | Problem-tracker example |
+|---|---|---|---|
+| **Permission test** | Ben is signed in to his own account and asks the database for Ana's problems | That a user cannot reach data they should not | Ana creates a problem; signed in as Ben, a query for it returns an empty list, and an update changes nothing |
+| **Regression test** | Users reported that a problem with intensity 10 was refused. You fixed it | That a bug you fixed stays fixed | The code checked "less than 10" (`< 10`) where it should have checked "10 or less" (`<= 10`). The test saves a problem with intensity 10 |
+| **Snapshot or visual test** | You approved the look of the problem list. A later change to shared styles should not change it without someone noticing | That output has not changed since it was last approved | Vitest's `toMatchSnapshot()` saves the rendered problem list and compares later runs with it; Playwright's `toHaveScreenshot()` does the same with a picture of the page |
+| **Smoke test** | You just deployed, and before telling anyone you want to know the site is up | That the deployed app works at all, in under a minute | After a deploy: the home page loads, and a test user can sign in |
 
 **Permission tests** are the two-account drill from Chapter 8, written down so it runs on every
-change. They matter more in a Supabase app than in most, because the browser queries the database
-directly and row-level security is the only thing stopping Ben from reading Ana's rows. A
-permission test must sign in as an ordinary user with the publishable key. The secret key bypasses
-row-level security, so a test that uses it checks nothing about your policies. Supabase can also
-run permission tests written in SQL, with `supabase test db`.
+change. The situation: Ana has logged a problem, and Ben, signed in to his own account, must get
+nothing back when he asks the database for it. This matters more in a Supabase app than in most,
+because the browser queries the database directly and row-level security is the only thing
+stopping Ben from reading Ana's rows. A permission test must sign in as an ordinary user with the
+publishable key. The secret key bypasses row-level security, so a test that uses it checks
+nothing about your policies. Supabase can also run permission tests written in SQL, with
+`supabase test db`.
 
 ```typescript
 test("Ben cannot read Ana's problems", async () => {
@@ -380,26 +522,50 @@ test("Ben cannot read Ana's problems", async () => {
 });
 ```
 
-**Regression tests** come from bugs. When you find one, ask the agent to write a test that
-reproduces it first and to show you that test failing. Then it fixes the code, and the same test
-passes. The failing run proves the test detects the bug; the passing run proves the fix works.
+| Code | What it means |
+|---|---|
+| `test("Ben cannot read Ana's problems", async () => {` | Start one test, which waits on the database |
+| `const { data } = await asBen.from('problems').select('*').eq('user_id', ana.id);` | Helper `asBen` is a connection to the test database signed in as the test user Ben, with the publishable key, the way Ben's own browser would connect. The line asks: from the `problems` table, every column (`*`) of every row whose `user_id` is Ana's id. Keep the rows under the name `data` |
+| `expect(data).toEqual([]);` | The check: `[]` is an empty list, so no rows may come back. Row-level security hides Ana's rows from Ben, so Supabase returns an empty list; it does not report an error |
+| `});` | End of this test |
 
-**Snapshot and visual tests** catch any change, including changes you meant to make. When you
+**Regression tests** come from bugs. The situation: users report that intensity 10 is refused.
+When you find a bug like this, ask the agent to write a test that reproduces it first and to show
+you that test failing. Then it fixes the code, and the same test passes. The failing run proves
+the test detects the bug; the passing run proves the fix works. This one is a unit test like the
+first example, with 10 as the input and `true` as the answer it must give:
+
+```typescript
+test('accepts an intensity of exactly 10', () => {
+  const result = validateProblem({ title: 'Lost receipts', intensity: 10 });
+  expect(result.ok).toBe(true);
+});
+```
+
+**Snapshot and visual tests** compare today's output with a saved copy. The first run saves a
+**snapshot** (the rendered problem list as text in a `.snap` file, or a picture of the page in a
+`.png` file) in the repo. Each later run produces the output again and
+fails on any difference. They catch any change, including changes you meant to make. When you
 change the design on purpose, the stored snapshot is updated (`npx vitest -u`,
 `npx playwright test --update-snapshots`), and the updated `.snap` or `.png` file appears in the
 diff. Check that someone meant to change it.
 
 **Smoke test** has a different meaning here than in Chapter 4, where it was an offer for a product
-that does not exist yet. In software, it is a short check run right after a deploy.
+that does not exist yet. In software, it is a short check run right after a deploy, against the
+live site.
 
 Two more words you will meet in test output. A **mock** is a stand-in for a real dependency that
-returns a fixed answer: a test of your AI feature can replace the call to Anthropic with a mock
-that always returns the same summary, so the test is fast, free, and gives the same result every
-time. The cost: a test with a mock checks your code against your assumption about the other
-service. If the service changes how it answers, the test still passes. A **flaky test** passes on one run and fails on the
-next with no change to the code, usually because an end-to-end test did not wait for the page to
-finish loading. Have flaky tests fixed or deleted. A suite that fails at random teaches everyone,
-including the agent, to ignore red.
+returns a fixed answer. The situation: your app has a "summarize my notes" feature that sends the
+notes to Anthropic's API. A test that used the real API would cost money, need a network
+connection, and get a different summary each run. Instead, the test replaces the call to
+Anthropic with a mock that always returns the same summary, so the test is fast, free, and gives
+the same result every time. The cost: a test with a mock checks your code against your assumption
+about the other service. If the service changes how it answers, the test still passes.
+
+A **flaky test** passes on one run and fails on the next with no change to the code. The
+situation: an end-to-end test checks the page before it has finished loading, so it passes when
+the page is fast and fails when it is slow. Have flaky tests fixed or deleted. A suite that fails
+at random teaches everyone, including the agent, to ignore red.
 
 **How many of each.** Mike Cohn's testing pyramid recommends many unit tests, fewer integration
 tests, and fewest end-to-end tests, because the larger ones are slow and fail for reasons unrelated
@@ -418,8 +584,8 @@ user data, and one end-to-end test of the path your demo depends on.
 - **Tests do not tell you whether the feature is the right one or whether users can use it.**
   That is what interviews (Chapter 4) and usability tests (Chapter 6) are for.
 - **A test can be changed to pass.** An agent told to "make the tests pass" sometimes changes
-  the expected value, deletes the test, or marks it `.skip` instead of fixing the code. A diff
-  review catches it.
+  the expected value, deletes the test, or marks it `.skip` (written `test.skip(...)`, which
+  tells the runner not to run that test) instead of fixing the code. A diff review catches it.
 
 ### What you do
 
@@ -453,18 +619,28 @@ Words used in this section:
 
 | Term | What it means |
 |---|---|
-| Test | A short program that runs some of your code with a chosen input and checks the result |
+| Test | A short program, kept in its own file, that runs some of your app's code with a chosen input and checks the result |
+| Function | A named piece of your app's code that takes an input and gives back a result, such as `validateProblem`. Running it is called **calling** it |
+| Route | The code on your server that answers requests sent to one address, such as `/api/problems` (Chapter 7) |
+| Request | A message sent to a server asking it to do one thing, such as save a problem (Chapter 8) |
 | Assertion | The line that states the expected result, such as `expect(got).toBe('$0.00')` |
-| Arrange, act, assert | The three steps of a test: set up the input, run the code, check the result |
+| Arrange, act, assert | The three steps of a test: choose the input, run your code on it, state the answer it must give |
 | Test suite | All the tests in a project, run together |
-| Test runner | The program that finds test files by name, runs them, and reports passes and failures (Vitest, Jest, Playwright) |
-| Unit test | A test of one function on its own |
+| Test runner | The program that finds test files by name, runs them, and reports passes and failures |
+| Vitest, Jest | Test runners for unit and integration tests in JavaScript and TypeScript projects |
+| Playwright | A test runner that opens a real browser and clicks through your app; used for end-to-end tests |
+| Unit test | A test that runs one function from your app on its own, with no browser, server, or database |
 | Integration test | A test of several real pieces together, such as a route and a test database |
 | End-to-end (E2E) test | A test that drives a real browser through the running app, as a user would |
 | Test database | A separate database that tests may fill and empty, never the live one |
+| Helper | A few lines written once in a test setup file and used by many tests, such as `postAs` or `testDb` |
+| Permission test | A test that signs in as one user and confirms they cannot read or change another user's data |
 | Regression test | A test written for a fixed bug, so the bug cannot return unnoticed |
-| Mock | A stand-in for a real dependency that returns a fixed answer |
+| Snapshot | A saved copy of some output (text, or a picture of the page) that later runs are compared with |
+| Smoke test | A short check, run right after a deploy, that the live app works at all, such as that the home page loads |
+| Mock | A stand-in for a real service, used in tests, that always returns the same fixed answer |
 | Flaky test | A test that passes or fails at random with no change to the code |
+| Coverage | The share of your code's lines that some test ran, whether or not any assertion checked the result |
 
 ::: {.callout-tip title="Try it"}
 Ask Claude Code: *"List the test files in this repo that are mine, not the ones in
@@ -915,7 +1091,11 @@ decide, using the lists above, whether to pay it down now or later.
   before it merges.
 - **Diff**: the lines a change adds, removes, or edits.
 - **Trunk-based development**: one shared `main` (the trunk) that is always releasable, with
-  short-lived branches merged back within a day or two.
+  every change merged into it within a day or two, by committing straight to it (solo, small
+  changes) or, the course default, through a short-lived branch and a pull request.
+- **Trunk**: the one shared branch everyone's work goes into; in your repo, `main`.
+- **Pull `main`**: copy the newest commits on `main` from GitHub to your laptop before creating a
+  branch, so the branch starts from everyone's latest work.
 - **Merge conflict**: two branches changed the same lines, and git needs a person to choose.
 - **Feature flag**: a setting that keeps merged but unfinished code hidden from users, or decides
   which users see a deployed feature.
@@ -929,13 +1109,15 @@ decide, using the lists above, whether to pay it down now or later.
   trying a change before users see it.
 - **Release**: turning a deployed feature on for some or all users, with a feature flag.
 - **Seed data**: made-up rows loaded into a development or staging database.
-- **Test**: a short program that runs some of your code with a chosen input and compares the
-  result with the expected answer (arrange, act, assert); the **assertion** is the comparison.
+- **Test**: a short program, in its own file, that runs some of your app's code with a chosen
+  input and compares the result with the expected answer (arrange, act, assert: choose the input,
+  run the code, state the answer); the **assertion** is the comparison.
 - **Test runner and test suite**: the program that finds test files by name and runs them
   (Vitest, Jest, Playwright), and all the tests in a project. Test files in `node_modules`
   belong to your dependencies and are not run.
-- **Unit, integration, end-to-end tests**: one function alone; several real pieces with a test
-  database; a real browser through the whole running app. The **testing pyramid**: many of the
+- **Unit, integration, end-to-end tests**: one function from your app run directly, with no
+  browser, server, or database; a request to a real server route that writes to a test database;
+  a real browser clicking through the whole running app. The **testing pyramid**: many of the
   first, fewest of the last.
 - **Permission, regression, snapshot, and smoke tests**: a user cannot reach others' rows; a fixed
   bug stays fixed; output unchanged since approved; the deployed app is up.
