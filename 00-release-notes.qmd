@@ -4,6 +4,19 @@ This course site is a living product. It gets better during the semester, and ev
 
 New entries appear at the top.
 
+## v2.7.0 (2026-10-10)
+
+Two new Design chapters: Design Fundamentals, read with class 5, and Specs, read with class 6.
+
+- **New Chapter 5b, "Design Fundamentals," required reading for class 5 (Mon, Oct 12).** It covers how UI, UX, and product design differ; the Double Diamond; fidelity on two axes and what AI changed about it; design tools, including Figma and Claude Design; Norman's design principles; information architecture; how people perceive a screen; visual fundamentals; and Nielsen's usability heuristics.
+- **New Chapter 6b, "Specs: Designing the Build," required reading for class 6 (Mon, Oct 19).** The spec material that was in Chapter 2 now lives here, in the Design section, along with the Agent Team Kit's spec skills. A spec with user stories and acceptance criteria now counts as Design evidence.
+- **Chapter 1 explains why there is no Build axis** among the builder skills.
+- **Chapter 3 adds disruptive innovation** (Christensen), with the performance-over-time chart.
+- **A Learn in Claude button now sits beside each section heading.** It replaces the `/learn` boxes at the end of each section. Click it to copy the `/learn` command for that section, then paste it into Claude Code. The syllabus explains how it works.
+- **The builder template adds `/eli5`,** a picture explainer of how something works. `/learn` offers it when a picture would help.
+- **Key Concepts lists are rewritten** to match what each chapter now covers.
+- **Agent Team Kit lessons added** in Chapters 2, 5, 9, and 12.
+
 ## v2.6.0 (2026-10-10)
 
 Chapter 9 is now two chapters, and every chapter has been reread and clarified for readers who are new to the material.
