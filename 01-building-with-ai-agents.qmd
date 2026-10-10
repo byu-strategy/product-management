@@ -345,9 +345,9 @@ This course uses terms like "building with AI," "agentic coding," "AI builder," 
 
 ## What Makes an Agent an Agent
 
-**An agent is a model in a loop with tools.** The **model** is a large language model (LLM), such as Claude: a program that takes in text and writes text back. A web chatbot and a coding agent run on the same underlying models. What separates them is access: the chatbot can only send text back to you, while the agent can read your files, run commands, and see what happened.
+**An agent is a model in a loop with tools.** The **model** is a large language model (LLM), such as Claude: a program that takes in text and writes text back. A web chatbot and a coding agent run on the same underlying models. What separates them is access to your computer. Some chatbots can now run code and make files, but only in a sandbox on the company's own servers; none of them can open your project. The agent works on your computer: it reads your files, runs commands in your terminal, and sees what happened.
 
-![The same model, four levels of access. Web chatbots sit at the top layer; agents work across all four.](images/agent-pyramid.svg){fig-alt="A four-layer pyramid. The small top layer is LLM, text in and text out. Below it, System Access: bash, files, terminal. Below that, Code Execution: write, run, debug, iterate. The wide base is Tools and Artifacts: docs, apps, APIs, deploy. A bracket marks the top layer alone as web chatbots, and a bracket spanning all four layers as AI agents."}
+![A web chatbot shows you the model's text and little else, and it never touches your computer. A coding agent runs the same model with access to your files, your terminal, and outside tools.](images/diagrams/ch01-agent-iceberg.svg){#fig-agent-iceberg fig-alt="An iceberg at a waterline. Above the water is a small pale tip labeled LLM, text in, text out; a bracket beside it reads web chatbot, shows you this part. Below the water the iceberg is much larger and darker with depth, in three layers. System access: reads and writes files, runs commands on your computer. Code execution: writes code and runs it: tries, fails, fixes, retries. Tools and artifacts: .docx, .pptx, .xlsx, full apps, outside services, deploys. A bracket spanning the whole iceberg, tip included, reads coding agent, same model, plus access, and lists Antigravity, Claude Code, Codex, Copilot, and Cursor." width="100%"}
 
 A chatbot can write you a PRD. An agent can read your repo (short for repository, the folder that holds your project's code), write the code, run it, watch it fail,
 fix it, and deploy the result. That gap is why this course runs in a terminal instead
@@ -365,7 +365,7 @@ Every agent turn has three phases. Claude Code's documentation names them **gath
 | **Act** | Changes something | Edit, Write, Bash (run a command) | It edited the wrong file, or ran a command you did not want |
 | **Check** | Looks at the result of its action | Run the tests, run the app, read the error output | It skipped the check, or the check could not detect the problem |
 
-Two building blocks make this work. The **model** reasons and decides the next step. The **tools** act and report back: every tool result goes into the conversation and shapes the model's next decision. Claude Code is the layer around the model that supplies the tools and manages what the model sees; the docs call that layer the *agentic harness*.
+Two building blocks make this work. The **model** reasons and decides the next step. The **tools** act and report back: every tool result goes into the conversation and shapes the model's next decision. Claude Code is the layer around the model that supplies the tools and manages what the model sees; the docs call that layer the *agentic harness*. [The model and the harness](#the-model-and-the-harness), after the tools section, shows what that layer does.
 
 **Worked example.** You tell Claude Code: "The delete button on my to-do app doesn't work." A good run looks like this:
 
@@ -430,6 +430,66 @@ this mechanism:
 
 ::: {.callout-tip title="Try it"}
 Ask Claude Code to make a small change in your project, then watch the transcript instead of the result. Label each step it takes as context, action, or check. Did it check its own work before saying it was done? If not, what check would you have asked for?
+:::
+
+### The model and the harness
+
+**The model turns text into text. The harness is the program around the model that decides what
+the model sees and does what the model asks.** In Claude Code's documentation, Claude Code is the
+harness and Claude is the model inside it. (The word comes from the gear that connects an
+animal's strength to useful work and lets a person steer it. In this book, harness means only the
+program.)
+
+On its own, the model has three limits. It receives text and writes text. It stores nothing from
+one request to the next, so everything it should know has to be in the request. And it has no
+access to your computer. The harness handles everything else: it builds each request, sends it,
+and acts on the reply. The two also run in different places: Claude Code runs on your computer, next to
+your files and terminal, and the model runs on Anthropic's servers, which the harness reaches over
+the internet.
+
+![You, the harness, and your files are all on your computer; the model runs on Anthropic's servers. The harness builds every request the model sees, sends it over the internet, checks and runs every tool call in the reply, and adds each result to the conversation. Nothing reaches the model, and the model reaches nothing, except through the harness.](images/diagrams/ch01-model-and-harness.svg){#fig-model-and-harness fig-alt="Two regions. A large box labeled your computer holds you, the harness, and your files and terminal. A smaller box outside it, labeled Anthropic's servers, holds the model: text in, text out, stores nothing between requests. Inside the harness, labeled Claude Code, a top row titled builds each request: conversation so far, system instructions, CLAUDE.md, tool list. An arrow labeled request goes from the tool list out to the model. An arrow labeled reply comes back into a bottom row titled handles each reply, read right to left: find tool calls, check the call, run the tool, add the result. Run the tool sends an action down to your files and terminal, whose output returns to add the result. Add the result sends the result, as text, up into the conversation. You send a message into the conversation; when the reply has no tool call, the harness shows it to you." width="100%"}
+
+The harness's jobs, in the order they happen on each request:
+
+| Job | What it does | Example in Claude Code |
+|---|---|---|
+| **Build the request** | Puts together everything the model will see: system instructions (Claude Code's standing instructions on how to use tools and behave), your CLAUDE.md, the list of tools, and the conversation so far | Your CLAUDE.md is in every request of every session, which is why the model follows it |
+| **Send and receive** | Sends the request to the model and receives the text the model writes back | Each message you type, and each tool result, starts a new request |
+| **Find tool calls** | Reads the reply for tool calls. If there are none, it shows you the reply and the turn ends | The reply "The bug is fixed" with no tool call comes back to you |
+| **Check the call** | Runs your hooks and permission rules on the tool call, which can allow it, ask you, or block it | The approval prompt before an `Edit` |
+| **Run the tool** | Runs the tool on your computer | `Bash` runs your tests in your terminal |
+| **Add the result** | Adds the tool's output to the conversation as text, then sends the next request | The failing test's error message, which the model reads next |
+| **Manage the context window** | When the conversation nears the limit, clears old tool outputs, then summarizes the conversation (compaction) | Automatic compaction; `/compact` when you want it now |
+| **Give you an interface** | Shows you the conversation and the tool calls, and takes your messages, approvals, and `Esc` | The terminal, the VS Code panel, the desktop app |
+
+Sources: [How Claude Code works](https://code.claude.com/docs/en/how-claude-code-works) and the
+[Claude Code glossary](https://code.claude.com/docs/en/glossary), which defines the agentic
+harness as "the tools, context management, and execution environment that turn a language model
+into a capable coding agent."
+
+Three things follow for a builder.
+
+- **The same model behaves very differently in different harnesses.** In the claude.ai chat
+  window, Claude answers you but cannot open the files on your laptop. In Claude Code, the same
+  model reads, edits, and runs your project. Cursor lets you pick a Claude model inside its own
+  harness. In your own app (Chapter 11), the model can do only what your code offers it as tools.
+  A model's abilities, as a user experiences them, depend on the harness around it.
+- **When an agent fails, ask whether the model or the harness was the limit.** If the right file
+  and instructions were in the request and the model still reasoned badly, the model was the
+  limit: give it a smaller task, clearer instructions, or a stronger model (`/model`). If the file
+  was never read, the tool was missing, a permission blocked the call, or compaction dropped an
+  early instruction, the harness was the limit, and you can usually fix that yourself.
+- **What you configure in Claude Code is the harness.** CLAUDE.md changes what goes into every
+  request. Permissions and hooks change what happens to a tool call. Skills and MCP servers add to
+  what the model can ask for. You cannot change the model's training; you can change everything
+  around it, and Chapter 2 shows how.
+
+::: {.callout-tip title="Try it"}
+In Claude Code, run `/context`. It lists what the harness has put into the context window by
+category: system prompt, tools, MCP tools, memory files (your CLAUDE.md), skills, and messages.
+Find your CLAUDE.md in the list. Then ask "What files are in my project folder?" in the claude.ai
+chat window and in Claude Code. Explain the difference between the two answers in one sentence
+about the harness.
 :::
 
 <!-- learn -->
@@ -636,6 +696,7 @@ When you want to see a UI idea in seconds before building it properly, a browser
 - **Vibe coding and the inverted loop**: build to learn first, then spec what you intend to keep
 - **Agent**: a model in a loop with tools
 - **Agent loop**: gather context, act, check; when a result is wrong, ask which phase failed
+- **Harness**: the program around the model that builds each request, checks and runs the tools the model asks for, and manages the context window; Claude Code is the harness, Claude is the model
 - **Command Line / CLI**: text-based interface to your computer, run in a terminal
 - **Package Manager**: tool for installing software from the command line (Homebrew, winget)
 - **VS Code**: the code editor used throughout the course
