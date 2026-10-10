@@ -352,7 +352,7 @@ of a browser tab.
 
 Every agent turn has three phases. Claude Code's documentation names them **gather context, take action, and verify results**, and the loop repeats until the task is done or you interrupt.
 
-![Each turn goes around the loop: gather context, act, check. When a result is wrong, ask which phase failed.](images/diagrams/ch01-agent-loop.svg){#fig-agent-loop fig-alt="A circular loop of three phases joined by clockwise arrows around a center labeled The model decides the next step. Gather context, at the top, means read and search. Act, at the lower right, means edit, write, and run. Check, at the lower left, means the tests or the app. From Check, an arrow exits to a box reading Passes: stop, report. To the side, a person icon labeled You notes Esc to interrupt, add context, or redirect." width="100%"}
+![You send a message. Inside one turn, the model calls a tool, reads the result, and decides again, as many times as it needs, then replies. You review the reply and send the next message.](images/diagrams/ch01-agent-loop.svg){#fig-agent-loop fig-alt="Two loops. On the left, You: you send a message into one turn and get a reply back, then review and test before the next message. Inside the turn, the Model either calls a tool or replies. A tool call goes to Tools, which run on your computer and come in three kinds: Gather (read, search), Act (edit, run commands), and Check (run tests, open the app). The result is added to the conversation and goes back to the model. Esc stops a turn." width="100%"}
 
 | Phase | What the agent does | The tools it uses | What goes wrong here |
 |---|---|---|---|
