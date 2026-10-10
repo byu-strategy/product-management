@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 530" role="img" aria-labelledby="t d" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+  <title id="t">The rider and the elephant</title>
+  <desc id="d">A line drawing of a large elephant walking to the right with a small rider on its back holding the reins. The rider is labeled deliberate reasoning. The elephant is labeled emotion and intuition. Ahead of them the path forks. A dashed branch rising to the upper right is labeled the route the rider chooses; a solid branch continuing straight ahead is labeled the route the elephant takes. The elephant is walking onto the straight branch: when the two disagree, the elephant goes its own way.</desc>
+  <defs>
+    <linearGradient id="gBody" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#EEF4FB"/>
+      <stop offset="100%" stop-color="#CFDEEF"/>
+    </linearGradient>
+    <linearGradient id="gFar" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#C9DAEC"/>
+      <stop offset="100%" stop-color="#B3C9E2"/>
+    </linearGradient>
+    <linearGradient id="gPath" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#E9ECEF" stop-opacity="0"/>
+      <stop offset="18%" stop-color="#E9ECEF"/>
+      <stop offset="100%" stop-color="#E9ECEF"/>
+    </linearGradient>
+    <marker id="ahR" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#0057B8"/>
+    </marker>
+    <marker id="ahN" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#002E5D"/>
+    </marker>
+    <clipPath id="cBody"><path d="M282,352 C262,320 262,280 282,252 C310,214 370,194 430,192 C480,190 520,198 548,212 C560,190 600,182 628,196 C656,210 668,238 666,268 C664,300 660,330 668,362 C676,394 690,420 706,432 C716,440 716,452 704,454 C688,456 670,444 660,428 C644,402 636,372 632,344 C630,330 622,322 612,322 C602,330 596,342 594,356 C594,390 596,430 598,466 L548,466 C546,436 544,410 542,392 C510,400 460,404 430,402 C428,426 428,448 428,466 L378,466 C376,440 374,410 372,388 C340,384 300,374 282,352 Z"/></clipPath>
+  </defs>
+  <rect width="1000" height="530" rx="8" fill="#FAFBFC"/>
+
+  <!-- ground and the fork ahead -->
+  <line x1="120" y1="466" x2="722" y2="466" stroke="#C3CCD6" stroke-width="2" stroke-linecap="round"/>
+  <path d="M722,466 L946,466" fill="none" stroke="#002E5D" stroke-width="3" stroke-linecap="round" marker-end="url(#ahN)"/>
+  <path d="M722,466 C790,466 850,440 940,390" fill="none" stroke="#0057B8" stroke-width="3" stroke-dasharray="9 7" stroke-linecap="round" marker-end="url(#ahR)"/>
+  <circle cx="722" cy="466" r="4.5" fill="#FAFBFC" stroke="#5A6672" stroke-width="2"/>
+
+  <!-- shadow -->
+  <ellipse cx="460" cy="470" rx="220" ry="10" fill="#002E5D" opacity="0.07"/>
+
+  <!-- far legs (behind) -->
+  <g stroke="#002E5D" stroke-width="3" stroke-linejoin="round" fill="url(#gFar)">
+    <path d="M334,370 C334,404 334,436 332,466 L376,466 C376,436 376,404 378,380 Z"/>
+    <path d="M500,382 C502,412 504,440 504,466 L548,466 C546,440 544,414 544,392 Z"/>
+  </g>
+
+  <!-- elephant, near side: body, legs, head and trunk in one outline -->
+  <g stroke="#002E5D" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M272,268 C256,296 252,330 254,372" fill="none"/>
+    <path d="M254,372 L248,388 M254,372 L256,390 M254,372 L262,386" fill="none" stroke-width="2.4"/>
+    <path fill="url(#gBody)" d="M282,352 C262,320 262,280 282,252 C310,214 370,194 430,192 C480,190 520,198 548,212 C560,190 600,182 628,196 C656,210 668,238 666,268 C664,300 660,330 668,362 C676,394 690,420 706,432 C716,440 716,452 704,454 C688,456 670,444 660,428 C644,402 636,372 632,344 C630,330 622,322 612,322 C602,330 596,342 594,356 C594,390 596,430 598,466 L548,466 C546,436 544,410 542,392 C510,400 460,404 430,402 C428,426 428,448 428,466 L378,466 C376,440 374,410 372,388 C340,384 300,374 282,352 Z"/>
+    <path fill="#DCE7F3" d="M562,214 C540,230 530,262 534,296 C538,322 548,344 560,356 C566,362 576,360 578,350 C582,330 584,312 590,296 C600,272 598,240 588,224 C580,214 570,210 562,214 Z"/>
+    <path fill="#FAFBFC" d="M630,330 C640,344 656,350 676,348 C660,340 648,330 642,318 Z"/>
+    <path d="M556,466 L556,460 M570,466 L570,460 M584,466 L584,460 M386,466 L386,460 M400,466 L400,460 M414,466 L414,460" fill="none" stroke-width="2"/>
+  </g>
+  <circle cx="630" cy="244" r="4.5" fill="#002E5D"/>
+
+  <!-- saddle blanket, following the line of the back -->
+  <g clip-path="url(#cBody)">
+    <path d="M372,150 L484,150 L480,262 C452,270 410,270 376,262 Z" fill="#B9D0EA" stroke="#002E5D" stroke-width="2.4" stroke-linejoin="round"/>
+    <path d="M378,250 C410,257 452,257 480,250" fill="none" stroke="#002E5D" stroke-width="1.6" opacity="0.45"/>
+  </g>
+  <path d="M282,352 C262,320 262,280 282,252 C310,214 370,194 430,192 C480,190 520,198 548,212" fill="none" stroke="#002E5D" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- rider (small), seated, holding the reins -->
+  <g stroke="#0057B8" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M420,144 L416,188" stroke-width="10"/>
+    <path d="M416,190 L440,198 L438,232" stroke-width="7"/>
+    <path d="M420,154 L446,172" stroke-width="5.5"/>
+  </g>
+  <circle cx="422" cy="128" r="11" fill="#0057B8"/>
+  <path d="M448,173 C510,184 562,198 604,224" fill="none" stroke="#0057B8" stroke-width="1.8"/>
+
+  <!-- labels -->
+  <line x1="404" y1="130" x2="350" y2="118" stroke="#0057B8" stroke-width="1.5"/>
+  <text x="342" y="112" text-anchor="end" font-size="21" font-weight="600" fill="#0057B8">Rider</text>
+  <text x="342" y="138" text-anchor="end" font-size="17" fill="#2C3E50">deliberate reasoning</text>
+
+  <line x1="330" y1="252" x2="214" y2="214" stroke="#002E5D" stroke-width="1.5"/>
+  <text x="206" y="204" text-anchor="end" font-size="21" font-weight="600" fill="#002E5D">Elephant</text>
+  <text x="206" y="230" text-anchor="end" font-size="17" fill="#2C3E50">emotion and</text>
+  <text x="206" y="252" text-anchor="end" font-size="17" fill="#2C3E50">intuition</text>
+
+  <text x="950" y="362" text-anchor="end" font-size="17" font-weight="600" fill="#0057B8">Route the rider chooses</text>
+  <text x="950" y="500" text-anchor="end" font-size="17" font-weight="600" fill="#002E5D">Route the elephant takes</text>
+</svg>

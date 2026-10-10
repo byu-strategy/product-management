@@ -7,15 +7,13 @@ title: "Directing the Agent"
 You have a working app and almost no control over how it got built. This chapter is about
 control, and control comes down to three questions you answer for every agent you direct:
 
-1. **What can it see?** The agent knows only what is in its context window.
-2. **What may it do?** Instructions advise; hooks and permission rules enforce; modes, sandboxes, and worktrees limit the damage.
+1. **What can it see?** The agent knows only what is in its context window: all the text the model has in front of it at one moment.
+2. **What may it do?** Instructions advise; hooks and permission rules enforce; modes, sandboxes, and worktrees limit the damage. Each of these is defined in its own section below.
 3. **How will you know it worked?** Its own report is a claim. Your check is the evidence.
 
 The second half of the chapter is about the discipline that makes all three easier: writing down
 what you want before anyone builds it. Most of the difference between a student who ships once and
 a student who ships all semester comes from this discipline.
-
-Terminal practice from earlier versions of this chapter now lives in [Chapter 1](01-building-with-ai-agents.qmd).
 
 <!-- learn -->
 
@@ -67,11 +65,11 @@ The window is finite. As it fills, Claude Code clears old tool output and then s
 
 ![CLAUDE.md loads again after both commands. `/compact` keeps a summary and the task; `/clear` keeps nothing you said.](images/diagrams/ch02-context-window.svg){#fig-context-window fig-alt="Three tall bars, each a context window filled from the bottom, starting with system instructions and CLAUDE.md. Mid-session, skill descriptions sit above them and the bar is full: conversation and a large block of tool results sit on top. An arrow labeled /compact leads to a second bar where the conversation and tool results are replaced by a small summary, with free space above, and the skill descriptions are replaced by only the skills you used. An arrow labeled /clear leads to a third bar with the skill descriptions back and an empty conversation. CLAUDE.md is highlighted in all three." width="100%"}
 
-**Worked example.** On Monday you tell Claude, "Never use a database for this project; JSON files only." On Wednesday you start a new session and ask for a search feature. Claude adds SQLite. It did not disobey you: Monday's sentence was in Monday's window, and Wednesday's window never contained it. Put the rule in CLAUDE.md and every session starts with it. (Claude may also have saved the rule to its auto memory, described below, but only on that computer, and Claude decides what it saves. A rule you depend on belongs in CLAUDE.md, which you write and commit.)
+**Worked example.** On Monday you tell Claude, "Never use a database for this project; JSON files only." On Wednesday you start a new session and ask for a search feature. Claude adds SQLite (a small database). It did not disobey you: Monday's sentence was in Monday's window, and Wednesday's window never contained it. Put the rule in CLAUDE.md and every session starts with it. (Claude may also have saved the rule to its auto memory, described below, but only on that computer, and Claude decides what it saves. A rule you depend on belongs in CLAUDE.md, which you write and commit.)
 
 #### CLAUDE.md: your project's memory
 
-`CLAUDE.md` is a Markdown file Claude Code reads automatically at the start of every session. It is where you write down what you would otherwise re-explain: what you are building, the tech stack, conventions, and commands. Ask Claude to write one:
+`CLAUDE.md` is a Markdown file (plain text with simple marks, such as `#` for a heading and `-` for a bullet) that Claude Code reads automatically at the start of every session. It is where you write down what you would otherwise re-explain: what you are building, the tech stack, conventions, and commands. Ask Claude to write one:
 
 > Create a CLAUDE.md file that describes a problem tracking application I'm building to help me identify startup ideas
 
@@ -94,7 +92,7 @@ A personal tool for capturing and evaluating problems that could become product 
 
 `/init` generates a starter CLAUDE.md by reading your codebase, and `/memory` opens your CLAUDE.md files, turns auto memory on or off, and shows what Claude has saved. Keep it short: the docs suggest under 200 lines, because every line costs context on every turn and long files are followed less reliably.
 
-**What to write in it.** Write what the agent cannot work out by reading the code: decisions, constraints, and traps. The code already shows which framework you use. It does not say why you chose one Supabase client over another, which file breaks if it is edited carelessly, or which commands must never run without asking. The [Agent Team Kit](https://github.com/ai-foundry-byu/agent-team-kit), a set of hooks, skills, and written practices from building production apps with several Claude Code agents at once, suggests these sections in its [guide to writing CLAUDE.md](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/docs/WRITING-CLAUDE-MD.md):
+**What to write in it.** Write what the agent cannot work out by reading the code: decisions, constraints, and traps. The code already shows which framework you use. It does not say why you chose one way of connecting to your database over another, which file breaks if it is edited carelessly, or which commands must never run without asking. The [Agent Team Kit](https://github.com/ai-foundry-byu/agent-team-kit), a set of hooks, skills, and written practices from building production apps with several Claude Code agents at once, suggests these sections in its [guide to writing CLAUDE.md](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/docs/WRITING-CLAUDE-MD.md):
 
 | Section | What goes in it |
 |---|---|
@@ -103,7 +101,7 @@ A personal tool for capturing and evaluating problems that could become product 
 | Architecture | Where each kind of code goes, so new code lands in the right place |
 | Conventions | Naming, styling, the words used in the interface |
 | Definition of done | The checks that must pass before work counts as finished (see Done Means You Saw It Work, below) |
-| Leave alone unless asked | Lines the agent must not cross on its own: pushing, adding a new auth or database library, dropping tables |
+| Leave alone unless asked | Lines the agent must not cross on its own: pushing to GitHub, adding a new sign-in (auth) or database library, deleting (dropping) database tables |
 
 Two habits keep it useful. When a convention changes, update CLAUDE.md in the same commit as the change, because an out-of-date file misdirects every session that reads it. And test it: read it as if you were an agent that just cloned the repo. Any wrong assumption you would still make about where code goes or what done means is the next thing to write.
 
@@ -249,7 +247,7 @@ You have three things to tell Claude: "We use Supabase for the database," "To pu
 
 #### Permission rules
 
-Rules live in a settings file under `permissions`, written as `Tool(specifier)`. **Deny overrides allow**, and deny rules apply in every permission mode.
+Rules live in a settings file under `permissions`: `.claude/settings.json` in your project to share them with your team, or `.claude/settings.local.json` for rules that are only yours. Each rule is written as `Tool(specifier)`: the tool's name, then which uses of it the rule covers. **Deny overrides allow**, and deny rules apply in every permission mode.
 
 ```json
 {
@@ -260,7 +258,7 @@ Rules live in a settings file under `permissions`, written as `Tool(specifier)`.
 }
 ```
 
-The first rule lets Claude run your tests without asking. `Read(./.env)` blocks Claude's file tools from reading the secrets file, and a Read deny also blocks editing it. `Bash(git push *)` stops the push command as Claude usually writes it. One limit to know: a Bash rule matches the *text* of the command, so the same action written another way (through a script, say) will not match it. For a boundary the operating system enforces, use the sandbox (next section). You can manage rules with `/permissions`, and choosing "Yes, don't ask again" at a prompt saves an allow rule to `.claude/settings.local.json`.
+The first rule lets Claude run your tests without asking (`npm` is the command that runs a JavaScript project's scripts, and `*` matches anything after it). `Read(./.env)` blocks Claude's file tools from reading the secrets file, and a Read deny also blocks editing it. `Bash(git push *)` stops the push command as Claude usually writes it. One limit to know: a Bash rule matches the *text* of the command, so the same action written another way (through a script, say) will not match it. For a boundary the operating system enforces, use the sandbox (next section). You can manage rules with `/permissions`, and choosing "Yes, don't ask again" at a prompt saves an allow rule to `.claude/settings.local.json`.
 
 #### Claude Code hooks
 
@@ -319,7 +317,7 @@ fi
 exit 0
 ```
 
-**The exit code is the decision.** Exit `2` blocks the action, and the message you print is shown
+Every command ends by returning an **exit code**, a number that reports how it went; `0` conventionally means success. That is what the `exit 2` and `exit 0` lines in the script set. **The exit code is the decision.** Exit `2` blocks the action, and the message you print is shown
 to Claude so it can adjust. Exit `0` means "no objection." Any other exit code, including the
 usual error code `1`, is treated as the hook itself failing: Claude Code shows a warning and **the
 action goes ahead.** A policy hook that exits 1 does not block anything.
@@ -335,7 +333,9 @@ the file. A formatter is a tool that rewrites code into a consistent style, such
 exit `2`, and Claude continues instead of stopping.
 
 **Block commits to main** (`PreToolUse`, matcher `Bash`): if the command is a `git commit` and the
-current branch is `main`, exit `2`.
+current branch is `main`, exit `2`. (A branch is a separate line of changes in git; `main` is the
+one that holds your official version. [Chapter 9](09-version-control-testing-and-tech-debt.qmd)
+covers branches.)
 
 **Block git commands that throw away uncommitted work** (`PreToolUse`, matcher `Bash`).
 `git reset --hard`, `git checkout -- .`, and `git clean -f` act on every file in the folder. With
@@ -377,8 +377,8 @@ before every commit, from anyone:
 
 ```bash
 npm run lint        # a check for common code mistakes
-npm run type-check
-npm test
+npm run type-check  # a check that each value is the kind of data the code expects
+npm test            # the project's automated tests
 ```
 
 If one fails (any non-zero exit, for Git hooks), the commit is blocked. Running every check on
@@ -403,7 +403,7 @@ So every action an agent takes falls into one of three groups (@fig-blast-radius
 
 1. **Claude edits a file with its edit tool.** `/rewind` puts the file back the way it was. You can let these run.
 2. **Claude runs a shell command that changes files on your laptop**, such as `rm -rf drafts/` (delete a folder and everything in it) or `mv` (move or rename a file). `/rewind` does not track these. Git can bring back any file as it was in your last commit. A file you never committed, such as your `.env` or a page you wrote this morning, is gone. Edits made by a subagent usually belong in this group too: `/rewind` does not restore them, so git is the way back. Commit before you start.
-3. **The action leaves your laptop**: a `git push` to GitHub, a deploy to Vercel, a write to your live Supabase database, an email sent through Resend. Neither `/rewind` nor the git history on your laptop can recall it. You can make a new change afterward (revert the commit, roll back the deploy, restore a backup if you have one), but by then a teammate may have pulled the code, users may have seen the page or lost their data, and the email is in someone's inbox. Approve each of these yourself, or run them yourself.
+3. **The action leaves your laptop**: a `git push` to GitHub, a deploy to Vercel (the service that hosts your live site), a write to your live Supabase database (the one your real users' data is in), an email sent through Resend (an email-sending service). Neither `/rewind` nor the git history on your laptop can recall it. You can make a new change afterward (revert the commit, roll back the deploy, restore a backup if you have one), but by then a teammate may have pulled the code, users may have seen the page or lost their data, and the email is in someone's inbox. Approve each of these yourself, or run them yourself.
 
 ![How far an action reaches decides how you undo it. `/rewind` restores Claude's file edits, git restores files you committed, and nothing recalls an action that has left your laptop.](images/diagrams/ch02-blast-radius.svg){#fig-blast-radius fig-alt="A grid of three columns and three rows. The columns are three kinds of action. Two stay on your laptop: Claude edits a file with its edit tool; a command deletes a folder, such as rm -rf drafts/. One reaches other people, highlighted: it leaves your laptop, as a push, a deploy, a write to the live database, or an email. Row how to undo it: /rewind; git, only if you committed; no undo, only a new fix later. Row so you: let it run without asking; commit before it runs; approve it yourself." width="100%"}
 
@@ -455,7 +455,7 @@ For each task, name which of the three groups it belongs to, how you would undo 
 
 ## Delegation and Parallel Work
 
-**A subagent starts with an empty context window and returns a summary. Parallel sessions need separate copies of the files. Both cost tokens and attention.**
+**A subagent starts with an empty context window and returns a summary. Parallel sessions need separate copies of the files. Both cost tokens and attention.** (A **token** is the unit a model reads and writes text in, roughly a short word or part of one. Usage limits and API prices are counted in tokens.)
 
 ![A subagent reads in its own window and sends back only a summary. A worktree gives a second session its own folder and branch on the same history.](images/diagrams/ch02-subagent-vs-worktree.svg){#fig-subagent-vs-worktree fig-alt="Two panels. Subagent, a helper inside one session: Your session sends a task description down to a subagent window full of lines labeled 50 files read stay in here; a highlighted arrow labeled summary only returns one line to your session. Worktree, two sessions at once: Session A works in the my-app folder on branch main, Session B in a fix-login folder on its own branch; both folders sit on one shared repository history. A note: ignored files such as .env start out missing." width="100%"}
 
@@ -498,7 +498,9 @@ The Agent Team Kit describes two ways to run parallel sessions and when each fit
 | Fits when | You are at the keyboard, watching each session | You start several sessions and leave them running |
 
 Either way, a worktree separates files and nothing else. Every session still uses your one
-Supabase database, and every session that starts the app starts its own dev server. Next.js moves
+Supabase database, and every session that starts the app starts its own dev server (the copy of
+your app that runs on your laptop while you build, at an address like `localhost:3000`; the
+number is the port, which tells the browser which running program to talk to). Next.js moves
 a second server to the next free port (3001) and prints it, but an agent that assumes
 `localhost:3000` will test the other session's server and report that server's errors as its own.
 Tell each session to use the port its own server printed, and to stop only the server it started
@@ -565,7 +567,7 @@ Add the Playwright server, run `/mcp` to confirm it connected, and ask Claude to
 
 Your definition of done has three checks:
 
-1. **Read the diff.** What files changed? Anything you did not ask for? `/diff` in Claude Code, or the diff view in VS Code or the desktop app, shows it.
+1. **Read the diff**, the list of lines added and removed in each changed file. What files changed? Anything you did not ask for? `/diff` in Claude Code, or the diff view in VS Code or the desktop app, shows it.
 2. **Run the app.** Start it and use the feature the way a user would.
 3. **Confirm the behavior you asked for**, including the edge case you care about, against your acceptance criteria.
 
@@ -593,7 +595,7 @@ Next time Claude reports a feature done, before you look at the app, write down 
 
 ## User Stories
 
-**The spec is the prompt for the whole project.** A vague spec produces code that looks plausible and is wrong. The rest of this chapter is about writing down what you want precisely enough that an agent (or a teammate) can build it and you can check it. User stories with acceptance criteria are the smallest unit, and they come from Agile and Extreme Programming [@beck1999xp; @cohn2004stories].
+**The spec is the prompt for the whole project.** A spec, short for specification, is a written description of what the product should do (defined in [Chapter 1](01-building-with-ai-agents.qmd#where-vibe-coding-came-from)). A vague spec produces code that looks plausible and is wrong. The rest of this chapter is about writing down what you want precisely enough that an agent (or a teammate) can build it and you can check it. User stories with acceptance criteria are the smallest unit, and they come from Agile and Extreme Programming [@beck1999xp; @cohn2004stories].
 
 A user story describes a feature from the user's perspective. It keeps you focused on value, not just functionality.
 
@@ -770,7 +772,7 @@ Build an advanced task manager (projects, tags, priorities, due dates) on top of
 | Step | Ask Claude to | What you check before moving on |
 |---|---|---|
 | 1. Requirements | Write `requirements.md`: user stories and EARS acceptance criteria for task organization, projects, tags, filtering and sorting, and completion tracking | Every criterion is testable; nothing is ambiguous |
-| 2. Design | Write `design.md` from the requirements: an ASCII architecture diagram, data models (Task, Project, Tag), JSON-file storage, UI components, validation, error handling | You can trace each requirement to part of the design |
+| 2. Design | Write `design.md` from the requirements: an ASCII architecture diagram (drawn with plain text characters), data models (the fields each kind of record holds: Task, Project, Tag), JSON-file storage, UI components, validation, error handling | You can trace each requirement to part of the design |
 | 3. Tasks | Write `tasks.md`: numbered checkboxes, at most two levels, 15 to 30 minutes each, each citing its requirements, starting with data models and storage | Each task is small enough to check on its own |
 | 4. Implement | "Implement task 1. Read requirements.md and design.md first, follow the data models exactly, then mark task 1 complete in tasks.md." | Read the diff and run the app (the three checks above), then go to task 2 |
 | 5. Explain | Write `architecture-explained.md`: the architecture as an ASCII diagram and a plain-language account of what happens when a user creates a task | A non-technical reader could follow it |
@@ -849,18 +851,20 @@ Orosz published an account of what OpenAI internally calls its agentic software 
 
 Trace the diagram. A human, labeled the **software builder**, defines the outcome. Everything
 downstream is an agent. Codex writes the code, pulling context from the places the context actually
-lives: the repo, GitHub, Slack, Notion, internal data sources. CI builds and tests, and when it
+lives: the repo, GitHub, Slack, Notion, internal data sources. CI (continuous integration: a system that builds and tests every change
+automatically) builds and tests, and when it
 fails the agent fixes its own work and tries again rather than handing a red build back to a person.
 Review is done in parallel by specialist agents, one for data, one for infrastructure, one for
 security, which classify how risky the change is. Only the risky changes get routed to a human
 engineer. Low-risk changes go straight to an agent that deploys them, monitors the rollout, and
 builds its own monitoring dashboard. Two more agents watch production: a Perf Factory that catches
-latency regressions and proposes fixes, and Sevbot, which investigates incidents and proposes
+latency regressions (changes that make the product slower to respond) and proposes fixes, and Sevbot, which investigates incidents and proposes
 mitigations. Both loop back to the start.
 
 Some numbers from the same piece: use of Codex in non-engineering departments at OpenAI went from
 roughly zero to about 90 percent between February and May 2026, nearly everyone at the company now
-uses it weekly, and pull request volume across the company rose roughly tenfold in six months.
+uses it weekly, and pull request volume (a pull request is a proposed change submitted for review
+before it is merged) across the company rose roughly tenfold in six months.
 
 Three things in that diagram are worth your attention as a PM.
 

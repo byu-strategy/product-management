@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 400" role="img" aria-labelledby="t d" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+<title id="t">The shape of a persuasive talk: what is and what could be</title>
+<desc id="d">A line moves between two levels, What is at the bottom and What could be at the top, across three spans labeled Beginning, Middle, and End. In the beginning the line stays on What is. At the first turning point, labeled Call to adventure, it rises to What could be. Through the middle, labeled Contrast, it moves down and up between the two levels several times. At the second turning point, labeled Call to action, it rises to What could be and stays there through the end.</desc>
+<defs><filter id="sh" filterUnits="userSpaceOnUse" x="0" y="0" width="1000" height="400"><feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#0A2E4D" flood-opacity="0.15"/></filter></defs>
+<rect width="1000" height="400" rx="8" fill="#FAFBFC"/>
+<line x1="200" y1="120" x2="970" y2="120" stroke="#D9DEE4" stroke-width="1.5" stroke-dasharray="5 5"/>
+<text x="186" y="127" font-size="20" font-weight="700" fill="#002E5D" text-anchor="end">What could be</text>
+<line x1="200" y1="270" x2="970" y2="270" stroke="#D9DEE4" stroke-width="1.5" stroke-dasharray="5 5"/>
+<text x="186" y="277" font-size="20" font-weight="700" fill="#002E5D" text-anchor="end">What is</text>
+<path d="M220,270 L390,270 C420.0,270 420.0,120 450,120 L480,120 C510.0,120 510.0,270 540,270 L570,270 C600.0,270 600.0,120 630,120 L660,120 C690.0,120 690.0,270 720,270 L750,270 C780.0,270 780.0,120 810,120 L960,120" fill="none" stroke="#0057B8" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<line x1="420" y1="82" x2="420" y2="290" stroke="#002E5D" stroke-width="1.5"/>
+<circle cx="420" cy="195.0" r="8" fill="#002E5D" stroke="#FAFBFC" stroke-width="3" filter="url(#sh)"/>
+<text x="420" y="72" font-size="18" font-weight="600" fill="#002E5D" text-anchor="middle">Call to adventure</text>
+<line x1="780" y1="82" x2="780" y2="290" stroke="#002E5D" stroke-width="1.5"/>
+<circle cx="780" cy="195.0" r="8" fill="#002E5D" stroke="#FAFBFC" stroke-width="3" filter="url(#sh)"/>
+<text x="780" y="72" font-size="18" font-weight="600" fill="#002E5D" text-anchor="middle">Call to action</text>
+<path d="M220,318 L220,326 L416,326 L416,318" fill="none" stroke="#8A939C" stroke-width="1.5"/>
+<text x="318.0" y="350" font-size="18" fill="#5A6672" text-anchor="middle">Beginning</text>
+<path d="M424,318 L424,326 L776,326 L776,318" fill="none" stroke="#8A939C" stroke-width="1.5"/>
+<text x="600.0" y="350" font-size="18" fill="#5A6672" text-anchor="middle">Middle: contrast</text>
+<path d="M784,318 L784,326 L960,326 L960,318" fill="none" stroke="#8A939C" stroke-width="1.5"/>
+<text x="872.0" y="350" font-size="18" fill="#5A6672" text-anchor="middle">End</text>
+<text x="305" y="220" font-size="17" font-style="italic" fill="#2C3E50" text-anchor="middle">Maya rereads</text>
+<text x="305" y="242" font-size="17" font-style="italic" fill="#2C3E50" text-anchor="middle">her notes</text>
+<text x="885" y="158" font-size="17" font-style="italic" fill="#2C3E50" text-anchor="middle">Maya knows</text>
+<text x="885" y="180" font-size="17" font-style="italic" fill="#2C3E50" text-anchor="middle">what to study</text>
+</svg>

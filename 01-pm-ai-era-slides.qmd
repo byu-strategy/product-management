@@ -42,7 +42,7 @@ Product Management, as a formal discipline and job title, traces its roots to He
 
 Early influences such as the \[Scrum development process\](https://en.wikipedia.org/wiki/Scrum\_(software_development))) and the [Agile Manifesto](https://agilemanifesto.org/) reshaped how products are built, while initiatives like Google’s Associate Product Manager (APM) program and influential books helped standardize best practices. In recent years, PM has become one of the most sought-after careers, and today the field is entering a new era with the rise of the AI Product Manager.
 
-![A History of Product Management; Aakash Gupta and Scott Murff](images/pm-history.png)
+![A History of Product Management; Aakash Gupta and Scott Murff](images/diagrams/ch01-pm-history.svg)
 
 The personal computer revolution of the 1980s brought computing into offices and homes. The rise of the internet in the 1990s connected the world and created entirely new industries, from e-commerce to online media. In the 2000s, broadband (i.e. high-speed internet access) and cloud computing made software cheaper to build, scale, and distribute, while the launch of the iPhone in 2007 ushered in the smartphone era putting powerful applications directly into billions of people’s hands.
 
