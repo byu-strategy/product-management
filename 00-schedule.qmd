@@ -19,7 +19,7 @@ The course is built around six builder skills, two weeks each. You will rate you
 |---|---|---|
 | **Agentic Workflow** | How do I put AI to work, as the way I build and inside the product? | 1–2 |
 | **Discovery** | What should I build, for whom, and should I? | 3–4 |
-| **Design** | What does the surface look like, and how does it flow? | 5–6 |
+| **Design** | What does the surface look like, how does it flow, and how do I write it down so an agent can build it? | 5–6b |
 | **Application Architecture** | How is it structured, shipped, and kept safe? | 7–8 |
 | **AI Systems** | How do the models work, and why do they behave the way they do? | 9–10 |
 | **Launch and Learn** | How do people find it, and did it work? | 11–12 |
@@ -35,8 +35,8 @@ Agentic Workflow comes first on purpose. You will ship something in week one tha
 | 2 | Mon, Sep 21 | Agentic Workflow | [Directing the Agent](02-directing-the-agent.qmd) | |
 | 3 | Mon, Sep 28 | Discovery | [What Is Worth Building](03-what-is-worth-building.qmd) | **Sprint 1 Due**, [Sprint 2 Assigned](00-assessments.qmd#sprint-2) (plan due Sat, Oct 3, 11:59 PM) |
 | 4 | Mon, Oct 5 | Discovery | [Finding and Validating the Problem](04-finding-and-validating-the-problem.qmd) | |
-| 5 | Mon, Oct 12 | Design | [Interface and Flow](05-interface-and-flow.qmd) | **Sprint 2 Due**, [Sprint 3 Assigned](00-assessments.qmd#sprint-3) (plan due Wed, Oct 14, 11:59 PM) |
-| 6 | Mon, Oct 19 | Design | [Testing the Design](06-testing-the-design.qmd) | |
+| 5 | Mon, Oct 12 | Design | [Interface and Flow](05-interface-and-flow.qmd), [Design Fundamentals](05b-design-fundamentals.qmd) | **Sprint 2 Due**, [Sprint 3 Assigned](00-assessments.qmd#sprint-3) (plan due Wed, Oct 14, 11:59 PM) |
+| 6 | Mon, Oct 19 | Design | [Testing the Design](06-testing-the-design.qmd), [Specs](06b-specs.qmd) | |
 | – | Oct 20 to 22 | – | Testing center | **[Midterm Exam](00-assessments.qmd#midterm-exam)** (covers classes 1–6) |
 | 7 | Mon, Oct 26 | App Architecture | [Anatomy of an Application](07-anatomy-of-an-application.qmd) | **Sprint 3 Due**, [Sprint 4 Assigned](00-assessments.qmd#sprint-4) (plan due Wed, Oct 28, 11:59 PM) |
 | 8 | Mon, Nov 2 | App Architecture | [Data and APIs](08-data-and-apis.qmd) + [Version Control, Environments, and Deploys](09-version-control-testing-and-tech-debt.qmd) + [Tests and Tech Debt](09b-tests-and-tech-debt.qmd) | [Peer Code Review Assigned](00-assessments.qmd#peer-code-review) |
@@ -98,7 +98,9 @@ Read the assigned chapter before class. Two weeks pair two chapters under one se
 | Discovery | [What Is Worth Building](03-what-is-worth-building.qmd) | Mon, Sep 28 |
 | Discovery | [Finding and Validating the Problem](04-finding-and-validating-the-problem.qmd) | Mon, Oct 5 |
 | Design | [Interface and Flow](05-interface-and-flow.qmd) | Mon, Oct 12 |
+| Design | [Design Fundamentals](05b-design-fundamentals.qmd) | Mon, Oct 12 |
 | Design | [Testing the Design](06-testing-the-design.qmd) | Mon, Oct 19 |
+| Design | [Specs: Designing the Build](06b-specs.qmd) | Mon, Oct 19 |
 | App Architecture | [Anatomy of an Application](07-anatomy-of-an-application.qmd) | Mon, Oct 26 |
 | App Architecture | [Data and APIs](08-data-and-apis.qmd) | Mon, Nov 2 |
 | App Architecture | [Version Control, Environments, and Deploys](09-version-control-testing-and-tech-debt.qmd) | Mon, Nov 2 |

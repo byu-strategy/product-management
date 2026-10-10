@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 540" role="img" aria-labelledby="t d" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+<title id="t">Fitts&#x27;s law and Hick&#x27;s law</title>
+<desc id="d">Two panels. Left, Fitts&#x27;s law, time to reach a target: a phone screen with the thumb resting near the bottom, marked thumb. A small Give away text link at the top right is far from the thumb, with distance D and its narrow width W marked; it is labeled far and narrow, slower. A full-width Give away this shift button just above the thumb has a wide W; it is labeled near and wide, faster. The formula reads Time = a + b log2(2D / W), with D distance and W width. Right, Hick&#x27;s law, time to choose among options: an illustrative bar chart of time to choose for 1, 2, 4, 8, and 16 equally likely options, each count also drawn as small squares. Each bar is taller than the last by the same amount, marked each doubling adds the same step.</desc>
+<defs>
+  <filter id="sh" x="-10%" y="-10%" width="120%" height="130%"><feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#002E5D" flood-opacity="0.13"/></filter>
+  <filter id="shs" x="-10%" y="-10%" width="120%" height="130%"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#002E5D" flood-opacity="0.12"/></filter>
+  <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5A6672"/></marker>
+  <marker id="arrN" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#002E5D"/></marker>
+  <marker id="arrR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0057B8"/></marker>
+  <linearGradient id="royalG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1A6BCB"/><stop offset="1" stop-color="#0057B8"/></linearGradient>
+  <linearGradient id="navyG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0B4178"/><stop offset="1" stop-color="#002E5D"/></linearGradient>
+  <linearGradient id="stepG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F1F6FB"/><stop offset="1" stop-color="#E1EAF5"/></linearGradient>
+  <linearGradient id="phoneG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#FBFCFE"/></linearGradient>
+  <linearGradient id="cardG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F6F8FB"/></linearGradient>
+  
+</defs>
+<rect width="1000" height="540" rx="8" fill="#FAFBFC"/>
+<rect x="20" y="20" width="470" height="500" rx="10" fill="#fff" stroke="#D9DEE4" stroke-width="1.5" filter="url(#shs)"/>
+<rect x="510" y="20" width="470" height="500" rx="10" fill="#fff" stroke="#D9DEE4" stroke-width="1.5" filter="url(#shs)"/>
+<text x="44" y="58" font-size="21" font-weight="700" fill="#002E5D" text-anchor="start" >Fitts&#x27;s law</text>
+<text x="44" y="82" font-size="16" font-weight="400" fill="#5A6672" text-anchor="start" >time to reach a target</text>
+<text x="534" y="58" font-size="21" font-weight="700" fill="#002E5D" text-anchor="start" >Hick&#x27;s law</text>
+<text x="534" y="82" font-size="16" font-weight="400" fill="#5A6672" text-anchor="start" >time to choose among options</text>
+<rect x="48" y="110" width="200" height="360" rx="22" fill="url(#phoneG)" stroke="#D9DEE4" stroke-width="1.5" filter="url(#shs)"/>
+<rect x="122.0" y="119" width="52" height="13" rx="6.5" fill="#1F2933"/>
+<text x="230" y="168" font-size="15" font-weight="600" fill="#0057B8" text-anchor="end" >Give away</text><line x1="160" y1="172" x2="230" y2="172" stroke="#0057B8" stroke-width="1.2"/>
+<rect x="64" y="190" width="110" height="10" rx="5" fill="#C8D0D8"/><rect x="64" y="210" width="80" height="8" rx="4" fill="#DDE2E7"/><rect x="64" y="226" width="96" height="8" rx="4" fill="#DDE2E7"/>
+<rect x="62" y="370" width="172" height="48" rx="10" fill="url(#royalG)"/><text x="148.0" y="400" font-size="15" font-weight="700" fill="#fff" text-anchor="middle" >Give away this shift</text>
+<circle cx="172.0" cy="444" r="9" fill="#002E5D" opacity="0.85"/><circle cx="172.0" cy="444" r="16" fill="none" stroke="#002E5D" stroke-width="1.2" stroke-dasharray="3 3"/>
+<text x="148.0" y="449" font-size="15" font-weight="500" fill="#5A6672" text-anchor="end" >thumb</text>
+<line x1="218" y1="444" x2="272" y2="444" stroke="#D9DEE4" stroke-width="1.2"/>
+<line x1="266" y1="444" x2="266" y2="164" stroke="#5A6672" stroke-width="1.5" marker-end="url(#arr)" marker-start="url(#arr)"/>
+<text x="276" y="312.0" font-size="17" font-weight="700" fill="#5A6672" text-anchor="start" font-style="italic">D</text>
+<path d="M160,144 v-5 H230 v5" fill="none" stroke="#5A6672" stroke-width="1.3"/><text x="195.0" y="134" font-size="16" font-weight="700" fill="#5A6672" text-anchor="middle" font-style="italic">W</text>
+<path d="M62,362 v-5 H234 v5" fill="none" stroke="#5A6672" stroke-width="1.3"/><text x="148.0" y="352" font-size="16" font-weight="700" fill="#5A6672" text-anchor="middle" font-style="italic">W</text>
+<text x="308" y="160" font-size="17" font-weight="700" fill="#2C3E50" text-anchor="start" >Far and narrow</text>
+<text x="308" y="182" font-size="16" font-weight="400" fill="#5A6672" text-anchor="start" >slower</text>
+<text x="308" y="390" font-size="17" font-weight="700" fill="#0057B8" text-anchor="start" >Near and wide</text>
+<text x="308" y="412" font-size="16" font-weight="400" fill="#5A6672" text-anchor="start" >faster</text>
+<rect x="298" y="260" width="182" height="74" rx="8" fill="#E6EEF7"/>
+<text x="310" y="288" font-size="15.5" font-weight="600" fill="#002E5D" text-anchor="start" >Time = a + b log₂(2D/W)</text>
+<text x="310" y="314" font-size="15" font-weight="400" fill="#5A6672" text-anchor="start" >D distance, W width</text>
+<text x="534" y="122" font-size="15" font-weight="600" fill="#5A6672" text-anchor="start" >Time to choose</text>
+<text x="956" y="122" font-size="15" font-weight="400" fill="#8A939C" text-anchor="end" font-style="italic">illustrative</text>
+<line x1="552" y1="400" x2="946" y2="400" stroke="#A3ACB5" stroke-width="1.5"/>
+<rect x="572" y="354.0" width="46" height="46.0" rx="5" fill="url(#stepG)" stroke="#002E5D" stroke-width="1.4"/>
+<text x="595.0" y="424" font-size="17" font-weight="700" fill="#002E5D" text-anchor="middle" >1</text>
+<rect x="591.0" y="436" width="8" height="8" rx="2" fill="#A3ACB5"/>
+<rect x="650" y="304.0" width="46" height="96.0" rx="5" fill="url(#stepG)" stroke="#002E5D" stroke-width="1.4"/>
+<text x="673.0" y="424" font-size="17" font-weight="700" fill="#002E5D" text-anchor="middle" >2</text>
+<rect x="663.5" y="436" width="8" height="8" rx="2" fill="#A3ACB5"/>
+<rect x="674.5" y="436" width="8" height="8" rx="2" fill="#A3ACB5"/>
+<rect x="728" y="254.0" width="46" height="146.0" rx="5" fill="url(#stepG)" stroke="#002E5D" stroke-width="1.4"/>
+<text x="751.0" y="424" font-size="17" font-weight="700" fill="#002E5D" text-anchor="middle" >4</text>
+<rect x="730.5" y="436" width="8" height="8" rx="2" fill="#A3ACB5"/>
+<rect x="741.5" y="436" width="8" height="8" rx="2" fill="#A3ACB5"/>
+<rect x="752.5" y="436" width="8" height="8" rx="2" fill="#A3ACB5"/>
+<rect x="763.5" y="436" width="8" height="8" rx="2" fill="#A3ACB5"/>
+<rect x="806" y="204.0" width="46" height="196.0" rx="5" fill="url(#stepG)" stroke="#002E5D" stroke-width="1.4"/>
+<text x="829.0" y="424" font-size="17" font-weight="700" fill="#002E5D" text-anchor="middle" >8</text>
+<rect x="808.5" y="436" width="8" height="8" rx="2" fill="#A3ACB5"/>
+<rect x="819.5" y="436" width="8" height="8" rx="2" fill="#A3ACB5"/>
+<rect x="830.5" y="436" width="8" height="8" rx="2" fill="#A3ACB5"/>
+<rect x="841.5" y="436" width="8" height="8" rx="2" fill="#A3ACB5"/>
+<rect x="808.5" y="447" width="8" height="8" rx="2" fill="#A3ACB5"/>
+<rect x="819.5" y="447" width="8" height="8" rx="2" fill="#A3ACB5"/>
+<rect x="830.5" y="447" width="8" height="8" rx="2" fill="#A3ACB5"/>
+<rect x="841.5" y="447" width="8" height="8" rx="2" fill="#A3ACB5"/>
+<rect x="884" y="154.0" width="46" height="246.0" rx="5" fill="url(#stepG)" stroke="#002E5D" stroke-width="1.4"/>
+<text x="907.0" y="424" font-size="17" font-weight="700" fill="#002E5D" text-anchor="middle" >16</text>
+<rect x="886.5" y="436" width="8" height="8" rx="2" fill="#A3ACB5"/>
+<rect x="897.5" y="436" width="8" height="8" rx="2" fill="#A3ACB5"/>
+<rect x="908.5" y="436" width="8" height="8" rx="2" fill="#A3ACB5"/>
+<rect x="919.5" y="436" width="8" height="8" rx="2" fill="#A3ACB5"/>
+<rect x="886.5" y="447" width="8" height="8" rx="2" fill="#A3ACB5"/>
+<rect x="897.5" y="447" width="8" height="8" rx="2" fill="#A3ACB5"/>
+<rect x="908.5" y="447" width="8" height="8" rx="2" fill="#A3ACB5"/>
+<rect x="919.5" y="447" width="8" height="8" rx="2" fill="#A3ACB5"/>
+<rect x="886.5" y="458" width="8" height="8" rx="2" fill="#A3ACB5"/>
+<rect x="897.5" y="458" width="8" height="8" rx="2" fill="#A3ACB5"/>
+<rect x="908.5" y="458" width="8" height="8" rx="2" fill="#A3ACB5"/>
+<rect x="919.5" y="458" width="8" height="8" rx="2" fill="#A3ACB5"/>
+<rect x="886.5" y="469" width="8" height="8" rx="2" fill="#A3ACB5"/>
+<rect x="897.5" y="469" width="8" height="8" rx="2" fill="#A3ACB5"/>
+<rect x="908.5" y="469" width="8" height="8" rx="2" fill="#A3ACB5"/>
+<rect x="919.5" y="469" width="8" height="8" rx="2" fill="#A3ACB5"/>
+<text x="751.0" y="508" font-size="15" font-weight="600" fill="#5A6672" text-anchor="middle" >Equally likely options</text>
+<path d="M618,354.0 H644" stroke="#0057B8" stroke-width="1.3" stroke-dasharray="3 3" fill="none"/>
+<path d="M644,354.0 V306.0" stroke="#0057B8" stroke-width="2" fill="none" marker-end="url(#arrR)"/>
+<path d="M696,304.0 H722" stroke="#0057B8" stroke-width="1.3" stroke-dasharray="3 3" fill="none"/>
+<path d="M722,304.0 V256.0" stroke="#0057B8" stroke-width="2" fill="none" marker-end="url(#arrR)"/>
+<path d="M774,254.0 H800" stroke="#0057B8" stroke-width="1.3" stroke-dasharray="3 3" fill="none"/>
+<path d="M800,254.0 V206.0" stroke="#0057B8" stroke-width="2" fill="none" marker-end="url(#arrR)"/>
+<path d="M852,204.0 H878" stroke="#0057B8" stroke-width="1.3" stroke-dasharray="3 3" fill="none"/>
+<path d="M878,204.0 V156.0" stroke="#0057B8" stroke-width="2" fill="none" marker-end="url(#arrR)"/>
+<text x="698" y="160.0" font-size="16" font-weight="600" fill="#0057B8" text-anchor="end" >Each doubling adds</text>
+<text x="698" y="181.0" font-size="16" font-weight="600" fill="#0057B8" text-anchor="end" >the same step</text>
+</svg>

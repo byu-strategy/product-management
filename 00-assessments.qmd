@@ -232,9 +232,9 @@ naturally takes:
 
 | Axis | Artifacts that count, for example |
 |---|---|
-| Agentic Workflow | A `CLAUDE.md`, slash commands and skills, subagent setups, specs, an automation that runs, prompts and tool use in the product, an eval set and its results |
+| Agentic Workflow | A `CLAUDE.md`, slash commands and skills, subagent setups, an automation that runs, prompts and tool use in the product, an eval set and its results |
 | Discovery | Interview notes and synthesis, personas, a problem statement, survey results, a competitive teardown |
-| Design | Flows, wireframes and mockups, a Figma file, a usability test write-up, a live interface |
+| Design | Flows, wireframes and mockups, a Figma file, a usability test write-up, a live interface, a spec with user stories and acceptance criteria |
 | Application Architecture | Code, a deployed app on Vercel or elsewhere, a data model, an API, tests, a working model call or retrieval pipeline |
 | AI Systems | A write-up of how your model behaves and why, a hallucination or failure analysis, a retrieval or context-window experiment and what it showed |
 | Launch and Learn | A landing page, a pitch deck, pricing or a financial model, sales copy, an analytics dashboard |

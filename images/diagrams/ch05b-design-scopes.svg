@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 620" role="img" aria-labelledby="t d" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+<title id="t">UI, UX, and product design as nested scopes</title>
+<desc id="d">Three nested rounded rectangles. The innermost, UI design, one screen, holds a small phone showing the ShiftSwap shift detail page: Thursday shift, 4:00 to 8:00 PM, Front desk, a filled Give away this shift button, and an outlined Swap button. The middle rectangle, UX design, adds the whole path to the goal, on screen and off: arrows lead from the screen to four steps, coworkers get a text, a coworker picks it up, the manager approves, and the student and coworker are notified. Under each step, where it happens: a text message, the coworker&#x27;s phone, the manager&#x27;s laptop, a push notification. The outer rectangle, product design, adds the problem, the user, and the business: last-minute shifts go uncovered; student employees and managers; the employer pays.</desc>
+<defs>
+  <filter id="sh" x="-10%" y="-10%" width="120%" height="130%"><feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#002E5D" flood-opacity="0.13"/></filter>
+  <filter id="shs" x="-10%" y="-10%" width="120%" height="130%"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#002E5D" flood-opacity="0.12"/></filter>
+  <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5A6672"/></marker>
+  <marker id="arrN" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#002E5D"/></marker>
+  <marker id="arrR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0057B8"/></marker>
+  <linearGradient id="royalG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1A6BCB"/><stop offset="1" stop-color="#0057B8"/></linearGradient>
+  <linearGradient id="navyG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0B4178"/><stop offset="1" stop-color="#002E5D"/></linearGradient>
+  <linearGradient id="stepG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F1F6FB"/><stop offset="1" stop-color="#E1EAF5"/></linearGradient>
+  <linearGradient id="phoneG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#FBFCFE"/></linearGradient>
+  <linearGradient id="cardG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F6F8FB"/></linearGradient>
+  
+</defs>
+<rect width="1000" height="620" rx="8" fill="#FAFBFC"/>
+<rect x="20" y="20" width="960" height="580" rx="14" fill="#FFFFFF" stroke="#B9D0EA" stroke-width="1.5" filter="url(#sh)"/>
+<text x="48" y="62" font-size="15" font-weight="700" fill="#002E5D" text-anchor="start" letter-spacing="1.2">PRODUCT DESIGN</text>
+<text x="222" y="62" font-size="16" font-weight="400" fill="#5A6672" text-anchor="start" >adds the problem, the user, the business</text>
+<circle cx="70" cy="118" r="22" fill="#E6EEF7"/><g transform="translate(58,106) scale(1)" fill="none" stroke="#002E5D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" />
+  <circle cx="12" cy="12" r="6" />
+  <circle cx="12" cy="12" r="2" /></g>
+<text x="104" y="112" font-size="17" font-weight="700" fill="#002E5D" text-anchor="start" >Problem</text>
+<text x="104" y="135" font-size="16" font-weight="400" fill="#2C3E50" text-anchor="start" >Last-minute shifts go uncovered</text>
+<circle cx="382" cy="118" r="22" fill="#E6EEF7"/><g transform="translate(370,106) scale(1)" fill="none" stroke="#002E5D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+  <circle cx="9" cy="7" r="4" />
+  <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+  <path d="M16 3.13a4 4 0 0 1 0 7.75" /></g>
+<text x="416" y="112" font-size="17" font-weight="700" fill="#002E5D" text-anchor="start" >User</text>
+<text x="416" y="135" font-size="16" font-weight="400" fill="#2C3E50" text-anchor="start" >Student employees, managers</text>
+<circle cx="694" cy="118" r="22" fill="#E6EEF7"/><g transform="translate(682,106) scale(1)" fill="none" stroke="#002E5D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" x2="12" y1="2" y2="22" />
+  <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" /></g>
+<text x="728" y="112" font-size="17" font-weight="700" fill="#002E5D" text-anchor="start" >Business</text>
+<text x="728" y="135" font-size="16" font-weight="400" fill="#2C3E50" text-anchor="start" >The employer pays</text>
+<rect x="44" y="172" width="912" height="404" rx="12" fill="#F4F7FB" stroke="#B9D0EA" stroke-width="1.5"/>
+<text x="72" y="210" font-size="15" font-weight="700" fill="#002E5D" text-anchor="start" letter-spacing="1.2">UX DESIGN</text>
+<text x="178" y="210" font-size="16" font-weight="400" fill="#5A6672" text-anchor="start" >adds the whole path to the goal, on screen and off</text>
+<rect x="68" y="232" width="262" height="320" rx="10" fill="#E6EEF7" stroke="#6495ED" stroke-width="1.5"/>
+<text x="90" y="262" font-size="15" font-weight="700" fill="#002E5D" text-anchor="start" letter-spacing="1.2">UI DESIGN</text>
+<text x="186" y="262" font-size="16" font-weight="400" fill="#5A6672" text-anchor="start" >one screen</text>
+<rect x="106" y="280" width="186" height="256" rx="18" fill="url(#phoneG)" stroke="#D9DEE4" stroke-width="1.5" filter="url(#shs)"/>
+<rect x="175.0" y="288" width="48" height="12" rx="6" fill="#1F2933"/>
+<text x="122" y="332" font-size="19" font-weight="700" fill="#002E5D" text-anchor="start" >Thursday shift</text>
+<text x="122" y="356" font-size="15" font-weight="400" fill="#2C3E50" text-anchor="start" >4:00 to 8:00 PM</text>
+<text x="122" y="376" font-size="15" font-weight="400" fill="#5A6672" text-anchor="start" >Front desk</text>
+<line x1="122" y1="392" x2="276" y2="392" stroke="#D9DEE4" stroke-width="1.5"/>
+<rect x="120" y="444" width="158" height="36" rx="8" fill="url(#royalG)"/>
+<text x="199.0" y="467" font-size="15" font-weight="700" fill="#fff" text-anchor="middle" >Give away this shift</text>
+<rect x="120" y="488" width="158" height="32" rx="8" fill="#fff" stroke="#0057B8" stroke-width="1.5"/>
+<text x="199.0" y="509" font-size="15" font-weight="600" fill="#0057B8" text-anchor="middle" >Swap</text>
+<line x1="334" y1="392" x2="394" y2="392" stroke="#5A6672" stroke-width="1.8" marker-end="url(#arr)"/>
+<circle cx="430" cy="392" r="30" fill="#fff" stroke="#B9D0EA" stroke-width="1.5"/><g transform="translate(416,378) scale(1.167)" fill="none" stroke="#002E5D" stroke-width="1.89" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /></g>
+<text x="430" y="450" font-size="16" font-weight="600" fill="#2C3E50" text-anchor="middle" >Coworkers</text>
+<text x="430" y="471" font-size="16" font-weight="400" fill="#2C3E50" text-anchor="middle" >get a text</text>
+<rect x="361" y="490" width="138" height="30" rx="15" fill="#fff" stroke="#D9DEE4" stroke-width="1.5"/>
+<text x="430" y="510" font-size="15" font-weight="400" fill="#5A6672" text-anchor="middle" >text message</text>
+<line x1="464" y1="392" x2="538" y2="392" stroke="#5A6672" stroke-width="1.8" marker-end="url(#arr)"/>
+<circle cx="574" cy="392" r="30" fill="#fff" stroke="#B9D0EA" stroke-width="1.5"/><g transform="translate(560,378) scale(1.167)" fill="none" stroke="#002E5D" stroke-width="1.89" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+  <circle cx="9" cy="7" r="4" />
+  <polyline points="16 11 18 13 22 9" /></g>
+<text x="574" y="450" font-size="16" font-weight="600" fill="#2C3E50" text-anchor="middle" >A coworker</text>
+<text x="574" y="471" font-size="16" font-weight="400" fill="#2C3E50" text-anchor="middle" >picks it up</text>
+<rect x="505" y="490" width="138" height="30" rx="15" fill="#fff" stroke="#D9DEE4" stroke-width="1.5"/>
+<text x="574" y="510" font-size="15" font-weight="400" fill="#5A6672" text-anchor="middle" >coworker&#x27;s phone</text>
+<line x1="608" y1="392" x2="682" y2="392" stroke="#5A6672" stroke-width="1.8" marker-end="url(#arr)"/>
+<circle cx="718" cy="392" r="30" fill="#fff" stroke="#B9D0EA" stroke-width="1.5"/><g transform="translate(704,378) scale(1.167)" fill="none" stroke="#002E5D" stroke-width="1.89" stroke-linecap="round" stroke-linejoin="round"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z" />
+  <path d="m9 12 2 2 4-4" /></g>
+<text x="718" y="450" font-size="16" font-weight="600" fill="#2C3E50" text-anchor="middle" >The manager</text>
+<text x="718" y="471" font-size="16" font-weight="400" fill="#2C3E50" text-anchor="middle" >approves</text>
+<rect x="649" y="490" width="138" height="30" rx="15" fill="#fff" stroke="#D9DEE4" stroke-width="1.5"/>
+<text x="718" y="510" font-size="15" font-weight="400" fill="#5A6672" text-anchor="middle" >manager&#x27;s laptop</text>
+<line x1="752" y1="392" x2="826" y2="392" stroke="#5A6672" stroke-width="1.8" marker-end="url(#arr)"/>
+<circle cx="862" cy="392" r="30" fill="#fff" stroke="#B9D0EA" stroke-width="1.5"/><g transform="translate(848,378) scale(1.167)" fill="none" stroke="#002E5D" stroke-width="1.89" stroke-linecap="round" stroke-linejoin="round"><path d="M10.268 21a2 2 0 0 0 3.464 0" />
+  <path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326" /></g>
+<text x="862" y="450" font-size="16" font-weight="600" fill="#2C3E50" text-anchor="middle" >Student and</text>
+<text x="862" y="471" font-size="16" font-weight="400" fill="#2C3E50" text-anchor="middle" >coworker notified</text>
+<rect x="793" y="490" width="138" height="30" rx="15" fill="#fff" stroke="#D9DEE4" stroke-width="1.5"/>
+<text x="862" y="510" font-size="15" font-weight="400" fill="#5A6672" text-anchor="middle" >push notification</text>
+</svg>

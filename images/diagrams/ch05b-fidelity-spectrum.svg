@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 610" role="img" aria-labelledby="t d" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+<title id="t">Fidelity and effort are separate dimensions</title>
+<desc id="d">A scatter chart. The horizontal axis is fidelity, how closely an artifact matches the shipped product, from low on the left to high on the right, divided into three shaded regions: sketch, mock, and prototype. The vertical axis is the time to make or change the artifact, on a scale marked seconds, minutes, hours, and days from bottom to top. Ten methods are plotted. Made by hand: a paper sketch, lowest fidelity, a few minutes; a whiteboard or Excalidraw sketch, slightly higher fidelity, a few minutes; a high-fidelity Figma mockup, in the mock region, hours; a clickable Figma prototype, at the start of the prototype region, between hours and days. Made by a coding agent: an ASCII mockup in the terminal, in the sketch region, seconds; gray boxes in HTML, low in the mock region, under a minute; an HTML mockup an agent writes, in the middle of the mock region, a minute or two; frozen real screens with one change, in the prototype region, a few minutes; a branch on a preview deployment, high fidelity, between minutes and hours. A production release sits at the top right, highest fidelity, days. For the four agent-made methods other than ASCII, a hollow circle marks the same artifact made by hand, with a dashed arrow down to its position today: gray boxes drawn in Figma or Balsamiq took about half an hour; an HTML mockup coded by hand took hours; frozen screens edited by hand took an hour or more; a preview branch coded by hand took days. The agent-made points sit low on the chart at every level of fidelity, so higher fidelity no longer means more time.</desc>
+<defs>
+<marker id="arrA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6495ED"/></marker>
+<marker id="arrG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5A6672"/></marker>
+<filter id="sh" x="-50%" y="-50%" width="200%" height="200%"><feDropShadow dx="0" dy="2" stdDeviation="2.5" flood-color="#002E5D" flood-opacity="0.18"/></filter>
+</defs>
+<rect width="1000" height="610" rx="8" fill="#FAFBFC"/>
+<rect x="150" y="40" width="228.0" height="450" fill="#EEF2F7"/>
+<text x="264.0" y="62" font-size="17" font-weight="600" fill="#5A6672" text-anchor="middle" letter-spacing="0.5">Sketch</text>
+<rect x="378.0" y="40" width="256.0" height="450" fill="#F6F8FB"/>
+<text x="506.0" y="62" font-size="17" font-weight="600" fill="#5A6672" text-anchor="middle" letter-spacing="0.5">Mock</text>
+<rect x="634.0" y="40" width="336.0" height="450" fill="#EEF2F7"/>
+<text x="802.0" y="62" font-size="17" font-weight="600" fill="#5A6672" text-anchor="middle" letter-spacing="0.5">Prototype</text>
+<line x1="150" y1="100" x2="970" y2="100" stroke="#D9DEE4" stroke-width="1" stroke-dasharray="2 4"/>
+<text x="138" y="106" font-size="17" fill="#5A6672" text-anchor="end">Days</text>
+<line x1="150" y1="215" x2="970" y2="215" stroke="#D9DEE4" stroke-width="1" stroke-dasharray="2 4"/>
+<text x="138" y="221" font-size="17" fill="#5A6672" text-anchor="end">Hours</text>
+<line x1="150" y1="335" x2="970" y2="335" stroke="#D9DEE4" stroke-width="1" stroke-dasharray="2 4"/>
+<text x="138" y="341" font-size="17" fill="#5A6672" text-anchor="end">Minutes</text>
+<line x1="150" y1="455" x2="970" y2="455" stroke="#D9DEE4" stroke-width="1" stroke-dasharray="2 4"/>
+<text x="138" y="461" font-size="17" fill="#5A6672" text-anchor="end">Seconds</text>
+<line x1="150" y1="490" x2="970" y2="490" stroke="#5A6672" stroke-width="1.5" marker-end="url(#arrG)"/>
+<line x1="150" y1="490" x2="150" y2="40" stroke="#5A6672" stroke-width="1.5" marker-end="url(#arrG)"/>
+<text x="150" y="516" font-size="16" fill="#5A6672">Low</text>
+<text x="970" y="516" font-size="16" fill="#5A6672" text-anchor="end">High</text>
+<text x="560.0" y="520" font-size="18" font-weight="600" fill="#2C3E50" text-anchor="middle">Fidelity: how closely it matches the shipped product</text>
+<text transform="translate(34 265.0) rotate(-90)" font-size="18" font-weight="600" fill="#2C3E50" text-anchor="middle">Time to make or change it</text>
+<line x1="422.0" y1="281" x2="422.0" y2="374" stroke="#6495ED" stroke-width="1.6" stroke-dasharray="4 4" marker-end="url(#arrA)"/>
+<circle cx="422.0" cy="272" r="7" fill="#FAFBFC" stroke="#6495ED" stroke-width="1.8"/>
+<line x1="534.0" y1="221" x2="534.0" y2="358" stroke="#6495ED" stroke-width="1.6" stroke-dasharray="4 4" marker-end="url(#arrA)"/>
+<circle cx="534.0" cy="212" r="7" fill="#FAFBFC" stroke="#6495ED" stroke-width="1.8"/>
+<line x1="758.0" y1="237" x2="758.0" y2="346" stroke="#6495ED" stroke-width="1.6" stroke-dasharray="4 4" marker-end="url(#arrA)"/>
+<circle cx="758.0" cy="228" r="7" fill="#FAFBFC" stroke="#6495ED" stroke-width="1.8"/>
+<line x1="854.0" y1="121" x2="854.0" y2="268" stroke="#6495ED" stroke-width="1.6" stroke-dasharray="4 4" marker-end="url(#arrA)"/>
+<circle cx="854.0" cy="112" r="7" fill="#FAFBFC" stroke="#6495ED" stroke-width="1.8"/>
+<circle cx="198.0" cy="336" r="9" fill="#002E5D" stroke="#fff" stroke-width="2" filter="url(#sh)"/>
+<text x="198.0" y="366" font-size="17" font-weight="600" fill="#2C3E50" text-anchor="middle">Paper sketch</text>
+<circle cx="254.0" cy="312" r="9" fill="#002E5D" stroke="#fff" stroke-width="2" filter="url(#sh)"/>
+<text x="254.0" y="270" font-size="17" font-weight="600" fill="#2C3E50" text-anchor="middle">Whiteboard or</text>
+<text x="254.0" y="290" font-size="17" font-weight="600" fill="#2C3E50" text-anchor="middle">Excalidraw</text>
+<circle cx="326.0" cy="440" r="9" fill="#0057B8" stroke="#fff" stroke-width="2" filter="url(#sh)"/>
+<text x="340.0" y="446" font-size="17" font-weight="600" fill="#0057B8" text-anchor="start">ASCII mockup</text>
+<text x="340.0" y="466" font-size="17" font-weight="600" fill="#0057B8" text-anchor="start">in the terminal</text>
+<circle cx="422.0" cy="388" r="9" fill="#0057B8" stroke="#fff" stroke-width="2" filter="url(#sh)"/>
+<text x="436.0" y="394" font-size="17" font-weight="600" fill="#0057B8" text-anchor="start">Gray boxes</text>
+<text x="436.0" y="414" font-size="17" font-weight="600" fill="#0057B8" text-anchor="start">in HTML</text>
+<circle cx="534.0" cy="372" r="9" fill="#0057B8" stroke="#fff" stroke-width="2" filter="url(#sh)"/>
+<text x="548.0" y="378" font-size="17" font-weight="600" fill="#0057B8" text-anchor="start">HTML mockup</text>
+<text x="548.0" y="398" font-size="17" font-weight="600" fill="#0057B8" text-anchor="start">an agent writes</text>
+<circle cx="590.0" cy="205" r="9" fill="#002E5D" stroke="#fff" stroke-width="2" filter="url(#sh)"/>
+<text x="604.0" y="211" font-size="17" font-weight="600" fill="#2C3E50" text-anchor="start">High-fidelity</text>
+<text x="604.0" y="231" font-size="17" font-weight="600" fill="#2C3E50" text-anchor="start">Figma mockup</text>
+<circle cx="678.0" cy="160" r="9" fill="#002E5D" stroke="#fff" stroke-width="2" filter="url(#sh)"/>
+<text x="678.0" y="120" font-size="17" font-weight="600" fill="#2C3E50" text-anchor="middle">Clickable Figma</text>
+<text x="678.0" y="140" font-size="17" font-weight="600" fill="#2C3E50" text-anchor="middle">prototype</text>
+<circle cx="758.0" cy="360" r="9" fill="#0057B8" stroke="#fff" stroke-width="2" filter="url(#sh)"/>
+<text x="772.0" y="366" font-size="17" font-weight="600" fill="#0057B8" text-anchor="start">Frozen real screens,</text>
+<text x="772.0" y="386" font-size="17" font-weight="600" fill="#0057B8" text-anchor="start">one change</text>
+<circle cx="854.0" cy="282" r="9" fill="#0057B8" stroke="#fff" stroke-width="2" filter="url(#sh)"/>
+<text x="854.0" y="312" font-size="17" font-weight="600" fill="#0057B8" text-anchor="middle">Branch on a</text>
+<text x="854.0" y="332" font-size="17" font-weight="600" fill="#0057B8" text-anchor="middle">preview deployment</text>
+<circle cx="934.0" cy="95" r="9" fill="#5A6672" stroke="#fff" stroke-width="2" filter="url(#sh)"/>
+<text x="934.0" y="125" font-size="17" font-weight="600" fill="#2C3E50" text-anchor="middle">Production</text>
+<text x="934.0" y="145" font-size="17" font-weight="600" fill="#2C3E50" text-anchor="middle">release</text>
+<text x="422.0" y="256" font-size="15" fill="#5A6672" text-anchor="middle">in Figma or Balsamiq</text>
+<circle cx="160" cy="575" r="9" fill="#0057B8" stroke="#fff" stroke-width="2"/>
+<text x="178" y="581" font-size="17" fill="#2C3E50">Made by a coding agent</text>
+<circle cx="410" cy="575" r="8" fill="#002E5D" stroke="#fff" stroke-width="2"/>
+<text x="428" y="581" font-size="17" fill="#2C3E50">Made by hand</text>
+<circle cx="580" cy="575" r="7" fill="#FAFBFC" stroke="#6495ED" stroke-width="1.8"/>
+<line x1="590" y1="575" x2="624" y2="575" stroke="#6495ED" stroke-width="1.6" stroke-dasharray="4 4" marker-end="url(#arrA)"/>
+<circle cx="634" cy="575" r="9" fill="#0057B8" stroke="#fff" stroke-width="2"/>
+<text x="654" y="581" font-size="17" fill="#2C3E50">Same artifact, by hand, then by an agent</text>
+</svg>

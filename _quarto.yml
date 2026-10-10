@@ -26,7 +26,9 @@ book:
     - part: Design
       chapters:
         - 05-interface-and-flow.qmd
+        - 05b-design-fundamentals.qmd
         - 06-testing-the-design.qmd
+        - 06b-specs.qmd
     - part: Application Architecture
       chapters:
         - 07-anatomy-of-an-application.qmd

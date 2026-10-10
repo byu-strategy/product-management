@@ -33,6 +33,7 @@ What has **not** changed: humans still have jobs to be done, still feel the same
 | Strategy is choosing what *not* to do | Michael Porter [@porter1996strategy] | Product Strategy | Matters more: when anyone can build anything, the choice is the advantage |
 | Where to play / how to win | Roger Martin & A.G. Lafley, *Playing to Win* (2013) [@lafley2013playing] | Product Strategy | Durable |
 | Moats and durable advantage | Hamilton Helmer, *7 Powers* (2016) [@helmer2016powers] | Product Strategy | More important now: when copying is cheap, a moat is the main source of lasting advantage |
+| Disruptive vs. sustaining innovation; low-end and new-market footholds | Clayton Christensen, *The Innovator's Dilemma* (1997); Christensen, Raynor & McDonald, "What Is Disruptive Innovation?" HBR (2015) [@christensen1997dilemma; @christensen2015disruptive] | Product Strategy | Cheap building lowers the cost of a low-end or new-market entry; an incumbent adding AI features for its existing customers is usually sustaining innovation |
 | DHM (delight, hard-to-copy, margin-enhancing) | Gibson Biddle [@biddle2018] | Product Strategy | Durable |
 | Product vision | Marty Cagan, *Inspired* [@cagan2017inspired] | Product Strategy; Ch 1 | Durable |
 | Aiming well; virtue as the mean | Aristotle, *Nicomachean Ethics* [@aristotlenicomachean] | Product Morality | Durable |
@@ -59,6 +60,15 @@ What has **not** changed: humans still have jobs to be done, still feel the same
 | Test demand before building: smoke test, Wizard of Oz | Lean-startup lineage, assembled by Hatch [@hatch_expeditionary] | Ch 5 | Still the cheapest test, even when building is cheap |
 | Usability: affordances and signifiers | Don Norman, *The Design of Everyday Things* (1988) [@norman2013design] | Ch 6 | AI generates usable-looking UIs fast; judging real usability matters more |
 | "Don't make me think" | Steve Krug, *Don't Make Me Think* (2000) [@krug2014think] | Ch 6 | Durable |
+| The Double Diamond: discover, define, develop, deliver | UK Design Council (developed 2003, shared publicly 2004) | Design Fundamentals | More relevant now: the first solution arrives in minutes, so diverging on the solution has to be deliberate |
+| Fidelity: sketches suggest, renderings confirm | Bill Buxton, *Sketching User Experiences* (2007) [@buxton2007sketching] | Design Fundamentals | High fidelity is now cheap; the risk is skipping the low-fidelity questions |
+| Mapping, constraints, feedback, conceptual model; gulfs of execution and evaluation | Don Norman, *The Design of Everyday Things* (1988) [@norman2013design] | Design Fundamentals | Durable; an agent sets the conceptual model silently unless you state it |
+| Ten usability heuristics; heuristic evaluation | Jakob Nielsen and Rolf Molich (1990); Nielsen (1994) [@nielsen1990heuristic; @nielsen1994enhancing] | Design Fundamentals | An agent can be one evaluator; it does not replace users |
+| Information architecture: organization, labeling, navigation, search | Rosenfeld, Morville & Arango, *Information Architecture* (4th ed., 2015) [@rosenfeld2015information] | Design Fundamentals | Durable |
+| Gestalt grouping | Wertheimer (1923) and successors, reviewed by Wagemans et al. (2012) [@wagemans2012century] | Design Fundamentals | Durable |
+| Fitts's law; Hick's law | Paul Fitts (1954); William Hick (1952) and Ray Hyman (1953) [@fitts1954information; @hick1952rate; @hyman1953stimulus] | Ch 5; Design Fundamentals | Durable |
+| Cognitive load | John Sweller (1988); Nelson Cowan (2001) [@sweller1988cognitive; @cowan2001magical] | Design Fundamentals | Durable |
+| Measure and line length in typography | Robert Bringhurst, *The Elements of Typographic Style* (1992) [@bringhurst2015elements] | Design Fundamentals | Durable |
 | The curse of knowledge; watch real users | usability tradition; Chip & Dan Heath [@heath2007stick] | Ch 6 | Durable |
 
 ## Grow the business
