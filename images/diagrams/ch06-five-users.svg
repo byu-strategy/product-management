@@ -21,7 +21,7 @@
   <linearGradient id="phoneG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#FBFCFE"/></linearGradient>
 <linearGradient id="areaG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#B9D0EA" stop-opacity="0.7"/><stop offset="1" stop-color="#E6EEF7" stop-opacity="0.2"/></linearGradient>
 </defs>
-<rect x="0" y="0" width="1000" height="630" rx="8" fill="url(#bgG)"/>
+<rect x="0" y="0" width="1000" height="630" rx="8" fill="#FAFBFC"/>
 <text x="50" y="34" font-size="17" font-weight="600" fill="#002E5D">Share of usability problems found</text>
 <line x1="110" y1="370" x2="930" y2="370" stroke="#AEB6BF" stroke-width="1.5"/>
 <text x="96" y="376" font-size="16" fill="#5A6672" text-anchor="end">0%</text>
@@ -64,44 +64,44 @@
 <text x="656.6666666666666" y="278.2" font-size="17" fill="#5A6672" text-anchor="middle">Users 6 to 15 mostly</text>
 <text x="656.6666666666666" y="301.2" font-size="17" fill="#5A6672" text-anchor="middle">repeat what you have seen</text>
 <text x="50" y="486" font-size="19" font-weight="700" fill="#002E5D">Fifteen sessions? Run three rounds of five, with a fix between</text>
-<rect x="50" y="520" width="236" height="76" rx="10" fill="url(#stepG)" stroke="#B9D0EA" stroke-width="1.5" filter="url(#sh)"/>
-<g transform="translate(70,530) scale(1.4167)" fill="none" stroke="#002E5D" stroke-width="1.624" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+<rect x="50" y="520" width="230" height="76" rx="10" fill="url(#stepG)" stroke="#B9D0EA" stroke-width="1.5" filter="url(#sh)"/>
+<g transform="translate(68,530) scale(1.4167)" fill="none" stroke="#002E5D" stroke-width="1.624" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
   <circle cx="12" cy="7" r="4" /></g>
-<g transform="translate(110,530) scale(1.4167)" fill="none" stroke="#002E5D" stroke-width="1.624" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+<g transform="translate(108,530) scale(1.4167)" fill="none" stroke="#002E5D" stroke-width="1.624" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
   <circle cx="12" cy="7" r="4" /></g>
-<g transform="translate(150,530) scale(1.4167)" fill="none" stroke="#002E5D" stroke-width="1.624" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+<g transform="translate(148,530) scale(1.4167)" fill="none" stroke="#002E5D" stroke-width="1.624" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
   <circle cx="12" cy="7" r="4" /></g>
-<g transform="translate(190,530) scale(1.4167)" fill="none" stroke="#002E5D" stroke-width="1.624" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+<g transform="translate(188,530) scale(1.4167)" fill="none" stroke="#002E5D" stroke-width="1.624" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
   <circle cx="12" cy="7" r="4" /></g>
-<g transform="translate(230,530) scale(1.4167)" fill="none" stroke="#002E5D" stroke-width="1.624" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+<g transform="translate(228,530) scale(1.4167)" fill="none" stroke="#002E5D" stroke-width="1.624" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
   <circle cx="12" cy="7" r="4" /></g>
-<text x="168.0" y="588" font-size="15" font-weight="600" fill="#5A6672" text-anchor="middle">Round 1</text>
-<line x1="294" y1="558" x2="394" y2="558" stroke="#0057B8" stroke-width="2" marker-end="url(#arrR)"/>
-<text x="344.0" y="548" font-size="17" font-weight="700" fill="#0057B8" text-anchor="middle">Fix</text>
-<rect x="402" y="520" width="236" height="76" rx="10" fill="url(#stepG)" stroke="#B9D0EA" stroke-width="1.5" filter="url(#sh)"/>
-<g transform="translate(422,530) scale(1.4167)" fill="none" stroke="#002E5D" stroke-width="1.624" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+<text x="165" y="588" font-size="15" font-weight="600" fill="#5A6672" text-anchor="middle">Round 1</text>
+<line x1="288" y1="558" x2="377" y2="558" stroke="#0057B8" stroke-width="2" marker-end="url(#arrR)"/>
+<text x="332" y="548" font-size="17" font-weight="700" fill="#0057B8" text-anchor="middle">Fix</text>
+<rect x="385" y="520" width="230" height="76" rx="10" fill="url(#stepG)" stroke="#B9D0EA" stroke-width="1.5" filter="url(#sh)"/>
+<g transform="translate(403,530) scale(1.4167)" fill="none" stroke="#002E5D" stroke-width="1.624" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
   <circle cx="12" cy="7" r="4" /></g>
-<g transform="translate(462,530) scale(1.4167)" fill="none" stroke="#002E5D" stroke-width="1.624" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+<g transform="translate(443,530) scale(1.4167)" fill="none" stroke="#002E5D" stroke-width="1.624" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
   <circle cx="12" cy="7" r="4" /></g>
-<g transform="translate(502,530) scale(1.4167)" fill="none" stroke="#002E5D" stroke-width="1.624" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+<g transform="translate(483,530) scale(1.4167)" fill="none" stroke="#002E5D" stroke-width="1.624" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
   <circle cx="12" cy="7" r="4" /></g>
-<g transform="translate(542,530) scale(1.4167)" fill="none" stroke="#002E5D" stroke-width="1.624" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+<g transform="translate(523,530) scale(1.4167)" fill="none" stroke="#002E5D" stroke-width="1.624" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
   <circle cx="12" cy="7" r="4" /></g>
-<g transform="translate(582,530) scale(1.4167)" fill="none" stroke="#002E5D" stroke-width="1.624" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+<g transform="translate(563,530) scale(1.4167)" fill="none" stroke="#002E5D" stroke-width="1.624" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
   <circle cx="12" cy="7" r="4" /></g>
-<text x="520.0" y="588" font-size="15" font-weight="600" fill="#5A6672" text-anchor="middle">Round 2</text>
-<line x1="646" y1="558" x2="746" y2="558" stroke="#0057B8" stroke-width="2" marker-end="url(#arrR)"/>
-<text x="696.0" y="548" font-size="17" font-weight="700" fill="#0057B8" text-anchor="middle">Fix</text>
-<rect x="754" y="520" width="236" height="76" rx="10" fill="url(#stepG)" stroke="#B9D0EA" stroke-width="1.5" filter="url(#sh)"/>
-<g transform="translate(774,530) scale(1.4167)" fill="none" stroke="#002E5D" stroke-width="1.624" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+<text x="500" y="588" font-size="15" font-weight="600" fill="#5A6672" text-anchor="middle">Round 2</text>
+<line x1="623" y1="558" x2="712" y2="558" stroke="#0057B8" stroke-width="2" marker-end="url(#arrR)"/>
+<text x="668" y="548" font-size="17" font-weight="700" fill="#0057B8" text-anchor="middle">Fix</text>
+<rect x="720" y="520" width="230" height="76" rx="10" fill="url(#stepG)" stroke="#B9D0EA" stroke-width="1.5" filter="url(#sh)"/>
+<g transform="translate(738,530) scale(1.4167)" fill="none" stroke="#002E5D" stroke-width="1.624" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
   <circle cx="12" cy="7" r="4" /></g>
-<g transform="translate(814,530) scale(1.4167)" fill="none" stroke="#002E5D" stroke-width="1.624" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+<g transform="translate(778,530) scale(1.4167)" fill="none" stroke="#002E5D" stroke-width="1.624" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
   <circle cx="12" cy="7" r="4" /></g>
-<g transform="translate(854,530) scale(1.4167)" fill="none" stroke="#002E5D" stroke-width="1.624" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+<g transform="translate(818,530) scale(1.4167)" fill="none" stroke="#002E5D" stroke-width="1.624" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
   <circle cx="12" cy="7" r="4" /></g>
-<g transform="translate(894,530) scale(1.4167)" fill="none" stroke="#002E5D" stroke-width="1.624" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+<g transform="translate(858,530) scale(1.4167)" fill="none" stroke="#002E5D" stroke-width="1.624" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
   <circle cx="12" cy="7" r="4" /></g>
-<g transform="translate(934,530) scale(1.4167)" fill="none" stroke="#002E5D" stroke-width="1.624" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+<g transform="translate(898,530) scale(1.4167)" fill="none" stroke="#002E5D" stroke-width="1.624" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
   <circle cx="12" cy="7" r="4" /></g>
-<text x="872.0" y="588" font-size="15" font-weight="600" fill="#5A6672" text-anchor="middle">Round 3</text>
+<text x="835" y="588" font-size="15" font-weight="600" fill="#5A6672" text-anchor="middle">Round 3</text>
 </svg>

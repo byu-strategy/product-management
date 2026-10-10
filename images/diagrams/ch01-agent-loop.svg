@@ -34,8 +34,8 @@
   <!-- Hub -->
   <circle cx="430" cy="350" r="82" fill="url(#al-hub)" stroke="#B9D0EA" stroke-width="1.5" filter="url(#al-shadow)"/>
   <text x="430" y="342" text-anchor="middle" font-size="20" font-weight="700" fill="#002E5D">The model</text>
-  <text x="430" y="368" text-anchor="middle" font-size="16" fill="#5A6672">decides the</text>
-  <text x="430" y="388" text-anchor="middle" font-size="16" fill="#5A6672">next step</text>
+  <text x="430" y="368" text-anchor="middle" font-size="17" fill="#5A6672">decides the</text>
+  <text x="430" y="388" text-anchor="middle" font-size="17" fill="#5A6672">next step</text>
 
   <!-- Node: Gather context (top) -->
   <circle cx="430" cy="150" r="50" fill="url(#al-node)" filter="url(#al-shadow)"/>
@@ -65,7 +65,7 @@
   <circle cx="890" cy="316" r="38" fill="#E6EEF7"/>
   <g transform="translate(870.0,296.0) scale(1.6667)" fill="none" stroke="#002E5D" stroke-width="1.500" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" /> <circle cx="12" cy="7" r="4" /></g>
   <text x="890" y="378" text-anchor="middle" font-size="19" font-weight="700" fill="#2C3E50">You</text>
-  <text x="890" y="404" text-anchor="middle" font-size="16" fill="#5A6672">Esc to interrupt,</text>
-  <text x="890" y="425" text-anchor="middle" font-size="16" fill="#5A6672">add context,</text>
-  <text x="890" y="446" text-anchor="middle" font-size="16" fill="#5A6672">or redirect</text>
+  <text x="890" y="405" text-anchor="middle" font-size="17" fill="#5A6672">Esc to interrupt,</text>
+  <text x="890" y="427" text-anchor="middle" font-size="17" fill="#5A6672">add context,</text>
+  <text x="890" y="449" text-anchor="middle" font-size="17" fill="#5A6672">or redirect</text>
 </svg>

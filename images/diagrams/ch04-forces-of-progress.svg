@@ -58,14 +58,14 @@
 
   <!-- arrow labels -->
   <text x="272" y="87" font-size="21" font-weight="700" fill="#FFFFFF">Push</text>
-  <text x="272" y="109" font-size="16" fill="#D6E4F3">Sunday spent matching payments</text>
+  <text x="272" y="109" font-size="17" fill="#D6E4F3">Sunday spent matching payments</text>
   <text x="272" y="189" font-size="21" font-weight="700" fill="#FFFFFF">Pull</text>
-  <text x="272" y="211" font-size="16" fill="#D6E4F3">Who has paid, updated for you</text>
+  <text x="272" y="211" font-size="17" fill="#D6E4F3">Who has paid, updated for you</text>
 
   <text x="728" y="315" text-anchor="end" font-size="21" font-weight="700" fill="#FFFFFF">Anxiety</text>
-  <text x="728" y="337" text-anchor="end" font-size="16" fill="#F1F3F5">"What if it gets a payment wrong?"</text>
+  <text x="728" y="337" text-anchor="end" font-size="17" fill="#F1F3F5">"What if it gets a payment wrong?"</text>
   <text x="728" y="417" text-anchor="end" font-size="21" font-weight="700" fill="#FFFFFF">Habit</text>
-  <text x="728" y="439" text-anchor="end" font-size="16" fill="#F1F3F5">Everyone already Venmos the treasurer</text>
+  <text x="728" y="439" text-anchor="end" font-size="17" fill="#F1F3F5">Everyone already Venmos the treasurer</text>
 
   <!-- the rule -->
   <line x1="40" y1="516" x2="960" y2="516" stroke="#D9DEE4" stroke-width="1.5"/>

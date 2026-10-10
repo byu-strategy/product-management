@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 640" role="img" aria-labelledby="t4 d4" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
   <title id="t4">Blast radius: what could it break, and can you undo it?</title>
-  <desc id="d4">Three concentric rings. The center is Claude's file edits. The middle ring is local files changed outside Claude's edit tools. A dashed line around the middle ring marks the edge of your laptop. The outer ring is anything that leaves your laptop. On the right, a row for each ring: Claude's file edits are undone by /rewind, so let them run in accept edits or auto mode. Shell deletes and moves and subagent edits are undone by git only if you committed, so commit and branch first. A push, deploy, database change, or sent email cannot be undone, so gate it with a deny rule, plan mode, or by running it yourself.</desc>
+  <desc id="d4">Three concentric rings. The center is Claude's file edits. The middle ring is local files changed outside Claude's edit tools. A dashed line around the middle ring marks the edge of your laptop. The outer ring is anything that leaves your laptop. On the right, a row for each ring: Claude's file edits are undone by /rewind, so let them run in accept-edits mode. Shell deletes and moves and subagent edits are undone by git only if you committed, so commit and branch first. A push, deploy, database change, or sent email cannot be undone, so gate it with a deny rule, plan mode, or by running it yourself.</desc>
   <defs>
     <linearGradient id="br-outer" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%" stop-color="#EEF0F3"/>
@@ -44,8 +44,8 @@
 
   <!-- Laptop boundary: the accent -->
   <circle cx="290" cy="320" r="190" fill="none" stroke="#0057B8" stroke-width="3" stroke-dasharray="10 7"/>
-  <rect x="206" y="496" width="168" height="32" rx="16" fill="#0057B8" filter="url(#br-shadow-sm)"/>
-  <text x="290" y="518" text-anchor="middle" font-size="16" font-weight="700" fill="#FFFFFF">edge of your laptop</text>
+  <rect x="196" y="495" width="188" height="34" rx="17" fill="#0057B8" filter="url(#br-shadow-sm)"/>
+  <text x="290" y="518" text-anchor="middle" font-size="17" font-weight="700" fill="#FFFFFF">edge of your laptop</text>
 
   <!-- ===== Right column ===== -->
   <g transform="translate(610.0,127.0) scale(0.8333)" fill="none" stroke="#5A6672" stroke-width="2.640" stroke-linecap="round" stroke-linejoin="round"><path d="M9 14 4 9l5-5" /> <path d="M4 9h10.5a5.5 5.5 0 0 1 5.5 5.5a5.5 5.5 0 0 1-5.5 5.5H11" /></g>
@@ -57,9 +57,8 @@
   <circle cx="636" cy="215" r="8.5" fill="#002E5D"/>
   <text x="678" y="211" font-size="19" font-weight="700" fill="#002E5D">/rewind</text>
   <text x="678" y="235" font-size="15" fill="#5A6672">Esc twice</text>
-  <text x="800" y="200" font-size="17" fill="#2C3E50">Let it run in</text>
-  <text x="800" y="223" font-size="17" fill="#2C3E50">accept-edits or</text>
-  <text x="800" y="246" font-size="17" fill="#2C3E50">auto mode</text>
+  <text x="800" y="211" font-size="17" fill="#2C3E50">Let it run in</text>
+  <text x="800" y="234" font-size="17" fill="#2C3E50">accept-edits mode</text>
   <line x1="610" y1="272" x2="975" y2="272" stroke="#E3E7EB" stroke-width="1.5"/>
   <circle cx="636" cy="329" r="24" fill="#FFFFFF" stroke="#C3CAD2" stroke-width="1.5"/>
   <circle cx="636" cy="329" r="16" fill="#002E5D"/>

@@ -47,11 +47,11 @@
   </defs>
   <rect x="0" y="0" width="1000" height="560" rx="8" fill="#FAFBFC"/>
   <rect x="300" y="26" width="400" height="52" rx="26" fill="url(#card)" stroke="#D3DCE5" stroke-width="1" filter="url(#shs)"/>
-  <text x="500" y="59" font-size="20" font-weight="600" fill="#002E5D" text-anchor="middle">The cat sat on the  ...</text>
+  <text x="500" y="59" font-size="20" font-weight="600" fill="#002E5D" text-anchor="middle">The cat sat on the ...</text>
   <path d="M 440 80 C 440 100, 260 96, 260 116" fill="none" stroke="#8A939C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
   <path d="M 560 80 C 560 100, 740 96, 740 116" fill="none" stroke="#8A939C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
   <rect x="40" y="122" width="440" height="418" rx="10" fill="url(#card)" stroke="#D3DCE5" stroke-width="1" filter="url(#sh)"/>
-  <text x="260" y="160" font-size="20" font-weight="700" fill="#002E5D" text-anchor="middle">Low temperature</text>
+  <text x="260" y="160" font-size="20" font-weight="700" fill="#002E5D" text-anchor="middle">Temperature 0.2</text>
   <text x="130" y="203" font-size="17" font-weight="500" fill="#2C3E50" text-anchor="end">mat</text>
   <rect x="144" y="188" width="252" height="20" rx="4" fill="#E9ECEF"/>
   <rect x="144" y="188" width="228.3" height="20" rx="4" fill="url(#navyh)"/>

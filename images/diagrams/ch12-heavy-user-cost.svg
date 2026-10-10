@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 590" role="img" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 540" role="img" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
   <title>Model cost per user against a flat price</title>
   <desc>A bar chart of QuizMe's monthly model cost per user, at 0.018 dollars per quiz, against a dashed line for the flat price of 4 dollars a month. A typical user takes 15 quizzes a month and costs 27 cents, leaving 3.73 dollars under the price. A heavy user in finals week takes 10 quizzes a day for 30 days, 300 in all, and costs 5.40 dollars; the part of that bar above the price line, 1.40 dollars, is money lost on that user before hosting and payment fees.</desc>
   <defs>
@@ -12,12 +12,11 @@
       <stop offset="0%" stop-color="#C24848"/><stop offset="100%" stop-color="#A33434"/>
     </linearGradient>
   </defs>
-  <rect x="0" y="0" width="1000" height="590" rx="8" fill="#FAFBFC"/>
+  <rect x="0" y="0" width="1000" height="540" rx="8" fill="#FAFBFC"/>
 
-  <text x="40" y="56" font-size="28" font-weight="700" fill="#002E5D">Your best users can be your most expensive</text>
-  <text x="40" y="88" font-size="18" fill="#5A6672">QuizMe's model cost per user per month, at $0.018 a quiz, on a flat $4.00 price</text>
+  <text x="150" y="52" font-size="15" font-weight="700" letter-spacing="1.2" fill="#5A6672">MODEL COST PER USER PER MONTH, AT $0.018 A QUIZ</text>
 
-  <g transform="translate(0,-60)">
+  <g transform="translate(0,-110)">
   <!-- axis and grid ($0 at y=560, 60px per dollar) -->
   <g stroke="#D9DEE4" stroke-width="1">
     <line x1="150" y1="500" x2="660" y2="500"/>

@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 576" role="img" aria-labelledby="t d" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
   <title id="t">The smallest tests by effort and evidence rung</title>
-  <desc id="d">Three rows for the evidence rungs, paid at the top, did in the middle, said at the bottom. Four columns, in rough order of effort from fewer hours to more: smoke test, concierge, Wizard of Oz, presell. The smoke test reaches did with a sign-up and paid with a pre-order; its pre-order point is highlighted as the highest rung for the fewest hours. The concierge reaches did, and paid if you charge. Wizard of Oz reaches did. Presell reaches paid. Across the said row, a red-outlined note: a working app shown to friends is said-rung evidence for value, however long it took to build.</desc>
+  <desc id="d">Three rows for the evidence rungs, paid at the top, did in the middle, said at the bottom. Four columns, in rough order of effort from fewer hours to more: smoke test, concierge, Wizard of Oz, presell. The smoke test reaches did with a sign-up and paid with a pre-order; The concierge reaches did, and paid if you charge. Wizard of Oz reaches did. Presell reaches paid. Across the said row, a red-outlined note: a working app shown to friends is said-rung evidence for value, however long it took to build.</desc>
   <defs>
     <linearGradient id="gPaid" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%" stop-color="#E6EEF7"/>
@@ -17,10 +17,6 @@
     <radialGradient id="gDot" cx="0.4" cy="0.35" r="0.7">
       <stop offset="0%" stop-color="#1F5C9E"/>
       <stop offset="100%" stop-color="#002E5D"/>
-    </radialGradient>
-    <radialGradient id="gHalo" cx="0.5" cy="0.5" r="0.5">
-      <stop offset="0%" stop-color="#0057B8" stop-opacity="0.28"/>
-      <stop offset="100%" stop-color="#0057B8" stop-opacity="0"/>
     </radialGradient>
     <filter id="sh" filterUnits="userSpaceOnUse" x="0" y="0" width="1000" height="620">
       <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#0A2E4D" flood-opacity="0.14"/>
@@ -45,13 +41,9 @@
   <text x="130" y="248" text-anchor="end" font-size="22" font-weight="700" fill="#002E5D">Did</text>
   <text x="130" y="388" text-anchor="end" font-size="22" font-weight="700" fill="#8A939C">Said</text>
 
-  <!-- focal: most learning per hour -->
-  <circle cx="260" cy="100" r="58" fill="url(#gHalo)"/>
-  <text x="290" y="64" font-size="16" font-weight="700" fill="#0057B8">Highest rung, fewest hours</text>
-
   <!-- SMOKE TEST -->
   <line x1="260" y1="100" x2="260" y2="240" stroke="#002E5D" stroke-width="3"/>
-  <circle cx="260" cy="100" r="13" fill="#0057B8" filter="url(#sh)"/>
+  <circle cx="260" cy="100" r="11" fill="url(#gDot)" filter="url(#sh)"/>
   <circle cx="260" cy="240" r="11" fill="url(#gDot)" filter="url(#sh)"/>
   <text x="284" y="106" font-size="17" fill="#2C3E50">pre-order</text>
   <text x="282" y="246" font-size="17" fill="#2C3E50">sign-up</text>
@@ -84,7 +76,6 @@
   <text x="460" y="508" text-anchor="middle" font-size="19" font-weight="600" fill="#002E5D">Concierge</text>
   <text x="660" y="508" text-anchor="middle" font-size="19" font-weight="600" fill="#002E5D">Wizard of Oz</text>
   <text x="860" y="508" text-anchor="middle" font-size="19" font-weight="600" fill="#002E5D">Presell</text>
-  <text x="150" y="546" font-size="16" fill="#5A6672">Fewer hours</text>
-  <text x="970" y="546" text-anchor="end" font-size="16" fill="#5A6672">More hours</text>
-  <text x="560" y="546" text-anchor="middle" font-size="16" fill="#8A939C">effort, in rough order</text>
+  <text x="150" y="546" font-size="17" fill="#5A6672">Fewer hours</text>
+  <text x="970" y="546" text-anchor="end" font-size="17" fill="#5A6672">More hours</text>
 </svg>

@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 496" role="img" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 422" role="img" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
   <title>The shape of a three-minute demo</title>
   <desc>A timeline of the three-minute final demo, with each part drawn to scale. The person and the problem takes 40 seconds; the moment it works, highlighted, takes 80 seconds, almost half the demo; the evidence takes 30 seconds; what you learned takes the last 30 seconds. Under each part is the QuizMe example: Maya has a quiz every Friday and rereads her notes and hopes; she uploads this week's notes, gets ten questions, misses three on equilibrium, and knows what to study; 20 invited, 8 finished a quiz, 5 came back; the team cut a signup step and killed the unused flashcard export.</desc>
   <defs>
@@ -6,9 +6,8 @@
     <linearGradient id="acc" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1A6FCC"/><stop offset="100%" stop-color="#0050A8"/></linearGradient>
     <filter id="sh" x="-10%" y="-30%" width="120%" height="170%"><feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#0A2E4D" flood-opacity="0.14"/></filter>
   </defs>
-  <rect x="0" y="0" width="1000" height="496" rx="8" fill="#FAFBFC"/>
-  <text x="40" y="58" font-size="28" font-weight="700" fill="#002E5D">A demo is an argument</text>
-  <text x="40" y="88" font-size="18" fill="#5A6672">Three minutes, drawn to scale. The claim: this product does a real job for a real person.</text>
+  <rect x="0" y="0" width="1000" height="422" rx="8" fill="#FAFBFC"/>
+  <g transform="translate(0,-74)">
   <circle cx="140.0" cy="150" r="26" fill="#E6EEF7"/>
   <g transform="translate(125.0,135) scale(1.25)" fill="none" stroke="#002E5D" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></g>
   <text x="140.0" y="204" text-anchor="middle" font-size="19" font-weight="700" fill="#002E5D">The person</text>
@@ -49,5 +48,6 @@
   <text x="809" y="338" text-anchor="middle" font-size="15" fill="#8A939C">2:30</text>
   <text x="960" y="338" text-anchor="end" font-size="15" fill="#8A939C">3:00</text>
   <line x1="40" y1="364" x2="960" y2="364" stroke="#E1E5EA" stroke-width="1.5"/>
-  <text x="40" y="384" font-size="14" font-weight="600" letter-spacing="1.2" fill="#8A939C">QUIZME, IN THREE MINUTES</text>
+  <text x="40" y="384" font-size="15" font-weight="600" letter-spacing="1.2" fill="#8A939C">QUIZME, IN THREE MINUTES</text>
+  </g>
 </svg>

@@ -39,36 +39,36 @@
 
   <!-- quadrant labels -->
   <text x="946" y="66" text-anchor="end" font-size="20" font-weight="700" fill="#0057B8">Riskiest: test first</text>
-  <text x="194" y="66" font-size="16" fill="#8A939C">Fatal, but already known</text>
-  <text x="194" y="470" font-size="16" fill="#8A939C">Safe to leave for later</text>
-  <text x="946" y="470" text-anchor="end" font-size="16" fill="#8A939C">Unsure, but survivable</text>
+  <text x="194" y="66" font-size="17" fill="#8A939C">Fatal, but already known</text>
+  <text x="194" y="470" font-size="17" fill="#8A939C">Safe to leave for later</text>
+  <text x="946" y="470" text-anchor="end" font-size="17" fill="#8A939C">Unsure, but survivable</text>
 
   <!-- 1 VALUE -->
   <circle cx="900" cy="132" r="18" fill="url(#gDot)" filter="url(#sh)"/>
   <text x="900" y="138" text-anchor="middle" font-size="17" font-weight="700" fill="#FFFFFF">1</text>
-  <text x="866" y="122" text-anchor="end" font-size="14" font-weight="700" fill="#0057B8" letter-spacing="1.2">VALUE</text>
+  <text x="866" y="122" text-anchor="end" font-size="15" font-weight="700" fill="#0057B8" letter-spacing="1.2">VALUE</text>
   <text x="866" y="145" text-anchor="end" font-size="18" font-weight="600" fill="#002E5D">Matching payments hurts</text>
   <text x="866" y="167" text-anchor="end" font-size="18" font-weight="600" fill="#002E5D">enough to switch</text>
 
   <!-- 2 FEASIBILITY -->
   <circle cx="900" cy="214" r="16" fill="#FFFFFF" stroke="#002E5D" stroke-width="2.5"/>
-  <text x="900" y="220" text-anchor="middle" font-size="16" font-weight="700" fill="#002E5D">2</text>
-  <text x="866" y="206" text-anchor="end" font-size="14" font-weight="700" fill="#002E5D" letter-spacing="1.2">FEASIBILITY</text>
+  <text x="900" y="220" text-anchor="middle" font-size="17" font-weight="700" fill="#002E5D">2</text>
+  <text x="866" y="206" text-anchor="end" font-size="15" font-weight="700" fill="#002E5D" letter-spacing="1.2">FEASIBILITY</text>
   <text x="866" y="229" text-anchor="end" font-size="17" fill="#2C3E50">They can connect their Venmo history</text>
 
   <!-- VIABILITY -->
   <circle cx="900" cy="350" r="11" fill="#A3ACB5"/>
-  <text x="878" y="342" text-anchor="end" font-size="14" font-weight="700" fill="#8A939C" letter-spacing="1.2">VIABILITY</text>
+  <text x="878" y="342" text-anchor="end" font-size="15" font-weight="700" fill="#8A939C" letter-spacing="1.2">VIABILITY</text>
   <text x="878" y="365" text-anchor="end" font-size="17" fill="#5A6672">A club pays $5 a month</text>
 
   <!-- USABILITY -->
   <circle cx="540" cy="390" r="11" fill="#A3ACB5"/>
-  <text x="518" y="382" text-anchor="end" font-size="14" font-weight="700" fill="#8A939C" letter-spacing="1.2">USABILITY</text>
+  <text x="518" y="382" text-anchor="end" font-size="15" font-weight="700" fill="#8A939C" letter-spacing="1.2">USABILITY</text>
   <text x="518" y="405" text-anchor="end" font-size="17" fill="#5A6672">They learn it in five minutes</text>
 
   <!-- x axis -->
   <line x1="170" y1="516" x2="962" y2="516" stroke="#8A939C" stroke-width="2" marker-end="url(#ax)"/>
-  <text x="170" y="546" font-size="16" fill="#5A6672">Low</text>
-  <text x="970" y="546" text-anchor="end" font-size="16" fill="#5A6672">High</text>
+  <text x="170" y="546" font-size="17" fill="#5A6672">Low</text>
+  <text x="970" y="546" text-anchor="end" font-size="17" fill="#5A6672">High</text>
   <text x="570" y="546" text-anchor="middle" font-size="19" font-weight="600" fill="#2C3E50">How uncertain are we?</text>
 </svg>

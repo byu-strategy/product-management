@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 640" role="img" aria-labelledby="t2 d2" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
   <title id="t2">What fills the context window, and what /compact and /clear do to it</title>
-  <desc id="d2">Three tall bars, each a context window filled from the bottom. Mid-session: system instructions, CLAUDE.md, skill descriptions, your messages and Claude's replies, and a large block of tool results, nearly full. An arrow labeled /compact leads to the second bar: system instructions, CLAUDE.md, skill descriptions, and a small summary of the conversation, with free space above; early details may be lost. An arrow labeled /clear runs under the bars to the third bar: system instructions, CLAUDE.md, skill descriptions, and an empty conversation. CLAUDE.md is highlighted in all three because it is reloaded every time.</desc>
+  <desc id="d2">Three tall bars, each a context window filled from the bottom. Mid-session: system instructions, CLAUDE.md, skill descriptions, your messages and Claude's replies, and a large block of tool results, nearly full. An arrow labeled /compact leads to the second bar: system instructions, CLAUDE.md, the skills you used (the list of skill descriptions does not reload), and a small summary of the conversation, with free space above; early details may be lost. An arrow labeled /clear runs under the bars to the third bar: system instructions, CLAUDE.md, skill descriptions, and an empty conversation. CLAUDE.md is highlighted in all three because it is reloaded every time.</desc>
   <defs>
     <marker id="cw-navy" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="#002E5D"/>
@@ -20,16 +20,16 @@
 
   <!-- Column headings -->
   <text x="165" y="40" text-anchor="middle" font-size="21" font-weight="700" fill="#002E5D">Mid-session</text>
-  <text x="165" y="68" text-anchor="middle" font-size="16" fill="#5A6672">Near the limit, Claude Code</text>
-  <text x="165" y="89" text-anchor="middle" font-size="16" fill="#5A6672">summarizes on its own</text>
+  <text x="165" y="68" text-anchor="middle" font-size="17" fill="#5A6672">Near the limit, Claude Code</text>
+  <text x="165" y="89" text-anchor="middle" font-size="17" fill="#5A6672">summarizes on its own</text>
 
   <text x="500" y="40" text-anchor="middle" font-size="21" font-weight="700" fill="#002E5D">After /compact</text>
-  <text x="500" y="68" text-anchor="middle" font-size="16" fill="#5A6672">Same task continues.</text>
-  <text x="500" y="89" text-anchor="middle" font-size="16" fill="#5A6672">Early details may be lost.</text>
+  <text x="500" y="68" text-anchor="middle" font-size="17" fill="#5A6672">Same task continues.</text>
+  <text x="500" y="89" text-anchor="middle" font-size="17" fill="#5A6672">Early details may be lost.</text>
 
   <text x="835" y="40" text-anchor="middle" font-size="21" font-weight="700" fill="#002E5D">After /clear</text>
-  <text x="835" y="68" text-anchor="middle" font-size="16" fill="#5A6672">New conversation.</text>
-  <text x="835" y="89" text-anchor="middle" font-size="16" fill="#5A6672">CLAUDE.md still loads.</text>
+  <text x="835" y="68" text-anchor="middle" font-size="17" fill="#5A6672">New conversation.</text>
+  <text x="835" y="89" text-anchor="middle" font-size="17" fill="#5A6672">CLAUDE.md still loads.</text>
 
   <!-- Window frames (white fill = free space) -->
   <g filter="url(#cw-shadow)">
@@ -51,11 +51,11 @@
   <line x1="50" y1="452" x2="280" y2="452" stroke="#FFFFFF" stroke-width="2"/>
   <line x1="50" y1="496" x2="280" y2="496" stroke="#FFFFFF" stroke-width="2"/>
   <text x="165" y="205" text-anchor="middle" font-size="19" font-weight="600" fill="#002E5D">Tool results</text>
-  <text x="165" y="233" text-anchor="middle" font-size="16" fill="#2C3E50">files it read,</text>
-  <text x="165" y="254" text-anchor="middle" font-size="16" fill="#2C3E50">command output</text>
+  <text x="165" y="233" text-anchor="middle" font-size="17" fill="#2C3E50">files it read,</text>
+  <text x="165" y="254" text-anchor="middle" font-size="17" fill="#2C3E50">command output</text>
     <text x="165" y="350" text-anchor="middle" font-size="19" font-weight="600" fill="#002E5D">Conversation</text>
-  <text x="165" y="375" text-anchor="middle" font-size="16" fill="#2C3E50">your messages and</text>
-  <text x="165" y="395" text-anchor="middle" font-size="16" fill="#2C3E50">Claude's replies</text>
+  <text x="165" y="375" text-anchor="middle" font-size="17" fill="#2C3E50">your messages and</text>
+  <text x="165" y="395" text-anchor="middle" font-size="17" fill="#2C3E50">Claude's replies</text>
   <text x="165" y="436" text-anchor="middle" font-size="17" fill="#2C3E50">Skill descriptions</text>
   <text x="165" y="480" text-anchor="middle" font-size="18" font-weight="700" fill="#FFFFFF">CLAUDE.md</text>
   <text x="165" y="524" text-anchor="middle" font-size="17" fill="#5A6672">System instructions</text>
@@ -71,10 +71,10 @@
   <line x1="385" y1="408" x2="615" y2="408" stroke="#FFFFFF" stroke-width="2"/>
   <line x1="385" y1="452" x2="615" y2="452" stroke="#FFFFFF" stroke-width="2"/>
   <line x1="385" y1="496" x2="615" y2="496" stroke="#FFFFFF" stroke-width="2"/>
-  <text x="500" y="240" text-anchor="middle" font-size="17" fill="#8A939C">free space</text>
+  <text x="500" y="250" text-anchor="middle" font-size="17" fill="#8A939C">free space</text>
   <text x="500" y="368" text-anchor="middle" font-size="18" font-weight="600" fill="#002E5D">Summary of the</text>
   <text x="500" y="391" text-anchor="middle" font-size="18" font-weight="600" fill="#002E5D">conversation</text>
-  <text x="500" y="436" text-anchor="middle" font-size="17" fill="#2C3E50">Skill descriptions</text>
+  <text x="500" y="436" text-anchor="middle" font-size="17" fill="#2C3E50">Skills you used</text>
   <text x="500" y="480" text-anchor="middle" font-size="18" font-weight="700" fill="#FFFFFF">CLAUDE.md</text>
   <text x="500" y="524" text-anchor="middle" font-size="17" fill="#5A6672">System instructions</text>
 
@@ -86,7 +86,7 @@
   </g>
   <line x1="720" y1="452" x2="950" y2="452" stroke="#FFFFFF" stroke-width="2"/>
   <line x1="720" y1="496" x2="950" y2="496" stroke="#FFFFFF" stroke-width="2"/>
-  <text x="835" y="260" text-anchor="middle" font-size="17" fill="#8A939C">empty conversation</text>
+  <text x="835" y="250" text-anchor="middle" font-size="17" fill="#8A939C">empty conversation</text>
   <text x="835" y="436" text-anchor="middle" font-size="17" fill="#2C3E50">Skill descriptions</text>
   <text x="835" y="480" text-anchor="middle" font-size="18" font-weight="700" fill="#FFFFFF">CLAUDE.md</text>
   <text x="835" y="524" text-anchor="middle" font-size="17" fill="#5A6672">System instructions</text>
@@ -98,7 +98,7 @@
 
   <!-- Arrow: /compact -->
   <line x1="290" y1="250" x2="376" y2="250" stroke="#002E5D" stroke-width="2" marker-end="url(#cw-navy)"/>
-  <text x="333" y="238" text-anchor="middle" font-size="16" font-weight="700" fill="#002E5D" font-family="Menlo, Consolas, monospace">/compact</text>
+  <text x="333" y="238" text-anchor="middle" font-size="17" font-weight="700" fill="#002E5D" font-family="Menlo, Consolas, monospace">/compact</text>
 
   <!-- Arrow: /clear (runs under the bars) -->
   <path d="M165,544 L165,590 Q165,600 175,600 L825,600 Q835,600 835,590 L835,550" fill="none" stroke="#002E5D" stroke-width="2" marker-end="url(#cw-navy)"/>
