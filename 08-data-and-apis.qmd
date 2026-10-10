@@ -70,7 +70,7 @@ interviews
 └── conducted_at
 ```
 
-![Each foreign key points at the primary key of another table. The "many" side holds the pointer.](images/diagrams/ch08-schema.svg){#fig-schema fig-alt="Three table cards side by side. users (from Supabase Auth): id, email, created_at. problems: id, user_id, title, description, frequency, intensity, created_at. interviews: id, problem_id, interviewee_role, notes, key_quotes, conducted_at. Every id is marked primary key. problems.user_id and interviews.problem_id are marked foreign key and highlighted, with blue arrows pointing to users.id and problems.id. Each arrow is labeled many at the foreign key end and 1 at the primary key end. Notes: one user has many problems, so each problem holds a user_id; one problem has many interviews, so each interview holds a problem_id." width="100%"}
+![Each foreign key points at the primary key of another table. The table on the "many" side holds the foreign key.](images/diagrams/ch08-schema.svg){#fig-schema fig-alt="Three table cards side by side. users (from Supabase Auth): id, email, created_at. problems: id, user_id, title, description, frequency, intensity, created_at. interviews: id, problem_id, interviewee_role, notes, key_quotes, conducted_at. Every id is marked primary key. problems.user_id and interviews.problem_id are marked foreign key and highlighted, with blue arrows pointing to users.id and problems.id. Each arrow is labeled many at the foreign key end and 1 at the primary key end. Notes: one user has many problems, so each problem holds a user_id; one problem has many interviews, so each interview holds a problem_id." width="100%"}
 
 The same design written as SQL is worth being able to read. Each line is a column, its type,
 and its rule:
@@ -120,7 +120,8 @@ Keep the production keys out of `.env.local`, so that no command reaches the liv
 you chose it on purpose. The [Agent Team Kit](https://github.com/ai-foundry-byu/agent-team-kit) states the rule in
 [develop against a disposable copy](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/memory-pack/develop-against-a-disposable-copy.md), and its
 [disposable environment guide](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/docs/DISPOSABLE-ENVIRONMENT.md) covers the details, including
-how to test real AI calls against the copy.
+how to test real AI calls against the copy. [Chapter 9](09-version-control-testing-and-tech-debt.qmd#environments-where-your-code-runs-and-which-data-it-touches)
+shows how your laptop, previews, and production each choose a database.
 
 ::: {.callout-tip title="Try it"}
 Write one sentence describing your product. Underline the nouns, decide which are tables, and
@@ -175,7 +176,7 @@ ORDER BY intensity DESC;
 The filter keeps rows 1 and 2 (row 6 fails the intensity test), the sort puts 8 before 7, and
 the result is two rows: *Group chat scheduling chaos, 8* and *Expense tracking is tedious, 7*.
 
-![The same query, one block at a time. The filter does most of the work; the result is two rows.](images/diagrams/ch08-query-blocks.svg){#fig-query-blocks fig-alt="Four numbered query blocks on the left, each beside the table it produces. 1, FROM problems: start with the whole six-row table. 2, WHERE owner = 'ana' AND intensity >= 5: rows 1 and 2 are highlighted; rows 3, 4 and 5 are struck through with the note not ana, and row 6 is struck through with the note 3 < 5. 3, SELECT title, intensity: the two rows keep only those columns, Expense tracking is tedious 7, then Group chat scheduling chaos 8. 4, ORDER BY intensity DESC: the result table, outlined in blue, lists Group chat scheduling chaos 8 first and Expense tracking is tedious 7 second, labeled Result: 2 rows. A note says the query is written with SELECT first but run in this order: table, filter, columns, sort, then limit." width="100%"}
+![The same query, one block at a time. The filter removes four of the six rows; the result is two rows.](images/diagrams/ch08-query-blocks.svg){#fig-query-blocks fig-alt="Four numbered query blocks on the left, each beside the table it produces. 1, FROM problems: start with the whole six-row table. 2, WHERE owner = 'ana' AND intensity >= 5: rows 1 and 2 are highlighted; rows 3, 4 and 5 are struck through with the note not ana, and row 6 is struck through with the note 3 < 5. 3, SELECT title, intensity: the two rows keep only those columns, Expense tracking is tedious 7, then Group chat scheduling chaos 8. 4, ORDER BY intensity DESC: the result table, outlined in blue, lists Group chat scheduling chaos 8 first and Expense tracking is tedious 7 second, labeled Result: 2 rows. A note says the query is written with SELECT first but run in this order: table, filter, columns, sort, then limit." width="100%"}
 
 Your app's code says the same thing in the Supabase client's words, block for block:
 
@@ -305,7 +306,8 @@ failure and tell the user what happened.
 
 Most products also borrow from other companies' APIs: Stripe for payments, Resend or SendGrid
 for email, Twilio for text messages, Anthropic for models. They all work the same way, over
-HTTP, the protocol your browser uses for every page.
+HTTP, the protocol your browser uses for every page. Chapter 7 shows the parts of one, the
+Claude API, in @fig-what-is-an-api.
 
 **A request** has a method (what kind of action), an address (which endpoint), headers
 (metadata, including who is calling), and sometimes a body (the data). **A response** has a

@@ -33,6 +33,9 @@ Every one of these comes up below. Come back here when one stops you.
 | **Database** | Where the app stores what it must remember, as tables of rows |
 | **Request, response** | A message one place sends another asking for something, and the reply |
 | **API, endpoint** | The list of requests a place will answer; one entry on that list, at its own address |
+| **API key** | A secret string a paid service such as Anthropic gives your account. Sent with each request, it says whose account is calling and gets the bill, so it stays on your server |
+| **API documentation** (docs) | The provider's published description of its API: every endpoint, the inputs each one accepts, and the output it returns |
+| **JSON** | A plain-text format for data: labels and values inside curly braces, such as `{ "task_text": "Buy groceries" }`. Most APIs send and receive it |
 | **React** | A library for building the screens that run in the browser |
 | **Next.js** | A framework built on React that also lets you write server code in the same project |
 | **Vercel** | The company whose computers run your Next.js app and serve it at a web address |
@@ -112,6 +115,20 @@ receive the answers, look up the correct ones itself, and compute the score.
 responses, and an **API** (Application Programming Interface) is the set of requests a place
 agrees to answer. Your server's API is a list of addresses, called
 **endpoints**, such as `POST /api/tasks`, each with a defined input and output.
+
+![The Claude API, with one request and its response, slightly shortened. The caller sees everything left of the dashed line: the published list of endpoints, and what one of them accepts and returns. Anthropic's code, servers, and models are to the right of the line.](images/diagrams/ch07-what-is-an-api.svg){#fig-what-is-an-api fig-alt="Three columns. On the left, your server: your app, calling Claude. In the middle, the Claude API at api.anthropic.com, drawn as a card listing its endpoints, each a method and an address: GET /v1/models, POST /v1/files, GET /v1/files, POST /v1/messages, POST /v1/skills, GET /v1/skills, and more. Under the card: published in the docs. On the right, past a dashed line, the part behind the API, hidden from callers: Anthropic's code, servers, and models, which can change without changing the endpoints. Your server sends one request, in a box labeled request, to the highlighted endpoint, POST /v1/messages. The request is labeled part by part: the endpoint; an API key header, x-api-key: sk-ant-api03-..., which identifies whose account is calling; the API version header, anthropic-version: 2023-06-01; and the input, a JSON body with model claude-sonnet-5-5, max_tokens 200, and messages holding one user message, Hello, Claude. The response, in a box labeled response, comes back from the same endpoint with status 200 OK and the output, a JSON body with role assistant and content holding one text block, Hello! How can I help?" width="100%"}
+
+@fig-what-is-an-api shows a real API: the one your server calls to use Claude. Anthropic
+publishes a list of endpoints in its documentation, and each entry is a method and an address.
+To use one, your server sends a request to that address with the inputs the documentation
+names: an **API key** that says whose account is calling (and gets the bill), a version, and a
+body in JSON with the model, the most tokens the reply may use, and the message. The answer
+comes back in the form the documentation describes. Your server never sees Anthropic's code,
+servers, or models. Anthropic can change any of them, and your code keeps working as long as
+the endpoints, their inputs, and their outputs stay the same. The documentation states those
+three things, so it is the contract between the two sides. Stripe, Resend, and Supabase work the same way. Claude Code is a caller too: each time it asks the model for its next step, it sends a request to Anthropic's Messages API (or to a cloud provider's copy of it, when a company runs Claude Code through Amazon or Google). So does
+your own app: each route in `app/api/`, such as `POST /api/tasks`, is an endpoint, and the
+list of them is your server's API, which your browser calls.
 
 ![Image source: Adityagaba via Medium](images/architecture.png){fig-alt="A diagram split into a front-end half and a back-end half. The front end shows a web app and a mobile app, with HTML, CSS, JavaScript, and Node logos beneath. An arrow connects them to a server in the back-end half, which connects in turn to a database, an API, and language logos for Java, Python, C plus plus, and PHP."}
 
@@ -265,6 +282,246 @@ Pick one feature in your product. Write the sequence as the diagram above does, 
 hop: what the user does, what the browser sends, what the server checks, what the database
 stores, what comes back. Then ask Claude Code to trace the same feature through your actual
 code and compare. Where the two differ, find out which one is right.
+:::
+
+<!-- learn -->
+
+## How the Code Works
+
+**The model:** the screen is computed from data. The code never edits the screen directly. It
+changes the data, called **state**, and React computes the screen again from the new state.
+
+The code an agent writes for a web app is built from about a dozen ideas. The agent types them;
+your job is to recognize each one when you read its code, so you can say what a file does and
+ask a precise question when something is wrong. This section uses React,
+the library this course builds with and the most widely used one. Svelte, Vue, and Angular are
+built on the same ideas (components, state, events) with different syntax, so what you learn
+here carries over.
+
+#### Words used in this section
+
+| Word | What it means | In the to-do app |
+|---|---|---|
+| **Value** | One piece of data: text (a **string**), a number, or true or false (a **boolean**) | `"Buy groceries"`, `123`, `false` |
+| **Variable** | A name that holds a value so later lines can use it. `const` means the name will not be pointed at a different value | `const text = "Buy groceries"` |
+| **Function** | Named steps that take inputs and return an output. A line of code runs a function by **calling** it: its name followed by parentheses | `addTask()` |
+| **Object** | Labeled values that describe one thing. JSON is an object written out as text | `{ task_text: "Buy groceries", completed: false }` |
+| **Array** (list) | Values in order, usually objects of the same shape | `[ { task_text: "Call dentist" }, { task_text: "Buy groceries" } ]` |
+| **Type** | A TypeScript label for the shape a value must have. TypeScript checks it before the code runs | `type Task = { id: number; task_text: string; completed: boolean }` |
+| **Component** | A function that returns a piece of the screen. Its name starts with a capital letter, and components are placed inside other components | `TaskList` returns the whole list; `TaskItem` returns one row |
+| **Props** | The inputs a component receives from the component that places it | `TaskItem` receives one `task` |
+| **State** | Data a component keeps while the page is open, which can change. Changing it through React makes React draw the component again | `tasks` (the list); `text` (what is typed in the box) |
+| **Render** | React calling your components to compute what the screen should show, then changing the page to match | After every state change |
+| **Event, handler** | Something the user does (a click, a keystroke), and the function that runs when it happens | A click on Add runs `addTask` |
+| **`async`, `await`** | `async` marks a function that waits for something slow, such as a reply from the server. `await` is the line where it waits. The rest of the page keeps working meanwhile | `await fetch("/api/tasks", ...)` |
+| **Module, import, export** | Each file is a module. It **exports** the pieces other files may use, and those files **import** them by name | `TaskList.tsx` imports `TaskItem` |
+| **`"use client"`** | A line at the top of a file telling Next.js to send that file's code to the browser | The first line of `TaskList.tsx` |
+
+### One component, annotated
+
+Here is the component behind the to-do list, close to what an agent writes. The numbers match
+the notes below it.
+
+```typescript
+"use client"; // <1>
+
+import { useState } from "react"; // <2>
+import { TaskItem } from "@/components/TaskItem"; // <2>
+
+type Task = { id: number; task_text: string; completed: boolean }; // <3>
+
+export function TaskList({ initialTasks }: { initialTasks: Task[] }) { // <4>
+  const [tasks, setTasks] = useState(initialTasks); // <5>
+  const [text, setText] = useState(""); // <5>
+
+  async function addTask() { // <6>
+    const response = await fetch("/api/tasks", { // <7>
+      method: "POST",
+      body: JSON.stringify({ task_text: text }),
+    });
+    const { task } = await response.json(); // <7>
+    setTasks([...tasks, task]); // <8>
+    setText(""); // <8>
+  }
+
+  return ( // <9>
+    <div>
+      <input value={text} onChange={(e) => setText(e.target.value)} />
+      <button onClick={addTask}>Add</button>
+      <ul>
+        {tasks.map((task) => <TaskItem key={task.id} task={task} />)}
+      </ul>
+    </div>
+  );
+}
+```
+
+1. **`"use client"`.** This file has state and responds to clicks, so it must run in the
+   browser. Without this line, Next.js treats the file as server code, and the build stops with
+   an error, because server code cannot hold state or respond to clicks.
+2. **Imports.** `useState` comes from React, a package installed in `node_modules`. `TaskItem`
+   comes from another file in this project; `@/` is a shortcut for the project's top folder.
+3. **A type.** The shape of one task, matching the columns of the `tasks` table. If a line tries
+   to read `task.title`, TypeScript reports the mistake before the app runs, because a task has
+   no `title`.
+4. **A component with a prop.** `TaskList` is a function. The page that places it passes in
+   `initialTasks`, the tasks already saved.
+5. **State.** `useState` returns two things: the current value (`tasks`) and the function that
+   changes it (`setTasks`). `text` holds whatever is typed in the box; the `onChange` handler
+   on the input updates it on every keystroke.
+6. **A handler.** `addTask` is the function that runs when Add is clicked. `async` marks it as
+   one that waits.
+7. **A request, and waiting.** `fetch` sends `POST /api/tasks` to your server with the text as
+   JSON. `await` pauses `addTask` until the reply arrives. The reply holds the saved task,
+   including the `id` the database gave it.
+8. **Changing state.** `setTasks` receives a new array: the old tasks (`...tasks` copies them
+   in) plus the new one. `setText("")` empties the box. Neither line touches the screen.
+9. **The screen, computed from state.** React calls `TaskList` again after every state change.
+   The input shows `text`. The list makes one `TaskItem` for each task in `tasks`.
+   `onClick={addTask}` connects the click to the handler. `key` gives React an id for each row,
+   so it can tell which rows are new.
+
+`TaskItem`, in its own file, is a few lines long: it receives one task as a prop and returns one
+row of the list showing `task.task_text`.
+
+The sign-in token does not appear in this code. With Supabase's setup for Next.js (the
+`@supabase/ssr` package), the token is stored in a **cookie**, a small piece of data the browser
+attaches to every request it sends to your own site, so `POST /api/tasks` carries it
+automatically and your server checks it. Two things are left out to keep the example short: the
+failure checks from Chapter 8 (what the user sees if the save fails) and a pending state on the
+button while `addTask` waits (Chapter 5).
+
+### The loop: state, render, event, state
+
+![Every change on the screen goes around this loop. The click handler never touches the screen: it sends the request, waits for the reply, and changes state (step 4). React then computes the new screen from the new state (step 5), the same way it computed the first one.](images/diagrams/ch07-react-loop.svg){#fig-react-loop fig-alt="Two columns, before the click and after the click, each with a State card above a Screen. Before: state holds tasks with one item, Call dentist, and text holding Buy groceries; React renders it into a screen whose input box shows Buy groceries, an Add button, and a list with Call dentist. Step 1, click: an arrow from the Add button to the click handler, addTask, whose code reads await fetch, setTasks with the old tasks plus the new task, and setText with an empty string. Below a dashed line separating the browser from your server, step 2 sends POST /api/tasks to your server, which saves the task in the database in app/api/tasks/route.ts, and step 3 returns the saved task while addTask waits for this reply. Step 4, setTasks changes state: the arrow goes to the State card after the click, which now holds Call dentist and Buy groceries, with text empty. Step 5, React renders that state into a screen with an empty input box and both tasks in the list. No arrow goes from the handler to the screen." width="100%"}
+
+@fig-react-loop shows the one idea that explains most front-end code: **the screen is a function
+of state**. Given the same state, a component always returns the same screen. So every screen
+your app can show, including the loading, empty, and error screens from Chapter 5, is what React
+computes from some value of state. When a screen is wrong, the question to ask is which state
+produced it, and which line set that state.
+
+::: {.callout-note title="Analogy: a chart in a spreadsheet"}
+A chart redraws whenever a cell it depends on changes. You edit the cells and never the bars.
+State is the cells, components are the formulas, and the screen is the chart. **Where it
+breaks:** a spreadsheet recalculates after any edit. React draws again only when state is
+changed through its setter, such as `setTasks`. A line that adds to the array directly,
+`tasks.push(task)`, changes the data without telling React, so the screen stays as it was.
+:::
+
+**Where each file runs.** `TaskList` runs in the browser because of `"use client"`. The page
+that places it, `app/tasks/page.tsx`, has no such line, so Next.js runs it on the server: in
+Next.js, pages and layouts are **server components** unless marked otherwise
+[@nextjs2026servercomponents]. A server component can read secret keys and query the database
+before the page is sent, and its code never reaches the browser. It cannot hold state or respond
+to clicks. A **client component** (a file marked `"use client"`) can, and its code is downloaded
+to every user, along with every file it imports. This is the three-places model from the start
+of the chapter, applied one file at a time.
+
+That last point decides where keys may go. Next.js copies only environment variables whose names
+start with `NEXT_PUBLIC_` into browser code; any other variable read in a client component comes
+out empty [@nextjs2026servercomponents]. A key typed directly into a client component's code
+gets no such protection: it is downloaded with the file.
+
+**What you recognize, and what the agent handles.**
+
+| You recognize | The agent handles |
+|---|---|
+| Which file is a page, a component, an endpoint, or a helper | Brackets, semicolons, `...`, and the rest of the syntax |
+| What state a screen depends on, and every value that state can take (empty, loading, error, full) | Writing the `useState` lines and the setters |
+| Whether a file runs in the browser or on the server, from `"use client"` and its folder | Imports, exports, and types |
+| Where the code waits on a request, and what happens if the request fails | The details of each `fetch` call |
+
+::: {.callout-tip title="Try it"}
+1. Ask Claude Code: *"Open the component for my app's main screen. List its state, its props,
+   its event handlers, and every request it sends, with line numbers. Then list each value the
+   state can take and what the screen shows for each."* Check two of the line numbers yourself.
+2. Predict: a handler adds a task with `tasks.push(newTask)`. The request succeeds and the row
+   is in the database, but nothing new appears on the screen until the page is reloaded. Why?
+:::
+
+::: {.callout-note collapse="true" title="Answer to 2"}
+`push` changes the array in place without calling `setTasks`, so React is never told that state
+changed and does not render again. Reloading the page works because the page loads the tasks
+from the database again. The fix is `setTasks([...tasks, newTask])`.
+:::
+
+<!-- learn -->
+
+## The Files in a Next.js Project
+
+**The model:** in a Next.js project, a file's name and folder tell you what it does and where it
+runs. Learn the conventions once and you can find your way around any Next.js repo, including
+the one the agent built for you.
+
+Most of these files come from `create-next-app`, the command that starts a Next.js project. Its
+defaults in the current version (Next.js 16) are TypeScript, the App Router (the `app/`
+folder), Tailwind CSS, ESLint, and an `AGENTS.md` file [@nextjs2026installation]. If your app
+lives in the `product/` folder of your course repo, these files sit inside that folder.
+
+**Folders are addresses.** Inside `app/`, the path to a `page.tsx` is the address of a screen,
+and the path to a `route.ts` is the address of an endpoint. `app/page.tsx` is the home page at
+`/`, `app/tasks/page.tsx` is the page at `/tasks`, and `app/api/tasks/route.ts` answers requests
+to `/api/tasks`. A folder becomes reachable only when it holds one of those two files, and a
+`layout.tsx` wraps every page in its folder and the folders below it
+[@nextjs2026projectstructure]. A `route.ts` exports functions named after request methods
+(`GET`, `POST`, `PATCH`, `DELETE`), and each one answers that method [@nextjs2026route].
+
+![The files of a to-do app built with Next.js and Supabase, grouped by what they do and placed in the column where each one runs. Files in the shaded column are downloaded to the user. The three marked "not in git" are kept out of your repo by .gitignore. Your editor lists the same files alphabetically.](images/diagrams/ch07-project-files.svg){#fig-project-files fig-alt="A list of the files in a Next.js and Supabase to-do app, grouped by what they do, with four columns showing where each one runs: the browser, which the user can read; the server, on Vercel; the database, on Supabase; and tools only, not the running app. A dashed line separates the browser column from the rest. Screens: app/layout.tsx, app/page.tsx, and app/tasks/page.tsx run on the server. Server endpoints: app/api/tasks/route.ts and proxy.ts run on the server. Components: components/TaskList.tsx, marked use client, and components/TaskItem.tsx run in the browser. Helper code: lib/supabase/client.ts runs in the browser and lib/supabase/server.ts on the server. Static files: public/logo.svg goes to the browser. Database schema: supabase/migrations/ runs in the database. Tests: tests/tasks.test.ts, tools only. Configuration: next.config.ts, tsconfig.json, and .gitignore, tools only. Dependencies: package.json and package-lock.json, tools only; node_modules/, not in git, runs in the browser and on the server. Build output: .next/, not in git, browser and server. Secrets: .env.local, not in git, server. For the agent: CLAUDE.md, AGENTS.md, and .claude/, tools only. For people: README.md, tools only." width="100%"}
+
+| File or folder | What it holds | Where it runs | In git? | Who usually edits it |
+|---|---|---|---|---|
+| `app/layout.tsx` | The frame around every page: the `<html>` and `<body>` tags, fonts, the header and navigation | Server | Yes | The agent |
+| `app/page.tsx`, `app/tasks/page.tsx` | One screen each, at the address its folder names | Server, unless the file starts with `"use client"` | Yes | The agent |
+| `app/api/tasks/route.ts` | An endpoint: one function per request method it answers | Server only | Yes | The agent |
+| `proxy.ts` | Code that runs before matching requests reach a page, often to send signed-out users to the sign-in page. Called `middleware.ts` before Next.js 16 [@nextjs2026proxy] | Server | Yes | The agent |
+| `components/` | Components used on more than one screen, such as `TaskList` and `TaskItem`. shadcn/ui puts its components in `components/ui/` (Chapter 5) | Browser if the file, or a file that imports it, says `"use client"`; otherwise server | Yes | The agent |
+| `lib/` | Helper code that is not a component, such as the Supabase connection: `client.ts` for browser code, `server.ts` for server code | Wherever the file that imports it runs | Yes | The agent |
+| `public/` | Files sent as they are: `public/logo.svg` is served at `/logo.svg` | Downloaded by the browser | Yes | You or the agent |
+| `supabase/migrations/` | One SQL file per change to the tables, such as `20261001120000_create_tasks.sql` (Chapter 8) | In the database, when the migration is applied | Yes | The agent writes; you review and apply |
+| `tests/`, `*.test.ts` | Tests (Chapter 9) | On your laptop and in automated checks, run by the test runner | Yes | The agent |
+| `next.config.ts` | Next.js settings, such as redirects and which sites images may load from | Read by Next.js when it builds and starts the app | Yes | The agent |
+| `tsconfig.json`, `eslint.config.mjs` | Settings for TypeScript (including what `@/` points to) and for the linter (Chapter 9) | Read by those tools | Yes | Created by `create-next-app`; rarely edited |
+| `.gitignore` | The files git must not track, including `node_modules/`, `.next/`, and `.env*` | Read by git | Yes | Created by `create-next-app`; check it |
+| `package.json` | The packages the app depends on, and named commands such as `dev`, `build`, and `test` | Read by npm, on your laptop and in Vercel's build | Yes | npm, when the agent installs a package |
+| `package-lock.json` | The exact version of every package, including the packages those packages use, so every install gets the same code | Read by npm | Yes | npm only; never by hand |
+| `node_modules/` | The installed packages themselves, often hundreds of folders | Their code runs in the browser and on the server, wherever it is imported | No. `npm install` rebuilds it from `package-lock.json` | npm |
+| `.next/` | The compiled code from the last `npm run dev` or `npm run build` | Served by Next.js on your laptop. Vercel builds its own copy | No | Next.js |
+| `.env.local` | Keys and settings for your laptop, such as `NEXT_PUBLIC_SUPABASE_URL` and the Supabase secret key | Loaded by your server when you run `npm run dev`. Names starting with `NEXT_PUBLIC_` are also copied into browser code | No. On Vercel, the same names are set in the project's settings | You |
+| `CLAUDE.md` | Instructions Claude Code reads at the start of every session (Chapter 2) | Read by Claude Code | Yes | You and the agent |
+| `AGENTS.md` | Instructions for coding agents from Next.js, pointing them to the documentation for the installed version, which is copied into `node_modules/next/dist/docs/` [@nextjs2026aiagents] | Read by coding agents. Claude Code reads it when `CLAUDE.md` contains the line `@AGENTS.md` | Yes | Next.js writes its part; you may add to it |
+| `.claude/` | This project's skills, hooks, and settings (Chapters 1 and 2) | Read by Claude Code | Yes, except `settings.local.json` | You and the agent |
+| `README.md` | What the project is and how to run it, for people | Read by people | Yes | You |
+
+**How the groups map to the three places.** The shaded column in @fig-project-files is the
+browser from @fig-where-code-runs: every file there is downloaded to the user's device, where
+the user can read it. The server column is your code on Vercel, which holds the secret keys.
+The database column holds a single folder, because the database runs the SQL in
+`supabase/migrations/` and nothing else from your repo. The files in the last column are used to
+build, test, and edit the app, and none of them is part of the app a user reaches. When you
+direct the agent, naming the file is often the clearest instruction you can give: "put this
+check in `app/api/tasks/route.ts`" leaves no doubt about where it runs.
+
+**Three files are kept out of git, each for its own reason.** `node_modules/` is large and can
+be rebuilt exactly from `package-lock.json`, so the lock file is committed instead. `.next/` is
+rebuilt on every run. `.env.local` holds secrets, and a secret committed to a public repo is
+published. If `git status` ever lists one of these three as a new file, `.gitignore` is missing
+a line; fix that before you commit.
+
+::: {.callout-tip title="Try it"}
+1. Open your repo's file list. For five files, name the row of the table each belongs to and the
+   column of @fig-project-files where it runs. Then ask Claude Code: *"Which files in this
+   project are ignored by git, and why is each one ignored?"*
+2. Predict: you find a line in `components/TaskList.tsx` that reads
+   `const key = "sb_secret_..."`. Who can read that key, and what should you do?
+:::
+
+::: {.callout-note collapse="true" title="Answer to 2"}
+Anyone who opens the app. `TaskList.tsx` starts with `"use client"`, so its code, including the
+key, is downloaded to every visitor's browser. Replace the key in the Supabase dashboard at
+once, since the old one must be treated as public. Then move the work that needed it into a
+server file such as `app/api/tasks/route.ts`, which reads the new key from an environment
+variable set in `.env.local` and in Vercel's settings.
 :::
 
 <!-- learn -->
@@ -467,6 +724,19 @@ Chapter 8 has a drill for testing it.
 - **Backend / server**: code that runs on a computer you control.
 - **Database**: durable storage; what survives a refresh.
 - **API and endpoint**: the requests a place agrees to answer, each at its own address.
+- **The screen is a function of state**: code changes state through its setter, and React
+  computes the screen again from the new state. The handler never edits the screen.
+- **Component and props**: a function that returns a piece of the screen, and the inputs it
+  receives.
+- **Event and handler**: a user action, and the function that runs when it happens.
+- **`async` and `await`**: a function that waits for a slow reply, and the line where it waits.
+- **Module, import, export**: each file shares named pieces that other files import.
+- **Server component vs. client component**: pages and layouts run on the server by default;
+  a file marked `"use client"` is downloaded to the browser, with everything it imports.
+- **File conventions**: in `app/`, `page.tsx` is a screen, `route.ts` is an endpoint, and the
+  folder path is the address; `layout.tsx` wraps the pages below it.
+- **Not in git**: `node_modules/` (rebuilt from `package-lock.json`), `.next/` (rebuilt on
+  every run), and `.env.local` (secrets).
 - **Full stack**: all of the above, and now all of it is yours.
 - **Stack choice**: pick the boring, well-documented option; agents write it better.
 - **Publishable (anon) key vs. secret (service role) key**: one is public by design and limited

@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1046" role="img" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+  <title>The files of a Next.js and Supabase project, and where each one runs</title>
+  <desc>A list of the files in a Next.js and Supabase to-do app, grouped by what they do, with four columns showing where each one runs: the browser, which the user can read; the server, on Vercel; the database, on Supabase; and tools only, not the running app. A dashed line separates the browser column from the rest. Screens: app/layout.tsx, app/page.tsx, and app/tasks/page.tsx run on the server. Server endpoints: app/api/tasks/route.ts and proxy.ts run on the server. Components: components/TaskList.tsx, marked use client, and components/TaskItem.tsx run in the browser. Helper code: lib/supabase/client.ts runs in the browser and lib/supabase/server.ts on the server. Static files: public/logo.svg goes to the browser. Database schema: supabase/migrations/ runs in the database. Tests: tests/tasks.test.ts, tools only. Configuration: next.config.ts, tsconfig.json, and .gitignore, tools only. Dependencies: package.json and package-lock.json, tools only; node_modules/, not in git, runs in the browser and on the server. Build output: .next/, not in git, browser and server. Secrets: .env.local, not in git, server. For the agent: CLAUDE.md, AGENTS.md, and .claude/, tools only. For people: README.md, tools only.</desc>
+  <rect x="0" y="0" width="1000" height="1046" rx="8" fill="#FAFBFC"/>
+    <rect x="568" y="16" width="100" height="1014" rx="8" fill="#E6EEF7" opacity="0.7"/>
+  <line x1="672" y1="20" x2="672" y2="1026" stroke="#0057B8" stroke-width="2" stroke-dasharray="2 6" stroke-linecap="round"/>
+  <text x="618" y="56" font-size="17" font-weight="700" fill="#0057B8" text-anchor="middle">Browser</text>
+  <text x="618" y="80" font-size="15" font-weight="400" fill="#0057B8" text-anchor="middle">user can read</text>
+  <text x="724" y="56" font-size="17" font-weight="700" fill="#002E5D" text-anchor="middle">Server</text>
+  <text x="724" y="80" font-size="15" font-weight="400" fill="#5A6672" text-anchor="middle">Vercel</text>
+  <text x="822" y="56" font-size="17" font-weight="700" fill="#002E5D" text-anchor="middle">Database</text>
+  <text x="822" y="80" font-size="15" font-weight="400" fill="#5A6672" text-anchor="middle">Supabase</text>
+  <text x="922" y="56" font-size="17" font-weight="700" fill="#002E5D" text-anchor="middle">Tools only</text>
+  <text x="922" y="80" font-size="15" font-weight="400" fill="#5A6672" text-anchor="middle">not the app</text>
+  <text x="30" y="148" font-size="14.5" font-weight="700" fill="#5A6672" text-anchor="start" letter-spacing="1">SCREENS</text>
+  <text x="214" y="148" font-size="16" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, monospace">app/layout.tsx</text>
+  <line x1="360.82000000000005" y1="143.0" x2="710" y2="143.0" stroke="#E3E7EB" stroke-width="1.25" stroke-dasharray="1 4" stroke-linecap="round"/>
+  <circle cx="724" cy="143.0" r="7.5" fill="#002E5D"/>
+  <text x="214" y="178" font-size="16" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, monospace">app/page.tsx</text>
+  <line x1="341.56" y1="173.0" x2="710" y2="173.0" stroke="#E3E7EB" stroke-width="1.25" stroke-dasharray="1 4" stroke-linecap="round"/>
+  <circle cx="724" cy="173.0" r="7.5" fill="#002E5D"/>
+  <text x="214" y="208" font-size="16" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, monospace">app/tasks/page.tsx</text>
+  <line x1="399.34000000000003" y1="203.0" x2="710" y2="203.0" stroke="#E3E7EB" stroke-width="1.25" stroke-dasharray="1 4" stroke-linecap="round"/>
+  <circle cx="724" cy="203.0" r="7.5" fill="#002E5D"/>
+  <line x1="30" y1="225.0" x2="970" y2="225.0" stroke="#E9ECEF" stroke-width="1.5"/>
+  <text x="30" y="252" font-size="14.5" font-weight="700" fill="#5A6672" text-anchor="start" letter-spacing="1">SERVER ENDPOINTS</text>
+  <text x="214" y="252" font-size="16" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, monospace">app/api/tasks/route.ts</text>
+  <line x1="437.86" y1="247.0" x2="710" y2="247.0" stroke="#E3E7EB" stroke-width="1.25" stroke-dasharray="1 4" stroke-linecap="round"/>
+  <circle cx="724" cy="247.0" r="7.5" fill="#002E5D"/>
+  <text x="214" y="282" font-size="16" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, monospace">proxy.ts</text>
+  <line x1="303.04" y1="277.0" x2="710" y2="277.0" stroke="#E3E7EB" stroke-width="1.25" stroke-dasharray="1 4" stroke-linecap="round"/>
+  <circle cx="724" cy="277.0" r="7.5" fill="#002E5D"/>
+  <line x1="30" y1="299.0" x2="970" y2="299.0" stroke="#E9ECEF" stroke-width="1.5"/>
+  <text x="30" y="326" font-size="14.5" font-weight="700" fill="#5A6672" text-anchor="start" letter-spacing="1">COMPONENTS</text>
+  <text x="214" y="326" font-size="16" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, monospace">components/TaskList.tsx</text>
+  <text x="447.49" y="326" font-size="15" font-weight="400" fill="#0057B8" text-anchor="start" font-family="Menlo, Consolas, monospace">"use client"</text>
+  <line x1="567.85" y1="321.0" x2="604" y2="321.0" stroke="#E3E7EB" stroke-width="1.25" stroke-dasharray="1 4" stroke-linecap="round"/>
+  <circle cx="618" cy="321.0" r="7.5" fill="#0057B8"/>
+  <text x="214" y="356" font-size="16" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, monospace">components/TaskItem.tsx</text>
+  <line x1="447.49" y1="351.0" x2="604" y2="351.0" stroke="#E3E7EB" stroke-width="1.25" stroke-dasharray="1 4" stroke-linecap="round"/>
+  <circle cx="618" cy="351.0" r="7.5" fill="#0057B8"/>
+  <line x1="30" y1="373.0" x2="970" y2="373.0" stroke="#E9ECEF" stroke-width="1.5"/>
+  <text x="30" y="400" font-size="14.5" font-weight="700" fill="#5A6672" text-anchor="start" letter-spacing="1">HELPER CODE</text>
+  <text x="214" y="400" font-size="16" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, monospace">lib/supabase/client.ts</text>
+  <line x1="437.86" y1="395.0" x2="604" y2="395.0" stroke="#E3E7EB" stroke-width="1.25" stroke-dasharray="1 4" stroke-linecap="round"/>
+  <circle cx="618" cy="395.0" r="7.5" fill="#0057B8"/>
+  <text x="214" y="430" font-size="16" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, monospace">lib/supabase/server.ts</text>
+  <line x1="437.86" y1="425.0" x2="710" y2="425.0" stroke="#E3E7EB" stroke-width="1.25" stroke-dasharray="1 4" stroke-linecap="round"/>
+  <circle cx="724" cy="425.0" r="7.5" fill="#002E5D"/>
+  <line x1="30" y1="447.0" x2="970" y2="447.0" stroke="#E9ECEF" stroke-width="1.5"/>
+  <text x="30" y="474" font-size="14.5" font-weight="700" fill="#5A6672" text-anchor="start" letter-spacing="1">STATIC FILES</text>
+  <text x="214" y="474" font-size="16" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, monospace">public/logo.svg</text>
+  <line x1="370.45000000000005" y1="469.0" x2="604" y2="469.0" stroke="#E3E7EB" stroke-width="1.25" stroke-dasharray="1 4" stroke-linecap="round"/>
+  <circle cx="618" cy="469.0" r="7.5" fill="#0057B8"/>
+  <line x1="30" y1="491.0" x2="970" y2="491.0" stroke="#E9ECEF" stroke-width="1.5"/>
+  <text x="30" y="518" font-size="14.5" font-weight="700" fill="#5A6672" text-anchor="start" letter-spacing="1">DATABASE SCHEMA</text>
+  <text x="214" y="518" font-size="16" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, monospace">supabase/migrations/</text>
+  <line x1="418.6" y1="513.0" x2="808" y2="513.0" stroke="#E3E7EB" stroke-width="1.25" stroke-dasharray="1 4" stroke-linecap="round"/>
+  <circle cx="822" cy="513.0" r="7.5" fill="#002E5D"/>
+  <line x1="30" y1="535.0" x2="970" y2="535.0" stroke="#E9ECEF" stroke-width="1.5"/>
+  <text x="30" y="562" font-size="14.5" font-weight="700" fill="#5A6672" text-anchor="start" letter-spacing="1">TESTS</text>
+  <text x="214" y="562" font-size="16" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, monospace">tests/tasks.test.ts</text>
+  <line x1="408.97" y1="557.0" x2="908" y2="557.0" stroke="#E3E7EB" stroke-width="1.25" stroke-dasharray="1 4" stroke-linecap="round"/>
+  <circle cx="922" cy="557.0" r="7.5" fill="#002E5D"/>
+  <line x1="30" y1="579.0" x2="970" y2="579.0" stroke="#E9ECEF" stroke-width="1.5"/>
+  <text x="30" y="606" font-size="14.5" font-weight="700" fill="#5A6672" text-anchor="start" letter-spacing="1">CONFIGURATION</text>
+  <text x="214" y="606" font-size="16" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, monospace">next.config.ts</text>
+  <line x1="360.82000000000005" y1="601.0" x2="908" y2="601.0" stroke="#E3E7EB" stroke-width="1.25" stroke-dasharray="1 4" stroke-linecap="round"/>
+  <circle cx="922" cy="601.0" r="7.5" fill="#002E5D"/>
+  <text x="214" y="636" font-size="16" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, monospace">tsconfig.json</text>
+  <line x1="351.19" y1="631.0" x2="908" y2="631.0" stroke="#E3E7EB" stroke-width="1.25" stroke-dasharray="1 4" stroke-linecap="round"/>
+  <circle cx="922" cy="631.0" r="7.5" fill="#002E5D"/>
+  <text x="214" y="666" font-size="16" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, monospace">.gitignore</text>
+  <line x1="322.3" y1="661.0" x2="908" y2="661.0" stroke="#E3E7EB" stroke-width="1.25" stroke-dasharray="1 4" stroke-linecap="round"/>
+  <circle cx="922" cy="661.0" r="7.5" fill="#002E5D"/>
+  <line x1="30" y1="683.0" x2="970" y2="683.0" stroke="#E9ECEF" stroke-width="1.5"/>
+  <text x="30" y="710" font-size="14.5" font-weight="700" fill="#5A6672" text-anchor="start" letter-spacing="1">DEPENDENCIES</text>
+  <text x="214" y="710" font-size="16" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, monospace">package.json</text>
+  <line x1="341.56" y1="705.0" x2="908" y2="705.0" stroke="#E3E7EB" stroke-width="1.25" stroke-dasharray="1 4" stroke-linecap="round"/>
+  <circle cx="922" cy="705.0" r="7.5" fill="#002E5D"/>
+  <text x="214" y="740" font-size="16" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, monospace">package-lock.json</text>
+  <line x1="389.71000000000004" y1="735.0" x2="908" y2="735.0" stroke="#E3E7EB" stroke-width="1.25" stroke-dasharray="1 4" stroke-linecap="round"/>
+  <circle cx="922" cy="735.0" r="7.5" fill="#002E5D"/>
+  <text x="214" y="770" font-size="16" font-weight="400" fill="#8A939C" text-anchor="start" font-family="Menlo, Consolas, monospace">node_modules/</text>
+  <rect x="351.19" y="755" width="82" height="22" rx="11" fill="#FFFFFF" stroke="#B9C2CB" stroke-width="1.25"/>
+  <text x="392.19" y="771" font-size="14.5" font-weight="600" fill="#5A6672" text-anchor="middle">not in git</text>
+  <line x1="449.19" y1="765.0" x2="604" y2="765.0" stroke="#E3E7EB" stroke-width="1.25" stroke-dasharray="1 4" stroke-linecap="round"/>
+  <circle cx="618" cy="765.0" r="7.5" fill="#0057B8"/>
+  <circle cx="724" cy="765.0" r="7.5" fill="#002E5D"/>
+  <line x1="30" y1="787.0" x2="970" y2="787.0" stroke="#E9ECEF" stroke-width="1.5"/>
+  <text x="30" y="814" font-size="14.5" font-weight="700" fill="#5A6672" text-anchor="start" letter-spacing="1">BUILD OUTPUT</text>
+  <text x="214" y="814" font-size="16" font-weight="400" fill="#8A939C" text-anchor="start" font-family="Menlo, Consolas, monospace">.next/</text>
+  <rect x="283.78" y="799" width="82" height="22" rx="11" fill="#FFFFFF" stroke="#B9C2CB" stroke-width="1.25"/>
+  <text x="324.78" y="815" font-size="14.5" font-weight="600" fill="#5A6672" text-anchor="middle">not in git</text>
+  <line x1="381.78" y1="809.0" x2="604" y2="809.0" stroke="#E3E7EB" stroke-width="1.25" stroke-dasharray="1 4" stroke-linecap="round"/>
+  <circle cx="618" cy="809.0" r="7.5" fill="#0057B8"/>
+  <circle cx="724" cy="809.0" r="7.5" fill="#002E5D"/>
+  <line x1="30" y1="831.0" x2="970" y2="831.0" stroke="#E9ECEF" stroke-width="1.5"/>
+  <text x="30" y="858" font-size="14.5" font-weight="700" fill="#5A6672" text-anchor="start" letter-spacing="1">SECRETS</text>
+  <text x="214" y="858" font-size="16" font-weight="400" fill="#8A939C" text-anchor="start" font-family="Menlo, Consolas, monospace">.env.local</text>
+  <rect x="322.3" y="843" width="82" height="22" rx="11" fill="#FFFFFF" stroke="#B9C2CB" stroke-width="1.25"/>
+  <text x="363.3" y="859" font-size="14.5" font-weight="600" fill="#5A6672" text-anchor="middle">not in git</text>
+  <line x1="420.3" y1="853.0" x2="710" y2="853.0" stroke="#E3E7EB" stroke-width="1.25" stroke-dasharray="1 4" stroke-linecap="round"/>
+  <circle cx="724" cy="853.0" r="7.5" fill="#002E5D"/>
+  <line x1="30" y1="875.0" x2="970" y2="875.0" stroke="#E9ECEF" stroke-width="1.5"/>
+  <text x="30" y="902" font-size="14.5" font-weight="700" fill="#5A6672" text-anchor="start" letter-spacing="1">FOR THE AGENT</text>
+  <text x="214" y="902" font-size="16" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, monospace">CLAUDE.md</text>
+  <line x1="312.67" y1="897.0" x2="908" y2="897.0" stroke="#E3E7EB" stroke-width="1.25" stroke-dasharray="1 4" stroke-linecap="round"/>
+  <circle cx="922" cy="897.0" r="7.5" fill="#002E5D"/>
+  <text x="214" y="932" font-size="16" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, monospace">AGENTS.md</text>
+  <line x1="312.67" y1="927.0" x2="908" y2="927.0" stroke="#E3E7EB" stroke-width="1.25" stroke-dasharray="1 4" stroke-linecap="round"/>
+  <circle cx="922" cy="927.0" r="7.5" fill="#002E5D"/>
+  <text x="214" y="962" font-size="16" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, monospace">.claude/</text>
+  <line x1="303.04" y1="957.0" x2="908" y2="957.0" stroke="#E3E7EB" stroke-width="1.25" stroke-dasharray="1 4" stroke-linecap="round"/>
+  <circle cx="922" cy="957.0" r="7.5" fill="#002E5D"/>
+  <line x1="30" y1="979.0" x2="970" y2="979.0" stroke="#E9ECEF" stroke-width="1.5"/>
+  <text x="30" y="1006" font-size="14.5" font-weight="700" fill="#5A6672" text-anchor="start" letter-spacing="1">FOR PEOPLE</text>
+  <text x="214" y="1006" font-size="16" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, monospace">README.md</text>
+  <line x1="312.67" y1="1001.0" x2="908" y2="1001.0" stroke="#E3E7EB" stroke-width="1.25" stroke-dasharray="1 4" stroke-linecap="round"/>
+  <circle cx="922" cy="1001.0" r="7.5" fill="#002E5D"/>
+</svg>

@@ -1,0 +1,114 @@
+<svg viewBox="0 0 1000 676" xmlns="http://www.w3.org/2000/svg" role="img" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+<title>What an API is</title>
+<desc>Three columns. On the left, your server: your app, calling Claude. In the middle, the Claude API at api.anthropic.com, drawn as a card listing its endpoints, each a method and an address: GET /v1/models, POST /v1/files, GET /v1/files, POST /v1/messages, POST /v1/skills, GET /v1/skills, and more. Under the card: published in the docs. On the right, past a dashed line, the part behind the API, hidden from callers: Anthropic&#x27;s code, servers, and models, which can change without changing the endpoints. Your server sends one request, labeled request, to the highlighted endpoint, POST /v1/messages. The request is labeled part by part: the endpoint; an API key header, x-api-key: sk-ant-api03-..., which identifies whose account is calling; the API version header, anthropic-version: 2023-06-01; and the input, a JSON body with model claude-sonnet-5-5, max_tokens 200, and messages holding one user message, Hello, Claude. The response, labeled response, comes back from the same endpoint with status 200 OK and the output, a JSON body with role assistant and content holding one text block, Hello! How can I help?</desc>
+<defs>
+<linearGradient id="nav" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0E3F6A"/><stop offset="1" stop-color="#002E5D"/></linearGradient>
+<linearGradient id="hl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F1F6FC"/><stop offset="1" stop-color="#E2ECF8"/></linearGradient>
+<filter id="sh" x="-10%" y="-10%" width="120%" height="130%"><feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#0A2E4D" flood-opacity="0.13"/></filter>
+<pattern id="hatch" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="10" height="10" fill="#EEF1F4"/><line x1="0" y1="0" x2="0" y2="10" stroke="#E2E6EB" stroke-width="4"/></pattern>
+<marker id="aB" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#0057B8"/></marker>
+<marker id="aG" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#5A6672"/></marker>
+</defs>
+<rect width="1000" height="676" rx="8" fill="#FAFBFC"/>
+<circle cx="150" cy="70" r="31" fill="#E6EEF7"/>
+<g transform="translate(135,55) scale(1.25)" fill="none" stroke="#002E5D" stroke-width="1.76" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="8" x="2" y="2" rx="2" ry="2" />
+  <rect width="20" height="8" x="2" y="14" rx="2" ry="2" />
+  <line x1="6" x2="6.01" y1="6" y2="6" />
+  <line x1="6" x2="6.01" y1="18" y2="18" /></g>
+<text x="150" y="131" font-size="19" font-weight="700" fill="#002E5D" text-anchor="middle" xml:space="preserve">Your server</text>
+<text x="150" y="153" font-size="15" font-weight="400" fill="#5A6672" text-anchor="middle" xml:space="preserve">your app, calling Claude</text>
+<circle cx="695" cy="70" r="31" fill="#E6EEF7"/>
+<g transform="translate(680,55) scale(1.25)" fill="none" stroke="#002E5D" stroke-width="1.76" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22v-5" />
+  <path d="M9 8V2" />
+  <path d="M15 8V2" />
+  <path d="M18 8v5a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4V8Z" /></g>
+<text x="695" y="131" font-size="19" font-weight="700" fill="#002E5D" text-anchor="middle" xml:space="preserve">Claude API</text>
+<text x="695" y="153" font-size="15" font-weight="400" fill="#5A6672" text-anchor="middle" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">api.anthropic.com</text>
+<circle cx="900" cy="70" r="31" fill="#E9ECEF"/>
+<g transform="translate(885,55) scale(1.25)" fill="none" stroke="#5A6672" stroke-width="1.76" stroke-linecap="round" stroke-linejoin="round"><path d="M10.733 5.076a10.744 10.744 0 0 1 11.205 6.575 1 1 0 0 1 0 .696 10.747 10.747 0 0 1-1.444 2.49" />
+  <path d="M14.084 14.158a3 3 0 0 1-4.242-4.242" />
+  <path d="M17.479 17.499a10.75 10.75 0 0 1-15.417-5.151 1 1 0 0 1 0-.696 10.75 10.75 0 0 1 4.446-5.143" />
+  <path d="m2 2 20 20" /></g>
+<text x="900" y="131" font-size="19" font-weight="700" fill="#5A6672" text-anchor="middle" xml:space="preserve">Behind the API</text>
+<text x="900" y="153" font-size="15" font-weight="400" fill="#5A6672" text-anchor="middle" xml:space="preserve">hidden from callers</text>
+<rect x="818" y="197" width="157" height="414" fill="url(#hatch)"/>
+<path d="M818 197 H965 a10 10 0 0 1 10 10 V601 a10 10 0 0 1 -10 10 H818" fill="none" stroke="#D9DEE4" stroke-width="1.5"/>
+<rect x="840" y="223" width="120" height="68" rx="8" fill="#F6F7F9" stroke="#D9DEE4" stroke-width="1.5"/>
+<g transform="translate(888,233) scale(1)" fill="none" stroke="#8A939C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 16 4-4-4-4" />
+  <path d="m6 8-4 4 4 4" />
+  <path d="m14.5 4-5 16" /></g>
+<text x="900" y="279" font-size="16" font-weight="500" fill="#5A6672" text-anchor="middle" xml:space="preserve">code</text>
+<rect x="840" y="315" width="120" height="68" rx="8" fill="#F6F7F9" stroke="#D9DEE4" stroke-width="1.5"/>
+<g transform="translate(888,325) scale(1)" fill="none" stroke="#8A939C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="8" x="2" y="2" rx="2" ry="2" />
+  <rect width="20" height="8" x="2" y="14" rx="2" ry="2" />
+  <line x1="6" x2="6.01" y1="6" y2="6" />
+  <line x1="6" x2="6.01" y1="18" y2="18" /></g>
+<text x="900" y="371" font-size="16" font-weight="500" fill="#5A6672" text-anchor="middle" xml:space="preserve">servers</text>
+<rect x="840" y="407" width="120" height="68" rx="8" fill="#F6F7F9" stroke="#D9DEE4" stroke-width="1.5"/>
+<g transform="translate(888,417) scale(1)" fill="none" stroke="#8A939C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z" />
+  <path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z" />
+  <path d="M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4" />
+  <path d="M17.599 6.5a3 3 0 0 0 .399-1.375" />
+  <path d="M6.003 5.125A3 3 0 0 0 6.401 6.5" />
+  <path d="M3.477 10.896a4 4 0 0 1 .585-.396" />
+  <path d="M19.938 10.5a4 4 0 0 1 .585.396" />
+  <path d="M6 18a4 4 0 0 1-1.967-.516" />
+  <path d="M19.967 17.484A4 4 0 0 1 18 18" /></g>
+<text x="900" y="463" font-size="16" font-weight="500" fill="#5A6672" text-anchor="middle" xml:space="preserve">models</text>
+<text x="900" y="521" font-size="15" font-weight="400" fill="#5A6672" text-anchor="middle" xml:space="preserve">can change</text>
+<text x="900" y="541" font-size="15" font-weight="400" fill="#5A6672" text-anchor="middle" xml:space="preserve">without changing</text>
+<text x="900" y="561" font-size="15" font-weight="400" fill="#5A6672" text-anchor="middle" xml:space="preserve">the endpoints</text>
+<line x1="818" y1="40" x2="818" y2="646" stroke="#002E5D" stroke-width="2" stroke-dasharray="7 6"/>
+<rect x="572" y="197" width="246" height="414" rx="10" fill="#FFFFFF" stroke="#B9D0EA" stroke-width="1.5" filter="url(#sh)"/>
+<rect x="588" y="235" width="52" height="26" rx="6" fill="#E6EEF7"/>
+<text x="614" y="253" font-size="15" font-weight="700" fill="#002E5D" text-anchor="middle" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">GET</text>
+<text x="652" y="254" font-size="16" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">/v1/models</text>
+<line x1="586" y1="278.0" x2="804" y2="278.0" stroke="#EDF0F3" stroke-width="1.5"/>
+<rect x="588" y="295" width="52" height="26" rx="6" fill="#E6EEF7"/>
+<text x="614" y="313" font-size="15" font-weight="700" fill="#002E5D" text-anchor="middle" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">POST</text>
+<text x="652" y="314" font-size="16" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">/v1/files</text>
+<line x1="586" y1="338.0" x2="804" y2="338.0" stroke="#EDF0F3" stroke-width="1.5"/>
+<rect x="588" y="355" width="52" height="26" rx="6" fill="#E6EEF7"/>
+<text x="614" y="373" font-size="15" font-weight="700" fill="#002E5D" text-anchor="middle" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">GET</text>
+<text x="652" y="374" font-size="16" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">/v1/files</text>
+<rect x="566" y="403" width="252" height="50" rx="8" fill="url(#hl)" stroke="#0057B8" stroke-width="2"/>
+<rect x="588" y="415" width="52" height="26" rx="6" fill="#0057B8"/>
+<text x="614" y="433" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">POST</text>
+<text x="652" y="434" font-size="16" font-weight="700" fill="#0057B8" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">/v1/messages</text>
+<rect x="588" y="475" width="52" height="26" rx="6" fill="#E6EEF7"/>
+<text x="614" y="493" font-size="15" font-weight="700" fill="#002E5D" text-anchor="middle" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">POST</text>
+<text x="652" y="494" font-size="16" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">/v1/skills</text>
+<line x1="586" y1="518.0" x2="804" y2="518.0" stroke="#EDF0F3" stroke-width="1.5"/>
+<rect x="588" y="535" width="52" height="26" rx="6" fill="#E6EEF7"/>
+<text x="614" y="553" font-size="15" font-weight="700" fill="#002E5D" text-anchor="middle" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">GET</text>
+<text x="652" y="554" font-size="16" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">/v1/skills</text>
+<text x="695" y="599" font-size="18" font-weight="700" fill="#8A939C" text-anchor="middle" xml:space="preserve">...</text>
+<g transform="translate(580,629) scale(0.9167)" fill="none" stroke="#5A6672" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7v14" />
+  <path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z" /></g>
+<text x="612" y="646" font-size="16" font-weight="500" fill="#5A6672" text-anchor="start" xml:space="preserve">published in the docs</text>
+<line x1="150" y1="176" x2="150" y2="616" stroke="#D9DEE4" stroke-width="2"/>
+<rect x="170" y="197" width="364" height="200" rx="8" fill="#FFFFFF" stroke="#002E5D" stroke-width="1.5" filter="url(#sh)"/>
+<text x="518" y="227" text-anchor="end" font-size="15" font-weight="700" letter-spacing="1.3" fill="#0057B8">REQUEST</text>
+<text x="186" y="227" font-size="15" font-weight="700" fill="#0057B8" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">POST /v1/messages</text>
+<text x="136" y="227" font-size="15" font-weight="500" fill="#8A939C" text-anchor="end" xml:space="preserve">endpoint</text>
+<text x="186" y="257" font-size="15" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">x-api-key: sk-ant-api03-...</text>
+<text x="136" y="257" font-size="15" font-weight="500" fill="#8A939C" text-anchor="end" xml:space="preserve">API key</text>
+<text x="186" y="281" font-size="15" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">anthropic-version: 2023-06-01</text>
+<text x="136" y="281" font-size="15" font-weight="500" fill="#8A939C" text-anchor="end" xml:space="preserve">API version</text>
+<text x="186" y="311" font-size="15" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">{ "model": "claude-sonnet-5-5",</text>
+<text x="136" y="311" font-size="15" font-weight="500" fill="#8A939C" text-anchor="end" xml:space="preserve">input</text>
+<text x="186" y="335" font-size="15" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">  "max_tokens": 200,</text>
+<text x="186" y="359" font-size="15" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">  "messages": [{ "role": "user",</text>
+<text x="186" y="383" font-size="15" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">    "content": "Hello, Claude" }] }</text>
+<line x1="150" y1="415" x2="560" y2="415" stroke="#0057B8" stroke-width="2" marker-end="url(#aB)"/>
+<line x1="566" y1="441" x2="158" y2="441" stroke="#5A6672" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#aG)"/>
+<rect x="170" y="459" width="364" height="152" rx="8" fill="#FFFFFF" stroke="#D9DEE4" stroke-width="1.5" filter="url(#sh)"/>
+<text x="518" y="489" text-anchor="end" font-size="15" font-weight="700" letter-spacing="1.3" fill="#5A6672">RESPONSE</text>
+<text x="186" y="489" font-size="15" font-weight="700" fill="#002E5D" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">200 OK</text>
+<text x="136" y="489" font-size="15" font-weight="500" fill="#8A939C" text-anchor="end" xml:space="preserve">status</text>
+<text x="186" y="519" font-size="15" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">{ "role": "assistant",</text>
+<text x="136" y="519" font-size="15" font-weight="500" fill="#8A939C" text-anchor="end" xml:space="preserve">output</text>
+<text x="186" y="543" font-size="15" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">  "content": [{ "type": "text",</text>
+<text x="186" y="567" font-size="15" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">    "text": "Hello! How can I help?"</text>
+<text x="186" y="591" font-size="15" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">  }] }</text>
+</svg>

@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 712" role="img" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+  <title>The React loop: state, render, event, handler, state</title>
+  <desc>Two columns, before the click and after the click, each with a State card above a Screen. Before: state holds tasks with one item, Call dentist, and text holding Buy groceries; React renders it into a screen whose input box shows Buy groceries, an Add button, and a list with Call dentist. Step 1, click: an arrow from the Add button to the click handler, addTask, whose code reads await fetch, setTasks with the old tasks plus the new task, and setText with an empty string. Below a dashed line separating the browser from your server, step 2 sends POST /api/tasks to your server, which saves the task in the database in app/api/tasks/route.ts, and step 3 returns the saved task while addTask waits for this reply. Step 4, setTasks changes state: the arrow goes to the State card after the click, which now holds Call dentist and Buy groceries, with text empty. Step 5, React renders that state into a screen with an empty input box and both tasks in the list. No arrow goes from the handler to the screen.</desc>
+  <defs>
+    <linearGradient id="gCard" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#FFFFFF"/><stop offset="100%" stop-color="#F3F6F9"/></linearGradient>
+    <linearGradient id="gGray" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#F4F6F8"/><stop offset="100%" stop-color="#E3E7EB"/></linearGradient>
+    <filter id="sh" x="-10%" y="-10%" width="120%" height="135%"><feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#002E5D" flood-opacity="0.13"/></filter>
+    <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0.5 L10,5 L0,9.5 z" fill="#8A939C"/></marker>
+    <marker id="ahA" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0.5 L10,5 L0,9.5 z" fill="#0057B8"/></marker>
+    <marker id="ahN" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0.5 L10,5 L0,9.5 z" fill="#002E5D"/></marker>
+  </defs>
+  <rect x="0" y="0" width="1000" height="712" rx="8" fill="#FAFBFC"/>
+    <text x="30" y="34" font-size="15" font-weight="700" fill="#8A939C" text-anchor="start" letter-spacing="1.2">BEFORE THE CLICK</text>
+  <text x="690" y="34" font-size="15" font-weight="700" fill="#8A939C" text-anchor="start" letter-spacing="1.2">AFTER THE CLICK</text>
+  <rect x="30" y="50" width="280" height="196" rx="10" fill="url(#gCard)" stroke="#D9DEE4" stroke-width="1.5" filter="url(#sh)"/>
+  <text x="50" y="82" font-size="19" font-weight="700" fill="#002E5D" text-anchor="start">State</text>
+  <text x="50" y="112" font-size="15" font-weight="700" fill="#5A6672" text-anchor="start" font-family="Menlo, Consolas, monospace">tasks</text>
+  <rect x="50" y="122" width="240" height="30" rx="6" fill="#FFFFFF" stroke="#D9DEE4" stroke-width="1.25"/>
+  <text x="64" y="142.5" font-size="16" font-weight="400" fill="#2C3E50" text-anchor="start">Call dentist</text>
+  <text x="50" y="212" font-size="15" font-weight="700" fill="#5A6672" text-anchor="start" font-family="Menlo, Consolas, monospace">text</text>
+  <text x="100" y="212" font-size="16" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, monospace">"Buy groceries"</text>
+  <rect x="690" y="50" width="280" height="196" rx="10" fill="url(#gCard)" stroke="#D9DEE4" stroke-width="1.5" filter="url(#sh)"/>
+  <text x="710" y="82" font-size="19" font-weight="700" fill="#002E5D" text-anchor="start">State</text>
+  <text x="710" y="112" font-size="15" font-weight="700" fill="#5A6672" text-anchor="start" font-family="Menlo, Consolas, monospace">tasks</text>
+  <rect x="710" y="122" width="240" height="30" rx="6" fill="#FFFFFF" stroke="#D9DEE4" stroke-width="1.25"/>
+  <text x="724" y="142.5" font-size="16" font-weight="400" fill="#2C3E50" text-anchor="start">Call dentist</text>
+  <rect x="710" y="158" width="240" height="30" rx="6" fill="#E6EEF7" stroke="#0057B8" stroke-width="1.75"/>
+  <text x="724" y="178.5" font-size="16" font-weight="600" fill="#0057B8" text-anchor="start">Buy groceries</text>
+  <text x="710" y="212" font-size="15" font-weight="700" fill="#5A6672" text-anchor="start" font-family="Menlo, Consolas, monospace">text</text>
+  <text x="760" y="212" font-size="16" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, monospace">""</text>
+  <rect x="30" y="316" width="280" height="172" rx="10" fill="url(#gCard)" stroke="#D9DEE4" stroke-width="1.5" filter="url(#sh)"/>
+  <path d="M31 346 V326 Q31 317 40 317 H300 Q309 317 309 326 V346 Z" fill="url(#gGray)"/>
+  <circle cx="48" cy="332" r="4" fill="#C5CCD3"/>
+  <circle cx="62" cy="332" r="4" fill="#C5CCD3"/>
+  <circle cx="76" cy="332" r="4" fill="#C5CCD3"/>
+  <text x="294" y="337" font-size="15" font-weight="700" fill="#5A6672" text-anchor="end">Screen</text>
+  <rect x="50" y="360" width="168" height="34" rx="6" fill="#FFFFFF" stroke="#B9C2CB" stroke-width="1.25"/>
+  <text x="62" y="382" font-size="16" font-weight="400" fill="#2C3E50" text-anchor="start">Buy groceries</text>
+  <rect x="228" y="360" width="62" height="34" rx="6" fill="#002E5D"/>
+  <text x="259" y="382" font-size="16" font-weight="700" fill="#FFFFFF" text-anchor="middle">Add</text>
+  <circle cx="61" cy="422" r="7" fill="none" stroke="#A3ABB3" stroke-width="1.6"/>
+  <text x="78" y="427.5" font-size="16" font-weight="400" fill="#2C3E50" text-anchor="start">Call dentist</text>
+  <rect x="690" y="316" width="280" height="172" rx="10" fill="url(#gCard)" stroke="#D9DEE4" stroke-width="1.5" filter="url(#sh)"/>
+  <path d="M691 346 V326 Q691 317 700 317 H960 Q969 317 969 326 V346 Z" fill="url(#gGray)"/>
+  <circle cx="708" cy="332" r="4" fill="#C5CCD3"/>
+  <circle cx="722" cy="332" r="4" fill="#C5CCD3"/>
+  <circle cx="736" cy="332" r="4" fill="#C5CCD3"/>
+  <text x="954" y="337" font-size="15" font-weight="700" fill="#5A6672" text-anchor="end">Screen</text>
+  <rect x="710" y="360" width="168" height="34" rx="6" fill="#FFFFFF" stroke="#B9C2CB" stroke-width="1.25"/>
+  <rect x="888" y="360" width="62" height="34" rx="6" fill="#002E5D"/>
+  <text x="919" y="382" font-size="16" font-weight="700" fill="#FFFFFF" text-anchor="middle">Add</text>
+  <circle cx="721" cy="422" r="7" fill="none" stroke="#A3ABB3" stroke-width="1.6"/>
+  <text x="738" y="427.5" font-size="16" font-weight="400" fill="#2C3E50" text-anchor="start">Call dentist</text>
+  <rect x="704" y="440" width="252" height="32" rx="6" fill="#E6EEF7"/>
+  <circle cx="721" cy="456" r="7" fill="none" stroke="#0057B8" stroke-width="1.6"/>
+  <text x="738" y="461.5" font-size="16" font-weight="600" fill="#0057B8" text-anchor="start">Buy groceries</text>
+  <path d="M100 254 V306" fill="none" stroke="#002E5D" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ahN)"/>
+  <text x="116" y="286" font-size="16" font-weight="600" fill="#002E5D" text-anchor="start">React renders</text>
+  <path d="M760 254 V306" fill="none" stroke="#002E5D" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ahN)"/>
+  <text x="776" y="286" font-size="16" font-weight="600" fill="#002E5D" text-anchor="start">React renders</text>
+  <circle cx="734" cy="280" r="14" fill="#002E5D"/>
+  <text x="734" y="285.5" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">5</text>
+  <rect x="360" y="316" width="280" height="172" rx="10" fill="url(#gCard)" stroke="#0057B8" stroke-width="2" filter="url(#sh)"/>
+  <text x="380" y="348" font-size="19" font-weight="700" fill="#002E5D" text-anchor="start">Click handler</text>
+  <text x="380" y="380" font-size="16" font-weight="700" fill="#0057B8" text-anchor="start" font-family="Menlo, Consolas, monospace">addTask()</text>
+  <text x="380" y="412" font-size="15" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, monospace">await fetch(...)</text>
+  <text x="380" y="440" font-size="15" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, monospace">setTasks([...tasks, task])</text>
+  <text x="380" y="468" font-size="15" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, monospace">setText("")</text>
+  <path d="M292 377 H352" fill="none" stroke="#0057B8" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ahA)"/>
+  <circle cx="335" cy="352" r="14" fill="#0057B8"/>
+  <text x="335" y="357.5" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">1</text>
+  <text x="335" y="408" font-size="16" font-weight="600" fill="#0057B8" text-anchor="middle">click</text>
+  <path d="M600 308 V150 H682" fill="none" stroke="#0057B8" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ahA)"/>
+  <circle cx="600" cy="196" r="14" fill="#0057B8"/>
+  <text x="600" y="201.5" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">4</text>
+  <text x="578" y="156" font-size="16" font-weight="700" fill="#0057B8" text-anchor="end" font-family="Menlo, Consolas, monospace">setTasks</text>
+  <text x="578" y="178" font-size="16" font-weight="400" fill="#5A6672" text-anchor="end">changes state</text>
+  <line x1="30" y1="552" x2="970" y2="552" stroke="#0057B8" stroke-width="2" stroke-dasharray="2 6" stroke-linecap="round"/>
+  <text x="30" y="540" font-size="15" font-weight="700" fill="#0057B8" text-anchor="start" letter-spacing="1.2">IN THE BROWSER</text>
+  <text x="30" y="578" font-size="15" font-weight="700" fill="#0057B8" text-anchor="start" letter-spacing="1.2">ON YOUR SERVER</text>
+  <rect x="340" y="586" width="320" height="100" rx="10" fill="url(#gCard)" stroke="#D9DEE4" stroke-width="1.5" filter="url(#sh)"/>
+  <circle cx="380" cy="636" r="22" fill="#E6EEF7"/>
+  <g transform="translate(368,624) scale(1)" fill="none" stroke="#002E5D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="8" x="2" y="2" rx="2" ry="2" />
+  <rect width="20" height="8" x="2" y="14" rx="2" ry="2" />
+  <line x1="6" x2="6.01" y1="6" y2="6" />
+  <line x1="6" x2="6.01" y1="18" y2="18" /></g>
+  <text x="416" y="618" font-size="17" font-weight="700" fill="#002E5D" text-anchor="start">Your server</text>
+  <text x="416" y="644" font-size="16" font-weight="400" fill="#2C3E50" text-anchor="start">saves the task in the database</text>
+  <text x="416" y="670" font-size="15" font-weight="400" fill="#5A6672" text-anchor="start" font-family="Menlo, Consolas, monospace">app/api/tasks/route.ts</text>
+  <path d="M450 496 V578" fill="none" stroke="#8A939C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+  <path d="M550 578 V496" fill="none" stroke="#8A939C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+  <circle cx="426" cy="516" r="14" fill="#002E5D"/>
+  <text x="426" y="521.5" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">2</text>
+  <text x="404" y="521" font-size="15" font-weight="400" fill="#5A6672" text-anchor="end" font-family="Menlo, Consolas, monospace">POST /api/tasks</text>
+  <circle cx="574" cy="516" r="14" fill="#002E5D"/>
+  <text x="574" y="521.5" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">3</text>
+  <text x="596" y="521" font-size="15" font-weight="400" fill="#5A6672" text-anchor="start">the saved task</text>
+  <text x="596" y="541" font-size="15" font-weight="400" fill="#8A939C" text-anchor="start">addTask waits for this reply</text>
+</svg>
