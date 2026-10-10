@@ -8,160 +8,474 @@ Your product is only as good as the part people touch. An agent will happily gen
 working application that nobody can figure out how to use, and it will not tell you that it
 has. Judgment about the surface is yours.
 
+The model for this whole chapter fits in two sentences. **Design is deciding where the user's
+attention goes. Every screen should make the next step obvious, and most of the real experience
+happens off the happy path.**
+
 It helps to be precise about what "the surface" means. Dan Olsen's UX iceberg splits it into four
-layers. Visual design is the only one above the waterline, and it is the one an agent is best at.
-The three underneath, interaction design, information architecture, and conceptual design, are where
-usable and unusable products actually diverge, and they are decided before a single style is chosen.
+layers [@olsen2015lean]. Visual design is the only one above the waterline, and it is the one an
+agent is best at. The three underneath, interaction design, information architecture, and
+conceptual design, are where usable and unusable products actually diverge, and they are decided
+before a single style is chosen.
 
 ![Image source: The Lean Product Playbook by Dan Olsen](images/ux-iceberg.png){fig-alt="An iceberg divided into four horizontal layers. Only the top layer, visual design, sits above the waterline. Below the surface, from top to bottom: interaction design, information architecture, and conceptual design as the largest layer at the base."}
 
 A polished screen sitting on a confused conceptual model is the most common way an AI-built
-application fails. The rest of this chapter is the machinery of the top layer; keep the bottom three
-in mind while you read it.
+application fails. This chapter works from the bottom of the iceberg up:
 
-## Frontend Fundamentals
+| Section | The idea you should leave with |
+|---|---|
+| Flows before screens | Map the steps of the user's task first |
+| Attention and hierarchy | One primary action per screen; size, spacing, and contrast rank everything else |
+| Off the happy path | Empty, loading, error, and partial states are designed on purpose |
+| Words are interface | Labels, buttons, and errors tell people what to do; specific beats clever |
+| Decide once | A design system makes each decision one time; familiar patterns beat novel ones |
+| Accessible by default | Contrast, keyboard, and screen readers are the baseline |
+| Designing for an uncertain AI | When output can be wrong, show sources, allow edits and undo, keep a human on what matters |
+| Directing an agent on design | Say exactly what to change, why, and with a reference |
 
-Every web application has a frontend, the part users see and interact with. Modern frontends are built with HTML (structure), CSS (styling), and JavaScript (interactivity).
+The ninth design idea, **watch, do not ask**, is the subject of [Testing the
+Design](06-testing-the-design.qmd). The chapter closes with a short section on web versus mobile
+and a reference section on how the surface is built in code.
 
-#### HTML: The Structure
+A running example helps. Picture **ShiftSwap**, an app for student employees at a campus job.
+A student who cannot work a shift posts it, a coworker picks it up, and the manager approves the
+trade. One AI feature: you photograph the paper schedule on the break-room wall and the app reads
+your shifts from it.
 
-HTML (HyperText Markup Language) defines the structure of a web page using elements:
+<!-- learn -->
 
-```html
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>My App</title>
-  </head>
-  <body>
-    <h1>Welcome</h1>
-    <p>This is a paragraph.</p>
-    <button>Click me</button>
-  </body>
-</html>
+## Flows Before Screens
+
+**The model:** a flow is the sequence of steps a user takes to finish one task. Map the flow
+first, then design the screens it needs. A beautiful screen in the wrong flow is still wrong.
+
+This is the interaction design and information architecture layer of the iceberg made concrete.
+Agents are eager to produce screens, so if you ask for "a dashboard," you will get one, with
+whatever steps the agent guessed. The flow is where you decide what the product actually asks of
+a person.
+
+#### The building blocks
+
+| Block | What it is | Question it answers |
+|---|---|---|
+| **Goal** | The one job the user came to do | What does "done" look like for them? |
+| **Entry point** | Where the flow starts: a link, a notification, the home screen | How do they arrive, and what do they already know? |
+| **Steps** | Each screen or action in order | What is the one thing they do here? |
+| **Decisions** | Points where the path branches | What choice do they make, and what does each choice lead to? |
+| **Exits** | Every way the flow ends: success, cancel, error, giving up | Where do they land, and can they get back? |
+
+These combine in a simple way: a flow is a goal, reached from an entry point, through steps,
+split by decisions, and ending in exits. Count the steps and decisions; each one is a chance for
+someone to stop. Good flows remove steps the user does not care about and make every exit land
+somewhere useful.
+
+#### Worked example: posting a shift on ShiftSwap
+
+```
+GOAL: Get my Thursday 4-8 shift covered, approved by my manager.
+
+ENTRY  Home screen ("My shifts")
+ 1.  Tap the Thursday shift
+ 2.  Tap "Give away this shift"
+ 3.  Optional note to coworkers ("Midterm that night")
+ 4.  Confirm  -> shift is posted, visible to eligible coworkers
+       DECISION: someone picks it up within 48 hours?
+         yes -> 5. Manager gets an approval request
+                  DECISION: approve?
+                    yes -> EXIT (success): both students notified, schedules updated
+                    no  -> EXIT: shift returns to me, with the manager's reason
+         no  -> EXIT: reminder to me 24 hours before the shift, with "Ask a specific coworker"
+ CANCEL at any step before pickup -> shift returns to me, nothing sent
 ```
 
-Common HTML elements:
-- `<h1>` to `<h6>`**: Headings
-- `<p>`**: Paragraphs
-- `<a>`**: Links
-- `<button>`**: Buttons
-- `<input>`**: Form inputs
-- `<div>`**: Generic containers
+Mapping it this way surfaces questions a screen mockup hides. Who counts as an "eligible"
+coworker? What does the original student see while waiting for approval? What happens if two
+people tap "Pick up" at the same moment? Each of those is a design decision, and each one an
+agent would otherwise make for you silently.
 
-#### CSS: The Styling
+::: {.callout-tip title="Try it"}
+Write the flow for the single most important task in your own product in the format above:
+goal, entry, numbered steps, decisions, and every exit. Then count. If the core task has more than
+six steps or any exit that leaves the user stranded, mark the step you would remove or fix first.
+Do this before you ask Claude Code for any new screen in Sprint 3, and paste the flow into the
+prompt.
+:::
 
-CSS (Cascading Style Sheets) controls how elements look:
+<!-- learn -->
 
-```css
-h1 {
-  color: blue;
-  font-size: 24px;
-}
+## Attention and Hierarchy
 
-button {
-  background-color: green;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 5px;
-}
+**The model:** each screen gets one primary action. Size, weight, spacing, and contrast tell
+people what matters before they read a word, so use them to rank everything on the screen.
+
+People do not read a screen top to bottom. They scan it, and their eyes go to whatever stands out.
+If everything stands out equally, nothing does, and the user has to read every label to find the
+next step. Adam Wathan and Steve Schoger's [Refactoring UI](https://www.refactoringui.com/), the
+start-here resource for this axis, is built around that point: hierarchy is the main thing that
+makes an interface look designed, and you create it as much by **de-emphasizing** the secondary
+items as by emphasizing the primary one.
+
+#### The building blocks
+
+| Lever | Draws attention when | Common mistake |
+|---|---|---|
+| **Size** | Larger than its neighbors | Making every heading big |
+| **Weight** | Bolder text or a filled button | Bold everywhere, so bold means nothing |
+| **Contrast and color** | Darker, more saturated, or the one colored element | Five colors competing; color as the only signal |
+| **Spacing** | Surrounded by more white space | Cramming, so groups blur together |
+| **Position** | Top, left, or where the eye lands after the last action | Burying the primary action below the fold |
+
+Three principles from Jon Yablonski's [Laws of UX](https://lawsofux.com/) explain why the ranking
+matters:
+
+- **Hick's Law**: the more options shown at once, the longer the decision takes. One primary
+  action shortens it.
+- **Fitts's Law**: the time to hit a target depends on its size and distance. The primary action
+  should be big and close to where the user's attention (or thumb) already is.
+- **Von Restorff effect**: the item that differs from its neighbors is the one noticed and
+  remembered. Make the primary action the one that differs.
+
+#### Worked example: the ShiftSwap shift detail screen
+
+The first version an agent produced showed four buttons in a row, all the same blue: **Give away**,
+**Swap**, **Message manager**, **Add to calendar**. Every user test began the same way: a pause
+while the person read all four.
+
+The revision used the levers. "Give away this shift" became the one full-width filled button at the
+bottom, within thumb reach. "Swap for another shift" became an outlined button beneath it. "Message
+manager" and "Add to calendar" moved into a small text-link row at the top. Nothing was removed; the
+ranking changed, and the pause went away.
+
+A quick check from the course's deck rubric works on screens too: the **squint test**. Squint (or
+blur a screenshot) until you cannot read the words. Whatever is still visible is what users will see
+first. If that is not the primary action, the hierarchy is wrong.
+
+::: {.callout-tip title="Try it"}
+Take a screenshot of your main screen. Before squinting, write down the one action you want a new
+user to take. Now squint. **Predict** what a first-time user clicks first, and explain which lever
+(size, weight, contrast, spacing, position) is pulling them there. If the prediction and your
+intended action differ, list the two changes that would fix it. Refactoring UI's advice to try the
+screen in grayscale first is a good second check: if the hierarchy only works because of color, it
+is fragile.
+:::
+
+<!-- learn -->
+
+## Off the Happy Path
+
+**The model:** a screen is a picture of the app's current state, and the app has more states than
+the one you demoed. Empty, loading, error, and partial states are where users get stuck. Design
+them on purpose.
+
+The **happy path** is the flow when everything goes right: the data exists, the network is fast,
+the input is valid. An agent builds the happy path first because that is what the prompt
+described. Users spend a surprising amount of time elsewhere: the first visit before they have any
+data, the three seconds while something loads, the moment the save fails. Jakob Nielsen's first
+usability heuristic, **visibility of system status**, says the interface should always tell people
+what is going on. These states are where it most often fails.
+
+#### The building blocks
+
+Think of each screen as a function of its state. In plain pseudocode:
+
+```
+screen(state):
+  if loading         -> show what is coming (skeleton or progress), keep the layout steady
+  if error           -> say what happened, keep the user's input, offer the fix
+  if no data yet     -> explain what goes here and offer the first action
+  if some data failed -> show what loaded, mark what did not, offer retry for that part
+  otherwise          -> the happy path
 ```
 
-Modern apps often use CSS frameworks like **Tailwind CSS**, which provides utility classes:
+| State | When it happens | What a good one does |
+|---|---|---|
+| **Empty** | First use, no search results, everything cleared | Explains what will appear here and gives one action to start |
+| **Loading** | Waiting on the network, a database, or a model | Under a second: nothing needed. Several seconds: show progress. Long waits: say what is happening and let people keep working |
+| **Error** | Validation fails, network drops, server breaks | Says what happened in plain words, keeps what the user typed, offers a next step |
+| **Partial** | Some data loaded and some did not; a profile half filled in | Shows what exists, marks what is missing, lets the user fix just that part |
 
-```html
-<button class="bg-green-500 text-white px-4 py-2 rounded">
-  Click me
-</button>
+The loading row follows Nielsen's long-standing response-time limits: about 0.1 second feels
+instant, about 1 second keeps the user's train of thought, and past about 10 seconds people need
+progress feedback or they leave the task.
+
+#### Worked example: "My shifts" in four states
+
+- **Empty** (new employee, schedule not loaded yet): "Your shifts will show up here. Add them from
+  a photo of the posted schedule, or type them in." Two buttons: **Scan schedule**, **Add a
+  shift**.
+- **Loading**: gray placeholder rows the shape of shift cards, so the screen does not jump when
+  the real data arrives.
+- **Error** (could not reach the server): "We couldn't load your shifts. Check your connection and
+  try again." A **Try again** button. Shifts already on the phone stay visible, marked as possibly
+  out of date.
+- **Partial** (shifts loaded, but the manager's approval status did not): the shifts show, and the
+  pending trade shows "Approval status unavailable" with its own **Refresh**.
+
+Each state answers the same two questions: what is true right now, and what can I do next?
+
+::: {.callout-tip title="Try it"}
+List the four states for the main screen of your product and write one sentence of what the user
+sees in each. Then ask Claude Code to render each state with fake data so you can look at all
+four. **Find the mistake:** most agent-built apps show a blank white area for the empty state and
+the raw text of an exception for the error state. Find the worst of the four in your app and fix
+it this sprint.
+:::
+
+<!-- learn -->
+
+## Words Are Interface
+
+**The model:** labels, buttons, and messages are the instructions for using your product. They
+tell people what will happen and what to do next. Specific beats clever.
+
+Steve Krug's *Don't Make Me Think* [@krug2014think] puts the cost plainly: every word a user has to
+puzzle over is a small stop in the flow. His third law of usability is to get rid of half the words
+on each page, then half of what is left. Nielsen's heuristic of **match between the system and the
+real world** adds the other half: use the user's words for things, never the database's.
+
+#### The building blocks
+
+| Text | Its job | Rule of thumb |
+|---|---|---|
+| **Button and link labels** | Say what happens when you press it | Verb plus object: "Post shift," "Save draft" |
+| **Headings and labels** | Name the thing in the user's terms | "Shifts I'm covering," never "Accepted transfers" |
+| **Error messages** | Explain what went wrong and how to fix it | Plain words, specific cause, a way forward, no blame |
+| **Empty states and hints** | Teach the next step at the moment it is needed | One sentence, one action |
+| **Confirmations** | Prove that the action happened | Say what changed and what happens next |
+
+NN/g's error-message guidelines (Neusesser and Sunwall, 2023) make the error row concrete: put the
+message next to the problem, say specifically what is wrong instead of "An error occurred," offer a
+remedy, keep the user's input so they do not start over, and do not blame the user.
+
+#### Worked example: three rewrites
+
+| Before | After | Why it is better |
+|---|---|---|
+| Button: **Submit** | **Post shift to coworkers** | Says what happens and who sees it |
+| "Something went wrong." | "Your manager's approval didn't go through because the shift starts in less than 2 hours. Call the front desk to cover it." | Says what happened, why, and what to do |
+| Empty list with no text | "No open shifts right now. We'll notify you when a coworker posts one." | Explains the emptiness and sets an expectation |
+
+The same discipline shows up in slide writing, where an action title ("Late-night shifts are the
+hardest to cover") beats a topic title ("Shift data"). The analogy holds for specificity. It breaks
+on length: a button label has two to four words to work with, so it names the action and nothing
+else.
+
+::: {.callout-tip title="Try it"}
+Open your app and copy out every button label, every heading, and the text of one error message.
+**Find the mistakes:** circle each label that does not say what happens ("Submit," "OK,"
+"Continue") and each word that comes from your code instead of your user ("record," "entity,"
+"null"). Rewrite the three worst. Then trigger an error on purpose and check whether the message
+says what happened and what to do.
+:::
+
+<!-- learn -->
+
+## Decide Once: Design Systems and Familiar Patterns
+
+**The model:** a design system makes each design decision one time, so a button looks and behaves
+the same everywhere. Familiar patterns beat novel ones, because users bring their expectations
+from every other app they use.
+
+**Jakob's Law** (from Laws of UX) states the second half: users spend most of their time in other
+products, so they expect yours to work the same way. A trash-can icon deletes, a gear opens
+settings, swiping left on a list row reveals actions on a phone. Every place you invent a new
+convention, the user pays to learn it. The [Apple Human Interface
+Guidelines](https://developer.apple.com/design/human-interface-guidelines/) are the canonical
+reference for what those conventions are on Apple platforms.
+
+#### The building blocks
+
+| Layer | What it holds | ShiftSwap example |
+|---|---|---|
+| **Tokens** | The raw choices: color palette, type scale, spacing scale, corner radius | Primary color, 4 text sizes, spacing in steps of 4px |
+| **Components** | Reusable pieces built from tokens, each with defined variants and states | Button (primary, secondary, ghost; default, hover, disabled, loading) |
+| **Patterns** | Components combined to solve a recurring problem | "Confirm before a destructive action," "form with inline errors" |
+
+Refactoring UI's advice to **limit your choices** is the same idea at small scale: pick a short
+spacing scale and type scale up front and use only those, so you never decide "14px or 15px?" again.
+
+#### Why this matters more with an agent
+
+An agent has no memory between sessions. Left alone, it will style each new screen from scratch,
+and after ten sessions you have five button styles. Two things fix that:
+
+1. **Use a component system the agent already knows.** [shadcn/ui](https://ui.shadcn.com/docs) is
+   the one this course recommends. It copies each component's source into your project, styled with
+   Tailwind and built on accessible primitives, so you and the agent can read and change it. Agents
+   have seen a great deal of code written against it.
+2. **Write the decisions down where the agent will read them.** A short design section in your
+   `CLAUDE.md` (see [Directing the Agent](02-directing-the-agent.qmd)) turns one-time decisions
+   into standing instructions:
+
+```markdown
+## Design rules
+- Components come from shadcn/ui in components/ui. Do not hand-roll buttons, inputs, or dialogs.
+- One primary (filled) button per screen. Everything else is secondary or ghost.
+- Spacing uses the Tailwind scale only (p-2, p-4, p-6, p-8). No arbitrary pixel values.
+- Every list screen has an empty state with one sentence and one action.
+- Destructive actions use the confirm dialog pattern.
 ```
 
-#### JavaScript: The Interactivity
+An analogy: a design system is the house style guide a newspaper gives every reporter, so a
+hundred writers produce one paper. Where it breaks: a style guide is advice a reporter can ignore,
+while a component library makes the right choice the easiest one to type.
 
-JavaScript makes pages interactive:
+::: {.callout-tip title="Try it"}
+Open three screens of your app side by side. **Find the inconsistencies:** count how many
+different button styles, text sizes, and gray colors you see. Then write five design rules for your
+`CLAUDE.md` like the ones above, and ask Claude Code to bring one screen into line with them.
+:::
 
-```javascript
-const button = document.querySelector('button');
-button.addEventListener('click', () => {
-  alert('Button clicked!');
-});
-```
+<!-- learn -->
 
-## React Basics
+## Accessible by Default
 
-For complex applications, raw HTML/CSS/JavaScript becomes hard to manage. **React** is a JavaScript library that helps you build user interfaces from reusable components.
+**The model:** sufficient contrast, full keyboard use, and screen-reader support are the
+baseline, the same as the app not crashing. Building them in from the start makes the product
+better for everyone.
 
-#### Components
+Most accessibility comes free if you use the right building blocks from the start, and costs a
+lot to retrofit. A button made from a real `<button>` element is reachable by
+keyboard and announced as a button by a screen reader. A button faked from a clickable `<div>` is
+neither, and an agent will sometimes produce the fake.
 
-A React component is a function that returns UI:
+#### The building blocks
 
-```jsx
-function Welcome() {
-  return <h1>Hello, World!</h1>;
-}
-```
+The Web Content Accessibility Guidelines (WCAG) organize the requirements under four principles.
+The few that matter most for a student product:
 
-Components can accept **props** (inputs) and manage **state** (data that changes):
+| Principle | Baseline check | Why it helps everyone |
+|---|---|---|
+| **Perceivable** | Text contrast at least 4.5:1 against its background (3:1 for large text and for icons and input borders); never use color alone to carry meaning | Readable in sunlight, on cheap screens, by tired eyes |
+| **Operable** | Every action works with the keyboard alone; focus is always visible; touch targets are large enough (Apple recommends at least 44 by 44 points) | Faster for power users; fewer mis-taps on phones |
+| **Understandable** | Every input has a visible label; errors say what to fix (see Words Are Interface) | Fewer failed forms for every user |
+| **Robust** | Real HTML elements for real things (buttons, links, headings, form labels) so assistive technology can read them | The same structure helps search engines and agents read your page |
 
-```jsx
-function Counter() {
-  const [count, setCount] = useState(0);
+An accurate analogy is the **curb cut**: the ramp cut into a sidewalk for wheelchair users is also
+used by people with strollers, suitcases, and bikes. Where it breaks: some accessibility needs pull
+in different directions (a user with low vision may want larger text that a dense dashboard cannot
+fit), so the baseline is a floor, and some users still need settings of their own.
 
-  return (
-    <div>
-      <p>Count: {count}</p>
-      <button onClick={() => setCount(count + 1)}>
-        Increment
-      </button>
-    </div>
-  );
-}
-```
+::: {.callout-tip title="Try it: the one-minute check"}
+1. Put your mouse away. Starting from the home screen, complete your core flow with only **Tab**,
+   **Shift+Tab**, **Enter**, and **Space**. Note every place you get stuck or lose track of where
+   focus is.
+2. Run your primary button and your body text through a contrast checker (WebAIM's is free).
+3. Zoom the browser to 200 percent and check whether anything overlaps or disappears.
 
-#### Why React?
+Paste what you found into Claude Code with the instruction "fix these accessibility issues using
+semantic HTML and our existing components." The full checklist is in the
+[Engineering Checklist](95-eng-checklist.qmd).
+:::
 
-- **Reusable components**: Build once, use everywhere
-- **Declarative**: Describe what you want, not how to do it
-- **Ecosystem**: Huge community, lots of libraries
-- **Industry standard**: Used by Facebook, Netflix, Airbnb, etc.
+<!-- learn -->
 
-For this class, we'll use **Next.js**, a React framework that handles routing, server rendering, and deployment.
+## Designing for an Uncertain AI
 
-## Client-Side State and Forms
+**The model:** when your product's output can be wrong, design for that. Set expectations, show
+where an answer came from, let people edit and undo, and keep a human on the decisions that
+matter.
 
-Most apps need forms to collect user input. Here's how state and forms work together:
+Ordinary software does the same thing every time; a model may not. [Models in Your
+Product](11-models-in-your-product.qmd) explains why a model can be confidently wrong and what that
+means for the engineering. This section is about what the user sees. Saleema Amershi and colleagues
+at Microsoft proposed eighteen guidelines for human-AI interaction and tested them against twenty
+AI products [@amershi2019guidelines]; the building blocks below follow several of them.
 
-```jsx
-function ProblemForm() {
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
+#### The building blocks
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log({ title, description });
-    // Save to database
-  };
+| Block | What it means on screen | Guideline it follows |
+|---|---|---|
+| **Set expectations** | Say what the feature does and how often it gets things wrong, in plain words, before people rely on it | Make clear what the system can do, and how well |
+| **Show the evidence** | Show the source behind the answer: the quoted passage, the region of the image it read | Make clear why the system did what it did |
+| **Draft, not action** | AI output arrives as an editable draft the user approves; it does not act on its own | Support efficient correction |
+| **Easy to dismiss and undo** | One tap to reject a suggestion or undo what it did | Support efficient dismissal |
+| **Human on what matters** | The higher the cost of a mistake, the more explicit the human confirmation | Chapter 11: if a wrong answer is expensive, put a human in the path |
 
-  return (
-    <form onSubmit={handleSubmit}>
-      <input
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-        placeholder="Problem title"
-      />
-      <textarea
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-        placeholder="Describe the problem"
-      />
-      <button type="submit">Save</button>
-    </form>
-  );
-}
-```
+Streaming the answer as it is generated, covered in Chapter 11, is the loading state for AI: it
+shows progress during a wait that can run many seconds.
 
-## The Platform Decision Framework
+#### Worked example: reading the schedule photo
 
-Before jumping to solutions, ask these questions:
+ShiftSwap's schedule scan uses a vision model to read a photo of the paper schedule. It will
+sometimes misread a handwritten 7 as a 1. The design:
+
+1. Before the scan: "Works best with a flat, well-lit photo. Check the shifts before saving; it can
+   misread handwriting."
+2. After the scan: the shifts appear as a **draft list**, each one next to a cropped image of the
+   part of the photo it came from, so the student can compare at a glance.
+3. Each shift is editable in place. Shifts the model was unsure of are marked "Check this."
+4. Nothing is added to the schedule until the student taps **Save 5 shifts**. After saving, an
+   **Undo** appears for ten seconds.
+5. The model never posts, trades, or approves a shift. Those stay human actions.
+
+::: {.callout-tip title="Try it"}
+Pick the AI feature in your product (or one you plan). **Predict** the most likely wrong output
+and what happens to the user if they do not catch it. Then check your current screen against the
+five blocks above. Which one is missing? Sketch, in words, the one change that would let a user
+catch the mistake before it costs them anything.
+:::
+
+<!-- learn -->
+
+## Directing an Agent on Design
+
+**The model:** say exactly what to change and why, with a reference. Taste is knowing what is
+wrong and being able to say it precisely.
+
+"Make it look better" or "improve the UX" gives the agent nothing to aim at, so it changes things
+at random: new colors, a gradient, more shadows. The agent is good at the visual layer and will do
+exactly what you describe. The quality of what you describe is the whole difference.
+
+#### The building blocks of a design instruction
+
+| Block | What it supplies | Example |
+|---|---|---|
+| **Where** | The screen and element | "On the shift detail screen, the button row at the bottom" |
+| **What is wrong** | The observed problem | "Four equal buttons, so users read all of them before acting" |
+| **Why** (the principle) | The reason a designer would accept | "One primary action per screen" |
+| **What to change** | The specific fix | "Make Give away the only filled button, full width; Swap outlined; move the other two to text links at the top" |
+| **Reference** | Something concrete to match | A screenshot, a named shadcn/ui component, or "like the checkout button in the Uber Eats app" |
+
+Claude Code accepts images, so a screenshot of your current screen, or of an app that does it well,
+is often the best reference you can give.
+
+| Vague | Precise |
+|---|---|
+| "Improve the UX of the shifts page." | "The shifts page has no empty state; a new user sees a blank white area. Add an empty state: one sentence, 'Your shifts will show up here,' and two buttons, Scan schedule (primary) and Add a shift (secondary), using our Button component." |
+| "Make the errors better." | "When the save fails, we show the raw error text. Show 'Couldn't save your shift. Check your connection and try again,' next to the Save button, keep the form values, and add a Try again button." |
+
+#### Taste is a skill
+
+As building becomes cheap, several design leaders argue that taste becomes the scarce part.
+Figma's CEO and Tony Fadell, who led the iPod and founded Nest, make that case in the podcasts on
+the [Builder Resources](97-builder-resources.qmd) page. Jenny Wen, who leads design for Claude at
+Anthropic, argues that the classic discover, mock, iterate design process is obsolete, and asks
+what taste means when prototyping is nearly free. Julie Zhuo, former VP of product design at
+Facebook, writes in [The Looking Glass](https://lg.substack.com/) about critique as a practiced
+skill. The practical version for you: you build taste by naming specific problems, over and over,
+against principles you can state.
+
+::: {.callout-tip title="Try it: the three-sentence critique"}
+Ask Claude Code to build a new screen for your product with no design guidance at all. Before you
+prompt again, write three sentences of critique, each with the form: **"[Element] is [problem],
+which breaks [principle from this chapter]."** For example: "The four buttons are the same weight,
+which breaks one primary action per screen." Then turn the three sentences into one precise prompt
+using the table above, and compare the result to what "make it better" produces.
+:::
+
+<!-- learn -->
+
+## Web, Mobile, or Both
+
+<!-- MOVE: the platform decision belongs in ch07 (Anatomy of an Application) or ch12 (Going to Market) because it is an architecture and distribution choice, not a design one. Kept here in short form because students may have studied it for the Oct 20 midterm. -->
+
+**The model:** most student products should start as a responsive web app. Go to the app stores
+only when the product needs something the web cannot do well, such as reliable device hardware,
+frequent brief use, or store discovery in a category people actively search.
+
+Ask these questions before choosing:
 
 | Question | If Yes | If No |
 |----------|--------|-------|
@@ -171,29 +485,39 @@ Before jumping to solutions, ask these questions:
 | Do competitors have apps? | Understand why | May not need one |
 | Will users install another app? | Maybe mobile | Probably web |
 
-**The key insight:** Most products don't need native apps. Web works for most B2B tools, productivity apps, and content platforms. Mobile matters most for consumer apps with frequent, brief interactions.
+The tradeoff in one line each:
 
-## Web vs. Mobile: The Real Tradeoffs
+- **Distribution.** The web gives instant access by URL, search traffic, and instant updates. App
+  stores give home-screen presence, more reliable push notifications, and better retention for the
+  people who install. Store discovery is hard outside categories people search for, so you usually
+  need the web to bring people in anyway.
+- **Cost.** Every native platform is another codebase to build and maintain, and every feature
+  and bug exists once per platform.
+- **Behavior.** Mobile fits frequent, brief use, location, the camera, offline use, and push
+  notifications. The web fits focused work, heavy typing, desk use, file handling, and SEO.
 
-#### Distribution
+There is also a spectrum between "web only" and "native":
 
-**Web advantages:**
-- Instant access via URL (no installation)
-- SEO brings organic traffic
-- Updates deploy instantly
-- One codebase for all users
-- Works on any device with a browser
+```
+Web → Responsive Web → PWA → Capacitor/Ionic → React Native → Native
+<---------------- Easier ----------------->
+<---------------- More "native" ---------->
+```
 
-**Mobile (App Store) advantages:**
-- Discovery through app stores
-- Home screen presence
-- Push notification reliability
-- "There's an app for that" legitimacy
-- Better retention for installed apps
+- A **progressive web app (PWA)** is a web app that can be installed to the home screen. It needs
+  HTTPS, a **web app manifest** (name, icons, colors), and, for offline use, a **service worker**
+  (a script that sits between the app and the network and can serve cached files). On iPhone, web
+  push notifications work only after the user adds the app to the Home Screen (iOS 16.4 and
+  later).
+- **Capacitor** wraps your existing web app in a native shell so it can ship to the App Store and
+  Google Play and call native APIs like the camera, from one codebase. It does not automatically
+  look like a native app.
+- **React Native** and fully **native** (Swift, Kotlin) give the most native feel and performance,
+  at the most cost. If you are asking "should I go native?", the answer is probably no.
 
-**The hard truth:** App store discovery is brutal. Unless you're in a category people actively search (fitness, dating, games), organic app store traffic is minimal. You'll need to drive users there yourself, which means you need web anyway.
+<!-- REVIEW: the old chapter's setup code used next-pwa, which is unmaintained and does not fit the App Router; it was cut. Current Next.js supports app/manifest.ts natively (nextjs.org/docs/app/guides/progressive-web-apps, checked 2026-10-10) and points to Serwist for service-worker offline caching. The old Capacitor config said webDir could be '.next'; that does not work. Capacitor needs a static export (output: 'export' in next.config), which builds to 'out', and a static export cannot use Server Actions. -->
 
-#### Development & Maintenance
+::: {.callout-note collapse="true" title="Platform reference: the full comparison tables"}
 
 | Factor | Web Only | Web + Mobile |
 |--------|----------|--------------|
@@ -203,33 +527,7 @@ Before jumping to solutions, ask these questions:
 | **Team size needed** | Smaller | Larger |
 | **Bug surface area** | Smaller | Much larger |
 
-**The hidden cost:** Mobile isn't just building once. It's maintaining multiple platforms forever. Every feature ships twice (or three times). Every bug exists in multiple places.
-
-#### User Behavior
-
-**Mobile makes sense when:**
-- Usage is frequent (daily+) and brief (< 2 minutes)
-- Location matters (maps, local search)
-- Camera/photos are core to the experience
-- Offline access is important
-- Push notifications drive engagement
-
-**Web makes more sense when:**
-- Tasks require focus (30+ minutes)
-- Heavy text input is common
-- Users are at desks (B2B, productivity)
-- File handling is important
-- SEO is a growth channel
-
-## The Platform Spectrum
-
-You don't have to choose between "web only" and "native app." There's a spectrum:
-
-```
-Web → Responsive Web → PWA → Capacitor/Ionic → React Native → Native
-<---------------- Easier ----------------->
-<---------------- More "native" ---------->
-```
+<!-- REVIEW: the 1x vs 2-3x build-time figures have no source; they read as a rule of thumb. Keep, source, or soften. -->
 
 | Approach | Effort | Native Feel | Store Distribution |
 |----------|--------|-------------|-------------------|
@@ -239,105 +537,6 @@ Web → Responsive Web → PWA → Capacitor/Ionic → React Native → Native
 | **React Native** | High | High | Yes |
 | **Native (Swift/Kotlin)** | Highest | Highest | Yes |
 
-For most startups, the sweet spot is **Responsive Web → PWA → Capacitor** progression:
-
-1. **Start responsive**: Mobile-friendly web
-2. **Add PWA**: Installable, offline-capable
-3. **Wrap with Capacitor**: Ship to app stores when needed
-
-## Progressive Web Apps (PWAs)
-
-PWAs are web apps with superpowers. They can:
-- Be installed on home screens
-- Work offline
-- Send push notifications (mostly)
-- Feel like native apps
-
-**PWA requirements:**
-- HTTPS (required)
-- Service worker (for offline/caching)
-- Web app manifest (metadata for installation)
-
-**PWA limitations:**
-- iOS Safari support is limited
-- Push notifications restricted on iOS
-- Some native APIs unavailable
-- Can't be listed in app stores (usually)
-
-**When PWA is enough:**
-- Internal tools
-- B2B products
-- Content-heavy apps
-- Products where installation isn't critical
-
-## Capacitor: Web to Native
-
-Capacitor (by the Ionic team) wraps your web app in a native container. You get:
-- Full app store distribution
-- Access to native device APIs
-- One codebase, multiple platforms
-- Keep your existing React/Vue/Angular code
-
-**How it works:**
-```
-Your Web App (React, etc.)
-        ↓
-    Capacitor
-        ↓
-iOS App    Android App    Web App
-```
-
-**Capacitor is ideal when:**
-- You have a working web app
-- You need app store presence
-- Native API access is important
-- You want to maintain one codebase
-
-**Capacitor limitations:**
-- Performance-intensive apps may struggle
-- Complex animations can feel non-native
-- Some native APIs need custom plugins
-- UI doesn't automatically match platform conventions
-
-## When to Go Fully Native
-
-Sometimes web-based approaches aren't enough:
-
-**Consider native (Swift, Kotlin) when:**
-- Performance is critical (games, video, AR)
-- Complex gestures and animations are core
-- Deep OS integration is required
-- Your competitors set native expectations
-- You have the team and resources
-
-**Consider React Native when:**
-- You need native performance
-- Your team knows JavaScript/React
-- You want shared logic but native UI
-- Instagram/Facebook-level apps
-
-**The honest advice:** If you're asking "should I go native?", the answer is probably no. Native development requires specialized skills, more time, and larger teams. Start simpler, validate, then upgrade if needed.
-
-## Making the Decision
-
-#### The Startup Path
-
-**Phase 1: Validate (Week 1-8)**
-- Build responsive web
-- Focus on core value proposition
-- Test with users
-
-**Phase 2: Grow (Week 8-16)**
-- Add PWA capabilities
-- Improve mobile experience
-- Monitor usage patterns
-
-**Phase 3: Expand (If needed)**
-- Wrap with Capacitor for app stores
-- Or stay web-only if it's working
-
-#### Decision Matrix
-
 | Your Situation | Recommendation |
 |----------------|----------------|
 | Pre-product-market fit | Stay web only |
@@ -346,208 +545,125 @@ Sometimes web-based approaches aren't enough:
 | Hardware-dependent | Capacitor or native |
 | Gaming / media-heavy | Native or React Native |
 
+**A common path:** build responsive web while you validate; add PWA install and better mobile
+behavior as usage grows; wrap with Capacitor for the app stores only if users need it, or stay on
+the web if it is working.
+
+**When to consider fully native:** performance is critical (games, video, AR), complex gestures and
+animation are core, deep OS integration is required, or competitors have set native expectations,
+and you have the team to support it. **React Native** fits when you need native performance and
+your team already knows JavaScript and React.
+:::
+
+<!-- learn -->
+
 ## Making Your App Mobile-Responsive
 
-Before anything else, your web app needs to work well on mobile screens.
+**The model:** design for the small screen first, then let the layout expand at set widths
+(breakpoints). A phone layout forces the hierarchy decision, because there is room for only one
+primary action.
 
-#### Responsive CSS Basics
-
-Use CSS media queries to adjust layouts:
-
-```css
-/* Default (mobile-first) */
-.container {
-  display: flex;
-  flex-direction: column;
-  padding: 1rem;
-}
-
-/* Tablet and up */
-@media (min-width: 768px) {
-  .container {
-    flex-direction: row;
-    padding: 2rem;
-  }
-}
-
-/* Desktop */
-@media (min-width: 1024px) {
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-}
-```
-
-#### Tailwind Responsive Utilities
-
-If you're using Tailwind CSS, responsive design is built in:
+**Mobile-first** means the default layout is the phone layout, and wider screens add columns and
+space. In Tailwind, the prefixes `sm:` (640px), `md:` (768px), `lg:` (1024px), and `xl:` (1280px)
+mean "from this width up." Reading one line is enough to see the model:
 
 ```jsx
-<div className="flex flex-col md:flex-row lg:max-w-4xl">
-  <aside className="w-full md:w-64">Sidebar</aside>
-  <main className="flex-1">Content</main>
-</div>
+<div className="flex flex-col md:flex-row">  {/* stacked on phones, side by side from 768px */}
 ```
 
-Prefixes: `sm:` (640px), `md:` (768px), `lg:` (1024px), `xl:` (1280px)
+#### Mobile UX essentials
 
-#### Mobile UX Essentials
+- **Touch targets**: at least 44 by 44 points for anything tappable (Apple's guideline).
+- **Form inputs**: use a font size of at least 16px in inputs. Smaller, and iOS Safari zooms the
+  page when the field gets focus. (This applies to inputs, not all text.)
+- **Input types**: use the right type (`type="email"`, `type="tel"`) so phones show the right
+  keyboard.
+- **Viewport**: the page needs `<meta name="viewport" content="width=device-width,
+  initial-scale=1">` or phones render it as a shrunken desktop page. Next.js adds this for you.
+- **Thumb reach**: put the primary action near the bottom of the screen, where a thumb can reach
+  it (Fitts's Law again).
 
-- **Touch targets**: Minimum 44×44px for buttons
-- **Font sizes**: 16px minimum to prevent zoom on iOS
-- **Forms**: Use appropriate input types (`type="email"`, `type="tel"`)
-- **Viewport**: Always include `<meta name="viewport" content="width=device-width, initial-scale=1">`
+::: {.callout-tip title="Try it"}
+Open your app in the browser's device toolbar at 375px wide (an iPhone-sized screen). **Find the
+mistakes:** anything cut off, any tap target smaller than a fingertip, any input that zooms the page
+when tapped. Fix the worst one with a precise prompt.
+:::
 
-## Setting Up a PWA
+<!-- learn -->
 
-#### 1. Create the Manifest
+## How the Surface Is Built (Reference)
 
-Create `public/manifest.json`:
+<!-- MOVE: belongs in ch07 (Anatomy of an Application) because how the frontend is built is architecture. Kept here as a short reference because ch05 previously taught it and it is on the midterm. -->
 
-```json
-{
-  "name": "My Product",
-  "short_name": "Product",
-  "description": "A brief description of your product",
-  "start_url": "/",
-  "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#000000",
-  "icons": [
-    {
-      "src": "/icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "/icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png"
-    }
-  ]
+You will not write much of this by hand, but you should know the parts so you can read what the
+agent wrote and catch it when something is off.
+
+| Building block | What it does | Analogy (and where it breaks) |
+|---|---|---|
+| **HTML** | Structure: headings, paragraphs, links, buttons, inputs, containers (`<h1>`, `<p>`, `<a>`, `<button>`, `<input>`, `<div>`) | The frame of a house. Breaks: HTML also carries meaning, a `<button>` is announced as a button, so the right element matters for accessibility |
+| **CSS** | Styling: color, size, spacing, layout, and responsive rules (`@media` queries) | Paint and furniture placement |
+| **Tailwind CSS** | CSS as short utility classes in the markup (`bg-green-500 px-4 py-2 rounded`) | |
+| **JavaScript** | Behavior: responds to clicks and typing, talks to the server | The wiring |
+| **React** | Builds the UI from reusable **components**, functions that return UI. Components take **props** (inputs) and hold **state** (data that changes) | |
+| **Next.js** | The React framework this course uses: routing, server rendering, deployment | |
+
+The one piece worth reading in code is how state drives the screen. When state changes, React
+redraws the component, which is exactly why "loading," "error," and "empty" are states you design:
+
+```jsx
+function Counter() {
+  const [count, setCount] = useState(0);   // state, starts at 0
+  return (
+    <div>
+      <p>Count: {count}</p>                 {/* the screen shows the current state */}
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+    </div>
+  );
 }
 ```
 
-Link it in your HTML:
+A form works the same way: each input's value lives in state, and the form's submit handler reads
+that state and sends it to be saved. Why React is the default: reusable components, a declarative
+style (you describe what the screen should look like for a given state, and React updates it), and
+the largest ecosystem, including shadcn/ui.
 
-```html
-<link rel="manifest" href="/manifest.json">
-<meta name="theme-color" content="#000000">
-```
-
-#### 2. Add a Service Worker
-
-For Next.js, use the `next-pwa` package:
-
-```bash
-npm install next-pwa
-```
-
-Update `next.config.js`:
-
-```javascript
-const withPWA = require('next-pwa')({
-  dest: 'public',
-  disable: process.env.NODE_ENV === 'development'
-});
-
-module.exports = withPWA({
-  // Your other Next.js config
-});
-```
-
-#### 3. Test Installation
-
-1. Deploy to HTTPS (Vercel handles this)
-2. Open in Chrome
-3. Look for install prompt or use DevTools → Application → Manifest
-
-## Capacitor Setup
-
-#### Initialize Capacitor
-
-```bash
-npm install @capacitor/core @capacitor/cli
-npx cap init
-```
-
-This creates `capacitor.config.ts`:
-
-```typescript
-import { CapacitorConfig } from '@capacitor/cli';
-
-const config: CapacitorConfig = {
-  appId: 'com.yourcompany.yourapp',
-  appName: 'Your App',
-  webDir: 'out',  // or 'build' or '.next' depending on your setup
-  server: {
-    androidScheme: 'https'
-  }
-};
-
-export default config;
-```
-
-#### Add Platforms
-
-```bash
-# Install platform packages
-npm install @capacitor/ios @capacitor/android
-
-# Add platforms
-npx cap add ios
-npx cap add android
-```
-
-#### Build and Sync
-
-```bash
-# Build your web app first
-npm run build
-
-# Copy web assets to native projects
-npx cap sync
-
-# Open in native IDEs
-npx cap open ios      # Opens Xcode
-npx cap open android  # Opens Android Studio
-```
-
-#### Using Native APIs
-
-Install Capacitor plugins for native features:
-
-```bash
-npm install @capacitor/camera @capacitor/filesystem
-```
-
-Use them in your code:
-
-```javascript
-import { Camera, CameraResultType } from '@capacitor/camera';
-
-async function takePhoto() {
-  const photo = await Camera.getPhoto({
-    quality: 90,
-    resultType: CameraResultType.Uri
-  });
-
-  // photo.webPath contains the image
-  return photo.webPath;
-}
-```
+<!-- learn -->
 
 ## Key Concepts
 
-- **Platform Spectrum**: Web → PWA → Capacitor → React Native → Native
-- **Distribution Tradeoffs**: Web (URL, SEO) vs. App Store (discovery, install)
-- **PWA (Progressive Web App)**: Installable web apps with offline support
-- **Capacitor**: Wraps web apps for native app store distribution
-- **Service Worker**: Enables offline functionality and caching
-- **Web App Manifest**: Metadata for PWA installation
-- **Responsive Design**: Adapting layouts to different screen sizes
-- **Mobile-First**: Designing for mobile screens first, then scaling up
-- **Git Hooks**: Automated scripts that run at commit/push time
-- **Husky**: Tool for managing Git hooks in JavaScript projects
-- **Lint-Staged**: Running checks only on staged files for speed
+- **UX iceberg**: visual design on top; interaction design, information architecture, and
+  conceptual design underneath, where usability is decided
+- **Flow**: goal, entry point, steps, decisions, exits; map it before designing screens
+- **Happy path**: the flow when everything goes right
+- **Visual hierarchy**: size, weight, contrast, spacing, and position rank what matters; one
+  primary action per screen
+- **Squint test**: blur the screen; what still stands out is what users see first
+- **Hick's Law, Fitts's Law, Von Restorff effect**: fewer choices decide faster; big, close targets
+  are faster to hit; the different item gets noticed
+- **Empty, loading, error, partial states**: the states off the happy path, each designed to say
+  what is true and what to do next
+- **Visibility of system status**: the interface always tells people what is going on
+- **Interface copy**: verb-plus-object buttons; errors that say what happened and how to fix it;
+  the user's words, not the database's
+- **Design system**: tokens, components, and patterns that make each decision once; record the
+  rules in `CLAUDE.md`
+- **shadcn/ui**: component source copied into your project, built on Tailwind and accessible
+  primitives
+- **Jakob's Law**: users expect your product to work like the ones they already use
+- **Accessibility baseline (WCAG)**: 4.5:1 text contrast, full keyboard use, visible focus, labeled
+  inputs, semantic HTML
+- **Designing for uncertain AI**: set expectations, show evidence, output as editable draft, easy
+  dismiss and undo, human on consequential decisions
+- **Precise design direction**: where, what is wrong, why, what to change, and a reference
+- **Platform spectrum**: Web → Responsive Web → PWA → Capacitor → React Native → Native
+- **Distribution tradeoffs**: web (URL, SEO, instant updates) vs. app store (discovery, install,
+  home screen)
+- **PWA, web app manifest, service worker**: installable web app; its install metadata; the script
+  that enables offline use and caching
+- **Capacitor**: wraps a web app for app store distribution and native APIs
+- **Responsive design and mobile-first**: one layout that adapts at breakpoints, starting from the
+  phone
+- **Components, props, and state**: how React builds the screen, and why each state is a screen
+  to design
+
+<!-- learn -->
