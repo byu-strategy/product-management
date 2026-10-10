@@ -13,7 +13,10 @@
 }
 .learn-btn:hover, .learn-btn:focus-visible { opacity: 1; background: #E1ECF8; border-color: #B9D0EA; }
 .learn-btn:focus-visible { outline: 2px solid #0057B8; outline-offset: 2px; }
-.learn-btn svg { flex: none; }
+.learn-btn svg { flex: none; display: block; }
+.learn-icon { display: inline-flex; }
+.learn-btn.learn-copied { opacity: 1; color: #2C7A4C; background: #E8F4EC; border-color: #B7DBC3; }
+.learn-btn.learn-failed { color: #B03A3A; background: #FBEDED; border-color: #EBC5C5; }
 .learn-note {
   position: absolute; left: 0; top: calc(100% + 6px); white-space: nowrap;
   padding: .3em .6em; border-radius: 6px;

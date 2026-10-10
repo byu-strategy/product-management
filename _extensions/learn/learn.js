@@ -16,13 +16,20 @@
     });
   }
 
+  var CHECK = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>';
+  var PASTE = /Mac|iPhone|iPad/.test(navigator.platform) ? "Cmd+V" : "Ctrl+V";
+
   function note(btn, text, ok) {
     var n = btn.querySelector(".learn-note");
     n.textContent = text;
+    if (ok) {
+      btn.querySelector(".learn-icon").innerHTML = CHECK;
+      btn.querySelector(".learn-label").textContent = "Copied";
+    }
     btn.classList.toggle("learn-failed", !ok);
     btn.classList.add("learn-copied");
     clearTimeout(btn._t);
-    btn._t = setTimeout(function () { btn.classList.remove("learn-copied", "learn-failed"); }, 2600);
+    btn._t = setTimeout(function () { btn.classList.remove("learn-copied", "learn-failed"); btn.querySelector(".learn-icon").innerHTML = ICON; btn.querySelector(".learn-label").textContent = "Learn in Claude"; }, 2600);
   }
 
   function init() {
@@ -35,10 +42,10 @@
       btn.className = "learn-btn";
       btn.title = "Copy a /learn command for this section, then paste it into Claude Code";
       btn.setAttribute("aria-label", "Copy the /learn command for this section");
-      btn.innerHTML = ICON + '<span class="learn-label">Learn in Claude</span><span class="learn-note" role="status" aria-live="polite"></span>';
+      btn.innerHTML = '<span class="learn-icon">' + ICON + '</span><span class="learn-label">Learn in Claude</span><span class="learn-note" role="status" aria-live="polite"></span>';
       btn.addEventListener("click", function () {
         copy(cmd).then(
-          function () { note(btn, "Copied. Paste it into Claude Code.", true); },
+          function () { note(btn, "On your clipboard. Paste it into Claude Code (" + PASTE + ").", true); },
           function () { window.prompt("Copy this, then paste it into Claude Code:", cmd); }
         );
       });
