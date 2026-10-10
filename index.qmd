@@ -51,6 +51,13 @@ Optional: [Innovators DNAs Resources and Assessment](https://apps.innovatorsdna.
 
 All other materials are available online at no cost.
 
+::: {.callout-tip title="Learning a section with Claude"}
+Most sections of the course book have a small **Learn in Claude** button beside the heading. Click it to
+copy a `/learn` command for that section, then paste it into Claude Code in your course repo.
+Claude tutors you on that section, worked on your own product, for as long as you choose, and
+saves a short log to your `learning/` folder.
+:::
+
 ## Description
 
 This course turns product managers into full-stack AI product builders. You will pick a

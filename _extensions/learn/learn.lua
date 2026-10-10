@@ -1,14 +1,15 @@
 --[[
-learn.lua: turn each `<!-- learn -->` comment into a "Learn this section with Claude" callout.
+learn.lua: give each section that ends with a `<!-- learn -->` comment a small "Learn" button
+beside its `##` heading.
 
-The callout holds one copyable line, `/learn <page url>#<anchor>`, which the student pastes into
-Claude Code to run the builder-template /learn skill on that section.
+The button copies one line, `/learn <page url>#<anchor>`, which the student pastes into Claude
+Code to run the builder-template /learn skill on that section. learn.js draws the button and does
+the copying; this filter only marks the heading with `data-learn`, so the table of contents and the
+heading text are untouched.
 
-The anchor is the identifier pandoc already gave the enclosing `##` heading, so it is always the
-real id on the page: nothing is recomputed and nothing is typed by hand. The page URL is the site
-URL plus this file's name with .html. Set `learn-base-url` in _quarto.yml to change the site.
-
-A marker before any `##` heading, or under a `#` heading only, is dropped with a warning.
+The anchor is the identifier pandoc already gave the `##` heading, so it is always the real id on
+the page. The page URL is the site URL plus this file's name with .html. Set `learn-base-url` in
+_quarto.yml to change the site. A marker before any `##` heading is dropped with a warning.
 ]]
 
 local DEFAULT_BASE = "https://byu-strategy.github.io/product-management/"
@@ -25,18 +26,6 @@ local function page_name()
   return name .. ".html"
 end
 
-local function callout(url)
-  local line = "/learn " .. url
-  return quarto.Callout({
-    type = "tip",
-    title = "Learn this section with Claude",
-    content = pandoc.Blocks({
-      pandoc.Para({ pandoc.Str("Paste this into Claude Code to learn this section from first principles, on your own product, as quick or as deep as you have time for.") }),
-      pandoc.CodeBlock(line, pandoc.Attr("", { "default", "learn-command" })),
-    }),
-  })
-end
-
 function Pandoc(doc)
   local base = DEFAULT_BASE
   if doc.meta["learn-base-url"] then
@@ -45,24 +34,42 @@ function Pandoc(doc)
   end
   local page = base .. page_name()
 
-  local section = nil
-  local out = pandoc.Blocks({})
-  local found = 0
+  -- pass 1: which ## sections end with a marker
+  local marked, section = {}, nil
   for _, block in ipairs(doc.blocks) do
     if block.t == "Header" and block.level <= 2 then
       section = (block.level == 2) and block.identifier or nil
-    end
-    if is_marker(block) then
+    elseif is_marker(block) then
       if section and section ~= "" then
-        out:insert((callout(page .. "#" .. section)))  -- parentheses: quarto.Callout returns more than one value
-        found = found + 1
+        marked[section] = true
       else
         quarto.log.warning("learn: a <!-- learn --> marker in " .. page_name() .. " has no ## heading above it; skipped")
       end
+    end
+  end
+
+  -- pass 2: drop the markers and tag the marked headings
+  local out, found = pandoc.Blocks({}), 0
+  for _, block in ipairs(doc.blocks) do
+    if is_marker(block) then
+      -- dropped
     else
+      if block.t == "Header" and block.level == 2 and marked[block.identifier] then
+        block.attributes["data-learn"] = "/learn " .. page .. "#" .. block.identifier
+        found = found + 1
+      end
       out:insert(block)
     end
   end
   doc.blocks = out
+
+  if found > 0 then
+    quarto.doc.add_html_dependency({
+      name = "learn-button",
+      version = "2.0.0",
+      scripts = { "learn.js" },
+      stylesheets = { "learn.css" },
+    })
+  end
   return doc
 end
