@@ -1,21 +1,70 @@
-<svg viewBox="0 0 1000 600" xmlns="http://www.w3.org/2000/svg" role="img" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
-<title>An eval for a course-help bot</title>
-<desc>An eval for the course-help bot that answers student questions from the syllabus. The change being tested: one line added to the prompt, If the answer is not in the sources, say you don't know. Five student questions, each with a pass rule, scored before and after the change. Can I turn in Sprint 3 late: must quote the late-work policy; passes before and after. When is the midterm: must say October 20 to 22 in the testing center; passes before and after. Is there parking near class: not in the syllabus, so it must say it does not know; fails before, passes after. How many points is Sprint 6: must say 100; passes before and after. Can I use AI on the exam: must say no, closed book; passes before, fails after, because the bot now says it does not know. The total is 4 of 5 both times: the score did not move, but the bot's behavior did.</desc>
-<rect width="1000" height="600" rx="8" fill="#FAFBFC"/>
-<rect x="40" y="36" width="920" height="84" rx="12" fill="#E6EEF7"/>
-<text x="64" y="68" font-size="15" font-weight="700" letter-spacing="1.2" fill="#002E5D">THE CHANGE BEING TESTED</text>
-<text x="64" y="100" font-size="18" fill="#2C3E50">Added to the prompt: "If the answer is not in the sources, say you don't know."</text>
-<text x="76" y="166" font-size="15" font-weight="700" letter-spacing="1.2" fill="#8A939C">STUDENT QUESTION</text>
-<text x="456" y="166" font-size="15" font-weight="700" letter-spacing="1.2" fill="#8A939C">PASSES IF IT</text>
-<text x="778" y="166" text-anchor="middle" font-size="15" font-weight="700" letter-spacing="1.2" fill="#8A939C">BEFORE</text>
-<text x="888" y="166" text-anchor="middle" font-size="15" font-weight="700" letter-spacing="1.2" fill="#8A939C">AFTER</text>
-<line x1="56" y1="180" x2="944" y2="180" stroke="#D9DEE4" stroke-width="1.5"/>
-<text x="76" y="218" font-size="17" fill="#2C3E50">Can I turn in Sprint 3 late?</text><text x="456" y="218" font-size="16" fill="#5A6672">quotes the late-work policy</text><circle cx="778" cy="212" r="15" fill="#FFFFFF" stroke="#2C7A4C" stroke-width="2"/><g transform="translate(769,203) scale(0.75)" fill="none" stroke="#2C7A4C" stroke-width="2.93" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5" /></g><circle cx="888" cy="212" r="15" fill="#FFFFFF" stroke="#2C7A4C" stroke-width="2"/><g transform="translate(879,203) scale(0.75)" fill="none" stroke="#2C7A4C" stroke-width="2.93" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5" /></g><text x="76" y="280" font-size="17" fill="#2C3E50">When is the midterm?</text><text x="456" y="280" font-size="16" fill="#5A6672">Oct 20 to 22, testing center</text><circle cx="778" cy="274" r="15" fill="#FFFFFF" stroke="#2C7A4C" stroke-width="2"/><g transform="translate(769,265) scale(0.75)" fill="none" stroke="#2C7A4C" stroke-width="2.93" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5" /></g><circle cx="888" cy="274" r="15" fill="#FFFFFF" stroke="#2C7A4C" stroke-width="2"/><g transform="translate(879,265) scale(0.75)" fill="none" stroke="#2C7A4C" stroke-width="2.93" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5" /></g><rect x="56" y="309" width="888" height="54" rx="8" fill="#E8F3EC"/><text x="76" y="342" font-size="17" fill="#2C3E50">Is there parking near class?</text><text x="456" y="342" font-size="16" fill="#5A6672">says it does not know</text><circle cx="778" cy="336" r="15" fill="#FFFFFF" stroke="#B03A3A" stroke-width="2"/><g transform="translate(769,327) scale(0.75)" fill="none" stroke="#B03A3A" stroke-width="2.93" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18" />
-  <path d="m6 6 12 12" /></g><circle cx="888" cy="336" r="15" fill="#FFFFFF" stroke="#2C7A4C" stroke-width="2"/><g transform="translate(879,327) scale(0.75)" fill="none" stroke="#2C7A4C" stroke-width="2.93" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5" /></g><text x="832" y="341" text-anchor="middle" font-size="18" fill="#2C7A4C">&#8594;</text><text x="76" y="404" font-size="17" fill="#2C3E50">How many points is Sprint 6?</text><text x="456" y="404" font-size="16" fill="#5A6672">says 100</text><circle cx="778" cy="398" r="15" fill="#FFFFFF" stroke="#2C7A4C" stroke-width="2"/><g transform="translate(769,389) scale(0.75)" fill="none" stroke="#2C7A4C" stroke-width="2.93" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5" /></g><circle cx="888" cy="398" r="15" fill="#FFFFFF" stroke="#2C7A4C" stroke-width="2"/><g transform="translate(879,389) scale(0.75)" fill="none" stroke="#2C7A4C" stroke-width="2.93" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5" /></g><rect x="56" y="433" width="888" height="54" rx="8" fill="#F8E6E6"/><text x="76" y="466" font-size="17" fill="#2C3E50">Can I use AI on the exam?</text><text x="456" y="466" font-size="16" fill="#5A6672">says no, closed book</text><circle cx="778" cy="460" r="15" fill="#FFFFFF" stroke="#2C7A4C" stroke-width="2"/><g transform="translate(769,451) scale(0.75)" fill="none" stroke="#2C7A4C" stroke-width="2.93" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5" /></g><circle cx="888" cy="460" r="15" fill="#FFFFFF" stroke="#B03A3A" stroke-width="2"/><g transform="translate(879,451) scale(0.75)" fill="none" stroke="#B03A3A" stroke-width="2.93" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18" />
-  <path d="m6 6 12 12" /></g><text x="832" y="465" text-anchor="middle" font-size="18" fill="#B03A3A">&#8594;</text>
-<line x1="56" y1="504" x2="944" y2="504" stroke="#D9DEE4" stroke-width="1.5"/>
-<text x="76" y="540" font-size="17" font-weight="700" fill="#002E5D">Passes</text>
-<text x="456" y="540" font-size="16" fill="#5A6672">same score, different failures</text>
-<text x="778" y="540" text-anchor="middle" font-size="19" font-weight="700" fill="#002E5D">4 of 5</text>
-<text x="888" y="540" text-anchor="middle" font-size="19" font-weight="700" fill="#002E5D">4 of 5</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 424" role="img" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+<title>One eval run on a support-email sorter</title>
+<desc>One eval run on an AI feature that sorts support emails into bug, billing, or feature request. Three test cases, each a row. On the left, the input emails: 1, The Save button does nothing. 2, Please add a dark mode. 3, I was charged twice this month. Each goes through the same box, your AI feature, made of a prompt and a model. Each output is shown next to the expected answer, which was written before the run, inside a dashed frame labeled code compares the labels. Row 1: output bug, expected bug, pass. Row 2: output feature request, expected feature request, pass. Row 3: output bug, expected billing, fail, shown in red. Below: score, 2 of 3 pass.</desc>
+<defs>
+<marker id="aG" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0.5 L10,5 L0,9.5 z" fill="#5A6672"/></marker>
+<marker id="aN" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0.5 L10,5 L0,9.5 z" fill="#002E5D"/></marker>
+<filter id="sh" x="-10%" y="-10%" width="120%" height="135%"><feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#002E5D" flood-opacity="0.12"/></filter>
+<filter id="shS" x="-10%" y="-10%" width="120%" height="135%"><feDropShadow dx="0" dy="1.5" stdDeviation="2.5" flood-color="#002E5D" flood-opacity="0.10"/></filter>
+<linearGradient id="gW" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F4F7FA"/></linearGradient>
+<linearGradient id="gB" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F3F7FC"/><stop offset="1" stop-color="#E6EEF7"/></linearGradient>
+<linearGradient id="gNavy" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0E3F6A"/><stop offset="1" stop-color="#001A36"/></linearGradient>
+<linearGradient id="gGreen" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F3F9F5"/><stop offset="1" stop-color="#E3F0E7"/></linearGradient>
+<linearGradient id="gRed" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FCF5F5"/><stop offset="1" stop-color="#F5E3E3"/></linearGradient>
+</defs>
+<rect width="1000" height="424" rx="8" fill="#FAFBFC"/>
+<rect x="560" y="22" width="416" height="332" rx="12" fill="none" stroke="#0057B8" stroke-width="1.5" stroke-dasharray="6 5"/>
+<rect x="578" y="10" width="252" height="26" fill="#FAFBFC"/>
+<g transform="translate(584,11) scale(0.9167)" fill="none" stroke="#0057B8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6" />
+  <polyline points="8 6 2 12 8 18" /></g>
+<text x="614" y="30" font-size="17" font-weight="700" fill="#0057B8" text-anchor="start">Code compares the labels</text>
+<text x="30" y="74" font-size="15" font-weight="700" fill="#5A6672" text-anchor="start">INPUT: A SUPPORT EMAIL</text>
+<text x="586" y="74" font-size="15" font-weight="700" fill="#5A6672" text-anchor="start">OUTPUT</text>
+<text x="764" y="74" font-size="15" font-weight="700" fill="#5A6672" text-anchor="start">EXPECTED ANSWER</text>
+<text x="764" y="94" font-size="15" font-weight="400" fill="#8A939C" text-anchor="start">written before the run</text>
+<rect x="392" y="106" width="136" height="238" rx="12" fill="url(#gNavy)" filter="url(#sh)"/>
+<g transform="translate(442,163) scale(1.5)" fill="none" stroke="#FFFFFF" stroke-width="1.47" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8" />
+  <rect width="16" height="12" x="4" y="8" rx="2" />
+  <path d="M2 14h2" />
+  <path d="M20 14h2" />
+  <path d="M15 13v2" />
+  <path d="M9 13v2" /></g>
+<text x="460.0" y="225.0" font-size="19" font-weight="700" fill="#FFFFFF" text-anchor="middle">Your AI</text>
+<text x="460.0" y="248.0" font-size="19" font-weight="700" fill="#FFFFFF" text-anchor="middle">feature</text>
+<text x="460.0" y="277.0" font-size="15" font-weight="500" fill="#B9D0EA" text-anchor="middle">prompt + model</text>
+<rect x="24" y="112" width="330" height="66" rx="10" fill="url(#gW)" stroke="#D9DEE4" stroke-width="1.5" filter="url(#shS)"/>
+<rect x="574" y="112" width="390" height="66" rx="10" fill="url(#gGreen)" stroke="#D9DEE4" stroke-width="1.5"/>
+<circle cx="50" cy="145.0" r="14" fill="#002E5D"/>
+<text x="50" y="150.5" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">1</text>
+<text x="76" y="151.0" font-size="17" font-weight="400" fill="#2C3E50" text-anchor="start">“The Save button does nothing.”</text>
+<line x1="356" y1="145.0" x2="386" y2="145.0" stroke="#5A6672" stroke-width="2" marker-end="url(#aG)"/>
+<line x1="528" y1="145.0" x2="578" y2="145.0" stroke="#5A6672" stroke-width="2" marker-end="url(#aG)"/>
+<rect x="586" y="128.0" width="164" height="34" rx="6" fill="#FFFFFF" stroke="#D9DEE4" stroke-width="1.5"/><text x="598" y="150.5" font-size="15" font-weight="700" fill="#002E5D" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace">bug</text>
+<rect x="764" y="128.0" width="164" height="34" rx="6" fill="#FFFFFF" stroke="#D9DEE4" stroke-width="1.5"/><text x="776" y="150.5" font-size="15" font-weight="700" fill="#002E5D" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace">bug</text>
+<g transform="translate(938,132) scale(1.083)" fill="none" stroke="#2C7A4C" stroke-width="2.03" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" />
+  <path d="m9 12 2 2 4-4" /></g>
+<rect x="24" y="192" width="330" height="66" rx="10" fill="url(#gW)" stroke="#D9DEE4" stroke-width="1.5" filter="url(#shS)"/>
+<rect x="574" y="192" width="390" height="66" rx="10" fill="url(#gGreen)" stroke="#D9DEE4" stroke-width="1.5"/>
+<circle cx="50" cy="225.0" r="14" fill="#002E5D"/>
+<text x="50" y="230.5" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">2</text>
+<text x="76" y="231.0" font-size="17" font-weight="400" fill="#2C3E50" text-anchor="start">“Please add a dark mode.”</text>
+<line x1="356" y1="225.0" x2="386" y2="225.0" stroke="#5A6672" stroke-width="2" marker-end="url(#aG)"/>
+<line x1="528" y1="225.0" x2="578" y2="225.0" stroke="#5A6672" stroke-width="2" marker-end="url(#aG)"/>
+<rect x="586" y="208.0" width="164" height="34" rx="6" fill="#FFFFFF" stroke="#D9DEE4" stroke-width="1.5"/><text x="598" y="230.5" font-size="15" font-weight="700" fill="#002E5D" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace">feature request</text>
+<rect x="764" y="208.0" width="164" height="34" rx="6" fill="#FFFFFF" stroke="#D9DEE4" stroke-width="1.5"/><text x="776" y="230.5" font-size="15" font-weight="700" fill="#002E5D" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace">feature request</text>
+<g transform="translate(938,212) scale(1.083)" fill="none" stroke="#2C7A4C" stroke-width="2.03" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" />
+  <path d="m9 12 2 2 4-4" /></g>
+<rect x="24" y="272" width="330" height="66" rx="10" fill="url(#gW)" stroke="#D9DEE4" stroke-width="1.5" filter="url(#shS)"/>
+<rect x="574" y="272" width="390" height="66" rx="10" fill="url(#gRed)" stroke="#D9DEE4" stroke-width="1.5"/>
+<circle cx="50" cy="305.0" r="14" fill="#002E5D"/>
+<text x="50" y="310.5" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">3</text>
+<text x="76" y="311.0" font-size="17" font-weight="400" fill="#2C3E50" text-anchor="start">“I was charged twice this month.”</text>
+<line x1="356" y1="305.0" x2="386" y2="305.0" stroke="#5A6672" stroke-width="2" marker-end="url(#aG)"/>
+<line x1="528" y1="305.0" x2="578" y2="305.0" stroke="#5A6672" stroke-width="2" marker-end="url(#aG)"/>
+<rect x="586" y="288.0" width="164" height="34" rx="6" fill="#FFFFFF" stroke="#B03A3A" stroke-width="1.5"/><text x="598" y="310.5" font-size="15" font-weight="700" fill="#B03A3A" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace">bug</text>
+<rect x="764" y="288.0" width="164" height="34" rx="6" fill="#FFFFFF" stroke="#D9DEE4" stroke-width="1.5"/><text x="776" y="310.5" font-size="15" font-weight="700" fill="#002E5D" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace">billing</text>
+<g transform="translate(938,292) scale(1.083)" fill="none" stroke="#B03A3A" stroke-width="2.03" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" />
+  <path d="m15 9-6 6" />
+  <path d="m9 9 6 6" /></g>
+<text x="966" y="396" font-size="22" font-weight="700" fill="#0057B8" text-anchor="end">Score: 2 of 3 pass</text>
 </svg>

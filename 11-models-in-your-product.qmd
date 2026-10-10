@@ -457,56 +457,99 @@ Few teams do this, and it matters more than anything else in this chapter.
 
 You cannot tell whether an AI feature works by trying it a few times. It worked those few
 times. The question is whether it works across the range of inputs real users will send, and
-whether the prompt you just "improved" made it better or quietly worse. Because output is
-sampled, a change can look better on two tries by luck alone.
+whether the prompt you just "improved" made it better or worse. Because output is sampled, a
+change can look better on two tries by luck alone.
 
-An **eval** is a test set for a non-deterministic system. It is not complicated:
+**The situation.** Your app gets support emails, and you added an AI feature that reads each
+one and sorts it into one of three categories, `bug`, `billing`, or `feature request`, so the
+right person sees it. (It is the structured-output pattern from earlier in this chapter: the
+model returns one field from a fixed list.) Some emails land in the wrong category, and you
+want to change the prompt. Before you ship the change, you want to know whether it makes the
+feature better.
 
-1. Collect twenty to fifty real inputs. Actual ones, from your product or your discovery
-   interviews, not invented ones. Include the weird cases.
-2. Write down what a good output looks like for each. A label, a required field, a rule the
-   answer must satisfy.
-3. Run all of them and count how many pass.
-4. Change one thing, the prompt or the model, and run it again.
+**An eval answers that with a number.** It is a fixed list of test inputs, each paired with the
+answer it must give. You run every input through your feature, compare each output with its
+expected answer, and count the matches. The count is the score.
 
-**Decide what better means before you change anything.** Steps 1 and 2 come first for that
-reason. Without them, you only know the output is different. Step 4 is what makes
-this an eval. Without a number, prompt engineering is guesswork: you make a change, spot-check two
-examples, and convince yourself. With a number, you know whether you moved from, say, 71
-percent to 84 percent or made it worse.
+![One eval run. Each row is a test case: a real email and the category it belongs in, decided before the run. Every email goes through the same feature, code compares each output with its expected answer, and the matches add up to the score.](images/diagrams/ch11-eval-example.svg){#fig-eval-example fig-alt="One eval run on an AI feature that sorts support emails into bug, billing, or feature request. Three numbered rows, one per test case. On the left, the input emails: 1, The Save button does nothing. 2, Please add a dark mode. 3, I was charged twice this month. An arrow from each email leads into one dark box labeled your AI feature, prompt plus model, and an arrow from that box leads to each email's output. A dashed frame labeled code compares the labels holds two columns, output and expected answer, the second noted as written before the run. Row 1: output bug, expected bug, a green check. Row 2: output feature request, expected feature request, a green check. Row 3, shaded red: output bug, expected billing, a red cross. Below the frame: score, 2 of 3 pass." width="100%"}
 
-**Worked example.** Take the course-help bot from the RAG section. It sometimes answers
-questions the syllabus does not cover, so you add one line to the prompt: "If the answer is not
-in the sources, say you don't know." Before shipping it, you run five real student questions,
-each with a written pass rule, through the old prompt and the new one.
+Read the figure from left to right. Each row is a **test case**: a real email, plus the
+category a person decided it belongs in before the run. The feature sees only the email, never
+the expected answer. Its output is set next to the expected answer, a few lines of code check
+whether the two labels are the same, and the matches are counted. Two of three pass. The third
+email is about a charge, which belongs in `billing`, and the feature called it a `bug`. A real
+eval has twenty to fifty test cases instead of three; the steps are the same.
 
-![An eval for the course-help bot: five real student questions, each with a pass rule, scored before and after one prompt change. The score stayed at 4 of 5, but one failure was fixed and a new one appeared, so read every row, not only the total.](images/diagrams/ch11-eval-example.svg){#fig-eval-example fig-alt="A table with a header band: the change being tested, added to the prompt, if the answer is not in the sources, say you don't know. Columns: student question, passes if it, before, after. Can I turn in Sprint 3 late, passes if it quotes the late-work policy: pass before and after. When is the midterm, passes if it says Oct 20 to 22, testing center: pass before and after. Is there parking near class, passes if it says it does not know: fail before, pass after, highlighted green. How many points is Sprint 6, passes if it says 100: pass before and after. Can I use AI on the exam, passes if it says no, closed book: pass before, fail after, highlighted red. Totals: passes 4 of 5 before and 4 of 5 after, same score, different failures." width="100%"}
+**Who checks the output.** Here the check is easy. The output is one word from a fixed list,
+so code compares two strings, the same comparison a test makes in Chapter 9. Many features
+write free text instead, like the course-help bot from the RAG section, where many wordings of
+a correct answer are possible. For those, you write a **pass rule**, a condition every correct
+answer meets, and the rule decides who can check it:
 
-The change did what it was meant to do: the bot now admits it knows nothing about parking.
-It also broke something. The syllabus says the exams are closed book but never uses the word
-"AI," so the bot now says it does not know, where before it answered correctly. The total did
-not move. **Read every row, not only the score.** And add the failing question to the set, so
-every later run checks it.
+| Test question for the course-help bot | A correct answer must | Checked by |
+|---|---|---|
+| "How many points is Sprint 6 worth?" | contain "100" | Code: does the answer contain that text? |
+| "Is there parking near class?" | say the course documents do not cover parking, with no guess | A second model, given the answer and the rule (a model as judge) |
+| "Can I turn in Sprint 6 late?" | say no, Sprint 6 cannot be turned in late for credit | You, reading the answer, or a judge model once its grades match yours |
 
-The total can also move when nothing changed, because output is sampled. Run the set more than
-once to see how much.
+A judge model can be wrong, like any model. Grade a batch of answers by hand
+first, then check how often the judge's pass or fail matches yours before you trust its score.
+
+**Decide what better means before you change anything.** The list and its expected answers
+come first. Without them, you only know the output is different. Without a number, prompt
+engineering is guesswork: you make a change, spot-check two examples, and convince yourself.
+With a number, you know whether you moved from, say, 71 percent to 84 percent or made it worse.
+
+**Then change one thing and run the same list again.** The first score is your **baseline**.
+To fix the double charge, you add one line to the prompt: "Any email about a charge, refund, or
+invoice is billing." Then you run the same five emails, the three above and two more, through
+the old prompt and the new one.
+
+![The same five test cases before and after one line was added to the prompt. The double charge now passes (green), an email that mentions a refund but reports a crash now fails (red), and the score stays at 4 of 5.](images/diagrams/ch11-eval-change.svg){#fig-eval-change fig-alt="A band at the top reads: one line added to the prompt, any email about a charge, refund, or invoice is billing. Below, a table with columns input email, expected answer, before the change, and after the change; each output has a green check if it matches the expected answer and a red cross if it does not. The Save button does nothing: expected bug; bug before, pass; bug after, pass. Please add a dark mode: expected feature request; feature request before and after, pass both times. I was charged twice this month, shaded green: expected billing; bug before, fail; billing after, pass. Can I get an invoice for my company: expected billing; billing before and after, pass both times. The Refund button crashes the app, shaded red: expected bug; bug before, pass; billing after, fail. Score row: 4 of 5 pass before the change and 4 of 5 pass after it." width="100%"}
+
+The change did what it was meant to do: the double charge is now `billing`. It also broke
+something. "The Refund button crashes the app" contains the word refund, so the new line sent it
+to `billing`, though it reports a crash and belongs in `bug`. A test case that passed before a
+change and fails after it is a **regression**. The score stayed at 4 of 5, so the score alone
+says nothing happened. **Read every row, not only the score.** Then adjust the prompt and run
+the list again, and keep both emails in the list, so every later run checks them.
+
+The score can also move when nothing changed, because output is sampled. Run the same list
+several times without changing anything to see how much.
 
 ![An eval runs the same cases every time. Three runs of an unchanged prompt show how much the score moves by chance; a change counts only if it moves the score past that range. Illustrative numbers.](images/diagrams/ch11-eval-before-after.svg){#fig-eval-before-after fig-alt="A grid of 20 numbered cases, each a green check for pass or a red cross for fail, in four rows. Runs 1, 2, and 3 use the same prompt and pass 14, 13, and 15 of 20; a bracket marks them as the same prompt. The After row, highlighted, follows one prompt change and passes 17 of 20. Below, a number line from 10 to 20 shows a gray noise band from 13 to 15 and a blue dot labeled after at 17. A note reads illustrative scores." width="100%"}
 
-Start with twenty examples in a JSON file and a script that loops over them. That is enough
-to catch real regressions, and it is more evaluation rigor than most shipped AI features
-have. Hamel Husain and Shreya Shankar's free [AI Evals course](https://ai.hamel.dev/eval-course)
-is a place to start when you want more.
+Words used in this section:
+
+| Term | What it means |
+|---|---|
+| Eval | A fixed list of test cases you run through an AI feature to score how often it gives a correct answer |
+| Test case | One input plus the answer it must give, or a rule a correct answer must meet |
+| Expected answer | The output a correct feature gives for a test case, decided by a person before the run |
+| Pass rule | A condition every correct answer meets, used when many wordings are correct: "contains 100," "says it does not know" |
+| Grader | Whatever checks an output: code when the rule is exact, a person or a second model when it takes judgment |
+| Model as judge | A second model given an output and the pass rule and asked to answer pass or fail |
+| Score | The number of test cases that pass, out of the total |
+| Baseline | The score before you change anything; later scores are compared with it |
+| Regression | A test case that passed before a change and fails after it |
+| Noise | How much the score moves between runs when nothing changed, because model output is sampled |
+
+**Building your own.** Collect twenty to fifty real inputs from your product or your discovery
+interviews; inputs you invent miss the odd cases users actually send. Write the expected answer
+or pass rule for each. Put them in a JSON file with a script that runs them all and prints the
+score. That is enough to catch real regressions, and it is more evaluation rigor than most
+shipped AI features have. Hamel Husain and Shreya Shankar's free [AI Evals email
+course](https://ai.hamel.dev/eval-course) is a place to start when you want more.
 
 If your product has an AI feature, an eval set is part of the product. Put it in your repo
 next to the prompt it tests.
 
 ::: {.callout-tip title="Try it"}
 Build the smallest eval for one AI feature in your product: twenty real inputs in a JSON file,
-each with a pass rule, and a script (ask Claude Code to write it) that runs them all and prints
-the pass count. Run it three times without changing anything and note how much the score moves
-on its own. Then make one prompt change and run it again. Was the change bigger than the noise?
-Commit the eval, the prompt, and both scores.
+each with its expected answer or pass rule, and a script (ask Claude Code to write it) that runs
+them all and prints the pass count. Run it three times without changing anything and note how
+much the score moves on its own. Then make one prompt change and run it again. Was the change
+bigger than the noise? Which test cases changed? Commit the eval, the prompt, and both scores.
 :::
 
 <!-- learn -->

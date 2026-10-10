@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 578" role="img" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+<title>The same eval before and after one prompt change</title>
+<desc>The same eval list run before and after one line is added to the prompt: Any email about a charge, refund, or invoice is billing. A table with columns input email, expected answer, output before the change, output after the change. The Save button does nothing: expected bug; bug before, pass; bug after, pass. Please add a dark mode: expected feature request; feature request before and after, pass both times. I was charged twice this month, highlighted green: expected billing; bug before, fail; billing after, pass. Can I get an invoice for my company: expected billing; billing before and after, pass both times. The Refund button crashes the app, highlighted red: expected bug; bug before, pass; billing after, fail. Score: 4 of 5 pass before and 4 of 5 pass after.</desc>
+<defs>
+<marker id="aG" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0.5 L10,5 L0,9.5 z" fill="#5A6672"/></marker>
+<marker id="aN" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0.5 L10,5 L0,9.5 z" fill="#002E5D"/></marker>
+<filter id="sh" x="-10%" y="-10%" width="120%" height="135%"><feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#002E5D" flood-opacity="0.12"/></filter>
+<filter id="shS" x="-10%" y="-10%" width="120%" height="135%"><feDropShadow dx="0" dy="1.5" stdDeviation="2.5" flood-color="#002E5D" flood-opacity="0.10"/></filter>
+<linearGradient id="gW" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F4F7FA"/></linearGradient>
+<linearGradient id="gB" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F3F7FC"/><stop offset="1" stop-color="#E6EEF7"/></linearGradient>
+<linearGradient id="gNavy" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0E3F6A"/><stop offset="1" stop-color="#001A36"/></linearGradient>
+<linearGradient id="gGreen" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F3F9F5"/><stop offset="1" stop-color="#E3F0E7"/></linearGradient>
+<linearGradient id="gRed" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FCF5F5"/><stop offset="1" stop-color="#F5E3E3"/></linearGradient>
+</defs>
+<rect width="1000" height="578" rx="8" fill="#FAFBFC"/>
+<rect x="24" y="22" width="952" height="92" rx="10" fill="url(#gB)" stroke="#D9DEE4" stroke-width="1.5"/>
+<text x="48" y="56" font-size="15" font-weight="700" fill="#002E5D" text-anchor="start">ONE LINE ADDED TO THE PROMPT</text>
+<text x="48" y="90" font-size="19" font-weight="600" fill="#2C3E50" text-anchor="start">“Any email about a charge, refund, or invoice is billing.”</text>
+<text x="48" y="172" font-size="15" font-weight="700" fill="#5A6672" text-anchor="start">INPUT EMAIL</text>
+<text x="410" y="172" font-size="15" font-weight="700" fill="#5A6672" text-anchor="start">EXPECTED ANSWER</text>
+<text x="590" y="172" font-size="15" font-weight="700" fill="#5A6672" text-anchor="start">BEFORE THE CHANGE</text>
+<text x="792" y="172" font-size="15" font-weight="700" fill="#5A6672" text-anchor="start">AFTER THE CHANGE</text>
+<line x1="24" y1="188" x2="976" y2="188" stroke="#D9DEE4" stroke-width="1.5"/>
+<text x="48" y="231.0" font-size="16" font-weight="400" fill="#2C3E50" text-anchor="start">“The Save button does nothing.”</text>
+<text x="410" y="231.0" font-size="15" font-weight="700" fill="#002E5D" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace">bug</text>
+<g transform="translate(590,213) scale(1)" fill="none" stroke="#2C7A4C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" />
+  <path d="m9 12 2 2 4-4" /></g>
+<text x="622" y="231.0" font-size="15" font-weight="700" fill="#002E5D" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace">bug</text>
+<g transform="translate(792,213) scale(1)" fill="none" stroke="#2C7A4C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" />
+  <path d="m9 12 2 2 4-4" /></g>
+<text x="824" y="231.0" font-size="15" font-weight="700" fill="#002E5D" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace">bug</text>
+<line x1="40" y1="254" x2="960" y2="254" stroke="#E9ECEF" stroke-width="1.5"/>
+<text x="48" y="289.0" font-size="16" font-weight="400" fill="#2C3E50" text-anchor="start">“Please add a dark mode.”</text>
+<text x="410" y="289.0" font-size="15" font-weight="700" fill="#002E5D" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace">feature request</text>
+<g transform="translate(590,271) scale(1)" fill="none" stroke="#2C7A4C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" />
+  <path d="m9 12 2 2 4-4" /></g>
+<text x="622" y="289.0" font-size="15" font-weight="700" fill="#002E5D" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace">feature request</text>
+<g transform="translate(792,271) scale(1)" fill="none" stroke="#2C7A4C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" />
+  <path d="m9 12 2 2 4-4" /></g>
+<text x="824" y="289.0" font-size="15" font-weight="700" fill="#002E5D" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace">feature request</text>
+<rect x="24" y="315" width="952" height="52" rx="8" fill="url(#gGreen)"/>
+<text x="48" y="347.0" font-size="16" font-weight="400" fill="#2C3E50" text-anchor="start">“I was charged twice this month.”</text>
+<text x="410" y="347.0" font-size="15" font-weight="700" fill="#002E5D" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace">billing</text>
+<g transform="translate(590,329) scale(1)" fill="none" stroke="#B03A3A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" />
+  <path d="m15 9-6 6" />
+  <path d="m9 9 6 6" /></g>
+<text x="622" y="347.0" font-size="15" font-weight="700" fill="#B03A3A" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace">bug</text>
+<g transform="translate(792,329) scale(1)" fill="none" stroke="#2C7A4C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" />
+  <path d="m9 12 2 2 4-4" /></g>
+<text x="824" y="347.0" font-size="15" font-weight="700" fill="#002E5D" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace">billing</text>
+<line x1="40" y1="370" x2="960" y2="370" stroke="#E9ECEF" stroke-width="1.5"/>
+<text x="48" y="405.0" font-size="16" font-weight="400" fill="#2C3E50" text-anchor="start">“Can I get an invoice for my company?”</text>
+<text x="410" y="405.0" font-size="15" font-weight="700" fill="#002E5D" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace">billing</text>
+<g transform="translate(590,387) scale(1)" fill="none" stroke="#2C7A4C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" />
+  <path d="m9 12 2 2 4-4" /></g>
+<text x="622" y="405.0" font-size="15" font-weight="700" fill="#002E5D" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace">billing</text>
+<g transform="translate(792,387) scale(1)" fill="none" stroke="#2C7A4C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" />
+  <path d="m9 12 2 2 4-4" /></g>
+<text x="824" y="405.0" font-size="15" font-weight="700" fill="#002E5D" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace">billing</text>
+<rect x="24" y="431" width="952" height="52" rx="8" fill="url(#gRed)"/>
+<text x="48" y="463.0" font-size="16" font-weight="400" fill="#2C3E50" text-anchor="start">“The Refund button crashes the app.”</text>
+<text x="410" y="463.0" font-size="15" font-weight="700" fill="#002E5D" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace">bug</text>
+<g transform="translate(590,445) scale(1)" fill="none" stroke="#2C7A4C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" />
+  <path d="m9 12 2 2 4-4" /></g>
+<text x="622" y="463.0" font-size="15" font-weight="700" fill="#002E5D" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace">bug</text>
+<g transform="translate(792,445) scale(1)" fill="none" stroke="#B03A3A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" />
+  <path d="m15 9-6 6" />
+  <path d="m9 9 6 6" /></g>
+<text x="824" y="463.0" font-size="15" font-weight="700" fill="#B03A3A" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace">billing</text>
+<line x1="24" y1="490" x2="976" y2="490" stroke="#D9DEE4" stroke-width="1.5"/>
+<text x="48" y="534" font-size="19" font-weight="700" fill="#002E5D" text-anchor="start">Score</text>
+<text x="590" y="534" font-size="21" font-weight="700" fill="#002E5D" text-anchor="start">4 of 5 pass</text>
+<text x="792" y="534" font-size="21" font-weight="700" fill="#0057B8" text-anchor="start">4 of 5 pass</text>
+</svg>
