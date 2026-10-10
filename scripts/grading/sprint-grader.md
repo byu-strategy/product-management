@@ -208,7 +208,12 @@ work was closer to a 4: the Supabase auth took four days across 31 prompts.").
 ## Axes
 
 Split the sprint's work across the six axes as shares that add up to 1: Discovery, Design,
-Application Architecture, AI Systems, Agentic Workflow, Launch and Learn. Use everything, all
+Launch and Learn, Agentic Workflow, Application Architecture, AI Systems. Agentic Workflow is
+putting AI to work, both directing coding agents and building AI into the product (prompts, tool
+use, agent loops, evals). Application Architecture includes wiring a model in (API calls,
+retrieval pipelines, cost and latency). AI Systems is understanding how the models work and why
+they behave as they do (pretraining, fine-tuning, embeddings, context windows, hallucination),
+not wiring them. Use everything, all
 together: the plan as it stands at the end (what the sprint was for), the `/sprint-review`
 report (where the time and prompts actually went, its axis tag, and any work it lists outside
 the scanned sessions), the artifacts in `shipped_files` and `other_repos`, and the demo. Each

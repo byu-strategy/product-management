@@ -41,10 +41,12 @@ def fmt(x):
     return f"{x:g}"
 
 
-# Same axis order, orientation, and colors as the builder profile charts students received.
-AXES = ["Discovery", "Design", "Application Architecture", "AI Systems", "Agentic Workflow", "Launch and Learn"]
-SHORT = [["Discovery"], ["Design"], ["Application", "Architecture"], ["AI Systems"], ["Agentic", "Workflow"],
-         ["Launch", "and Learn"]]
+# Same layout and colors as the builder profile charts and the app: a flat-top hexagon drawn
+# clockwise from one o'clock, product down the right (Discovery, Design, Launch and Learn), AI
+# down the left read from the top (Agentic Workflow, Application Architecture, AI Systems).
+AXES = ["Discovery", "Design", "Launch and Learn", "AI Systems", "Application Architecture", "Agentic Workflow"]
+SHORT = [["Discovery"], ["Design"], ["Launch", "and Learn"], ["AI Systems"], ["Application", "Architecture"],
+         ["Agentic", "Workflow"]]
 ACCENT, GRID, INK, MUTED = "#4f46e5", "#d5d5df", "#1f1f24", "#6b6b76"
 
 
@@ -57,7 +59,7 @@ def hexagon(shares, profile=None):
     center means only skill; effort is the shading, so the two never share a scale."""
     import math
     cx, cy, R = 260, 170, 112
-    ang = [math.pi / 2 - i * 2 * math.pi / 6 for i in range(6)]
+    ang = [math.pi / 3 - i * 2 * math.pi / 6 for i in range(6)]  # first axis at one o'clock, flat top
     pt = lambda r, a: (cx + r * math.cos(a), cy - r * math.sin(a))
     vals = [max(0.0, min(1.0, float(shares.get(ax, 0)))) for ax in AXES]
     wedges = ""
@@ -85,7 +87,7 @@ def hexagon(shares, profile=None):
     for ax, lines, v, a in zip(AXES, SHORT, vals, ang):
         x, y = pt(R + 22, a)
         anchor = "middle" if abs(math.cos(a)) < 0.2 else ("start" if math.cos(a) > 0 else "end")
-        y0 = y - (len(lines) - 1) * 7 + (4 if math.sin(a) < -0.2 else (-6 if math.sin(a) > 0.9 else 0))
+        y0 = y - (len(lines) - 1) * 7 + (6 if math.sin(a) < -0.2 else (-14 if math.sin(a) > 0.2 else 0))
         tsp = "".join(f'<tspan x="{x:.1f}" dy="{0 if i == 0 else 14}">{html.escape(l)}</tspan>' for i, l in enumerate(lines))
         sub = []
         if profile and ax in profile:

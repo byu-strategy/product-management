@@ -13,13 +13,15 @@ Below is the planned schedule. Dates, topics, and assignments may adjust as need
 
 The course is built around six builder skills, two weeks each. You will rate yourself on all six in week 1 and again at the end, and the chapters, the drills, and both exams are organized the same way.
 
+![](images/builder-model.png){width=60%}
+
 | Axis | The question it answers | Weeks |
 |---|---|---|
-| **Agentic Workflow** | How do I build with AI as my instrument? | 1–2 |
+| **Agentic Workflow** | How do I put AI to work, as the way I build and inside the product? | 1–2 |
 | **Discovery** | What should I build, for whom, and should I? | 3–4 |
 | **Design** | What does the surface look like, and how does it flow? | 5–6 |
 | **Application Architecture** | How is it structured, shipped, and kept safe? | 7–8 |
-| **AI Systems** | What intelligence lives inside the product? | 9–10 |
+| **AI Systems** | How do the models work, and why do they behave the way they do? | 9–10 |
 | **Launch and Learn** | How do people find it, and did it work? | 11–12 |
 
 Agentic Workflow comes first on purpose. You will ship something in week one that you do not fully understand, and you will spend week seven learning what you shipped.

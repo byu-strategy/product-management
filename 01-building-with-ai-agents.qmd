@@ -58,13 +58,15 @@ The scripture is not decoration, and it is not separate from the craft. This is 
 This course tracks six skills. Together they are what a full-stack AI product builder can
 do, and they are the frame for everything that follows.
 
+![](images/builder-model.png){width=60%}
+
 | Axis | The question it answers |
 |---|---|
-| **Agentic Workflow** | How do I build with AI as my instrument? |
+| **Agentic Workflow** | How do I put AI to work, as the way I build and inside the product? |
 | **Discovery** | What should I build, for whom, and should I? |
 | **Design** | What does the surface look like, and how does it flow? |
 | **Application Architecture** | How is it structured, shipped, and kept safe? |
-| **AI Systems** | What intelligence lives inside the product? |
+| **AI Systems** | How do the models work, and why do they behave the way they do? |
 | **Launch and Learn** | How do people find it, and did it work? |
 
 Each axis gets two weeks. You will rate yourself on all six this week and again at the end
