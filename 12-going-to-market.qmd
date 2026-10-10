@@ -44,7 +44,8 @@ Your **Ideal Customer Profile (ICP)** is a description of the customer who gets 
 and is easiest to reach. You already did most of this work in
 [Finding and Validating the Problem](04-finding-and-validating-the-problem.qmd): the job they
 are hiring a product to do, and the interviews that showed you the pain. The ICP compresses that
-into something you can act on:
+into something you can act on. The table gives one B2C example (business to consumer: you sell to
+individual people) and one B2B example (business to business: you sell to companies):
 
 | Block | B2C example | B2B example |
 |---|---|---|
@@ -94,8 +95,7 @@ matters because each one depends on the one before:
 You start from the alternative, because "better" only means something relative to what they
 do now. If you start from your features, you end up describing your product to yourself.
 
-**Worked example.** Suppose you built QuizMe, which turns a student's own lecture notes into a
-practice quiz. A weak position, written by the founder: "AI-powered adaptive learning platform."
+**Worked example.** Take QuizMe, the example introduced at the start of this chapter. A weak position, written by the founder: "AI-powered adaptive learning platform."
 A stronger one starts from three interview quotes:
 
 > "I just reread my notes and hope it sticks."
@@ -192,7 +192,8 @@ is someone paying: a preorder, a paid pilot, a deposit.
 Chapter 11 showed you how to price one model call ([What It Costs](11-models-in-your-product.qmd)).
 Pricing is where that arithmetic becomes a business decision. The building blocks:
 
-- **Cost per core action** = input tokens x input price + output tokens x output price.
+- **Cost per core action** = input tokens x input price + output tokens x output price. The core
+  action is the one thing a user does that triggers a model call, such as generating one quiz.
 - **Actions per user per month**, which varies enormously between a light and a heavy user.
 - **Cost per user per month** = cost per action x actions per month.
 - **Gross margin per user** = price minus cost to serve, divided by price.
@@ -231,8 +232,9 @@ matters: will *anyone* pay? A few people paying a small amount teaches you more 
 using it free.
 
 ::: {.callout-tip title="Try it"}
-For your own product: estimate the tokens in and out of your core AI call, use chapter 11's
-price table, and compute cost per action. Then estimate actions per month for your lightest and
+For your own product: estimate the tokens in and out of your core AI call, look up current
+prices on Anthropic's pricing page (linked in Chapter 11's
+[What It Costs](11-models-in-your-product.qmd)), and compute cost per action. Then estimate actions per month for your lightest and
 your heaviest realistic user. At your intended price, which users lose you money? Predict first,
 then check one real call's `usage` numbers in your logs. What is one product change that would
 keep the heavy user profitable?
@@ -350,12 +352,14 @@ as with Salesforce. It works when the product is complex, the deal is large, or 
 to learn a new category. Many companies start product-led and add sales as they move to larger
 customers; Notion started self-serve and now has enterprise sales.
 
+![The same customer reaching value two ways. In product-led growth, the customer does every step alone. In sales-led growth, every step before the customer gets value takes your time, which is why it fits a complex product or a large deal.](images/diagrams/ch12-product-vs-sales-led.svg){#fig-product-vs-sales-led fig-alt="Two panels with the same layout, each with two rows, Customer and You. Top panel, product-led growth: in the Customer row, three steps in order, signs up, tries it, gets value; the You row is empty and reads you are not involved. To the right: works when time to value is short. Bottom panel, sales-led growth: the You row starts with reach out, in blue; then two blue steps span both rows because both people take part, run a demo and close the sale; then gets value in the Customer row. To the right: works when the product is complex or the deal is large. A legend says blue marks a step that needs your time." width="100%"}
+
 | Channel | Fits a student sprint? | Note |
 |---|---|---|
 | Community and word of mouth | Yes | Be useful where your beachhead gathers |
 | Direct outreach (DMs, email) | Yes | The hand-recruiting above, made routine |
 | Building in public (LinkedIn, X) | Partly | Results take months; useful for credibility |
-| Content and SEO | Rarely | Results usually take months |
+| Content and SEO (search engine optimization: showing up in search results) | Rarely | Results usually take months |
 | Partnerships | Sometimes | A club, a TA, a professor who shares it with a class |
 | Paid ads | Rarely | Costs money to test, and needs validated messaging first |
 
@@ -365,7 +369,8 @@ The biggest mistake is trying every channel at once. Pick 1-2, commit for a fixe
 
 ### A second audience: the models
 
-Inbound now has a second audience. A growing share of buyers ask a model rather than a search
+Inbound (customers who find you on their own, instead of you reaching out to them) now has a
+second audience. A growing share of buyers ask a model rather than a search
 engine, which means you also care about which sources those models cite. A Semrush study of 150,000
 citations in June 2025 found the answer skewed heavily toward a handful of community and reference
 sites.
@@ -403,7 +408,8 @@ guardrails, a date) and put event tracking on your core task. The how is in
 - **Private beta:** the twenty people you invited by hand. Watch them use it. Fix what breaks and
   the step where they get stuck.
 - **Public beta:** open it to your beachhead (the course, the club), labeled as a beta.
-- **Wider launch:** a post in the communities you have been helpful in, Product Hunt, LinkedIn.
+- **Wider launch:** a post in the communities you have been helpful in, Product Hunt (a site where new
+  products are posted and voted on), LinkedIn.
 
 **Deploy is not release.** On Vercel, merging to `main` puts the code on the live site at once.
 Launching in rings needs a second switch: a **release flag** (the feature flag from
@@ -416,7 +422,8 @@ beta users, then for everyone, with no new deploy (@fig-deploy-vs-release).
 
 The [Agent Team Kit](https://github.com/ai-foundry-byu/agent-team-kit)'s [release flags spec](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/docs/RELEASE-FLAGS-SPEC.md) goes further than a
 student product needs, but three of its rules apply at any size. Check the flag on the server as
-well as in the interface: a hidden button over a working endpoint can still be called. Turning a
+well as in the interface: a hidden button over a working endpoint (the server address the button sends its request to)
+can still be called. Turning a
 flag off stops new use and undoes nothing already done; an email sent or a payment taken while the
 beta ring had the feature stays sent and taken
 ([flag or staging is whose data](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/memory-pack/flag-or-staging-is-whose-data.md)). And remove
@@ -451,7 +458,7 @@ AI is useful here, within limits:
 
 - **It can** summarize open-ended feedback into themes, if you ask it to quote the responses
   behind each theme so you can check. It can draft experiment ideas, write the SQL for a funnel
-  or cohort query, and check your arithmetic.
+  or cohort query (Chapter 14 explains both), and check your arithmetic.
 - **It cannot** tell you why signups rose from a list of weekly totals. Paste eight weeks of
   signup counts into a model and ask for "patterns" and it will find some, because it always
   produces an answer, and with a few dozen users most week-to-week movement is noise. Whether a

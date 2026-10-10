@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 660" role="img" aria-labelledby="t d" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+  <title id="t">QuizMe break-even: each paying user contributes one block toward fixed costs</title>
+  <desc id="d">A chart in dollars per month, from 0 to 50, with a dashed line at 45 dollars marked fixed costs. Two columns are built from stacked blocks, one block per paying user. The left column, all typical users, stacks blocks of 3 dollars 28 each, which is 4 dollars minus 27 cents of model calls minus 45 cents of payment fees. Thirteen blocks stay below the line; the fourteenth, highlighted, crosses it, so break-even is 14 paying users. The right column, 1 in 10 users a heavy user, stacks blocks of 2 dollars 77 each, which is 4 dollars minus an average of 78 cents of model calls minus 45 cents of fees. The seventeenth block, highlighted, crosses the line, so break-even is 17 paying users.</desc>
+  <defs>
+    <linearGradient id="gBlk" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#D3E2F3"/><stop offset="100%" stop-color="#B9D0EA"/></linearGradient>
+    <linearGradient id="gAcc" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0E63C4"/><stop offset="100%" stop-color="#003F87"/></linearGradient>
+  </defs>
+  <rect x="0" y="0" width="1000" height="660" rx="8" fill="#FAFBFC"/>
+  <line x1="150" y1="510.0" x2="900" y2="510.0" stroke="#E3E7EB" stroke-width="1"/>
+  <text x="138" y="515.0" font-size="15" font-weight="400" fill="#8A939C" text-anchor="end">$0</text>
+  <line x1="150" y1="420.0" x2="900" y2="420.0" stroke="#E3E7EB" stroke-width="1"/>
+  <text x="138" y="425.0" font-size="15" font-weight="400" fill="#8A939C" text-anchor="end">$10</text>
+  <line x1="150" y1="330.0" x2="900" y2="330.0" stroke="#E3E7EB" stroke-width="1"/>
+  <text x="138" y="335.0" font-size="15" font-weight="400" fill="#8A939C" text-anchor="end">$20</text>
+  <line x1="150" y1="240.0" x2="900" y2="240.0" stroke="#E3E7EB" stroke-width="1"/>
+  <text x="138" y="245.0" font-size="15" font-weight="400" fill="#8A939C" text-anchor="end">$30</text>
+  <line x1="150" y1="150.0" x2="900" y2="150.0" stroke="#E3E7EB" stroke-width="1"/>
+  <text x="138" y="155.0" font-size="15" font-weight="400" fill="#8A939C" text-anchor="end">$40</text>
+  <line x1="150" y1="60.0" x2="900" y2="60.0" stroke="#E3E7EB" stroke-width="1"/>
+  <text x="138" y="65.0" font-size="15" font-weight="400" fill="#8A939C" text-anchor="end">$50</text>
+  <text x="70" y="285.0" font-size="15" fill="#8A939C" text-anchor="middle" transform="rotate(-90 70 285.0)">Dollars per month</text>
+  <rect x="330" y="480.5" width="150" height="29.5" fill="url(#gBlk)" stroke="#FAFBFC" stroke-width="2"/>
+  <text x="405.0" y="500.7" font-size="15" font-weight="600" fill="#002E5D" text-anchor="middle">1</text>
+  <rect x="330" y="451.0" width="150" height="29.5" fill="url(#gBlk)" stroke="#FAFBFC" stroke-width="2"/>
+  <text x="405.0" y="471.2" font-size="15" font-weight="600" fill="#002E5D" text-anchor="middle">2</text>
+  <rect x="330" y="421.4" width="150" height="29.5" fill="url(#gBlk)" stroke="#FAFBFC" stroke-width="2"/>
+  <text x="405.0" y="441.7" font-size="15" font-weight="600" fill="#002E5D" text-anchor="middle">3</text>
+  <rect x="330" y="391.9" width="150" height="29.5" fill="url(#gBlk)" stroke="#FAFBFC" stroke-width="2"/>
+  <text x="405.0" y="412.2" font-size="15" font-weight="600" fill="#002E5D" text-anchor="middle">4</text>
+  <rect x="330" y="362.4" width="150" height="29.5" fill="url(#gBlk)" stroke="#FAFBFC" stroke-width="2"/>
+  <text x="405.0" y="382.7" font-size="15" font-weight="600" fill="#002E5D" text-anchor="middle">5</text>
+  <rect x="330" y="332.9" width="150" height="29.5" fill="url(#gBlk)" stroke="#FAFBFC" stroke-width="2"/>
+  <text x="405.0" y="353.1" font-size="15" font-weight="600" fill="#002E5D" text-anchor="middle">6</text>
+  <rect x="330" y="303.4" width="150" height="29.5" fill="url(#gBlk)" stroke="#FAFBFC" stroke-width="2"/>
+  <text x="405.0" y="323.6" font-size="15" font-weight="600" fill="#002E5D" text-anchor="middle">7</text>
+  <rect x="330" y="273.8" width="150" height="29.5" fill="url(#gBlk)" stroke="#FAFBFC" stroke-width="2"/>
+  <text x="405.0" y="294.1" font-size="15" font-weight="600" fill="#002E5D" text-anchor="middle">8</text>
+  <rect x="330" y="244.3" width="150" height="29.5" fill="url(#gBlk)" stroke="#FAFBFC" stroke-width="2"/>
+  <text x="405.0" y="264.6" font-size="15" font-weight="600" fill="#002E5D" text-anchor="middle">9</text>
+  <rect x="330" y="214.8" width="150" height="29.5" fill="url(#gBlk)" stroke="#FAFBFC" stroke-width="2"/>
+  <text x="405.0" y="235.1" font-size="15" font-weight="600" fill="#002E5D" text-anchor="middle">10</text>
+  <rect x="330" y="185.3" width="150" height="29.5" fill="url(#gBlk)" stroke="#FAFBFC" stroke-width="2"/>
+  <text x="405.0" y="205.5" font-size="15" font-weight="600" fill="#002E5D" text-anchor="middle">11</text>
+  <rect x="330" y="155.8" width="150" height="29.5" fill="url(#gBlk)" stroke="#FAFBFC" stroke-width="2"/>
+  <text x="405.0" y="176.0" font-size="15" font-weight="600" fill="#002E5D" text-anchor="middle">12</text>
+  <rect x="330" y="126.2" width="150" height="29.5" fill="url(#gBlk)" stroke="#FAFBFC" stroke-width="2"/>
+  <text x="405.0" y="146.5" font-size="15" font-weight="600" fill="#002E5D" text-anchor="middle">13</text>
+  <rect x="330" y="96.7" width="150" height="29.5" fill="url(#gAcc)" stroke="#FAFBFC" stroke-width="2"/>
+  <text x="405.0" y="117.0" font-size="15" font-weight="600" fill="#FFFFFF" text-anchor="middle">14</text>
+  <text x="405.0" y="82.7" font-size="19" font-weight="700" fill="#0057B8" text-anchor="middle">14 paying users</text>
+  <text x="405.0" y="544.0" font-size="19" font-weight="700" fill="#002E5D" text-anchor="middle">All typical users</text>
+  <text x="405.0" y="572.0" font-size="17" font-weight="400" fill="#5A6672" text-anchor="middle">$4.00 − $0.27 − $0.45 = $3.28</text>
+  <path d="M326,480.48 L320,480.48 L320,510.0 L326,510.0" fill="none" stroke="#5A6672" stroke-width="1.5"/>
+  <text x="312" y="491.2" font-size="16" font-weight="600" fill="#2C3E50" text-anchor="end">$3.28</text>
+  <text x="312" y="510.2" font-size="16" font-weight="400" fill="#5A6672" text-anchor="end">per user</text>
+  <rect x="660" y="485.1" width="150" height="24.9" fill="url(#gBlk)" stroke="#FAFBFC" stroke-width="2"/>
+  <text x="735.0" y="503.0" font-size="15" font-weight="600" fill="#002E5D" text-anchor="middle">1</text>
+  <rect x="660" y="460.1" width="150" height="24.9" fill="url(#gBlk)" stroke="#FAFBFC" stroke-width="2"/>
+  <text x="735.0" y="478.1" font-size="15" font-weight="600" fill="#002E5D" text-anchor="middle">2</text>
+  <rect x="660" y="435.2" width="150" height="24.9" fill="url(#gBlk)" stroke="#FAFBFC" stroke-width="2"/>
+  <text x="735.0" y="453.2" font-size="15" font-weight="600" fill="#002E5D" text-anchor="middle">3</text>
+  <rect x="660" y="410.3" width="150" height="24.9" fill="url(#gBlk)" stroke="#FAFBFC" stroke-width="2"/>
+  <text x="735.0" y="428.2" font-size="15" font-weight="600" fill="#002E5D" text-anchor="middle">4</text>
+  <rect x="660" y="385.4" width="150" height="24.9" fill="url(#gBlk)" stroke="#FAFBFC" stroke-width="2"/>
+  <text x="735.0" y="403.3" font-size="15" font-weight="600" fill="#002E5D" text-anchor="middle">5</text>
+  <rect x="660" y="360.4" width="150" height="24.9" fill="url(#gBlk)" stroke="#FAFBFC" stroke-width="2"/>
+  <text x="735.0" y="378.4" font-size="15" font-weight="600" fill="#002E5D" text-anchor="middle">6</text>
+  <rect x="660" y="335.5" width="150" height="24.9" fill="url(#gBlk)" stroke="#FAFBFC" stroke-width="2"/>
+  <text x="735.0" y="353.5" font-size="15" font-weight="600" fill="#002E5D" text-anchor="middle">7</text>
+  <rect x="660" y="310.6" width="150" height="24.9" fill="url(#gBlk)" stroke="#FAFBFC" stroke-width="2"/>
+  <text x="735.0" y="328.5" font-size="15" font-weight="600" fill="#002E5D" text-anchor="middle">8</text>
+  <rect x="660" y="285.6" width="150" height="24.9" fill="url(#gBlk)" stroke="#FAFBFC" stroke-width="2"/>
+  <text x="735.0" y="303.6" font-size="15" font-weight="600" fill="#002E5D" text-anchor="middle">9</text>
+  <rect x="660" y="260.7" width="150" height="24.9" fill="url(#gBlk)" stroke="#FAFBFC" stroke-width="2"/>
+  <text x="735.0" y="278.7" font-size="15" font-weight="600" fill="#002E5D" text-anchor="middle">10</text>
+  <rect x="660" y="235.8" width="150" height="24.9" fill="url(#gBlk)" stroke="#FAFBFC" stroke-width="2"/>
+  <text x="735.0" y="253.7" font-size="15" font-weight="600" fill="#002E5D" text-anchor="middle">11</text>
+  <rect x="660" y="210.8" width="150" height="24.9" fill="url(#gBlk)" stroke="#FAFBFC" stroke-width="2"/>
+  <text x="735.0" y="228.8" font-size="15" font-weight="600" fill="#002E5D" text-anchor="middle">12</text>
+  <rect x="660" y="185.9" width="150" height="24.9" fill="url(#gBlk)" stroke="#FAFBFC" stroke-width="2"/>
+  <text x="735.0" y="203.9" font-size="15" font-weight="600" fill="#002E5D" text-anchor="middle">13</text>
+  <rect x="660" y="161.0" width="150" height="24.9" fill="url(#gBlk)" stroke="#FAFBFC" stroke-width="2"/>
+  <text x="735.0" y="178.9" font-size="15" font-weight="600" fill="#002E5D" text-anchor="middle">14</text>
+  <rect x="660" y="136.1" width="150" height="24.9" fill="url(#gBlk)" stroke="#FAFBFC" stroke-width="2"/>
+  <text x="735.0" y="154.0" font-size="15" font-weight="600" fill="#002E5D" text-anchor="middle">15</text>
+  <rect x="660" y="111.1" width="150" height="24.9" fill="url(#gBlk)" stroke="#FAFBFC" stroke-width="2"/>
+  <text x="735.0" y="129.1" font-size="15" font-weight="600" fill="#002E5D" text-anchor="middle">16</text>
+  <rect x="660" y="86.2" width="150" height="24.9" fill="url(#gAcc)" stroke="#FAFBFC" stroke-width="2"/>
+  <text x="735.0" y="104.2" font-size="15" font-weight="600" fill="#FFFFFF" text-anchor="middle">17</text>
+  <text x="735.0" y="72.2" font-size="19" font-weight="700" fill="#0057B8" text-anchor="middle">17 paying users</text>
+  <text x="735.0" y="544.0" font-size="19" font-weight="700" fill="#002E5D" text-anchor="middle">1 in 10 is a heavy user</text>
+  <text x="735.0" y="572.0" font-size="17" font-weight="400" fill="#5A6672" text-anchor="middle">$4.00 − $0.78 − $0.45 = $2.77</text>
+  <path d="M656,485.07 L650,485.07 L650,510.0 L656,510.0" fill="none" stroke="#5A6672" stroke-width="1.5"/>
+  <text x="642" y="493.5" font-size="16" font-weight="600" fill="#2C3E50" text-anchor="end">$2.77</text>
+  <text x="642" y="512.5" font-size="16" font-weight="400" fill="#5A6672" text-anchor="end">per user</text>
+  <line x1="150" y1="105.0" x2="900" y2="105.0" stroke="#002E5D" stroke-width="2.5" stroke-dasharray="8 5"/>
+  <text x="160" y="131.0" font-size="17" font-weight="700" fill="#002E5D" text-anchor="start">Fixed costs,</text>
+  <text x="160" y="152.0" font-size="17" font-weight="700" fill="#002E5D" text-anchor="start">$45 a month</text>
+  <text x="545" y="614.0" font-size="16" font-weight="400" fill="#8A939C" text-anchor="middle">Price − model calls − payment fee = contribution margin per user</text>
+</svg>

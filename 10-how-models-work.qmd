@@ -10,7 +10,8 @@ into text, you cannot reason about why it fails, what it costs, where it will be
 wrong, or which problems it is the wrong tool for.
 
 The whole chapter rests on one fact: **a language model is a compressed statistical picture of
-text that predicts the next token.** Its fluency, its knowledge, its randomness, and its
+text that predicts the next token.** A token is a small piece of text, often a word or part of
+a word (Step 1 below explains them). Its fluency, its knowledge, its randomness, and its
 confident mistakes all follow from that. The first half of the chapter builds a model from
 scratch, one building block at a time, the way Sebastian Raschka does in *Build a Large
 Language Model (From Scratch)* [@raschka2024build], the source of most of the figures here. The
@@ -40,7 +41,7 @@ and where it does not, and catch an agent's mistake.
 
 ## Building a Language Model from Scratch
 
-Every LLM, from the small GPT you could build on a laptop to the frontier models behind Claude
+Every LLM, from the small GPT (the kind of model behind ChatGPT) you could build on a laptop to the frontier models behind Claude
 Code, is assembled from the same six blocks:
 
 | Step | Building block | What it does |
@@ -69,7 +70,8 @@ starting from single characters and repeatedly merging the pairs that appear tog
 
 Tokens are the unit of everything you will pay for and run into:
 
-- **Cost.** APIs bill per token in and per token out.
+- **Cost.** Model APIs (the service your code calls to reach a model, Chapter 7) bill per token
+  in and per token out.
 - **Speed.** The model writes one token at a time, so a long answer takes longer than a short one.
 - **Limits.** The context window (how much the model can take in at once) and the maximum
   output are both counted in tokens.
@@ -122,7 +124,7 @@ retrieval fetches the wrong pieces, the model answers from them anyway, fluently
 each token's numbers come to reflect its context.** In "I deposited cash at the bank", attention
 lets "bank" draw on "deposited" and "cash" and move toward the financial meaning. In "we sat on
 the river bank" it moves the other way. This mechanism, introduced in the transformer
-architecture [@vaswani2017attention], is the T in GPT and the reason models handle distant
+architecture [@vaswani2017attention], is the T in GPT (Generative Pretrained Transformer) and the reason models handle distant
 context far better than older designs.
 
 A GPT stacks this into a **transformer block** (attention followed by a small neural network
@@ -142,7 +144,8 @@ model "knows" about your request at that moment is in those tokens.
 **After the last layer, the model turns the final token's numbers into a score for every token
 in its vocabulary, converts those scores into probabilities, and picks one. Then it appends that
 token to the input and runs again.** A whole answer is this loop, one token at a time, until the
-model produces a stop token or hits the output limit.
+model produces a stop token (a special token that means "end of answer") or hits the output
+limit.
 
 ![Image source: Build a Large Language Model (From Scratch) by Sebastian Raschka](images/prediction.png)
 
@@ -154,8 +157,10 @@ called **temperature** controls how random the draw is: near 0 it almost always 
 top token; at 1 it draws in proportion to the probabilities. That is why the same prompt gives a
 different answer on a second run, and why a different early token can change the whole rest of
 the answer. Anthropic's API documentation notes that even at temperature 0 the results are
-not fully deterministic, and its newest models no longer let you set temperature below the
-default at all. Design your product on the assumption that output varies.
+not fully deterministic, and its newest models no longer let you change temperature at all:
+any value other than the default, for temperature or the related `top_p` and `top_k`
+settings, returns an error ([Claude Opus 5.5 migration guide](https://platform.claude.com/docs/en/models/opus-5-5/migration-guide)).
+Design your product on the assumption that output varies.
 
 ![The same probabilities, two temperatures. At low temperature nearly every run picks the top token; at temperature 1 the less likely tokens get drawn too, so repeated runs differ. Illustrative numbers.](images/diagrams/ch10-sampling-temperature.svg){#fig-sampling-temperature fig-alt="The text so far is The cat sat on the. Two bar charts give the probability of each possible next token. At temperature 0.2, mat gets about 91 percent, rug 9 percent, and floor, couch, bed, and other each under 1 percent. At temperature 1, mat gets 40 percent, rug 25, floor 15, couch 10, bed 6, and other 4. Below each chart are five runs of the same prompt: at low temperature all five say mat; at temperature 1 they say mat, rug, mat, floor, mat, with rug and floor highlighted." width="100%"}
 
@@ -234,7 +239,8 @@ and which training stage explains what you see.
 ### Build one yourself
 
 The fastest way to make this chapter concrete is to watch a small GPT get built, block by block,
-in code. This is optional, and it is the most valuable optional thing on the AI Systems axis.
+in code. This is optional, and it is the most valuable optional thing on the AI Systems axis
+(the builder skill this chapter and Chapter 11 cover).
 
 - **Book:** Sebastian Raschka, *Build a Large Language Model (From Scratch)* (Manning, 2024)
   [@raschka2024build]. Tokenizer, embeddings, attention, a GPT, pretraining, then fine-tuning,
@@ -281,8 +287,8 @@ can verify, and putting a person or a check in the path where a wrong answer is 
 ::: {.callout-tip title="Try it"}
 Ask a model for two published sources, with authors, titles, and years, on a narrow topic from
 your own product's domain. Look each one up. Record what was real, what was partly real, and
-what was invented. Keep the result: it is the start of a hallucination analysis for your AI
-Systems evidence.
+what was invented. Keep the result: it is the start of a hallucination analysis, one of the kinds of AI Systems
+evidence listed on the [assessments page](00-assessments.qmd).
 :::
 
 ### The context window is working memory
@@ -326,7 +332,7 @@ edit, and sent the result back to the model as more text. The same model with a 
 harness can do different things, which is the point of the agent pyramid in Chapter 1.
 
 This one fact explains a lot. An agent's capabilities and risks come from the tools the harness exposes;
-the model alone only writes text. Permissions and hooks work because they live in the harness,
+the model alone only writes text. Permissions and hooks (Chapter 1) work because they live in the harness,
 where the model's output cannot override them. And when the model's text can trigger an action, anyone who can
 put text in front of the model can try to steer that action. Chapter 11 builds this loop into
 a product and covers the defenses.
@@ -357,7 +363,8 @@ one may appear.
 Pick the one AI task at the heart of your product. Write five realistic inputs, including one
 awkward edge case. Predict which ones the model will get right, then run them. Where your
 prediction was wrong, you found the frontier for your product. This is the start of the eval set
-in Chapter 11.
+in Chapter 11: a fixed list of test inputs, each with the answer it should get, that you rerun
+after every change.
 :::
 
 <!-- learn -->

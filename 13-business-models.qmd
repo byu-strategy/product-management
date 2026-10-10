@@ -21,11 +21,11 @@ app that turns a student's lecture notes into a practice quiz, for $4 a month.
 
 **The model:** a business creates value for a specific customer, delivers it through some
 channel, and captures part of that value as revenue, at a cost lower than what it captures.
-Every block of the canvas is one part of that sentence, and a choice in one block constrains
-the others.
+The Business Model Canvas, below, breaks that sentence into ten blocks, and a choice in one block
+constrains the others.
 
-The Business Model Canvas is a strategic management tool that helps you describe, design,
-challenge, and pivot your business model. Alexander Osterwalder created it [@osterwalder2010business];
+The Business Model Canvas is a one-page tool for describing, designing, and questioning a
+business model, and for changing it when the evidence says a part is wrong. Alexander Osterwalder created it [@osterwalder2010business];
 Jeff Dyer refined it by splitting the central value proposition into two parts: the
 **Jobs-To-Be-Done** (what customers are hiring your product to do) and the **Customer Value
 Proposition** (the specific solution you provide). That gives the ten-block canvas this course
@@ -41,13 +41,16 @@ Read the canvas as two halves joined in the middle:
 | **The center** | Jobs-To-Be-Done, Customer Value Proposition | What job they hire you for, and what you offer to do it |
 | **The operations side** (left) | Key Activities, Key Resources, Key Partners, Cost Structure | What you must do and have to deliver it, and what that costs |
 
-**How the blocks combine.** Each choice forces others. Choose a self-serve channel and your
-customer relationship must be automated, which means onboarding has to work without you. Choose
-a subscription revenue stream and retention becomes what matters most, because revenue only
-continues while people stay. Choose a model call as your core activity and every use of the
-product adds to your cost structure. A canvas where the blocks contradict each other (a
-$3-a-month price with a sales-led channel that needs a call per customer) is a model that cannot
-work, however good each block looks alone.
+**How the blocks combine.** Each choice forces others. Choose a self-serve channel (customers
+find you, sign up, and pay on their own) and your customer relationship must be automated, which
+means onboarding, the first steps a new user takes, has to work without you. Choose a
+subscription revenue stream and retention (how many customers keep using and paying) becomes what
+matters most, because revenue only continues while people stay. Choose a model call (a request
+your app sends to an AI model, which you pay for each time) as your core activity and every use
+of the product adds to your cost structure. A canvas where the blocks contradict each other is a
+model that cannot work, however good each block looks alone. Example: a $3-a-month price with a
+sales-led channel, where you get each customer through a call or meeting, costs more in your time
+per customer than the customer pays.
 
 **Every block is a hypothesis.** Filling in the canvas does not make anything true. Mark each
 entry as *evidence* (an interview, a payment, your usage logs) or *guess*. The guesses that would
@@ -68,12 +71,12 @@ something specific is true about your customer and your costs.
 
 | Revenue model | How you get paid | Must be true | For an AI product |
 |---|---|---|---|
-| Subscription | A fixed price per month or year | People need it repeatedly | Heavy users can cost more than they pay; add an allowance |
-| Usage-based | Per action, per credit, per seat-hour | Use maps to value | Price tracks your model cost |
+| Subscription | A fixed price per month or year | People need it repeatedly | Heavy users can cost more than they pay; include a monthly usage limit |
+| Usage-based | Per action, or per prepaid credit spent on actions | Use maps to value | Price tracks your model cost |
 | Freemium | Free tier, paid upgrade | Free users are cheap and some convert | Free users still run up model cost; cap the free tier |
 | One-time purchase | Pay once | The job is done once | Ongoing AI calls are not covered by a one-time price |
 | Advertising | Advertisers pay for attention | Very large audience | Rarely fits a student product |
-| Commission | A share of each transaction | You sit between buyer and seller | Cost scales with transactions, not tokens |
+| Commission | A share of each transaction | You sit between buyer and seller | Cost scales with transactions, not with tokens (the units of text a model reads and writes, which set its price) |
 
 Pricing, the number itself, is covered in [Going to Market](12-going-to-market.qmd): price from
 the value delivered, never from asking customers to invent a number, and check the floor set by
@@ -119,9 +122,11 @@ measure the distribution of usage and not only the average. Second, a revenue-ba
 $16) would have told you that you could spend up to $16 to acquire a customer. The margin-based
 number says $11.
 
+![Break-even for QuizMe, one block per paying user. Each user contributes their contribution margin toward the $45 of monthly fixed costs; break-even is the first user whose block crosses the line. When 1 in 10 users is a heavy user, each block is smaller, so it takes 17 users instead of 14. Numbers are the chapter's worked example; the fee and fixed-cost figures are assumptions.](images/diagrams/ch13-break-even-blocks.svg){#fig-break-even-blocks fig-alt="A chart in dollars per month, from 0 to 50, with a dashed line at 45 dollars marked fixed costs, 45 dollars a month. Two columns are built from stacked, numbered blocks, one block per paying user. The left column, all typical users, stacks blocks of 3 dollars 28 each, which is 4 dollars minus 27 cents of model calls minus 45 cents of payment fee. Thirteen blocks stay below the line; the fourteenth, highlighted, crosses it, so break-even is 14 paying users. The right column, 1 in 10 is a heavy user, stacks blocks of 2 dollars 77 each, which is 4 dollars minus an average of 78 cents of model calls minus 45 cents of fee. The seventeenth block, highlighted, crosses the line, so break-even is 17 paying users. A note at the bottom reads price minus model calls minus payment fee equals contribution margin per user." width="100%"}
+
 ::: {.callout-tip title="Try it"}
 Build the same table for your product with your own numbers: price, model cost per typical and
-heavy user (from chapter 11's arithmetic and your logs), payment fees, fixed costs. Before you
+heavy user (from the cost arithmetic in [Models in Your Product](11-models-in-your-product.qmd) and your logs), payment fees, fixed costs. Before you
 compute, predict your break-even number of paying users. Then ask: what share of heavy users would
 make your contribution margin zero?
 :::
@@ -138,11 +143,16 @@ like a validated one. The prompts below therefore ask it to separate evidence fr
 to price from what customers already spend. Read every block it writes and ask, "how do I know
 this?"
 
-**Important:** As you complete each prompt, save the output to a file called `business-model-canvas.md` in your project directory. Each section should be appended to this file in order. By the end of this process, you'll have a complete business model canvas document that you can reference and use to create presentations.
-
 There are two ways to work: one prompt that drafts the whole canvas, or one prompt per block. Use
 the single prompt for a first draft if you already know the canvas. Use the step-by-step prompts
 if you are new to it, or when one block needs more thought than the others.
+
+**Where the answers go.** Paste each prompt into Claude Code, opened in your project folder. The
+last line of each prompt tells Claude to save its answer to a file called
+`business-model-canvas.md` in your project, adding each block under its own heading in order. You
+do not copy anything by hand. Open the file after each prompt and read what was added. By the end
+you have the whole canvas in one file, and prompts 12 and 13 read that file to build a
+spreadsheet and a slide.
 
 ::: {.callout-note collapse="true" title="Quick Start: single-prompt Business Model Canvas"}
 ```markdown
@@ -150,7 +160,7 @@ if you are new to it, or when one block needs more thought than the others.
 
 Help me create a complete Business Model Canvas for my business in one comprehensive analysis.
 
-**Instructions:** Review my Claude.md file and codebase to understand my product/business.
+**Instructions:** Review my CLAUDE.md file and codebase to understand my product/business.
 
 **Output Requirements:** Maximum 1200 words total. Create a complete, concise business model canvas covering all 10 components.
 
@@ -209,7 +219,7 @@ Please analyze and provide:
 
 Mark every claim as **evidence** (from my notes, data, or code) or **guess**. Format each section with clear headers. Use bullet points for scannability. Focus on specifics over generics.
 
-**After receiving the response, save it to `business-model-canvas-short.md` in your project directory.**
+**After receiving the response, save it to `business-model-canvas.md` in your project directory.**
 ```
 :::
 
@@ -228,7 +238,7 @@ come first because every other block depends on them.
 
 Help me identify and analyze the customer segments for my business.
 
-**Business/Product Description:** Review my Claude.md file and code base to understand my product.
+**Business/Product Description:** Review my CLAUDE.md file and code base to understand my product.
 
 **Output Requirements:** Keep this concise - maximum 150 words total. Focus on clarity over comprehensiveness.
 
@@ -448,7 +458,7 @@ Keep it tight. Only list partnerships that are truly necessary.
 :::
 
 **Phase 3: Financial viability.** The unit economics above, applied to your product. Check the
-cost per user against your logs, not only the model's estimate.
+cost per user against your logs, not only Claude's estimate.
 
 ::: {.callout-note collapse="true" title="10. Cost Structure prompt"}
 ```markdown
@@ -513,6 +523,11 @@ Keep it actionable and specific. Skip theoretical analysis.
 
 The financial model makes break-even and its sensitivity explicit: change the price, the share of
 heavy users, or the model cost, and watch break-even move. The slide is for presenting the canvas.
+
+Prompts 12 and 13 name the `xlsx` and `pptx` skills, Anthropic's built-in skills for making
+Excel and PowerPoint files. When you sign in to Claude Code with a claude.ai account, `xlsx` is
+always available. If Claude says it cannot find `pptx`, turn it on in your skills settings on
+claude.ai.
 
 ::: {.callout-note collapse="true" title="12. Financial model for break-even analysis prompt"}
 Once you've completed your business model canvas, use this prompt to create a financial model in Excel:

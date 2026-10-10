@@ -10,18 +10,31 @@ other people: that they have this problem, that it hurts enough to change what t
 would use and pay for your fix. Discovery is the work of finding out which of those beliefs are
 true, cheaply, before you spend a sprint building on them.
 
-Problem discovery is the process of moving from *I think this is a problem* to *I know this is a problem worth solving*. It requires talking to real people, asking the right questions, and synthesizing what you learn into actionable insights.
+Problem discovery is the process of moving from *I think this is a problem* to *I know this is a problem worth solving*. It requires talking to real people, asking the right questions, and turning what you hear into conclusions you can act on.
 
-This chapter covers finding and framing problems, gathering honest evidence, choosing who you
-build for, finding your riskiest assumption, and testing it before you build.
+This is the longest chapter in the book because it covers the whole path from noticing a problem
+to deciding what to build first. The sections follow the order you do the work:
 
-Dan Olsen's Lean Product Process is a useful overview of the whole process. The bottom two layers are the
+1. **Get the mindset.** Treat your beliefs as guesses to check ([Discovery Is Truth-Seeking](#discovery-is-truth-seeking), [The Five Discovery Skills](#the-five-discovery-skills)).
+2. **Notice many problems.** Start with your own frustrations and write them all down before you judge any ([You Are Your Best First Customer](#you-are-your-best-first-customer) through [Diverge Before You Converge](#diverge-before-you-converge)).
+3. **Describe each problem precisely.** Say what the person is trying to get done, how it hurts, and what they do about it today ([Jobs-to-be-Done](#jobs-to-be-done-framework) through [The Real Competitor Is the Current Habit](#the-real-competitor-is-the-current-habit)).
+4. **Talk to people.** Interview them about what they actually did, and sort what you hear by how much you can trust it ([Problem Interviews](#problem-interviews-the-mom-test) through [Interview Synthesis](#interview-synthesis)).
+5. **Choose who it is for.** Pick a narrow group you can reach ([Who It Is For, and Not For](#who-it-is-for-and-not-for) through [Building Personas](#building-personas)).
+6. **Score your problems and pick one** ([Evaluating Your Problems](#evaluating-your-problems)).
+7. **Find what could make it fail, and test that first, cheaply** ([Issue Trees](#structure-a-messy-problem-issue-trees) through [The Smallest Test](#the-smallest-test)).
+8. **Commit, and say what you offer** ([The Commitment Decision](#the-commitment-decision) through [Your Value Proposition](#your-value-proposition)).
+9. **Decide the smallest first build** ([What is an MVP?](#what-is-an-mvp) through [Feature Prioritization](#feature-prioritization)).
+10. **Write the brief, and keep discovering** ([From Discovery to the Brief](#from-discovery-to-the-brief), [Discovery Is Continuous](#discovery-is-continuous)).
+
+Dan Olsen's Lean Product Process is a useful overview of the whole process. **Product-market fit**
+means you have built something that meets a real need of a real group of customers better than what
+they use now. The bottom two layers are the
 market and are not yours to decide: who the customer is and which of their needs are underserved.
 The top three are the product and are entirely your choices: the value proposition, the feature set,
 and the UX. Product-market fit is the boundary between them, and step 6 loops back through customer
 testing. This chapter is the bottom half. Chapters 5 and 6 are the top.
 
-![Image source: The Lean Product Playbook by Dan Olsen](images/lean-product-process.png){fig-alt="A pyramid split into a market half and a product half. The market base, from the bottom, is 1 target customer and 2 underserved needs. The product top, from the bottom, is 3 value proposition, 4 feature set, and 5 UX. A double arrow between the halves is labeled product-market fit, and a dashed arrow from the top loops back down to the base labeled 6 test with customers."}
+![The Lean Product Process. The market half, who the customer is and which needs are underserved, is what you discover; the product half, the value proposition, feature set, and UX, is what you choose. Product-market fit is where the two meet, and testing with customers loops back from the top to the base. Adapted from Dan Olsen, *The Lean Product Playbook* [@olsen2015lean].](images/diagrams/ch04-pmf-pyramid.svg){#fig-pmf-pyramid fig-alt="A pyramid split into two halves with a gap between them. The bottom half, bracketed as Market, you discover, has layer 1, target customer, at the base and layer 2, underserved needs, above it. The top half, bracketed as Product, you choose, has layer 3, value proposition, layer 4, feature set, and layer 5, UX, at the tip. In the gap between the halves, two double-headed arrows flank the label product-market fit. A dashed blue arrow, labeled 6, test with customers, runs from the tip of the pyramid around the right side and back down to the base." width="100%"}
 
 ::: {.callout-note title="The example in this chapter: a dues tracker"}
 A student club collects membership dues. Members pay the treasurer on Venmo, and every Sunday
@@ -46,7 +59,7 @@ Those six regions each show up in real product work:
 
 | Region | What it is in product terms |
 |---|---|
-| **Validated Insight** | True, and you have strong evidence. You believed it, you tested it, it held. This is what you want under your roadmap before you commit. |
+| **Validated Insight** | True, and you have strong evidence. You believed it, you tested it, it held. This is what you want under your build plan before you commit. |
 | **Founded Bet** | True, but the evidence is still thin. A reasoned conviction you act on ahead of full proof. You cannot validate everything. |
 | **Unfounded Hunch** | You believe it, it is not true, little evidence. A guess you are fond of. Cheap to hold, cheap to drop, if you are honest. |
 | **False Confidence** | You believe it, it is not true, and you feel sure. "I *know* users want this." The most dangerous place to build from, because the certainty hides the mistake. |
@@ -64,21 +77,21 @@ If the map tells you where a belief sits, the next question is how you gather th
 | Way of knowing | How a PM uses it | How it misleads you |
 |---|---|---|
 | **Logical reasoning** | Your own analysis, the internal logic of the idea | Armchair theorizing, confirmation bias. Seems airtight but has never been checked against a user. |
-| **Trial and error** | Shipping, A/B tests, MVP experiments | Slow and costly, and you can optimize into a dead end. |
-| **Word of others** | Competitors, analysts, "best practices," the loudest stakeholder | Cargo-culting. Their context is not your context. |
-| **Sensory experience** | Watching real users, usability tests | Tiny samples, the observer effect. You see what you expect. |
+| **Trial and error** | Shipping a version, A/B tests (showing two versions to different users and comparing what they do), small experiments | Slow and costly, and you can optimize into a dead end. |
+| **Word of others** | Competitors, analysts, "best practices," the loudest stakeholder | Copying what worked for someone else without knowing why it worked. Their context is not your context. |
+| **Sensory experience** | Watching real users, usability tests | Tiny samples, and people act differently when they know you are watching. You see what you expect. |
 | **Intuition** | Product sense, taste | Your preferences are not your user's preferences. |
 | **Epiphany** | The insight in the shower | Feels convincing because it has not been tested. |
 
 Because each tool fails in its own way, **you triangulate**: you treat a belief as validated only when independent sources converge, an interview, plus a behavior in the data, plus a test that survives. The most common mistake is trusting a single source, usually your own logic or one enthusiastic user, and promoting it straight to certainty. That leads to False Confidence.
 
-How much evidence is enough depends on the stakes. A throwaway prototype needs almost none: go build it and learn. Committing the rest of the semester to one product needs a preponderance: real interviews, a customer who lives the problem, some signal they would pay. That is exactly what the Sprint 2 conviction scoring is asking you to weigh. The posture throughout is to hold beliefs as probabilities: "I am maybe sixty percent sure" in place of "this is a great idea," and let each conversation move the number.
+How much evidence is enough depends on the stakes. A throwaway prototype needs almost none: go build it and learn. Committing the rest of the semester to one product needs a preponderance: real interviews, a customer who lives the problem, some signal they would pay. That is exactly what the conviction checks in the [Problem Discovery Framework](94-problem-discovery-framework.qmd), which you use in Sprint 2, ask you to weigh (see [Evaluating Your Problems](#evaluating-your-problems)). The posture throughout is to hold beliefs as probabilities: "I am maybe sixty percent sure" in place of "this is a great idea," and let each conversation move the number.
 
 ::: {.callout-note title="Thinking in probabilities"}
 This is the Bayesian habit, and it comes with one practical rule: **good evidence is evidence that would look different if you were wrong.** "Tell me about the last time you dealt with this" is strong evidence, because someone who does not really have the problem cannot answer it convincingly. "Would you use an app that does this?" is weak evidence, because people say yes whether the problem is real or not. Seek the evidence that actually moves the number; discount the flattery that does not. That single test is why the Mom Test works, and it is the logic behind the [evidence ladder](#the-evidence-ladder-said-did-paid) later in this chapter.
 :::
 
-The rest of this chapter is the *how*. Jobs-to-be-Done gives you a sharper hypothesis about what is true. The Mom Test gathers evidence that actually moves the number instead of flattery that does not.
+The rest of this chapter is the *how*. Jobs-to-be-Done gives you a sharper hypothesis about what is true. [The Mom Test](#problem-interviews-the-mom-test) gathers evidence that actually moves the number instead of flattery that does not.
 
 <!-- learn -->
 
@@ -208,7 +221,7 @@ Most products focus only on functional jobs. But emotional and social jobs often
 A job rarely happens in one moment. Mapping the whole experience, phase by phase, shows you where
 the pain is greatest, which is usually not where you assumed. The dips are your opportunities.
 
-![Image source: Heart of the Customer](images/journey-map.png){fig-alt="A customer journey map for a persona named Paula. A band across the top divides the experience into three journey phases. Below it a line traces her emotional state from negative through positive and back down, annotated with quotes at each turn: concerned, supported, cared for, and annoyed at the final handoff. A row along the bottom lists opportunities identified at each phase."}
+![A customer journey map for the dues tracker's treasurer. The treasurer's mood drops below neutral while she matches and chases payments, and the opportunities sit under those two dips. The phases, thoughts, and feelings are invented for teaching, like the rest of the example.](images/diagrams/ch04-journey-map.svg){#fig-journey-map fig-alt="A customer journey map for a student club treasurer collecting dues. Four phases run left to right: collect dues, match payments, chase who owes, and report totals. Doing row: receives Venmo payments, some with no name; checks each payment against the sign-up sheet; texts members the sheet shows as unpaid; sends the paid total to the club president. Thinking row: dues are coming in; whose 20 dollars is this; what if she already paid; done until next Sunday. Feeling row: a line traces the treasurer's mood, calm above neutral while collecting, dropping below neutral to frustrated while matching and lowest, anxious, while chasing, then back above neutral, relieved, after reporting. Opportunity row: opportunities appear only under the two dips: match payments to members automatically, and show who has paid before anyone is texted." width="100%"}
 
 ::: {.callout-tip title="Try it"}
 Find the mistake in each job statement, then rewrite it:
@@ -269,7 +282,7 @@ of switching is real: learning a new tool, moving data, getting others to change
 risk that the new tool fails at a bad moment.
 
 This changes what you build and what you ask. In interviews, the question "What do you do today?"
-is as important as "What is hard?" In your value proposition, the "Unlike" line should name the
+is as important as "What is hard?" In your [value proposition](#your-value-proposition) (later in this chapter), the "Unlike" line should name the
 habit ("Unlike a Venmo feed and a spreadsheet") before it names any startup. And when the honest
 answer to "what do you do today" is "nothing, and it's fine," the problem may not hurt enough to
 beat any habit.
@@ -329,10 +342,13 @@ This forces specificity. You'll learn:
 - They take an action that costs them something: they sign up for your test, send you their real spreadsheet, or book a second conversation
 - They introduce you to others with the same problem
 
-Asking whether they can beta test is encouraging, but it is still something they said. It
+Asking whether they can beta test (try an early version before it is public) is encouraging, but it is still something they said. It
 becomes evidence when they show up for the beta.
 
 #### Signs You Should Pivot
+
+To **pivot** is to change direction: drop this problem, or keep the person and look for a different problem they have.
+
 
 - They can't remember the last time this happened
 - They shrug and say "it's not a big deal"
@@ -528,7 +544,7 @@ A persona is a fictional but realistic representation of your target customer. I
 
 A worked example, from Dan Olsen:
 
-![Image source: The Lean Product Playbook by Dan Olsen](images/persona.png){fig-alt="A one-page persona for The Busy Mom, Lisa Bennett, age 32, a married teacher with a bachelor's degree earning 55,000 dollars. A pull quote reads that her children's health is her top priority but raising two kids is a full-time job, so she needs an easy way to stay on top of their prescriptions and medical appointments. Paragraphs describe her family and her worry about forgetting to refill an asthma inhaler prescription. Three columns at the bottom list her goals, her technology use, and her interests."}
+![A one-page persona: segment and name, demographics, a quote in her own words, a short story, then goals, technology use, and interests. Adapted from Dan Olsen, *The Lean Product Playbook* [@olsen2015lean].](images/diagrams/ch04-persona.svg){#fig-persona fig-alt="A one-page persona. A person icon sits beside the segment name, The Busy Mom, and the name Lisa Bennett. Demographics: age 32, female, married, bachelor's degree, teacher, income 55,000 dollars. A pull quote: My children's health is my top priority, but raising two kids is a full-time job, so I need an easy way to stay on top of their prescriptions and medical appointments. A short story: she is an elementary school teacher who lives with her husband Dave and their children Addison, 12, and Caleb, 9; Dave often works late, so Lisa is the primary caregiver; Addison has asthma and must always have her inhaler, and Lisa worries she might forget to refill the prescription. Three columns. Goals: be reminded of children's medical appointments, keep track of children's health information, refill prescriptions easily. Technology use: average, owns an iPhone, uses a desktop PC, uses Facebook to keep up with family and friends. Interests: spending time with family, being involved in her children's extracurricular activities, tennis." width="100%"}
 
 Note what makes this one useful: the quote and the asthma inhaler come from a real interview, not
 from imagination. A persona is a summary of evidence you already collected. The failure mode, and
@@ -538,7 +554,7 @@ you already believed.
 
 #### Persona Template
 
-**Name & Role:** Sarah, 34, Marketing Manager at a 200-person SaaS company
+**Name & Role:** Sarah, 34, Marketing Manager at a 200-person SaaS company (Software as a Service: a company that sells software by monthly subscription)
 
 **Demographics:**
 
@@ -636,7 +652,7 @@ misses: how well people's needs are already met. Plot potential problems on a 2x
 
 The opportunity zone is **high importance + low satisfaction**. These are problems that matter a lot to people but that they can't solve well today. High importance with high satisfaction means the current habit already does the job, and you would have to beat it.
 
-![Image source: The Lean Product Playbook by Dan Olsen](images/importance-satisfaction.png)
+![Importance versus satisfaction. A need that matters and is poorly met by current solutions is the opportunity; one that matters and is already met well means competing with what people use now; a need that matters little is not worth going after. Adapted from Dan Olsen, *The Lean Product Playbook* [@olsen2015lean].](images/diagrams/ch04-importance-satisfaction.svg){#fig-importance-satisfaction fig-alt="A two by two grid. The vertical axis is importance of user need, low at the bottom to high at the top. The horizontal axis is user satisfaction with current solutions, low on the left to high on the right. The top left quadrant, high importance and low satisfaction, is shaded blue and labeled Opportunity: matters, poorly met today. The top right quadrant, high importance and high satisfaction, is labeled Competitive: matters, already met well. The whole bottom half, low importance at any level of satisfaction, is one gray region labeled Not worth going after: matters little, however well it is met." width="100%"}
 
 <!-- learn -->
 
@@ -647,7 +663,8 @@ work the part that decides the answer.
 
 Discovery questions arrive messy: "Is this worth building?" "Why aren't people using my app?"
 Consultants handle messy questions with a short sequence of steps, and the steps apply directly
-to product work. This section adapts them from the Management Consulting course (STRAT 325, chapter
+to product work. They also set up the next section: the impact and uncertainty test in building
+block 3 is how you will pick your riskiest assumption. This section adapts them from the Management Consulting course (STRAT 325, chapter
 5, *Structured Problem-Solving*, sections 1.5 to 1.8).
 
 #### Building block 1: MECE
@@ -749,10 +766,10 @@ Marty Cagan sorts everything that has to be true into four risks [@cagan2017insp
 
 | Risk | The question | A cheap test |
 |---|---|---|
-| **Value** | Will they want it, enough to switch from the current habit and pay? | Interviews about the last time; a smoke test; a presell |
+| **Value** | Will they want it, enough to switch from the current habit and pay? | Interviews about the last time; a smoke test; a presell (both defined in [The Smallest Test](#the-smallest-test)) |
 | **Usability** | Can they figure out how to use it? | Put a clickable prototype in front of five users and watch ([Testing the Design](06-testing-the-design.qmd)) |
 | **Feasibility** | Can we build it with the time, skills, data, and tools we have? | Ask Claude to build only the hardest piece in an hour (a spike) |
-| **Viability** | Does it work as a business: someone pays, costs stay below price, it is legal and allowed? | Price it in a presell; estimate cost per user (including AI API costs); check the rules |
+| **Viability** | Does it work as a business: someone pays, costs stay below price, it is legal and allowed? | Price it in a presell; estimate cost per user (including what the AI company charges each time your app sends it a request); check the rules |
 
 These four are a MECE split of "will this product work?": a failure in any one is enough to make it fail. Cagan's
 point is that teams over-test feasibility and under-test value, which is the risk most often
@@ -771,7 +788,7 @@ A worked example. Idea: a dues tracker for student club treasurers.
 | What would have to be true | Risk | Uncertainty | Fatal if false? |
 |---|---|---|---|
 | Treasurers find matching payments to members painful enough to switch | Value | High (we've talked to two) | Yes |
-| Treasurers can connect their Venmo history to the app | Feasibility | High (Venmo closed its API to new developers in 2016; members can download a monthly CSV statement) | Yes |
+| Treasurers can connect their Venmo history to the app | Feasibility | High (Venmo closed its API, the connection other apps use to read its data, to new developers in 2016; members can download a monthly CSV statement) | Yes |
 | Treasurers can learn it in under five minutes | Usability | Medium | No, fixable |
 | A club will pay $5 a month | Viability | High | Not this semester; a free tool is fine for now |
 
@@ -866,11 +883,17 @@ At some point, you need to stop exploring and start building. This is the commit
 - You can't articulate who this is for
 - You're only excited because you like the solution idea
 
+For the dues tracker, ready would look like this: you have talked to five treasurers; three showed
+you the sign-up sheet they reconcile by hand every Sunday (did); you can name the habit (a Venmo
+feed and a spreadsheet); and the concierge test from [The Smallest Test](#the-smallest-test) ran for
+two Sundays with treasurers sending their exports each week. Not ready would look like this: two
+treasurers said it sounded useful, and neither has sent you anything.
+
 <!-- learn -->
 
 ## Avoiding Premature Commitment
 
-The opposite trap is committing too early. Watch for these warning signs:
+The Commitment Decision asks whether you have enough evidence to commit. The more common trap is committing before you do. Watch for these warning signs:
 
 **Solution love:** You're attached to a specific solution before validating the problem. ("I want to build an AI app" → wrong starting point)
 
@@ -904,51 +927,32 @@ Once you commit to a problem, articulate your value proposition, a clear stateme
 > Unlike **manual spreadsheets or expensive enterprise solutions**
 > We **take 10 minutes to set up and cost 1/10th the price**
 
+The same template for the dues tracker:
+
+> For **treasurers of student clubs with fewer than 200 members who collect dues on Venmo**
+> Who **spend Sunday matching payments to a sign-up sheet**
+> Our product is **a dues tracker**
+> That **shows who has paid and who still owes**
+> Unlike **a Venmo feed and a spreadsheet**
+> We **match each payment to a member from the Venmo statement you already download**
+
 The "For" line is your beachhead. The "Unlike" line names the [current
-habit](#the-real-competitor-is-the-current-habit) first (here, manual spreadsheets), because that
-is what the customer will compare you to.
+habit](#the-real-competitor-is-the-current-habit) first (manual spreadsheets in the first example; a Venmo feed and a spreadsheet in the
+second), because that is what the customer will compare you to.
 
-![Image source: Strategyzer](images/value-prop.png) [@osterwalder2014value]
+The canvas below is a second way to check the same statement. On the right, list the customer's
+jobs, pains, and gains from your interviews. On the left, list what your product does about each
+one. Your value proposition is strong when the left side answers the items on the right that
+matter most to the customer.
 
-<!-- learn -->
-
-## From Discovery to the Brief
-
-**The model:** discovery ends in a one-page brief: who it is for, what problem, what done looks
-like, and what is out. The same page is the shared contract with a client and the prompt for your
-agent.
-
-Each line comes straight from this chapter:
-
-| Brief line | Where it comes from |
-|---|---|
-| **Who** | Your beachhead, the not-for list, and the user and payer |
-| **Problem** | The job statement and your synthesis, with the evidence rung for each claim |
-| **Done looks like** | The observable result that would show the riskiest assumption held (for example, "3 of 5 treasurers use the list two Sundays in a row") |
-| **Out** | Everything the "so what" test and MVP scoping cut |
-
-An agent given only "build a dues tracker" fills every blank with a guess, and its guesses come
-from the average app it has seen. The brief replaces those guesses with your evidence. Chapter 2
-covers how to turn it into [user stories](02-directing-the-agent.qmd#user-stories) and a
-[PRD](02-directing-the-agent.qmd#product-requirements-documents-prds) the agent builds from.
-
-<!-- learn -->
-
-## Discovery Is Continuous
-
-Discovery is not a phase you finish before building. The best product teams keep talking to customers every week, indefinitely. Teresa Torres calls this **continuous discovery**, and it fits this course exactly: you run the loop again every sprint, not once at the start.
-
-She also gives a way to keep discovery organized, the **Opportunity Solution Tree**. Start from one desired **outcome** (the thing you want to move). Branch into the **opportunities**: the specific customer needs and pains you have discovered that could move it. Under each opportunity, branch into candidate **solutions**, and under each solution, the **experiments** that would test it. The tree enforces a rule: every solution has to sit under an opportunity you actually discovered, or it does not belong on the tree.
-
-The pieces of this chapter fit on that tree. Each experiment tests one assumption behind a
-solution, usually your riskiest, and each is tagged by one of the four risks. The smallest tests
-above are your experiments.
-
-*Continuous discovery and the Opportunity Solution Tree are from Teresa Torres, Continuous Discovery Habits (2021) [@torres2021continuous].*
+![The Value Proposition Canvas. The customer profile (circle) holds the customer's jobs, pains, and gains; the value map (square) holds the products and services, pain relievers, and gain creators that answer them. Fit is when the value map addresses the jobs, pains, and gains that matter most to the customer. From Alexander Osterwalder, Yves Pigneur, Greg Bernarda, and Alan Smith, *Value Proposition Design* [@osterwalder2014value]. The Value Proposition Canvas is copyright Strategyzer AG ([strategyzer.com](https://www.strategyzer.com)); redrawn here with its terms and layout unchanged.](images/diagrams/ch04-value-prop-canvas.svg){#fig-value-prop-canvas fig-alt="The Value Proposition Canvas. On the left, a square called the value map is divided into three parts: products and services on the left, gain creators at upper right, and pain relievers at lower right, with a gift icon at the center. On the right, a circle called the customer profile is divided into three parts: gains at upper left, pains at lower left, and customer jobs on the right, with a person icon at the center. Two arrows, one from each shape, point toward each other in the gap between them, labeled fit." width="100%"}
 
 <!-- learn -->
 
 ## What is an MVP?
+
+Once you have committed to a problem and can state your value proposition, the next decision is
+what to build first.
 
 A **Minimum Viable Product** is the smallest thing you can put in front of real users that tests
 your riskiest assumption and generates learning you can act on. Eric Ries, who gave the term its
@@ -1053,6 +1057,44 @@ It works because it forces trade-offs that a flat must / should / could list let
 
 <!-- learn -->
 
+## From Discovery to the Brief
+
+**The model:** discovery ends in a one-page brief: who it is for, what problem, what done looks
+like, and what is out. The same page is the shared contract with a client and the prompt for your
+agent.
+
+Each line comes straight from this chapter:
+
+| Brief line | Where it comes from |
+|---|---|
+| **Who** | Your beachhead, the not-for list, and the user and payer |
+| **Problem** | The job statement and your synthesis, with the evidence rung for each claim |
+| **Done looks like** | The observable result that would show the riskiest assumption held (for example, "3 of 5 treasurers use the list two Sundays in a row") |
+| **Out** | Everything the "so what" test and MVP scoping cut |
+
+An agent given only "build a dues tracker" fills every blank with a guess, and its guesses come
+from the average app it has seen. The brief replaces those guesses with your evidence. Chapter 2
+covers how to turn it into [user stories](02-directing-the-agent.qmd#user-stories) and a
+[PRD](02-directing-the-agent.qmd#product-requirements-documents-prds) the agent builds from.
+
+<!-- learn -->
+
+## Discovery Is Continuous
+
+Discovery is not a phase you finish before building. The best product teams keep talking to customers every week, indefinitely. Teresa Torres calls this **continuous discovery**, and it fits this course exactly: you run the loop again every sprint, not once at the start.
+
+She also gives a way to keep discovery organized, the **Opportunity Solution Tree**. Start from one desired **outcome** (the thing you want to move). Branch into the **opportunities**: the specific customer needs and pains you have discovered that could move it. Under each opportunity, branch into candidate **solutions**, and under each solution, the **experiments** that would test it. The tree enforces a rule: every solution has to sit under an opportunity you actually discovered, or it does not belong on the tree.
+
+The pieces of this chapter fit on that tree. Each experiment tests one assumption behind a
+solution, usually your riskiest, and each is tagged by one of the four risks. The smallest tests
+above are your experiments (@fig-opportunity-solution-tree).
+
+![An opportunity solution tree for the dues tracker. Each box sits under one box in the row above, so every experiment traces up to a solution, a discovered pain, and the outcome. A solution with no opportunity above it does not belong on the tree. Opportunity Solution Tree from Teresa Torres [@torres2021continuous].](images/diagrams/ch04-opportunity-solution-tree.svg){#fig-opportunity-solution-tree fig-alt="A tree with four rows, top to bottom: outcome, opportunities, solutions, experiments. The outcome at the top is: treasurers use the who-has-paid list every Sunday. Under it are two opportunities: matching Venmo payments to the sign-up sheet by hand, highlighted, and a gray dashed placeholder, another pain you heard. Under the highlighted opportunity are two solutions: a gray dashed placeholder, another solution, and the dues tracker app. Under the dues tracker app are two experiments: a concierge test, send the list by hand, tagged value risk, and a spike that reads a Venmo CSV export, tagged feasibility risk. To the right in the solutions row is a box with a red dashed outline, an AI app, connected to nothing above it, labeled no opportunity above it." width="100%"}
+
+*Continuous discovery and the Opportunity Solution Tree are from Teresa Torres, Continuous Discovery Habits (2021) [@torres2021continuous].*
+
+<!-- learn -->
+
 ## Key Concepts
 
 - **Discovery**: reducing uncertainty before you spend weeks building; triangulate, and hold beliefs as probabilities
@@ -1077,9 +1119,9 @@ It works because it forces trade-offs that a flat must / should / could list let
 - **The Commitment Decision**: When to stop exploring and start building
 - **Avoiding Premature Commitment**: Watch for solution love, confirmation bias
 - **Value Proposition**: Clear statement of what you offer and why; the "Unlike" line names the habit
-- **The brief**: who, problem, what done looks like, what is out; the contract with a client and the prompt for the agent
-- **Opportunity Solution Tree**: outcome, opportunities, solutions, experiments
 - **MVP / Minimum Awesome Product**: the smallest thing that tests your riskiest assumption with honest signal
 - **Feature prioritization**: ICE, MoSCoW, the $100 Test
+- **The brief**: who, problem, what done looks like, what is out; the contract with a client and the prompt for the agent
+- **Opportunity Solution Tree**: outcome, opportunities, solutions, experiments
 
 <!-- learn -->

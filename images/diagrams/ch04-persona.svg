@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 749" role="img" aria-labelledby="t d" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+  <title id="t">Persona: The Busy Mom, Lisa Bennett</title>
+  <desc id="d">A one-page persona. A person icon sits beside the segment name, The Busy Mom, and the name Lisa Bennett. Demographics: age 32, female, married, bachelor's degree, teacher, income 55,000 dollars. A pull quote: My children's health is my top priority, but raising two kids is a full-time job, so I need an easy way to stay on top of their prescriptions and medical appointments. A short story: she is an elementary school teacher who lives with her husband Dave and their children Addison, 12, and Caleb, 9; Dave often works late, so Lisa is the primary caregiver; Addison has asthma and must always have her inhaler, and Lisa worries she might forget to refill the prescription. Three columns. Goals: be reminded of children's medical appointments, keep track of children's health information, refill prescriptions easily. Technology use: average, owns an iPhone, uses a desktop PC, uses Facebook to keep up with family and friends. Interests: spending time with family, being involved in her children's extracurricular activities, tennis.</desc>
+  <defs>
+    <filter id="sh" filterUnits="userSpaceOnUse" x="0" y="0" width="1000" height="749">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#0A2E4D" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+  <rect width="1000" height="749" rx="8" fill="#FAFBFC"/>
+  <rect x="30" y="24" width="940" height="701" rx="10" fill="#FFFFFF" stroke="#D9DEE4" stroke-width="1.5" filter="url(#sh)"/>
+  <circle cx="130" cy="124" r="70" fill="#E6EEF7"/>
+  <g transform="translate(88,82) scale(3.5)" fill="none" stroke="#002E5D" stroke-width="0.63" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+  <circle cx="12" cy="7" r="4" /></g>
+  <text x="230" y="86" font-size="16" font-weight="700" fill="#0057B8" text-anchor="start">THE BUSY MOM</text>
+  <text x="230" y="126" font-size="36" font-weight="700" fill="#002E5D" text-anchor="start">Lisa Bennett</text>
+  <text x="230" y="162" font-size="16" font-weight="400" fill="#5A6672" text-anchor="start">Age</text>
+  <text x="360" y="162" font-size="16" font-weight="600" fill="#2C3E50" text-anchor="start">32</text>
+  <text x="230" y="186" font-size="16" font-weight="400" fill="#5A6672" text-anchor="start">Gender</text>
+  <text x="360" y="186" font-size="16" font-weight="600" fill="#2C3E50" text-anchor="start">Female</text>
+  <text x="230" y="210" font-size="16" font-weight="400" fill="#5A6672" text-anchor="start">Marital status</text>
+  <text x="360" y="210" font-size="16" font-weight="600" fill="#2C3E50" text-anchor="start">Married</text>
+  <text x="560" y="162" font-size="16" font-weight="400" fill="#5A6672" text-anchor="start">Education</text>
+  <text x="690" y="162" font-size="16" font-weight="600" fill="#2C3E50" text-anchor="start">Bachelor’s degree</text>
+  <text x="560" y="186" font-size="16" font-weight="400" fill="#5A6672" text-anchor="start">Job</text>
+  <text x="690" y="186" font-size="16" font-weight="600" fill="#2C3E50" text-anchor="start">Teacher</text>
+  <text x="560" y="210" font-size="16" font-weight="400" fill="#5A6672" text-anchor="start">Income</text>
+  <text x="690" y="210" font-size="16" font-weight="600" fill="#2C3E50" text-anchor="start">$55,000</text>
+  <rect x="70" y="262" width="5" height="84" rx="2.5" fill="#0057B8"/>
+  <text x="94" y="284" font-size="21" font-weight="500" fill="#0057B8" text-anchor="start">“My children’s health is my top priority, but raising two kids is a full-time</text>
+  <text x="94" y="313" font-size="21" font-weight="500" fill="#0057B8" text-anchor="start">job, so I need an easy way to stay on top of their prescriptions and</text>
+  <text x="94" y="342" font-size="21" font-weight="500" fill="#0057B8" text-anchor="start">medical appointments.”</text>
+  <text x="70" y="392" font-size="17" font-weight="400" fill="#2C3E50" text-anchor="start">Elementary school teacher. Lives with her husband, Dave, and their children,</text>
+  <text x="70" y="418" font-size="17" font-weight="400" fill="#2C3E50" text-anchor="start">Addison (12) and Caleb (9). Dave often works late, so Lisa is the primary caregiver.</text>
+  <text x="70" y="444" font-size="17" font-weight="400" fill="#2C3E50" text-anchor="start">Addison has asthma and must always have her inhaler with her. Lisa worries she</text>
+  <text x="70" y="470" font-size="17" font-weight="400" fill="#2C3E50" text-anchor="start">might forget to refill the inhaler prescription and put Addison in danger.</text>
+  <line x1="70" y1="496" x2="930" y2="496" stroke="#D9DEE4" stroke-width="1.5"/>
+  <text x="70" y="530" font-size="19" font-weight="700" fill="#002E5D" text-anchor="start">Goals</text>
+  <circle cx="75" cy="558" r="3.5" fill="#0057B8"/>
+  <text x="90" y="564" font-size="17" font-weight="400" fill="#2C3E50" text-anchor="start">Be reminded of children’s</text>
+  <text x="90" y="587" font-size="17" font-weight="400" fill="#2C3E50" text-anchor="start">medical appointments</text>
+  <circle cx="75" cy="613" r="3.5" fill="#0057B8"/>
+  <text x="90" y="619" font-size="17" font-weight="400" fill="#2C3E50" text-anchor="start">Keep track of children’s</text>
+  <text x="90" y="642" font-size="17" font-weight="400" fill="#2C3E50" text-anchor="start">health information</text>
+  <circle cx="75" cy="668" r="3.5" fill="#0057B8"/>
+  <text x="90" y="674" font-size="17" font-weight="400" fill="#2C3E50" text-anchor="start">Refill prescriptions easily</text>
+  <text x="366" y="530" font-size="19" font-weight="700" fill="#002E5D" text-anchor="start">Technology use</text>
+  <circle cx="371" cy="558" r="3.5" fill="#0057B8"/>
+  <text x="386" y="564" font-size="17" font-weight="400" fill="#2C3E50" text-anchor="start">Average</text>
+  <circle cx="371" cy="590" r="3.5" fill="#0057B8"/>
+  <text x="386" y="596" font-size="17" font-weight="400" fill="#2C3E50" text-anchor="start">Owns an iPhone</text>
+  <circle cx="371" cy="622" r="3.5" fill="#0057B8"/>
+  <text x="386" y="628" font-size="17" font-weight="400" fill="#2C3E50" text-anchor="start">Uses a desktop PC</text>
+  <circle cx="371" cy="654" r="3.5" fill="#0057B8"/>
+  <text x="386" y="660" font-size="17" font-weight="400" fill="#2C3E50" text-anchor="start">Uses Facebook to keep up</text>
+  <text x="386" y="683" font-size="17" font-weight="400" fill="#2C3E50" text-anchor="start">with family and friends</text>
+  <text x="662" y="530" font-size="19" font-weight="700" fill="#002E5D" text-anchor="start">Interests</text>
+  <circle cx="667" cy="558" r="3.5" fill="#0057B8"/>
+  <text x="682" y="564" font-size="17" font-weight="400" fill="#2C3E50" text-anchor="start">Spending time with family</text>
+  <circle cx="667" cy="590" r="3.5" fill="#0057B8"/>
+  <text x="682" y="596" font-size="17" font-weight="400" fill="#2C3E50" text-anchor="start">Being involved in her</text>
+  <text x="682" y="619" font-size="17" font-weight="400" fill="#2C3E50" text-anchor="start">children’s extracurricular</text>
+  <text x="682" y="642" font-size="17" font-weight="400" fill="#2C3E50" text-anchor="start">activities</text>
+  <circle cx="667" cy="668" r="3.5" fill="#0057B8"/>
+  <text x="682" y="674" font-size="17" font-weight="400" fill="#2C3E50" text-anchor="start">Tennis</text>
+</svg>

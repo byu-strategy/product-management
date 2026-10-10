@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600" role="img" aria-labelledby="t d" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+  <title id="t">An opportunity solution tree for the dues tracker</title>
+  <desc id="d">A tree with four rows, top to bottom: outcome, opportunities, solutions, experiments. The outcome at the top is treasurers use the who-has-paid list every Sunday. Under it are two opportunities: matching Venmo payments to the sign-up sheet by hand, which is highlighted, and a gray placeholder, another pain you heard. Under the highlighted opportunity are two solutions: a gray placeholder, another solution, and the dues tracker app. Under the dues tracker app are two experiments: a concierge test, sending the list by hand, tagged value risk, and a spike that reads a Venmo CSV export, tagged feasibility risk. Off to the right in the solutions row is a box with a red dashed outline, an AI app, connected to nothing, labeled no opportunity above it.</desc>
+  <defs>
+    <linearGradient id="gOut" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0B4A86"/>
+      <stop offset="100%" stop-color="#002E5D"/>
+    </linearGradient>
+    <linearGradient id="gAcc" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#EEF4FB"/>
+      <stop offset="100%" stop-color="#D3E3F4"/>
+    </linearGradient>
+    <linearGradient id="gCard" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#F3F5F7"/>
+    </linearGradient>
+    <filter id="sh" filterUnits="userSpaceOnUse" x="0" y="0" width="1000" height="600">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#0A2E4D" flood-opacity="0.13"/>
+    </filter>
+  </defs>
+  <rect x="0" y="0" width="1000" height="600" rx="8" fill="#FAFBFC"/>
+
+  <!-- row bands -->
+  <line x1="40" y1="150" x2="960" y2="150" stroke="#E9ECEF" stroke-width="1.5"/>
+  <line x1="40" y1="282" x2="960" y2="282" stroke="#E9ECEF" stroke-width="1.5"/>
+  <line x1="40" y1="412" x2="960" y2="412" stroke="#E9ECEF" stroke-width="1.5"/>
+
+  <!-- row labels -->
+  <text x="40" y="92" font-size="15" font-weight="700" fill="#5A6672" letter-spacing="1.2">OUTCOME</text>
+  <text x="40" y="222" font-size="15" font-weight="700" fill="#5A6672" letter-spacing="1.2">OPPORTUNITIES</text>
+  <text x="40" y="352" font-size="15" font-weight="700" fill="#5A6672" letter-spacing="1.2">SOLUTIONS</text>
+  <text x="40" y="502" font-size="15" font-weight="700" fill="#5A6672" letter-spacing="1.2">EXPERIMENTS</text>
+
+  <!-- connectors: gray branches -->
+  <path d="M590,118 V160 H760 V184" fill="none" stroke="#A3ACB5" stroke-width="2"/>
+  <path d="M440,252 V292 H310 V314" fill="none" stroke="#A3ACB5" stroke-width="2"/>
+  <!-- connectors: worked branch -->
+  <path d="M590,118 V160 H440 V184" fill="none" stroke="#0057B8" stroke-width="2.5"/>
+  <path d="M440,252 V292 H540 V314" fill="none" stroke="#0057B8" stroke-width="2.5"/>
+  <path d="M540,374 V424 H435 V444" fill="none" stroke="#0057B8" stroke-width="2.5"/>
+  <path d="M540,374 V424 H660 V444" fill="none" stroke="#0057B8" stroke-width="2.5"/>
+
+  <!-- OUTCOME -->
+  <rect x="320" y="58" width="540" height="60" rx="10" fill="url(#gOut)" filter="url(#sh)"/>
+  <text x="590" y="95" text-anchor="middle" font-size="20" font-weight="600" fill="#FFFFFF">Treasurers use the “who has paid” list every Sunday</text>
+
+  <!-- OPPORTUNITY A (worked) -->
+  <rect x="270" y="184" width="340" height="68" rx="10" fill="#FAFBFC" filter="url(#sh)"/>
+  <rect x="270" y="184" width="340" height="68" rx="10" fill="url(#gAcc)" stroke="#0057B8" stroke-width="2"/>
+  <text x="440" y="213" text-anchor="middle" font-size="18" font-weight="600" fill="#002E5D">Matching Venmo payments to</text>
+  <text x="440" y="237" text-anchor="middle" font-size="18" font-weight="600" fill="#002E5D">the sign-up sheet by hand</text>
+
+  <!-- OPPORTUNITY B (placeholder) -->
+  <rect x="670" y="184" width="180" height="68" rx="10" fill="#F4F6F8" stroke="#C3CAD2" stroke-width="1.5" stroke-dasharray="6 5"/>
+  <text x="760" y="213" text-anchor="middle" font-size="17" fill="#5A6672">Another pain</text>
+  <text x="760" y="237" text-anchor="middle" font-size="17" fill="#5A6672">you heard</text>
+
+  <!-- SOLUTION placeholder -->
+  <rect x="230" y="314" width="160" height="60" rx="10" fill="#F4F6F8" stroke="#C3CAD2" stroke-width="1.5" stroke-dasharray="6 5"/>
+  <text x="310" y="350" text-anchor="middle" font-size="17" fill="#5A6672">Another solution</text>
+
+  <!-- SOLUTION worked -->
+  <rect x="440" y="314" width="200" height="60" rx="10" fill="#FAFBFC" filter="url(#sh)"/>
+  <rect x="440" y="314" width="200" height="60" rx="10" fill="url(#gCard)" stroke="#0057B8" stroke-width="2"/>
+  <text x="540" y="350" text-anchor="middle" font-size="19" font-weight="600" fill="#002E5D">Dues tracker app</text>
+
+  <!-- ORPHAN SOLUTION -->
+  <rect x="790" y="314" width="160" height="60" rx="10" fill="#FFFFFF" stroke="#B03A3A" stroke-width="2" stroke-dasharray="7 5"/>
+  <text x="870" y="350" text-anchor="middle" font-size="19" font-weight="600" fill="#B03A3A">An AI app</text>
+  <text x="870" y="400" text-anchor="middle" font-size="17" fill="#B03A3A">No opportunity above it</text>
+
+  <!-- EXPERIMENT 1 -->
+  <rect x="335" y="444" width="200" height="104" rx="10" fill="#FAFBFC" filter="url(#sh)"/>
+  <rect x="335" y="444" width="200" height="104" rx="10" fill="url(#gCard)" stroke="#D9DEE4" stroke-width="1.5"/>
+  <text x="435" y="474" text-anchor="middle" font-size="18" font-weight="600" fill="#2C3E50">Concierge: send</text>
+  <text x="435" y="497" text-anchor="middle" font-size="18" font-weight="600" fill="#2C3E50">the list by hand</text>
+  <rect x="368" y="512" width="134" height="24" rx="12" fill="#0057B8"/>
+  <text x="435" y="529" text-anchor="middle" font-size="15" font-weight="700" fill="#FFFFFF" letter-spacing="1">VALUE RISK</text>
+
+  <!-- EXPERIMENT 2 -->
+  <rect x="560" y="444" width="200" height="104" rx="10" fill="#FAFBFC" filter="url(#sh)"/>
+  <rect x="560" y="444" width="200" height="104" rx="10" fill="url(#gCard)" stroke="#D9DEE4" stroke-width="1.5"/>
+  <text x="660" y="474" text-anchor="middle" font-size="18" font-weight="600" fill="#2C3E50">Spike: read a</text>
+  <text x="660" y="497" text-anchor="middle" font-size="18" font-weight="600" fill="#2C3E50">Venmo CSV export</text>
+  <rect x="570" y="512" width="180" height="24" rx="12" fill="#E6EEF7" stroke="#002E5D" stroke-width="1.2"/>
+  <text x="660" y="529" text-anchor="middle" font-size="15" font-weight="700" fill="#002E5D" letter-spacing="1">FEASIBILITY RISK</text>
+</svg>

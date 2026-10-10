@@ -10,13 +10,20 @@ has. Judgment about the surface is yours.
 
 The model for this whole chapter fits in two sentences. **Design is deciding where the user's
 attention goes. Every screen should make the next step obvious, and most of what users experience
-happens off the happy path.**
+happens off the happy path.** The **happy path** is the run through the product where everything
+goes right; "off the happy path" is everything else, such as a first visit with no data, a slow
+load, or a failed save.
 
 It helps to be precise about what "the surface" means. Dan Olsen's UX iceberg splits it into four
-layers [@olsen2015lean]. Visual design is the only one above the waterline, and it is the one an
-agent is best at. The three underneath, interaction design, information architecture, and
-conceptual design, are where usable and unusable products actually diverge, and they are decided
-before a single style is chosen.
+layers [@olsen2015lean]. Visual design (colors, fonts, spacing) is the only one above the
+waterline, and it is the one an agent is best at. The three underneath are where usable and
+unusable products actually diverge, and they are decided before a single style is chosen:
+
+- **Interaction design**: what the user does on each screen and what the product does in return.
+- **Information architecture**: how the content is organized and named, and how the user moves
+  between screens to find it.
+- **Conceptual design**: the basic idea of the product as the user understands it, such as "I
+  post a shift, a coworker takes it, my manager approves."
 
 ![Image source: The Lean Product Playbook by Dan Olsen](images/ux-iceberg.png){fig-alt="An iceberg divided into four horizontal layers. Only the top layer, visual design, sits above the waterline. Below the surface, from top to bottom: interaction design, information architecture, and conceptual design as the largest layer at the base."}
 
@@ -36,7 +43,9 @@ application fails. This chapter works from the bottom of the iceberg up:
 
 The ninth design idea, **watch, do not ask**, is the subject of [Testing the
 Design](06-testing-the-design.qmd). The chapter closes with a short section on web versus mobile
-and a reference section on how the surface is built in code.
+and a reference section on how the surface is built in code. If words such as HTML, CSS,
+Tailwind, React, or component are new to you, read that reference section, [How the Surface Is
+Built](#how-the-surface-is-built-reference), first; it is one short table.
 
 ::: {.callout-note title="The example in this chapter: ShiftSwap"}
 ShiftSwap is an app for student employees at a campus job. A student who cannot work a shift
@@ -128,7 +137,7 @@ items as by emphasizing the primary one.
 | **Weight** | Bolder text or a filled button | Bold everywhere, so bold means nothing |
 | **Contrast and color** | Darker, more saturated, or the one colored element | Five colors competing; color as the only signal |
 | **Spacing** | Surrounded by more white space | Cramming, so groups blur together |
-| **Position** | Top, left, or where the eye lands after the last action | Burying the primary action below the fold |
+| **Position** | Top, left, or where the eye lands after the last action | Burying the primary action below the fold (the part of the page you must scroll to see) |
 
 Three principles from Jon Yablonski's [Laws of UX](https://lawsofux.com/) explain why the ranking
 matters:
@@ -187,7 +196,7 @@ Think of each screen as a function of its state. In plain pseudocode:
 
 ```
 screen(state):
-  if loading         -> show what is coming (skeleton or progress), keep the layout steady
+  if loading         -> show what is coming (a skeleton: gray shapes where content will be, or a progress bar), keep the layout steady
   if error           -> say what happened, keep the user's input, offer the fix
   if no data yet     -> explain what goes here and offer the first action
   if some data failed -> show what loaded, mark what did not, offer retry for that part
@@ -205,13 +214,15 @@ The loading row follows Nielsen's long-standing response-time limits: about 0.1 
 instant, about 1 second keeps the user's train of thought, and past about 10 seconds people need
 progress feedback or they leave the task.
 
-**Buttons that change data need a loading state of their own.** If a Save button shows no sign of
-being pressed while its request runs, people assume the click missed and click again, and the
+**Buttons that change data need a loading state of their own.** When you press Save, the app
+sends a **request**, a message to the server asking it to save, and waits for the reply. If a
+Save button shows no sign of being pressed while its request runs, people assume the click missed and click again, and the
 action runs twice: two posts, two charges, two emails. Give every button that saves, sends, or
 deletes two kinds of feedback: a visible change the moment it is pressed, and, while the request
 runs, a spinner in place of the label at the button's original width (so nothing around it moves),
 with the button disabled until the request finishes. Build it once, in your shared Button
-component, so every screen gets it. The [Agent Team Kit](https://github.com/ai-foundry-byu/agent-team-kit) keeps this as a standing rule for
+**component** (a reusable piece of the screen, written once and used everywhere), so every screen
+gets it. The [Agent Team Kit](https://github.com/ai-foundry-byu/agent-team-kit) keeps this as a standing rule for
 the agents that build its apps ([every mutating button gives feedback](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/memory-pack/every-mutating-button-gives-feedback.md)).
 
 #### Worked example: "My shifts" in four states
@@ -261,7 +272,7 @@ real world** adds a second rule: use the user's words for things, never the data
 | **Empty states and hints** | Teach the next step at the moment it is needed | One sentence, one action |
 | **Confirmations** | Prove that the action happened | Say what changed and what happens next |
 
-NN/g's error-message guidelines (Neusesser and Sunwall, 2023) make the error row concrete: put the
+The Nielsen Norman Group (NN/g), the usability research firm Jakob Nielsen co-founded, publishes error-message guidelines (Neusesser and Sunwall, 2023) that make the error row concrete. Put the
 message next to the problem, say specifically what is wrong instead of "An error occurred," offer a
 remedy, keep the user's input so they do not start over, and do not blame the user.
 
@@ -306,7 +317,7 @@ reference for what those conventions are on Apple platforms.
 | Layer | What it holds | ShiftSwap example |
 |---|---|---|
 | **Tokens** | The raw choices: color palette, type scale, spacing scale, corner radius | Primary color, 4 text sizes, spacing in steps of 4px |
-| **Components** | Reusable pieces built from tokens, each with defined variants and states | Button (primary, secondary, ghost; default, hover, disabled, loading) |
+| **Components** | Reusable pieces built from tokens, each with defined variants and states | Button in three variants (primary: filled; secondary: outlined; ghost: text only) and four states (default, hover: the pointer is over it, disabled, loading) |
 | **Patterns** | Components combined to solve a recurring problem | "Confirm before a destructive action," "form with inline errors" |
 
 ![Each layer is built only from the one before it: a handful of tokens become a few components, and patterns are assembled from those components. Written into CLAUDE.md, the decisions carry over to every screen the agent builds.](images/diagrams/ch05-design-system.svg){#fig-design-system fig-alt="Three cards connected by arrows. Tokens, the raw choices: four color swatches labeled Primary, Text, Muted, and Border; a type scale of four sizes; and a spacing scale of 4, 8, 16, 24, and 32. Components, built from tokens: a button in Primary, Secondary, and Ghost variants, and in Default, Disabled, and Loading states. Patterns, components combined: a confirm dialog titled Give away Thursday's shift, with Cancel and Give away buttons, assembled from components rather than rebuilt by hand. A band underneath reads: Written down once, in CLAUDE.md, so the agent reuses the same decisions on every new screen." width="100%"}
@@ -320,8 +331,10 @@ An agent has no memory between sessions. Left alone, it will style each new scre
 and after ten sessions you have five button styles. Two things fix that:
 
 1. **Use a component system the agent already knows.** [shadcn/ui](https://ui.shadcn.com/docs) is
-   the one this course recommends. It copies each component's source into your project, styled with
-   Tailwind and built on accessible primitives, so you and the agent can read and change it. Agents
+   the one this course recommends. It copies each component's source code into your project, styled
+   with Tailwind (a way of writing styles as short labels in the code, such as `p-4` for padding)
+   and built on components that already handle keyboard use and screen readers, so you and the
+   agent can read and change it. Agents
    have seen a great deal of code written against it.
 2. **Write the decisions down where the agent will read them.** A short design section in your
    `CLAUDE.md` (see [Directing the Agent](02-directing-the-agent.qmd)) turns one-time decisions
@@ -355,7 +368,9 @@ baseline, the same as the app not crashing. Building them in from the start make
 better for everyone.
 
 Most accessibility comes free if you use the right building blocks from the start, and costs a
-lot to retrofit. A button made from a real `<button>` element is reachable by
+lot to retrofit. A **screen reader** is software that reads the screen aloud for people who cannot
+see it. Web pages are built from HTML **elements**, tags that say what each thing is: `<button>`
+is a button, `<div>` is a plain box with no meaning. A button made from a real `<button>` element is reachable by
 keyboard and announced as a button by a screen reader. A button faked from a clickable `<div>` is
 neither, and an agent will sometimes produce the fake.
 
@@ -367,7 +382,7 @@ The few that matter most for a student product:
 | Principle | Baseline check | Why it helps everyone |
 |---|---|---|
 | **Perceivable** | Text contrast at least 4.5:1 against its background (3:1 for large text and for icons and input borders); never use color alone to carry meaning | Readable in sunlight, on cheap screens, by tired eyes |
-| **Operable** | Every action works with the keyboard alone; focus is always visible; touch targets are large enough (Apple recommends at least 44 by 44 points) | Faster for power users; fewer mis-taps on phones |
+| **Operable** | Every action works with the keyboard alone; focus (the outline that shows which element the keyboard will act on) is always visible; touch targets are large enough (Apple recommends at least 44 by 44 points) | Faster for power users; fewer mis-taps on phones |
 | **Understandable** | Every input has a visible label; errors say what to fix (see Words Are Interface) | Fewer failed forms for every user |
 | **Robust** | Real HTML elements for real things (buttons, links, headings, form labels) so assistive technology can read them | The same structure helps search engines and agents read your page |
 
@@ -499,11 +514,13 @@ using the table above, and compare the result to what "make it better" produces.
 
 <!-- MOVE: the platform decision belongs in ch07 (Anatomy of an Application) or ch12 (Going to Market) because it is an architecture and distribution choice, not a design one. Kept here in short form because students may have studied it for the Oct 20 midterm. -->
 
-**The model:** most student products should start as a responsive web app. Go to the app stores
+**The model:** most student products should start as a responsive web app (a website that
+adjusts its layout to any screen size). Go to the app stores
 only when the product needs something the web cannot do well, such as reliable device hardware,
 frequent brief use, or store discovery in a category people actively search.
 
-Ask these questions before choosing:
+A **native** app is one built for a single platform, iPhone or Android, and installed from that
+platform's app store. Ask these questions before choosing:
 
 | Question | If Yes | If No |
 |----------|--------|-------|
@@ -515,11 +532,12 @@ Ask these questions before choosing:
 
 The tradeoff in one line each:
 
-- **Distribution.** The web gives instant access by URL, search traffic, and instant updates. App
+- **Distribution.** The web gives instant access by URL, search traffic (people finding you
+  through Google, which is what SEO, search engine optimization, works on), and instant updates. App
   stores give home-screen presence, more reliable push notifications, and better retention for the
   people who install. Store discovery is hard outside categories people search for, so you usually
   need the web to bring people in anyway.
-- **Cost.** Every native platform is another codebase to build and maintain, and every feature
+- **Cost.** Every native platform is another **codebase** (a separate set of code) to build and maintain, and every feature
   and bug exists once per platform.
 - **Behavior.** Mobile fits frequent, brief use, location, the camera, offline use, and push
   notifications. The web fits focused work, heavy typing, desk use, file handling, and SEO.
@@ -538,7 +556,8 @@ Web → Responsive Web → PWA → Capacitor/Ionic → React Native → Native
   push notifications work only after the user adds the app to the Home Screen (iOS 16.4 and
   later).
 - **Capacitor** wraps your existing web app in a native shell so it can ship to the App Store and
-  Google Play and call native APIs like the camera, from one codebase. It does not automatically
+  Google Play and use phone features such as the camera through the phone's own programming
+  interfaces (native APIs), from one codebase. It does not automatically
   look like a native app.
 - **React Native** and fully **native** (Swift, Kotlin) give the most native feel and performance,
   at the most cost. If you are asking "should I go native?", the answer is probably no.
@@ -606,7 +625,7 @@ mean "from this width up." Reading one line is enough to see the model:
   page when the field gets focus. (This applies to inputs, not all text.)
 - **Input types**: use the right type (`type="email"`, `type="tel"`) so phones show the right
   keyboard.
-- **Viewport**: the page needs `<meta name="viewport" content="width=device-width,
+- **Viewport** (the visible area of the page on the screen): the page needs `<meta name="viewport" content="width=device-width,
   initial-scale=1">` or phones render it as a shrunken desktop page. Next.js adds this for you.
 - **Thumb reach**: put the primary action near the bottom of the screen, where a thumb can reach
   it (Fitts's Law again).

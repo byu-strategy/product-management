@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 590" role="img" aria-labelledby="t d" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+  <title id="t">Customer journey map: a club treasurer collecting dues</title>
+  <desc id="d">A customer journey map for a student club treasurer collecting dues. Four phases run left to right: collect dues, match payments, chase who owes, and report totals. Doing row: receives Venmo payments, some with no name; checks each payment against the sign-up sheet; texts members the sheet shows as unpaid; sends the paid total to the club president. Thinking row: dues are coming in; whose 20 dollars is this; what if she already paid; done until next Sunday. Feeling row: a line traces the treasurer's mood, calm above neutral while collecting, dropping below neutral to frustrated while matching and lowest, anxious, while chasing, then back above neutral, relieved, after reporting. Opportunity row: opportunities appear only under the two dips: match payments to members automatically, and show who has paid before anyone is texted.</desc>
+  <rect width="1000" height="590" rx="8" fill="#FAFBFC"/>
+  <line x1="374" y1="84" x2="374" y2="570" stroke="#D9DEE4" stroke-width="1.5"/>
+  <line x1="576" y1="84" x2="576" y2="570" stroke="#D9DEE4" stroke-width="1.5"/>
+  <line x1="778" y1="84" x2="778" y2="570" stroke="#D9DEE4" stroke-width="1.5"/>
+  <line x1="30" y1="176" x2="980" y2="176" stroke="#D9DEE4" stroke-width="1.5"/>
+  <line x1="30" y1="254" x2="980" y2="254" stroke="#D9DEE4" stroke-width="1.5"/>
+  <line x1="30" y1="470" x2="980" y2="470" stroke="#D9DEE4" stroke-width="1.5"/>
+  <path d="M172,20 L368,20 L384,45.0 L368,70 L172,70 Z" fill="#002E5D" opacity="0.92"/>
+  <text x="273" y="51" font-size="18" font-weight="600" fill="#FFFFFF" text-anchor="middle">Collect dues</text>
+  <path d="M374,20 L570,20 L586,45.0 L570,70 L374,70 L390,45.0 Z" fill="#002E5D" opacity="0.92"/>
+  <text x="481" y="51" font-size="18" font-weight="600" fill="#FFFFFF" text-anchor="middle">Match payments</text>
+  <path d="M576,20 L772,20 L788,45.0 L772,70 L576,70 L592,45.0 Z" fill="#002E5D" opacity="0.92"/>
+  <text x="683" y="51" font-size="18" font-weight="600" fill="#FFFFFF" text-anchor="middle">Chase who owes</text>
+  <path d="M778,20 L974,20 L990,45.0 L974,70 L778,70 L794,45.0 Z" fill="#002E5D" opacity="0.92"/>
+  <text x="885" y="51" font-size="18" font-weight="600" fill="#FFFFFF" text-anchor="middle">Report totals</text>
+  <text x="30" y="51" font-size="18" font-weight="600" fill="#5A6672" text-anchor="start">Phase</text>
+  <text x="30" y="130" font-size="18" font-weight="600" fill="#5A6672" text-anchor="start">Doing</text>
+  <text x="30" y="225" font-size="18" font-weight="600" fill="#5A6672" text-anchor="start">Thinking</text>
+  <text x="30" y="361" font-size="18" font-weight="600" fill="#5A6672" text-anchor="start">Feeling</text>
+  <text x="30" y="284" font-size="15" font-weight="400" fill="#8A939C" text-anchor="start">better</text>
+  <text x="30" y="451" font-size="15" font-weight="400" fill="#8A939C" text-anchor="start">worse</text>
+  <text x="30" y="522" font-size="18" font-weight="600" fill="#0057B8" text-anchor="start">Opportunity</text>
+  <text x="188" y="108" font-size="17" font-weight="400" fill="#2C3E50" text-anchor="start">Receives Venmo</text>
+  <text x="188" y="130" font-size="17" font-weight="400" fill="#2C3E50" text-anchor="start">payments, some</text>
+  <text x="188" y="152" font-size="17" font-weight="400" fill="#2C3E50" text-anchor="start">with no name</text>
+  <text x="188" y="214" font-size="17" font-weight="400" fill="#2C3E50" text-anchor="start" font-style="italic">“Dues are</text>
+  <text x="188" y="236" font-size="17" font-weight="400" fill="#2C3E50" text-anchor="start" font-style="italic">coming in.”</text>
+  <text x="390" y="108" font-size="17" font-weight="400" fill="#2C3E50" text-anchor="start">Checks each</text>
+  <text x="390" y="130" font-size="17" font-weight="400" fill="#2C3E50" text-anchor="start">payment against</text>
+  <text x="390" y="152" font-size="17" font-weight="400" fill="#2C3E50" text-anchor="start">the sign-up sheet</text>
+  <text x="390" y="214" font-size="17" font-weight="400" fill="#2C3E50" text-anchor="start" font-style="italic">“Whose $20</text>
+  <text x="390" y="236" font-size="17" font-weight="400" fill="#2C3E50" text-anchor="start" font-style="italic">is this?”</text>
+  <text x="592" y="108" font-size="17" font-weight="400" fill="#2C3E50" text-anchor="start">Texts members the</text>
+  <text x="592" y="130" font-size="17" font-weight="400" fill="#2C3E50" text-anchor="start">sheet shows as</text>
+  <text x="592" y="152" font-size="17" font-weight="400" fill="#2C3E50" text-anchor="start">unpaid</text>
+  <text x="592" y="214" font-size="17" font-weight="400" fill="#2C3E50" text-anchor="start" font-style="italic">“What if she</text>
+  <text x="592" y="236" font-size="17" font-weight="400" fill="#2C3E50" text-anchor="start" font-style="italic">already paid?”</text>
+  <text x="794" y="108" font-size="17" font-weight="400" fill="#2C3E50" text-anchor="start">Sends the paid</text>
+  <text x="794" y="130" font-size="17" font-weight="400" fill="#2C3E50" text-anchor="start">total to the club</text>
+  <text x="794" y="152" font-size="17" font-weight="400" fill="#2C3E50" text-anchor="start">president</text>
+  <text x="794" y="214" font-size="17" font-weight="400" fill="#2C3E50" text-anchor="start" font-style="italic">“Done until</text>
+  <text x="794" y="236" font-size="17" font-weight="400" fill="#2C3E50" text-anchor="start" font-style="italic">next Sunday.”</text>
+  <line x1="172" y1="355" x2="980" y2="355" stroke="#8A939C" stroke-width="1.5" stroke-dasharray="4 5"/>
+  <clipPath id="above"><rect x="172" y="260" width="808" height="95"/></clipPath>
+  <clipPath id="below"><rect x="172" y="355" width="808" height="110"/></clipPath>
+  <path d="M178.0,345.0 C220.8,345.0 230.2,318.0 273.0,318.0 C363.9,318.0 384.1,400.0 475.0,400.0 C565.9,400.0 586.1,425.0 677.0,425.0 C767.9,425.0 788.1,330.0 879.0,330.0 C921.8,330.0 931.2,342.0 974.0,342.0 L974,355 L178,355 Z" fill="#DCE8F5" clip-path="url(#above)"/>
+  <path d="M178.0,345.0 C220.8,345.0 230.2,318.0 273.0,318.0 C363.9,318.0 384.1,400.0 475.0,400.0 C565.9,400.0 586.1,425.0 677.0,425.0 C767.9,425.0 788.1,330.0 879.0,330.0 C921.8,330.0 931.2,342.0 974.0,342.0 L974,355 L178,355 Z" fill="#F3DCDC" clip-path="url(#below)"/>
+  <path d="M178.0,345.0 C220.8,345.0 230.2,318.0 273.0,318.0 C363.9,318.0 384.1,400.0 475.0,400.0 C565.9,400.0 586.1,425.0 677.0,425.0 C767.9,425.0 788.1,330.0 879.0,330.0 C921.8,330.0 931.2,342.0 974.0,342.0" fill="none" stroke="#002E5D" stroke-width="2.5"/>
+  <circle cx="273.0" cy="318" r="6" fill="#FFFFFF" stroke="#002E5D" stroke-width="2.5"/>
+  <text x="273" y="302" font-size="17" font-weight="600" fill="#002E5D" text-anchor="middle">Calm</text>
+  <circle cx="475.0" cy="400" r="6" fill="#FFFFFF" stroke="#B03A3A" stroke-width="2.5"/>
+  <text x="475" y="430" font-size="17" font-weight="600" fill="#B03A3A" text-anchor="middle">Frustrated</text>
+  <circle cx="677.0" cy="425" r="6" fill="#FFFFFF" stroke="#B03A3A" stroke-width="2.5"/>
+  <text x="677" y="455" font-size="17" font-weight="600" fill="#B03A3A" text-anchor="middle">Anxious</text>
+  <circle cx="879.0" cy="330" r="6" fill="#FFFFFF" stroke="#002E5D" stroke-width="2.5"/>
+  <text x="879" y="314" font-size="17" font-weight="600" fill="#002E5D" text-anchor="middle">Relieved</text>
+  <rect x="382" y="486" width="186" height="88" rx="8" fill="#E6EEF7" stroke="#0057B8" stroke-width="1.5"/>
+  <text x="394" y="508" font-size="17" font-weight="600" fill="#002E5D" text-anchor="start">Match payments</text>
+  <text x="394" y="530" font-size="17" font-weight="600" fill="#002E5D" text-anchor="start">to members</text>
+  <text x="394" y="552" font-size="17" font-weight="600" fill="#002E5D" text-anchor="start">automatically</text>
+  <rect x="584" y="486" width="186" height="88" rx="8" fill="#E6EEF7" stroke="#0057B8" stroke-width="1.5"/>
+  <text x="596" y="508" font-size="17" font-weight="600" fill="#002E5D" text-anchor="start">Show who has paid</text>
+  <text x="596" y="530" font-size="17" font-weight="600" fill="#002E5D" text-anchor="start">before anyone</text>
+  <text x="596" y="552" font-size="17" font-weight="600" fill="#002E5D" text-anchor="start">is texted</text>
+</svg>

@@ -26,7 +26,7 @@ The same curse applies to the agent that built your app. It knows what every ele
 
 ## The Design Canon Behind This
 
-Two ideas from design shape what you are testing for. Don Norman's *The Design of Everyday Things* [@norman2013design] gives you **affordances** and **signifiers**: good design makes the right action obvious, a door you push has a plate, a door you pull has a handle. When users hesitate, a signifier is usually missing. Steve Krug's *Don't Make Me Think* [@krug2014think] gives you the standard to test against: every moment a user has to stop and figure out your interface is friction you can remove.
+Two ideas from design shape what you are testing for. Don Norman's *The Design of Everyday Things* [@norman2013design] gives you **affordances** and **signifiers**. An affordance is an action a thing makes possible: a door can be pushed or pulled. A signifier is the visible cue that tells you which action to take: a door you push has a flat plate, a door you pull has a handle. Good design makes the right action obvious. When users hesitate, a signifier is usually missing. Steve Krug's *Don't Make Me Think* [@krug2014think] gives you the standard to test against: every moment a user has to stop and figure out your interface is friction you can remove.
 
 This matters more with AI. It will generate a screen that *looks* polished in seconds, but polish is not usability, and a good-looking interface can still make people think. Watching real users is exactly what reveals the difference, and no AI can do it in your place.
 
@@ -75,6 +75,8 @@ An analogy: proofreading. The first fresh reader catches many of the typos; the 
 3. **Recruit the right people**: They should match your target user
 4. **Set up recording**: Screen + audio (get permission)
 5. **Prepare your script**: Consistent intro and task instructions
+
+The script below asks the tester to **think aloud**: to say what they are looking at, looking for, and expecting as they work. Their words tell you why they did what you saw them do.
 
 #### The Test Script Structure
 
@@ -207,6 +209,8 @@ Each cycle should be as fast as possible:
 
 #### When to Pivot vs. Persevere
 
+To **pivot** is to change a basic part of the product, such as the problem, the user, or the core solution, while keeping what you have learned. To **persevere** is to keep the same direction and improve how well it works.
+
 **Consider pivoting when:**
 - Users consistently don't understand the value
 - The problem you're solving isn't painful enough
@@ -234,7 +238,7 @@ Not all feedback is equal. One user's opinion isn't a mandate.
 - "I would want..." (hypothetical)
 - "My friend would love..." (secondhand)
 - Feature requests without a problem statement
-- Requests that conflict with your core value prop
+- Requests that conflict with your core value proposition
 
 **Useful responses to feedback:**
 - "That's interesting, tell me more about when that would happen."
@@ -250,16 +254,16 @@ Once your product has users, you can test at scale:
 | Method | Best For | Sample Size |
 |--------|----------|-------------|
 | **Usability testing** | Deep understanding | About 5 per round, repeated |
-| **A/B testing** | Optimizing metrics | 1000+ users |
+| **A/B testing** (half your users see version A, half see version B, and you compare a number such as sign-ups) | Optimizing metrics | 1000+ users |
 | **Surveys** | Broad sentiment | 100+ users |
-| **Analytics** | Behavior patterns | All users |
-| **Session replay** | Specific issues | As needed |
+| **Analytics** (counts of what users do, recorded automatically) | Behavior patterns | All users |
+| **Session replay** (a recording of one user's clicks and scrolling, played back later) | Specific issues | As needed |
 | **In-app feedback button** | Bugs and confusion, reported when they happen | Any user who clicks it |
 | **Agent walk-through** | Steps where the app does something a user would not expect | Before each round with people |
 
 <!-- REVIEW: the A/B (1000+) and survey (100+) sample sizes are rules of thumb with no source; the right A/B size depends on the effect you want to detect. Consider pointing to ch14 instead of giving a number. -->
 
-**Start with usability testing.** You need qualitative insights before you can optimize quantitatively. Analytics and A/B testing come back in [Measuring What Matters](14-measuring-what-matters.qmd).
+**Start with usability testing.** First learn *why* people struggle by watching a few of them; only then is it worth measuring *how many* struggle across many users. Analytics and A/B testing come back in [Measuring What Matters](14-measuring-what-matters.qmd).
 
 The last two rows suit a product built with agents. A feedback button that sends, along with the
 user's sentence, the page they were on, a screenshot, and the recent errors gives an agent enough

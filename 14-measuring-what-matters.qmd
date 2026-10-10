@@ -22,8 +22,17 @@ app that turns a student's lecture notes into a practice quiz, for $4 a month.
 ## Decide What Working Means First
 
 **The model:** pick one number that moves only if the product delivers value, plus a few
-guardrails that show when the number rose for the wrong reason. Write it down before launch, so you
+guardrails (numbers that must not get worse, defined below) that show when the number rose for the
+wrong reason. Write it down before launch, so you
 cannot change the definition after you see the data.
+
+### Outcomes, not output
+
+There is a more basic mistake than any bad metric: measuring how much you *built* instead of whether it *worked*. Features shipped, tickets closed, lines of code: these are **output**. Whether users are better off, whether they came back, whether the problem actually got solved, is **outcome**. Marty Cagan and Melissa Perri call the habit of mistaking the first for the second the *build trap*: a team busily shipping, feeling productive, and delivering nothing that matters.
+
+In the AI era this trap is more dangerous, because output has never been cheaper. You can ship a feature a day now. So hold yourself to outcomes: did more people get the job done, did more new users reach that point, did a real user get real value? The goal is changing an outcome; shipping is only the means. The rest of this section is how you pick the number that measures the outcome.
+
+*Outcomes over output, and the build trap, from Marty Cagan, Inspired / Empowered [@cagan2017inspired], and Melissa Perri, Escaping the Build Trap (2018) [@perri2018buildtrap].*
 
 ### The North Star and the metrics under it
 
@@ -46,7 +55,9 @@ reference for choosing one.
 
 Below it sit **input metrics** (drivers you can change that move the North Star), **operational
 metrics** (day-to-day activity), and **diagnostic metrics** (health checks that tell you something
-is broken).
+is broken). For QuizMe: the North Star is quizzes completed per week; an input metric is the share
+of new signups who upload their first notes; an operational metric is notes uploaded per day; a
+diagnostic metric is how often quiz generation fails.
 
 **The test for a North Star:** would this number go up if the product got *worse*? Weekly active
 users fails the test. Send more reminder emails and it rises, even if nobody gets more out of the
@@ -76,22 +87,16 @@ Before you launch (Sprint 5 at the latest), commit one short note to your repo:
 
 Without the threshold and date, any result can be read as a success.
 
-### Outcomes, not output
-
-There is a more basic mistake than any bad metric: measuring how much you *built* instead of whether it *worked*. Features shipped, tickets closed, lines of code: these are **output**. Whether users are better off, whether they came back, whether the problem actually got solved, is **outcome**. Marty Cagan and Melissa Perri call the habit of mistaking the first for the second the *build trap*: a team busily shipping, feeling productive, and delivering nothing that matters.
-
-In the AI era this trap is more dangerous, because output has never been cheaper. You can ship a feature a day now. So hold yourself to outcomes: did the North Star move, did activation improve, did a real user get real value? The goal is changing an outcome; shipping is only the means.
-
-*Outcomes over output, and the build trap, from Marty Cagan, Inspired / Empowered [@cagan2017inspired], and Melissa Perri, Escaping the Build Trap (2018) [@perri2018buildtrap].*
-
 ### Vanity, leading, and lagging
 
 **Vanity metrics** make you feel good but don't help you make decisions: total registered users
 (includes everyone who left), page views without context, followers, downloads. **Actionable
 metrics** inform a decision: active users doing the core task, conversion between steps,
-retention by cohort, time to value. The test: can this metric change what you do next week?
+retention by cohort, time to value (how long a new user takes to first get what they came for).
+The test: can this metric change what you do next week?
 
-**Lagging** indicators measure outcomes after the fact (revenue, churn). **Leading** indicators
+**Lagging** indicators measure outcomes after the fact (revenue, churn: the share of users who
+stop using the product). **Leading** indicators
 move earlier and predict them (completing the core task in the first week, days since last
 visit, a feature adopted or ignored). Lagging indicators tell you the score; leading indicators
 tell you where to act. If churn is your problem, look for what churned users stopped doing first.
@@ -149,7 +154,8 @@ the four to six events that trace your one core task, start to finish. For QuizM
 | Something failed | `quiz_generation_failed` | error type, model |
 
 Each row answers a question: how many arrived, signed up, got a finished quiz, came back, and how
-often the AI step broke. In code it is one line per step, after the step succeeds:
+often the AI step broke. In code it is one line per step, after the step succeeds. The lines below
+are plain-language sketches, not real code; Claude Code writes the real version for your app:
 
 ```
 after notes are saved:      track("notes_uploaded", { words })
@@ -163,15 +169,17 @@ yourself and look in the table. "Tracking returns real data" is the done conditi
 ### Where the events live, and who can touch them
 
 If you store events in your own Supabase table, remember how the browser talks to your database
-(see the architecture chapters): the browser holds a public key, so anyone can send requests to
-your tables directly. A table with **no row-level security (RLS)** is open to anyone with that
+(see [Row Level Security](08-data-and-apis.qmd#row-level-security-enforce-access-where-the-data-lives)):
+the browser holds the publishable key, which anyone can see, so anyone can send requests to your
+tables directly. A table with **no row-level security (RLS)** is open to anyone with that
 key: they could write fake events, and possibly read every user's activity. The rule you need:
 
 - A signed-in user may **insert** events about **themselves** only.
 - **Nobody reads** events from the browser. You read them in the Supabase SQL editor or from
   server code.
 - Events from signed-out visitors (the landing page) cannot pass the first rule. Log those through
-  an analytics service like PostHog, or through a server route.
+  an analytics service like PostHog, or through a server route (code that runs on your server,
+  where the browser cannot change it).
 
 ::: {.callout-note collapse="true" title="See it in code: an events table with row-level security"}
 Use this if you keep events in Supabase. It replaces an earlier version of this chapter that left
@@ -236,7 +244,9 @@ and the step that loses the largest share is the first one to fix.
 
 ### The funnel
 
-Dave McClure's Pirate Metrics [@mcclure2007] name the stages:
+Dave McClure's Pirate Metrics [@mcclure2007] name the stages. They are also called AARRR, from
+the stages' first letters. CAC, ARPU, and LTV in the last column are money measures, defined in
+[Money Metrics](#money-metrics) below; you need only Activation and Retention for now.
 
 | Stage | Question | Key Metrics |
 |-------|----------|-------------|
@@ -263,8 +273,10 @@ The largest loss is between signup and first quiz: 80 percent of the people who 
 got value. Compare two fixes. Doubling traffic to 400 visitors yields 16 week-2 users, at the cost
 of finding 200 more people. Doubling activation from 20 to 40 percent yields the same 16, with no
 new traffic, and it helps every future visitor too. High acquisition with low activation is a
-**leaky bucket**: fix activation before spending more on acquisition. Pre-product-market fit,
-Activation and Retention are where to focus.
+**leaky bucket**: fix activation before spending more on acquisition. Until you have evidence that
+a group of people wants the product enough to keep using it (product-market fit, from
+[chapter 04](04-finding-and-validating-the-problem.qmd)), Activation and Retention are where to
+focus.
 
 ![QuizMe's funnel. Each rate is a share of the step before it. The step from signup to a first quiz keeps only 20 percent, the lowest rate. It loses fewer people than the first step (64 against 120), but it is the first one to fix: doubling activation there gives the same 16 week-2 users as doubling traffic, with no new visitors.](images/diagrams/ch14-activation-funnel.svg){#fig-activation-funnel fig-alt="A centered funnel of four bars sized by people: 200 arrived at the landing page, 80 signed up, 16 completed a first quiz, and 8 completed a quiz in week 2. Between the bars, the share of the previous step that continued: 40 percent of arrivals signed up, 20 percent of signups took a first quiz, and 50 percent of quiz-takers came back. The step from signing up to a first quiz is highlighted as the lowest rate: only 20 percent of signups took a first quiz." width="100%"}
 

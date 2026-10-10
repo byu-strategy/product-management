@@ -6,7 +6,8 @@ title: "Anatomy of an Application"
 
 You have been shipping since week one, and Claude Code has been making the architectural
 decisions for you. That was on purpose. You cannot learn everything before you build
-anything, and the fastest way to understand a stack is to already have one running.
+anything, and the fastest way to understand a **stack** (the set of technologies an app is
+built from) is to already have one running.
 
 Now you find out what you have been shipping. The model for this chapter and the next two
 fits in two sentences:
@@ -33,6 +34,8 @@ Every one of these comes up below. Come back here when one stops you.
 | **Database** | Where the app stores what it must remember, as tables of rows |
 | **Request, response** | A message one place sends another asking for something, and the reply |
 | **API, endpoint** | The list of requests a place will answer; one entry on that list, at its own address |
+| **Method** | The verb at the start of a request. `GET` reads, `POST` creates, `PATCH` changes, `DELETE` removes |
+| **Status code** | The number at the start of a response. `200 OK` means it worked, `201 Created` means something new was saved, codes in the 400s mean the request was refused or wrong, and the 500s mean the server failed |
 | **API key** | A secret string a paid service such as Anthropic gives your account. Sent with each request, it says whose account is calling and gets the bill, so it stays on your server |
 | **API documentation** (docs) | The provider's published description of its API: every endpoint, the inputs each one accepts, and the output it returns |
 | **JSON** | A plain-text format for data: labels and values inside curly braces, such as `{ "task_text": "Buy groceries" }`. Most APIs send and receive it |
@@ -41,6 +44,9 @@ Every one of these comes up below. Come back here when one stops you.
 | **Vercel** | The company whose computers run your Next.js app and serve it at a web address |
 | **Supabase** | A company that runs a database for you, plus sign-in (**Supabase Auth**) and file storage |
 | **Postgres** | The database software Supabase runs |
+| **SQL** | The language for asking a database questions and changing its tables, such as `INSERT` (add a row) and `SELECT` (read rows) |
+| **TypeScript** | JavaScript, the language of the browser, with labels that say what kind of data each value holds, so mistakes show up before the code runs |
+| **Package, npm** | Code someone else wrote and published for others to use; npm is the tool that downloads packages into your project's `node_modules/` folder |
 | **Token** | A signed string Supabase Auth gives the browser after sign-in. Every later request carries it to prove who is asking |
 | **Publishable key, secret key** | Supabase's two keys. The publishable key is public and can reach only what row-level security allows; the secret key bypasses those rules and stays on your server |
 | **Row-level security** | Rules inside the database that decide, row by row, who may read or change it. [Data and APIs](08-data-and-apis.qmd) shows how to write them |
@@ -59,7 +65,7 @@ Supabase's computers, stores each record until it is deleted.
 
 | Place | Also called | Who controls it | What belongs there | What must never be there |
 |---|---|---|---|---|
-| The user's browser or phone | Frontend, client, client-side | The user | Screens, buttons, forms, quick checks that save the user a round trip | Secret keys, the only copy of a rule that protects money or data (prices, permissions, grades) |
+| The user's browser or phone | Frontend, client, client-side | The user | Screens, buttons, forms, quick checks that save the user a round trip (a request to the server and the wait for its reply) | Secret keys, the only copy of a rule that protects money or data (prices, permissions, grades) |
 | Your server | Backend, server-side | You | Business logic (the rules of your product), secret keys, calls to paid services such as a model or Stripe | Nothing the user should not trigger without a check |
 | The database | Storage, persistence | You, through its rules | Everything the product must keep between visits: users, records, history | Data with no rule about who may read it |
 
@@ -69,7 +75,8 @@ A few terms you will hear constantly:
   browser. "Client" usually means the same thing, though it can mean any program that calls an
   API, including another server.
 - **Backend** is code that runs on a computer you control. In this course that means Next.js
-  route handlers and server components running on Vercel.
+  route handlers (the `route.ts` files that answer requests) and server components (explained in
+  [How the Code Works](#how-the-code-works)) running on Vercel.
 - **Database** is durable storage. Postgres, in this course, run by Supabase.
 
 **The rule that follows.** Every line of frontend code is downloaded to the user's machine.
@@ -122,18 +129,24 @@ agrees to answer. Your server's API is a list of addresses, called
 publishes a list of endpoints in its documentation, and each entry is a method and an address.
 To use one, your server sends a request to that address with the inputs the documentation
 names: an **API key** that says whose account is calling (and gets the bill), a version, and a
-body in JSON with the model, the most tokens the reply may use, and the message. The answer
-comes back in the form the documentation describes. Your server never sees Anthropic's code,
+body in JSON with the model, the longest reply allowed (`max_tokens`, counted in model tokens,
+the small pieces of text a model reads and writes; these are a different thing from the sign-in
+token in the Words table), and the message. The answer comes back in the form the documentation
+describes. Your server never sees Anthropic's code,
 servers, or models. Anthropic can change any of them, and your code keeps working as long as
 the endpoints, their inputs, and their outputs stay the same. The documentation states those
-three things, so it is the contract between the two sides. Stripe, Resend, and Supabase work the same way. Claude Code is a caller too: each time it asks the model for its next step, it sends a request to Anthropic's Messages API (or to a cloud provider's copy of it, when a company runs Claude Code through Amazon or Google). So does
+three things, so it is the contract between the two sides.
+
+Stripe, Resend, and Supabase work the same way. Claude Code is a caller too: each time it asks the model for its next step, it sends a request to Anthropic's Messages API (or to a cloud provider's copy of it, when a company runs Claude Code through Amazon or Google). So does
 your own app: each route in `app/api/`, such as `POST /api/tasks`, is an endpoint, and the
 list of them is your server's API, which your browser calls.
 
 ![Image source: Adityagaba via Medium](images/architecture.png){fig-alt="A diagram split into a front-end half and a back-end half. The front end shows a web app and a mobile app, with HTML, CSS, JavaScript, and Node logos beneath. An arrow connects them to a server in the back-end half, which connects in turn to a database, an API, and language logos for Java, Python, C plus plus, and PHP."}
 
 Here is what happens when a user adds a to-do item. In the sequence below, your server's API
-is its set of routes, such as `POST /api/tasks`, so it is drawn as part of the server.
+is its set of routes, such as `POST /api/tasks`, so it is drawn as part of the server. Read it
+top to bottom; each arrow is one message. `INSERT` is the SQL command that adds a row, and `201
+Created` is the status code that says the new task was saved.
 
 ```{mermaid}
 sequenceDiagram
@@ -359,7 +372,8 @@ export function TaskList({ initialTasks }: { initialTasks: Task[] }) { // <4>
 1. **`"use client"`.** This file has state and responds to clicks, so it must run in the
    browser. Without this line, Next.js treats the file as server code, and the build stops with
    an error, because server code cannot hold state or respond to clicks.
-2. **Imports.** `useState` comes from React, a package installed in `node_modules`. `TaskItem`
+2. **Imports.** `useState` comes from React, a package that npm installed in the
+   `node_modules` folder (see [The Files in a Next.js Project](#the-files-in-a-next.js-project)). `TaskItem`
    comes from another file in this project; `@/` is a shortcut for the project's top folder.
 3. **A type.** The shape of one task, matching the columns of the `tasks` table. If a line tries
    to read `task.title`, TypeScript reports the mistake before the app runs, because a task has
@@ -565,7 +579,9 @@ THEN system SHALL create account and send confirmation email
 - Row level security: a user can read and update only their own profile
 ```
 
-The good spec says where each rule is enforced. The browser checks are there for speed; the
+The Requirements line uses EARS, the WHEN ... THEN ... SHALL form from [Directing the
+Agent](02-directing-the-agent.qmd), which makes each requirement testable. The good spec says
+where each rule is enforced. The browser checks are there for speed; the
 enforcing checks run where the user cannot reach them.
 
 This might feel like a lot if you are new to technical concepts. You need enough to know what
@@ -629,7 +645,7 @@ of protecting data into the database itself.
 | **Authentication** | User signup, login, OAuth |
 | **Storage** | File uploads and hosting |
 | **Realtime** | Live updates when data changes |
-| **Edge Functions** | Serverless code execution |
+| **Edge Functions** | Small pieces of server code that Supabase runs for you, so you do not manage a server |
 
 Your app connects with a project URL and a key:
 
@@ -642,12 +658,13 @@ const supabase = createClient(
 );
 ```
 
-**That key is public, on purpose.** Supabase issues two kinds of key. The **publishable key**
-(`sb_publishable_...`, called the **anon key** in older projects and tutorials) ships to every
-visitor's browser, which is why its variable starts with `NEXT_PUBLIC_`. Anyone can copy it.
-It can reach only what your row level security rules allow. The **secret key**
-(`sb_secret_...`, formerly the **service role key**) bypasses those rules entirely, so it lives
-only on your server and never gets the `NEXT_PUBLIC_` prefix. Supabase is retiring the old
+**That key is public, on purpose.** This is the publishable key from the credentials table in
+[Requests Connect the Places](#requests-connect-the-places): it ships to every visitor's
+browser, which is why its variable starts with `NEXT_PUBLIC_`, and it can reach only what your
+row-level security rules allow. The secret key bypasses those rules, so it lives only on your
+server and never gets the `NEXT_PUBLIC_` prefix. Older projects and tutorials use other names:
+the publishable key (`sb_publishable_...`) was the **anon key**, and the secret key
+(`sb_secret_...`) was the **service role key**. Supabase is retiring the old
 anon and service role names by the end of 2026, so you will see both in code for a while.
 Chapter 8 covers the rules that make a public key safe.
 
