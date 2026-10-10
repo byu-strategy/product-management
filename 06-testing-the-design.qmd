@@ -32,6 +32,8 @@ This matters more with AI. It will generate a screen that *looks* polished in se
 
 *From Don Norman, The Design of Everyday Things (first published 1988; revised edition 2013), and Steve Krug, Don't Make Me Think (first published 2000; revised edition 2014).*
 
+Norman's other principles (mapping, constraints, feedback, and the conceptual model) and Nielsen's ten usability heuristics, which give you a checklist to review a screen before a test, are in [Design Fundamentals](05b-design-fundamentals.qmd).
+
 <!-- learn -->
 
 ## What is Usability Testing?
@@ -286,18 +288,42 @@ Plan your next round: write one task as a goal, name five testers who match your
 
 ## Key Concepts
 
-- **Watch, do not ask**: behavior shows the problem; opinions hide it
-- **Curse of Knowledge**: You can't see your product like new users do, and neither can the agent that built it
-- **Affordances and signifiers**: design that makes the right action obvious (Norman)
-- **Don't make me think**: every pause to figure out the interface is friction (Krug)
-- **Usability Testing**: Observing users attempt tasks, not asking opinions
-- **Think-aloud**: testers narrate as they work; you stay quiet
-- **The five-user rule**: about five comparable users per round find most problems; run several small rounds (Nielsen)
-- **Task Completion**: The core metric, can they do the thing?
-- **Affinity mapping**: group observations into themes, then rank by frequency and severity
-- **Severity Scoring**: Critical > Major > Minor > Cosmetic, judged by the effect on the task
-- **Fix and retest**: fix the top issues, then run the same tasks with new users
-- **Build-Measure-Learn**: Fast iteration cycles
-- **Pivot vs. Persevere**: When to change direction vs. keep improving
+- **Watch, do not ask**: give about five real users a real task and watch what they do. Behavior
+  shows the problem; opinions hide it.
+- **Curse of knowledge**: once you know something, it is nearly impossible to imagine not knowing
+  it. You cannot see your product the way a new user does, and neither can the agent that built it.
+- **Affordances and signifiers** (Norman): an affordance is an action a thing makes possible; a
+  signifier is the visible cue that the action is there. When users hesitate, a signifier is
+  usually missing.
+- **Don't make me think** (Krug): every moment a user has to stop and figure out the interface is
+  friction you can remove. A polished screen can still make people think.
+- **Usability testing**: observing real users attempt real tasks while you stay quiet and take
+  notes. It shows where people get stuck; it does not show whether they will pay or what to build
+  next.
+- **The five-user rule** (Nielsen and Landauer): about five comparable users find most usability
+  problems, so fifteen sessions are better spent as three rounds of five with a fix between each.
+  If you have two very different groups, test three or four from each.
+- **Tasks written as goals**: "Get your Thursday shift covered," never "Click Give away."
+- **Think-aloud**: testers say what they are looking at, looking for, and expecting as they work;
+  you stay silent, do not help or explain, and do not ask whether they like it.
+- **What to observe**: task completion, time on task, errors, recovery, and where people pause.
+  Record what people did before what they said.
+- **Affinity mapping**: write each observation down, group similar ones, name each group, and rank
+  the groups by frequency and severity.
+- **Severity scoring**: critical, major, minor, cosmetic, judged by what the problem does to the
+  task. Fix critical and major problems first.
+- **Fix and retest**: fix the one or two highest-severity problems, run the same tasks with new
+  users, and check that the problem is gone and the fix created no new one.
+- **Build-Measure-Learn** (Eric Ries): make a small change, observe users with it, decide what to
+  do next. One round of usability testing is one turn of the loop.
+- **Pivot vs. persevere**: to pivot is to change a basic part of the product (the problem, the user,
+  or the core solution) while keeping what you learned; to persevere is to keep the direction and
+  improve how well it works.
+- **Responding to feedback without overreacting**: filter each piece of feedback by frequency,
+  severity, source, and alignment with your vision. Hypothetical, secondhand, and solution-only
+  requests are weak.
+- **Testing at scale**: A/B tests, surveys, analytics, session replay, a feedback button, and an
+  agent walk-through each answer a different question. Start with usability testing, because it
+  shows why people struggle before you measure how many do.
 
 <!-- learn -->

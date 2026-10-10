@@ -356,27 +356,69 @@ Not every product touches all three. The question is directional: for the needs 
 
 ## Key Concepts
 
-- **Why products fail** (CB Insights, 2026): running out of capital is how most failed startups end (70%); poor product-market fit (43%) is the most common reason the money ran out.
+- **Why products fail** (CB Insights, 2026): running out of capital is how most failed startups
+  end (70%); poor product-market fit (43%) is the most common reason the money ran out.
 - **The Idea Trap**: falling in love with a solution before understanding the problem.
-- **Problem vs. solution thinking, and the stranger test**: a real problem exists without your product; describe it so someone who never heard your idea would recognize it.
-- **Strategy is choosing what not to do** (Michael Porter)
-- **Where to play / how to win** (Roger Martin & A.G. Lafley, *Playing to Win*)
-- **Create value vs. capture value, the value stick** (Adam Brandenburger & Harborne Stuart; sharpened by Peter Thiel, and by David Teece for innovators): creating value is necessary but not sufficient; capture is a separate, constrained choice.
-- **Five forces as a market-power reading** (Michael Porter): how wide a share of the created value the industry lets you keep.
-- **Blue ocean / value innovation** (W. Chan Kim & Renée Mauborgne): widen the band by redrawing the market boundary instead of fighting for position inside it.
-- **Moats / durable advantage** (Hamilton Helmer, *7 Powers*): network effects, switching costs, scale, brand
-- **Sustaining vs. disruptive innovation** (Clayton Christensen): a sustaining innovation makes a product better for the incumbent's existing customers; a disruptive innovation starts worse on that measure, cheaper or simpler, and improves until it is good enough for the mainstream.
-- **Low-end and new-market footholds**: a disruptive entrant starts with customers the incumbent overserves or with nonconsumers, people who bought nothing before. Uber, by Christensen's test, started in neither; Netflix's mail-order DVDs started in a foothold.
-- **DHM**: Delight, Hard to copy, Margin-enhancing (Gibson Biddle)
-- **Product vision before strategy** (Marty Cagan)
-- **The AI-era shift**: cheap building commoditizes features; strategy, moats, taste, and distribution are the durable advantages
-
-- **The aim is a values question**: truth-seeking tells you what is; it does not tell you what to build.
-- **Human nature cuts both ways**: the knowledge that removes friction can also engineer compulsion.
-- **The reflection test**: would your user, calm and reflective, be glad you built it this way?
-- **Engagement can mislead**: retention a user would disown is extraction, and does not count as success.
-- **You own what your algorithm amplifies.**
-- **The golden mean**: most product virtues are a mean between a vice of excess and a vice of deficiency.
-- **Habits build character**: a product that shapes habits is shaping who its users become.
+- **Problem vs. solution thinking, and the stranger test**: a real problem exists without your
+  product. A problem statement names a person, a situation, and what goes wrong for them today,
+  so a stranger who lives it would recognize it.
+- **Product vision** (Marty Cagan): a description of the better world your product creates,
+  usually a few years out. Write it first, then let the strategy serve it.
+- **Strategy is choosing what not to do** (Michael Porter): a small set of hard choices that fit
+  together. A strategy with no sacrifices is a wish list.
+- **Where to play and how to win** (Roger Martin and A.G. Lafley, *Playing to Win*): two of five
+  linked strategy choices, and the two that matter most for a student product. Because building is
+  cheap now, a market too small for a funded team can be worth your time.
+- **Value created and the value stick** (Brandenburger and Stuart; Oberholzer-Gee): value created
+  is willingness to pay minus willingness to sell. Price and cost divide it into what the customer
+  keeps, what you capture, and what suppliers keep.
+- **Creating value is necessary, not sufficient** (Thiel, Teece): a product can create value and
+  capture almost none of it. How much you can capture is set by industry structure, so assess it
+  accurately.
+- **The band**: your margin, the part of the value stick between price and cost. Its width is
+  something you Inform on; where you position inside it is the Aim.
+- **Elements of Value** (Bain): thirty kinds of value, from functional at the base up to social
+  impact. If every element you can claim is in the bottom row, you are competing on cost and
+  convenience alone, which is the easiest position to copy.
+- **Five forces as a reading of market power** (Michael Porter): rivalry, new entrants, and
+  substitutes decide whether the industry can hold price above cost; buyer and supplier power
+  decide whether a neighbor in the chain can bargain your share away. The forces describe the
+  industry and say nothing about whether your product is the strongest in it.
+- **Blue ocean and value innovation** (W. Chan Kim and Renée Mauborgne): create uncontested space
+  by raising willingness to pay and cutting cost at the same time, dropping what the industry
+  over-serves and adding what it never offered. A blue ocean has no barriers, so it needs a moat
+  to stay yours.
+- **Moats** (Hamilton Helmer, *7 Powers*): sources of durable advantage: network effects,
+  switching costs, scale economies, brand, counter-positioning, cornered resource, and process
+  power. Copying costs less than ever with AI tools, so ask what stops the next builder from
+  copying you next week.
+- **Sustaining vs. disruptive innovation** (Clayton Christensen): a sustaining innovation makes a
+  product better for the incumbent's existing customers. A disruptive innovation starts worse on
+  that measure, cheaper or simpler, and improves until it is good enough for mainstream customers.
+  It describes a path over time.
+- **Overshoot and footholds**: incumbents improve faster than most customers can use, so they
+  overshoot them. An entrant starts in a low-end foothold (overserved customers) or a new-market
+  foothold (nonconsumers). By Christensen's test Uber started in neither; Netflix's mail-order DVDs
+  did.
+- **DHM** (Gibson Biddle): a good product strategy Delights customers in Hard-to-copy,
+  Margin-enhancing ways, all three at once.
+- **Human nature cuts both ways**: the rider (deliberate reasoning) steers only when the elephant
+  (emotion and habit) is willing (Haidt). The same knowledge of people that removes friction can
+  engineer compulsion.
+- **Moral foundations** (Haidt): users bring moral intuitions such as care, fairness, loyalty,
+  authority, sanctity, and liberty to your product, and building against them costs trust.
+- **The Hooked loop and the reflection test** (Eyal): trigger, action, variable reward,
+  investment. The mechanics are neutral; ask whether your user, in a calm and reflective moment,
+  would be glad you designed it this way. Engagement a user would disown is extraction and does
+  not count as success.
+- **You own what your algorithm amplifies**: a product that recommends or ranks shapes what people
+  see, and optimizing a number without asking what it does to a person is a moral decision.
+- **The golden mean** (Aristotle): a virtue is a settled disposition to choose well, lying in a
+  mean between a vice of excess and a vice of deficiency. Most product decisions aim at a mean
+  instead of a maximum.
+- **Habits build character**: we become what we repeatedly do, so a product that shapes habits is
+  shaping who its users become.
+- **The directional test**: for the needs your product touches, does it expand users' agency,
+  support their becoming, and deepen their connection?
 
 <!-- learn -->

@@ -1016,7 +1016,7 @@ Start with the outcome, not the feature list.
 
 ## Feature Prioritization
 
-<!-- MOVE: belongs in ch05 or with the spec material in ch02 because it is scoping a build, not validating a problem; kept here because chapters 01 to 06 are on the midterm. -->
+<!-- MOVE: belongs in ch05 or with the spec material in ch06b because it is scoping a build, not validating a problem; kept here because chapters 01 to 06 are on the midterm. -->
 
 You'll always have more ideas than time. Use frameworks to prioritize.
 
@@ -1073,9 +1073,9 @@ Each line comes straight from this chapter:
 | **Out** | Everything the "so what" test and MVP scoping cut |
 
 An agent given only "build a dues tracker" fills every blank with a guess, and its guesses come
-from the average app it has seen. The brief replaces those guesses with your evidence. Chapter 2
-covers how to turn it into [user stories](02-directing-the-agent.qmd#user-stories) and a
-[PRD](02-directing-the-agent.qmd#product-requirements-documents-prds) the agent builds from.
+from the average app it has seen. The brief replaces those guesses with your evidence. Chapter 6b
+covers how to turn it into [user stories](06b-specs.qmd#user-stories) and a
+[PRD](06b-specs.qmd#product-requirements-documents-prds) the agent builds from.
 
 <!-- learn -->
 
@@ -1097,31 +1097,94 @@ above are your experiments (@fig-opportunity-solution-tree).
 
 ## Key Concepts
 
-- **Discovery**: reducing uncertainty before you spend weeks building; triangulate, and hold beliefs as probabilities
-- **Jobs-to-be-Done (JTBD)**: Customers hire products to make progress in a situation; write the job with no product in it
-- **Functional/Emotional/Social Jobs**: Three dimensions of every need
-- **Five kinds of pain**: physical, functional, financial, emotional, social
-- **The real competitor is the current habit**: push and pull must beat anxiety and habit (Moesta's forces of progress)
-- **The Mom Test**: Ask about past behavior, not future intentions
-- **The evidence ladder**: said < did < paid; ask about the last time
-- **Problem Interviews**: Conversations that validate (or invalidate) hypotheses
-- **Interview Synthesis**: Turning conversations into insights, each tagged by evidence rung
-- **Beachhead and not-for**: a narrow first customer, and who you are not serving
-- **User vs. payer**: the person who uses it and the person who pays may differ
-- **The Access Test**: location, engagement, reciprocity
-- **Personas**: Fictional but realistic customer representations, built from interviews
-- **Evaluating problems**: frequency, intensity, willingness to pay, market size, your fit, feasibility; importance vs. satisfaction
-- **MECE and issue trees**: break a question into parts that do not overlap and leave nothing out; work the branch that decides the answer; the "so what" test
-- **What would have to be true**: turn an idea into testable conditions
-- **The four risks** (Marty Cagan): value, usability, feasibility, viability
-- **Riskiest assumption**: most uncertain and most fatal; test it first
-- **The smallest test**: smoke test, concierge, Wizard of Oz, presell; choose by learning per hour
-- **The Commitment Decision**: When to stop exploring and start building
-- **Avoiding Premature Commitment**: Watch for solution love, confirmation bias
-- **Value Proposition**: Clear statement of what you offer and why; the "Unlike" line names the habit
-- **MVP / Minimum Awesome Product**: the smallest thing that tests your riskiest assumption with honest signal
-- **Feature prioritization**: ICE, MoSCoW, the $100 Test
-- **The brief**: who, problem, what done looks like, what is out; the contract with a client and the prompt for the agent
-- **Opportunity Solution Tree**: outcome, opportunities, solutions, experiments
+- **Discovery**: finding out which of your beliefs about other people are true, cheaply, before you
+  spend a sprint building on them.
+- **Product-market fit and the Lean Product Process** (Dan Olsen): you have built something that
+  meets a real need of a real group of customers better than what they use now. The target customer
+  and underserved needs are the market, which you discover; the value proposition, feature set,
+  and UX are the product, which you choose.
+- **Belief versus truth**: six regions of a map of what you believe, what is true, and how much
+  evidence you have. The most dangerous is False Confidence (sure, and wrong); the most common miss
+  is Available but Unseen (true, and one interview away).
+- **Triangulation and thinking in probabilities**: every way of knowing can mislead, so treat a
+  belief as validated only when independent sources agree, and hold beliefs as probabilities. Good
+  evidence would look different if you were wrong.
+- **The five discovery skills** (Dyer, Gregersen, and Christensen): questioning, observing,
+  networking, experimenting, and associating. They are mostly learned through practice.
+- **You are your best first customer**: your own frustrations give fast feedback and real insight,
+  but you are one data point.
+- **Problem journal**: a running record of every moment of friction you notice, captured without
+  filtering.
+- **Diverge before you converge**: generate many candidate problems before judging any, then
+  narrow deliberately. Seizing the first idea is premature convergence.
+- **Jobs-to-be-Done (JTBD)**: people hire a product to make progress in a specific situation. Write
+  the job (when I'm [situation], I want to [motivation], so I can [outcome]) with no product or
+  feature in it.
+- **Functional, emotional, and social jobs**: what they want to accomplish, how they want to feel,
+  and how they want to be seen.
+- **Journey map**: the whole job mapped phase by phase, with what the person does, thinks, and
+  feels. The dips show where the pain is greatest and where the opportunities are.
+- **Five kinds of pain**: physical, functional, financial, emotional, and social. The pains people
+  mention first are usually functional; the ones that drive them to pay are often emotional or
+  social.
+- **The real competitor is the current habit**: your main competitor is whatever the person does
+  today. They switch only when push plus pull outweighs anxiety plus habit (Moesta's forces of
+  progress).
+- **The Mom Test** (Rob Fitzpatrick): talk about their life instead of your idea, ask about specific
+  past events instead of hypothetical futures, and listen more than you talk. The most useful
+  question: "Walk me through the last time you experienced this problem."
+- **The evidence ladder**: said, did, paid. Each rung costs the person more to fake, so it counts
+  for more. The past is on the did rung and the future is on the said rung; tag every claim by its
+  rung.
+- **Interview synthesis**: a validated problem statement, who you talked to, key insights each
+  tagged with its evidence rung, quotes, and next steps. Stop interviewing when new interviews stop
+  surprising you.
+- **Beachhead and not-for**: a narrow first segment you can win completely and expand from (Geoffrey
+  Moore), plus a stated list of who you are not serving.
+- **User versus payer**: the person who uses the product and the person who pays for it may differ.
+  If they do, you need evidence from both.
+- **The access test**: location, engagement, and reciprocity. If you cannot reach a segment cheaply
+  now, find a reachable beachhead or reconsider the problem.
+- **Persona**: a fictional but realistic customer built from interview evidence you already have.
+  A persona generated before you talk to anyone contains no information.
+- **Evaluating problems**: score frequency, intensity, willingness to pay, and market size, then
+  check your fit (conviction) and addressability. The strongest case is frequent and painful and
+  people will pay.
+- **Importance versus satisfaction** (Dan Olsen): the opportunity is a need that matters a lot and
+  is poorly met by current solutions.
+- **MECE and issue trees**: break a question into parts that do not overlap and leave nothing out,
+  splitting until every leaf can be checked with evidence. Work first on the branch with high
+  impact, high uncertainty, and testability, and skip any question that fails the "so what" test.
+- **What would have to be true**: turn an idea into a list of specific conditions, each of which you
+  can test (Roger Martin).
+- **The four risks** (Marty Cagan): value, usability, feasibility, and viability. Teams over-test
+  feasibility and under-test value, and a working app proves only that you could build it.
+- **Riskiest assumption**: the condition that is both most uncertain and most fatal if false. Test
+  it before anything else.
+- **The smallest test**: smoke test, concierge, Wizard of Oz, or presell. Choose by learning per
+  hour: the highest evidence rung on your riskiest assumption for the fewest hours.
+- **The commitment decision**: when to stop exploring and choose one problem: five or more
+  interviews, signals above the said rung, a named habit to beat, and a riskiest assumption a small
+  test has not disproved.
+- **Avoiding premature commitment**: watch for solution love, confirmation bias, sunk cost, and
+  founder fantasy.
+- **Value proposition**: for [customer], who [problem], our product is [category] that [benefit],
+  unlike [alternatives], we [differentiator]. The "For" line is your beachhead, and the "Unlike"
+  line names the current habit first.
+- **Value Proposition Canvas** (Osterwalder and others): fit is when your pain relievers and gain
+  creators answer the customer's jobs, pains, and gains that matter most.
+- **MVP** (Eric Ries): the smallest thing you can put in front of real users that tests your
+  riskiest assumption and generates learning you can act on. It can be anything from a smoke test
+  to a working product with one core feature.
+- **Minimum awesome product** (Furr and Dyer): cut scope to the minimum, then make what remains
+  excellent, so people's reactions give honest signal.
+- **MVP scoping**: ask what is the one thing users must be able to do; everything else is optional.
+- **Feature prioritization**: ICE (impact × confidence / effort), MoSCoW (must, should, could,
+  won't), and the $100 test.
+- **The brief**: who it is for, the problem, what done looks like, and what is out. It is the
+  shared contract with a client and the prompt for your agent.
+- **Continuous discovery and the Opportunity Solution Tree** (Teresa Torres): keep talking to
+  customers every sprint. The tree runs outcome, opportunities, solutions, experiments, and every
+  solution must sit under an opportunity you actually discovered.
 
 <!-- learn -->

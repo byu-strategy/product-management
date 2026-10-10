@@ -72,10 +72,16 @@ of them.
 |---|---|
 | **Agentic Workflow** | How do I put AI to work, as the way I build and inside the product? |
 | **Discovery** | What should I build, for whom, and should I? |
-| **Design** | What does the surface look like, and how does it flow? |
+| **Design** | What does the surface look like, how does it flow, and how do I write it down so an agent can build it? |
 | **Application Architecture** | How is it structured, shipped, and kept safe? |
 | **AI Systems** | How do the models work, and why do they behave the way they do? |
 | **Launch and Learn** | How do people find it, and did it work? |
+
+There is no Build axis, on purpose. A coding agent can now write a working first version of a
+feature in minutes, so most of the cost has moved to deciding what to build and describing it
+precisely. That work happens before the build, in Discovery and Design. The last step of Design is
+the spec, the written description an agent builds from and you check the result against
+([Specs](06b-specs.qmd)).
 
 Each axis gets two weeks. You will rate yourself on all six this week (that first rating is your baseline) and again at the end
 of the semester, and you will get back a six-sided chart of your profile both times. The
@@ -268,7 +274,7 @@ The prototype, in place of a document, is what you use to make the case for the 
 
 This is a change in sequence, and the writing still happens. You still write down what the thing is supposed to do, you just write it after you have
 learned something from a build instead of guessing beforehand, and you write it before the code is
-something you intend to keep. The rule for the rest of the course: **explore to learn, then spec anything you intend to keep.** [Chapter 2](02-directing-the-agent.qmd) is about that discipline.
+something you intend to keep. The rule for the rest of the course: **explore to learn, then spec anything you intend to keep.** [Chapter 6b](06b-specs.qmd) is about that discipline.
 
 <!-- learn -->
 
@@ -689,19 +695,53 @@ When you want to see a UI idea in seconds before building it properly, a browser
 
 ## Key Concepts
 
-- **Product Management**: identifying customer needs, aligning with business goals, and leading a team to build products that succeed
-- **Product Trio**: PM + designer + engineer collaboration model
-- **AI-Powered PM**: uses AI tools in their own workflow (prototyping, coding, analysis)
-- **AI Product PM**: builds products where AI is a core feature
-- **Vibe coding and the inverted loop**: build to learn first, then spec what you intend to keep
-- **Agent**: a model in a loop with tools
-- **Agent loop**: gather context, act, check; when a result is wrong, ask which phase failed
-- **Harness**: the program around the model that builds each request, checks and runs the tools the model asks for, and manages the context window; Claude Code is the harness, Claude is the model
-- **Command Line / CLI**: text-based interface to your computer, run in a terminal
-- **Package Manager**: tool for installing software from the command line (Homebrew, winget)
-- **VS Code**: the code editor used throughout the course
-- **Claude Code**: Anthropic's coding agent; one engine across the terminal, VS Code extension, desktop app, and web, sharing CLAUDE.md, skills, hooks, and settings on your machine
-- **`.claude` folder**: where a project's Claude Code settings, skills, hooks, and subagents live
-- **Explanatory output style**: adds *Insight* notes explaining the choices behind the code
+- **AIRE**: the loop the course runs: Aim (what do you want?), Inform (what is true?), Reason
+  (what's the best option?), Enact (what happened?). Aim comes first, because without a goal you
+  cannot tell which facts matter.
+- **Outcome as area**: how good a decision turns out is roughly Information × Reasoning ×
+  Execution. The factors multiply, so a zero in any one makes the outcome zero.
+- **The six builder axes**: Agentic Workflow, Discovery, Design, Application Architecture, AI
+  Systems, and Launch and Learn. There is no Build axis because a coding agent writes a first
+  version in minutes, so most of the cost has moved to deciding what to build and describing it.
+- **Product management**: identifying customer needs, aligning them with business goals, and
+  leading a cross-functional team to build a product that succeeds in the market.
+- **Product trio**: a product manager who sets vision, strategy, and priorities; a designer who
+  owns usability and the experience; and engineers who turn ideas into working systems.
+- **AI-Powered PM**: a PM who uses AI tools in their own workflow (prototyping, coding,
+  analysis).
+- **AI Product PM**: a PM who builds products where AI is a core feature, and so must know what
+  AI can and cannot do, how to measure it, and how to design around its limits.
+- **Vibe coding**: Andrej Karpathy's 2025 term for having AI write your code. This course lets
+  the agent write the syntax and keeps the understanding for you.
+- **The inverted loop**: when building is cheap, you build first and work out your thinking on
+  the prototype. The rule: explore to learn, then spec anything you intend to keep.
+- **Full-stack product builder**: one person who, with AI tools, does the work of all three trio
+  roles, including the architecture and engineering work that used to belong to someone else.
+- **Agent**: a model in a loop with tools. Every Claude app runs the same models; the harness
+  around the model decides how far it reaches, from a sandbox on Anthropic's servers (web and
+  mobile chat) to your own files and terminal (desktop app and Claude Code).
+- **Agent loop**: gather context, act, check. When a result is wrong, ask which phase failed: it
+  lacked context, took the wrong action, or skipped the check.
+- **Tool**: a function Claude Code offers the model, with a name, a description, and inputs. The
+  model only writes a tool call; Claude Code checks it against your hooks and permissions, runs
+  it, and adds the result to the conversation.
+- **Harness**: the program around the model that builds each request, checks and runs the tool
+  calls in each reply, adds the results, and manages the context window. Claude Code is the
+  harness and Claude is the model. When an agent fails, ask whether the model or the harness was
+  the limit.
+- **Command line and terminal**: a text-based way to control your computer by typing commands;
+  the terminal is the program that shows it. You need to read the commands an agent runs before
+  you approve them.
+- **Package manager**: a tool that installs, updates, and removes software from the command line
+  (Homebrew on macOS, winget on Windows).
+- **VS Code**: the free code editor used throughout the course, with a file browser, an editor, a
+  terminal, and the Claude Code extension in one window.
+- **Claude Code, one engine with many surfaces**: Anthropic's coding agent, run from the
+  terminal, the VS Code extension, the desktop app, or the web. The three local surfaces share
+  the same configuration files; a web session sees only what you have pushed to GitHub.
+- **`.claude` folder**: where a project's Claude Code configuration lives: settings, and later
+  skills, hooks, and subagents. `CLAUDE.md` is a separate file.
+- **Explanatory output style**: a setting that makes Claude add *Insight* notes explaining the
+  choices behind the code it writes.
 
 <!-- learn -->

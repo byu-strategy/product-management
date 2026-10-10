@@ -47,6 +47,10 @@ and a reference section on how the surface is built in code. If words such as HT
 Tailwind, React, or component are new to you, read that reference section, [How the Surface Is
 Built](#how-the-surface-is-built-reference), first; it is one short table.
 
+The theory under these rules (UI versus UX versus product design, the Double Diamond, fidelity,
+Norman's principles, information architecture, Gestalt, Fitts's and Hick's laws, visual design
+fundamentals, and Nielsen's heuristics) is in [Design Fundamentals](05b-design-fundamentals.qmd).
+
 ::: {.callout-note title="The example in this chapter: ShiftSwap"}
 ShiftSwap is an app for student employees at a campus job. A student who cannot work a shift
 posts it, a coworker picks it up, and the manager approves the trade. One AI feature: you
@@ -224,6 +228,11 @@ with the button disabled until the request finishes. Build it once, in your shar
 **component** (a reusable piece of the screen, written once and used everywhere), so every screen
 gets it. The [Agent Team Kit](https://github.com/ai-foundry-byu/agent-team-kit) keeps this as a standing rule for
 the agents that build its apps ([every mutating button gives feedback](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/memory-pack/every-mutating-button-gives-feedback.md)).
+Do the same for every sign that something is working. Define a small set of indicators once, as
+shared components: a plain spinner for saving or loading, and a different indicator, with a steady
+label and the seconds elapsed, used only while a model is working. A user who sees each one used
+the same way everywhere learns what it means. Turn the animation off for people who have set their
+device to reduce motion ([one system for status motion](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/memory-pack/ai-status-motion-one-system.md)).
 
 #### Worked example: "My shifts" in four states
 
@@ -347,7 +356,13 @@ and after ten sessions you have five button styles. Two things fix that:
 - Spacing uses the Tailwind scale only (p-2, p-4, p-6, p-8). No arbitrary pixel values.
 - Every list screen has an empty state with one sentence and one action.
 - Destructive actions use the confirm dialog pattern.
+- Icons come from lucide-react, the icon set shadcn/ui uses. No emoji as icons.
 ```
+
+The last rule is one the Agent Team Kit gives all its agents
+([real icons, not emoji](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/memory-pack/real-icons-not-emoji.md)).
+An emoji looks different on each device and does not take the size and color of the text around
+it, and agents tend to add emoji as placeholders while prototyping and leave them in.
 
 An analogy: a design system is the house style guide a newspaper gives every reporter, so a
 hundred writers produce one paper. Where it breaks: a style guide is advice a reporter can ignore,
@@ -428,7 +443,9 @@ AI products [@amershi2019guidelines]; the building blocks below follow several o
 | **A person confirms costly actions** | The higher the cost of a mistake, the more explicit the human confirmation | Chapter 11: if a wrong answer is expensive, put a human in the path |
 
 Streaming the answer as it is generated, covered in Chapter 11, is the loading state for AI: it
-shows progress during a wait that can run many seconds.
+shows progress during a wait that can run many seconds. Chapter 11 adds a Stop: every screen where
+a model works for the user needs a way to start it, a live sign that it is still working, and a
+way to cancel it.
 
 #### Worked example: reading the schedule photo
 
@@ -660,39 +677,63 @@ draw the screen again, which is why loading, empty, and error are each a state y
 
 ## Key Concepts
 
-- **UX iceberg**: visual design on top; interaction design, information architecture, and
-  conceptual design underneath, where usability is decided
-- **Flow**: goal, entry point, steps, decisions, exits; map it before designing screens
-- **Happy path**: the flow when everything goes right
-- **Visual hierarchy**: size, weight, contrast, spacing, and position rank what matters; one
-  primary action per screen
-- **Squint test**: blur the screen; what still stands out is what users see first
-- **Hick's Law, Fitts's Law, Von Restorff effect**: fewer choices decide faster; big, close targets
-  are faster to hit; the different item gets noticed
-- **Empty, loading, error, partial states**: the states off the happy path, each designed to say
-  what is true and what to do next
-- **Visibility of system status**: the interface always tells people what is going on
-- **Interface copy**: verb-plus-object buttons; errors that say what happened and how to fix it;
-  the user's words, not the database's
-- **Design system**: tokens, components, and patterns that make each decision once; record the
-  rules in `CLAUDE.md`
-- **shadcn/ui**: component source copied into your project, built on Tailwind and accessible
-  primitives
-- **Jakob's Law**: users expect your product to work like the ones they already use
-- **Accessibility baseline (WCAG)**: 4.5:1 text contrast, full keyboard use, visible focus, labeled
-  inputs, semantic HTML
-- **Designing for uncertain AI**: set expectations, show evidence, output as editable draft, easy
-  dismiss and undo, a person confirms costly actions
-- **Precise design direction**: where, what is wrong, why, what to change, and a reference
-- **Platform spectrum**: Web → Responsive Web → PWA → Capacitor → React Native → Native
-- **Distribution tradeoffs**: web (URL, SEO, instant updates) vs. app store (discovery, install,
-  home screen)
-- **PWA, web app manifest, service worker**: installable web app; its install metadata; the script
-  that enables offline use and caching
-- **Capacitor**: wraps a web app for app store distribution and native APIs
-- **Responsive design and mobile-first**: one layout that adapts at breakpoints, starting from the
-  phone
-- **Components, props, and state**: how React builds the screen, and why each state is a screen
-  to design
+- **The chapter's model**: design is deciding where the user's attention goes. Every screen should
+  make the next step obvious, and most of what users experience happens off the happy path.
+- **Happy path**: the run through the product where everything goes right.
+- **UX iceberg** (Dan Olsen): visual design above the waterline; interaction design, information
+  architecture, and conceptual design underneath, where usable and unusable products diverge.
+- **Flow**: the sequence of steps a user takes to finish one task: a goal, an entry point, steps,
+  decisions, and exits. Map it before designing screens, and count the steps and decisions.
+- **Visual hierarchy**: size, weight, contrast, spacing, and position rank what is on the screen.
+  Give each screen one primary action, and de-emphasize the secondary items.
+- **Hick's Law, Fitts's Law, Von Restorff effect**: more options take longer to decide among; big,
+  close targets are faster to hit; the item that differs from its neighbors gets noticed.
+- **Squint test**: blur the screen until you cannot read it. Whatever still stands out is what users
+  see first, and it should be the primary action.
+- **Empty, loading, error, and partial states**: the states off the happy path. Each one says what
+  is true right now and what the user can do next.
+- **Visibility of system status** (Nielsen): the interface always tells people what is going on.
+- **Feedback on buttons that change data**: a visible change the moment it is pressed, then a
+  spinner in place of the label and the button disabled until the request finishes, so nobody
+  clicks twice. Build it once, in the shared Button component.
+- **Words are interface**: labels, buttons, and messages tell people what will happen and what to
+  do next. Buttons are verb plus object, errors say what happened and how to fix it, and names use
+  the user's words for things. Specific beats clever.
+- **Design system**: tokens, components, and patterns that make each design decision one time.
+  Use a component system the agent knows and write the rules in `CLAUDE.md`, because an agent has
+  no memory between sessions.
+- **shadcn/ui**: the component system this course recommends. It copies each component's source
+  into your project, styled with Tailwind and built on components that already handle keyboard use
+  and screen readers.
+- **Jakob's Law**: users spend most of their time in other products, so they expect yours to work
+  the same way. Familiar patterns beat novel ones.
+- **Accessibility baseline (WCAG)**: text contrast of at least 4.5:1, full keyboard use with visible
+  focus, a visible label on every input, and real HTML elements for real things. It is the baseline,
+  the same as the app not crashing, and it costs little when built in from the start.
+- **Designing for an uncertain AI**: when output can be wrong, set expectations, show the evidence,
+  deliver output as an editable draft, make it easy to dismiss and undo, and have a person confirm
+  costly actions.
+- **Precise design direction**: tell the agent where, what is wrong, why (the principle), what to
+  change, and a reference. For a redesign, ask first for the list of what it removes (a subtraction
+  audit).
+- **Taste is a skill**: you build it by naming specific problems, over and over, against principles
+  you can state.
+- **Web, mobile, or both**: most student products should start as a responsive web app and go to
+  the app stores only when they need something the web cannot do well. The web gives access by URL,
+  search traffic, and instant updates; stores give home-screen presence, more reliable push
+  notifications, and better retention, and every native platform is another codebase.
+- **Platform spectrum**: Web, Responsive Web, PWA, Capacitor, React Native, Native, from easiest to
+  most native.
+- **PWA, web app manifest, service worker**: a web app that can be installed to the home screen; the
+  file with its name, icons, and colors; the script that serves cached files for offline use.
+- **Capacitor**: wraps your existing web app in a native shell so it can ship to the app stores and
+  use phone features, from one codebase.
+- **Mobile-first and breakpoints**: the phone layout is the default, and wider screens add columns
+  and space at set widths (`sm:`, `md:`, `lg:`, `xl:` in Tailwind).
+- **HTML, CSS, JavaScript, React, Next.js**: structure, styling, behavior, the library that builds
+  the screen from components, and the React framework this course uses.
+- **Components, props, and state**: React builds the screen from components that take props
+  (inputs) and hold state (data that changes); a change in state redraws the screen, which is why
+  each state is a screen to design.
 
 <!-- learn -->

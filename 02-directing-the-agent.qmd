@@ -11,9 +11,9 @@ control, and control comes down to three questions you answer for every agent yo
 2. **What may it do?** Instructions advise; hooks and permission rules enforce; modes, sandboxes, and worktrees limit the damage. Each of these is defined in its own section below.
 3. **How will you know it worked?** Its own report is a claim. Your check is the evidence.
 
-The second half of the chapter is about the discipline that makes all three easier: writing down
-what you want before anyone builds it. Most of the difference between a student who ships once and
-a student who ships all semester comes from this discipline.
+All three get easier when you have written down what you want before anyone builds it. That
+written description is a spec, and it is the last step of design, so it has its own chapter in the
+Design part of the book: [Specs](06b-specs.qmd).
 
 <!-- learn -->
 
@@ -32,7 +32,7 @@ Then iterate:
 
 > Now I want to rate each problem on frequency (daily, weekly, monthly, rarely). Add a dropdown for that.
 
-Each small request is one short trip around the agent loop, and you check the result before the next one. Conversation is how you *explore*. Once you know what you want to keep, you write it down as a spec (later in this chapter), so the next session, or the next agent, does not have to rediscover it from a chat log.
+Each small request is one short trip around the agent loop, and you check the result before the next one. Conversation is how you *explore*. Once you know what you want to keep, you write it down as a spec ([Specs](06b-specs.qmd)), so the next session, or the next agent, does not have to rediscover it from a chat log.
 
 <!-- learn -->
 
@@ -149,7 +149,7 @@ A slash command is recognized at the start of a message; anything after it is it
 | `/context` | Show what is filling the context window |
 | `/clear` | Start a new conversation with empty context (CLAUDE.md still loads) |
 | `/compact` | Summarize the conversation so far to free up context, and keep going on the same task |
-| `/plan` | Switch into plan mode (read-only planning; see below) |
+| `/plan` | Switch into plan mode (read-only planning; see [Claude Code's plan mode](06b-specs.qmd#claude-codes-plan-mode)) |
 | `/rewind` | Roll back Claude's file edits and/or the conversation to an earlier point |
 | `/permissions` | Manage allow, ask, and deny rules |
 | `/mcp` | Manage connections to outside tools (MCP servers) |
@@ -224,7 +224,7 @@ The Agent Team Kit's [skills guide](https://github.com/ai-foundry-byu/agent-team
 |---|---|
 | [`regression-check`](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/skills/regression-check/SKILL.md) | Before a change to shared code is finished, lists every caller of what changed and the features behind them, then adds a test of each affected feature's user-facing behavior |
 | [`fix-bug`](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/skills/fix-bug/SKILL.md) | Loads a bug report and requires the agent to reproduce the bug before changing code, keeping what the user saw separate from the user's guess at the cause |
-| [`spec`](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/skills/spec/SKILL.md) and [`build-spec`](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/skills/build-spec/SKILL.md) | Turns an exploration into a written spec and stops for your approval; then builds it one item at a time, closing each acceptance criterion with the check the spec named |
+| [`spec`](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/skills/spec/SKILL.md) and [`build-spec`](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/skills/build-spec/SKILL.md) | Write a spec and stop for approval, then build it; see [Specs](06b-specs.qmd#the-agent-team-kits-spec-and-build-spec-skills) |
 | [`ux-critique`](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/skills/ux-critique/SKILL.md) | Uses the app in a browser through one flow; at each step predicts what a user would expect, acts, and records where the result differs |
 | [`push`](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/skills/push/SKILL.md) | Turns "ship it" into a fixed sequence: release notes, version bump, commit only those files, then push |
 
@@ -408,6 +408,11 @@ So every action an agent takes falls into one of three groups (@fig-blast-radius
 ![How far an action reaches decides how you undo it. `/rewind` restores Claude's file edits, git restores files you committed, and nothing recalls an action that has left your laptop.](images/diagrams/ch02-blast-radius.svg){#fig-blast-radius fig-alt="A grid of three columns and three rows. The columns are three kinds of action. Two stay on your laptop: Claude edits a file with its edit tool; a command deletes a folder, such as rm -rf drafts/. One reaches other people, highlighted: it leaves your laptop, as a push, a deploy, a write to the live database, or an email. Row how to undo it: /rewind; git, only if you committed; no undo, only a new fix later. Row so you: let it run without asking; commit before it runs; approve it yourself." width="100%"}
 
 Checkpoints do not replace git: commit before risky work, and work on a branch ([Chapter 9](09-version-control-testing-and-tech-debt.qmd)).
+The Agent Team Kit turns the three groups into one standing rule for its agents
+([commit freely, never push](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/memory-pack/commit-freely-never-push.md)):
+commit after each finished piece of work without asking, because a commit stays on your laptop
+and can be undone, and push only when you say so, because a push leaves your laptop. Put both
+halves in your CLAUDE.md.
 
 #### The controls, from tightest to loosest
 
@@ -573,7 +578,7 @@ Your definition of done has three checks:
 
 **Worked example.** You ask for "a due date on each task; overdue tasks show in red." Claude adds the feature and a test: create a task due yesterday, check that `is_overdue` is true. The test passes. You run the app and every task created this morning is red. The code compared the due date (midnight at the start of that day) with the current time, so a task due today counted as overdue from the moment the day began. The test only tried a task due yesterday, so it passed. The agent's test and the agent's code missed the same case. Your acceptance criterion ("a task due today is not overdue") caught it.
 
-Better still, give the agent a check it can run itself, so it can finish the loop without you. Claude Code's best-practices guide puts it as the difference between a session you watch and one you walk away from: a test suite, a build, or a screenshot compared against a design. Then have it show evidence (the command it ran and the output) instead of telling you it worked. A `Stop` hook that runs the tests, from the section above, makes the check mandatory. [Chapter 9b](09b-tests-and-tech-debt.qmd) covers testing; remember that tests written by the same agent that wrote the code need your acceptance criteria to mean anything.
+Better still, give the agent a check it can run itself, so it can finish the loop without you. Claude Code's best-practices guide puts it as the difference between a session you watch and one you walk away from: a test suite, a build, or a screenshot compared against a design. Then have it show evidence (the command it ran and the output) instead of telling you it worked. For a check in the browser, the Agent Team Kit's [guide to driving the app](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/docs/DRIVING-THE-APP.md) shows how an agent takes screenshots, records a walkthrough, and clicks through a flow by itself, and has it confirm each step by reading the page's address and contents as well as looking at the screenshot. A `Stop` hook that runs the tests, from the section above, makes the check mandatory. [Chapter 9b](09b-tests-and-tech-debt.qmd) covers testing; remember that tests written by the same agent that wrote the code need your acceptance criteria to mean anything.
 
 **Match the check to the risk.** Not every change needs a run through the app. The Agent Team
 Kit's rule ([verify proportional to risk](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/memory-pack/verify-proportional-to-risk.md)): if the
@@ -590,254 +595,6 @@ form you can paste into CLAUDE.md.
 ::: {.callout-tip title="Try it"}
 Next time Claude reports a feature done, before you look at the app, write down one behavior that would prove it works and one edge case that might break it. Then check both. Record whether the agent's own report was right.
 :::
-
-<!-- learn -->
-
-## User Stories
-
-**The spec is the prompt for the whole project.** A spec, short for specification, is a written description of what the product should do (defined in [Chapter 1](01-building-with-ai-agents.qmd#where-vibe-coding-came-from)). A vague spec produces code that looks plausible and is wrong. The rest of this chapter is about writing down what you want precisely enough that an agent (or a teammate) can build it and you can check it. User stories with acceptance criteria are the smallest unit, and they come from Agile and Extreme Programming [@beck1999xp; @cohn2004stories].
-
-A user story describes a feature from the user's perspective. It keeps you focused on value, not just functionality.
-
-#### The Format
-
-> As a **[type of user]**, I want **[goal]** so that **[benefit]**.
-
-**Examples:**
-
-> As a **marketing manager**, I want **to see all my campaigns in one dashboard** so that **I don't waste time switching between tools**.
-
-> As a **job seeker**, I want **to save interesting positions** so that **I can apply when I have time**.
-
-> As a **small business owner**, I want **to accept credit card payments** so that **I can sell to customers who don't carry cash**.
-
-#### Good vs. Bad User Stories
-
-| Bad Story | Why It's Bad | Better Story |
-|-----------|--------------|--------------|
-| "Build login system" | No user, no benefit | "As a user, I want to save my progress so I don't lose my work" |
-| "Add profile pictures" | Feature, not outcome | "As a user, I want colleagues to recognize me so team coordination is easier" |
-| "Make it faster" | Too vague | "As a user loading the dashboard, I want it to load in under 2 seconds so I can start working immediately" |
-
-#### Acceptance Criteria
-
-Every user story needs acceptance criteria, specific conditions that must be true for the story to be "done". They are also your check in the agent loop: the list you hold the agent's work against.
-
-```
-User Story: As a customer, I want to reset my password so I can access my account if I forget it.
-
-Acceptance Criteria:
-- User can request reset via email
-- Reset link expires after 1 hour
-- User must create password with 8+ characters
-- User receives confirmation email after reset
-- Old password no longer works
-```
-
-<!-- learn -->
-
-## Product Requirements Documents (PRDs)
-
-A PRD explains what you're building, why, and how you'll know it's successful. It aligns your team (even if that's just you and Claude) around a shared understanding.
-
-#### PRD Structure
-
-| Section | Purpose |
-|---------|---------|
-| **Overview** | What is this feature/product? |
-| **Objectives** | Why are we building it? What problem does it solve? |
-| **User Stories** | Who uses it and what do they accomplish? (with acceptance criteria) |
-| **Functional Requirements** | What must it do? |
-| **Non-Functional Requirements** | Performance, security, usability standards |
-| **Success Metrics** | How will we measure success? |
-| **Out of Scope** | What we're explicitly NOT building |
-
-Claude can draft one fast. Give it the product, the target user, and the problem, and ask for those sections. Then review and refine: AI gives you a starting point, not the final document. Structure helps the agent as much as it helps people: bullets over paragraphs, tables for comparisons, numbered requirements it can cite back (`Requirement 2.1`), so every task traces to a requirement.
-
-#### Build first, then spec what you keep
-
-Madhu Guru's tweet in [Chapter 1](01-building-with-ai-agents.qmd) described Google moving from a writing-first to a building-first culture. The PRD still gets written, at a different point. **Explore to learn, then spec anything you intend to keep.** A throwaway prototype to test an idea with users needs no spec. The moment you decide to keep building on it, write down what it does and should do, because the next session of the agent will know only what is written.
-
-> In the near future, the person who communicates most effectively is the most valuable programmer. If you can communicate effectively, you can program.
->
->Moving forward, the new scarce skill is writing specifications that fully capture the intent and values [of what you want to build]. Whoever masters that becomes the most valuable programmer. There's a reasonable chance that this is going to be the coders of today. This is already very similar to what we do. However, product managers also write specifications...
->
-> *Sean Grove, Engineer at OpenAI*
-
-**Spec-Driven Development (SDD)** is the discipline Grove describes: write specifications before code you intend to keep. Specs usually come in three documents:
-
-1. **Requirements**: what should the system do? (user stories and acceptance criteria)
-2. **Design**: how will it work? (architecture and data models)
-3. **Tasks**: what are the discrete implementation steps? (a checklist)
-
-A traditional PRD's audience was engineers and colleagues. An AI-native spec has the same goal, but its first reader is an agent, so it lives as Markdown files in the repo where the agent can read it. AI drafts it; you refine it. To specify a design you need the building blocks of an application (client, server, APIs, database), which [Chapter 7](07-anatomy-of-an-application.qmd) covers:
-
-![](/images/eng-landscape.png)
-
-<!-- learn -->
-
-## The SDD Workflow
-
-Most SDD approaches follow a similar pattern:
-
-```{mermaid}
-graph LR
-    A[Requirements] --> B[Design]
-    B --> C[Tasks]
-    C --> D[Implementation]
-    D --> E[Test & Review]
-    E --> F{Need Changes?}
-    F -->|Yes| A
-    F -->|No| G[Done]
-
-    style A fill:#e1f5ff
-    style B fill:#fff4e1
-    style C fill:#e8f5e9
-    style D fill:#f3e5f5
-    style E fill:#fce4ec
-```
-
-Instead of asking the AI to "build the entire authentication system," you:
-
-1. Write down what authentication needs to do (requirements)
-2. Design how it will work technically (design)
-3. Break it into small tasks (tasks)
-4. Have AI implement one task at a time (implementation)
-5. Check each task against its acceptance criteria, then continue
-
-The goal is to **guide the AI through small, checkable changes instead of letting it improvise an entire feature**. Each task is one short trip around the agent loop with a clear check at the end.
-
-<!-- learn -->
-
-## Major SDD Approaches
-
-Three tools package this workflow. They share the same three documents; pick one.
-
-### Kiro's three files and EARS
-
-[Kiro](https://kiro.dev/docs/specs/concepts/) popularized the three-file layout: `requirements.md`, `design.md`, and `tasks.md`. Its requirements use **EARS** (Easy Approach to Requirements Syntax), which makes each one testable:
-
-```markdown
-WHEN a user submits the login form with invalid credentials
-THE SYSTEM SHALL display "Invalid username or password"
-AND not reveal which field was incorrect
-```
-
-Either the system does that or it doesn't, which is exactly what you want to check an agent's work against. `design.md` covers architecture, data models, API endpoints, and error handling; `tasks.md` is a checklist where each task names the requirements it satisfies (`Requirements: 1.1, 1.2`).
-
-### GitHub Spec Kit
-
-GitHub's open-source [Spec Kit](https://developer.microsoft.com/blog/spec-driven-development-spec-kit) adds commands to your agent for each step. In the current version they appear as skills named `/speckit-specify` (what the feature should do, no technical decisions), `/speckit-plan` (the technical approach), `/speckit-tasks` (break the plan into chunks), and `/speckit-implement`. Install it by following the repository's README and choosing Claude Code as the integration; it adds a `.specify` folder to your project.
-
-![](images/spec-kit.png)
-<!-- REVIEW: screenshot of the older `specify init . --ai claude` flow; current Spec Kit uses `--integration` and hyphenated /speckit-* commands, so the init screen may look different. -->
-
-Spec Kit's distinctive idea is the **constitution**: a file of non-negotiable project principles (security rules, performance standards, quality rules) that every later step must respect, such as "all user data encrypted at rest" or "API responses under 200 ms at the 95th percentile." When the agent proposes something that violates it, you point back to the rule. Remember the previous sections, though: a constitution is still advice to the agent. A rule that must hold every time also needs a hook or a permission rule.
-
-### Claude Code's plan mode
-
-Claude Code has **plan mode** built in. In plan mode Claude reads files, searches, and runs exploratory commands, then writes a plan, but it **does not edit your source files** until you approve. That makes it the safest mode for exploring, because Claude does not edit your files while you plan.
-
-You enter plan mode with **`Shift+Tab`** (press until the status bar shows plan mode on) or by starting a message with **`/plan`**, for example `/plan add user profiles`. Telling Claude "let's plan" in ordinary words does not switch modes. When the plan is ready, Claude asks how to proceed: approve it and let Claude start editing (with auto mode or with your approval for each edit), or keep planning. `Ctrl+G` opens the plan in your editor so you can change it first.
-
-A spec-driven workflow with plan mode:
-
-1. **Enter plan mode** (`Shift+Tab` or `/plan`) and describe the feature.
-2. **Research**: Claude explores the codebase, asks clarifying questions, and proposes a plan.
-3. **Review the plan** and send it back until it is right.
-4. **Approve the plan**, which exits plan mode.
-5. **Write the specs**: now that Claude can write files, have it save the agreed plan as `requirements.md`, `design.md`, and `tasks.md`. (It could not write them in step 2, because plan mode is read-only.)
-6. **Execute tasks** one at a time, checking each.
-
-The docs add one caution: planning has overhead. If you could describe the change in one sentence, skip the plan and just ask.
-
-You can make the workflow standing behavior by putting rules in `CLAUDE.md` ("read requirements.md, design.md, and tasks.md before implementing any task"; "mark tasks complete by changing [ ] to [x]"), and you can wire Kiro's approach into Claude Code with the community [spec-workflow-mcp](https://github.com/Pimzino/spec-workflow-mcp) server. Cursor added a similar plan mode in October 2025.
-
-<!-- learn -->
-
-## Why SDD Matters (Especially for PMs)
-
-- **Your code stays maintainable.** Weeks later, the specs tell you (and the agent) why things were built that way.
-- **You can collaborate.** Teammates, and your future self, read the specs instead of deciphering code, and design review happens before an expensive rewrite.
-- **You catch problems early.** Writing requirements forces the edge cases: an empty form, an API that is down.
-- **The agent builds closer to your intent.** Less improvisation, fewer surprises, because the spec is in its context.
-- **You can check the result.** Every task traces to a requirement, so "does it do what we said?" has an answer.
-
-<!-- learn -->
-
-## Getting Started: Your First SDD Feature
-
-Build an advanced task manager (projects, tags, priorities, due dates) on top of the to-do app from Chapter 1. Each step is one prompt; the specs live in `.claude/specs/advanced-task-management/`.
-
-| Step | Ask Claude to | What you check before moving on |
-|---|---|---|
-| 1. Requirements | Write `requirements.md`: user stories and EARS acceptance criteria for task organization, projects, tags, filtering and sorting, and completion tracking | Every criterion is testable; nothing is ambiguous |
-| 2. Design | Write `design.md` from the requirements: an ASCII architecture diagram (drawn with plain text characters), data models (the fields each kind of record holds: Task, Project, Tag), JSON-file storage, UI components, validation, error handling | You can trace each requirement to part of the design |
-| 3. Tasks | Write `tasks.md`: numbered checkboxes, at most two levels, 15 to 30 minutes each, each citing its requirements, starting with data models and storage | Each task is small enough to check on its own |
-| 4. Implement | "Implement task 1. Read requirements.md and design.md first, follow the data models exactly, then mark task 1 complete in tasks.md." | Read the diff and run the app (the three checks above), then go to task 2 |
-| 5. Explain | Write `architecture-explained.md`: the architecture as an ASCII diagram and a plain-language account of what happens when a user creates a task | A non-technical reader could follow it |
-
-**Implement one task per prompt.** After each, review the code and test it before the next. The explanation from step 5 might read:
-
-```
-1. UI layer: what the user sees (TaskList, TaskForm)
-2. State layer: the data in memory while the app runs
-3. Storage layer: reads and writes data/app-data.json
-
-When you create a task: TaskForm calls store.addTask(), the store updates
-memory and calls storage.saveData(), the JSON file is rewritten, and
-TaskList re-renders with the new task.
-```
-
-<!-- learn -->
-
-## CLAUDE.md: Your SDD Configuration
-
-You can give Claude Code your SDD workflow as standing instructions by adding them to your project's `CLAUDE.md` file or your global `~/.claude/CLAUDE.md`. A starter:
-
-```markdown
-# Spec-Driven Development Workflow
-
-Specs live in `.claude/specs/{feature-name}/`: requirements.md, design.md, tasks.md.
-
-1. Write requirements.md first, in EARS format. Get approval before design.
-2. Read requirements.md before writing design.md. Get approval before tasks.
-3. Read ALL spec files before implementing any task.
-4. Implement ONE task at a time; mark it [x]; wait for approval before the next.
-5. Validate all user input server-side.
-```
-
-With this in place, Claude Code reads your SDD process at the start of every session and follows it closely. CLAUDE.md is guidance, not a guarantee: for a rule that must hold every time, such as "never skip the tests," add a hook.
-
-<!-- learn -->
-
-## SDD in Practice: Tips and Gotchas
-
-- **Start small.** Spec one feature, not the whole app.
-- **Specs are living documents.** You will learn things while building. Update the spec so it stays the single source of truth.
-- **Don't over-specify.** If an implementation detail doesn't matter, leave it to the agent.
-- **Use AI to write specs**, then review and refine them yourself.
-- **Name the check for each acceptance criterion.** Next to each criterion, write what will confirm it: a test, a browser check that you or an agent will do, or a search of the code (for example, "every server action checks the user's role"). The Agent Team Kit's [`spec`](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/skills/spec/SKILL.md) skill requires this, on the reasoning that a criterion you cannot attach a check to is too vague to build from. Write permission criteria in both directions: who can see the feature, and who must not.
-- **Review specs before code.** Have another person, or Claude in a fresh session (`/clear`), critique the spec. A design flaw caught in a spec costs a paragraph; caught in code, it costs a rewrite.
-
-<!-- learn -->
-
-## When to Use SDD vs. Pure Vibe Coding
-
-**Use pure vibe coding for:**
-- Quick throwaway prototypes
-- Exploring ideas ("what would this look like?")
-- One-off scripts and automations
-- Learning new technologies
-
-**Use spec-driven development for:**
-- Features that will be maintained
-- Code that multiple people touch
-- Anything going to production
-- Complex logic with edge cases
-- When you'll need to come back later
-
-In practice, you'll often start with vibe coding to explore, then transition to SDD once you know what you want to build.
 
 <!-- learn -->
 
@@ -888,23 +645,8 @@ supply through CLAUDE.md and MCP; your skills are their reusable agent procedure
 permission rules are their CI gates; and your three checks before calling something done are their review.
 Only the scale differs.
 
-<!-- learn -->
-
-## Exercise: Add a Feature Using SDD
-
-Take the to-do list app you built in chapter 1 (or any project you're working on) and add one feature using spec-driven development. Pick something relatively simple: categories or tags, due dates and reminders, search and filter, or user authentication.
-
-**Follow the workflow:**
-
-1. **Plan** in plan mode (`Shift+Tab` or `/plan`): have Claude explore the code and propose an approach. Approve it when it is right.
-2. **Create requirements.md**: 3-5 user stories, EARS-format acceptance criteria for each, edge cases thought through.
-3. **Create design.md**: data model changes, any new API endpoints, UI changes, error handling.
-4. **Create tasks.md**: 5-10 small tasks of 10-30 minutes each, each referencing its requirements.
-5. **Implement with Claude Code**, one task at a time: read the diff, run the app, check the acceptance criteria, mark the task complete, move on. Commit after each task so you can return to any point.
-
-**Observe the difference:**
-
-How does this feel compared to pure vibe coding? Is the code quality better? Do you feel more in control? Can you explain why the code looks the way it does? Which of your acceptance criteria caught something the agent's own report missed?
+Writing that definition of done is the subject of [Specs](06b-specs.qmd), in the Design part of
+the book: user stories, acceptance criteria, PRDs, and the spec-driven workflow.
 
 <!-- learn -->
 
@@ -935,25 +677,66 @@ Pick "GitHub Actions" if your site has a build step, which anything beyond plain
 
 ## Key Concepts
 
-- **Context window**: everything the agent can see right now; what is not in it does not exist for the agent.
-- **CLAUDE.md**: standing context an agent reads at the start of every session (`./CLAUDE.md`, `CLAUDE.local.md`, `~/.claude/CLAUDE.md`; all combine).
-- **`/context`, `/compact`, `/clear`**: see what fills the window, summarize it and keep going, or start fresh.
-- **Slash command**: a command you invoke by name at the start of a message; custom ones are now skills.
-- **Skill**: packaged instructions the agent loads when a task matches; only its description sits in context until used.
-- **Advice versus enforcement**: CLAUDE.md is advice; hooks and permission rules run every time.
-- **Permission rule**: an allow, ask, or deny entry in settings; deny overrides allow.
-- **Hook**: a script fired automatically at a point in the agent's loop; exit 2 blocks, any other non-zero exit does not.
-- **Blast radius**: what an action could break and whether you can undo it.
-- **Permission modes**: Manual, Accept edits, Plan, Auto, Bypass; `Shift+Tab` cycles them in the terminal.
-- **Plan mode**: read-only planning; entered with `Shift+Tab` or `/plan`; Claude edits only after you approve.
-- **`/rewind` and checkpoints**: undo Claude's file edits; they do not undo shell deletions, pushes, deploys, or database changes.
-- **Sandbox**: an operating-system boundary on which files and network hosts shell commands can reach.
-- **Subagent**: a worker with its own empty context window that returns a summary, so the main conversation does not fill up.
-- **Worktree**: a separate copy of the files on its own branch, so parallel sessions do not collide.
-- **MCP**: the open protocol that connects an agent to outside tools and data (browser, database, tickets).
-- **Definition of done**: read the diff, run the app, confirm the behavior you asked for.
-- **User story**: a unit of work stated from the user's point of view, with acceptance criteria.
-- **Spec-driven development**: write the requirements, design, and tasks before code you intend to keep.
-- **The rule underneath all of it**: the scarce skill is saying precisely what you want, and checking that you got it.
+- **Three questions of control**: what can the agent see, what may it do, and how will you know
+  it worked?
+- **Conversational coding**: explore in small requests, checking each result before the next;
+  once you know what you want to keep, write it down as a spec ([Specs](06b-specs.qmd)).
+- **Context window**: all the text the model has in front of it at one moment. What is not in it
+  does not exist for the agent, and anything that must survive goes in a file the agent re-reads.
+- **`/context`, `/compact`, `/clear`**: show what fills the window; summarize the conversation
+  and keep going on the same task; start a new, empty conversation (CLAUDE.md still loads).
+- **CLAUDE.md**: a Markdown file Claude Code reads at the start of every session. Write what the
+  agent cannot work out from the code (decisions, constraints, traps, commands, the definition of
+  done), and keep it short. Project, local, and personal files all combine.
+- **Auto memory**: notes Claude writes for itself, stored in your home folder on one computer.
+  Teammates and web sessions never see it, so move a note that matters into CLAUDE.md.
+- **Slash command**: a command recognized at the start of a message, with anything after it as
+  its argument. Your own saved commands are now skills.
+- **Skill**: a reusable procedure in a folder with a `SKILL.md` file, run by name or loaded when
+  your request matches its description. Only the description sits in context until it is used:
+  standing facts go in CLAUDE.md, a procedure you need sometimes goes in a skill.
+- **Advice versus enforcement**: an instruction in CLAUDE.md is advice the agent usually follows;
+  a hook or a permission rule runs every time.
+- **Permission rule**: an allow, ask, or deny entry in a settings file, checked before a tool
+  runs. Deny overrides allow, and a Bash rule matches only the text of the command.
+- **Hook**: your own script that Claude Code runs automatically at a point in the loop
+  (`PreToolUse`, `PostToolUse`, `Stop`, `SessionStart`). The exit code is the decision: exit 2
+  blocks, and any other non-zero exit lets the action go ahead. Git hooks are a different thing:
+  they fire on Git's actions, from anyone.
+- **Blast radius**: everything an action can change if it goes wrong. Ask how far it reaches and
+  whether you can undo it.
+- **Three groups of action**: Claude's own file edits (undo with `/rewind`), shell commands that
+  change files on your laptop (undo with git, only if you committed), and actions that leave your
+  laptop, such as a push, a deploy, a live database write, or an email (no undo; approve each
+  yourself). Commit freely, push only when you say so.
+- **Checkpoints and `/rewind`**: Claude Code saves your files before each prompt; `/rewind`
+  restores Claude's file edits or the conversation, and nothing done by a shell command or
+  outside your laptop.
+- **Plan mode**: Claude reads files, explores, and writes a plan, and does not edit your source
+  until you approve it. Enter it with `Shift+Tab` or `/plan`.
+- **Permission modes**: Manual, Accept edits, Plan, Auto, and Bypass permissions, cycled with
+  `Shift+Tab` in the terminal. Accept edits and Auto both run `rm` and `mv` without asking, so
+  commit first.
+- **Sandbox**: an operating-system boundary on which folders shell commands may write and which
+  network hosts they may reach. Off by default; turn it on with `/sandbox`.
+- **Subagent**: a worker with its own empty context window that gets only the task description
+  Claude writes for it and returns only a summary, so noisy work does not fill your main
+  conversation.
+- **Worktree**: a second working folder with its own files and branch on the same repository
+  history, so parallel sessions do not overwrite each other. It separates files only: the
+  database and dev server ports are still shared.
+- **Task decomposition**: break a feature into small pieces you can check one at a time, in
+  order.
+- **MCP**: the Model Context Protocol, an open standard for connecting an agent to outside tools
+  and data. An MCP server wraps one system (a browser, a database, a ticket tracker) and exposes it
+  as new tools. Connect only servers you trust.
+- **Definition of done**: read the diff, run the app, and confirm the behavior you asked for
+  against your acceptance criteria. Tests the agent wrote can miss the same case its code missed.
+- **Match the check to the risk**: if the diff shows the whole effect, reading it and a type
+  check are enough; if the change can fail in ways the diff does not show, run the app. Run the
+  real build before you push import changes.
+- **The agentic software factory**: at full scale (OpenAI's version), the human defines the
+  outcome, verification is the bottleneck, and risk classification decides which changes a person
+  reviews.
 
 <!-- learn -->
