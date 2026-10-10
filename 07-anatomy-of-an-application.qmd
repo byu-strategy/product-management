@@ -8,101 +8,147 @@ You have been shipping since week one, and Claude Code has been making the archi
 decisions for you. That was on purpose. You cannot learn everything before you build
 anything, and the fastest way to understand a stack is to already have one running.
 
-Now you find out what you have been shipping. When you write requirements and design
-documents for web or mobile applications, you are working with a handful of building
-blocks: a client, a server, an API, and a database. Knowing what each one does is the
-difference between directing an agent and hoping it guesses right.
+Now you find out what you have been shipping. The model for this chapter and the next two
+fits in two sentences:
+
+> **An app is a few places where code runs and data lives, connected by requests. Most bugs
+> and breaches come from something sitting in the wrong place, or from trusting the wrong
+> side.**
+
+Every web or mobile product is built from the same handful of blocks: the user's browser, a
+server, a database, and the requests that pass between them. Once you can say which block a
+piece of code or data belongs in, you can direct an agent instead of hoping it guesses right,
+and you can catch it when it puts something in the wrong place.
 
 ![](/images/eng-landscape.png)
 
-## Frontend (The User Interface)
+<!-- learn -->
 
-The **frontend** is everything users see and interact with, whether in a browser or on a smartphone. It's the buttons, forms, text, images, and animations. When you click "Add to Cart" on a shopping site, that button and the visual feedback you get, that's frontend.
+## Three Places Code Runs and Data Lives
 
-The frontend (web browser or mobile app) is sometimes called the "client". Hoever "client" can also mean any consumer of an API, for example a server-side job, a third-party service, or another backend that calls your API. When we say "client-side" or refer explicitly to the frontend, we mean code executing in the user's browser or device; when we discuss API interactions, "client" may refer to any caller of the API.
+**The model:** the browser belongs to the user, who can see and change anything there. The
+server is yours and keeps secrets. The database remembers.
 
-**Technologies you'll encounter:**
+| Place | Also called | Who controls it | What belongs there | What must never be there |
+|---|---|---|---|---|
+| The user's browser or phone | Frontend, client, client-side | The user | Screens, buttons, forms, quick checks that save the user a round trip | Secret keys, the only copy of a rule that matters (prices, permissions, grades) |
+| Your server | Backend, server-side | You | Business logic (the rules of your product), secret keys, calls to paid services such as a model or Stripe | Nothing the user should not trigger without a check |
+| The database | Storage, persistence | You, through its rules | Everything the product must remember after a refresh: users, records, history | Data with no rule about who may read it |
 
-**Web:**
+A few terms you will hear constantly:
 
-- **HTML/CSS/JavaScript** - Structure, styling, and interactivity
-- **Frameworks** - React, Vue, Svelte (for complex interfaces)
+- **Frontend** is what the user sees and touches. In this course it is React running in the
+  browser. "Client" usually means the same thing, though it can mean any program that calls an
+  API, including another server.
+- **Backend** is code that runs on a computer you control. In this course that means Next.js
+  route handlers and server components running on Vercel.
+- **Database** is durable storage. Postgres, in this course, run by Supabase.
 
-**Mobile:**
+**The rule that follows.** Every line of frontend code is downloaded to the user's machine.
+Anyone can open the browser's developer tools (a panel built into every browser that shows the
+page's code, its stored data, and every request it sends) and read or change any of it. So a
+check that runs only in the browser is a suggestion, and a key shipped to the browser is
+public. Checks that matter run again on the server or in the database. Secrets stay on the
+server.
 
-- **Native** - Swift (iOS), Kotlin (Android) for platform-specific apps
-- **Cross-platform** - React Native, Flutter (one codebase for both iOS and Android)
+**Worked example.** A student builds a study-room booking app. The "Book" button is greyed
+out after a user has two bookings this week. That limit lives only in the React component.
+A user opens developer tools, re-enables the button, and books ten rooms. The fix is to
+enforce the limit where the data lives (a database rule or a server check), and keep the greyed
+button as a courtesy.
 
-## Backend (The Business Logic)
+::: {.callout-note title="Analogy: a bank"}
+The browser is the deposit slip: the customer fills it out and can write anything on it. The
+server is the teller, who checks ID and applies the bank's rules. The database is the vault.
+**Where it breaks:** in a Supabase app the browser can talk to the vault directly, through a
+window with its own guard (row level security, Chapter 8), with no teller in between. That is
+why the database's own rules matter so much in this stack.
+:::
 
-The **backend** consists of everything the user does not directly see. It handles the "business logic" which are the rules and operations that make your app work. When you submit a login form, the backend checks if your password is correct. When you add a to-do item, the backend validates it and saves it.
+::: {.callout-tip title="Try it"}
+1. In your own repo, ask Claude Code: *"List every file in this project and label it browser,
+   server, or both. Explain how you decided."* In Next.js, a file that starts with
+   `"use client"` ships to the browser; a `route.ts` under `app/api/` runs only on the server.
+   Check two of its labels yourself.
+2. Predict: a quiz app checks each answer in browser code and then sends `{ score: 7 }` to the
+   server, which saves it. What can a student do, and where should the check move?
+:::
 
-**Technologies you'll encounter:**
+::: {.callout-note collapse="true" title="Answer to 2"}
+Send `{ score: 10 }` directly, or edit the code to mark every answer correct. The server should
+receive the answers, look up the correct ones itself, and compute the score.
+:::
 
-- **Server frameworks** - Node.js/Express, Python/Django, Ruby on Rails
-- **APIs** - The connection points between frontend and backend (more on this below)
-- **Backend Services** - Firebase, Supabase, AWS Amplify (backend-as-a-service for mobile apps)
-- **Authentication** - Login systems, user sessions, permissions
+<!-- learn -->
 
-## Database (The Memory)
+## Requests Connect the Places
 
-The **database** is where your application stores data permanently. Think of it as your app's long-term memory. Whether users access from a browser or mobile device, the database ensures their data persists.
+**The model:** the places never share memory. They talk only by sending requests and getting
+responses, and an **API** (Application Programming Interface) is the set of requests a place
+agrees to answer. Your server's API is its front door: a list of addresses, called
+**endpoints**, such as `POST /api/tasks`, each with a defined input and output.
 
-**Technologies you'll encounter:**
+![Image source: Adityagaba via Medium](images/architecture.png){fig-alt="A diagram split into a front-end half and a back-end half. The front end shows a web app and a mobile app, with HTML, CSS, JavaScript, and Node logos beneath. An arrow connects them to a server in the back-end half, which connects in turn to a database, an API, and language logos for Java, Python, C plus plus, and PHP."}
 
-- **SQL databases** - PostgreSQL, MySQL (data organized like spreadsheets with tables and rows)
-- **NoSQL databases** - MongoDB, Firebase Firestore (organized like nested documents)
-- **Mobile-friendly options** - Firebase, Supabase (real-time sync across devices)
-- **Local storage** - SQLite (on-device storage for mobile apps), IndexedDB (browser storage)
+Here is what happens when a user adds a to-do item. The API is the entry point of
+your server, so it has no box of its own.
 
-For example, in a to-do list app, items are stored in a SQL database table that might look like:
+```{mermaid}
+sequenceDiagram
+    participant User
+    participant Browser as Browser (frontend)
+    participant Server as Your server (API route)
+    participant Database
+
+    User->>Browser: Types "Buy groceries" and clicks Add
+    Browser->>Browser: Quick check: text is not empty (a courtesy)
+    Browser->>Server: POST /api/tasks {"task_text": "Buy groceries"}
+    Server->>Server: Who is asking? Check again: not empty, not too long
+    Server->>Database: INSERT a new task for this user
+    Database->>Server: New task with id=123
+    Server->>Browser: 201 Created {"task": {...}}
+    Browser->>User: Shows the new task in the list
+```
+
+The database stores it as a row in a table:
 
 | id  | user_id | task_text        | completed | created_at          |
 |-----|---------|------------------|-----------|---------------------|
 | 1   | 42      | "Buy groceries"  | false     | 2025-01-15 10:30:00 |
 | 2   | 42      | "Call dentist"   | true      | 2025-01-15 11:45:00 |
 
-## API (The Messenger)
-
-**API** stands for Application Programming Interface which is unfortuate because it doesn't describe very clearly what an API does. An API is the messenger system carries information between the frontend and backend. If you need to display data onscreen (your frontend) then an API provides the rails to retreive this data from the database.
-
-**Examples** When you add a to-do item:
-
-1. **Frontend** sends a POST request to `/api/tasks` with the task text
-2. **Backend** receives the request, validates the data, saves to database
-3. **Backend** sends response back: `{ success: true, task: { id: 123, text: "Buy groceries" } }`
-4. **Frontend** receives response and updates the UI
-
-## How They Work Together: The Full Stack
-![Image source: Adityagaba via Medium](images/architecture.png){fig-alt="A diagram split into a front-end half and a back-end half. The front end shows a web app and a mobile app, with HTML, CSS, JavaScript, and Node logos beneath. An arrow connects them to a server in the back-end half, which connects in turn to a database, an API, and language logos for Java, Python, C plus plus, and PHP."}
-
-
-Here's how all four pieces work together when a user adds a to-do item (same flow for web and mobile):
+**Two paths in this course's stack.** Supabase puts its own API in front of your database, so
+the browser can read and write rows directly, carrying a public key and the signed-in user's
+token. Anything that needs a secret, such as a model call or a payment, goes through your
+server instead.
 
 ```{mermaid}
-sequenceDiagram
-    participant User
-    participant Frontend
-    participant API
-    participant Backend
-    participant Database
-
-    User->>Frontend: Types "Buy groceries" and taps/clicks Add
-    Frontend->>API: POST /api/tasks {"task_text": "Buy groceries"}
-    API->>Backend: Route request to task creation handler
-    Backend->>Backend: Validate task text is not empty
-    Backend->>Database: INSERT new task record
-    Database->>Backend: Return new task with id=123
-    Backend->>API: Return success response
-    API->>Frontend: { "success": true, "task": {...} }
-    Frontend->>User: Display new task in list
+flowchart LR
+    B["Browser<br/>(the user's machine)"] -- "publishable key + user's token" --> S[("Supabase<br/>database + row rules")]
+    B -- "request" --> V["Your server<br/>(Next.js route on Vercel)"]
+    V -- "secret key stays here" --> S
+    V -- "secret key stays here" --> M["Paid APIs<br/>(model, payments, email)"]
 ```
 
-**This is called the "full stack"**: frontend (web/mobile), backend, database, and the APIs connecting them. When you become a **Full-Stack Product Builder**, you're able to specify requirements and design across all these layers for both web and mobile platforms.
+**This is the "full stack"**: frontend, backend, database, and the requests connecting them.
+As a full-stack product builder, you decide what lives where, even when the agent types it.
 
-### Why This Matters for Writing Specs
+Requests fail in many ways (no network, not signed in, not allowed, too many requests).
+Chapter 8 covers what each failure looks like and what the user should see.
 
-When you write specifications, you'll need to think about all these layers:
+::: {.callout-tip title="Try it"}
+Pick one feature in your product. Write the sequence as the diagram above does, one line per
+hop: what the user does, what the browser sends, what the server checks, what the database
+stores, what comes back. Then ask Claude Code to trace the same feature through your actual
+code and compare. Where the two differ, find out which one is right.
+:::
+
+<!-- learn -->
+
+## Writing Specs That Cover Every Layer
+
+When you direct an agent, a spec that names each layer gets you code that puts each piece in
+the right place.
 
 **Bad spec (vague):**
 
@@ -111,6 +157,7 @@ The app should let users create accounts
 ```
 
 **Good spec (covers all layers):**
+
 ```markdown
 ## User Registration Feature
 
@@ -120,44 +167,38 @@ THEN system SHALL create account and send confirmation email
 
 ### Design
 
-**Frontend (Web & Mobile):**
+**Frontend (browser):**
 - Registration form with email and password fields
-- Client-side validation: email format, password minimum 8 characters
-- Display loading state during submission
-- Web: /signup route | Mobile: RegisterScreen component
+- Quick checks for the user's convenience: email format, password at least 8 characters
+- Display loading state during submission, and the error message if signup fails
 
-**API:**
-- POST /api/auth/register
-- Request: { email, password }
-- Response: { success, user } or { success: false, error }
-
-**Backend:**
-- Validate email format and uniqueness
-- Hash password using bcrypt
-- Create user record
-- Send confirmation email via SendGrid
-- Return JWT token for authentication
+**Auth (Supabase Auth):**
+- Call Supabase Auth signUp with email and password
+- Supabase checks the email is not taken, stores the password securely,
+  sends the confirmation email, and starts a session once the email is confirmed
+- The same length and format rules are enforced in Supabase's auth settings,
+  so a request that skips the form is still checked
 
 **Database:**
-- Users table with: id, email (unique), password_hash, created_at
+- profiles table: id (= auth user id), display_name, created_at
+- Row level security: a user can read and update only their own profile
 ```
 
-See the difference? The good spec thinks through the entire stack for both web and mobile. This is what Claude Code (or any AI coding agent) needs to generate quality code.
+The good spec says where each rule is enforced. The browser checks are there for speed; the
+real checks run where the user cannot reach them.
 
-### Don't Panic
-
-This might feel like a lot if you're new to technical concepts. The good news: **you can learn super fast**. You just need enough understanding to start knowing what questions to ask.
-
-The core You'll start naturally thinking: "This feature needs a frontend form, an API endpoint to submit it, backend validation, and a database table to store the results."
-
-And here's the best part: **Claude Code can help you learn**. When you're unsure about how something should work technically, you can ask:
+This might feel like a lot if you are new to technical concepts. You need enough to know what
+questions to ask, and you will start thinking in layers without trying: "This feature needs a
+form, an endpoint to submit it, a server-side check, and a table to store the result." When you
+are unsure, ask the agent to explain before it builds:
 
 ```markdown
-I want to add user authentication to my app. Can you explain what
-database tables I'll need and what the API endpoints should look like?
+I want to add user authentication to my app. Before writing code, explain
+what runs in the browser, what runs on the server, what tables I need,
+and where each access rule is enforced.
 ```
 
-The AI will explain the architecture and help you write the specs. You're not expected to know everything, you're expected to ask good questions and guide the implementation.
+<!-- learn -->
 
 ## Tech Stacks and Languages
 
@@ -166,7 +207,7 @@ stacks as shorthand for a whole set of decisions.
 
 | Layer | What it does | Common choices |
 |---|---|---|
-| Frontend | What the user sees and touches | React, Next.js, Vue, Svelte, plain HTML and CSS |
+| Frontend | What the user sees and touches | React, Next.js, Vue, Svelte, plain HTML and CSS; Swift, Kotlin, or React Native on phones |
 | Backend | Business logic, the rules of your product | Node.js, Python, Ruby, Go |
 | Database | What the product remembers | Postgres, MySQL, SQLite, MongoDB |
 | Hosting | Where it runs so others can reach it | Vercel, Netlify, Railway, Fly.io, AWS |
@@ -178,20 +219,28 @@ reasonable one. It is chosen because it gets a real, multi-user, authenticated a
 onto the internet faster than anything else available to a solo builder, and because the
 free tiers are generous enough to carry a student product through a semester.
 
-**On languages.** You will mostly write, and mostly read, JavaScript and TypeScript,
-because that is the language of the browser. SQL turns up whenever you ask the database a
-question. Python appears when you are doing analysis or calling a model. You do not need
-fluency in any of them to ship. You need enough to read what the agent wrote and notice
-when it is wrong, which is a much lower bar and a much more useful one.
+**On languages.** You will mostly read JavaScript and TypeScript (JavaScript with labels that
+say what kind of data each value holds, so mistakes show up before the code runs), because
+that is the language of the browser. SQL turns up whenever you ask the database a question.
+Python appears when you are doing analysis or calling a model. You do not need fluency in any
+of them to ship. You need enough to read what the agent wrote and notice when it is wrong,
+which is a much lower bar and a much more useful one.
 
-**Choosing a stack.** Pick the boring one. Novel technology spends your attention on the
-tool instead of the product, and an agent writes better code in a popular stack because it
-has seen far more of it. The stack that is well documented, widely used, and already
-familiar to your tools is almost always the right call for a first product.
+**Choosing a stack.** Pick the boring one. Dan McKinley's essay "Choose Boring Technology"
+makes the case: every new tool spends attention you could spend on the product, and a
+well-known tool's failure modes are already documented [@mckinley2015boring]. The AI-era
+reason is stronger still: an agent writes better code in a popular stack because it has seen
+far more of it. The stack that is well documented, widely used, and already familiar to your
+tools is almost always the right call for a first product.
+
+<!-- learn -->
 
 ## Supabase Introduction
 
-**Supabase** is an open-source backend platform that provides everything you need to build a real application:
+**Supabase** is a hosted Postgres database with an API, sign-in, and file storage built
+around it. The part that shapes your architecture: Supabase generates an API for every table,
+so your browser code can query the database directly. That is fast to build with, and it moves
+the job of protecting data into the database itself.
 
 | Feature | What It Does |
 |---------|--------------|
@@ -201,76 +250,93 @@ familiar to your tools is almost always the right call for a first product.
 | **Realtime** | Live updates when data changes |
 | **Edge Functions** | Serverless code execution |
 
-Think of Supabase as "Firebase for people who like SQL." It's free for small projects and scales as you grow.
-
-#### Setting Up Supabase
-
-1. Go to [supabase.com](https://supabase.com) and create an account
-2. Create a new project
-3. Note your project URL and API key (you'll need these)
-
-#### Connecting Your App
-
-Install the Supabase client:
-
-```bash
-npm install @supabase/supabase-js
-```
-
-Create a client:
+Your app connects with a project URL and a key:
 
 ```javascript
 import { createClient } from '@supabase/supabase-js';
 
 const supabase = createClient(
-  'https://your-project.supabase.co',
-  'your-anon-key'
+  process.env.NEXT_PUBLIC_SUPABASE_URL,
+  process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY  // public by design
 );
 ```
 
-## Authentication with Supabase
+**That key is public, on purpose.** Supabase issues two kinds of key. The **publishable key**
+(`sb_publishable_...`, called the **anon key** in older projects and tutorials) ships to every
+visitor's browser, which is why its variable starts with `NEXT_PUBLIC_`. Anyone can copy it.
+It can reach only what your row level security rules allow. The **secret key**
+(`sb_secret_...`, formerly the **service role key**) bypasses those rules entirely, so it lives
+only on your server and never gets the `NEXT_PUBLIC_` prefix. Supabase is retiring the old
+anon and service role names by the end of 2026, so you will see both in code for a while.
+Chapter 8 covers the rules that make a public key safe.
 
-Authentication is how you verify who users are. Supabase makes this simple:
+<!-- REVIEW: the variable name NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY is a convention; check it matches the builder template's .env.example -->
 
-#### Email/Password Auth
+<!-- learn -->
+
+## Who You Are, What You May Do
+
+**The model:** authentication proves identity. Authorization decides access. Enforce access
+where the data lives, never only on the screen.
+
+| Block | Question it answers | In this course's stack |
+|---|---|---|
+| **Authentication** (authn) | Who is this? | Supabase Auth: email and password, or "Sign in with Google" (OAuth, where another service vouches for the user) |
+| **Session** | How does the app remember who signed in? | A signed token the browser stores and sends with each request; the server and database can verify it was not forged |
+| **Authorization** (authz) | May this person do this to this row? | Row level security policies in the database, plus checks in your server routes |
+
+The common mistake is to treat authorization as a screen problem: hide the Delete button from
+non-owners and call it done. The button is in the browser, and so is the request it would have
+sent, which anyone can send by hand. Authorization holds only when the database or server
+refuses the request.
+
+**Worked example.** A club app shows officers an "Edit roster" page. Members never see the
+link. A curious member types `/roster/edit` into the address bar, and the page loads, because
+the only check was the hidden link. With a database rule that lets only officers update the
+roster table, the page may still load, but every save fails. That is the outcome you want.
+
+The sign-up and sign-in calls are short, because Supabase does the hard parts (storing passwords
+safely, issuing the session token):
 
 ```javascript
-// Sign up
-const { user, error } = await supabase.auth.signUp({
-  email: 'user@example.com',
-  password: 'secure-password'
-});
-
-// Sign in
-const { user, error } = await supabase.auth.signInWithPassword({
-  email: 'user@example.com',
-  password: 'secure-password'
-});
-
-// Sign out
+// Sign up, sign in, sign out (supabase-js v2: results come back as { data, error })
+const { data, error } = await supabase.auth.signUp({ email, password });
+const { data: signIn, error: signInError } =
+  await supabase.auth.signInWithPassword({ email, password });
 await supabase.auth.signOut();
 
-// Get current user
+// Who is signed in right now?
 const { data: { user } } = await supabase.auth.getUser();
+
+// Sign in with Google (configure providers in the Supabase dashboard
+// under Authentication, then Providers)
+await supabase.auth.signInWithOAuth({ provider: 'google' });
 ```
 
-#### OAuth (Google, GitHub, etc.)
+::: {.callout-tip title="Try it"}
+For each, say whether it is authentication or authorization, and where it should be enforced:
+(a) a student must be signed in to see the dashboard; (b) a student may edit only their own
+posts; (c) only the TA can export grades; (d) a password must be at least 8 characters. Then
+find one place in your own app where access is enforced only by hiding something on screen.
+Chapter 8 has a drill for testing it.
+:::
 
-```javascript
-// Sign in with Google
-const { data, error } = await supabase.auth.signInWithOAuth({
-  provider: 'google'
-});
-```
-
-Configure OAuth providers in your Supabase dashboard under Authentication → Providers.
+<!-- learn -->
 
 ## Key Concepts
 
-- **Frontend**: the interface running in the user's browser.
-- **Backend**: the logic running on a server, where rules and secrets live.
+- **Three places**: the browser (the user's), the server (yours, keeps secrets), the database
+  (remembers).
+- **The trust rule**: anything in the browser can be read and changed by the user; checks that
+  matter and secrets live on the server or in the database.
+- **Frontend / client**: code that runs on the user's machine.
+- **Backend / server**: code that runs on a computer you control.
 - **Database**: durable storage; what survives a refresh.
-- **API**: the contract by which frontend and backend talk.
+- **API and endpoint**: the requests a place agrees to answer, each at its own address.
 - **Full stack**: all of the above, and now all of it is yours.
 - **Stack choice**: pick the boring, well-documented option; agents write it better.
-- **Authentication**: proving who a user is. Authorization is deciding what they may do.
+- **Publishable (anon) key vs. secret (service role) key**: one is public by design and limited
+  by row rules; the other bypasses them and stays on the server.
+- **Authentication vs. authorization**: proving who a user is, and deciding what they may do.
+
+<!-- learn -->
