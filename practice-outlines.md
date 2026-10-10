@@ -152,7 +152,7 @@ Covers practices 1 through 6: Agentic Workflow, Discovery, Design. 40 items.
 - **Film:** a diff that made the code worse while adding a feature, and the small refactor that would have prevented it.
 - **Install:** Supabase database, row-level security, CRUD, APIs; git branches, technical debt, linting, testing, refactoring.
 - **Drill:** refactor one messy part of your product, add a test, review the diff before you commit.
-- **Reading / due:** [Data and APIs](08-data-and-apis.qmd) and [Version Control, Testing, and Tech Debt](09-version-control-testing-and-tech-debt.qmd).
+- **Reading / due:** [Data and APIs](08-data-and-apis.qmd), [Version Control, Environments, and Deploys](09-version-control-testing-and-tech-debt.qmd), and [Tests and Tech Debt](09b-tests-and-tech-debt.qmd).
 
 ---
 
