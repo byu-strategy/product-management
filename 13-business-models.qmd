@@ -6,31 +6,140 @@ title: "Business Models"
 
 A product that cannot pay for itself is a project. The business model is the argument for
 how value reaches you as well as your customer, and writing it down early surfaces the
-assumptions you did not know you were making.
+assumptions you did not know you were making. For an AI product it also answers a question
+that traditional software rarely had to ask: does each additional user cost you more than
+they bring in?
 
-## Introduction
+<!-- learn -->
 
-The Business Model Canvas is a strategic management tool that helps you describe, design, challenge, and pivot your business model. Created by Alexander Osterwalder [@osterwalder2010business] and refined by Jeff Dyer, it provides a visual framework for understanding how your organization creates, delivers, and captures value.
+## What a Business Model Is
 
-This version incorporates Jeff Dyer's refinement which splits the central value proposition into two distinct components: **Jobs-To-Be-Done** (understanding what customers are hiring your product to do) and **Customer Value Proposition** (the specific solutions you provide). This creates a 10-component canvas that emphasizes customer-centricity and job-based thinking.
+**The model:** a business creates value for a specific customer, delivers it through some
+channel, and captures part of that value as revenue, at a cost lower than what it captures.
+Every block of the canvas is one part of that sentence, and a choice in one block constrains
+the others.
 
-## Building Your Business Model Canvas
+The Business Model Canvas is a strategic management tool that helps you describe, design,
+challenge, and pivot your business model. Alexander Osterwalder created it [@osterwalder2010business];
+Jeff Dyer refined it by splitting the central value proposition into two parts: the
+**Jobs-To-Be-Done** (what customers are hiring your product to do) and the **Customer Value
+Proposition** (the specific solution you provide). That gives the ten-block canvas this course
+uses.
 
-Use the following prompts to systematically work through each component of the Business Model Canvas. These prompts will help you think critically about your business model and identify opportunities for innovation.
+![The ten-block Business Model Canvas used in this course, with the center split into Jobs-To-Be-Done and the Customer Value Proposition.](images/business-model-canvas.png){fig-alt="A Business Model Canvas grid with ten blocks and guiding questions: Key Partners, Key Activities, Key Resources, Jobs-To-Be-Done, Solution Customer Value Proposition, Customer Relationships, Channels, Customer Segments, Cost Structure, and Revenue Streams."}
 
-**Important:** As you complete each prompt, save the output to a file called `business-model-canvas.md` in your project directory. Each section should be appended to this file in order. By the end of this process, you'll have a complete, well-formatted business model canvas document that you can reference and use to create presentations.
+Read the canvas as two halves joined in the middle:
 
-The prompts are organized into four phases that follow the natural logic of business model development:
+| Part | Blocks | Question it answers |
+|---|---|---|
+| **The customer side** (right) | Customer Segments, Channels, Customer Relationships, Revenue Streams | Who pays, how they find you, how you keep them, what they pay |
+| **The center** | Jobs-To-Be-Done, Customer Value Proposition | What job they hire you for, and what you offer to do it |
+| **The operations side** (left) | Key Activities, Key Resources, Key Partners, Cost Structure | What you must do and have to deliver it, and what that costs |
 
-- **Phase 1: Customer Focus** - Understanding who you serve and what value you provide
-- **Phase 2: Infrastructure** - Determining what you need to deliver that value
-- **Phase 3: Financial Viability** - Understanding your cost structure
-- **Phase 4: Synthesis** - Validating and visualizing your complete business model
+**How the blocks combine.** Each choice forces others. Choose a self-serve channel and your
+customer relationship must be automated, which means onboarding has to work without you. Choose
+a subscription revenue stream and retention becomes the whole game, because revenue only
+continues while people stay. Choose a model call as your core activity and every use of the
+product adds to your cost structure. A canvas where the blocks contradict each other (a
+$3-a-month price with a sales-led channel that needs a call per customer) is a model that cannot
+work, however good each block looks alone.
 
-## Quick Start: Single-Prompt Business Model Canvas
+**Every block is a hypothesis.** Filling in the canvas does not make anything true. Mark each
+entry as *evidence* (an interview, a payment, your usage logs) or *guess*. The guesses that would
+sink the whole model if wrong are the ones to test next.
 
-**Alternative Approach:** If you prefer to generate a complete business model canvas in one interaction rather than working through each component individually, use this comprehensive prompt:
+::: {.callout-tip title="Try it"}
+Take one choice from your product (your channel, your price, or your core AI feature) and predict
+which two other blocks it forces. Then find a classmate's canvas and look for one pair of blocks
+that contradict each other.
+:::
 
+<!-- learn -->
+
+## How Money Comes In: Revenue Models
+
+**The model:** a revenue model is the rule that turns use into money. Each one only works if
+something specific is true about your customer and your costs.
+
+| Revenue model | How you get paid | Must be true | For an AI product |
+|---|---|---|---|
+| Subscription | A fixed price per month or year | People need it repeatedly | Heavy users can cost more than they pay; add an allowance |
+| Usage-based | Per action, per credit, per seat-hour | Use maps to value | Price tracks your model cost |
+| Freemium | Free tier, paid upgrade | Free users are cheap and some convert | Free users still run up model cost; cap the free tier |
+| One-time purchase | Pay once | The job is done once | Ongoing AI calls are not covered by a one-time price |
+| Advertising | Advertisers pay for attention | Very large audience | Rarely fits a student product |
+| Commission | A share of each transaction | You sit between buyer and seller | Cost scales with transactions, not tokens |
+
+Pricing, the number itself, is covered in [Going to Market](12-going-to-market.qmd): price from
+the value delivered, never from asking customers to invent a number, and check the floor set by
+your cost to serve.
+
+<!-- learn -->
+
+## Unit Economics and Break-Even
+
+**The model:** look at one customer. If each customer brings in more than they cost to serve, you
+need enough customers to cover your fixed costs. If each customer costs more than they bring in,
+more customers make it worse.
+
+The building blocks:
+
+- **Fixed costs** do not change with the number of users: hosting plan, domain, a database tier.
+- **Variable costs** grow with each user or each use: model API calls, payment processing fees,
+  email sends.
+- **Contribution margin per customer** = price minus variable cost per customer. This is what each
+  customer contributes toward fixed costs.
+- **Break-even customers** = fixed costs divided by contribution margin per customer.
+- **Lifetime value (LTV)** = contribution margin per month times the average months a customer
+  stays. Using revenue instead of margin overstates it, and for AI products, where each user has a
+  real cost, the overstatement is large.
+- **Customer acquisition cost (CAC)**: what you spend, in money and time, to get one paying
+  customer. If CAC is higher than LTV, every new customer loses money.
+
+**Worked example.** QuizMe charges $4 a month. From [Going to Market](12-going-to-market.qmd), a
+typical user costs $0.27 a month in model calls. Assume payment processing takes about $0.45 of
+each $4 charge (check your processor's actual rate) and fixed costs are $45 a month.
+
+| | Calculation | Result |
+|---|---|---|
+| Contribution margin, typical user | $4.00 - $0.27 - $0.45 | $3.28 |
+| Break-even, all typical users | $45 / $3.28 | 14 paying users |
+| Average model cost if 1 in 10 is a heavy user ($5.40) | 0.9 x $0.27 + 0.1 x $5.40 | $0.78 |
+| Contribution margin with that mix | $4.00 - $0.78 - $0.45 | $2.77 |
+| Break-even with that mix | $45 / $2.77 | 17 paying users |
+| LTV if users stay 4 months | $2.77 x 4 | $11.08 |
+
+Two lessons. First, a few heavy users moved break-even by three customers, which is why you
+measure the distribution of usage and not only the average. Second, a revenue-based LTV ($4 x 4 =
+$16) would have told you that you could spend up to $16 to acquire a customer. The margin-based
+number says $11.
+
+::: {.callout-tip title="Try it"}
+Build the same table for your product with your own numbers: price, model cost per typical and
+heavy user (from chapter 11's arithmetic and your logs), payment fees, fixed costs. Before you
+compute, predict your break-even number of paying users. Then ask: what share of heavy users would
+make your contribution margin zero?
+:::
+
+<!-- learn -->
+
+## Drafting Your Canvas with Claude
+
+**What AI can and cannot do here.** Claude can read your CLAUDE.md and codebase and draft every
+block in minutes, find the model calls in your code, check that the blocks agree with each other,
+and build a spreadsheet with working formulas. It cannot know your customers. Where your notes
+are silent, it will fill the block with something plausible, and a plausible block reads exactly
+like a validated one. The prompts below therefore ask it to separate evidence from guesses and
+to price from what customers already spend. Read every block it writes and ask, "how do I know
+this?"
+
+**Important:** As you complete each prompt, save the output to a file called `business-model-canvas.md` in your project directory. Each section should be appended to this file in order. By the end of this process, you'll have a complete business model canvas document that you can reference and use to create presentations.
+
+There are two ways to work: one prompt that drafts the whole canvas, or one prompt per block. Use
+the single prompt for a first draft if you already know the canvas. Use the step-by-step prompts
+if you are new to it, or when one block needs more thought than the others.
+
+::: {.callout-note collapse="true" title="Quick Start: single-prompt Business Model Canvas"}
 ```markdown
 # Generate Complete Business Model Canvas
 
@@ -66,7 +175,7 @@ Please analyze and provide:
 
 **6. Revenue Streams** (120 words max):
    - Primary revenue model
-   - Pricing approach and rationale
+   - Pricing approach and rationale, starting from what customers spend on the problem today (use my interview notes if they exist; do not invent a willingness-to-pay figure)
    - Revenue per segment with approximate price points
 
 **7. Key Resources** (100 words max):
@@ -84,6 +193,7 @@ Please analyze and provide:
 **10. Cost Structure** (120 words max):
    - Top 3-5 cost categories
    - Fixed vs. variable split
+   - Model (AI API) cost per core action, and per typical and heavy user per month
    - Cost strategy (lean vs. premium)
    - Break-even estimate
 
@@ -92,27 +202,22 @@ Please analyze and provide:
    - Biggest risk and key strength
    - Top 3 validation priorities
 
-Format each section with clear headers. Use bullet points for scannability. Focus on specifics over generics.
+Mark every claim as **evidence** (from my notes, data, or code) or **guess**. Format each section with clear headers. Use bullet points for scannability. Focus on specifics over generics.
 
 **After receiving the response, save it to `business-model-canvas-short.md` in your project directory.**
 ```
+:::
 
-**When to use this approach:**
-- You want a quick first draft to iterate on
-- You're familiar with Business Model Canvas concepts
-- You prefer a holistic view before diving into details
+### Step by step
 
-**When to use the detailed step-by-step approach below:**
-- You're new to Business Model Canvas thinking
-- You want deeper analysis and guided thinking for each component
-- You prefer building incrementally with focused attention on each element
+The step-by-step prompts follow the logic of the canvas, the customer side first, then
+operations, then money, then a check of the whole. Each one reads what you have already saved,
+so later blocks build on earlier ones.
 
----
+**Phase 1: Customer focus.** Who you serve and what you do for them. The segment and the job
+come first because every other block depends on them.
 
-## Phase 1: Customer Focus
-
-### 1. Customer Segments Prompt
-
+::: {.callout-note collapse="true" title="1. Customer Segments prompt"}
 ```markdown
 # Customer Segments Analysis
 
@@ -135,11 +240,9 @@ Format as a tight, scannable list. No lengthy explanations.
 
 **After receiving the response, save it to `business-model-canvas.md` under the heading "# Customer Segments"**
 ```
+:::
 
----
-
-### 2. Jobs-To-Be-Done Prompt
-
+::: {.callout-note collapse="true" title="2. Jobs-To-Be-Done prompt"}
 ```markdown
 # Jobs-To-Be-Done Analysis
 
@@ -161,11 +264,9 @@ Format as a tight bullet list per segment. Focus on the 1-2 most important jobs 
 
 **After receiving the response, save it to `business-model-canvas.md` under the heading "# Jobs-To-Be-Done"**
 ```
+:::
 
----
-
-### 3. Customer Value Proposition Prompt
-
+::: {.callout-note collapse="true" title="3. Customer Value Proposition prompt"}
 ```markdown
 # Customer Value Proposition (CVP) Development
 
@@ -187,11 +288,9 @@ Format as concise bullets per segment. Emphasize outcomes over features.
 
 **After receiving the response, append it to `business-model-canvas.md` under the heading "# Customer Value Proposition"**
 ```
+:::
 
----
-
-### 4. Channels Prompt
-
+::: {.callout-note collapse="true" title="4. Channels prompt"}
 ```markdown
 # Channels Strategy
 
@@ -215,11 +314,9 @@ Keep it tactical and specific. No generic channel descriptions.
 
 **After receiving the response, append it to `business-model-canvas.md` under the heading "# Channels"**
 ```
+:::
 
----
-
-### 5. Customer Relationships Prompt
-
+::: {.callout-note collapse="true" title="5. Customer Relationships prompt"}
 ```markdown
 # Customer Relationships Strategy
 
@@ -241,11 +338,9 @@ Format as tight bullets. Be specific about tactics, not generic strategies.
 
 **After receiving the response, append it to `business-model-canvas.md` under the heading "# Customer Relationships"**
 ```
+:::
 
----
-
-### 6. Revenue Streams Prompt
-
+::: {.callout-note collapse="true" title="6. Revenue Streams prompt"}
 ```markdown
 # Revenue Streams Analysis
 
@@ -259,21 +354,23 @@ Provide:
 
 1. **Primary Revenue Model** (choose one): Asset sale, subscription, usage fee, freemium, licensing, advertising, etc.
 
-2. **Pricing Approach** (1 sentence): How we price and why it fits our segments
+2. **Pricing Approach** (1 sentence): How we price and why it fits our segments, starting from what customers spend on the problem today (from my interview notes if they exist). Do not invent a willingness-to-pay number
 
 3. **Revenue per Segment** (1 sentence per segment): What each segment pays for and approximate price point
+
+4. **AI Cost Check** (1 sentence): The price compared with model cost for a typical and a heavy user per month
 
 Keep it focused on the core revenue mechanics. Skip lengthy projections.
 
 **After receiving the response, append it to `business-model-canvas.md` under the heading "# Revenue Streams"**
 ```
+:::
 
----
+**Phase 2: Infrastructure.** What you must have and do to deliver the value proposition. For most
+of you the key resource is your code and your model access, and the key activity includes the
+model calls, which is why they reappear in the cost structure.
 
-## Phase 2: Infrastructure
-
-### 7. Key Resources Prompt
-
+::: {.callout-note collapse="true" title="7. Key Resources prompt"}
 ```markdown
 # Key Resources Identification
 
@@ -297,11 +394,9 @@ For each resource, provide 1 sentence on why it's critical. Focus only on must-h
 
 **After receiving the response, append it to `business-model-canvas.md` under the heading "# Key Resources"**
 ```
+:::
 
----
-
-### 8. Key Activities Prompt
-
+::: {.callout-note collapse="true" title="8. Key Activities prompt"}
 ```markdown
 # Key Activities Analysis
 
@@ -321,11 +416,9 @@ Keep it focused on must-do activities only. Skip extensive categorization.
 
 **After receiving the response, append it to `business-model-canvas.md` under the heading "# Key Activities"**
 ```
+:::
 
----
-
-### 9. Key Partnerships Prompt
-
+::: {.callout-note collapse="true" title="9. Key Partnerships prompt"}
 ```markdown
 # Key Partnerships Strategy
 
@@ -347,13 +440,12 @@ Keep it tight. Only list partnerships that are truly necessary.
 
 **After receiving the response, append it to `business-model-canvas.md` under the heading "# Key Partnerships"**
 ```
+:::
 
----
+**Phase 3: Financial viability.** The unit economics above, applied to your product. Check the
+cost per user against your logs, not only the model's estimate.
 
-## Phase 3: Financial Viability
-
-### 10. Cost Structure Prompt
-
+::: {.callout-note collapse="true" title="10. Cost Structure prompt"}
 ```markdown
 # Cost Structure Analysis
 
@@ -365,25 +457,26 @@ Help me understand and optimize the cost structure for our business model.
 
 Provide:
 
-1. **Top 3-5 Cost Categories** (1 phrase each): List the biggest costs (e.g., "Engineering salaries", "Cloud infrastructure", "Customer acquisition")
+1. **Top 3-5 Cost Categories** (1 phrase each): List the biggest costs (e.g., "Engineering salaries", "Cloud infrastructure", "Customer acquisition", "Model API calls")
 
 2. **Fixed vs. Variable Split** (1 sentence): Approximate ratio and what drives variable costs
 
 3. **Cost Strategy** (1 sentence): Are we cost-driven (lean) or value-driven (premium)?
 
-4. **Break-Even Estimate** (1-2 sentences): Rough estimate of units/customers needed to break even and monthly burn rate
+4. **Cost per User** (1-2 sentences): Model cost per core action x actions per month, for a typical and a heavy user, plus payment fees. Read my code to find the model calls
+
+5. **Break-Even Estimate** (1-2 sentences): Rough estimate of units/customers needed to break even and monthly burn rate
 
 Keep it high-level. Skip detailed optimization recommendations.
 
 **After receiving the response, append it to `business-model-canvas.md` under the heading "# Cost Structure"**
 ```
+:::
 
----
+**Phase 4: Synthesis and validation.** A check of the whole: do the blocks agree, and which guess
+would sink the model if it were wrong?
 
-## Phase 4: Synthesis & Validation
-
-### 11. Complete Business Model Review Prompt
-
+::: {.callout-note collapse="true" title="11. Complete Business Model Review prompt"}
 ```markdown
 # Complete Business Model Canvas Review
 
@@ -409,11 +502,14 @@ Keep it actionable and specific. Skip theoretical analysis.
 
 **After receiving the response, append it to `business-model-canvas.md` under the heading "# Business Model Review & Validation Plan"**
 ```
+:::
 
----
+### Turn the canvas into a model and a slide
 
-### 12. Create Financial Model for Break-Even Analysis
+The financial model makes break-even and its sensitivity explicit: change the price, the share of
+heavy users, or the model cost, and watch break-even move. The slide is for presenting the canvas.
 
+::: {.callout-note collapse="true" title="12. Financial model for break-even analysis prompt"}
 Once you've completed your business model canvas, use this prompt to create a financial model in Excel:
 
 ```markdown
@@ -437,7 +533,8 @@ Create an Excel file named `financial-model.xlsx` with the following sheets:
 
 - Cost assumptions from the canvas:
   - Fixed costs (monthly): salaries, rent, software, etc.
-  - Variable costs (per unit/customer): COGS, transaction fees, etc.
+  - Variable costs (per unit/customer): model API cost per user (cost per core action x actions per month), payment processing fees, other COGS
+  - Separate assumptions for a typical user and a heavy user
   - Semi-variable costs: marketing, support scaling
 
 - Make all assumptions clearly labeled and in BLUE cells so they're easy to identify and modify
@@ -480,12 +577,10 @@ Please read my `business-model-canvas.md` file now and create the financial mode
 ```
 
 **After receiving the Excel file, save it to your project directory for break-even and sensitivity analysis.**
+:::
 
----
-
-### 13. Create Business Model Canvas Presentation
-
-Once you've completed all prompts above and your `business-model-canvas.md` file is complete, use this final prompt to create a professional Business Model Canvas presentation slide:
+::: {.callout-note collapse="true" title="13. Business Model Canvas presentation prompt"}
+Once your `business-model-canvas.md` file is complete, use this prompt to create a Business Model Canvas presentation slide:
 
 ```markdown
 # Create Business Model Canvas Presentation Slide
@@ -535,33 +630,26 @@ I need you to create a professional Business Model Canvas presentation slide usi
 
 Please read my `business-model-canvas.md` file now and create the presentation.
 ```
+:::
 
----
+**Tips:**
 
-## Getting Started
+1. **Be specific.** Generic inputs give a generic canvas. Put your interview notes and real usage numbers in the repo where Claude can read them.
+2. **Iterate.** Your first canvas will be wrong. Revise it when the evidence changes.
+3. **Check coherence.** After each block, ask how it affects the others.
+4. **Test the riskiest guess.** The review prompt names it; your next sprint can test it.
 
-Work through the prompts above in order, building your Business Model Canvas systematically. Each prompt builds on the previous ones, so keep your answers accessible to reference in later prompts.
-
-**Tips for success:**
-
-1. **Be specific:** Generic answers lead to generic business models. Include details about your specific business context.
-
-2. **Iterate:** Your first answers won't be perfect. Use the AI to refine and improve each component.
-
-3. **Stay customer-focused:** Always return to the question: "How does this create value for our customers?"
-
-4. **Test assumptions:** For each component, identify what assumptions you're making and how you could validate them.
-
-5. **Think holistically:** As you complete each section, consider how it affects the other components of your business model.
-
-6. **Use the complete review:** Once you've filled in all components, use the final prompt to get a comprehensive analysis and identify areas for improvement.
+<!-- learn -->
 
 ## Key Concepts
 
-- **Business Model Canvas**: nine blocks describing how a business creates, delivers, and captures value.
+- **Business model**: how you create value for a customer, deliver it, and capture part of it at a cost below what you capture.
+- **Business Model Canvas**: ten blocks (Osterwalder's nine, with the value proposition split into Jobs-To-Be-Done and Customer Value Proposition) describing how a business creates, delivers, and captures value.
 - **Customer segments**: who you serve, stated narrowly enough to act on.
 - **Value proposition**: the specific gain or pain relief you deliver.
-- **Revenue streams**: how value returns to you, and on what cadence.
-- **Cost structure**: what you must spend regardless of whether anyone buys.
-- **Unit economics**: what one customer costs to acquire and returns over time.
-- **Break-even**: the point where cumulative revenue overtakes cumulative cost.
+- **Revenue model**: the rule that turns use into money; each one requires something to be true.
+- **Fixed and variable costs**: costs that stay the same as you grow, and costs that grow with each user or use, including model calls.
+- **Contribution margin**: price minus variable cost per customer.
+- **Unit economics**: what one customer costs to acquire and to serve, and what they return over time.
+- **Break-even**: fixed costs divided by contribution margin per customer.
+- **Margin-based LTV**: contribution margin per month times months retained.

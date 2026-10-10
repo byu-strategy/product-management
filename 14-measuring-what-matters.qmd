@@ -6,13 +6,23 @@ title: "Measuring What Matters"
 
 You can't improve what you don't measure. But measuring the wrong things is worse than measuring nothing. It leads you to optimize for metrics that don't matter while ignoring what does.
 
-This chapter teaches you to choose the right metrics, avoid vanity traps, and implement analytics that actually inform decisions. The goal isn't to track everything; it's to track what helps you build a better product.
+Launch is the start of an experiment. This chapter is how you run it: decide what working means
+before you ship, record what people actually do, follow them from arrival to coming back, tell a
+real effect from a coincidence, and decide which features to keep, change, or kill.
 
 Read a metric as [evidence](04-finding-and-validating-the-problem.qmd), not a verdict. A number moves a belief up or down; it does not certify that you are right, or that you are worthy. And remember that outcomes carry luck: a good number can follow a poor decision and a bad number a sound one [@duke2018bets]. Track what updates your beliefs about the product, not what flatters them.
 
-## The Metrics Hierarchy
+<!-- learn -->
 
-Not all metrics are created equal. Think of them in layers:
+## Decide What Working Means First
+
+**The model:** pick one number that moves only if the product delivers value, plus a few
+guardrails that catch you winning the number the wrong way. Write it down before launch, so the
+data cannot talk you into a new definition afterward.
+
+### The North Star and the metrics under it
+
+Think of metrics in layers:
 
 ```
                     North Star Metric
@@ -24,206 +34,143 @@ Not all metrics are created equal. Think of them in layers:
               Diagnostic Metrics (health checks)
 ```
 
-**North Star Metric**: The one number that best captures the value you deliver to customers. For Airbnb, it's nights booked. For Slack, it's messages sent. For Spotify, it's time spent listening.
+**North Star Metric**: the one number that best captures the value customers get. It counts
+value delivered, not activity. Airbnb's is usually given as nights booked: a booked night means a
+guest found a place and a host earned money. Amplitude's *North Star Playbook* is the standard
+reference for choosing one.
 
-**Input Metrics**: The levers you can pull that influence the North Star. These are what you actually optimize.
+Below it sit **input metrics** (levers you can pull that move the North Star), **operational
+metrics** (day-to-day activity), and **diagnostic metrics** (health checks that tell you something
+is broken).
 
-**Operational Metrics**: Day-to-day activity indicators.
+**The test for a North Star:** would this number go up if the product got *worse*? Weekly active
+users fails the test. Send more reminder emails and it rises, even if nobody gets more out of the
+product. A value metric counts the moment the job gets done.
 
-**Diagnostic Metrics**: Health checks that tell you if something's broken.
+| Product | Activity metric (weak) | Value metric (stronger) |
+|---|---|---|
+| QuizMe (notes to practice quiz) | Weekly logins | Quizzes completed per week |
+| A rent-splitting app | Accounts created | Bills settled with every roommate paid |
+| A club event planner | Pages viewed | Events that happened with RSVPs filled |
 
-## Leading vs. Lagging Indicators
+**Guardrails** are the numbers that must not get worse while you push the North Star: AI cost per
+active user, error rate, unsubscribes, time to complete the core task. They stop you from
+"winning" by spamming users or by running a model call that costs more than the user pays.
 
-| Type | Definition | Example |
-|------|------------|---------|
-| **Lagging** | Measures outcomes (what happened) | Revenue, churn rate |
-| **Leading** | Predicts outcomes (what will happen) | Feature adoption, NPS |
+### Write a success definition
 
-**The insight:** Lagging indicators tell you the score. Leading indicators tell you how to change it.
+Before you launch (Sprint 5 at the latest), commit one short note to your repo:
 
-If churn is your problem (lagging), look for leading indicators that predict it:
-- Days since last login
-- Features used (or not used)
-- Support tickets filed
-- Declining engagement
+| Line | Example |
+|---|---|
+| Value metric | Students who complete at least one quiz in their second week |
+| Threshold | 5 of the first 20 invited users |
+| Guardrail 1 | AI cost per active user under $1 a month |
+| Guardrail 2 | Quiz generation fails less than 1 time in 20 |
+| Judgment date | Two weeks after the invite goes out |
 
-## Vanity Metrics vs. Actionable Metrics
+Without the threshold and date, any result can be read as a success.
 
-**Vanity metrics** make you feel good but don't help you make decisions:
-- Total registered users (includes inactive)
-- Page views (without context)
-- Social media followers
-- App downloads
+### Outcomes, not output
 
-**Actionable metrics** inform decisions:
-- Active users (DAU/WAU/MAU)
-- Conversion rate
-- Retention cohorts
-- Time to value
+There is a deeper vanity trap than any bad metric: measuring how much you *built* instead of whether it *worked*. Features shipped, tickets closed, lines of code: these are **output**. Whether users are better off, whether they came back, whether the problem actually got solved, is **outcome**. Marty Cagan and Melissa Perri call the habit of mistaking the first for the second the *build trap*: a team busily shipping, feeling productive, and delivering nothing that matters.
 
-**The test:** Can this metric directly inform a decision? If not, it's probably vanity.
-
-## Measure Outcomes, Not Output
-
-There is a deeper vanity trap than any bad metric: measuring how much you *built* instead of whether it *worked*. Features shipped, tickets closed, lines of code, these are **output**. Whether users are better off, whether they came back, whether the problem actually got solved, is **outcome**. Marty Cagan and Melissa Perri call the habit of mistaking the first for the second the *build trap*: a team busily shipping, feeling productive, and delivering nothing that matters.
-
-In the AI era this trap is more dangerous, not less, because output has never been cheaper. You can ship a feature a day now. So hold yourself to outcomes: did the North Star move, did activation improve, did a real user get real value? Shipping is not the goal; changing an outcome is.
+In the AI era this trap is more dangerous, because output has never been cheaper. You can ship a feature a day now. So hold yourself to outcomes: did the North Star move, did activation improve, did a real user get real value? The goal is changing an outcome; shipping is only the means.
 
 *Outcomes over output, and the build trap, from Marty Cagan, Inspired / Empowered [@cagan2017inspired], and Melissa Perri, Escaping the Build Trap (2018) [@perri2018buildtrap].*
 
-## The Pirate Metrics Framework (AARRR)
+### Vanity, leading, and lagging
 
-Dave McClure's framework [@mcclure2007] covers the entire user lifecycle:
+**Vanity metrics** make you feel good but don't help you make decisions: total registered users
+(includes everyone who left), page views without context, followers, downloads. **Actionable
+metrics** inform a decision: active users doing the core task, conversion between steps,
+retention by cohort, time to value. The test: can this metric change what you do next week?
 
-| Stage | Question | Key Metrics |
-|-------|----------|-------------|
-| **Acquisition** | How do users find you? | Traffic sources, CAC, sign-ups |
-| **Activation** | Do they have a good first experience? | Activation rate, time to value |
-| **Retention** | Do they come back? | Day 1/7/30 retention, churn |
-| **Revenue** | Do they pay? | Conversion, ARPU, LTV |
-| **Referral** | Do they tell others? | NPS, referral rate, virality |
+**Lagging** indicators measure outcomes after the fact (revenue, churn). **Leading** indicators
+move earlier and predict them (completing the core task in the first week, days since last
+visit, a feature adopted or ignored). Lagging indicators tell you the score; leading indicators
+tell you where to act. If churn is your problem, look for what churned users stopped doing first.
 
-**Where to focus:** If you're pre-product-market fit, focus on Activation and Retention. Acquisition and Revenue come later.
+::: {.callout-tip title="Try it"}
+Write your product's North Star and apply the test: name one way the number could go up while the
+product got worse. If you can, it is an activity metric; find the moment the job gets done and
+count that instead. Then add two guardrails and fill in the success-definition table.
+:::
 
-## Acquisition Metrics
+<!-- learn -->
 
-Measure how people discover and start using your product.
+## Instrument the Core Action
 
-| Metric | What It Measures | Formula |
-|--------|-----------------|---------|
-| **Traffic** | Visitors by source | Organic, paid, referral counts |
-| **Sign-ups** | New account creation | Registrations per period |
-| **CAC** | Cost to acquire a customer | Total acquisition spend / New customers |
-| **Activation Rate** | First value experience | Users who complete key action / Total new users |
+**The model:** log the events that trace your main task from start to finish. You cannot analyze
+what you did not record, and you cannot go back and record last week.
 
-**Watch out for:** High acquisition + low activation = leaky bucket. Fix activation before spending more on acquisition.
+### The building blocks of an event
 
-## Engagement Metrics
+An event is one row that says something happened:
 
-Track how actively and frequently people interact with your product.
+| Part | Example | Why it matters |
+|---|---|---|
+| **Who** | `user_id` (or an anonymous id before signup) | Lets you count people, not clicks, and follow one person over time |
+| **What** | `quiz_completed` | One name per step, verb in the past tense |
+| **When** | `created_at`, with time zone | Lets you build funnels and cohorts |
+| **Details** | `{ "questions": 10, "score": 7 }` | Lets you split results later |
 
-| Metric | What It Measures | Formula |
-|--------|-----------------|---------|
-| **DAU/WAU/MAU** | Active users by timeframe | Unique users who performed core action |
-| **Stickiness** | Habit formation | DAU / MAU (higher = stickier) |
-| **Session length** | Depth of engagement | Average time per session |
-| **Feature adoption** | Feature usage | Users who used feature / Total active users |
-
-**DAU/MAU ratio benchmarks:**
-- 50%+ = Excellent (daily habit)
-- 20-50% = Good
-- 10-20% = Average
-- <10% = Concerning
-
-## Retention Metrics
-
-Measure how well your product keeps users coming back over time.
-
-| Metric | What It Measures | Formula |
-|--------|-----------------|---------|
-| **Retention rate** | Users who stayed | Users at end of period / Users at start |
-| **Churn rate** | Users who left | Lost users / Total users |
-| **Cohort retention** | Retention by signup date | % of cohort still active after N days |
-
-**Cohort analysis** is your most powerful retention tool. Instead of looking at all users together, group them by when they signed up and track each group separately.
+The data path is short:
 
 ```
-Cohort: January signups
-Day 1:  100% (by definition)
-Day 7:   60%
-Day 30:  35%
-Day 90:  20%
-```
-
-**Retention curves tell a story:**
-- Steep initial drop → First experience problem
-- Continued decline → Core value problem
-- Flattening curve → Found your retained users
-- Rising curve → You're doing something special
-
-## Monetization Metrics
-
-Reflect your ability to generate revenue.
-
-| Metric | What It Measures | Formula |
-|--------|-----------------|---------|
-| **Conversion rate** | Free to paid | Paying users / Total users |
-| **ARPU** | Revenue per user | Revenue / Active users |
-| **LTV** | Lifetime customer value | ARPU × Average customer lifespan |
-| **LTV:CAC ratio** | Unit economics health | LTV / CAC (want 3:1 or better) |
-
-**The LTV:CAC ratio** is crucial:
-- < 1:1 = Losing money on each customer
-- 1-3:1 = Concerning, watch carefully
-- 3:1+ = Healthy, can invest in growth
-- 5:1+ = Very healthy, maybe under-investing
-
-## Customer Satisfaction Metrics
-
-Track how users feel about your product.
-
-| Metric | What It Measures | Scale |
-|--------|-----------------|-------|
-| **NPS** | Likelihood to recommend | -100 to +100 |
-| **CSAT** | Satisfaction with experience | 1-5 or 1-10 |
-| **CES** | Effort to accomplish goal | 1-7 |
-
-**Net Promoter Score (NPS)** [@reichheld2003onenumber]**:**
-- "How likely are you to recommend us?" (0-10)
-- Promoters (9-10), Passives (7-8), Detractors (0-6)
-- NPS = % Promoters - % Detractors
-
-**Benchmarks vary by industry:** A 30 NPS might be excellent for a bank but mediocre for a consumer app.
-
-## Data-Informed vs. Data-Driven
-
-**Data-driven:** "The data says X, so we do X."
-
-**Data-informed:** "The data says X, and combined with our judgment about Y, we'll do Z."
-
-The difference matters. Data can tell you *what* is happening, but rarely *why*. It can show *correlation* but not *causation*.
-
-**When to trust data:**
-- Large sample sizes
-- Clear causation (A/B tests)
-- Consistent patterns across time/segments
-
-**When to be skeptical:**
-- Small sample sizes
-- Cherry-picked time periods
-- Metrics that can be gamed
-- Correlation without causation
-
-## Choosing Your Metrics
-
-For your sprint, focus on these questions:
-
-1. **What's your North Star?** The one metric that best represents value delivered.
-2. **What are your input metrics?** 2-3 things you can influence that drive the North Star.
-3. **What's your activation event?** The moment users first get value.
-4. **How will you measure retention?** Day 1, Day 7, Day 30 are common.
-
-**Start simple.** It's better to track 5 metrics well than 50 poorly.
-
-## Analytics Architecture
-
-A typical analytics setup:
-
-```
-User Action
+User does the core task
     ↓
-Event Tracking (client-side)
+Your code records an event (who, what, when, details)
     ↓
-Analytics Service (Supabase, Mixpanel, PostHog)
+Events table (Supabase) or an analytics service (PostHog, Mixpanel)
     ↓
-Dashboard (visualization)
+A query or dashboard (funnel, cohort)
     ↓
 Decision
 ```
 
-## Setting Up Analytics with Supabase
+### Start from the task, not from a generic list
 
-Supabase can serve as your analytics backend. Create an events table:
+A generic schema (`page_viewed`, `feature_used`) records a lot and answers little. Instead, write
+the four to six events that trace your one core task, start to finish. For QuizMe:
+
+| Step | Event | Details |
+|---|---|---|
+| Arrived | `landing_viewed` | referrer (where they came from) |
+| Signed up | `user_signed_up` | method |
+| Gave input | `notes_uploaded` | word count |
+| Got value | `quiz_completed` | questions, score |
+| Came back | `quiz_completed` in a later week | |
+| Something failed | `quiz_generation_failed` | error type, model |
+
+Each row answers a question: how many arrived, signed up, got a finished quiz, came back, and how
+often the AI step broke. In code it is one line per step, after the step succeeds:
+
+```
+after notes are saved:      track("notes_uploaded", { words })
+after the quiz is scored:   track("quiz_completed", { questions, score })
+if the model call fails:    track("quiz_generation_failed", { error })
+```
+
+Ask Claude Code to add it, and give it this table. Then check that real rows arrive: use the app
+yourself and look in the table. "Tracking returns real data" is the done condition.
+
+### Where the events live, and who can touch them
+
+If you store events in your own Supabase table, remember how the browser talks to your database
+(see the architecture chapters): the browser holds a public key, so anyone can send requests to
+your tables directly. A table with **no row-level security (RLS)** is open to anyone with that
+key: they could write fake events, and possibly read every user's activity. The rule you need:
+
+- A signed-in user may **insert** events about **themselves** only.
+- **Nobody reads** events from the browser. You read them in the Supabase SQL editor or from
+  server code.
+- Events from signed-out visitors (the landing page) cannot pass the first rule. Log those through
+  an analytics service like PostHog, or through a server route.
+
+::: {.callout-note collapse="true" title="See it in code: an events table with row-level security"}
+Use this if you keep events in Supabase. It replaces an earlier version of this chapter that left
+RLS off.
 
 ```sql
 CREATE TABLE analytics_events (
@@ -233,95 +180,156 @@ CREATE TABLE analytics_events (
   event_data JSONB DEFAULT '{}',
   page_url TEXT,
   session_id TEXT,
-  created_at TIMESTAMP DEFAULT NOW()
+  created_at TIMESTAMPTZ DEFAULT NOW()
 );
 
--- Index for fast queries
-CREATE INDEX idx_events_name ON analytics_events(event_name);
-CREATE INDEX idx_events_user ON analytics_events(user_id);
-CREATE INDEX idx_events_time ON analytics_events(created_at);
+ALTER TABLE analytics_events ENABLE ROW LEVEL SECURITY;
+
+-- Signed-in users may add events about themselves, and nothing else.
+CREATE POLICY "insert own events" ON analytics_events
+  FOR INSERT TO authenticated
+  WITH CHECK (user_id = auth.uid());
+
+-- No SELECT policy: the browser cannot read anyone's events.
 ```
+:::
 
-## Event Tracking Implementation
+### Or use an analytics service
 
-Create an analytics utility:
+A service gives you funnels and cohorts without building them, and handles signed-out visitors.
+Free tiers as of October 2026:
+
+| Service | Best For | Free Tier |
+|---------|----------|-----------|
+| **PostHog** | Product analytics, open source | 1M events/mo |
+| **Mixpanel** | Event-based analytics | 1M events/mo |
+| **Amplitude** | Product analytics at scale | 2M events/mo |
+| **Plausible** | Simple, privacy-focused | Paid, after a 30-day free trial |
+| **Google Analytics** | Basic web analytics | Free |
+
+With PostHog, setup is one `init`, one `capture` per event, and `identify` for signed-in users:
 
 ```javascript
-// lib/analytics.js
-import { supabase } from './supabase';
-
-let sessionId = null;
-
-function getSessionId() {
-  if (!sessionId) {
-    sessionId = crypto.randomUUID();
-  }
-  return sessionId;
-}
-
-export async function trackEvent(eventName, eventData = {}) {
-  const { data: { user } } = await supabase.auth.getUser();
-
-  const { error } = await supabase.from('analytics_events').insert({
-    user_id: user?.id,
-    event_name: eventName,
-    event_data: eventData,
-    page_url: window.location.href,
-    session_id: getSessionId()
-  });
-
-  if (error) {
-    console.error('Analytics error:', error);
-  }
-}
+posthog.init('your-project-key', { api_host: 'https://us.i.posthog.com' });
+posthog.capture('quiz_completed', { questions: 10, score: 7 });
+posthog.identify(userId);
 ```
 
-## Tracking Key Events
+::: {.callout-tip title="Try it"}
+Write your own event table: the four to six steps of your core task, one event name each, and the
+details you would want to split by. Then find the mistake in this plan: "We log `button_clicked`
+on every button, so we can reconstruct anything later." What question about your core task can
+that log not answer?
+:::
 
-Track events throughout your app:
+<!-- learn -->
 
-```javascript
-// Track sign-up
-await trackEvent('user_signed_up', {
-  method: 'email' // or 'google', 'github'
-});
+## Signups Are Not Adoption
 
-// Track activation (first value moment)
-await trackEvent('activation_completed', {
-  feature: 'first_problem_added'
-});
+**The model:** follow people from arrival to first value to coming back. Each step loses people,
+and the step that loses the largest share is the first one to fix.
 
-// Track feature usage
-await trackEvent('feature_used', {
-  feature: 'problem_tracker',
-  action: 'added_problem'
-});
+### The funnel
 
-// Track conversions
-await trackEvent('subscription_started', {
-  plan: 'pro',
-  monthly_value: 29
-});
+Dave McClure's Pirate Metrics [@mcclure2007] name the stages:
+
+| Stage | Question | Key Metrics |
+|-------|----------|-------------|
+| **Acquisition** | How do users find you? | Traffic sources, CAC, sign-ups |
+| **Activation** | Do they reach first value? | Activation rate, time to value |
+| **Retention** | Do they come back? | Week 1, 2, 4 retention by cohort |
+| **Revenue** | Do they pay? | Conversion, ARPU, LTV |
+| **Referral** | Do they tell others? | Referral rate, invites sent |
+
+**Activation** is the moment a new user first gets the value the product promises: for QuizMe, the
+first completed quiz, not the signup. **Activation rate** = users who reached that moment / users
+who signed up.
+
+**Worked example.** QuizMe's first two weeks, from its events:
+
+| Step | People | Share of previous step |
+|---|---|---|
+| Arrived at the landing page | 200 | |
+| Signed up | 80 | 40% |
+| Completed a first quiz | 16 | 20% |
+| Completed a quiz in week 2 | 8 | 50% |
+
+The largest loss is between signup and first quiz: 80 percent of the people who signed up never
+got value. Compare two fixes. Doubling traffic to 400 visitors yields 16 week-2 users, at the cost
+of finding 200 more people. Doubling activation from 20 to 40 percent yields the same 16, with no
+new traffic, and it helps every future visitor too. High acquisition with low activation is a
+**leaky bucket**: fix activation before spending more on acquisition. Pre-product-market fit,
+Activation and Retention are where to focus.
+
+### Onboarding is the activation step
+
+Good onboarding gets users to the first value moment fast, teaches by doing, and removes every
+step that moment does not need. Common mistakes: too many steps before value, asking for
+information you do not need yet, and no guidance after signup. Measure it with the funnel: time
+to first value and where people drop.
+
+::: {.callout-tip title="Try it"}
+Fill in the funnel table for your own product from your events: arrived, signed up, reached first
+value, came back. If you cannot fill a row, that is an event you are not logging yet. Predict
+which step loses the largest share before you look.
+:::
+
+<!-- learn -->
+
+## Retention Is the Truth
+
+**The model:** group users by the week they started and watch who returns. Averages and running
+totals hide decay, because new arrivals keep refilling the bucket.
+
+### Cohorts
+
+A **cohort** is everyone who started in the same period. Track each cohort separately: of the
+people who signed up in week 1, what share were active in week 2, week 3, week 4?
+
+```
+Cohort: January signups (illustrative)
+Day 0:  100% (by definition: the day they signed up)
+Day 7:   60%
+Day 30:  35%
+Day 90:  20%
 ```
 
-## Common Event Schema
+**Retention for a cohort** = members of the cohort active in period N / members of the cohort.
+Do not compute it as "users at the end of the period / users at the start": that counts new
+arrivals as if they were retained, which is exactly the error cohorts exist to avoid.
+**Churn** = users active last period who are not active this period / users active last period.
 
-Standardize your event names and properties:
+### Why totals lie
 
-| Event | Properties | When to Fire |
-|-------|------------|--------------|
-| `page_viewed` | `page_name`, `referrer` | Every page load |
-| `user_signed_up` | `method` | Account creation |
-| `user_logged_in` | `method` | Successful login |
-| `activation_completed` | `feature` | First value moment |
-| `feature_used` | `feature`, `action` | Feature interactions |
-| `error_occurred` | `error_type`, `message` | Errors |
+Suppose a class assignment sends a new wave of signups every week:
 
-## Querying Your Data
+| Week | Weekly active users (total) | That week's new cohort, active one week later |
+|---|---|---|
+| 1 | 40 | 50% |
+| 2 | 60 | 35% |
+| 3 | 85 | 20% |
 
-Basic SQL queries for common metrics:
+The total more than doubles. Meanwhile each new cohort keeps a smaller share than the one before:
+the product is getting *worse* at keeping people, and only the stream of new signups hides it.
+Once the signups stop, the total falls.
 
-**Daily Active Users:**
+**Retention curves tell a story** (plot share of cohort active against weeks since signup):
+
+- Steep initial drop → first experience problem (go back to the funnel)
+- Continued decline → core value problem
+- Flattening curve → you have found people who keep using it
+- Rising curve → returning users bring others or use it more
+
+For benchmarks, see Lenny Rachitsky and Casey Winters, "What is good retention?" in
+[Builder Resources](97-builder-resources.qmd); at student scale the curve's shape tells you more.
+
+### Engagement measures count people
+
+**DAU / WAU / MAU** are distinct users who did the core action in a day, week, or month.
+**Stickiness** = DAU / MAU, how many of the month's users show up on a typical day. **Feature
+adoption** = users who used a feature / active users. Each one counts *people*: an "active user"
+is a distinct `user_id`, not an event. The query that gets this right:
+
 ```sql
 SELECT DATE(created_at) as date, COUNT(DISTINCT user_id) as dau
 FROM analytics_events
@@ -330,27 +338,33 @@ GROUP BY DATE(created_at)
 ORDER BY date;
 ```
 
-**Activation Rate:**
-```sql
-WITH signups AS (
-  SELECT user_id, MIN(created_at) as signup_date
-  FROM analytics_events
-  WHERE event_name = 'user_signed_up'
-  GROUP BY user_id
-),
-activations AS (
-  SELECT user_id
-  FROM analytics_events
-  WHERE event_name = 'activation_completed'
-)
-SELECT
-  COUNT(DISTINCT activations.user_id)::FLOAT /
-  COUNT(DISTINCT signups.user_id) as activation_rate
-FROM signups
-LEFT JOIN activations ON signups.user_id = activations.user_id;
+**Find the mistake.** An earlier version of this chapter built a dashboard card labeled "Daily
+Active Users" that counted every event row in the last 24 hours. One student who completes ten
+quizzes is then ten "active users." The building block it was missing is `DISTINCT user_id`. (Note
+also that a dashboard that reads events from the browser needs read access the RLS rule above
+forbids; build it server-side or read the numbers in the SQL editor.)
+
+```
+WRONG:  dau = count(events where created_at in last 24h)
+RIGHT:  dau = count(distinct user_id among events where created_at in last 24h)
 ```
 
-**Retention by Cohort:**
+### Retention levers
+
+| Lever | Description | Technical Implementation |
+|-------|-------------|-------------------------|
+| **Habit formation** | Make the app part of a routine the user already has | Reminders tied to a real moment (the night before the quiz) |
+| **Increased value** | More usage = more value | Data accumulation, personalization |
+| **Social connection** | Users connect with others | Sharing, collaboration features |
+
+Keeping users by making it hard to leave (for example, making their data hard to export) is not a
+lever this course teaches; see [Product Morality](03-what-is-worth-building.qmd).
+
+::: {.callout-note collapse="true" title="See it in code: retention by cohort (for your own product)"}
+Run this in the Supabase SQL editor on your events table. It counts, for each signup week, how many
+of that cohort were active in each later week. Divide each count by the cohort's size (its first
+row) to get the retention curve.
+
 ```sql
 WITH user_cohorts AS (
   SELECT
@@ -377,119 +391,170 @@ WHERE ua.activity_week >= uc.cohort_week
 GROUP BY uc.cohort_week, ua.activity_week
 ORDER BY uc.cohort_week, ua.activity_week;
 ```
+:::
 
-## Building a Simple Dashboard
+::: {.callout-tip title="Try it"}
+Run the cohort query (or your analytics service's retention view) on your own product and draw the
+curve for your largest cohort. Predict its shape first. Then compare your total weekly active
+users with the cohort curve: does the total tell the same story?
+:::
 
-Create a dashboard component in React:
+<!-- learn -->
 
-```jsx
-import { useState, useEffect } from 'react';
-import { supabase } from '../lib/supabase';
+## Cause Versus Coincidence
 
-export function MetricsDashboard() {
-  const [metrics, setMetrics] = useState({
-    dau: 0,
-    signups: 0,
-    activations: 0
-  });
+**The model:** a randomized test shows cause. A before-and-after comparison usually shows the
+season, the campaign, or noise.
 
-  useEffect(() => {
-    async function fetchMetrics() {
-      // Daily Active Users (last 24 hours)
-      const { count: dau } = await supabase
-        .from('analytics_events')
-        .select('user_id', { count: 'exact', head: true })
-        .gte('created_at', new Date(Date.now() - 86400000).toISOString());
+When a number moves right after you change something, two explanations compete: your change
+caused it, or something else happened at the same time. The data alone cannot tell them apart.
 
-      // Signups (last 7 days)
-      const { count: signups } = await supabase
-        .from('analytics_events')
-        .select('*', { count: 'exact', head: true })
-        .eq('event_name', 'user_signed_up')
-        .gte('created_at', new Date(Date.now() - 604800000).toISOString());
+### Three ways a before-and-after fools you
 
-      // Activations (last 7 days)
-      const { count: activations } = await supabase
-        .from('analytics_events')
-        .select('*', { count: 'exact', head: true })
-        .eq('event_name', 'activation_completed')
-        .gte('created_at', new Date(Date.now() - 604800000).toISOString());
+Suppose you ship a new onboarding flow on Monday, and that week's activation rate jumps from 20 to
+35 percent. Before you credit the new flow, consider:
 
-      setMetrics({ dau, signups, activations });
-    }
+1. **The calendar.** A professor assigned the class to try each other's apps that week, so the
+   new signups were classmates who were told to finish the flow. The users changed, not only the
+   product.
+2. **The campaign.** You posted in a club's group chat the same day. People who come from a
+   friend's recommendation behave differently from people who find you cold.
+3. **Noise.** With 20 signups a week, one person is 5 percentage points. Three more people
+   finishing the flow by chance moves the rate 15 points. Week-to-week swings that large happen
+   with no change at all.
 
-    fetchMetrics();
-  }, []);
+### Why random assignment works
 
-  return (
-    <div className="grid grid-cols-3 gap-4">
-      <MetricCard title="Daily Active Users" value={metrics.dau} />
-      <MetricCard title="Signups (7d)" value={metrics.signups} />
-      <MetricCard title="Activations (7d)" value={metrics.activations} />
-    </div>
-  );
-}
+In a **randomized controlled experiment** (an **A/B test**), each new user is assigned at random
+to the old flow (A) or the new flow (B), during the same weeks. Because a coin decides who gets
+which, the class assignment, the club post, and everything else you did not think of land on both
+groups about equally. The only systematic difference between the groups is the flow. So a
+difference in outcomes, if it is larger than chance would produce, was caused by the flow.
 
-function MetricCard({ title, value }) {
-  return (
-    <div className="bg-white p-4 rounded-lg shadow">
-      <h3 className="text-sm text-gray-500">{title}</h3>
-      <p className="text-2xl font-bold">{value}</p>
-    </div>
-  );
-}
-```
+Ron Kohavi, Diane Tang, and Ya Xu's *Trustworthy Online Controlled Experiments* is the standard
+reference [@kohavi2020trustworthy]. One of its lessons matters most at your scale: detecting the
+small improvements large companies test for takes thousands of users per group, which is why
+chapter 06 lists A/B testing for products with 1,000+ users
+([Testing at Scale](06-testing-the-design.qmd)).
 
-## Alternative: Third-Party Analytics
+### What to do with 20 users
 
-For more features without building custom:
+You can still learn honestly at student scale:
 
-| Service | Best For | Free Tier |
-|---------|----------|-----------|
-| **PostHog** | Product analytics, open source | 1M events/mo |
-| **Mixpanel** | Event-based analytics | 100K users/mo |
-| **Amplitude** | Product analytics at scale | 10M events/mo |
-| **Plausible** | Simple, privacy-focused | Paid only |
-| **Google Analytics** | Basic web analytics | Unlimited |
+- **Look only for big effects.** If 2 of 10 people finished the old flow and 8 of 10 finished the
+  new one, that is hard to explain as chance. A move from 3 of 10 to 4 of 10 tells you nothing.
+- **Hold out a group.** Send the reminder email to a randomly chosen half of your users and not the
+  other half, in the same week. Compare the halves, not this week with last week.
+- **Watch people.** Five usability sessions show you *why* people stall, which no number does
+  (see [chapter 06](06-testing-the-design.qmd)).
+- **Say "can't tell yet."** It is a legitimate finding, and it is better than a confident story
+  built on noise.
 
-## PostHog Integration Example
+**Data-informed versus data-driven.** "The data says X, so we do X" works only when the data came
+from a clean test with enough people. Otherwise: "the data says X, combined with what we saw in
+interviews and sessions, so we will try Z and check again."
 
-```bash
-npm install posthog-js
-```
+### What AI can and cannot do here
 
-```javascript
-// lib/posthog.js
-import posthog from 'posthog-js';
+A model can write the query that splits users into A and B, compute the rates, and list what else
+changed that week for you to rule out. It cannot turn a before-and-after into a causal answer.
+Ask it for "patterns" in eight weeks of signup totals and it will report some, because it always
+produces an answer; with a few dozen users most of them are noise. Asking a model which version
+your users would prefer is a guess about people it has never met.
 
-export function initPostHog() {
-  if (typeof window !== 'undefined') {
-    posthog.init('your-project-key', {
-      api_host: 'https://app.posthog.com'
-    });
-  }
-}
+::: {.callout-tip title="Try it"}
+Your signups doubled the week you added a "share with a classmate" button. List three explanations
+other than the button. Then design the smallest test that would separate the button's effect from
+the others, with the users you actually have. What result would make you say "can't tell yet"?
+:::
 
-export function trackEvent(event, properties) {
-  posthog.capture(event, properties);
-}
+<!-- learn -->
 
-export function identifyUser(userId, traits) {
-  posthog.identify(userId, traits);
-}
-```
+## Keep, Change, or Kill
+
+**The model:** every feature carries an upkeep cost. Usage data tells you which features to double
+down on and which to retire.
+
+With a coding agent, a feature costs minutes to add. It then has to keep working: every later
+change can break it, every prompt and test has to account for it, every new user has to
+understand it, and an AI feature keeps costing money per call. That is the build trap from the
+other side: output is cheap to add and expensive to carry.
+
+A feature review takes ten minutes with your events:
+
+| Feature | % of active users who used it (last 2 weeks) | Upkeep cost | Tied to the North Star? | Decision |
+|---|---|---|---|---|
+| Quiz from notes | 90% | Model cost per quiz, prompt maintenance | Yes, it is the core task | Keep, invest |
+| Flashcard export | 5% | Broke twice in two sprints | No | Kill |
+| Study streaks | 30% | Low | Weakly | Change: test whether it brings people back |
+| Dark mode | Not logged | Low | No | Can't tell: log it first |
+
+A feature few people use, that breaks often, and that does not serve the core task is a candidate
+to remove. A feature most active users touch is where improvements pay off. A feature you cannot
+measure you cannot judge: add an event before you decide. When you remove one, tell the people who
+used it.
+
+::: {.callout-tip title="Try it"}
+Fill in the feature review table for your own product (it makes a good Sprint 6 reflection). Name
+one feature you would kill, and say what number would have to be true for you to keep it instead.
+:::
+
+<!-- learn -->
+
+## Money Metrics
+
+**The model:** revenue metrics only mean something per customer and net of what that customer
+costs you. For an AI product, the cost side is real for every user.
+
+| Metric | What It Measures | Formula |
+|--------|-----------------|---------|
+| **Conversion rate** | Free to paid | Paying users / Total users |
+| **ARPU** | Revenue per user | Revenue / Active users |
+| **CAC** | Cost to acquire a customer | Total acquisition spend (money and time) / New customers |
+| **LTV** | Lifetime customer value | Contribution margin per month (ARPU minus cost to serve, including model calls) × average months retained |
+| **LTV:CAC ratio** | Unit economics health | LTV / CAC |
+
+Revenue-based LTV assumes serving a customer is free, which for an AI product it is not
+([Business Models](13-business-models.qmd) works an example). If LTV is below CAC, each new
+customer loses money; a common rule of thumb is LTV at least three times CAC. Pricing is in
+[Going to Market](12-going-to-market.qmd).
+
+<!-- learn -->
+
+## Asking How People Feel
+
+Behavior is the stronger evidence, but asking helps you interpret it.
+
+| Metric | What It Measures | Scale |
+|--------|-----------------|-------|
+| **NPS** | Likelihood to recommend | -100 to +100 |
+| **CSAT** | Satisfaction with experience | 1-5 or 1-10 |
+| **CES** | Effort to accomplish goal | 1-7 |
+
+**Net Promoter Score (NPS)** [@reichheld2003onenumber]: "How likely are you to recommend us?"
+(0-10). Promoters (9-10), Passives (7-8), Detractors (0-6). NPS = % Promoters - % Detractors.
+Benchmarks vary by industry, and with twenty respondents one person changing their answer moves NPS by five points or more, so at
+student scale read the comments rather than the score. For product-market fit, Sean Ellis's survey
+question ("How would you feel if you could no longer use this product?") is listed in
+[Builder Resources](97-builder-resources.qmd).
+
+<!-- learn -->
 
 ## Key Concepts
 
-- **North Star Metric**: The one number that best captures value delivered
-- **Leading vs. Lagging Indicators**: Predictors vs. outcomes
-- **Vanity Metrics**: Feel-good numbers that don't inform decisions
-- **AARRR (Pirate Metrics)**: Acquisition, Activation, Retention, Revenue, Referral
-- **Cohort Analysis**: Tracking user groups over time
-- **DAU/MAU**: Daily/Monthly Active Users
-- **Stickiness**: DAU/MAU ratio (habit strength)
-- **LTV:CAC Ratio**: Unit economics health (want 3:1+)
-- **NPS (Net Promoter Score)**: Likelihood to recommend
-- **Data-Informed vs. Data-Driven**: Using data with judgment vs. blindly following data
-- **Event Tracking**: Recording user actions for analysis
-- **Activation Rate**: Users who reach first value / Total new users
+- **North Star Metric**: the one number that rises only when customers get value.
+- **Guardrail metrics**: numbers that must not get worse while you push the North Star (AI cost per user, error rate).
+- **Success definition**: value metric, threshold, guardrails, and a date, written before launch.
+- **Outcomes vs. output**: whether it worked versus how much you built; the build trap.
+- **Vanity vs. actionable metrics**; **leading vs. lagging indicators**.
+- **Event**: who, what, when, and details, for each step of the core task.
+- **Row-level security on event data**: users may insert only their own events; nobody reads them from the browser.
+- **AARRR (Pirate Metrics)**: Acquisition, Activation, Retention, Revenue, Referral.
+- **Activation rate**: users who reach first value / users who signed up.
+- **Cohort retention**: share of a start-week group still active N weeks later; Day 0 is 100% by definition.
+- **DAU/MAU and stickiness**: distinct people, not events.
+- **Randomized test (A/B test)**: random assignment isolates cause; before-and-after does not.
+- **Holdout group**: a random set of users who do not get the change, compared in the same weeks.
+- **Keep, change, or kill**: retire features that few use, cost upkeep, and do not serve the core task.
+- **Margin-based LTV and LTV:CAC**: lifetime contribution margin compared with cost to acquire.
+- **NPS**: likelihood to recommend; weak at small sample sizes.

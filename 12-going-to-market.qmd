@@ -5,407 +5,262 @@ title: "Going to Market"
 ## Why This Matters
 
 Shipping is not launching. A deployed product with no users is a private hobby, and most
-student products die there, not because they were bad but because nobody was ever told
-about them. This chapter is how people find out.
+student products die there, often because nobody was ever told about them. This chapter is
+how the first people find out, why they would pick you over what they do today, and what you
+charge them without losing money on every heavy user.
 
-## Introduction: The GTM Reality Check
+Go-to-market (GTM) answers four questions, in order:
 
-You've built something. Maybe it's an MVP, maybe it's a prototype that actually works, maybe you've even got a few beta users. You're feeling good. The product works. The code runs. Users seem to like it.
+1. **Who** is it for, narrowly enough that you can find them? (Customer and beachhead)
+2. **Why** would they pick you over what they already do? (Positioning)
+3. **How** will the first ones hear about it? (First users by hand, then channels)
+4. **What** will you charge, and does the arithmetic hold? (Pricing and AI margins)
 
-And then... crickets.
+What makes them stay, and how you know, is the measurement chapter,
+[Measuring What Matters](14-measuring-what-matters.qmd).
 
-This is the moment many founders hit a wall. They've done the hard work of building, but nobody knows the product exists. Or worse, people *know* about it but don't care enough to try it. Or they try it once and never come back.
+Two beliefs to drop before you start. "If we build it, they will come": they will not, because
+nobody is waiting for your product, so you go find them. "We just need to go viral": virality is
+an outcome of a product people want plus a way for it to spread, never a plan. And GTM is not an
+afterthought: knowing who you are for should shape what you build.
 
-**Building the product is only half the battle. Getting people to use and pay for is the other half.**
+<!-- learn -->
 
-This is where go-to-market (GTM) strategy comes in. GTM is your plan for how you'll reach customers, convince them your product solves a real problem, and turn them into paying users. It's the bridge between what you built and who needs it.
+## Who It Is For: The Beachhead
 
-### Common Myths Founders Believe
+**The model:** pick the narrowest group you can reach by hand and win completely, then widen.
+A specific group is one you can find, speak to, and build for. A vague one ("college
+students") is none of those.
 
-Before we dive in, let's bust a few myths:
+Your **Ideal Customer Profile (ICP)** is a description of the customer who gets the most value
+and is easiest to reach. You already did the hard part in
+[Finding and Validating the Problem](04-finding-and-validating-the-problem.qmd): the job they
+are hiring a product to do, and the interviews that showed you the pain. The ICP compresses that
+into something you can act on:
 
-**Myth #1: "If we build it, they will come."**
-Reality: No they won't. Rarely are people sitting around waiting for your product. You have to go find them.
+| Block | B2C example | B2B example |
+|---|---|---|
+| Who | BYU students in a large intro course with a weekly quiz | Office managers at 5-to-20-person dental practices |
+| Situation | The night before a quiz, with a stack of lecture notes | Monday morning, rebooking cancelled appointments |
+| Current habit | Rereading notes; a group chat swapping old quizzes | A paper list and phone calls |
+| Where they gather | The course's Slack or GroupMe, a study room, a club | A regional association, a Facebook group |
+| What they pay for today | A tutor before the final; printed study guides | A receptionist's overtime |
 
-**Myth #2: "We just need to go viral."**
-Reality: Viral growth is not a strategy. It's an outcome of exceptional product-market fit combined with smart distribution. Plan for the hard work first.
+Geoffrey Moore's *Crossing the Chasm* argues you should win a single narrow segment completely
+before you expand, a **beachhead**: a small market you can dominate, become the obvious choice
+for, and use as a base to move outward. For you, the beachhead might be one dorm, one club, one
+section of one course, one type of small business in Provo. Own that first. A product that ten
+people love beats one that a thousand people shrug at.
 
-**Myth #3: "Marketing is just posting on social media."**
-Reality: Marketing is understanding your customer deeply, crafting the right message, and delivering it through the right channels at the right time. Social media might be one small piece of that.
-
-**Myth #4: "We'll figure out GTM after we finish building."**
-Reality: GTM should inform what you build. If you wait until after, you might discover you built for the wrong customer or solved the wrong problem.
-
-### The GTM Framework
-
-A solid go-to-market strategy answers four core questions:
-
-1. **Who** is your customer? (Customer)
-2. **Why** should they care? (Positioning & Messaging)
-3. **How** will you reach them? (Channels)
-4. **What** will make them stick? (Product & Metrics)
-
-The rest of this chapter walks through each question with practical frameworks, AI-powered tools, and real examples you can apply immediately.
-
-Let's get ready for launch.
-
-## Winning Support: Your Innovation Capital
-
-Reaching customers is one thing; getting people to *back* you is another. Users decide whether to trust a stranger's product, mentors decide whether to spend time on you, and, later, investors or a boss decide whether to fund you. Jeff Dyer and his colleagues call the ability to attract that support **innovation capital**, and they show it is something you build on purpose, from three sources:
-
-- **Human capital** — who you are as a builder: your skills, and your visible passion for the problem. You have been building this all semester.
-- **Social capital** — who you know: the users, mentors, classmates, and experts who will vouch for you or help you.
-- **Reputation capital** — what you have done: your track record. A shipped product with real users is reputation you can point to, and it is the cheapest kind to earn as a student. You just ship and show.
-
-Take an honest inventory of all three now. Your go-to-market is far stronger when you can show not only a product, but a credible builder, with a network and a track record, standing behind it. You will spend the final demo turning that capital into belief.
-
-*Innovation capital is from Jeff Dyer, Nathan Furr, and Curtis Lefrandt, Innovation Capital (Harvard Business Review Press, 2019) [@dyer2019innovation].*
-
-## Know Your Customer (Really)
-
-Most founders think they know their customer. They don't.
-
-They have a vague idea, "small business owners" or "college students" or "busy professionals." But vague ideas don't help you write copy, choose channels, or prioritize features. You need specificity.
-
-### Defining Your Ideal Customer Profile (ICP)
-
-Your **Ideal Customer Profile (ICP)** is a detailed description of the type of customer who gets the most value from your product and is most likely to buy. For B2B products, this usually describes a company. For B2C, it describes an individual.
-
-Here's a simple template:
-
-**B2B ICP Example:**
-
-- **Company size:** 10-50 employees
-- **Industry:** SaaS startups in the productivity space
-- **Revenue:** $1M-$5M ARR
-- **Pain point:** Struggling to manage customer onboarding at scale
-- **Budget authority:** Head of Customer Success or COO
-- **Tech stack:** Uses Slack, Notion, and a CRM
-
-**B2C ICP Example:**
-
-- **Demographics:** 22-28 years old, recent college grads
-- **Location:** Urban areas, US-based
-- **Behavior:** Actively job searching, checks LinkedIn daily
-- **Pain point:** Overwhelmed by application tracking and interview prep
-- **Willingness to pay:** $10-20/month for tools that save time
-
-**Why this matters:** The more specific your ICP, the easier it is to find them, speak to them, and build for them.
+*The beachhead and the technology adoption lifecycle are from Geoffrey Moore, Crossing the Chasm (1991) [@moore1991crossing].*
 
 ::: {.callout-note collapse="true" title="Who is NOT your customer?"}
 A useful exercise is defining who your product is *not* for. This helps you avoid wasting time and money on the wrong audience. For example, if you're building a no-code tool for small businesses, enterprise CTOs are probably not your customer, even if they express interest.
 :::
 
-### Start With a Beachhead
-
-Do not try to reach everyone at once. Geoffrey Moore's *Crossing the Chasm* argues you should win a single narrow segment completely before you expand, a **beachhead**: a small market you can dominate, become the obvious choice for, and use as a base to move outward. For you as a student, the beachhead might be one dorm, one club, one type of small business in Provo. Own that first. A product that ten people love beats one that a thousand people shrug at.
-
-*The beachhead and the technology adoption lifecycle are from Geoffrey Moore, Crossing the Chasm (1991) [@moore1991crossing].*
-
-### Jobs-to-be-Done Recap in 5 Minutes
-
-The **Jobs-to-be-Done (JTBD)** framework shifts your focus from demographics to *why* customers "hire" your product. People don't buy a product, they hire it to do a job.
-
-A classic example: People don't want a quarter-inch drill. They want a quarter-inch hole. Actually, they don't even want the hole, they want to hang a picture so their living room feels complete.
-
-**The JTBD template:**
-
-*When I [situation], I want to [motivation], so I can [desired outcome].*
-
-**Example for a B2B scheduling tool:**
-
-*When I'm coordinating meetings with clients across time zones, I want to automate scheduling, so I can avoid the endless email back-and-forth and focus on preparing for the meeting.*
-
-**Why this matters:** JTBD helps you understand the emotional and functional reasons customers come to you. It reveals the true problem you're solving, which directly informs your messaging and positioning.
-
-### Using AI for Customer Research and Persona Development
-
-Here's where AI becomes a superpower for early-stage founders. Instead of spending weeks conducting interviews and analyzing surveys, you can use AI to:
-
-1. **Generate initial customer personas** based on your assumptions
-2. **Simulate customer interviews** to test your messaging
-3. **Analyze customer feedback** from reviews, support tickets, or social media
-4. **Identify pain points** by scraping competitor reviews or Reddit threads
-
-**Example AI Prompt:**
-
-> "I'm building a mobile app that helps freelancers track time and send invoices. My target customer is freelance designers and consultants earning $50K-$100K annually. Generate three detailed customer personas, including demographics, pain points, daily workflows, and preferred communication channels."
-
-You can then take these AI-generated personas and validate them with real customer conversations. AI gives you a strong starting hypothesis; real customers give you ground truth.
-
-**Tools to try:**
-
-- **ChatGPT or Claude** for persona generation and customer journey mapping
-- **Perplexity** for researching customer pain points from public forums
-- **Browse AI** or **Apify** for scraping competitor reviews or social media mentions
-
-::: {.callout-tip collapse="true" title="Common Mistake: Skipping Validation"}
-It's tempting to generate a persona with AI and treat it as fact. Don't. Use AI to accelerate hypothesis generation, then validate with 5-10 real customer conversations. If your AI-generated persona says customers care most about pricing, but real customers keep mentioning ease of use, trust the humans.
+::: {.callout-tip title="Try it"}
+Write your beachhead as one sentence with a place in it: "students in ___ who ___, reachable
+through ___." If you cannot name the place where twenty of them gather, your segment is still
+too vague. Narrow it until you can.
 :::
 
-### Quick Validation Techniques
-
-Before you invest heavily in GTM, validate that your ICP and understanding of their pain points are accurate. Here are three fast techniques:
-
-**1. The Mom Test**
-
-Ask questions about past behavior, not hypotheticals. Bad question: "Would you use this?" Good question: "Tell me about the last time you struggled with [problem]. What did you do?"
-
-**2. Landing Page Test**
-
-Build a simple landing page explaining your product and include a call-to-action like "Join the waitlist." Drive traffic via Reddit, LinkedIn, or paid ads. If nobody signs up, your messaging or audience might be off.
-
-**3. Smoke Test**
-
-Offer a "pre-order" or "early access" option and see if people commit. Commitment (especially financial) is the strongest signal of real demand.
+<!-- learn -->
 
 ## Positioning & Messaging
 
-You know who your customer is. Now you need to convince them you're worth their time.
+**The model:** positioning is why a specific person picks you over their current habit, said in
+their own words. The real alternative is rarely a competitor's app. It is usually a
+spreadsheet, a group text, a sticky note, or doing nothing.
 
-Positioning is how you want customers to think about your product relative to alternatives. Messaging is the words you use to communicate that positioning.
+April Dunford's *Obviously Awesome* breaks positioning into building blocks, and the order
+matters because each one depends on the one before:
 
-### The Positioning Statement Formula
+| Block | Question | Comes from |
+|---|---|---|
+| Competitive alternatives | What would they do if you did not exist? | Interviews: what they did last time |
+| Unique attributes | What can you do that the alternative cannot? | Your product |
+| Value | What does that attribute get them? | Their words about the pain |
+| Who cares most | Which people value that the most? | The interviews where they lit up |
+| Market category | What frame makes your value obvious? | The alternative they compare you to |
 
-A good positioning statement clarifies who you serve, what problem you solve, and why you're different. Use this formula:
+You start from the alternative, because "better" only means something relative to what they
+do now. If you start from your features, you end up describing your product to yourself.
+
+**Worked example.** Suppose you built QuizMe, which turns a student's own lecture notes into a
+practice quiz. A weak position, written by the founder: "AI-powered adaptive learning platform."
+A stronger one starts from three interview quotes:
+
+> "I just reread my notes and hope it sticks."
+> "Someone posts last year's quiz in the group chat, but it's never the same questions."
+> "I don't know what I don't know until the quiz."
+
+The alternative is rereading plus the group chat. The unique attribute is questions built from
+*your* notes for *this* week. The value, in their words: find out what you don't know before the
+quiz does. Who cares most: students in courses with frequent quizzes. That gives you a headline
+nobody had to invent: *"Find out what you don't know before the quiz does."*
+
+### The positioning statement
+
+Once the blocks are filled in, a one-line statement keeps everyone, including your coding agent,
+pointed the same way. This template is Geoffrey Moore's, and chapter 04 uses it for your value
+proposition [@moore1991crossing]; see
+[Your Value Proposition](04-finding-and-validating-the-problem.qmd):
 
 **For [target customer] who [pain point], [product name] is a [category] that [key benefit]. Unlike [alternatives], we [unique differentiator].**
 
-**Example:**
+> For students in quiz-heavy courses who reread their notes and hope, QuizMe is a practice-quiz
+> tool that shows you what you don't know yet. Unlike rereading or last year's quiz from the
+> group chat, it writes questions from this week's notes.
 
-*For freelance designers who struggle to track billable hours, TimeStack is a time-tracking app that automates logging with AI. Unlike Toggl or Harvest, we integrate directly into Figma and Adobe Creative Cloud, so you never have to manually start a timer.*
+The statement is an internal compass that informs *all* of your messaging; your tagline and
+homepage copy come from it.
 
-This isn't your tagline or homepage copy but rather an internal compass that can inform *all* of your messaging.
+### Messages that convert
 
-### Crafting Messages That Convert
+Messaging is the words you use to deliver the position. Speak to the pain, in the customer's
+words, and run the **"So what?" test**: for every sentence, ask "So what?" If you cannot answer
+with a customer benefit, rewrite it.
 
-Good messaging speaks to your customer's pain points, not your product's features. Here's a simple framework:
+- "We use AI to generate questions from your notes." So what?
+- "So you get questions about exactly what was covered this week." So what?
+- "So you find the gaps tonight, while you can still fix them."
 
-**Bad messaging (feature-focused):**
+The last line is the message. The first is a feature description.
 
-"TimeStack uses AI to automatically log your hours across multiple apps."
+### What AI can and cannot do for your messaging
 
-**Good messaging (benefit-focused):**
+A model is a fast drafting partner. It can write twenty headline variations from your positioning
+statement in seconds, and it can rewrite a jargon-heavy sentence in plain words:
 
-"Never forget to track time again. TimeStack logs your hours automatically, so you get paid for every minute you work."
+> "Write five different homepage headlines for a practice-quiz tool for students in quiz-heavy
+> courses. Use the phrases from these three interview quotes: [paste]."
 
-Notice the shift? The bad version talks about *what* the product does. The good version talks about *why it matters* to the customer.
+> "Explain how QuizMe builds questions in one sentence that a first-year student would understand."
 
-**The "So What?" Test:**
+What it cannot do is tell you which headline your customers will respond to. You can ask a model
+"which of these two resonates more with a stressed student?", and that is a **gut check with a
+model**: a guess based on the text it was trained on. It is not an A/B test. An A/B test shows
+two versions to real people, assigned at random, and counts what they *do*
+(see [Cause Versus Coincidence](14-measuring-what-matters.qmd)). The model has never met your
+customers. The interview quotes are the ground truth; the model only helps you phrase them.
 
-For every sentence in your messaging, ask "So what?" If you can't answer with a clear customer benefit, rewrite it.
-
-**Example:**
-
-- "We use machine learning to categorize your tasks." → So what?
-- "So you don't have to manually tag every entry." → So what?
-- "So you save 30 minutes a week and get back to designing."
-
-Now you've got a message that resonates.
-
-### AI-Assisted Copywriting and Testing
-
-AI tools can dramatically accelerate your messaging iteration. Here's how:
-
-**1. Generate multiple variations quickly**
-
-> "Write five different homepage headlines for a time-tracking app for freelancers. Emphasize saving time and getting paid accurately."
-
-AI will spit out options. Pick the best, tweak, and test.
-
-**2. A/B test messaging with synthetic users**
-
-> "I'm deciding between these two headlines: [A] 'Never miss billable hours again' vs [B] 'Get paid for every minute you work.' Which resonates more with a freelance designer earning $75K/year who struggles with time tracking?"
-
-AI can simulate user reactions based on common behavior patterns. Not a replacement for real A/B testing, but a useful gut check.
-
-**3. Simplify complex ideas**
-
-> "Explain how our AI time-tracking works in one sentence that a non-technical freelancer would understand."
-
-**Tools to try:**
-
-- **ChatGPT or Claude** for headline and copy generation
-- **Copy.ai or Jasper** for marketing copy at scale
-- **Hemingway Editor** (not AI, but great for clarity)
-
-### Pricing: Three Approaches for Early-Stage Products
-
-Pricing is part of your positioning. It signals value, filters customers, and determines your business model. Here are three common approaches for early-stage startups:
-
-**1. Cost-Plus Pricing**
-
-Calculate your costs (hosting, support, development time) and add a margin. Simple, but ignores what customers are willing to pay.
-
-**Best for:** Hardware or products with clear unit economics.
-
-**2. Value-Based Pricing**
-
-Price based on the value you deliver to the customer. If you save a customer $10,000/year, charging $2,000/year feels like a steal.
-
-**Best for:** B2B SaaS, productivity tools, anything with measurable ROI.
-
-**3. Competitive Pricing**
-
-Look at what competitors charge and price slightly below (penetration) or slightly above (premium positioning).
-
-**Best for:** Entering crowded markets where customers have clear price expectations.
-
-**For start-ups:** Start with value-based pricing if possible. Talk to 10 potential customers and ask, "If this saved you X hours or $Y dollars, what would you expect to pay?" You'll get a range. Price somewhere in the middle.
-
-::: {.callout-note collapse="true" title="Think about it: Should you offer a free tier?"}
-Freemium models can drive adoption, but they also attract non-paying users who consume support resources. When does a free tier make sense? When is it a distraction?
+::: {.callout-tip title="Try it"}
+Pull three quotes from your own interview notes. Fill in Dunford's five blocks, starting with the
+competitive alternative. Then write one headline that uses the customer's words, not yours. If
+the alternative you wrote is a competitor's app, check your notes: is that really what the last
+person you interviewed did?
 :::
 
-## Choosing Your Channel Strategy
+<!-- learn -->
 
-You've nailed your positioning and messaging. Now you need to get it in front of customers. This is where **channels** come in.
+## Pricing and AI Margins
 
-A channel is any method you use to reach and acquire customers. Email, content marketing, paid ads, cold outreach, and partnerships are all channels.
+**The model:** price on the value delivered, and check the floor: every AI call costs you money,
+so a heavy user on a flat price can cost more than they pay.
 
-The challenge: there are dozens of possible channels. You can't do them all. You need to pick 1-2 that match your customer, your product, and your resources.
+A price sits between two walls:
 
-### The Channel Decision Tree
+| Wall | What sets it | Where you learn it |
+|---|---|---|
+| **Ceiling: value** | What the problem costs the customer today, in money and hours | Chapter 04's workaround spend |
+| **Reference: alternatives** | What they pay now for the workaround or a substitute | Interviews, the substitute's price page |
+| **Floor: your cost to serve** | Model calls, hosting, payment fees, per user per month | Chapter 11's arithmetic, your logs |
 
-Use this framework to narrow down your options:
+Three classic approaches each look at one wall. **Cost-plus** adds a margin to your cost (simple,
+but ignores what the customer would pay). **Competitive** prices relative to alternatives
+(useful when customers already have a clear reference price). **Value-based** prices from what
+the problem is worth to the customer: if you save a business $10,000 a year, $2,000 a year is
+easy to say yes to. Start from value when you can, and check it against the floor.
 
-**1. Where does your customer spend time?**
+**How not to find the ceiling.** Do not ask customers "what would you pay?" and price in the
+middle of their answers. Chapter 04 warns against exactly this: people invent a number for a
+hypothetical. Instead, add up what the problem already costs them, the workaround they pay for,
+the hours lost, the substitute they buy (see "Harden your evidence" in
+[Willingness to Pay](04-finding-and-validating-the-problem.qmd)). The strongest evidence of all
+is someone paying: a preorder, a paid pilot, a deposit.
 
-- B2B SaaS buyers: LinkedIn, industry newsletters, niche Slack communities
-- Consumer apps: Social Media, Reddit, product hunt
-- Technical users: Hacker News, GitHub, dev.to, Stack Overflow
+### Every AI call is a cost
 
-**2. What's your customer acquisition cost (CAC) tolerance?**
+Chapter 11 showed you how to price one model call ([What It Costs](11-models-in-your-product.qmd)).
+Pricing is where that arithmetic becomes a business decision. The building blocks:
 
-- Low budget: content marketing, organic social, partnerships
-- High budget: paid ads, influencer marketing, conferences
+- **Cost per core action** = input tokens x input price + output tokens x output price.
+- **Actions per user per month**, which varies enormously between a light and a heavy user.
+- **Cost per user per month** = cost per action x actions per month.
+- **Gross margin per user** = price minus cost to serve, divided by price.
 
-**3. How complex is your product?**
+**Worked example.** QuizMe sends about 4,000 tokens of notes and instructions and gets back about
+1,000 tokens of questions. At chapter 11's Sonnet 5 prices ($2 input, $10 output per million
+tokens):
 
-- High-touch sales (complex B2B): outbound, demos, account-based marketing
-- Self-serve (simple B2C or PLG): inbound, product-led growth, virality
+| | Calculation | Result |
+|---|---|---|
+| Cost per quiz | 4,000 x $2/1M + 1,000 x $10/1M | $0.018 |
+| Typical user, 15 quizzes a month | 15 x $0.018 | $0.27 |
+| Heavy user in finals week, 10 a day for 30 days | 300 x $0.018 | $5.40 |
+| Flat price | | $4.00 a month |
 
-**4. What's your speed priority?**
+The typical user is very profitable. The heavy user costs $1.40 more than they pay, before
+hosting and payment fees. With traditional software, a heavy user costs you almost nothing extra;
+with an AI product, your best users can be your most expensive. The fixes are product decisions:
+a monthly quiz allowance with paid top-ups, usage-based pricing, caching the repeated
+instructions (chapter 11), or a cheaper model for the parts where measurement shows it is good
+enough.
 
-- Need fast validation: paid ads, cold outreach
-- Building long-term: SEO, content marketing, community
+**Flat subscription versus usage pricing.** A flat subscription is simple to buy and predictable
+for the customer, and it carries the heavy-user risk. Usage pricing (credits, per-action, tiers
+with allowances) tracks your cost but makes the customer think about every click. Many AI
+products combine them: a flat price that includes an allowance.
 
-### Product-Led vs Sales-Led: Which Fits Your Product?
+### Should you offer a free tier?
 
-**Product-Led Growth (PLG):**
+A free tier makes sense when a free user costs you little and either some of them convert or
+they bring other users. For an AI product, every free user runs up model cost, so a free tier
+needs a usage cap. At student scale, a free tier is often a distraction from the question that
+matters: will *anyone* pay? A few people paying a small amount teaches you more than many people
+using it free.
 
-Users can sign up, try, and get value from your product *without* talking to a salesperson. Think Notion, Figma, or Slack.
-
-**When PLG works:**
-
-- Your product has a self-serve onboarding flow
-- Time-to-value is short (minutes to hours)
-- Users can experience the "aha moment" on their own
-- You're targeting individuals or small teams who can adopt bottom-up
-
-**Sales-Led Growth (SLG):**
-
-You proactively reach out to customers, run demos, and close deals through human interaction. Think Salesforce or enterprise software.
-
-**When SLG works:**
-
-- Your product is complex and requires setup or training
-- Deal sizes are $10K+ annually
-- You're selling to enterprises with long procurement cycles
-- You need to educate buyers on a new category
-
-**Hybrid approach:**
-
-Many startups start PLG to get initial traction and layer on sales as they move upmarket. Notion started self-serve and now has enterprise sales reps.
-
-### Digital Channels That Actually Work for Student Startups
-
-Here's a quick rundown of channels and what works for early-stage founders:
-
-**Content Marketing (Blog, SEO)**
-
-Write helpful content that ranks on Google and brings in organic traffic.
-**Effort:** High. **Time to results:** 3-6 months. **Cost:** Free (just time).
-**Best for:** B2B SaaS, dev tools, productivity apps.
-
-**Social Media (LinkedIn, Twitter/X)**
-
-Build an audience by sharing insights, progress, and learnings.
-**Effort:** Medium. **Time to results:** 2-4 months. **Cost:** Free.
-**Best for:** Personal brand → product awareness pipeline.
-
-**Paid Ads (Google, Meta, LinkedIn)**
-
-Pay to put your product in front of targeted users.
-**Effort:** Medium. **Time to results:** Immediate. **Cost:** $500+ to test meaningfully.
-**Best for:** Clear ICP, validated messaging, products with fast time-to-value.
-
-**Cold Outreach (Email, LinkedIn DMs)**
-
-Directly message potential customers with personalized pitches.
-**Effort:** High. **Time to results:** Immediate. **Cost:** Free.
-**Best for:** B2B with clear ICP, small addressable market, high LTV.
-
-**Community and Word-of-Mouth**
-
-Join where your customers hang out (Reddit, Slack, Discord). Be helpful first, pitch second.
-**Effort:** Medium. **Time to results:** 1-3 months. **Cost:** Free.
-**Best for:** Niche products, dev tools, highly engaged communities.
-
-**Partnerships and Integrations**
-
-Partner with complementary products to access their user base.
-**Effort:** High. **Time to results:** 2-6 months. **Cost:** Free to low.
-**Best for:** B2B tools with clear integration opportunities (e.g., Zapier, Slack).
-
-::: {.callout-tip collapse="true" title="Common Mistake: Spreading Too Thin"}
-The biggest mistake is trying every channel at once. Pick 1-2, commit for 4-6 weeks, and measure results. If it's not working, kill it and try something else. Depth > breadth.
+::: {.callout-tip title="Try it"}
+For your own product: estimate the tokens in and out of your core AI call, use chapter 11's
+price table, and compute cost per action. Then estimate actions per month for your lightest and
+your heaviest realistic user. At your intended price, which users lose you money? Predict first,
+then check one real call's `usage` numbers in your logs. What is one product change that would
+keep the heavy user profitable?
 :::
 
-### AI Tools for Channel Optimization
+<!-- learn -->
 
-AI can help you execute channels faster and smarter:
+## Your First Users, by Hand
 
-**For content marketing:**
+**The model:** your first users come from places you can reach yourself. Do things that do not
+scale, because recruiting people one at a time is how you learn what will scale.
 
-- Use ChatGPT or Claude to outline blog posts, generate SEO keywords, or rewrite headlines
-- Tools like Jasper or Copy.ai can draft full articles (but always edit for voice and accuracy)
+Paul Graham's essay *Do Things That Don't Scale* makes the case: founders hesitate to recruit
+users manually because it seems small and slow, and that is exactly what works at the start.
+His examples include the Airbnb founders going door to door in New York to recruit hosts and
+improve their listings, and the Stripe founders setting up new users on the spot instead of
+sending a link [@graham2013]. Each conversation teaches you what makes someone say yes, which
+words work, and where people get stuck. Those lessons are what you later build into a channel.
 
-**For cold outreach:**
+A concrete target for a two-week sprint: **20 named people contacted, 5 actually using it.**
+Write the names down. Track who replied, who tried it, who came back.
 
-- Use ChatGPT to personalize cold email templates based on LinkedIn profiles
-- Tools like Lavender or Smartwriter use AI to optimize email subject lines and body copy
+### Where the first twenty come from
 
-**For paid ads:**
-
-- Use ChatGPT to generate 10 variations of ad copy
-- Tools like Pencil or AdCreative.ai generate ad creatives using AI
-
-**For social media:**
-
-- Use ChatGPT to repurpose long-form content into Twitter threads or LinkedIn posts
-- Tools like Buffer or Hootsuite now have AI writing assistants built in
-
-## Your First 10 Customers
-
-Everything we've discussed so far is preparation. Now it's time to actually *get* customers.
-
-Your first 10 customers are the hardest and the most important. They validate you're solving a real problem, provide critical feedback, and (hopefully) become advocates.
-
-Here's how to get them.
-
-### Outbound Tactics That Work on a $0 Budget
-
-Outbound means *you* reach out to potential customers. No ads. No waiting. Just hustle.
-
-**1. Personal Network**
-
-Start with people you know. Friends, classmates, professors, LinkedIn connections. Message 20 people today. Not with a pitch but with a question:
+**1. Personal network.** Friends, classmates, roommates, professors, LinkedIn connections.
+Message them with a question instead of a pitch:
 
 > "Hey [Name], I'm working on [product] for [customer type]. Do you know anyone who struggles with [pain point]? I'd love 15 minutes to show them what I'm building."
 
-**2. Cold Email**
-Find emails using tools like Hunter.io, Apollo, or LinkedIn Sales Navigator. Send personalized emails. Keep it short:
+**2. Where your beachhead gathers.** The course Slack, the club GroupMe, the dorm floor, the
+subreddit. Be helpful first: answer questions, share what you have learned. Mention the product
+when it is relevant.
+
+**3. Direct messages.** A short, specific note to someone who fits the ICP:
+
+> "Hi [Name], saw your post about [topic]. I'm building something for [customer type] and would love your feedback if you have 10 minutes."
+
+**4. Cold email**, for B2B, where the buyer is reachable by name:
 
 > Subject: Quick question about [pain point]
 > Hi [Name],
@@ -413,17 +268,92 @@ Find emails using tools like Hunter.io, Apollo, or LinkedIn Sales Navigator. Sen
 > Would you be open to a 15-minute demo?
 > [Your name]
 
-**3. LinkedIn DMs**
+Then sit with them while they use it. Watching five people try it teaches more than a launch post
+to five hundred.
 
-Connect with your ICP on LinkedIn. Send a brief, non-salesy message:
+### The pitch conversation
 
-> "Hi [Name], saw your post about [topic]. I'm building something for [customer type] and would love your feedback if you have 10 minutes."
+You have someone on a call. A sales demo is a conversation built around *their* problem. (It is a
+different thing from the final demo in [chapter 15](15-storytelling-and-the-final-demo.qmd),
+which is a recorded story for an audience.) A 15-minute structure:
 
-**4. Join Where Your Customers Are**
+1. **Set the stage (1 min):** "Thanks for joining. I want to show you [product], but first, tell me about how you currently handle [pain point]?"
+2. **Listen and adapt (3 min):** Let them talk. Take notes. Adjust your demo to their specific pain.
+3. **Show the moment it works (7 min):** Walk through the product on *their* use case, straight to the point where they see the value.
+4. **Handle objections (2 min):** Address questions and concerns directly.
+5. **Ask for a commitment (2 min):** "Does this solve [pain]? Want to try it for a week?"
 
-Find niche communities (Slack groups, Discord servers, subreddits) and *be helpful first*. Answer questions, share insights. After building trust, mention your product when relevant.
+**Common objections and how to handle them:**
 
-### Building Inbound Momentum (Content, SEO Basics)
+- **"It's too expensive."** → "What's it worth to you to solve [pain]? How much time/money are you losing now?"
+- **"I need to think about it."** → "Totally fair. What specifically do you need to think through? Maybe I can help."
+- **"We're already using [competitor]."** → "Got it. What's working? What's not? Here's how we're different…"
+
+### The levers of persuasion
+
+People rarely decide on logic alone. Robert Cialdini's research names six levers that move real
+decisions, worth using honestly, and worth recognizing when they are used on you:
+
+- **Social proof:** people do what similar people do. Show that others like them already use and trust you.
+- **Authority:** credible expertise persuades. Signal what makes you credible on this problem.
+- **Scarcity:** limited access or time raises perceived value: early access, a waitlist, a cohort.
+- **Reciprocity:** give first (a useful tool, real help), and people are inclined to give back.
+- **Commitment and consistency:** a small yes leads to a bigger one. Start with a low-friction ask.
+- **Liking:** people say yes to those they like and who are like them. Be human, specific, and warm.
+
+These amplify a true offer; they cannot substitute for one. Used to push a product that does not
+deliver, they become manipulation, the line drawn in [Product Morality](03-what-is-worth-building.qmd).
+
+*The six principles of persuasion are from Robert Cialdini, Influence (1984) [@cialdini1984influence].*
+
+::: {.callout-tip title="Try it"}
+Write the list: twenty names, each with where you will reach them and the one-line message you
+will send. Before you send anything, predict how many will reply and how many will try it. After
+a week, compare. The gap between your prediction and the result is information about your
+message or your segment.
+:::
+
+<!-- learn -->
+
+## Choosing Your Channel Strategy
+
+**The model:** a channel is a repeatable path by which strangers become users. Hand recruiting
+does not repeat; a channel does. Pick one or two that match where your customer already is,
+and give each a fair test before you add another.
+
+Gabriel Weinberg and Justin Mares's *Traction* lists nineteen channels and makes the point that
+most products grow through one or two of them [@weinberg2015traction]. Three questions narrow
+the choice:
+
+1. **Where does your customer already spend time?** Students: course and club group chats,
+   campus events, Instagram, Reddit. Small businesses: associations, local groups, LinkedIn.
+   Developers: GitHub, Hacker News, dev communities.
+2. **What does it cost, in money and in time to results?** You have little money and a
+   two-week sprint.
+3. **Does the product sell itself?** If people can sign up and reach value on their own in
+   minutes, a product-led channel fits. If it needs setup or training, a person has to sell it.
+
+**Product-led growth (PLG)**: users sign up, try, and get value without talking to anyone. Think
+Notion, Figma, or Slack. It works when time-to-value is short and the "aha moment" happens on
+its own. **Sales-led growth (SLG)**: you reach out, run demos, and close through conversation,
+as with Salesforce. It works when the product is complex, the deal is large, or the buyer needs
+to learn a new category. Many companies start product-led and add sales as they move to larger
+customers; Notion started self-serve and now has enterprise sales.
+
+| Channel | Fits a student sprint? | Note |
+|---|---|---|
+| Community and word of mouth | Yes | Be useful where your beachhead gathers |
+| Direct outreach (DMs, email) | Yes | The hand-recruiting above, made routine |
+| Building in public (LinkedIn, X) | Partly | Results take months; useful for credibility |
+| Content and SEO | Rarely | Results usually take months |
+| Partnerships | Sometimes | A club, a TA, a professor who shares it with a class |
+| Paid ads | Rarely | Costs money to test, and needs validated messaging first |
+
+::: {.callout-tip collapse="true" title="Common Mistake: Spreading Too Thin"}
+The biggest mistake is trying every channel at once. Pick 1-2, commit for a fixed period, and measure results. If it's not working, kill it and try something else. Depth > breadth.
+:::
+
+### A second audience: the models
 
 Inbound now has a second audience. A growing share of buyers ask a model rather than a search
 engine, which means you also care about which sources those models cite. A Semrush study of 150,000
@@ -432,372 +362,105 @@ sites.
 
 ![Image source: Visual Capitalist, based on a Semrush study of 150,000 citations, June 2025](images/ai-data.webp){fig-alt="A ranked bar chart titled Where AI Gets Its Facts, showing the top domains cited by LLMs such as ChatGPT and Perplexity. Reddit leads at 40.1 percent, followed by Wikipedia at 26.3, YouTube at 23.5, Google at 23.3, Yelp at 21.0, Facebook at 20.0, and Amazon at 18.7, trailing down through TripAdvisor, Mapbox, OpenStreetMap, Instagram, MapQuest, Walmart, eBay, LinkedIn, Quora, Home Depot, Yahoo, Target, and Pinterest at 4.2 percent."}
 
-Read that as a channel list, not a curiosity. A genuinely helpful answer in the subreddit where your
-customers already are does double duty: it reaches them, and it is the kind of source a model repeats
-later. This does not change the underlying advice, which is still to be useful in public where your
-buyers gather. It changes where "public" is.
+Read that as a channel list. A genuinely helpful answer in the subreddit where your customers
+already are does double duty: it reaches them, and it is the kind of source a model repeats
+later. The underlying advice is unchanged: be useful in public where your buyers gather. What
+has changed is where "public" is.
 
-Inbound means customers come to *you*. This takes longer to build but compounds over time.
+::: {.callout-tip title="Try it"}
+Pick one channel for your next sprint. Write down what you will do, how many people it should
+bring to your product, and the date you will judge it. If it brings fewer than half that number,
+what will you try instead?
+:::
 
-**1. Start a blog (and SEO basics)**
-
-Write content that answers questions your customers are Googling. Use tools like:
-
-- **AnswerThePublic** to find common questions
-- **Ahrefs or SEMrush** to research keywords (free tiers available)
-- **Google Search Console** to track what's ranking
-
-Target low-competition, high-intent keywords. Example: Instead of "time tracking software" (too competitive), try "time tracking for freelance designers" (niche and specific).
-
-**2. Share your journey publicly**
-
-Build in public on Twitter/X or LinkedIn. Share what you're learning, your wins, your struggles. People love following along. Some will become customers.
-
-Example posts:
-- "Just talked to our 5th potential customer. Here's what I learned about [pain point]."
-- "Built our landing page in 2 hours with Webflow + ChatGPT. Here's the before/after."
-
-**3. Create a lead magnet**
-
-Offer something valuable in exchange for an email. Examples:
-- Free template or tool
-- Industry report or guide
-- Exclusive community access
-
-Use tools like ConvertKit, Mailchimp, or Beehiiv to collect and nurture emails.
-
-### The Levers of Persuasion
-
-People rarely decide on logic alone. Robert Cialdini's research names six levers that move real decisions, worth using honestly, and worth recognizing when they are used on you:
-
-- **Social proof** — people do what similar people do. Show that others like them already use and trust you.
-- **Authority** — credible expertise persuades. Signal what makes you credible on this problem.
-- **Scarcity** — limited access or time raises perceived value: early access, a waitlist, a cohort.
-- **Reciprocity** — give first (a useful tool, real help), and people are inclined to give back.
-- **Commitment and consistency** — a small yes leads to a bigger one. Start with a low-friction ask.
-- **Liking** — people say yes to those they like and who are like them. Be human, specific, and warm.
-
-These amplify a true offer; they do not substitute for one. Used to push a product that does not deliver, they become manipulation, the line drawn in [Product Morality](03-what-is-worth-building.qmd).
-
-*The six principles of persuasion are from Robert Cialdini, Influence (1984) [@cialdini1984influence].*
-
-### The Art of the Demo/Pitch
-
-You've got someone on a call. Now what?
-
-**The 15-minute demo structure:**
-
-1. **Set the stage (1 min):** "Thanks for joining. I want to show you [product], but first, tell me about how you currently handle [pain point]?"
-
-2. **Listen and adapt (3 min):** Let them talk. Take notes. Adjust your demo to their specific pain.
-
-3. **Show, don't tell (7 min):** Walk through the product focused on *their* use case. Highlight the "aha moment," the point where they see the value.
-
-4. **Handle objections (2 min):** They'll have questions or concerns. Address them directly.
-
-5. **Ask for the close (2 min):** "Does this solve [pain]? Want to try it for a week?" Get commitment.
-
-**Common objections and how to handle them:**
-
-- **"It's too expensive."** → "What's it worth to you to solve [pain]? How much time/money are you losing now?"
-- **"I need to think about it."** → "Totally fair. What specifically do you need to think through? Maybe I can help."
-- **"We're already using [competitor]."** → "Got it. What's working? What's not? Here's how we're different…"
-
-### Using AI for Prospecting and Outreach
-
-AI can 10x your outreach efficiency:
-
-**1. Generate personalized emails at scale**
-
-> "Write a cold email to a Head of Customer Success at a 50-person SaaS company. Mention their recent LinkedIn post about onboarding challenges. Pitch our tool that automates customer onboarding checklists."
-
-**2. Research prospects faster**
-
-> "Summarize this LinkedIn profile and suggest three personalized talking points I can use in a cold email: [paste profile URL]."
-
-**3. Draft follow-ups automatically**
-
-> "Write a polite follow-up email to someone who didn't respond to my initial demo request. Keep it short and add value."
-
-**Tools to try:**
-
-- **ChatGPT or Claude** for writing and personalization
-- **Clay or Smartlead** for AI-powered outreach automation
-- **Reply.io or Instantly.ai** for cold email sequences with AI personalization
-
-### Conversion Optimization with AI
-
-Once people land on your site, how do you convert them?
-
-**1. Test headlines with AI**
-
-> "Generate 10 headline variations for a landing page selling a time-tracking app to freelancers. Focus on saving time and increasing earnings."
-
-**2. Analyze drop-off points**
-
-Use tools like Hotjar or Microsoft Clarity to see where users leave. Then ask AI:
-
-> "Users are dropping off on our pricing page after 8 seconds. Here's the current copy: [paste]. What might be confusing or turning them away?"
-
-**3. Optimize CTAs**
-
-> "Rewrite this CTA to be more action-oriented and benefit-focused: 'Sign up for free trial.'"
+<!-- learn -->
 
 ## Launch & Iterate
 
-Launch isn't a one-time event. It's a process.
+**The model:** a launch is the start of an experiment, so it needs a definition of success and
+working measurement before anyone sees the link.
 
-### The Lean Launch Playbook
-
-**Phase 1: Private Beta (Weeks 1-2)**
-Invite 10-20 users by hand. Get feedback. Fix bugs. Improve onboarding.
-
-**Phase 2: Public Beta (Weeks 3-4)**
-Open to anyone, but set expectations ("beta" means it's not perfect). Use a waitlist to build anticipation.
-
-**Phase 3: Official Launch (Week 5+)**
-Announce publicly via Product Hunt, Hacker News, LinkedIn, newsletters. Treat this as your "big push."
-
-**Pro tip:** Launch multiple times. Launch on Product Hunt. Launch a new feature. Launch a major update. Each launch is a new chance to get attention.
-
-### Metrics That Matter
-
-Track these from day one:
-
-**1. Customer Acquisition Cost (CAC)**
-How much you spend (time + money) to acquire one customer.
-Formula: Total marketing spend ÷ number of new customers
-
-**2. Lifetime Value (LTV)**
-How much revenue a customer generates over their lifetime.
-Formula: Average revenue per user × average customer lifespan
-
-**3. LTV:CAC Ratio**
-Are you making more than you spend?
-Goal: LTV should be at least 3x CAC.
-
-**4. Conversion Rates Across the Funnel**
-- Landing page visit → sign-up
-- Sign-up → activation (first value moment)
-- Activation → paid conversion
-
-**5. Retention and Churn**
-How many users stick around?
-Monthly churn = (customers lost this month ÷ customers at start of month) × 100
-
-**6. North Star Metric**
-The one metric that best captures the value your product delivers.
-Examples:
-- Notion: Weekly active users
-- Slack: Messages sent per day
-- Airbnb: Nights booked
-
-::: {.callout-note collapse="true" title="Think about it: What should your North Star Metric be?"}
-If you're building a product, what's the single metric that indicates users are getting value? Why that one? How does it tie to revenue?
-:::
-
-### When and How to Pivot Your GTM
-
-Sometimes your GTM isn't working. Here's how to know when to pivot:
-
-**Signs you need to pivot:**
-
-- CAC is way higher than LTV
-- Conversion rates are below 1% despite testing
-- Customers sign up but don't use the product
-- You're getting feedback that your positioning is off
-
-**How to pivot:**
-
-1. Go back to customers. Do 10 more interviews.
-2. Test a new channel (if current one isn't working after 6 weeks).
-3. Rewrite messaging based on actual customer language.
-4. Narrow or shift your ICP.
-
-**Example:**
-
-You launched a productivity app for "busy professionals." Nobody's buying. You dig deeper and realize your actual users are freelance consultants who love a specific feature you almost cut. Pivot: Reposition as "the productivity tool built for freelancers" and double down on that audience.
-
-### AI for Analytics and Experimentation
-
-Use AI to:
-
-**1. Identify patterns in data**
-
-> "Here's our weekly sign-up data for the past 8 weeks: [paste data]. What patterns or anomalies do you see?"
-
-**2. Suggest experiment ideas**
-
-> "Our landing page converts at 2%. What are five experiments I could run to improve this?"
-
-**3. Summarize user feedback**
-
-> "Here are 20 user feedback responses: [paste]. Summarize the top 3 themes and suggest product improvements."
-
-**Tools to try:**
-- **ChatGPT or Claude** for analysis and recommendations
-- **Jupyter Notebook + AI** for deeper data analysis
-- **Amplitude or Mixpanel** (both have AI-powered insights features)
-
-## GTM Toolkit
-
-Here's your GTM tech stack, optimized for student budgets.
-
-### Essential (Free) Tools for GTM Execution
-
-**Customer Research**
-
-- **Typeform** (free tier) → surveys
-- **Calendly** (free) → scheduling interviews
-- **Loom** (free tier) → record demos and walkthroughs
-
-**Landing Pages & Websites**
-
-- **Webflow** (free tier) → no-code websites
-- **Carrd** (free) → simple one-page sites
-- **Framer** (free tier) → design-focused sites
-
-**Email Marketing**
-
-- **ConvertKit** (free up to 1,000 subscribers)
-- **Mailchimp** (free up to 500 contacts)
-- **Beehiiv** (free tier) → newsletters
-
-**Analytics**
-
-- **Google Analytics** (free) → website traffic
-- **Hotjar** (free tier) → heatmaps and session recordings
-- **Plausible** (free trial, then $9/mo) → privacy-friendly analytics
-
-**CRM & Sales**
-
-- **HubSpot CRM** (free forever)
-- **Notion** (free) → DIY CRM with templates
-- **Airtable** (free tier) → flexible database for tracking leads
-
-**Social Media**
-
-- **Buffer** (free tier) → schedule posts
-- **Canva** (free) → create graphics
-
-### AI Tools for Each GTM Function
-
-**Customer Research:** ChatGPT, Claude, Perplexity
-**Copywriting:** Copy.ai, Jasper, Hemingway Editor
-**Outreach:** Smartlead, Reply.io, Clay
-**Content Creation:** Jasper, Writesonic, Descript (video)
-**Ad Creative:** AdCreative.ai, Pencil
-**Analytics:** ChatGPT for data analysis, Amplitude's AI insights
-
-### Key Frameworks and Templates
-
-**Customer persona template**
-**Positioning statement template**
-**Cold email template library**
-**Landing page copywriting formula (PAS: Problem-Agitate-Solution)**
-**Demo script template**
-
-You can find templates for all of these by asking ChatGPT:
-
-> "Give me a customer persona template for a B2B SaaS product."
-
-### Resources for Going Deeper
-
-**Books:**
-
-- *Traction* by Gabriel Weinberg & Justin Mares [@weinberg2015traction] → The 19 channels framework
-- *Obviously Awesome* by April Dunford [@dunford2019obviously] → Positioning masterclass
-- *The Mom Test* by Rob Fitzpatrick [@fitzpatrick2013mom] → Customer interviews done right
-
-**Blogs & Newsletters:**
-
-- Lenny's Newsletter (lennysnewsletter.com)
-- Product-Led Alliance (productled.com)
-- First Round Review (review.firstround.com)
-
-**Communities:**
-
-- Indie Hackers (indiehackers.com)
-- Y Combinator Startup School (startupschool.org)
-- Product Hunt (producthunt.com)
-
----
-
-## Closing Thoughts
-
-Go-to-market isn't something you do once and forget. It's iterative. You'll test channels, refine messaging, talk to more customers, and adjust constantly.
-
-Founders who succeed stay close to customers, move fast, and aren't afraid to pivot when something isn't working.
-
-You've built something. Now go get it in front of people.
-
-## Growth and Retention Strategy
-
-As your product matures, focus shifts from acquisition to retention. Sustainable code enables sustainable growth.
-
-#### The User Lifecycle [@mcclure2007]
-
-```
-Awareness → Acquisition → Activation → Retention → Revenue → Referral
-                            ↑
-                       You are here
-                    (Sprint 3-4 focus)
-```
-
-By this point, you should have:
-- **Acquisition**: Users can find and sign up
-- **Activation**: Users experience core value
-
-Now focus on:
-- **Retention**: Users keep coming back
-- **Revenue**: Users are willing to pay
-- **Referral**: Users tell others
-
-#### Retention Levers
-
-| Lever | Description | Technical Implementation |
-|-------|-------------|-------------------------|
-| **Habit formation** | Make the app part of daily routine | Push notifications, email reminders |
-| **Increased value** | More usage = more value | Data accumulation, personalization |
-| **Social connection** | Users connect with others | Sharing, collaboration features |
-| **Switching costs** | Leaving means losing something | Data export friction (ethical limits) |
-
-## Onboarding Optimization
-
-The first experience determines whether users return.
-
-**Good onboarding:**
-- Gets users to the "aha moment" fast
-- Teaches by doing, not explaining
-- Celebrates small wins
-- Removes friction ruthlessly
-
-**Common mistakes:**
-- Too many steps before value
-- Requiring unnecessary information
-- Information overload
-- No guidance after signup
-
-**Measure it:**
-- Time to first value action
-- Completion rate of onboarding steps
-- Drop-off points in the flow
-- Day 1 retention vs. users who completed onboarding
-
-## Instrument It Before You Launch
+### Instrument it before you launch
 
 Do not ship a landing page without analytics on it. You will get one first wave of traffic
-and exactly one chance to learn from it, and an uninstrumented launch throws that away. Put
-event tracking in before you send anyone the link. The mechanics are in
+and exactly one chance to learn from it, and an uninstrumented launch throws that away. Before
+you send anyone the link, write down what "working" means (one value metric, a threshold, a few
+guardrails, a date) and put event tracking on your core task. The how is in
 [Measuring What Matters](14-measuring-what-matters.qmd); the discipline is to do it now
 rather than after.
+
+### Launch in rings
+
+- **Private beta:** the twenty people you invited by hand. Watch them use it. Fix what breaks and
+  the step where they get stuck.
+- **Public beta:** open it to your beachhead (the course, the club), labeled as a beta.
+- **Wider launch:** a post in the communities you have been helpful in, Product Hunt, LinkedIn.
+
+You can launch more than once. A new feature or a major update is a new reason to tell people.
+
+### When to change your GTM
+
+Change the plan when the evidence says the plan is wrong:
+
+- People sign up but do not reach first value (an onboarding or product problem, not a channel problem).
+- A channel you gave a fair test brings almost no one.
+- Interviewees keep describing your product in words different from your messaging.
+- Acquiring a customer costs more than they will ever bring in (see
+  [Money Metrics](14-measuring-what-matters.qmd)).
+
+How: go back to customers and do more interviews, rewrite messaging in their actual words, narrow
+or shift the ICP, or try the next channel.
+
+**Example.** You launched a planner for "busy students." Nobody sticks. You dig in and find that
+your few retained users are student-athletes who use one feature, the travel-week schedule, that
+you almost cut. Reposition as "the planner for student-athletes on the road" and double down on
+that audience.
+
+### Using AI on launch data
+
+AI is useful here, within limits:
+
+- **It can** summarize open-ended feedback into themes, if you ask it to quote the responses
+  behind each theme so you can check. It can draft experiment ideas, write the SQL for a funnel
+  or cohort query, and check your arithmetic.
+- **It cannot** tell you why signups rose from a list of weekly totals. Paste eight weeks of
+  signup counts into a model and ask for "patterns" and it will find some, because it always
+  produces an answer, and with a few dozen users most week-to-week movement is noise. Whether a
+  change *caused* a result is a question of how the data was collected, which the model cannot see.
+  See [Cause Versus Coincidence](14-measuring-what-matters.qmd).
+
+> "Here are 20 user feedback responses: [paste]. Group them into the top 3 themes. For each
+> theme, quote the responses that belong to it, and list any responses that fit no theme."
+
+::: {.callout-tip title="Try it"}
+Write your launch note before you launch: the date, who will get the link, the one number that
+means it is working, and the threshold. Commit it. Two weeks later, read it back before you look
+at the data.
+:::
+
+<!-- learn -->
+
+## Going Deeper
+
+<!-- MOVE: the vendor tool lists (GTM Toolkit) were cut here; if Scott wants them, they belong in 98-tools.qmd, and the reading list belongs in 97-builder-resources.qmd -->
+
+- *Traction* by Gabriel Weinberg & Justin Mares [@weinberg2015traction]: the 19 channels framework
+- *Obviously Awesome* by April Dunford [@dunford2019obviously]: positioning from the customer's alternative
+- *The Mom Test* by Rob Fitzpatrick [@fitzpatrick2013mom]: customer interviews done right
+- Paul Graham, "Do Things That Don't Scale" [@graham2013]
+
+<!-- learn -->
 
 ## Key Concepts
 
 - **Ideal Customer Profile**: the specific, reachable group you are actually for.
 - **Beachhead**: the narrow first market you can win before widening.
-- **Positioning**: what you are, for whom, and why you over the alternative.
+- **Positioning**: why a specific person picks you over their current habit, in their words.
+- **Competitive alternative**: what the customer would do if you did not exist, usually not a competitor.
+- **Gut check with a model**: a model's opinion of your copy; not an A/B test.
+- **Value-based pricing**: price from what the problem costs the customer today.
+- **Cost per user**: cost per AI action times actions per month; heavy users can cost more than they pay.
+- **Gross margin per user**: price minus cost to serve, as a share of price.
+- **Do things that don't scale**: recruit the first users by hand to learn what will scale.
 - **Channel**: the repeatable path by which strangers become users.
 - **Product-led vs sales-led**: does the product sell itself, or does a person sell it?
-- **Growth and retention**: acquisition is rented; retention is owned.
-- **Onboarding**: the minutes that decide whether a signup becomes a user.
