@@ -218,6 +218,54 @@ Ask honestly: once you are winning, what stops the next student with the same AI
 
 <!-- learn -->
 
+## Disruption: how small entrants beat leaders
+
+Clayton Christensen studied a puzzle: well-run companies that listened to their best customers and invested in better products kept losing their markets to small newcomers whose products were worse. He laid out his answer in *The Innovator's Dilemma* [@christensen1997dilemma], drawing mainly on the disk drive industry, and he and two coauthors restated it twenty years after he first published it [@christensen2015disruptive]. The model starts from one observation: products improve faster than most customers can use the improvements.
+
+An established company, the **incumbent**, improves its product for its most demanding customers, who are usually its most profitable ones. Christensen calls these **sustaining innovations**: improvements that make a good product better in the eyes of the customers the incumbent already has. The 2015 article's examples are a fifth blade in a razor, a clearer TV picture, and better mobile phone reception. Because performance rises faster than most customers' needs, the incumbent ends up offering more than many of its customers can use. It **overshoots** them.
+
+That leaves two places where a new company, the **entrant**, can get a first set of customers, which Christensen calls footholds:
+
+- A **low-end foothold**: the least demanding customers, whom the incumbent overserves. They will buy a product that is good enough for them if it is cheaper or simpler.
+- A **new-market foothold**: **nonconsumers**, people who did not buy the product at all because the existing options cost too much or were too inconvenient. Christensen's example is copiers. Xerox sold large machines at high prices to large corporations, so school librarians, bowling-league operators, and other small users made do with carbon paper or mimeograph machines. In the late 1970s, makers of small personal copiers sold to those people and created a new market.
+
+The entrant's product starts out worse on the measure the incumbent's customers care about. The incumbent, chasing higher margins with its demanding customers, has little reason to fight for the low end and tends not to respond vigorously. The entrant improves its product and moves upmarket while keeping the low price or convenience that won its first customers. When its product becomes good enough for mainstream customers and they start buying it in volume, disruption has happened. Christensen calls the whole sequence a **disruptive innovation**. It describes the path a product takes over time, so you cannot tell whether a product is disruptive by looking at it at one moment.
+
+![The disruptive innovation model. The shaded band is the performance customers can use, from the least demanding to the most demanding; it rises slowly. The incumbent improves faster than that, for its most demanding customers, and overshoots what they can use. An entrant starts at the bottom of the band (a low-end foothold) or below it (a new-market foothold, among people who bought nothing before), and improves faster than the band rises. Disruption has happened when its product is good enough for mainstream customers (the circles) and they start buying it. Adapted from Christensen, Raynor, and McDonald [-@christensen2015disruptive], after Christensen [-@christensen1997dilemma].](images/diagrams/ch03-disruption.svg){#fig-disruption fig-alt="A chart with time on the horizontal axis and product performance on the vertical axis. A shaded band, the performance customers can use, rises slowly from left to right. Its top edge is the most demanding customers, its bottom edge the least demanding customers, and a dashed line through the middle the mainstream customers. A steep dark line, the incumbent's sustaining improvements, starts inside the band, crosses its top edge, and keeps rising above it; a double-headed arrow between that line and the top of the band is labeled overshoot. Two blue lines show the entrant's product. One starts on the bottom edge of the band, labeled low-end foothold, overserved customers. The other, dashed, starts below the band, labeled new-market foothold, nonconsumers. Both rise more steeply than the band and cross the mainstream line, and each crossing is marked with a circle, labeled good enough for mainstream customers." width="100%"}
+
+#### Words used in this section
+
+| Word | What it means |
+|---|---|
+| **Incumbent** | The established company that leads a market today |
+| **Entrant** | A new company entering that market, usually smaller and with less money |
+| **Sustaining innovation** | An improvement that makes a product better for the customers the incumbent already has |
+| **Overshoot** | Performance beyond what a group of customers can use or will pay more for |
+| **Low-end foothold** | A start with the incumbent's least demanding customers, using a cheaper or simpler product that is good enough for them |
+| **New-market foothold** | A start with nonconsumers, people who did not buy any product of this kind before |
+| **Disruptive innovation** | The path an entrant follows from one of those footholds to the incumbent's mainstream customers |
+
+**What disruption is not.** By 2015, Christensen and his coauthors found that "disruptive" had come to mean any newcomer that shakes up an industry, and they argued that this usage is too broad [@christensen2015disruptive]. Their test case was Uber, and their answer was that Uber, in their sense of the word, is not a disruptive innovation. It started in neither foothold. A low-end foothold would have required taxis to overserve customers by being too plentiful, too easy to use, and too clean. And Uber did not mainly target nonconsumers: it launched in San Francisco, a well-served taxi market, and its customers were mostly people who already hired rides. Its service was rarely described as worse than a taxi's, and many would call it better. In the authors' reading, that makes most of its strategy sustaining innovation, and the taxi companies responded the way incumbents respond to sustaining threats, with their own hailing apps and with legal challenges to Uber's services.
+
+Netflix, in the same article, did follow a disruptive path. When it launched in 1997, it mailed DVDs that took several days to arrive, which did not appeal to most of Blockbuster's customers, who rented new releases on impulse. It appealed to a few groups: movie buffs who did not care about new releases, early owners of DVD players, and online shoppers. Blockbuster had little reason to respond. Later, streaming let Netflix offer Blockbuster's mainstream customers a wider selection at a low price, and Blockbuster failed to respond to that path in time and collapsed.
+
+Two more points from the article. Success is not part of the definition: many entrants follow a disruptive path and still fail. And entering head-on is the harder road. In Christensen's study of the disk drive industry, only 6% of entrants that attacked incumbents with sustaining innovations, better products for the incumbents' own customers, succeeded [@christensen2015disruptive].
+
+**What it means for you.** Two connections are worth making, with some care. First, look at a low-end or new-market entrant on the [value stick](#creating-value-and-capturing-it). Its first customers' willingness to pay is low, because the product is worse on the usual measure, so the entrant can create value only if its cost is lower still. Building with AI tools lowers your cost to make a simple product, and the customers an incumbent ignores (a small group with a niche workflow, people priced out of the existing options) are the footholds the model describes. That is the classic entrant position. Second, when an incumbent adds AI features for the customers it already has, that is sustaining innovation, and the model predicts that the incumbent will usually win that contest. A student product that tries to be a slightly better version of an incumbent's product, for the incumbent's own customers, is in the 6% case. Compare counter-positioning in the list of moats above: in both cases the incumbent holds back because responding does not pay for the business it already runs. The model does not tell you how to win the foothold itself; the article says the theory has little to offer there beyond avoiding head-on competition with better-funded incumbents.
+
+::: {.callout-tip title="Try it"}
+For your product, write one sentence for each:
+
+1. Who is the incumbent in your product's space? (It may be a company, or the spreadsheet or group chat people use now.)
+2. Which customers does it overserve, and which people does it leave out entirely?
+3. Is your product a sustaining entry (better on the incumbent's measure, for its customers) or a disruptive one (worse on that measure, but cheaper, simpler, or more convenient, for customers it overserves or ignores)?
+4. If it is disruptive, what would have to improve for it to become good enough for the incumbent's mainstream customers?
+
+You can ask Claude to challenge your answer to question 3, but give it the incumbent's product and your first customer, and ask it which of the two footholds, if either, you are in.
+:::
+
+<!-- learn -->
+
 ## A test worth memorizing: DHM
 
 Gibson Biddle, from leading product at Netflix, offers a compact test for a good product strategy: **DHM** [@biddle2018]. Does it **D**elight customers, in **H**ard-to-copy, **M**argin-enhancing ways? All three at once:
@@ -317,6 +365,8 @@ Not every product touches all three. The question is directional: for the needs 
 - **Five forces as a market-power reading** (Michael Porter): how wide a share of the created value the industry lets you keep.
 - **Blue ocean / value innovation** (W. Chan Kim & Renée Mauborgne): widen the band by redrawing the market boundary instead of fighting for position inside it.
 - **Moats / durable advantage** (Hamilton Helmer, *7 Powers*): network effects, switching costs, scale, brand
+- **Sustaining vs. disruptive innovation** (Clayton Christensen): a sustaining innovation makes a product better for the incumbent's existing customers; a disruptive innovation starts worse on that measure, cheaper or simpler, and improves until it is good enough for the mainstream.
+- **Low-end and new-market footholds**: a disruptive entrant starts with customers the incumbent overserves or with nonconsumers, people who bought nothing before. Uber, by Christensen's test, started in neither; Netflix's mail-order DVDs started in a foothold.
 - **DHM**: Delight, Hard to copy, Margin-enhancing (Gibson Biddle)
 - **Product vision before strategy** (Marty Cagan)
 - **The AI-era shift**: cheap building commoditizes features; strategy, moats, taste, and distribution are the durable advantages
