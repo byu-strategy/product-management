@@ -103,7 +103,8 @@
 <g transform="translate(840,82) scale(0.8333)" fill="none" stroke="#002E5D" stroke-width="2.64" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="18" r="3" />
   <circle cx="6" cy="6" r="3" />
   <path d="M6 21V9a9 9 0 0 0 9 9" /></g>
-<text x="850" y="130" font-size="18" font-weight="600" text-anchor="middle" fill="#2C3E50">merge</text>
+<text x="850" y="130" font-size="18" font-weight="600" text-anchor="middle" fill="#2C3E50">merge,</text>
+<text x="850" y="151" font-size="18" font-weight="600" text-anchor="middle" fill="#2C3E50">after approval</text>
 <circle cx="636" cy="198" r="15" fill="#FFFFFF" stroke="#2C7A4C" stroke-width="2"/>
 <g transform="translate(626,188) scale(0.8333)" fill="none" stroke="#2C7A4C" stroke-width="2.64" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" />
   <path d="m9 12 2 2 4-4" /></g>
