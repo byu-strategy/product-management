@@ -672,9 +672,12 @@ it would fail on Vercel. Run on every pull request, the four together mean a red
 the PR before a user sees the problem.
 
 You will not write lint configuration by hand either; the agent does. One caution: current ESLint
-(version 9 and later) uses a file named `eslint.config.js`; tutorials that set up `.eslintrc.json`
-or run `npx eslint --init` describe the older format. Next.js projects come with linting already
-configured.
+(version 9 and later) uses a file named `eslint.config.js` (or `.mjs`); tutorials that set up
+`.eslintrc.json` or run `npx eslint --init` describe the older format. A project started with
+`create-next-app` comes with ESLint set up by default: an `eslint.config.mjs` file and a `lint`
+script in `package.json`. Since Next.js 16 you run it with `npm run lint`, because the old
+`next lint` command was removed and `next build` no longer runs the linter
+[@nextjs2026installation].
 
 ::: {.callout-tip title="Try it"}
 Ask Claude Code: *"Which checks run on this repo, where are they defined, and do they run on

@@ -12,9 +12,9 @@
 <text x="40" y="92" font-size="21" font-weight="700" fill="#002E5D">Deploy</text>
 <text x="40" y="116" font-size="16" fill="#5A6672">code reaches</text>
 <text x="40" y="136" font-size="16" fill="#5A6672">the server</text>
-<text x="40" y="318" font-size="21" font-weight="700" fill="#002E5D">Release</text>
-<text x="40" y="342" font-size="16" fill="#5A6672">people</text>
-<text x="40" y="362" font-size="16" fill="#5A6672">see it</text>
+<text x="40" y="338" font-size="21" font-weight="700" fill="#002E5D">Release</text>
+<text x="40" y="362" font-size="16" fill="#5A6672">people</text>
+<text x="40" y="382" font-size="16" fill="#5A6672">see it</text>
 <line x1="40" y1="190" x2="960" y2="190" stroke="#D9DEE4" stroke-width="1.5"/>
 <circle cx="300" cy="100" r="34" fill="url(#gNavy)" filter="url(#sh)"/>
 <g transform="translate(282,82) scale(1.5)" fill="none" stroke="#FFFFFF" stroke-width="1.47" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="18" r="3" /> <circle cx="6" cy="6" r="3" /> <path d="M6 21V9a9 9 0 0 0 9 9" /></g>
@@ -27,31 +27,31 @@
 <rect x="655" y="80" width="210" height="40" rx="20" fill="#FFFFFF" stroke="#D9DEE4" stroke-width="1.5"/>
 <text x="760" y="106" font-size="16" text-anchor="middle" fill="#2C3E50">new feature, flag off</text>
 <path d="M580 172 V196" stroke="#8A939C" stroke-width="1.5" stroke-dasharray="4 5" fill="none"/>
-<circle cx="330" cy="320" r="90" fill="#FFFFFF" stroke="#B9D0EA" stroke-width="1.5"/>
-<circle cx="330" cy="320" r="60" fill="#FFFFFF" stroke="#B9D0EA" stroke-width="1.5"/>
-<circle cx="330" cy="320" r="30" fill="#0057B8" stroke="#FFFFFF" stroke-width="2.5"/>
-<text x="330" y="326" font-size="15" font-weight="600" text-anchor="middle" fill="#FFFFFF">You</text>
-<text x="330" y="278" font-size="15" font-weight="400" text-anchor="middle" fill="#5A6672">Beta users</text>
-<text x="330" y="248" font-size="15" font-weight="400" text-anchor="middle" fill="#5A6672">Everyone</text>
-<circle cx="580" cy="320" r="90" fill="#FFFFFF" stroke="#B9D0EA" stroke-width="1.5"/>
-<circle cx="580" cy="320" r="60" fill="#0057B8" stroke="#FFFFFF" stroke-width="2.5"/>
-<circle cx="580" cy="320" r="30" fill="#0057B8" stroke="#FFFFFF" stroke-width="2.5"/>
-<text x="580" y="326" font-size="15" font-weight="600" text-anchor="middle" fill="#FFFFFF">You</text>
-<text x="580" y="278" font-size="15" font-weight="600" text-anchor="middle" fill="#FFFFFF">Beta users</text>
-<text x="580" y="248" font-size="15" font-weight="400" text-anchor="middle" fill="#5A6672">Everyone</text>
-<circle cx="830" cy="320" r="90" fill="#0057B8" stroke="#FFFFFF" stroke-width="2.5"/>
-<circle cx="830" cy="320" r="60" fill="#0057B8" stroke="#FFFFFF" stroke-width="2.5"/>
-<circle cx="830" cy="320" r="30" fill="#0057B8" stroke="#FFFFFF" stroke-width="2.5"/>
-<text x="830" y="326" font-size="15" font-weight="600" text-anchor="middle" fill="#FFFFFF">You</text>
-<text x="830" y="278" font-size="15" font-weight="600" text-anchor="middle" fill="#FFFFFF">Beta users</text>
-<text x="830" y="248" font-size="15" font-weight="600" text-anchor="middle" fill="#FFFFFF">Everyone</text>
-<path d="M240 214 V204 H920 V214" stroke="#8A939C" stroke-width="1.5" fill="none"/>
+<circle cx="300" cy="340" r="106" fill="#FFFFFF" stroke="#B9D0EA" stroke-width="1.5"/>
+<circle cx="300" cy="340" r="72" fill="#FFFFFF" stroke="#B9D0EA" stroke-width="1.5"/>
+<circle cx="300" cy="340" r="30" fill="#0057B8" stroke="#FFFFFF" stroke-width="2.5"/>
+<text x="300" y="346" font-size="15" font-weight="600" text-anchor="middle" fill="#FFFFFF">You</text>
+<text x="300" y="300" font-size="15" font-weight="400" text-anchor="middle" fill="#5A6672">Beta users</text>
+<text x="300" y="260" font-size="15" font-weight="400" text-anchor="middle" fill="#5A6672">Everyone</text>
+<circle cx="580" cy="340" r="106" fill="#FFFFFF" stroke="#B9D0EA" stroke-width="1.5"/>
+<circle cx="580" cy="340" r="72" fill="#0057B8" stroke="#FFFFFF" stroke-width="2.5"/>
+<circle cx="580" cy="340" r="30" fill="#0057B8" stroke="#FFFFFF" stroke-width="2.5"/>
+<text x="580" y="346" font-size="15" font-weight="600" text-anchor="middle" fill="#FFFFFF">You</text>
+<text x="580" y="300" font-size="15" font-weight="600" text-anchor="middle" fill="#FFFFFF">Beta users</text>
+<text x="580" y="260" font-size="15" font-weight="400" text-anchor="middle" fill="#5A6672">Everyone</text>
+<circle cx="860" cy="340" r="106" fill="#0057B8" stroke="#FFFFFF" stroke-width="2.5"/>
+<circle cx="860" cy="340" r="72" fill="#0057B8" stroke="#FFFFFF" stroke-width="2.5"/>
+<circle cx="860" cy="340" r="30" fill="#0057B8" stroke="#FFFFFF" stroke-width="2.5"/>
+<text x="860" y="346" font-size="15" font-weight="600" text-anchor="middle" fill="#FFFFFF">You</text>
+<text x="860" y="300" font-size="15" font-weight="600" text-anchor="middle" fill="#FFFFFF">Beta users</text>
+<text x="860" y="260" font-size="15" font-weight="600" text-anchor="middle" fill="#FFFFFF">Everyone</text>
+<path d="M194 214 V204 H966 V214" stroke="#8A939C" stroke-width="1.5" fill="none"/>
 <rect x="533" y="194" width="94" height="22" fill="#FAFBFC"/>
 <text x="580" y="210" font-size="15" text-anchor="middle" fill="#5A6672">one deploy</text>
-<path d="M426 320 H480" stroke="#0057B8" stroke-width="2" fill="none" marker-end="url(#ahA)"/>
-<path d="M676 320 H730" stroke="#0057B8" stroke-width="2" fill="none" marker-end="url(#ahA)"/>
-<text x="455" y="360" font-size="15" text-anchor="middle" fill="#0057B8">change</text>
-<text x="455" y="378" font-size="15" text-anchor="middle" fill="#0057B8">the flag</text>
-<text x="705" y="360" font-size="15" text-anchor="middle" fill="#0057B8">change</text>
-<text x="705" y="378" font-size="15" text-anchor="middle" fill="#0057B8">the flag</text>
+<path d="M412 340 H468" stroke="#0057B8" stroke-width="2" fill="none" marker-end="url(#ahA)"/>
+<text x="440" y="380" font-size="15" text-anchor="middle" fill="#0057B8">change</text>
+<text x="440" y="398" font-size="15" text-anchor="middle" fill="#0057B8">the flag</text>
+<path d="M692 340 H748" stroke="#0057B8" stroke-width="2" fill="none" marker-end="url(#ahA)"/>
+<text x="720" y="380" font-size="15" text-anchor="middle" fill="#0057B8">change</text>
+<text x="720" y="398" font-size="15" text-anchor="middle" fill="#0057B8">the flag</text>
 </svg>

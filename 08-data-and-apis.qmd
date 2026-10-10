@@ -20,7 +20,9 @@ every request can fail. It ends with the rules for secrets and for other people'
 model is the hardest thing to change later, so it deserves the most thought early.
 
 The building blocks come from E. F. Codd's relational model, which Postgres and nearly every
-business database still follow [@codd1970relational]:
+business database still follow [@codd1970relational]. The examples use a **problem tracker**, an
+app where users log problems they have noticed and the interviews they hold about each one. It is
+the running example for most of this chapter, and Chapter 9 uses it again:
 
 | Block | What it is | Problem-tracker example |
 |---|---|---|
@@ -313,6 +315,10 @@ Claude API, in @fig-what-is-an-api.
 (metadata, including who is calling), and sometimes a body (the data). **A response** has a
 status code (how it went) and usually a body.
 
+The figure and the messages below use the to-do app from Chapter 7, whose code you have already
+read: a user adds a task, and the browser sends it to `/api/tasks`. The worked example at the end
+of this section returns to the problem tracker and saves a problem to `/api/problems`.
+
 ![One request to save a task, and every answer that can come back. Your server checks the request in order; the first check that fails sends back its own status code, and each code calls for a different message to the user. A crash anywhere in your server's code also returns 500. When the network drops or the wait times out, no response comes back and there is no code at all.](images/diagrams/ch08-request-round-trip.svg){#fig-request-round-trip fig-alt="A sequence diagram with three columns, the browser, your server, and the database, plus a column on the left showing the message the user sees. At the top, the browser sends a request to your server: POST /api/tasks, an Authorization header carrying the token, and a body with the task text Buy groceries. If no response comes back because the network is down or the request timed out, the user sees: No connection. Try again. Your server then checks three things in order. If the token is not valid, it answers 401 Unauthorized and the user sees: Please sign in again. If the user is not allowed, it answers 403 Forbidden and the user sees: You don't have access. If the input is not valid, it answers 400 Bad Request and the user sees: Task can't be empty. If all three checks pass, the server inserts the row into the database and gets back the new row or an error. If the save failed, it answers 500 Internal Server Error and the user sees: Something went wrong. If it worked, the server answers 201 Created with a body holding the new task, id 123, and the user sees the new task in the list." width="100%"}
 
 #### Words used in this section
@@ -404,9 +410,9 @@ breaks:** a real waiter comes back to tell you the kitchen is out of fish. A req
 come back at all, and nothing tells you unless your code set a time limit.
 :::
 
-**Worked example.** Here is a save that handles failure. The key fact: `fetch` throws an error
-only when no answer came back at all. A 403 or a 500 is still an answer, so the code has to
-check `response.ok` (true for any 2xx) itself.
+**Worked example.** Back in the problem tracker, here is a save that handles failure. The key
+fact: `fetch` throws an error only when no answer came back at all. A 403 or a 500 is still an
+answer, so the code has to check `response.ok` (true for any 2xx) itself.
 
 ```javascript
 try {

@@ -7,7 +7,7 @@ editor: visual
 
 Setup and working agreements for running many Claude Code agents on one shared repo. It is updated through the semester, so refer back to it.
 
-- [Agent Team Kit repo](https://github.com/sdmurff/agent-team-kit)
+- [Agent Team Kit repo](https://github.com/ai-foundry-byu/agent-team-kit)
 
 ## Thought Leaders
 

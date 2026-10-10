@@ -621,8 +621,6 @@ when tapped. Fix the worst one with a precise prompt.
 
 ## How the Surface Is Built (Reference)
 
-<!-- MOVE: belongs in ch07 (Anatomy of an Application) because how the frontend is built is architecture. Kept here as a short reference because ch05 previously taught it and it is on the midterm. -->
-
 You will not write much of this by hand, but you should know the parts so you can read what the
 agent wrote and catch it when something is off.
 
@@ -635,25 +633,9 @@ agent wrote and catch it when something is off.
 | **React** | Builds the UI from reusable **components**, functions that return UI. Components take **props** (inputs) and hold **state** (data that changes) | |
 | **Next.js** | The React framework this course uses: routing, server rendering, deployment | |
 
-The one piece worth reading in code is how state drives the screen. When state changes, React
-redraws the component, which is exactly why "loading," "error," and "empty" are states you design:
-
-```jsx
-function Counter() {
-  const [count, setCount] = useState(0);   // state, starts at 0
-  return (
-    <div>
-      <p>Count: {count}</p>                 {/* the screen shows the current state */}
-      <button onClick={() => setCount(count + 1)}>Increment</button>
-    </div>
-  );
-}
-```
-
-A form works the same way: each input's value lives in state, and the form's submit handler reads
-that state and sends it to be saved. Why React is the default: reusable components, a declarative
-style (you describe what the screen should look like for a given state, and React updates it), and
-the largest ecosystem, including shadcn/ui.
+Chapter 7 reads a React component line by line, including how a change in state makes React
+draw the screen again, which is why loading, empty, and error are each a state you design: see
+[How the Code Works](07-anatomy-of-an-application.qmd#how-the-code-works).
 
 <!-- learn -->
 
