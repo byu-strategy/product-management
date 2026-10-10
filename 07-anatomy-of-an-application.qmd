@@ -22,6 +22,28 @@ and you can catch it when it puts something in the wrong place.
 
 ![](/images/eng-landscape.png)
 
+### Words in this chapter
+
+Every one of these comes up below. Come back here when one stops you.
+
+| Word | What it means |
+|---|---|
+| **Browser** (frontend, client) | The program on the user's device that shows your app, such as Chrome or Safari, and the app code running inside it |
+| **Server** (backend) | A computer you control that runs your app's code and keeps its secrets |
+| **Database** | Where the app stores what it must remember, as tables of rows |
+| **Request, response** | A message one place sends another asking for something, and the reply |
+| **API, endpoint** | The list of requests a place will answer; one entry on that list, at its own address |
+| **React** | A library for building the screens that run in the browser |
+| **Next.js** | A framework built on React that also lets you write server code in the same project |
+| **Vercel** | The company whose computers run your Next.js app and serve it at a web address |
+| **Supabase** | A company that runs a database for you, plus sign-in (**Supabase Auth**) and file storage |
+| **Postgres** | The database software Supabase runs |
+| **Token** | A signed string Supabase Auth gives the browser after sign-in. Every later request carries it to prove who is asking |
+| **Publishable key, secret key** | Supabase's two keys. The publishable key is public and can reach only what row-level security allows; the secret key bypasses those rules and stays on your server |
+| **Row-level security** | Rules inside the database that decide, row by row, who may read or change it. [Data and APIs](08-data-and-apis.qmd) shows how to write them |
+| **Environment variable** | A setting kept outside your code, such as a key. In Next.js, names that start with `NEXT_PUBLIC_` are sent to the browser; all others stay on the server |
+| **OAuth** | Signing in through another service ("Sign in with Google"), which vouches for who the user is |
+
 <!-- learn -->
 
 ## Three Places Code Runs and Data Lives
@@ -119,18 +141,25 @@ The database stores it as a row in a table:
 | 1   | 42      | "Buy groceries"  | false     | 2025-01-15 10:30:00 |
 | 2   | 42      | "Call dentist"   | true      | 2025-01-15 11:45:00 |
 
-**Two paths in this course's stack.** Supabase puts its own API in front of your database, so
-the browser can read and write rows directly, carrying a public key and the signed-in user's
-token. Anything that needs a secret, such as a model call or a payment, goes through your
-server instead.
+**One session in this course's stack.** Here is what happens, place by place, when a student
+opens a to-do app, signs in, loads their tasks, and asks an AI feature for help.
 
-```{mermaid}
-flowchart LR
-    B["Browser<br/>(the user's machine)"] -- "publishable key + user's token" --> S[("Supabase<br/>database + row rules")]
-    B -- "request" --> V["Your server<br/>(Next.js route on Vercel)"]
-    V -- "secret key stays here" --> S
-    V -- "secret key stays here" --> M["Paid APIs<br/>(model, payments, email)"]
-```
+![One session in this course's stack. Ordinary data goes straight from the browser to Supabase, guarded by row-level security; anything that needs a secret key goes through your server, and the key never crosses the line.](images/diagrams/ch07-one-session.svg){#fig-one-session fig-alt="Four columns: the browser, on the user's machine; your server, Next.js running on Vercel; Supabase, which handles sign-in and the database; and paid services such as Claude and Stripe. A dashed line between the browser and the rest marks where the user's control ends. Four numbered moments run top to bottom. 1, open the app: your server sends the page code to the browser. 2, sign in: the browser sends email and password to Supabase, which returns a token. 3, load your tasks: the browser sends the publishable key and the token straight to Supabase, where row-level security checks the token and returns only your rows. 4, use an AI feature: the browser sends a request and the token to your server, the server calls the paid service with a secret key, and the result comes back to the server and then to the browser." width="100%"}
+
+1. **Open the app.** The browser asks for your site's address. Vercel's computers send back the
+   page's code, which now runs on the user's machine.
+2. **Sign in.** The browser sends the email and password to Supabase Auth, which checks them and
+   sends back a token.
+3. **Load your tasks.** The browser asks Supabase's database directly, carrying the publishable
+   key and the token. Row-level security reads the token and returns only that user's rows. Your
+   server is not involved.
+4. **Use an AI feature.** A model call costs money and needs a secret key, so the browser asks
+   your server instead. Your server checks the token, calls the paid service with the secret key,
+   and passes the result back. The secret key never leaves your server.
+
+Two things follow. Because the browser talks to the database directly in step 3, the
+database's own rules are the only guard on ordinary data. And anything that needs a secret, such
+as a model call, a payment, or an email, goes through your server, as in step 4.
 
 **This is the "full stack"**: frontend, backend, database, and the requests connecting them.
 As a full-stack product builder, you decide what lives where, even when the agent types it.
@@ -299,6 +328,14 @@ link. A curious member types `/roster/edit` into the address bar, and the page l
 the only check was the hidden link. With a database rule that lets only officers update the
 roster table, the page may still load, but every save fails. That is the outcome you want.
 
+::: {.callout-note title="Analogy: a concert wristband"}
+At the door you show ID once and get a wristband: signing in gives the browser a token. At
+every bar you show the wristband instead of your ID: every request carries the token. The bar
+decides what you may order: authorization. **Where it breaks:** a token expires after a while and
+is renewed in the background, and anyone who copies it can act as you until it expires. That is
+why a token must never be pasted into logs, chats, or prompts.
+:::
+
 The sign-up and sign-in calls are short, because Supabase does the hard parts (storing passwords
 safely, issuing the session token):
 
@@ -340,7 +377,7 @@ Chapter 8 has a drill for testing it.
 - **Full stack**: all of the above, and now all of it is yours.
 - **Stack choice**: pick the boring, well-documented option; agents write it better.
 - **Publishable (anon) key vs. secret (service role) key**: one is public by design and limited
-  by row rules; the other bypasses them and stays on the server.
+  by row-level security; the other bypasses them and stays on the server.
 - **Authentication vs. authorization**: proving who a user is, and deciding what they may do.
 
 <!-- learn -->

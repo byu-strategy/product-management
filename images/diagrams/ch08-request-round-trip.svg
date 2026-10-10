@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 640" role="img" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
   <title>A request's round trip, and where it can fail</title>
-  <desc>Sequence diagram with three participants: the browser, your server, and the database. The browser sends POST /api/problems to the server. The server checks who is asking and whether the input is valid, inserts the row into the database, gets the new row back, and answers 201 Created. The browser checks response.ok and says what happened. Three numbered markers show where it can fail: 1, on the way to the server, no network or a timeout means no answer at all; 2, at the server's checks, a 400, 401, 403, 404 or 429 means the request was the problem; 3, during the server's own work, including its call to the database, a 500 means the server was the problem; it comes back in place of the 201.</desc>
+  <desc>A save, traced from the browser to your server to the database and back. The browser sends a save request; the server checks who is asking and whether the input is valid; the server inserts the row into the database and gets the new row back; the server answers saved. Three numbered points mark where it can fail instead. 1, never arrived: no network, or the request timed out, so there is no answer at all. 2, refused, at the server's checks: not allowed (including not signed in), or bad input. 3, server broke, during the database step: a bug, or the database failed. Under the browser: tell the user which one happened.</desc>
   <defs>
     <linearGradient id="gCard" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#FFFFFF"/><stop offset="100%" stop-color="#F3F6F9"/></linearGradient>
     <linearGradient id="gBlue" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#F0F5FB"/><stop offset="100%" stop-color="#DCE7F4"/></linearGradient>
@@ -29,16 +29,16 @@
   <circle cx="600" cy="82" r="36" fill="url(#gBlue)" stroke="#B9D0EA" stroke-width="1.5" filter="url(#sh)"/>
   <g transform="translate(583.0,65.0) scale(1.417)" fill="none" stroke="#002E5D" stroke-width="1.84" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3" /> <path d="M3 5V19A9 3 0 0 0 21 19V5" /> <path d="M3 12A9 3 0 0 0 21 12" /></g>
   <text x="600" y="146" font-size="18" font-weight="700" text-anchor="middle" fill="#002E5D">Database</text>
-  <text x="686" y="146" font-size="15" font-weight="700" letter-spacing="1.2" fill="#8A939C">CAN COME BACK INSTEAD</text>
+  <text x="686" y="146" font-size="15" font-weight="700" letter-spacing="1.2" fill="#8A939C">WHERE IT CAN FAIL</text>
   <path d="M124 210 H364" fill="none" stroke="#002E5D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ahN)"/>
-  <text x="231.0" y="196" font-size="15" font-weight="600" text-anchor="middle" font-family="Menlo, Consolas, monospace" fill="#002E5D">POST /api/problems</text>
+  <text x="231.0" y="196" font-size="15" font-weight="600" text-anchor="middle" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" fill="#002E5D">save request</text>
   <circle cx="326" cy="210" r="13" fill="url(#gRoyal)" stroke="#FFFFFF" stroke-width="2.5" filter="url(#shS)"/>
   <text x="326" y="215" font-size="15" font-weight="700" text-anchor="middle" fill="#FFFFFF">1</text>
   <rect x="686" y="179" width="284" height="62" rx="12" fill="url(#gCard)" stroke="#D9DEE4" stroke-width="1.5" filter="url(#shS)"/>
   <circle cx="714" cy="210" r="13" fill="url(#gRoyal)" stroke="#FFFFFF" stroke-width="2.5" filter="url(#shS)"/>
   <text x="714" y="215" font-size="15" font-weight="700" text-anchor="middle" fill="#FFFFFF">1</text>
-  <text x="740" y="206" font-size="16" font-weight="700" fill="#002E5D">No network, or timeout</text>
-  <text x="740" y="228" font-size="15" fill="#5A6672">no answer at all</text>
+  <text x="740" y="206" font-size="16" font-weight="700" fill="#002E5D">Never arrived</text>
+  <text x="740" y="228" font-size="15" fill="#5A6672">no network, or timed out</text>
   <rect x="362" y="258" width="16" height="80" rx="4" fill="url(#gBlue)" stroke="#B9D0EA" stroke-width="1.5"/>
   <text x="392" y="290" font-size="16" fill="#5A6672">who is asking?</text>
   <text x="392" y="312" font-size="16" fill="#5A6672">is the input valid?</text>
@@ -47,23 +47,23 @@
   <rect x="686" y="267" width="284" height="62" rx="12" fill="url(#gCard)" stroke="#D9DEE4" stroke-width="1.5" filter="url(#shS)"/>
   <circle cx="714" cy="298" r="13" fill="url(#gRoyal)" stroke="#FFFFFF" stroke-width="2.5" filter="url(#shS)"/>
   <text x="714" y="303" font-size="15" font-weight="700" text-anchor="middle" fill="#FFFFFF">2</text>
-  <text x="740" y="294" font-size="16" font-weight="700" fill="#002E5D">400, 401, 403, 404, 429</text>
-  <text x="740" y="316" font-size="15" fill="#5A6672">the request was the problem</text>
+  <text x="740" y="294" font-size="16" font-weight="700" fill="#002E5D">Refused</text>
+  <text x="740" y="316" font-size="15" fill="#5A6672">not allowed, or bad input</text>
   <path d="M380 372 H594" fill="none" stroke="#002E5D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ahN)"/>
   <text x="485.0" y="360" font-size="16" text-anchor="middle" fill="#2C3E50">insert the row</text>
   <path d="M596 424 H384" fill="none" stroke="#5A6672" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="6 5" marker-end="url(#ahD)"/>
   <text x="485.0" y="412" font-size="16" text-anchor="middle" fill="#2C3E50">the new row</text>
   <path d="M366 484 H126" fill="none" stroke="#5A6672" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="6 5" marker-end="url(#ahD)"/>
-  <text x="259.0" y="470" font-size="15" font-weight="600" text-anchor="middle" font-family="Menlo, Consolas, monospace" fill="#002E5D">201 Created</text>
+  <text x="259.0" y="470" font-size="15" font-weight="600" text-anchor="middle" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" fill="#002E5D">saved</text>
   <rect x="362" y="358" width="16" height="80" rx="4" fill="url(#gBlue)" stroke="#B9D0EA" stroke-width="1.5"/>
   <circle cx="370" cy="398" r="13" fill="url(#gRoyal)" stroke="#FFFFFF" stroke-width="2.5" filter="url(#shS)"/>
   <text x="370" y="403" font-size="15" font-weight="700" text-anchor="middle" fill="#FFFFFF">3</text>
   <rect x="686" y="367" width="284" height="62" rx="12" fill="url(#gCard)" stroke="#D9DEE4" stroke-width="1.5" filter="url(#shS)"/>
   <circle cx="714" cy="398" r="13" fill="url(#gRoyal)" stroke="#FFFFFF" stroke-width="2.5" filter="url(#shS)"/>
   <text x="714" y="403" font-size="15" font-weight="700" text-anchor="middle" fill="#FFFFFF">3</text>
-  <text x="740" y="394" font-size="16" font-weight="700" fill="#002E5D">500</text>
-  <text x="740" y="416" font-size="15" fill="#5A6672">the server was the problem</text>
+  <text x="740" y="394" font-size="16" font-weight="700" fill="#002E5D">Server broke</text>
+  <text x="740" y="416" font-size="15" fill="#5A6672">a bug, or the database failed</text>
   <rect x="28" y="530" width="184" height="62" rx="12" fill="url(#gBlue)" stroke="#B9D0EA" stroke-width="1.5" filter="url(#shS)"/>
-  <text x="120" y="557" font-size="15" font-weight="600" text-anchor="middle" font-family="Menlo, Consolas, monospace" fill="#002E5D">check response.ok,</text>
-  <text x="120" y="579" font-size="16" text-anchor="middle" fill="#2C3E50">say what happened</text>
+  <text x="120" y="557" font-size="15" font-weight="600" text-anchor="middle" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" fill="#002E5D">tell the user</text>
+  <text x="120" y="579" font-size="16" text-anchor="middle" fill="#2C3E50">which one happened</text>
 </svg>

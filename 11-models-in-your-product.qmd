@@ -265,6 +265,20 @@ the right chunk come back at all?
 
 ![RAG has two lanes: prepare the documents once, then retrieve and answer for every question. The red markers are where the course-help bot goes wrong, and each one still produces a fluent answer.](images/diagrams/ch11-rag-failure-points.svg){#fig-rag-failure-points fig-alt="Two lanes of cards with icons. Once, ahead of time: Documents, Chunk, Embed, Store. Every question: Question, Embed, Search, Model, Answer. An arrow from Store down to Search is labeled nearest by meaning. Three red numbered markers show failures: 1 on Documents, never loaded; 2 on Search, wrong chunks; 3 on Answer, answers anyway. A band at the bottom reads: test retrieval on its own, for each test question, did the right chunk come back?" width="100%"}
 
+Words used in this section:
+
+| Term | What it means |
+|---|---|
+| Document | A source file you want the model to answer from: a syllabus page, a help article, a policy |
+| Chunk | One passage cut from a document, a few hundred tokens long; the unit that gets retrieved |
+| Token | The piece of text a model reads and counts, roughly three quarters of a word (Chapter 10) |
+| Embedding (vector) | A list of numbers that stands for a passage's meaning; passages with similar meaning get similar lists |
+| Embedding model | A model that turns text into an embedding; it writes no text |
+| Vector store | A table that holds each chunk's text next to its embedding; in Supabase, pgvector |
+| Nearest by meaning | The chunks whose embeddings are closest to the question's embedding |
+| Retrieval | Fetching those nearest chunks for one question |
+| Source (citation) | The chunk the answer quotes, shown so the user can check it |
+
 ::: {.callout-tip title="Try it"}
 For a RAG feature in your product (or the course-help bot above), write three questions: one
 the documents answer, one they answer only partly, and one they do not answer at all. Predict
@@ -452,6 +466,22 @@ reason. Without them, you only know the output is different. Step 4 is what make
 this an eval. Without a number, prompt engineering is guesswork: you make a change, spot-check two
 examples, and convince yourself. With a number, you know whether you moved from, say, 71
 percent to 84 percent or made it worse.
+
+**Worked example.** Take the course-help bot from the RAG section. It sometimes answers
+questions the syllabus does not cover, so you add one line to the prompt: "If the answer is not
+in the sources, say you don't know." Before shipping it, you run five real student questions,
+each with a written pass rule, through the old prompt and the new one.
+
+![An eval for the course-help bot: five real student questions, each with a pass rule, scored before and after one prompt change. The score stayed at 4 of 5, but one failure was fixed and a new one appeared, so read every row, not only the total.](images/diagrams/ch11-eval-example.svg){#fig-eval-example fig-alt="A table with a header band: the change being tested, added to the prompt, if the answer is not in the sources, say you don't know. Columns: student question, passes if it, before, after. Can I turn in Sprint 3 late, passes if it quotes the late-work policy: pass before and after. When is the midterm, passes if it says Oct 20 to 22, testing center: pass before and after. Is there parking near class, passes if it says it does not know: fail before, pass after, highlighted green. How many points is Sprint 6, passes if it says 100: pass before and after. Can I use AI on the exam, passes if it says no, closed book: pass before, fail after, highlighted red. Totals: passes 4 of 5 before and 4 of 5 after, same score, different failures." width="100%"}
+
+The change did what it was meant to do: the bot now admits it knows nothing about parking.
+It also broke something. The syllabus says the exams are closed book but never uses the word
+"AI," so the bot now says it does not know, where before it answered correctly. The total did
+not move. **Read every row, not only the score.** And add the failing question to the set, so
+every later run checks it.
+
+The total can also move when nothing changed, because output is sampled. Run the set more than
+once to see how much.
 
 ![An eval runs the same cases every time. Three runs of an unchanged prompt show how much the score moves by chance; a change counts only if it moves the score past that range. Illustrative numbers.](images/diagrams/ch11-eval-before-after.svg){#fig-eval-before-after fig-alt="A grid of 20 numbered cases, each a green check for pass or a red cross for fail, in four rows. Runs 1, 2, and 3 use the same prompt and pass 14, 13, and 15 of 20; a bracket marks them as the same prompt. The After row, highlighted, follows one prompt change and passes 17 of 20. Below, a number line from 10 to 20 shows a gray noise band from 13 to 15 and a blue dot labeled after at 17. A note reads illustrative scores." width="100%"}
 
