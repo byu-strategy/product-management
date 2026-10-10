@@ -67,7 +67,7 @@ The window is finite. As it fills, Claude Code clears old tool output and then s
 
 ![CLAUDE.md is reloaded every time. `/compact` keeps a summary and the task; `/clear` keeps nothing you said.](images/diagrams/ch02-context-window.svg){#fig-context-window fig-alt="Three tall bars, each a context window filled from the bottom, starting with system instructions and CLAUDE.md. Mid-session, skill descriptions sit above them and the bar is full: conversation and a large block of tool results sit on top. An arrow labeled /compact leads to a second bar where the conversation and tool results are replaced by a small summary, with free space above, and the skill descriptions are replaced by only the skills you used. An arrow labeled /clear leads to a third bar with the skill descriptions back and an empty conversation. CLAUDE.md is highlighted in all three." width="100%"}
 
-**Worked example.** On Monday you tell Claude, "Never use a database for this project; JSON files only." On Wednesday you start a new session and ask for a search feature. Claude adds SQLite. It did not disobey you: Monday's sentence was in Monday's window, and Wednesday's window never contained it. Put the rule in CLAUDE.md and every session starts with it.
+**Worked example.** On Monday you tell Claude, "Never use a database for this project; JSON files only." On Wednesday you start a new session and ask for a search feature. Claude adds SQLite. It did not disobey you: Monday's sentence was in Monday's window, and Wednesday's window never contained it. Put the rule in CLAUDE.md and every session starts with it. (Claude may also have saved the rule to its auto memory, described below, but only on that computer, and Claude decides what it saves. A rule you depend on belongs in CLAUDE.md, which you write and commit.)
 
 #### CLAUDE.md: your project's memory
 
@@ -92,7 +92,20 @@ A personal tool for capturing and evaluating problems that could become product 
 - Focus on fast capture over elaborate analysis
 ```
 
-`/init` generates a starter CLAUDE.md by reading your codebase, and `/memory` opens it for editing. Keep it short: the docs suggest under 200 lines, because every line costs context on every turn and long files are followed less reliably.
+`/init` generates a starter CLAUDE.md by reading your codebase, and `/memory` opens your CLAUDE.md files, turns auto memory on or off, and shows what Claude has saved. Keep it short: the docs suggest under 200 lines, because every line costs context on every turn and long files are followed less reliably.
+
+**What to write in it.** Write what the agent cannot work out by reading the code: decisions, constraints, and traps. The code already shows which framework you use. It does not say why you chose one Supabase client over another, which file breaks if it is edited carelessly, or which commands must never run without asking. The [Agent Team Kit](https://github.com/ai-foundry-byu/agent-team-kit), a set of hooks, skills, and written practices from building production apps with several Claude Code agents at once, suggests these sections in its [guide to writing CLAUDE.md](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/docs/WRITING-CLAUDE-MD.md):
+
+| Section | What goes in it |
+|---|---|
+| What this repo is | One paragraph: the product and the stack |
+| Commands | The dev, build, test, and database commands, one line each |
+| Architecture | Where each kind of code goes, so new code lands in the right place |
+| Conventions | Naming, styling, the words used in the interface |
+| Definition of done | The checks that must pass before work counts as finished (see Done Means You Saw It Work, below) |
+| Leave alone unless asked | Lines the agent must not cross on its own: pushing, adding a new auth or database library, dropping tables |
+
+Two habits keep it useful. When a convention changes, update CLAUDE.md in the same commit as the change, because an out-of-date file misdirects every session that reads it. And test it: read it as if you were an agent that just cloned the repo. Any wrong assumption you would still make about where code goes or what done means is the next thing to write.
 
 #### Where CLAUDE.md files live
 
@@ -104,8 +117,24 @@ A personal tool for capturing and evaluating problems that could become product 
 
 All the files that apply are **combined**, not replaced: a project file adds to your personal one, and the more specific file is read last. Settings are a different thing and live in different files (`.claude/settings.json` and related files); you will meet them under permissions and hooks below.
 
+#### CLAUDE.md and auto memory
+
+Claude Code also keeps **auto memory**: notes Claude writes for itself as it works, such as a
+build command it worked out or a correction you gave it. It is on by default. The two differ in
+who writes them and where they live:
+
+| | CLAUDE.md | Auto memory |
+|---|---|---|
+| **Who writes it** | You (or Claude, when you ask) | Claude, when it decides something is worth keeping |
+| **Where it lives** | In your project folder, so it is committed with the code | In your home folder, `~/.claude/projects/<project>/memory/` |
+| **What loads** | The whole file, every session | An index file, `MEMORY.md` (its first 200 lines), every session; the rest when Claude needs it |
+| **Who else gets it** | Anyone who clones the repo, and web sessions | Nobody. The terminal, VS Code, and the desktop app on the same computer share it; another computer, a teammate, or a web session does not |
+
+Check what Claude has saved with `/memory`. When a saved note matters to the project, move it
+into CLAUDE.md so it reaches everyone who works on the code.
+
 ::: {.callout-tip title="Try it"}
-Run `/context` in a session and find your CLAUDE.md in the list. Then: (1) tell Claude a project rule in chat, run `/clear`, and ask it what the rule is. (2) Put the rule in CLAUDE.md, run `/clear`, and ask again. Explain the difference in one sentence.
+Run `/context` in a session and find your CLAUDE.md in the list. Then: (1) tell Claude a project rule in chat, run `/clear`, and ask it what the rule is. (If Claude remembers it anyway, check `/memory`: it may have saved the rule to auto memory.) (2) Put the rule in CLAUDE.md, run `/clear`, and ask again. Explain the difference in one sentence.
 :::
 
 <!-- learn -->
@@ -118,7 +147,7 @@ A slash command is recognized at the start of a message; anything after it is it
 |---------|--------------|
 | `/help` | Show available commands |
 | `/init` | Write a starter CLAUDE.md for this project |
-| `/memory` | Open your CLAUDE.md files for editing |
+| `/memory` | Open your CLAUDE.md files, turn auto memory on or off, and browse what Claude has saved |
 | `/context` | Show what is filling the context window |
 | `/clear` | Start a new conversation with empty context (CLAUDE.md still loads) |
 | `/compact` | Summarize the conversation so far to free up context, and keep going on the same task |
@@ -190,6 +219,16 @@ turn, so every line costs context all the time. A skill's full instructions load
 used. The rule of thumb: **standing facts go in CLAUDE.md; a procedure you need sometimes goes in a skill.**
 
 Skills worth creating: `feedback-synthesis` (synthesize several interviews or test sessions), `component-review` (review a React component), `api-design` (design an endpoint), `test-generator` (test cases for a component). To use a skill in every project, copy its folder to `~/.claude/skills/`. A **plugin** is a package that bundles skills, hooks, subagents, and MCP servers so others can install them with `/plugin`.
+
+The Agent Team Kit's [skills guide](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/docs/SKILLS.md) gives two tests for when a procedure should become a skill. If you have explained the same careful procedure to an agent twice, write it down once as a skill. If an action is expensive to get wrong (a release, a database migration), write a skill that fixes the safe order of steps, so the agent does not improvise it. The kit's own skills are worked examples to copy and adapt:
+
+| Skill | What it does |
+|---|---|
+| [`regression-check`](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/skills/regression-check/SKILL.md) | Before a change to shared code is finished, lists every caller of what changed and the features behind them, then adds a test of each affected feature's user-facing behavior |
+| [`fix-bug`](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/skills/fix-bug/SKILL.md) | Loads a bug report and requires the agent to reproduce the bug before changing code, keeping what the user saw separate from the user's guess at the cause |
+| [`spec`](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/skills/spec/SKILL.md) and [`build-spec`](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/skills/build-spec/SKILL.md) | Turns an exploration into a written spec and stops for your approval; then builds it one item at a time, closing each acceptance criterion with the check the spec named |
+| [`ux-critique`](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/skills/ux-critique/SKILL.md) | Uses the app in a browser through one flow; at each step predicts what a user would expect, acts, and records where the result differs |
+| [`push`](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/skills/push/SKILL.md) | Turns "ship it" into a fixed sequence: release notes, version bump, commit only those files, then push |
 
 ::: {.callout-tip title="Try it"}
 You have three things to tell Claude: "We use Supabase for the database," "To publish a release: bump the version, write notes, tag, push," and "Never commit to main." Decide which goes in CLAUDE.md, which in a skill, and which belongs in neither (hint: the next section).
@@ -298,6 +337,38 @@ exit `2`, and Claude continues instead of stopping.
 **Block commits to main** (`PreToolUse`, matcher `Bash`): if the command is a `git commit` and the
 current branch is `main`, exit `2`.
 
+**Block git commands that throw away uncommitted work** (`PreToolUse`, matcher `Bash`).
+`git reset --hard`, `git checkout -- .`, and `git clean -f` act on every file in the folder. With
+one session they are ordinary commands. With two sessions in the same folder, one session can
+erase an hour of the other's uncommitted work, and there is no commit to recover it from. A hook
+turns the command into a refusal with a reason. Register it like the `.env` hook above, with
+matcher `Bash`:
+
+```bash
+#!/bin/bash
+# Block git commands that discard uncommitted work or rewrite pushed history
+CMD=$(jq -r '.tool_input.command')
+if echo "$CMD" | grep -Eq 'git (reset --hard|checkout -- \.|clean -[a-z]*f)|git push.* (--force|-f)( |$)'; then
+  echo "Blocked: this command discards uncommitted work or rewrites pushed history. Commit first, or ask the user." >&2
+  exit 2
+fi
+exit 0
+```
+
+The Agent Team Kit's [`bash-guard`](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/hooks/scripts/bash-guard.mjs) does this and more, including
+blocking `git add -A` so one session cannot commit another session's half-finished files; the
+reasoning is in its [hooks reference](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/docs/HOOKS.md). Like a Bash permission rule, it matches
+the text of the command, so it catches the usual ways of writing these commands, not every
+possible one.
+
+**Flag a file that has grown too large** (`PostToolUse`, matcher `Edit|Write`). Agents tend to add
+to an existing file rather than split it, so files in an agent-built app grow to thousands of
+lines. The kit's [file-size check](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/hooks/scripts/file-size-budget.mjs) caps new files at a set
+length (800 lines by default), lets files already over the cap shrink but never grow, and tells
+Claude as soon as an edit crosses the line. Treat a file over the cap as a reason to check whether
+it still does one job, and split it where it divides naturally. Deleting comments to get under the
+number leaves the problem in place ([why the guard works this way](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/memory-pack/arch-guards-as-alarms.md)).
+
 #### Git hooks with Husky
 
 Husky is the standard way to manage Git hooks in JavaScript projects. `npm install -D husky` and
@@ -322,28 +393,29 @@ A two-minute drill. Add `Never edit .env files` to CLAUDE.md, then ask Claude: "
 
 ## Blast Radius
 
-**Before you let an agent run unattended, ask two questions: what could this break, and can I undo it?** The answers decide how much freedom to give it. Plan mode, permission modes, sandboxes, and worktrees each limit what an action can affect, in a different way.
+**An action's blast radius is everything it can change if it goes wrong. Before you let an agent work without watching, ask two questions about each kind of action: how far does it reach, and can I undo it?** The farther an action reaches, the fewer ways you have to undo it, and the less you should let the agent do it without you.
 
 #### What can be undone
 
-Claude Code takes a **checkpoint** before each prompt you send. `/rewind` (or pressing `Esc` twice) opens a menu to restore the code, the conversation, or both to an earlier point. Checkpoints are fast and local, but they only cover part of what an agent can do:
+Claude Code saves a **checkpoint** of your files before each prompt you send. `/rewind` (or `Esc` twice when the prompt is empty) opens a menu that restores the code, the conversation, or both to an earlier prompt. A checkpoint records only the changes Claude makes with its own file-editing tool. It does not record what a shell command does, and it has no way to reach anything outside your laptop.
 
-| Action | Undone by `/rewind`? | What you need instead |
-|---|---|---|
-| Claude edits a file with its edit tools | Yes | |
-| Claude deletes or moves files with a shell command (`rm`, `mv`) | **No** | Git (a commit to return to) |
-| A subagent's edits | Usually no | Git |
-| A pushed commit, a deploy, a database change, a sent email | **No** | Permission rules that stop it before it happens |
+So every action an agent takes falls into one of three groups (@fig-blast-radius):
 
-So: **anything that leaves your laptop cannot be rewound.** That is the line between actions you can let run and actions you gate. Checkpoints do not replace git: commit before risky work, and work on a branch ([Chapter 9](09-version-control-testing-and-tech-debt.qmd)).
+1. **Claude edits a file with its edit tool.** `/rewind` puts the file back the way it was. You can let these run.
+2. **Claude runs a shell command that changes files on your laptop**, such as `rm -rf drafts/` (delete a folder and everything in it) or `mv` (move or rename a file). `/rewind` does not track these. Git can bring back any file as it was in your last commit. A file you never committed, such as your `.env` or a page you wrote this morning, is gone. Edits made by a subagent usually belong in this group too: `/rewind` does not restore them, so git is the way back. Commit before you start.
+3. **The action leaves your laptop**: a `git push` to GitHub, a deploy to Vercel, a write to your live Supabase database, an email sent through Resend. Neither `/rewind` nor the git history on your laptop can recall it. You can make a new change afterward (revert the commit, roll back the deploy, restore a backup if you have one), but by then a teammate may have pulled the code, users may have seen the page or lost their data, and the email is in someone's inbox. Approve each of these yourself, or run them yourself.
 
-![The farther an action reaches, the less you can undo it. The edge of your laptop is where undo ends.](images/diagrams/ch02-blast-radius.svg){#fig-blast-radius fig-alt="Three concentric rings. Center: Claude's file edits. Middle: local files. Outer: leaves your laptop. A dashed highlighted circle around the middle ring is labeled edge of your laptop. A table on the right: Claude's file edits are undone with /rewind, so let them run in accept-edits mode. Local files are undone with git if you committed, so commit and branch first. Anything that leaves is undone by nothing, so gate it with a deny rule, plan mode, or run it yourself." width="100%"}
+![How far an action reaches decides how you undo it. `/rewind` restores Claude's file edits, git restores files you committed, and nothing recalls an action that has left your laptop.](images/diagrams/ch02-blast-radius.svg){#fig-blast-radius fig-alt="Two panels. The left panel, labeled on your laptop, has two columns. First column: Claude edits a file with its edit tool; undo with /rewind; so let it run. Second column: a shell command deletes a folder, rm -rf drafts/; undo with git, only if the files were committed; so commit first. The right panel, labeled leaves your laptop, lists four actions: pushes to GitHub, deploys to Vercel, writes the live database, sends an email. No undo, only a new fix later (a revert, a rollback, a correction), highlighted in blue; so you approve it." width="100%"}
+
+Checkpoints do not replace git: commit before risky work, and work on a branch ([Chapter 9](09-version-control-testing-and-tech-debt.qmd)).
 
 #### The controls, from tightest to loosest
 
+Claude Code gives you several controls. Each limits something different, and you combine them so that the first group runs freely, the second runs only after a commit, and the third waits for you.
+
 | Control | What it limits |
 |---|---|
-| **Plan mode** | Read-only. Claude reads, searches, and proposes a plan; it does not edit your source until you approve |
+| **Plan mode** | Changes to your files. Claude reads files, runs commands to look around, and writes a plan; it does not edit your source until you approve the plan |
 | **Permission mode** | What runs without asking (table below) |
 | **Permission rules** | Specific tools, files, or commands always allowed, asked about, or denied |
 | **Sandbox** | An operating-system boundary around shell commands: which folders they may write and which network hosts they may reach. Off by default; turn it on with `/sandbox` (macOS, Linux, WSL2) |
@@ -354,17 +426,29 @@ Permission modes, cycled in the terminal with `Shift+Tab` (the status bar shows 
 | Mode | Runs without asking | Use it when |
 |---|---|---|
 | **Manual** (config value `default`) | Reads only | Sensitive work; you want to review every action |
-| **Accept edits** | Reads, file edits, common file commands (`mkdir`, `mv`, `cp`, `rm`) | You are iterating on code and reviewing as you go |
-| **Plan** | Reads (and safe exploration) | Exploring before changing anything |
+| **Accept edits** | Reads, file edits, and common file commands (`mkdir`, `touch`, `mv`, `cp`, `rm`, `sed`) inside your project | You are iterating on code and reviewing as you go |
+| **Plan** | Reads, plus exploring commands (no edits to your source) | Exploring before changing anything |
 | **Auto** | Most actions, with a background safety check that blocks risky ones | Long tasks where approving every prompt would be tedious |
 | **Bypass permissions** | Everything | Only inside an isolated container or virtual machine |
 
-Depending on your version and plan, a new session may start in Auto or Manual; check the status bar. Deny rules apply in every mode, including bypass.
+Depending on your version and plan, a new session may start in Auto or Manual; check the status bar. Note that Accept edits and Auto both let Claude run `rm` and `mv` without asking, which are group 2 actions: commit first.
 
-**Worked example.** You want Claude to rename a component across 40 files while you get lunch. What could it break? Files in this repo. Can you undo it? Yes, if you commit first. Accept-edits or auto mode on a fresh branch is reasonable. Both modes let Claude run shell commands (`mv`, `rm`, `sed`) that `/rewind` cannot undo, so git is the way back. Now you want it to run a migration against your live Supabase database. What could it break? Real user data. Can you undo it? Not with `/rewind`. That one waits for you: plan it, read the migration, and run it yourself or approve it explicitly, and keep a deny rule on the production command.
+For group 3, add **ask rules** for the commands that reach other people. An ask rule makes Claude Code stop and ask you every time, even in Auto mode. A deny rule blocks the command outright, in every mode, including bypass. In `.claude/settings.json`:
+
+```json
+{
+  "permissions": {
+    "ask": ["Bash(git push *)", "Bash(vercel *)", "Bash(supabase db push *)"]
+  }
+}
+```
+
+A rule matches the command as Claude writes it. It catches `git push origin main`, but it does not catch a script such as `node scripts/send-email.js` that sends an email from inside. For those, read the script before you approve it.
+
+**Worked example.** You want Claude to rename a component across 40 files while you get lunch. How far does it reach? Files in this repo, on your laptop. Can you undo it? Claude will use its edit tool for most changes, which `/rewind` covers, but a rename usually also needs `mv`, which only git covers. So commit, start a fresh branch, and let it run in Accept edits or Auto. Now you want it to run a migration against your live Supabase database. How far does it reach? Every user's data. Can you undo it? Not with `/rewind` or git. That one waits for you: have Claude plan it in plan mode, read the migration, then run it yourself or approve it when Claude Code asks.
 
 ::: {.callout-tip title="Try it"}
-For each task, name what it could break, whether `/rewind` undoes it, and the mode or rule you would use: (a) restyle every page with Tailwind; (b) delete old files in `scripts/` with `rm`; (c) `git push` to main; (d) explore an unfamiliar codebase and explain it.
+For each task, name which of the three groups it belongs to, how you would undo it, and the mode or rule you would use: (a) restyle every page with Tailwind; (b) delete old files in `scripts/` with `rm`; (c) `git push` to main; (d) explore an unfamiliar codebase and explain it.
 :::
 
 <!-- learn -->
@@ -402,6 +486,23 @@ claude --worktree fix-login     # a second, isolated session on branch worktree-
 ```
 
 This creates `.claude/worktrees/fix-login/`. Two things surprise people: a worktree is a fresh checkout, so gitignored files like `.env` are missing until you copy them in (a `.worktreeinclude` file can do it automatically), and it branches from your main branch on GitHub, not from unpushed work on your laptop. The desktop app has a worktree option when you start a session.
+
+The Agent Team Kit describes two ways to run parallel sessions and when each fits
+([worktree mode](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/docs/WORKTREE-MODE.md)):
+
+| | One shared folder | A worktree per session |
+|---|---|---|
+| How sessions are kept apart | You give each one a different part of the app | Git gives each its own folder and branch |
+| Can two sessions edit the same file? | Yes, so split the work carefully | No |
+| Extra steps | None | Copy `.env.local` and install packages in each worktree; merge each branch back |
+| Fits when | You are at the keyboard, watching each session | You start several sessions and leave them running |
+
+Either way, a worktree separates files and nothing else. Every session still uses your one
+Supabase database, and every session that starts the app starts its own dev server. Next.js moves
+a second server to the next free port (3001) and prints it, but an agent that assumes
+`localhost:3000` will test the other session's server and report that server's errors as its own.
+Tell each session to use the port its own server printed, and to stop only the server it started
+([run your own dev server](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/memory-pack/run-your-own-dev-server.md)).
 
 #### The cost
 
@@ -471,6 +572,18 @@ Your definition of done has three checks:
 **Worked example.** You ask for "a due date on each task; overdue tasks show in red." Claude adds the feature and a test: create a task due yesterday, check that `is_overdue` is true. The test passes. You run the app and every task created this morning is red. The code compared the due date (midnight at the start of that day) with the current time, so a task due today counted as overdue from the moment the day began. The test only tried a task due yesterday, so it passed. The agent's test and the agent's code missed the same case. Your acceptance criterion ("a task due today is not overdue") caught it.
 
 Better still, give the agent a check it can run itself, so it can finish the loop without you. Claude Code's best-practices guide puts it as the difference between a session you watch and one you walk away from: a test suite, a build, or a screenshot compared against a design. Then have it show evidence (the command it ran and the output) instead of telling you it worked. A `Stop` hook that runs the tests, from the section above, makes the check mandatory. [Chapter 9](09-version-control-testing-and-tech-debt.qmd) covers testing; remember that tests written by the same agent that wrote the code need your acceptance criteria to mean anything.
+
+**Match the check to the risk.** Not every change needs a run through the app. The Agent Team
+Kit's rule ([verify proportional to risk](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/memory-pack/verify-proportional-to-risk.md)): if the
+diff shows the whole effect (a changed label, a color class, a one-line fix), reading the diff and
+a type check are enough. If the change can fail in ways the diff does not show (a new layout, a
+form that saves, data loading, anything that changes state), run the app and use it. A second rule
+from the same kit ([verify with the real build](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/memory-pack/verify-with-the-real-build.md)): a
+passing type check does not mean the site will build. A page that runs in the browser and imports
+server-only code can pass `npx tsc --noEmit` and still fail `npm run build`, which is what Vercel
+runs. When a change adds or moves imports, run the build before you push. The kit's
+[definition-of-done section](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/snippets/CLAUDE-md-working-discipline.md) states these rules in a
+form you can paste into CLAUDE.md.
 
 ::: {.callout-tip title="Try it"}
 Next time Claude reports a feature done, before you look at the app, write down one behavior that would prove it works and one edge case that might break it. Then check both. Record whether the agent's own report was right.
@@ -702,6 +815,7 @@ With this in place, Claude Code reads your SDD process at the start of every ses
 - **Specs are living documents.** You will learn things while building. Update the spec so it stays the single source of truth.
 - **Don't over-specify.** If an implementation detail doesn't matter, leave it to the agent.
 - **Use AI to write specs**, then review and refine them yourself.
+- **Name the check for each acceptance criterion.** Next to each criterion, write what will confirm it: a test, a browser check that you or an agent will do, or a search of the code (for example, "every server action checks the user's role"). The Agent Team Kit's [`spec`](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/skills/spec/SKILL.md) skill requires this, on the reasoning that a criterion you cannot attach a check to is too vague to build from. Write permission criteria in both directions: who can see the feature, and who must not.
 - **Review specs before code.** Have another person, or Claude in a fresh session (`/clear`), critique the spec. A design flaw caught in a spec costs a paragraph; caught in code, it costs a rewrite.
 
 <!-- learn -->
