@@ -66,7 +66,7 @@ customers use (the term is explained under [Where This Is Going](#where-this-is-
 skills are the frame for everything that follows, and each part of the book in the sidebar is one
 of them.
 
-![](images/builder-model.png){width=60%}
+![](images/diagrams/builder-axes.svg){fig-alt="A hexagon with one builder axis at each corner, clockwise from the upper left: Agentic Workflow, Discovery, Design, Launch and Learn, AI Systems, and Application Architecture, each with an icon. Faint rings inside mark levels from the center to the edge." fig-align="center" width="70%"}
 
 | Axis | The question it answers |
 |---|---|

@@ -5,7 +5,7 @@ title: "Builder Resources"
 Curated reading, courses, and accounts for becoming an AI product builder, organized by the six
 Builder axes.
 
-![](images/builder-model.png)
+![](images/diagrams/builder-axes.svg){fig-alt="A hexagon with one builder axis at each corner, clockwise from the upper left: Agentic Workflow, Discovery, Design, Launch and Learn, AI Systems, and Application Architecture, each with an icon. Faint rings inside mark levels from the center to the edge." fig-align="center" width="70%"}
 
 **How to use this.** Do not work through it top to bottom. Find your lowest axis on your baseline
 profile, start with the one item marked **Start here**, and come back for the rest when you need

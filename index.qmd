@@ -65,7 +65,7 @@ work, and why they behave the way they do), and **Launch and Learn** (how people
 whether it worked). Each gets two weeks. You will rate
 yourself on all six in the first week and again in the last, and see how the shape changed.
 
-![](images/builder-model.png){width=60%}
+![](images/diagrams/builder-axes.svg){fig-alt="A hexagon with one builder axis at each corner, clockwise from the upper left: Agentic Workflow, Discovery, Design, Launch and Learn, AI Systems, and Application Architecture, each with an icon. Faint rings inside mark levels from the center to the edge." fig-align="center" width="70%"}
 
 Tooling is Claude Code, GitHub, Next.js, Supabase, and Vercel. You do not need to arrive
 knowing any of them. You will ship something in week one that you do not fully understand,
