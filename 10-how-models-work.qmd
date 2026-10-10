@@ -4,8 +4,8 @@ title: "How Models Work"
 
 ## Why This Matters
 
-You are building products on top of a technology most people treat as magic. Magic is a bad
-foundation for product decisions. If you do not know roughly how a model turns your prompt
+You are building products on top of a technology most people treat as inexplicable. That is a poor
+basis for product decisions. If you do not know roughly how a model turns your prompt
 into text, you cannot reason about why it fails, what it costs, where it will be confidently
 wrong, or which problems it is the wrong tool for.
 
@@ -79,8 +79,8 @@ words. Code, other languages, and unusual strings use more tokens per word.
 
 Tokenization also explains a strange failure. A model asked how many r's are in "strawberry"
 is reasoning about two or three token IDs, not ten letters, so letter-level questions were a
-classic stumble for years. Newer models often get it right; the point is that the model's view
-of text is not yours.
+common failure for years. Newer models often get it right; the point is that the model sees text
+differently from the way you do.
 
 ::: {.callout-tip title="Try it"}
 Paste the same 100-word paragraph into a tokenizer viewer (search "Claude tokenizer" or
@@ -99,7 +99,7 @@ position, since "dog bites man" and "man bites dog" use the same tokens.
 
 ![Image source: Build a Large Language Model (From Scratch) by Sebastian Raschka](images/embedding.png)
 
-The plot below squeezes embeddings into two dimensions so you can see them. Real ones have
+The plot below reduces embeddings to two dimensions so you can see them. Real ones have
 hundreds or thousands of dimensions, which is what lets them capture many kinds of similarity at
 once.
 
@@ -110,10 +110,10 @@ Where it breaks: a paper map has two dimensions and one kind of nearness. An emb
 hundreds, so two words can be close in one sense (both are animals) and far in another (one is
 formal, one is slang).
 
-The same idea powers search in your product. An embedding model can place whole sentences or
+The same idea can run search in your product. An embedding model can place whole sentences or
 documents on the map, so "how do I get my money back" lands near your refund policy even though
 they share no words. Retrieving the nearest pieces and handing them to the model is called
-retrieval-augmented generation (RAG), and Chapter 11 builds it. The catch to remember: if
+retrieval-augmented generation (RAG), and Chapter 11 builds it. Remember that if
 retrieval fetches the wrong pieces, the model answers from them anyway, fluently.
 
 ### Step 3: Attention mixes in context
@@ -150,14 +150,14 @@ model produces a stop token or hits the output limit.
 
 The pick is usually **sampled**, not the single most likely token. If "mat" has a 40 percent
 chance and "rug" 25 percent, a sampled model writes "rug" about a quarter of the time. A setting
-called **temperature** controls how adventurous the draw is: near 0 it almost always takes the
+called **temperature** controls how random the draw is: near 0 it almost always takes the
 top token; at 1 it draws in proportion to the probabilities. That is why the same prompt gives a
-different answer on a second run, and why a different early token can send the whole answer down
-a different path. Anthropic's API documentation notes that even at temperature 0 the results are
+different answer on a second run, and why a different early token can change the whole rest of
+the answer. Anthropic's API documentation notes that even at temperature 0 the results are
 not fully deterministic, and its newest models no longer let you set temperature below the
-default at all. Treat variation as a design fact.
+default at all. Design your product on the assumption that output varies.
 
-![The same probabilities, two temperatures. At low temperature nearly every run picks the top token; at temperature 1 the less likely tokens get drawn too, so repeated runs differ. Illustrative numbers.](images/diagrams/ch10-sampling-temperature.svg){#fig-sampling-temperature fig-alt="The text so far is The cat sat on the. Two bar charts give the probability of each possible next token. At low temperature, 0.2, mat gets about 91 percent, rug 9 percent, and floor, couch, bed, and other each under 1 percent. At temperature 1, mat gets 40 percent, rug 25, floor 15, couch 10, bed 6, and other 4. Below each chart are five runs of the same prompt: at low temperature all five say mat; at temperature 1 they say mat, rug, mat, floor, mat, with rug and floor highlighted." width="100%"}
+![The same probabilities, two temperatures. At low temperature nearly every run picks the top token; at temperature 1 the less likely tokens get drawn too, so repeated runs differ. Illustrative numbers.](images/diagrams/ch10-sampling-temperature.svg){#fig-sampling-temperature fig-alt="The text so far is The cat sat on the. Two bar charts give the probability of each possible next token. At temperature 0.2, mat gets about 91 percent, rug 9 percent, and floor, couch, bed, and other each under 1 percent. At temperature 1, mat gets 40 percent, rug 25, floor 15, couch 10, bed 6, and other 4. Below each chart are five runs of the same prompt: at low temperature all five say mat; at temperature 1 they say mat, rug, mat, floor, mat, with rug and floor highlighted." width="100%"}
 
 ::: {.callout-tip title="Try it"}
 Send the identical prompt five times in fresh chats: "Suggest a name for a campus app that
@@ -214,13 +214,13 @@ later stages change how the model behaves far more than what it knows.** Two sta
   answers that score well. This is **reinforcement learning from human feedback** (RLHF).
   OpenAI's InstructGPT paper found that people preferred answers from a 1.3-billion-parameter
   model trained this way over answers from the 175-billion-parameter GPT-3 it started from
-  [@ouyang2022training]. Behavior, not size, was the difference.
+  [@ouyang2022training]. The behavior training outweighed a difference of more than 100 times in size.
 
 Training on human approval has a side effect. People tend to rate agreement and flattery a
 little higher than correction, so the model learns to agree. Researchers at Anthropic found this
 tendency, called **sycophancy**, across several assistants trained this way and traced it partly
 to the human preference data itself [@sharma2023sycophancy]. In practice: if you push back on a
-correct answer, a model may cave; if you ask "isn't my idea great?", it leans toward yes. A
+correct answer, a model may abandon it; if you ask "isn't my idea great?", it leans toward yes. A
 student in this course once asked Claude, mid-review, what level of sycophantic it was at and
 whether it could turn that down to healthy criticism. That is the right instinct. Ask for the
 case against, and judge disagreement on the evidence.
@@ -262,9 +262,10 @@ the answer many times, the plausible continuation is the true one. When it did n
 fact, a recent event, a specific citation, a number), the model still produces something that
 *looks like* an answer, because looking like an answer is what it was trained to do.
 
-This is a **hallucination**: fluent, confident output that is false. It is not a malfunction.
-It comes from the same mechanism as the fluent, correct output. A model has no built-in sense
-of when it does not know; its confidence is a property of the words, not of the facts. Human
+This is a **hallucination**: fluent, confident output that is false. It comes
+from the same mechanism as the fluent, correct output, so the model is working as designed when it
+happens. A model has no built-in sense of when it does not know; its confidence reflects the
+wording and says nothing about whether the facts are right. Human
 feedback training helps (models are now often trained to say "I'm not sure"), but it does not
 remove the cause.
 
@@ -294,10 +295,10 @@ documents, the conversation so far, and the answer it writes.
 The model itself is stateless. When a chat app seems to remember your earlier message, the app
 is resending the whole conversation with every new message. When Claude Code seems to remember
 your project's conventions, it is because it loads `CLAUDE.md` into the context at the start of
-every session. This is why `/clear` wipes the slate and `/compact` replaces a long history with a
+every session. This is why `/clear` empties the context and `/compact` replaces a long history with a
 summary (Chapter 2): they are edits to working memory, the only memory there is.
 
-![Each call starts empty. The conversation exists only because the app resends the whole history every time, so call 3 carries five messages to say one new thing.](images/diagrams/ch10-stateless-calls.svg){#fig-stateless-calls fig-alt="A band across the top reads: your app keeps the history and resends all of it on every call. Below it, three API calls side by side. Call 1 sends one message: My product is Tandem. Call 2 sends three: that first message, the model reply Nice, what does it do, and the new question What is it called. Call 3 sends all five, ending with the new message Write a tagline. The newest message in each call is highlighted in blue; the others are resent. Each stack flows into a Model box labeled starts empty." width="100%"}
+![Each call starts empty. The conversation exists only because the app resends the whole history every time, so call 3 carries five messages to say one new thing.](images/diagrams/ch10-stateless-calls.svg){#fig-stateless-calls fig-alt="A band across the top reads: your app keeps the history and resends all of it on every call. Below it, three API calls side by side. Call 1 sends one message: Tandem is my study app. Call 2 sends three: that first message, the model reply Who is it for, and the new message College freshmen. Call 3 sends all five, ending with the new message Write a tagline with its name, which works only because the name from call 1 was resent. The newest message in each call is highlighted in blue; the others are resent. Each stack flows into a Model box labeled starts empty." width="100%"}
 
 Three predictions follow. A long conversation gets slower and more expensive with each turn,
 because every turn resends everything. When the window fills, something has to be dropped or
@@ -322,18 +323,18 @@ email) is software around it that reads that text and runs something.** That sof
 **harness**. When Claude Code edits your file, the model wrote a structured request such as
 "use the Edit tool on `page.tsx` with this change"; Claude Code checked its permissions, ran the
 edit, and sent the result back to the model as more text. The same model with a different
-harness has different powers, which is the point of the agent pyramid in Chapter 1.
+harness can do different things, which is the point of the agent pyramid in Chapter 1.
 
-This one fact explains a lot. An agent's power and risk come from the tools the harness exposes,
-not from the model. Permissions and hooks work because they live in the harness, where the
-model cannot argue with them. And when the model's text can trigger an action, anyone who can
+This one fact explains a lot. An agent's capabilities and risks come from the tools the harness exposes;
+the model alone only writes text. Permissions and hooks work because they live in the harness,
+where the model's output cannot override them. And when the model's text can trigger an action, anyone who can
 put text in front of the model can try to steer that action. Chapter 11 builds this loop into
 a product and covers the defenses.
 
 ### The jagged frontier
 
 **Models are superhuman at some tasks and fail at nearby tasks that look no harder. You find
-out which is which by testing your task, not by trusting the model's reputation.** Ethan
+out which is which by testing your task; the model's reputation will not tell you.** Ethan
 Mollick and colleagues named this the **jagged technological frontier** in a field experiment
 with 758 Boston Consulting Group consultants [@dellacqua2023jagged]. On tasks inside the
 frontier, consultants using GPT-4 finished more tasks, faster, at higher quality. On one task
@@ -345,7 +346,7 @@ readable version.
 
 ![The jagged frontier: tasks that look equally hard fall on either side of an uneven edge, and the edge moves with each release. The right panel shows the one BCG task designed to sit just outside it [@dellacqua2023jagged].](images/diagrams/ch10-jagged-frontier.svg){#fig-jagged-frontier fig-alt="On the left, a map of tasks divided by a jagged line. Inside the shaded region, where the model does well: write a React component, summarize a meeting. Just outside, where it fails: a fact past the cutoff, long arithmetic, exact counting. A dashed line next to the edge marks where the next release may put it. On the right, the BCG experiment with 758 consultants: on one task just outside the frontier, 84 percent got it right without AI and 60 to 70 percent using GPT-4. Many trusted a plausible, wrong answer." width="100%"}
 
-Jaggedness follows from the build. A model is strong where its training text was rich and the
+Jaggedness follows from how the model is built. A model is strong where its training text was rich and the
 task matches patterns it saw (writing a React component, summarizing a meeting). It is weak
 where the task needs something the mechanism lacks: exact counting over tokens, long arithmetic
 across a table, a fact past its cutoff, or knowing which of two plausible answers is true. The
@@ -355,7 +356,7 @@ one may appear.
 ::: {.callout-tip title="Try it"}
 Pick the one AI task at the heart of your product. Write five realistic inputs, including one
 awkward edge case. Predict which ones the model will get right, then run them. Where your
-prediction was wrong, you found the frontier for your product. This is the seed of the eval set
+prediction was wrong, you found the frontier for your product. This is the start of the eval set
 in Chapter 11.
 :::
 

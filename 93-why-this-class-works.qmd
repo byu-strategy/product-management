@@ -2,37 +2,37 @@
 title: "Why This Class Works This Way"
 ---
 
-This class is built on evidence about how people actually learn, not on tradition or guesswork. I am putting the reasoning here in the open so you can see why each piece of the course exists and get more out of it. If a part of the class feels harder than a normal lecture, that is usually the design working, not a mistake. Here is the thinking.
+This class is built on evidence about how people actually learn, not on tradition or guesswork. I am putting the reasoning here in the open so you can see why each piece of the course exists and get more out of it. If a part of the class feels harder than a normal lecture, that is usually by design, not a mistake.
 
 ## How you actually learn
 
-A handful of moves do most of the work. They are not intuitive, and most of them feel worse in the moment than the methods that don't work.
+A handful of study methods account for most of the benefit. They are not intuitive, and most of them feel worse in the moment than the methods that don't work.
 
-- **Recall, don't re-read.** Pulling an idea out of your memory is the learning event. Re-reading and highlighting feel productive but mostly build a false sense of knowing.
+- **Recall, don't re-read.** Retrieving an idea from memory is what produces the learning. Re-reading and highlighting feel productive but mostly build a false sense of knowing.
 - **Space it out.** Practice spread across several days beats the same time crammed into one session. Cramming works for tomorrow and fails for everything after.
 - **Mix it up.** Practicing different kinds of problems together beats doing one kind in a block, even though blocking feels smoother.
-- **Build the model, not the pile of facts.** Learn the few principles that explain the many details. A good mental model is worth a hundred memorized facts.
+- **Build the model, not the pile of facts.** Learn the few principles that explain the many details. A good mental model is worth more than many memorized facts.
 - **Explain it in your own words.** If you can teach it to someone else, or to Claude, you understand it. If you can't, you have found the gap.
 - **Find your wrong ideas and break them.** You already have theories about products, users, and markets. Some are wrong. The fastest way to learn is to surface them and test them to failure.
-- **Study a worked example, then practice at the edge.** See it done, then do the hard part yourself with quick feedback. Practice that stays comfortable is not developing you.
-- **Sleep.** Memory consolidates while you sleep. Trading sleep for one more hour of work usually costs you more than it buys.
+- **Study a worked example, then practice just beyond what you can already do.** See it done, then do the hard part yourself with quick feedback. Practice that stays comfortable is not developing you.
+- **Sleep.** Memory consolidates while you sleep. Trading sleep for one more hour of work usually loses more learning than the hour gains.
 
 ## Why class is run the way it is
 
 We run class as a working session rather than a lecture because that is how skills are actually built.
 
-- **Reps over speeches.** The research on elite coaching, including a study that coded John Wooden's UCLA practices act by act, found that great coaching is mostly specific, immediate, task-focused information, not inspiration. Class time is for installing skills and reviewing film, not for me talking at you.
-- **The struggle is designed.** The hard parts are on purpose. Building something real, at the edge of what you can do, with feedback, is what moves you forward.
-- **Coach the standard, not the scoreboard.** We focus on how the work is done. Do that well and the outcomes follow.
-- **Fundamentals first.** The unglamorous basics, like git, shipping, and talking to users, are what everything else stands on.
+- **Practice over lectures.** The research on elite coaching, including a study that coded John Wooden's UCLA practices act by act, found that great coaching is mostly specific, immediate, task-focused information, not inspiration. Class time is for practicing skills and reviewing your work, not for me lecturing.
+- **The struggle is designed.** The hard parts are on purpose. Building something real, at the edge of what you can do, with feedback, is what improves your skill.
+- **Process over outcomes.** We focus on how the work is done. Do that well and the outcomes follow.
+- **Fundamentals first.** The unglamorous basics, like git, shipping, and talking to users, are what everything else depends on.
 
 ## Why the assessments look the way they do
 
-The single most important idea: low-stakes work and graded judgment are two different jobs, and they want opposite stakes.
+The most important idea is that low-stakes work and graded judgment are two different jobs, and they need opposite stakes.
 
 - **Low-stakes work should be safe to fail.** Quizzes, drills, and sprint check-ins exist to cause learning, not to rank you. They are low-stakes on purpose. The point is to make your errors early and cheap, where feedback can fix them. Treat them as your best preparation, not as busywork.
-- **Judgment rides on the real work.** Most of your grade is on building an actual product, the whole game in junior form, iterated with feedback. That is the thing worth certifying, and it is the thing employers and customers care about.
-- **No single high-stakes final.** Pressure consumes the working memory you need to perform, and it hurts your best thinking most. Weight is distributed and, where possible, retakeable, so one bad day does not define you.
+- **Grades are based on the real work.** Most of your grade is on building an actual product, the whole game in junior form, iterated with feedback. That is the thing worth certifying, and it is the thing employers and customers care about.
+- **No single high-stakes final.** Pressure consumes the working memory you need to perform, and it hurts your best thinking most. Weight is distributed and, where possible, retakeable, so one bad day does not determine your grade.
 - **Feedback is about the work, not about you.** Comments aimed at the task help. Praise or criticism aimed at the self, like "you're smart" or "you're behind," mostly hurts. Expect specific, task-focused feedback.
 
 One honest warning: active, effortful learning often feels worse than a smooth lecture. Students in active classes reliably learn more while feeling like they learned less. If it feels harder, that is the method working.
@@ -41,9 +41,9 @@ One honest warning: active, effortful learning often feels worse than a smooth l
 
 There is a reason the final is scored on the quality of your product decisions and your learning, not on how many signups you got. The quality of an outcome is not the same as the quality of the decision behind it.
 
-A useful way to see it: the part of an outcome you control is roughly a product of three things, `Information × Reasoning × Execution`. Did you go get the right evidence, did you reason about it soundly, and did you ship with care. It is a product, not a sum, which means a zero anywhere sinks the whole thing. Brilliant reasoning on evidence you never gathered is a confident mistake. A great idea you never shipped is worth nothing. You cannot offset a weak factor with a strong one; your weakest link caps the result.
+A useful way to see it: the part of an outcome you control is roughly a product of three things, `Information × Reasoning × Execution`. Did you go get the right evidence, did you reason about it soundly, and did you ship with care. It is a product, not a sum, which means a zero in any factor makes the whole product zero. Brilliant reasoning on evidence you never gathered is a confident mistake. A great idea you never shipped is worth nothing. You cannot offset a weak factor with a strong one; your weakest factor limits the result.
 
-But even a strong `Information × Reasoning × Execution` does not guarantee a good outcome, because outcomes are also moved by things you do not control: timing, luck, a competitor's move, the market. Judging a decision only by how it happened to turn out has a name, *resulting*, and it is a good way to learn the wrong lesson. A rushed product can get lucky signups; a thoughtful one can find three real users and a hard truth. We grade the part you control, because that is the part that makes you better.
+But even a strong `Information × Reasoning × Execution` does not guarantee a good outcome, because outcomes are also affected by things you do not control: timing, luck, a competitor's move, the market. Judging a decision only by how it happened to turn out has a name, *resulting*, and it is a good way to learn the wrong lesson. A rushed product can get lucky signups; a thoughtful one can find three real users and a hard truth. We grade the part you control, because that is the part that makes you better.
 
 ## Myths this class rejects
 
@@ -54,4 +54,4 @@ But even a strong `Information × Reasoning × Execution` does not guarantee a g
 
 ## Where this comes from
 
-These principles are drawn from cognitive science and from the study of elite coaching, not from opinion. Anchors include Roediger and Karpicke on retrieval, Dunlosky and colleagues on which study strategies actually work, Sweller on cognitive load, Ericsson on deliberate practice, Perkins on learning the whole game, and Gallimore and Tharp's observational study of John Wooden. I keep a fuller, sourced version of these principles behind the course and revise it as the evidence changes. If you want to go deeper on any of it, ask.
+These principles are drawn from cognitive science and from the study of elite coaching, not from opinion. Sources include Roediger and Karpicke on retrieval, Dunlosky and colleagues on which study strategies actually work, Sweller on cognitive load, Ericsson on deliberate practice, Perkins on learning the whole game, and Gallimore and Tharp's observational study of John Wooden. I keep a fuller, sourced version of these principles behind the course and revise it as the evidence changes. If you want to go deeper on any of it, ask.

@@ -4,7 +4,7 @@ title: "Version Control, Testing, and Tech Debt"
 
 ## Why This Matters
 
-Code you cannot change is code you do not own. This chapter is about the practices that keep
+If you cannot safely change your code, you no longer control your product. This chapter is about the practices that keep
 a product changeable while an agent edits it many times a day: version control so you can undo
 anything, review and automated checks so you find out when something broke before users do, a
 way back when a bad change ships anyway, logs so you can see what users hit, and a working
@@ -266,7 +266,7 @@ the product, meeting a hard deadline such as a demo, or testing a hypothesis qui
 
 > "We know this data model won't scale past 10,000 users, but we need to launch next week to test demand. If it works, we'll rebuild the database layer."
 
-The key: you know you are taking on debt, and you have a plan to address it.
+What makes it strategic: you know you are taking on debt, and you have a plan to address it.
 
 **Accidental (inadvertent) debt** happens when nobody knew a better approach, requirements
 changed after the code was written, quick fixes became permanent, or the design was never

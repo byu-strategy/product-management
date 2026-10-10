@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1000 650" role="img" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
   <title>Before-and-after comparison versus a randomized test</title>
-  <desc>Two panels. On the left, a before-and-after comparison: last week, with the old flow, activation was 20 percent; this week it is 35 percent, but four explanations compete: the new flow, a class assignment, a club group chat post, and the noise of only 20 signups a week. The data cannot say which one moved the number. On the right, a randomized test: in the same weeks, a coin assigns each new user to group A, the old flow, or group B, the new flow. The class assignment, the club post, and everything else land on both groups about equally, so the flow is the only systematic difference, and a gap between A and B larger than chance would produce was caused by the flow.</desc>
+  <desc>Two panels. On the left, a before-and-after comparison: last week, with the old flow, activation was 20 percent; this week it is 35 percent, but four explanations compete: the new flow, a class assignment, a club group chat post, and the noise of only 20 signups a week. The data cannot say which one moved the number. On the right, a randomized test: in the same weeks, each new user is assigned at random, half to group A,, the old flow, or half to group B, the new flow. The class assignment, the club post, and everything else land on both groups about equally, so the flow is the only systematic difference, and a gap between A and B larger than chance would produce was caused by the flow.</desc>
   <defs>
     <filter id="sh" x="-15%" y="-10%" width="130%" height="130%">
       <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#0A2E4D" flood-opacity="0.12"/>
@@ -11,7 +11,7 @@
     <linearGradient id="royal" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%" stop-color="#1A6FCC"/><stop offset="100%" stop-color="#0057B8"/>
     </linearGradient>
-    <linearGradient id="coin" x1="0" y1="0" x2="0" y2="1">
+    <linearGradient id="assignFill" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%" stop-color="#2A5C8F"/><stop offset="100%" stop-color="#002E5D"/>
     </linearGradient>
     <marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
@@ -26,7 +26,7 @@
   <text x="102" y="60" font-size="24" font-weight="700" fill="#002E5D">Before and after</text>
   <text x="102" y="86" font-size="17" fill="#5A6672">This week against last week</text>
   <text x="590" y="60" font-size="24" font-weight="700" fill="#002E5D">Randomized test</text>
-  <text x="590" y="86" font-size="17" fill="#5A6672">The same weeks, split by a coin</text>
+  <text x="590" y="86" font-size="17" fill="#5A6672">The same weeks, users assigned at random</text>
   <line x1="500" y1="40" x2="500" y2="616" stroke="#E1E5EA" stroke-width="1.5"/>
   <rect x="40" y="200" width="200" height="316" rx="10" fill="url(#card)" stroke="#E1E5EA" stroke-width="1" filter="url(#sh)"/>
   <text x="140" y="236" text-anchor="middle" font-size="19" font-weight="700" fill="#002E5D">Last week</text>
@@ -54,11 +54,12 @@
   <circle cx="376" cy="150" r="6" fill="#FAFBFC" stroke="#8A939C" stroke-width="2"/>
   <rect x="250" y="142" width="16" height="16" rx="2" transform="rotate(45 258 150)" fill="#0057B8"/>
   <text x="258" y="128" text-anchor="middle" font-size="15" font-weight="600" fill="#0057B8">new flow ships</text>
-  <circle cx="744" cy="140" r="30" fill="url(#coin)" filter="url(#sh)"/>
-  <circle cx="744" cy="140" r="23" fill="none" stroke="#FFFFFF" stroke-opacity="0.35" stroke-width="1.5"/>
-  <text x="744" y="146" text-anchor="middle" font-size="15" font-weight="700" fill="#FFFFFF">coin</text>
-  <path d="M718,158 C684,176 644,178 630,192" fill="none" stroke="#8A939C" stroke-width="2" marker-end="url(#ar)"/>
-  <path d="M770,158 C804,176 844,178 858,192" fill="none" stroke="#8A939C" stroke-width="2" marker-end="url(#ar)"/>
+  <rect x="649" y="120" width="190" height="40" rx="20" fill="url(#assignFill)" filter="url(#sh)"/>
+  <text x="744" y="146" text-anchor="middle" font-size="16" font-weight="700" fill="#FFFFFF">Random assignment</text>
+  <path d="M700,160 C676,176 644,178 630,192" fill="none" stroke="#8A939C" stroke-width="2" marker-end="url(#ar)"/>
+  <path d="M788,160 C812,176 844,178 858,192" fill="none" stroke="#8A939C" stroke-width="2" marker-end="url(#ar)"/>
+  <text x="622" y="174" text-anchor="end" font-size="15" font-weight="600" fill="#5A6672">50%</text>
+  <text x="866" y="174" text-anchor="start" font-size="15" font-weight="600" fill="#5A6672">50%</text>
   <rect x="530" y="200" width="200" height="316" rx="10" fill="url(#card)" stroke="#E1E5EA" stroke-width="1" filter="url(#sh)"/>
   <text x="630" y="236" text-anchor="middle" font-size="19" font-weight="700" fill="#002E5D">Group A</text>
   <rect x="758" y="200" width="200" height="316" rx="10" fill="url(#card)" stroke="#0057B8" stroke-width="2" filter="url(#sh)"/>

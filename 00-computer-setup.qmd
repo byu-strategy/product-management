@@ -15,7 +15,7 @@ title: "Computer Setup"
 - [ ] Go to [claude.com/pricing](https://www.claude.com/pricing)
 - [ ] Sign up for **Claude Pro** ($20/month) or **Claude Max** ($100/month)
 
-A paid Claude account is required for this course. You do not have to start at the top. **Claude Pro at $20 per month is enough to get going**, and it will carry you through the early weeks. Once your build work picks up you will start running into usage limits, and that is the signal to **upgrade to Claude Max at $100 per month**. You can upgrade at any time from your account settings and it takes effect immediately, so there is no reason to pay for Max before you need it.
+A paid Claude account is required for this course. You do not have to start at the top. **Claude Pro at $20 per month is enough to get going**, and it is enough for the early weeks. Once your build work picks up you will start running into usage limits, and that is the signal to **upgrade to Claude Max at $100 per month**. You can upgrade at any time from your account settings and it takes effect immediately, so there is no reason to pay for Max before you need it.
 
 Either way, you can offset the cost by applying for a [Rollins Center Validation Grant](https://programs.byucet.org/dashboard/grant/4), which reimburses up to $500 for customer discovery and validation work on your product.
 
@@ -67,7 +67,7 @@ Now you will install the **Claude Code CLI (command-line interface)**. This tool
 Run **one** of the following commands inside the VS Code terminal, depending on your operating system.
 
 ::: {.callout-tip}
-**Troubleshooting tip:** If at any point you get stuck or something is not working as expected, take a screenshot or copy the error message and surrounding context into ChatGPT, Claude, or Gemini and ask for help troubleshooting. Follow the troubleshooting instructions and within one or two loops you should be unblocked. When errors arise, it is often because dependencies are not installed, so additional software needs to be installed first. AI chatbots will guide you through how to install these dependencies if needed.
+**Troubleshooting tip:** If at any point you get stuck or something is not working as expected, take a screenshot or copy the error message and surrounding context into ChatGPT, Claude, or Gemini and ask for help troubleshooting. Follow the troubleshooting instructions and within one or two rounds you should be able to continue. When errors arise, it is often because dependencies are not installed, so additional software needs to be installed first. AI chatbots will guide you through how to install these dependencies if needed.
 :::
 
 - [ ] Copy and paste this command into the terminal, then press **Enter**:
@@ -106,7 +106,7 @@ You will be prompted to authenticate your Claude account and will be routed to a
 
 ![](images/claude-start.png)
 
-Claude Code is now installed. We will use it to install the rest of the software you need to build full-stack applications, and to get AI leverage on many other knowledge work tasks.
+Claude Code is now installed. We will use it to install the rest of the software you need to build full-stack applications, and to use AI on many other knowledge work tasks.
 
 Paste the following prompt into the terminal where Claude Code is active:
 

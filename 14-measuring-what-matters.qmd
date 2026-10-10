@@ -10,15 +10,15 @@ Launch is the start of an experiment. This chapter is how you run it: decide wha
 before you ship, record what people actually do, follow them from arrival to coming back, tell a
 real effect from a coincidence, and decide which features to keep, change, or kill.
 
-Read a metric as [evidence](04-finding-and-validating-the-problem.qmd), not a verdict. A number moves a belief up or down; it does not certify that you are right, or that you are worthy. And remember that outcomes carry luck: a good number can follow a poor decision and a bad number a sound one [@duke2018bets]. Track what updates your beliefs about the product, not what flatters them.
+Read a metric as [evidence](04-finding-and-validating-the-problem.qmd) that moves a belief up or down. It does not certify that you are right, or that you are worthy. And remember that outcomes carry luck: a good number can follow a poor decision and a bad number a sound one [@duke2018bets]. Track what updates your beliefs about the product, not what flatters them.
 
 <!-- learn -->
 
 ## Decide What Working Means First
 
 **The model:** pick one number that moves only if the product delivers value, plus a few
-guardrails that catch you winning the number the wrong way. Write it down before launch, so the
-data cannot talk you into a new definition afterward.
+guardrails that show when the number rose for the wrong reason. Write it down before launch, so you
+cannot change the definition after you see the data.
 
 ### The North Star and the metrics under it
 
@@ -39,7 +39,7 @@ value delivered, not activity. Airbnb's is usually given as nights booked: a boo
 guest found a place and a host earned money. Amplitude's *North Star Playbook* is the standard
 reference for choosing one.
 
-Below it sit **input metrics** (levers you can pull that move the North Star), **operational
+Below it sit **input metrics** (drivers you can change that move the North Star), **operational
 metrics** (day-to-day activity), and **diagnostic metrics** (health checks that tell you something
 is broken).
 
@@ -73,7 +73,7 @@ Without the threshold and date, any result can be read as a success.
 
 ### Outcomes, not output
 
-There is a deeper vanity trap than any bad metric: measuring how much you *built* instead of whether it *worked*. Features shipped, tickets closed, lines of code: these are **output**. Whether users are better off, whether they came back, whether the problem actually got solved, is **outcome**. Marty Cagan and Melissa Perri call the habit of mistaking the first for the second the *build trap*: a team busily shipping, feeling productive, and delivering nothing that matters.
+There is a more basic mistake than any bad metric: measuring how much you *built* instead of whether it *worked*. Features shipped, tickets closed, lines of code: these are **output**. Whether users are better off, whether they came back, whether the problem actually got solved, is **outcome**. Marty Cagan and Melissa Perri call the habit of mistaking the first for the second the *build trap*: a team busily shipping, feeling productive, and delivering nothing that matters.
 
 In the AI era this trap is more dangerous, because output has never been cheaper. You can ship a feature a day now. So hold yourself to outcomes: did the North Star move, did activation improve, did a real user get real value? The goal is changing an outcome; shipping is only the means.
 
@@ -261,7 +261,7 @@ new traffic, and it helps every future visitor too. High acquisition with low ac
 **leaky bucket**: fix activation before spending more on acquisition. Pre-product-market fit,
 Activation and Retention are where to focus.
 
-![QuizMe's funnel. The step from signup to a first quiz keeps only 20 percent, so it is the first one to fix: doubling activation there gives the same 16 week-2 users as doubling traffic, with no new visitors.](images/diagrams/ch14-activation-funnel.svg){#fig-activation-funnel fig-alt="A centered funnel of four bars sized by people: 200 arrived at the landing page, 80 signed up, 16 completed a first quiz, and 8 completed a quiz in week 2. Between the bars, the share that continued: 40 percent, 20 percent, and 50 percent. The step from signing up to a first quiz is highlighted as the biggest leak: 80 percent of signups never got value." width="100%"}
+![QuizMe's funnel. The step from signup to a first quiz keeps only 20 percent, so it is the first one to fix: doubling activation there gives the same 16 week-2 users as doubling traffic, with no new visitors.](images/diagrams/ch14-activation-funnel.svg){#fig-activation-funnel fig-alt="A centered funnel of four bars sized by people: 200 arrived at the landing page, 80 signed up, 16 completed a first quiz, and 8 completed a quiz in week 2. Between the bars, the share that continued: 40 percent, 20 percent, and 50 percent. The step from signing up to a first quiz is highlighted as the biggest drop: 80 percent of signups never took a first quiz." width="100%"}
 
 ### Onboarding is the activation step
 
@@ -278,8 +278,7 @@ which step loses the largest share before you look.
 
 <!-- learn -->
 
-## Retention Is the Truth
-
+## Retention Shows Whether It Works {#retention-is-the-truth}
 **The model:** group users by the week they started and watch who returns. Averages and running
 totals hide decay, because new arrivals keep refilling the bucket.
 
@@ -301,8 +300,7 @@ Do not compute it as "users at the end of the period / users at the start": that
 arrivals as if they were retained, which is exactly the error cohorts exist to avoid.
 **Churn** = users active last period who are not active this period / users active last period.
 
-### Why totals lie
-
+### Why totals mislead {#why-totals-lie}
 Suppose a class assignment sends a new wave of signups every week:
 
 | Week | Weekly active users (total) | That week's new cohort, active one week later |
@@ -315,14 +313,14 @@ The total more than doubles. Meanwhile each new cohort keeps a smaller share tha
 the product is getting *worse* at keeping people, and only the stream of new signups hides it.
 Once the signups stop, the total falls.
 
-**Retention curves tell a story** (plot share of cohort active against weeks since signup):
+**What the shape of a retention curve means** (plot share of cohort active against weeks since signup):
 
 - Steep initial drop → first experience problem (go back to the funnel)
 - Continued decline → core value problem
 - Flattening curve → you have found people who keep using it
 - Rising curve → returning users bring others or use it more
 
-![Four shapes a cohort's retention curve can take. The one to look for is the curve that flattens: some share of the cohort keeps coming back.](images/diagrams/ch14-retention-curves.svg){#fig-retention-curves fig-alt="A line chart of the share of a cohort still active against weeks since signup, weeks 0 to 8, with four illustrative curves that all start at 100 percent. The highlighted curve flattens near 30 percent, labeled you found people who stay. In gray: a rising curve dips to about 40 percent and climbs, labeled they bring others or use it more; a steep first drop falls below 20 percent in week 1 and stays there, labeled first experience problem; and a curve that keeps falling to nearly zero, labeled core value problem." width="100%"}
+![Four shapes a cohort's retention curve can take. The one to look for is the curve that flattens: some share of the cohort keeps coming back. Illustrative curves.](images/diagrams/ch14-retention-curves.svg){#fig-retention-curves fig-alt="A line chart of the share of a cohort still active against weeks since signup, weeks 0 to 8, with four illustrative curves that all start at 100 percent. The highlighted curve flattens near 30 percent, labeled you found people who stay. In gray: a rising curve dips to about 40 percent and climbs, labeled they bring others or use it more; a steep first drop falls below 20 percent in week 1 and stays there, labeled first experience problem; and a curve that keeps falling to nearly zero, labeled core value problem." width="100%"}
 
 For benchmarks, see Lenny Rachitsky and Casey Winters, "What is good retention?" in
 [Builder Resources](97-builder-resources.qmd); at student scale the curve's shape tells you more.
@@ -353,8 +351,7 @@ WRONG:  dau = count(events where created_at in last 24h)
 RIGHT:  dau = count(distinct user_id among events where created_at in last 24h)
 ```
 
-### Retention levers
-
+### What improves retention {#retention-levers}
 | Lever | Description | Technical Implementation |
 |-------|-------------|-------------------------|
 | **Habit formation** | Make the app part of a routine the user already has | Reminders tied to a real moment (the night before the quiz) |
@@ -362,7 +359,7 @@ RIGHT:  dau = count(distinct user_id among events where created_at in last 24h)
 | **Social connection** | Users connect with others | Sharing, collaboration features |
 
 Keeping users by making it hard to leave (for example, making their data hard to export) is not a
-lever this course teaches; see [Product Morality](03-what-is-worth-building.qmd).
+method this course teaches; see [Product Morality](03-what-is-worth-building.qmd).
 
 ::: {.callout-note collapse="true" title="See it in code: retention by cohort (for your own product)"}
 Run this in the Supabase SQL editor on your events table. It counts, for each signup week, how many
@@ -400,7 +397,7 @@ ORDER BY uc.cohort_week, ua.activity_week;
 ::: {.callout-tip title="Try it"}
 Run the cohort query (or your analytics service's retention view) on your own product and draw the
 curve for your largest cohort. Predict its shape first. Then compare your total weekly active
-users with the cohort curve: does the total tell the same story?
+users with the cohort curve: does the total show the same trend?
 :::
 
 <!-- learn -->
@@ -430,12 +427,12 @@ Suppose you ship a new onboarding flow on Monday, and that week's activation rat
 ### Why random assignment works
 
 In a **randomized controlled experiment** (an **A/B test**), each new user is assigned at random
-to the old flow (A) or the new flow (B), during the same weeks. Because a coin decides who gets
+to the old flow (A) or the new flow (B), during the same weeks. Because chance alone decides who gets
 which, the class assignment, the club post, and everything else you did not think of land on both
 groups about equally. The only systematic difference between the groups is the flow. So a
 difference in outcomes, if it is larger than chance would produce, was caused by the flow.
 
-![A before-and-after comparison credits the new flow with everything that changed that week. A randomized test spreads the other changes across both groups, so the flow is the only systematic difference.](images/diagrams/ch14-before-after-vs-ab.svg){#fig-before-after-vs-ab fig-alt="Two panels. Left, before and after: last week, with the old flow, activation was 20 percent; this week it is 35 percent, but this week also had a class assignment, a club chat post, and the noise of 20 signups, so four explanations compete for one number. Right, a randomized test: a coin assigns each new user to group A with the old flow or group B with the new flow, in the same weeks; the class assignment, the club post, and everything else land in both groups, so only the flow differs, and a gap larger than chance is its effect." width="100%"}
+![A before-and-after comparison credits the new flow with everything that changed that week. A randomized test spreads the other changes across both groups, so the flow is the only systematic difference.](images/diagrams/ch14-before-after-vs-ab.svg){#fig-before-after-vs-ab fig-alt="Two panels. Left, before and after: last week, with the old flow, activation was 20 percent; this week it is 35 percent, but this week also had a class assignment, a club chat post, and the noise of 20 signups, so four explanations compete for one number. Right, a randomized test: in the same weeks, each new user is assigned at random, half to group A with the old flow and half to group B with the new flow; the class assignment, the club post, and everything else land in both groups, so only the flow differs, and a gap larger than chance is its effect." width="100%"}
 
 Ron Kohavi, Diane Tang, and Ya Xu's *Trustworthy Online Controlled Experiments* is the standard
 reference [@kohavi2020trustworthy]. One of its lessons matters most at your scale: detecting the
@@ -453,8 +450,8 @@ You can still learn honestly at student scale:
   other half, in the same week. Compare the halves, not this week with last week.
 - **Watch people.** Five usability sessions show you *why* people stall, which no number does
   (see [chapter 06](06-testing-the-design.qmd)).
-- **Say "can't tell yet."** It is a legitimate finding, and it is better than a confident story
-  built on noise.
+- **Say "can't tell yet."** It is a legitimate finding, and it is better than a confident explanation
+  based on noise.
 
 **Data-informed versus data-driven.** "The data says X, so we do X" works only when the data came
 from a clean test with enough people. Otherwise: "the data says X, combined with what we saw in
@@ -478,13 +475,13 @@ the others, with the users you actually have. What result would make you say "ca
 
 ## Keep, Change, or Kill
 
-**The model:** every feature carries an upkeep cost. Usage data tells you which features to double
-down on and which to retire.
+**The model:** every feature carries an upkeep cost. Usage data tells you which features to invest
+in and which to retire.
 
 With a coding agent, a feature costs minutes to add. It then has to keep working: every later
 change can break it, every prompt and test has to account for it, every new user has to
-understand it, and an AI feature keeps costing money per call. That is the build trap from the
-other side: output is cheap to add and expensive to carry.
+understand it, and an AI feature keeps costing money per call. This is another form of the build
+trap: a feature is cheap to add and expensive to maintain.
 
 A feature review takes ten minutes with your events:
 
@@ -495,7 +492,7 @@ A feature review takes ten minutes with your events:
 | Study streaks | 30% | Low | Weakly | Change: test whether it brings people back |
 | Dark mode | Not logged | Low | No | Can't tell: log it first |
 
-![The feature review as a grid of usage against upkeep. A feature few people use that is costly to carry, and is not the core task, is a candidate to kill; a feature you have not logged has no place on the grid yet.](images/diagrams/ch14-keep-change-kill.svg){#fig-keep-change-kill fig-alt="A two-by-two grid with share of active users who used a feature on the horizontal axis, from few to most, and upkeep cost on the vertical axis, from low to high. Top left, candidate to kill if it is not the core task: flashcard export, 5 percent, broke twice in two sprints. Top right, keep and invest, improvements pay off here: quiz from notes, 90 percent, model cost per quiz. Bottom left, change it, then test: study streaks, 30 percent, low upkeep. Bottom right, keep: used widely, cheap to carry. Off the grid, in a dashed box labeled can't tell: dark mode, not logged yet; add an event, then decide." width="100%"}
+![The feature review as a grid of usage against upkeep. A feature most active users touch is where improvements pay off; one few people use that is costly to maintain, and is not the core task, is a candidate to kill; one you have not logged has no place on the grid yet.](images/diagrams/ch14-keep-change-kill.svg){#fig-keep-change-kill fig-alt="A grid with share of active users who used a feature on the horizontal axis, from few to most, and upkeep cost on the vertical axis, from low to high. The whole right half, keep and invest, most active users touch it so improvements pay off here: quiz from notes, 90 percent, model cost per quiz. Top left, candidate to kill if it is not the core task: flashcard export, 5 percent, broke twice in two sprints. Bottom left, change it, then test whether it brings people back: study streaks, 30 percent, low upkeep. Off the grid, in a dashed box labeled can't tell: dark mode, not logged yet; add an event, then decide." width="100%"}
 
 A feature few people use, that breaks often, and that does not serve the core task is a candidate
 to remove. A feature most active users touch is where improvements pay off. A feature you cannot

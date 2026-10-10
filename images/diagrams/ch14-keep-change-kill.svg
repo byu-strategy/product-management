@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 560" role="img" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
   <title>Keep, change, or kill: usage against upkeep</title>
-  <desc>A grid of QuizMe features. The horizontal axis is the share of active users who used a feature, from few to most. The vertical axis is its upkeep cost, from low to high. The whole right half, features most active users touch, is keep and invest, because improvements pay off there; quiz from notes sits there, used by 90 percent, with model cost per quiz. Top left, few users and high upkeep, is the candidate to kill if it is not the core task; flashcard export sits there, used by 5 percent and broken twice in two sprints. Bottom left, few users and low upkeep, is change it, then test whether it brings people back; study streaks sits there at 30 percent. Off the grid, dark mode is not logged, so it cannot be judged until an event is added.</desc>
+  <desc>A grid of QuizMe features. The horizontal axis is the share of active users who used a feature, from few to most. The vertical axis is its upkeep cost, from low to high. The whole right half, features most active users touch, is keep and invest, because improvements reach the most people; quiz from notes sits there, used by 90 percent, with model cost per quiz. Top left, few users and high upkeep, is the candidate to kill if it is not the core task; flashcard export sits there, used by 5 percent and broken twice in two sprints. Bottom left, few users and low upkeep, is change it, then test whether it brings people back; study streaks sits there at 30 percent. Off the grid, dark mode is not logged, so it cannot be judged until an event is added.</desc>
   <defs>
     <filter id="sh" x="-10%" y="-10%" width="120%" height="125%">
       <feDropShadow dx="0" dy="1.5" stdDeviation="2.5" flood-color="#002E5D" flood-opacity="0.12"/>
@@ -33,7 +33,7 @@
 
   <text x="468" y="164" font-size="20" font-weight="700" fill="#0057B8">Keep and invest</text>
   <text x="468" y="188" font-size="15" fill="#5A6672">most active users touch it,</text>
-  <text x="468" y="207" font-size="15" fill="#5A6672">so improvements pay off here</text>
+  <text x="468" y="207" font-size="15" fill="#5A6672">so improvements reach the most people</text>
 
   <text x="168" y="374" font-size="20" font-weight="700" fill="#002E5D">Change it, then test</text>
   <text x="168" y="398" font-size="15" fill="#5A6672">test whether it brings people back</text>

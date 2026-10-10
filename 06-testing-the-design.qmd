@@ -4,13 +4,13 @@ title: "Testing the Design"
 
 ## Why This Matters
 
-You've built something. It works, at least on your machine. But here's an uncomfortable truth: you have no idea if it actually solves your users' problem until you watch real people try to use it.
+You've built something. It works, at least on your machine. But you do not know whether it solves your users' problem until you watch real people try to use it.
 
 **The model:** give about five real users a real task and watch what they do. Behavior shows the problem; opinions hide it. Fix the worst problem, then test again.
 
-This chapter teaches you to run a usability test, synthesize what you saw without overreacting, and close the loop by fixing and retesting.
+This chapter teaches you to run a usability test, synthesize what you saw without overreacting, and then fix the problems and test again.
 
-This is triangulation from [Finding and Validating the Problem](04-finding-and-validating-the-problem.qmd) in practice. One user is one blind man on the elephant, a single partial view. Watch enough of them and the real shape of the problem appears. No single tester, however loud or however pleased, is proof on their own.
+This is triangulation from [Finding and Validating the Problem](04-finding-and-validating-the-problem.qmd) in practice. One user shows you one partial view of the problem. Watch enough of them and the full problem appears. No single tester, however loud or however pleased, is proof on their own.
 
 <!-- learn -->
 
@@ -18,7 +18,7 @@ This is triangulation from [Finding and Validating the Problem](04-finding-and-v
 
 You built this thing. You know exactly where every button is, what every label means, why the workflow goes left to right. Your users don't. They're seeing it for the first time, bringing different mental models, and expecting it to work like other things they've used (Jakob's Law, from [Interface and Flow](05-interface-and-flow.qmd)).
 
-This is the **curse of knowledge**: once you know something, it's nearly impossible to imagine not knowing it [@heath2007stick]. The only cure is watching people who don't know.
+This is the **curse of knowledge**: once you know something, it's nearly impossible to imagine not knowing it [@heath2007stick]. The only way around it is to watch people who don't know.
 
 The same curse applies to the agent that built your app. It knows what every element was meant to do, so asking it "is this usable?" gets you the builder's view. It can review your screens against principles; it cannot be a first-time user.
 
@@ -28,7 +28,7 @@ The same curse applies to the agent that built your app. It knows what every ele
 
 Two ideas from design shape what you are testing for. Don Norman's *The Design of Everyday Things* [@norman2013design] gives you **affordances** and **signifiers**: good design makes the right action obvious, a door you push has a plate, a door you pull has a handle. When users hesitate, a signifier is usually missing. Steve Krug's *Don't Make Me Think* [@krug2014think] gives you the standard to test against: every moment a user has to stop and figure out your interface is friction you can remove.
 
-AI raises the stakes here. It will generate a screen that *looks* polished in seconds, but polish is not usability, and a good-looking interface can still make people think. Watching real users is exactly what reveals the difference, and no AI can do it in your place.
+This matters more with AI. It will generate a screen that *looks* polished in seconds, but polish is not usability, and a good-looking interface can still make people think. Watching real users is exactly what reveals the difference, and no AI can do it in your place.
 
 *From Don Norman, The Design of Everyday Things (first published 1988; revised edition 2013), and Steve Krug, Don't Make Me Think (first published 2000; revised edition 2014).*
 
@@ -41,7 +41,7 @@ Usability testing is observing real users attempt to accomplish real tasks with 
 **What usability testing reveals:**
 - Where users get stuck or confused
 - What they expect vs. what they get
-- Whether your core value proposition actually lands
+- Whether users understand your core value proposition
 - What terminology confuses them
 - Which features they ignore completely
 
@@ -58,7 +58,7 @@ Jakob Nielsen's rule of thumb, from a model he built with Thomas Landauer [@niel
 - Each additional user mostly repeats problems you have already seen, so new findings fall off fast.
 - So the better use of fifteen sessions is three rounds of five, with a fix between each round. Fixes can fail or create new problems, and only a retest shows that.
 
-![New findings fall off fast: five users find about 85 percent of the problems, and the next ten mostly repeat them. Fifteen sessions buy more as three rounds of five with a fix between. Curve after Nielsen and Landauer's model [@nielsen1993mathematical].](images/diagrams/ch06-five-users.svg){#fig-five-users fig-alt="A line chart of the share of usability problems found against users tested, from 0 to 15. The curve rises steeply, reaches about 85 percent at five users, which is highlighted, and flattens toward 100 percent; the region from 6 to 15 users is shaded and labeled Users 6 to 15 mostly repeat what you have seen. Below, three boxes of five user icons labeled Round 1, Round 2, and Round 3 are joined by arrows labeled Fix." width="100%"}
+![New findings fall off fast: five users find about 85 percent of the problems, and the next ten mostly repeat them. Fifteen sessions find more as three rounds of five with a fix between. Curve after Nielsen and Landauer's model [@nielsen1993mathematical].](images/diagrams/ch06-five-users.svg){#fig-five-users fig-alt="A line chart of the share of usability problems found against users tested, from 0 to 15. The curve rises steeply, reaches about 85 percent at five users, which is highlighted, and flattens toward 100 percent; the region from 6 to 15 users is shaded and labeled Users 6 to 15 mostly repeat what you have seen. Below, three boxes of five user icons labeled Round 1, Round 2, and Round 3 are joined by arrows labeled Fix." width="100%"}
 
 The rule assumes your testers are the same kind of user. If you have two very different groups (students who post shifts and managers who approve them, say), test three or four from each.
 
@@ -203,7 +203,7 @@ Each cycle should be as fast as possible:
 - **Measure**: Observe users with the change
 - **Learn**: Decide what to do next
 
-**Common mistake:** Building too much before measuring. Ship smaller, learn faster. In usability terms, the retest loop above is one turn of this cycle.
+**Common mistake:** Building too much before measuring. Ship smaller changes so you learn sooner. In usability terms, the retest loop above is one turn of this cycle.
 
 <!-- MOVE: "When to Pivot vs. Persevere" belongs in discovery (ch04) or ch14 Measuring What Matters because it is a decision about value, not usability. Kept here because it is on the Oct 20 midterm. -->
 
@@ -232,7 +232,7 @@ Not all feedback is equal. One user's opinion isn't a mandate.
 3. **Source**: Is this from your target user?
 4. **Alignment**: Does it fit your product vision?
 
-**Red flags that feedback is misleading:**
+**Signs that feedback is misleading:**
 - "I would want..." (hypothetical)
 - "My friend would love..." (secondhand)
 - Feature requests without a problem statement

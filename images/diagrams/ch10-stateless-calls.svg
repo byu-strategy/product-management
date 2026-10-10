@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 612" role="img" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
   <title>The model remembers nothing between calls</title>
-  <desc>Your app keeps the conversation history and resends all of it on every call. Three API calls side by side: call 1 sends one message, call 2 sends three (the first message, the model's reply, and the new question), call 3 sends all five. The newest message in each call is highlighted; the rest are resent. Each stack goes into the model, which starts empty every time.</desc>
+  <desc>A band across the top: your app keeps the history and resends all of it on every call. Three API calls side by side. Call 1 sends one message: Tandem is my study app. Call 2 sends three: that first message, the model reply Who is it for, and the new message College freshmen. Call 3 sends all five, ending with the new message Write a tagline with its name, which the model can answer only because the name from call 1 was resent. The newest message in each call is highlighted; the others are resent. Each stack flows into a Model box labeled starts empty.</desc>
   <defs>
     <linearGradient id="card" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%" stop-color="#FFFFFF"/><stop offset="100%" stop-color="#F3F6F9"/>
@@ -56,7 +56,7 @@
   <rect x="40" y="396" width="270" height="44" rx="8" fill="#0E3F6A" filter="url(#sh)"/>
   <rect x="40" y="396" width="270" height="44" rx="8" fill="url(#royalg)"/>
   <g transform="translate(54.2 407.2) scale(0.9000)" fill="none" stroke="#FFFFFF" stroke-width="2.667" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" /> <circle cx="12" cy="7" r="4" /></g>
-  <text x="88" y="424" font-size="16" font-weight="600" fill="#FFFFFF" text-anchor="start">My product is Tandem.</text>
+  <text x="88" y="424" font-size="16" font-weight="600" fill="#FFFFFF" text-anchor="start">Tandem is my study app.</text>
   <path d="M 175.0 452 L 175.0 486" fill="none" stroke="#8A939C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
   <rect x="85" y="494" width="180" height="96" rx="12" fill="url(#card)" stroke="#C7D3DF" stroke-width="1" filter="url(#sh)"/>
   <g transform="translate(106 524) scale(1.5000)" fill="none" stroke="#002E5D" stroke-width="1.600" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8" /> <rect width="16" height="12" x="4" y="8" rx="2" /> <path d="M2 14h2" /> <path d="M20 14h2" /> <path d="M15 13v2" /> <path d="M9 13v2" /></g>
@@ -66,14 +66,14 @@
   <path d="M 500.0 138 L 500.0 280" fill="none" stroke="#6495ED" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)" stroke-dasharray="2 6"/>
   <rect x="365" y="288" width="270" height="44" rx="8" fill="#FFFFFF" stroke="#D3DCE5" stroke-width="1" filter="url(#shs)"/>
   <g transform="translate(379.2 299.2) scale(0.9000)" fill="none" stroke="#5A6672" stroke-width="2.667" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" /> <circle cx="12" cy="7" r="4" /></g>
-  <text x="413" y="316" font-size="16" font-weight="400" fill="#2C3E50" text-anchor="start">My product is Tandem.</text>
+  <text x="413" y="316" font-size="16" font-weight="400" fill="#2C3E50" text-anchor="start">Tandem is my study app.</text>
   <rect x="365" y="342" width="270" height="44" rx="8" fill="url(#tint)" stroke="#D3DCE5" stroke-width="1" filter="url(#shs)"/>
   <g transform="translate(379.2 353.2) scale(0.9000)" fill="none" stroke="#5A6672" stroke-width="2.667" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8" /> <rect width="16" height="12" x="4" y="8" rx="2" /> <path d="M2 14h2" /> <path d="M20 14h2" /> <path d="M15 13v2" /> <path d="M9 13v2" /></g>
-  <text x="413" y="370" font-size="16" font-weight="400" fill="#2C3E50" text-anchor="start">Nice. What does it do?</text>
+  <text x="413" y="370" font-size="16" font-weight="400" fill="#2C3E50" text-anchor="start">Who is it for?</text>
   <rect x="365" y="396" width="270" height="44" rx="8" fill="#0E3F6A" filter="url(#sh)"/>
   <rect x="365" y="396" width="270" height="44" rx="8" fill="url(#royalg)"/>
   <g transform="translate(379.2 407.2) scale(0.9000)" fill="none" stroke="#FFFFFF" stroke-width="2.667" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" /> <circle cx="12" cy="7" r="4" /></g>
-  <text x="413" y="424" font-size="16" font-weight="600" fill="#FFFFFF" text-anchor="start">What is it called?</text>
+  <text x="413" y="424" font-size="16" font-weight="600" fill="#FFFFFF" text-anchor="start">College freshmen.</text>
   <path d="M 500.0 452 L 500.0 486" fill="none" stroke="#8A939C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
   <rect x="410" y="494" width="180" height="96" rx="12" fill="url(#card)" stroke="#C7D3DF" stroke-width="1" filter="url(#sh)"/>
   <g transform="translate(431 524) scale(1.5000)" fill="none" stroke="#002E5D" stroke-width="1.600" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8" /> <rect width="16" height="12" x="4" y="8" rx="2" /> <path d="M2 14h2" /> <path d="M20 14h2" /> <path d="M15 13v2" /> <path d="M9 13v2" /></g>
@@ -83,20 +83,20 @@
   <path d="M 825.0 138 L 825.0 172" fill="none" stroke="#6495ED" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)" stroke-dasharray="2 6"/>
   <rect x="690" y="180" width="270" height="44" rx="8" fill="#FFFFFF" stroke="#D3DCE5" stroke-width="1" filter="url(#shs)"/>
   <g transform="translate(704.2 191.2) scale(0.9000)" fill="none" stroke="#5A6672" stroke-width="2.667" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" /> <circle cx="12" cy="7" r="4" /></g>
-  <text x="738" y="208" font-size="16" font-weight="400" fill="#2C3E50" text-anchor="start">My product is Tandem.</text>
+  <text x="738" y="208" font-size="16" font-weight="400" fill="#2C3E50" text-anchor="start">Tandem is my study app.</text>
   <rect x="690" y="234" width="270" height="44" rx="8" fill="url(#tint)" stroke="#D3DCE5" stroke-width="1" filter="url(#shs)"/>
   <g transform="translate(704.2 245.2) scale(0.9000)" fill="none" stroke="#5A6672" stroke-width="2.667" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8" /> <rect width="16" height="12" x="4" y="8" rx="2" /> <path d="M2 14h2" /> <path d="M20 14h2" /> <path d="M15 13v2" /> <path d="M9 13v2" /></g>
-  <text x="738" y="262" font-size="16" font-weight="400" fill="#2C3E50" text-anchor="start">Nice. What does it do?</text>
+  <text x="738" y="262" font-size="16" font-weight="400" fill="#2C3E50" text-anchor="start">Who is it for?</text>
   <rect x="690" y="288" width="270" height="44" rx="8" fill="#FFFFFF" stroke="#D3DCE5" stroke-width="1" filter="url(#shs)"/>
   <g transform="translate(704.2 299.2) scale(0.9000)" fill="none" stroke="#5A6672" stroke-width="2.667" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" /> <circle cx="12" cy="7" r="4" /></g>
-  <text x="738" y="316" font-size="16" font-weight="400" fill="#2C3E50" text-anchor="start">What is it called?</text>
+  <text x="738" y="316" font-size="16" font-weight="400" fill="#2C3E50" text-anchor="start">College freshmen.</text>
   <rect x="690" y="342" width="270" height="44" rx="8" fill="url(#tint)" stroke="#D3DCE5" stroke-width="1" filter="url(#shs)"/>
   <g transform="translate(704.2 353.2) scale(0.9000)" fill="none" stroke="#5A6672" stroke-width="2.667" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8" /> <rect width="16" height="12" x="4" y="8" rx="2" /> <path d="M2 14h2" /> <path d="M20 14h2" /> <path d="M15 13v2" /> <path d="M9 13v2" /></g>
-  <text x="738" y="370" font-size="16" font-weight="400" fill="#2C3E50" text-anchor="start">It is called Tandem.</text>
+  <text x="738" y="370" font-size="16" font-weight="400" fill="#2C3E50" text-anchor="start">Got it.</text>
   <rect x="690" y="396" width="270" height="44" rx="8" fill="#0E3F6A" filter="url(#sh)"/>
   <rect x="690" y="396" width="270" height="44" rx="8" fill="url(#royalg)"/>
   <g transform="translate(704.2 407.2) scale(0.9000)" fill="none" stroke="#FFFFFF" stroke-width="2.667" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" /> <circle cx="12" cy="7" r="4" /></g>
-  <text x="738" y="424" font-size="16" font-weight="600" fill="#FFFFFF" text-anchor="start">Write a tagline.</text>
+  <text x="738" y="424" font-size="16" font-weight="600" fill="#FFFFFF" text-anchor="start">Write a tagline with its name.</text>
   <path d="M 825.0 452 L 825.0 486" fill="none" stroke="#8A939C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
   <rect x="735" y="494" width="180" height="96" rx="12" fill="url(#card)" stroke="#C7D3DF" stroke-width="1" filter="url(#sh)"/>
   <g transform="translate(756 524) scale(1.5000)" fill="none" stroke="#002E5D" stroke-width="1.600" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8" /> <rect width="16" height="12" x="4" y="8" rx="2" /> <path d="M2 14h2" /> <path d="M20 14h2" /> <path d="M15 13v2" /> <path d="M9 13v2" /></g>

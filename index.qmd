@@ -55,7 +55,7 @@ All other materials are available online at no cost.
 
 This course turns product managers into full-stack AI product builders. You will pick a
 problem worth solving, build a real digital product for it, put it in front of real users,
-and ship it, using AI coding agents as your primary instrument throughout.
+and ship it, using AI coding agents as your primary tool throughout.
 
 The course is organized around six builder skills: **Agentic Workflow** (putting AI to work,
 as the way you build and inside the product you build), **Discovery** (what to build, for
@@ -99,7 +99,7 @@ See the [Schedule section](00-schedule.qmd) for a weekly schedule of class topic
 
 ## Grading
 
-Most of your grade rides on building a real product across the semester, not on exams. This is deliberate. The research this course is built on says the thing worth certifying is authentic performance, the whole game done and iterated with feedback, not recall on a test. The two exams are proctored and closed book, which makes them the one place your own understanding is measured without AI assistance, and at 5% each they are deliberately low stakes. For the reasoning behind this design, see [Why This Class Works This Way](93-why-this-class-works.qmd).
+Most of your grade comes from building a real product across the semester, not on exams. This is deliberate. The research this course is built on says the thing worth certifying is authentic performance, the whole game done and iterated with feedback, not recall on a test. The two exams are proctored and closed book, which makes them the one place your own understanding is measured without AI assistance, and at 5% each they are deliberately low stakes. For the reasoning behind this design, see [Why This Class Works This Way](93-why-this-class-works.qmd).
 
 | Component | Points | % of Grade |
 |-----------|--------|------------|

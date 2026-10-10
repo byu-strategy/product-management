@@ -9,7 +9,7 @@ editor: visual
 |--------------|-----------------------------------------------------------------------------|
 | **Python**   | High-level, versatile, beginner-friendly; popular for AI, data science, and web apps. |
 | **JavaScript** | Core language of the web; runs in browsers and servers (with Node.js).       |
-| **TypeScript** | TypeScript is a superset of JavaScript — you write .ts files, but browsers and servers don’t understand TypeScript directly.
+| **TypeScript** | TypeScript is a superset of JavaScript: you write .ts files, but browsers and servers don’t understand TypeScript directly.
 Instead, TypeScript is compiled (or transpiled) into plain JavaScript. |
 | **Java**     | Object-oriented, cross-platform; widely used in enterprise apps and Android. |
 | **C**        | Low-level, fast, portable; forms the basis of many other languages.          |

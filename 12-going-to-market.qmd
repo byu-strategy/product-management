@@ -4,8 +4,8 @@ title: "Going to Market"
 
 ## Why This Matters
 
-Shipping is not launching. A deployed product with no users is a private hobby, and most
-student products die there, often because nobody was ever told about them. This chapter is
+Shipping is not launching. A deployed product with no users has not launched, and most
+student products stop there, often because nobody was ever told about them. This chapter is
 how the first people find out, why they would pick you over what they do today, and what you
 charge them without losing money on every heavy user.
 
@@ -33,7 +33,7 @@ A specific group is one you can find, speak to, and build for. A vague one ("col
 students") is none of those.
 
 Your **Ideal Customer Profile (ICP)** is a description of the customer who gets the most value
-and is easiest to reach. You already did the hard part in
+and is easiest to reach. You already did most of this work in
 [Finding and Validating the Problem](04-finding-and-validating-the-problem.qmd): the job they
 are hiring a product to do, and the interviews that showed you the pain. The ICP compresses that
 into something you can act on:
@@ -49,8 +49,8 @@ into something you can act on:
 Geoffrey Moore's *Crossing the Chasm* argues you should win a single narrow segment completely
 before you expand, a **beachhead**: a small market you can dominate, become the obvious choice
 for, and use as a base to move outward. For you, the beachhead might be one dorm, one club, one
-section of one course, one type of small business in Provo. Own that first. A product that ten
-people love beats one that a thousand people shrug at.
+section of one course, one type of small business in Provo. Win that segment first. Ten
+people who love a product are worth more than a thousand who are indifferent to it.
 
 *The beachhead and the technology adoption lifecycle are from Geoffrey Moore, Crossing the Chasm (1991) [@moore1991crossing].*
 
@@ -80,7 +80,7 @@ matters because each one depends on the one before:
 | Competitive alternatives | What would they do if you did not exist? | Interviews: what they did last time |
 | Unique attributes | What can you do that the alternative cannot? | Your product |
 | Value | What does that attribute get them? | Their words about the pain |
-| Who cares most | Which people value that the most? | The interviews where they lit up |
+| Who cares most | Which people value that the most? | The interviews where they showed the most interest |
 | Market category | What frame makes your value obvious? | The alternative they compare you to |
 
 You start from the alternative, because "better" only means something relative to what they
@@ -112,7 +112,7 @@ proposition [@moore1991crossing]; see
 > tool that shows you what you don't know yet. Unlike rereading or last year's quiz from the
 > group chat, it writes questions from this week's notes.
 
-The statement is an internal compass that informs *all* of your messaging; your tagline and
+The statement is an internal reference that informs *all* of your messaging; your tagline and
 homepage copy come from it.
 
 ### Messages that convert
@@ -158,7 +158,7 @@ person you interviewed did?
 **The model:** price on the value delivered, and check the floor: every AI call costs you money,
 so a heavy user on a flat price can cost more than they pay.
 
-A price sits between two walls:
+A price sits between a ceiling and a floor, with the alternatives as a reference point:
 
 | Wall | What sets it | Where you learn it |
 |---|---|---|
@@ -166,7 +166,7 @@ A price sits between two walls:
 | **Reference: alternatives** | What they pay now for the workaround or a substitute | Interviews, the substitute's price page |
 | **Floor: your cost to serve** | Model calls, hosting, payment fees, per user per month | Chapter 11's arithmetic, your logs |
 
-Three classic approaches each look at one wall. **Cost-plus** adds a margin to your cost (simple,
+Three classic approaches each start from one of these. **Cost-plus** adds a margin to your cost (simple,
 but ignores what the customer would pay). **Competitive** prices relative to alternatives
 (useful when customers already have a clear reference price). **Value-based** prices from what
 the problem is worth to the customer: if you save a business $10,000 a year, $2,000 a year is
@@ -190,8 +190,8 @@ Pricing is where that arithmetic becomes a business decision. The building block
 - **Gross margin per user** = price minus cost to serve, divided by price.
 
 **Worked example.** QuizMe sends about 4,000 tokens of notes and instructions and gets back about
-1,000 tokens of questions. At chapter 11's Sonnet 5 prices ($2 input, $10 output per million
-tokens):
+1,000 tokens of questions. At illustrative prices of $2 per million input tokens and $10 per million
+output tokens (check [Anthropic's pricing page](https://platform.claude.com/docs/en/about-claude/pricing) for current rates):
 
 | | Calculation | Result |
 |---|---|---|
@@ -279,7 +279,7 @@ You have someone on a call. A sales demo is a conversation built around *their* 
 different thing from the final demo in [chapter 15](15-storytelling-and-the-final-demo.qmd),
 which is a recorded story for an audience.) A 15-minute structure:
 
-1. **Set the stage (1 min):** "Thanks for joining. I want to show you [product], but first, tell me about how you currently handle [pain point]?"
+1. **Open (1 min):** "Thanks for joining. I want to show you [product], but first, tell me about how you currently handle [pain point]?"
 2. **Listen and adapt (3 min):** Let them talk. Take notes. Adjust your demo to their specific pain.
 3. **Show the moment it works (7 min):** Walk through the product on *their* use case, straight to the point where they see the value.
 4. **Handle objections (2 min):** Address questions and concerns directly.
@@ -291,16 +291,16 @@ which is a recorded story for an audience.) A 15-minute structure:
 - **"I need to think about it."** → "Totally fair. What specifically do you need to think through? Maybe I can help."
 - **"We're already using [competitor]."** → "Got it. What's working? What's not? Here's how we're different…"
 
-### The levers of persuasion
+### Six principles of persuasion {#the-levers-of-persuasion}
 
-People rarely decide on logic alone. Robert Cialdini's research names six levers that move real
+People rarely decide on logic alone. Robert Cialdini's research names six principles that influence
 decisions, worth using honestly, and worth recognizing when they are used on you:
 
 - **Social proof:** people do what similar people do. Show that others like them already use and trust you.
 - **Authority:** credible expertise persuades. Signal what makes you credible on this problem.
 - **Scarcity:** limited access or time raises perceived value: early access, a waitlist, a cohort.
 - **Reciprocity:** give first (a useful tool, real help), and people are inclined to give back.
-- **Commitment and consistency:** a small yes leads to a bigger one. Start with a low-friction ask.
+- **Commitment and consistency:** a small yes leads to a bigger one. Start with a small, easy ask.
 - **Liking:** people say yes to those they like and who are like them. Be human, specific, and warm.
 
 These amplify a true offer; they cannot substitute for one. Used to push a product that does not
@@ -352,7 +352,7 @@ customers; Notion started self-serve and now has enterprise sales.
 | Paid ads | Rarely | Costs money to test, and needs validated messaging first |
 
 ::: {.callout-tip collapse="true" title="Common Mistake: Spreading Too Thin"}
-The biggest mistake is trying every channel at once. Pick 1-2, commit for a fixed period, and measure results. If it's not working, kill it and try something else. Depth > breadth.
+The biggest mistake is trying every channel at once. Pick 1-2, commit for a fixed period, and measure results. If it's not working, stop it and try something else. Test one or two channels thoroughly.
 :::
 
 ### A second audience: the models
@@ -365,7 +365,7 @@ sites.
 ![Image source: Visual Capitalist, based on a Semrush study of 150,000 citations, June 2025](images/ai-data.webp){fig-alt="A ranked bar chart titled Where AI Gets Its Facts, showing the top domains cited by LLMs such as ChatGPT and Perplexity. Reddit leads at 40.1 percent, followed by Wikipedia at 26.3, YouTube at 23.5, Google at 23.3, Yelp at 21.0, Facebook at 20.0, and Amazon at 18.7, trailing down through TripAdvisor, Mapbox, OpenStreetMap, Instagram, MapQuest, Walmart, eBay, LinkedIn, Quora, Home Depot, Yahoo, Target, and Pinterest at 4.2 percent."}
 
 Read that as a channel list. A genuinely helpful answer in the subreddit where your customers
-already are does double duty: it reaches them, and it is the kind of source a model repeats
+already are does two things: it reaches them, and it is the kind of source a model repeats
 later. The underlying advice is unchanged: be useful in public where your buyers gather. What
 has changed is where "public" is.
 
@@ -385,11 +385,10 @@ working measurement before anyone sees the link.
 ### Instrument it before you launch
 
 Do not ship a landing page without analytics on it. You will get one first wave of traffic
-and exactly one chance to learn from it, and an uninstrumented launch throws that away. Before
+and exactly one chance to learn from it, and an uninstrumented launch wastes it. Before
 you send anyone the link, write down what "working" means (one value metric, a threshold, a few
 guardrails, a date) and put event tracking on your core task. The how is in
-[Measuring What Matters](14-measuring-what-matters.qmd); the discipline is to do it now
-rather than after.
+[Measuring What Matters](14-measuring-what-matters.qmd); do it now, before launch.
 
 ### Launch in rings
 
@@ -415,7 +414,7 @@ or shift the ICP, or try the next channel.
 
 **Example.** You launched a planner for "busy students." Nobody sticks. You dig in and find that
 your few retained users are student-athletes who use one feature, the travel-week schedule, that
-you almost cut. Reposition as "the planner for student-athletes on the road" and double down on
+you almost cut. Reposition as "the planner for student-athletes on the road" and focus on
 that audience.
 
 ### Using AI on launch data

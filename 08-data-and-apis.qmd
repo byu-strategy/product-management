@@ -32,7 +32,7 @@ business database still follow [@codd1970relational]:
 
 A spreadsheet is a fair picture of one table. It breaks in two places: a database enforces
 types and rules on every write (a spreadsheet lets you type "seven" into a number column), and
-the power is in the links between tables, which a spreadsheet does not have.
+most of a database's usefulness comes from the links between tables, which a spreadsheet does not have.
 
 **From description to schema.** Take the product description and underline the nouns. "Users
 log problems they have noticed, and record interviews with people who have each problem." The
@@ -100,12 +100,12 @@ exist. `ON DELETE CASCADE` means that if a problem is deleted, its interviews ar
 **Why it is hard to change.** Once real rows sit in a table, every screen, query, and report
 depends on its shape. Splitting `name` into first and last name later means rewriting every
 existing row and every piece of code that reads it, and guessing for rows like "Madonna". Code
-can be rewritten in an afternoon; data has to be carried across. So sketch the schema before
+can be rewritten in an afternoon; data has to be migrated. So sketch the schema before
 you build, and include it in your sprint plan when a sprint adds tables.
 
 **Change it with migrations.** A **migration** is a file of SQL that makes one change to the
 schema ("add a `status` column to `problems`"), saved in your repo and applied in order. Ask
-the agent to write a migration rather than clicking columns into existence in the Supabase Table
+the agent to write a migration instead of adding columns by clicking in the Supabase Table
 Editor. A migration is reviewable, repeatable on a fresh database, and in your git history; a
 click is none of those.
 
@@ -196,7 +196,7 @@ empty interview columns. In the Supabase client the same join is written as a ne
 **The other verbs.** Reading is one of four operations, together called **CRUD**: Create
 (`INSERT`), Read (`SELECT`), Update (`UPDATE`), Delete (`DELETE`). Update and delete use the
 same `WHERE` block to pick their rows, which is why an update or delete with a missing or wrong
-filter is the most destructive one-line mistake in software: `DELETE FROM problems` with no
+filter can change or erase every row in a table with one line: `DELETE FROM problems` with no
 `WHERE` removes every row.
 
 **Indexes, in one paragraph.** To answer `WHERE owner = 'ana'`, the database either reads every
@@ -232,7 +232,7 @@ Using the two tables above, predict the result of each before opening the answer
 
 **The model:** in a Supabase app the browser queries the database directly with a key everyone
 can see (Chapter 7). So the database is the only place access can be enforced. Row level
-security (RLS) is the lock. Hiding a button is not.
+security (RLS) enforces access there. Hiding a button enforces nothing.
 
 A **policy** is a rule attached to a table that says which rows a request may touch, based on
 who is asking. The clearest way to picture it: the database silently adds the policy as an
@@ -272,7 +272,7 @@ named with their own id."
 **Worked example.** A peer-feedback app shows each student only their own feedback, because the
 page asks for `.eq('student_id', user.id)`. RLS is off. A student opens developer tools, edits
 the request to remove the filter, and downloads every student's feedback. The page's filter was
-a convenience; a `USING (auth.uid() = student_id)` policy would have been the lock.
+a convenience; a `USING (auth.uid() = student_id)` policy would have enforced the restriction.
 
 ::: {.callout-tip title="Try it: the two-account drill"}
 Create two accounts in your app, A and B. As A, create a record. Sign in as B and try to see,
@@ -322,7 +322,7 @@ means the server was the problem.
 Two failures have no status code at all: the network drops (the request never arrives) and the
 request hangs until it times out. A spinner that never stops is usually one of these.
 
-![One save, from click to answer. The numbered points are where it can fail instead, and only the first comes back with no status code.](images/diagrams/ch08-request-round-trip.svg){#fig-request-round-trip fig-alt="A sequence diagram with three columns headed by icons: Browser, Your server, Database. The browser sends POST /api/problems to the server. The server checks who is asking and whether the input is valid, sends insert the row to the database, and gets the new row back. The server answers the browser with 201 Created, and the browser checks response.ok and says what happened. Three blue numbered markers show where it can fail, listed under Can come back instead: 1, on the request, no network or a timeout, no answer at all; 2, at the server's checks, 400, 401, 403, 404 or 429, the request was the problem; 3, on the response, 500, the server was the problem." width="100%"}
+![One save, from click to answer. The numbered points are where it can fail instead, and only the first comes back with no status code.](images/diagrams/ch08-request-round-trip.svg){#fig-request-round-trip fig-alt="A sequence diagram with three columns headed by icons: Browser, Your server, Database. The browser sends POST /api/problems to the server. The server checks who is asking and whether the input is valid, sends insert the row to the database, and gets the new row back. The server answers the browser with 201 Created, and the browser checks response.ok and says what happened. Three blue numbered markers show where it can fail, listed under Can come back instead: 1, on the request, no network or a timeout, no answer at all; 2, at the server's checks, 400, 401, 403, 404 or 429, the request was the problem; 3, during the server's own work and its database call, 500, the server was the problem, sent back in place of the 201." width="100%"}
 
 ::: {.callout-note title="Analogy: a waiter"}
 Your app is the customer, the API is the waiter, the server is the kitchen. You order from a
@@ -381,7 +381,7 @@ go, including into prompts and logs.
 
 **Secrets.** Anyone holding a secret key can act as your product: spend your money on a model
 API, issue refunds through Stripe, read every row in your database. A leaked key can be used
-until you notice the bill. Keys come in two kinds, and the difference is the point:
+until you notice the bill. Keys come in two kinds, and the difference decides where each may live:
 
 | Key | Example | Where it may live | Why |
 |---|---|---|---|
@@ -423,7 +423,7 @@ it:
   that limits who may see it, including which outside services.
 - **Credentials**: passwords and keys, which should never be stored in plain text or shown back.
 
-The rule that catches builders: **sending data somewhere is copying it to that company's
+The rule builders most often miss: **sending data somewhere is copying it to that company's
 servers.** A model prompt, an analytics event, an error report, a `console.log` on the server
 (which lands in Vercel's logs), and the files you let Claude Code read all leave your database.
 Before data goes somewhere, ask: does the user or client know it goes there, does the contract
@@ -460,7 +460,7 @@ event `profile_updated` that includes the user's new phone number. Then search y
 - **CRUD**: Create, Read, Update, Delete.
 - **Index**: a sorted lookup list on a column that makes finding rows fast.
 - **RLS (Row Level Security)**: policies in the database that decide which rows each user may
-  touch; the lock in a Supabase app.
+  touch; the access control in a Supabase app.
 - **HTTP methods and status codes**: what a request asks for, and how it went (2xx, 4xx, 5xx).
 - **Rate limit (429)**: a cap on how many requests you may send in a period.
 - **Public vs. secret keys**: publishable keys ship to the browser; secret keys stay on the server.

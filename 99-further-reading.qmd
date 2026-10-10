@@ -22,7 +22,7 @@ This article explains how Claude Code differs from browser-based Claude by enabl
 
 **Source:** GitHub Spec Kit
 
-This comprehensive guide articulates a fundamental shift in software development methodology where specifications become the primary artifact that generates code, rather than code being produced from specifications. The document introduces practical workflows with automated commands (`/speckit.specify`, `/speckit.plan`, `/speckit.tasks`) and a constitutional framework with nine core articles that enforce development discipline. This resource demonstrates how templates and structured thinking can guide AI toward higher-quality specifications, creating a repeatable methodology for bridging the gap between requirements and implementation.
+This guide describes a change in software development method in which specifications become the primary artifact that generates code, rather than code being produced from specifications. The document introduces practical workflows with automated commands (`/speckit.specify`, `/speckit.plan`, `/speckit.tasks`) and a constitutional framework with nine core articles that enforce development discipline. This resource demonstrates how templates and structured thinking can guide AI toward higher-quality specifications, creating a repeatable method for turning requirements into an implementation.
 
 [Read the full guide](https://github.com/github/spec-kit/blob/main/spec-driven.md)
 
@@ -46,7 +46,7 @@ A reported look at how OpenAI builds software internally, where a human defines 
 
 ### AI-Assisted Development with Claude Code
 
-An in-depth video exploring AI-assisted development workflows and techniques using Claude Code.
+A video covering AI-assisted development workflows and techniques using Claude Code.
 
 [Watch on YouTube](https://www.youtube.com/watch?v=8rABwKRsec4)
 
@@ -61,5 +61,5 @@ An in-depth video exploring AI-assisted development workflows and techniques usi
 Looking for more resources? Check out:
 
 - [Thought Leaders](97-thought-leaders.qmd) - Product management voices, plus the accounts worth following on X
-- [Tools](98-tools.qmd) - Essential tools and platforms
+- [Tools](98-tools.qmd) - Tools and platforms
 - [Prompts](99-prompts.qmd) - Prompt engineering resources

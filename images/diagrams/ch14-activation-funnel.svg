@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 490" role="img" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
   <title>QuizMe's first two weeks as a funnel</title>
-  <desc>A centered funnel of four bars sized by people: 200 arrived at the landing page, 80 signed up, 16 completed a first quiz, and 8 completed a quiz in week 2. Between the bars, the share that continued: 40 percent, then 20 percent, then 50 percent. The step from signing up to a first quiz is highlighted as the biggest leak: 80 percent of the people who signed up never got value.</desc>
+  <desc>A centered funnel of four bars sized by people: 200 arrived at the landing page, 80 signed up, 16 completed a first quiz, and 8 completed a quiz in week 2. Between the bars, the share that continued: 40 percent, then 20 percent, then 50 percent. The step from signing up to a first quiz is highlighted as the biggest drop: 80 percent of the people who signed up never took a first quiz.</desc>
   <defs>
     <linearGradient id="bar" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%" stop-color="#1D4F82"/>
@@ -56,7 +56,7 @@
   <text x="960" y="438" text-anchor="end" font-size="17" fill="#8A939C">50% continue</text>
 
   <text x="960" y="328" text-anchor="end" font-size="20" font-weight="700" fill="#0057B8">20% continue</text>
-  <text x="430" y="316" text-anchor="end" font-size="19" font-weight="700" fill="#0057B8">The biggest leak</text>
-  <text x="430" y="338" text-anchor="end" font-size="16" fill="#2C3E50">80% of signups never got value</text>
+  <text x="430" y="316" text-anchor="end" font-size="19" font-weight="700" fill="#0057B8">The biggest drop</text>
+  <text x="430" y="338" text-anchor="end" font-size="16" fill="#2C3E50">80% of signups never took a first quiz</text>
   </g>
 </svg>

@@ -38,7 +38,7 @@ Read the canvas as two halves joined in the middle:
 
 **How the blocks combine.** Each choice forces others. Choose a self-serve channel and your
 customer relationship must be automated, which means onboarding has to work without you. Choose
-a subscription revenue stream and retention becomes the whole game, because revenue only
+a subscription revenue stream and retention becomes what matters most, because revenue only
 continues while people stay. Choose a model call as your core activity and every use of the
 product adds to your cost structure. A canvas where the blocks contradict each other (a
 $3-a-month price with a sales-led channel that needs a call per customer) is a model that cannot
@@ -46,7 +46,7 @@ work, however good each block looks alone.
 
 **Every block is a hypothesis.** Filling in the canvas does not make anything true. Mark each
 entry as *evidence* (an interview, a payment, your usage logs) or *guess*. The guesses that would
-sink the whole model if wrong are the ones to test next.
+make the whole model fail if wrong are the ones to test next.
 
 ::: {.callout-tip title="Try it"}
 Take one choice from your product (your channel, your price, or your core AI feature) and predict
@@ -128,7 +128,7 @@ make your contribution margin zero?
 **What AI can and cannot do here.** Claude can read your CLAUDE.md and codebase and draft every
 block in minutes, find the model calls in your code, check that the blocks agree with each other,
 and build a spreadsheet with working formulas. It cannot know your customers. Where your notes
-are silent, it will fill the block with something plausible, and a plausible block reads exactly
+say nothing, it will fill the block with something plausible, and a plausible block reads exactly
 like a validated one. The prompts below therefore ask it to separate evidence from guesses and
 to price from what customers already spend. Read every block it writes and ask, "how do I know
 this?"
@@ -474,7 +474,7 @@ Keep it high-level. Skip detailed optimization recommendations.
 :::
 
 **Phase 4: Synthesis and validation.** A check of the whole: do the blocks agree, and which guess
-would sink the model if it were wrong?
+would make the model fail if it were wrong?
 
 ::: {.callout-note collapse="true" title="11. Complete Business Model Review prompt"}
 ```markdown

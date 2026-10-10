@@ -4,21 +4,21 @@ title: "Finding and Validating the Problem"
 
 ## Why This Matters
 
-Building is cheap now, so the expensive mistake is building the wrong thing. **Discovery is buying
-down uncertainty before you spend weeks on an answer.** Every idea you have rests on beliefs about
+Building is cheap now, so the expensive mistake is building the wrong thing. **Discovery reduces
+uncertainty before you spend weeks on an answer.** Every idea you have rests on beliefs about
 other people: that they have this problem, that it hurts enough to change what they do, that they
 would use and pay for your fix. Discovery is the work of finding out which of those beliefs are
-true, cheaply, before a sprint of building bets on them.
+true, cheaply, before you spend a sprint building on them.
 
 Problem discovery is the process of moving from *I think this is a problem* to *I know this is a problem worth solving*. It requires talking to real people, asking the right questions, and synthesizing what you learn into actionable insights.
 
 This chapter covers finding and framing problems, gathering honest evidence, choosing who you
 build for, finding your riskiest assumption, and testing it before you build.
 
-Dan Olsen's Lean Product Process is a useful map of the whole trip. The bottom two layers are the
+Dan Olsen's Lean Product Process is a useful overview of the whole process. The bottom two layers are the
 market and are not yours to decide: who the customer is and which of their needs are underserved.
 The top three are the product and are entirely your choices: the value proposition, the feature set,
-and the UX. Product-market fit is the seam between them, and step 6 loops back through customer
+and the UX. Product-market fit is the boundary between them, and step 6 loops back through customer
 testing. This chapter is the bottom half. Chapters 5 and 6 are the top.
 
 ![Image source: The Lean Product Playbook by Dan Olsen](images/lean-product-process.png){fig-alt="A pyramid split into a market half and a product half. The market base, from the bottom, is 1 target customer and 2 underserved needs. The product top, from the bottom, is 3 value proposition, 4 feature set, and 5 UX. A double arrow between the halves is labeled product-market fit, and a dashed arrow from the top loops back down to the base labeled 6 test with customers."}
@@ -27,7 +27,7 @@ testing. This chapter is the bottom half. Chapters 5 and 6 are the top.
 
 ## Discovery Is Truth-Seeking
 
-Before the frameworks, the mindset. Strip away the tools and a product manager has one core job: to know what is actually true about a customer and their problem before spending real time and money building. Discovery is how you do that job. Everything else in this chapter, Jobs-to-be-Done, the Mom Test, interview synthesis, is machinery for replacing what you *believe* about your users with what is *true* about them, as cheaply and quickly as possible. Steve Blank gave this discipline its name, *customer development*, and its blunt motto: get out of the building [@blank2005four]. The facts you need are outside, with real people, not inside your head.
+A product manager has one core job: to know what is actually true about a customer and their problem before spending real time and money building. Discovery is how you do that job. Everything else in this chapter, Jobs-to-be-Done, the Mom Test, interview synthesis, is a method for replacing what you *believe* about your users with what is *true* about them, as cheaply and quickly as possible. Steve Blank gave this discipline its name, *customer development*, and its motto: get out of the building [@blank2005four]. The facts you need are outside, with real people, not inside your head.
 
 It helps to see where a belief can sit.
 
@@ -42,26 +42,26 @@ Those six regions each show up in real product work:
 | **Unfounded Hunch** | You believe it, it is not true, little evidence. A guess you are fond of. Cheap to hold, cheap to drop, if you are honest. |
 | **False Confidence** | You believe it, it is not true, and you feel sure. "I *know* users want this." The most dangerous place to build from, because the certainty hides the mistake. |
 | **Available but Unseen** | True, evidence exists, you have not gone to get it. A competitor already solved it, or a user would tell you in five minutes. |
-| **Undiscovered Need** | True, but no one has evidence yet. The frontier. The biggest opportunities and the biggest risks both live here. |
+| **Undiscovered Need** | True, but no one has evidence yet. The biggest opportunities and the biggest risks are both here. |
 
-The job has a shape. **Grow the overlap** by making more of your beliefs true, which means killing the false ones. **Pull truths into it** by going and finding what you do not yet know. And **push your beliefs above the evidence line**, from founded bet toward validated insight, before you bet the semester on them.
+The work has three parts. **Grow the overlap** by making more of your beliefs true, which means discarding the false ones. **Pull truths into it** by going and finding what you do not yet know. And **push your beliefs above the evidence line**, from founded bet toward validated insight, before you commit the semester to them.
 
-Two failure modes account for most dead products. The first is building from **False Confidence**: shipping a thing you were sure about and never checked. The second is never leaving **Available but Unseen**: a truth was one interview away and you built on a guess instead.
+Two failure modes account for most failed products. The first is building from **False Confidence**: shipping a thing you were sure about and never checked. The second is never leaving **Available but Unseen**: a truth was one interview away and you built on a guess instead.
 
 #### Six ways of knowing, all flawed
 
-If the map tells you where a belief sits, the next question is how you gather the evidence to move it. You have six tools, and every one of them can lie to you.
+If the map tells you where a belief sits, the next question is how you gather the evidence to move it. You have six tools, and every one of them can mislead you.
 
-| Way of knowing | How a PM uses it | How it lies to you |
+| Way of knowing | How a PM uses it | How it misleads you |
 |---|---|---|
-| **Logical reasoning** | Your own analysis, the internal logic of the idea | Armchair theorizing, confirmation bias. Feels airtight, has never met a user. |
+| **Logical reasoning** | Your own analysis, the internal logic of the idea | Armchair theorizing, confirmation bias. Seems airtight but has never been checked against a user. |
 | **Trial and error** | Shipping, A/B tests, MVP experiments | Slow and costly, and you can optimize into a dead end. |
 | **Word of others** | Competitors, analysts, "best practices," the loudest stakeholder | Cargo-culting. Their context is not your context. |
 | **Sensory experience** | Watching real users, usability tests | Tiny samples, the observer effect. You see what you expect. |
-| **Intuition** | Product sense, taste | Your gut is not your user's gut. |
-| **Epiphany** | The insight in the shower | Seductive precisely because it is unvalidated. |
+| **Intuition** | Product sense, taste | Your preferences are not your user's preferences. |
+| **Epiphany** | The insight in the shower | Feels convincing because it has not been tested. |
 
-Because each tool fails in its own way, **you triangulate**: you treat a belief as validated only when independent sources converge, an interview, plus a behavior in the data, plus a test that survives. The most common mistake is trusting a single source, usually your own logic or one enthusiastic user, and promoting it straight to certainty. That is the road to False Confidence.
+Because each tool fails in its own way, **you triangulate**: you treat a belief as validated only when independent sources converge, an interview, plus a behavior in the data, plus a test that survives. The most common mistake is trusting a single source, usually your own logic or one enthusiastic user, and promoting it straight to certainty. That leads to False Confidence.
 
 How much evidence is enough depends on the stakes. A throwaway prototype needs almost none: go build it and learn. Committing the rest of the semester to one product needs a preponderance: real interviews, a customer who lives the problem, some signal they would pay. That is exactly what the Sprint 2 conviction scoring is asking you to weigh. The posture throughout is to hold beliefs as probabilities: "I am maybe sixty percent sure" in place of "this is a great idea," and let each conversation move the number.
 
@@ -75,15 +75,15 @@ The rest of this chapter is the *how*. Jobs-to-be-Done gives you a sharper hypot
 
 ## The Five Discovery Skills
 
-Where do good problems come from? Jeff Dyer and his colleagues studied disruptive innovators and found they are not born with a creativity gene, they *behave* in five particular ways, and those behaviors are mostly learnable (their research puts creativity at roughly one-third genetic, versus about four-fifths for raw IQ). The five skills:
+Where do good problems come from? Jeff Dyer and his colleagues studied disruptive innovators and found that what sets them apart is behavior: they act in five particular ways, and those behaviors are mostly learnable (their research puts creativity at roughly one-third genetic, versus about four-fifths for raw IQ). The five skills:
 
-- **Questioning**: relentlessly asking why, why not, and what if, keeping a high ratio of questions to answers.
+- **Questioning**: repeatedly asking why, why not, and what if, keeping a high ratio of questions to answers.
 - **Observing**: watching customers and their workarounds like an anthropologist, noticing what people actually do rather than what they say.
-- **Networking**: talking with people whose perspective differs from yours, to borrow ideas from other worlds.
+- **Networking**: talking with people whose perspective differs from yours, to borrow ideas from other fields.
 - **Experimenting**: trying things, taking them apart, running small tests.
-- **Associating**: the payoff skill, connecting the inputs from the other four into a new idea.
+- **Associating**: the skill the other four feed, connecting the inputs from the other four into a new idea.
 
-This whole course is a program for practicing these. Your problem journal is Questioning and Observing; the interviews later in this chapter are Observing and Networking; your prototypes and smallest tests are Experimenting. That is the point of the practice model, and it is Dyer's finding too: these are skills you build with reps, not gifts you are born with.
+This whole course is a program for practicing these. Your problem journal is Questioning and Observing; the interviews later in this chapter are Observing and Networking; your prototypes and smallest tests are Experimenting. That is the point of the practice model, and it is Dyer's finding too: these are skills you build with practice, and you are not born with them.
 
 *The five discovery skills are from Jeff Dyer, Hal Gregersen, and Clayton Christensen, ["The Innovator's DNA,"](https://hbr.org/2009/12/the-innovators-dna) Harvard Business Review, December 2009. [@dyer2009dna]*
 
@@ -99,10 +99,10 @@ Many of the best products come from founders who were frustrated by something in
 - **Dropbox** came from Drew Houston constantly forgetting his USB drive
 - **Airbnb** came from founders who couldn't afford their San Francisco rent
 
-When you're your own customer, you have unfair advantages:
+When you're your own customer, you have three advantages:
 
 1. **Faster feedback loops**: You can test ideas immediately on yourself
-2. **Authentic insight**: You truly understand the problem's nuances
+2. **Authentic insight**: You understand the problem's nuances
 3. **Built-in motivation**: You actually want the solution to exist
 
 The limit: you are one data point. Your own pain tells you the problem exists for at least one
@@ -128,7 +128,7 @@ Your journal entries might look like:
 - "Had to manually copy data from one spreadsheet to another AGAIN"
 - "Missed a package delivery because I didn't know it was coming"
 
-These small frustrations are seeds for products. Notice that each entry passes the stranger test
+These small frustrations can become product ideas. Notice that each entry passes the stranger test
 from [What Is Worth Building](03-what-is-worth-building.qmd#problem-vs.-solution-thinking): it
 describes what happened, and none of them names an app.
 
@@ -136,9 +136,9 @@ describes what happened, and none of them names an app.
 
 ## Diverge Before You Converge
 
-There is a rhythm to good discovery: **open wide before you narrow.** Generate many candidate problems before you judge any of them, then converge deliberately on the most promising. Most people do the opposite. They seize the first idea and spend months defending it, which is just premature convergence wearing a confident face.
+Good discovery follows an order: **generate many options before you narrow.** Generate many candidate problems before you judge any of them, then converge deliberately on the most promising. Most people do the opposite. They seize the first idea and spend months defending it, which is premature convergence.
 
-So resist the urge to pick early. Your problem journal is the diverging half: capture dozens of frictions without filtering. Casting a wide net, across different people, contexts, and moments, surfaces problems you would never have reasoned your way to from your desk. Only once you have a real pile do you start scoring and cutting ([Evaluating Your Problems](#evaluating-your-problems), below). The wider you diverge, the better the thing you eventually converge on.
+So resist the urge to pick early. Your problem journal is the diverging half: capture dozens of frictions without filtering. Looking widely, across different people, contexts, and moments, surfaces problems you would never have reasoned your way to from your desk. Only once you have a long list do you start scoring and cutting ([Evaluating Your Problems](#evaluating-your-problems), below). The wider you diverge, the better the thing you eventually converge on.
 
 *Diverge/converge discipline adapted from Nile Hatch, [Expeditionary Innovation](https://github.com/nilehatch/exp_innov/). [@hatch_expeditionary]*
 
@@ -154,7 +154,7 @@ The Jobs-to-be-Done (JTBD) framework, popularized by Clayton Christensen [@chris
 
 The classic example is the milkshake [@christensen2016luck]. A fast-food chain wanted to sell more milkshakes, so they improved the recipe. Sales didn't budge. Then they asked a different question: *What job are people hiring the milkshake to do?*
 
-They discovered that most milkshakes were bought in the morning by commuters. The "job" wasn't *enjoy a delicious treat*. It was *make my boring commute more interesting while keeping me full until lunch*. Suddenly, the milkshake's competition wasn't other milkshakes; it was bananas, bagels, and donuts. The solution? Make it thicker (lasts longer), add fruit chunks (more interesting), and offer it at the drive-through (more convenient).
+They discovered that most milkshakes were bought in the morning by commuters. The "job" wasn't *enjoy a delicious treat*. It was *make my boring commute more interesting while keeping me full until lunch*. The milkshake's competition wasn't other milkshakes; it was bananas, bagels, and donuts. The fix was to make it thicker (lasts longer), add fruit chunks (more interesting), and offer it at the drive-through (more convenient).
 
 #### The JTBD Formula
 
@@ -197,7 +197,7 @@ Most products focus only on functional jobs. But emotional and social jobs often
 #### Map the whole job
 
 A job rarely happens in one moment. Mapping the whole experience, phase by phase, shows you where
-the pain actually spikes, which is usually not where you assumed. The dips are your opportunities.
+the pain is greatest, which is usually not where you assumed. The dips are your opportunities.
 
 ![Image source: Heart of the Customer](images/journey-map.png){fig-alt="A customer journey map for a persona named Paula. A band across the top divides the experience into three journey phases. Below it a line traces her emotional state from negative through positive and back down, annotated with quotes at each turn: concerned, supported, cared for, and annoyed at the final handoff. A row along the bottom lists opportunities identified at each phase."}
 
@@ -255,7 +255,7 @@ contest between four forces [@moesta2020demand]:
 ![Four forces act on every switch. Push and pull move the treasurer toward the new page; anxiety and habit hold the treasurer in place. Forces of progress from Bob Moesta.](images/diagrams/ch04-forces-of-progress.svg){#fig-forces-of-progress fig-alt="On the left, a panel with a spreadsheet icon labeled Today, Venmo plus a sign-up sheet. On the right, a panel with a checklist icon labeled New page, shows who has paid. Between them, two blue arrows point right: Push, Sunday spent matching payments, and Pull, who has paid, updated for you. Below them, two gray arrows point left: Anxiety, what if it gets a payment wrong, and Habit, everyone already Venmos the treasurer. A line at the bottom reads: they switch only when push plus pull is greater than anxiety plus habit." width="100%"}
 
 A person switches only when push plus pull outweighs anxiety plus habit. Most first products are
-all pull: the builder pictures the new thing and forgets that the old thing has a grip. The cost
+all pull: the builder pictures the new thing and forgets how hard the old habit is to leave. The cost
 of switching is real: learning a new tool, moving data, getting others to change too, and the
 risk that the new tool fails at a bad moment.
 
@@ -277,7 +277,7 @@ answer holds.
 
 ## Problem Interviews (The Mom Test)
 
-Once you have a hypothesis about the job customers are trying to do, you need to validate it with real conversations. This is where most people fail, they ask bad questions that produce misleading answers.
+Once you have a hypothesis about the job customers are trying to do, you need to validate it with real conversations. This is where most people fail: they ask bad questions that produce misleading answers.
 
 Rob Fitzpatrick's book *The Mom Test* [@fitzpatrick2013mom] identifies the core problem: if you tell your mom about your business idea, she'll say it's great. She loves you. She doesn't want to hurt your feelings. And her feedback is useless.
 
@@ -298,9 +298,9 @@ The solution is to ask questions that even your mom couldn't lie about, question
 | "How much would you pay for this?" | They'll guess to be nice | "What are you currently paying to solve this?" |
 | "Would you recommend this to friends?" | Future promise, not behavior | "Have you ever told anyone about this problem?" |
 
-#### The Magic Question
+#### The Most Useful Question {#the-magic-question}
 
-The most powerful interview question is:
+The most useful interview question is:
 
 > "Walk me through the last time you experienced this problem."
 
@@ -320,7 +320,7 @@ This forces specificity. You'll learn:
 - They take an action that costs them something: they sign up for your test, send you their real spreadsheet, or book a second conversation
 - They introduce you to others with the same problem
 
-Asking whether they can beta test is a nice moment, but it is still something they said. It
+Asking whether they can beta test is encouraging, but it is still something they said. It
 becomes evidence when they show up for the beta.
 
 #### Signs You Should Pivot
@@ -418,7 +418,7 @@ to about this?" An introduction is a did.
 After 5+ interviews, patterns emerge. Synthesize what you learned into actionable insights.
 
 ::: {.callout-note title="How many interviews is enough?"}
-There is no magic number, but there is a signal: **stop when new interviews stop surprising you.** Early on, every conversation adds something. As you approach saturation, you start hearing the same problems, quotes, and workarounds you have already heard, and the information each new interview adds drops toward zero. When two or three in a row tell you nothing new, you have enough to act. If every interview still surprises you, keep going, your net is probably too narrow.
+There is no fixed number. The rule: **stop when new interviews stop surprising you.** Early on, every conversation adds something. As you approach saturation, you start hearing the same problems, quotes, and workarounds you have already heard, and the information each new interview adds drops toward zero. When two or three in a row tell you nothing new, you have enough to act. If every interview still surprises you, keep going; your sample is probably too narrow.
 
 *The saturation ("information entropy") stop rule is from Nile Hatch, [Expeditionary Innovation](https://github.com/nilehatch/exp_innov/) [@hatch_expeditionary].*
 :::
@@ -467,7 +467,7 @@ and the person who pays for it may be different people.
 
 Geoffrey Moore's advice for new products is to win one narrow segment completely before
 expanding: a **beachhead**, a small market you can dominate and use as a base to move outward
-[@moore1991crossing]. Narrow wins early for three reasons. Narrow people share the same habit, so
+[@moore1991crossing]. A narrow segment works better early, for three reasons. Narrow people share the same habit, so
 one product can beat it. They talk to each other, so word spreads. And you can reach all of them,
 so you learn fast. For a student, a beachhead might be one dorm, one club, or one kind of small
 business in Provo. Ten people who love it teach you more than a thousand who shrug.
@@ -501,11 +501,11 @@ could talk to this week?
 
 ## Can You Reach Them? The Access Test
 
-A real, painful, frequent problem is still not an opportunity if you cannot reach the people who have it. A powerful need you cannot access is not an opportunity; it is a wish. Before you commit, run a quick access test on three questions:
+A real, painful, frequent problem is still not an opportunity if you cannot reach the people who have it. Before you commit, run a quick access test on three questions:
 
-1. **Location.** Can you find where these people already gather, online or off? If you cannot name the channel, that is a red flag.
+1. **Location.** Can you find where these people already gather, online or off? If you cannot name the channel, that is a warning sign.
 2. **Engagement.** Will they actually respond to you, answer questions, and try a prototype?
-3. **Reciprocity.** Do you have something to offer in return? Access is reciprocity, not just reach. People give you their time when the exchange feels fair.
+3. **Reciprocity.** Do you have something to offer in return? Reaching people is not enough. People give you their time when the exchange feels fair.
 
 If you cannot reach a segment cheaply now, as a student, you will not reach them cheaply as a founder. Either find a reachable beachhead within the market or reconsider the problem.
 
@@ -524,7 +524,7 @@ A worked example, from Dan Olsen:
 Note what makes this one useful: the quote and the asthma inhaler come from a real interview, not
 from imagination. A persona is a summary of evidence you already collected. The failure mode, and
 it is the easy one now, is asking an agent to generate a persona before you have talked to anyone.
-That produces a plausible character with no information in it, and it will happily confirm whatever
+That produces a plausible character with no information in it, and it will confirm whatever
 you already believed.
 
 #### Persona Template
@@ -583,7 +583,7 @@ Framework](94-problem-discovery-framework.qmd) you use in Sprint 2. Its parts:
 The first four are scored 1 to 5 (the Opportunity Score); conviction and feasibility are
 checklists. The full scales are in the framework appendix.
 
-A problem that happens rarely but is extremely painful (like planning a wedding) can be worth solving. A problem that happens constantly but is mildly annoying (like seeing ads) can also be worth solving. The sweet spot is **frequent AND painful AND people will pay**.
+A problem that happens rarely but is extremely painful (like planning a wedding) can be worth solving. A problem that happens constantly but is mildly annoying (like seeing ads) can also be worth solving. The strongest case is **frequent AND painful AND people will pay**.
 
 #### Frequency and intensity
 
@@ -591,7 +591,7 @@ Problems that occur frequently create more value when solved: a tool that saves 
 
 #### Willingness to Pay
 
-The ultimate validation: will someone exchange money to make this problem go away? This is harder to assess than frequency or intensity, but it's the most important. Score it from the highest rung of the evidence ladder you actually have.
+The strongest validation is whether someone will exchange money to make this problem go away. This is harder to assess than frequency or intensity, but it's the most important. Score it from the highest rung of the evidence ladder you actually have.
 
 **Strong signals (did and paid):**
 
@@ -607,7 +607,7 @@ The ultimate validation: will someone exchange money to make this problem go awa
 - They ask about pricing but take no step when offered one
 - They have no budget authority for this type of purchase
 
-::: {.callout-tip title="Harden your evidence"}
+::: {.callout-tip title="Strengthen your evidence"}
 Three ways to keep your scores honest:
 
 - **Quantify willingness to pay from what they already spend.** Do not ask for a number they will invent. Add up what the problem *actually* costs them today: the price of the workaround, the hours lost, the substitute they already buy. That is real willingness to pay.
@@ -625,7 +625,7 @@ misses: how well people's needs are already met. Plot potential problems on a 2x
 - **Y-axis: Importance**: How much does this matter to the customer?
 - **X-axis: Satisfaction**: How well do current solutions address it?
 
-The opportunity zone is **high importance + low satisfaction**. These are problems people care deeply about but can't solve well today. High importance with high satisfaction means the current habit already does the job, and you would have to beat it.
+The opportunity zone is **high importance + low satisfaction**. These are problems that matter a lot to people but that they can't solve well today. High importance with high satisfaction means the current habit already does the job, and you would have to beat it.
 
 ![Image source: The Lean Product Playbook by Dan Olsen](images/importance-satisfaction.png)
 
@@ -637,8 +637,8 @@ The opportunity zone is **high importance + low satisfaction**. These are proble
 work the part that decides the answer.
 
 Discovery questions arrive messy: "Is this worth building?" "Why aren't people using my app?"
-Consultants handle messy questions with a short sequence of moves, and they port directly to
-product work. This section adapts them from the Management Consulting course (STRAT 325, chapter
+Consultants handle messy questions with a short sequence of steps, and the steps apply directly
+to product work. This section adapts them from the Management Consulting course (STRAT 325, chapter
 5, *Structured Problem-Solving*, sections 1.5 to 1.8).
 
 #### Building block 1: MECE
@@ -670,7 +670,7 @@ week. Why is retention low?
 %%| label: fig-issue-tree
 %%| fig-cap: "An issue tree for low retention. The three first-level branches cover every sign-up exactly once, so the data can point to the branch that holds the problem."
 %%| fig-alt: "A tree branching left to right from the question why do only 15 of 120 sign-ups use it weekly. Three branches: never activated, meaning never joined a group, which splits into did not understand what to do and no group existed for their class; activated, then left, which splits into group never met, group met but was not useful, and their need ended because the exam passed; and still active, which leads to what do these 15 have in common."
-%%{init: {'theme':'base','themeVariables':{'fontFamily':'Inter, Helvetica Neue, Helvetica, Arial, sans-serif','fontSize':'16px','primaryColor':'#E6EEF7','primaryBorderColor':'#002E5D','primaryTextColor':'#2C3E50','lineColor':'#5A6672','secondaryColor':'#F4F6F8','tertiaryColor':'#FAFBFC','actorBkg':'#E6EEF7','actorBorder':'#002E5D','git0':'#002E5D','git1':'#0057B8','git2':'#6495ED','gitBranchLabel0':'#ffffff','gitBranchLabel1':'#ffffff'}}}%%
+%%{init: {'theme':'base','flowchart':{'curve':'basis','wrappingWidth':320,'nodeSpacing':22,'rankSpacing':56},'themeVariables':{'fontFamily':'Inter, Helvetica Neue, Helvetica, Arial, sans-serif','fontSize':'17px','primaryColor':'#F4F6F8','primaryBorderColor':'#D9DEE4','primaryTextColor':'#2C3E50','lineColor':'#8A939C'}}}%%
 flowchart LR
   Q["Why do only 15 of 120<br/>sign-ups use it weekly?"] --> A["Never activated<br/>(never joined a group)"]
   Q --> B["Activated, then left"]
@@ -681,6 +681,10 @@ flowchart LR
   B --> B2["Group met, wasn't useful"]
   B --> B3["Their need ended (exam passed)"]
   C --> C1["What do these 15 have in common?"]
+  classDef question fill:#002E5D,stroke:#002E5D,color:#FFFFFF,font-weight:700
+  classDef branch fill:#E6EEF7,stroke:#0057B8,stroke-width:2px,color:#002E5D,font-weight:600
+  class Q question
+  class A,B,C branch
 ```
 
 The tree changes what you do next. The instinct is "add features." The tree sends you to the
@@ -719,7 +723,7 @@ Two drills.
 ## The Four Risks and the Riskiest Assumption
 
 **The model:** every product idea can fail in four ways: they don't want it, they can't use it,
-we can't build it, or it doesn't work as a business. Name the assumption most likely to sink you
+we can't build it, or it doesn't work as a business. Name the assumption most likely to make it fail
 and test it first.
 
 #### What would have to be true
@@ -741,9 +745,9 @@ Marty Cagan sorts everything that has to be true into four risks [@cagan2017insp
 | **Feasibility** | Can we build it with the time, skills, data, and tools we have? | Ask Claude to build only the hardest piece in an hour (a spike) |
 | **Viability** | Does it work as a business: someone pays, costs stay below price, it is legal and allowed? | Price it in a presell; estimate cost per user (including AI API costs); check the rules |
 
-These four are a MECE split of "will this product work?": a failure in any one sinks it. Cagan's
+These four are a MECE split of "will this product work?": a failure in any one is enough to make it fail. Cagan's
 point is that teams over-test feasibility and under-test value, which is the risk most often
-wrong. AI makes this worse: an agent can retire feasibility risk for an ordinary app in an
+wrong. AI makes this worse: an agent can resolve feasibility risk for an ordinary app in an
 afternoon, and a working app is easy to mistake for proof of value. It only proves you could
 build it.
 
@@ -814,11 +818,11 @@ The concierge test is Paul Graham's "do things that don't scale" applied to disc
 
 **Learning per hour** is how you choose among them. Ask: which test answers my riskiest
 assumption, on the highest rung, in the fewest hours? For the dues tracker, a concierge test
-wins: ask three treasurers to send you their Venmo export each Sunday and send back a "who has
+is the best choice: ask three treasurers to send you their Venmo export each Sunday and send back a "who has
 paid" list you built by hand. In two weeks you learn whether they send it (did), whether they
 read the list, and whether they would pay for it, with no code at all.
 
-![The four smallest tests in rough order of effort, and the highest evidence rung each can reach. A working app shown to friends stays on the said rung for value, however much it cost to build.](images/diagrams/ch04-smallest-test.svg){#fig-smallest-test fig-alt="A chart with three rows for the evidence rungs, Paid at the top, Did in the middle, Said at the bottom, and four columns along an effort axis from fewer hours to more hours: smoke test, concierge, Wizard of Oz, presell. The smoke test has a point on Did labeled sign-up joined to a point on Paid labeled pre-order; the pre-order point is highlighted in blue with the note highest rung, fewest hours. The concierge has a solid point on Did labeled done by hand and an open point on Paid labeled if you charge, joined by a dashed line. Wizard of Oz has one point on Did labeled looks automated. Presell has one point on Paid labeled deposit. Across the Said row is a red-outlined box with a laptop icon: a working app shown to friends, said-rung evidence for value, however long it took to build." width="100%"}
+![The four smallest tests in rough order of effort, and the highest evidence rung each can reach. A working app shown to friends stays on the said rung for value, however much it cost to build.](images/diagrams/ch04-smallest-test.svg){#fig-smallest-test fig-alt="A chart with three rows for the evidence rungs, Paid at the top, Did in the middle, Said at the bottom, and four columns along an effort axis, in rough order from fewer hours to more hours: smoke test, concierge, Wizard of Oz, presell. The smoke test has a point on Did labeled sign-up joined to a point on Paid labeled pre-order. The concierge has a solid point on Did labeled done by hand and an open point on Paid labeled if you charge, joined by a dashed line. Wizard of Oz has one point on Did labeled looks automated. Presell has one point on Paid labeled deposit. Across the Said row is a red-outlined box with a laptop icon: a working app shown to friends, said-rung evidence for value, however long it took to build." width="100%"}
 
 Building is cheap now, so sometimes the build *is* the cheapest test, especially for usability
 and feasibility. But a working app tested on friends sits on the said rung for value. Whatever
@@ -844,7 +848,7 @@ At some point, you need to stop exploring and start building. This is the commit
 - You've talked to 5+ people who experience the problem
 - Multiple people show strong signals on frequency, intensity, and willingness to pay, with evidence above the said rung
 - You can name the current habit you have to beat
-- You have named your riskiest assumption, and a small test has not killed it
+- You have named your riskiest assumption, and a small test has not disproved it
 - You're excited to work on this for months
 
 **Signs you're not ready:**
@@ -926,7 +930,7 @@ covers how to turn it into [user stories](02-directing-the-agent.qmd#user-storie
 
 Discovery is not a phase you finish before building. The best product teams keep talking to customers every week, indefinitely. Teresa Torres calls this **continuous discovery**, and it fits this course exactly: you run the loop again every sprint, not once at the start.
 
-She also gives a way to keep discovery organized, the **Opportunity Solution Tree**. Start from one desired **outcome** (the thing you want to move). Branch into the **opportunities**: the specific customer needs and pains you have discovered that could move it. Under each opportunity, branch into candidate **solutions**, and under each solution, the **experiments** that would test it. The tree keeps you honest: every solution has to hang off a real, discovered opportunity, or it does not belong on the tree.
+She also gives a way to keep discovery organized, the **Opportunity Solution Tree**. Start from one desired **outcome** (the thing you want to move). Branch into the **opportunities**: the specific customer needs and pains you have discovered that could move it. Under each opportunity, branch into candidate **solutions**, and under each solution, the **experiments** that would test it. The tree enforces a rule: every solution has to sit under an opportunity you actually discovered, or it does not belong on the tree.
 
 The pieces of this chapter fit on that tree. Each experiment tests one assumption behind a
 solution, usually your riskiest, and each is tagged by one of the four risks. The smallest tests
@@ -940,15 +944,15 @@ above are your experiments.
 
 A **Minimum Viable Product** is the smallest thing you can put in front of real users that tests
 your riskiest assumption and generates learning you can act on. Eric Ries, who gave the term its
-modern use, defines it by the learning it buys with the least effort [@ries2011lean]. By that
+modern use, defines it by how much it teaches you for the least effort [@ries2011lean]. By that
 definition the smoke tests and concierge services above are MVPs: the Dropbox video was one. So
 an MVP sits on a spectrum, from no code at all to a working product with one core feature.
 
 The keyword *viable* is about honest signal: whatever you put in front of people has to deliver
 the experience well enough that their response tells you something. A broken prototype gets
-polite shrugs that you cannot read.
+polite reactions that tell you nothing.
 
-The MVP and the build-measure-learn loop behind it come from Eric Ries, *The Lean Startup* (2011) [@ries2011lean]. The loop still holds, but the AI era has flipped its balance: building is cheap now, so *measure* and *learn*, deciding what to build and confirming it worked, are where the real work moved.
+The MVP and the build-measure-learn loop behind it come from Eric Ries, *The Lean Startup* (2011) [@ries2011lean]. The loop still holds, but AI has changed its balance: building is cheap now, so *measure* and *learn*, deciding what to build and confirming it worked, now take most of the effort.
 
 ![Image source: The Lean Product Playbook by Dan Olsen [@olsen2015lean]](images/mvp.png)
 
@@ -956,7 +960,7 @@ The MVP and the build-measure-learn loop behind it come from Eric Ries, *The Lea
 
 ## Minimum Viable, or Minimum Awesome?
 
-Jeff Dyer and Nathan Furr push the MVP one step further, and it is worth taking. A merely *viable* product often tests badly: people are polite about something that barely works, so you cannot tell real demand from good manners. They argue instead for a **minimum awesome product**, still minimal, still one core action, but good enough at that one thing to genuinely delight. An awesome-at-one-thing product gives you honest signal: people either love it or they do not, which is exactly what you are trying to learn. So cut scope ruthlessly, then make the little that remains excellent.
+Jeff Dyer and Nathan Furr push the MVP one step further, and it is worth taking. A merely *viable* product often tests badly: people are polite about something that barely works, so you cannot tell real demand from good manners. They argue instead for a **minimum awesome product**, still minimal, still one core action, but good enough at that one thing that people are delighted by it. An awesome-at-one-thing product gives you honest signal: people either love it or they do not, which is exactly what you are trying to learn. So cut scope to the minimum, then make what remains excellent.
 
 *The minimum awesome product is from Nathan Furr and Jeff Dyer, [The Innovator's Method](https://hbr.org/books/chapters/the-innovators-method) (Harvard Business Review Press, 2014) [@furr2014method].*
 
@@ -964,7 +968,7 @@ Jeff Dyer and Nathan Furr push the MVP one step further, and it is worth taking.
 
 ## MVP Scoping: The Art of Cutting
 
-Most founders include too much in their MVP. They think "just one more feature" will make it viable. Wrong. Every feature adds:
+Most founders include too much in their MVP. They think "just one more feature" will make it viable. It usually does not. Every feature adds:
 
 - Development time
 - Testing complexity
@@ -1002,7 +1006,7 @@ Start with the outcome, not the feature list.
 
 <!-- MOVE: belongs in ch05 or with the spec material in ch02 because it is scoping a build, not validating a problem; kept here because chapters 01 to 06 are on the midterm. -->
 
-You'll always have more ideas than time. Use frameworks to prioritize ruthlessly.
+You'll always have more ideas than time. Use frameworks to prioritize.
 
 #### The ICE Framework
 
@@ -1029,13 +1033,13 @@ Categorize features as [@clegg1994]:
 | **Could have** | Nice to have if time permits |
 | **Won't have** | Explicitly out of scope (for now) |
 
-Be honest about what's truly "must have." Most features are "should have" at best.
+Be honest about what is "must have." Most features are "should have" at best.
 
 #### The $100 Test
 
-Here is a fast, honest way to force prioritization. Imagine you have exactly **$100 to "spend" across your candidate features.** You must allocate all of it, and you cannot spread it evenly. Put the money where the value is. The features that attract real dollars are your MVP; the ones that get a few cents are not.
+The $100 Test is a fast way to force prioritization. Imagine you have exactly **$100 to "spend" across your candidate features.** You must allocate all of it, and you cannot spread it evenly. Put the money where the value is. The features that attract real dollars are your MVP; the ones that get a few cents are not.
 
-It works because it forces trade-offs that a flat must / should / could list lets you dodge, you feel the cost of every feature you fund. Run it on yourself, and better, run it with a few target users and watch where *they* put the money.
+It works because it forces trade-offs that a flat must / should / could list lets you avoid: you feel the cost of every feature you fund. Run it on yourself, and better, run it with a few target users and watch where *they* put the money.
 
 *The $100 Test is from Nile Hatch, [Expeditionary Innovation](https://github.com/nilehatch/exp_innov/) [@hatch_expeditionary].*
 
@@ -1043,7 +1047,7 @@ It works because it forces trade-offs that a flat must / should / could list let
 
 ## Key Concepts
 
-- **Discovery**: buying down uncertainty before you spend weeks building; triangulate, and hold beliefs as probabilities
+- **Discovery**: reducing uncertainty before you spend weeks building; triangulate, and hold beliefs as probabilities
 - **Jobs-to-be-Done (JTBD)**: Customers hire products to make progress in a situation; write the job with no product in it
 - **Functional/Emotional/Social Jobs**: Three dimensions of every need
 - **Five kinds of pain**: physical, functional, financial, emotional, social

@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 592" role="img" aria-labelledby="t d" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
 <title id="t">A design system: decide once</title>
-<desc id="d">A design system shown as three layers from left to right. Tokens, the raw choices: four colors (primary, text, muted, border), a type scale of four sizes, and a spacing scale of 4, 8, 16, 24 and 32. Components, built from tokens: a button in primary, secondary and ghost variants, and in default, disabled and loading states. Patterns, components combined: a confirm dialog asking 'Give away Thursday's shift?' with Cancel and Give away buttons, assembled from existing components rather than hand-rolled. A band underneath says the decisions are written down once in CLAUDE.md so the agent reuses them on every new screen.</desc>
+<desc id="d">A design system shown as three layers from left to right. Tokens, the raw choices: four colors (primary, text, muted, border), a type scale of four sizes, and a spacing scale of 4, 8, 16, 24 and 32. Components, built from tokens: a button in primary, secondary and ghost variants, and in default, disabled and loading states. Patterns, components combined: a confirm dialog asking 'Give away Thursday's shift?' with Cancel and Give away buttons, assembled from existing components rather than rebuilt by hand. A band underneath says the decisions are written down once in CLAUDE.md so the agent reuses them on every new screen.</desc>
 <defs>
   <filter id="sh" x="-10%" y="-10%" width="120%" height="130%">
     <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#002E5D" flood-opacity="0.13"/>
@@ -95,7 +95,7 @@
 <rect x="835.0" y="322" width="95.0" height="42" rx="8" fill="url(#royalG)"/>
 <text x="882.5" y="349" font-size="16" font-weight="600" fill="#fff" text-anchor="middle">Give away</text>
 <text x="712" y="418" font-size="15" fill="#5A6672">Assembled from components,</text>
-<text x="712" y="438" font-size="15" fill="#5A6672">never hand-rolled</text>
+<text x="712" y="438" font-size="15" fill="#5A6672">never rebuilt by hand</text>
 <rect x="30" y="498" width="940" height="64" rx="10" fill="url(#stepG)" stroke="#B9D0EA" stroke-width="1.5"/>
 <rect x="48" y="508" width="44" height="44" rx="8" fill="#fff" stroke="#B9D0EA" stroke-width="1.2"/>
 <g transform="translate(58,518) scale(1.0000)" fill="none" stroke="#002E5D" stroke-width="1.800" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />

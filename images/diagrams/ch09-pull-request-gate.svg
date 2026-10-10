@@ -27,7 +27,7 @@
   <g transform="translate(782.0,322.0) scale(0.667)" fill="none" stroke="#FFFFFF" stroke-width="3.30" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="18" r="3" /> <circle cx="6" cy="6" r="3" /> <path d="M6 21V9a9 9 0 0 0 9 9" /></g>
   <rect x="222" y="88" width="150" height="30" rx="15" fill="#FFFFFF" stroke="#6495ED" stroke-width="1.5"/>
   <text x="297" y="109" font-size="15" font-weight="600" text-anchor="middle" font-family="Menlo, Consolas, monospace" fill="#0057B8">feature-rating</text>
-  <text x="360" y="188" font-size="16" text-anchor="middle" fill="#5A6672">build and break safely</text>
+  <text x="360" y="188" font-size="16" text-anchor="middle" fill="#5A6672">work here without touching main</text>
   <rect x="40" y="375" width="72" height="30" rx="15" fill="url(#gNavy)" stroke="#002E5D" stroke-width="1"/>
   <text x="76" y="396" font-size="15" font-weight="600" text-anchor="middle" font-family="Menlo, Consolas, monospace" fill="#FFFFFF">main</text>
   <text x="470" y="396" font-size="16" text-anchor="middle" fill="#5A6672">main, and the live site, stay untouched</text>

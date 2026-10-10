@@ -510,7 +510,7 @@ The standard sprint.
 **100 points (Plan 10, Wrap-up 90) | Assigned: Mon, Nov 23 | Plan due: Wed, Nov 25 | Due: Thu, Dec 10**
 
 The standard sprint, worth double, with a higher bar. By Dec 10 what you have built should be
-the best version of itself. The demo runs to three minutes instead of 60 to 90 seconds and covers
+as good as you can make it. The demo runs to three minutes instead of 60 to 90 seconds and covers
 the semester rather than the sprint: the problem, a live demo, and what you learned.
 
 ---
@@ -564,7 +564,7 @@ Write a 1-2 page review covering:
 - **Security considerations:** Any obvious vulnerabilities?
 - **3 specific suggestions:** Actionable improvements with rationale
 
-**Part 3: Kick the Tires**
+**Part 3: Hands-On Testing**
 
 - Sign up and use the app as a real user
 - Document: Did it work? What broke? What was confusing?
@@ -612,28 +612,28 @@ Your goal is to help your peer improve, not to criticize. Frame feedback as "Hav
 **How to record your test session:**
 
 1. **Start Loom, share your screen, and open their app URL**
-2. **Think out loud the entire time** — narrate what you see, what you expect, where you're confused, what works
-3. **Try to complete the core task** — sign up, use the main feature, see if your data persists
-4. **Try to break things** — what happens with bad input? Edge cases? Unexpected flows?
-5. **End with your summary** — look at the camera and give:
+2. **Think out loud the entire time:** narrate what you see, what you expect, where you're confused, what works
+3. **Try to complete the core task:** sign up, use the main feature, see if your data persists
+4. **Try to break things:** what happens with bad input? Edge cases? Unexpected flows?
+5. **End with your summary:** look at the camera and give:
    - 3 things that worked well (be specific)
    - 3 things you'd improve (most impactful first)
    - Would you use this product? Why or why not?
 
-**Submit:** Your Loom URL on Canvas. Share the video with your peer too — this is a gift to them.
+**Submit:** Your Loom URL on Canvas. Share the video with your peer too; it is useful feedback for them.
 
 **Grading Rubric (50 points)**
 
 | Score | What the TA sees |
 |-------|-----------------|
-| **45-50** | Genuine engagement — spent real time exploring the product. Think-aloud narration is specific and continuous. Summary feedback is actionable and constructive. |
-| **35-44** | Good test session but narration is sparse, or summary feedback is vague. Clearly used the product but didn't dig deep. |
+| **45-50** | Genuine engagement: spent real time exploring the product. Think-aloud narration is specific and continuous. Summary feedback is actionable and constructive. |
+| **35-44** | Good test session but narration is sparse, or summary feedback is vague. Clearly used the product but didn't explore it in depth. |
 | **25-34** | Surface-level engagement. Quick walkthrough without much exploration or thoughtful feedback. |
 | **15-24** | Video submitted but minimal effort. Barely used the product. |
 | **0** | Not submitted. |
 
 ::: {.callout-tip title="Testing Mindset"}
-Your job is to help your peer see their product through fresh eyes. Be honest but kind. The best feedback is specific ("The button on the checkout page didn't respond when I clicked it") not vague ("The checkout was buggy").
+Your job is to help your peer see their product the way a new user sees it. Be honest but kind. The best feedback is specific ("The button on the checkout page didn't respond when I clicked it") not vague ("The checkout was buggy").
 :::
 
 ---

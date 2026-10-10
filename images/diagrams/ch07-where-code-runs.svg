@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 490" role="img" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
   <title>Where code runs</title>
-  <desc>Three places, each a column. The browser, which the user controls: they can see and change all of it, so it holds no secrets and no checks that matter. Your server: secret keys live there, and so do the checks that matter. The database: it remembers what survives a refresh, and its row rules apply to every request. A dashed line between the browser and the server marks where the user's control ends. Requests go from browser to server to database; in a Supabase app the browser can also query the database directly, through its row rules.</desc>
+  <desc>Three places, each a column. The browser, which the user controls: they can see and change all of it, so it holds no secrets and no checks that matter. Your server: secret keys live there, and so do the checks that matter. The database: it remembers what survives a refresh, and its row-level security applies to every request. A dashed line between the browser and the server marks where the user's control ends. Requests go from browser to server to database; in a Supabase app the browser can also query the database directly, through row-level security.</desc>
   <defs>
     <linearGradient id="gCard" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#FFFFFF"/><stop offset="100%" stop-color="#F3F6F9"/></linearGradient>
     <linearGradient id="gBlue" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#F0F5FB"/><stop offset="100%" stop-color="#DCE7F4"/></linearGradient>
@@ -22,7 +22,7 @@
   <text x="358" y="466" font-size="15" font-weight="700" letter-spacing="1.2" fill="#0057B8">YOU CONTROL</text>
   <path d="M180 122 C180 40 820 40 820 120" fill="none" stroke="#8A939C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="6 6" marker-end="url(#ah)"/>
   <rect x="345" y="58" width="310" height="28" fill="#FAFBFC"/>
-  <text x="500" y="78" font-size="16" text-anchor="middle" fill="#5A6672">Supabase: direct, through row rules</text>
+  <text x="500" y="78" font-size="16" text-anchor="middle" fill="#5A6672">Supabase: direct, through row-level security</text>
   <circle cx="180" cy="178" r="46" fill="url(#gBlue)" stroke="#B9D0EA" stroke-width="1.5" filter="url(#sh)"/>
   <g transform="translate(159.0,157.0) scale(1.750)" fill="none" stroke="#002E5D" stroke-width="1.49" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2" /> <path d="M10 4v4" /> <path d="M2 8h20" /> <path d="M6 4v4" /></g>
   <text x="180" y="260" font-size="21" font-weight="700" text-anchor="middle" fill="#002E5D">Browser</text>
@@ -51,7 +51,7 @@
   <text x="754" y="322" font-size="16" fill="#2C3E50">remembers after</text>
   <text x="754" y="343" font-size="16" fill="#2C3E50">a refresh</text>
   <g transform="translate(723.0,367.0) scale(0.917)" fill="none" stroke="#5A6672" stroke-width="2.40" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2" /> <path d="M7 11V7a5 5 0 0 1 10 0v4" /></g>
-  <text x="754" y="378" font-size="16" fill="#2C3E50">row rules on</text>
+  <text x="754" y="378" font-size="16" fill="#2C3E50">row-level security on</text>
   <text x="754" y="399" font-size="16" fill="#2C3E50">every request</text>
   <path d="M232 178 H440" fill="none" stroke="#8A939C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
   <text x="400" y="166" font-size="16" text-anchor="middle" fill="#5A6672">requests</text>

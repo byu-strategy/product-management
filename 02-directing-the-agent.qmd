@@ -12,8 +12,8 @@ control, and control comes down to three questions you answer for every agent yo
 3. **How will you know it worked?** Its own report is a claim. Your check is the evidence.
 
 The second half of the chapter is about the discipline that makes all three easier: writing down
-what you want before anyone builds it. The gap between a student who ships once and a student who
-ships all semester is almost entirely here.
+what you want before anyone builds it. Most of the difference between a student who ships once and
+a student who ships all semester comes from this discipline.
 
 Terminal practice from earlier versions of this chapter now lives in [Chapter 1](01-building-with-ai-agents.qmd).
 
@@ -21,7 +21,7 @@ Terminal practice from earlier versions of this chapter now lives in [Chapter 1]
 
 ## Conversational Coding
 
-The key to effective AI-assisted coding is learning to think out loud. Instead of trying to write perfect prompts, have a conversation:
+AI-assisted coding works best when you think out loud. Instead of trying to write perfect prompts, have a conversation:
 
 **Less effective:**
 > Build me a problem tracker app with all features
@@ -40,7 +40,7 @@ Each small request is one short trip around the agent loop, and you check the re
 
 ## It Knows Only What It Can See
 
-**The context window is the agent's entire world.** Whatever is not in it does not exist for the agent: not the conversation you had yesterday, not the decision you made in your head, not the file it never opened. Every response is produced from what is in the window right now.
+**The agent can use only what is in its context window.** Whatever is not in it does not exist for the agent: not the conversation you had yesterday, not the decision you made in your head, not the file it never opened. Every response is produced from what is in the window right now.
 
 #### What fills the window
 
@@ -65,7 +65,7 @@ The window is finite. As it fills, Claude Code clears old tool output and then s
 | Skills | Keep procedures out of the window until they are needed |
 | Subagents | Do noisy work (long logs, big searches) in a separate window and return only a summary |
 
-![CLAUDE.md is reloaded every time. `/compact` keeps a summary and the task; `/clear` keeps nothing you said.](images/diagrams/ch02-context-window.svg){#fig-context-window fig-alt="Three tall bars, each a context window filled from the bottom with system instructions, CLAUDE.md, and skill descriptions. Mid-session, the bar is full: conversation and a large block of tool results sit on top. An arrow labeled /compact leads to a second bar where the conversation and tool results are replaced by a small summary, with free space above. An arrow labeled /clear leads to a third bar with an empty conversation. CLAUDE.md is highlighted in all three." width="100%"}
+![CLAUDE.md is reloaded every time. `/compact` keeps a summary and the task; `/clear` keeps nothing you said.](images/diagrams/ch02-context-window.svg){#fig-context-window fig-alt="Three tall bars, each a context window filled from the bottom, starting with system instructions and CLAUDE.md. Mid-session, skill descriptions sit above them and the bar is full: conversation and a large block of tool results sit on top. An arrow labeled /compact leads to a second bar where the conversation and tool results are replaced by a small summary, with free space above, and the skill descriptions are replaced by only the skills you used. An arrow labeled /clear leads to a third bar with the skill descriptions back and an empty conversation. CLAUDE.md is highlighted in all three." width="100%"}
 
 **Worked example.** On Monday you tell Claude, "Never use a database for this project; JSON files only." On Wednesday you start a new session and ask for a search feature. Claude adds SQLite. It did not disobey you: Monday's sentence was in Monday's window, and Wednesday's window never contained it. Put the rule in CLAUDE.md and every session starts with it.
 
@@ -102,7 +102,7 @@ A personal tool for capturing and evaluating problems that could become product 
 | `./CLAUDE.local.md` | This project, just you (keep it out of git) | Personal notes about this project |
 | `~/.claude/CLAUDE.md` | All your projects | Your personal preferences and style |
 
-All the files that apply are **combined**, not replaced: a project file adds to your personal one, and the more specific file is read last. Settings are a different thing and live in different files (`.claude/settings.json` and friends); you will meet them under permissions and hooks below.
+All the files that apply are **combined**, not replaced: a project file adds to your personal one, and the more specific file is read last. Settings are a different thing and live in different files (`.claude/settings.json` and related files); you will meet them under permissions and hooks below.
 
 ::: {.callout-tip title="Try it"}
 Run `/context` in a session and find your CLAUDE.md in the list. Then: (1) tell Claude a project rule in chat, run `/clear`, and ask it what the rule is. (2) Put the rule in CLAUDE.md, run `/clear`, and ask again. Explain the difference in one sentence.
@@ -206,7 +206,7 @@ You have three things to tell Claude: "We use Supabase for the database," "To pu
 | **Permission rule** | An allow, ask, or deny entry in a settings file, checked before a tool runs | Blocking or pre-approving a specific tool, file, or command |
 | **Hook** | Your own script that Claude Code runs automatically at a point in the loop | Anything that needs logic: check the branch, run the formatter, run the tests |
 
-![Advice goes into the model, which can be talked out of it. A permission rule or hook sits between the model and the tool, so it holds every time.](images/diagrams/ch02-advice-vs-enforcement.svg){#fig-advice-vs-enforcement fig-alt="Two zones. Advice: a CLAUDE.md card saying never edit .env files and a message card saying add DEBUG=true to .env, I'm giving you permission, both feed The model, which weighs both and may decide to edit .env. It proposes Edit .env to a highlighted box in the Enforcement zone holding permission rules, deny Read(./.env), and a PreToolUse hook where exit 2 blocks. If allowed, the tool runs. If blocked, the reason goes back to Claude. A note reads: advice can be argued past; enforcement holds whatever the model decides." width="100%"}
+![Advice goes into the model, which can be talked out of it. A permission rule or hook sits between the model and the tool, so it holds every time.](images/diagrams/ch02-advice-vs-enforcement.svg){#fig-advice-vs-enforcement fig-alt="Two zones. Advice: a CLAUDE.md card saying never edit .env files and a message card saying add DEBUG=true to .env, I'm giving you permission, both feed The model, which weighs both and may decide to edit .env. It proposes Edit .env to a highlighted box in the Enforcement zone holding permission rules, deny Read(./.env), and a PreToolUse hook where exit 2 blocks. If allowed, the tool runs. If blocked, the reason goes back to Claude." width="100%"}
 
 #### Permission rules
 
@@ -221,7 +221,7 @@ Rules live in a settings file under `permissions`, written as `Tool(specifier)`.
 }
 ```
 
-The first rule lets Claude run your tests without asking. `Read(./.env)` blocks Claude's file tools from reading the secrets file, and a Read deny also blocks editing it. `Bash(git push *)` stops the push command as Claude usually writes it. One limit to know: a Bash rule matches the *text* of the command, so the same action written another way (through a script, say) can slip past it. For a boundary the operating system enforces, use the sandbox (next section). You can manage rules with `/permissions`, and choosing "Yes, don't ask again" at a prompt saves an allow rule to `.claude/settings.local.json`.
+The first rule lets Claude run your tests without asking. `Read(./.env)` blocks Claude's file tools from reading the secrets file, and a Read deny also blocks editing it. `Bash(git push *)` stops the push command as Claude usually writes it. One limit to know: a Bash rule matches the *text* of the command, so the same action written another way (through a script, say) will not match it. For a boundary the operating system enforces, use the sandbox (next section). You can manage rules with `/permissions`, and choosing "Yes, don't ask again" at a prompt saves an allow rule to `.claude/settings.local.json`.
 
 #### Claude Code hooks
 
@@ -322,7 +322,7 @@ A two-minute drill. Add `Never edit .env files` to CLAUDE.md, then ask Claude: "
 
 ## Blast Radius
 
-**Before you let an agent run unattended, ask two questions: what could this break, and can I undo it?** The answers decide how much freedom to give it. Plan mode, permission modes, sandboxes, and worktrees each shrink the radius in a different way.
+**Before you let an agent run unattended, ask two questions: what could this break, and can I undo it?** The answers decide how much freedom to give it. Plan mode, permission modes, sandboxes, and worktrees each limit what an action can affect, in a different way.
 
 #### What can be undone
 
@@ -337,7 +337,7 @@ Claude Code takes a **checkpoint** before each prompt you send. `/rewind` (or pr
 
 So: **anything that leaves your laptop cannot be rewound.** That is the line between actions you can let run and actions you gate. Checkpoints do not replace git: commit before risky work, and work on a branch ([Chapter 9](09-version-control-testing-and-tech-debt.qmd)).
 
-![The farther an action reaches, the less you can undo it. The edge of your laptop is where undo ends.](images/diagrams/ch02-blast-radius.svg){#fig-blast-radius fig-alt="Three concentric rings. Center: Claude's file edits. Middle: local files. Outer: leaves your laptop. A dashed highlighted circle around the middle ring is labeled edge of your laptop. A table on the right: Claude's file edits are undone with /rewind, so let them run in accept-edits or auto mode. Local files are undone with git if you committed, so commit and branch first. Anything that leaves is undone by nothing, so gate it with a deny rule, plan mode, or run it yourself." width="100%"}
+![The farther an action reaches, the less you can undo it. The edge of your laptop is where undo ends.](images/diagrams/ch02-blast-radius.svg){#fig-blast-radius fig-alt="Three concentric rings. Center: Claude's file edits. Middle: local files. Outer: leaves your laptop. A dashed highlighted circle around the middle ring is labeled edge of your laptop. A table on the right: Claude's file edits are undone with /rewind, so let them run in accept-edits mode. Local files are undone with git if you committed, so commit and branch first. Anything that leaves is undone by nothing, so gate it with a deny rule, plan mode, or run it yourself." width="100%"}
 
 #### The controls, from tightest to loosest
 
@@ -354,14 +354,14 @@ Permission modes, cycled in the terminal with `Shift+Tab` (the status bar shows 
 | Mode | Runs without asking | Use it when |
 |---|---|---|
 | **Manual** (config value `default`) | Reads only | Sensitive work; you want to review every action |
-| **Accept edits** | Reads, file edits, common file commands (`mkdir`, `mv`, `cp`) | You are iterating on code and reviewing as you go |
+| **Accept edits** | Reads, file edits, common file commands (`mkdir`, `mv`, `cp`, `rm`) | You are iterating on code and reviewing as you go |
 | **Plan** | Reads (and safe exploration) | Exploring before changing anything |
-| **Auto** | Most actions, with a background safety check that blocks risky ones | Long tasks where prompts would wear you out |
+| **Auto** | Most actions, with a background safety check that blocks risky ones | Long tasks where approving every prompt would be tedious |
 | **Bypass permissions** | Everything | Only inside an isolated container or virtual machine |
 
 Depending on your version and plan, a new session may start in Auto or Manual; check the status bar. Deny rules apply in every mode, including bypass.
 
-**Worked example.** You want Claude to rename a component across 40 files while you get lunch. What could it break? Files in this repo. Can you undo it? Yes, if you commit first; edits are checkpointed and git covers the rest. Accept-edits or auto mode on a fresh branch is reasonable. Now you want it to run a migration against your live Supabase database. What could it break? Real user data. Can you undo it? Not with `/rewind`. That one waits for you: plan it, read the migration, and run it yourself or approve it explicitly, and keep a deny rule on the production command.
+**Worked example.** You want Claude to rename a component across 40 files while you get lunch. What could it break? Files in this repo. Can you undo it? Yes, if you commit first. Accept-edits or auto mode on a fresh branch is reasonable. Both modes let Claude run shell commands (`mv`, `rm`, `sed`) that `/rewind` cannot undo, so git is the way back. Now you want it to run a migration against your live Supabase database. What could it break? Real user data. Can you undo it? Not with `/rewind`. That one waits for you: plan it, read the migration, and run it yourself or approve it explicitly, and keep a deny rule on the production command.
 
 ::: {.callout-tip title="Try it"}
 For each task, name what it could break, whether `/rewind` undoes it, and the mode or rule you would use: (a) restyle every page with Tailwind; (b) delete old files in `scripts/` with `rm`; (c) `git push` to main; (d) explore an unfamiliar codebase and explain it.
@@ -371,7 +371,7 @@ For each task, name what it could break, whether `/rewind` undoes it, and the mo
 
 ## Delegation and Parallel Work
 
-**A subagent starts with an empty head and returns a summary. Parallel sessions need separate copies of the files. Both cost tokens and attention.**
+**A subagent starts with an empty context window and returns a summary. Parallel sessions need separate copies of the files. Both cost tokens and attention.**
 
 ![A subagent reads in its own window and sends back only a summary. A worktree gives a second session its own folder and branch on the same history.](images/diagrams/ch02-subagent-vs-worktree.svg){#fig-subagent-vs-worktree fig-alt="Two panels. Subagent, a helper inside one session: Your session sends a task description down to a subagent window full of lines labeled 50 files read stay in here; a highlighted arrow labeled summary only returns one line to your session. Worktree, two sessions at once: Session A works in the my-app folder on branch main, Session B in a fix-login folder on its own branch; both folders sit on one shared repository history. A note: ignored files such as .env start out missing." width="100%"}
 
@@ -379,7 +379,7 @@ For each task, name what it could break, whether `/rewind` undoes it, and the mo
 
 Each subagent works in its own, separate context window. It does not see your conversation with
 Claude. Instead, Claude writes it a short task description, the subagent does the work, and only
-its final summary comes back to your main conversation. That is the point: a subagent can read
+its final summary comes back to your main conversation. That is its purpose: a subagent can read
 fifty files or a long test log without filling up your main conversation. It also means a
 subagent knows only what it was told.
 
@@ -391,7 +391,7 @@ What a subagent gets:
 2. **CLAUDE.md**, in most cases. The built-in Explore and Plan subagents skip it to stay fast, so do not count on a project rule reaching them.
 3. **None of your conversation.** If the task depends on something you said, Claude has to put it in the task description.
 
-Use a subagent when a side task would flood your main window (searching a codebase, reading logs, researching documentation) or needs a narrower set of tools. Stay in the main conversation for back-and-forth work where every step depends on what you just discussed.
+Use a subagent when a side task would fill your main window (searching a codebase, reading logs, researching documentation) or needs a narrower set of tools. Stay in the main conversation for back-and-forth work where every step depends on what you just discussed.
 
 #### Parallel work needs separate copies of the files
 
@@ -405,11 +405,11 @@ This creates `.claude/worktrees/fix-login/`. Two things surprise people: a workt
 
 #### The cost
 
-Every subagent and every parallel session spends its own tokens, and all their results come back for you to review. Anthropic's write-up of its multi-agent research system makes the same point: parallel agents win on broad, divisible work and cost several times the tokens of a single agent. For a student project, the scarce resource is usually your attention to review, not the agent's speed.
+Every subagent and every parallel session spends its own tokens, and all their results come back for you to review. Anthropic's write-up of its multi-agent research system makes the same point: parallel agents perform better on broad, divisible work and cost several times the tokens of a single agent. For a student project, the limiting resource is usually your time to review the results, more than the agent's speed.
 
 #### Task decomposition
 
-What works far better than asking for everything at once is breaking a feature into small pieces you can check one at a time:
+Breaking a feature into small pieces you can check one at a time works far better than asking for everything at once:
 
 **Instead of:**
 > "Build my entire app"
@@ -431,7 +431,7 @@ Find the mistake: "I'll ask Claude to spin up three subagents: one builds the lo
 
 ## Reach Beyond the Repo: MCP
 
-**MCP is how an agent gets tools and data it does not have.** Out of the box, Claude Code can touch your files, your terminal, and the web. Your tickets, your Supabase database, and a real browser to click through your app are outside that reach. The **Model Context Protocol (MCP)** is an open standard for connecting them: an MCP **server** wraps a system and exposes it to Claude as new tools.
+**MCP is how an agent gets tools and data it does not have.** By default, Claude Code can use your files, your terminal, and the web. Your tickets, your Supabase database, and a real browser to click through your app are outside that reach. The **Model Context Protocol (MCP)** is an open standard for connecting them: an MCP **server** wraps a system and exposes it to Claude as new tools.
 
 | Building block | What it is |
 |---|---|
@@ -448,7 +448,7 @@ A good signal that you need one: you keep copying data into the chat from anothe
 claude mcp add playwright -- npx -y @playwright/mcp@latest
 ```
 
-Now you can ask: "Open localhost:3000, sign up with a test email, and screenshot the dashboard." Claude closes its own check step against the running app instead of guessing. Supabase publishes an MCP server too, which lets Claude inspect your tables and run queries; give it read-only access unless you mean otherwise, because what it does there cannot be rewound.
+Now you can ask: "Open localhost:3000, sign up with a test email, and screenshot the dashboard." Claude runs its own check against the running app instead of guessing. Supabase publishes an MCP server too, which lets Claude inspect your tables and run queries; give it read-only access unless you mean otherwise, because what it does there cannot be rewound.
 
 Two costs. Each server's tool list takes some context. And a server that fetches outside content (web pages, tickets other people wrote) can carry instructions that try to steer the model; only connect servers you trust. [Chapter 11](11-models-in-your-product.qmd) covers that risk, prompt injection, in depth.
 
@@ -468,9 +468,9 @@ Your definition of done has three checks:
 2. **Run the app.** Start it and use the feature the way a user would.
 3. **Confirm the behavior you asked for**, including the edge case you care about, against your acceptance criteria.
 
-**Worked example.** You ask for "a due date on each task; overdue tasks show in red." Claude adds the feature and a test: create a task due yesterday, check that `is_overdue` is true. The test passes. You run the app and every task created this morning is red. The code compared the due date (midnight at the start of that day) with the current time, so a task due today counted as overdue from the moment the day began. The test only tried a task due yesterday, so it passed. The agent's test and the agent's code shared the same blind spot. Your acceptance criterion ("a task due today is not overdue") caught it.
+**Worked example.** You ask for "a due date on each task; overdue tasks show in red." Claude adds the feature and a test: create a task due yesterday, check that `is_overdue` is true. The test passes. You run the app and every task created this morning is red. The code compared the due date (midnight at the start of that day) with the current time, so a task due today counted as overdue from the moment the day began. The test only tried a task due yesterday, so it passed. The agent's test and the agent's code missed the same case. Your acceptance criterion ("a task due today is not overdue") caught it.
 
-Better still, give the agent a check it can run itself, so the loop closes without you. Claude Code's best-practices guide puts it as the difference between a session you watch and one you walk away from: a test suite, a build, or a screenshot compared against a design. Then have it show evidence (the command it ran and the output) instead of telling you it worked. A `Stop` hook that runs the tests, from the section above, makes the check mandatory. [Chapter 9](09-version-control-testing-and-tech-debt.qmd) covers testing; remember that tests written by the same agent that wrote the code need your acceptance criteria to mean anything.
+Better still, give the agent a check it can run itself, so it can finish the loop without you. Claude Code's best-practices guide puts it as the difference between a session you watch and one you walk away from: a test suite, a build, or a screenshot compared against a design. Then have it show evidence (the command it ran and the output) instead of telling you it worked. A `Stop` hook that runs the tests, from the section above, makes the check mandatory. [Chapter 9](09-version-control-testing-and-tech-debt.qmd) covers testing; remember that tests written by the same agent that wrote the code need your acceptance criteria to mean anything.
 
 ::: {.callout-tip title="Try it"}
 Next time Claude reports a feature done, before you look at the app, write down one behavior that would prove it works and one edge case that might break it. Then check both. Record whether the agent's own report was right.
@@ -480,7 +480,7 @@ Next time Claude reports a feature done, before you look at the app, write down 
 
 ## User Stories
 
-**The spec is the prompt for the whole project.** Vague in, plausible garbage out. The rest of this chapter is about writing down what you want precisely enough that an agent (or a teammate) can build it and you can check it. User stories with acceptance criteria are the smallest unit, and they come from Agile and Extreme Programming [@beck1999xp; @cohn2004stories].
+**The spec is the prompt for the whole project.** A vague spec produces code that looks plausible and is wrong. The rest of this chapter is about writing down what you want precisely enough that an agent (or a teammate) can build it and you can check it. User stories with acceptance criteria are the smallest unit, and they come from Agile and Extreme Programming [@beck1999xp; @cohn2004stories].
 
 A user story describes a feature from the user's perspective. It keeps you focused on value, not just functionality.
 
@@ -541,7 +541,7 @@ Claude can draft one fast. Give it the product, the target user, and the problem
 
 #### Build first, then spec what you keep
 
-Madhu Guru's tweet in [Chapter 1](01-building-with-ai-agents.qmd) described Google moving from a writing-first to a building-first culture. That does not retire the PRD; it moves it. **Explore to learn, then spec anything you intend to keep.** A throwaway prototype to test an idea with users needs no spec. The moment you decide to keep building on it, write down what it does and should do, because the next session of the agent will know only what is written.
+Madhu Guru's tweet in [Chapter 1](01-building-with-ai-agents.qmd) described Google moving from a writing-first to a building-first culture. The PRD still gets written, at a different point. **Explore to learn, then spec anything you intend to keep.** A throwaway prototype to test an idea with users needs no spec. The moment you decide to keep building on it, write down what it does and should do, because the next session of the agent will know only what is written.
 
 > In the near future, the person who communicates most effectively is the most valuable programmer. If you can communicate effectively, you can program.
 >
@@ -621,7 +621,7 @@ Spec Kit's distinctive idea is the **constitution**: a file of non-negotiable pr
 
 ### Claude Code's plan mode
 
-Claude Code has **plan mode** built in. In plan mode Claude reads files, searches, and runs exploratory commands, then writes a plan, but it **does not edit your source files** until you approve. That makes it the safest place to think: zero risk of accidental changes while you explore.
+Claude Code has **plan mode** built in. In plan mode Claude reads files, searches, and runs exploratory commands, then writes a plan, but it **does not edit your source files** until you approve. That makes it the safest mode for exploring, because Claude does not edit your files while you plan.
 
 You enter plan mode with **`Shift+Tab`** (press until the status bar shows plan mode on) or by starting a message with **`/plan`**, for example `/plan add user profiles`. Telling Claude "let's plan" in ordinary words does not switch modes. When the plan is ready, Claude asks how to proceed: approve it and let Claude start editing (with auto mode or with your approval for each edit), or keep planning. `Ctrl+G` opens the plan in your editor so you can change it first.
 
@@ -739,7 +739,7 @@ lives: the repo, GitHub, Slack, Notion, internal data sources. CI builds and tes
 fails the agent fixes its own work and tries again rather than handing a red build back to a person.
 Review is done in parallel by specialist agents, one for data, one for infrastructure, one for
 security, which classify how risky the change is. Only the risky changes get routed to a human
-engineer. Low-risk changes go straight to an agent that deploys them, babysits the rollout, and
+engineer. Low-risk changes go straight to an agent that deploys them, monitors the rollout, and
 builds its own monitoring dashboard. Two more agents watch production: a Perf Factory that catches
 latency regressions and proposes fixes, and Sevbot, which investigates incidents and proposes
 mitigations. Both loop back to the start.
@@ -768,7 +768,7 @@ blast-radius judgment from earlier in this chapter, and you should be making the
 You are running a small version of this factory. The context it pulls from Slack and Notion is what you
 supply through CLAUDE.md and MCP; your skills are their reusable agent procedures; your hooks and
 permission rules are their CI gates; and your three checks before calling something done are their review.
-The difference is scale, not shape.
+Only the scale differs.
 
 <!-- learn -->
 
@@ -794,7 +794,7 @@ How does this feel compared to pure vibe coding? Is the code quality better? Do 
 
 <!-- MOVE: belongs in ch07 or ch09 (Application Architecture) because deployment is not Agentic Workflow material; the audit recommends moving it there. -->
 
-Streamlit apps are an even lighter way to ship than Vercel. Ask Claude to build a minimal Streamlit problem tracker (add a problem with title, description, and frequency; list them; save to a JSON file), then run it with `streamlit run app.py`. To share it or open it on your phone, push the code to GitHub, go to [share.streamlit.io](https://share.streamlit.io), connect the repo, and deploy.
+Streamlit apps are an even simpler way to deploy than Vercel. Ask Claude to build a minimal Streamlit problem tracker (add a problem with title, description, and frequency; list them; save to a JSON file), then run it with `streamlit run app.py`. To share it or open it on your phone, push the code to GitHub, go to [share.streamlit.io](https://share.streamlit.io), connect the repo, and deploy.
 
 <!-- learn -->
 
@@ -830,7 +830,7 @@ Pick "GitHub Actions" if your site has a build step, which anything beyond plain
 - **Plan mode**: read-only planning; entered with `Shift+Tab` or `/plan`; Claude edits only after you approve.
 - **`/rewind` and checkpoints**: undo Claude's file edits; they do not undo shell deletions, pushes, deploys, or database changes.
 - **Sandbox**: an operating-system boundary on which files and network hosts shell commands can reach.
-- **Subagent**: a worker with its own empty context window that returns a summary, so the main thread stays clean.
+- **Subagent**: a worker with its own empty context window that returns a summary, so the main conversation does not fill up.
 - **Worktree**: a separate copy of the files on its own branch, so parallel sessions do not collide.
 - **MCP**: the open protocol that connects an agent to outside tools and data (browser, database, tickets).
 - **Definition of done**: read the diff, run the app, confirm the behavior you asked for.

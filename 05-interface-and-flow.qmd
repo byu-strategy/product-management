@@ -4,12 +4,12 @@ title: "Interface and Flow"
 
 ## Why This Matters
 
-Your product is only as good as the part people touch. An agent will happily generate a
+Your product is only as good as the interface people use. An agent will happily generate a
 working application that nobody can figure out how to use, and it will not tell you that it
 has. Judgment about the surface is yours.
 
 The model for this whole chapter fits in two sentences. **Design is deciding where the user's
-attention goes. Every screen should make the next step obvious, and most of the real experience
+attention goes. Every screen should make the next step obvious, and most of what users experience
 happens off the happy path.**
 
 It helps to be precise about what "the surface" means. Dan Olsen's UX iceberg splits it into four
@@ -120,7 +120,7 @@ items as by emphasizing the primary one.
 
 #### The building blocks
 
-| Lever | Draws attention when | Common mistake |
+| Property | Draws attention when | Common mistake |
 |---|---|---|
 | **Size** | Larger than its neighbors | Making every heading big |
 | **Weight** | Bolder text or a filled button | Bold everywhere, so bold means nothing |
@@ -144,12 +144,12 @@ The first version an agent produced showed four buttons in a row, all the same b
 **Swap**, **Message manager**, **Add to calendar**. Every user test began the same way: a pause
 while the person read all four.
 
-The revision used the levers. "Give away this shift" became the one full-width filled button at the
+The revision used these properties. "Give away this shift" became the one full-width filled button at the
 bottom, within thumb reach. "Swap for another shift" became an outlined button beneath it. "Message
 manager" and "Add to calendar" moved into a small text-link row at the top. Nothing was removed; the
 ranking changed, and the pause went away.
 
-![The shift detail screen before and after. Blurred, the four equal buttons form one band; after the revision, the only thing that survives the blur is the primary action.](images/diagrams/ch05-hierarchy-before-after.svg){#fig-hierarchy-before-after fig-alt="Two phone mockups of the ShiftSwap shift detail screen, each with a blurred copy labeled Squinted. Before: the shift details sit above a row of four same-size, same-blue buttons labeled Give away, Swap, Message manager, and Add to calendar; blurred, the four buttons merge into one blue band. After: Message manager and Add to calendar are small text links near the top, Give away this shift is a full-width filled button at the bottom, and Swap for another shift is an outlined button below it; blurred, only the Give away button stands out." width="100%"}
+![The shift detail screen before and after. Blurred, the four equal buttons form one band; after the revision, the only thing still visible when blurred is the primary action.](images/diagrams/ch05-hierarchy-before-after.svg){#fig-hierarchy-before-after fig-alt="Two phone mockups of the ShiftSwap shift detail screen, each with a blurred copy labeled Squinted. Before: the shift details sit above a row of four same-size, same-blue buttons labeled Give away, Swap, Message manager, and Add to calendar; blurred, the four buttons merge into one blue band. After: Message manager and Add to calendar are small text links near the top, Give away this shift is a full-width filled button at the bottom, and Swap for another shift is an outlined button below it; blurred, only the Give away button stands out." width="100%"}
 
 A quick check from the course's deck rubric works on screens too: the **squint test**. Squint (or
 blur a screenshot) until you cannot read the words. Whatever is still visible is what users will see
@@ -157,8 +157,8 @@ first. If that is not the primary action, the hierarchy is wrong.
 
 ::: {.callout-tip title="Try it"}
 Take a screenshot of your main screen. Before squinting, write down the one action you want a new
-user to take. Now squint. **Predict** what a first-time user clicks first, and explain which lever
-(size, weight, contrast, spacing, position) is pulling them there. If the prediction and your
+user to take. Now squint. **Predict** what a first-time user clicks first, and explain which property
+(size, weight, contrast, spacing, position) draws them there. If the prediction and your
 intended action differ, list the two changes that would fix it. Refactoring UI's advice to try the
 screen in grayscale first is a good second check: if the hierarchy only works because of color, it
 is fragile.
@@ -236,9 +236,9 @@ it this sprint.
 tell people what will happen and what to do next. Specific beats clever.
 
 Steve Krug's *Don't Make Me Think* [@krug2014think] puts the cost plainly: every word a user has to
-puzzle over is a small stop in the flow. His third law of usability is to get rid of half the words
+puzzle over slows them down. His third law of usability is to get rid of half the words
 on each page, then half of what is left. Nielsen's heuristic of **match between the system and the
-real world** adds the other half: use the user's words for things, never the database's.
+real world** adds a second rule: use the user's words for things, never the database's.
 
 #### The building blocks
 
@@ -286,7 +286,7 @@ from every other app they use.
 **Jakob's Law** (from Laws of UX) states the second half: users spend most of their time in other
 products, so they expect yours to work the same way. A trash-can icon deletes, a gear opens
 settings, swiping left on a list row reveals actions on a phone. Every place you invent a new
-convention, the user pays to learn it. The [Apple Human Interface
+convention, the user has to spend time learning it. The [Apple Human Interface
 Guidelines](https://developer.apple.com/design/human-interface-guidelines/) are the canonical
 reference for what those conventions are on Apple platforms.
 
@@ -298,7 +298,7 @@ reference for what those conventions are on Apple platforms.
 | **Components** | Reusable pieces built from tokens, each with defined variants and states | Button (primary, secondary, ghost; default, hover, disabled, loading) |
 | **Patterns** | Components combined to solve a recurring problem | "Confirm before a destructive action," "form with inline errors" |
 
-![Each layer is built only from the one before it: a handful of tokens become a few components, and patterns are assembled from those components. Written into CLAUDE.md, the decisions carry over to every screen the agent builds.](images/diagrams/ch05-design-system.svg){#fig-design-system fig-alt="Three cards connected by arrows. Tokens, the raw choices: four color swatches labeled Primary, Text, Muted, and Border; a type scale of four sizes; and a spacing scale of 4, 8, 16, 24, and 32. Components, built from tokens: a button in Primary, Secondary, and Ghost variants, and in Default, Disabled, and Loading states. Patterns, components combined: a confirm dialog titled Give away Thursday's shift, with Cancel and Give away buttons, assembled from components rather than hand-rolled. A band underneath reads: Written down once, in CLAUDE.md, so the agent reuses the same decisions on every new screen." width="100%"}
+![Each layer is built only from the one before it: a handful of tokens become a few components, and patterns are assembled from those components. Written into CLAUDE.md, the decisions carry over to every screen the agent builds.](images/diagrams/ch05-design-system.svg){#fig-design-system fig-alt="Three cards connected by arrows. Tokens, the raw choices: four color swatches labeled Primary, Text, Muted, and Border; a type scale of four sizes; and a spacing scale of 4, 8, 16, 24, and 32. Components, built from tokens: a button in Primary, Secondary, and Ghost variants, and in Default, Disabled, and Loading states. Patterns, components combined: a confirm dialog titled Give away Thursday's shift, with Cancel and Give away buttons, assembled from components rather than rebuilt by hand. A band underneath reads: Written down once, in CLAUDE.md, so the agent reuses the same decisions on every new screen." width="100%"}
 
 Refactoring UI's advice to **limit your choices** is the same idea at small scale: pick a short
 spacing scale and type scale up front and use only those, so you never decide "14px or 15px?" again.
@@ -434,9 +434,9 @@ catch the mistake before it costs them anything.
 **The model:** say exactly what to change and why, with a reference. Taste is knowing what is
 wrong and being able to say it precisely.
 
-"Make it look better" or "improve the UX" gives the agent nothing to aim at, so it changes things
+"Make it look better" or "improve the UX" gives the agent no specific problem to fix, so it changes things
 at random: new colors, a gradient, more shadows. The agent is good at the visual layer and will do
-exactly what you describe. The quality of what you describe is the whole difference.
+exactly what you describe. What you describe determines the result.
 
 #### The building blocks of a design instruction
 

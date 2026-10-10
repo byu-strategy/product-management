@@ -104,6 +104,6 @@
 <g transform="translate(856,138) scale(0.385)"><use href="#scrAfter" filter="url(#squint)"/></g>
 <rect x="856" y="138" width="123.2" height="215.6" rx="9" fill="none" stroke="#D9DEE4" stroke-width="1"/>
 <text x="856" y="383.6" font-size="15" fill="#5A6672">Only the primary</text>
-<text x="856" y="403.6" font-size="15" fill="#5A6672">action survives</text>
+<text x="856" y="403.6" font-size="15" fill="#5A6672">action stays visible</text>
 <line x1="500" y1="30" x2="500" y2="690" stroke="#D9DEE4" stroke-width="1.5"/>
 </svg>

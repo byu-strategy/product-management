@@ -20,7 +20,7 @@ What to build, and for whom.
 
 | Resource | Format | Why |
 |---|---|---|
-| **Start here:** [The Mom Test](https://www.momtestbook.com/), Rob Fitzpatrick | Book, short | Fixes the most common failure in the room: asking questions that produce flattering lies |
+| **Start here:** [The Mom Test](https://www.momtestbook.com/), Rob Fitzpatrick | Book, short | Corrects the most common interviewing mistake: asking questions that produce flattering lies |
 | [Continuous Discovery Habits](https://www.producttalk.org/continuous-discovery-habits/), Teresa Torres | Book | Turns "talk to users" into a weekly team habit rather than a good intention |
 | [Prioritize Opportunities, Not Solutions](https://www.producttalk.org/prioritize-opportunities/), Teresa Torres | Article, free | The clearest free explainer of the opportunity solution tree |
 | [The Lean Product Playbook](https://dan-olsen.com/book/), Dan Olsen | Book | The cleanest operational definition of product-market fit, six steps from customer to MVP |
@@ -98,7 +98,7 @@ The surface and the flow.
 | **Start here:** [Refactoring UI](https://www.refactoringui.com/) | Book | Written for engineers who need work to look designed without becoming designers |
 | [Laws of UX](https://lawsofux.com/), Jon Yablonski | Site, free | The cognitive principles that explain why an interface works, one page each |
 | [The Definition of User Experience](https://www.nngroup.com/articles/definition-user-experience/), Norman and Nielsen | Article, free | The foundational framing, from the people who coined the term |
-| [Handmade Designs: The New Trust Signal](https://www.nngroup.com/articles/handmade-designs/), NN/g | Article, 2026 | Directly on the UI critique row: as AI polish becomes free, imperfection starts reading as trust |
+| [Handmade Designs: The New Trust Signal](https://www.nngroup.com/articles/handmade-designs/), NN/g | Article, 2026 | Covers the UI critique row: as AI-generated polish costs nothing, visible imperfection starts to signal trust |
 | [shadcn/ui](https://ui.shadcn.com/docs) | Docs | The component system agents actually write against, built to be legible to an LLM |
 | [Apple Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines/) | Docs | Canonical reference for platform-native patterns and component behavior |
 | [The design process is dead. Here's what's replacing it.](https://www.lennysnewsletter.com/p/the-design-process-is-dead), Jenny Wen | Article, 2026 | Head of design at Claude on why discovery, mock, iterate is obsolete, and what taste means when prototyping is free |
@@ -176,9 +176,9 @@ How the application is structured, shipped, and kept safe.
 |---|---|---|
 | **Start here:** [Learn Next.js](https://nextjs.org/learn), Vercel | Course, free | Sixteen chapters building a real full-stack app: routing, data, auth, deploy |
 | [Supabase docs](https://supabase.com/docs) and the [auth guide](https://supabase.com/docs/guides/auth) | Docs | Postgres, auth, storage, realtime in one set. The auth guide covers row level security, which most tutorials skip |
-| [Designing Data-Intensive Applications, 2nd ed.](https://martin.kleppmann.com/2026/03/24/designing-data-intensive-applications-2e.html), Kleppmann and Riccomini | Book, 2026 | The reference for how data systems really behave. The second edition rewrites the consistency chapter and adds the cloud reality |
+| [Designing Data-Intensive Applications, 2nd ed.](https://martin.kleppmann.com/2026/03/24/designing-data-intensive-applications-2e.html), Kleppmann and Riccomini | Book, 2026 | The reference for how data systems really behave. The second edition rewrites the consistency chapter and adds coverage of cloud systems |
 | [Pro Git](https://git-scm.com/book/en/v2) | Book, free | Complete and free. Read chapters 1 to 3 and stop until you need more |
-| [OWASP Top 10:2025](https://owasp.org/Top10/2025/) | Standard | The 2025 edition adds software supply chain failures. If a syllabus cites the 2021 list, it is stale |
+| [OWASP Top 10:2025](https://owasp.org/Top10/2025/) | Standard | The 2025 edition adds software supply chain failures. If a syllabus cites the 2021 list, it is out of date |
 | [Web Security Academy](https://portswigger.net/web-security), PortSwigger | Labs, free | Hands-on labs for the attacks OWASP describes. Reading about SQL injection is not the same as doing one |
 | [Use The Index, Luke!](https://use-the-index-luke.com/), Markus Winand | Book, free | SQL indexing for developers. Almost nothing else covers this well |
 | [The Pragmatic Engineer](https://newsletter.pragmaticengineer.com/), Gergely Orosz | Newsletter | How production systems and engineering practice actually work inside real companies |
@@ -264,7 +264,7 @@ feature you build.
 | [Let's build GPT: from scratch, in code, spelled out](https://www.youtube.com/watch?v=kCc8FmEb1nY), Andrej Karpathy | Video, 2h | Writes a small GPT in one sitting. The fastest way to see that a model is next-token prediction and nothing hidden |
 | [The Illustrated Transformer](https://jalammar.github.io/illustrated-transformer/), Jay Alammar | Article, free | Attention and the transformer, one diagram at a time |
 | [How Models Work](10-how-models-work.qmd) | Chapter | The course chapter: next-word prediction, training, and why the same prompt gives different answers |
-| [Context windows](https://platform.claude.com/docs/en/build-with-claude/context-windows) and [prompt caching](https://platform.claude.com/docs/en/build-with-claude/prompt-caching), Anthropic | Docs | What actually counts against the window, and the most direct lever you have on cost and latency |
+| [Context windows](https://platform.claude.com/docs/en/build-with-claude/context-windows) and [prompt caching](https://platform.claude.com/docs/en/build-with-claude/prompt-caching), Anthropic | Docs | What actually counts against the window, and the most direct way to reduce cost and latency |
 | [AI Engineering](https://www.oreilly.com/library/view/ai-engineering/9781098166298/), Chip Huyen | Book | The standard reference for the job title. Free chapter notes at [aie-book](https://github.com/chiphuyen/aie-book) |
 | [AI Engineering 101](https://www.youtube.com/watch?v=qbvY0dQgSJ4), Chip Huyen, Oct 2025 | Podcast | The book's author covering the same ground in an hour |
 
@@ -334,7 +334,7 @@ When we get there, tell me plainly what I still cannot do.
 
 ## Agentic Workflow
 
-Putting AI to work, as the way you build and inside the product you build. This axis moves fastest, so favor docs and primary sources over books.
+Putting AI to work, as the way you build and inside the product you build. This axis changes fastest, so favor docs and primary sources over books.
 
 | Resource | Format | Why |
 |---|---|---|
@@ -342,7 +342,7 @@ Putting AI to work, as the way you build and inside the product you build. This 
 | [Claude Code documentation](https://code.claude.com/docs/en/overview) | Docs | CLAUDE.md, memory, skills, hooks, subagents, and MCP, all in one place. Note the URL moved in 2025 |
 | [Anthropic Academy](https://anthropic.skilljar.com/) | Courses, free | Around 23 free courses with certificates, including Claude Code in Action, MCP, skills, and subagents |
 | [Agentic Engineering Patterns](https://simonwillison.net/guides/agentic-engineering-patterns/), Simon Willison | Guide, free | Six chapters on principles, testing, and annotated real prompts. The best free text on loop design |
-| [How we built our multi-agent research system](https://www.anthropic.com/engineering/multi-agent-research-system), Anthropic | Article | Orchestrator and subagent architecture, when parallelism wins, and the token cost it carries |
+| [How we built our multi-agent research system](https://www.anthropic.com/engineering/multi-agent-research-system), Anthropic | Article | Orchestrator and subagent architecture, when parallelism helps, and the token cost it carries |
 | [Writing effective tools for agents](https://www.anthropic.com/engineering/writing-tools-for-agents), Anthropic | Article | Read before you write an MCP server, not after |
 | [Model Context Protocol](https://modelcontextprotocol.io) and [AGENTS.md](https://agents.md/) | Specs | Both are now multi-vendor open standards rather than one company's idea |
 | [How far can we push AI autonomy in code generation?](https://martinfowler.com/articles/pushing-ai-autonomy.html), Birgitta Böckeler | Article | The most rigorous treatment of where human review is still non-negotiable |
@@ -351,8 +351,8 @@ Putting AI to work, as the way you build and inside the product you build. This 
 | [Claude Code and Cowork](https://www.youtube.com/watch?v=Ybrl4FYM57c), Fiona Fung, Jun 2026 | Podcast | The follow-up, four months later, on how the workflow changed again |
 | [Tool use with Claude](https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview) | Docs | Canonical reference for function calling and the agentic loop |
 | [Interactive prompt engineering tutorial](https://github.com/anthropics/prompt-eng-interactive-tutorial) and [Claude Cookbooks](https://github.com/anthropics/claude-cookbooks) | Notebooks, free | Runnable examples for RAG, tool use, evals, caching, and cost |
-| [Patterns for Building LLM-based Systems and Products](https://eugeneyan.com/writing/llm-patterns/), Eugene Yan | Article, free | The single best map of the field: evals, RAG, caching, guardrails, defensive UX |
-| [AI Evals email course](https://ai.hamel.dev/eval-course), Hamel Husain and Shreya Shankar | Course, free | Seventeen parts plus two free ebooks. Evals are the axis item nobody has, and this is the on-ramp |
+| [Patterns for Building LLM-based Systems and Products](https://eugeneyan.com/writing/llm-patterns/), Eugene Yan | Article, free | The best overview of the field: evals, RAG, caching, guardrails, defensive UX |
+| [AI Evals email course](https://ai.hamel.dev/eval-course), Hamel Husain and Shreya Shankar | Course, free | Seventeen parts plus two free ebooks. Evals are the axis item nobody has, and this is the place to start |
 | [Effective context engineering for AI agents](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents), Anthropic | Article | Context engineering as the discipline that succeeded prompt engineering |
 | [Why AI evals are the hottest new skill for product builders](https://www.youtube.com/watch?v=BsWxPI9UM4c), Hamel Husain, Sep 2025 | Podcast | The best introduction to why evals matter, from the person who teaches them |
 
@@ -437,7 +437,7 @@ Getting it in front of people and finding out whether it worked.
 | [Growth Loops are the New Funnels](https://www.reforge.com/blog/growth-loops), Reforge | Article | The essay that reframed growth from linear funnels to compounding loops |
 | [Trustworthy Online Controlled Experiments](https://experimentguide.com/), Kohavi, Tang and Xu | Book | The A/B testing reference. Chapter 1 and the FAQ are free on the companion site |
 | [The new AI growth playbook for 2026](https://www.lennysnewsletter.com/p/the-new-ai-growth-playbook-for-2026-elena-verna), Elena Verna | Article, 2026 | Argues AI-native products have to re-find product-market fit every few months rather than once |
-| [Finding hidden growth opportunities in your product](https://www.youtube.com/watch?v=2BKmNmnEj9w), Albert Cheng, Oct 2025 | Podcast | Duolingo and Uber growth work, concrete enough to copy on Monday |
+| [Finding hidden growth opportunities in your product](https://www.youtube.com/watch?v=2BKmNmnEj9w), Albert Cheng, Oct 2025 | Podcast | Duolingo and Uber growth work, concrete enough to apply right away |
 | [What world-class go-to-market looks like in 2026](https://www.youtube.com/watch?v=RmnWHz8HD74), Jeanne DeWitt Grosser, Nov 2025 | Podcast | Vercel and Stripe on positioning and pricing, the two rows this axis is weakest on |
 
 **Create your own curated study plan from these resources.** Copy this into Claude Code.

@@ -7,7 +7,7 @@ title: "The Logic of Value"
 
 This is the economics underneath the [value stick](03-what-is-worth-building.qmd#creating-value-and-capturing-it). The strategy chapter uses the value stick as a teaching picture: willingness to pay at the top, willingness to sell at the bottom, create versus capture in between. This appendix derives the picture. It shows that producer surplus, accounting profit, economic profit, and the finance world's ROIC minus WACC are not four different ideas from four different disciplines. They are one idea, seen at four depths of cost recognition, and they connect all the way up to the consumer's willingness to pay.
 
-It runs deeper than the course needs. It is here as reference for anyone who wants the full derivation, and as the first of a set of standalone pieces that may later become chapters of a separate book on the logic of value.
+It goes into more detail than the course needs. It is here as reference for anyone who wants the full derivation, and as the first of a set of standalone pieces that may later become chapters of a separate book on the logic of value.
 :::
 
 ## One idea, four disciplines
@@ -36,7 +36,7 @@ Each line recognizes one more cost than the line above it. Producer surplus reco
 
 ![One idea at four depths of cost recognition. A single revenue bar splits into four claims, and each profit measure is the span it keeps once the costs to its left are dropped. Economic profit is the residual sliver that finance restates as return above the cost of capital.](images/profit-continuum.svg){fig-alt="A horizontal revenue bar divided left to right into four segments: variable costs, fixed costs, normal profit, and economic profit. Below it, four bracketed spans show producer surplus keeping the last three segments, accounting profit keeping the last two, economic profit keeping only the final segment, and financial economic profit restating that same segment as ROIC minus WACC times capital."}
 
-The rest of this appendix walks the continuum: what producer surplus actually measures, the three claims that draw it down, the same fact read as a waterfall of revenue, and finally the consumer side, which closes the loop back to the value stick.
+The rest of this appendix goes through the continuum in order: what producer surplus actually measures, the three claims that draw it down, the same fact read as a waterfall of revenue, and finally the consumer side, which connects back to the value stick.
 
 ## What producer surplus actually measures
 
@@ -56,7 +56,7 @@ $$
 \text{Accounting Profit} = PS - FC
 $$
 
-Producer surplus is necessary for profit but not sufficient. It is the raw material out of which profit is carved. If fixed costs exceed producer surplus, the firm generated real surplus and still lost money.
+Producer surplus is necessary for profit but not sufficient. Profit is what remains of it after further costs are subtracted. If fixed costs exceed producer surplus, the firm generated real surplus and still lost money.
 
 ## The three claims on producer surplus
 
@@ -70,7 +70,7 @@ $$
 - **Normal profit (NP)** is the implicit cost of the owners' own capital and effort, the return they could have earned elsewhere at similar risk. It is a cost, not a gain, even though it never appears on an income statement.
 - **Economic profit (EP)** is whatever is left after both. It is the only tier that represents value genuinely captured above every cost, explicit and implicit.
 
-This decomposition is not standard textbook framing, and it is the hinge of the whole synthesis. It is what makes the perfect-competition result intuitive. In long-run competitive equilibrium, entry drives economic profit to zero, but producer surplus stays strictly positive:
+This decomposition is not standard textbook framing, and the whole synthesis depends on it. It is what makes the perfect-competition result intuitive. In long-run competitive equilibrium, entry drives economic profit to zero, but producer surplus stays strictly positive:
 
 $$
 EP = 0 \quad \Longrightarrow \quad PS = FC + NP
@@ -107,7 +107,7 @@ $$
 
 ![Revenue as a capital stack. The four tranches are paid in order of priority, variable costs first, economic profit last. Producer surplus is everything above variable cost; profit is whatever survives once every senior claim is satisfied.](images/revenue-waterfall.svg){fig-alt="A vertical stacked bar representing revenue. From the bottom up: variable costs (paid first, senior), fixed costs, normal profit, and economic profit (paid last, junior, the residual). A left-hand axis marks increasing priority of claim toward the bottom. Right-hand brackets mark the full bar as revenue and the top three tranches as producer surplus, equal to revenue minus variable costs."}
 
-One caveat gates the whole chain. The firm produces at all only when price covers average variable cost. Below the shutdown point the firm makes nothing, and every term collapses to zero.
+One condition applies to the whole chain. The firm produces at all only when price covers average variable cost. Below the shutdown point the firm makes nothing, and every term collapses to zero.
 
 $$
 P \ge AVC \quad \Longrightarrow \quad Q^* > 0 \quad \Longrightarrow \quad PS = R - VC
@@ -121,13 +121,13 @@ $$
 \text{Total Surplus} = \underbrace{CS}_{\text{consumer surplus}} + \underbrace{PS}_{\text{producer surplus}}
 $$
 
-where consumer surplus is willingness to pay minus price, and producer surplus is price minus variable cost. So producer surplus is not the total value created. It is the producer's share of it. Substitute the producer waterfall back in and the whole thing telescopes into a single identity that runs from the customer's desire all the way down to the firm's residual:
+where consumer surplus is willingness to pay minus price, and producer surplus is price minus variable cost. So producer surplus is not the total value created. It is the producer's share of it. Substitute the producer waterfall back in and the whole thing telescopes into a single identity that runs from the customer's willingness to pay all the way down to the firm's residual:
 
 $$
 WTP = VC + FC + NP + EP + CS
 $$
 
-Read it left to right and it is the entire journey of a dollar of value: it originates in the consumer's willingness to pay, is realized as revenue at the point of sale, flows down through the firm's variable and fixed costs and the required return on its capital, and terminates in economic profit, with whatever the customer did not have to pay retained as consumer surplus. The value the firm and its customer share, the part that does not go to covering costs or normal returns, is:
+Read left to right, it traces a dollar of value from start to finish: it originates in the consumer's willingness to pay, is realized as revenue at the point of sale, flows down through the firm's variable and fixed costs and the required return on its capital, and terminates in economic profit, with whatever the customer did not have to pay retained as consumer surplus. The value the firm and its customer share, the part that does not go to covering costs or normal returns, is:
 
 $$
 \text{Value Created} = CS + EP
@@ -141,9 +141,9 @@ This is exactly the value stick, now derived rather than drawn. The full height 
 
 This framework makes the role of strategy precise. Operations and finance decide how efficiently a firm creates value, how low it can push $VC$ and $FC$, how little capital it can tie up. None of that determines whether the firm keeps any of the value it creates. That is set entirely by the economic profit tier, and the economic profit tier is set by market power.
 
-In perfect competition, $EP \to 0$. The whole gap is handed to customers and suppliers, and the firm keeps only its normal return. Strategy is the discipline of creating and defending an edge, through differentiation, cost advantage, network effects, brand, or genuine innovation, that lets a firm hold price up toward willingness to pay and sustain $EP > 0$ over time. This is why the [strategy chapter](03-what-is-worth-building.qmd#the-five-forces-how-wide-is-the-band) reads Porter's five forces as a diagnostic of exactly one thing: how wide the economic profit band is that the industry will let you keep.
+In perfect competition, $EP \to 0$. The whole gap is handed to customers and suppliers, and the firm keeps only its normal return. Strategy is the discipline of creating and defending an advantage, through differentiation, cost advantage, network effects, brand, or genuine innovation, that lets a firm hold price up toward willingness to pay and sustain $EP > 0$ over time. This is why the [strategy chapter](03-what-is-worth-building.qmd#the-five-forces-how-wide-is-the-band) reads Porter's five forces as a diagnostic of exactly one thing: how wide the economic profit band is that the industry will let you keep.
 
-The framework also sharpens two familiar strategic moves.
+The framework also clarifies two familiar strategic moves.
 
 **Red ocean versus blue ocean** [@kim2005blue] is redistribution versus expansion. In a fixed market, total surplus is fixed, and competition is a fight over how the existing $CS + PS$ is divided. A firm can push for more producer surplus at rivals' expense, or convert consumer surplus into economic profit by raising price toward willingness to pay. Both are redistributive, moving the interior lines of the stick without changing its height. Blue ocean, in this language, is a shift of the frontier itself: value innovation that lifts willingness to pay and cuts cost at the same time, enlarging total surplus rather than re-slicing it.
 
@@ -151,6 +151,6 @@ The framework also sharpens two familiar strategic moves.
 
 ## Where this sits
 
-None of the individual pieces here are new. What is uncommon is putting them in one chain. Marshall gave us the geometry of consumer and producer surplus but never tied it to the accounting statements [@marshall1890principles]. Brandenburger and Stuart gave us value created as willingness to pay minus willingness to sell, and value captured as the firm's slice of it, but framed it as bargaining rather than as a cost decomposition [@brandenburger1996]. Oberholzer-Gee turned that into the value stick used to teach it [@oberholzergee2021]. The finance literature operationalized the residual tier as economic value added, ROIC minus WACC times capital, but treated it as a purely financial metric divorced from surplus [@stewart1991quest]. Porter built strategy around sustaining ROIC above WACC without linking it back to welfare economics [@porter1980competitivestrategy]. Teece and Thiel sharpened the warning that creating value and capturing it are separate problems [@teece1986; @thiel2014].
+None of the individual pieces here are new. What is uncommon is putting them in one chain. Marshall gave us the geometry of consumer and producer surplus but never tied it to the accounting statements [@marshall1890principles]. Brandenburger and Stuart gave us value created as willingness to pay minus willingness to sell, and value captured as the firm's slice of it, but framed it as bargaining rather than as a cost decomposition [@brandenburger1996]. Oberholzer-Gee turned that into the value stick used to teach it [@oberholzergee2021]. The finance literature operationalized the residual tier as economic value added, ROIC minus WACC times capital, but treated it as a purely financial metric divorced from surplus [@stewart1991quest]. Porter built strategy around sustaining ROIC above WACC without linking it back to welfare economics [@porter1980competitivestrategy]. Teece and Thiel emphasized that creating value and capturing it are separate problems [@teece1986; @thiel2014].
 
-The single identity, $WTP = VC + FC + NP + EP + CS$, is the bridge. It shows that the same quantity called surplus by economists, profit by accountants, return above cost of capital by financiers, and value captured by strategists is one continuous thing, measured at different depths, flowing from human desire through the firm's income statement and capital structure and out into competitive advantage. That is not new mathematics. It is new clarity, and it is the backbone the rest of these pieces will build on.
+The single identity, $WTP = VC + FC + NP + EP + CS$, connects these pieces. It shows that the same quantity called surplus by economists, profit by accountants, return above cost of capital by financiers, and value captured by strategists is one continuous thing, measured at different depths, running from willingness to pay through the firm's income statement and capital structure and out into competitive advantage. The mathematics is not new. What this appendix adds is the single chain, and the rest of these pieces will build on it.

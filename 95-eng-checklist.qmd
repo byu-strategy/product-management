@@ -457,7 +457,7 @@ Before deploying to production, verify:
 
 **Perfect is the enemy of shipped.**
 
-Use this checklist as a guide, not a gate. Early-stage products can ship with:
+Use this checklist as a guide; you do not have to meet every item before you ship. Early-stage products can ship with:
 - Basic error handling (not comprehensive monitoring)
 - Core feature tests (not 100% coverage)
 - Good-enough performance (not perfectly optimized)
@@ -480,7 +480,7 @@ Use this checklist as a guide, not a gate. Early-stage products can ship with:
 - Document as you go
 - Review your own code before asking AI to
 
-**World-class engineers aren't perfect. They're disciplined, thoughtful, and always learning.**
+**Good engineers still make mistakes. They are disciplined and careful, and they keep learning.**
 
 ---
 
@@ -514,7 +514,7 @@ Use this checklist as a guide, not a gate. Early-stage products can ship with:
 - ✅ **Email verification** - Built-in email confirmation flow
 - ✅ **Password reset** - Secure reset token generation and validation
 - ✅ **Social auth** - Pre-built integrations with 20+ providers
-- ✅ **Multi-factor authentication** - TOTP support out of the box
+- ✅ **Multi-factor authentication** - TOTP support built in
 
 #### Security Features
 - ✅ **Row Level Security (RLS)** - Database-level access control (you write policies, Supabase enforces)
@@ -629,7 +629,7 @@ Total: 3-5 days of engineering work
 - ❌ **Use service role key in frontend** - Bypasses all RLS security
 - ❌ **Store secrets in database** - Use Supabase Vault or environment variables
 - ❌ **Skip migrations** - Manual schema changes break deployments
-- ❌ **Ignore RLS** - "I'll add security later" = security breach waiting to happen
+- ❌ **Ignore RLS** - "I'll add security later" leaves your data exposed until you do
 - ❌ **Over-fetch data** - Select only columns you need
 - ❌ **Forget indexes** - Unindexed queries slow down as data grows
 

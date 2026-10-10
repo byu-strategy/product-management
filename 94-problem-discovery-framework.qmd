@@ -10,13 +10,13 @@ Three universal human needs that drive motivation and wellbeing:
 
 | Human Need | Definition | Gospel Framing |
 |---|---|---|
-| **Autonomy** | Control over your life and choices | **Agency** — moral agency, stewardship |
-| **Competence** | Growth, mastery, becoming more capable | **Becoming** — eternal progression, growing toward divine potential |
-| **Relatedness** | Connection to others, belonging | **Connection** — covenant relationships, community |
+| **Autonomy** | Control over your life and choices | **Agency**: moral agency, stewardship |
+| **Competence** | Growth, mastery, becoming more capable | **Becoming**: eternal progression, growing toward divine potential |
+| **Relatedness** | Connection to others, belonging | **Connection**: covenant relationships, community |
 
 ### Core Insight
 
-**The user is always an individual.** Households and organizations don't click buttons — people do. SDT applies regardless of context (personal, household, or work).
+**The user is always an individual.** Households and organizations don't click buttons; people do. SDT applies regardless of context (personal, household, or work).
 
 ---
 
@@ -73,7 +73,7 @@ Problems aren't only about pain. A frustration points to a **pain reliever** pro
 
 | Sum | Level | Interpretation |
 |---|---|---|
-| 0–1 | Low | Weak foundation — reconsider |
+| 0–1 | Low | Weak foundation; reconsider |
 | 2 | Moderate | Worth exploring further |
 | 3–4 | High | Strong conviction to pursue |
 
@@ -88,8 +88,8 @@ Problems aren't only about pain. A frustration points to a **pain reliever** pro
 | Sum | Level | Interpretation |
 |---|---|---|
 | 3 | Clear | Clear path to build |
-| 1–2 | Caution | Some challenges — have a plan |
-| 0 | Blocked | Major concerns — reconsider or simplify |
+| 1–2 | Caution | Some challenges; have a plan |
+| 0 | Blocked | Major concerns; reconsider or simplify |
 
 ---
 
@@ -105,8 +105,8 @@ Three directional checks rooted in Self-Determination Theory and alignment with 
 
 ### Key Principles
 
-- **Not every product needs all three.** Pure tools (Uber, Amazon) may only expand agency — that's fine.
+- **Not every product needs all three.** Pure tools (Uber, Amazon) may only expand agency, and that is fine.
 - **The question is directional.** For the needs you DO touch, are you on the right side?
 - **Design details matter.** The same product type can be either beneficial or harmful.
 - **Dependency is not inherently bad.** Electricity creates dependency AND expands agency. The test is whether the dependency empowers or exploits.
-- **Principles from D&C 121:** Persuasion, long-suffering, love unfeigned — the relationship between product and user should be one of genuine service, not extraction.
+- **Principles from D&C 121:** Persuasion, long-suffering, love unfeigned. The relationship between product and user should be one of genuine service, not extraction.

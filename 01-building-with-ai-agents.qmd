@@ -5,30 +5,29 @@ title: "Building with AI Agents"
 ## Why This Matters
 
 This is a course about building products, and you are going to start building in week one,
-before you know what a backend is. That is not an accident. The instrument you build with
-is an AI agent, and learning to direct one well is the skill everything else in this course
-sits on top of.
+before you know what a backend is. That is deliberate. You build with an AI agent, and
+directing one well is the skill everything else in this course depends on.
 
 <!-- learn -->
 
 ## The Loop: How This Course Works
 
-Before the history and the frameworks, here is the one idea the whole course runs on. Strip product management down to its core and it is this: **figure out what is true, and act on it.** True about a customer, a problem, a market. Everything else, the interviews, the specs, the MVPs, the metrics, is machinery for that.
+The course is organized around one idea. At its core, product management means two things: **figure out what is true, and act on it.** True about a customer, a problem, a market. Everything else, the interviews, the specs, the MVPs, the metrics, is a method for doing that.
 
-We run that machinery as a single loop, and it has a name: **AIRE**. Each step is a question, except the last, which is what happens when you have answered the first three:
+We run those methods as a single loop called **AIRE**. Each step is a question, except the last, which is what happens when you have answered the first three:
 
 - **Aim.** *What do you want?* The goal, and the values behind it: what value you are trying to create, for whom, and how much you mean to capture.
 - **Inform.** *What is true?* Go find out what is actually true about your customer and their problem. Gather evidence.
 - **Reason.** *What's the best option?* Lay out the real alternatives and choose among them. If there was only ever one option, you have not reasoned, you have rationalized.
 - **Enact.** *What happened?* Build it, ship it, and watch. The answer becomes the next turn's evidence, so you loop back with a sharper aim, better information, and clearer reasoning.
 
-Say it in one breath: what do you want, what is true, what's the best option, what happened. Three questions and a turn.
+In short: what do you want, what is true, what's the best option, what happened.
 
-**Aim comes first, and that is not an accident.** Information is endless; without an aim you have no way to tell which facts matter, and discovery with no destination is just wandering. Lewis Carroll made the point in *Alice's Adventures in Wonderland* [@carroll1865], when Alice reaches a fork and asks the Cheshire Cat which way to go. President Thomas S. Monson retold it this way:
+**Aim comes first on purpose.** Information is endless; without an aim you have no way to tell which facts matter, and discovery with no destination is just wandering. Lewis Carroll made the point in *Alice's Adventures in Wonderland* [@carroll1865], when Alice reaches a fork and asks the Cheshire Cat which way to go. President Thomas S. Monson retold it this way:
 
 > The cat answers, "That depends where you want to go. If you do not know where you want to go, it doesn't matter which path you take."
 
-Alice does not know where she wants to go, so for her it truly does not matter. Monson's turn on the story is the whole reason Aim leads: "Unlike Alice, we know where we want to go, and it does matter which way we go, for by choosing our path, we choose our destination" [@monson2016]. Answer *what do you want* first, and every question after it has a criterion. Skip it, and any road looks as good as any other.
+Alice does not know where she wants to go, so for her it does not matter. Monson's reading of the story is the reason Aim comes first: "Unlike Alice, we know where we want to go, and it does matter which way we go, for by choosing our path, we choose our destination" [@monson2016]. Answer *what do you want* first, and every question after it has a criterion. Skip it, and any road looks as good as any other.
 
 The course *is* this loop, and the parts you see in the sidebar are its steps:
 
@@ -39,21 +38,21 @@ The course *is* this loop, and the parts you see in the sidebar are its steps:
 | **Reason** | what's the best option? | **Build**: decide what to build, then build it |
 | **Enact** | what happened? | **Build**, then **Grow**: ship it, measure, and learn on the live product |
 
-The **Aim**, what is worth building at all, is where strategy and values meet. What value you create and for whom, and how much of it you can capture, is the [create-versus-capture](03-what-is-worth-building.qmd#creating-value-and-capturing-it) choice in [Product Strategy](03-what-is-worth-building.qmd); whether it is worth building at all is [Product Morality](03-what-is-worth-building.qmd). And you will run the whole loop many times across the semester, once per sprint, because a single turn tells you little; the arc is what reveals whether you are getting good.
+The **Aim**, what is worth building at all, is where strategy and values meet. What value you create and for whom, and how much of it you can capture, is the [create-versus-capture](03-what-is-worth-building.qmd#creating-value-and-capturing-it) choice in [Product Strategy](03-what-is-worth-building.qmd); whether it is worth building at all is [Product Morality](03-what-is-worth-building.qmd). And you will run the whole loop many times across the semester, once per sprint, because a single turn tells you little; the trend across sprints shows whether you are improving.
 
 Two things about the loop are worth knowing up front.
 
-First, **the middle three multiply, they do not add.** How good a decision turns out is roughly Information × Reasoning × Execution, and because those multiply, a zero anywhere sinks the whole. Brilliant reasoning on evidence you never gathered is a confident mistake. A great idea you never ship is worth nothing. Think of it as an area, not a perimeter: a rectangle with one short side has almost no area however long the others are.
+First, **the middle three multiply, they do not add.** How good a decision turns out is roughly Information × Reasoning × Execution, and because those multiply, a zero in any one makes the whole product zero. Brilliant reasoning on evidence you never gathered is a confident mistake. A great idea you never ship is worth nothing. Think of it as an area, not a perimeter: a rectangle with one short side has almost no area however long the others are.
 
 ![Outcome is the area the factors enclose, not their perimeter. One weak factor collapses it.](images/outcome-as-area.svg){fig-alt="Two rectangles. The left, with all sides full, is a large shaded area labeled Outcome. The right, with the Execution side near zero, collapses to a thin sliver labeled Outcome near zero."}
 
-Second, **most of the loop is about telling what you believe from what is true.** You will always have beliefs about your customer. Some are right, some are wrong, and the work of Inform and Reason is to close the gap. [Chapter 3](04-finding-and-validating-the-problem.qmd) gives you a picture of exactly that: a map of where a belief can sit relative to the truth, and how to move it.
+Second, **most of the loop is about telling what you believe from what is true.** You will always have beliefs about your customer. Some are right, some are wrong, and the work of Inform and Reason is to close the gap. [Chapter 3](04-finding-and-validating-the-problem.qmd) gives you a diagram of that: a map of where a belief can sit relative to the truth, and how to move it.
 
 AIRE is the loop *you* run, across a sprint. Later in this chapter you will meet a second, much faster loop: the one the *agent* runs on every turn (gather context, act, check). Keep the two apart. AIRE decides what is worth building; the agent loop is how a piece of it gets built.
 
 ### How we run class
 
-Class meets once a week: short bursts of full attention to install a skill, then live building with Claude Code. Each class has one emphasis, and we open it with a scripture and a quote tied to that emphasis.
+Class meets once a week: short periods of focused instruction to teach a skill, then live building with Claude Code. Each class has one emphasis, and we open it with a scripture and a quote tied to that emphasis.
 
 The scripture is not decoration, and it is not separate from the craft. This is BYU, and we take seriously Brigham Young's charge to Karl G. Maeser as he left to found this university: to "not teach even the alphabet or the multiplication tables without the Spirit of God." All truth is God's truth, and seeking it honestly, about a customer, a market, or anything else, is a spiritual act as much as a technical one. Faith, in the oldest sense, is not the absence of evidence; it is belief carried all the way into action. That is the Enact in AIRE: a belief you will not act on is dead. We will treat the whole loop that way, as work worth doing well and worth doing in good faith.
 
@@ -80,10 +79,10 @@ of the semester, and you will get back a six-sided chart of your profile both ti
 point of the baseline is not to judge you. It is so you know which axis is your weakest and
 can spend your discretionary effort there.
 
-Agentic Workflow comes first because you need the instrument before anything else is
-possible. You will ship something in week one that you do not fully understand, and that is
-deliberate. Understanding arrives later, and it arrives faster when you already have
-something running to understand.
+Agentic Workflow comes first because you need the tool before you can do anything
+else. You will ship something in week one that you do not fully understand, and that is
+deliberate. You will understand it later, and you will understand it faster because you
+already have something running to study.
 
 <!-- learn -->
 
@@ -104,7 +103,7 @@ Product management as a job title traces to Hewlett-Packard in the 1940s. The id
 
 ![Image source: Wikimedia Commons](images/brand-men.jpg)
 
-Later influences, including the [Scrum development process](https://en.wikipedia.org/wiki/Scrum_(software_development)), the [Agile Manifesto](https://agilemanifesto.org/) [@beck2001], Google's Associate Product Manager (APM) program, and a shelf of influential books, standardized how the work is done.
+Later influences, including the [Scrum development process](https://en.wikipedia.org/wiki/Scrum_(software_development)), the [Agile Manifesto](https://agilemanifesto.org/) [@beck2001], Google's Associate Product Manager (APM) program, and a number of influential books, standardized how the work is done.
 
 ![A History of Product Management; Aakash Gupta and Scott Murff](images/pm-history.png)
 
@@ -112,7 +111,7 @@ Each computing wave widened the field: personal computers in the 1980s, the inte
 
 > “Discoveries latent with such potent power, either for the blessing or the destruction of human beings as to make men’s responsibility in controlling them the most gigantic ever placed in human hands. … This age is fraught with limitless perils, as well as untold possibilities.” *--David O. McKay, in Conference Report, Oct. 1966, 4.* [@mckay1966]
 
-**You have the opportunity to harness AI to improve the world. This class will help prepare you to take it.**
+**You have the opportunity to use AI to improve the world. This class will help prepare you to take it.**
 
 For two decades many companies built software with a *product trio*: a product manager who sets vision, strategy, and priorities; a designer who owns usability and the experience; and engineers who turn ideas into working, scalable systems. AI is changing both the division of labor inside the trio and how much one person can do.
 
@@ -120,7 +119,7 @@ For two decades many companies built software with a *product trio*: a product m
 
 ## AI Product Management
 
-With AI, a PM can produce wireframes, mockups, and working demos without waiting on design or engineering, and can put a tangible idea in front of users in days. Designers and engineers are still needed; what changes is when they are engaged. Some ambitious individuals will wear all three hats.
+With AI, a PM can produce wireframes, mockups, and working demos without waiting on design or engineering, and can put a tangible idea in front of users in days. Designers and engineers are still needed; what changes is when they are engaged. Some ambitious individuals will do all three jobs.
 
 ![](images/full-stack-from-to.png)
 
@@ -156,7 +155,7 @@ We are adding a coding section to all of our Product Managers interviews at <a h
 
 #### AI Product PM
 
-An AI Product PM builds products where AI is a core feature. On top of the traditional job (define the problem, lead the team, ship), they need to know what AI can and cannot do, how to measure its performance, and how to design around its limits, balancing accuracy, speed, cost, and safety. That is a high bar, and it is the bar this course aims at. Paweł Huryn's roadmap lays out what it takes:
+An AI Product PM builds products where AI is a core feature. On top of the traditional job (define the problem, lead the team, ship), they need to know what AI can and cannot do, how to measure its performance, and how to design around its limits, balancing accuracy, speed, cost, and safety. That is a high standard, and it is the standard this course aims at. Paweł Huryn's roadmap lays out what it takes:
 
 ![AI Product Management Learning Roadmap from Paweł Huryn](images/ai-pm-roadmap.jpeg)
 
@@ -212,7 +211,7 @@ In March 2025, YC managing partner Jared Friedman said that a quarter of the Win
 
 {{< video https://www.youtube.com/embed/IACHfKmZMr8 >}}
 
-A wave of companies now sells tools for this. Dan Olsen's chart sorts them from less technical to more technical: browser-based app builders on the left, then IDE extensions, desktop apps, and command-line agents such as Claude Code on the right. This course works on the right side, and it is often useful to borrow from the left.
+Many companies now sell tools for this. Dan Olsen's chart sorts them from less technical to more technical: browser-based app builders on the left, then IDE extensions, desktop apps, and command-line agents such as Claude Code on the right. This course works on the right side, and tools from the left side are often useful too.
 
 ![](/images/dan-olsen-vibe-coding.jpeg)
 
@@ -258,12 +257,11 @@ At <a href="https://twitter.com/Google?ref_src=twsrc%5Etfw">\@Google</a>, we are
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 ```
 
-In the inverted loop you build first and the artifact becomes the way you think. You play with a
-working thing, and only then do you design it, because now you have something real to react to.
-The prototype is the argument.
+In the inverted loop you build first and work out your thinking on the prototype. You use a
+working version, and only then do you design it, because now you have something real to react to.
+The prototype, in place of a document, is what you use to make the case for the idea.
 
-Read this as a change in sequence. The writing does not go away;
-it moves. You still write down what the thing is supposed to do, you just write it after you have
+This is a change in sequence, and the writing still happens. You still write down what the thing is supposed to do, you just write it after you have
 learned something from a build instead of guessing beforehand, and you write it before the code is
 something you intend to keep. The rule for the rest of the course: **explore to learn, then spec anything you intend to keep.** [Chapter 2](02-directing-the-agent.qmd) is about that discipline.
 
@@ -286,7 +284,7 @@ The fight over what a product manager does is going to among the first major AI 
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 ```
 
-With the right tools, one person can credibly wear all three trio hats and become what LinkedIn's Tomer Cohen calls a [Full-Stack Product Builder](https://www.linkedin.com/pulse/bringing-full-stack-builder-life-tomer-cohen-gy5nf/).
+With the right tools, one person can credibly do all three trio roles and become what LinkedIn's Tomer Cohen calls a [Full-Stack Product Builder](https://www.linkedin.com/pulse/bringing-full-stack-builder-life-tomer-cohen-gy5nf/).
 
 The table below lists what product work actually consists of, question by question, and marks which
 role does each piece. The highlighted column is the full-stack product builder: the same discovery,
@@ -385,7 +383,7 @@ Ask Claude Code to make a small change in your project, then watch the transcrip
 
 To direct an agent you need to read what it is doing, and most of what a coding agent does happens on the [command line](https://en.wikipedia.org/wiki/Command-line_interface): a text-based way to control your computer by typing commands instead of clicking. The program that shows it is a **terminal**: Terminal on macOS; Command Prompt, PowerShell, or Git Bash on Windows; or the terminal panel built into VS Code.
 
-The command line gives direct access to files, programs, and system functions, many of which have no graphical interface at all. That is why AI made it more important: Claude Code, Codex, and Gemini CLI all live there, and when the agent runs a command you approve or reject it based on whether you can read it.
+The command line gives direct access to files, programs, and system functions, many of which have no graphical interface at all. That is why AI made it more important: Claude Code, Codex, and Gemini CLI all run there, and when the agent runs a command you approve or reject it based on whether you can read it.
 
 You do not need to memorize commands, since the agent will type them. You need to recognize the core ones:
 
@@ -439,7 +437,7 @@ Visual Studio Code is a free code editor from Microsoft and the home base for th
 
 ## Claude Code
 
-Claude Code is Anthropic's coding agent. You describe what you want in plain language; it reads your project, plans, edits files across the codebase, runs commands and tests, and reports back, asking your permission for actions you have not pre-approved. It will not build a polished, complicated application by itself, but it gives you something like a crane and power tools for building the house.
+Claude Code is Anthropic's coding agent. You describe what you want in plain language; it reads your project, plans, edits files across the codebase, runs commands and tests, and reports back, asking your permission for actions you have not pre-approved. It will not build a polished, complicated application by itself, but it does much of the construction while you direct it.
 
 {{< video https://www.youtube.com/embed/GqjvaBUk3Tc >}}
 
@@ -570,7 +568,7 @@ Claude Code is the primary tool in this course. The wider field, roughly sorted:
 | **Lovable**, **v0** | Browser app builders | Quick UI prototypes from a prompt |
 | **Figma** | Design tool | Mockups and user flows |
 
-When you want to see a UI idea in seconds before building it properly, a browser app builder like Lovable is a reasonable first stop.
+When you want to see a UI idea in seconds before building it properly, a browser app builder like Lovable is a reasonable place to start.
 
 <!-- learn -->
 

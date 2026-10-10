@@ -184,5 +184,5 @@
 </g></g>
 <text x="863.0" y="540" font-size="21" font-weight="700" fill="#002E5D" text-anchor="middle">Partial</text>
 <text x="863.0" y="566" font-size="16" fill="#5A6672" text-anchor="middle">Shows what loaded,</text>
-<text x="863.0" y="587" font-size="16" fill="#5A6672" text-anchor="middle">retries only the gap</text>
+<text x="863.0" y="587" font-size="16" fill="#5A6672" text-anchor="middle">retries only what failed</text>
 </svg>

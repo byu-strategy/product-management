@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 422" role="img" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
   <title>The shape of a three-minute demo</title>
-  <desc>A timeline of the three-minute final demo, with each part drawn to scale. The person and the problem takes 40 seconds; the moment it works, highlighted, takes 80 seconds, almost half the demo; the evidence takes 30 seconds; what you learned takes the last 30 seconds. Under each part is the QuizMe example: Maya has a quiz every Friday and rereads her notes and hopes; she uploads this week's notes, gets ten questions, misses three on equilibrium, and knows what to study; 20 invited, 8 finished a quiz, 5 came back; the team cut a signup step and killed the unused flashcard export.</desc>
+  <desc>A timeline of the three-minute final demo, with each part drawn to scale. The person and the problem takes 40 seconds; the moment it works, highlighted, takes 80 seconds, almost half the demo; the evidence takes 30 seconds; what you learned takes the last 30 seconds. Under each part is the QuizMe example: Maya has a quiz every Friday and studies by rereading her notes; she uploads this week's notes, gets ten questions, misses three on equilibrium, and knows what to study; 20 invited, 8 finished a quiz, 5 came back; the team cut a signup step and killed the unused flashcard export.</desc>
   <defs>
     <linearGradient id="seg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#E3ECF6"/><stop offset="100%" stop-color="#CCDCEE"/></linearGradient>
     <linearGradient id="acc" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1A6FCC"/><stop offset="100%" stop-color="#0050A8"/></linearGradient>
@@ -15,8 +15,8 @@
   <rect x="40" y="252" width="200" height="60" rx="8" fill="url(#seg)" filter="url(#sh)"/>
   <text x="140.0" y="290" text-anchor="middle" font-size="20" font-weight="700" fill="#002E5D">40 s</text>
   <text x="140.0" y="410" text-anchor="middle" font-size="16" fill="#5A6672">Maya has a quiz</text>
-  <text x="140.0" y="432" text-anchor="middle" font-size="16" fill="#5A6672">every Friday. She</text>
-  <text x="140.0" y="454" text-anchor="middle" font-size="16" fill="#5A6672">rereads and hopes.</text>
+  <text x="140.0" y="432" text-anchor="middle" font-size="16" fill="#5A6672">every Friday. She studies</text>
+  <text x="140.0" y="454" text-anchor="middle" font-size="16" fill="#5A6672">by rereading her notes.</text>
   <circle cx="446.5" cy="150" r="26" fill="#0057B8"/>
   <g transform="translate(431.5,135) scale(1.25)" fill="none" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10 7.75a.75.75 0 0 1 1.142-.638l3.664 2.249a.75.75 0 0 1 0 1.278l-3.664 2.25a.75.75 0 0 1-1.142-.64z"/><path d="M12 17v4"/><path d="M8 21h8"/><rect x="2" y="3" width="20" height="14" rx="2"/></g>
   <text x="446.5" y="204" text-anchor="middle" font-size="19" font-weight="700" fill="#0057B8">The moment it works</text>

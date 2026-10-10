@@ -2,7 +2,7 @@
 title: "The Canon"
 ---
 
-This class is a synthesis. Almost none of the ideas here are mine; they are the best of what product people, entrepreneurs, designers, and thinkers have worked out over decades, organized onto one spine ([AIRE](01-building-with-ai-agents.qmd)) and put to work building real products with AI. This page names the sources, says where each idea lives in the course, and, because the ground is moving, flags what AI has changed and what it has not.
+This class is a synthesis. Almost none of the ideas here are mine; they are the best of what product people, entrepreneurs, designers, and thinkers have worked out over decades, organized under one framework ([AIRE](01-building-with-ai-agents.qmd)) and put to work building real products with AI. This page names the sources, says where each idea lives in the course, and, because the field is changing, flags what AI has changed and what it has not.
 
 If you build on someone's idea, credit them. That is both honest and how you learn whose work to go read next.
 
@@ -11,10 +11,10 @@ If you build on someone's idea, credit them. That is both honest and how you lea
 A lot of product wisdom was written when building software was slow, expensive, and specialized. Some of that guidance is now dated. Three shifts matter most.
 
 - **Building got cheap, so the bottleneck moved.** The hard part is no longer *can we build it?* but *should we build it, and are we building the right thing?* Discovery and validation matter **more** now, not less, because it has never been easier to build the wrong thing quickly. "Write a detailed spec, then build" is giving way to "build a rough thing to think with." (Chapter 5 says this directly.)
-- **One person can now do the whole stack.** Frameworks written for cross-functional teams, hand-offs between PM, design, and engineering, still teach the right *thinking*, but you are playing every position at once. Read them for the judgment, not the org chart.
-- **AI can manufacture plausible-but-fake validation.** It will happily generate a persona, simulate an interview, and tell you your idea is great. That makes the old discipline, real people, real past behavior, more valuable, not less. AI accelerates hypotheses; humans give ground truth.
+- **One person can now do the whole stack.** Frameworks written for cross-functional teams, hand-offs between PM, design, and engineering, still teach the right *thinking*, but you now fill every role yourself. Read them for the judgment and set aside the assumptions about team structure.
+- **AI can manufacture plausible-but-fake validation.** It will readily generate a persona, simulate an interview, and tell you your idea is great. That makes the old discipline, real people, real past behavior, more valuable, not less. AI can generate hypotheses quickly; only real people can confirm or refute them.
 
-What has **not** changed: humans still have jobs to be done, still feel the same pains, still decide with the elephant and justify with the rider, still trust people before products. Taste, judgment, and the choice of what is worth building are more decisive than ever, because everyone now has the same cheap building power.
+What has **not** changed: humans still have jobs to be done, still feel the same pains, still decide with the elephant and justify with the rider, still trust people before products. Taste, judgment, and the choice of what is worth building matter more than they did, because everyone now has the same cheap building power.
 
 ## Foundations and mindset
 
@@ -22,7 +22,7 @@ What has **not** changed: humans still have jobs to be done, still feel the same
 |---|---|---|---|
 | Product management as a craft; outcomes over output; discovery vs. delivery | Marty Cagan, *Inspired* / *Empowered* (SVPG) [@cagan2017inspired; @cagan2020empowered] | Ch 1; Ch 8 | The discovery/delivery split endures; the "empowered team" is now often a team of one plus AI |
 | Escaping the build trap (shipping features ≠ delivering value) | Melissa Perri, *Escaping the Build Trap* (2018) [@perri2018buildtrap] | Ch 8 | Sharper risk now: cheap building makes the build trap easier to fall into |
-| The Lean Startup: build-measure-learn, validated learning, pivot | Eric Ries, *The Lean Startup* (2011) [@ries2011lean] | Ch 5; Ch 9 | Build cost collapsed; the loop still holds but "measure and learn" is now the expensive part |
+| The Lean Startup: build-measure-learn, validated learning, pivot | Eric Ries, *The Lean Startup* (2011) [@ries2011lean] | Ch 5; Ch 9 | Build cost fell sharply; the loop still holds but "measure and learn" is now the expensive part |
 | Customer Development: "get out of the building" | Steve Blank, *The Four Steps to the Epiphany* (2005) [@blank2005four] | Ch 3–4 | AI can augment research; it cannot replace real customer contact |
 | The five discovery skills (Q/O/N/E → Associating) | Dyer, Gregersen & Christensen, "The Innovator's DNA," HBR (2009) [@dyer2009dna] | Ch 2 | Durable; these are the behaviors, not the tools |
 
@@ -32,7 +32,7 @@ What has **not** changed: humans still have jobs to be done, still feel the same
 |---|---|---|---|
 | Strategy is choosing what *not* to do | Michael Porter [@porter1996strategy] | Product Strategy | Matters more: when anyone can build anything, the choice is the advantage |
 | Where to play / how to win | Roger Martin & A.G. Lafley, *Playing to Win* (2013) [@lafley2013playing] | Product Strategy | Durable |
-| Moats and durable advantage | Hamilton Helmer, *7 Powers* (2016) [@helmer2016powers] | Product Strategy | Sharper: cheap copying makes the moat the whole game |
+| Moats and durable advantage | Hamilton Helmer, *7 Powers* (2016) [@helmer2016powers] | Product Strategy | More important now: when copying is cheap, a moat is the main source of lasting advantage |
 | DHM (delight, hard-to-copy, margin-enhancing) | Gibson Biddle [@biddle2018] | Product Strategy | Durable |
 | Product vision | Marty Cagan, *Inspired* [@cagan2017inspired] | Product Strategy; Ch 1 | Durable |
 | Aiming well; virtue as the mean | Aristotle, *Nicomachean Ethics* [@aristotlenicomachean] | Product Morality | Durable |
@@ -73,7 +73,7 @@ What has **not** changed: humans still have jobs to be done, still feel the same
 | Business Model Canvas | Osterwalder & Pigneur (2010); JTBD refinement by Jeff Dyer [@osterwalder2010business] | Ch 10 | Durable |
 | Influence: reciprocity, social proof, authority, scarcity, commitment, liking | Robert Cialdini, *Influence* (1984) [@cialdini1984influence] | Ch 9, Ch 12 | Durable; deploy honestly (see Product Morality) |
 | Innovation Capital and the impression amplifiers | Dyer, Furr & Lefrandt, *Innovation Capital* (2019) [@dyer2019innovation] | Ch 9, Ch 12 | Durable |
-| Habit loops (trigger, action, variable reward, investment) | Nir Eyal, *Hooked* (2014) [@eyal2014hooked] | Product Morality | Use the reflection test; do not weaponize |
+| Habit loops (trigger, action, variable reward, investment) | Nir Eyal, *Hooked* (2014) [@eyal2014hooked] | Product Morality | Use the reflection test; do not use it to exploit users |
 
 ## Demo and storytelling
 
@@ -92,8 +92,8 @@ What has **not** changed: humans still have jobs to be done, still feel the same
 | Resulting: judge the decision, not just the outcome | Annie Duke, *Thinking in Bets* (2018) [@duke2018bets] | Grading philosophy; Ch 8 | Durable |
 | Truth-seeking; radical honesty; principles | Ray Dalio, *Principles* (2017) [@dalio2017principles] | Ch 3; grading philosophy | Durable |
 | Virtue as the mean; practical wisdom | Aristotle, *Nicomachean Ethics* [@aristotlenicomachean] | Product Morality | Durable |
-| "Make something people want"; "do things that don't scale" | Paul Graham / Y Combinator [@graham2013] | Ch 2, Ch 9 | More true now: building is easy, wanting is the hard part |
+| "Make something people want"; "do things that don't scale" | Paul Graham / Y Combinator [@graham2013] | Ch 2, Ch 9 | More true now: building is easy, and making something people want is the hard part |
 
 ## How to use this page
 
-Do not try to read all of it at once. When a chapter borrows an idea, this page tells you whose shoulders you are standing on. Pick two or three sources a semester and go deep. And when you find a principle written before 2023, ask the question this class keeps asking: *does that still hold now that building is cheap and everyone has an AI?* Sometimes yes, sometimes not, and knowing the difference is the skill.
+Do not try to read all of it at once. When a chapter borrows an idea, this page tells you whose work it comes from. Pick two or three sources a semester and read them closely. And when you find a principle written before 2023, ask the question this class keeps asking: *does that still hold now that building is cheap and everyone has an AI?* Sometimes yes, sometimes not, and knowing the difference is the skill.

@@ -29,7 +29,7 @@ and you can catch it when it puts something in the wrong place.
 **The model:** the browser belongs to the user, who can see and change anything there. The
 server is yours and keeps secrets. The database remembers.
 
-![The dashed line is where the user's control ends. Anything left of it can be read and changed, so secrets and the checks that matter sit to the right.](images/diagrams/ch07-where-code-runs.svg){#fig-where-code-runs fig-alt="Three places drawn as icons in a row: the browser, your server, and the database. A dashed blue line between the browser and the server is labeled the user controls on the left and you control on the right. Under the browser: sees and changes all of it; no secrets, no checks that matter. Under the server: secret keys live here; the checks that matter. Under the database: remembers after a refresh; row rules on every request. A solid arrow labeled requests runs from browser to server to database, and a dashed arc from the browser straight to the database is labeled Supabase: direct, through row rules." width="100%"}
+![The dashed line is where the user's control ends. Anything left of it can be read and changed, so secrets and the checks that matter sit to the right.](images/diagrams/ch07-where-code-runs.svg){#fig-where-code-runs fig-alt="Three places drawn as icons in a row: the browser, your server, and the database. A dashed blue line between the browser and the server is labeled the user controls on the left and you control on the right. Under the browser: sees and changes all of it; no secrets, no checks that matter. Under the server: secret keys live here; the checks that matter. Under the database: remembers after a refresh; row-level security on every request. A solid arrow labeled requests runs from browser to server to database, and a dashed arc from the browser straight to the database is labeled Supabase: direct, through row-level security." width="100%"}
 
 | Place | Also called | Who controls it | What belongs there | What must never be there |
 |---|---|---|---|---|
@@ -49,7 +49,7 @@ A few terms you will hear constantly:
 **The rule that follows.** Every line of frontend code is downloaded to the user's machine.
 Anyone can open the browser's developer tools (a panel built into every browser that shows the
 page's code, its stored data, and every request it sends) and read or change any of it. So a
-check that runs only in the browser is a suggestion, and a key shipped to the browser is
+check that runs only in the browser can be bypassed, and a key shipped to the browser is
 public. Checks that matter run again on the server or in the database. Secrets stay on the
 server.
 
@@ -87,7 +87,7 @@ receive the answers, look up the correct ones itself, and compute the score.
 
 **The model:** the places never share memory. They talk only by sending requests and getting
 responses, and an **API** (Application Programming Interface) is the set of requests a place
-agrees to answer. Your server's API is its front door: a list of addresses, called
+agrees to answer. Your server's API is a list of addresses, called
 **endpoints**, such as `POST /api/tasks`, each with a defined input and output.
 
 ![Image source: Adityagaba via Medium](images/architecture.png){fig-alt="A diagram split into a front-end half and a back-end half. The front end shows a web app and a mobile app, with HTML, CSS, JavaScript, and Node logos beneath. An arrow connects them to a server in the back-end half, which connects in turn to a database, an API, and language logos for Java, Python, C plus plus, and PHP."}
@@ -187,7 +187,7 @@ THEN system SHALL create account and send confirmation email
 ```
 
 The good spec says where each rule is enforced. The browser checks are there for speed; the
-real checks run where the user cannot reach them.
+enforcing checks run where the user cannot reach them.
 
 This might feel like a lot if you are new to technical concepts. You need enough to know what
 questions to ask, and you will start thinking in layers without trying: "This feature needs a
@@ -219,7 +219,7 @@ stacks as shorthand for a whole set of decisions.
 database and authentication, and Vercel for hosting. That combination is not the only
 reasonable one. It is chosen because it gets a real, multi-user, authenticated application
 onto the internet faster than anything else available to a solo builder, and because the
-free tiers are generous enough to carry a student product through a semester.
+free tiers are large enough to cover a student product for a semester.
 
 **On languages.** You will mostly read JavaScript and TypeScript (JavaScript with labels that
 say what kind of data each value holds, so mistakes show up before the code runs), because
@@ -230,19 +230,19 @@ which is a much lower bar and a much more useful one.
 
 **Choosing a stack.** Pick the boring one. Dan McKinley's essay "Choose Boring Technology"
 makes the case: every new tool spends attention you could spend on the product, and a
-well-known tool's failure modes are already documented [@mckinley2015boring]. The AI-era
-reason is stronger still: an agent writes better code in a popular stack because it has seen
+well-known tool's failure modes are already documented [@mckinley2015boring]. There is
+also a reason specific to AI: an agent writes better code in a popular stack because it has seen
 far more of it. The stack that is well documented, widely used, and already familiar to your
-tools is almost always the right call for a first product.
+tools is almost always the right choice for a first product.
 
 <!-- learn -->
 
 ## Supabase Introduction
 
 **Supabase** is a hosted Postgres database with an API, sign-in, and file storage built
-around it. The part that shapes your architecture: Supabase generates an API for every table,
-so your browser code can query the database directly. That is fast to build with, and it moves
-the job of protecting data into the database itself.
+around it. Supabase generates an API for every table, so your browser code can query the
+database directly. This shapes your architecture. It is fast to build with, and it moves the job
+of protecting data into the database itself.
 
 | Feature | What It Does |
 |---------|--------------|

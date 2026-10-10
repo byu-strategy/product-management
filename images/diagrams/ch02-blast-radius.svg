@@ -72,7 +72,7 @@
   <circle cx="636" cy="443" r="16" fill="#FFFFFF" stroke="#C3CAD2" stroke-width="1.5"/>
   <circle cx="636" cy="443" r="8.5" fill="#FFFFFF" stroke="#C3CAD2" stroke-width="1.5"/>
   <text x="678" y="439" font-size="19" font-weight="700" fill="#0057B8">nothing</text>
-  <text x="678" y="463" font-size="15" fill="#5A6672">it already left</text>
+  <text x="678" y="463" font-size="15" fill="#5A6672">it has already been sent</text>
   <text x="800" y="428" font-size="17" fill="#2C3E50">Gate it: deny rule,</text>
   <text x="800" y="451" font-size="17" fill="#2C3E50">plan mode, or run</text>
   <text x="800" y="474" font-size="17" fill="#2C3E50">it yourself</text>
