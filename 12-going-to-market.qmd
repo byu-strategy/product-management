@@ -24,6 +24,14 @@ nobody is waiting for your product, so you go find them. "We just need to go vir
 an outcome of a product people want plus a way for it to spread, never a plan. And GTM is not an
 afterthought: knowing who you are for should shape what you build.
 
+::: {.callout-note title="The example in chapters 12 to 15: QuizMe"}
+QuizMe turns a student's own lecture notes into a practice quiz. The student uploads notes, an
+AI model writes questions from them, and the student takes the quiz to find out what they do not
+know yet. It costs $4 a month. Chapters 12 to 15 follow it from launch to the final demo: who it
+is for, what it costs to run, how to tell whether it works, and how to present it. The example is
+invented for teaching.
+:::
+
 <!-- learn -->
 
 ## Who It Is For: The Beachhead

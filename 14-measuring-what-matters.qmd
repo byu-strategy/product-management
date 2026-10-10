@@ -12,6 +12,11 @@ real effect from a coincidence, and decide which features to keep, change, or ki
 
 Read a metric as [evidence](04-finding-and-validating-the-problem.qmd) that moves a belief up or down. It does not certify that you are right, or that you are worthy. And remember that outcomes carry luck: a good number can follow a poor decision and a bad number a sound one [@duke2018bets]. Track what updates your beliefs about the product, not what flatters them.
 
+::: {.callout-note title="The running example: QuizMe"}
+This chapter continues the example from [Going to Market](12-going-to-market.qmd): QuizMe, an
+app that turns a student's lecture notes into a practice quiz, for $4 a month.
+:::
+
 <!-- learn -->
 
 ## Decide What Working Means First

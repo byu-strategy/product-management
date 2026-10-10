@@ -23,6 +23,15 @@ testing. This chapter is the bottom half. Chapters 5 and 6 are the top.
 
 ![Image source: The Lean Product Playbook by Dan Olsen](images/lean-product-process.png){fig-alt="A pyramid split into a market half and a product half. The market base, from the bottom, is 1 target customer and 2 underserved needs. The product top, from the bottom, is 3 value proposition, 4 feature set, and 5 UX. A double arrow between the halves is labeled product-market fit, and a dashed arrow from the top loops back down to the base labeled 6 test with customers."}
 
+::: {.callout-note title="The example in this chapter: a dues tracker"}
+A student club collects membership dues. Members pay the treasurer on Venmo, and every Sunday
+the treasurer matches those payments, one by one, against a sign-up sheet to see who still owes.
+A student builder thinks one page that shows who has paid would save that Sunday. This chapter
+follows the idea through discovery: what the treasurer does today, which assumptions would make
+it fail, and the smallest test that shows whether it is worth building. The example is invented
+for teaching.
+:::
+
 <!-- learn -->
 
 ## Discovery Is Truth-Seeking
@@ -762,7 +771,7 @@ A worked example. Idea: a dues tracker for student club treasurers.
 | What would have to be true | Risk | Uncertainty | Fatal if false? |
 |---|---|---|---|
 | Treasurers find matching payments to members painful enough to switch | Value | High (we've talked to two) | Yes |
-| Treasurers can connect their Venmo history to the app | Feasibility | High (Venmo offers no public API for this) | Yes |
+| Treasurers can connect their Venmo history to the app | Feasibility | High (Venmo closed its API to new developers in 2016; members can download a monthly CSV statement) | Yes |
 | Treasurers can learn it in under five minutes | Usability | Medium | No, fixable |
 | A club will pay $5 a month | Viability | High | Not this semester; a free tool is fine for now |
 
@@ -773,7 +782,6 @@ because if treasurers don't care, the data question never matters. But the feasi
 cheap to check (an hour of reading and a spike) and could kill the idea in its current form, so
 check it the same week.
 
-<!-- REVIEW: the Venmo API claim in this example reflects my understanding that Venmo has no open public API for reading transaction history; verify before publishing or swap in a different data source. -->
 
 ::: {.callout-tip title="Try it"}
 For your product, write the hypothesis in one sentence, then list five things that would have to

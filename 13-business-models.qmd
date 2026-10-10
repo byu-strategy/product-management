@@ -10,6 +10,11 @@ assumptions you did not know you were making. For an AI product it also answers 
 that traditional software rarely had to ask: does each additional user cost you more than
 they bring in?
 
+::: {.callout-note title="The running example: QuizMe"}
+This chapter continues the example from [Going to Market](12-going-to-market.qmd): QuizMe, an
+app that turns a student's lecture notes into a practice quiz, for $4 a month.
+:::
+
 <!-- learn -->
 
 ## What a Business Model Is

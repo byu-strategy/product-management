@@ -8,6 +8,11 @@ You spent the semester finding a truth about a customer and building something i
 
 This chapter teaches you to build a supply of stories, to tell them well, and to shape the one story that matters most this semester: the story of what you built, why, and what happened when people used it.
 
+::: {.callout-note title="The running example: QuizMe"}
+This chapter continues the example from [Going to Market](12-going-to-market.qmd): QuizMe, an
+app that turns a student's lecture notes into a practice quiz, for $4 a month.
+:::
+
 <!-- learn -->
 
 ## A story has a job

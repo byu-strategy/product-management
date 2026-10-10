@@ -38,10 +38,12 @@ The ninth design idea, **watch, do not ask**, is the subject of [Testing the
 Design](06-testing-the-design.qmd). The chapter closes with a short section on web versus mobile
 and a reference section on how the surface is built in code.
 
-A running example helps. Picture **ShiftSwap**, an app for student employees at a campus job.
-A student who cannot work a shift posts it, a coworker picks it up, and the manager approves the
-trade. One AI feature: you photograph the paper schedule on the break-room wall and the app reads
-your shifts from it.
+::: {.callout-note title="The example in this chapter: ShiftSwap"}
+ShiftSwap is an app for student employees at a campus job. A student who cannot work a shift
+posts it, a coworker picks it up, and the manager approves the trade. One AI feature: you
+photograph the paper schedule on the break-room wall and the app reads your shifts from it. The
+example is invented for teaching.
+:::
 
 <!-- learn -->
 
