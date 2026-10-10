@@ -494,7 +494,7 @@ email is about a charge, which belongs in `billing`, and the feature called it a
 eval has twenty to fifty test cases instead of three; the steps are the same.
 
 **Who checks the output.** Here the check is easy. The output is one word from a fixed list,
-so code compares two strings, the same comparison a test makes in Chapter 9. Many features
+so code compares two strings, the same comparison a test makes in Chapter 9b. Many features
 write free text instead, like the course-help bot from the RAG section, where many wordings of
 a correct answer are possible. For those, you write a **pass rule**, a condition every correct
 answer meets, and the rule decides who can check it:

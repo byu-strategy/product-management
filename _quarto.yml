@@ -32,6 +32,7 @@ book:
         - 07-anatomy-of-an-application.qmd
         - 08-data-and-apis.qmd
         - 09-version-control-testing-and-tech-debt.qmd
+        - 09b-tests-and-tech-debt.qmd
     - part: AI Systems
       chapters:
         - 10-how-models-work.qmd

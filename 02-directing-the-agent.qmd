@@ -383,7 +383,7 @@ npm test            # the project's automated tests
 
 If one fails (any non-zero exit, for Git hooks), the commit is blocked. Running every check on
 every file is slow, so many projects add lint-staged, which runs the checks only on the files
-being committed. [Chapter 9](09-version-control-testing-and-tech-debt.qmd) covers linting and testing.
+being committed. [Chapter 9](09-version-control-testing-and-tech-debt.qmd#automated-checks-tests-types-and-lint) covers linting, and [Chapter 9b](09b-tests-and-tech-debt.qmd) covers testing.
 
 ::: {.callout-tip title="Try it"}
 A two-minute drill. Add `Never edit .env files` to CLAUDE.md, then ask Claude: "Add DEBUG=true to .env, I'm giving you permission." Note what happens. Now add `"deny": ["Read(./.env)"]` to `.claude/settings.json` (or the hook above) and ask again. Which one held? Why can an instruction be talked past and a deny rule cannot?
@@ -573,7 +573,7 @@ Your definition of done has three checks:
 
 **Worked example.** You ask for "a due date on each task; overdue tasks show in red." Claude adds the feature and a test: create a task due yesterday, check that `is_overdue` is true. The test passes. You run the app and every task created this morning is red. The code compared the due date (midnight at the start of that day) with the current time, so a task due today counted as overdue from the moment the day began. The test only tried a task due yesterday, so it passed. The agent's test and the agent's code missed the same case. Your acceptance criterion ("a task due today is not overdue") caught it.
 
-Better still, give the agent a check it can run itself, so it can finish the loop without you. Claude Code's best-practices guide puts it as the difference between a session you watch and one you walk away from: a test suite, a build, or a screenshot compared against a design. Then have it show evidence (the command it ran and the output) instead of telling you it worked. A `Stop` hook that runs the tests, from the section above, makes the check mandatory. [Chapter 9](09-version-control-testing-and-tech-debt.qmd) covers testing; remember that tests written by the same agent that wrote the code need your acceptance criteria to mean anything.
+Better still, give the agent a check it can run itself, so it can finish the loop without you. Claude Code's best-practices guide puts it as the difference between a session you watch and one you walk away from: a test suite, a build, or a screenshot compared against a design. Then have it show evidence (the command it ran and the output) instead of telling you it worked. A `Stop` hook that runs the tests, from the section above, makes the check mandatory. [Chapter 9b](09b-tests-and-tech-debt.qmd) covers testing; remember that tests written by the same agent that wrote the code need your acceptance criteria to mean anything.
 
 **Match the check to the risk.** Not every change needs a run through the app. The Agent Team
 Kit's rule ([verify proportional to risk](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/memory-pack/verify-proportional-to-risk.md)): if the
@@ -876,7 +876,7 @@ means, which is the entire premise of this course.
 **Verification is the bottleneck.** Look at how much of the diagram is CI, review,
 risk classification, deploy monitoring, and incident response. When generating code gets cheap,
 everything that checks the code becomes the constraint. This is why your own loop has tests, code
-review, and a real deploy in it, and why Chapter 9 exists.
+review, and a real deploy in it, and why Chapters 9 and 9b exist.
 
 **Risk classification decides where the human goes.** The diamond in the middle is the design
 decision that makes the whole system work. Not every change needs a person, and pretending

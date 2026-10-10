@@ -13,7 +13,7 @@ Below is the planned schedule. Dates, topics, and assignments may adjust as need
 
 The course is built around six builder skills, two weeks each. You will rate yourself on all six in week 1 and again at the end, and the chapters, the drills, and both exams are organized the same way.
 
-![](images/builder-model.png){width=60%}
+![](images/diagrams/builder-axes.svg){fig-alt="A hexagon with one builder axis at each corner, clockwise from the upper left: Agentic Workflow, Discovery, Design, Launch and Learn, AI Systems, and Application Architecture, each with an icon. Faint rings inside mark levels from the center to the edge." fig-align="center" width="70%"}
 
 | Axis | The question it answers | Weeks |
 |---|---|---|
@@ -39,7 +39,7 @@ Agentic Workflow comes first on purpose. You will ship something in week one tha
 | 6 | Mon, Oct 19 | Design | [Testing the Design](06-testing-the-design.qmd) | |
 | – | Oct 20 to 22 | – | Testing center | **[Midterm Exam](00-assessments.qmd#midterm-exam)** (covers classes 1–6) |
 | 7 | Mon, Oct 26 | App Architecture | [Anatomy of an Application](07-anatomy-of-an-application.qmd) | **Sprint 3 Due**, [Sprint 4 Assigned](00-assessments.qmd#sprint-4) (plan due Wed, Oct 28, 11:59 PM) |
-| 8 | Mon, Nov 2 | App Architecture | [Data and APIs](08-data-and-apis.qmd) + [Version Control, Testing, and Tech Debt](09-version-control-testing-and-tech-debt.qmd) | [Peer Code Review Assigned](00-assessments.qmd#peer-code-review) |
+| 8 | Mon, Nov 2 | App Architecture | [Data and APIs](08-data-and-apis.qmd) + [Version Control, Environments, and Deploys](09-version-control-testing-and-tech-debt.qmd) + [Tests and Tech Debt](09b-tests-and-tech-debt.qmd) | [Peer Code Review Assigned](00-assessments.qmd#peer-code-review) |
 | 9 | Mon, Nov 9 | AI Systems | [How Models Work](10-how-models-work.qmd) | **Sprint 4 Due**, [Peer Code Review Due](00-assessments.qmd#peer-code-review), [Sprint 5 Assigned](00-assessments.qmd#sprint-5) (plan due Wed, Nov 11, 11:59 PM) |
 | 10 | Mon, Nov 16 | AI Systems | [Models in Your Product](11-models-in-your-product.qmd) | |
 | 11 | Mon, Nov 23 | Launch and Learn | [Going to Market](12-going-to-market.qmd) + [Business Models](13-business-models.qmd) | **Sprint 5 Due**, [Sprint 6 Assigned](00-assessments.qmd#sprint-6) (plan due Wed, Nov 25, 11:59 PM). Withdraw deadline is Tue, Nov 24. |
@@ -101,7 +101,8 @@ Read the assigned chapter before class. Two weeks pair two chapters under one se
 | Design | [Testing the Design](06-testing-the-design.qmd) | Mon, Oct 19 |
 | App Architecture | [Anatomy of an Application](07-anatomy-of-an-application.qmd) | Mon, Oct 26 |
 | App Architecture | [Data and APIs](08-data-and-apis.qmd) | Mon, Nov 2 |
-| App Architecture | [Version Control, Testing, and Tech Debt](09-version-control-testing-and-tech-debt.qmd) | Mon, Nov 2 |
+| App Architecture | [Version Control, Environments, and Deploys](09-version-control-testing-and-tech-debt.qmd) | Mon, Nov 2 |
+| App Architecture | [Tests and Tech Debt](09b-tests-and-tech-debt.qmd) | Mon, Nov 2 |
 | AI Systems | [How Models Work](10-how-models-work.qmd) | Mon, Nov 9 |
 | AI Systems | [Models in Your Product](11-models-in-your-product.qmd) | Mon, Nov 16 |
 | Launch and Learn | [Going to Market](12-going-to-market.qmd) | Mon, Nov 23 |

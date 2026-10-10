@@ -493,7 +493,7 @@ to `/api/tasks`. A folder becomes reachable only when it holds one of those two 
 | `lib/` | Helper code that is not a component, such as the Supabase connection: `client.ts` for browser code, `server.ts` for server code | Wherever the file that imports it runs | Yes | The agent |
 | `public/` | Files sent as they are: `public/logo.svg` is served at `/logo.svg` | Downloaded by the browser | Yes | You or the agent |
 | `supabase/migrations/` | One SQL file per change to the tables, such as `20261001120000_create_tasks.sql` (Chapter 8) | In the database, when the migration is applied | Yes | The agent writes; you review and apply |
-| `tests/`, `*.test.ts` | Tests (Chapter 9) | On your laptop and in automated checks, run by the test runner | Yes | The agent |
+| `tests/`, `*.test.ts` | Tests (Chapter 9b) | On your laptop and in automated checks, run by the test runner | Yes | The agent |
 | `next.config.ts` | Next.js settings, such as redirects and which sites images may load from | Read by Next.js when it builds and starts the app | Yes | The agent |
 | `tsconfig.json`, `eslint.config.mjs` | Settings for TypeScript (including what `@/` points to) and for the linter (Chapter 9) | Read by those tools | Yes | Created by `create-next-app`; rarely edited |
 | `.gitignore` | The files git must not track, including `node_modules/`, `.next/`, and `.env*` | Read by git | Yes | Created by `create-next-app`; check it |

@@ -23,7 +23,7 @@ model is the hardest thing to change later, so it deserves the most thought earl
 The building blocks come from E. F. Codd's relational model, which Postgres (the database
 Supabase runs) and nearly every business database still follow [@codd1970relational]. The examples use a **problem tracker**, an
 app where users log problems they have noticed and the interviews they hold about each one. It is
-the running example for most of this chapter, and Chapter 9 uses it again:
+the running example for most of this chapter, and Chapters 9 and 9b use it again:
 
 | Block | What it is | Problem-tracker example |
 |---|---|---|
