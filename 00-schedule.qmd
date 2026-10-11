@@ -38,7 +38,7 @@ Agentic Workflow comes first on purpose. You will ship something in week one tha
 | 5 | Mon, Oct 12 | Design | [Interface and Flow](05-interface-and-flow.qmd), [Design Fundamentals](05b-design-fundamentals.qmd) | **Sprint 2 Due**, [Sprint 3 Assigned](00-assessments.qmd#sprint-3) (plan due Wed, Oct 14, 11:59 PM) |
 | 6 | Mon, Oct 19 | Design | [Testing the Design](06-testing-the-design.qmd), [Specs](06b-specs.qmd) | |
 | – | Oct 20 to 22 | – | Testing center | **[Midterm Exam](00-assessments.qmd#midterm-exam)** (covers classes 1–6) |
-| 7 | Mon, Oct 26 | App Architecture | [Anatomy of an Application](07-anatomy-of-an-application.qmd) | **Sprint 3 Due**, [Sprint 4 Assigned](00-assessments.qmd#sprint-4) (plan due Wed, Oct 28, 11:59 PM) |
+| 7 | Mon, Oct 26 | App Architecture | [Anatomy of an Application](07-anatomy-of-an-application.qmd) + [The Browser, Developer Tools, and Claude in Chrome](09c-browser-and-developer-tools.qmd) | **Sprint 3 Due**, [Sprint 4 Assigned](00-assessments.qmd#sprint-4) (plan due Wed, Oct 28, 11:59 PM) |
 | 8 | Mon, Nov 2 | App Architecture | [Data and APIs](08-data-and-apis.qmd) + [Version Control, Environments, and Deploys](09-version-control-testing-and-tech-debt.qmd) + [Tests and Tech Debt](09b-tests-and-tech-debt.qmd) | [Peer Code Review Assigned](00-assessments.qmd#peer-code-review) |
 | 9 | Mon, Nov 9 | AI Systems | [How Models Work](10-how-models-work.qmd) | **Sprint 4 Due**, [Peer Code Review Due](00-assessments.qmd#peer-code-review), [Sprint 5 Assigned](00-assessments.qmd#sprint-5) (plan due Wed, Nov 11, 11:59 PM) |
 | 10 | Mon, Nov 16 | AI Systems | [Models in Your Product](11-models-in-your-product.qmd) | |
@@ -102,6 +102,7 @@ Read the assigned chapter before class. Two weeks pair two chapters under one se
 | Design | [Testing the Design](06-testing-the-design.qmd) | Mon, Oct 19 |
 | Design | [Specs: Designing the Build](06b-specs.qmd) | Mon, Oct 19 |
 | App Architecture | [Anatomy of an Application](07-anatomy-of-an-application.qmd) | Mon, Oct 26 |
+| App Architecture | [The Browser, Developer Tools, and Claude in Chrome](09c-browser-and-developer-tools.qmd) | Mon, Oct 26 |
 | App Architecture | [Data and APIs](08-data-and-apis.qmd) | Mon, Nov 2 |
 | App Architecture | [Version Control, Environments, and Deploys](09-version-control-testing-and-tech-debt.qmd) | Mon, Nov 2 |
 | App Architecture | [Tests and Tech Debt](09b-tests-and-tech-debt.qmd) | Mon, Nov 2 |

@@ -1,0 +1,58 @@
+<svg viewBox="0 0 1000 520" xmlns="http://www.w3.org/2000/svg" role="img" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+<title>Where an app keeps data</title>
+<desc>A chart with two axes. Across: how long the data lasts, from until the page reloads, to until the browser data is cleared, to until you delete it. Up: who can reach it, from this tab, to this browser on this device, to every device and user you allow. Three places sit on a rising diagonal. Page memory, such as React state, lasts until reload and is reached only by this tab. Browser storage, such as cookies and local storage, lasts until cleared and is reached by this browser on this device. The database, on your server, highlighted, lasts until you delete it and is reached by every device and user you allow. The first two are marked: the user can change it. The database is marked: your server decides.</desc>
+<defs><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#5A6672"/></marker><linearGradient id="nav" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0B3D73"/><stop offset="1" stop-color="#002E5D"/></linearGradient><filter id="sh" x="-10%" y="-10%" width="120%" height="130%"><feDropShadow dx="0" dy="3" stdDeviation="5" flood-opacity="0.12"/></filter></defs>
+<rect width="1000" height="520" rx="8" fill="#FAFBFC"/>
+<line x1="210" y1="440" x2="970" y2="440" stroke="#5A6672" stroke-width="2" marker-end="url(#ag)"/>
+<line x1="210" y1="440" x2="210" y2="40" stroke="#5A6672" stroke-width="2" marker-end="url(#ag)"/>
+<text x="590.0" y="506" font-size="17" font-weight="700" fill="#002E5D" text-anchor="middle">How long it lasts</text>
+<line x1="330" y1="440" x2="330" y2="446" stroke="#5A6672" stroke-width="1.5"/>
+<text x="330" y="464" font-size="15" font-weight="400" fill="#5A6672" text-anchor="middle">until the page</text>
+<text x="330" y="482" font-size="15" font-weight="400" fill="#5A6672" text-anchor="middle">reloads</text>
+<line x1="580" y1="440" x2="580" y2="446" stroke="#5A6672" stroke-width="1.5"/>
+<text x="580" y="464" font-size="15" font-weight="400" fill="#5A6672" text-anchor="middle">until browser</text>
+<text x="580" y="482" font-size="15" font-weight="400" fill="#5A6672" text-anchor="middle">data is cleared</text>
+<line x1="830" y1="440" x2="830" y2="446" stroke="#5A6672" stroke-width="1.5"/>
+<text x="830" y="464" font-size="15" font-weight="400" fill="#5A6672" text-anchor="middle">until you</text>
+<text x="830" y="482" font-size="15" font-weight="400" fill="#5A6672" text-anchor="middle">delete it</text>
+<line x1="204" y1="370" x2="210" y2="370" stroke="#5A6672" stroke-width="1.5"/>
+<text x="196" y="375" font-size="15" font-weight="400" fill="#5A6672" text-anchor="end">this tab</text>
+<line x1="204" y1="240" x2="210" y2="240" stroke="#5A6672" stroke-width="1.5"/>
+<text x="196" y="240" font-size="15" font-weight="400" fill="#5A6672" text-anchor="end">this browser,</text>
+<text x="196" y="259" font-size="15" font-weight="400" fill="#5A6672" text-anchor="end">this device</text>
+<line x1="204" y1="110" x2="210" y2="110" stroke="#5A6672" stroke-width="1.5"/>
+<text x="196" y="110" font-size="15" font-weight="400" fill="#5A6672" text-anchor="end">every device</text>
+<text x="196" y="129" font-size="15" font-weight="400" fill="#5A6672" text-anchor="end">and user you allow</text>
+<text x="40" y="240.0" font-size="17" font-weight="700" fill="#002E5D" text-anchor="middle" transform="rotate(-90 40 240.0)">Who can reach it</text>
+<rect x="212.0" y="322.0" width="236" height="96" rx="12" fill="#FFFFFF" stroke="#002E5D" stroke-width="1.5" filter="url(#sh)"/>
+<g transform="translate(228,338) scale(1)" fill="none" stroke="#002E5D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z" />
+  <path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z" />
+  <path d="M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4" />
+  <path d="M17.599 6.5a3 3 0 0 0 .399-1.375" />
+  <path d="M6.003 5.125A3 3 0 0 0 6.401 6.5" />
+  <path d="M3.477 10.896a4 4 0 0 1 .585-.396" />
+  <path d="M19.938 10.5a4 4 0 0 1 .585.396" />
+  <path d="M6 18a4 4 0 0 1-1.967-.516" />
+  <path d="M19.967 17.484A4 4 0 0 1 18 18" /></g>
+
+<text x="262.0" y="356.0" font-size="18" font-weight="700" fill="#002E5D" text-anchor="start">Page memory</text>
+<text x="262.0" y="378.0" font-size="15" font-weight="400" fill="#5A6672" text-anchor="start">React state</text>
+<text x="262.0" y="402.0" font-size="14.5" font-weight="600" fill="#B03A3A" text-anchor="start">the user can change it</text>
+<rect x="462.0" y="192.0" width="236" height="96" rx="12" fill="#FFFFFF" stroke="#002E5D" stroke-width="1.5" filter="url(#sh)"/>
+<g transform="translate(478,208) scale(1)" fill="none" stroke="#002E5D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" x2="2" y1="12" y2="12" />
+  <path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z" />
+  <line x1="6" x2="6.01" y1="16" y2="16" />
+  <line x1="10" x2="10.01" y1="16" y2="16" /></g>
+
+<text x="512.0" y="226.0" font-size="18" font-weight="700" fill="#002E5D" text-anchor="start">Browser storage</text>
+<text x="512.0" y="248.0" font-size="15" font-weight="400" fill="#5A6672" text-anchor="start">cookies, local storage</text>
+<text x="512.0" y="272.0" font-size="14.5" font-weight="600" fill="#B03A3A" text-anchor="start">the user can change it</text>
+<rect x="712.0" y="62.0" width="236" height="96" rx="12" fill="url(#nav)" stroke="#002E5D" stroke-width="0" filter="url(#sh)"/>
+<g transform="translate(728,78) scale(1)" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3" />
+  <path d="M3 5V19A9 3 0 0 0 21 19V5" />
+  <path d="M3 12A9 3 0 0 0 21 12" /></g>
+
+<text x="762.0" y="96.0" font-size="18" font-weight="700" fill="#FFFFFF" text-anchor="start">Database</text>
+<text x="762.0" y="118.0" font-size="15" font-weight="400" fill="#C9D8EA" text-anchor="start">on your server</text>
+<text x="762.0" y="142.0" font-size="14.5" font-weight="600" fill="#FFFFFF" text-anchor="start">your server decides</text>
+</svg>

@@ -646,7 +646,7 @@ from Chapter 7 keeps its own:
 
 | Where it ran | Where to look | What you find | Catch |
 |---|---|---|---|
-| Browser | The **console** in the browser's developer tools | Errors in frontend code, failed requests | Only on the machine in front of you; you see a user's console errors only if you reproduce the problem or use an error reporter |
+| Browser | The **console** and **Network** panels in the browser's developer tools ([Developer Tools](09c-browser-and-developer-tools.qmd#developer-tools)) | Errors in frontend code, failed requests | Only on the machine in front of you; you see a user's console errors only if you reproduce the problem or use an error reporter |
 | Your server | **Vercel runtime logs** (project, then Logs) | Errors and `console.log` output from route handlers and server code | Kept for one hour on the Hobby plan, so look soon |
 | Database | **Supabase logs** (dashboard, Logs) | Rejected queries, auth failures, RLS denials | Separate from Vercel; check both |
 | All of the above, from real users | An **error reporter** such as Sentry | Every crash, grouped and counted, with an email alert | Takes a few minutes to set up; free tier is enough for a student product |

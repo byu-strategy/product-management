@@ -1,0 +1,68 @@
+<svg viewBox="0 0 1000 440" xmlns="http://www.w3.org/2000/svg" role="img" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+<title>Developer tools: five panels, five questions</title>
+<desc>A sketch of the browser developer tools. Along the top, five panels, each with the question it answers. Device toolbar: how does it look on a phone? Elements: what is on the page, and why does it look that way? Console: did the code throw an error? Network: what requests went out, and what came back? Application: what does the browser remember? The Network panel is open. Its list shows the page, a script, a stylesheet, and an image, each GET with status 200, and a highlighted row: tasks, POST, 201, fetch. Beside the list, the selected request's payload, task_text Buy groceries, and its response, id 123, task_text Buy groceries, completed false.</desc>
+<defs><filter id="sh" x="-5%" y="-5%" width="110%" height="120%"><feDropShadow dx="0" dy="3" stdDeviation="5" flood-opacity="0.12"/></filter></defs>
+<rect width="1000" height="440" rx="8" fill="#FAFBFC"/>
+<rect x="24" y="100" width="952" height="318" rx="10" fill="#FFFFFF" stroke="#D9DEE4" stroke-width="1.5" filter="url(#sh)"/>
+<rect x="24" y="100" width="952" height="46" rx="10" fill="#F2F4F7"/><rect x="24" y="130" width="952" height="16" fill="#F2F4F7"/>
+<line x1="24" y1="146" x2="976" y2="146" stroke="#D9DEE4" stroke-width="1.5"/>
+<g transform="translate(81,112) scale(0.9167)" fill="none" stroke="#002E5D" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2" ry="2" />
+  <path d="M12 18h.01" /></g>
+
+<line x1="92" y1="92" x2="92" y2="104" stroke="#8A939C" stroke-width="1.5"/>
+<text x="92" y="48" font-size="15" font-weight="400" fill="#5A6672" text-anchor="middle">How does it look</text>
+<text x="92" y="69" font-size="15" font-weight="400" fill="#5A6672" text-anchor="middle">on a phone?</text>
+<text x="262" y="129" font-size="16" font-weight="500" fill="#2C3E50" text-anchor="middle">Elements</text>
+<line x1="262" y1="92" x2="262" y2="104" stroke="#8A939C" stroke-width="1.5"/>
+<text x="262" y="48" font-size="15" font-weight="400" fill="#5A6672" text-anchor="middle">What is on the page,</text>
+<text x="262" y="69" font-size="15" font-weight="400" fill="#5A6672" text-anchor="middle">and why does it look so?</text>
+<text x="452" y="129" font-size="16" font-weight="500" fill="#2C3E50" text-anchor="middle">Console</text>
+<line x1="452" y1="92" x2="452" y2="104" stroke="#8A939C" stroke-width="1.5"/>
+<text x="452" y="48" font-size="15" font-weight="400" fill="#5A6672" text-anchor="middle">Did the code</text>
+<text x="452" y="69" font-size="15" font-weight="400" fill="#5A6672" text-anchor="middle">throw an error?</text>
+<text x="632" y="129" font-size="16" font-weight="700" fill="#0057B8" text-anchor="middle">Network</text>
+<rect x="584" y="142" width="96" height="4" fill="#0057B8"/>
+<line x1="632" y1="92" x2="632" y2="104" stroke="#8A939C" stroke-width="1.5"/>
+<text x="632" y="48" font-size="15" font-weight="600" fill="#0057B8" text-anchor="middle">What requests went out,</text>
+<text x="632" y="69" font-size="15" font-weight="600" fill="#0057B8" text-anchor="middle">and what came back?</text>
+<text x="842" y="129" font-size="16" font-weight="500" fill="#2C3E50" text-anchor="middle">Application</text>
+<line x1="842" y1="92" x2="842" y2="104" stroke="#8A939C" stroke-width="1.5"/>
+<text x="842" y="48" font-size="15" font-weight="400" fill="#5A6672" text-anchor="middle">What does the</text>
+<text x="842" y="69" font-size="15" font-weight="400" fill="#5A6672" text-anchor="middle">browser remember?</text>
+<text x="52" y="166" font-size="14.5" font-weight="700" fill="#5A6672" text-anchor="start">Name</text>
+<text x="242" y="166" font-size="14.5" font-weight="700" fill="#5A6672" text-anchor="start">Method</text>
+<text x="342" y="166" font-size="14.5" font-weight="700" fill="#5A6672" text-anchor="start">Status</text>
+<text x="432" y="166" font-size="14.5" font-weight="700" fill="#5A6672" text-anchor="start">Type</text>
+<line x1="44" y1="176" x2="564" y2="176" stroke="#D9DEE4" stroke-width="1.2"/>
+<text x="52" y="206" font-size="15" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">your-app.vercel.app</text>
+<text x="242" y="206" font-size="15" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">GET</text>
+<text x="342" y="206" font-size="15" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">200</text>
+<text x="432" y="206" font-size="15" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">document</text>
+<text x="52" y="246" font-size="15" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">main.js</text>
+<text x="242" y="246" font-size="15" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">GET</text>
+<text x="342" y="246" font-size="15" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">200</text>
+<text x="432" y="246" font-size="15" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">script</text>
+<text x="52" y="286" font-size="15" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">styles.css</text>
+<text x="242" y="286" font-size="15" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">GET</text>
+<text x="342" y="286" font-size="15" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">200</text>
+<text x="432" y="286" font-size="15" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">stylesheet</text>
+<text x="52" y="326" font-size="15" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">logo.svg</text>
+<text x="242" y="326" font-size="15" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">GET</text>
+<text x="342" y="326" font-size="15" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">200</text>
+<text x="432" y="326" font-size="15" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">image</text>
+<rect x="44" y="340" width="520" height="38" rx="6" fill="#E6EEF7" stroke="#0057B8" stroke-width="1.5"/>
+<text x="52" y="366" font-size="15" font-weight="700" fill="#0057B8" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">tasks</text>
+<text x="242" y="366" font-size="15" font-weight="700" fill="#0057B8" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">POST</text>
+<text x="342" y="366" font-size="15" font-weight="700" fill="#0057B8" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">201</text>
+<text x="432" y="366" font-size="15" font-weight="700" fill="#0057B8" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">fetch</text>
+<line x1="588" y1="146" x2="588" y2="418" stroke="#D9DEE4" stroke-width="1.5"/>
+<text x="608" y="166" font-size="15" font-weight="700" fill="#0057B8" text-anchor="start">Selected: tasks</text>
+<text x="608" y="202" font-size="14.5" font-weight="700" fill="#5A6672" text-anchor="start">Payload (what was sent)</text>
+<rect x="608" y="212" width="348" height="40" rx="6" fill="#F4F7FB"/>
+<text x="620" y="238" font-size="14.5" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">{"task_text": "Buy groceries"}</text>
+<text x="608" y="284" font-size="14.5" font-weight="700" fill="#5A6672" text-anchor="start">Response (what came back)</text>
+<rect x="608" y="294" width="348" height="88" rx="6" fill="#F4F7FB"/>
+<text x="620" y="320" font-size="14.5" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">{"id": 123,</text>
+<text x="620" y="344" font-size="14.5" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve"> "task_text": "Buy groceries",</text>
+<text x="620" y="368" font-size="14.5" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve"> "completed": false}</text>
+</svg>

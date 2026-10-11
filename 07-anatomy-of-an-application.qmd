@@ -187,6 +187,11 @@ DNS lookup and nothing leaves your machine, which is also why plain `http` is fi
 is the **port**: one computer runs many programs that accept connections, and the port number
 says which one. Websites use port 443 for HTTPS by default, so the port is left out of their URLs.
 
+**What the browser does with the reply.** The browser turns the HTML, CSS, and JavaScript it
+receives into the page, then runs your JavaScript each time the user clicks or types. Everything it
+receives, the user can read and change. [The Browser, Developer Tools, and Claude in
+Chrome](09c-browser-and-developer-tools.qmd) shows that process and the tools for watching it.
+
 Words used in this section:
 
 | Term | What it means |
