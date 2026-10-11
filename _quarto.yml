@@ -48,7 +48,7 @@ book:
     - part: Appendix
       chapters:
         - A1-logic-of-value.qmd
-        - A2-claude-code-and-codex.qmd
+        - A2-coding-agents-compared.qmd
         - A3-claude-code-cli-and-desktop.qmd
     - part: References
       chapters:

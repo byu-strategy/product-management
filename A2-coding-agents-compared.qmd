@@ -1,0 +1,264 @@
+---
+title: "Claude Code and Other Coding Agents"
+---
+
+::: {.callout-note}
+## What this appendix is
+
+This course teaches with Claude Code. Three other coding agents run in the terminal on the same agent loop ([Chapter 1](01-building-with-ai-agents.qmd#what-makes-an-agent-an-agent)): OpenAI's **Codex**, GitHub's **Copilot CLI**, and Google's **Antigravity CLI** (which replaced Gemini CLI for individual users on June 18, 2026). The model and the harness differ, so the commands, file names, and safety controls differ too. This appendix maps each Claude Code concept the book teaches to its counterpart in the other three, so that what you learn here works whichever agent your team or employer uses.
+
+The tables come first: what each tool costs, then features, files, commands, and keys. After them, one section per tool covers the differences that change what you do.
+
+All four tools change every few weeks. Every cell was checked against the vendors' documentation on October 10, 2026: [Claude Code](https://code.claude.com/docs/en/cli-reference), [Codex](https://learn.chatgpt.com/docs/developer-commands?surface=cli), [Copilot CLI](https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-command-reference), and [Antigravity CLI](https://antigravity.google/docs/cli/reference). "Not listed" means the reference does not mention it, which is different from "does not exist." When a cell and the current docs disagree, the docs are right.
+:::
+
+## The concepts transfer
+
+Everything in [Chapter 2](02-directing-the-agent.qmd) is a property of agents, so none of it is specific to Claude. The agent knows only what is in its context window. A standing rule belongs in a file the agent re-reads every session. A procedure you repeat belongs in a skill. Advice in an instruction file can be ignored; a rule or hook that sits between the model and the tool cannot. An action's blast radius decides how much you let the agent do without you. The tables below change only the names.
+
+## Which one can you use?
+
+| | Claude Code | Codex | Copilot CLI | Antigravity CLI |
+|---|---|---|---|---|
+| Sign in with | Claude account | ChatGPT account | GitHub account | Google account |
+| Free option | None; needs Pro, Max, Team, or Enterprise, or an API key | ChatGPT Free ([pricing](https://learn.chatgpt.com/docs/pricing)) | Copilot Free, and Copilot Student for verified students ([plans](https://docs.github.com/en/copilot/concepts/billing/individual-plans)) | Personal Google account, with a weekly quota ([plans](https://antigravity.google/docs/plans)) |
+| Can it use Claude models? | Yes | No | Yes, on paid plans; Free and Student pick the model for you | Yes, on Google AI Pro (paid), Ultra, and Enterprise ([models](https://antigravity.google/docs/models)) |
+| Company billing | Claude Team or Enterprise, or [Google Cloud or Microsoft Foundry](https://code.claude.com/docs/en/third-party-integrations) | ChatGPT Business or Enterprise | GitHub Copilot Business or Enterprise | Gemini Enterprise |
+
+**No Claude plan?** Copilot Student is the closest free substitute for this course. It is a terminal agent built around GitHub, and it reads your `CLAUDE.md` and `.claude/skills/` without changes (see [Using one repo with all four](#using-one-repo-with-all-four)). A Claude model inside another tool is still not Claude Code: you get the model, in that tool's harness.
+
+## Features
+
+| What it is | Claude Code | Codex | Copilot CLI | Antigravity CLI |
+|---|---|---|---|---|
+| Start a session | `claude` | `codex` | `copilot` | `agy` |
+| Project instruction file | `CLAUDE.md` | `AGENTS.md` | `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `.github/copilot-instructions.md` (all combined) | `AGENTS.md`, `GEMINI.md` |
+| Skills (a `SKILL.md` folder) | Yes | Yes | Yes | Yes |
+| Run a skill by name | `/skill-name` | `$skill-name` | `/skill-name` | `/skill-name` |
+| Plan before editing | Plan mode | `/plan` | Plan mode | Plan mode |
+| Approval presets | Manual, Accept edits, Plan, Auto, Bypass | Read Only, Auto, Full Access | Standard, plan, autopilot; `/permissions` sets default, assisted, or allow-all | default, accept-edits, plan |
+| Saved allow, ask, and deny rules | `permissions` in `settings.json` | `prefix_rule` in a `.rules` file (experimental) | Not as a file; `--allow-tool` and `--deny-tool` at launch, or a hook | `allow`, `ask`, `deny` lists in `~/.gemini/antigravity-cli/settings.json` |
+| Sandbox for shell commands | Off by default; `/sandbox` | On by default | Off by default; `/sandbox enable` | Off by default; `enableTerminalSandbox` |
+| Hooks | Yes | Yes; must be trusted in `/hooks` | Yes | Yes |
+| Undo the agent's file edits | `/rewind` (its own edits, not shell commands) | None; use git | `/undo`, "Conversation + files" (edits and shell commands) | `/rewind` restores the conversation; files not documented, so use git |
+| Subagents | Yes; define your own | Yes; define your own | Yes; define custom agents | Yes; the main agent starts them |
+| Memory the agent writes itself | On by default | Off by default | Copilot Memory, stored by GitHub | Not documented |
+| MCP servers | Yes | Yes | Yes | Yes |
+| Run one prompt from a script | `claude -p` | `codex exec` | `copilot -p` | `agy -p` |
+| Separate copy of the files (git worktree) | `claude -w` | Not listed for the CLI | `copilot -w`, `/worktree` | Not listed for the CLI |
+| Run in the cloud | `claude --cloud` | `codex cloud` | `copilot --cloud` (preview), `/delegate` | Not listed for the CLI |
+| Desktop app | Claude desktop app, `/desktop` | ChatGPT desktop app, `/app` | GitHub Copilot app, `/app` | Antigravity 2.0 |
+
+## Files and folders
+
+"Project" files live in your repo and are committed; "you" files live in your home folder and apply to every project.
+
+| What | Claude Code | Codex | Copilot CLI | Antigravity CLI |
+|---|---|---|---|---|
+| Instructions, project | `CLAUDE.md`, `.claude/rules/` | `AGENTS.md` | `AGENTS.md`, `CLAUDE.md`, `.github/copilot-instructions.md`, `.claude/rules/` | `AGENTS.md`, `GEMINI.md`, `.agents/rules/` |
+| Instructions, you | `~/.claude/CLAUDE.md` | `~/.codex/AGENTS.md` | `~/.copilot/copilot-instructions.md` | `~/.gemini/AGENTS.md` |
+| Skills, project | `.claude/skills/` | `.agents/skills/` | `.github/skills/`, `.claude/skills/`, `.agents/skills/` | `.agents/skills/` |
+| Skills, you | `~/.claude/skills/` | `~/.agents/skills/` | `~/.copilot/skills/`, `~/.agents/skills/` | `~/.gemini/antigravity-cli/skills/` |
+| Settings, project | `.claude/settings.json` | `.codex/config.toml` | `.github/copilot/settings.json` | Not listed |
+| Settings, you | `~/.claude/settings.json` | `~/.codex/config.toml` | `~/.copilot/settings.json` | `~/.gemini/antigravity-cli/settings.json` |
+| Hooks, project | `hooks` in `.claude/settings.json` | `.codex/hooks.json` | `.github/hooks/*.json`, also reads `.claude/settings.json` | `.agents/hooks.json` |
+| MCP servers, project | `.mcp.json` | `.codex/config.toml` | `.mcp.json` | `.agents/mcp_config.json` |
+| MCP servers, you | `~/.claude.json` | `~/.codex/config.toml` | `~/.copilot/mcp-config.json` | `~/.gemini/config/mcp_config.json` |
+| Subagents, project | `.claude/agents/` | `.codex/agents/` (TOML) | `.github/agents/` | Not defined in files |
+
+## Commands
+
+Typed in your shell:
+
+| What you want | Claude Code | Codex | Copilot CLI | Antigravity CLI |
+|---|---|---|---|---|
+| Install (macOS) | `curl -fsSL https://claude.ai/install.sh \| bash` | `curl -fsSL https://chatgpt.com/codex/install.sh \| sh` | `brew install --cask copilot-cli` | `curl -fsSL https://antigravity.google/cli/install.sh \| bash` |
+| Install (any OS, with Node) | `npm install -g @anthropic-ai/claude-code` | `npm install -g @openai/codex` | `npm install -g @github/copilot` | Not offered |
+| Update | `claude update` | `codex update` | `copilot update` | `agy update` |
+| Continue the last session | `claude -c` | `codex resume --last` | `copilot --continue` | `agy -c` |
+| Pick a past session | `claude -r` | `codex resume` | `copilot --resume` | `/resume` |
+| Run one prompt and exit | `claude -p "..."` | `codex exec "..."` | `copilot -p "..."` | `agy -p "..."` |
+| Add an MCP server | `claude mcp add` | `codex mcp add` | `copilot mcp add` | `/mcp`, or edit `mcp_config.json` |
+| Choose the model at launch | `--model` | `-m` | `--model` | `/model` |
+
+Typed inside a session:
+
+| What you want | Claude Code | Codex | Copilot CLI | Antigravity CLI |
+|---|---|---|---|---|
+| List commands | `/help` | type `/` | `/help` | `/help` |
+| Write a starter instruction file | `/init` (`CLAUDE.md`) | `/init` (`AGENTS.md`) | `/init` (`.github/copilot-instructions.md`) | Not listed |
+| See what fills the context window | `/context` | `/status` | `/context` | `/context` |
+| Summarize to free context | `/compact` | `/compact` | `/compact` | Not listed |
+| Start an empty conversation | `/clear` (alias `/new`) | `/clear` or `/new` | `/clear` (aliases `/new`, `/reset`) | `/clear` (alias `/new`) |
+| Switch model or effort | `/model`, `/effort` | `/model` | `/model` | `/model` |
+| Plan first | `/plan` | `/plan` | `/plan` | `/plan` |
+| Approvals and rules | `/permissions` | `/permissions` | `/permissions` | `/permissions` |
+| Undo | `/rewind` (aliases `/undo`, `/checkpoint`) | None | `/undo` (alias `/rewind`) | `/rewind` (alias `/undo`) |
+| See what changed | `/diff` | `/diff` | `/diff` | `/diff` |
+| Code review | `/code-review` (alias `/review`) | `/review` | `/review` | Not listed |
+| MCP servers | `/mcp` | `/mcp` | `/mcp` | `/mcp` |
+| Hooks | `/hooks` | `/hooks` | `/env` lists them | `/hooks` |
+| Skills | `/skills` | `/skills` | `/skills` | `/skills` |
+| Subagents | ask Claude | `/agent` | `/agent`, `/subagents` | `/agents` |
+| Side question that stays out of the conversation | `/btw` | `/side` (alias `/btw`) | `/btw` (alias `/ask`) | `/btw` |
+| Copy the conversation to try another direction | `/branch` | `/fork` | `/fork` (alias `/branch`) | `/fork` (alias `/branch`) |
+| Keep working until a goal is met | `/goal` | `/goal` | `/goal` (alias `/autopilot`) | Not listed |
+| Usage and limits | `/usage` | `/usage` | `/usage` | `/usage` |
+| Move to the desktop app | `/desktop` | `/app` | `/app` | Not listed |
+| Import another tool's setup | `/import codex` | `/import` (Claude Code or Cursor) | Not needed; reads Claude files | `agy plugin import gemini` |
+| Exit | `/exit` | `/exit` | `/exit` | `/exit` |
+
+## Keys
+
+| What you want | Claude Code | Codex | Copilot CLI | Antigravity CLI |
+|---|---|---|---|---|
+| Cycle modes | `Shift+Tab` | Not listed; use `/permissions` | `Shift+Tab` | `Shift+Tab` |
+| Stop the agent | `Esc` | Not listed; `Ctrl+C` closes the session | `Esc` twice | `Esc` |
+| Point at a file | `@` | `@` | `@` | `@` |
+| Run a shell command yourself | `!` | `!` | `!` | Not listed |
+| New line | `Shift+Enter` or `Ctrl+J` | Not listed | `Shift+Enter` | `Shift+Enter` or `Ctrl+J` |
+| Paste an image | `Ctrl+V` | Paste, or `codex -i` | `Alt+V` | `Ctrl+V` |
+| Search past prompts | `Ctrl+R` | `Ctrl+R` | `Ctrl+R` | Not listed (`Ctrl+R` opens Artifact Review) |
+| Queue a message while it works | Type and press Enter | `Tab` | `Ctrl+Q` | Not listed |
+
+## Using one repo with all four {#using-one-repo-with-all-four}
+
+A builder template set up for Claude Code (a `CLAUDE.md`, skills in `.claude/skills/`, hooks in `.claude/settings.json`, MCP servers in `.mcp.json`) works in each tool to a different degree:
+
+| Your Claude Code file | Codex | Copilot CLI | Antigravity CLI |
+|---|---|---|---|
+| `CLAUDE.md` | Not read | Read | Not read |
+| `.claude/skills/` | Not read | Read | Not read |
+| Hooks in `.claude/settings.json` | Not read | Read, with Claude-style matchers | Not read |
+| `.mcp.json` | Not read | Read | Not read |
+
+Copilot CLI reads Claude Code's files on purpose ([custom instructions](https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/add-custom-instructions), [skills](https://docs.github.com/en/copilot/concepts/agents/about-agent-skills), [hooks reference](https://docs.github.com/en/copilot/reference/hooks-configuration)). For the other two, three steps cover most of it:
+
+1. **Put the shared rules in `AGENTS.md`, and make `CLAUDE.md` one line that imports it.** Codex, Copilot, and Antigravity all read `AGENTS.md`; Claude Code reads the import.
+
+    ```markdown
+    @AGENTS.md
+    ```
+
+2. **Link each skill into `.agents/skills/`**, which Codex, Copilot, and Antigravity all read. Codex follows symlinked skill folders; for Antigravity, check that `/skills` lists them, and copy the folders if it does not.
+
+    ```bash
+    mkdir -p .agents/skills
+    ln -s ../../.claude/skills/sprint-plan .agents/skills/sprint-plan
+    ln -s ../../.claude/skills/sprint-review .agents/skills/sprint-review
+    ```
+
+3. **Rewrite hooks for each tool.** Every tool sends the hook a description of the tool call as JSON, but the field names differ. The sections below show what changes.
+
+## Codex in detail
+
+Sources: [Codex CLI](https://learn.chatgpt.com/docs/codex/cli), [CLI reference](https://learn.chatgpt.com/docs/developer-commands?surface=cli), [AGENTS.md](https://learn.chatgpt.com/docs/agent-configuration/agents-md), [approvals and security](https://learn.chatgpt.com/docs/agent-approvals-security), [rules](https://learn.chatgpt.com/docs/agent-configuration/rules), [skills](https://learn.chatgpt.com/docs/build-skills), [hooks](https://learn.chatgpt.com/docs/hooks), [memories](https://learn.chatgpt.com/docs/customization/memories). Codex documentation moved from `developers.openai.com/codex` to `learn.chatgpt.com/docs`; old links redirect.
+
+### Instructions
+
+Codex reads one `AGENTS.md` per folder, from the repo root down to where you started; closer files come later and win. An `AGENTS.override.md` in the same folder is read instead of `AGENTS.md`. The combined limit is 32 KiB (`project_doc_max_bytes`). Codex does not read `CLAUDE.md` unless you add it to `project_doc_fallback_filenames` in `config.toml`.
+
+Claude Code reads `AGENTS.md` itself (version 2.1.277 or later), but only when the project has no `CLAUDE.md` ([memory](https://code.claude.com/docs/en/memory)). Each tool can copy the other's setup: `/import codex` in Claude Code, `/import` in Codex.
+
+### Modes, rules, and sandbox
+
+Claude Code asks permission for each action and offers an optional sandbox. Codex runs every command inside a sandbox by default, and permission decides when a command may leave it.
+
+| Claude Code permission mode | Closest Codex setting |
+|---|---|
+| **Manual** | **Read Only**: `--sandbox read-only --ask-for-approval on-request` |
+| **Plan** | `/plan` |
+| **Accept edits** | **Auto**, the default: `--sandbox workspace-write --ask-for-approval on-request`. Edits and commands inside the project run freely; leaving the project or using the network asks first |
+| **Auto** | No direct equivalent. The Codex Auto preset is the sandbox above, not a background safety check |
+| **Bypass permissions** | `--dangerously-bypass-approvals-and-sandbox` (alias `--yolo`). Only inside an isolated container or virtual machine |
+
+Chapter 2's ask rules for commands that leave your laptop look like this in each tool:
+
+::: {.columns}
+::: {.column width="48%"}
+**Claude Code**, `.claude/settings.json`
+
+```json
+{
+  "permissions": {
+    "ask": ["Bash(git push *)",
+            "Bash(vercel *)"]
+  }
+}
+```
+:::
+::: {.column width="4%"}
+:::
+::: {.column width="48%"}
+**Codex**, `~/.codex/rules/default.rules`
+
+```python
+prefix_rule(
+    pattern = ["git", "push"],
+    decision = "prompt",
+)
+prefix_rule(
+    pattern = ["vercel"],
+    decision = "prompt",
+)
+```
+:::
+:::
+
+Codex's `decision` values are `"allow"`, `"prompt"` (Claude's `ask`), and `"forbidden"` (Claude's `deny`). A Codex rule governs commands that would run outside the sandbox. `codex execpolicy check` tests a rules file.
+
+### Hooks
+
+Codex uses Claude Code's event names (`PreToolUse`, `PostToolUse`, `Stop`, and others, 12 in all) and the same exit code 2 to block. Two things differ: a hook does not run until you trust it in `/hooks`, and a file-edit hook receives the whole patch as text in `tool_input.command`, not a file path.
+
+Chapter 2's `git` guard reads `tool_input.command`, which Codex also sends for shell commands, so it works unchanged. The `.env` guard reads `tool_input.file_path`, which Codex does not send. In Codex, check the patch text instead (match `Edit|Write`, which Codex maps to its `apply_patch` tool):
+
+```bash
+#!/bin/bash
+# Block Codex from editing .env files
+if jq -r '.tool_input.command' | grep -q '\.env'; then
+  echo "Blocked: .env files hold secrets and must not be edited by the agent" >&2
+  exit 2
+fi
+exit 0
+```
+
+This also blocks a patch that mentions `.env` anywhere in its text. Codex's docs call tool hooks "a useful guardrail, not a complete enforcement boundary"; the same is true in every tool here.
+
+### Undo
+
+Codex documents no file checkpoint. `Esc` twice lets you edit your previous message and fork the conversation, but it does not put your files back. Its own quickstart says: "Create Git checkpoints before and after a task so you can revert changes." In the terms of [Blast Radius](02-directing-the-agent.qmd#blast-radius), every Codex edit is group 2: commit before you start.
+
+## Copilot CLI in detail
+
+Sources: [Copilot CLI](https://docs.github.com/en/copilot/concepts/copilot-surfaces/copilot-cli), [install](https://docs.github.com/en/copilot/how-tos/copilot-cli/set-up-copilot-cli/install-copilot-cli), [command reference](https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-command-reference), [hooks reference](https://docs.github.com/en/copilot/reference/hooks-configuration).
+
+**Getting it.** Every Copilot plan includes Copilot CLI, including Copilot Free and Copilot Student, which is free for verified students through GitHub Education. Install it, run `copilot`, and type `/login`. A Microsoft 365 Copilot license, the assistant in Office and Teams, is a different product and does not sign you in.
+
+**Instructions and skills.** Copilot combines every instruction file it finds (`AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `.github/copilot-instructions.md`) and has no precedence order between them, so keep them from contradicting each other. `/instructions` shows which files it loaded. Skills in `.claude/skills/` work as they are.
+
+**Permission rules.** Copilot has no committed file of allow, ask, and deny rules. You pass them at launch, and a deny always wins, even with `--allow-all`:
+
+```bash
+copilot --allow-tool='shell(git:*)' --deny-tool='shell(git push)'
+```
+
+The approval you give during a session ("Yes, and approve TOOL for the rest of the running session") covers that tool for every later use in the session. Approving `rm ./old-file.txt` that way also approves `rm -rf ./*`. For a rule that holds every session, use a `preToolUse` hook.
+
+**Hooks.** Copilot reads hooks from `.github/hooks/*.json` and also from your `.claude/settings.json`. Hooks written with Claude's event names (`PreToolUse`) get Claude-style matchers (`Bash`, `Edit|Write`) and a payload with `tool_name` and `tool_input`. Exit code 2 blocks. The arguments inside `tool_input` are Copilot's own, so test each Chapter 2 script with a harmless call before you rely on it.
+
+**Undo.** `/undo` offers "Conversation only" or "Conversation + files." The second restores files Copilot changed through its edit tools, shell commands, and subagents, and skips any file you have edited since. That covers more than Claude Code's `/rewind`, which does not track shell commands. Anything that left your laptop still cannot be undone.
+
+## Antigravity CLI in detail
+
+Sources: [getting started](https://antigravity.google/docs/getting-started), [CLI reference](https://antigravity.google/docs/cli/reference), [execution modes](https://antigravity.google/docs/cli/modes), [rules](https://antigravity.google/docs/rules), [skills](https://antigravity.google/docs/skills), [permissions](https://antigravity.google/docs/permissions), [hooks](https://antigravity.google/docs/hooks), [migrating from Gemini CLI](https://antigravity.google/docs/cli/gcli-migration).
+
+**Getting it.** Install with the script in the [Commands](#commands) table, run `agy` in your project folder, and sign in with a Google account. Antigravity CLI shares settings and permissions with the Antigravity 2.0 desktop app. If you used Gemini CLI, `agy` offers to import its settings on first launch, and `agy plugin import gemini` converts its extensions.
+
+**Instructions.** Antigravity reads `AGENTS.md` and `GEMINI.md` in every folder, plus `.agents/rules/*.md`. A file in `.agents/rules/` needs frontmatter with a `trigger` (`always_on`, `model_decision`, `glob`, or `manual`); without it the rule is "silently discarded." Rules have a 20,000-token budget, after which the largest files are shortened to a pointer.
+
+**Modes and permissions.** `Shift+Tab` cycles `default` (shows each file edit as a diff for you to accept), `accept-edits`, and `plan`. Separately, `allow`, `ask`, and `deny` rules cover actions such as `command(git push)`, `write_file(path)`, and `read_url(domain)`; deny beats ask, and ask beats allow. They live in your user settings file, not in the repo, so they do not travel with the project. Reading and writing files inside your workspace needs no rule; in `default` mode you still review each edit.
+
+**Hooks.** Hooks go in `.agents/hooks.json` and use different names from the other three tools. The shell tool is `run_command`, and its command is in `toolCall.args.CommandLine`. File edits are `write_to_file`, `replace_file_content`, and `multi_replace_file_content`, with the path in `toolCall.args.TargetFile`. A `PreToolUse` hook answers with JSON such as `{"decision": "deny", "reason": "..."}` instead of an exit code. Chapter 2's scripts need rewriting for these names. Note that `"allow"` approves the call without asking you, so a guard should not return it for commands it has no opinion about; check the [hooks](https://antigravity.google/docs/hooks) page for the current options.
+
+**Undo.** `/rewind` rolls back the conversation. The reference does not say it restores files, and `/fork` copies the conversation, not your files. Use git.
