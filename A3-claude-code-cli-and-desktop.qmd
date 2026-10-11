@@ -146,6 +146,35 @@ Three things to know:
 - **The extension does not install `claude`.** It bundles a private copy for its chat panel. Typing `claude` in a terminal needs the standalone install from [Computer Setup](00-computer-setup.qmd).
 - **Running `claude` in VS Code's terminal reinstalls the extension** if you removed it. Turn off **Auto-install IDE extension** in `/config` to stop that.
 
+## The CLI in VS Code or the desktop app? {#cli-in-vs-code-or-the-desktop-app}
+
+Many people who started with the CLI in VS Code have moved to the desktop app, and the app has added much of what used to keep them in the editor. This scorecard compares the two setups people actually choose between: the **Claude Code CLI in VS Code's terminal** ([above](#claude-code-in-the-vs-code-terminal)) and the **Claude desktop app's Code tab**.
+
+| What you need to do | Claude Code CLI in VS Code | Claude desktop app (Code tab) |
+|---|---|---|
+| Find and open files | 2: Explorer, `Cmd+P` search, and `Cmd`-click any file path in the terminal to open it at that line | 1: click a path in the chat or diff to open it in a file pane; **Open in** sends it to your editor; no file search documented |
+| Edit code yourself | 2: full editor | 1: small edits in the file pane |
+| Review what the agent changed | 1: diffs open in VS Code's diff viewer; you can't send line comments back | 2: diff view with line comments Claude acts on, and a code review card |
+| See the running app, and let the agent check it | 1: you open it in your browser; Claude can drive Chrome with `claude --chrome` or an MCP server | 2: Browser pane; Claude checks its own work after each edit |
+| Preview other files (HTML, PDF, images) | 1: Markdown and images; other types need extensions | 2: HTML, PDF, image, and video files open in the Browser pane |
+| Feed the agent your editor's context | 2: your selection, the open file, and the Problems panel | 1: `@` mentions and attachments; no editor connection |
+| Run several agents at once | 1: one terminal per session; `claude -w` for a worktree; `claude agents` for background sessions | 2: sidebar of sessions, a worktree checkbox, split view, sessions that message each other |
+| Every command, scripts, and CI | 2: all commands and flags, `claude -p` | 1: a subset; no `-p`; panel commands such as `/permissions` don't open |
+| Set safety rules | 2: `/permissions` and `/hooks` panels, plus the settings files | 1: the same settings files, edited by hand; mode menu |
+| Use editor extensions | 2: the whole VS Code marketplace | 0: none |
+| Keep work going when you step away | 1: `/remote-control`, `claude --cloud`, `/schedule` | 2: all of those, plus notifications, PR auto-fix, scheduled tasks, Dispatch from your phone |
+| Setup | 1: VS Code, the CLI, and the extension | 2: one download |
+| **Total (of 24)** | **18** | **17** |
+
+Scores are 2 (does this well), 1 (does it partly, or with extra setup), or 0 (cannot). They are our judgment, based on what each product's documentation says it does, not on timed tests. Each row is worth the same, which may not match how you work: weight the rows you do most.
+
+**What the scores show.** The totals are close because the two setups win at different jobs:
+
+- **VS Code wins when you work on the code yourself.** Finding a file, clicking a path in Claude's output to land on the exact line, editing it with full editor support, using extensions, and handing Claude your editor's errors and selection all happen in one window. It also has every command and flag.
+- **The app wins when you direct and review the agent.** Commenting on a diff line by line, watching Claude test its own change in the Browser pane, previewing a PDF or HTML file, and running several sessions side by side take less setup in the app than in VS Code.
+
+The more of your time goes to reading and editing code, the more VS Code pays off. The more of it goes to giving instructions and reviewing results, the more the app does. You do not have to pick one: both read the same `CLAUDE.md`, skills, and settings, `/desktop` moves a session from the terminal to the app, and **Open in** sends any file from the app to VS Code.
+
 ## Which one to use
 
 The documentation's advice: "use Desktop when you want to manage parallel sessions in one window, arrange panes side by side, or review changes visually. Use the CLI when you need scripting, automation, or prefer a terminal workflow."

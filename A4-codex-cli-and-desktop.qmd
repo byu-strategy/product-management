@@ -97,6 +97,35 @@ Several CLI-only commands have a button or panel in the app instead of a command
 
 The docs do not describe moving an app chat back into the CLI.
 
+## The CLI in VS Code or the desktop app? {#cli-in-vs-code-or-the-desktop-app}
+
+The same debate exists for Codex. This scorecard compares the **Codex CLI in VS Code's terminal** with **Codex in the ChatGPT desktop app**, using the same rows as the [Claude Code scorecard](A3-claude-code-cli-and-desktop.qmd#cli-in-vs-code-or-the-desktop-app).
+
+| What you need to do | Codex CLI in VS Code | Codex in the ChatGPT desktop app |
+|---|---|---|
+| Find and open files | 2: Explorer, `Cmd+P` search, and `Cmd`-click any file path in the terminal to open it at that line | 2: file tree (`Cmd+Shift+E`), file search (`Cmd+P`), and **Open** sends a file to your editor |
+| Edit code yourself | 2: full editor | 1: open the file in your editor; in-app editing is documented only for LaTeX |
+| Review what the agent changed | 1: `/diff` in the terminal and VS Code's Source Control panel; you can't send line comments back | 2: review pane with line feedback, and stage, revert, commit, or push |
+| See the running app, and let the agent check it | 1: you open it in your browser; Codex can drive one only through an MCP server | 2: built-in browser where you comment on the page and Codex fixes it |
+| Preview other files (HTML, PDF, documents) | 1: Markdown and images; other types need extensions | 2: previews documents, spreadsheets, presentations, PDFs, and HTML, with annotations |
+| Feed the agent your editor's context | 1: `/ide` adds open files and your selection; no diagnostics | 1: `/ide-context` shares IDE context |
+| Run several agents at once | 1: one terminal per session; subagents; no worktrees in the CLI | 2: worktrees with Handoff, local environments with setup scripts |
+| Every command, scripts, and CI | 2: all commands and flags, `codex exec` | 1: a separate, shorter command list; no scripting |
+| Set safety rules | 2: `/permissions`, `/hooks`, rules files, launch flags | 1: the app's settings; the pages we read describe fewer approval controls than the CLI has |
+| Use editor extensions | 2: the whole VS Code marketplace | 0: none |
+| Keep work going when you step away | 1: `codex cloud`, `codex remote-control` | 2: mobile app, scheduled tasks, notifications, Computer Use |
+| Setup | 1: VS Code and the CLI | 2: one download |
+| **Total (of 24)** | **17** | **18** |
+
+Scores are 2 (does this well), 1 (does it partly, or with extra setup), or 0 (cannot). They are our judgment, based on what each product's documentation says it does, not on timed tests. Each row is worth the same, which may not match how you work: weight the rows you do most.
+
+**What the scores show.** As with Claude Code, VS Code wins when you work on the code yourself and the app wins when you direct and review the agent. Two differences from the Claude comparison:
+
+- **The Codex app has closed more of the file gap.** It has a file tree and `Cmd+P` file search, which the Claude app's documentation does not list. Clicking a path in the terminal to open a file at the exact line is still a VS Code strength.
+- **The Codex CLI gets less from VS Code than Claude Code does.** Claude Code's CLI opens its diffs in VS Code and reads the Problems panel; the Codex CLI's `/ide` adds open files and your selection, and nothing in the docs says it does more. For Codex, VS Code is mostly a good editor and terminal next to the agent rather than a connected one.
+
+The app is also where Codex gets its worktrees, which its CLI lacks, so running several Codex chats in parallel is much easier there.
+
 ## Which one to use
 
 OpenAI's docs give the use cases. The CLI is for when "you work from the terminal," "you need scripting or CI," "you want a local code review," or "you want to hand work to the cloud" ([Codex CLI](https://learn.chatgpt.com/docs/codex/cli)). The desktop app is for coordinating several projects, creating and reviewing files, using the browser and your computer, and scheduling recurring work ([desktop app](https://learn.chatgpt.com/docs/app)).
