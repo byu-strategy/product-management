@@ -224,57 +224,57 @@
 <rect x="40" y="719" width="72" height="30" rx="15" fill="url(#tbd-navy)"/>
 <text x="76" y="739" font-size="15" font-weight="600" text-anchor="middle" font-family="Menlo, Consolas, monospace" fill="#FFFFFF">main</text>
 <line x1="230" y1="734" x2="968" y2="734" stroke="#002E5D" stroke-width="5" stroke-linecap="round"/>
-<line x1="262" y1="674" x2="958" y2="674" stroke="#0057B8" stroke-width="3" stroke-linecap="round"/>
-<line x1="346" y1="794" x2="958" y2="794" stroke="#6495ED" stroke-width="3" stroke-linecap="round"/>
-<path d="M244.0 725 L262.0 684" fill="none" stroke="#5A6672" stroke-width="1.8" marker-end="url(#tbd-ah)"/>
-<circle cx="288.0" cy="674" r="4.5" fill="#FFFFFF" stroke="#0057B8" stroke-width="2.5"/>
-<circle cx="312.0" cy="674" r="4.5" fill="#FFFFFF" stroke="#0057B8" stroke-width="2.5"/>
-<circle cx="336.0" cy="674" r="4.5" fill="#FFFFFF" stroke="#0057B8" stroke-width="2.5"/>
-<path d="M336.0 681 V721" fill="none" stroke="#0057B8" stroke-width="2" marker-end="url(#tbd-ah)"/>
-<path d="M336.0 743 L362.0 784" fill="none" stroke="#5A6672" stroke-width="1.8" marker-end="url(#tbd-ah)"/>
-<circle cx="386.0" cy="794" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
-<circle cx="410.0" cy="794" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
-<circle cx="434.0" cy="794" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
-<path d="M434.0 787 V747" fill="none" stroke="#6495ED" stroke-width="2" marker-end="url(#tbd-ah)"/>
-<path d="M434.0 725 L460.0 684" fill="none" stroke="#5A6672" stroke-width="1.8" marker-end="url(#tbd-ah)"/>
-<circle cx="496.0" cy="674" r="4.5" fill="#FFFFFF" stroke="#0057B8" stroke-width="2.5"/>
-<circle cx="532.0" cy="674" r="4.5" fill="#FFFFFF" stroke="#0057B8" stroke-width="2.5"/>
-<path d="M532.0 681 V721" fill="none" stroke="#0057B8" stroke-width="2" marker-end="url(#tbd-ah)"/>
-<circle cx="512.0" cy="794" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
-<circle cx="552.0" cy="794" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
-<path d="M552.0 787 V760" fill="none" stroke="#A86B00" stroke-width="2" stroke-dasharray="4 4"/>
-<g stroke="#A86B00" stroke-width="2.5" stroke-linecap="round"><line x1="546" y1="748" x2="558" y2="760"/><line x1="558" y1="748" x2="546" y2="760"/></g>
-<path d="M532.0 743 L590.0 784" fill="none" stroke="#5A6672" stroke-width="1.8" marker-end="url(#tbd-ah)"/>
-<circle cx="626.0" cy="794" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
-<path d="M626.0 787 V747" fill="none" stroke="#6495ED" stroke-width="2" marker-end="url(#tbd-ah)"/>
-<circle cx="626" cy="734" r="13" fill="none" stroke="#2E7D4F" stroke-width="2.5"/>
-<text x="578" y="826" font-size="16" font-weight="600" text-anchor="end" fill="#A86B00">rejected: Ana pushed first</text>
-<text x="602" y="826" font-size="16" font-weight="600" fill="#2E7D4F">pull, agent resolves conflict, push</text>
-<path d="M626.0 725 L668.0 684" fill="none" stroke="#5A6672" stroke-width="1.8" marker-end="url(#tbd-ah)"/>
+<line x1="294" y1="674" x2="958" y2="674" stroke="#0057B8" stroke-width="3" stroke-linecap="round"/>
+<line x1="410" y1="794" x2="958" y2="794" stroke="#6495ED" stroke-width="3" stroke-linecap="round"/>
+<path d="M244.0 725 L294.0 684" fill="none" stroke="#5A6672" stroke-width="1.8" marker-end="url(#tbd-ah)"/>
+<circle cx="316.0" cy="674" r="4.5" fill="#FFFFFF" stroke="#0057B8" stroke-width="2.5"/>
+<circle cx="338.0" cy="674" r="4.5" fill="#FFFFFF" stroke="#0057B8" stroke-width="2.5"/>
+<circle cx="360.0" cy="674" r="4.5" fill="#FFFFFF" stroke="#0057B8" stroke-width="2.5"/>
+<path d="M360.0 681 V721" fill="none" stroke="#0057B8" stroke-width="2" marker-end="url(#tbd-ah)"/>
+<path d="M360.0 743 L410.0 784" fill="none" stroke="#5A6672" stroke-width="1.8" marker-end="url(#tbd-ah)"/>
+<circle cx="430.0" cy="794" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
+<circle cx="450.0" cy="794" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
+<circle cx="470.0" cy="794" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
+<path d="M470.0 787 V747" fill="none" stroke="#6495ED" stroke-width="2" marker-end="url(#tbd-ah)"/>
+<path d="M470.0 725 L520.0 684" fill="none" stroke="#5A6672" stroke-width="1.8" marker-end="url(#tbd-ah)"/>
+<circle cx="540.0" cy="674" r="4.5" fill="#FFFFFF" stroke="#0057B8" stroke-width="2.5"/>
+<circle cx="560.0" cy="674" r="4.5" fill="#FFFFFF" stroke="#0057B8" stroke-width="2.5"/>
+<path d="M560.0 681 V721" fill="none" stroke="#0057B8" stroke-width="2" marker-end="url(#tbd-ah)"/>
+<circle cx="510.0" cy="794" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
+<circle cx="594.0" cy="794" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
+<path d="M594.0 787 V756" fill="none" stroke="#A86B00" stroke-width="2" stroke-dasharray="4 4"/>
+<g stroke="#A86B00" stroke-width="2.5" stroke-linecap="round"><line x1="588" y1="744" x2="600" y2="756"/><line x1="600" y1="744" x2="588" y2="756"/></g>
+<path d="M560.0 743 L610.0 784" fill="none" stroke="#5A6672" stroke-width="1.8" marker-end="url(#tbd-ah)"/>
+<circle cx="640.0" cy="794" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
+<path d="M640.0 787 V747" fill="none" stroke="#6495ED" stroke-width="2" marker-end="url(#tbd-ah)"/>
+<circle cx="640" cy="734" r="13" fill="none" stroke="#2E7D4F" stroke-width="2.5"/>
+<text x="588" y="826" font-size="16" font-weight="600" text-anchor="end" fill="#A86B00">rejected: Ana pushed first</text>
+<text x="614" y="826" font-size="16" font-weight="600" fill="#2E7D4F">pull, agent resolves conflict, push</text>
+<path d="M640.0 725 L690.0 684" fill="none" stroke="#5A6672" stroke-width="1.8" marker-end="url(#tbd-ah)"/>
 <circle cx="716.0" cy="674" r="4.5" fill="#FFFFFF" stroke="#0057B8" stroke-width="2.5"/>
-<circle cx="756.0" cy="674" r="4.5" fill="#FFFFFF" stroke="#0057B8" stroke-width="2.5"/>
-<circle cx="796.0" cy="674" r="4.5" fill="#FFFFFF" stroke="#0057B8" stroke-width="2.5"/>
-<circle cx="836.0" cy="674" r="4.5" fill="#FFFFFF" stroke="#0057B8" stroke-width="2.5"/>
-<path d="M836.0 681 V721" fill="none" stroke="#0057B8" stroke-width="2" marker-end="url(#tbd-ah)"/>
-<path d="M836.0 743 L866.0 784" fill="none" stroke="#5A6672" stroke-width="1.8" marker-end="url(#tbd-ah)"/>
-<circle cx="894.0" cy="794" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
-<circle cx="922.0" cy="794" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
-<path d="M922.0 787 V747" fill="none" stroke="#6495ED" stroke-width="2" marker-end="url(#tbd-ah)"/>
-<circle cx="262.0" cy="674" r="5.5" fill="#002E5D" stroke="#FFFFFF" stroke-width="2"/>
-<circle cx="362.0" cy="794" r="5.5" fill="#0057B8" stroke="#FFFFFF" stroke-width="2"/>
-<circle cx="460.0" cy="674" r="5.5" fill="#6495ED" stroke="#FFFFFF" stroke-width="2"/>
-<circle cx="590.0" cy="794" r="5.5" fill="#0057B8" stroke="#FFFFFF" stroke-width="2"/>
-<circle cx="668.0" cy="674" r="5.5" fill="#6495ED" stroke="#FFFFFF" stroke-width="2"/>
-<circle cx="866.0" cy="794" r="5.5" fill="#0057B8" stroke="#FFFFFF" stroke-width="2"/>
-<text x="300" y="660" font-size="14" text-anchor="middle" font-family="Menlo, Consolas, monospace" fill="#0057B8">main on Ana's laptop</text>
+<circle cx="752.0" cy="674" r="4.5" fill="#FFFFFF" stroke="#0057B8" stroke-width="2.5"/>
+<circle cx="788.0" cy="674" r="4.5" fill="#FFFFFF" stroke="#0057B8" stroke-width="2.5"/>
+<circle cx="824.0" cy="674" r="4.5" fill="#FFFFFF" stroke="#0057B8" stroke-width="2.5"/>
+<path d="M824.0 681 V721" fill="none" stroke="#0057B8" stroke-width="2" marker-end="url(#tbd-ah)"/>
+<path d="M824.0 743 L874.0 784" fill="none" stroke="#5A6672" stroke-width="1.8" marker-end="url(#tbd-ah)"/>
+<circle cx="900.0" cy="794" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
+<circle cx="926.0" cy="794" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
+<path d="M926.0 787 V747" fill="none" stroke="#6495ED" stroke-width="2" marker-end="url(#tbd-ah)"/>
+<circle cx="294.0" cy="674" r="5.5" fill="#002E5D" stroke="#FFFFFF" stroke-width="2"/>
+<circle cx="410.0" cy="794" r="5.5" fill="#0057B8" stroke="#FFFFFF" stroke-width="2"/>
+<circle cx="520.0" cy="674" r="5.5" fill="#6495ED" stroke="#FFFFFF" stroke-width="2"/>
+<circle cx="610.0" cy="794" r="5.5" fill="#0057B8" stroke="#FFFFFF" stroke-width="2"/>
+<circle cx="690.0" cy="674" r="5.5" fill="#6495ED" stroke="#FFFFFF" stroke-width="2"/>
+<circle cx="874.0" cy="794" r="5.5" fill="#0057B8" stroke="#FFFFFF" stroke-width="2"/>
+<text x="330" y="660" font-size="14" text-anchor="middle" font-family="Menlo, Consolas, monospace" fill="#0057B8">main on Ana's laptop</text>
 <text x="764" y="782" font-size="14" text-anchor="middle" font-family="Menlo, Consolas, monospace" fill="#6495ED">main on Ben's laptop</text>
 <circle cx="244.0" cy="734" r="7" fill="#002E5D" stroke="#FFFFFF" stroke-width="2.5"/>
-<circle cx="336.0" cy="734" r="7" fill="#0057B8" stroke="#FFFFFF" stroke-width="2.5"/>
-<circle cx="434.0" cy="734" r="7" fill="#6495ED" stroke="#FFFFFF" stroke-width="2.5"/>
-<circle cx="532.0" cy="734" r="7" fill="#0057B8" stroke="#FFFFFF" stroke-width="2.5"/>
-<circle cx="626.0" cy="734" r="7" fill="#6495ED" stroke="#FFFFFF" stroke-width="2.5"/>
-<circle cx="836.0" cy="734" r="7" fill="#0057B8" stroke="#FFFFFF" stroke-width="2.5"/>
-<circle cx="922.0" cy="734" r="7" fill="#6495ED" stroke="#FFFFFF" stroke-width="2.5"/>
+<circle cx="360.0" cy="734" r="7" fill="#0057B8" stroke="#FFFFFF" stroke-width="2.5"/>
+<circle cx="470.0" cy="734" r="7" fill="#6495ED" stroke="#FFFFFF" stroke-width="2.5"/>
+<circle cx="560.0" cy="734" r="7" fill="#0057B8" stroke="#FFFFFF" stroke-width="2.5"/>
+<circle cx="640.0" cy="734" r="7" fill="#6495ED" stroke="#FFFFFF" stroke-width="2.5"/>
+<circle cx="824.0" cy="734" r="7" fill="#0057B8" stroke="#FFFFFF" stroke-width="2.5"/>
+<circle cx="926.0" cy="734" r="7" fill="#6495ED" stroke="#FFFFFF" stroke-width="2.5"/>
 </g>
 <g transform="translate(0,494)">
 <rect x="16" y="602" width="968" height="186" rx="10" fill="url(#tbd-panel)"/>
