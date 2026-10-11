@@ -228,23 +228,14 @@ changed the same lines, git stops with a **merge conflict**, and someone has to 
 which version is right. With two long-lived branches open, each also has to be reconciled with
 the other, and problems that appear only when the two are combined show up together, at the end.
 
-![Three days of trunk-based work, solo and on a team, and one contrast. Each row is one maker: you, a Claude Code session, Ana, or Ben. Working alone, you can commit straight to main. With two sessions in their own worktrees, or two people, each task is a short branch merged into the same main the same day or the next, and each new branch starts from the latest main. With several sessions in one folder, every session commits straight to main; now and then two of them change the same file, and the next commit fixes it. A team can do the same on each laptop and push to main on GitHub a few commits at a time; when two pushes clash, git rejects the second, and that person's agent pulls, resolves the conflict, and pushes again. Bottom: Ana and Ben keep one branch each open for all three days and merge them at once, with conflicts.](images/diagrams/ch09-trunk-based.svg){#fig-trunk-based fig-alt="Six panels stacked on one shared time axis of three days, labeled Day 1, Day 2, and Day 3. In every panel a dark line labeled main runs left to right, and each row above or below it is labeled with the person or session that made the branches in that row. Filled dark dots on main are commits on main; hollow dots on a branch are commits on that branch. Panel 1, solo, straight to main: a row labeled You sits above main, and seven short arrows point from it down to seven commits on main, spread over the three days, with no branches. Panel 2, solo, two Claude Code sessions, each in its own worktree: a row labeled Session 1 above main and a row labeled Session 2 below it. Each session makes three short branches, one per day; each leaves main and merges back the same day, and on each day the two sessions' branches overlap in time. Panel 3, solo, several Claude Code sessions, all straight to main: three rows labeled Session 1, Session 2, and Session 3 sit above main, with no branches. Eighteen arrows, six from each session's row, point down to commits on main, interleaved across the three days; each commit is filled in its session's color. On Day 2, two neighboring commits on main, one from Session 1 and one from Session 2, are ringed in amber and labeled two sessions edit one file. The commit after them, from Session 2, is circled in green and labeled the next commit fixes it. Panel 4, team of two: Ana's row above main, Ben's row below. Ana's branch ratings-1 runs through most of Day 1 and merges at the end of it. Ben's branch fix-signup starts midway through Day 1 and merges early on Day 2. A marker on main just after that merge reads: Ana pulls main, gets Ben's fix. Ana's branch ratings-2 then starts there and merges late on Day 2. Ben's branch signup-email starts on Day 3, after that merge, and merges the same day. Panel 5, team of two, several sessions on main on each laptop, pushing to GitHub: a row labeled Ana's laptop above main and a row labeled Ben's laptop below it, each with its own line, labeled main on Ana's laptop and main on Ben's laptop, with no branches; the middle line is labeled main on GitHub. Hollow dots are commits made on that laptop. Filled dots are commits that are on GitHub, colored by author: dark blue for Ana, light blue for Ben, navy for the commit main started with. A push is an arrow from a laptop's newest commit straight to a filled dot on main; a pull is a gray arrow from the newest dot on main to a filled copy of it on the laptop line. Ana pulls, makes three commits, and pushes; Ben pulls that, makes three, and pushes; Ana pulls Ben's push, makes two, and pushes. On Day 2 Ben makes two commits without pulling, and his push is drawn as a short dashed amber arrow from his newest commit that stops at an amber X; a leader line from that commit points to the label rejected: Ana pushed first. He pulls Ana's commit, and his agent resolves the conflict in one more commit, which a leader line labels agent resolves the conflict, then pushes; he pushes it, and that dot on main is circled in green. On Day 3 Ana pulls it, makes four commits, and pushes; Ben pulls that, makes two, and pushes. Panel 6, team of two, long-lived branches: Ana's branch and Ben's branch both leave main at the start of Day 1, collect ten commits each over all three days while main gets no commits, and both merge into main at one point at the end of Day 3, marked with a red warning circle labeled merge conflicts." width="100%"}
+![Three days of trunk-based work, solo and on a team, and one contrast. Each row is one maker: you, a Claude Code session, Ana, or Ben. Working alone, you can commit straight to main, and so can several sessions in one folder; now and then two of them change the same file, and the next commit fixes it. With two sessions in their own worktrees, or two people, each task is a short branch merged into the same main the same day or the next, and each new branch starts from the latest main. A team can do the same on each laptop and push to main on GitHub a few commits at a time; when two pushes clash, git rejects the second, and that person's agent pulls, resolves the conflict, and pushes again. Bottom: Ana and Ben keep one branch each open for all three days and merge them at once, with conflicts.](images/diagrams/ch09-trunk-based.svg){#fig-trunk-based fig-alt="Six panels stacked on one shared time axis of three days, labeled Day 1, Day 2, and Day 3. In every panel a dark line labeled main runs left to right, and each row above or below it is labeled with the person or session that made the branches in that row. Filled dark dots on main are commits on main; hollow dots on a branch are commits on that branch. Panel 1, solo, straight to main: a row labeled You sits above main, and seven short arrows point from it down to seven commits on main, spread over the three days, with no branches. Panel 2, solo, several Claude Code sessions, all straight to main: three rows labeled Session 1, Session 2, and Session 3 sit above main, with no branches. Eighteen arrows, six from each session's row, point down to commits on main, interleaved across the three days; each commit is filled in its session's color. On Day 2, two neighboring commits on main, one from Session 1 and one from Session 2, are ringed in amber and labeled two sessions edit one file. The commit after them, from Session 2, is circled in green and labeled the next commit fixes it. Panel 3, solo, two Claude Code sessions, each in its own worktree: a row labeled Session 1 above main and a row labeled Session 2 below it. Each session makes three short branches, one per day; each leaves main and merges back the same day, and on each day the two sessions' branches overlap in time. Panel 4, team of two: Ana's row above main, Ben's row below. Ana's branch ratings-1 runs through most of Day 1 and merges at the end of it. Ben's branch fix-signup starts midway through Day 1 and merges early on Day 2. A marker on main just after that merge reads: Ana pulls main, gets Ben's fix. Ana's branch ratings-2 then starts there and merges late on Day 2. Ben's branch signup-email starts on Day 3, after that merge, and merges the same day. Panel 5, team of two, several sessions on main on each laptop, pushing to GitHub: a row labeled Ana's laptop above main and a row labeled Ben's laptop below it, each with its own line, labeled main on Ana's laptop and main on Ben's laptop, with no branches; the middle line is labeled main on GitHub. Hollow dots are commits made on that laptop. Filled dots are commits that are on GitHub, colored by author: dark blue for Ana, light blue for Ben, navy for the commit main started with. A push is an arrow from a laptop's newest commit straight to a filled dot on main; a pull is a gray arrow from the newest dot on main to a filled copy of it on the laptop line. Ana pulls, makes three commits, and pushes; Ben pulls that, makes three, and pushes; Ana pulls Ben's push, makes two, and pushes. On Day 2 Ben makes two commits without pulling, and his push is drawn as a short dashed amber arrow from his newest commit that stops at an amber X; a leader line from that commit points to the label rejected: Ana pushed first. He pulls Ana's commit, and his agent resolves the conflict in one more commit, which a leader line labels agent resolves the conflict, then pushes; he pushes it, and that dot on main is circled in green. On Day 3 Ana pulls it, makes four commits, and pushes; Ben pulls that, makes two, and pushes. Panel 6, team of two, long-lived branches: Ana's branch and Ben's branch both leave main at the start of Day 1, collect ten commits each over all three days while main gets no commits, and both merge into main at one point at the end of Day 3, marked with a red warning circle labeled merge conflicts." width="100%"}
 
 ### What it looks like solo
 
 The top panel of @fig-trunk-based is the simplest form: you, alone, committing to `main`. Each
 commit is pushed to GitHub, and Vercel deploys it to the live site.
 
-The second panel is how you will usually work alone in this course: one person with two Claude
-Code sessions, each in its own worktree (Chapter 2), and each working on its own branch. On Day 1,
-session 1 builds a search box on one branch while session 2 fixes the empty state of the home page
-on another. When a session finishes its task, it pushes the branch and opens a pull request; you
-read the diff and the preview and merge it, the same day. Before a session starts its next task,
-ask it to pull `main` from GitHub and create the new branch from it, so the new branch starts
-from a `main` that already holds both sessions' merged work. A session that keeps one branch
-open for the whole week is a long-lived branch, even though nobody else is in the repo.
-
-The third panel has no branches at all. Several sessions share one folder and each commits
+The second panel has no branches at all. Several sessions share one folder and each commits
 straight to `main` when it finishes a unit of work, so their commits interleave on one line. This
 is the Agent Team Kit's default, which it calls stay on main
 ([design notes](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/docs/DESIGN-NOTES.md)),
@@ -266,6 +257,15 @@ the files you changed, format only those files, and never amend or rebase, becau
 commit may belong to another session. The kit's hooks block the most damaging commands
 (`git add -A`, `git reset --hard`, `git stash`) for every session
 ([concurrent agents on main](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/snippets/CLAUDE-md-main.md)).
+
+The third panel is how you will usually work alone in this course: one person with two Claude
+Code sessions, each in its own worktree (Chapter 2), and each working on its own branch. On Day 1,
+session 1 builds a search box on one branch while session 2 fixes the empty state of the home page
+on another. When a session finishes its task, it pushes the branch and opens a pull request; you
+read the diff and the preview and merge it, the same day. Before a session starts its next task,
+ask it to pull `main` from GitHub and create the new branch from it, so the new branch starts
+from a `main` that already holds both sessions' merged work. A session that keeps one branch
+open for the whole week is a long-lived branch, even though nobody else is in the repo.
 
 ### What it looks like on a team
 
@@ -289,7 +289,7 @@ panel is the same two people with one branch each, kept open for three days: nei
 other's work until both merge at the end of Day 3, and every place the two branches changed the
 same lines is a conflict to settle at once.
 
-The fifth panel is the team version of the third. Ana and Ben each run several sessions that
+The fifth panel is the team version of the second. Ana and Ben each run several sessions that
 commit straight to `main` on their own laptop, with no branches, and each pushes to GitHub a few
 commits at a time. This is the first style on Hammant's site, committing straight to the trunk,
 and the Agent Team Kit's collaboration model
@@ -299,7 +299,7 @@ hollow dot is a commit made on that laptop; a filled dot is a commit that is on 
 copies the newest commit on GitHub to the laptop (gray arrow), and a push copies the laptop's newest
 commit to GitHub. Until you push, your commits work like a short branch that only you can see. A
 push sends every commit since your last push at once; the figure draws it as one dot on `main`, the
-same way the second and fourth panels draw a whole branch as the one dot where it merges.
+same way the third and fourth panels draw a whole branch as the one dot where it merges.
 
 GitHub accepts a push only if it builds on the newest `main` there, so you pull whenever the other
 person has pushed. On Day 2, Ben keeps working after his first push without pulling, which is fine
@@ -316,7 +316,7 @@ when the other sessions are idle, because a rebase changes files under any sessi
 
 Committing straight to `main` by hand is reasonable when all three of these hold: you work alone;
 the change is small, such as fixing a typo in a page; and you run the checks on your laptop first
-(`npm test` and `npm run build`). Several sessions committing straight to `main` (the third panel)
+(`npm test` and `npm run build`). Several sessions committing straight to `main` (the second panel)
 also works when you are at the keyboard watching them and each has its own part of the app, and
 a team can work that way on each laptop and push often (the fifth panel). Vercel deploys a commit on
 `main` as soon as it reaches GitHub, so there is no preview and nobody reads the diff before users
@@ -327,7 +327,7 @@ you work alone. The pull request runs the checks on GitHub's computers instead o
 remember them, builds a preview you can click through, and shows the full diff, which is where a
 line like `USING (true)` gets caught. When a second person or a second Claude Code session works
 in the repo, use a short branch every time, unless you are deliberately running several sessions
-on `main` as in the third panel, watching them, and pushing only after the checks pass on your
+on `main` as in the second panel, watching them, and pushing only after the checks pass on your
 laptop.
 
 ### The four rules
