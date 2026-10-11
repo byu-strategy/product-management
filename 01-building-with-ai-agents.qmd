@@ -453,6 +453,22 @@ A keyboard, a mouse, a touchscreen, and a microphone are not interfaces. They ar
 and each can carry more than one interface: the keyboard types both commands and chat messages.
 Voice is a way to deliver natural language.
 
+The CLI and the API are the closest pair. Both exchange exact text: a command and an API request
+each follow a strict format, do exactly what they say, and can be saved and run again by a
+program. They differ in who they were built for:
+
+| | Built for people | Built for programs |
+|---|---|---|
+| **Visual** | GUI | |
+| **Exact text** | CLI | API |
+
+A CLI prints output meant to be read on a screen ("3 files changed") and offers help text; an API
+returns structured data, such as JSON, with no screen at all. The CLI sits between the two: built
+for people, but exact enough for a program to drive, which is why shell scripts work and why
+Claude Code can run your commands. Often a CLI is a front end to an API. When you type
+`gh pr create` (GitHub's CLI) to open a pull request, the `gh` program turns that command into a
+request to GitHub's API and shows you the reply.
+
 The order they arrived in explains a lot. Early computers ran **batch jobs**: you handed in a stack
 of punched cards and got a printout back later. In 1961, MIT demonstrated **time-sharing**, where
 many people typed at terminals and the computer answered each one in turn; the command line comes
