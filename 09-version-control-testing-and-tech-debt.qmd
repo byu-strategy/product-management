@@ -228,7 +228,7 @@ changed the same lines, git stops with a **merge conflict**, and someone has to 
 which version is right. With two long-lived branches open, each also has to be reconciled with
 the other, and problems that appear only when the two are combined show up together, at the end.
 
-![Three days of trunk-based work, solo and on a team, and one contrast. Each row is one maker: you, a Claude Code session, Ana, or Ben. Working alone, you can commit straight to main. With two sessions or two people, each task is a short branch merged into the same main the same day or the next, and each new branch starts from the latest main. Bottom: Ana and Ben keep one branch each open for all three days and merge them at once, with conflicts.](images/diagrams/ch09-trunk-based.svg){#fig-trunk-based fig-alt="Four panels stacked on one shared time axis of three days, labeled Day 1, Day 2, and Day 3. In every panel a dark line labeled main runs left to right, and each row above or below it is labeled with the person or session that made the branches in that row. Filled dark dots on main are commits on main; hollow dots on a branch are commits on that branch. Panel 1, solo, straight to main: a row labeled You sits above main, and seven short arrows point from it down to seven commits on main, spread over the three days, with no branches. Panel 2, solo, two Claude Code sessions: a row labeled Session 1 above main and a row labeled Session 2 below it. Each session makes three short branches, one per day; each leaves main and merges back the same day, and on each day the two sessions' branches overlap in time. Panel 3, team of two: Ana's row above main, Ben's row below. Ana's branch ratings-1 runs through most of Day 1 and merges at the end of it. Ben's branch fix-signup starts midway through Day 1 and merges early on Day 2. A marker on main just after that merge reads: Ana pulls main, gets Ben's fix. Ana's branch ratings-2 then starts there and merges late on Day 2. Ben's branch signup-email starts on Day 3, after that merge, and merges the same day. Panel 4, team of two, long-lived branches: Ana's branch and Ben's branch both leave main at the start of Day 1, collect ten commits each over all three days while main gets no commits, and both merge into main at one point at the end of Day 3, marked with a red warning circle labeled merge conflicts." width="100%"}
+![Three days of trunk-based work, solo and on a team, and one contrast. Each row is one maker: you, a Claude Code session, Ana, or Ben. Working alone, you can commit straight to main. With two sessions in their own worktrees, or two people, each task is a short branch merged into the same main the same day or the next, and each new branch starts from the latest main. With several sessions in one folder, every session commits straight to main; now and then two of them change the same file, and the next commit fixes it. Bottom: Ana and Ben keep one branch each open for all three days and merge them at once, with conflicts.](images/diagrams/ch09-trunk-based.svg){#fig-trunk-based fig-alt="Five panels stacked on one shared time axis of three days, labeled Day 1, Day 2, and Day 3. In every panel a dark line labeled main runs left to right, and each row above or below it is labeled with the person or session that made the branches in that row. Filled dark dots on main are commits on main; hollow dots on a branch are commits on that branch. Panel 1, solo, straight to main: a row labeled You sits above main, and seven short arrows point from it down to seven commits on main, spread over the three days, with no branches. Panel 2, solo, two Claude Code sessions, each in its own worktree: a row labeled Session 1 above main and a row labeled Session 2 below it. Each session makes three short branches, one per day; each leaves main and merges back the same day, and on each day the two sessions' branches overlap in time. Panel 3, solo, several Claude Code sessions, all straight to main: three rows labeled Session 1, Session 2, and Session 3 sit above main, with no branches. Eighteen short arrows, six from each session, point down to commits on main, interleaved across the three days. On Day 2, an arrow from Session 1 and an arrow from Session 2 point at the same spot on main, marked with an amber warning circle labeled two sessions edit one file. The next commit, from Session 2, is circled in green and labeled the next commit fixes it. Panel 4, team of two: Ana's row above main, Ben's row below. Ana's branch ratings-1 runs through most of Day 1 and merges at the end of it. Ben's branch fix-signup starts midway through Day 1 and merges early on Day 2. A marker on main just after that merge reads: Ana pulls main, gets Ben's fix. Ana's branch ratings-2 then starts there and merges late on Day 2. Ben's branch signup-email starts on Day 3, after that merge, and merges the same day. Panel 5, team of two, long-lived branches: Ana's branch and Ben's branch both leave main at the start of Day 1, collect ten commits each over all three days while main gets no commits, and both merge into main at one point at the end of Day 3, marked with a red warning circle labeled merge conflicts." width="100%"}
 
 ### What it looks like solo
 
@@ -244,9 +244,32 @@ ask it to pull `main` from GitHub and create the new branch from it, so the new 
 from a `main` that already holds both sessions' merged work. A session that keeps one branch
 open for the whole week is a long-lived branch, even though nobody else is in the repo.
 
+The third panel has no branches at all. Several sessions share one folder and each commits
+straight to `main` when it finishes a unit of work, so their commits interleave on one line. This
+is the Agent Team Kit's default, which it calls stay on main
+([design notes](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/docs/DESIGN-NOTES.md)),
+and it is the one-shared-folder column of the table in Chapter 2. You keep the sessions apart by
+giving each a different part of the app: one works on the search page, one on the sign-up email,
+one on the tests. There is no merge step, and each session sees the others' finished work as soon
+as it lands.
+
+Nothing in git stops two of those sessions from changing the same file. When it happens (the amber
+circle), the second session usually finds out right away: its build fails, a test fails, or `git
+status` shows a change it did not make. It reads the other session's commit and makes a new commit
+that fixes the clash (the green circle). Because the clash is one commit old, the fix is a few
+lines. The kit chooses this over worktrees on purpose: worktrees separate files, but the
+collisions that hurt most in its experience are in the dev server ports and the shared database,
+which every session shares either way, and each worktree branch adds a merge.
+
+Sessions sharing one `main` follow the rules from earlier in this chapter: stage and commit only
+the files you changed, format only those files, and never amend or rebase, because the newest
+commit may belong to another session. The kit's hooks block the most damaging commands
+(`git add -A`, `git reset --hard`, `git stash`) for every session
+([concurrent agents on main](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/snippets/CLAUDE-md-main.md)).
+
 ### What it looks like on a team
 
-The third panel is a team of two, Ana and Ben, sharing one repository on GitHub, each with a copy
+The fourth panel is a team of two, Ana and Ben, sharing one repository on GitHub, each with a copy
 on their own laptop. Ana is adding ratings; Ben is fixing a bug in sign-up.
 
 - **Day 1.** Ana creates `ratings-1` and adds the `rating` column and the code that saves a
@@ -268,9 +291,10 @@ same lines is a conflict to settle at once.
 
 ### Straight to main, or a short branch?
 
-Committing straight to `main` is reasonable when all three of these hold: you work alone, with no
-second session running in the repo; the change is small, such as fixing a typo in a page; and you
-run the checks on your laptop first (`npm test` and `npm run build`). Vercel deploys a commit on
+Committing straight to `main` by hand is reasonable when all three of these hold: you work alone;
+the change is small, such as fixing a typo in a page; and you run the checks on your laptop first
+(`npm test` and `npm run build`). Several sessions committing straight to `main` (the third panel)
+also works when you are at the keyboard watching them and each has its own part of the app. Vercel deploys a commit on
 `main` as soon as it reaches GitHub, so there is no preview and nobody reads the diff before users
 see it.
 
@@ -278,7 +302,9 @@ The default in this course is a short branch with a pull request, for every chan
 you work alone. The pull request runs the checks on GitHub's computers instead of relying on you to
 remember them, builds a preview you can click through, and shows the full diff, which is where a
 line like `USING (true)` gets caught. When a second person or a second Claude Code session works
-in the repo, use a short branch every time.
+in the repo, use a short branch every time, unless you are deliberately running several sessions
+on `main` as in the third panel, watching them, and pushing only after the checks pass on your
+laptop.
 
 ### The four rules
 
