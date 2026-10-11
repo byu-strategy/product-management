@@ -1,0 +1,72 @@
+<svg viewBox="0 0 1000 760" xmlns="http://www.w3.org/2000/svg" role="img" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+<title>How a request crosses the internet</title>
+<desc>Three columns: your browser, on your laptop; a DNS server, which looks up names; and Vercel's server, which runs your app. 1: the browser asks the DNS server where your-app.vercel.app is. 2: the DNS server answers with an IP address, 216.198.79.67. 3: the browser opens a secure HTTPS connection to that address, at Vercel's server. 4: over that connection, the browser sends an HTTP request: POST /api/tasks, with the header Host: your-app.vercel.app and the body task_text Buy groceries. 5: Vercel's server sends back an HTTP response: 201 Created, with the new task as JSON. Steps 4 and 5 sit in a shaded band labeled encrypted.</desc>
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0057B8"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5A6672"/></marker><linearGradient id="nav" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0B3D73"/><stop offset="1" stop-color="#002E5D"/></linearGradient><filter id="sh" x="-10%" y="-10%" width="120%" height="130%"><feDropShadow dx="0" dy="3" stdDeviation="5" flood-opacity="0.13"/></filter></defs>
+<rect width="1000" height="760" rx="8" fill="#FAFBFC"/>
+<rect x="20.0" y="24" width="220" height="104" rx="12" fill="#FFFFFF" stroke="#002E5D" stroke-width="1.5" filter="url(#sh)"/>
+<g transform="translate(117,36) scale(1.083)" fill="none" stroke="#002E5D" stroke-width="2.03" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="3" rx="2" />
+  <line x1="8" x2="16" y1="21" y2="21" />
+  <line x1="12" x2="12" y1="17" y2="21" /></g>
+
+<text x="130" y="90" font-size="19" font-weight="700" fill="#002E5D" text-anchor="middle">Your browser</text>
+<text x="130" y="113" font-size="15" font-weight="400" fill="#5A6672" text-anchor="middle">on your laptop</text>
+<line x1="130" y1="128" x2="130" y2="736" stroke="#D9DEE4" stroke-width="1.5" stroke-dasharray="5 5"/>
+<rect x="390.0" y="24" width="220" height="104" rx="12" fill="#FFFFFF" stroke="#002E5D" stroke-width="1.5" filter="url(#sh)"/>
+<g transform="translate(487,36) scale(1.083)" fill="none" stroke="#002E5D" stroke-width="2.03" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7v14" />
+  <path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z" /></g>
+
+<text x="500" y="90" font-size="19" font-weight="700" fill="#002E5D" text-anchor="middle">A DNS server</text>
+<text x="500" y="113" font-size="15" font-weight="400" fill="#5A6672" text-anchor="middle">looks up names</text>
+<line x1="500" y1="128" x2="500" y2="736" stroke="#D9DEE4" stroke-width="1.5" stroke-dasharray="5 5"/>
+<rect x="750.0" y="24" width="220" height="104" rx="12" fill="url(#nav)" stroke="#002E5D" stroke-width="0" filter="url(#sh)"/>
+<g transform="translate(847,36) scale(1.083)" fill="none" stroke="#FFFFFF" stroke-width="2.03" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="8" x="2" y="2" rx="2" ry="2" />
+  <rect width="20" height="8" x="2" y="14" rx="2" ry="2" />
+  <line x1="6" x2="6.01" y1="6" y2="6" />
+  <line x1="6" x2="6.01" y1="18" y2="18" /></g>
+
+<text x="860" y="90" font-size="19" font-weight="700" fill="#FFFFFF" text-anchor="middle">Vercel's server</text>
+<text x="860" y="113" font-size="15" font-weight="400" fill="#C9D8EA" text-anchor="middle">runs your app</text>
+<line x1="860" y1="128" x2="860" y2="736" stroke="#D9DEE4" stroke-width="1.5" stroke-dasharray="5 5"/>
+<rect x="40" y="430" width="920" height="300" rx="14" fill="#EEF4FB"/>
+<g transform="translate(56,444) scale(0.75)" fill="none" stroke="#0057B8" stroke-width="2.93" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2" />
+  <path d="M7 11V7a5 5 0 0 1 10 0v4" /></g>
+
+<text x="82" y="458" font-size="15" font-weight="700" fill="#0057B8" text-anchor="start" letter-spacing="1.5">ENCRYPTED</text>
+<line x1="130" y1="430" x2="130" y2="730" stroke="#D3E0F0" stroke-width="1.5" stroke-dasharray="5 5"/>
+<line x1="500" y1="430" x2="500" y2="730" stroke="#D3E0F0" stroke-width="1.5" stroke-dasharray="5 5"/>
+<line x1="860" y1="430" x2="860" y2="730" stroke="#D3E0F0" stroke-width="1.5" stroke-dasharray="5 5"/>
+<line x1="130" y1="180" x2="494" y2="180" stroke="#5A6672" stroke-width="2" marker-end="url(#ag)"/>
+<circle cx="170" cy="180" r="14" fill="#0057B8"/>
+<text x="170" y="185.5" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">1</text>
+<text x="194" y="168" font-size="15" font-weight="400" fill="#5A6672" text-anchor="start" paint-order="stroke" stroke="#FAFBFC" stroke-width="6">Where is</text>
+<text x="194" y="204" font-size="16" font-weight="600" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">your-app.vercel.app?</text>
+<line x1="500" y1="250" x2="136" y2="250" stroke="#5A6672" stroke-width="2" marker-end="url(#ag)"/>
+<circle cx="460" cy="250" r="14" fill="#0057B8"/>
+<text x="460" y="255.5" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">2</text>
+<text x="436" y="238" font-size="15" font-weight="400" fill="#5A6672" text-anchor="end" paint-order="stroke" stroke="#FAFBFC" stroke-width="6">IP address</text>
+<text x="436" y="274" font-size="16" font-weight="600" fill="#2C3E50" text-anchor="end" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">216.198.79.67</text>
+<line x1="136" y1="340" x2="854" y2="340" stroke="#0057B8" stroke-width="2.5" marker-end="url(#ar)" marker-start="url(#ar)"/>
+<rect x="325.0" y="318" width="340" height="44" rx="22" fill="#FFFFFF" stroke="#0057B8" stroke-width="2"/>
+<circle cx="325.0" cy="340" r="14" fill="#0057B8"/>
+<text x="325.0" y="345.5" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">3</text>
+<g transform="translate(355,330) scale(0.8333)" fill="none" stroke="#0057B8" stroke-width="2.64" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2" />
+  <path d="M7 11V7a5 5 0 0 1 10 0v4" /></g>
+
+<text x="383.0" y="346" font-size="16" font-weight="600" fill="#0057B8" text-anchor="start">Open a secure connection</text>
+<text x="495.0" y="388" font-size="15" font-weight="400" fill="#5A6672" text-anchor="middle">to 216.198.79.67, using HTTPS</text>
+<line x1="130" y1="540" x2="854" y2="540" stroke="#0057B8" stroke-width="2.5" marker-end="url(#ar)"/>
+<rect x="300" y="480" width="390" height="124" rx="10" fill="#FFFFFF" stroke="#0057B8" stroke-width="2"/>
+<circle cx="300" cy="480" r="14" fill="#0057B8"/>
+<text x="300" y="485.5" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">4</text>
+<text x="322" y="510" font-size="17" font-weight="700" fill="#0057B8" text-anchor="start">HTTP request</text>
+<text x="322" y="538" font-size="15" font-weight="600" fill="#002E5D" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">POST /api/tasks</text>
+<text x="322" y="562" font-size="15" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">Host: your-app.vercel.app</text>
+<text x="322" y="586" font-size="15" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">{"task_text": "Buy groceries"}</text>
+<line x1="860" y1="676" x2="136" y2="676" stroke="#0057B8" stroke-width="2.5" marker-end="url(#ar)"/>
+<rect x="300" y="630" width="390" height="94" rx="10" fill="#FFFFFF" stroke="#0057B8" stroke-width="2"/>
+<circle cx="300" cy="630" r="14" fill="#0057B8"/>
+<text x="300" y="635.5" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">5</text>
+<text x="322" y="660" font-size="17" font-weight="700" fill="#0057B8" text-anchor="start">HTTP response</text>
+<text x="322" y="688" font-size="15" font-weight="600" fill="#002E5D" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">201 Created</text>
+<text x="322" y="712" font-size="15" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">{"id": 123, "task_text": ...}</text>
+</svg>

@@ -116,6 +116,93 @@ receive the answers, look up the correct ones itself, and compute the score.
 
 <!-- learn -->
 
+## How a Request Crosses the Internet
+
+**The model:** every computer on the internet has a number, its **IP address**, such as
+`216.198.79.67`. People use names instead, such as `your-app.vercel.app`, and a lookup service
+called **DNS** turns the name into the number. Once the browser has the number, it opens an
+encrypted connection to that computer and sends its request. Everything in the rest of this
+chapter rides on this one trip.
+
+A web address, a **URL**, packs the whole trip into one line:
+
+![The four parts of a URL. The domain names the computer, and the path names the endpoint on it.](images/diagrams/ch07-url-anatomy.svg){#fig-url-anatomy fig-alt="The URL https://your-app.vercel.app/api/tasks?completed=false split into four labeled parts. Scheme, https://, how to connect. Domain, your-app.vercel.app, highlighted, which computer, by name. Path, /api/tasks, which endpoint. Query, ?completed=false, extra details." width="100%"}
+
+The **scheme** says how to connect (`https` means encrypted). The **domain** names the computer.
+The **path** names what you want on that computer; for an API, that is the endpoint. The
+**query**, after the `?`, adds details, here "only the tasks that are not done." Your API docs,
+your Vercel links, and your app's own routes are all read this way.
+
+@fig-request-journey follows one request, saving a task in the to-do app, from the user's
+browser to your server and back:
+
+![One request, start to finish. The browser first learns the server's number from DNS, then opens an encrypted connection to it, and only then sends the HTTP request. Steps 4 and 5 are what the rest of this chapter calls a request and a response.](images/diagrams/ch07-request-journey.svg){#fig-request-journey fig-alt="Three columns: your browser, on your laptop; a DNS server, which looks up names; and Vercel's server, which runs your app. 1: the browser asks the DNS server where your-app.vercel.app is. 2: the DNS server answers with an IP address, 216.198.79.67. 3: the browser opens a secure connection to 216.198.79.67 using HTTPS, a two-way arrow to Vercel's server. Steps 4 and 5 sit in a shaded band labeled encrypted. 4: the browser sends an HTTP request: POST /api/tasks, Host: your-app.vercel.app, and the body task_text Buy groceries. 5: Vercel's server sends an HTTP response: 201 Created, and the new task as JSON with id 123." width="100%"}
+
+1. **Look up the name.** The browser asks a DNS server where `your-app.vercel.app` is. (Your
+   computer does the asking on the browser's behalf, and it remembers the answer for a while, so
+   most requests skip this step.)
+2. **Get the number.** The answer is an IP address. Asked on October 10, 2026, DNS returned
+   `216.198.79.67` for a `vercel.app` name; Vercel uses many addresses, and they change.
+3. **Open a secure connection.** The browser connects to that address and the two sides agree on
+   encryption. From here on, anyone between them sees only scrambled data. This is the "S" in
+   **HTTPS**, and it is why an API key sent in a request header is safe on the way to the server.
+   It is not safe in browser code, where the user can read it before it is ever sent.
+4. **Send the HTTP request.** The method, the path, some headers, and a body.
+5. **Get the HTTP response.** A status code, some headers, and a body.
+
+On the wire, steps 4 and 5 look like this (the classic text form; newer connections send the same
+parts in a more compact form):
+
+```http
+POST /api/tasks HTTP/1.1
+Host: your-app.vercel.app
+Content-Type: application/json
+Cookie: sb-abcdefgh-auth-token=...
+
+{"task_text": "Buy groceries"}
+```
+
+```http
+HTTP/1.1 201 Created
+Content-Type: application/json
+
+{"id": 123, "task_text": "Buy groceries", "completed": false}
+```
+
+`Host` repeats the domain, because one Vercel computer serves many apps and needs to know which
+one you want. `Content-Type` says the body is JSON. `Cookie` carries the user's sign-in, which
+the browser attaches to every request to your site ([Who You Are, What You May
+Do](#who-you-are-what-you-may-do) covers it). Underneath, the internet splits each message into
+small pieces called packets that travel separately and are put back together at the other end;
+you never see them.
+
+**The browser always asks first, and the server only answers.** A server cannot send a browser
+something it did not ask for over this kind of request. A feature that updates live, such as a
+shared list that changes when a teammate adds a task, either asks again every few seconds or keeps
+a connection open for the server to send through, which is what Supabase's Realtime feature does.
+
+**On your own laptop**, the same trip is shorter. When you run `npm run dev`, your app is at
+`http://localhost:3000`. `localhost` is a name that always means "this computer," so there is no
+DNS lookup and nothing leaves your machine, which is also why plain `http` is fine there. `3000`
+is the **port**: one computer runs many programs that accept connections, and the port number
+says which one. Websites use port 443 for HTTPS by default, so the port is left out of their URLs.
+
+Words used in this section:
+
+| Term | What it means |
+|---|---|
+| **IP address** | The number that identifies a computer on the internet, such as `216.198.79.67` |
+| **Domain** | A name for a computer that people can remember, such as `your-app.vercel.app` |
+| **DNS** | The internet's lookup service: give it a domain, and it returns the IP address |
+| **URL** | A full web address: scheme, domain, path, and sometimes a query |
+| **HTTP**, **HTTPS** | The format for requests and responses on the web. HTTPS is HTTP sent over an encrypted connection |
+| **Header** | A labeled line of extra information in a request or response, such as `Content-Type` or `Cookie` |
+| **Port** | A number that says which program on a computer a connection is for, such as `3000` |
+| **localhost** | A name that always means the computer you are on |
+| **Packet** | One of the small pieces a message is split into for the trip |
+
+<!-- learn -->
+
 ## Requests Connect the Places
 
 **The model:** the places never share memory. They talk only by sending requests and getting

@@ -1,0 +1,29 @@
+<svg viewBox="0 0 1000 224" xmlns="http://www.w3.org/2000/svg" role="img" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+<title>The parts of a URL</title>
+<desc>The URL https://your-app.vercel.app/api/tasks?completed=false split into four labeled parts. Scheme, https://, how to connect. Domain, your-app.vercel.app, which computer, by name. Path, /api/tasks, which endpoint. Query, ?completed=false, extra details.</desc>
+<rect width="1000" height="224" rx="8" fill="#FAFBFC"/>
+<rect x="84.60000000000002" y="52" width="128.8" height="50" rx="6" fill="#E6EEF7"/>
+<text x="86.60000000000002" y="86" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="26" fill="#002E5D" font-weight="400" xml:space="preserve">https://</text>
+<path d="M88.60000000000002,112 L88.60000000000002,120 L209.40000000000003,120 L209.40000000000003,112" fill="none" stroke="#5A6672" stroke-width="1.5"/>
+<line x1="149.00000000000003" y1="120" x2="149.00000000000003" y2="134" stroke="#5A6672" stroke-width="1.5"/>
+<text x="149.00000000000003" y="160" text-anchor="middle" font-size="18" font-weight="700" fill="#002E5D">Scheme</text>
+<text x="149.00000000000003" y="184" text-anchor="middle" font-size="15" fill="#5A6672">how to connect</text>
+<rect x="209.40000000000003" y="52" width="300.4" height="50" rx="6" fill="#D3E3F5"/>
+<text x="211.40000000000003" y="86" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="26" fill="#0057B8" font-weight="400" xml:space="preserve">your-app.vercel.app</text>
+<path d="M213.40000000000003,112 L213.40000000000003,120 L505.8,120 L505.8,112" fill="none" stroke="#5A6672" stroke-width="1.5"/>
+<line x1="359.6" y1="120" x2="359.6" y2="134" stroke="#5A6672" stroke-width="1.5"/>
+<text x="359.6" y="160" text-anchor="middle" font-size="18" font-weight="700" fill="#0057B8">Domain</text>
+<text x="359.6" y="184" text-anchor="middle" font-size="15" fill="#5A6672">which computer, by name</text>
+<rect x="505.8" y="52" width="160.0" height="50" rx="6" fill="#E6EEF7"/>
+<text x="507.8" y="86" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="26" fill="#002E5D" font-weight="400" xml:space="preserve">/api/tasks</text>
+<path d="M509.8,112 L509.8,120 L661.8,120 L661.8,112" fill="none" stroke="#5A6672" stroke-width="1.5"/>
+<line x1="585.8" y1="120" x2="585.8" y2="134" stroke="#5A6672" stroke-width="1.5"/>
+<text x="585.8" y="160" text-anchor="middle" font-size="18" font-weight="700" fill="#002E5D">Path</text>
+<text x="585.8" y="184" text-anchor="middle" font-size="15" fill="#5A6672">which endpoint</text>
+<rect x="661.8" y="52" width="253.6" height="50" rx="6" fill="#D3E3F5"/>
+<text x="663.8" y="86" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="26" fill="#002E5D" font-weight="400" xml:space="preserve">?completed=false</text>
+<path d="M665.8,112 L665.8,120 L911.4,120 L911.4,112" fill="none" stroke="#5A6672" stroke-width="1.5"/>
+<line x1="788.5999999999999" y1="120" x2="788.5999999999999" y2="134" stroke="#5A6672" stroke-width="1.5"/>
+<text x="788.5999999999999" y="160" text-anchor="middle" font-size="18" font-weight="700" fill="#002E5D">Query</text>
+<text x="788.5999999999999" y="184" text-anchor="middle" font-size="15" fill="#5A6672">extra details</text>
+</svg>
