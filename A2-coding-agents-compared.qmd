@@ -7,7 +7,7 @@ title: "Claude Code and Other Coding Agents"
 
 This course teaches with Claude Code. Three other coding agents run in the terminal on the same agent loop ([Chapter 1](01-building-with-ai-agents.qmd#what-makes-an-agent-an-agent)): OpenAI's **Codex**, GitHub's **Copilot CLI**, and Google's **Antigravity CLI** (which replaced Gemini CLI for individual users on June 18, 2026). The model and the harness differ, so the commands, file names, and safety controls differ too. This appendix maps each Claude Code concept the book teaches to its counterpart in the other three, so that what you learn here works whichever agent your team or employer uses.
 
-The tables come first: what each tool costs, then features, files, commands, and keys. After them, one section per tool covers the differences that change what you do.
+The tables come first: what each tool costs, then features, files, every command, every tool the agent can call, and keys. After them, one section per tool covers the differences that change what you do.
 
 All four tools change every few weeks. Every cell was checked against the vendors' documentation on October 10, 2026: [Claude Code](https://code.claude.com/docs/en/cli-reference), [Codex](https://learn.chatgpt.com/docs/developer-commands?surface=cli), [Copilot CLI](https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-command-reference), and [Antigravity CLI](https://antigravity.google/docs/cli/reference). "Not listed" means the reference does not mention it, which is different from "does not exist." When a cell and the current docs disagree, the docs are right.
 :::
@@ -68,45 +68,312 @@ Everything in [Chapter 2](02-directing-the-agent.qmd) is a property of agents, s
 
 ## Commands
 
-Typed in your shell:
+Every command the four references list, grouped by what it does. Aliases are in parentheses. A blank cell means that tool's reference lists no command for it; the tool may still do it another way (Codex sets effort inside `/model`, for example). Commands that work only in a desktop app, an IDE extension, or a cloud product are left out, and so are commands marked removed.
 
-| What you want | Claude Code | Codex | Copilot CLI | Antigravity CLI |
+### In your shell
+
+| What it does | Claude Code | Codex | Copilot CLI | Antigravity CLI |
 |---|---|---|---|---|
-| Install (macOS) | `curl -fsSL https://claude.ai/install.sh \| bash` | `curl -fsSL https://chatgpt.com/codex/install.sh \| sh` | `brew install --cask copilot-cli` | `curl -fsSL https://antigravity.google/cli/install.sh \| bash` |
-| Install (any OS, with Node) | `npm install -g @anthropic-ai/claude-code` | `npm install -g @openai/codex` | `npm install -g @github/copilot` | Not offered |
-| Update | `claude update` | `codex update` | `copilot update` | `agy update` |
+| Install (macOS) | install script ([setup](https://code.claude.com/docs/en/setup)) | install script ([Codex CLI](https://learn.chatgpt.com/docs/codex/cli)) | `brew install --cask copilot-cli` | install script ([getting started](https://antigravity.google/docs/getting-started)) |
+| Install (any OS, with Node) | `npm install -g @anthropic-ai/claude-code` | `npm install -g @openai/codex` | `npm install -g @github/copilot` |  |
+| Start a session | `claude` | `codex` | `copilot` | `agy` |
+| Start a session with a first prompt | `claude "..."` |  | `copilot -i "..."` |  |
+| Run one prompt and exit | `claude -p` | `codex exec` (`codex e`) | `copilot -p` | `agy -p` |
 | Continue the last session | `claude -c` | `codex resume --last` | `copilot --continue` | `agy -c` |
-| Pick a past session | `claude -r` | `codex resume` | `copilot --resume` | `/resume` |
-| Run one prompt and exit | `claude -p "..."` | `codex exec "..."` | `copilot -p "..."` | `agy -p "..."` |
-| Add an MCP server | `claude mcp add` | `codex mcp add` | `copilot mcp add` | `/mcp`, or edit `mcp_config.json` |
-| Choose the model at launch | `--model` | `-m` | `--model` | `/model` |
+| Pick a past session | `claude -r` | `codex resume` | `copilot --resume` | `agy --conversation <id>` |
+| Copy a past session into a new one | `claude -r <id> --fork-session` | `codex fork` |  |  |
+| Choose a mode at launch | `claude --permission-mode` | `codex --sandbox`, `--ask-for-approval` | `copilot --mode` | `agy --mode` |
+| Update | `claude update` | `codex update` | `copilot update` | `agy update` |
+| Install a specific version | `claude install` |  |  |  |
+| Version | `claude -v` |  | `copilot version` | `agy --version` |
+| Help | `claude --help` |  | `copilot help` | `agy --help` |
+| Sign in | `claude auth login` | `codex login` | `copilot login` |  |
+| Sign out | `claude auth logout` | `codex logout` |  |  |
+| Check sign-in | `claude auth status` | `codex login status` |  |  |
+| Token for scripts and CI | `claude setup-token` |  |  |  |
+| Diagnose the installation | `claude doctor` | `codex doctor` |  |  |
+| Read or change settings |  |  | `copilot config` |  |
+| Feature flags |  | `codex features` |  |  |
+| Write starter instructions |  |  | `copilot init` |  |
+| List instruction files found |  |  | `copilot instruction` |  |
+| MCP servers | `claude mcp` | `codex mcp` | `copilot mcp` |  |
+| Plugins and marketplaces | `claude plugin` | `codex plugin`, `codex plugin marketplace` | `copilot plugin` | `agy plugin` |
+| Skills |  |  | `copilot skill` |  |
+| Language servers |  |  | `copilot lsp` |  |
+| Import another tool's setup | `claude import` |  |  | `agy plugin import gemini` |
+| Code review without a session | `claude ultrareview` | `codex review` |  |  |
+| Run in the cloud | `claude --cloud` | `codex cloud` | `copilot --cloud` |  |
+| Bring cloud work to your laptop | `claude --teleport` | `codex apply` |  |  |
+| Open the desktop app | `claude --desktop` | `codex app` | `copilot app` |  |
+| Remote control from another device | `claude remote-control` | `codex remote-control` | `copilot --remote` | `agy remote-control` |
+| Background sessions | `claude --bg`, `claude agents`, `attach`, `logs`, `respawn`, `stop`, `rm` |  |  |  |
+| Background session service | `claude daemon` |  |  |  |
+| List models |  | `codex debug models` |  | `agy models` |
+| List agents |  |  |  | `agy agents` |
+| Archive or delete saved sessions | `claude purge` | `codex archive`, `unarchive`, `delete` |  |  |
+| Shell tab completion |  | `codex completion` | `copilot completion` |  |
+| Run a command in the sandbox |  | `codex sandbox` |  |  |
+| Sandbox certificate |  |  | `copilot sandbox ca` |  |
+| Test a rules file |  | `codex execpolicy` |  |  |
+| Auto mode rules | `claude auto-mode` |  |  |  |
+| Run a saved workflow |  |  | `copilot workflow run` |  |
+| Show the exact prompt the model sees |  | `codex debug prompt-input` |  |  |
+| Server for other apps to drive the agent |  | `codex app-server`, `codex debug app-server send-message-v2` | `copilot --acp` |  |
+| Company deployment (gateway, self-hosted runners) | `claude gateway`, `claude self-hosted-runner` |  |  |  |
 
-Typed inside a session:
+### Inside a session
 
-| What you want | Claude Code | Codex | Copilot CLI | Antigravity CLI |
+**Sessions and conversations**
+
+| What it does | Claude Code | Codex | Copilot CLI | Antigravity CLI |
 |---|---|---|---|---|
-| List commands | `/help` | type `/` | `/help` | `/help` |
-| Write a starter instruction file | `/init` (`CLAUDE.md`) | `/init` (`AGENTS.md`) | `/init` (`.github/copilot-instructions.md`) | Not listed |
+| Start an empty conversation | `/clear` (`/reset`, `/new`) | `/clear`, `/new` | `/clear` (`/new`, `/reset`) | `/clear` (`/new`) |
+| Resume an earlier session | `/resume` (`/continue`) | `/resume` | `/resume` (`/continue`) | `/resume` (`/switch`, `/conversation`) |
+| Copy the conversation and switch to the copy | `/branch` | `/fork` | `/fork` (`/branch`) | `/fork` (`/branch`) |
+| Copy the conversation into a background session and keep working here | `/fork` |  |  |  |
+| Send the whole session to the background | `/background` (`/bg`) |  |  |  |
+| Stop the background session you are attached to | `/stop` |  |  |  |
+| Rename the session | `/rename` | `/rename` | `/rename` | `/rename` |
+| Session details, checkpoints, and cleanup |  |  | `/session` (`/sessions`) |  |
+| Archive the session |  | `/archive` |  |  |
+| Delete the session |  | `/delete` | `/session delete` |  |
+| One-line summary of the session | `/recap` |  |  |  |
+| Export or share the conversation | `/export` |  | `/share` (`/export`) |  |
+| Search the conversation |  |  | `/search` (`/find`) |  |
+| Restart the tool, keeping open sessions |  |  | `/restart` |  |
+| Change the working directory | `/cd` |  | `/cwd` (`/cd`) |  |
+| Give access to another directory | `/add-dir` |  | `/add-dir` | `/add-dir` |
+| List directories with access |  |  | `/list-dirs` |  |
+| Exit | `/exit` (`/quit`) | `/exit`, `/quit` | `/exit` (`/quit`) | `/exit` (`/quit`) |
+
+**Context and instructions**
+
+| What it does | Claude Code | Codex | Copilot CLI | Antigravity CLI |
+|---|---|---|---|---|
 | See what fills the context window | `/context` | `/status` | `/context` | `/context` |
-| Summarize to free context | `/compact` | `/compact` | `/compact` | Not listed |
-| Start an empty conversation | `/clear` (alias `/new`) | `/clear` or `/new` | `/clear` (aliases `/new`, `/reset`) | `/clear` (alias `/new`) |
-| Switch model or effort | `/model`, `/effort` | `/model` | `/model` | `/model` |
-| Plan first | `/plan` | `/plan` | `/plan` | `/plan` |
-| Approvals and rules | `/permissions` | `/permissions` | `/permissions` | `/permissions` |
-| Undo | `/rewind` (aliases `/undo`, `/checkpoint`) | None | `/undo` (alias `/rewind`) | `/rewind` (alias `/undo`) |
+| Summarize the conversation to free space | `/compact` | `/compact` | `/compact` |  |
+| Set when automatic compaction starts | `/autocompact` |  |  |  |
+| Ask a side question that stays out of the conversation | `/btw` | `/side` (`/btw`) | `/ask` (`/btw`) | `/btw` |
+| Attach a file to the chat |  | `/mention` |  |  |
+| Connect the editor (VS Code and others) | `/ide` | `/ide` | `/ide` |  |
+| Write a starter instruction file | `/init` | `/init` | `/init` |  |
+| View or toggle instruction files | `/memory` |  | `/instructions` |  |
+| Memory the agent writes itself | `/memory` | `/memories` |  |  |
+
+**Model and reasoning**
+
+| What it does | Claude Code | Codex | Copilot CLI | Antigravity CLI |
+|---|---|---|---|---|
+| Choose the model | `/model` | `/model` | `/model` (`/models`) | `/model` |
+| Set reasoning effort | `/effort` | `/model` | `/model` |  |
+| Fast mode | `/fast` | `/fast` |  | `/fast` |
+| Consult a second model during a task | `/advisor` |  | `/rubber-duck` |  |
+| Response style | `/output-style` | `/personality` |  |  |
+| Multi-agent deep reasoning on one hard problem |  |  |  | `/boost` |
+
+**Planning and running on its own**
+
+| What it does | Claude Code | Codex | Copilot CLI | Antigravity CLI |
+|---|---|---|---|---|
+| Plan before editing | `/plan` | `/plan` | `/plan` | `/plan` |
+| Keep working until a goal is met | `/goal` | `/goal` | `/autopilot` (`/goal`) |  |
+| Rewrite a rough prompt into a clear one |  |  | `/refine` |  |
+| Repeat a prompt on an interval | `/loop` (`/proactive`) |  | `/every` (experimental) |  |
+| Run a prompt once, later |  |  | `/after` (experimental) |  |
+| Scheduled tasks that run in the cloud | `/schedule` (`/routines`) |  |  |  |
+
+**Permissions and safety**
+
+| What it does | Claude Code | Codex | Copilot CLI | Antigravity CLI |
+|---|---|---|---|---|
+| Permission rules or mode | `/permissions` (`/allowed-tools`) | `/permissions` | `/permissions` | `/permissions` |
+| Allow everything |  |  | `/allow-all` (`/yolo`) |  |
+| Reset approvals given this session |  |  | `/reset-allowed-tools`, `/permissions reset` |  |
+| Retry an action the automatic reviewer denied |  | `/approve` |  |  |
+| Suggest allow rules from your past sessions | `/fewer-permission-prompts` |  |  |  |
+| Set up auto mode for your environment | `/auto-mode-setup` |  |  |  |
+| Sandbox | `/sandbox` |  | `/sandbox` |  |
+| Windows sandbox setup |  | `/setup-default-sandbox`, `/sandbox-add-read-dir` |  |  |
+| Hooks | `/hooks` | `/hooks` | `/env` (lists them) | `/hooks` |
+| Privacy settings | `/privacy-settings` |  |  |  |
+
+**Changes, undo, and review**
+
+| What it does | Claude Code | Codex | Copilot CLI | Antigravity CLI |
+|---|---|---|---|---|
+| Undo | `/rewind` (`/checkpoint`, `/undo`) |  | `/undo` (`/rewind`) | `/rewind` (`/undo`) |
 | See what changed | `/diff` | `/diff` | `/diff` | `/diff` |
-| Code review | `/code-review` (alias `/review`) | `/review` | `/review` | Not listed |
-| MCP servers | `/mcp` | `/mcp` | `/mcp` | `/mcp` |
-| Hooks | `/hooks` | `/hooks` | `/env` lists them | `/hooks` |
+| Code review | `/code-review` (`/review`) | `/review` | `/review` |  |
+| Deep code review in the cloud | `/ultrareview` |  |  |  |
+| Security review | `/security-review` |  | `/security-review` |  |
+| Clean up the changed code | `/simplify` |  |  |  |
+| Run the app to confirm a change works | `/run`, `/verify` |  |  |  |
+| Teach `/run` how to start your app | `/run-skill-generator` |  |  |  |
+| Review plans and other artifacts |  |  |  | `/artifact` |
+| Search the codebase |  |  |  | `/codesearch` (`/cs`, `/search`) |
+| Pull requests | `/autofix-pr` |  | `/pr` |  |
+| Hand a task to a cloud agent that opens a PR |  |  | `/delegate` |  |
+| Work in a git worktree |  |  | `/worktree`, `/move`, `/new worktree` |  |
+| Split a large change across parallel agents | `/batch` |  | `/fleet` |  |
+
+**Agents and parallel work**
+
+| What it does | Claude Code | Codex | Copilot CLI | Antigravity CLI |
+|---|---|---|---|---|
+| Subagents | `/agents` (a reminder only) | `/agent` (`/subagents`) | `/agent`, `/subagents` (`/agents`) | `/agents` |
+| Hand a side task to a subagent that reports back | `/subtask` |  |  |  |
+| Background tasks and shells | `/tasks` (`/bashes`) | `/ps` | `/tasks` | `/tasks` |
+| Stop background shells |  | `/stop` (`/clean`) |  |  |
+| List agents and sessions to message | `/list-agents` (`/peers`) |  |  |  |
+| Teams of agents for long projects |  |  |  | `/teamwork-preview` (`/teamwork`) |
+| Multi-agent workflows | `/workflows`, `/workflow-authoring` |  | `/workflows` |  |
+| Deep research with cited sources | `/deep-research` |  | `/research` |  |
+
+**Skills, plugins, and outside tools**
+
+| What it does | Claude Code | Codex | Copilot CLI | Antigravity CLI |
+|---|---|---|---|---|
 | Skills | `/skills` | `/skills` | `/skills` | `/skills` |
-| Subagents | ask Claude | `/agent` | `/agent`, `/subagents` | `/agents` |
-| Side question that stays out of the conversation | `/btw` | `/side` (alias `/btw`) | `/btw` (alias `/ask`) | `/btw` |
-| Copy the conversation to try another direction | `/branch` | `/fork` | `/fork` (alias `/branch`) | `/fork` (alias `/branch`) |
-| Keep working until a goal is met | `/goal` | `/goal` | `/goal` (alias `/autopilot`) | Not listed |
-| Usage and limits | `/usage` | `/usage` | `/usage` | `/usage` |
-| Move to the desktop app | `/desktop` | `/app` | `/app` | Not listed |
-| Import another tool's setup | `/import codex` | `/import` (Claude Code or Cursor) | Not needed; reads Claude files | `agy plugin import gemini` |
-| Exit | `/exit` | `/exit` | `/exit` | `/exit` |
+| Reload skills | `/reload-skills` |  | `/skills reload` |  |
+| Context cost of each skill | `/skill-doctor` |  |  |  |
+| Plugins | `/plugin` | `/plugins` | `/plugin` | `/plugin` (`/plugins`) |
+| Reload plugins | `/reload-plugins` |  |  |  |
+| Write a mod (plugin) with help | `/plugin-authoring` |  |  |  |
+| Apps (connectors) |  | `/apps` |  |  |
+| MCP servers | `/mcp` | `/mcp` | `/mcp` | `/mcp` |
+| Language servers |  |  | `/lsp` |  |
+| Extensions |  |  | `/extensions` (experimental) |  |
+| Import another tool's setup | `/import` | `/import` |  |  |
+| Change settings by describing the change | `/update-config` |  |  |  |
+
+**Apps, cloud, and other devices**
+
+| What it does | Claude Code | Codex | Copilot CLI | Antigravity CLI |
+|---|---|---|---|---|
+| Move the session to the desktop app | `/desktop` (`/app`) | `/app` | `/app` |  |
+| Pull a cloud session into the terminal | `/teleport` (`/tp`) |  |  |  |
+| Default cloud environment | `/remote-env` |  |  |  |
+| Connect GitHub for cloud sessions | `/web-setup` |  |  |  |
+| Control this session from another device | `/remote-control` (`/rc`) |  | `/remote` | `/remote-control` |
+| Get the mobile app | `/mobile` (`/ios`, `/android`) |  |  |  |
+| Work in your Chrome browser | `/chrome`, `/claude-in-chrome` |  |  |  |
+| Install the GitHub app | `/install-github-app` |  |  |  |
+| Install the Slack app | `/install-slack-app` |  |  |  |
+| Open a file in your editor |  |  |  | `/open` |
+
+**Artifacts and design (Claude Code bundled skills)**
+
+| What it does | Claude Code | Codex | Copilot CLI | Antigravity CLI |
+|---|---|---|---|---|
+| List and attach your artifacts | `/artifacts` |  |  |  |
+| Artifact capabilities and diagram guidance | `/artifact-capabilities`, `/artifact-diagramming` |  |  |  |
+| Make a slide deck | `/slides` |  |  |  |
+| Draft UI designs | `/design` |  |  |  |
+| Sync your design system | `/design-sync`, `/design-login` |  |  |  |
+| Chart and dashboard guidance | `/dataviz` |  |  |  |
+| Claude API reference for your project | `/claude-api` |  |  |  |
+
+**Account and usage**
+
+| What it does | Claude Code | Codex | Copilot CLI | Antigravity CLI |
+|---|---|---|---|---|
+| Usage and limits | `/usage` (`/cost`, `/stats`) | `/usage` | `/usage` | `/usage` (`/quota`) |
+| Credits and spending limits | `/usage-credits` |  | `/limits` | `/credits` |
+| Options when you hit a limit | `/rate-limit-options` |  |  |  |
+| Upgrade your plan | `/upgrade` |  |  |  |
+| Status: version, model, account | `/status` | `/status` |  |  |
+| Sign in | `/login` |  | `/login` |  |
+| Sign out | `/logout` | `/logout` | `/logout` | `/logout` |
+| Switch accounts |  |  | `/user` |  |
+| Share free trial passes | `/passes` |  |  |  |
+
+**Settings and interface**
+
+| What it does | Claude Code | Codex | Copilot CLI | Antigravity CLI |
+|---|---|---|---|---|
+| Settings | `/config` (`/settings`) |  | `/settings` (`/config`) | `/config` (`/settings`) |
+| Show where each setting came from |  | `/debug-config` |  |  |
+| Experimental features |  | `/experimental` | `/experimental` |  |
+| Status line | `/statusline` | `/statusline` | `/statusline` (`/footer`) | `/statusline` |
+| Terminal window title |  | `/title` |  | `/title` |
+| Color theme | `/theme` | `/theme` | `/theme` |  |
+| Prompt bar color | `/color` |  |  |  |
+| Keyboard shortcuts | `/keybindings` | `/keymap` |  | `/keybindings` |
+| Vim editing |  | `/vim` | `/vim` |  |
+| Terminal renderer | `/tui` |  |  |  |
+| Focus view | `/focus` |  |  |  |
+| Raw scrollback for copying |  | `/raw` |  |  |
+| Mouse scroll speed | `/scroll-speed` |  |  |  |
+| Set up Shift+Enter for new lines | `/terminal-setup` |  | `/terminal-setup` |  |
+| Voice dictation | `/voice` |  | `/voice` | `/voice` (`/record`) |
+| Copy the last response | `/copy` | `/copy` | `/copy` | `/copy` |
+| Terminal pet |  | `/pets` (`/pet`) |  |  |
+| Keep the computer awake |  |  | `/keep-alive` (`/caffeinate`) |  |
+| Preview interface components |  |  | `/clikit`, `/tuikit` |  |
+
+**Help, updates, and diagnostics**
+
+| What it does | Claude Code | Codex | Copilot CLI | Antigravity CLI |
+|---|---|---|---|---|
+| Help | `/help` |  | `/help` | `/help` |
+| Interactive feature lessons | `/powerup` |  |  |  |
+| Release notes | `/release-notes` |  | `/changelog` (`/release-notes`) |  |
+| Version |  |  | `/version` |  |
+| Update |  |  | `/update` (`/upgrade`) |  |
+| Install an older version |  |  | `/downgrade` |  |
+| Setup checkup | `/doctor` (`/checkup`) |  |  |  |
+| Debug a problem in the session | `/debug` |  | `/diagnose` |  |
+| Collect debug logs |  |  | `/collect-debug-logs` |  |
+| Memory snapshot for a bug report | `/heapdump` |  |  |  |
+| Send feedback or a bug report | `/feedback`, `/bug` (`/share`) | `/feedback` | `/feedback` (`/bug`) | `/feedback` |
+| Report on how you have been using it | `/insights` |  | `/chronicle` |  |
+| Onboarding guide for a teammate | `/team-onboarding` |  |  |  |
+| Stickers and radio | `/stickers`, `/radio` |  |  |  |
+
+## Tools the agent can use
+
+The tools are what the model can ask the harness to do ([Chapter 1](01-building-with-ai-agents.qmd#tools-how-the-agent-acts-on-your-computer)). The names matter when you write permission rules and hooks, because rules and hooks match on them. Sources: [Claude Code tools reference](https://code.claude.com/docs/en/tools-reference), [Copilot CLI tool names](https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-command-reference#tool-availability-values), [Antigravity supported tools](https://antigravity.google/docs/hooks#supported-tools). Codex has no tools reference; its column lists the tools its [hooks page](https://learn.chatgpt.com/docs/hooks#tool-coverage) names, so a blank Codex cell is less certain than the others.
+
+| What it does | Claude Code | Codex | Copilot CLI | Antigravity CLI |
+|---|---|---|---|---|
+| Run a shell command | `Bash`, `PowerShell` | `exec_command` (matched as `Bash`) | `bash`, `powershell` | `run_command` |
+| Send input to a running command |  | `write_stdin` | `write_bash` | `manage_task` |
+| Read, list, or stop running commands | `TaskOutput` (deprecated), `TaskStop` |  | `read_bash`, `list_bash`, `stop_bash` | `manage_task` |
+| React to a command's output as it arrives | `Monitor` |  |  |  |
+| Read a file | `Read` |  | `view` | `view_file` |
+| List a directory |  |  | `view` | `list_dir` |
+| Create a file | `Write` | `apply_patch` | `create` | `write_to_file` |
+| Edit a file | `Edit` | `apply_patch` | `edit`, `apply_patch` | `replace_file_content`, `multi_replace_file_content` |
+| Edit a Jupyter notebook | `NotebookEdit` |  |  |  |
+| Find files by name pattern | `Glob` |  | `glob` | `find_by_name` |
+| Search inside files | `Grep` |  | `grep` (`rg`) | `grep_search`, `code_search` |
+| Code intelligence from a language server | `LSP` |  |  |  |
+| Fetch a web page | `WebFetch` |  | `web_fetch` | `read_url_content` |
+| Search the web | `WebSearch` | web search (hosted) | `web_search` | `search_web` |
+| Drive a browser |  |  |  | `browser_` tools |
+| Generate an image |  |  |  | `generate_image` |
+| Ask you a question | `AskUserQuestion` |  | `ask_user` | `ask_question` |
+| Keep a task list | `TaskCreate`, `TaskGet`, `TaskList`, `TaskUpdate`, `TodoWrite` | `update_plan` | `update_todo` |  |
+| Enter or leave plan mode | `EnterPlanMode`, `ExitPlanMode` |  |  |  |
+| Run a subagent | `Agent` | `spawn_agent` | `task` | `invoke_subagent` |
+| Define a new subagent during the task |  |  |  | `define_subagent` |
+| Message another agent | `SendMessage`, `ListAgents` |  | `write_agent`, `list_agents` | `send_message` |
+| Check on or stop subagents | `TaskStop` |  | `read_agent` | `manage_subagents` |
+| Hand a subagent's report back | `SubagentHandback` |  |  |  |
+| Run a skill | `Skill` |  | `skill` |  |
+| Work in a git worktree | `EnterWorktree`, `ExitWorktree` |  |  |  |
+| Schedule work for later | `CronCreate`, `CronList`, `CronDelete`, `ScheduleWakeup`, `RemoteTrigger` |  |  | `schedule` |
+| Check or request permissions |  |  |  | `list_permissions`, `ask_permission` |
+| Store a fact in memory |  |  | `memory` (permission kind) |  |
+| Use MCP servers | MCP tools, `ListMcpResourcesTool`, `ReadMcpResourceTool`, `WaitForMcpServers` | MCP tools | MCP tools | MCP tools |
+| Load tools only when needed | `ToolSearch` |  |  |  |
+| Run a multi-agent workflow | `Workflow` |  |  |  |
+| Publish a web page (artifact) | `Artifact` |  |  |  |
+| Send you a notification or a file | `PushNotification`, `SendUserFile` |  |  |  |
+| Report code-review findings | `ReportFindings` |  |  |  |
+| Draft feedback about the tool | `SendFeedback` |  |  |  |
+| Share an onboarding guide | `ShareOnboardingGuide` |  |  |  |
+| End the conversation | `EndConversation` |  |  |  |
 
 ## Keys
 
