@@ -1,0 +1,270 @@
+---
+title: "Claude Code and Codex"
+---
+
+::: {.callout-note}
+## What this appendix is
+
+This course teaches with Claude Code. OpenAI's Codex is a coding agent built on the same agent loop ([Chapter 1](01-building-with-ai-agents.qmd#what-makes-an-agent-an-agent)): a model that reads files, runs commands, checks the result, and repeats. The model and the harness differ, so the commands, file names, and safety controls differ too. This appendix maps each Claude Code concept the book teaches to its Codex counterpart, so that what you learn here works if your team or employer uses Codex.
+
+Both tools change every few weeks. Every row here was checked against the two vendors' documentation on October 10, 2026, and each section links the page it came from. When a row and the current docs disagree, the docs are right. Codex documentation moved from `developers.openai.com/codex` to [learn.chatgpt.com/docs](https://learn.chatgpt.com/docs); old links redirect.
+:::
+
+## The concepts transfer
+
+Everything in [Chapter 2](02-directing-the-agent.qmd) is a property of agents, so none of it is specific to Claude. The agent knows only what is in its context window. A standing rule belongs in a file the agent re-reads every session. A procedure you repeat belongs in a skill. Advice in an instruction file can be ignored; a rule or hook that sits between the model and the tool cannot. An action's blast radius decides how much you let the agent do without you. The tables below change only the names.
+
+## Getting started
+
+Sources: [Codex CLI](https://learn.chatgpt.com/docs/codex/cli), [Codex CLI reference](https://learn.chatgpt.com/docs/developer-commands?surface=cli), [Claude Code CLI reference](https://code.claude.com/docs/en/cli-reference).
+
+| | Claude Code | Codex |
+|---|---|---|
+| Install (macOS) | `curl -fsSL https://claude.ai/install.sh \| bash`, or `npm install -g @anthropic-ai/claude-code` | `curl -fsSL https://chatgpt.com/codex/install.sh \| sh`, `npm install -g @openai/codex`, or `brew install --cask codex` |
+| Start a session | `claude` in the project folder | `codex` in the project folder |
+| Account | Paid Claude plan (Pro, Max, Team, Enterprise) or an API key | ChatGPT sign-in or an API key ([pricing](https://learn.chatgpt.com/docs/pricing)) |
+| Run one prompt without the chat (scripts, CI) | `claude -p "..."` | `codex exec "..."` |
+| Continue the last session | `claude --continue` | `codex resume --last` |
+| Pick a past session | `claude --resume` or `/resume` | `codex resume` or `/resume` |
+| Switch model and reasoning effort | `/model`, `/effort`, `--model` | `/model`, `-m`, `model_reasoning_effort` in config |
+| Settings file | JSON: `~/.claude/settings.json` (you), `.claude/settings.json` (project, committed) | TOML: `~/.codex/config.toml` (you), `.codex/config.toml` (project, loads only once you trust the project) |
+| Update | `claude update` | `codex update`, or rerun the install command |
+
+## Project instructions
+
+Sources: [Claude Code memory and AGENTS.md](https://code.claude.com/docs/en/memory), [Codex AGENTS.md](https://learn.chatgpt.com/docs/agent-configuration/agents-md), [Codex memories](https://learn.chatgpt.com/docs/customization/memories).
+
+Claude Code reads `CLAUDE.md`. Codex reads `AGENTS.md`, an open format that most coding agents other than Claude Code use. They do the same job: standing facts and rules loaded at the start of every session ([CLAUDE.md: your project's memory](02-directing-the-agent.qmd#claude.md-your-projects-memory)).
+
+| | Claude Code | Codex |
+|---|---|---|
+| Project file | `CLAUDE.md` (or `.claude/CLAUDE.md`) | `AGENTS.md` |
+| Your file for every project | `~/.claude/CLAUDE.md` | `~/.codex/AGENTS.md` |
+| A second file that changes the first | `CLAUDE.local.md`: your personal additions for one project, kept out of git | `AGENTS.override.md`: read instead of `AGENTS.md` in the same folder, for a temporary or team-specific override |
+| Files in subfolders | Load when Claude opens a file in that folder | One file per folder, from the repo root down to where you started; closer files come later and win |
+| Write a starter file | `/init` | `/init` |
+| Size limit | None stated; keep it short | 32 KiB combined by default (`project_doc_max_bytes`) |
+
+**One file for both tools.** Since version 2.1.277, Claude Code reads `AGENTS.md` when the project has no `CLAUDE.md`. If you already have a `CLAUDE.md`, Claude reads only that. To keep one source of truth, put the shared rules in `AGENTS.md` and make your `CLAUDE.md` a single line that imports it:
+
+```markdown
+@AGENTS.md
+```
+
+Codex does not read `CLAUDE.md` unless you add it to `project_doc_fallback_filenames` in `config.toml`. Each tool can also copy the other's setup (instruction files, MCP servers, skills): `/import codex` in Claude Code, `/import` in Codex. Claude Code's `/init` also offers to carry over Codex configuration it finds.
+
+**Auto memory** works differently. Claude Code's is on by default and kept per project in `~/.claude/projects/`; `/memory` manages it. Codex's memories are off by default (`memories = true` under `[features]` in `config.toml` turns them on), are written in the background into `~/.codex/memories/`, and `/memories` controls them. In both tools, a rule you depend on belongs in the instruction file you write and commit.
+
+## The context window
+
+Sources: [Claude Code commands](https://code.claude.com/docs/en/commands), [Codex CLI reference](https://learn.chatgpt.com/docs/developer-commands?surface=cli).
+
+| What you want | Claude Code | Codex |
+|---|---|---|
+| See how full the window is | `/context` (a grid of what fills it) | `/status` (token usage and remaining context) |
+| Summarize and keep going | `/compact` | `/compact` |
+| Start empty, instruction file still loads | `/clear` (alias `/new`) | `/clear` (also clears the screen) or `/new` |
+| Point at a file | `@path/to/file` | `@path/to/file`, or `/mention` |
+| Add an image | Paste it (Ctrl+V) | Paste it, or `codex -i image.png` |
+| Run a shell command yourself | `!` then the command | `!` then the command; it runs under the current sandbox and approval settings |
+| Stop the agent mid-turn | `Esc` | Not listed in the CLI reference. `Ctrl+C` closes the whole session |
+| Add an instruction while it works | Type and press Enter | Enter adds it to the current turn; Tab queues it for after |
+| Ask a side question that stays out of the conversation | `/btw` | `/side` (alias `/btw`) |
+| Search past prompts | `Ctrl+R` | `Ctrl+R` |
+
+## Slash commands
+
+Sources: [Claude Code commands](https://code.claude.com/docs/en/commands), [Codex CLI slash commands](https://learn.chatgpt.com/docs/developer-commands?surface=cli). The Codex desktop app and IDE extension have a shorter list of their own ([slash commands](https://learn.chatgpt.com/docs/reference/slash-commands)); `/permissions`, `/hooks`, `/diff`, and `/clear` are CLI only.
+
+Most of the built-ins in [Chapter 2](02-directing-the-agent.qmd#claude-code-slash-commands) have a Codex command of the same name.
+
+| Claude Code | Codex | Notes |
+|---|---|---|
+| `/help` | none | In Codex, type `/` to see the list |
+| `/init` | `/init` | Writes `CLAUDE.md` or `AGENTS.md` |
+| `/memory` | `/memories` | Different scope; see above |
+| `/context` | `/status` | |
+| `/clear`, `/compact` | `/clear`, `/compact` | |
+| `/plan` | `/plan` | Both plan before editing |
+| `/rewind` (aliases `/checkpoint`, `/undo`) | none | See [Undo](#undo) |
+| `/permissions` | `/permissions` | In Claude Code, edits allow, ask, and deny rules. In Codex, picks a preset such as Auto or Read Only |
+| `/mcp` | `/mcp` | |
+| `/hooks` | `/hooks` | In Codex, also where you approve (trust) a hook before it runs |
+| `/status` | `/status` | |
+| `/diff` | `/diff` | Shows what the agent changed |
+| `/code-review` (alias `/review`) | `/review` | Reviews uncommitted changes, a commit, or a branch |
+| `/agents` | `/agent` | In Claude Code, `/agents` now only reminds you to ask Claude or edit `.claude/agents/`. In Codex, `/agent` switches between running subagents |
+| `/skills`, `/plugin` | `/skills`, `/plugins` | |
+| `/desktop` (alias `/app`) | `/app` | Moves the session into the desktop app |
+| `/goal` | `/goal` | Keeps working until a condition is met |
+| `/usage` | `/usage` | |
+| `/exit` | `/exit` or `/quit` | |
+
+## Skills
+
+Sources: [Claude Code skills](https://code.claude.com/docs/en/skills), [Codex: build skills](https://learn.chatgpt.com/docs/build-skills).
+
+A skill is a folder with a `SKILL.md` file: a `name` and `description` at the top, then the instructions ([Claude Code: Skills](02-directing-the-agent.qmd#claude-code-skills)). Codex uses the same structure, based on the open [Agent Skills](https://agentskills.io) format. Both load only each skill's name and description at the start, and read the full instructions when a skill is used.
+
+| | Claude Code | Codex |
+|---|---|---|
+| Project skills | `.claude/skills/<name>/SKILL.md` | `.agents/skills/<name>/SKILL.md`, in any folder from where you started up to the repo root |
+| Your skills for every project | `~/.claude/skills/` | `~/.agents/skills/` |
+| Run one by name | `/skill-name` | `$skill-name`, or pick it from `/skills` |
+| Loads on its own when the request matches the description | Yes | Yes, unless `agents/openai.yaml` sets `allow_implicit_invocation: false` |
+| Write one with help | Ask Claude | `$skill-creator` |
+| Saved prompts | `.claude/commands/*.md` still works; new ones should be skills | Use a skill |
+
+The builder template's `sprint-plan` and `sprint-review` skills sit in `.claude/skills/`, which Codex does not read. Codex follows symlinked skill folders, so you can share one copy of each skill between the tools. From your repo root:
+
+```bash
+mkdir -p .agents/skills
+ln -s ../../.claude/skills/sprint-plan .agents/skills/sprint-plan
+ln -s ../../.claude/skills/sprint-review .agents/skills/sprint-review
+```
+
+A skill whose `SKILL.md` contains only frontmatter and plain instructions usually runs in both. One that names Claude-specific tools or settings may not, so test it in Codex before you rely on it.
+
+## Advice versus enforcement
+
+Sources: [Codex approvals and security](https://learn.chatgpt.com/docs/agent-approvals-security), [Codex rules](https://learn.chatgpt.com/docs/agent-configuration/rules), [Claude Code permission modes](https://code.claude.com/docs/en/permission-modes).
+
+An instruction file is advice: the model can ignore it. Enforcement happens in the harness, outside the model ([Advice Versus Enforcement](02-directing-the-agent.qmd#advice-versus-enforcement)). Both tools enforce, but they are built around different defaults. Claude Code asks permission for each action and offers an optional sandbox. Codex runs every command inside a sandbox by default, and permission decides when a command may leave it.
+
+### Modes
+
+| Claude Code permission mode | Closest Codex setting |
+|---|---|
+| **Manual** (`default`) | **Read Only** preset: `--sandbox read-only --ask-for-approval on-request` |
+| **Plan** | `/plan` |
+| **Accept edits** | **Auto** preset, the Codex default: `--sandbox workspace-write --ask-for-approval on-request`. Edits and commands inside the project run freely; leaving the project or using the network asks first |
+| **Auto** | No direct equivalent. The Codex Auto preset is the sandbox above, not a background safety check |
+| **Bypass permissions** (`--dangerously-skip-permissions`) | Full access: `--dangerously-bypass-approvals-and-sandbox` (alias `--yolo`). Same warning: only inside an isolated container or virtual machine |
+
+In Claude Code you cycle modes with `Shift+Tab`. In Codex you choose a preset with `/permissions` or with flags at launch. Codex's old `--full-auto` flag and `untrusted` approval setting are retired.
+
+### Rules for specific commands
+
+Chapter 2 adds **ask rules** for the commands that leave your laptop. Codex has the same idea, under the name **rules** (marked experimental). Rules are written in a `.rules` file, such as `~/.codex/rules/default.rules`, with `prefix_rule`:
+
+::: {.columns}
+::: {.column width="48%"}
+**Claude Code**, `.claude/settings.json`
+
+```json
+{
+  "permissions": {
+    "ask": ["Bash(git push *)",
+            "Bash(vercel *)"]
+  }
+}
+```
+:::
+::: {.column width="4%"}
+:::
+::: {.column width="48%"}
+**Codex**, `~/.codex/rules/default.rules`
+
+```python
+prefix_rule(
+    pattern = ["git", "push"],
+    decision = "prompt",
+)
+prefix_rule(
+    pattern = ["vercel"],
+    decision = "prompt",
+)
+```
+:::
+:::
+
+| Claude Code rule | Codex `decision` |
+|---|---|
+| `allow` | `"allow"` (runs outside the sandbox without asking) |
+| `ask` | `"prompt"` |
+| `deny` | `"forbidden"` |
+
+A Codex rule governs commands that would run outside the sandbox. Like a Claude Code rule, it matches the command as written, so it does not see a script that pushes or sends an email from inside. `codex execpolicy check` tests a rules file before you rely on it.
+
+### Sandbox
+
+| | Claude Code | Codex |
+|---|---|---|
+| Default | Off; turn on with `/sandbox` | On for every command |
+| Network | Allowed hosts you configure | Off by default inside the sandbox |
+| Turn off | Leave it off | `--sandbox danger-full-access` |
+
+### Hooks
+
+Sources: [Claude Code hooks](https://code.claude.com/docs/en/hooks), [Codex hooks](https://learn.chatgpt.com/docs/hooks).
+
+Both tools run your own script at fixed points in the loop, and the script can block a tool call ([Claude Code hooks](02-directing-the-agent.qmd#claude-code-hooks)). Codex uses the same event names and the same JSON-on-standard-input design.
+
+| | Claude Code | Codex |
+|---|---|---|
+| Where they are set | `hooks` in `.claude/settings.json` or `~/.claude/settings.json` | `.codex/hooks.json` or `[hooks]` in `.codex/config.toml` (project); the same names under `~/.codex/` (you) |
+| Main events | `PreToolUse`, `PostToolUse`, `UserPromptSubmit`, `Stop`, `SessionStart`, and about 30 more | The same names, 12 in all |
+| Block a call | Exit code 2, reason on stderr | Exit code 2, reason on stderr |
+| Match shell commands | `Bash` | `Bash` (Codex matchers are regular expressions) |
+| Match file edits | `Edit\|Write` | `Edit\|Write` also works; Codex's edit tool is `apply_patch` |
+| What a file-edit hook receives | The file's path, in `tool_input.file_path` | The whole patch as text, in `tool_input.command` |
+| "Ask the user" from a hook | Yes (`"ask"`) | Not yet |
+| Before it runs | Runs once it is in settings | Must be trusted in `/hooks`; editing the hook requires trusting it again |
+
+The `git` guard in Chapter 2 reads `tool_input.command`, which Codex also sends for shell commands, so it works in Codex unchanged. The `.env` guard reads `tool_input.file_path`, which Codex does not send for edits. In Codex, check the patch text for the filename instead:
+
+```bash
+#!/bin/bash
+# Block Codex from editing .env files
+if jq -r '.tool_input.command' | grep -q '\.env'; then
+  echo "Blocked: .env files hold secrets and must not be edited by the agent" >&2
+  exit 2
+fi
+exit 0
+```
+
+This is stricter than the Claude version: it also blocks a patch whose text mentions `.env` anywhere. Codex's own docs call tool hooks "a useful guardrail, not a complete enforcement boundary"; the same is true of Claude Code's.
+
+## Undo {#undo}
+
+Sources: [Claude Code checkpointing](https://code.claude.com/docs/en/checkpointing), [Codex CLI reference](https://learn.chatgpt.com/docs/developer-commands?surface=cli).
+
+This is the largest difference for the [blast radius](02-directing-the-agent.qmd#blast-radius) section. Claude Code saves a checkpoint of its file edits before each prompt, and `/rewind` (or `Esc` twice) restores them. Codex documents no file checkpoint. `Esc` twice in Codex lets you edit your previous message and fork the conversation from there, but it does not put your files back.
+
+In Codex, then, your only undo for a file edit is git, and Codex's own quickstart says the same: "Create Git checkpoints before and after a task so you can revert changes." Group 1 in Chapter 2 (edits the agent's own tool makes) behaves like group 2: commit before you start, and work on a branch. The sandbox and the Auto preset limit how far a Codex action can reach. Neither one restores a file.
+
+## Subagents and parallel work
+
+Sources: [Claude Code subagents](https://code.claude.com/docs/en/sub-agents), [Codex subagents](https://learn.chatgpt.com/docs/agent-configuration/subagents).
+
+| | Claude Code | Codex |
+|---|---|---|
+| Define a subagent | Markdown file in `.claude/agents/` or `~/.claude/agents/` | TOML file in `.codex/agents/` or `~/.codex/agents/`, with `name`, `description`, and `developer_instructions` |
+| Create one | Ask Claude, or add the file yourself | Ask Codex, or add the file yourself; `/agent` (alias `/subagents`) switches between running ones |
+| Separate copy of the files for a second session | Git worktree, `claude -w` ([Chapter 2](02-directing-the-agent.qmd#parallel-work-needs-separate-copies-of-the-files)) | Git worktree, or a cloud task (below) |
+
+## MCP
+
+Sources: [Claude Code MCP](https://code.claude.com/docs/en/mcp), [Codex MCP](https://learn.chatgpt.com/docs/extend/mcp?surface=cli).
+
+MCP is an open standard, so the same server works in both tools ([Reach Beyond the Repo: MCP](02-directing-the-agent.qmd#reach-beyond-the-repo-mcp)). Only the command that adds it and the file that saves it differ.
+
+| | Claude Code | Codex |
+|---|---|---|
+| Add a server | `claude mcp add playwright -- npx -y @playwright/mcp@latest` | `codex mcp add playwright -- npx -y @playwright/mcp@latest` |
+| Saved in | `.mcp.json` (project, committed) or your user settings | `[mcp_servers.<name>]` in `~/.codex/config.toml` or the project's `.codex/config.toml` |
+| Check status, sign in | `/mcp`; `claude mcp login` | `/mcp`; `codex mcp login` |
+
+## Where each one runs
+
+Both run in the terminal, in VS Code, in a desktop app, and in the cloud ([One engine, many surfaces](01-building-with-ai-agents.qmd#one-engine-many-surfaces)).
+
+| Surface | Claude Code | Codex |
+|---|---|---|
+| Terminal | `claude` | `codex` ([Codex CLI](https://learn.chatgpt.com/docs/codex/cli)) |
+| VS Code | Claude Code extension, opened from the Spark icon | Codex extension (`openai.chatgpt`), opened from the Codex icon; also for Cursor and Windsurf ([Codex IDE extension](https://learn.chatgpt.com/docs/codex/ide)) |
+| Desktop app | Code tab of the [Claude desktop app](https://code.claude.com/docs/en/desktop); `/desktop` moves a terminal session there ([Claude Code in the Terminal and the Desktop App](A3-claude-code-cli-and-desktop.qmd)) | Codex in the ChatGPT desktop app; `codex app` opens it and `/app` moves a session there. Each chat has its own [integrated terminal](https://learn.chatgpt.com/docs/integrated-terminal) (`` Ctrl+` ``), and the app has its own [commands](https://learn.chatgpt.com/docs/reference/commands) and [slash commands](https://learn.chatgpt.com/docs/reference/slash-commands) |
+| Cloud | [Cloud sessions](https://claude.com/resources/articles/claude-code-on-the-web) (formerly Claude Code on the web), in the browser or with `claude --cloud`: connect GitHub, describe a task, each task runs in its own sandbox and can open a pull request; `claude --teleport` brings one back to your terminal | [Codex cloud](https://learn.chatgpt.com/docs/cloud), in ChatGPT or with `codex cloud`: connect GitHub, publish an environment, run tasks in parallel, then commit or open a pull request; `codex apply` brings a task's changes to your laptop |
+| Code review on GitHub | Claude GitHub app (`/install-github-app`) | Comment `@codex review` on a pull request, or turn on automatic reviews ([code review](https://learn.chatgpt.com/docs/code-review)) |
+
+A cloud task has no access to your laptop. It works only from what is committed and pushed, so a file in `.gitignore`, such as `.env`, is not there unless you add it to the environment's settings.
