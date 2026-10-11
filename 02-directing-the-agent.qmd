@@ -284,7 +284,7 @@ Words used in this section:
 |---|---|
 | **Event** | The point in the agent loop where a hook can fire, such as `PreToolUse` (before a tool runs) |
 | **Matcher** | Which tools the hook watches, such as `Edit\|Write` (an edit or a new file) or `Bash` (a terminal command) |
-| **Hook script** | A short program you write. Claude Code runs it at the event and waits for its answer |
+| **Hook script** | A short program you write, often a Bash script. Claude Code runs it on its own when the event fires, outside the conversation, and waits for its answer. Nobody types it, and the model never sees it or chooses to run it. (The matcher `Bash` is different: it means Claude's Bash tool, which the hook watches) |
 | **JSON** | A plain-text format for structured data. Claude Code uses it to tell the script what Claude is about to do |
 | **Exit code** | The number a program returns when it ends. For a hook, it is the decision: `0` means no objection, `2` blocks the action |
 | **Reason** | The message the script prints when it blocks an action. Claude Code passes it to the model, which can try something else |
