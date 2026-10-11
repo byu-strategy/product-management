@@ -391,21 +391,23 @@ Claude Code ran a tool the model asked for.** A **tool** is a function Claude Co
 model: a name, a description of what it does, and the inputs it takes. `Read` takes a file path.
 `Edit` takes a file path, the text to replace, and the new text. `Bash` takes a command.
 
-![One tool call, as messages between the model and Claude Code. (1) Claude Code sends the list of tools the model can call. (2) The model answers with a tool call and stops. (3) Claude Code checks the call against your hooks and permissions, then runs it. (4) Claude Code sends the result back, and the model decides the next step.](images/diagrams/ch01-one-tool-call.svg){#fig-one-tool-call fig-alt="Two columns joined by four numbered arrows. Left column: the model, which writes text only. Right column: Claude Code, which runs on your computer. Arrow 1 goes from Claude Code to the model, carrying a card titled tools the model can call: Read(file_path), Edit(file_path, old, new), Bash(command), plus MCP tools. Arrow 2 goes from the model to Claude Code, carrying a tool call card: Edit, file app.py, old todos.remove(item), new todos.remove(item) save(todos); under the model, stops and waits. Step 3 sits on the Claude Code column as three stacked cards: Hook, can block it; Permission, allow, ask you, deny; Run the tool, app.py changes. Arrow 4 goes from Claude Code back to the model, carrying a result card: Updated app.py, or an error; under the model, reads it, decides again." width="100%"}
+![One tool call, as messages between the model and Claude Code. (1) Claude Code sends the list of tools the model can call. (2) The model answers with a tool call, and its reply ends. (3) Claude Code checks the call against your hooks and permissions, then runs it. (4) Claude Code sends a new request with the whole conversation plus the result, and the model decides the next step.](images/diagrams/ch01-one-tool-call.svg){#fig-one-tool-call fig-alt="Two columns joined by four numbered arrows. Left column: the model, which writes text only. Right column: Claude Code, which runs on your computer. Arrow 1 goes from Claude Code to the model, carrying a card titled tools the model can call: Read(file_path), Edit(file_path, old, new), Bash(command), plus MCP tools. Arrow 2 goes from the model to Claude Code, carrying a tool call card: Edit, file app.py, old todos.remove(item), new todos.remove(item) save(todos); under the model, its reply ends here. Step 3 sits on the Claude Code column as three stacked cards: Hook, can block it; Permission, allow, ask you, deny; Run the tool, app.py changes. Arrow 4 goes from Claude Code back to the model, carrying a next request card: the whole conversation so far plus Updated app.py, or an error; under the model, reads it all, then calls again or replies." width="100%"}
 
 One tool call, step by step, using the delete-button fix from the worked example above:
 
 1. **The list.** With every request, Claude Code sends the model the tools the model can call
    and what each one takes. The model can only use what is on this list.
 2. **The call.** The model writes a tool call: text in a fixed format naming the tool and its
-   inputs (`Edit`, the file `app.py`, the old line, the new lines). Then it stops writing and
-   waits. Nothing has changed on your computer yet.
+   inputs (`Edit`, the file `app.py`, the old line, the new lines). Its reply ends there.
+   Nothing has changed on your computer yet.
 3. **The checks, then the run.** Claude Code, the program running on your computer, receives
    the call. A hook can block it, and a permission rule either allows it, asks you, or denies
    it (Chapter 2 covers both). Only then does Claude Code run the tool, and the file changes.
-4. **The result.** What the tool returned (a file's contents, a command's output, or an error
-   message) is added to the conversation as text. The model reads it and decides the next
-   step: another tool call, or a reply to you.
+4. **The next request.** What the tool returned (a file's contents, a command's output, or an
+   error message) is added to the conversation as text, and Claude Code sends a new request:
+   the whole conversation so far, plus the result. The model keeps nothing between requests,
+   so it rereads everything and decides the next step: another tool call, or a reply to you.
+   The loop ends when the model replies without a tool call.
 
 The tools you will see most often in Claude Code:
 
