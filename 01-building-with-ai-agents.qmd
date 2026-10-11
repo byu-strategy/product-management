@@ -437,6 +437,28 @@ this mechanism:
   code plays Claude Code's part: it receives the call, decides whether to run it, and sends the
   result back (Chapter 11).
 
+#### The terminal, the shell, and scripts
+
+The `Bash` tool runs "a terminal command," but the terminal is only the window. The program that
+runs commands is the **shell**. When you type `git status` in a terminal, the terminal passes the
+line to the shell, and the shell runs the `git` program. Claude Code reaches the same shell
+directly, with no window: Claude's `Bash` tool sends it commands, and so do the hooks you will set
+up in Chapter 2. A **shell script** is a file of commands the shell runs from top to bottom, with
+no one typing.
+
+![You and Claude Code use the same shell. You reach it through a terminal window; Claude Code sends commands to it directly, from Claude's Bash tool and from hooks. A shell script is a file of commands; its first line names the shell that runs it.](images/diagrams/ch01-terminal-and-shell.svg){#fig-terminal-and-shell fig-alt="You type into a terminal window showing the command git status. The terminal passes the line to a tall box labeled Shell, zsh or Bash, reads each line and runs it. The shell runs programs and files: git, npm, python3, and your files. Below, Claude Code sends two commands straight to the same shell, through an empty dashed outline labeled no window: from the Bash tool, git commit -m, and from a hook, require-review.sh. At the bottom, a shell script named require-review.sh with three lines labeled: #!/bin/bash, which shell runs this file; CMD equals a jq command, commands, run top to bottom; exit 2, ends with an exit code." width="100%"}
+
+Words used in this section:
+
+| Term | What it means |
+|---|---|
+| **Terminal** | The window that shows text and passes your typing to the shell: Terminal on a Mac, iTerm, or the terminal panel in VS Code. It runs nothing itself |
+| **Shell** | The program that reads a command and runs it. It also defines the language commands are written in |
+| **zsh**, **Bash** | Two shells with nearly the same language. zsh is the default on a Mac; Bash is the default on most Linux computers and in Git Bash on Windows. Windows also has its own shell, PowerShell |
+| **Command** | One line the shell runs: a program's name and its inputs, such as `git commit -m "Add delete button"` |
+| **Shell script** | A file of commands the shell runs from top to bottom. Its first line, such as `#!/bin/bash`, names the shell that runs it |
+| **CLI** | Command-line interface: working by typing commands, or a program built to be used that way. Claude Code is a CLI |
+
 ::: {.callout-tip title="Try it"}
 Ask Claude Code to make a small change in your project, then watch the transcript instead of the result. Label each step it takes as context, action, or check. Did it check its own work before saying it was done? If not, what check would you have asked for?
 :::
