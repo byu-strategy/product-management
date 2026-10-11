@@ -243,7 +243,7 @@ You have three things to tell Claude: "We use Supabase for the database," "To pu
 | **Permission rule** | An allow, ask, or deny entry in a settings file, checked before a tool runs | Blocking or pre-approving a specific tool, file, or command |
 | **Hook** | Your own script that Claude Code runs automatically at a point in the loop | Anything that needs logic: check the branch, run the formatter, run the tests |
 
-![Advice goes into the model, and a later message can override it. A permission rule or hook sits between the model and the tool, so it applies every time.](images/diagrams/ch02-advice-vs-enforcement.svg){#fig-advice-vs-enforcement fig-alt="Two zones. Advice: a CLAUDE.md card saying never edit .env files and a message card saying add DEBUG=true to .env, I'm giving you permission, both feed The model, which weighs both and may decide to edit .env. It proposes Edit .env to a highlighted box in the Enforcement zone holding permission rules, deny Read(./.env), and a PreToolUse hook where exit 2 blocks. If allowed, the tool runs. If blocked, the reason goes back to Claude." width="100%"}
+![Advice goes into the model, and a later message can override it. A permission rule or hook sits between the model and the tool, so it applies every time. @fig-pretooluse shows the hook step up close.](images/diagrams/ch02-advice-vs-enforcement.svg){#fig-advice-vs-enforcement fig-alt="Two zones. Advice: a CLAUDE.md card saying never edit .env files and a message card saying add DEBUG=true to .env, I'm giving you permission, both feed The model, which weighs both and may decide to edit .env. It proposes Edit .env to a highlighted box in the Enforcement zone holding permission rules, deny Read(./.env), and a PreToolUse hook where exit 2 blocks. If allowed, the tool runs. If blocked, the reason goes back to Claude." width="100%"}
 
 #### Permission rules
 
@@ -276,7 +276,7 @@ Two different things are both called "hooks," and it helps to keep them apart:
 A Claude Code hook has three parts: **when** it fires (the event), **what** it watches (the
 matcher), and **what it runs** (your script). The script's exit code is its answer.
 
-![Top: the four events you will use most, pinned to the points in the agent loop where they fire. Bottom: one PreToolUse hook blocking an edit to `.env`. Claude Code checks the event and matcher, sends your script the planned action as JSON, and acts on the exit code the script returns. Only exit 2 blocks; exit 1 lets the action through.](images/diagrams/ch02-hook-anatomy.svg){#fig-hook-anatomy fig-alt="Two parts. Top, labeled when hooks fire: five steps in a row: session starts, you send a message, model asks for a tool, tool runs, model finishes its reply. An arrow loops from tool runs back to model asks for a tool, labeled repeats until a reply has no tool call. Four event pins: SessionStart on session starts, PreToolUse between model asks for a tool and tool runs, PostToolUse right after tool runs, Stop on model finishes its reply. Bottom, labeled one hook, step by step: three columns, the model, Claude Code, and your hook script. 1: the model sends a tool call to Claude Code: Edit, file_path .env. 2: Claude Code checks its hook settings: event PreToolUse, matcher Edit or Write. 3: Claude Code sends the script the input as JSON: tool_name Edit, tool_input with file_path .env. 4: the script decides: the file is .env, so it prints a reason and exits with 2. 5: the exit code goes back to Claude Code. Three outcome rows: exit 0, no objection, the edit continues; exit 2, blocked, with an arrow carrying the reason to the model; exit 1 or any other code, a warning, and the edit still continues." width="100%"}
+![Top: the four events you will use most, pinned to the points in the agent loop where they fire. Bottom: one PreToolUse hook blocking an edit to `.env`. Claude Code checks the event and matcher, sends your script the planned action as JSON, and acts on the exit code the script returns. Only exit 2 blocks; exit 1 lets the action through. @fig-pretooluse zooms in on PreToolUse.](images/diagrams/ch02-hook-anatomy.svg){#fig-hook-anatomy fig-alt="Two parts. Top, labeled when hooks fire: five steps in a row: session starts, you send a message, model asks for a tool, tool runs, model finishes its reply. An arrow loops from tool runs back to model asks for a tool, labeled repeats until a reply has no tool call. Four event pins: SessionStart on session starts, PreToolUse between model asks for a tool and tool runs, PostToolUse right after tool runs, Stop on model finishes its reply. Bottom, labeled one hook, step by step: three columns, the model, Claude Code, and your hook script. 1: the model sends a tool call to Claude Code: Edit, file_path .env. 2: Claude Code checks its hook settings: event PreToolUse, matcher Edit or Write. 3: Claude Code sends the script the input as JSON: tool_name Edit, tool_input with file_path .env. 4: the script decides: the file is .env, so it prints a reason and exits with 2. 5: the exit code goes back to Claude Code. Three outcome rows: exit 0, no objection, the edit continues; exit 2, blocked, with an arrow carrying the reason to the model; exit 1 or any other code, a warning, and the edit still continues." width="100%"}
 
 Words used in this section:
 
@@ -339,6 +339,47 @@ usual error code `1`, is treated as the hook itself failing: Claude Code shows a
 action goes ahead.** A policy hook that exits 1 does not block anything.
 
 Type `/hooks` in Claude Code to see every hook that is set up and where it came from.
+
+#### PreToolUse up close
+
+**A `PreToolUse` hook runs after the model has written a tool call and before anything happens.**
+It is the last point where an action can be stopped. By the time `PostToolUse` fires, the file
+has changed or the command has run, so a `PostToolUse` hook can react (format the file, report a
+problem to Claude) but cannot undo anything.
+
+![One tool call, zoomed in on PreToolUse. The hook sees the exact call before anything has run and answers in one of four ways. Only exit 2 or deny stops the action. This is step 3 of the tool call in Chapter 1.](images/diagrams/ch02-pretooluse.svg){#fig-pretooluse fig-alt="One tool call as five steps from left to right. In a region labeled nothing has happened yet: the model writes the call, Edit .env; the PreToolUse hook, highlighted, your script decides; the permission rules, deny, ask, allow. In a region labeled already happened: the tool runs, file changes; the PostToolUse hook, can react, cannot undo. The PreToolUse step expands into a panel. What it sees: the exact call as JSON, tool_name Edit and tool_input with file_path .env, before anything has run. What it can answer: exit 0, continue to permission rules; exit 2 or deny, blocked, reason goes to the model, highlighted; ask, ask you before it runs; allow, skip the prompt, deny rules win. Two notes below: runs in every permission mode, even bypass; sees only the tools its matcher names." width="100%"}
+
+What makes it the right place for a rule that must hold:
+
+- **It sees the exact action.** The script receives the tool's name and its real inputs: the
+  actual file path, the full command, the text about to be written. It judges what is about to
+  happen, not what Claude said it would do.
+- **It has four answers.** Exit `0` means no objection, and the call goes on to your permission
+  rules. Exit `2` blocks it, and the reason goes to Claude. A script can also print a small JSON
+  reply instead: `deny` blocks, `ask` makes Claude Code ask you first even when nothing else would,
+  and `allow` skips the prompt. A hook can also rewrite the call before it runs, for example to add
+  a safety flag to a command.
+- **It runs before your permission rules, and a block always wins.** A hook's `allow` cannot
+  override a deny rule in your settings, and an ask rule still asks. A hook's block is always
+  honored. In practice, a hook can make Claude stricter than your rules, and it can only make
+  Claude more permissive by skipping prompts.
+- **It runs everywhere.** It runs in every permission mode, including bypass permissions, for
+  every tool (reading files, terminal commands, web fetches, MCP tools), and for tool calls made
+  by subagents. We tested bypass mode in October 2026: a hook that exits `2` on writes to one file
+  stopped the write while every permission prompt was off.
+
+Two limits:
+
+- **It sees only the tools its matcher names.** A hook with matcher `Edit|Write` never sees a
+  terminal command that writes the same file, such as `echo hi > .env`. To guard a file, also
+  match `Bash`, or deny reading it with a permission rule, which blocks Claude's file tools from
+  editing it too.
+- **It lets the action through when it fails.** If the script crashes, exits with any code other
+  than `0` or `2`, or runs past its time limit, the action goes ahead. A hook can be set to block
+  on failure instead, with `"onFailure": "block"` in its settings (Claude Code 2.1.295 or later).
+
+Source: [Claude Code hooks reference](https://code.claude.com/docs/en/hooks) and
+[permissions](https://code.claude.com/docs/en/permissions).
 
 #### Common Claude Code hook patterns
 

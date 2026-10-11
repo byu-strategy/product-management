@@ -402,7 +402,8 @@ One tool call, step by step, using the delete-button fix from the worked example
    Nothing has changed on your computer yet.
 3. **The checks, then the run.** Claude Code, the program running on your computer, receives
    the call. A hook can block it, and a permission rule either allows it, asks you, or denies
-   it (Chapter 2 covers both). Only then does Claude Code run the tool, and the file changes.
+   it. Only then does Claude Code run the tool, and the file changes. Chapter 2 covers both,
+   and [PreToolUse up close](02-directing-the-agent.qmd#pretooluse-up-close) zooms in on this step.
 4. **The next request.** What the tool returned (a file's contents, a command's output, or an
    error message) is added to the conversation as text, and Claude Code sends a new request:
    the whole conversation so far, plus the result. The model keeps nothing between requests,
