@@ -124,8 +124,30 @@ From the [troubleshooting](https://code.claude.com/docs/en/desktop#troubleshooti
 - **The app does not read all of your shell setup.** On macOS, an app opened from the Dock reads `PATH` from `~/.zshrc` but not other variables you export there. If Claude cannot find `npm` or `node`, check that they work in your terminal, then restart the app. To give local sessions and dev servers an environment variable, use the local environment editor (the gear icon next to **Local**).
 - **A cloud session sees only what you pushed.** The same rule as [Chapter 1](01-building-with-ai-agents.qmd#one-engine-many-surfaces): your `.env` and anything uncommitted stay on your laptop.
 
+## Claude Code in the VS Code terminal {#claude-code-in-the-vs-code-terminal}
+
+Sources: [Run CLI in VS Code](https://code.claude.com/docs/en/vs-code#run-cli-in-vs-code), [the built-in IDE MCP server](https://code.claude.com/docs/en/vs-code#the-built-in-ide-mcp-server).
+
+This book runs `claude` in VS Code's integrated terminal, and Anthropic's docs recommend the same: "If you need a CLI-only feature, run `claude` in VS Code's integrated terminal." You get every terminal feature, connected to the editor. The Claude Code extension, which `claude` installs the first time you run it there, runs a small local MCP server, and the CLI connects to it automatically. That connection adds:
+
+| What you get | Details |
+|---|---|
+| Diffs open in VS Code's diff viewer | Instead of as text in the terminal |
+| Your selection and the open file go with each prompt | The transcript shows a line such as `⧉ Selected 12 lines from app.ts` |
+| Claude can read the Problems panel | Through a tool named `mcp__ide__getDiagnostics`: the errors and warnings your language extensions report |
+
+A terminal app outside VS Code gets the same connection when you type `/ide` while VS Code is open. A plain terminal with no editor gets the CLI alone.
+
+**Your VS Code extensions help in two ways.** Extensions that check code, such as ESLint, the TypeScript checker, Pylance, and Tailwind CSS IntelliSense, report to the Problems panel, so Claude can see that an edit broke a type or a lint rule without running a build. The rest help you review Claude's work: the diff viewer, git history, previews. Claude does not use an extension's commands directly. To let Claude act on an outside system such as GitHub or Supabase, add an MCP server ([Chapter 2](02-directing-the-agent.qmd#reach-beyond-the-repo-mcp)). The extensions this course recommends are in [Computer Setup](00-computer-setup.qmd#recommended-vs-code-extensions).
+
+Three things to know:
+
+- **Selected text is sent from any file.** The extension's chat panel holds back selected text from gitignored and excluded files. The CLI in VS Code's terminal "sends your selected text whatever the file," so if you highlight a line in `.env`, Claude receives it. The `Read(./.env)` deny rule in [Permission rules](02-directing-the-agent.qmd#permission-rules) stops both the selection and the open-file notice.
+- **The extension does not install `claude`.** It bundles a private copy for its chat panel. Typing `claude` in a terminal needs the standalone install from [Computer Setup](00-computer-setup.qmd).
+- **Running `claude` in VS Code's terminal reinstalls the extension** if you removed it. Turn off **Auto-install IDE extension** in `/config` to stop that.
+
 ## Which one to use
 
 The documentation's advice: "use Desktop when you want to manage parallel sessions in one window, arrange panes side by side, or review changes visually. Use the CLI when you need scripting, automation, or prefer a terminal workflow."
 
-For this course, the terminal is what the book teaches and what every command in it assumes. The app is a good second window for two jobs: reviewing a diff before you commit, and watching Claude check its own work in the Browser pane. Your `CLAUDE.md`, skills, rules, and hooks work in both, so you can switch at any time.
+For this course, the terminal inside VS Code is what the book teaches and what every command in it assumes. The app is a good second window for two jobs: reviewing a diff before you commit, and watching Claude check its own work in the Browser pane. Your `CLAUDE.md`, skills, rules, and hooks work in both, so you can switch at any time.

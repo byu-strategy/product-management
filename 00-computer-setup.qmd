@@ -126,6 +126,20 @@ Press **Enter** to say "Yes" when asked to proceed. Claude Code works much like 
 > - **↑ (up arrow)** to recall your last command
 > - **↓ (down arrow)** to move forward through your command history
 
+### Recommended VS Code extensions {#recommended-vs-code-extensions}
+
+Open the Extensions view (**Cmd+Shift+X** on macOS, **Ctrl+Shift+X** on Windows), search for each name, and click **Install**. All are free.
+
+| Extension | What it does | Why it helps when you build with Claude Code |
+|---|---|---|
+| **ESLint** | Flags problems in JavaScript and TypeScript in projects set up with ESLint | Its warnings appear in VS Code's Problems panel, which Claude can read |
+| **Prettier - Code formatter** | Formats code the same way every time you save, once you set it as your default formatter | Your edits and Claude's follow one style |
+| **Tailwind CSS IntelliSense** | Autocomplete and checks for Tailwind class names | Flags class names that do not exist |
+| **GitLens** | Shows who changed each line, and when | Helps you review what Claude changed |
+| **Python** (by Microsoft) | Python language support, including Pylance | Only if you write Python; its errors also appear in the Problems panel |
+
+You do not need to install the Claude Code extension yourself. The first time you run `claude` in VS Code's terminal, it installs the extension, which lets Claude open its changes in VS Code's diff viewer and see the text you have selected. [Claude Code in the VS Code terminal](A3-claude-code-cli-and-desktop.qmd#claude-code-in-the-vs-code-terminal) explains what that connection does.
+
 ::: {.callout-important}
 **Next:** set up your builder repo and plan Sprint 1 with the setup prompt in [Sprint 1](00-assessments.qmd#sprint-1).
 :::
