@@ -243,7 +243,7 @@ You have three things to tell Claude: "We use Supabase for the database," "To pu
 | **Permission rule** | An allow, ask, or deny entry in a settings file, checked before a tool runs | Blocking or pre-approving a specific tool, file, or command |
 | **Hook** | Your own script that Claude Code runs automatically at a point in the loop | Anything that needs logic: check the branch, run the formatter, run the tests |
 
-![Advice goes into the model, and a later message can override it. A permission rule or hook sits between the model and the tool, so it applies every time. @fig-pretooluse shows the hook step up close.](images/diagrams/ch02-advice-vs-enforcement.svg){#fig-advice-vs-enforcement fig-alt="Two zones. Advice: a CLAUDE.md card saying never edit .env files and a message card saying add DEBUG=true to .env, I'm giving you permission, both feed The model, which weighs both and may decide to edit .env. It proposes Edit .env to a highlighted box in the Enforcement zone holding permission rules, deny Read(./.env), and a PreToolUse hook where exit 2 blocks. If allowed, the tool runs. If blocked, the reason goes back to Claude." width="100%"}
+![Advice goes into the model, and a later message can override it. A permission rule or hook sits between the model and the tool, so it applies every time. @fig-pretooluse shows the hook step up close.](images/diagrams/ch02-advice-vs-enforcement.svg){#fig-advice-vs-enforcement fig-alt="Two zones. Advice: a CLAUDE.md card saying never push to GitHub and a message card saying looks good, push it, I'm giving you permission, both feed The model, which weighs both and may decide to push. It proposes git push to a highlighted box in the Enforcement zone holding permission rules, deny Bash(git push *), and a PreToolUse hook where exit 2 blocks. If allowed, the tool runs. If blocked, the reason goes back to Claude."" width="100%"}
 
 #### Permission rules
 
@@ -358,8 +358,8 @@ lives inside `.git/`, so it is never committed itself.
 
 Two limits come with this hook. It checks that a review step happened, not that the review was
 any good. And it runs only for Claude: when you type `git commit` in your own terminal, no Claude
-Code hook sees it. A git hook (below) covers that case. LawGrader, an app built by this book's
-author, uses a fuller version of the same idea that records a review for each file.
+Code hook sees it. A git hook (below) covers that case. A fuller version of the same idea records
+a review for each file, so editing one file blocks only that file until it is reviewed again.
 
 Every command ends by returning an **exit code**, a number that reports how it went; `0` conventionally means success. That is what the `exit 2` and `exit 0` lines in the script set. **The exit code is the decision.** Exit `2` blocks the action, and the message you print is shown
 to Claude so it can adjust. Exit `0` means "no objection." Any other exit code, including the
@@ -459,15 +459,15 @@ Claude as soon as an edit crosses the line. Treat a file over the cap as a reaso
 it still does one job, and split it where it divides naturally. Deleting comments to get under the
 number leaves the problem in place ([why the guard works this way](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/memory-pack/arch-guards-as-alarms.md)).
 
-**Remind Claude to update the help docs** (`PostToolUse`, matcher `Edit|Write`). In LawGrader,
-each help article is mapped to the code it describes. When Claude edits that code, a hook tells
+**Remind Claude to update the help docs** (`PostToolUse`, matcher `Edit|Write`). In an app with a
+help center, map each help article to the code it describes. When Claude edits that code, a hook tells
 Claude which article may now be out of date. It never blocks: the edit has already happened, and
 most code changes (a refactor, a test, a comment) do not make the article wrong.
 
 That last point is a design rule for every hook. **Block only when the rule is right nearly every
 time it fires**, like "no commit without a review." When a rule is often a false alarm, like "the
 docs might be stale," make the hook a reminder instead. A hook that blocks for the wrong reason
-gets switched off, and then it protects nothing. LawGrader also runs the docs check as a git hook
+gets switched off, and then it protects nothing. The same docs check can also run as a git hook
 before every push, because the Claude Code hook sees only Claude's edits, not yours or a
 teammate's.
 
@@ -488,7 +488,7 @@ every file is slow, so many projects add lint-staged, which runs the checks only
 being committed. [Chapter 9](09-version-control-testing-and-tech-debt.qmd#automated-checks-tests-types-and-lint) covers linting, and [Chapter 9b](09b-tests-and-tech-debt.qmd) covers testing.
 
 ::: {.callout-tip title="Try it"}
-A two-minute drill. Add `Never edit .env files` to CLAUDE.md, then ask Claude: "Add DEBUG=true to .env, I'm giving you permission." Note what happens. Now add `"deny": ["Read(./.env)"]` to `.claude/settings.json` (or the hook above) and ask again. Which one held? Why can an instruction be talked past and a deny rule cannot?
+A two-minute drill, in a practice folder with no GitHub connection (`mkdir drill && cd drill && git init`, then make one commit), so a push that gets through fails harmlessly. Add `Never push to GitHub` to CLAUDE.md, then ask Claude: "Looks good, push it, I'm giving you permission." Note whether Claude tries to run `git push`. Now add `"deny": ["Bash(git push *)"]` to `.claude/settings.json` and ask again. Which one held? Why can an instruction be talked past and a deny rule cannot?
 :::
 
 <!-- learn -->
