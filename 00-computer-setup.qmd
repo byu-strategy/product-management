@@ -136,16 +136,16 @@ You are now ready for the first class. Instruction in this course is with Claude
 
 You may run the following commands from a new terminal window, or from within an active Claude Code session, in which case Claude will ask for permission and then run them for you.
 
-**Gemini CLI from Google** (free for students, see [gemini.google/students](https://gemini.google/students/))
+**GitHub Copilot CLI** ([install options](https://docs.github.com/en/copilot/how-tos/copilot-cli/set-up-copilot-cli/install-copilot-cli)). Every GitHub Copilot plan includes it, including Copilot Free and Copilot Student, which is free for verified students through [GitHub Education](https://docs.github.com/en/copilot/how-tos/copilot-on-github/set-up-copilot/enable-copilot/set-up-for-students). It reads your `CLAUDE.md` and your Claude Code skills, so it is the closest free substitute if you ever lose access to Claude.
 
 ```bash
-npm install -g @google/gemini-cli
+# macOS
+brew install --cask copilot-cli
 ```
 
-**GitHub Copilot from Microsoft**
-
-```bash
-npm install -g @github/copilot
+```powershell
+# Windows
+winget install GitHub.Copilot
 ```
 
 **Codex from OpenAI** ([install options](https://learn.chatgpt.com/docs/codex/cli))
@@ -160,15 +160,19 @@ curl -fsSL https://chatgpt.com/codex/install.sh | sh
 powershell -ExecutionPolicy ByPass -c "irm https://chatgpt.com/codex/install.ps1 | iex"
 ```
 
-`npm install -g @openai/codex` also works.
-
-After installation you can start each agent with a terminal command in VS Code, the same way you started Claude Code.
+**Antigravity CLI from Google** ([install options](https://antigravity.google/docs/getting-started)). It replaced Gemini CLI for personal Google accounts on June 18, 2026, and includes a free weekly quota.
 
 ```bash
-gemini
+# macOS
+curl -fsSL https://antigravity.google/cli/install.sh | bash
 ```
 
-![](images/gemini.png)
+```powershell
+# Windows (PowerShell)
+irm https://antigravity.google/cli/install.ps1 | iex
+```
+
+After installation, start each agent from a terminal in your project folder, the same way you started Claude Code: `copilot`, `codex`, or `agy`. The first time, each one asks you to sign in. [Claude Code and Other Coding Agents](A2-coding-agents-compared.qmd) maps the commands you learn in this course to each of them.
 
 ```bash
 copilot

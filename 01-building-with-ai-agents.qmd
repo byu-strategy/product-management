@@ -504,7 +504,7 @@ about the harness.
 
 To direct an agent you need to read what it is doing, and most of what a coding agent does happens on the [command line](https://en.wikipedia.org/wiki/Command-line_interface): a text-based way to control your computer by typing commands instead of clicking. The program that shows it is a **terminal**: Terminal on macOS; Command Prompt, PowerShell, or Git Bash on Windows; or the terminal panel built into VS Code.
 
-The command line gives direct access to files, programs, and system functions, many of which have no graphical interface at all. That is why AI made it more important: Claude Code, Codex, and Gemini CLI all run there, and when the agent runs a command you approve or reject it based on whether you can read it.
+The command line gives direct access to files, programs, and system functions, many of which have no graphical interface at all. That is why AI made it more important: Claude Code, Codex, Copilot CLI, and Antigravity CLI all run there, and when the agent runs a command you approve or reject it based on whether you can read it.
 
 You do not need to memorize commands, since the agent will type them. You need to recognize the core ones:
 
@@ -577,13 +577,9 @@ When Claude wants to run something, such as installing git, node, and python, it
 That approval prompt is the permission system at work. Chapter 2 explains how to decide what the agent may do without asking.
 
 ::: {.callout-note collapse="true" title="Other AI CLI agents (optional)"}
-Instruction in this course uses Claude Code, but the same model applies to other terminal agents. Install commands are in [Computer Setup](00-computer-setup.qmd#optional-other-ai-coding-agents).
+Instruction in this course uses Claude Code, but the same model applies to other terminal agents. Install commands are in [Computer Setup](00-computer-setup.qmd#optional-other-ai-coding-agents), and [Claude Code and Other Coding Agents](A2-coding-agents-compared.qmd) maps each Claude Code command to its counterpart. Google's terminal agent is now Antigravity CLI (`agy`), which replaced Gemini CLI for personal accounts on June 18, 2026.
 
-**Google Gemini CLI** ([free for students](https://gemini.google/students/)):
-
-![](images/gemini.png)
-
-**GitHub Copilot CLI**:
+**GitHub Copilot CLI** (free for verified students with Copilot Student):
 
 ![](images/copilot.png)
 
@@ -684,7 +680,7 @@ Claude Code is the primary tool in this course. The wider field, roughly sorted:
 | Tool | Type | Best for |
 |------|------|----------|
 | **Claude Code** | Coding agent (terminal, VS Code, desktop, web) | Full-stack building; the course's main tool |
-| **Codex**, **Gemini CLI**, **GitHub Copilot** | Coding agents from OpenAI, Google, and GitHub | The same agent-loop model, different vendors |
+| **Codex**, **GitHub Copilot CLI**, **Antigravity CLI** | Coding agents from OpenAI, GitHub, and Google ([compared](A2-coding-agents-compared.qmd)) | The same agent-loop model, different vendors |
 | **Cursor** | AI code editor (a VS Code fork) | Editing with AI built into the editor |
 | **Lovable**, **v0** | Browser app builders | Quick UI prototypes from a prompt |
 | **Figma** | Design tool | Mockups and user flows |
