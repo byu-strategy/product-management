@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 720" role="img" aria-labelledby="t d" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
 <title id="t">The same model, with harnesses that reach different depths</title>
-<desc id="d">An iceberg at a waterline. Above the water is a small pale tip, bracketed as The model, text in, text out. Below the water is a much larger, irregular body, bracketed as The harness, in three bands that get darker with depth. Top band: a cloud sandbox and connectors; code runs on Anthropic’s servers, with connectors to Gmail and Google Drive. Middle band: your computer; your files, your terminal, and apps on your screen. Bottom band: scripts and CI; claude -p and GitHub Actions. On the left, three vertical bars start at the waterline and show how deep each Claude app reaches. Web and mobile chat stops at the bottom of the top band. The desktop app stops at the bottom of the middle band. The terminal, or CLI, goes a little further, into the bottom band.</desc>
+<desc id="d">An iceberg at a waterline. Above the water is a small pale tip, bracketed as The model, text and images in, text out. Below the water is a much larger, irregular body, bracketed as The harness, in three bands that get darker with depth. Top band: a cloud sandbox and connectors; code runs on Anthropic’s servers, with connectors to Gmail and Google Drive. Middle band: your computer; your files, your terminal, and apps on your screen. Bottom band: scripts and CI; claude -p and GitHub Actions. On the left, three vertical bars start at the waterline and show how deep each Claude app reaches. Web and mobile chat stops at the bottom of the top band. The desktop app stops at the bottom of the middle band. The terminal, or CLI, goes a little further, into the bottom band.</desc>
 <defs>
   <linearGradient id="gWater" x1="0" y1="0" x2="0" y2="1">
     <stop offset="0%" stop-color="#E6EEF7"/><stop offset="100%" stop-color="#C6D8EC"/>
@@ -162,8 +162,9 @@
 <path d="M500,172 L514,150 L532,130 L546,96 L560,70 L572,50 L584,64 L594,82 L610,62 L624,78 L640,112 L652,130 L668,150 L684,172 Z" fill="none" stroke="#8AA6C8" stroke-width="1.5"/>
 <line x1="0" y1="172" x2="1000" y2="172" stroke="#6495ED" stroke-width="1.5"/>
 <path d="M814,50 H822 V164 H814" fill="none" stroke="#8A939C" stroke-width="2" stroke-linejoin="round"/>
-<text x="842" y="104" font-size="22" font-weight="600" fill="#002E5D">The model</text>
-<text x="842" y="130" font-size="17" fill="#5A6672">text in, text out</text>
+<text x="842" y="96" font-size="22" font-weight="600" fill="#002E5D">The model</text>
+<text x="842" y="122" font-size="17" fill="#5A6672">text and images in,</text>
+<text x="842" y="144" font-size="17" fill="#5A6672">text out</text>
 <path d="M814,180 H822 V676 H814" fill="none" stroke="#0057B8" stroke-width="2" stroke-linejoin="round"/>
 <text x="842" y="430" font-size="22" font-weight="600" fill="#0057B8">The harness</text>
 <text x="566" y="242" text-anchor="middle" font-size="21" font-weight="600" fill="#002E5D">A cloud sandbox and connectors</text>
