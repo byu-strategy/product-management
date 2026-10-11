@@ -4,6 +4,15 @@ This course site is a living product. It gets better during the semester, and ev
 
 New entries appear at the top.
 
+## v2.8.1 (2026-10-10)
+
+The coding agents appendix now lists every command and every built-in tool for all four agents, and Computer Setup recommends VS Code extensions.
+
+- **"Claude Code and Other Coding Agents":** the command tables now include every command from Claude Code, Codex, Copilot CLI, and Antigravity CLI, grouped by what each one does, so you can see which tools lack a command. A new table lists the tools each agent can call (such as `Read`, `Edit`, and `Bash` in Claude Code), which are the names permission rules and hooks match on.
+- **New section, "Claude Code in the VS Code terminal,"** in the terminal and desktop app appendix: what you gain by running `claude` inside VS Code, how your VS Code extensions help, and three things to know, including that text you select in the editor is sent with your prompt even from `.env`.
+- **Computer Setup:** a table of recommended VS Code extensions (ESLint, Prettier, Tailwind CSS IntelliSense, GitLens, and Python), with why each helps when you build with Claude Code.
+- **Chapter 2, permission rules:** explains why the `Read(./.env)` deny rule also matters in VS Code.
+
 ## v2.8.0 (2026-10-10)
 
 Two new appendices: one compares Claude Code with three other coding agents, and one compares Claude Code in the terminal with the desktop app.
