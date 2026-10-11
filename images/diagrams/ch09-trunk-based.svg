@@ -1,8 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1094" role="img" aria-labelledby="tbd-t tbd-d" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1346" role="img" aria-labelledby="tbd-t tbd-d" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
 <title id="tbd-t">Trunk-based development, solo and on a team</title>
-<desc id="tbd-d">Five panels on one shared time axis of three days. Each panel has a dark main line, and each row of branches belongs to one named maker. Panel 1, solo, straight to main: you commit directly on main, seven commits over three days, with no branches. Panel 2, solo with two Claude Code sessions, each in its own worktree: session 1 and session 2 each work in their own row; each makes two short branches, and each branch leaves main and merges back the same day. Panel 3, solo with several Claude Code sessions, all straight to main: three sessions each commit directly on main with no branches, and their commits interleave over three days. On day 2, session 1 and session 2 change the same file, marked with an amber warning; the next commit, from session 2, fixes it, circled in green. Panel 4, a team of two: Ana makes ratings-1 on day 1 and ratings-2 from day 2 into day 3; Ben makes fix-signup from day 1 into day 2 and signup-email on day 3. Every branch merges into the same main within a day or two. Ana starts ratings-2 just after Ben merges fix-signup, so her branch includes his fix; Ben starts signup-email just after Ana merges ratings-2. Panel 5, a team of two with long-lived branches, for contrast: Ana and Ben each keep one branch open for all three days, collecting many commits, while main gets nothing; both merge at the end of day 3 at one point marked in red, merge conflicts.</desc>
+<desc id="tbd-d">Six panels on one shared time axis of three days. Each panel has a dark main line, and each row of branches belongs to one named maker. Panel 1, solo, straight to main: you commit directly on main, seven commits over three days, with no branches. Panel 2, solo with two Claude Code sessions, each in its own worktree: session 1 and session 2 each work in their own row; each makes two short branches, and each branch leaves main and merges back the same day. Panel 3, solo with several Claude Code sessions, all straight to main: three sessions each commit directly on main with no branches, and their commits interleave over three days. On day 2, session 1 and session 2 change the same file, marked with an amber warning; the next commit, from session 2, fixes it, circled in green. Panel 4, a team of two: Ana makes ratings-1 on day 1 and ratings-2 from day 2 into day 3; Ben makes fix-signup from day 1 into day 2 and signup-email on day 3. Every branch merges into the same main within a day or two. Ana starts ratings-2 just after Ben merges fix-signup, so her branch includes his fix; Ben starts signup-email just after Ana merges ratings-2. Panel 5, a team of two, each running several sessions on main on their own laptop: commits collect on each laptop and are pushed to main on GitHub a few at a time. On day 2 Ben's push is rejected because Ana's push changed the same lines; his agent pulls, resolves the conflict, and pushes again. Panel 6, a team of two with long-lived branches, for contrast: Ana and Ben each keep one branch open for all three days, collecting many commits, while main gets nothing; both merge at the end of day 3 at one point marked in red, merge conflicts.</desc>
 <defs><linearGradient id="tbd-panel" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#F6F8FA"/><stop offset="100%" stop-color="#EDF0F3"/></linearGradient><linearGradient id="tbd-navy" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0E3F6A"/><stop offset="100%" stop-color="#001A36"/></linearGradient><linearGradient id="tbd-red" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#FBF3F3"/><stop offset="100%" stop-color="#F3E1E1"/></linearGradient><filter id="tbd-sh" x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#002E5D" flood-opacity="0.13"/></filter><marker id="tbd-ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0.5 L10,5 L0,9.5 z" fill="#5A6672"/></marker></defs>
-<rect x="0" y="0" width="1000" height="1094" rx="8" fill="#FAFBFC"/>
+<rect x="0" y="0" width="1000" height="1346" rx="8" fill="#FAFBFC"/>
 <rect x="16" y="16" width="968" height="132" rx="10" fill="url(#tbd-panel)"/>
 <rect x="16" y="160" width="968" height="196" rx="10" fill="url(#tbd-panel)"/>
 <line x1="240.0" y1="66" x2="240.0" y2="138" stroke="#DCE1E6" stroke-width="1.5" stroke-dasharray="3 5"/>
@@ -162,15 +162,10 @@
 <text x="674" y="590" font-size="16" font-weight="600" fill="#2E7D4F">the next commit fixes it</text>
 <g transform="translate(0,242)">
 <rect x="16" y="368" width="968" height="222" rx="10" fill="url(#tbd-panel)"/>
-<rect x="16" y="602" width="968" height="186" rx="10" fill="url(#tbd-panel)"/>
 <line x1="240.0" y1="418" x2="240.0" y2="580" stroke="#DCE1E6" stroke-width="1.5" stroke-dasharray="3 5"/>
 <line x1="480.0" y1="418" x2="480.0" y2="580" stroke="#DCE1E6" stroke-width="1.5" stroke-dasharray="3 5"/>
 <line x1="720.0" y1="418" x2="720.0" y2="580" stroke="#DCE1E6" stroke-width="1.5" stroke-dasharray="3 5"/>
 <line x1="960.0" y1="418" x2="960.0" y2="580" stroke="#DCE1E6" stroke-width="1.5" stroke-dasharray="3 5"/>
-<line x1="240.0" y1="652" x2="240.0" y2="778" stroke="#DCE1E6" stroke-width="1.5" stroke-dasharray="3 5"/>
-<line x1="480.0" y1="652" x2="480.0" y2="778" stroke="#DCE1E6" stroke-width="1.5" stroke-dasharray="3 5"/>
-<line x1="720.0" y1="652" x2="720.0" y2="778" stroke="#DCE1E6" stroke-width="1.5" stroke-dasharray="3 5"/>
-<line x1="960.0" y1="652" x2="960.0" y2="778" stroke="#DCE1E6" stroke-width="1.5" stroke-dasharray="3 5"/>
 <text x="40" y="402" font-size="19" font-weight="700" fill="#002E5D">Team of two</text>
 <rect x="40" y="479" width="72" height="30" rx="15" fill="url(#tbd-navy)"/>
 <text x="76" y="499" font-size="15" font-weight="600" text-anchor="middle" font-family="Menlo, Consolas, monospace" fill="#FFFFFF">main</text>
@@ -213,6 +208,86 @@
 <path d="M566.4 504 V545" fill="none" stroke="#8A939C" stroke-width="1.5"/>
 <circle cx="566.4" cy="494" r="4.5" fill="#5A6672"/>
 <text x="576.4" y="550" font-size="17" fill="#5A6672">Ana pulls main, gets Ben's fix</text>
+<rect x="16" y="602" width="968" height="240" rx="10" fill="url(#tbd-panel)"/>
+<line x1="240.0" y1="652" x2="240.0" y2="832" stroke="#DCE1E6" stroke-width="1.5" stroke-dasharray="3 5"/>
+<line x1="480.0" y1="652" x2="480.0" y2="832" stroke="#DCE1E6" stroke-width="1.5" stroke-dasharray="3 5"/>
+<line x1="720.0" y1="652" x2="720.0" y2="832" stroke="#DCE1E6" stroke-width="1.5" stroke-dasharray="3 5"/>
+<line x1="960.0" y1="652" x2="960.0" y2="832" stroke="#DCE1E6" stroke-width="1.5" stroke-dasharray="3 5"/>
+<text x="40" y="636" font-size="19" font-weight="700" fill="#002E5D">Team of two, several sessions on main on each laptop, pushing to GitHub</text>
+<circle cx="54" cy="674" r="15" fill="#FFFFFF" stroke="#C9D7E8" stroke-width="1.5"/>
+<g transform="translate(45,665) scale(0.75)" fill="none" stroke="#002E5D" stroke-width="2.93" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+  <circle cx="12" cy="7" r="4" /></g>
+<text x="78" y="680" font-size="18" font-weight="600" fill="#2C3E50">Ana's laptop</text>
+<circle cx="54" cy="794" r="15" fill="#FFFFFF" stroke="#C9D7E8" stroke-width="1.5"/>
+<g transform="translate(45,785) scale(0.75)" fill="none" stroke="#002E5D" stroke-width="2.93" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+  <circle cx="12" cy="7" r="4" /></g>
+<text x="78" y="800" font-size="18" font-weight="600" fill="#2C3E50">Ben's laptop</text>
+<rect x="40" y="719" width="72" height="30" rx="15" fill="url(#tbd-navy)"/>
+<text x="76" y="739" font-size="15" font-weight="600" text-anchor="middle" font-family="Menlo, Consolas, monospace" fill="#FFFFFF">main</text>
+<line x1="230" y1="734" x2="968" y2="734" stroke="#002E5D" stroke-width="5" stroke-linecap="round"/>
+<line x1="248" y1="674" x2="342" y2="674" stroke="#0057B8" stroke-width="3" stroke-linecap="round"/>
+<circle cx="262.0" cy="674" r="4.5" fill="#FFFFFF" stroke="#0057B8" stroke-width="2.5"/>
+<circle cx="292.0" cy="674" r="4.5" fill="#FFFFFF" stroke="#0057B8" stroke-width="2.5"/>
+<circle cx="322.0" cy="674" r="4.5" fill="#FFFFFF" stroke="#0057B8" stroke-width="2.5"/>
+<path d="M342.0 680 V720" fill="none" stroke="#0057B8" stroke-width="2" marker-end="url(#tbd-ah)"/>
+<line x1="286" y1="794" x2="432" y2="794" stroke="#6495ED" stroke-width="3" stroke-linecap="round"/>
+<circle cx="300.0" cy="794" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
+<circle cx="336.0" cy="794" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
+<circle cx="372.0" cy="794" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
+<circle cx="408.0" cy="794" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
+<path d="M432.0 788 V748" fill="none" stroke="#6495ED" stroke-width="2" marker-end="url(#tbd-ah)"/>
+<line x1="456" y1="674" x2="556" y2="674" stroke="#0057B8" stroke-width="3" stroke-linecap="round"/>
+<circle cx="470.0" cy="674" r="4.5" fill="#FFFFFF" stroke="#0057B8" stroke-width="2.5"/>
+<circle cx="500.0" cy="674" r="4.5" fill="#FFFFFF" stroke="#0057B8" stroke-width="2.5"/>
+<circle cx="530.0" cy="674" r="4.5" fill="#FFFFFF" stroke="#0057B8" stroke-width="2.5"/>
+<path d="M556.0 680 V720" fill="none" stroke="#0057B8" stroke-width="2" marker-end="url(#tbd-ah)"/>
+<line x1="498" y1="794" x2="590" y2="794" stroke="#6495ED" stroke-width="3" stroke-linecap="round"/>
+<circle cx="512.0" cy="794" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
+<circle cx="548.0" cy="794" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
+<path d="M590.0 788 V758" fill="none" stroke="#A86B00" stroke-width="2" stroke-dasharray="4 4"/>
+<g stroke="#A86B00" stroke-width="2.5" stroke-linecap="round"><line x1="584" y1="752" x2="596" y2="764"/><line x1="596" y1="752" x2="584" y2="764"/></g>
+<path d="M616.0 742 V786" fill="none" stroke="#5A6672" stroke-width="1.8" marker-end="url(#tbd-ah)"/>
+<line x1="590" y1="794" x2="646" y2="794" stroke="#6495ED" stroke-width="3" stroke-linecap="round"/>
+<path d="M646.0 788 V748" fill="none" stroke="#6495ED" stroke-width="2" marker-end="url(#tbd-ah)"/>
+<path d="M646.0 788 V748" fill="none" stroke="#6495ED" stroke-width="2" marker-end="url(#tbd-ah)"/>
+<circle cx="646.0" cy="734" r="22" fill="none" stroke="#2E7D4F" stroke-width="2.5"/>
+<text x="600" y="826" font-size="16" font-weight="600" text-anchor="end" fill="#A86B00">push rejected: conflict</text>
+<text x="626" y="826" font-size="16" font-weight="600" fill="#2E7D4F">agent pulls, resolves it, pushes</text>
+<line x1="728" y1="674" x2="856" y2="674" stroke="#0057B8" stroke-width="3" stroke-linecap="round"/>
+<circle cx="742.0" cy="674" r="4.5" fill="#FFFFFF" stroke="#0057B8" stroke-width="2.5"/>
+<circle cx="772.0" cy="674" r="4.5" fill="#FFFFFF" stroke="#0057B8" stroke-width="2.5"/>
+<circle cx="802.0" cy="674" r="4.5" fill="#FFFFFF" stroke="#0057B8" stroke-width="2.5"/>
+<circle cx="832.0" cy="674" r="4.5" fill="#FFFFFF" stroke="#0057B8" stroke-width="2.5"/>
+<path d="M856.0 680 V720" fill="none" stroke="#0057B8" stroke-width="2" marker-end="url(#tbd-ah)"/>
+<line x1="866" y1="794" x2="932" y2="794" stroke="#6495ED" stroke-width="3" stroke-linecap="round"/>
+<circle cx="880.0" cy="794" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
+<circle cx="908.0" cy="794" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
+<path d="M932.0 788 V748" fill="none" stroke="#6495ED" stroke-width="2" marker-end="url(#tbd-ah)"/>
+<circle cx="325.0" cy="734" r="5.5" fill="#002E5D" stroke="#FFFFFF" stroke-width="2"/>
+<circle cx="342.0" cy="734" r="5.5" fill="#002E5D" stroke="#FFFFFF" stroke-width="2"/>
+<circle cx="359.0" cy="734" r="5.5" fill="#002E5D" stroke="#FFFFFF" stroke-width="2"/>
+<circle cx="406.5" cy="734" r="5.5" fill="#002E5D" stroke="#FFFFFF" stroke-width="2"/>
+<circle cx="423.5" cy="734" r="5.5" fill="#002E5D" stroke="#FFFFFF" stroke-width="2"/>
+<circle cx="440.5" cy="734" r="5.5" fill="#002E5D" stroke="#FFFFFF" stroke-width="2"/>
+<circle cx="457.5" cy="734" r="5.5" fill="#002E5D" stroke="#FFFFFF" stroke-width="2"/>
+<circle cx="539.0" cy="734" r="5.5" fill="#002E5D" stroke="#FFFFFF" stroke-width="2"/>
+<circle cx="556.0" cy="734" r="5.5" fill="#002E5D" stroke="#FFFFFF" stroke-width="2"/>
+<circle cx="573.0" cy="734" r="5.5" fill="#002E5D" stroke="#FFFFFF" stroke-width="2"/>
+<circle cx="637.5" cy="734" r="5.5" fill="#002E5D" stroke="#FFFFFF" stroke-width="2"/>
+<circle cx="654.5" cy="734" r="5.5" fill="#002E5D" stroke="#FFFFFF" stroke-width="2"/>
+<circle cx="830.5" cy="734" r="5.5" fill="#002E5D" stroke="#FFFFFF" stroke-width="2"/>
+<circle cx="847.5" cy="734" r="5.5" fill="#002E5D" stroke="#FFFFFF" stroke-width="2"/>
+<circle cx="864.5" cy="734" r="5.5" fill="#002E5D" stroke="#FFFFFF" stroke-width="2"/>
+<circle cx="881.5" cy="734" r="5.5" fill="#002E5D" stroke="#FFFFFF" stroke-width="2"/>
+<circle cx="923.5" cy="734" r="5.5" fill="#002E5D" stroke="#FFFFFF" stroke-width="2"/>
+<circle cx="940.5" cy="734" r="5.5" fill="#002E5D" stroke="#FFFFFF" stroke-width="2"/>
+</g>
+<g transform="translate(0,494)">
+<rect x="16" y="602" width="968" height="186" rx="10" fill="url(#tbd-panel)"/>
+<line x1="240.0" y1="652" x2="240.0" y2="778" stroke="#DCE1E6" stroke-width="1.5" stroke-dasharray="3 5"/>
+<line x1="480.0" y1="652" x2="480.0" y2="778" stroke="#DCE1E6" stroke-width="1.5" stroke-dasharray="3 5"/>
+<line x1="720.0" y1="652" x2="720.0" y2="778" stroke="#DCE1E6" stroke-width="1.5" stroke-dasharray="3 5"/>
+<line x1="960.0" y1="652" x2="960.0" y2="778" stroke="#DCE1E6" stroke-width="1.5" stroke-dasharray="3 5"/>
 <text x="40" y="636" font-size="19" font-weight="700" fill="#002E5D">Team of two, long-lived branches</text>
 <rect x="40" y="695" width="72" height="30" rx="15" fill="url(#tbd-navy)"/>
 <text x="76" y="715" font-size="15" font-weight="600" text-anchor="middle" font-family="Menlo, Consolas, monospace" fill="#FFFFFF">main</text>
