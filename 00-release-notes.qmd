@@ -4,6 +4,16 @@ This course site is a living product. It gets better during the semester, and ev
 
 New entries appear at the top.
 
+## v2.8.0 (2026-10-10)
+
+Two new appendices: one compares Claude Code with three other coding agents, and one compares Claude Code in the terminal with the desktop app.
+
+- **New appendix, "Claude Code and Other Coding Agents."** Tables map what you learn in this course to Codex (OpenAI), Copilot CLI (GitHub), and Antigravity CLI (Google): what each costs, features, where files live, commands, and keys. It also shows how one repo can work with all four, and what changes for hooks and undo in each tool.
+- **New appendix, "Claude Code in the Terminal and the Desktop App."** What the two share, what the desktop app adds (diff view, app preview, parallel sessions), what only the terminal does, and how to move a session between them.
+- **Computer Setup, optional agents:** Gemini CLI is replaced by Antigravity CLI, which took its place for personal Google accounts on June 18, 2026. Copilot CLI is listed with Copilot Student, which is free for verified students, and Codex now installs with OpenAI's install script.
+- **Chapter 1:** the harness has a more concrete definition: the software that builds each request, sends it to the model, and carries out the tool calls. The figure matches.
+- **Wording:** Claude Code on the web is now called a cloud session, Anthropic's current name, in Chapters 1 and 2.
+
 ## v2.7.2 (2026-10-10)
 
 Chapter 1's tool-call figure now shows that each step is a new request.
