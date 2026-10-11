@@ -461,12 +461,14 @@ Apple Macintosh in January 1984, and came to most PCs with Microsoft Windows 1.0
 which is named for the windows of its interface. The GUI's purpose was to let people use a
 computer without memorizing commands.
 
-![The GUI, the terminal and shell, and APIs sit side by side, and each one asks the operating system to do the work. Neither the GUI nor the shell goes through the other. You talk to Claude Code in plain English, and Claude Code works through the shell and APIs.](images/diagrams/ch01-interfaces.svg){#fig-interfaces fig-alt="Two at the top: you, and Claude Code, joined by an arrow labeled plain English from you to Claude Code. Below them, three boxes side by side: GUI apps, windows, buttons, menus you point at; terminal and shell, commands you type; APIs, requests sent between programs. Arrows go from you to GUI apps and to the terminal and shell, and from Claude Code to the terminal and shell and to APIs. Each of the three boxes has an arrow down to one wide bar, the operating system, macOS, Windows, Linux: files, programs, network, screen. Below it is a bar labeled hardware." width="100%"}
+![The GUI, the terminal and shell, and APIs sit side by side, and each one asks the operating system to do the work. Neither the GUI nor the shell goes through the other. The operating system also reaches other computers over the internet, which is where most APIs and the model itself run. You talk to Claude Code in plain English, and Claude Code works through the shell and APIs.](images/diagrams/ch01-interfaces.svg){#fig-interfaces fig-alt="Two at the top: you, and Claude Code, joined by an arrow labeled plain English from you to Claude Code. Below them, three boxes side by side: GUI apps, windows and buttons you point at; terminal and shell, commands you type; APIs, requests sent between programs. Arrows go from you to GUI apps and to the terminal and shell, and from Claude Code to the terminal and shell and to APIs. Each of the three boxes has an arrow down to one wide bar, the operating system, macOS, Windows, Linux: files, programs, network. Below it is a bar labeled your computer's hardware. To the right, a two-way arrow labeled internet connects the operating system to a panel of other computers: Anthropic, which runs the model, highlighted; GitHub; Supabase; and Vercel." width="100%"}
 
 The GUI and the shell are side by side. A Mac app that opens a file asks macOS to open it; it does
 not type a command into a shell. The shell asks macOS for the same things. Some GUI apps do run
 command-line programs behind the scenes (the Git panel in VS Code runs `git`), but that is a
-choice an app makes, not how GUIs work.
+choice an app makes, not how GUIs work. The operating system is also what reaches the internet.
+Most APIs you will use run on other computers, and so does the model: every request Claude Code
+sends to Claude leaves your computer this way.
 
 **Why this matters for building with agents.** The command line was always the most powerful
 interface: commands are exact, they can be chained together, and they can be saved in a file and
