@@ -4,6 +4,32 @@ This course site is a living product. It gets better during the semester, and ev
 
 New entries appear at the top.
 
+## v2.10.0 (2026-10-10)
+
+A new Architecture appendix on the browser, and new sections in Chapters 1, 2, and 7 on hooks,
+the terminal, interfaces, and how requests cross the internet.
+
+- **New appendix: The Browser, Developer Tools, and Claude in Chrome.** What the browser does
+  with HTML, CSS, and JavaScript; where an app keeps data (page memory, browser storage, or the
+  database, and which to use); the five developer tools panels and the question each answers; and
+  how to connect Claude in Chrome to Claude Code, what it can do, and what to watch. Assigned with
+  Chapter 7 on Mon, Oct 26.
+- **Chapter 7: How a Request Crosses the Internet.** IP addresses, domains, and DNS; the parts of a
+  URL; one request from browser to server and back, with the real text of the request; HTTPS;
+  `localhost` and ports.
+- **Chapter 1:** a figure of one tool call that shows each step as a new request carrying the whole
+  conversation; a clearer definition of the harness; a new section on ways to tell a computer what
+  to do (CLI, GUI, API, natural language), with a figure of where each sits on your computer; and a
+  section on the terminal, the shell, and shell scripts.
+- **Chapter 2: hooks.** A figure of when hooks fire and how one hook runs, step by step, and a
+  close-up of `PreToolUse`. The running example is now a hook that blocks a commit until the
+  changes are reviewed. New patterns for reminding Claude to update help docs, and a rule for when
+  a hook should block and when it should only remind. The advice-versus-enforcement example now
+  uses `git push`. The continuous integration figure uses standard terms.
+- **Chapter 9:** the trunk-based development figure now shows a team of two pushing to GitHub,
+  including a rejected push and how it is resolved.
+- **Appendix A3:** working across several folders and sessions, in the terminal and the desktop app.
+
 ## v2.9.0 (2026-10-10)
 
 New appendix on Codex in the terminal and the ChatGPT desktop app, and scorecards comparing each CLI in VS Code with its desktop app.
