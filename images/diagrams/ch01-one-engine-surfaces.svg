@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 540" role="img" aria-labelledby="t6 d6" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
   <title id="t6">One engine, four surfaces</title>
-  <desc id="d6">Two panels. Your laptop: the terminal, the VS Code extension, and the desktop app all read the same things on your machine: the configuration files (CLAUDE.md, skills, hooks, MCP servers, and settings) and, in a separate box, auto memory, the notes Claude writes for itself in ~/.claude/projects/&lt;project&gt;/memory/, labeled stays on this laptop. In the cloud: a web session at claude.ai/code runs on a fresh clone of your GitHub repo, which holds only what you committed and pushed. A highlighted arrow labeled git push runs from the configuration files to the repo; no arrow leaves auto memory. A note says auto memory and files that live only on your laptop, such as ~/.claude/settings.json, settings.local.json, and .env, are not there.</desc>
+  <desc id="d6">Two panels. Your laptop: the terminal, the VS Code extension, and the desktop app all read the same things on your machine: the configuration files (CLAUDE.md, skills, hooks, MCP servers, and settings) and, in a separate box, auto memory, the notes Claude writes for itself in ~/.claude/projects/&lt;project&gt;/memory/, labeled stays on this laptop. In the cloud: a cloud session at claude.ai/code runs on a fresh clone of your GitHub repo, which holds only what you committed and pushed. A highlighted arrow labeled git push runs from the configuration files to the repo; no arrow leaves auto memory. A note says auto memory and files that live only on your laptop, such as ~/.claude/settings.json, settings.local.json, and .env, are not there.</desc>
   <defs>
     <linearGradient id="sf-panel" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#F6F8FA"/><stop offset="100%" stop-color="#EDF0F3"/></linearGradient>
     <linearGradient id="sf-bar" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0E3F6A"/><stop offset="100%" stop-color="#001A36"/></linearGradient>
@@ -47,7 +47,7 @@
   <rect x="690" y="88" width="258" height="148" rx="10" fill="url(#sf-card)" stroke="#D9DEE4" stroke-width="1.2" filter="url(#sf-shadow)"/>
   <circle cx="819" cy="132" r="26" fill="#E6EEF7"/>
   <g transform="translate(805.0,118.0) scale(1.1667)" fill="none" stroke="#002E5D" stroke-width="1.886" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" /> <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" /> <path d="M2 12h20" /></g>
-  <text x="819" y="190" text-anchor="middle" font-size="19" font-weight="700" fill="#002E5D">Web session</text>
+  <text x="819" y="190" text-anchor="middle" font-size="19" font-weight="700" fill="#002E5D">Cloud session</text>
   <text x="819" y="214" text-anchor="middle" font-size="15" fill="#5A6672">claude.ai/code</text>
   <rect x="690" y="284" width="258" height="96" rx="10" fill="url(#sf-card)" stroke="#0057B8" stroke-width="2" filter="url(#sf-shadow)"/>
   <g transform="translate(713.0,317.0) scale(1.2500)" fill="none" stroke="#0057B8" stroke-width="1.760" stroke-linecap="round" stroke-linejoin="round"><line x1="6" x2="6" y1="3" y2="15" /> <circle cx="18" cy="6" r="3" /> <circle cx="6" cy="18" r="3" /> <path d="M18 9a9 9 0 0 1-9 9" /></g>

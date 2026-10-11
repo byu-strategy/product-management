@@ -601,11 +601,11 @@ Instruction in this course uses Claude Code, but the same model applies to other
 | **Terminal (CLI)** | `claude` typed in any terminal, including VS Code's | You want every feature, scripting (`claude -p`), or a terminal workflow. The docs call it the most complete surface |
 | **VS Code extension** | A chat panel in the editor, opened from the Spark icon | You want inline diffs next to your code and to stay in the editor |
 | **Desktop app** | The Code tab in the Claude desktop app | You want a visual diff viewer, an app preview, and several sessions side by side |
-| **Web** ([claude.ai/code](https://claude.ai/code)) | A session that runs in Anthropic's cloud on a fresh clone of your GitHub repo | A long task that should keep running after you close the laptop |
+| **Cloud session** ([claude.ai/code](https://claude.ai/code), formerly Claude Code on the web) | A session that runs in Anthropic's cloud on a fresh clone of your GitHub repo | A long task that should keep running after you close the laptop |
 
-What carries across: the terminal, the VS Code extension, and the desktop app read the **same configuration files** on your machine: `CLAUDE.md`, skills, hooks, MCP servers, and `settings.json`. Chapter 2 explains each of these; for now, what matters is that all three surfaces share them. Learn them once in the terminal and you have learned them for the app. A web session is different because it runs on another computer: it sees what you have committed to your repo (saved as a version with git) and pushed (uploaded to GitHub), such as the project `CLAUDE.md` and `.claude/settings.json`. It does not see what lives only on your laptop: `~/.claude/settings.json`, `.claude/settings.local.json`, and your `.env` (the file that holds your secret keys and passwords).
+What carries across: the terminal, the VS Code extension, and the desktop app read the **same configuration files** on your machine: `CLAUDE.md`, skills, hooks, MCP servers, and `settings.json`. Chapter 2 explains each of these; for now, what matters is that all three surfaces share them. Learn them once in the terminal and you have learned them for the app. A cloud session is different because it runs on another computer: it sees what you have committed to your repo (saved as a version with git) and pushed (uploaded to GitHub), such as the project `CLAUDE.md` and `.claude/settings.json`. It does not see what lives only on your laptop: `~/.claude/settings.json`, `.claude/settings.local.json`, and your `.env` (the file that holds your secret keys and passwords).
 
-![The three local surfaces share your configuration files and Claude's auto memory. A web session sees only what you pushed to GitHub; auto memory is stored in your home folder, outside the repo, so it stays on the computer where Claude wrote it.](images/diagrams/ch01-one-engine-surfaces.svg){#fig-one-engine-surfaces fig-alt="Two panels. Your laptop: Terminal, VS Code extension, and Desktop app cards each point down to one shaded area holding two boxes. The first is a dark bar, The same configuration files: CLAUDE.md, skills, hooks, MCP, settings. Below it is a separate box, Auto memory, stored under ~/.claude/projects/ in your home folder, labeled stays on this laptop. A highlighted arrow labeled git push runs from the configuration bar to a card in the cloud panel, Your GitHub repo, what you pushed; no arrow leaves auto memory. From the repo, an arrow labeled fresh clone points up to Web session, claude.ai/code. A note says not there: auto memory, ~/.claude/settings.json, settings.local.json, .env." width="100%"}
+![The three local surfaces share your configuration files and Claude's auto memory. A cloud session sees only what you pushed to GitHub; auto memory is stored in your home folder, outside the repo, so it stays on the computer where Claude wrote it.](images/diagrams/ch01-one-engine-surfaces.svg){#fig-one-engine-surfaces fig-alt="Two panels. Your laptop: Terminal, VS Code extension, and Desktop app cards each point down to one shaded area holding two boxes. The first is a dark bar, The same configuration files: CLAUDE.md, skills, hooks, MCP, settings. Below it is a separate box, Auto memory, stored under ~/.claude/projects/ in your home folder, labeled stays on this laptop. A highlighted arrow labeled git push runs from the configuration bar to a card in the cloud panel, Your GitHub repo, what you pushed; no arrow leaves auto memory. From the repo, an arrow labeled fresh clone points up to Cloud session, claude.ai/code. A note says not there: auto memory, ~/.claude/settings.json, settings.local.json, .env." width="100%"}
 
 Three gotchas students hit:
 
@@ -614,7 +614,7 @@ Three gotchas students hit:
 - Some terminal commands, such as `/permissions`, are not available in the desktop app; you edit the settings file instead.
 
 ::: {.callout-tip title="Try it"}
-Predict, then check: you add a line to your project's `CLAUDE.md` while working in the terminal. Will a session in the VS Code extension see it? Will a web session at claude.ai/code see it if you have not committed and pushed the file? (Yes; no.)
+Predict, then check: you add a line to your project's `CLAUDE.md` while working in the terminal. Will a session in the VS Code extension see it? Will a cloud session at claude.ai/code see it if you have not committed and pushed the file? (Yes; no.)
 :::
 
 <!-- learn -->
@@ -737,8 +737,8 @@ When you want to see a UI idea in seconds before building it properly, a browser
 - **VS Code**: the free code editor used throughout the course, with a file browser, an editor, a
   terminal, and the Claude Code extension in one window.
 - **Claude Code, one engine with many surfaces**: Anthropic's coding agent, run from the
-  terminal, the VS Code extension, the desktop app, or the web. The three local surfaces share
-  the same configuration files; a web session sees only what you have pushed to GitHub.
+  terminal, the VS Code extension, the desktop app, or a cloud session. The three local surfaces share
+  the same configuration files; a cloud session sees only what you have pushed to GitHub.
 - **`.claude` folder**: where a project's Claude Code configuration lives: settings, and later
   skills, hooks, and subagents. `CLAUDE.md` is a separate file.
 - **Explanatory output style**: a setting that makes Claude add *Insight* notes explaining the

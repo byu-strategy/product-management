@@ -126,7 +126,7 @@ who writes them and where they live:
 | **Who writes it** | You (or Claude, when you ask) | Claude, when it decides something is worth keeping |
 | **Where it lives** | In your project folder, so it is committed with the code | In your home folder, `~/.claude/projects/<project>/memory/` |
 | **What loads** | The whole file, every session | An index file, `MEMORY.md` (its first 200 lines), every session; the rest when Claude needs it |
-| **Who else gets it** | Anyone who clones the repo, and web sessions | Nobody. The terminal, VS Code, and the desktop app on the same computer share it; another computer, a teammate, or a web session does not |
+| **Who else gets it** | Anyone who clones the repo, and cloud sessions | Nobody. The terminal, VS Code, and the desktop app on the same computer share it; another computer, a teammate, or a cloud session does not |
 
 Check what Claude has saved with `/memory`. When a saved note matters to the project, move it
 into CLAUDE.md so it reaches everyone who works on the code.
@@ -689,7 +689,7 @@ Pick "GitHub Actions" if your site has a build step, which anything beyond plain
   agent cannot work out from the code (decisions, constraints, traps, commands, the definition of
   done), and keep it short. Project, local, and personal files all combine.
 - **Auto memory**: notes Claude writes for itself, stored in your home folder on one computer.
-  Teammates and web sessions never see it, so move a note that matters into CLAUDE.md.
+  Teammates and cloud sessions never see it, so move a note that matters into CLAUDE.md.
 - **Slash command**: a command recognized at the start of a message, with anything after it as
   its argument. Your own saved commands are now skills.
 - **Skill**: a reusable procedure in a folder with a `SKILL.md` file, run by name or loaded when
