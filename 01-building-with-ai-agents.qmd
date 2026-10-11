@@ -437,6 +437,47 @@ this mechanism:
   code plays Claude Code's part: it receives the call, decides whether to run it, and sends the
   result back (Chapter 11).
 
+#### Ways to tell a computer what to do
+
+An **interface** is how one side tells a computer what to do and gets an answer back. Interfaces
+differ in what is exchanged and in who they were built for:
+
+| Interface | What is exchanged | Built for | Who uses it now |
+|---|---|---|---|
+| **CLI** (command-line interface) | Typed commands in an exact format | People | People, and agents such as Claude Code |
+| **GUI** (graphical user interface) | Windows, buttons, and menus you point at | People | People. An agent can use one by reading screenshots and clicking, when nothing else is available |
+| **API** (application programming interface) | Structured requests and replies, often JSON | Programs | Programs, including agents |
+| **Natural language** | Plain sentences | People | People talking to agents and chat apps |
+
+A keyboard, a mouse, a touchscreen, and a microphone are not interfaces. They are input devices,
+and each can carry more than one interface: the keyboard types both commands and chat messages.
+Voice is a way to deliver natural language.
+
+The order they arrived in explains a lot. Early computers ran **batch jobs**: you handed in a stack
+of punched cards and got a printout back later. In 1961, MIT demonstrated **time-sharing**, where
+many people typed at terminals and the computer answered each one in turn; the command line comes
+from there. The **GUI** was built at Xerox PARC on the Alto in 1973, reached a mass market with the
+Apple Macintosh in January 1984, and came to most PCs with Microsoft Windows 1.0 in November 1985,
+which is named for the windows of its interface. The GUI's purpose was to let people use a
+computer without memorizing commands.
+
+![The GUI, the terminal and shell, and APIs sit side by side, and each one asks the operating system to do the work. Neither the GUI nor the shell goes through the other. You talk to Claude Code in plain English, and Claude Code works through the shell and APIs.](images/diagrams/ch01-interfaces.svg){#fig-interfaces fig-alt="Two at the top: you, and Claude Code, joined by an arrow labeled plain English from you to Claude Code. Below them, three boxes side by side: GUI apps, windows, buttons, menus you point at; terminal and shell, commands you type; APIs, requests sent between programs. Arrows go from you to GUI apps and to the terminal and shell, and from Claude Code to the terminal and shell and to APIs. Each of the three boxes has an arrow down to one wide bar, the operating system, macOS, Windows, Linux: files, programs, network, screen. Below it is a bar labeled hardware." width="100%"}
+
+The GUI and the shell are side by side. A Mac app that opens a file asks macOS to open it; it does
+not type a command into a shell. The shell asks macOS for the same things. Some GUI apps do run
+command-line programs behind the scenes (the Git panel in VS Code runs `git`), but that is a
+choice an app makes, not how GUIs work.
+
+**Why this matters for building with agents.** The command line was always the most powerful
+interface: commands are exact, they can be chained together, and they can be saved in a file and
+run again. It was also the hardest to learn, which is why the GUI took over. An agent removes the
+hard part. You describe what you want in plain English, and the agent writes and runs the
+commands. You get the command line's reach without memorizing it, which is why Claude Code is
+built as a CLI. Two qualifications. A GUI is still the better tool for visual work, such as
+designing a screen or reading a chart. And the same reach that lets an agent do anything on your
+computer lets it break anything, which is the subject of [Blast Radius](02-directing-the-agent.qmd#blast-radius) in
+Chapter 2.
+
 #### The terminal, the shell, and scripts
 
 The `Bash` tool runs "a terminal command," but the terminal is only the window. The program that
