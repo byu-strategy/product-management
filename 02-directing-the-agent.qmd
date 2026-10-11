@@ -635,17 +635,22 @@ risk classification, deploy monitoring, and incident response. When generating c
 everything that checks the code becomes the constraint. This is why your own loop has tests, code
 review, and a real deploy in it, and why Chapters 9 and 9b exist.
 
-![What CI does, and why it becomes the slowest step once AI writes the code. Top: every change sent to GitHub is set up on a blank computer and checked the same way, ending in a green check or a red X. Bottom: the same 51 minutes drawn to scale (illustrative times). A person spends most of the time writing; the AI spends most of it waiting on CI checks, including one that found a problem and had to run again after the fix.](images/diagrams/ch02-ci-run.svg){#fig-ci-run fig-alt="Two parts. Top: what one CI check does. Your change is sent to GitHub, and an arrow leads into a panel labeled GitHub sets it up on a blank computer, holding four numbered steps in order: copy your code, download add-ons, put the app together, run the checks. From the last step, one arrow leads to a green check labeled works, and another to a red X labeled broken, sent back to fix. Bottom: two timelines drawn to the same scale of 0 to 51 minutes, labeled illustrative. Dashed lines connect the first CI check in the AI's timeline to the top panel, showing that each CI check is those four steps. AI writes: 3 minutes writing, a 10-minute CI check that fails, 2 minutes fixing, a 10-minute CI check that passes, then two more rounds of 3 minutes writing and a 10-minute CI check that passes. Total: 3 changes, with 40 of 51 minutes spent waiting on CI checks. Person writes: 41 minutes writing, then one 10-minute CI check that passes. Total: 1 change, with 10 of 51 minutes in CI." width="100%"}
+![What one CI run does, and why CI becomes the slow part once an AI agent writes the code. Top: every push to GitHub starts the same four steps on a fresh virtual machine, and the result is a green check or a red X. A red X means fix the code and push again, which starts another run. Bottom: one change written by a person and one written by an AI agent, drawn to the same scale (illustrative times). The CI run takes the same 10 minutes in both. For the person it is a small part of the change; for the agent it is most of it.](images/diagrams/ch02-ci-run.svg){#fig-ci-run fig-alt="Two parts. Top: what one CI run does. A git push sends the latest commit to GitHub, and an arrow leads into a panel labeled GitHub Actions runner, a fresh virtual machine, holding four numbered steps in order: check out the code, install packages, build the app, run the tests. From the last step, one arrow leads to a green check labeled pass, and another to a red X labeled fail. Bottom: two horizontal bars on one scale of 0 to 51 minutes, labeled illustrative. One change, by a person: writing code, 41 min, then CI, 10 min; 51 minutes in all. One change, by an AI agent: writing code, 3 min, then CI, 10 min; 13 minutes in all. The CI segment is the same length in both bars, so for the agent it is most of the time the change takes." width="100%"}
 
 Words used in this figure:
 
 | Term | What it means |
 |---|---|
-| CI check | The automatic test GitHub runs every time a change arrives, ending in a green check or a red X. CI stands for continuous integration |
-| Blank computer | A new computer in GitHub's data center with nothing extra installed, so the app has to work without anything that happens to be on your laptop |
-| Add-ons (packages) | Code other people wrote that your app uses, such as a login system or a date picker. The app keeps a list of them, and this step downloads everything on the list |
-| Put the app together (build) | Turn the code you wrote into the files that actually run. If the pieces do not fit, this step fails |
-| Run the checks (tests) | Small programs written ahead of time that use the app and confirm it gives the right answers, such as "a wrong password shows an error." They catch only what someone thought to check |
+| Commit | A saved snapshot of your code, with a message saying what changed |
+| `git push` | The command that sends your commits from your laptop to your repository on GitHub |
+| CI (continuous integration) | Building and testing every change automatically as soon as it is pushed, so problems show up right away |
+| GitHub Actions | GitHub's service that runs CI. A file in the repo (in `.github/workflows/`) lists the steps and says when to run them, such as on every push |
+| Runner | The computer that runs the steps. GitHub starts a fresh virtual machine (a temporary computer in its data center) for each run and deletes it afterward, so nothing left over from earlier runs or from your laptop can make the app pass by accident |
+| Check out the code | Copy the code from the repository onto the runner |
+| Packages | Code other people wrote that your app depends on, such as a date library. Your repo lists them (in `package.json` for a JavaScript app), and "install packages" downloads every one on the list |
+| Build | Turn the source code into the files that actually run. A build fails if the code has certain errors, such as a missing file or a type error |
+| Tests | Small programs, written ahead of time, that run parts of your app and check the results. They catch only what someone wrote a test for |
+| Pass / fail | The result GitHub shows next to the commit: a green check if every step succeeded, a red X if any step failed |
 
 **Risk classification decides where the human goes.** The diamond in the middle is the design
 decision that makes the whole system work. Not every change needs a person, and pretending
