@@ -116,7 +116,38 @@ Sources: [Coming from the CLI](https://code.claude.com/docs/en/desktop#coming-fr
 
 `/desktop` and `claude --desktop` work on macOS and Windows (x64) when you sign in with a Claude subscription. They do not work with an API key.
 
-## Things that surprise people
+## Working across several folders {#working-across-several-folders}
+
+Sources: [working directories](https://code.claude.com/docs/en/permissions#working-directories), [additional directories](https://code.claude.com/docs/en/permissions#additional-directories-grant-file-access-not-configuration), [CLAUDE.md from additional directories](https://code.claude.com/docs/en/memory), [CLI flag equivalents](https://code.claude.com/docs/en/desktop#cli-flag-equivalents).
+
+A session starts with access to one folder. Some work spans several: a website repo and a notes folder, or one folder of instructions that should apply to many projects. There are three ways to add folders, and they do not all do the same thing:
+
+| How | Lasts | Gives file access | Loads that folder's skills, subagents, and commands | Works in the desktop app |
+|---|---|---|---|---|
+| `claude --add-dir <path>` at launch | This session | Yes | Yes | No. The app has no equivalent for local sessions; cloud sessions can add more repos with **+** |
+| `/add-dir <path>` in a session | This session | Yes | Yes | Not documented. The app refuses only commands that have no argument form, so it may work; try it |
+| `permissions.additionalDirectories` in a settings file | Every session that reads that file | Yes | No: "file access only" | Yes, because the app reads the same settings files |
+
+Two details matter:
+
+- **An added folder's `CLAUDE.md` does not load by default**, whichever way you add it. Setting the environment variable `CLAUDE_CODE_ADDITIONAL_DIRECTORIES_CLAUDE_MD=1` turns it on for folders added with `--add-dir` or `/add-dir`. Remember that the app does not read variables you export in `~/.zshrc`; set it in the app's local environment editor instead (see [Things that surprise people](#things-that-surprise-people)). A simpler route that works everywhere: import the other folder's file from your project's `CLAUDE.md` with a line such as `@../notes/CLAUDE.md`.
+- **The app has no screen for this.** Its `/permissions` command, which manages working directories in the terminal, is not available in the app, and its Settings page does not list extra folders. To set it up from the app, ask Claude to add the folders to `permissions.additionalDirectories` in the project's `.claude/settings.json` (the built-in `/update-config` skill does this). The app is built around one project folder per session; working across many is still easier from the terminal.
+
+## Sessions that talk to each other {#sessions-that-talk-to-each-other}
+
+Sources: [tools reference](https://code.claude.com/docs/en/tools-reference) (`SendMessage`, `ListAgents`), [work across sessions](https://code.claude.com/docs/en/desktop#work-across-sessions), [what's not available in Desktop](https://code.claude.com/docs/en/desktop#whats-not-available-in-desktop).
+
+Claude Code has three ways for one Claude to work with another, and the two surfaces support them differently:
+
+| Feature | How it works | Terminal | Desktop app |
+|---|---|---|---|
+| **Subagents** | One way: Claude gives a subagent a task and gets back one report | Yes | Yes |
+| **Cross-session messaging** | Back and forth: one session sends another a message with `SendMessage`; the other reads it when its current work finishes and can reply. `/list-agents` (alias `/peers`) shows who you can reach | Yes: your other local sessions, plus cloud and remote sessions while Remote Control is connected | Yes, in plain language ("tell the payments session the schema changed"), but only between sessions the app runs |
+| **Agent teams** | A lead Claude assigns tasks to teammate sessions from a shared task list, and they message each other | Yes | No |
+
+The catch is the boundary between surfaces. Through the app, Claude "doesn't see cloud sessions, or sessions you started from the terminal CLI or the VS Code extension, even in worktrees of the same project." If several sessions need to coordinate, run them all in the terminal or all in the app. A session can refuse incoming messages with the `crossSessionInbound` setting.
+
+## Things that surprise people {#things-that-surprise-people}
 
 From the [troubleshooting](https://code.claude.com/docs/en/desktop#troubleshooting) and [local sessions](https://code.claude.com/docs/en/desktop#local-sessions) sections:
 
@@ -158,19 +189,21 @@ Many people who started with the CLI in VS Code have moved to the desktop app, a
 | See the running app, and let the agent check it | 1: you open it in your browser; Claude can drive Chrome with `claude --chrome` or an MCP server | 2: Browser pane; Claude checks its own work after each edit |
 | Preview other files (HTML, PDF, images) | 1: Markdown and images; other types need extensions | 2: HTML, PDF, image, and video files open in the Browser pane |
 | Feed the agent your editor's context | 2: your selection, the open file, and the Problems panel | 1: `@` mentions and attachments; no editor connection |
-| Run several agents at once | 1: one terminal per session; `claude -w` for a worktree; `claude agents` for background sessions | 2: sidebar of sessions, a worktree checkbox, split view, sessions that message each other |
+| Run several agents at once | 1: one terminal per session; `claude -w` for a worktree; `claude agents` for background sessions | 2: sidebar of sessions, a worktree checkbox, split view |
+| Have sessions work together | 2: messages between local sessions, and agent teams with a shared task list | 1: messages between app sessions only; no agent teams |
+| Work across several folders | 2: `--add-dir` and `/add-dir`, which also load each folder's skills | 1: a settings file you edit by hand or through Claude; file access only, no screen for it |
 | Every command, scripts, and CI | 2: all commands and flags, `claude -p` | 1: a subset; no `-p`; panel commands such as `/permissions` don't open |
 | Set safety rules | 2: `/permissions` and `/hooks` panels, plus the settings files | 1: the same settings files, edited by hand; mode menu |
 | Use editor extensions | 2: the whole VS Code marketplace | 0: none |
 | Keep work going when you step away | 1: `/remote-control`, `claude --cloud`, `/schedule` | 2: all of those, plus notifications, PR auto-fix, scheduled tasks, Dispatch from your phone |
 | Setup | 1: VS Code, the CLI, and the extension | 2: one download |
-| **Total (of 24)** | **18** | **17** |
+| **Total (of 28)** | **22** | **19** |
 
 Scores are 2 (does this well), 1 (does it partly, or with extra setup), or 0 (cannot). They are our judgment, based on what each product's documentation says it does, not on timed tests. Each row is worth the same, which may not match how you work: weight the rows you do most.
 
-**What the scores show.** The totals are close because the two setups win at different jobs:
+**What the scores show.** The two setups win at different jobs:
 
-- **VS Code wins when you work on the code yourself.** Finding a file, clicking a path in Claude's output to land on the exact line, editing it with full editor support, using extensions, and handing Claude your editor's errors and selection all happen in one window. It also has every command and flag.
+- **VS Code wins when you work on the code yourself.** Finding a file, clicking a path in Claude's output to land on the exact line, editing it with full editor support, using extensions, and handing Claude your editor's errors and selection all happen in one window. It also has every command and flag, and it is the better setup for work that spans several folders or several coordinating sessions ([above](#working-across-several-folders)).
 - **The app wins when you direct and review the agent.** Commenting on a diff line by line, watching Claude test its own change in the Browser pane, previewing a PDF or HTML file, and running several sessions side by side take less setup in the app than in VS Code.
 
 The more of your time goes to reading and editing code, the more VS Code pays off. The more of it goes to giving instructions and reviewing results, the more the app does. You do not have to pick one: both read the same `CLAUDE.md`, skills, and settings, `/desktop` moves a session from the terminal to the app, and **Open in** sends any file from the app to VS Code.
