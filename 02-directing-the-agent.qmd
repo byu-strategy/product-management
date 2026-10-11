@@ -273,6 +273,22 @@ Two different things are both called "hooks," and it helps to keep them apart:
   commit came from you, from Claude, or from anyone else. Husky (below) is a popular way to set
   them up.
 
+A Claude Code hook has three parts: **when** it fires (the event), **what** it watches (the
+matcher), and **what it runs** (your script). The script's exit code is its answer.
+
+![Top: the four events you will use most, pinned to the points in the agent loop where they fire. Bottom: one PreToolUse hook blocking an edit to `.env`. Claude Code checks the event and matcher, sends your script the planned action as JSON, and acts on the exit code the script returns. Only exit 2 blocks; exit 1 lets the action through.](images/diagrams/ch02-hook-anatomy.svg){#fig-hook-anatomy fig-alt="Two parts. Top, labeled when hooks fire: five steps in a row: session starts, you send a message, model asks for a tool, tool runs, model finishes its reply. An arrow loops from tool runs back to model asks for a tool, labeled repeats until a reply has no tool call. Four event pins: SessionStart on session starts, PreToolUse between model asks for a tool and tool runs, PostToolUse right after tool runs, Stop on model finishes its reply. Bottom, labeled one hook, step by step: three columns, the model, Claude Code, and your hook script. 1: the model sends a tool call to Claude Code: Edit, file_path .env. 2: Claude Code checks its hook settings: event PreToolUse, matcher Edit or Write. 3: Claude Code sends the script the input as JSON: tool_name Edit, tool_input with file_path .env. 4: the script decides: the file is .env, so it prints a reason and exits with 2. 5: the exit code goes back to Claude Code. Three outcome rows: exit 0, the edit runs; exit 2, blocked, with an arrow carrying the reason to the model; exit 1 or any other code, a warning, and the edit still runs." width="100%"}
+
+Words used in this section:
+
+| Term | What it means |
+|---|---|
+| **Event** | The point in the agent loop where a hook can fire, such as `PreToolUse` (before a tool runs) |
+| **Matcher** | Which tools the hook watches, such as `Edit\|Write` (an edit or a new file) or `Bash` (a terminal command) |
+| **Hook script** | A short program you write. Claude Code runs it at the event and waits for its answer |
+| **JSON** | A plain-text format for structured data. Claude Code uses it to tell the script what Claude is about to do |
+| **Exit code** | The number a program returns when it ends. For a hook, it is the decision: `0` lets the action run, `2` blocks it |
+| **Reason** | The message the script prints when it blocks an action. Claude Code passes it to the model, which can try something else |
+
 The events you will use most:
 
 | Event | When it fires | Typical use |
