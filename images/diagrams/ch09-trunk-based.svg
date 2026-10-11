@@ -226,37 +226,37 @@
 <line x1="230" y1="734" x2="968" y2="734" stroke="#002E5D" stroke-width="5" stroke-linecap="round"/>
 <line x1="294" y1="674" x2="958" y2="674" stroke="#0057B8" stroke-width="3" stroke-linecap="round"/>
 <line x1="410" y1="794" x2="958" y2="794" stroke="#6495ED" stroke-width="3" stroke-linecap="round"/>
-<path d="M244.0 725 L294.0 684" fill="none" stroke="#5A6672" stroke-width="1.8" marker-end="url(#tbd-ah)"/>
+<path d="M251.0 725.5 L287.6 681.7" fill="none" stroke="#3E4A56" stroke-width="2.4" marker-end="url(#tbd-ah)"/>
 <circle cx="316.0" cy="674" r="4.5" fill="#FFFFFF" stroke="#0057B8" stroke-width="2.5"/>
 <circle cx="338.0" cy="674" r="4.5" fill="#FFFFFF" stroke="#0057B8" stroke-width="2.5"/>
 <circle cx="360.0" cy="674" r="4.5" fill="#FFFFFF" stroke="#0057B8" stroke-width="2.5"/>
 <path d="M360.0 681 V721" fill="none" stroke="#0057B8" stroke-width="2" marker-end="url(#tbd-ah)"/>
-<path d="M360.0 743 L410.0 784" fill="none" stroke="#5A6672" stroke-width="1.8" marker-end="url(#tbd-ah)"/>
+<path d="M367.0 742.5 L403.6 786.3" fill="none" stroke="#3E4A56" stroke-width="2.4" marker-end="url(#tbd-ah)"/>
 <circle cx="430.0" cy="794" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
 <circle cx="450.0" cy="794" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
 <circle cx="470.0" cy="794" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
 <path d="M470.0 787 V747" fill="none" stroke="#6495ED" stroke-width="2" marker-end="url(#tbd-ah)"/>
-<path d="M470.0 725 L520.0 684" fill="none" stroke="#5A6672" stroke-width="1.8" marker-end="url(#tbd-ah)"/>
+<path d="M477.0 725.5 L513.6 681.7" fill="none" stroke="#3E4A56" stroke-width="2.4" marker-end="url(#tbd-ah)"/>
 <circle cx="540.0" cy="674" r="4.5" fill="#FFFFFF" stroke="#0057B8" stroke-width="2.5"/>
 <circle cx="560.0" cy="674" r="4.5" fill="#FFFFFF" stroke="#0057B8" stroke-width="2.5"/>
 <path d="M560.0 681 V721" fill="none" stroke="#0057B8" stroke-width="2" marker-end="url(#tbd-ah)"/>
 <circle cx="510.0" cy="794" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
-<circle cx="594.0" cy="794" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
-<path d="M594.0 787 V756" fill="none" stroke="#A86B00" stroke-width="2" stroke-dasharray="4 4"/>
-<g stroke="#A86B00" stroke-width="2.5" stroke-linecap="round"><line x1="588" y1="744" x2="600" y2="756"/><line x1="600" y1="744" x2="588" y2="756"/></g>
-<path d="M560.0 743 L610.0 784" fill="none" stroke="#5A6672" stroke-width="1.8" marker-end="url(#tbd-ah)"/>
+<circle cx="574.0" cy="794" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
+<path d="M574.0 787 V774" fill="none" stroke="#A86B00" stroke-width="2" stroke-dasharray="3 3"/>
+<g stroke="#A86B00" stroke-width="2.5" stroke-linecap="round"><line x1="568" y1="762" x2="580" y2="774"/><line x1="580" y1="762" x2="568" y2="774"/></g>
+<path d="M567.0 742.5 L603.6 786.3" fill="none" stroke="#3E4A56" stroke-width="2.4" marker-end="url(#tbd-ah)"/>
 <circle cx="640.0" cy="794" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
 <path d="M640.0 787 V747" fill="none" stroke="#6495ED" stroke-width="2" marker-end="url(#tbd-ah)"/>
 <circle cx="640" cy="734" r="13" fill="none" stroke="#2E7D4F" stroke-width="2.5"/>
-<text x="588" y="826" font-size="16" font-weight="600" text-anchor="end" fill="#A86B00">rejected: Ana pushed first</text>
+<text x="590" y="826" font-size="16" font-weight="600" text-anchor="end" fill="#A86B00">rejected: Ana pushed first</text>
 <text x="614" y="826" font-size="16" font-weight="600" fill="#2E7D4F">pull, agent resolves conflict, push</text>
-<path d="M640.0 725 L690.0 684" fill="none" stroke="#5A6672" stroke-width="1.8" marker-end="url(#tbd-ah)"/>
+<path d="M647.0 725.5 L683.6 681.7" fill="none" stroke="#3E4A56" stroke-width="2.4" marker-end="url(#tbd-ah)"/>
 <circle cx="716.0" cy="674" r="4.5" fill="#FFFFFF" stroke="#0057B8" stroke-width="2.5"/>
 <circle cx="752.0" cy="674" r="4.5" fill="#FFFFFF" stroke="#0057B8" stroke-width="2.5"/>
 <circle cx="788.0" cy="674" r="4.5" fill="#FFFFFF" stroke="#0057B8" stroke-width="2.5"/>
 <circle cx="824.0" cy="674" r="4.5" fill="#FFFFFF" stroke="#0057B8" stroke-width="2.5"/>
 <path d="M824.0 681 V721" fill="none" stroke="#0057B8" stroke-width="2" marker-end="url(#tbd-ah)"/>
-<path d="M824.0 743 L874.0 784" fill="none" stroke="#5A6672" stroke-width="1.8" marker-end="url(#tbd-ah)"/>
+<path d="M831.0 742.5 L867.6 786.3" fill="none" stroke="#3E4A56" stroke-width="2.4" marker-end="url(#tbd-ah)"/>
 <circle cx="900.0" cy="794" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
 <circle cx="926.0" cy="794" r="4.5" fill="#FFFFFF" stroke="#6495ED" stroke-width="2.5"/>
 <path d="M926.0 787 V747" fill="none" stroke="#6495ED" stroke-width="2" marker-end="url(#tbd-ah)"/>
