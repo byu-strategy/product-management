@@ -276,7 +276,7 @@ Two different things are both called "hooks," and it helps to keep them apart:
 A Claude Code hook has three parts: **when** it fires (the event), **what** it watches (the
 matcher), and **what it runs** (your script). The script's exit code is its answer.
 
-![Top: the four events you will use most, pinned to the points in the agent loop where they fire. Bottom: one PreToolUse hook blocking an edit to `.env`. Claude Code checks the event and matcher, sends your script the planned action as JSON, and acts on the exit code the script returns. Only exit 2 blocks; exit 1 lets the action through. @fig-pretooluse zooms in on PreToolUse.](images/diagrams/ch02-hook-anatomy.svg){#fig-hook-anatomy fig-alt="Two parts. Top, labeled when hooks fire: five steps in a row: session starts, you send a message, model asks for a tool, tool runs, model finishes its reply. An arrow loops from tool runs back to model asks for a tool, labeled repeats until a reply has no tool call. Four event pins: SessionStart on session starts, PreToolUse between model asks for a tool and tool runs, PostToolUse right after tool runs, Stop on model finishes its reply. Bottom, labeled one hook, step by step: three columns, the model, Claude Code, and your hook script. 1: the model sends a tool call to Claude Code: Edit, file_path .env, with a note that .env is your secrets file. 2: Claude Code checks its hook settings: event PreToolUse, matcher Edit or Write. 3: Claude Code sends the script the input as JSON: tool_name Edit, tool_input with file_path .env. 4: the script decides: the file is .env, so it prints a reason and exits with 2. 5: the exit code goes back to Claude Code. Three outcome rows: exit 0, no objection, the edit continues; exit 2, blocked, with an arrow carrying the reason to the model; exit 1 or any other code, a warning, and the edit still continues." width="100%"}
+![Top: the four events you will use most, pinned to the points in the agent loop where they fire. Bottom: one PreToolUse hook blocking a commit that has not been reviewed. Claude Code checks the event and matcher, sends your script the planned action as JSON, and acts on the exit code the script returns. Only exit 2 blocks; exit 1 lets the action through. @fig-pretooluse zooms in on PreToolUse.](images/diagrams/ch02-hook-anatomy.svg){#fig-hook-anatomy fig-alt="Two parts. Top, labeled when hooks fire: five steps in a row: session starts, you send a message, model asks for a tool, tool runs, model finishes its reply. An arrow loops from tool runs back to model asks for a tool, labeled repeats until a reply has no tool call. Four event pins: SessionStart on session starts, PreToolUse between model asks for a tool and tool runs, PostToolUse right after tool runs, Stop on model finishes its reply. Bottom, labeled one hook, step by step: three columns, the model, Claude Code, and your hook script. 1: the model sends a tool call to Claude Code: Bash, git commit -m Add delete button. 2: Claude Code checks its hook settings: event PreToolUse, matcher Bash. 3: Claude Code sends the script the input as JSON: tool_name Bash, tool_input with the command git commit. 4: the script decides: no review is recorded, so it prints a reason and exits with 2. 5: the exit code goes back to Claude Code. Three outcome rows: exit 0, no objection, the commit continues; exit 2, blocked, with an arrow carrying the reason to the model; exit 1 or any other code, a warning, and the commit still continues." width="100%"}
 
 Words used in this section:
 
@@ -299,16 +299,17 @@ The events you will use most:
 | `SessionStart` | When a session starts | Load facts like the current branch |
 
 Hooks are set in a settings file: `.claude/settings.json` to share with your team (commit it), or
-`~/.claude/settings.json` for all your projects. This one runs a script before every file edit:
+`~/.claude/settings.json` for all your projects. The example in the figure, a hook that stops
+Claude from committing code nobody has reviewed, is registered like this:
 
 ```json
 {
   "hooks": {
     "PreToolUse": [
       {
-        "matcher": "Edit|Write",
+        "matcher": "Bash",
         "hooks": [
-          { "type": "command", "command": "${CLAUDE_PROJECT_DIR}/.claude/hooks/protect-env.sh" }
+          { "type": "command", "command": "${CLAUDE_PROJECT_DIR}/.claude/hooks/require-review.sh" }
         ]
       }
     ]
@@ -316,22 +317,49 @@ Hooks are set in a settings file: `.claude/settings.json` to share with your tea
 }
 ```
 
-The `matcher` says which tools the hook watches. Claude Code sends the hook a description of what
-Claude is about to do, as JSON, and the script decides. Create
-`.claude/hooks/protect-env.sh` and make it runnable with `chmod +x .claude/hooks/protect-env.sh`.
-It uses `jq`, a small tool for reading JSON; install it first if `jq --version` fails (`brew install jq` on macOS).
+The `matcher` says which tools the hook watches: `Bash` means every terminal command Claude is
+about to run. Claude Code sends the hook a description of the command, as JSON, and the script
+decides. Create `.claude/hooks/require-review.sh` and make it runnable with
+`chmod +x .claude/hooks/require-review.sh`. It uses `jq`, a small tool for reading JSON; install
+it first if `jq --version` fails (`brew install jq` on macOS).
 
 ```bash
 #!/bin/bash
-# Block Claude from editing .env files
-FILE=$(jq -r '.tool_input.file_path')
+# Block a commit until the staged changes have been reviewed
+cd "$CLAUDE_PROJECT_DIR"
+CMD=$(jq -r '.tool_input.command')
 
-if [[ "$FILE" == *".env"* ]]; then
-  echo "Blocked: .env files hold secrets and must not be edited by Claude" >&2
-  exit 2
+if [[ "$CMD" == *"git commit"* ]]; then
+  CHANGES=$(git diff --cached | shasum)        # fingerprint of what is about to be committed
+  REVIEWED=$(cat .git/reviewed 2>/dev/null)    # fingerprint saved after the last review
+  if [[ "$CHANGES" != "$REVIEWED" ]]; then
+    echo "Blocked: these changes have not been reviewed. Review them, record the review, then commit." >&2
+    exit 2
+  fi
 fi
 exit 0
 ```
+
+Line by line:
+
+| Line | What it does |
+|---|---|
+| `CMD=$(jq -r '.tool_input.command')` | Reads the command Claude is about to run from the JSON |
+| `if [[ "$CMD" == *"git commit"* ]]` | Acts only on commits; every other command passes |
+| `git diff --cached`, passed to `shasum` | Takes a fingerprint of the staged changes, the exact code about to be committed. Any change to the code changes the fingerprint |
+| `cat .git/reviewed` | Reads the fingerprint saved when the changes were last reviewed |
+| `!=`, then `exit 2` | No review, or the code changed since the review: block, and tell Claude why |
+
+**Recording a review** is one command, run after the review is done:
+`git diff --cached | shasum > .git/reviewed`. The review itself can be you reading the changes, a
+teammate, or Claude in a fresh session asked to review the staged changes. Because the record is
+a fingerprint of the exact code, any edit after the review blocks the commit again. The file
+lives inside `.git/`, so it is never committed itself.
+
+Two limits come with this hook. It checks that a review step happened, not that the review was
+any good. And it runs only for Claude: when you type `git commit` in your own terminal, no Claude
+Code hook sees it. A git hook (below) covers that case. LawGrader, an app built by this book's
+author, uses a fuller version of the same idea that records a review for each file.
 
 Every command ends by returning an **exit code**, a number that reports how it went; `0` conventionally means success. That is what the `exit 2` and `exit 0` lines in the script set. **The exit code is the decision.** Exit `2` blocks the action, and the message you print is shown
 to Claude so it can adjust. Exit `0` means "no objection." Any other exit code, including the
@@ -347,7 +375,7 @@ It is the last point where an action can be stopped. By the time `PostToolUse` f
 has changed or the command has run, so a `PostToolUse` hook can react (format the file, report a
 problem to Claude) but cannot undo anything.
 
-![One tool call, zoomed in on PreToolUse. The hook sees the exact call before anything has run and answers in one of four ways. Only exit 2 or deny stops the action. This is step 3 of the tool call in Chapter 1.](images/diagrams/ch02-pretooluse.svg){#fig-pretooluse fig-alt="One tool call as five steps from left to right. In a region labeled nothing has happened yet: the model asks to edit .env, your secrets file; the PreToolUse hook, highlighted, your script decides; the permission rules, deny, ask, allow. In a region labeled already happened: the tool runs, file changes; the PostToolUse hook, can react, cannot undo. The PreToolUse step expands into a panel. What it sees: the exact call as JSON, tool_name Edit and tool_input with file_path .env, with a note that file_path names the file to edit, .env, your secrets file. What it can answer: exit 0, continue to permission rules; exit 2 or deny, blocked, reason goes to the model, highlighted; ask, ask you before it runs; allow, skip the prompt, deny rules win. Two notes below: runs in every permission mode, even bypass; sees only the tools its matcher names." width="100%"}
+![One tool call, zoomed in on PreToolUse. The hook sees the exact call before anything has run and answers in one of four ways. Only exit 2 or deny stops the action. This is step 3 of the tool call in Chapter 1.](images/diagrams/ch02-pretooluse.svg){#fig-pretooluse fig-alt="One tool call as five steps from left to right. In a region labeled nothing has happened yet: the model asks to commit, git commit; the PreToolUse hook, highlighted, your script decides; the permission rules, deny, ask, allow. In a region labeled already happened: the tool runs, commit is made; the PostToolUse hook, can react, cannot undo. The PreToolUse step expands into a panel. What it sees: the exact command as JSON, tool_name Bash and tool_input with the command git commit, before anything has run. What it can answer: exit 0, continue to permission rules; exit 2 or deny, blocked, reason goes to the model, highlighted; ask, ask you before it runs; allow, skip the prompt, deny rules win. Two notes below: runs in every permission mode, even bypass; sees only the tools its matcher names." width="100%"}
 
 What makes it the right place for a rule that must hold:
 
@@ -365,15 +393,15 @@ What makes it the right place for a rule that must hold:
   Claude more permissive by skipping prompts.
 - **It runs everywhere.** It runs in every permission mode, including bypass permissions, for
   every tool (reading files, terminal commands, web fetches, MCP tools), and for tool calls made
-  by subagents. We tested bypass mode in October 2026: a hook that exits `2` on writes to one file
-  stopped the write while every permission prompt was off.
+  by subagents. We tested bypass mode in October 2026: with every permission prompt off, a hook
+  that exits `2` stopped a file write, and the review hook above stopped an unreviewed commit.
 
 Two limits:
 
-- **It sees only the tools its matcher names.** A hook with matcher `Edit|Write` never sees a
-  terminal command that writes the same file, such as `echo hi > .env`. To guard a file, also
-  match `Bash`, or deny reading it with a permission rule, which blocks Claude's file tools from
-  editing it too.
+- **It sees only the tools its matcher names.** The review hook watches `Bash`, so it sees
+  `git commit` and every other terminal command, and nothing else. A hook with matcher
+  `Edit|Write` sees file edits but never a terminal command that changes the same file, such as
+  `echo hi > notes.md`. Match every tool that can do the thing you want to stop.
 - **It lets the action through when it fails.** If the script crashes, exits with any code other
   than `0` or `2`, or runs past its time limit, the action goes ahead. A hook can be set to block
   on failure instead, with `"onFailure": "block"` in its settings (Claude Code 2.1.295 or later).
@@ -382,6 +410,11 @@ Source: [Claude Code hooks reference](https://code.claude.com/docs/en/hooks) and
 [permissions](https://code.claude.com/docs/en/permissions).
 
 #### Common Claude Code hook patterns
+
+**Protect your secrets file** (`PreToolUse`, matcher `Edit|Write`): if the file path is `.env`,
+exit `2`. The `.env` file (`.env.local` in a Next.js app) holds your API keys and passwords
+([Chapter 7](07-anatomy-of-an-application.qmd)), and a wrong edit can break the app or expose a
+key. A deny rule (above) does the same job with no script.
 
 **Format every file Claude edits** (`PostToolUse`, matcher `Edit|Write`): run your formatter on
 the file. A formatter is a tool that rewrites code into a consistent style, such as Prettier.
@@ -398,8 +431,8 @@ covers branches.)
 `git reset --hard`, `git checkout -- .`, and `git clean -f` act on every file in the folder. With
 one session they are ordinary commands. With two sessions in the same folder, one session can
 erase an hour of the other's uncommitted work, and there is no commit to recover it from. A hook
-turns the command into a refusal with a reason. Register it like the `.env` hook above, with
-matcher `Bash`:
+turns the command into a refusal with a reason. Register it like the review hook above, also
+with matcher `Bash`:
 
 ```bash
 #!/bin/bash
@@ -425,6 +458,18 @@ length (800 lines by default), lets files already over the cap shrink but never 
 Claude as soon as an edit crosses the line. Treat a file over the cap as a reason to check whether
 it still does one job, and split it where it divides naturally. Deleting comments to get under the
 number leaves the problem in place ([why the guard works this way](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/memory-pack/arch-guards-as-alarms.md)).
+
+**Remind Claude to update the help docs** (`PostToolUse`, matcher `Edit|Write`). In LawGrader,
+each help article is mapped to the code it describes. When Claude edits that code, a hook tells
+Claude which article may now be out of date. It never blocks: the edit has already happened, and
+most code changes (a refactor, a test, a comment) do not make the article wrong.
+
+That last point is a design rule for every hook. **Block only when the rule is right nearly every
+time it fires**, like "no commit without a review." When a rule is often a false alarm, like "the
+docs might be stale," make the hook a reminder instead. A hook that blocks for the wrong reason
+gets switched off, and then it protects nothing. LawGrader also runs the docs check as a git hook
+before every push, because the Claude Code hook sees only Claude's edits, not yours or a
+teammate's.
 
 #### Git hooks with Husky
 

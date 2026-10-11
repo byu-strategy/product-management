@@ -1,6 +1,6 @@
 <svg viewBox="0 0 1000 1240" xmlns="http://www.w3.org/2000/svg" role="img" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
 <title>Anatomy of a Claude Code hook</title>
-<desc>Two parts. Top, when hooks fire: the agent loop as five steps in a row. Session starts, then you send a message, then the model asks for a tool, then the tool runs; the last two repeat until the model replies with no tool call, and then the model finishes its reply. Four hook events are pinned to the loop: SessionStart when the session starts, PreToolUse between the model asking for a tool and the tool running, PostToolUse right after the tool runs, and Stop when the model finishes. Bottom, one hook step by step, in three columns: the model, Claude Code, and your hook script. 1: the model sends a tool call: Edit, with file_path .env, which names the file to edit, your secrets file. 2: Claude Code checks its hook settings: the event is PreToolUse and the matcher Edit|Write matches Edit, so the hook runs. 3: Claude Code sends the hook script the planned action as JSON: tool_name Edit, and tool_input with file_path .env. 4: the script checks the file path; it is .env, so it prints a reason and exits with code 2. 5: the script returns an exit code to Claude Code, which acts on it. Exit 0: no objection, and the edit continues to the permission check. Exit 2: the edit is blocked, and an arrow carries the reason the script printed to the model, which can try something else. Any other exit code, such as 1: Claude Code shows a warning and the edit still continues.</desc>
+<desc>Two parts. Top, when hooks fire: the agent loop as five steps in a row. Session starts, then you send a message, then the model asks for a tool, then the tool runs; the last two repeat until the model replies with no tool call, and then the model finishes its reply. Four hook events are pinned to the loop: SessionStart when the session starts, PreToolUse between the model asking for a tool and the tool running, PostToolUse right after the tool runs, and Stop when the model finishes. Bottom, one hook step by step, in three columns: the model, Claude Code, and your hook script. 1: the model sends a tool call: Bash, git commit -m 'Add delete button'. 2: Claude Code checks its hook settings: the event is PreToolUse and the matcher Bash matches, so the hook runs. 3: Claude Code sends the hook script the planned action as JSON: tool_name Bash, and tool_input with the command git commit. 4: the script finds no review recorded for these changes, so it prints a reason and exits with code 2. 5: the script returns the exit code to Claude Code, which acts on it. Exit 0: no objection, and the commit continues to the permission check. Exit 2: the commit is blocked, and an arrow carries the reason the script printed to the model, which can review the changes and try again. Any other exit code, such as 1: Claude Code shows a warning and the commit still continues.</desc>
 <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0057B8"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8A939C"/></marker><linearGradient id="nav" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0B3D73"/><stop offset="1" stop-color="#002E5D"/></linearGradient><filter id="sh" x="-10%" y="-10%" width="120%" height="130%"><feDropShadow dx="0" dy="3" stdDeviation="5" flood-opacity="0.12"/></filter></defs>
 <rect width="1000" height="1240" rx="8" fill="#FAFBFC"/>
 <text x="24" y="40" font-size="15" font-weight="700" fill="#5A6672" text-anchor="start" letter-spacing="1.5">WHEN HOOKS FIRE</text>
@@ -71,42 +71,42 @@
 <circle cx="180" cy="470" r="14" fill="#0057B8"/>
 <text x="180" y="475.5" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">1</text>
 <text x="202" y="500" font-size="17" font-weight="700" fill="#0057B8" text-anchor="start">Tool call</text>
-<text x="202" y="526" font-size="15" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">Edit</text>
-<text x="202" y="549" font-size="15" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">file_path: .env</text>
-<text x="202" y="572" font-size="15" font-weight="400" fill="#5A6672" text-anchor="start">.env is your secrets file</text>
+<text x="202" y="526" font-size="15" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">Bash</text>
+<text x="202" y="549" font-size="15" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">git commit -m</text>
+<text x="202" y="572" font-size="15" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">  "Add delete button"</text>
 <rect x="365" y="612" width="250" height="100" rx="10" fill="#FFFFFF" stroke="#0057B8" stroke-width="2"/>
 <circle cx="365" cy="612" r="14" fill="#0057B8"/>
 <text x="365" y="617.5" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">2</text>
 <text x="387" y="642" font-size="17" font-weight="700" fill="#0057B8" text-anchor="start">Check hook settings</text>
 <text x="387" y="668" font-size="15" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">event:   PreToolUse</text>
-<text x="387" y="691" font-size="15" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">matcher: Edit|Write</text>
+<text x="387" y="691" font-size="15" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">matcher: Bash</text>
 <line x1="490" y1="790" x2="849" y2="790" stroke="#0057B8" stroke-width="2.5" marker-end="url(#ar)"/>
-<rect x="528" y="734" width="290" height="124" rx="10" fill="#FFFFFF" stroke="#0057B8" stroke-width="2"/>
-<circle cx="528" cy="734" r="14" fill="#0057B8"/>
-<text x="528" y="739.5" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">3</text>
-<text x="550" y="764" font-size="17" font-weight="700" fill="#0057B8" text-anchor="start">Input, as JSON</text>
-<text x="550" y="790" font-size="15" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">"tool_name": "Edit",</text>
-<text x="550" y="813" font-size="15" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">"tool_input": {</text>
-<text x="550" y="836" font-size="15" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">  "file_path": ".env" }</text>
+<rect x="518" y="734" width="312" height="124" rx="10" fill="#FFFFFF" stroke="#0057B8" stroke-width="2"/>
+<circle cx="518" cy="734" r="14" fill="#0057B8"/>
+<text x="518" y="739.5" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">3</text>
+<text x="540" y="764" font-size="17" font-weight="700" fill="#0057B8" text-anchor="start">Input, as JSON</text>
+<text x="540" y="790" font-size="15" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">"tool_name": "Bash",</text>
+<text x="540" y="813" font-size="15" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">"tool_input": {</text>
+<text x="540" y="836" font-size="15" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">  "command": "git commit ..." }</text>
 <rect x="735" y="890" width="240" height="100" rx="10" fill="#FFFFFF" stroke="#0057B8" stroke-width="2"/>
 <circle cx="735" cy="890" r="14" fill="#0057B8"/>
 <text x="735" y="895.5" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">4</text>
 <text x="757" y="920" font-size="17" font-weight="700" fill="#0057B8" text-anchor="start">Script decides</text>
-<text x="757" y="946" font-size="15" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">file is .env, so</text>
-<text x="757" y="969" font-size="15" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">print reason, exit 2</text>
+<text x="757" y="946" font-size="15" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">no review recorded,</text>
+<text x="757" y="969" font-size="15" font-weight="400" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">so print reason, exit 2</text>
 <path d="M855,990 L855,1040 L496,1040" fill="none" stroke="#0057B8" stroke-width="2.5" marker-end="url(#ar)"/>
 <circle cx="690" cy="1040" r="14" fill="#0057B8"/>
 <text x="690" y="1045.5" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">5</text>
 <text x="716" y="1026" font-size="15" font-weight="600" fill="#0057B8" text-anchor="start" paint-order="stroke" stroke="#FAFBFC" stroke-width="6">exit code</text>
 <rect x="270" y="1070" width="440" height="40" rx="8" fill="#FFFFFF" stroke="#D9DEE4" stroke-width="1.5"/>
 <text x="286" y="1096" font-size="15" font-weight="700" fill="#2C3E50" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">exit 0</text>
-<text x="420" y="1096" font-size="16" font-weight="600" fill="#2C3E50" text-anchor="start">No objection; the edit continues</text>
+<text x="420" y="1096" font-size="16" font-weight="600" fill="#2C3E50" text-anchor="start">No objection; the commit continues</text>
 <rect x="270" y="1118" width="440" height="40" rx="8" fill="#E6EEF7" stroke="#0057B8" stroke-width="1.5"/>
 <text x="286" y="1144" font-size="15" font-weight="700" fill="#0057B8" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">exit 2</text>
 <text x="420" y="1144" font-size="16" font-weight="700" fill="#0057B8" text-anchor="start">Blocked</text>
 <rect x="270" y="1166" width="440" height="40" rx="8" fill="#FBF1F1" stroke="#E3B9B9" stroke-width="1.5"/>
 <text x="286" y="1192" font-size="15" font-weight="700" fill="#B03A3A" text-anchor="start" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">exit 1, other</text>
-<text x="420" y="1192" font-size="16" font-weight="400" fill="#B03A3A" text-anchor="start">Warning; the edit still continues</text>
+<text x="420" y="1192" font-size="16" font-weight="400" fill="#B03A3A" text-anchor="start">Warning; the commit still continues</text>
 <line x1="268" y1="1138.0" x2="136" y2="1138.0" stroke="#0057B8" stroke-width="2.5" marker-end="url(#ar)"/>
 <text x="200.0" y="1128.0" font-size="15" font-weight="600" fill="#0057B8" text-anchor="middle" paint-order="stroke" stroke="#FAFBFC" stroke-width="6">the reason</text>
 </svg>
