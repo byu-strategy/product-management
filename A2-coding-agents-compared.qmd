@@ -7,7 +7,7 @@ title: "Claude Code and Other Coding Agents"
 
 This course teaches with Claude Code. Three other coding agents run in the terminal on the same agent loop ([Chapter 1](01-building-with-ai-agents.qmd#what-makes-an-agent-an-agent)): OpenAI's **Codex**, GitHub's **Copilot CLI**, and Google's **Antigravity CLI** (which replaced Gemini CLI for individual users on June 18, 2026). The model and the harness differ, so the commands, file names, and safety controls differ too. This appendix maps each Claude Code concept the book teaches to its counterpart in the other three, so that what you learn here works whichever agent your team or employer uses.
 
-The tables come first: what each tool costs, then features, files, every command, every tool the agent can call, and keys. After them, one section per tool covers the differences that change what you do.
+The tables come first: what each tool costs, a score for how much harness each one has, then features, files, every command, every tool the agent can call, and keys. After them, one section per tool covers the differences that change what you do.
 
 All four tools change every few weeks. Every cell was checked against the vendors' documentation on October 10, 2026: [Claude Code](https://code.claude.com/docs/en/cli-reference), [Codex](https://learn.chatgpt.com/docs/developer-commands?surface=cli), [Copilot CLI](https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-command-reference), and [Antigravity CLI](https://antigravity.google/docs/cli/reference). "Not listed" means the reference does not mention it, which is different from "does not exist." When a cell and the current docs disagree, the docs are right.
 :::
@@ -26,6 +26,117 @@ Everything in [Chapter 2](02-directing-the-agent.qmd) is a property of agents, s
 | Company billing | Claude Team or Enterprise, or [Google Cloud or Microsoft Foundry](https://code.claude.com/docs/en/third-party-integrations) | ChatGPT Business or Enterprise | GitHub Copilot Business or Enterprise | Gemini Enterprise |
 
 **No Claude plan?** Copilot Student is the closest free substitute for this course. It is a terminal agent built around GitHub, and it reads your `CLAUDE.md` and `.claude/skills/` without changes (see [Using one repo with all four](#using-one-repo-with-all-four)). A Claude model inside another tool is still not Claude Code: you get the model, in that tool's harness.
+
+## How much harness does each one have?
+
+The model is only part of an agent. The harness around it builds each request, checks each tool call, runs the tools, and manages the context window ([The model and the harness](01-building-with-ai-agents.qmd#the-model-and-the-harness)). To compare the four harnesses, we scored each against a checklist of 35 capabilities, grouped under those jobs. Each item is a yes or no taken from the tables on this page. A blank cell means the tool's documentation does not describe it.
+
+| Harness job | Items | Claude Code | Codex | Copilot CLI | Antigravity CLI |
+|---|---|---|---|---|---|
+| Build the request | 6 | 6 | 4 | 6 | 5 |
+| Manage the context window | 3 | 3 | 1 | 2 | 1 |
+| Check the call | 7 | 7 | 6 | 4 | 5 |
+| Run the tools | 4 | 4 | 2 | 4 | 3 |
+| Recover | 3 | 2 | 1 | 3 | 1 |
+| Delegate | 4 | 4 | 1 | 4 | 1 |
+| Reach beyond your laptop | 5 | 5 | 5 | 5 | 4 |
+| Run from scripts | 3 | 3 | 3 | 2 | 3 |
+| **Total** | **35** | **34** | **23** | **30** | **23** |
+| Commands inside a session | | 111 | 50 | 77 | 37 |
+| Built-in tools named in the docs | | 46 | 6 | 23 | 22 |
+
+What the scores show:
+
+- **Claude Code** has the most complete harness here: every item but one, and the most commands and tools. The one it misses, undo that also reverses shell commands, is one Copilot CLI has.
+- **Copilot CLI** is close behind. It is weakest at checking calls: it has no rules file you can commit, so a rule has to be passed at launch or written as a hook. It is strongest at recovery, with an undo that restores files changed by shell commands too.
+- **Codex** and **Antigravity CLI** tie. Codex is strong at enforcement (sandbox on by default, rules, a reviewer model) and weak at recovery, delegation, and context management (no file undo, no worktrees, no view of what fills the window). Antigravity is strong at instructions and permission rules, and weak in the same three places.
+- The gaps that matter most for this course are in **Recover**. Without a file undo, every edit the agent makes falls in group 2 of [Blast Radius](02-directing-the-agent.qmd#blast-radius): commit before you start.
+
+::: {.callout-warning collapse="true" title="How to read this score, and the full checklist"}
+This is our own checklist, not a published benchmark. Read it with three limits in mind:
+
+- **It counts capabilities, not quality.** A yes says a feature exists. It says nothing about how well it works, how reliable the agent is, or how good the model is. A tool with a lower score and a stronger model can still produce better work.
+- **It leans toward Claude Code.** The checklist comes from what this book teaches, and the book teaches with Claude Code, so Claude Code's features set the list. An item another tool has and Claude Code lacks gets in only if it fits a harness job, such as Copilot's shell-command undo.
+- **It depends on the documentation.** Codex has no tools reference, so its tool count (6) counts only the tools its hooks page names; the real number is likely higher. A blank cell means "not documented," not "impossible."
+
+The counts were taken on October 10, 2026, from the same sources as the tables. Each job has a different number of items, so compare tools within a row before comparing totals.
+
+**Build the request**
+
+| Item | Claude Code | Codex | Copilot CLI | Antigravity CLI |
+|---|---|---|---|---|
+| Reads `AGENTS.md` | Yes | Yes | Yes | Yes |
+| Instruction files in subfolders | Yes | Yes | Yes | Yes |
+| Rules scoped to file patterns | Yes |  | Yes | Yes |
+| Instruction files can import other files | Yes |  | Yes | Yes |
+| Skills that load only when needed | Yes | Yes | Yes | Yes |
+| Memory the agent writes itself | Yes | Yes | Yes |  |
+
+**Manage the context window**
+
+| Item | Claude Code | Codex | Copilot CLI | Antigravity CLI |
+|---|---|---|---|---|
+| Shows what fills the window | Yes |  | Yes | Yes |
+| Summarize on demand (`/compact`) | Yes | Yes | Yes |  |
+| Set when automatic compaction starts | Yes |  |  |  |
+
+**Check the call**
+
+| Item | Claude Code | Codex | Copilot CLI | Antigravity CLI |
+|---|---|---|---|---|
+| Switch permission modes during a session | Yes | Yes | Yes | Yes |
+| Saved allow, ask, and deny rules | Yes | Yes |  | Yes |
+| Rules you can commit with the project | Yes | Yes |  |  |
+| Operating-system sandbox for shell commands | Yes | Yes | Yes | Yes |
+| Hooks that can block a tool call | Yes | Yes | Yes | Yes |
+| Hooks that can ask you instead | Yes |  | Yes | Yes |
+| A reviewer model that approves routine actions | Yes | Yes |  |  |
+
+**Run the tools**
+
+| Item | Claude Code | Codex | Copilot CLI | Antigravity CLI |
+|---|---|---|---|---|
+| Fetch a web page | Yes |  | Yes | Yes |
+| Search the web | Yes | Yes | Yes | Yes |
+| Code intelligence from a language server | Yes |  | Yes |  |
+| Long-running shell commands it can check on | Yes | Yes | Yes | Yes |
+
+**Recover**
+
+| Item | Claude Code | Codex | Copilot CLI | Antigravity CLI |
+|---|---|---|---|---|
+| Undo restores files | Yes |  | Yes |  |
+| Undo also reverses shell commands |  |  | Yes |  |
+| Copy the conversation to try another direction | Yes | Yes | Yes | Yes |
+
+**Delegate**
+
+| Item | Claude Code | Codex | Copilot CLI | Antigravity CLI |
+|---|---|---|---|---|
+| Subagents you define in files | Yes | Yes | Yes |  |
+| Built-in git worktrees | Yes |  | Yes |  |
+| A command that splits work across parallel agents | Yes |  | Yes | Yes |
+| Several sessions running at once | Yes |  | Yes |  |
+
+**Reach beyond your laptop**
+
+| Item | Claude Code | Codex | Copilot CLI | Antigravity CLI |
+|---|---|---|---|---|
+| MCP servers | Yes | Yes | Yes | Yes |
+| Plugins and marketplaces | Yes | Yes | Yes | Yes |
+| Run the session in the cloud | Yes | Yes | Yes |  |
+| Control the session from another device | Yes | Yes | Yes | Yes |
+| Hand the session to a desktop app | Yes | Yes | Yes | Yes |
+
+**Run from scripts**
+
+| Item | Claude Code | Codex | Copilot CLI | Antigravity CLI |
+|---|---|---|---|---|
+| One-shot prompt | Yes | Yes | Yes | Yes |
+| JSON or streaming output | Yes | Yes | Yes | Yes |
+| Output checked against a schema you supply | Yes | Yes |  | Yes |
+
+:::
 
 ## Features
 
