@@ -24,8 +24,9 @@
   <path d="M20 14h2" />
   <path d="M15 13v2" />
   <path d="M9 13v2" /></g>
-<text x="872" y="312" text-anchor="middle" font-size="21" font-weight="700" fill="#FFFFFF">Model</text>
-<text x="872" y="336" text-anchor="middle" font-size="15" fill="#C9D8EA">text in, text out</text>
+<text x="872" y="305" text-anchor="middle" font-size="21" font-weight="700" fill="#FFFFFF">Model</text>
+<text x="872" y="326" text-anchor="middle" font-size="15" fill="#C9D8EA">text and images in,</text>
+<text x="872" y="344" text-anchor="middle" font-size="15" fill="#C9D8EA">text out</text>
 <text x="872" y="388" text-anchor="middle" font-size="15" fill="#5A6672">stores nothing</text>
 <text x="872" y="407" text-anchor="middle" font-size="15" fill="#5A6672">between requests</text>
 <!-- harness -->
