@@ -4,6 +4,15 @@ This course site is a living product. It gets better during the semester, and ev
 
 New entries appear at the top.
 
+## v2.9.0 (2026-10-10)
+
+New appendix on Codex in the terminal and the ChatGPT desktop app, and scorecards comparing each CLI in VS Code with its desktop app.
+
+- **New appendix, "Codex in the Terminal and the ChatGPT Desktop App."** The Codex desktop app is now Codex mode inside the ChatGPT desktop app. The appendix covers what the CLI and the app share, which commands work in each, what the app adds (worktrees, a review pane, a built-in browser, scheduled tasks), what only the CLI does, and how to move a chat between them.
+- **New scorecards: the CLI in VS Code or the desktop app?** Both the Claude Code and the Codex appendices now score the two setups on 12 everyday jobs, such as finding files, reviewing changes, previewing your app, and running several agents at once, and explain where each one wins.
+- **"Claude Code and Other Coding Agents"** links each desktop app row to its comparison.
+- **Chapter 2:** a new figure shows the four steps of one CI run (push, install packages, build, run tests) and why CI becomes the slowest step when an agent writes the code, with a table defining each term.
+
 ## v2.8.2 (2026-10-10)
 
 The coding agents appendix now scores how much harness each agent has.
