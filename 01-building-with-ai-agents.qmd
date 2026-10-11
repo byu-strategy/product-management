@@ -442,11 +442,10 @@ Ask Claude Code to make a small change in your project, then watch the transcrip
 
 ### The model and the harness
 
-**The model turns text into text. The harness is the program around the model that decides what
-the model sees and does what the model asks.** In Claude Code's documentation, Claude Code is the
-harness and Claude is the model inside it. (The word comes from the gear that connects an
-animal's strength to useful work and lets a person steer it. In this book, harness means only the
-program.)
+**The model reads text and images and writes text. The harness is the software around the model:
+it builds each request, sends it to the model, and carries out the tool calls the model asks
+for.** Claude Code is a harness, and it runs on your computer. In web and mobile chat, the harness
+runs on Anthropic's servers.
 
 On its own, the model has three limits. It receives text and writes text. It stores nothing from
 one request to the next, so everything it should know has to be in the request. And it has no
