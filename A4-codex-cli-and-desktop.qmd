@@ -1,0 +1,104 @@
+---
+title: "Codex in the Terminal and the ChatGPT Desktop App"
+---
+
+::: {.callout-note}
+## What this appendix is
+
+[Claude Code in the Terminal and the Desktop App](A3-claude-code-cli-and-desktop.qmd) compares Claude Code's two main surfaces. This appendix does the same for OpenAI's Codex: the **Codex CLI** in your terminal, and **Codex in the ChatGPT desktop app**. For how Codex compares with Claude Code itself, see [Claude Code and Other Coding Agents](A2-coding-agents-compared.qmd).
+
+Checked on October 10, 2026, against OpenAI's documentation at [learn.chatgpt.com/docs](https://learn.chatgpt.com/docs). Each section links the pages it came from. When this page and the docs disagree, the docs are right.
+:::
+
+## There is no separate Codex app any more
+
+OpenAI's desktop app for Codex is now part of the **ChatGPT desktop app**. The old Codex app page (`developers.openai.com/codex/app`) redirects to the [ChatGPT desktop app](https://learn.chatgpt.com/docs/app) page, and the docs' [glossary](https://learn.chatgpt.com/docs/glossary) defines it as a "desktop app with ChatGPT and Codex, including Chat and Work, projects, file previews, scheduled tasks, and developer tools."
+
+Inside the app, a dropdown at the top switches between three modes ([quickstart](https://learn.chatgpt.com/docs/quickstart)):
+
+| Mode | For | Shortcut (macOS) |
+|---|---|---|
+| **Chat** | Quick questions and conversation | `Ctrl+1` |
+| **Work** | Research, analysis, and finished documents, spreadsheets, and presentations | `Ctrl+2` |
+| **Codex** | Software development with your codebase and developer tools | `Ctrl+3` |
+
+This appendix is about the Codex mode. When the Codex docs say "the desktop app," they mean this app with Codex selected.
+
+## The same engine
+
+The CLI and the app run the same Codex agent and share much of their setup:
+
+| Shared | Source |
+|---|---|
+| `AGENTS.md` instructions, in your project and your personal file (edit the personal one in the app under **Settings > Personalization**) | [AGENTS.md](https://learn.chatgpt.com/docs/agent-configuration/agents-md), [settings](https://learn.chatgpt.com/docs/reference/settings) |
+| MCP servers: "The ChatGPT desktop app, Codex CLI, and IDE extension share this configuration" | [MCP](https://learn.chatgpt.com/docs/extend/mcp) |
+| Skills in `.agents/skills/` and `~/.agents/skills/` | [Build skills](https://learn.chatgpt.com/docs/build-skills) |
+| Plugins, from one directory shared by ChatGPT and Codex | [Build skills](https://learn.chatgpt.com/docs/build-skills) |
+| Your ChatGPT sign-in and plan usage | [Pricing](https://learn.chatgpt.com/docs/pricing) |
+
+The docs say the CLI and IDE extension "share the same configuration layers" in `config.toml` ([config basics](https://learn.chatgpt.com/docs/config-file/config-basic)), but they do not say the same of the desktop app. Settings such as the default model may need to be set in both places.
+
+## Getting started
+
+| | Codex CLI | ChatGPT desktop app |
+|---|---|---|
+| Install | Install script, npm, or Homebrew ([Codex CLI](https://learn.chatgpt.com/docs/codex/cli)) | [Download ChatGPT](https://chatgpt.com/download/) for macOS or Windows; Linux has its own guide |
+| Start | `codex` in the project folder | Open the app, choose **Codex** from the dropdown, open a folder or project, then **New chat** |
+| Open one from the other | `codex app` opens the desktop app (on macOS, on the current folder) | |
+| Where it can run | Your computer; `codex cloud` sends a task to the cloud | **Work in > This computer** (Local or Worktree) or **Cloud** ([environments](https://learn.chatgpt.com/docs/environments/modes)) |
+
+## Commands
+
+The two surfaces have separate command lists: the CLI's in the [CLI reference](https://learn.chatgpt.com/docs/developer-commands?surface=cli), the app's on its [slash commands](https://learn.chatgpt.com/docs/reference/slash-commands) page. Of 58 commands, not counting aliases, 19 work in both.
+
+| In both | CLI only | App only |
+|---|---|---|
+| `/approve`, `/archive`, `/compact`, `/fast`, `/feedback`, `/fork`, `/goal`, `/init`, `/mcp`, `/memories`, `/model`, `/new`, `/pet`, `/plan`, `/rename`, `/review`, `/side`, `/status`, `/usage` | `/agent` (`/subagents`), `/app`, `/apps`, `/clear`, `/copy`, `/debug-config`, `/delete`, `/diff`, `/exit` (`/quit`), `/experimental`, `/hooks`, `/ide`, `/import`, `/keymap`, `/logout`, `/mention`, `/permissions`, `/personality`, `/plugins`, `/ps`, `/raw`, `/resume`, `/sandbox-add-read-dir`, `/setup-default-sandbox`, `/skills`, `/statusline`, `/stop`, `/theme`, `/title`, `/vim` | `/chat`, `/cloud`, `/cloud-environment`, `/ide-context`, `/local`, `/pin`, `/project`, `/reasoning`, `/worktree` |
+
+Several CLI-only commands have a button or panel in the app instead of a command: the review pane shows the diff, **Settings** covers the theme and keyboard shortcuts, and the sidebar holds your chats and projects. The app also has its own [keyboard shortcuts](https://learn.chatgpt.com/docs/reference/commands); press `Cmd+/` to see them.
+
+## What the app adds
+
+| Feature | What it does | Related idea in the book |
+|---|---|---|
+| [**Worktrees with Handoff**](https://learn.chatgpt.com/docs/environments/git-worktrees) | Select **Worktree** under the composer and Codex works in a separate copy of your repo. **Handoff** moves the chat and its changes between the worktree and your main copy | [Parallel work needs separate copies of the files](02-directing-the-agent.qmd#parallel-work-needs-separate-copies-of-the-files) |
+| [**Local environments**](https://learn.chatgpt.com/docs/environments/local-environment) | Setup scripts that run when a worktree is created (such as `npm install`), and one-click actions such as starting your dev server. Saved in `.codex/` in your project, so you can commit them | Worktrees start without your installed packages or `.env` |
+| [**Review pane**](https://learn.chatgpt.com/docs/code-review) | See what changed, leave feedback on specific lines, and stage, revert, commit, or push | Review before you commit |
+| [**Code Review**](https://learn.chatgpt.com/docs/code-review) | Open a pull request, read its summary, checks, and comments, and inspect the diff | [Chapter 9](09-version-control-testing-and-tech-debt.qmd) |
+| [**Built-in browser**](https://learn.chatgpt.com/docs/browser) | Preview your running app (for example `localhost:3000`), leave comments on parts of the page, and ask Codex to fix them | [Done means you saw it work](02-directing-the-agent.qmd#done-means-you-saw-it-work) |
+| [**Integrated terminal**](https://learn.chatgpt.com/docs/integrated-terminal) | A terminal in each chat, scoped to its project or worktree (`` Ctrl+` ``). Codex can read its output | Running your own checks |
+| [**Computer Use**](https://learn.chatgpt.com/docs/computer-use) | Codex operates desktop apps through the screen, on macOS and Windows | |
+| [**Scheduled tasks**](https://learn.chatgpt.com/docs/automations) | Run work on a schedule; in a Git repo each run gets its own background worktree | |
+| [**Projects and files**](https://learn.chatgpt.com/docs/projects) | Group chats by project and preview documents, spreadsheets, and images in the app | |
+| [**Codex on mobile**](https://learn.chatgpt.com/docs/mobile) | Start chats, approve requests, and review changes from your phone, for work running on your computer | |
+| **Chat and Work modes** | Switch to a general ChatGPT chat or a Work task without leaving the app | |
+
+## What only the CLI does
+
+| CLI only | Why it matters |
+|---|---|
+| `codex exec`, with JSON output and a schema for the result | Run Codex from a script or CI ([non-interactive mode](https://learn.chatgpt.com/docs/non-interactive-mode)) |
+| `/hooks` | Review and trust hooks before they run ([hooks](https://learn.chatgpt.com/docs/hooks)) |
+| `/permissions` and launch flags such as `--sandbox` | Pick the approval preset and sandbox for a session |
+| `/diff`, `/copy`, `/mention`, `/resume` | Terminal versions of what the app does with panels and the sidebar |
+| `codex cloud` and `codex apply` | Send a task to the cloud and bring its changes back, from the terminal |
+| `codex review`, `codex doctor`, `codex mcp`, `codex plugin` | Manage Codex from your shell without opening a session |
+| Works over SSH and in any terminal, including VS Code's | No desktop app needed |
+
+## Moving between them
+
+| From | To | How |
+|---|---|---|
+| CLI | App | Type `/app` in the session. "The desktop app opens the same saved chat so you can continue there" (macOS and Windows) |
+| Shell | App | `codex app` opens the desktop app, or starts its installer if it is missing |
+| App, Local | App, Worktree | **Handoff** moves the chat and its code changes between the two |
+| App | Cloud | **Work in > Cloud**, using a published cloud environment |
+| Cloud | Your laptop | `codex apply` in the CLI applies a cloud task's changes to your local repo |
+
+The docs do not describe moving an app chat back into the CLI.
+
+## Which one to use
+
+OpenAI's docs give the use cases. The CLI is for when "you work from the terminal," "you need scripting or CI," "you want a local code review," or "you want to hand work to the cloud" ([Codex CLI](https://learn.chatgpt.com/docs/codex/cli)). The desktop app is for coordinating several projects, creating and reviewing files, using the browser and your computer, and scheduling recurring work ([desktop app](https://learn.chatgpt.com/docs/app)).
+
+The split is the same as for Claude Code. The terminal is the complete, scriptable surface, and the app is the better window for reviewing diffs, previewing your app, and running several chats in parallel. One difference matters for this course: the app's worktrees and **Handoff** give Codex the separate working copies that its CLI does not offer. Codex has no undo for file edits in either surface, so commit before you start ([Claude Code and Other Coding Agents](A2-coding-agents-compared.qmd#undo)).

@@ -158,7 +158,7 @@ The counts were taken on October 10, 2026, from the same sources as the tables. 
 | Run one prompt from a script | `claude -p` | `codex exec` | `copilot -p` | `agy -p` |
 | Separate copy of the files (git worktree) | `claude -w` | Not listed for the CLI | `copilot -w`, `/worktree` | Not listed for the CLI |
 | Run in the cloud | `claude --cloud` | `codex cloud` | `copilot --cloud` (preview), `/delegate` | Not listed for the CLI |
-| Desktop app | Claude desktop app, `/desktop` | ChatGPT desktop app, `/app` | GitHub Copilot app, `/app` | Antigravity 2.0 |
+| Desktop app | Claude desktop app, `/desktop` ([compared](A3-claude-code-cli-and-desktop.qmd)) | ChatGPT desktop app, `/app` ([compared](A4-codex-cli-and-desktop.qmd)) | GitHub Copilot app, `/app` | Antigravity 2.0 |
 
 ## Files and folders
 

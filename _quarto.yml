@@ -50,6 +50,7 @@ book:
         - A1-logic-of-value.qmd
         - A2-coding-agents-compared.qmd
         - A3-claude-code-cli-and-desktop.qmd
+        - A4-codex-cli-and-desktop.qmd
     - part: References
       chapters:
         - 93-why-this-class-works.qmd
