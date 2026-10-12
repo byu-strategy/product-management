@@ -72,6 +72,11 @@ csl: chicago-author-date.csl
 # Turns each <!-- learn --> marker into a copyable /learn line for its section (_extensions/learn)
 filters:
   - learn
+  # Topics | Weeks switch in the left rail; the weeks are in _weeks.yml (_extensions/week-view)
+  - week-view
+
+metadata-files:
+  - _weeks.yml
 
 format:
   html:

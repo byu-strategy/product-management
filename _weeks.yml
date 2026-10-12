@@ -1,0 +1,124 @@
+# The 14-week reading order shown in the left rail's "Weeks" view (_extensions/week-view).
+# Loaded into every page through `metadata-files` in _quarto.yml.
+#
+# start: the class date (YYYY-MM-DD). A week is "This week" from its start until the next
+#        week's start, in the reader's local time. `course-end` closes the last one.
+# read:  chapter files, without .qmd, in reading order. Prev/next links follow this order in
+#        Weeks mode. A chapter not listed here appears under "Appendix and references".
+# items: deadlines under the readings. kind is due, assigned, plan, exam, or task; href is optional.
+#
+# Keep in step with the tables in 00-schedule.qmd.
+
+week-view:
+  course-end: "2026-12-10"
+  course-info: [index, 00-schedule, 00-assessments, 00-release-notes]
+  weeks:
+    - week: 0
+      date: Week of Sep 2
+      start: "2026-09-02"
+      axis: Setup (online)
+      read: [00-computer-setup]
+      items:
+        - {kind: task, text: Accounts and installs complete}
+    - week: 1
+      date: Mon, Sep 14
+      start: "2026-09-14"
+      axis: Agentic Workflow
+      read: [01-building-with-ai-agents]
+      items:
+        - {kind: task, text: Baseline hexagon survey}
+        - {kind: assigned, text: Sprint 1 assigned, href: "00-assessments.html#sprint-1"}
+        - {kind: plan, text: "Sprint 1 plan due Wed, Sep 16", href: "00-assessments.html#sprint-1"}
+    - week: 2
+      date: Mon, Sep 21
+      start: "2026-09-21"
+      axis: Agentic Workflow
+      read: [02-directing-the-agent]
+    - week: 3
+      date: Mon, Sep 28
+      start: "2026-09-28"
+      axis: Discovery
+      read: [03-what-is-worth-building]
+      items:
+        - {kind: due, text: Sprint 1 due, href: "00-assessments.html#sprint-1"}
+        - {kind: assigned, text: Sprint 2 assigned, href: "00-assessments.html#sprint-2"}
+        - {kind: plan, text: "Sprint 2 plan due Sat, Oct 3", href: "00-assessments.html#sprint-2"}
+    - week: 4
+      date: Mon, Oct 5
+      start: "2026-10-05"
+      axis: Discovery
+      read: [04-finding-and-validating-the-problem]
+    - week: 5
+      date: Mon, Oct 12
+      start: "2026-10-12"
+      axis: Design
+      read: [05-interface-and-flow, 05b-design-fundamentals]
+      items:
+        - {kind: due, text: Sprint 2 due, href: "00-assessments.html#sprint-2"}
+        - {kind: assigned, text: Sprint 3 assigned, href: "00-assessments.html#sprint-3"}
+        - {kind: plan, text: "Sprint 3 plan due Wed, Oct 14", href: "00-assessments.html#sprint-3"}
+    - week: 6
+      date: Mon, Oct 19
+      start: "2026-10-19"
+      axis: Design
+      read: [06-testing-the-design, 06b-specs]
+      items:
+        - {kind: exam, text: "Midterm, testing center, Oct 20 to 22", href: "00-assessments.html#midterm-exam"}
+    - week: 7
+      date: Mon, Oct 26
+      start: "2026-10-26"
+      axis: App Architecture
+      read: [07-anatomy-of-an-application, 09c-browser-and-developer-tools]
+      items:
+        - {kind: due, text: Sprint 3 due, href: "00-assessments.html#sprint-3"}
+        - {kind: assigned, text: Sprint 4 assigned, href: "00-assessments.html#sprint-4"}
+        - {kind: plan, text: "Sprint 4 plan due Wed, Oct 28", href: "00-assessments.html#sprint-4"}
+    - week: 8
+      date: Mon, Nov 2
+      start: "2026-11-02"
+      axis: App Architecture
+      read: [08-data-and-apis, 09-version-control-testing-and-tech-debt, 09b-tests-and-tech-debt]
+      items:
+        - {kind: assigned, text: Peer Code Review assigned, href: "00-assessments.html#peer-code-review"}
+    - week: 9
+      date: Mon, Nov 9
+      start: "2026-11-09"
+      axis: AI Systems
+      read: [10-how-models-work]
+      items:
+        - {kind: due, text: Sprint 4 due, href: "00-assessments.html#sprint-4"}
+        - {kind: due, text: Peer Code Review due, href: "00-assessments.html#peer-code-review"}
+        - {kind: assigned, text: Sprint 5 assigned, href: "00-assessments.html#sprint-5"}
+        - {kind: plan, text: "Sprint 5 plan due Wed, Nov 11", href: "00-assessments.html#sprint-5"}
+    - week: 10
+      date: Mon, Nov 16
+      start: "2026-11-16"
+      axis: AI Systems
+      read: [11-models-in-your-product]
+    - week: 11
+      date: Mon, Nov 23
+      start: "2026-11-23"
+      axis: Launch and Learn
+      read: [12-going-to-market, 13-business-models]
+      items:
+        - {kind: due, text: Sprint 5 due, href: "00-assessments.html#sprint-5"}
+        - {kind: assigned, text: Sprint 6 assigned, href: "00-assessments.html#sprint-6"}
+        - {kind: plan, text: "Sprint 6 plan due Wed, Nov 25", href: "00-assessments.html#sprint-6"}
+        - {kind: task, text: "Withdraw deadline Tue, Nov 24"}
+    - week: 12
+      date: Mon, Nov 30
+      start: "2026-11-30"
+      axis: Launch and Learn
+      read: [14-measuring-what-matters]
+      items:
+        - {kind: assigned, text: Peer Product Testing assigned, href: "00-assessments.html#peer-product-testing"}
+    - week: 13
+      date: Mon, Dec 7
+      start: "2026-12-07"
+      axis: Wrap Up
+      read: [15-storytelling-and-the-final-demo]
+      items:
+        - {kind: due, text: Peer Product Testing due, href: "00-assessments.html#peer-product-testing"}
+        - {kind: task, text: Closing hexagon survey}
+        - {kind: exam, text: "Final, testing center, Dec 8 to 9", href: "00-assessments.html#final-exam"}
+        - {kind: due, text: "Sprint 6 due Thu, Dec 10", href: "00-assessments.html#sprint-6"}
