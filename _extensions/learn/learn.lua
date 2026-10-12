@@ -3,6 +3,10 @@ learn.lua: give each `##` section that states its model a small "Learn" button b
 heading. A section states its model in a paragraph that opens in bold with "The model:". That
 line is the rule: write one and the section gets a button; the /learn skill teaches that model.
 
+A section that practice/version-a.json cites (the public practice form parallel to the midterm)
+also gets a button, so every section the midterm draws on has one, and /learn uses those
+practice items in its check.
+
 Until a section's model line is written, a `<!-- learn -->` comment inside the section gives it a
 button anyway. Each marker left in the book is a section still waiting for its model line; once
 the line exists, delete the marker.
@@ -45,6 +49,26 @@ local function is_marker(block)
     and block.text:match("^%s*<!%-%-%s*learn%s*%-%->%s*$") ~= nil
 end
 
+-- Anchors cited by the practice form, as a set of "<chapter>.qmd#<anchor>". Read once per
+-- render; a missing or unreadable file means no practice sections.
+local practice_sections = nil
+local function practice_cited()
+  if practice_sections then return practice_sections end
+  practice_sections = {}
+  local f = io.open("practice/version-a.json", "r")
+  if not f then return practice_sections end
+  local ok, bank = pcall(pandoc.json.decode, f:read("a"), false)
+  f:close()
+  if not ok or type(bank) ~= "table" then
+    quarto.log.warning("learn: practice/version-a.json could not be read; no practice buttons")
+    return practice_sections
+  end
+  for _, it in ipairs(bank.items or {}) do
+    for _, s in ipairs(it.sections or {}) do practice_sections[s] = true end
+  end
+  return practice_sections
+end
+
 local function page_name()
   local input = quarto.doc.input_file or ""
   local name = input:match("([^/\\]+)%.[^.]+$") or input
@@ -59,11 +83,14 @@ function Pandoc(doc)
   end
   local page = base .. page_name()
 
-  -- pass 1: which ## sections state a model
+  -- pass 1: which ## sections state a model, are cited by the practice form, or carry a marker
   local marked, section = {}, nil
+  local cited = practice_cited()
+  local chapter = page_name():gsub("%.html$", ".qmd")
   for _, block in ipairs(doc.blocks) do
     if block.t == "Header" and block.level <= 2 then
       section = (block.level == 2) and block.identifier or nil
+      if section and cited[chapter .. "#" .. section] then marked[section] = true end
     elseif section and section ~= "" and (has_model_line(block) or is_marker(block)) then
       marked[section] = true
     end
