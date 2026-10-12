@@ -15,8 +15,6 @@ This chapter continues the example from [Going to Market](12-going-to-market.qmd
 app that turns a student's lecture notes into a practice quiz, for $4 a month.
 :::
 
-<!-- learn -->
-
 ## What a Business Model Is
 
 **The model:** a business creates value for a specific customer, delivers it through some
@@ -62,8 +60,6 @@ which two other blocks it forces. Then find a classmate's canvas and look for on
 that contradict each other.
 :::
 
-<!-- learn -->
-
 ## How Money Comes In: Revenue Models
 
 **The model:** a revenue model is the rule that turns use into money. Each one only works if
@@ -81,8 +77,6 @@ something specific is true about your customer and your costs.
 Pricing, the number itself, is covered in [Going to Market](12-going-to-market.qmd): price from
 the value delivered, never from asking customers to invent a number, and check the floor set by
 your cost to serve.
-
-<!-- learn -->
 
 ## Unit Economics and Break-Even
 
@@ -130,8 +124,6 @@ heavy user (from the cost arithmetic in [Models in Your Product](11-models-in-yo
 compute, predict your break-even number of paying users. Then ask: what share of heavy users would
 make your contribution margin zero?
 :::
-
-<!-- learn -->
 
 ## Drafting Your Canvas with Claude
 

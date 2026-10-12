@@ -13,8 +13,6 @@ This chapter gives you four models: the data model is the skeleton of your produ
 is a few blocks that pick rows; the database decides who sees which rows; and
 every request can fail. It ends with the rules for secrets and for other people's data.
 
-<!-- learn -->
-
 ## The Data Model Is the Skeleton
 
 **The model:** tables are the nouns of your product and keys are how they relate. The data
@@ -136,8 +134,6 @@ the one above. Then ask Claude Code to compare your sketch with the tables your 
 has, and explain every difference.
 :::
 
-<!-- learn -->
-
 ## Asking the Database a Question
 
 **The model:** every read is built from the same few blocks. Choose the columns, choose the
@@ -246,8 +242,6 @@ Using the two tables above, predict the result of each before opening the answer
 4. Four. Problem 5 now has a matching interview, so it gains one row.
 :::
 
-<!-- learn -->
-
 ## Row Level Security: Enforce Access Where the Data Lives
 
 **The model:** in a Supabase app the browser queries the database directly with a key everyone
@@ -301,8 +295,6 @@ asking Claude Code to write a short script that queries the table with your publ
 signed in as B. If any attempt succeeds, you have found an authorization hole. Fix it with a
 policy, then run the drill again. This is also a standard check in the Peer Code Review.
 :::
-
-<!-- learn -->
 
 ## Requests Are Contracts That Fail
 
@@ -457,8 +449,6 @@ and sign out in another tab and click it. Ask Claude Code to make every case sho
 message without losing what the user typed.
 :::
 
-<!-- learn -->
-
 ## Secrets and Sensitive Data
 
 **The model:** an API key is a password. Personal and client data has rules about where it may
@@ -585,5 +575,3 @@ event `profile_updated` that includes the user's new phone number. Then search y
   provider's dashboard and revoke the old one.
 - **Sensitive data**: personal, student, and client data may go only where its rules allow.
   Sending data to a model, a log, or an analytics event copies it to that company's servers.
-
-<!-- learn -->

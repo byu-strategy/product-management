@@ -58,8 +58,6 @@ photograph the paper schedule on the break-room wall and the app reads your shif
 example is invented for teaching.
 :::
 
-<!-- learn -->
-
 ## Flows Before Screens
 
 **The model:** a flow is the sequence of steps a user takes to finish one task. Map the flow
@@ -119,8 +117,6 @@ Do this before you ask Claude Code for any new screen in Sprint 3, and paste the
 prompt.
 :::
 
-<!-- learn -->
-
 ## Attention and Hierarchy
 
 **The model:** each screen gets one primary action. Size, weight, spacing, and contrast tell
@@ -178,8 +174,6 @@ intended action differ, list the two changes that would fix it. Refactoring UI's
 screen in grayscale first is a good second check: if the hierarchy only works because of color, it
 is fragile.
 :::
-
-<!-- learn -->
 
 ## Off the Happy Path
 
@@ -259,8 +253,6 @@ the raw text of an exception for the error state. Find the worst of the four in 
 it this sprint.
 :::
 
-<!-- learn -->
-
 ## Words Are Interface
 
 **The model:** labels, buttons, and messages are the instructions for using your product. They
@@ -305,8 +297,6 @@ Open your app and copy out every button label, every heading, and the text of on
 "null"). Rewrite the three worst. Then trigger an error on purpose and check whether the message
 says what happened and what to do.
 :::
-
-<!-- learn -->
 
 ## Decide Once: Design Systems and Familiar Patterns
 
@@ -418,8 +408,6 @@ semantic HTML and our existing components." The full checklist is in the
 [Engineering Checklist](95-eng-checklist.qmd).
 :::
 
-<!-- learn -->
-
 ## Designing for an Uncertain AI
 
 **The model:** when your product's output can be wrong, design for that. Set expectations, show
@@ -469,8 +457,6 @@ and what happens to the user if they do not catch it. Then check your current sc
 five blocks above. Which one is missing? Sketch, in words, the one change that would let a user
 catch the mistake before it costs them anything.
 :::
-
-<!-- learn -->
 
 ## Directing an Agent on Design
 
@@ -524,8 +510,6 @@ which breaks [principle from this chapter]."** For example: "The four buttons ar
 which breaks one primary action per screen." Then turn the three sentences into one precise prompt
 using the table above, and compare the result to what "make it better" produces.
 :::
-
-<!-- learn -->
 
 ## Web, Mobile, or Both
 
@@ -619,8 +603,6 @@ and you have the team to support it. **React Native** fits when you need native 
 your team already knows JavaScript and React.
 :::
 
-<!-- learn -->
-
 ## Making Your App Mobile-Responsive
 
 **The model:** design for the small screen first, then let the layout expand at set widths
@@ -653,8 +635,6 @@ mistakes:** anything cut off, any tap target smaller than a fingertip, any input
 when tapped. Fix the worst one with a precise prompt.
 :::
 
-<!-- learn -->
-
 ## How the Surface Is Built (Reference)
 
 You will not write much of this by hand, but you should know the parts so you can read what the
@@ -672,8 +652,6 @@ agent wrote and catch it when something is off.
 Chapter 7 reads a React component line by line, including how a change in state makes React
 draw the screen again, which is why loading, empty, and error are each a state you design: see
 [How the Code Works](07-anatomy-of-an-application.qmd#how-the-code-works).
-
-<!-- learn -->
 
 ## Key Concepts
 
@@ -735,5 +713,3 @@ draw the screen again, which is why loading, empty, and error are each a state y
 - **Components, props, and state**: React builds the screen from components that take props
   (inputs) and hold state (data that changes); a change in state redraws the screen, which is why
   each state is a screen to design.
-
-<!-- learn -->

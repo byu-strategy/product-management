@@ -47,8 +47,6 @@ Two facts about browsers shape how apps are built:
   code is not a secret, and a check that runs only in the browser can be switched off. This is the
   reason [Chapter 7](07-anatomy-of-an-application.qmd) keeps keys and price checks on the server.
 
-<!-- learn -->
-
 ## Where an App Keeps Data
 
 **The model:** an app can keep data in three places, and the question that picks among them is
@@ -79,8 +77,6 @@ like `isAdmin: true` or a quiz score in the browser and believes it, when the us
 Application panel and change it. The database copy is the one that counts; what the browser holds
 is a copy for convenience.
 
-<!-- learn -->
-
 ## Developer Tools
 
 Every browser has **developer tools**, a panel that shows what the page is made of and what it is
@@ -108,8 +104,6 @@ rode along with the request.
 
 When you report a bug to Claude, the console error and the failed request are the evidence. Paste
 them in, or give Claude a way to read them itself, which is what the next section is for.
-
-<!-- learn -->
 
 ## Claude in Chrome
 
@@ -186,8 +180,6 @@ can run in tests on every pull request ([Tests and Tech Debt](09b-tests-and-tech
 Code's documentation suggests trying an MCP server or a command first, then the browser, and
 controlling the whole computer only when nothing else can do the task
 ([computer use](https://code.claude.com/docs/en/computer-use)).
-
-<!-- learn -->
 
 ## Words used in this appendix
 

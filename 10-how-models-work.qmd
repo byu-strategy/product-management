@@ -18,8 +18,6 @@ Language Model (From Scratch)* [@raschka2024build], the source of most of the fi
 second half draws out what each block means for the product you are building. The math sits at
 the end, folded away, for anyone who wants it.
 
-<!-- learn -->
-
 ## AI and Machine Learning
 
 Artificial intelligence (AI) is the broad idea of computer systems that do tasks we associate
@@ -508,5 +506,3 @@ A transformer is many such layers, with attention between them.
   the output you want, with background, a role, examples, or a template filled with live data.
 - **Parameters, loss, gradient descent**: the numbers a model learns, the measure of its error,
   and the procedure that adjusts every parameter a small step to lower the error.
-
-<!-- learn -->

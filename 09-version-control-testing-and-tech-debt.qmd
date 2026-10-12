@@ -12,8 +12,6 @@ it, a way back when a bad change ships anyway, and logs so you can see what user
 [Chapter 9b](09b-tests-and-tech-debt.qmd) covers the tests those checks run and how to decide
 which messy code to clean up and which to leave alone.
 
-<!-- learn -->
-
 ## Git: A Time Machine Plus Parallel Copies
 
 **The model:** version control is a time machine plus parallel copies. Every commit is a saved
@@ -78,8 +76,6 @@ Ask Claude Code: *"Show my last ten commits and, for each, one line on what it c
 one that is three or more commits back and ask what the app would lose if you returned to it.
 Then look at the messages: could a teammate tell from them what happened this week?
 :::
-
-<!-- learn -->
 
 ## Pull Requests: The Review Gate
 
@@ -162,8 +158,6 @@ instead of committing to `main`. Before merging, open the preview URL and the di
 sentence on what the change does and one on anything in the diff you did not expect.
 :::
 
-<!-- learn -->
-
 ## Automated Checks: Tests, Types, and Lint
 
 **The model:** automated checks catch the obvious, every time, without anyone remembering to
@@ -195,8 +189,6 @@ Ask Claude Code: *"Which checks run on this repo, where are they defined, and do
 pull requests?"* If none do, ask it to add a GitHub Actions workflow that runs the tests, the
 build, and lint on every PR, then open a PR and watch the check appear.
 :::
-
-<!-- learn -->
 
 ## Trunk-Based Development: Small Branches, Merged Often
 
@@ -381,8 +373,6 @@ can each be finished and merged within a day. For any piece that would show user
 unfinished, explain how a feature flag would keep it hidden."* Build the first piece on its own
 branch, merge it, and delete the branch.
 :::
-
-<!-- learn -->
 
 ## Environments: Where Your Code Runs and Which Data It Touches
 
@@ -620,8 +610,6 @@ database table above and ask the agent to set it up. For your next feature, deci
 build it whether it needs staging, a flag, or both, using the two questions above.
 :::
 
-<!-- learn -->
-
 ## Rolling Back a Bad Deploy
 
 **The model:** every deploy needs a way back. Fixing forward under pressure, with users hitting
@@ -656,8 +644,6 @@ dashboard and confirm the live site changed back. Then ask Claude Code to `git r
 commit, and explain the difference between what the two did.
 :::
 
-<!-- learn -->
-
 ## See What Is Happening: Logs and Error Reports
 
 **The model:** logs and error reports are how you find out what users hit. You cannot fix what
@@ -690,8 +676,6 @@ trigger it, and find the error in the Vercel logs within the hour. Copy the log 
 Code and ask it to explain the cause from the log alone. Then remove the deliberate error. Do it
 once now, so the first time you need the logs is not during a real outage.
 :::
-
-<!-- learn -->
 
 ## Key Concepts
 
@@ -746,5 +730,3 @@ once now, so the first time you need the logs is not during a real outage.
 - **Logs and error reports**: the browser console, Vercel runtime logs, Supabase logs, and an
   error reporter such as Sentry. A useful log line says what happened, where, and an id, never
   personal data or tokens.
-
-<!-- learn -->

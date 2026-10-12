@@ -31,8 +31,6 @@ branches in ways you cannot enumerate. Anthropic's [Building Effective
 Agents](https://www.anthropic.com/engineering/building-effective-agents) makes the same
 argument: start with the simplest workflow that works and add autonomy only when it pays.
 
-<!-- learn -->
-
 ## Where the Call Lives
 
 **Your API key never goes in the browser.** An API key ([Chapter 7](07-anatomy-of-an-application.qmd))
@@ -613,5 +611,3 @@ bigger than the noise? Which test cases changed? Commit the eval, the prompt, an
 - **Baseline, regression, and noise**: the score before a change, a case that passed before and
   fails after, and how much the score moves when nothing changed. Read every row, and count a
   change only if it moves the score past the noise.
-
-<!-- learn -->

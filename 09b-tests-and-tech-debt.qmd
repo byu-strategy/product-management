@@ -12,8 +12,6 @@ chapter shows how to read a test, which kinds to ask the agent for, and what a p
 and does not tell you. The second half is about technical debt: the shortcuts that make each later
 change slower, how to tell a deliberate shortcut from an accidental mess, and when to clean one up.
 
-<!-- learn -->
-
 ## Tests: Code That Checks Your Code
 
 **The model:** a test is a short program that runs a piece of your code with an input you chose
@@ -373,8 +371,6 @@ wrong (on a branch, or undo it afterward), run the tests, and read the failure. 
 and what did it print? Restore the line and run them again.
 :::
 
-<!-- learn -->
-
 ## What is Technical Debt?
 
 **The model:** choose boring, well-known tools. Every shortcut is a loan with interest; take it
@@ -405,8 +401,6 @@ Ask it to fix a bug and it may add a second copy of a function instead of findin
 patch one screen while three others keep the bug. Each choice is small; together they make the
 codebase harder for the agent itself to change, because it now has to read and keep consistent
 more code than the product needs.
-
-<!-- learn -->
 
 ## Strategic vs. Accidental Debt
 
@@ -532,5 +526,3 @@ decide, using the lists above, whether to pay it down now or later.
   or component, so the next change touches one place.
 - **Refactoring**: changing code's structure without changing what it does; safe only when tests
   or a careful preview confirm the behavior stayed the same.
-
-<!-- learn -->

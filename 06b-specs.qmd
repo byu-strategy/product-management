@@ -23,8 +23,6 @@ story with its acceptance criteria, then the PRD, then spec-driven development: 
 workflow, the tools that package it, and two skills from the Agent Team Kit that write a spec and
 then build from it.
 
-<!-- learn -->
-
 ## User Stories
 
 User stories with acceptance criteria are the smallest unit of a spec. They come from Agile and Extreme Programming [@beck1999xp; @cohn2004stories].
@@ -214,8 +212,6 @@ The docs add one caution: planning has overhead. If you could describe the chang
 
 You can make the workflow standing behavior by putting rules in `CLAUDE.md` ("read requirements.md, design.md, and tasks.md before implementing any task"; "mark tasks complete by changing [ ] to [x]"), and you can wire Kiro's approach into Claude Code with the community [spec-workflow-mcp](https://github.com/Pimzino/spec-workflow-mcp) server. Cursor added a similar plan mode in October 2025.
 
-<!-- learn -->
-
 ## The Agent Team Kit's spec and build-spec Skills
 
 The [Agent Team Kit](https://github.com/ai-foundry-byu/agent-team-kit) (introduced in [Directing
@@ -302,8 +298,6 @@ guide](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/docs/SKILLS.md
 behind both skills: for anything bigger than a one-line fix, have the agent show you the plan in a
 form you can edit, and count the work as done when there is evidence for each criterion.
 
-<!-- learn -->
-
 ## Getting Started: Your First SDD Feature
 
 Build an advanced task manager (projects, tags, priorities, due dates) on top of the to-do app from Chapter 1. Each step is one prompt; the specs live in `.claude/specs/advanced-task-management/`.
@@ -327,8 +321,6 @@ When you create a task: TaskForm calls store.addTask(), the store updates
 memory and calls storage.saveData(), the JSON file is rewritten, and
 TaskList re-renders with the new task.
 ```
-
-<!-- learn -->
 
 ## CLAUDE.md: Your SDD Configuration
 
@@ -359,8 +351,6 @@ With this in place, Claude Code reads your SDD process at the start of every ses
 - **Name the check for each acceptance criterion.** Next to each criterion, write what will confirm it: a test, a browser check that you or an agent will do, or a search of the code (for example, "every server action checks the user's role"). The Agent Team Kit's `spec` skill ([above](#the-agent-team-kits-spec-and-build-spec-skills)) requires this, on the reasoning that a criterion you cannot attach a check to is too vague to build from. Write permission criteria in both directions: who can see the feature, and who must not.
 - **Review specs before code.** Have another person, or Claude in a fresh session (`/clear`), critique the spec. A design flaw caught in a spec costs a paragraph; caught in code, it costs a rewrite.
 
-<!-- learn -->
-
 ## Exercise: Add a Feature Using SDD
 
 Take the to-do list app you built in chapter 1 (or any project you're working on) and add one feature using spec-driven development. Pick something relatively simple: categories or tags, due dates and reminders, search and filter, or user authentication.
@@ -376,8 +366,6 @@ Take the to-do list app you built in chapter 1 (or any project you're working on
 **Observe the difference:**
 
 How does this feel compared to pure vibe coding? Is the code quality better? Do you feel more in control? Can you explain why the code looks the way it does? Which of your acceptance criteria caught something the agent's own report missed?
-
-<!-- learn -->
 
 ## Key Concepts
 
@@ -418,5 +406,3 @@ How does this feel compared to pure vibe coding? Is the code quality better? Do 
   criteria it closes. Progress saved there lets a fresh session pick up where the last one stopped.
 - **Review the spec before the code**: have another person, or Claude in a fresh session, critique
   it. A flaw caught in a spec costs a paragraph; caught in code, it costs a rewrite.
-
-<!-- learn -->

@@ -8,8 +8,6 @@ This is a course about building products, and you are going to start building in
 before you know what a backend is. That is deliberate. You build with an AI agent, and
 directing one well is the skill everything else in this course depends on.
 
-<!-- learn -->
-
 ## The Loop: How This Course Works
 
 The course is organized around one idea. At its core, product management means two things: **figure out what is true, and act on it.** True about a customer, a problem, a market. Everything else, the interviews, the specs, the MVPs, the metrics, is a method for doing that.
@@ -123,8 +121,6 @@ Each computing wave widened the field: personal computers in the 1980s, the inte
 **You have the opportunity to use AI to improve the world. This class will help prepare you to take it.**
 
 For two decades many companies built software with a *product trio*: a product manager who sets vision, strategy, and priorities; a designer who owns usability and the experience; and engineers who turn ideas into working, scalable systems. AI is changing both the division of labor inside the trio and how much one person can do.
-
-<!-- learn -->
 
 ## AI Product Management
 
@@ -276,8 +272,6 @@ This is a change in sequence, and the writing still happens. You still write dow
 learned something from a build instead of guessing beforehand, and you write it before the code is
 something you intend to keep. The rule for the rest of the course: **explore to learn, then spec anything you intend to keep.** [Chapter 6b](06b-specs.qmd) is about that discipline.
 
-<!-- learn -->
-
 ## Where This Is Going
 
 Who owns which piece of product work is now an open question:
@@ -335,8 +329,6 @@ Builder’s high is back...
 
 That is the ambition for you in this course: to become a full-stack product builder who uses AI to build products that improve people's lives.
 
-<!-- learn -->
-
 ## Vibe Coding Terminology
 
 The term "vibe coding" sounds unserious, and often the practice is. Some engineers now advertise themselves as "Vibe Code Cleanup Specialists," hired to clean up [AI slop](https://en.wikipedia.org/wiki/AI_slop): code or content generated carelessly.
@@ -346,8 +338,6 @@ The term "vibe coding" sounds unserious, and often the practice is. Some enginee
 Don't be the reason your boss has to bring in a Vibe Code Cleanup Specialist.
 
 This course uses terms like "building with AI," "agentic coding," "AI builder," and "full-stack product builder" instead, and holds the work to a standard: code an agent wrote for you should stand up to review in a serious engineering organization.
-
-<!-- learn -->
 
 ## What Makes an Agent an Agent
 
@@ -635,13 +625,9 @@ In a VS Code terminal, run `winget install --id Git.Git -e --source winget`, the
 
 A **package manager** installs, updates, and removes software from the command line, so you type one command instead of clicking through an installer. On macOS the standard one is *Homebrew* (installed from [brew.sh](https://brew.sh); check it with `brew --version`). On Windows 10 and 11, *winget* comes pre-installed (`winget --version`). When Claude Code installs `git`, `node`, or `python` for you, it is calling one of these.
 
-<!-- learn -->
-
 ## VS Code
 
 Visual Studio Code is a free code editor from Microsoft and the home base for this course: a file browser, an editor, a built-in terminal, and the Claude Code extension in one window. Installation is in [Computer Setup](00-computer-setup.qmd). (On macOS, `brew install --cask visual-studio-code` installs it from the command line; `--cask` tells Homebrew it is a graphical app.)
-
-<!-- learn -->
 
 ## Claude Code
 
@@ -700,8 +686,6 @@ Three gotchas students hit:
 Predict, then check: you add a line to your project's `CLAUDE.md` while working in the terminal. Will a session in the VS Code extension see it? Will a cloud session at claude.ai/code see it if you have not committed and pushed the file? (Yes; no.)
 :::
 
-<!-- learn -->
-
 ## Code your first app
 
 Open VS Code and create a new folder for your app.
@@ -752,13 +736,9 @@ JSON (JavaScript Object Notation) is a lightweight format for storing and sendin
 Here "name" is a key and "Alice" its value. JSON is easy for people to read and for programs to parse, which is why apps use it to exchange data.
 :::
 
-<!-- learn -->
-
 ## Code Your Second App
 
 Spend the next 15 minutes building another application. For now, keep using streamlit (say so in your prompt).
-
-<!-- learn -->
 
 ## AI Dev Tools Landscape
 
@@ -773,8 +753,6 @@ Claude Code is the primary tool in this course. The wider field, roughly sorted:
 | **Figma** | Design tool | Mockups and user flows |
 
 When you want to see a UI idea in seconds before building it properly, a browser app builder like Lovable is a reasonable place to start.
-
-<!-- learn -->
 
 ## Key Concepts
 
@@ -826,5 +804,3 @@ When you want to see a UI idea in seconds before building it properly, a browser
   skills, hooks, and subagents. `CLAUDE.md` is a separate file.
 - **Explanatory output style**: a setting that makes Claude add *Insight* notes explaining the
   choices behind the code it writes.
-
-<!-- learn -->

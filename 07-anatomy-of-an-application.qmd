@@ -53,8 +53,6 @@ Every one of these comes up below. Come back here when one stops you.
 | **Environment variable** | A setting kept outside your code, such as a key. In Next.js, names that start with `NEXT_PUBLIC_` are sent to the browser; all others stay on the server |
 | **OAuth** | Signing in through another service ("Sign in with Google"), which vouches for who the user is |
 
-<!-- learn -->
-
 ## Three Places Code Runs and Data Lives
 
 **The model:** the browser belongs to the user, who can see and change anything there. The
@@ -113,8 +111,6 @@ why the database's own rules matter so much in this stack.
 Send `{ score: 10 }` directly, or edit the code to mark every answer correct. The server should
 receive the answers, look up the correct ones itself, and compute the score.
 :::
-
-<!-- learn -->
 
 ## How a Request Crosses the Internet
 
@@ -205,8 +201,6 @@ Words used in this section:
 | **Port** | A number that says which program on a computer a connection is for, such as `3000` |
 | **localhost** | A name that always means the computer you are on |
 | **Packet** | One of the small pieces a message is split into for the trip |
-
-<!-- learn -->
 
 ## Requests Connect the Places
 
@@ -389,8 +383,6 @@ stores, what comes back. Then ask Claude Code to trace the same feature through 
 code and compare. Where the two differ, find out which one is right.
 :::
 
-<!-- learn -->
-
 ## How the Code Works
 
 **The model:** the screen is computed from data. The code never edits the screen directly. It
@@ -552,8 +544,6 @@ changed and does not render again. Reloading the page works because the page loa
 from the database again. The fix is `setTasks([...tasks, newTask])`.
 :::
 
-<!-- learn -->
-
 ## The Files in a Next.js Project
 
 **The model:** in a Next.js project, a file's name and folder tell you what it does and where it
@@ -630,8 +620,6 @@ server file such as `app/api/tasks/route.ts`, which reads the new key from an en
 variable set in `.env.local` and in Vercel's settings.
 :::
 
-<!-- learn -->
-
 ## Writing Specs That Cover Every Layer
 
 When you direct an agent, a spec that names each layer gets you code that puts each piece in
@@ -688,8 +676,6 @@ what runs in the browser, what runs on the server, what tables I need,
 and where each access rule is enforced.
 ```
 
-<!-- learn -->
-
 ## Tech Stacks and Languages
 
 A **stack** is the specific set of technologies you have chosen for each layer. People name
@@ -722,8 +708,6 @@ well-known tool's failure modes are already documented [@mckinley2015boring]. Th
 also a reason specific to AI: an agent writes better code in a popular stack because it has seen
 far more of it. The stack that is well documented, widely used, and already familiar to your
 tools is almost always the right choice for a first product.
-
-<!-- learn -->
 
 ## Supabase Introduction
 
@@ -762,8 +746,6 @@ anon and service role names by the end of 2026, so you will see both in code for
 Chapter 8 covers the rules that make a public key safe.
 
 <!-- REVIEW: the variable name NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY is a convention; check it matches the builder template's .env.example -->
-
-<!-- learn -->
 
 ## Who You Are, What You May Do
 
@@ -822,8 +804,6 @@ find one place in your own app where access is enforced only by hiding something
 Chapter 8 has a drill for testing it.
 :::
 
-<!-- learn -->
-
 ## Key Concepts
 
 - **Three places**: the browser belongs to the user, the server runs your code and holds the
@@ -871,5 +851,3 @@ Chapter 8 has a drill for testing it.
 - **Authentication vs. authorization**: authentication proves who a user is; authorization
   decides what they may do to each row. Enforce authorization where the data lives, never only
   by hiding something on screen.
-
-<!-- learn -->

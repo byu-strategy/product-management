@@ -50,8 +50,6 @@ up, and the manager approves the trade. One AI feature reads shifts from a photo
 schedule. The example is invented for teaching.
 :::
 
-<!-- learn -->
-
 ## UI, UX, and Product Design
 
 **The model: user interface (UI) design is the screen; user experience (UX) design is everything a
@@ -85,8 +83,6 @@ which scope you are working in.
 > "We are working on UX, not UI: the path from posting a shift to the manager's approval. Do not
 > change any styling. List every message the student and the coworker receive, on screen and off,
 > in order, and mark any step where one of them does not know what happens next."
-
-<!-- learn -->
 
 ## The Design Process: Diverge, Then Converge, Twice
 
@@ -125,8 +121,6 @@ process is not linear
 > list and say what it assumes about the student and the manager. Do not write code yet."
 
 <!-- REVIEW: dates checked 2026-10-10 on the Design Council's history page and Framework for Innovation page ("Launched in 2004"). The brief for this chapter said 2005, a date common in secondary sources; the Design Council's own pages say developed from 2003 and shared publicly from 2004, so the text follows them. -->
-
-<!-- learn -->
 
 ## Fidelity: Sketch, Wireframe, Mockup, Prototype
 
@@ -243,8 +237,6 @@ an ASCII mockup of each screen in the flow, in the terminal, with no code writte
 before anything is built.
 :::
 
-<!-- learn -->
-
 ## Design Tools: Paper, Figma, Claude, and Code
 
 **The model: pick the tool by the question and by who has to work in the file with you.** Every method
@@ -292,8 +284,6 @@ A decision rule:
 If you are embedded on a company team, use the tool the team's designers use. Your design file is
 for them as much as for you.
 
-<!-- learn -->
-
 ## Norman's Principles of Interaction
 
 **The model: a person using a product must work out what they can do and then work out what
@@ -335,8 +325,6 @@ which is why Jakob's law matters.
 > "Write the conceptual model of this feature in three sentences, as a user would say it. Then
 > list every screen, label, and message that teaches it, and every place where what the screen
 > shows could lead a user to a different model. Do not change code yet."
-
-<!-- learn -->
 
 ## Information Architecture
 
@@ -391,8 +379,6 @@ to the wrong place is the first thing to rename.
 > the wrong place when looking for trades waiting on their manager. Propose three alternative names
 > in the user's words, and list every place in the app the label appears so we change it
 > everywhere."
-
-<!-- learn -->
 
 ## How People Perceive a Screen
 
@@ -474,8 +460,6 @@ Flow](05-interface-and-flow.qmd#decide-once-design-systems-and-familiar-patterns
 > 24px below the previous field. Make Give away this shift full width and at least 48px tall at the
 > bottom (Fitts's law). Move Message manager and Add to calendar into a More menu (Hick's law)."
 
-<!-- learn -->
-
 ## Visual Design Fundamentals
 
 **The model: visual design is a small set of decisions made once and reused: one or two typefaces
@@ -555,8 +539,6 @@ the Tailwind theme, so the agent can use only those values:
 > Check every text color against its background and report any pair below 4.5:1 for normal text or
 > 3:1 for large text."
 
-<!-- learn -->
-
 ## Nielsen's Ten Usability Heuristics
 
 **The model: ten broad rules of thumb, published by Jakob Nielsen in 1994, summarize what makes an
@@ -607,8 +589,6 @@ above on the same screen. **Compare:** which problems did only you find, and whi
 agent find? Fix the one that both of you ranked highest, and check it in your next usability test.
 :::
 
-<!-- learn -->
-
 ## Words Used in This Chapter
 
 | Word | What it means |
@@ -640,8 +620,6 @@ agent find? Fix the one that both of you ranked highest, and check it in your ne
 | **Contrast ratio** | The measured difference in luminance between text and its background, from 1:1 to 21:1 |
 | **Design token** | A named value, such as a color or spacing step, that every component uses |
 | **Heuristic evaluation** | An expert review of an interface against a set of usability rules, without users |
-
-<!-- learn -->
 
 ## Key Concepts
 
@@ -683,5 +661,3 @@ agent find? Fix the one that both of you ranked highest, and check it in your ne
 - **Design tokens**: the named values from those scales, so every screen uses the same choices.
 - **Nielsen's ten heuristics**: ten rules of thumb for reviewing a whole screen. A heuristic review
   with an agent finds problems cheaply before a usability test and does not replace one.
-
-<!-- learn -->

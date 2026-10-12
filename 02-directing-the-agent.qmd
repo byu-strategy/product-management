@@ -15,8 +15,6 @@ All three get easier when you have written down what you want before anyone buil
 written description is a spec, and it is the last step of design, so it has its own chapter in the
 Design part of the book: [Specs](06b-specs.qmd).
 
-<!-- learn -->
-
 ## Conversational Coding
 
 AI-assisted coding works best when you think out loud. Instead of trying to write perfect prompts, have a conversation:
@@ -162,8 +160,6 @@ A slash command is recognized at the start of a message; anything after it is it
 You can also save a prompt you use often and run it by name. Claude Code now treats these as **skills** (next section): a file at `.claude/commands/interview.md` still works and creates `/interview`, but new ones should be skills. Text you type after the command replaces `$ARGUMENTS` in the file, so `/interview [paste notes]` runs your saved synthesis prompt on those notes. Files in `~/.claude/` (your home folder) are available in every project; files in the project's `.claude/` only there.
 
 Useful ones for a PM: `persona` (a persona from interview data), `jtbd` (a problem restated as a job to be done), `commit` (a commit message for staged changes), `review` (a code review).
-
-<!-- learn -->
 
 ## Claude Code: Skills
 
@@ -767,15 +763,11 @@ Only the scale differs.
 Writing that definition of done is the subject of [Specs](06b-specs.qmd), in the Design part of
 the book: user stories, acceptance criteria, PRDs, and the spec-driven workflow.
 
-<!-- learn -->
-
 ## Deploying a Prototype
 
 <!-- MOVE: belongs in ch07 or ch09 (Application Architecture) because deployment is not Agentic Workflow material; the audit recommends moving it there. -->
 
 Streamlit apps are an even simpler way to deploy than Vercel. Ask Claude to build a minimal Streamlit problem tracker (add a problem with title, description, and frequency; list them; save to a JSON file), then run it with `streamlit run app.py`. To share it or open it on your phone, push the code to GitHub, go to [share.streamlit.io](https://share.streamlit.io), connect the repo, and deploy.
-
-<!-- learn -->
 
 ## Deployment with Vercel / GitHub Pages
 
@@ -791,8 +783,6 @@ Once your code is on GitHub, deployment is simple.
 
 Pick "GitHub Actions" if your site has a build step, which anything beyond plain HTML will. Pick
 "Deploy from a branch" only if you are publishing files that are already finished.
-
-<!-- learn -->
 
 ## Key Concepts
 
@@ -857,5 +847,3 @@ Pick "GitHub Actions" if your site has a build step, which anything beyond plain
 - **The agentic software factory**: at full scale (OpenAI's version), the human defines the
   outcome, verification is the bottleneck, and risk classification decides which changes a person
   reviews.
-
-<!-- learn -->

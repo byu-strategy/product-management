@@ -69,7 +69,7 @@ book:
 bibliography: references.bib
 csl: chicago-author-date.csl
 
-# Turns each <!-- learn --> marker into a copyable /learn line for its section (_extensions/learn)
+# Adds a "Learn in Claude" button to each ## section that states "**The model:**" (_extensions/learn)
 filters:
   - learn
   # Topics | Weeks switch in the left rail; the weeks are in _weeks.yml (_extensions/week-view)

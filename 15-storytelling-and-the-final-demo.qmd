@@ -13,8 +13,6 @@ This chapter continues the example from [Going to Market](12-going-to-market.qmd
 app that turns a student's lecture notes into a practice quiz, for $4 a month.
 :::
 
-<!-- learn -->
-
 ## A story has a job
 
 Every story has a purpose, and the first question is always what that purpose is. Work through three steps. The first, Aim, is the same first step as the course's loop in [chapter 01](01-building-with-ai-agents.qmd):
@@ -149,8 +147,6 @@ Storytelling is a skill built by repetition. Practice the demo out loud, on came
 ::: {.callout-tip title="Try it"}
 Write your demo as five lines: the person, the problem, the moment it works, the evidence, what you learned. Read it aloud with a timer. Which line has no evidence behind it yet? That is what to measure before December 10.
 :::
-
-<!-- learn -->
 
 ## Key Concepts
 

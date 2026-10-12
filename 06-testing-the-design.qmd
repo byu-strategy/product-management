@@ -12,8 +12,6 @@ This chapter teaches you to run a usability test, synthesize what you saw withou
 
 This is triangulation from [Finding and Validating the Problem](04-finding-and-validating-the-problem.qmd) in practice. One user shows you one partial view of the problem. Watch enough of them and the full problem appears. No single tester, however loud or however pleased, is proof on their own.
 
-<!-- learn -->
-
 ## The Curse of Knowledge
 
 You built this thing. You know exactly where every button is, what every label means, why the workflow goes left to right. Your users don't. They're seeing it for the first time, bringing different mental models, and expecting it to work like other things they've used (Jakob's Law, from [Interface and Flow](05-interface-and-flow.qmd)).
@@ -33,8 +31,6 @@ This matters more with AI. It will generate a screen that *looks* polished in se
 *From Don Norman, The Design of Everyday Things (first published 1988; revised edition 2013), and Steve Krug, Don't Make Me Think (first published 2000; revised edition 2014).*
 
 Norman's other principles (mapping, constraints, feedback, and the conceptual model) and Nielsen's ten usability heuristics, which give you a checklist to review a screen before a test, are in [Design Fundamentals](05b-design-fundamentals.qmd).
-
-<!-- learn -->
 
 ## What is Usability Testing?
 
@@ -325,5 +321,3 @@ Plan your next round: write one task as a goal, name five testers who match your
 - **Testing at scale**: A/B tests, surveys, analytics, session replay, a feedback button, and an
   agent walk-through each answer a different question. Start with usability testing, because it
   shows why people struggle before you measure how many do.
-
-<!-- learn -->

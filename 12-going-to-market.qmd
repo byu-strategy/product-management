@@ -32,8 +32,6 @@ is for, what it costs to run, how to tell whether it works, and how to present i
 invented for teaching.
 :::
 
-<!-- learn -->
-
 ## Who It Is For: The Beachhead
 
 **The model:** pick the narrowest group you can reach by hand and win completely, then widen.
@@ -72,8 +70,6 @@ Write your beachhead as one sentence with a place in it: "students in ___ who __
 through ___." If you cannot name the place where twenty of them gather, your segment is still
 too vague. Narrow it until you can.
 :::
-
-<!-- learn -->
 
 ## Positioning & Messaging
 
@@ -159,8 +155,6 @@ the alternative you wrote is a competitor's app, check your notes: is that reall
 person you interviewed did?
 :::
 
-<!-- learn -->
-
 ## Pricing and AI Margins
 
 **The model:** price on the value delivered, and check the floor: every AI call costs you money,
@@ -239,8 +233,6 @@ your heaviest realistic user. At your intended price, which users lose you money
 then check one real call's `usage` numbers in your logs. What is one product change that would
 keep the heavy user profitable?
 :::
-
-<!-- learn -->
 
 ## Your First Users, by Hand
 
@@ -325,8 +317,6 @@ a week, compare. The gap between your prediction and the result is information a
 message or your segment.
 :::
 
-<!-- learn -->
-
 ## Choosing Your Channel Strategy
 
 **The model:** a channel is a repeatable path by which strangers become users. Hand recruiting
@@ -387,8 +377,6 @@ Pick one channel for your next sprint. Write down what you will do, how many peo
 bring to your product, and the date you will judge it. If it brings fewer than half that number,
 what will you try instead?
 :::
-
-<!-- learn -->
 
 ## Launch & Iterate
 
@@ -476,8 +464,6 @@ means it is working, and the threshold. Commit it. Two weeks later, read it back
 at the data.
 :::
 
-<!-- learn -->
-
 ## Going Deeper
 
 <!-- MOVE: the vendor tool lists (GTM Toolkit) were cut here; if Scott wants them, they belong in 98-tools.qmd, and the reading list belongs in 97-builder-resources.qmd -->
@@ -486,8 +472,6 @@ at the data.
 - *Obviously Awesome* by April Dunford [@dunford2019obviously]: positioning from the customer's alternative
 - *The Mom Test* by Rob Fitzpatrick [@fitzpatrick2013mom]: customer interviews done right
 - Paul Graham, "Do Things That Don't Scale" [@graham2013]
-
-<!-- learn -->
 
 ## Key Concepts
 

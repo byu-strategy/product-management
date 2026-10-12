@@ -17,8 +17,6 @@ This chapter continues the example from [Going to Market](12-going-to-market.qmd
 app that turns a student's lecture notes into a practice quiz, for $4 a month.
 :::
 
-<!-- learn -->
-
 ## Decide What Working Means First
 
 **The model:** pick one number that moves only if the product delivers value, plus a few
@@ -106,8 +104,6 @@ Write your product's North Star and apply the test: name one way the number coul
 product got worse. If you can, it is an activity metric; find the moment the job gets done and
 count that instead. Then add two guardrails and fill in the success-definition table.
 :::
-
-<!-- learn -->
 
 ## Instrument the Core Action
 
@@ -235,8 +231,6 @@ on every button, so we can reconstruct anything later." What question about your
 that log not answer?
 :::
 
-<!-- learn -->
-
 ## Signups Are Not Adoption
 
 **The model:** follow people from arrival to first value to coming back. Each step loses people,
@@ -292,8 +286,6 @@ Fill in the funnel table for your own product from your events: arrived, signed 
 value, came back. If you cannot fill a row, that is an event you are not logging yet. Predict
 which step loses the largest share before you look.
 :::
-
-<!-- learn -->
 
 ## Retention Shows Whether It Works {#retention-is-the-truth}
 **The model:** group users by the week they started and watch who returns. Averages and running
@@ -417,8 +409,6 @@ curve for your largest cohort. Predict its shape first. Then compare your total 
 users with the cohort curve: does the total show the same trend?
 :::
 
-<!-- learn -->
-
 ## Cause Versus Coincidence
 
 **The model:** a randomized test shows cause. A before-and-after comparison usually shows the
@@ -488,8 +478,6 @@ other than the button. Then design the smallest test that would separate the but
 the others, with the users you actually have. What result would make you say "can't tell yet"?
 :::
 
-<!-- learn -->
-
 ## Keep, Change, or Kill
 
 **The model:** every feature carries an upkeep cost. Usage data tells you which features to invest
@@ -521,8 +509,6 @@ Fill in the feature review table for your own product (it makes a good Sprint 6 
 one feature you would kill, and say what number would have to be true for you to keep it instead.
 :::
 
-<!-- learn -->
-
 ## Money Metrics
 
 **The model:** revenue metrics only mean something per customer and net of what that customer
@@ -540,8 +526,6 @@ Revenue-based LTV assumes serving a customer is free, which for an AI product it
 ([Business Models](13-business-models.qmd) works an example). If LTV is below CAC, each new
 customer loses money; a common rule of thumb is LTV at least three times CAC. Pricing is in
 [Going to Market](12-going-to-market.qmd).
-
-<!-- learn -->
 
 ## Asking How People Feel
 

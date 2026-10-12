@@ -45,8 +45,6 @@ it fail, and the smallest test that shows whether it is worth building. The exam
 for teaching.
 :::
 
-<!-- learn -->
-
 ## Discovery Is Truth-Seeking
 
 A product manager has one core job: to know what is actually true about a customer and their problem before spending real time and money building. Discovery is how you do that job. Everything else in this chapter, Jobs-to-be-Done, the Mom Test, interview synthesis, is a method for replacing what you *believe* about your users with what is *true* about them, as cheaply and quickly as possible. Steve Blank gave this discipline its name, *customer development*, and its motto: get out of the building [@blank2005four]. The facts you need are outside, with real people, not inside your head.
@@ -234,8 +232,6 @@ Find the mistake in each job statement, then rewrite it:
 where the progress should be.)
 :::
 
-<!-- learn -->
-
 ## The Five Kinds of Pain
 
 Jobs come in three types; the *pain* behind a job comes in five kinds, and naming them gives you a checklist of what to probe for. A single problem often hurts in more than one way:
@@ -294,8 +290,6 @@ switching to your product, including getting other people to switch. Then predic
 pull larger than anxiety plus habit? Ask Claude to argue the side of the habit and see if your
 answer holds.
 :::
-
-<!-- learn -->
 
 ## Problem Interviews (The Mom Test)
 
@@ -399,8 +393,6 @@ Tag each of these interview notes as said, did, or paid:
 Then go through your own interview synthesis and tag every key insight the same way. How many of
 your insights rest only on the said rung?
 :::
-
-<!-- learn -->
 
 ## Conducting Effective Interviews
 
@@ -521,8 +513,6 @@ are *not* your customer even though they might be interested. Then name the user
 If they are different people, have you interviewed the payer? If not, who is the first payer you
 could talk to this week?
 :::
-
-<!-- learn -->
 
 ## Can You Reach Them? The Access Test
 
@@ -744,8 +734,6 @@ Two drills.
    for overlaps and gaps, then decide yourself whether it is right.
 :::
 
-<!-- learn -->
-
 ## The Four Risks and the Riskiest Assumption
 
 **The model:** every product idea can fail in four ways: they don't want it, they can't use it,
@@ -807,8 +795,6 @@ and whether it is fatal. Circle your riskiest assumption. Then write one line yo
 into your sprint plan: "My riskiest assumption is ___, and this sprint I will test it by ___."
 :::
 
-<!-- learn -->
-
 ## The Smallest Test
 
 **The model:** before you build, fake it, do it by hand, or sell it first. The goal is learning
@@ -861,8 +847,6 @@ what action you will count, which rung that action sits on, and how many hours i
 Predict the result before you run it, and write down what result would make you change your plan.
 Pick the one with the best learning per hour and run it this sprint.
 :::
-
-<!-- learn -->
 
 ## The Commitment Decision
 
@@ -1077,8 +1061,6 @@ from the average app it has seen. The brief replaces those guesses with your evi
 covers how to turn it into [user stories](06b-specs.qmd#user-stories) and a
 [PRD](06b-specs.qmd#product-requirements-documents-prds) the agent builds from.
 
-<!-- learn -->
-
 ## Discovery Is Continuous
 
 Discovery is not a phase you finish before building. The best product teams keep talking to customers every week, indefinitely. Teresa Torres calls this **continuous discovery**, and it fits this course exactly: you run the loop again every sprint, not once at the start.
@@ -1186,5 +1168,3 @@ above are your experiments (@fig-opportunity-solution-tree).
 - **Continuous discovery and the Opportunity Solution Tree** (Teresa Torres): keep talking to
   customers every sprint. The tree runs outcome, opportunities, solutions, experiments, and every
   solution must sit under an opportunity you actually discovered.
-
-<!-- learn -->

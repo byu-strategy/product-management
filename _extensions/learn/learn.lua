@@ -1,6 +1,11 @@
 --[[
-learn.lua: give each section that ends with a `<!-- learn -->` comment a small "Learn" button
-beside its `##` heading.
+learn.lua: give each `##` section that states its model a small "Learn" button beside its
+heading. A section states its model in a paragraph that opens in bold with "The model:". That
+line is the rule: write one and the section gets a button; the /learn skill teaches that model.
+
+Until a section's model line is written, a `<!-- learn -->` comment inside the section gives it a
+button anyway. Each marker left in the book is a section still waiting for its model line; once
+the line exists, delete the marker.
 
 The heading carries `/learn <page url>#<anchor>`. learn.js turns that into a plain-text prompt
 (run the learn skill on this section, and install it from builder-template first if it is
@@ -14,6 +19,25 @@ _quarto.yml to change the site. A marker before any `##` heading is dropped with
 ]]
 
 local DEFAULT_BASE = "https://byu-strategy.github.io/product-management/"
+
+-- A model line is a paragraph that opens in bold with "The model:", either as a label
+-- ("**The model:** a flow is ...") or as a whole bold sentence ("**The model: a flow is ...**").
+local function is_model_line(block)
+  if block.t ~= "Para" or #block.content == 0 then return false end
+  local first = block.content[1]
+  return first.t == "Strong" and pandoc.utils.stringify(first):match("^The model:") ~= nil
+end
+
+local function has_model_line(block)
+  if is_model_line(block) then return true end
+  local found = false
+  if block.t == "Div" or block.t == "BlockQuote" then
+    pandoc.Blocks(block.content):walk({
+      Para = function(p) if is_model_line(p) then found = true end end,
+    })
+  end
+  return found
+end
 
 local function is_marker(block)
   return block.t == "RawBlock"
@@ -35,26 +59,20 @@ function Pandoc(doc)
   end
   local page = base .. page_name()
 
-  -- pass 1: which ## sections end with a marker
+  -- pass 1: which ## sections state a model
   local marked, section = {}, nil
   for _, block in ipairs(doc.blocks) do
     if block.t == "Header" and block.level <= 2 then
       section = (block.level == 2) and block.identifier or nil
-    elseif is_marker(block) then
-      if section and section ~= "" then
-        marked[section] = true
-      else
-        quarto.log.warning("learn: a <!-- learn --> marker in " .. page_name() .. " has no ## heading above it; skipped")
-      end
+    elseif section and section ~= "" and (has_model_line(block) or is_marker(block)) then
+      marked[section] = true
     end
   end
 
   -- pass 2: drop the markers and tag the marked headings
   local out, found = pandoc.Blocks({}), 0
   for _, block in ipairs(doc.blocks) do
-    if is_marker(block) then
-      -- dropped
-    else
+    if not is_marker(block) then
       if block.t == "Header" and block.level == 2 and marked[block.identifier] then
         block.attributes["data-learn"] = "/learn " .. page .. "#" .. block.identifier
         found = found + 1
