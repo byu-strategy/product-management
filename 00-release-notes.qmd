@@ -4,6 +4,21 @@ This course site is a living product. It gets better during the semester, and ev
 
 New entries appear at the top.
 
+## v2.11.0 (2026-10-12)
+
+The left sidebar now has a Weeks view that walks through the course one class at a time.
+
+- **Topics | Weeks switch in the sidebar.** Weeks lists each class with its date and axis, the
+  chapters to read for it, and what is assigned or due that week. The current week is open and
+  marked "This week", and it moves forward on its own each Monday. Topics is the chapter order
+  you have used so far. The site opens on Weeks, and it remembers whichever view you choose.
+- **Previous and next follow your view.** In Weeks, the links at the bottom of a chapter go to
+  the next reading in class order (for example, Anatomy of an Application leads to The Browser,
+  Developer Tools, and Claude in Chrome, both read in week 7).
+- **Learn in Claude buttons** now sit on the sections that teach a core idea, and were removed
+  from introductions, Key Concepts lists, tool tours, setup steps, and exercises. The syllabus
+  now says that `/learn` tutors you on the section's core idea.
+
 ## v2.10.0 (2026-10-10)
 
 A new Architecture appendix on the browser, and new sections in Chapters 1, 2, and 7 on hooks,
