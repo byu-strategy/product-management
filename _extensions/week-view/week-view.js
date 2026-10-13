@@ -2,7 +2,8 @@
 // Topics is the sidebar Quarto renders. Weeks is built here from window.PM_WEEK_VIEW
 // (_weeks.yml, written into the page by week-view.lua), reusing the chapter titles Quarto
 // already put in the sidebar so a title lives in one place.
-// The reader's choice is remembered; ?view=weeks or ?view=topics in a link overrides it.
+// New visitors start on Weeks. The reader's choice is remembered; ?view=weeks or ?view=topics
+// in a link overrides it.
 (function () {
   var KEY = "pm-sidebar-view";
 
@@ -145,7 +146,7 @@
     });
 
     var asked = new URLSearchParams(location.search).get("view");
-    show(asked === "weeks" || asked === "topics" ? asked : load() === "weeks" ? "weeks" : "topics");
+    show(asked === "weeks" || asked === "topics" ? asked : load() === "topics" ? "topics" : "weeks");
 
     // In Weeks mode, bring this week into view if the rail is taller than the window.
     if (!weeks.hidden) {

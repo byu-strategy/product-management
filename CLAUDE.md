@@ -41,7 +41,7 @@ Faith is integrated, not bolted on. This is BYU: each class opens with a scriptu
 - **Configuration**: `_quarto.yml` defines the book structure, chapter order, and output settings
 - **Weeks view**: the left rail has a Topics | Weeks switch. Topics is the `_quarto.yml` order;
   Weeks is `_weeks.yml` (class dates, readings per week, deadlines), drawn by
-  `_extensions/week-view`. "This week" is worked out in the reader's browser from today's date,
+  `_extensions/week-view`. New visitors start on Weeks; after that the reader's choice sticks. "This week" is worked out in the reader's browser from today's date,
   so it advances with no rebuild. When a date, reading, or deadline in `00-schedule.qmd`
   changes, change `_weeks.yml` in the same commit.
 - Design docs kept out of the book use a leading underscore so Quarto ignores them:
