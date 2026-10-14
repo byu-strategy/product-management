@@ -327,7 +327,11 @@ def build(student, sub, plan_sub, cfg, due):
         f["plan_committed"] = bool(ph)
         f["plan_changed_during_sprint"] = bool(ph) and any(
             field(plan_first, k) != field(plan_now, k) for k in ("Goal", "Done looks like"))
-        f["plan_change_noted"] = has_field(plan_now, "Changes")
+        # "**Changes:**" from /sprint-plan, or a hand-written "**Change (Oct 6):**" with a reason.
+        # The template's own placeholder line does not count.
+        f["plan_change_noted"] = any(
+            "Only if the plan changes" not in m.group(0) for m in
+            re.finditer(r"^\s*(?:#+\s*|\*\*)Changes?\b[^\n]*?:?\**\s*\S[^\n]*", plan_now or "", re.I | re.M))
         m = re.search(r"\*\*Where to see it:\*\*\s*(.+)", readme)
         f["readme_where_to_see_it"] = m.group(1).strip() if m and "[URL" not in m.group(1) else None
         # Sprint 1 put the retro at the end of the plan file. From Sprint 2 it is the "Your retro"
@@ -367,7 +371,7 @@ def build(student, sub, plan_sub, cfg, due):
         f["plan_days_late"] = max(0, -(-int(late_s) // 86400))
     else:
         from plan_grades import plan_from_submission
-        plan_text, how = plan_from_submission(plan_sub.get("body")) if plan_sub.get("submitted_at") else ("", "")
+        plan_text, how = plan_from_submission(plan_sub.get("body"), cfg["sprint"], plan_sub.get("submitted_at")) if plan_sub.get("submitted_at") else ("", "")
         at = plan_sub.get("submitted_at")
         p["plan_submission"] = {"source": f"Canvas ({how})" if how else "Canvas",
                                 "submitted_at": at and local(at).isoformat(), "text": plan_text or None}
@@ -405,7 +409,8 @@ def build(student, sub, plan_sub, cfg, due):
     m = re.search(r"## Where the work lives\n(.*?)(?=\n## |\Z)", readme_text, re.S)
     where = m.group(1) if m else ""
     named = {re.sub(r"\.git$", "", u.lower()) for u in
-             re.findall(r"github\.com/([\w.-]+/[\w.-]+)", where + " " + " ".join(links))}
+             re.findall(r"github\.com/([\w.-]+/[\w.-]+)",
+                        where + " " + " ".join(links) + " " + ((p.get("plan") or {}).get("now") or ""))}
     course = (repo_url or "").replace("https://github.com/", "").strip("/").lower()
     mine = {r for r, owner in cfg["shared"].items() if owner.lower() == (student.get("github_username") or "#").lower()}
     others = [r for r in cfg["shared"] if r.lower() != course and (r in mine or r.lower() in named)]

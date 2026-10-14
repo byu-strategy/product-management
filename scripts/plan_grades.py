@@ -43,18 +43,46 @@ def plain(body):
     return html.unescape(re.sub(r"<[^>]+>", "", t)).strip()
 
 
-def plan_from_submission(body):
-    """The plan a student turned in: the file behind a GitHub link (the standard way), or text
-    pasted into the box (how the first Sprint 2 submissions came in). Returns (text, how)."""
+def file_at(owner, repo, path, ref, submitted_at=None):
+    """A file's text as committed on `ref` when the student submitted; failing that, as it is now
+    (a file committed after the submission still counts, as it did before). None if unreadable."""
+    sha = ""
+    if submitted_at:
+        sha = subprocess.run(["gh", "api", f"repos/{owner}/{repo}/commits?path={path}&sha={ref}"
+                              f"&until={submitted_at}&per_page=1", "--jq", ".[0].sha // empty"],
+                             capture_output=True, text=True).stdout.strip()
+    p = subprocess.run(["gh", "api", "-H", "Accept: application/vnd.github.raw",
+                        f"repos/{owner}/{repo}/contents/{path}?ref={sha or ref}"], capture_output=True, text=True)
+    return p.stdout if p.returncode == 0 and p.stdout.strip() else None
+
+
+def plan_from_submission(body, sprint=None, submitted_at=None):
+    """The plan a student turned in: the file behind a GitHub link (the standard way), the
+    sprint's plan file in a repo linked bare (three Sprint 2 plans came in as just the repo URL),
+    or text pasted into the box (how the first Sprint 2 submissions came in). A linked file is read
+    as committed at submission, since a link to main otherwise shows the plan with its retro.
+    Returns (text, how)."""
     text = plain(body)
     m = re.search(r"github\.com/([\w.-]+)/([\w.-]+)/blob/([^/\s]+)/(\S+?\.md)", body or "")
     if m:
         owner, repo, ref, path = m.groups()
-        p = subprocess.run(["gh", "api", "-H", "Accept: application/vnd.github.raw",
-                            f"repos/{owner}/{repo}/contents/{path}?ref={ref}"], capture_output=True, text=True)
-        if p.returncode == 0 and p.stdout.strip():
-            return p.stdout, f"linked file {owner}/{repo}/{path}"
+        got = file_at(owner, repo, path, ref, submitted_at)
+        if got:
+            return got, f"linked file {owner}/{repo}/{path}"
+        # A branch name with a slash (claude/cool-fermi-qm8912) or a branch deleted after merging:
+        # read the same sprints/ file from the default branch.
+        sp = re.search(r"sprints/[^/]+\.md$", path)
+        got = sp and file_at(owner, repo, sp.group(0), "HEAD", submitted_at)
+        if got:
+            return got, f"linked file {owner}/{repo}/{sp.group(0)}, read from the default branch"
         return "", f"link to {owner}/{repo}/{path} could not be opened"
+    m = re.fullmatch(r"\s*(?:https?://)?(?:www\.)?github\.com/([\w.-]+)/([\w.-]+?)(?:\.git)?/?\s*", text or "")
+    if m and sprint:
+        owner, repo = m.groups()
+        path = f"sprints/sprint-{sprint}-plan.md"
+        got = file_at(owner, repo, path, "HEAD", submitted_at)
+        return (got, f"repo link; {owner}/{repo}/{path}") if got else \
+            ("", f"repo link {owner}/{repo}; no {path} found")
     return text, "pasted text"
 
 
@@ -121,7 +149,7 @@ def main():
     rows = []
     for s in roster:
         sub = subs.get(str(s["canvas_user_id"]), {})
-        text, how = plan_from_submission(sub.get("body")) if sub.get("submitted_at") else ("", "")
+        text, how = plan_from_submission(sub.get("body"), a.sprint, sub.get("submitted_at")) if sub.get("submitted_at") else ("", "")
         missing = [k for k in PLAN_FIELDS if not has_field(text, k)] if text else []
         at = sub.get("submitted_at")
         fb_path = base / "feedback" / f"{s['net_id']}.json"
