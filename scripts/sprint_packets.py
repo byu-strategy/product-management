@@ -473,8 +473,17 @@ def main():
     cfg = SPRINTS[a.sprint] | {"sprint": a.sprint}
 
     api = CanvasAPI(*[load_config()[k] for k in ("url", "token")], COURSE_ID)
-    assignment = api.get(f"/assignments/{cfg['review']}")
-    due = local(assignment["due_at"])
+    # The class due date, not one bent by an extension: with overrides present, Canvas otherwise
+    # reports an override's date (a single extension moved Sprint 1's to Oct 7 for everyone).
+    assignment = api.get(f"/assignments/{cfg['review']}", params={"override_assignment_dates": "false"})
+    class_due = local(assignment["due_at"])
+    # Extensions: a student's own due date, which also bounds what counts as late work for them.
+    extended = {}
+    for o in api.get_all(f"/assignments/{cfg['review']}/overrides"):
+        if o.get("due_at") and o.get("student_ids"):
+            extended.update({str(sid): local(o["due_at"]) for sid in o["student_ids"]})
+        elif o.get("course_section_id"):
+            print(f"warning: section override '{o.get('title')}' is not applied; due dates use the class date")
     subs = {str(s["user_id"]): s for s in
             api.get_all(f"/assignments/{cfg['review']}/submissions")}
     plan_subs = {str(s["user_id"]): s for s in
@@ -496,10 +505,12 @@ def main():
             continue
         s = s | {"repo_url": repos.get(s["net_id"], {}).get("repo_url", ""),
                  "github_username": repos.get(s["net_id"], {}).get("github_username", "")}
+        due = extended.get(str(s["canvas_user_id"]), class_due)
         p = build(s, subs.get(str(s["canvas_user_id"]), {}),
                   plan_subs.get(str(s["canvas_user_id"]), {}), cfg, due)
         p["assignment"] = {"id": cfg["review"], "name": assignment["name"],
-                           "points": assignment["points_possible"], "due": due.isoformat()}
+                           "points": assignment["points_possible"], "due": due.isoformat(),
+                           "extended": due != class_due}
         (out / f"{s['net_id']}.json").write_text(json.dumps(p, indent=1))
         (out / f"{s['net_id']}.json").chmod(0o600)
         print(f"{s['net_id']:10} {len(json.dumps(p)) // 4:>6} tokens  "
