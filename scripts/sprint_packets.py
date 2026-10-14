@@ -311,10 +311,17 @@ def build(student, sub, plan_sub, cfg, due):
         plan_now = file_at(repo, plan_path)
         review = file_at(repo, review_path)
         readme = file_at(repo, "README.md") or ""
+        at_due = [sha for sha, t in ph if t <= due]
         p["plan"] = {"first_commit": ph[0][1].isoformat() if ph else None, "commits": len(ph),
-                     "as_committed_day_one": plan_first, "now": plan_now}
+                     "as_committed_day_one": plan_first, "now": plan_now,
+                     # Only when it was edited after the due date; otherwise it equals "now".
+                     "at_due_date": file_at(repo, plan_path, at_due[-1]) if at_due and any(t > due for _, t in ph) else None}
         p["review"] = {"first_commit": rh[0][1].isoformat() if rh else None, "commits": len(rh),
                        "text": review}
+        # Commits run to today, so a late submitter's packet can hold the next sprint's work too.
+        # The next sprint's plan lets the grader credit only work that serves this sprint's plan.
+        next_plan = file_at(repo, f"sprints/sprint-{n + 1}-plan.md")
+        p["next_sprint_plan"] = next_plan[:4000] if next_plan else None
         p["readme"] = readme[:4000]
         start = ph[0][1] if ph else due - dt.timedelta(days=14)
         log = gh_list(f"repos/{repo}/commits?since={start.astimezone(dt.timezone.utc).isoformat()}&per_page=100")
@@ -354,6 +361,7 @@ def build(student, sub, plan_sub, cfg, due):
         f["review_window_end"] = m.group(1) if m else None
         f["readme_context_filled"] = "[Your product" not in readme and "[the hats you wear" not in readme
         f["commits_after_due"] = sum(c["after_due"] for c in commits)
+        f["plan_edited_after_due"] = any(t > due for _, t in ph)
     else:
         f["repo_found"] = False
 

@@ -163,6 +163,16 @@ goal comfortably hit earns nothing extra.
 - **Late:** `canvas_late`, `review_on_time` false, or `commits_after_due`. Do not deduct for
   lateness in any category, including Output, and do not mention lateness in `reasons` as a
   cause of a lower score or anywhere in `feedback`. Flag it only. Scott applies the late policy.
+- **Credit only this sprint's work, whenever it was done.** `commits` and `shipped_files` run
+  to the day the packet was built, so a late submitter's packet can also hold the next sprint's
+  work. Judge Output against this sprint's plan only. Work committed after the due date
+  (`after_due` on a commit) counts when it finishes what this sprint's plan set out to do, late
+  or not. It does not count when it serves `next_sprint_plan` instead: new scope, the next
+  sprint's goal, or its done line. When one commit does both, credit only the part this
+  sprint's plan asked for. If `plan_edited_after_due` is true, read the plan as it was at the
+  due date (the edits after it do not move the target) and flag it. Say in `reasons` which
+  later work you set aside as next-sprint work. This is attribution, not a penalty: never
+  mention it in `feedback` as lateness.
 - **Plan completion** (`plan_score`, `plan_on_time`, `plan_fields_missing`) is not yours to
   score. Do not mention it in `feedback`.
 - **Sprint 1 setup item** (`readme_context_filled`): flag only, no deduction. Adding the TA as
