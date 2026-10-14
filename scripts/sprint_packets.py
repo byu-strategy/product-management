@@ -408,9 +408,13 @@ def build(student, sub, plan_sub, cfg, due):
     readme_text = p.get("readme") or ""
     m = re.search(r"## Where the work lives\n(.*?)(?=\n## |\Z)", readme_text, re.S)
     where = m.group(1) if m else ""
-    named = {re.sub(r"\.git$", "", u.lower()) for u in
-             re.findall(r"github\.com/([\w.-]+/[\w.-]+)",
-                        where + " " + " ".join(links) + " " + ((p.get("plan") or {}).get("now") or ""))}
+    text = (where + " " + " ".join(links) + " " + ((p.get("plan") or {}).get("now") or "") + " " +
+            ((p.get("review") or {}).get("text") or ""))
+    named = {re.sub(r"\.git$", "", u.lower()) for u in re.findall(r"github\.com/([\w.-]+/[\w.-]+)", text)}
+    # The review report names repos bare ("Spencer24601/RememberMe"); take those under the student's own account.
+    if student.get("github_username"):
+        named |= {u.lower().rstrip(".") for u in
+                  re.findall(rf"(?<![\w/.-])({re.escape(student['github_username'])}/[\w.-]+)", text, re.I)}
     course = (repo_url or "").replace("https://github.com/", "").strip("/").lower()
     mine = {r for r, owner in cfg["shared"].items() if owner.lower() == (student.get("github_username") or "#").lower()}
     others = [r for r in cfg["shared"] if r.lower() != course and (r in mine or r.lower() in named)]
