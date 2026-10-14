@@ -73,9 +73,9 @@ PowerPoint, PDF, and Excel files, and some entries have an `image` path: open th
 before judging output. A template, a placeholder, or a file with only headings is not real
 work.
 
-Difficulty is not graded in either direction. An ambitious goal the student partly reached and
-accounted for in the retro can still earn full marks; a safe goal comfortably hit earns nothing
-extra.
+Difficulty is not a score of its own; it moves Output only as set out under Difficulty below.
+Great work on an ambitious goal earns full marks even when the student missed it a little; a safe
+goal comfortably hit earns nothing extra.
 
 ## Rules
 
@@ -193,8 +193,16 @@ How it affects **Output**:
 
 - **Sprint 1: raise only.** An ambitious goal (assessed 4 or 5) partly reached and accounted
   for in the retro can earn full marks. Difficulty never lowers a Sprint 1 score.
-- **Sprint 2 on: both ways.** Ambitious work partly reached can earn full marks; routine work
-  (assessed 1 or 2) comfortably finished earns at most 75% of output (15 of 20, 37 of 50).
+- **Sprint 2 on: both ways.** Routine work (assessed 1 or 2) comfortably finished earns at most
+  75% of output (15 of 20, 37 of 50).
+- **Ambitious work missed a little earns full marks (every sprint; Scott, 2026-10-14).** When the
+  work was ambitious (assessed 4 or 5) and what was produced is really great work, give full
+  Output even if one or two `Done looks like` items were missed or only partly reached. Name the
+  misses in the feedback as facts, without a deduction. Take points only when the misses leave
+  the output thin: little real work came out of the sprint, not a hard goal fallen a little short
+  of. Example: a difficulty-4 app that works end to end on real data, with one of four planned
+  features not finished, is full marks; a difficulty-4 goal where only a scaffold and a plan came
+  out is not.
 
 Never tell the student that their baseline or starting point was used, in `difficulty.note` or
 anywhere else they will read: no "baseline", "starting point", "where you started", or their
