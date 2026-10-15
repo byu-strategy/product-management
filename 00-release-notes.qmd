@@ -4,6 +4,20 @@ This course site is a living product. It gets better during the semester, and ev
 
 New entries appear at the top.
 
+## v2.11.1 (2026-10-14)
+
+Chapter 2's section on reaching systems outside your repo now covers three routes an agent can use.
+
+- **Chapter 2: Reach Beyond the Repo: CLI Tools, MCP, and APIs.** A table compares the three
+  routes (a CLI tool the agent runs in the terminal, an MCP server, and a direct API call the agent
+  writes with your key), with an example of each, what each is good for, and what each costs. The
+  section says which to try first, defines a connector as the Claude app's name for an MCP server,
+  and explains that a plugin is a package of skills, slash commands, subagents, hooks, and MCP
+  servers, which is a way to install building blocks and not a fourth route.
+- **Key Concepts for Chapter 2** add entries for the three routes, CLI, connector, and plugin.
+- **Two new references** in the bibliography: Anthropic's introduction of the Model Context
+  Protocol and the Claude Code plugins overview.
+
 ## v2.11.0 (2026-10-12)
 
 The left sidebar now has a Weeks view that walks through the course one class at a time.
