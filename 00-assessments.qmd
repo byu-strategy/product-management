@@ -65,24 +65,33 @@ worth it and not enough for one bad morning to matter.
 
 ### Midterm Exam {#midterm-exam}
 
-**25 points | Testing center, Tue, Oct 20 to Thu, Oct 22 | 40 items**
+**25 points | Testing center, Tue, Oct 20 to Thu, Oct 22 | 36 questions**
 
-Covers classes 1 through 6: the Agentic Workflow, Discovery, and Design axes.
+Covers classes 1 through 6: the Agentic Workflow, Discovery, and Design axes. Scored the same way
+as the final (below): 80% correct or better earns all 25 points.
 
 ### Final Exam {#final-exam}
 
-**25 points | Testing center, Tue, Dec 8 to Wed, Dec 9 | 90 items**
+**25 points | Testing center, Tue, Dec 8 to Wed, Dec 9 | 84 questions, 2 hours**
 
-Cumulative across all six axes, 15 items per axis. Because the item count is even across
-axes, your score comes back as a six-sided profile you can compare against the self
-assessment you filled out in week 1 and again in week 13. The gap between what you think you
-know and what you can produce under proctoring is usually the most useful thing on the page.
+Cumulative across all six axes. 72 questions count toward your score, weighted toward the axes
+with the most to know: Agentic Workflow 16, Application Architecture 14, AI Systems 11, Discovery
+11, Launch and Learn 11, and Design 9. The other 12 are trial questions being tested for future
+exams; they look like the rest and do not count. Every question comes from what the chapters
+teach, in three kinds: know it (what something is or is for), use it (which tool or step fits a
+short situation), and predict it (what happens, or what went wrong, and why).
+
+**Your points.** The exam is meant to be hard, so 80% correct earns full credit:
+points = 25 × (your percent correct ÷ 80%), up to 25. For example, 80% or higher earns 25 points,
+70% earns 21.9, and 60% earns 18.75.
+
+**Your results by axis.** Alongside your score you get a result for each axis: Developing (below
+50% on that axis), Proficient (50% to 79%), or Strong (80% and up). The exam measures what you know
+on each axis, one part of your builder profile; your sprint work shows what you have built.
 
 Questions are application rather than recall. Expect "which of these is a leading indicator
 for this product" rather than "define leading indicator." Reading the chapters is the
 preparation; skimming them is not.
-
----
 
 ## Sprints
 

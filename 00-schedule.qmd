@@ -80,12 +80,12 @@ in [Assessments](00-assessments.qmd#sprints).
 
 Both exams are taken in the testing center on your own schedule within the window. Each window opens at 8:00 AM on its first day and closes at 9:00 PM on its last, and the testing center charges a $5 late fee after 2:00 PM on the last day. They are closed book and proctored, which makes them the one place in this course where your own knowledge is measured without AI assistance. Each is worth 5% of your grade.
 
-| Exam | Window | Covers | Items |
+| Exam | Window | Covers | Questions |
 |------|--------|--------|-------|
-| Midterm | Tue, Oct 20 to Thu, Oct 22 | Classes 1 through 6: Agentic Workflow, Discovery, Design | 40 |
-| Final | Tue, Dec 8 to Wed, Dec 9 | Cumulative, all six axes | 90, 15 per axis |
+| Midterm | Tue, Oct 20 to Thu, Oct 22 | Classes 1 through 6: Agentic Workflow, Discovery, Design | 36 |
+| Final | Tue, Dec 8 to Wed, Dec 9 | Cumulative, all six axes | 84 (72 scored), 2 hours |
 
-The final is built with 15 items per axis so your score comes back as a six-sided profile you can compare with your self-assessment.
+On both exams, 80% correct earns full credit, and you get a result for each axis (Developing, Proficient, or Strong). See [Assessments](00-assessments.qmd#final-exam) for how points are figured.
 
 ## Readings
 
