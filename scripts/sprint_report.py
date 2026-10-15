@@ -582,6 +582,13 @@ def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott
                       if g_tot else "nothing new counted")
         if not grew:
             grew = "<p>No new concepts or depth were counted this sprint.</p>"
+        core = (G.get("start") or {}).get("points") or {}
+        whole = sum(float(v) for v in core.values()) + sum(float(v) for v in (G.get("practice_total") or {}).values())
+        lead = (f'<p class=lead><b>{fmt(whole)} of 600</b> points, {whole / 6:.0f}% of the way to the hiring bar '
+                f'on all six axes (100 on each).')
+        if g_tot:
+            lead += f' This sprint added {fmt(g_tot)} points, {g_tot / 6:.1f}% of the way.'
+        grew = lead + "</p>" + grew
     else:
         grew_right, grew = "being prepared", "<p>Your builder profile is being prepared.</p>"
 
