@@ -1,4 +1,4 @@
-# Builder inventory (draft v1.2, 2026-10-14)
+# Builder inventory (draft v1.3, 2026-10-14)
 
 One list of 37 items (six per axis, seven in Launch and Learn), used two ways: the baseline
 survey asks students to place themselves on each item, and sprint evidence moves items up.
@@ -6,7 +6,8 @@ Supersedes the milestone list in `builder-milestones.md` (v0, the pilot) and the
 first baseline survey.
 
 v1.2 rewrote levels 4 and 5 from 25 coded Sprint 2 packets (`_data/.../builder-pilot/inventory-fit/`):
-what students actually did, and what a coder could and could not confirm from the packet.
+what students actually did, and what a coder could and could not confirm from the packet. v1.3
+fixed the wording a second coding of the same 25 found ambiguous.
 
 **The standard.** A profile with every item at 5 describes someone ready to be hired into
 LinkedIn's Associate Product Builder program, Google's APM program, or a builder role at a top
@@ -38,19 +39,26 @@ Levels 1 and 2 read the same for every item and are not repeated below.
 - **Checkable.** Evidence is something a reader can open: a commit or file in a shared repo, a
   Google file, a live link, or a moment in the Loom. A sentence in the retro or README, or work
   described only in the `/sprint-review` report, does not count by itself.
-- **This sprint.** The work is in this sprint's commits or Loom. A level reached earlier is kept,
-  never credited again.
+- **Level 5 includes level 4.** A level-5 credit needs the level-4 statement met too.
+- **This sprint.** The work is in this sprint's commits (on or before the due date) or Loom. A level
+  reached earlier is kept, never credited again. Work done before the course and copied in does not count.
+- **Whose work.** In a shared repo, credit follows the commit author.
+- **What counts as a record.** A committed file or a commit message that names the result. The parts
+  of one statement may be in different files. A retro counts as the student's reasoning, never as
+  proof that the work happened. A `decisions/` file is required only where an item says "decision record".
+- **One piece of work, two items.** It counts for each item whose statement it meets on its own.
 - **Real users.** People who do not build the product, using it for its purpose, shown by a dated
   record: a feedback or test note, a usage count from the database, a support message, a payment,
   or their data on screen in the Loom.
   - The team is the people who build it. A business partner, coworker, co-founder or client who
     uses it and does not build it is a real user.
-  - Family members count for watching someone use it (G6), and for other items only when the
-    product is for households.
+  - Family members count for watching someone use it (G6), and for other items when the README's
+    "Who it is for" names family or household use.
   - When the builder is the only user, the item stops at 4.
 - **Chose it on purpose.** A file in `decisions/` (or a spec section) that names at least two
-  options and the reason for the one chosen, committed no later than the work it decides. A record
-  committed in the same commit as the work counts for level 4 only.
+  options and the reason for the one chosen, committed no later than the work it decides. For a
+  build choice, a record committed in the same commit as the work counts for level 4 only. A decision
+  that follows a result (a test, an interview) is recorded after it, as it should be.
 - **Both halves.** When a level-5 statement has two parts, both must be shown. A coder names the
   missing half, so the student sees what is left.
 - **Before.** "Before the code" means an earlier commit, not an earlier time in the same commit.
@@ -76,7 +84,7 @@ Levels 1 and 2 read the same for every item and are not repeated below.
 
 **D3 Assumption tests.** Finding the riskiest belief and checking it.
 - 3: can name a product's riskiest assumption and a test that could prove it wrong.
-- 4: named a belief the product depends on, ran a check that could prove it wrong (an interview,
+- 4: named a belief the product depends on before checking it, ran a check that could prove it wrong (an interview,
   a prototype, a survey, a comparison with a real result), and recorded the result.
 - 5: the result decided something, and a decision record cites it.
 - Old survey: none.
@@ -91,7 +99,7 @@ Levels 1 and 2 read the same for every item and are not repeated below.
 
 **D5 Prioritization.** Ranking by value, effort and risk.
 - 3: can explain why a team should build one thing before another.
-- 4: ranked options in writing with the criteria shown.
+- 4: ranked options in writing, in order, with the criteria shown.
 - 5: built what ranked first for real users, and the ranking cites what was learned.
 - Old survey: Prioritization.
 - Chapters: Ch 4: The Commitment Decision; MVP Scoping; Feature Prioritization.
@@ -107,7 +115,8 @@ Levels 1 and 2 read the same for every item and are not repeated below.
 
 **G1 User flows and states.** What the user does, step by step, including off the happy path.
 - 3: can walk through a flow, say where users will drop off, and list the empty, loading and error states it needs.
-- 4: built the empty, loading and error states for a flow, and wrote the flow down (steps, or a list of states).
+- 4: built the error state for a flow, and the empty and loading states where the flow has them, and wrote
+  the flow down (steps, or a list of states) in a spec or design file.
 - 5: changed a flow or state because of what a person outside the team did, and recorded why.
 - Old survey: User flows.
 - Chapters: Ch 5: Flows Before Screens; Off the Happy Path.
@@ -121,14 +130,15 @@ Levels 1 and 2 read the same for every item and are not repeated below.
 
 **G3 Design system.** Define a component once and reuse it.
 - 3: can explain what a design system saves and what it costs.
-- 4: built shared components or design tokens used on three or more screens.
+- 4: built shared components or design tokens used on three or more screens or page sections.
 - 5: chose the system over alternatives in a decision record, in a product real users use.
 - Old survey: Design systems.
 - Chapters: Ch 5: Decide Once: Design Systems and Familiar Patterns.
 
 **G4 Specs.** A description clear enough to build from.
 - 3: can explain what makes a spec testable.
-- 4: wrote a spec with acceptance criteria, committed before the code it describes.
+- 4: wrote a spec with acceptance criteria (a sprint plan with numbered checks counts), committed in an
+  earlier commit than the code it describes.
 - 5: shipped to real users against the spec, and recorded what changed in it and why.
 - Old survey: Spec writing.
 - Chapters: Ch 6b: User Stories; PRDs; The SDD Workflow; Stories and acceptance criteria.
@@ -152,7 +162,7 @@ Levels 1 and 2 read the same for every item and are not repeated below.
 **L1 Shipping to real people.** People who do not build it use it.
 - 3: can explain the difference between launched and used.
 - 4: people outside the team used it, with a dated record.
-- 5: two or more people used it on two or more separate days, on their own.
+- 5: two or more people used it on two or more different dates, on their own.
 - Old survey: none.
 - Chapters: Ch 12: Who It Is For: The Beachhead; Your First Users, by Hand; Launch in rings.
 
@@ -187,8 +197,9 @@ Levels 1 and 2 read the same for every item and are not repeated below.
 
 **L6 Telling the product's story.** A demo and a story that make people believe it.
 - 3: can explain what a story does that a feature list does not.
-- 4: recorded a demo of 90 seconds or less that shows one task done in the live product, from the
-  user's first action to the result. A tour of screens, or features described and not shown, does not count.
+- 4: recorded a demo that shows one task done in the product people use (a live app, or the prototype
+  if that is what they use), from the user's first action to the result, in one take or with cuts said
+  aloud. A tour of screens, or features described and not shown, does not count.
 - 5: the demo shows real users' use of the product, and someone acted on it (a user signed up, a sponsor approved, a client paid).
 - Old survey: none.
 - Chapters: Ch 15: A story has a job; The Final Demo.
@@ -213,8 +224,9 @@ Levels 1 and 2 read the same for every item and are not repeated below.
 
 **A2 Data and schema.** Data that outlives a session, in a defined shape.
 - 3: can explain tables, keys and relationships, and when a schema change breaks things.
-- 4: defined tables in a migration or schema file, and the product reads and writes them. Importing
-  existing data into them (a spreadsheet, an old system, with duplicates removed) also counts.
+- 4: defined or changed the shape of stored data in a committed file (a migration, an ORM or record
+  schema, tables created in code), and the product reads and writes it. Importing existing data into
+  the store (a spreadsheet, an old system, with duplicates removed) also counts.
 - 5: real users' data lives there, and the schema choices are in a decision record.
 - Old survey: Database schema design.
 - Chapters: Ch 8: The Data Model Is the Skeleton; Asking the Database a Question.
@@ -222,30 +234,34 @@ Levels 1 and 2 read the same for every item and are not repeated below.
 **A3 Sign-in and access.** Who you are, and what you may see.
 - 3: can explain authentication versus authorization.
 - 4: built sign-in (a password, a provider, or a magic link) and at least one rule that stops one
-  user from reading another user's data.
+  user from reading or changing another user's data.
 - 5: real users sign in, and the access rules are recorded and tested.
 - Old survey: Auth vs authorization.
 - Chapters: Ch 7: Who You Are, What You May Do. Ch 8: Row Level Security.
 
 **A4 APIs and integrations.** Calling other systems, including models, or offering an API.
 - 3: can explain a request and response, and why calls fail.
-- 4: the product calls an API (a model counts) and handles a failed call.
+- 4: the product calls another system's API (a model counts; its own database is A2) and handles a failed call.
 - 5: chose the integration in a decision record, and it works for real users.
 - Old survey: APIs.
 - Chapters: Ch 8: Requests Are Contracts That Fail. Ch 11: Where the Call Lives.
 
 **A5 Secrets, privacy and security.** Keys out of the code, people's data protected.
 - 3: can explain why a committed key is an incident and what never goes in a prompt.
-- 4: keys are in environment variables or a secret store, and no key, database file, log or
-  personal data is in the repo.
-- 5: handles real people's data with the protections written down and applied (consent, redaction,
-  access limits). Passing a platform review (an app store, a sign-in provider's verification) counts.
+- 4: secret keys are in environment variables or a secret store (keys meant to be public, such as a
+  browser-safe publishable key, are fine), and no secret key, database file, log or personal data is in
+  the repo. A product with no keys meets this on the personal-data half alone.
+- 5: handles data about people outside the team (users, customers, interviewees, people named in
+  sources) with the protections written down and applied (consent, redaction, access limits). The
+  builder-only rule does not apply here. Passing a platform review (an app store, a sign-in provider's
+  verification) counts.
 - Old survey: Environments and secrets; Data privacy; Security basics.
 - Chapters: Ch 8: Secrets and Sensitive Data.
 
 **A6 Version control, checks and tech debt.** History, review, what runs on every change, and what was deferred.
 - 3: can explain branches, pull requests, continuous integration, and when debt is worth taking on.
-- 4: works in branches or pull requests, or has automated tests or checks that run.
+- 4: works in branches or pull requests that contain code, or has automated tests or checks with a record
+  this sprint that they ran (a CI log, saved output, or a commit message reporting the result).
 - 5: checks run on a product real users depend on, and a record says what they catch.
 - Old survey: Version control; Pull requests; CI.
 - Chapters: Ch 9: Git; Pull Requests; Automated Checks; Rolling Back. Ch 9b: Tests; Technical Debt.
@@ -263,7 +279,9 @@ Putting AI to work: directing coding agents, and building AI into the product.
 
 **W2 Agent tooling.** Skills, hooks, subagents, and tool connections such as MCP.
 - 3: can explain when to package a workflow, and when parallel agents help or cost.
-- 4: built a skill, hook, subagent or tool connection that runs. A skill or agent that is itself the product counts here.
+- 4: built a skill, hook, subagent or tool connection that runs. A skill or agent that is itself the
+  product counts here; its instructions are also W4 and its review steps S5. W1 and W3 cover only the
+  agent that builds the product.
 - 5: people outside the team use it, or it runs in the product's development every sprint, and its design is recorded.
 - Old survey: Skills; Hooks; Subagents; MCP; Multi-agent orchestration.
 - Chapters: Ch 2: Slash Commands; Skills; Rules; Advice Versus Enforcement; Delegation and Parallel Work; MCP.
@@ -285,7 +303,8 @@ Putting AI to work: directing coding agents, and building AI into the product.
 
 **W5 Tool use and agent loops in the product.** The model calls tools and takes steps on its own.
 - 3: can explain tool calling, stopping conditions and retries.
-- 4: built a feature where the model takes more than one step, or calls a tool, without a person in between.
+- 4: built a feature where the model chooses the next step or calls a tool, without a person in between.
+  A fixed sequence of model calls written in code is W4.
 - 5: real users rely on it, and the loop's limits are written down.
 - Old survey: Tool use and function calling; Loop design.
 - Chapters: Ch 11: Tools and Agent Loops.
@@ -305,14 +324,15 @@ show this axis at level 3, through `/learn` and the exams.
 
 **S1 Tokens and the context window.** What fills it, and what happens when it overflows.
 - 3: can explain tokens, the context window, and what overflow does.
-- 4: designed around the limit in the product (trimming, summarizing, chunking), noted in a spec or the code.
+- 4: designed around a token limit (the context window or the output limit) in the product (trimming,
+  summarizing, chunking), noted in a spec or the code.
 - 5: the design is backed by numbers from the product, recorded.
 - Old survey: Context window.
 - Chapters: Ch 10: Step 1 (tokens); The context window is working memory. Ch 11: The API Remembers Nothing.
 
 **S2 Cost and latency.** What makes a model call slow or expensive.
 - 3: can estimate a call's cost and explain what drives latency.
-- 4: measured cost or latency in the product and saved the numbers. A claimed saving with no measurement does not count.
+- 4: measured the cost or latency of model or service calls in the product and saved the numbers. A claimed saving with no measurement does not count.
 - 5: changed the product because of the numbers, recorded.
 - Old survey: Tokens, latency and cost.
 - Chapters: Ch 11: What It Costs. Ch 12: Every AI call is a cost.
