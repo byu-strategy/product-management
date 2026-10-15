@@ -1,0 +1,444 @@
+{
+ "axis": "Agentic Workflow",
+ "key": "agentic",
+ "items": {
+  "W1": "Directing coding agents",
+  "W2": "Agent tooling",
+  "W3": "Checking agent output",
+  "W4": "Prompts in the product",
+  "W5": "Tool use and agent loops in the product",
+  "W6": "Evals and accuracy checks"
+ },
+ "intro": "Putting AI to work: directing coding agents, and building AI into the product.",
+ "concepts": [
+  {
+   "id": "AW01",
+   "name": "The agent loop and the harness",
+   "item": "W1",
+   "what": "A model in a loop with tools: it gathers context, acts, and checks. The model writes; the harness carries out the actions.",
+   "used": "",
+   "made": "",
+   "shipped": "",
+   "exam": [
+    "AW-M-01",
+    "AW-M-09",
+    "AW-M-21",
+    "AW-M-24",
+    "AW-M-30"
+   ],
+   "chapter": "Ch 1: What Makes an Agent an Agent"
+  },
+  {
+   "id": "AW02",
+   "name": "Command line and packages",
+   "item": "W1",
+   "what": "Running commands, files and folders, package managers.",
+   "used": "commands run in sessions",
+   "made": "",
+   "shipped": "",
+   "exam": [
+    "AW-M-06",
+    "AW-M-16"
+   ],
+   "chapter": "Ch 1: The Command Line"
+  },
+  {
+   "id": "AW03",
+   "name": "Launching and surfaces",
+   "item": "W1",
+   "what": "Starting the agent in the right folder; the same engine in the terminal, desktop, IDE and web; following a session from the Claude mobile app (Remote Control); speaking prompts (/voice); non-interactive runs.",
+   "used": "sessions started in the course repo; /remote-control or /voice used in sessions",
+   "made": "a script that runs the agent without a person (non-interactive)",
+   "shipped": "",
+   "exam": [
+    "AW-M-17",
+    "AW-M-18",
+    "AW-F-18",
+    "AW-F-52"
+   ],
+   "chapter": "Ch 1: One engine, many surfaces; Ch 2: Your phone and your voice"
+  },
+  {
+   "id": "AW04",
+   "name": "Project instructions (CLAUDE.md, AGENTS.md)",
+   "item": "W1",
+   "what": "A file the agent reads at the start of every session: decisions, constraints, traps. Advisory, not enforced.",
+   "used": "the file loads in sessions",
+   "made": "wrote its content (beyond the template), committed",
+   "shipped": "",
+   "exam": [
+    "AW-M-02",
+    "AW-M-15",
+    "AW-F-23"
+   ],
+   "chapter": "Ch 2: It Knows Only What It Can See; Project Overview"
+  },
+  {
+   "id": "AW05",
+   "name": "Memory and context",
+   "item": "W1",
+   "what": "What persists between sessions (auto memory, CLAUDE.md) and what does not; /clear and /compact.",
+   "used": "memory written or /clear, /compact used in sessions",
+   "made": "wrote a memory entry or rule on purpose, committed",
+   "shipped": "",
+   "exam": [
+    "AW-M-08",
+    "AW-M-14",
+    "AW-M-22",
+    "AW-F-17"
+   ],
+   "chapter": "Ch 2: Development Notes"
+  },
+  {
+   "id": "AW06",
+   "name": "Plan mode and spec first",
+   "item": "W1",
+   "what": "Exploring and planning before editing; handing the agent a spec.",
+   "used": "sessions in plan mode",
+   "made": "a spec the agent built from (counts as G4)",
+   "shipped": "",
+   "exam": [
+    "AW-M-03",
+    "AW-M-11"
+   ],
+   "chapter": "Ch 2; Ch 6b: The SDD Workflow"
+  },
+  {
+   "id": "AW07",
+   "name": "Settings and their scope",
+   "item": "W1",
+   "what": "Project settings versus global settings, and which wins.",
+   "used": "",
+   "made": "committed .claude/settings.json",
+   "shipped": "",
+   "exam": [
+    "AW-M-04",
+    "AW-M-13"
+   ],
+   "chapter": "Ch 2: Rules"
+  },
+  {
+   "id": "AW08",
+   "name": "Slash commands",
+   "item": "W2",
+   "what": "Commands run by name inside a session; text after the command is its argument. Must know by name: /context, /compact, /clear, /rewind, /resume, /rename, /list-agents (/peers), /btw, /exit, /remote-control (/rc), /voice, /init, /memory, /config, /model, /effort, /status, /usage, /add-dir, /plan, /permissions, /hooks, /sandbox, /skills, /mcp, /plugin, /diff, /help.",
+   "used": "slash commands used in sessions (the scan lists them)",
+   "made": "wrote a custom command or skill run by name",
+   "shipped": "",
+   "exam": [
+    "AW-F-36",
+    "AW-F-41",
+    "AW-F-42",
+    "AW-F-43",
+    "AW-F-44",
+    "AW-F-45",
+    "AW-F-46",
+    "AW-F-47",
+    "AW-F-48",
+    "AW-F-49",
+    "AW-F-50",
+    "AW-F-51",
+    "AW-F-52",
+    "AW-F-53"
+   ],
+   "chapter": "Ch 2: Claude Code: Slash Commands"
+  },
+  {
+   "id": "AW09",
+   "name": "Skills",
+   "item": "W2",
+   "what": "A saved procedure the agent runs by name, shared in the repo or kept personal.",
+   "used": "a skill invoked in sessions",
+   "made": "wrote .claude/skills/<own>/SKILL.md",
+   "shipped": "others use it (a classmate, a team, users)",
+   "exam": [
+    "AW-M-12",
+    "AW-F-12"
+   ],
+   "chapter": "Ch 2: Claude Code: Skills"
+  },
+  {
+   "id": "AW10",
+   "name": "Hooks",
+   "item": "W2",
+   "what": "A command that runs every time an event happens: guaranteed, unlike an instruction.",
+   "used": "a hook ran in sessions",
+   "made": "a hook committed in .claude/settings.json",
+   "shipped": "",
+   "exam": [
+    "AW-M-25",
+    "AW-M-26",
+    "AW-M-31",
+    "AW-F-01",
+    "AW-F-14"
+   ],
+   "chapter": "Ch 2: Advice Versus Enforcement"
+  },
+  {
+   "id": "AW11",
+   "name": "Advice versus enforcement",
+   "item": "W2",
+   "what": "Instructions advise; hooks and permission rules enforce. Knowing which to use for a rule.",
+   "used": "",
+   "made": "",
+   "shipped": "",
+   "exam": [
+    "AW-M-29",
+    "AW-M-32"
+   ],
+   "chapter": "Ch 2: Advice Versus Enforcement"
+  },
+  {
+   "id": "AW12",
+   "name": "Subagents",
+   "item": "W2",
+   "what": "A separate agent with its own context, used to protect the main one or to work in parallel.",
+   "used": "subagents launched in sessions",
+   "made": "wrote .claude/agents/<name>.md",
+   "shipped": "",
+   "exam": [
+    "AW-F-03"
+   ],
+   "chapter": "Ch 2: Delegation and Parallel Work"
+  },
+  {
+   "id": "AW13",
+   "name": "Reaching outside the repo: CLI tools, MCP servers, API calls",
+   "item": "W2",
+   "what": "Three routes to a system outside the repo: a CLI tool the agent runs (gh, supabase), an MCP server that adds the system's actions as tools (in the Claude app, a connector), or a direct API call the agent writes with a key. Choosing the route for a case.",
+   "used": "any of the three in sessions (the scan lists each)",
+   "made": "added an MCP server to .mcp.json, or wrote a script or skill that wraps a CLI tool or an API",
+   "shipped": "",
+   "exam": [
+    "AW-M-27",
+    "AW-F-16",
+    "AW-F-33",
+    "AW-F-34"
+   ],
+   "chapter": "Ch 2: Reach Beyond the Repo: CLI Tools, MCP, and APIs"
+  },
+  {
+   "id": "AW26",
+   "name": "Plugins",
+   "item": "W2",
+   "what": "A package of skills, slash commands, subagents, hooks and MCP servers installed together with /plugin. A way to share building blocks, not a route to outside data; an enabled plugin costs context every session.",
+   "used": "a plugin installed and used (its skills appear as plugin:skill)",
+   "made": "wrote a plugin (.claude-plugin/plugin.json)",
+   "shipped": "others install it",
+   "exam": [
+    "AW-F-35"
+   ],
+   "chapter": "Ch 2: Plugins: a package, not a route"
+  },
+  {
+   "id": "AW14",
+   "name": "Parallel sessions, worktrees and messaging",
+   "item": "W2",
+   "what": "Several agents at once, each in its own working copy, and messages between them: /list-agents shows who Claude can reach; a message is plain text with no authority (it cannot approve a prompt or change settings).",
+   "used": "worktrees or messages to another session in sessions (the scan counts both)",
+   "made": "",
+   "shipped": "",
+   "exam": [
+    "AW-F-07",
+    "AW-F-19",
+    "AW-F-54",
+    "AW-F-55"
+   ],
+   "chapter": "Ch 2: Parallel work needs separate copies of the files; Messaging your other sessions"
+  },
+  {
+   "id": "AW15",
+   "name": "Permission modes",
+   "item": "W3",
+   "what": "Manual, Accept edits, Plan, Auto (a second model reviews each action), Don't ask (pre-approved tools only, for scripts), and Bypass permissions (--dangerously-skip-permissions: no prompts and no safety checks, for containers only). What each lets run without asking, and when to use it.",
+   "used": "the modes used in sessions (the scan counts turns in each)",
+   "made": "",
+   "shipped": "",
+   "exam": [
+    "AW-F-22",
+    "AW-F-37",
+    "AW-F-39"
+   ],
+   "chapter": "Ch 2: The controls, from tightest to loosest"
+  },
+  {
+   "id": "AW27",
+   "name": "Permission rules",
+   "item": "W3",
+   "what": "Allow, ask and deny rules in a settings file: ask and deny hold in every mode, including auto and bypass; a boundary said only in chat does not.",
+   "used": "a rule prompted or blocked in sessions",
+   "made": "committed allow, ask or deny rules",
+   "shipped": "",
+   "exam": [
+    "AW-M-23",
+    "AW-F-09",
+    "AW-F-15",
+    "AW-F-38",
+    "AW-F-40"
+   ],
+   "chapter": "Ch 2: Rules; The controls, from tightest to loosest"
+  },
+  {
+   "id": "AW16",
+   "name": "Blast radius and undo",
+   "item": "W3",
+   "what": "What an action can damage and what can be undone (/rewind, git); some actions are permanent.",
+   "used": "/rewind or a revert in sessions",
+   "made": "",
+   "shipped": "",
+   "exam": [
+    "AW-M-19",
+    "AW-M-20",
+    "AW-F-10"
+   ],
+   "chapter": "Ch 2: Blast Radius"
+  },
+  {
+   "id": "AW17",
+   "name": "Verifying agent work",
+   "item": "W3",
+   "what": "Done means you saw it work; a fresh-context review of agent-written code.",
+   "used": "",
+   "made": "a recorded check of agent work (a review note, a test run, a check on the live site)",
+   "shipped": "",
+   "exam": [
+    "AW-M-10",
+    "AW-F-02"
+   ],
+   "chapter": "Ch 2: Done Means You Saw It Work"
+  },
+  {
+   "id": "AW18",
+   "name": "Prompts as product code",
+   "item": "W4",
+   "what": "Prompts in the product are versioned, tested and changed with reasons; examples for boundary cases.",
+   "used": "",
+   "made": "a prompt file in the repo that the product uses",
+   "shipped": "real users use the feature; versions kept with reasons",
+   "exam": [
+    "AW-F-21",
+    "AW-F-30"
+   ],
+   "chapter": "Ch 11: Prompts Are Product Code"
+  },
+  {
+   "id": "AW19",
+   "name": "Structured output",
+   "item": "W4",
+   "what": "Asking the model for output in a fixed shape the code can rely on.",
+   "used": "",
+   "made": "a schema the product enforces on model output",
+   "shipped": "real users use the feature",
+   "exam": [
+    "AW-F-04"
+   ],
+   "chapter": "Ch 11: Getting Structured Output"
+  },
+  {
+   "id": "AW20",
+   "name": "Streaming and the AI surface",
+   "item": "W4",
+   "what": "Showing output as it arrives, and the states an AI feature passes through.",
+   "used": "",
+   "made": "a streamed response in the product",
+   "shipped": "real users use the feature",
+   "exam": [
+    "AW-F-32"
+   ],
+   "chapter": "Ch 11: Streaming"
+  },
+  {
+   "id": "AW21",
+   "name": "Untrusted model input",
+   "item": "W4",
+   "what": "Text the model reads can carry instructions (prompt injection); privileged actions need a guard.",
+   "used": "",
+   "made": "a guard on privileged actions in the product",
+   "shipped": "real users use the guarded feature",
+   "exam": [
+    "AW-F-20"
+   ],
+   "chapter": "Ch 11: Where It Breaks"
+  },
+  {
+   "id": "AW22",
+   "name": "Non-determinism",
+   "item": "W4",
+   "what": "The same input can give different output; a feature must work across runs.",
+   "used": "",
+   "made": "",
+   "shipped": "",
+   "exam": [
+    "AW-F-11"
+   ],
+   "chapter": "Ch 11: Where It Breaks"
+  },
+  {
+   "id": "AW23",
+   "name": "Tool calling and agent loops in the product",
+   "item": "W5",
+   "what": "The model chooses the next step or calls a tool; stopping rules and a point where a person decides.",
+   "used": "",
+   "made": "a loop or tool call in the product, with a stopping rule",
+   "shipped": "real users rely on it; limits written down",
+   "exam": [
+    "AW-F-06",
+    "AW-F-29"
+   ],
+   "chapter": "Ch 11: Tools and Agent Loops"
+  },
+  {
+   "id": "AW24",
+   "name": "Evals",
+   "item": "W6",
+   "what": "A set of cases with known answers, a baseline, noise, and graders (code for exact answers, a model as judge).",
+   "used": "evals run, results saved",
+   "made": "an eval set or scorer in the repo",
+   "shipped": "a product decision made from saved results",
+   "exam": [
+    "AW-F-05",
+    "AW-F-13",
+    "AW-F-24",
+    "AW-F-25",
+    "AW-F-26",
+    "AW-F-27"
+   ],
+   "chapter": "Ch 11: Evals: Knowing Whether It Works"
+  },
+  {
+   "id": "AW25",
+   "name": "Choosing a model by measurement",
+   "item": "W6",
+   "what": "Picking a model by running the same cases on each, not by reputation.",
+   "used": "",
+   "made": "a recorded comparison of models on the product's own cases",
+   "shipped": "the product runs the chosen model for real users",
+   "exam": [
+    "AW-F-08"
+   ],
+   "chapter": "Ch 11: one paragraph"
+  }
+ ],
+ "exam_elsewhere": [
+  {
+   "id": "AW-M-05",
+   "belongs": "A1 deploy (Application Architecture)"
+  },
+  {
+   "id": "AW-M-07",
+   "belongs": "A1 deploy (Application Architecture)"
+  },
+  {
+   "id": "AW-F-28",
+   "belongs": "S2 cost (AI Systems)"
+  },
+  {
+   "id": "AW-F-31",
+   "belongs": "S2 cost (AI Systems)"
+  },
+  {
+   "id": "AW-M-28",
+   "belongs": "course framing, no concept"
+  }
+ ]
+}

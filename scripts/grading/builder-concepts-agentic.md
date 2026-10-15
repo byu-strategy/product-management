@@ -1,7 +1,8 @@
-# Agentic Workflow concepts (draft, 2026-10-14)
+# Agentic Workflow concepts (draft, generated from concepts/agentic.json)
 
-The named concepts under the six Agentic Workflow items in `builder-inventory.md`. Each concept has
-up to four checks, each counted once:
+The named concepts under the Agentic Workflow items in `builder-inventory.md`. Putting AI to work: directing coding agents, and building AI into the product.
+
+Each concept has up to four checks, each counted once:
 
 - **Know it**: says what it is and when to use it. Evidence: final exam questions on the concept
   (and `/learn` checks). Self-rated in the survey until the exam.
@@ -9,7 +10,8 @@ up to four checks, each counted once:
 - **Made it**: built one. Evidence: a file they wrote, committed in a shared repo.
 - **Shipped it**: made it for real users and chose it on purpose (the inventory's level 5 rules).
 
-A blank cell means the check does not apply to that concept. Evidence rules from the inventory apply.
+A blank cell means the check does not apply to that concept. Evidence rules from
+`builder-inventory.md` apply.
 
 ## W1 Directing coding agents
 
