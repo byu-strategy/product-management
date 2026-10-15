@@ -1,0 +1,398 @@
+{
+ "axis": "AI Systems",
+ "key": "aisystems",
+ "items": {
+  "S1": "Tokens and the context window",
+  "S2": "Cost and latency",
+  "S3": "How models are made",
+  "S4": "Retrieval and embeddings",
+  "S5": "Hallucination and verification",
+  "S6": "Choosing a model or technique"
+ },
+ "intro": "Understanding how language models work and why they behave as they do; building AI into the product is Agentic Workflow.",
+ "concepts": [
+  {
+   "id": "AS01",
+   "name": "Tokens",
+   "item": "S1",
+   "what": "The model reads and writes tokens, pieces of text with ID numbers from a fixed vocabulary, about three quarters of an English word. Tokens are the unit of cost, speed and every limit, and code and other languages use more tokens per word.",
+   "used": "a tokenizer viewer or a token count checked in a session or a spec",
+   "made": "",
+   "shipped": "",
+   "exam": [
+    "AS-F-03",
+    "AS-F-14"
+   ],
+   "chapter": "Ch 10: Step 1: Text becomes tokens"
+  },
+  {
+   "id": "AS02",
+   "name": "The context window",
+   "item": "S1",
+   "what": "The most tokens the model can take in at once: instructions, documents, the conversation so far, and its answer. When it fills, something is dropped or summarized, and what was dropped is gone.",
+   "used": "/context checked in sessions",
+   "made": "",
+   "shipped": "",
+   "exam": [
+    "AS-F-07"
+   ],
+   "chapter": "Ch 10: The context window is working memory"
+  },
+  {
+   "id": "AS03",
+   "name": "The stateless model",
+   "item": "S1",
+   "what": "Each call starts from zero, and the model's weights do not change from use. A conversation exists only because the app resends the history, and a correction given in one chat does not reach the next.",
+   "used": "",
+   "made": "the product stores the conversation or user facts in its database and decides what to resend, committed",
+   "shipped": "",
+   "exam": [
+    "AS-F-01",
+    "AS-F-04",
+    "AS-F-09"
+   ],
+   "chapter": "Ch 10: The context window is working memory; Ch 11: The API Remembers Nothing"
+  },
+  {
+   "id": "AS04",
+   "name": "The output limit",
+   "item": "S1",
+   "what": "A separate cap, in tokens, on how much the model writes in one call (max_tokens). An answer that reaches it stops mid-sentence.",
+   "used": "",
+   "made": "a design around the output limit (splitting a job into parts, checking the stop reason), noted in a spec or the code",
+   "shipped": "",
+   "exam": [
+    "AS-F-14"
+   ],
+   "chapter": "Ch 10: Step 4: The model predicts the next token (one sentence); Ch 11: code samples only"
+  },
+  {
+   "id": "AS05",
+   "name": "Keeping a long context in bounds",
+   "item": "S1",
+   "what": "Trimming, summarizing or chunking what is sent so the important tokens stay in the window. /compact and /clear do this for a Claude Code session; a product needs its own rule.",
+   "used": "/compact or /clear used in sessions",
+   "made": "code that trims or summarizes history or splits a long input, with the limit it designs around named in a spec or the code",
+   "shipped": "the limit is backed by numbers from the product (input sizes, turn counts), recorded",
+   "exam": [
+    "AS-F-07"
+   ],
+   "chapter": "Ch 10: The context window is working memory; Ch 11: The API Remembers Nothing"
+  },
+  {
+   "id": "AS06",
+   "name": "Per-token pricing",
+   "item": "S2",
+   "what": "Model APIs bill per input token and per output token, and output costs about five times input on Anthropic's current models. A long conversation costs more each turn because every turn resends everything.",
+   "used": "",
+   "made": "",
+   "shipped": "",
+   "exam": [
+    "AS-F-01",
+    "AS-F-14"
+   ],
+   "chapter": "Ch 10: Step 1: Text becomes tokens; Ch 11: What It Costs"
+  },
+  {
+   "id": "AS07",
+   "name": "Estimating a feature's cost",
+   "item": "S2",
+   "what": "Tokens per call (in and out) times calls per user per day times users times price per token, done before shipping. A cost that is small in a demo can be large at a thousand users a day.",
+   "used": "",
+   "made": "a cost estimate for an AI feature in the sprint plan or a spec, with each factor stated",
+   "shipped": "",
+   "exam": [
+    "AW-F-31"
+   ],
+   "chapter": "Ch 11: What It Costs; Ch 12: Every AI call is a cost"
+  },
+  {
+   "id": "AS08",
+   "name": "Caching",
+   "item": "S2",
+   "what": "Prompt caching keeps a repeated opening of the prompt (a long system prompt or reference document) ready so repeated calls pay a fraction for it. Storing a model's answer and reusing it avoids the call altogether when the input has not changed.",
+   "used": "",
+   "made": "cache_control on a repeated prefix, or a stored model result reused instead of a new call, committed",
+   "shipped": "the saving is measured on real traffic and recorded",
+   "exam": [
+    "AW-F-28",
+    "AW-F-31"
+   ],
+   "chapter": "Ch 11: What It Costs"
+  },
+  {
+   "id": "AS09",
+   "name": "Measuring usage",
+   "item": "S2",
+   "what": "Every response reports its input and output tokens (usage), and a call's input can be counted before it is sent. Measured numbers replace guesses about cost and latency.",
+   "used": "",
+   "made": "code that logs tokens or latency per model call, with the numbers saved in the repo",
+   "shipped": "the product changed because of the numbers (a smaller model, a shorter prompt, a cap), recorded",
+   "exam": [],
+   "chapter": "Ch 11: What It Costs"
+  },
+  {
+   "id": "AS10",
+   "name": "What drives latency",
+   "item": "S2",
+   "what": "The model writes one token at a time, so long outputs are slow; attention runs over the whole context, so long inputs are slower too; larger models are slower than small ones. A call can take one second or ten.",
+   "used": "",
+   "made": "measured latency of a model call in the product, saved",
+   "shipped": "",
+   "exam": [],
+   "chapter": "Ch 10: Step 3: Attention mixes in context; Step 4; Ch 11: What It Costs; Where It Breaks"
+  },
+  {
+   "id": "AS12",
+   "name": "Machine learning and training",
+   "item": "S3",
+   "what": "A model learns from examples of inputs paired with outputs: a loss measures its error and gradient descent adjusts every parameter a small step to lower it. A language model is a large neural network trained this way on text.",
+   "used": "",
+   "made": "",
+   "shipped": "",
+   "exam": [],
+   "chapter": "Ch 10: AI and Machine Learning; Under the Hood: The Math"
+  },
+  {
+   "id": "AS13",
+   "name": "Attention and the transformer",
+   "item": "S3",
+   "what": "Attention lets each token draw on every earlier token, so its numbers reflect its context; a transformer repeats attention in stacked blocks. It runs over the whole context, which is why longer prompts cost more and take longer.",
+   "used": "",
+   "made": "",
+   "shipped": "",
+   "exam": [],
+   "chapter": "Ch 10: Step 3: Attention mixes in context"
+  },
+  {
+   "id": "AS14",
+   "name": "Next-token prediction",
+   "item": "S3",
+   "what": "The model scores every token in its vocabulary, turns the scores into probabilities, picks one, appends it, and runs again until a stop token or the output limit. The model generates an answer token by token; it does not look one up.",
+   "used": "",
+   "made": "",
+   "shipped": "",
+   "exam": [
+    "AS-F-08"
+   ],
+   "chapter": "Ch 10: Step 4: The model predicts the next token"
+  },
+  {
+   "id": "AS15",
+   "name": "Sampling and temperature",
+   "item": "S3",
+   "what": "The next token is drawn from the probabilities, so the same input can give different output; temperature sets how random the draw is. Even temperature 0 is not fully deterministic, and newer models do not allow changing it.",
+   "used": "",
+   "made": "",
+   "shipped": "",
+   "exam": [
+    "AS-F-16"
+   ],
+   "chapter": "Ch 10: Step 4: The model predicts the next token"
+  },
+  {
+   "id": "AS16",
+   "name": "Pretraining and the base model",
+   "item": "S3",
+   "what": "Self-supervised training on huge amounts of text, where each next token is its own label, sets the weights. The result is a base model that continues text and can follow examples in the prompt (few-shot) but is not yet an assistant.",
+   "used": "",
+   "made": "",
+   "shipped": "",
+   "exam": [
+    "AS-F-08",
+    "AS-F-13"
+   ],
+   "chapter": "Ch 10: Step 5: Pretraining on huge text"
+  },
+  {
+   "id": "AS17",
+   "name": "Knowledge cutoff",
+   "item": "S3",
+   "what": "Pretraining text stops at a date, and nothing after it is in the weights. The model does not know today's date, recent changes or new library versions unless the prompt supplies them.",
+   "used": "",
+   "made": "a product decision that supplies current facts (the date, live data, retrieved documents) because of the cutoff, recorded in a spec, decision record or the code",
+   "shipped": "",
+   "exam": [
+    "AS-F-06"
+   ],
+   "chapter": "Ch 10: Step 5: Pretraining on huge text"
+  },
+  {
+   "id": "AS18",
+   "name": "Instruction tuning and human feedback",
+   "item": "S3",
+   "what": "Later training on example conversations and on people's preferences between answers (RLHF) turns a text completer into an assistant. It changes behavior far more than knowledge.",
+   "used": "",
+   "made": "",
+   "shipped": "",
+   "exam": [
+    "AS-F-13"
+   ],
+   "chapter": "Ch 10: Step 6: Fine-tuning and human feedback shape behavior"
+  },
+  {
+   "id": "AS19",
+   "name": "Sycophancy",
+   "item": "S3",
+   "what": "Because people rate agreement a little higher than correction, the model learns to agree and may drop a correct answer when pushed. Ask for the case against, and judge disagreement on the evidence.",
+   "used": "prompts in sessions that ask the model for the case against or for criticism",
+   "made": "a product prompt or design that counters agreement (asks for the case against, hides the user's preferred answer), recorded with the reason",
+   "shipped": "",
+   "exam": [
+    "AS-F-05"
+   ],
+   "chapter": "Ch 10: Step 6: Fine-tuning and human feedback shape behavior"
+  },
+  {
+   "id": "AS20",
+   "name": "Embeddings",
+   "item": "S4",
+   "what": "A list of numbers that places a token, sentence or document on a map of meaning, so similar meanings sit close together. Search by embedding matches meaning, and it can miss exact strings such as part numbers or IDs.",
+   "used": "",
+   "made": "an embedding model called and its vectors stored in the product, committed",
+   "shipped": "",
+   "exam": [
+    "AS-F-02"
+   ],
+   "chapter": "Ch 10: Step 2: Tokens become embeddings; Ch 11: Grounding Answers in Your Data"
+  },
+  {
+   "id": "AS21",
+   "name": "Retrieval-augmented generation (RAG)",
+   "item": "S4",
+   "what": "Find the pieces of your own documents nearest in meaning to the question and put them in the prompt, so the model answers from them. It supplies text at question time and does not change the model; it addresses the cutoff and private data, and moves the risk to retrieval.",
+   "used": "",
+   "made": "retrieval built into the product: chunks embedded and stored, nearest chunks fetched and sent with the question, committed",
+   "shipped": "retrieval runs for real users and its quality was measured and changed because of the result",
+   "exam": [
+    "AS-F-11"
+   ],
+   "chapter": "Ch 11: Grounding Answers in Your Data"
+  },
+  {
+   "id": "AS22",
+   "name": "Chunking and the vector store",
+   "item": "S4",
+   "what": "Documents are split into passages of a few hundred tokens, the unit that gets retrieved, and each passage is stored next to its embedding (in Supabase, a pgvector column). Documents and questions must be embedded with the same model.",
+   "used": "",
+   "made": "chunking code with a stated chunk size and a vector column or table, committed",
+   "shipped": "",
+   "exam": [],
+   "chapter": "Ch 11: Grounding Answers in Your Data"
+  },
+  {
+   "id": "AS23",
+   "name": "Where retrieval fails",
+   "item": "S4",
+   "what": "A document never loaded, the wrong chunks fetched, or an answer given anyway: each still produces a fluent, cited answer. Test retrieval on its own by checking, for each test question, whether the right chunk came back.",
+   "used": "",
+   "made": "a retrieval test: questions with the chunk each should return, and the results, committed",
+   "shipped": "retrieval changed because of the test result, with before and after numbers recorded",
+   "exam": [
+    "AS-F-12"
+   ],
+   "chapter": "Ch 11: Grounding Answers in Your Data"
+  },
+  {
+   "id": "AS24",
+   "name": "Hallucination",
+   "item": "S5",
+   "what": "Fluent, confident output that is false. The model produces the most plausible continuation and nothing inside it checks whether plausible is true, so its confidence says nothing about accuracy.",
+   "used": "",
+   "made": "a hallucination analysis: model claims checked against sources, with what was real, partly real and invented, committed",
+   "shipped": "",
+   "exam": [
+    "AS-F-08",
+    "AS-F-10"
+   ],
+   "chapter": "Ch 10: Plausible is not true; Ch 11: Where It Breaks"
+  },
+  {
+   "id": "AS25",
+   "name": "Checking model output against a source",
+   "item": "S5",
+   "what": "Anything that matters is checked against something trusted: required quotes or sources, a validation rule, a second independent pass, or a person approving before it is used. Where a wrong answer is expensive, the check sits in the path.",
+   "used": "",
+   "made": "a check on model output built into the product, or a wrong output traced to its cause and fixed, committed",
+   "shipped": "the check runs for real users and what it catches is recorded",
+   "exam": [
+    "AS-F-10"
+   ],
+   "chapter": "Ch 10: Plausible is not true; Ch 11: Where It Breaks"
+  },
+  {
+   "id": "AS26",
+   "name": "The jagged frontier",
+   "item": "S5",
+   "what": "Models are strong at some tasks and fail at nearby tasks that look no harder, such as exact counting or long arithmetic, and the edge moves with each release. Test your own task; reputation will not tell you.",
+   "used": "",
+   "made": "the product's core AI task run on realistic inputs including an edge case, with predictions and results, committed",
+   "shipped": "",
+   "exam": [
+    "AS-F-15"
+   ],
+   "chapter": "Ch 10: The jagged frontier"
+  },
+  {
+   "id": "AS27",
+   "name": "When not to use a model",
+   "item": "S6",
+   "what": "Anything that must be exact or stable (an ID, a price, a sum, a permission check) comes from code. Use the model for the part that needs language and judgment.",
+   "used": "",
+   "made": "a decision record naming a model option and a non-model option for one feature, and the reason for the choice",
+   "shipped": "",
+   "exam": [
+    "AS-F-15",
+    "AS-F-16"
+   ],
+   "chapter": "Ch 11: Where It Breaks; Ch 10: The jagged frontier"
+  },
+  {
+   "id": "AS28",
+   "name": "Model tiers: capability, cost and speed",
+   "item": "S6",
+   "what": "Larger models are more capable and cost more per token and run slower; the smallest fit simple, high-volume, latency-sensitive work. Start with the most capable and move down only when measurement shows the smaller one is good enough.",
+   "used": "",
+   "made": "a decision record choosing a model that names an alternative and the reason",
+   "shipped": "the choice backed by a comparison run in the product, with saved results",
+   "exam": [],
+   "chapter": "Ch 11: What It Costs (one paragraph, On choosing a model)"
+  },
+  {
+   "id": "AS29",
+   "name": "Prompting, retrieval or fine-tuning",
+   "item": "S6",
+   "what": "Prompting (instructions and examples) changes one call; retrieval supplies facts at question time; fine-tuning retrains the model and changes its behavior; it is a poor way to add facts that change. Try them in that order of cost.",
+   "used": "",
+   "made": "a decision record that chooses a technique and names an alternative",
+   "shipped": "the choice backed by a comparison run in the product, with saved results",
+   "exam": [],
+   "chapter": "not taught yet as a comparison (Ch 10: Prompting; Step 6; Ch 11: Grounding Answers in Your Data each cover one technique)"
+  }
+ ],
+ "exam_elsewhere": [
+  {
+   "id": "AS-F-17",
+   "belongs": "AW01 The agent loop and the harness (Agentic Workflow)"
+  }
+ ],
+ "book_gaps": [
+  "Choosing a technique (prompting, retrieval, fine-tuning) has no section. Add one to Ch 11 after Grounding Answers in Your Data, with when each fits and what fine-tuning cannot do (add facts that change).",
+  "Choosing a model tier is one paragraph inside Ch 11: What It Costs. A short section on capability, cost and speed tradeoffs would give S6 a home; measurement stays with Agentic Workflow's evals.",
+  "Embedding search missing exact strings (part numbers, IDs, names) and keyword or hybrid search are not taught, though AS-F-02 tests it. Add a paragraph to Ch 11: Grounding Answers in Your Data.",
+  "The output limit (max_tokens, stop reason, an answer cut off mid-sentence) gets one sentence in Ch 10 Step 4. Add a paragraph to Ch 11: The API Remembers Nothing or What It Costs.",
+  "Latency drivers are spread across Ch 10 Steps 3 and 4 and Ch 11 Where It Breaks. Ch 11: What It Costs could add a short list: output length, input length, model size, and time to first token with streaming.",
+  "Keeping a long context in bounds in a product (trim, summarize, chunk) is named in Ch 11: The API Remembers Nothing but not shown. A worked example with a rule (keep the last N turns plus a summary) would support S1 level 4.",
+  "Logging usage per call (response.usage) is shown as one line; how to save the numbers so they count as evidence for S2 level 4 is not said.",
+  "Cost to serve and margin per user is owned by Launch and Learn (LL14); AI Systems keeps the per-call cost concepts."
+ ],
+ "evidence_notes": [
+  "The session scan counts slash commands, so /context, /compact and /clear are visible for AS02 and AS05. It cannot see token counts or cost per session; adding the session's token totals to the scan would make AS06 visible as Used it.",
+  "Product token usage, latency and cost live in the product's logs or provider dashboard, which the packet does not see. Only numbers saved in the repo (a usage log, a measured table in a spec) count for S2 level 4.",
+  "Database or page latency is not model latency. A coder needs the S2 statement to say model or service calls, as v1.3 does, and the record to say which call was timed.",
+  "Many S4 and S5 builds sit in code that calls a model inside the product. A private repo the coder cannot open hides them; the packet should list which repos were shared.",
+  "S3 concepts (pretraining, attention, RLHF, the cutoff) rarely show in a build. Level 3 comes from /learn checks and the final; level 4 needs a recorded decision that names the training fact it depends on, which students seldom write. A prompt in the decision template (what can the model not know here?) would surface it.",
+  "A cost estimate (AS07) and a margin calculation (AS11) are often in the sprint plan or a pricing doc rather than code. The packet should include the plan and any pricing file so they can be checked.",
+  "A check on model output (AS25) and a check on the coding agent's output (W3) look the same in a commit. The coder needs to know whether the checked output is produced by the product for its users or by the agent building it."
+ ]
+}

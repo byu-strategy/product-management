@@ -1,0 +1,428 @@
+{
+  "axis": "Design",
+  "key": "design",
+  "intro": "Deciding what the user sees and does, writing it down clearly enough to build, and watching real people use it.",
+  "items": {
+    "G1": "User flows and states",
+    "G2": "Visual fundamentals",
+    "G3": "Design system",
+    "G4": "Specs",
+    "G5": "Critique and direction",
+    "G6": "Usability testing"
+  },
+  "concepts": [
+    {
+      "id": "DE01",
+      "name": "Flows before screens",
+      "item": "G1",
+      "what": "A flow is the steps a user takes to finish one task: a goal, an entry point, steps, decisions, and exits. Map it and count the steps before designing or prompting for screens.",
+      "used": "a flow mapped in a plan or spec before the screens were built (commit order shows it)",
+      "made": "a flow written down as steps or a list of states in a committed spec or design file",
+      "shipped": "a flow changed because of what a person outside the team did, with the reason recorded",
+      "exam": [
+        "G-F-05"
+      ],
+      "chapter": "Ch 5: Flows Before Screens"
+    },
+    {
+      "id": "DE02",
+      "name": "States off the happy path",
+      "item": "G1",
+      "what": "The happy path is the run where everything goes right. Empty, loading, error and partial states each say what is true now and what the user can do next; a button that changes data shows a loading state and disables itself until the request finishes.",
+      "used": "empty, loading or error states present in the product (code or Loom)",
+      "made": "built the error state for a flow, plus the empty and loading states where the flow has them, committed",
+      "shipped": "a state added or changed after a real user got stuck in it, recorded",
+      "exam": [
+        "G-M-08",
+        "G-F-04"
+      ],
+      "chapter": "Ch 5: Off the Happy Path"
+    },
+    {
+      "id": "DE03",
+      "name": "UI, UX and product design (the UX iceberg)",
+      "item": "G1",
+      "what": "UI is the screens; UX is the whole experience of getting a task done, including what happens off the screen; product design also decides what the product is. Visual polish sits on top of interaction design, information architecture and the conceptual layer, where usable and unusable products differ.",
+      "used": "",
+      "made": "",
+      "shipped": "",
+      "exam": [
+        "G-M-01",
+        "G-M-20"
+      ],
+      "chapter": "Ch 5b: UI, UX, and Product Design; Ch 5: Why This Matters"
+    },
+    {
+      "id": "DE04",
+      "name": "Information architecture",
+      "item": "G1",
+      "what": "How content is organized, labeled, navigated and searched, in the user's terms. Navigation patterns (tab bar, sidebar, top navigation, hub and spoke, breadcrumbs) fit different products. A card sort shows how people group things; a tree test checks whether they can find things in a proposed structure.",
+      "used": "navigation chosen and named in the user's words",
+      "made": "a committed navigation map or site structure, or card sort or tree test results",
+      "shipped": "navigation changed after a card sort or tree test with real users, recorded",
+      "exam": [
+        "G-M-15",
+        "G-F-14"
+      ],
+      "chapter": "Ch 5b: Information Architecture; Two methods: card sorting and tree testing"
+    },
+    {
+      "id": "DE05",
+      "name": "Designing for an uncertain AI",
+      "item": "G1",
+      "what": "When a model's output can be wrong, the screen sets expectations, shows the evidence behind the answer, presents output as an editable draft, makes dismiss and undo one step, and asks a person to confirm costly actions.",
+      "used": "an AI feature whose output arrives as a draft the user approves or edits",
+      "made": "built at least two of the five blocks (expectations, evidence, draft, undo, confirmation) into an AI feature, committed",
+      "shipped": "real users catch or correct wrong AI output through it, recorded",
+      "exam": [
+        "G-F-16"
+      ],
+      "chapter": "Ch 5: Designing for an Uncertain AI"
+    },
+    {
+      "id": "DE06",
+      "name": "Visual hierarchy and one primary action",
+      "item": "G2",
+      "what": "Size, weight, contrast, spacing and position rank what is on the screen. Each screen gets one primary action and the rest are de-emphasized. The squint test: blur the screen; what still stands out should be the primary action.",
+      "used": "screens with one filled primary button",
+      "made": "a written rule such as one primary action per screen, followed in the product",
+      "shipped": "",
+      "exam": [
+        "G-M-06"
+      ],
+      "chapter": "Ch 5: Attention and Hierarchy"
+    },
+    {
+      "id": "DE07",
+      "name": "Gestalt grouping",
+      "item": "G2",
+      "what": "People see items as a group when they are close together, look alike, or share a boundary. Space inside a group should be smaller than the space between groups, or a label reads as belonging to the wrong field.",
+      "used": "",
+      "made": "",
+      "shipped": "",
+      "exam": [
+        "G-M-16",
+        "G-M-21"
+      ],
+      "chapter": "Ch 5b: How People Perceive a Screen; Gestalt grouping"
+    },
+    {
+      "id": "DE08",
+      "name": "Fitts's law, Hick's law and cognitive load",
+      "item": "G2",
+      "what": "Fitts: a target is faster to hit when it is larger and closer. Hick: more options take longer to choose among, for a choice among unfamiliar options. Cognitive load: show what the user needs at the step where they need it, so they recognize it instead of recalling it.",
+      "used": "",
+      "made": "",
+      "shipped": "",
+      "exam": [
+        "G-F-13",
+        "G-M-17",
+        "G-F-17"
+      ],
+      "chapter": "Ch 5b: Fitts's law; Hick's law; Cognitive load and Jakob's law; Ch 5: Attention and Hierarchy"
+    },
+    {
+      "id": "DE09",
+      "name": "Norman's principles and the conceptual model",
+      "item": "G2",
+      "what": "An affordance is an action a thing makes possible; a signifier is the visible cue that it is there. Mapping, constraints and feedback close the gulfs of execution and evaluation. The user's model of how the product works is built only from the system image, so a change that alters what users think the product is for needs testing first.",
+      "used": "",
+      "made": "",
+      "shipped": "",
+      "exam": [
+        "G-M-11",
+        "G-M-13",
+        "G-M-09"
+      ],
+      "chapter": "Ch 5b: Norman's Principles of Interaction; Ch 6: The Design Canon Behind This"
+    },
+    {
+      "id": "DE10",
+      "name": "Typography, layout grid and color",
+      "item": "G2",
+      "what": "A short type scale, a spacing scale and a grid, and color used by meaning with one accent. Limiting the choices up front means each one is made once.",
+      "used": "screens use a small set of text sizes and spacing values",
+      "made": "written rules (a type scale, spacing scale, color rules), committed, and the product follows them",
+      "shipped": "",
+      "exam": [],
+      "chapter": "Ch 5b: Visual Design Fundamentals; Typography; Layout and grid; Color"
+    },
+    {
+      "id": "DE11",
+      "name": "Words are interface",
+      "item": "G2",
+      "what": "Labels, buttons and messages are instructions. Buttons are verb plus object, errors say what happened and how to fix it, names use the user's words, and confirmations say what changed.",
+      "used": "button labels and error messages written in the user's terms",
+      "made": "rewritten interface copy or a committed copy rule in the spec or design rules",
+      "shipped": "",
+      "exam": [
+        "G-F-03"
+      ],
+      "chapter": "Ch 5: Words Are Interface"
+    },
+    {
+      "id": "DE12",
+      "name": "Accessibility baseline (WCAG)",
+      "item": "G2",
+      "what": "Text contrast at least 4.5:1 (3:1 for large text), every action works by keyboard with visible focus, touch targets large enough, a label on every input, and real HTML elements so screen readers can read them.",
+      "used": "a keyboard or contrast check run on the product",
+      "made": "a committed accessibility rule or check result (contrast output, keyboard pass notes) and fixes that follow it",
+      "shipped": "",
+      "exam": [
+        "G-F-02"
+      ],
+      "chapter": "Ch 5: Accessible by Default"
+    },
+    {
+      "id": "DE13",
+      "name": "Web, mobile, or both; mobile-first layout",
+      "item": "G2",
+      "what": "Most student products start as a responsive web app; a PWA, Capacitor, or native app is chosen for use away from a desk, device hardware, or store distribution. Mobile-first means the phone layout is the default and wider screens add columns at set breakpoints, with touch targets sized for a thumb.",
+      "used": "the product checked at phone and desktop widths",
+      "made": "a responsive layout or a spec for mobile behavior, committed",
+      "shipped": "platform chosen in a decision record naming the alternatives, and real users reach it on that platform",
+      "exam": [
+        "G-M-04",
+        "G-M-02"
+      ],
+      "chapter": "Ch 5: Web, Mobile, or Both; Making Your App Mobile-Responsive"
+    },
+    {
+      "id": "DE14",
+      "name": "Design system: tokens, components, patterns",
+      "item": "G3",
+      "what": "A design system makes each decision once. Tokens hold the raw choices (colors, type sizes, spacing, radius); components are built from tokens with defined variants and states; patterns combine components to solve a recurring problem. A component library the agent already knows (shadcn/ui) keeps sessions consistent.",
+      "used": "screens built from shared components instead of one-off styling",
+      "made": "shared components or design tokens used on three or more screens or page sections, committed",
+      "shipped": "the system chosen over alternatives in a decision record, in a product real users use",
+      "exam": [
+        "G-F-01"
+      ],
+      "chapter": "Ch 5: Decide Once: Design Systems and Familiar Patterns; Ch 5b: From decisions to tokens"
+    },
+    {
+      "id": "DE15",
+      "name": "Design rules written for the agent",
+      "item": "G3",
+      "what": "An agent has no memory between sessions and will restyle each new screen. A short design rules section in CLAUDE.md or the spec (which components, one primary button, spacing scale, empty states, icon set) turns one-time decisions into standing instructions.",
+      "used": "the rules load in sessions",
+      "made": "a design rules section in CLAUDE.md, AGENTS.md or a spec, committed, and the product follows it",
+      "shipped": "the rules changed because of what real users did, recorded",
+      "exam": [],
+      "chapter": "Ch 5: Decide Once: Design Systems and Familiar Patterns (Why this matters more with an agent)"
+    },
+    {
+      "id": "DE16",
+      "name": "Jakob's law and familiar patterns",
+      "item": "G3",
+      "what": "Users spend most of their time in other products and expect yours to work the same way. Each invented convention is something users must learn; platform guidelines record the conventions.",
+      "used": "",
+      "made": "",
+      "shipped": "",
+      "exam": [
+        "G-F-10"
+      ],
+      "chapter": "Ch 5: Decide Once: Design Systems and Familiar Patterns; Ch 5b: Cognitive load and Jakob's law"
+    },
+    {
+      "id": "DE17",
+      "name": "User stories",
+      "item": "G4",
+      "what": "As a [type of user], I want [goal] so that [benefit]. A story names a user and an outcome; \"build login\" or \"make it faster\" does not.",
+      "used": "",
+      "made": "stories written in a committed spec or sprint plan",
+      "shipped": "",
+      "exam": [],
+      "chapter": "Ch 6b: User Stories"
+    },
+    {
+      "id": "DE18",
+      "name": "Acceptance criteria",
+      "item": "G4",
+      "what": "The conditions that must be true for a story to be done, and the check held against the agent's work. Each criterion states one observable result, names the user and screen, and names the check that confirms it (walk, unit, or structure); a criterion about who can see something gets its opposite as a separate criterion. EARS phrases a requirement as WHEN ... THE SYSTEM SHALL.",
+      "used": "",
+      "made": "a spec or sprint plan with numbered acceptance criteria, committed in an earlier commit than the code",
+      "shipped": "shipped to real users against the criteria, with what changed in the spec and why recorded",
+      "exam": [
+        "G-M-18",
+        "G-F-11"
+      ],
+      "chapter": "Ch 6b: Acceptance Criteria; Kiro's three files and EARS; The Agent Team Kit's spec and build-spec Skills"
+    },
+    {
+      "id": "DE19",
+      "name": "Product requirements document (PRD)",
+      "item": "G4",
+      "what": "A document that says what is being built, why, for whom, and how success is measured: overview, objectives, stories with criteria, functional and non-functional requirements, success metrics, and out of scope.",
+      "used": "",
+      "made": "a committed PRD or spec that includes success metrics and an out-of-scope list",
+      "shipped": "",
+      "exam": [],
+      "chapter": "Ch 6b: Product Requirements Documents (PRDs)"
+    },
+    {
+      "id": "DE20",
+      "name": "Spec-driven development",
+      "item": "G4",
+      "what": "Write the spec before code you intend to keep: requirements, design, then tasks, built one checkable task at a time. Explore with throwaway code to learn, then spec what you keep. Kiro's three files, GitHub Spec Kit (with a constitution of non-negotiable principles), and a plan saved to files package the same workflow.",
+      "used": "specs read by the agent before building (spec files opened in sessions)",
+      "made": "spec files (requirements, design, tasks, or one spec file) committed before the code they describe",
+      "shipped": "",
+      "exam": [],
+      "chapter": "Ch 6b: Build first, then spec what you keep; Why SDD Matters; When to Use SDD vs. Pure Vibe Coding; The SDD Workflow; Major SDD Approaches"
+    },
+    {
+      "id": "DE21",
+      "name": "Decisions already made, considered and rejected",
+      "item": "G4",
+      "what": "A spec records what was settled while exploring (wording, empty and error states, names) and each option turned down with the reason, so the next session does not reopen the question or propose the rejected option again.",
+      "used": "",
+      "made": "a spec with decisions-made and considered-and-rejected sections, committed",
+      "shipped": "",
+      "exam": [
+        "G-M-14"
+      ],
+      "chapter": "Ch 6b: The Agent Team Kit's spec and build-spec Skills"
+    },
+    {
+      "id": "DE22",
+      "name": "Punch list and check sheet",
+      "item": "G4",
+      "what": "The spec's build steps as an ordered checklist, each naming the files it touches and the criteria it closes, so a fresh session can resume. Browser-checked criteria go into a check sheet of Go, Do, Expect lines worked by hand.",
+      "used": "the spec and build-spec skills run in sessions",
+      "made": "a committed punch list with items checked off, or a check sheet with results",
+      "shipped": "",
+      "exam": [],
+      "chapter": "Ch 6b: The Agent Team Kit's spec and build-spec Skills"
+    },
+    {
+      "id": "DE23",
+      "name": "Precise design direction",
+      "item": "G5",
+      "what": "A design instruction says where, what is wrong, why (the principle), what to change, and a reference such as a screenshot or a named component. For a redesign, ask first for a list of what the new design removes (a subtraction audit). Taste is naming specific problems against stated principles.",
+      "used": "design prompts in sessions that name the element, the problem and the principle (seen in the scan's prompts)",
+      "made": "a written design direction (in a spec, an issue, or a change note) that names the problem and the fix, and the change shipped",
+      "shipped": "a design direction revised after people outside the team used the product, saying what changed and why",
+      "exam": [
+        "G-M-07"
+      ],
+      "chapter": "Ch 5: Directing an Agent on Design; Taste is a skill"
+    },
+    {
+      "id": "DE24",
+      "name": "Double Diamond: diverge, then converge, twice",
+      "item": "G5",
+      "what": "Design widens and narrows twice: explore the problem, define it, then generate several solutions before choosing one. Builders using an agent most often skip the second widening and build the first solution.",
+      "used": "several design options generated before one was chosen",
+      "made": "a committed comparison of two or more design options with the reason for the one chosen",
+      "shipped": "",
+      "exam": [
+        "G-M-19"
+      ],
+      "chapter": "Ch 5b: The Design Process: Diverge, Then Converge, Twice"
+    },
+    {
+      "id": "DE25",
+      "name": "Nielsen's ten usability heuristics",
+      "item": "G5",
+      "what": "Ten rules of thumb (visibility of system status, match with the real world, user control, consistency, error prevention, recognition over recall, and others) for reviewing a screen. A heuristic review, by a person or an agent, finds likely problems; it does not replace watching users.",
+      "used": "a heuristic review run on the product",
+      "made": "a committed heuristic review with the problems found and the fixes",
+      "shipped": "",
+      "exam": [
+        "G-F-15"
+      ],
+      "chapter": "Ch 5b: Nielsen's Ten Usability Heuristics; Running a quick heuristic review with an agent"
+    },
+    {
+      "id": "DE26",
+      "name": "Curse of knowledge: watch, do not ask",
+      "item": "G6",
+      "what": "The builder cannot see the product as a newcomer does. Watching what people do shows problems that asking their opinion hides; a task completed is not the same as a task understood.",
+      "used": "",
+      "made": "",
+      "shipped": "",
+      "exam": [
+        "G-F-06"
+      ],
+      "chapter": "Ch 6: The Curse of Knowledge; What to Observe"
+    },
+    {
+      "id": "DE27",
+      "name": "Running a usability test",
+      "item": "G6",
+      "what": "About five people from the target group per round, three to five tasks written as goals (never as click instructions), a think-aloud script, and a moderator who stays quiet and does not help. Watching a few people comes before counting many with analytics or A/B tests.",
+      "used": "a usability session run with someone outside the team",
+      "made": "a committed note per session: who (no names needed), the tasks, and what the person did",
+      "shipped": "",
+      "exam": [
+        "G-M-05",
+        "G-M-03"
+      ],
+      "chapter": "Ch 6: What is Usability Testing?; Running a Usability Test; Testing at Scale"
+    },
+    {
+      "id": "DE28",
+      "name": "Affinity mapping and severity scoring",
+      "item": "G6",
+      "what": "Group observations into themes, then rank problems as critical, major, minor or cosmetic. Fix what blocks the core task first.",
+      "used": "",
+      "made": "a committed synthesis of test notes with problems ranked by severity",
+      "shipped": "",
+      "exam": [
+        "G-F-07"
+      ],
+      "chapter": "Ch 6: Synthesizing Feedback; The Affinity Mapping Process; Severity Scoring"
+    },
+    {
+      "id": "DE29",
+      "name": "Fix the top issue and retest",
+      "item": "G6",
+      "what": "Fix the one or two most severe problems, run the same tasks with new people, and check the problem is gone and nothing new broke. Keep what works; weigh feedback by frequency, severity and source instead of acting on single opinions. Repeated failure to show value across rounds is a reason to consider a pivot.",
+      "used": "",
+      "made": "a change committed that cites a test finding",
+      "shipped": "the product changed because of a usability test, and the change and a retest are recorded",
+      "exam": [
+        "G-F-08",
+        "G-F-09",
+        "G-M-10"
+      ],
+      "chapter": "Ch 6: Fix the top issue and retest; Iteration Frameworks; Responding to Feedback Without Overreacting"
+    },
+    {
+      "id": "DE30",
+      "name": "Fidelity: the cheapest artifact for the question",
+      "item": "G6",
+      "what": "Sketch, wireframe, mockup and prototype differ in how finished they look and how much they do; fidelity and effort are separate. Name the question first, then make the cheapest artifact that answers it. Polish invites comments on polish.",
+      "used": "a sketch, wireframe or mockup made before building",
+      "made": "a committed sketch, wireframe, mockup or prototype used to test a question before the feature was built",
+      "shipped": "",
+      "exam": [
+        "G-M-12",
+        "G-M-22",
+        "G-F-12"
+      ],
+      "chapter": "Ch 5b: Fidelity: Sketch, Wireframe, Mockup, Prototype; Design Tools: Paper, Figma, Claude, and Code"
+    }
+  ],
+  "exam_elsewhere": [],
+  "book_gaps": [
+    "Writing a flow down (G1 level 4): Ch 5 teaches mapping a flow but gives no file convention. Add a short 'Write the flow in the spec' block to Ch 5: Flows Before Screens, and a Flow and states section to the spec template in Ch 6b.",
+    "Session notes (G6 level 4): Ch 6 says to take notes but gives no note format or where to commit it. Add a one-page session note template to Ch 6: Running a Usability Test.",
+    "Changing a spec after shipping (G4 level 5): Ch 6b does not teach recording what changed in a spec and why. Add a 'When the spec changes' subsection after The Agent Team Kit's spec and build-spec Skills.",
+    "Choosing a design system on purpose (G3 level 5): Ch 5 recommends shadcn/ui but does not show a decision record comparing options. Add an example to Decide Once.",
+    "Recruiting test participants and consent: one line in Ch 6 (Before the Session). Thin for a step most students find hardest.",
+    "Dark patterns and design ethics (deceptive defaults, confirm-shaming, hidden cancellation): not taught. A short section would fit after Words Are Interface in Ch 5.",
+    "Onboarding and first-run design beyond the empty state: thin. Could extend Ch 5: Off the Happy Path."
+  ],
+  "evidence_notes": [
+    "States (DE02): a packet sees code and nine Loom frames, which usually show the happy path. An empty, loading or error state is confirmed only if the spec lists the states or the Loom shows one. Asking for a Flow and states list in the spec would make it visible.",
+    "Flow written down (DE01): several Sprint 2 flows exist only in code (a Steps component, a route list). The coder cannot tell a route list from a flow. A named spec section would settle it.",
+    "Design rules (DE10, DE12, DE15): rules sometimes live only in commit messages or code comments, and contrast and keyboard checks leave no record unless output is saved. A committed check result (contrast numbers, a keyboard-pass note) would make them checkable.",
+    "Design system reuse (DE14): counting the screens that use a shared component needs a code search the packet does not include. Adding import counts per shared component to the packet would make 'three or more screens' checkable.",
+    "Spec text (DE18 to DE22): packets often drop spec texts under the text budget, so acceptance criteria and decisions sections cannot be read. Commit order still settles 'before the code'. Giving spec files priority in the packet would fix it.",
+    "Design direction (DE23): directions to an agent are in the user's prompts, which the session scan reads but does not classify. Directions to a teammate or another tool (Cursor) are not visible. A scan count of prompts with a screenshot attached, or naming an element and a principle, would help.",
+    "Usability testing (DE27 to DE29): one record may meet G5 and G6; it counts for each only when it meets each statement on its own. Session note texts are often absent from the packet.",
+    "Know it: DE10 (typography, grid, color), DE15 (design rules for the agent), DE17 (user stories), DE19 (PRD), DE20 (spec-driven development) and DE22 (punch list and check sheet) have no exam question."
+  ]
+}

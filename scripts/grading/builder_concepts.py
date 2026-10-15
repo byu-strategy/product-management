@@ -48,6 +48,9 @@ def build(key, items):
             lines.append(f"| **{c['id']} {c['name']}.** {c['what']} | {c['used'] or 'n/a'} | {c['made'] or 'n/a'} | "
                          f"{c['shipped'] or 'n/a'} | {c['chapter']} |")
         lines.append("")
+    for title, field in (("Book gaps", "book_gaps"), ("Evidence a packet or the session scan cannot see yet", "evidence_notes")):
+        if d.get(field):
+            lines += [f"## {title}", ""] + [f"- {x}" for x in d[field]] + [""]
     (HERE / f"builder-concepts-{key}.md").write_text("\n".join(lines))
 
     e = html.escape
@@ -97,8 +100,26 @@ td{{border-bottom:1px solid #f0f1f4;padding:8px;vertical-align:top}}tr.grp td{{b
 <li><b>Questions on this axis that belong elsewhere:</b> {e("; ".join(f"{x['id']}: {x['belongs']}" for x in d.get("exam_elsewhere", []))) or "none"}</li>
 {f'<li class=gap>Ids not in the bank: {e(", ".join(missing))}</li>' if missing else ""}</ul>"""
     (EXAM / f"concepts-{key}.html").write_text(page)
+    SUMMARY.append((d["axis"], key, len(C), checks, len(noq), len(nofinal), len(unmapped), len(d.get("book_gaps", []))))
     print(f"{d['axis']}: {len(C)} concepts, {checks} checks, no question {len(noq)}, none seated on final {len(nofinal)}, "
           f"unmapped final {len(unmapped)}" + (f", MISSING IDS {missing}" if missing else ""))
+
+
+SUMMARY = []
+
+
+def overview():
+    e = html.escape
+    rows = "".join(f'<tr><td><a href="concepts-{k}.html">{e(a)}</a></td><td>{n}</td><td>{c}</td><td>{q}</td><td>{f}</td><td>{u}</td><td>{g}</td></tr>'
+                   for a, k, n, c, q, f, u, g in SUMMARY)
+    t = [sum(x[i] for x in SUMMARY) for i in range(2, 8)]
+    (EXAM / "concepts-index.html").write_text(f"""<!doctype html><meta charset=utf-8><title>Builder concepts</title><style>
+body{{font:14px/1.5 -apple-system,Helvetica,Arial,sans-serif;color:#1d2330;max-width:900px;margin:28px auto;padding:0 20px}}
+table{{border-collapse:collapse;width:100%}}th,td{{text-align:left;padding:8px;border-bottom:1px solid #eceef2}}th{{font-size:12px;color:#6b7385}}
+td:not(:first-child),th:not(:first-child){{text-align:right}}tr.t td{{font-weight:600}}a{{color:#2f5bd3}}</style>
+<h1>Builder concepts: all six axes</h1><p>The spine of the builder system. Each axis page lists its concepts, their checks, and the exam questions on each.</p>
+<table><tr><th>Axis</th><th>Concepts</th><th>Checks</th><th>No question</th><th>None seated on final</th><th>Final questions mapped to no concept</th><th>Book gaps</th></tr>
+{rows}<tr class=t><td>Total</td>{"".join(f"<td>{x}</td>" for x in t)}</tr></table>""")
 
 
 if __name__ == "__main__":
@@ -106,3 +127,5 @@ if __name__ == "__main__":
     items = exam_items()
     for k in keys:
         build(k, items)
+    if not sys.argv[1:]:
+        overview()

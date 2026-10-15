@@ -23,7 +23,7 @@ A blank cell means the check does not apply to that concept. Evidence rules from
 | **AW03 Launching and surfaces.** Starting the agent in the right folder; the same engine in the terminal, desktop, IDE and web; following a session from the Claude mobile app (Remote Control); speaking prompts (/voice); non-interactive runs. | sessions started in the course repo; /remote-control or /voice used in sessions | a script that runs the agent without a person (non-interactive) | n/a | Ch 1: One engine, many surfaces; Ch 2: Your phone and your voice |
 | **AW04 Project instructions (CLAUDE.md, AGENTS.md).** A file the agent reads at the start of every session: decisions, constraints, traps. Advisory, not enforced. | the file loads in sessions | wrote its content (beyond the template), committed | n/a | Ch 2: It Knows Only What It Can See; Project Overview |
 | **AW05 Memory and context.** What persists between sessions (auto memory, CLAUDE.md) and what does not; /clear and /compact. | memory written or /clear, /compact used in sessions | wrote a memory entry or rule on purpose, committed | n/a | Ch 2: Development Notes |
-| **AW06 Plan mode and spec first.** Exploring and planning before editing; handing the agent a spec. | sessions in plan mode | a spec the agent built from (counts as G4) | n/a | Ch 2; Ch 6b: The SDD Workflow |
+| **AW06 Plan mode.** Claude reads, explores and writes a plan without editing your files until you approve it. Writing the spec it builds from is Design's spec-driven development (DE20). | sessions in plan mode | n/a | n/a | Ch 2; Ch 6b: The SDD Workflow |
 | **AW07 Settings and their scope.** Project settings versus global settings, and which wins. | n/a | committed .claude/settings.json | n/a | Ch 2: Rules |
 
 ## W2 Agent tooling

@@ -1,0 +1,443 @@
+{
+ "axis": "Discovery",
+ "key": "discovery",
+ "intro": "Finding out what is true about a problem and the people who have it, and choosing what is worth building, before spending weeks on it.",
+ "items": {
+  "D1": "User interviews",
+  "D2": "Problem and who it is for",
+  "D3": "Assumption tests",
+  "D4": "Competitive landscape",
+  "D5": "Prioritization",
+  "D6": "What to build"
+ },
+ "concepts": [
+  {
+   "id": "DI01",
+   "name": "Problem interviews (the Mom Test)",
+   "item": "D1",
+   "what": "Ask about their life, not your idea; ask about specific past events, not hypothetical futures; listen more than you talk. The most useful question: \"Walk me through the last time you experienced this problem.\" A leading or hypothetical question produces polite agreement that predicts nothing.",
+   "used": "Used: interviewed people with a guide someone else wrote (the book's sample script, a teammate's, or an agent's), or asked an agent to check questions against the Mom Test rules (session scan). Notes show past-tense questions about the problem.",
+   "made": "Built: wrote discovery/interview-guide.md (or similar) with past-tense questions about the problem, committed before the interview notes it was used for. Interviews that only collect the product's content do not count.",
+   "shipped": "Interviews with people outside the team changed or held the product's direction, and a decision record cites them (D1 level 5).",
+   "exam": [
+    "D-M-05",
+    "D-M-06"
+   ],
+   "chapter": "Ch 4: Problem Interviews (The Mom Test); Conducting Effective Interviews"
+  },
+  {
+   "id": "DI02",
+   "name": "The evidence ladder: said, did, paid",
+   "item": "D1",
+   "what": "What people said is weak evidence, what they did is stronger, what they paid is strongest, because each rung costs more to fake. The past is on the did rung and the future on the said rung, so tag every claim by its rung.",
+   "used": "Used: interview notes or a test note label claims said, did or paid (the repo), or the student asked an agent to tag notes by rung (session scan).",
+   "made": "Built: a synthesis or insights file in which each key claim carries its rung and points to the interview or test that supports it.",
+   "shipped": "",
+   "exam": [
+    "D-M-07",
+    "D-M-11",
+    "D-M-20"
+   ],
+   "chapter": "Ch 4: The Evidence Ladder: Said, Did, Paid"
+  },
+  {
+   "id": "DI03",
+   "name": "Interview synthesis and saturation",
+   "item": "D1",
+   "what": "After several interviews, write the validated problem statement, who you talked to, key insights tagged by rung, quotes, and next steps. Stop interviewing when new interviews stop surprising you, and widen the sample when one person is all you have.",
+   "used": "Used: filled in the book's synthesis template, or a teammate's synthesis, with their own interview notes.",
+   "made": "Built: a committed synthesis file (synthesis.md, insights.md) that cites each interview note by file and states what changed or held.",
+   "shipped": "",
+   "exam": [
+    "D-M-08",
+    "D-M-12"
+   ],
+   "chapter": "Ch 4: Interview Synthesis"
+  },
+  {
+   "id": "DI04",
+   "name": "Problem statement and the stranger test",
+   "item": "D2",
+   "what": "A problem statement names a person, a situation, and what goes wrong for them today, with no product, feature or technology in it. A stranger who lives it would recognize it; a solution statement only makes sense to someone who heard the pitch (the Idea Trap).",
+   "used": "",
+   "made": "Built: a problem statement in the README, spec or synthesis that names no solution and cites what interviewees said.",
+   "shipped": "Real users describe the problem in their own words in the record (D2 level 5).",
+   "exam": [
+    "D-F-03"
+   ],
+   "chapter": "Ch 3: Why Most Products Fail; Problem vs. Solution Thinking. Ch 4: Problem Journaling"
+  },
+  {
+   "id": "DI05",
+   "name": "Jobs to be done",
+   "item": "D2",
+   "what": "People hire a product to make progress in a situation: \"When I'm [situation], I want to [motivation], so I can [outcome],\" with no product in the middle slot. Jobs are functional, emotional and social; pains are physical, functional, financial, emotional and social; a journey map shows where in the job the pain sits.",
+   "used": "Used: worked from a job statement someone else wrote (a teammate, the client brief, an agent's draft) to frame interviews or a spec.",
+   "made": "Built: wrote a job statement, or a journey map of the whole job, from their own interviews, committed.",
+   "shipped": "",
+   "exam": [
+    "D-M-14"
+   ],
+   "chapter": "Ch 4: Jobs-to-be-Done Framework; The Five Kinds of Pain"
+  },
+  {
+   "id": "DI06",
+   "name": "Who it is for, and who it is not for",
+   "item": "D2",
+   "what": "Win one narrow segment completely before expanding (Moore): people who share the same habit, talk to each other, and can all be reached. Say who it is not for. Segments that share a job can still differ in situation and pain.",
+   "used": "",
+   "made": "Built: a written target customer, narrow enough to name, with a not-for list, in the README, spec or value proposition.",
+   "shipped": "The product serves that beachhead, and the record says who was left out and why (D2 level 5).",
+   "exam": [
+    "D-F-04",
+    "D-F-13"
+   ],
+   "chapter": "Ch 4: Who It Is For, and Not For (Start narrow: the beachhead)"
+  },
+  {
+   "id": "DI07",
+   "name": "User versus payer",
+   "item": "D2",
+   "what": "The person who uses the product and the person who pays for it may differ. The user cares whether it is easy, the payer whether it is worth the money, so you need evidence from both.",
+   "used": "",
+   "made": "Built: a written user and payer for the product, with interview notes from the payer when they differ.",
+   "shipped": "",
+   "exam": [
+    "D-F-08",
+    "D-M-08"
+   ],
+   "chapter": "Ch 4: Who It Is For, and Not For (The user and the payer)"
+  },
+  {
+   "id": "DI08",
+   "name": "The access test",
+   "item": "D2",
+   "what": "A real problem is not an opportunity if you cannot reach the people who have it. Check location (where they gather), engagement (will they respond) and reciprocity (what you offer in return).",
+   "used": "",
+   "made": "",
+   "shipped": "",
+   "exam": [
+    "D-M-10"
+   ],
+   "chapter": "Ch 4: Can You Reach Them? The Access Test"
+  },
+  {
+   "id": "DI09",
+   "name": "Personas",
+   "item": "D2",
+   "what": "A fictional but realistic customer that summarizes interview evidence you already have. A persona generated before talking to anyone, by a person or an agent, contains no information and confirms what you already believed.",
+   "used": "Used: worked from a persona someone else wrote (a teammate, the client, or an agent), for example in a spec or prompt (repo or session scan).",
+   "made": "Built: wrote personas.md from their own interviews, with each persona's claims citing an interview note. A persona drafted before any interview does not count.",
+   "shipped": "Real users describe the problem in their own words in the persona, and it says who was left out and why (D2 level 5).",
+   "exam": [
+    "D-M-02"
+   ],
+   "chapter": "Ch 4: Building Personas"
+  },
+  {
+   "id": "DI10",
+   "name": "Belief versus truth and triangulation",
+   "item": "D3",
+   "what": "A map of what you believe, what is true, and how much evidence you have; False Confidence (sure, and wrong) is the most dangerous region. Every way of knowing can mislead, so treat a belief as validated only when independent sources agree. Good evidence would look different if you were wrong.",
+   "used": "",
+   "made": "Built: an insights or assumptions file that lists beliefs with a confidence level and the evidence for each, written before the checks that tested them.",
+   "shipped": "",
+   "exam": [
+    "D-M-11"
+   ],
+   "chapter": "Ch 4: Discovery Is Truth-Seeking (Six ways of knowing, all flawed; Thinking in probabilities)"
+  },
+  {
+   "id": "DI11",
+   "name": "Issue trees and MECE",
+   "item": "D3",
+   "what": "Break a messy question into parts that do not overlap and leave nothing out (mutually exclusive, collectively exhaustive), splitting until each leaf can be checked with evidence. Work first on the branch with high impact, high uncertainty and testability, and skip any question that fails the so-what test (would the answer change what we build?).",
+   "used": "Used: worked a question with an issue tree someone else drew (a teammate, an agent) or asked an agent to check a tree for overlaps and gaps (session scan).",
+   "made": "Built: a committed issue tree for an open product question, with the leaf chosen to test and the questions excluded.",
+   "shipped": "",
+   "exam": [
+    "D-F-01",
+    "D-F-02"
+   ],
+   "chapter": "Ch 4: Structure a Messy Problem: Issue Trees"
+  },
+  {
+   "id": "DI12",
+   "name": "What would have to be true",
+   "item": "D3",
+   "what": "State the idea as a hypothesis on day one, then list the specific conditions that must hold for it to work (Roger Martin). Each condition can be tested; a vague belief cannot.",
+   "used": "",
+   "made": "Built: a committed list of conditions that would have to be true, each labeled with its risk and uncertainty.",
+   "shipped": "",
+   "exam": [
+    "D-F-12",
+    "D-F-15"
+   ],
+   "chapter": "Ch 4: The Four Risks and the Riskiest Assumption (What would have to be true)"
+  },
+  {
+   "id": "DI13",
+   "name": "The four risks",
+   "item": "D3",
+   "what": "Value (will they want it), usability (can they use it), feasibility (can we build it), viability (does it work as a business). A MECE list of how a product fails. Teams over-test feasibility and under-test value; a working app proves only that it could be built.",
+   "used": "",
+   "made": "Built: an assumptions list with each assumption labeled by risk, committed.",
+   "shipped": "",
+   "exam": [
+    "D-F-15"
+   ],
+   "chapter": "Ch 4: The Four Risks and the Riskiest Assumption (The four risks)"
+  },
+  {
+   "id": "DI14",
+   "name": "Riskiest assumption",
+   "item": "D3",
+   "what": "The condition that is both most uncertain and most fatal if false. Test it before anything else, even before a cheaper quick win, because work on other parts is wasted if it fails.",
+   "used": "Used: named a riskiest assumption in the sprint plan (\"My riskiest assumption is ___, and this sprint I will test it by ___\").",
+   "made": "Built: named the assumption before checking it, ran a check that could prove it wrong, and committed the result (D3 level 4).",
+   "shipped": "The result decided something, and a decision record cites it (D3 level 5).",
+   "exam": [
+    "D-F-05",
+    "D-F-10"
+   ],
+   "chapter": "Ch 4: The Four Risks and the Riskiest Assumption (The riskiest assumption)"
+  },
+  {
+   "id": "DI15",
+   "name": "The smallest test: smoke test, fake door, concierge, Wizard of Oz, presell",
+   "item": "D3",
+   "what": "Before building, fake it, do it by hand, or sell it first. Choose by learning per hour: the highest evidence rung on the riskiest assumption for the fewest hours. A working app shown to friends stays on the said rung for value.",
+   "used": "Used: took part in or reused someone else's test (a teammate's landing page, a class template) and recorded its result.",
+   "made": "Built: designed and ran one of the tests (a page, a hand-delivered service, a pre-order), with the action counted, its rung, a prediction set before, and the result committed.",
+   "shipped": "Run with people outside the team, and the result decided something in a decision record.",
+   "exam": [
+    "D-F-05",
+    "D-F-11"
+   ],
+   "chapter": "Ch 4: The Smallest Test"
+  },
+  {
+   "id": "DI16",
+   "name": "The current habit and the forces of progress",
+   "item": "D4",
+   "what": "The main competitor is what the person does today: a spreadsheet, a group text, or nothing. A person switches only when push plus pull outweighs anxiety plus habit (Moesta), so the product must beat the habit by more than the cost of switching. No rival app does not mean no competition.",
+   "used": "Used: asked \"What do you do today?\" in interviews, recorded per person (the repo).",
+   "made": "Built: a written comparison of what users actually do today and the alternatives they use, from interviews, including doing nothing. A competitor price list with no user input does not count.",
+   "shipped": "The product's position comes from that comparison, in a decision record (D4 level 5).",
+   "exam": [
+    "D-M-09",
+    "D-M-14",
+    "D-F-06"
+   ],
+   "chapter": "Ch 4: The Real Competitor Is the Current Habit"
+  },
+  {
+   "id": "DI17",
+   "name": "Importance versus satisfaction",
+   "item": "D4",
+   "what": "Plot needs by how much they matter and how well current solutions meet them (Olsen). The opportunity is high importance with low satisfaction; high importance with high satisfaction means competing with what already works.",
+   "used": "",
+   "made": "Built: a committed importance and satisfaction table or chart built from interview data.",
+   "shipped": "",
+   "exam": [
+    "D-M-03"
+   ],
+   "chapter": "Ch 4: Evaluating Your Problems (Another lens: importance and satisfaction)"
+  },
+  {
+   "id": "DI18",
+   "name": "Five forces",
+   "item": "D4",
+   "what": "Rivalry, new entrants and substitutes decide whether an industry can hold price above cost; buyer and supplier power decide whether a neighbor can bargain your share away (Porter). The forces describe the industry, not whether your product is strongest in it.",
+   "used": "",
+   "made": "Built: a written five forces reading of the product's industry, committed.",
+   "shipped": "",
+   "exam": [
+    "D-F-19"
+   ],
+   "chapter": "Ch 3: The five forces: how wide is the band?"
+  },
+  {
+   "id": "DI19",
+   "name": "Blue ocean and value innovation",
+   "item": "D4",
+   "what": "Create uncontested space by raising willingness to pay and cutting cost at once, dropping what the industry over-serves and adding what it never offered (Kim and Mauborgne). A blue ocean has no barriers, so it needs a moat to stay yours.",
+   "used": "",
+   "made": "Built: a written list of factors the product drops, reduces, raises and adds compared with the alternatives, committed.",
+   "shipped": "",
+   "exam": [
+    "D-F-18"
+   ],
+   "chapter": "Ch 3: Blue oceans: widening the band"
+  },
+  {
+   "id": "DI20",
+   "name": "Moats (7 Powers)",
+   "item": "D4",
+   "what": "Sources of durable advantage (Helmer): network effects, switching costs, scale economies, brand, counter-positioning, cornered resource, process power. Ask what stops the next builder with the same AI tools from copying you next week. An incumbent's switching costs can close an apparent opening.",
+   "used": "",
+   "made": "Built: a written moat statement for the product (the one-page strategy) that names a power and why it applies.",
+   "shipped": "",
+   "exam": [
+    "D-F-09",
+    "D-F-18",
+    "D-F-20"
+   ],
+   "chapter": "Ch 3: Moats: why the win lasts"
+  },
+  {
+   "id": "DI21",
+   "name": "Disruption",
+   "item": "D4",
+   "what": "Incumbents improve for their most demanding customers and overshoot the rest (sustaining innovation). An entrant starts in a low-end foothold (overserved customers) or a new-market foothold (nonconsumers) and moves upmarket (Christensen). Fast growth that hurts incumbents is not disruption by itself.",
+   "used": "",
+   "made": "Built: a written answer to the chapter's four questions: the incumbent, whom it overserves or leaves out, sustaining or disruptive entry, and what would have to improve.",
+   "shipped": "",
+   "exam": [
+    "D-M-18",
+    "D-F-16",
+    "D-F-17"
+   ],
+   "chapter": "Ch 3: Disruption: how small entrants beat leaders"
+  },
+  {
+   "id": "DI22",
+   "name": "Scoring problems and the commitment decision",
+   "item": "D5",
+   "what": "Score candidate problems on frequency, intensity, willingness to pay and market size, then check conviction and technical feasibility. Estimate willingness to pay from what the problem costs today, not from a price people name. Commit when five or more interviews show signals above the said rung, the habit to beat is named, and a small test has not disproved the riskiest assumption; watch for solution love, confirmation bias, sunk cost and founder fantasy.",
+   "used": "Used: scored problems with the course's Problem Discovery Framework sheet (Sprint 2).",
+   "made": "Built: a committed scoring of two or more candidate problems with the evidence for each score, and the one chosen.",
+   "shipped": "",
+   "exam": [
+    "D-M-01"
+   ],
+   "chapter": "Ch 4: Evaluating Your Problems; The Commitment Decision; Avoiding Premature Commitment. Appendix: Problem Discovery Framework (Scoring)"
+  },
+  {
+   "id": "DI23",
+   "name": "MVP and scoping",
+   "item": "D5",
+   "what": "The smallest thing that tests the riskiest assumption with real users and produces learning you can act on (Ries); it can be a smoke test or one core feature. Cut to the one thing users must be able to do, then make that excellent (minimum awesome). With fixed time, hold the time and cut scope, stating in writing what is out.",
+   "used": "",
+   "made": "Built: a written MVP scope naming the one thing users must do and a list of what is out, committed before the build.",
+   "shipped": "Real users used the scoped MVP, and the record says what was cut and why.",
+   "exam": [
+    "D-F-14"
+   ],
+   "chapter": "Ch 4: What is an MVP?; Minimum Viable, or Minimum Awesome?; MVP Scoping: The Art of Cutting"
+  },
+  {
+   "id": "DI24",
+   "name": "Prioritization frameworks: ICE, MoSCoW, the $100 test",
+   "item": "D5",
+   "what": "ICE scores impact times confidence over effort; MoSCoW sorts must, should, could and won't; the $100 test forces an uneven split of a fixed budget. A score is only as good as the evidence behind it: a high confidence rating with no evidence is a guess.",
+   "used": "Used: ranked work with a framework someone else set up (a teammate's backlog, a template), or asked an agent to score features (session scan).",
+   "made": "Built: a committed ranking of options in order, with the criteria and the evidence for each score shown.",
+   "shipped": "Built what ranked first for real users, and the ranking cites what was learned (D5 level 5).",
+   "exam": [
+    "D-M-15",
+    "D-F-10"
+   ],
+   "chapter": "Ch 4: Feature Prioritization"
+  },
+  {
+   "id": "DI25",
+   "name": "Continuous discovery and the opportunity solution tree",
+   "item": "D5",
+   "what": "Keep talking to customers every sprint (Torres). The tree runs outcome, opportunities, solutions, experiments; every solution must sit under an opportunity you actually discovered, and every experiment tests one assumption behind a solution.",
+   "used": "",
+   "made": "Built: a committed opportunity solution tree for the product, with each opportunity traced to interview notes.",
+   "shipped": "",
+   "exam": [
+    "D-M-13"
+   ],
+   "chapter": "Ch 4: Discovery Is Continuous"
+  },
+  {
+   "id": "DI26",
+   "name": "Product strategy: vision, where to play, how to win, what not to do",
+   "item": "D6",
+   "what": "A vision describes the better world the product creates (Cagan). Strategy is a small set of hard choices, including what not to do (Porter); for a student product the key choices are where to play and how to win (Lafley and Martin). Building is cheap now, so a small market can be worth it.",
+   "used": "",
+   "made": "Built: the chapter's one-page product strategy (vision, where you play, how you win, moat, what you will not do), committed.",
+   "shipped": "Built the chosen idea for real users, and a later decision record says whether the choice held (D6 level 5).",
+   "exam": [],
+   "chapter": "Ch 3: Vision before strategy; Strategy is choosing what not to do; Where to play, and how to win; Putting it to work"
+  },
+  {
+   "id": "DI27",
+   "name": "Diverge before you converge",
+   "item": "D6",
+   "what": "Generate many candidate problems before judging any, then narrow on purpose. A problem journal captures every friction without filtering; seizing the first idea is premature convergence.",
+   "used": "",
+   "made": "Built: a written choice of this product or idea over at least one other, including who it is for and why it can win (D6 level 4).",
+   "shipped": "Built the chosen idea for real users, and a later decision record says whether the choice held (D6 level 5).",
+   "exam": [],
+   "chapter": "Ch 4: You Are Your Best First Customer; Problem Journaling; Diverge Before You Converge"
+  },
+  {
+   "id": "DI28",
+   "name": "The value stick: creating and capturing value",
+   "item": "D6",
+   "what": "Value created is willingness to pay minus willingness to sell (Brandenburger and Stuart). Price and cost divide it into what the customer keeps, what the maker captures, and what suppliers keep. Creating value does not guarantee capturing it; industry structure limits the share.",
+   "used": "",
+   "made": "Built: a written value stick for the product with willingness to pay, price, cost and willingness to sell estimated from evidence.",
+   "shipped": "",
+   "exam": [
+    "D-M-04",
+    "D-M-16",
+    "D-M-19"
+   ],
+   "chapter": "Ch 3: Creating value, and capturing it"
+  },
+  {
+   "id": "DI29",
+   "name": "DHM and the value proposition",
+   "item": "D6",
+   "what": "DHM (Biddle): a good strategy delights customers in hard-to-copy, margin-enhancing ways, all three at once. The value proposition template states for whom, which problem, the category, the benefit, unlike which alternatives (the current habit first), and the differentiator; the Value Proposition Canvas and Bain's Elements of Value check it against the customer's jobs, pains and gains.",
+   "used": "Used: filled in the value proposition template for the product (sprint plan or README).",
+   "made": "Built: a committed value proposition whose For line is the beachhead and whose Unlike line names the current habit, drawn from interviews.",
+   "shipped": "Real users chose it over their current habit, recorded.",
+   "exam": [],
+   "chapter": "Ch 3: A test worth memorizing: DHM; Creating value, and capturing it (Elements of Value). Ch 4: Your Value Proposition"
+  },
+  {
+   "id": "DI30",
+   "name": "The reflection test and the directional test",
+   "item": "D6",
+   "what": "Habit-forming products run trigger, action, variable reward, investment (Eyal); the mechanics are neutral. The test: would the user, in a calm and reflective moment, be glad you designed it this way? For the needs it touches, does the product expand agency, support becoming, and deepen connection?",
+   "used": "",
+   "made": "Built: a written check of the product's habit loop or engagement design against the reflection and directional tests, committed.",
+   "shipped": "",
+   "exam": [
+    "D-M-17"
+   ],
+   "chapter": "Ch 3: Understanding human nature cuts both ways; Aiming well: virtue and the golden mean. Appendix: Problem Discovery Framework (Gospel Framework)"
+  }
+ ],
+ "exam_elsewhere": [
+  {
+   "id": "D-F-07",
+   "belongs": "G4 Specs (Design); retired"
+  }
+ ],
+ "book_gaps": [
+  "Decision records: D1, D3, D4 and D6 level 5 all require a decisions/ file that cites interviews or a test, but no chapter shows how to write one (options, deciding reason, evidence cited, committed before the work). Add a short section to Ch 4 after The Commitment Decision, or in Ch 6b with specs.",
+  "Writing up a comparison of alternatives (D4 level 4): Ch 4 teaches the current habit and Ch 3 teaches five forces and moats, but nothing shows how to build a comparison table of what users do today from interview notes, as distinct from a desk-research competitor list. Add a worked table to Ch 4: The Real Competitor Is the Current Habit.",
+  "Choosing one idea over another (D6 level 4): Diverge Before You Converge and Evaluating Your Problems score problems, but no section shows a written idea-versus-idea choice that names who it is for and why it can win. Add to Ch 4: The Commitment Decision, with an example record.",
+  "Stopping an idea: Signs You Should Pivot lists symptoms, but there is no guidance on recording a decision to stop or shelve an idea from evidence (the pilot found such records fit no item). Add to Ch 4: Avoiding Premature Commitment.",
+  "Ranking with criteria shown (D5 level 4): Feature Prioritization lists ICE, MoSCoW and the $100 test without a worked ranked list, and carries a MOVE note saying it belongs with specs. Add a worked example and settle where the section lives.",
+  "Opportunity solution tree is taught in one paragraph and a figure in Discovery Is Continuous, but has a midterm question. Expand it, or retire the question.",
+  "Surveys: D3 level 4 lists a survey as a valid check, but the book does not teach survey design or when a survey misleads (only that a concierge test teaches more than a survey). Add a short note to Ch 4: The Smallest Test.",
+  "The brief (Ch 4: From Discovery to the Brief) is left to G4 Specs on the Design axis; if Design does not claim it, it needs a Discovery concept."
+ ],
+ "evidence_notes": [
+  "Interview order: D1 level 4 excludes interviews that only collect the product's content, and \"problem interviews before the student saw the product\" needs the interview text and date. The packet often lists discovery/ files with no text (the text budget runs out). Put discovery/ files ahead of code in the packet's text budget.",
+  "Assumption named before the check (D3 level 4) needs commit order between the assumptions file and the test note. The packet shows commit hashes but a coder cannot always tell which came first; listing each discovery file's first-commit date in the packet would settle it.",
+  "Used it for most Discovery concepts happens outside the repo and outside Claude Code (talking to people, a whiteboard). The session scan sees only an agent asked to draft or check a guide, a persona, a tree or a ranking. A \"Discovery this sprint\" table in the /sprint-review template (what was done, with whom, date, file) would give the scan something to read.",
+  "Agent-written versus student-written: a persona, synthesis or assumptions list drafted by an agent from nothing looks the same in the repo as one built from interviews. The session scan could flag discovery files an agent wrote before any interview note existed.",
+  "Real users for Discovery level 5 often means interviewees, who have not used the product. The packet cannot tell an interviewee from a user; the \"Users this sprint\" table proposed in builder-inventory.md would separate them.",
+  "Smoke tests and presells record their result as counts (visits, sign-ups, deposits) that live in a landing-page tool or Stripe, not the repo. Ask students to commit the counts with a date in the test note.",
+  "Several Ch 3 concepts (five forces, blue ocean, moats, disruption, value stick, DHM, reflection test) are rarely written down in a student repo; their Built it rests on the one-page product strategy. Asking for that page as a committed strategy.md in Sprint 2 would make them visible."
+ ]
+}

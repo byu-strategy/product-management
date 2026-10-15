@@ -1,0 +1,411 @@
+{
+ "axis": "Launch and Learn",
+ "key": "launch",
+ "intro": "Getting the product to the people it is for, measuring what they do, deciding from it, and making the case for it.",
+ "items": {
+  "L1": "Shipping to real people",
+  "L2": "Metrics and instrumentation",
+  "L3": "Experiments",
+  "L4": "Positioning, pricing and business model",
+  "L5": "Acting on usage",
+  "L6": "Telling the product's story",
+  "L7": "Reaching users"
+ },
+ "concepts": [
+  {
+   "id": "LL01",
+   "name": "Real users and launched versus used",
+   "item": "L1",
+   "what": "A launch puts the product where people can reach it; use is people who do not build it doing its main task on their own. A real user is shown by a dated record (a usage count, a feedback note, a payment), and repeat use on separate days matters more than a first try.",
+   "used": "usage queries against the product's own data run in sessions",
+   "made": "a dated usage record committed (metrics file, test note, or usage count) naming people outside the team",
+   "shipped": "two or more people outside the team used it on two or more dates, on their own",
+   "exam": [],
+   "chapter": "Ch 12: Your First Users, by Hand; Launch & Iterate. Ch 14: Outcomes, not output"
+  },
+  {
+   "id": "LL02",
+   "name": "Launch in rings and deploy versus release",
+   "item": "L1",
+   "what": "Launch to widening groups: a private beta of people invited by hand, a public beta for the beachhead, then a wider launch. A merge deploys code; a release flag, checked on the server, decides who sees it, so each ring is reached by changing the flag with no new deploy.",
+   "used": "a flag turned on for a group in sessions",
+   "made": "a release flag committed (a table or config naming who has the feature) and checked in server code",
+   "shipped": "the feature released to real users ring by ring, with the rings recorded",
+   "exam": [
+    "LL-F-13"
+   ],
+   "chapter": "Ch 12: Launch in rings"
+  },
+  {
+   "id": "LL03",
+   "name": "North Star metric",
+   "item": "L2",
+   "what": "The one number that best shows the value customers get, It measures an outcome (whether users are better off); how much the team built is output. Test: could it go up while the product got worse? If so, it counts activity. Input metrics are the drivers that move it.",
+   "used": "",
+   "made": "the number named in a spec, README or metrics file, with why it shows value",
+   "shipped": "chosen over at least one other number in a decision record, and reported from real users' data",
+   "exam": [
+    "LL-F-05"
+   ],
+   "chapter": "Ch 14: Outcomes, not output; The North Star and the metrics under it"
+  },
+  {
+   "id": "LL04",
+   "name": "Success definition and guardrails",
+   "item": "L2",
+   "what": "Written before launch: the value metric, a threshold, guardrail metrics that must not get worse (such as AI cost per active user or error rate), and a judgment date. Without the threshold and date any result can be read as a success.",
+   "used": "",
+   "made": "a success definition committed before the launch or test it judges",
+   "shipped": "real users' results judged against it on its date, recorded",
+   "exam": [],
+   "chapter": "Ch 14: The North Star and the metrics under it; Write a success definition. Ch 12: Instrument it before you launch"
+  },
+  {
+   "id": "LL05",
+   "name": "Vanity, leading and lagging metrics",
+   "item": "L2",
+   "what": "A vanity metric (total signups, page views, time in app) feels good and changes no decision; an actionable one can change what you do next week. Leading indicators move early and predict an outcome; lagging indicators (revenue, churn) report it after the fact.",
+   "used": "",
+   "made": "",
+   "shipped": "",
+   "exam": [
+    "LL-F-05"
+   ],
+   "chapter": "Ch 14: Vanity, leading, and lagging"
+  },
+  {
+   "id": "LL06",
+   "name": "Events and instrumenting the core action",
+   "item": "L2",
+   "what": "An event is one row: who, what, when, and details. Log the four to six events that trace the core task from start to finish, tied to the user, before launch, and check that real rows arrive. Signed-in users may insert only their own events and nobody reads them from the browser; signed-out visitors go through an analytics service or a server route.",
+   "used": "events queried or checked for real rows in sessions",
+   "made": "an events table and logging calls (or analytics capture calls) committed for the core task. Analytics shown to users does not count",
+   "shipped": "events from real users answered a question written down in advance",
+   "exam": [
+    "LL-F-01"
+   ],
+   "chapter": "Ch 14: Instrument the Core Action. Ch 12: Instrument it before you launch"
+  },
+  {
+   "id": "LL07",
+   "name": "The funnel and activation",
+   "item": "L2",
+   "what": "Follow people from arrival to first value to coming back (AARRR: acquisition, activation, retention, revenue, referral). Each rate is a share of the step before it. Activation is the first moment a user gets the promised value; with high acquisition and low activation (a leaky bucket), fix activation, usually onboarding, before buying more traffic.",
+   "used": "a funnel query or analytics funnel run in sessions",
+   "made": "a funnel or activation rate computed from the product's events, committed (a query, a script, or a metrics file with the numbers)",
+   "shipped": "",
+   "exam": [
+    "LL-F-04",
+    "LL-F-07"
+   ],
+   "chapter": "Ch 14: Signups Are Not Adoption; The funnel; Onboarding is the activation step"
+  },
+  {
+   "id": "LL08",
+   "name": "Cohort retention, churn and stickiness",
+   "item": "L2",
+   "what": "Group users by start week and track the share still active N periods later. Totals can rise from new signups while every cohort keeps less. Curve shape points to the cause: a steep first drop to the first experience, steady decline to the core value, flattening to a group that stays. Churn and DAU/MAU count distinct people, never events.",
+   "used": "a cohort or retention query run in sessions",
+   "made": "a cohort table computed from the product's data, committed",
+   "shipped": "",
+   "exam": [
+    "LL-F-14",
+    "LL-F-06"
+   ],
+   "chapter": "Ch 14: Retention Shows Whether It Works; Cohorts; Why totals mislead; Engagement measures count people"
+  },
+  {
+   "id": "LL09",
+   "name": "Cause versus coincidence",
+   "item": "L3",
+   "what": "A before-and-after change can come from the calendar, a campaign, or noise, and the data alone cannot tell them apart from the change you made.",
+   "used": "",
+   "made": "",
+   "shipped": "",
+   "exam": [
+    "LL-F-15"
+   ],
+   "chapter": "Ch 14: Cause Versus Coincidence; Three ways a before-and-after fools you"
+  },
+  {
+   "id": "LL10",
+   "name": "Randomized test (A/B test)",
+   "item": "L3",
+   "what": "Assign users to A or B at random in the same weeks, so the change is the only systematic difference and a gap larger than chance is its effect. It proves an effect on the metric measured, for those users in that period; it says nothing about other metrics, later outcomes, or why. State the prediction before it starts.",
+   "used": "a test set up or its results analyzed in sessions",
+   "made": "a test plan with the prediction committed before the test started, then the result recorded",
+   "shipped": "the result changed what was built or how it is offered, recorded",
+   "exam": [
+    "LL-F-09",
+    "LL-F-10"
+   ],
+   "chapter": "Ch 14: Why random assignment works"
+  },
+  {
+   "id": "LL11",
+   "name": "Learning with small numbers",
+   "item": "L3",
+   "what": "With about 20 users, look only for big effects, hold out a random group in the same weeks, watch people use it, and say \"can't tell yet\" when the data cannot decide. Run a test to the size planned in advance; stopping when one version looks ahead finds differences that are chance.",
+   "used": "",
+   "made": "a holdout or small test with the planned size and the result recorded, including \"can't tell yet\"",
+   "shipped": "",
+   "exam": [
+    "LL-F-11"
+   ],
+   "chapter": "Ch 14: What to do with 20 users"
+  },
+  {
+   "id": "LL12",
+   "name": "Positioning and the competitive alternative",
+   "item": "L4",
+   "what": "Why a specific person picks you over what they do today (usually a spreadsheet, a group text, or nothing), said in their words. Start from that competitive alternative, then unique attributes, value, who cares most, and the category. A positioning statement is the internal reference for all messaging, and every sentence of it should pass the \"So what?\" test. A model's opinion of copy is a guess from its training text; only real people's replies, clicks and signups show which message works.",
+   "used": "",
+   "made": "a positioning statement or messaging file committed, naming the customer and the alternative it replaces",
+   "shipped": "the position tested with real people (landing page, outreach replies) and what happened recorded",
+   "exam": [
+    "LL-F-02"
+   ],
+   "chapter": "Ch 12: Positioning & Messaging; The positioning statement; Messages that convert; What AI can and cannot do for your messaging"
+  },
+  {
+   "id": "LL13",
+   "name": "Value-based pricing: ceiling, reference, floor",
+   "item": "L4",
+   "what": "Price between what the problem is worth to the customer (the ceiling, from what it costs them today, never from asking what they would pay) and your cost to serve (the floor), with what they pay for alternatives as the reference. The value estimate rests on assumptions about how the customer uses what is saved.",
+   "used": "",
+   "made": "a price decision record with the ceiling, reference and floor and their sources",
+   "shipped": "the price shown to real people and their response (payments, refusals) recorded",
+   "exam": [
+    "LL-F-08"
+   ],
+   "chapter": "Ch 12: Pricing and AI Margins"
+  },
+  {
+   "id": "LL14",
+   "name": "AI cost to serve and gross margin",
+   "item": "L4",
+   "what": "Cost per user is cost per AI action times actions per month. Gross margin is price minus cost to serve, divided by price. On a flat price, a heavy user of an AI product can cost more than they pay, so check the distribution of usage as well as the average.",
+   "used": "",
+   "made": "a cost-to-serve estimate per user, including the heaviest realistic user, committed",
+   "shipped": "",
+   "exam": [
+    "LL-F-12"
+   ],
+   "chapter": "Ch 12: Every AI call is a cost"
+  },
+  {
+   "id": "LL15",
+   "name": "Revenue models and free tiers",
+   "item": "L4",
+   "what": "The rule that turns use into money: subscription, usage-based, freemium, one-time, advertising, or commission. Each works only if something specific holds about the customer and costs. A flat price is simple and carries the heavy-user risk; usage pricing tracks cost; a free tier needs a usage cap.",
+   "used": "",
+   "made": "a revenue model chosen in a decision record that names another model",
+   "shipped": "real users paid under it",
+   "exam": [],
+   "chapter": "Ch 13: How Money Comes In: Revenue Models. Ch 12: Should you offer a free tier?"
+  },
+  {
+   "id": "LL16",
+   "name": "Business Model Canvas",
+   "item": "L4",
+   "what": "A one-page model in ten blocks (customer segments, jobs-to-be-done, value proposition, channels, relationships, revenue, resources, activities, partners, costs). The blocks constrain each other, and every block is a hypothesis to mark as evidence or guess. A model can draft every block, and fills gaps with plausible guesses.",
+   "used": "the canvas drafted with an agent in sessions",
+   "made": "business-model-canvas.md committed, with each block marked evidence or guess",
+   "shipped": "",
+   "exam": [],
+   "chapter": "Ch 13: What a Business Model Is; Drafting Your Canvas with Claude"
+  },
+  {
+   "id": "LL17",
+   "name": "Unit economics and break-even",
+   "item": "L4",
+   "what": "Look at one customer. Contribution margin is price minus variable cost (model calls, payment fees). Break-even is fixed costs divided by contribution margin. If each customer costs more than they bring in, more customers make it worse.",
+   "used": "",
+   "made": "a break-even or financial model with the variable costs per user, committed",
+   "shipped": "",
+   "exam": [
+    "LL-F-12"
+   ],
+   "chapter": "Ch 13: Unit Economics and Break-Even; Turn the canvas into a model and a slide"
+  },
+  {
+   "id": "LL18",
+   "name": "Lifetime value and acquisition cost",
+   "item": "L4",
+   "what": "Margin-based LTV is contribution margin per month times the months a customer stays; using revenue overstates it, by a lot for an AI product. CAC is what you spend in money and time to win one paying customer. If CAC exceeds LTV, each new customer loses money; a common rule of thumb is LTV at least three times CAC.",
+   "used": "",
+   "made": "CAC per channel or LTV computed from recorded spend and retention, committed",
+   "shipped": "",
+   "exam": [
+    "LL-F-04",
+    "LL-F-06"
+   ],
+   "chapter": "Ch 13: Unit Economics and Break-Even. Ch 14: Money Metrics"
+  },
+  {
+   "id": "LL19",
+   "name": "Keep, change, or kill",
+   "item": "L5",
+   "what": "Every feature carries upkeep. Retire one that few use, that costs upkeep, and that does not serve the core task, after logging it long enough to judge; tell the people who rely on it and give them a path. The same reasoning applies to stopping a product.",
+   "used": "",
+   "made": "a usage analysis of a feature or the product, with what it showed, committed",
+   "shipped": "a feature or the product changed, cut or stopped because of real users' usage, with the record",
+   "exam": [
+    "LL-F-03"
+   ],
+   "chapter": "Ch 14: Keep, Change, or Kill"
+  },
+  {
+   "id": "LL20",
+   "name": "When to change the go-to-market plan",
+   "item": "L5",
+   "what": "Change the plan when people sign up but do not reach value, a channel given a fair test brings almost no one, customers describe the product in other words, or a customer costs more to acquire than they bring in. Then interview again, rewrite messaging in their words, narrow the customer, or try the next channel.",
+   "used": "",
+   "made": "a decision record that changes the customer, message or channel and cites the evidence",
+   "shipped": "the changed plan reached real users, recorded",
+   "exam": [
+    "LL-F-07"
+   ],
+   "chapter": "Ch 12: When to change your GTM"
+  },
+  {
+   "id": "LL21",
+   "name": "Reading what people say: NPS, comments and AI themes",
+   "item": "L5",
+   "what": "Combine the numbers with what interviews, sessions and comments show (data-informed), unless the data came from a clean test with enough people. At student scale one NPS answer moves the score five points or more, so read the comments. A model can group feedback into themes with the quotes behind each; it cannot tell you why a number moved.",
+   "used": "feedback grouped with a model in sessions, with quotes checked",
+   "made": "a feedback synthesis with counts and quotes, committed",
+   "shipped": "",
+   "exam": [],
+   "chapter": "Ch 14: What to do with 20 users; Asking How People Feel. Ch 12: Using AI on launch data"
+  },
+  {
+   "id": "LL22",
+   "name": "A story has a job",
+   "item": "L6",
+   "what": "Aim (what to communicate, and to whom), approach (which story serves it), act (tell it and watch whether it landed). A story shows a change, a before and an after; without one it is a report. Setting, method, audience and purpose are chosen on purpose.",
+   "used": "",
+   "made": "",
+   "shipped": "",
+   "exam": [],
+   "chapter": "Ch 15: A story has a job"
+  },
+  {
+   "id": "LL23",
+   "name": "Story database",
+   "item": "L6",
+   "what": "A running list of at least 20 personal stories, each with its five-second moment, kept ready for interviews, demos and pitches.",
+   "used": "",
+   "made": "a story database file committed in the repo",
+   "shipped": "",
+   "exam": [],
+   "chapter": "Ch 15: Build a story database"
+  },
+  {
+   "id": "LL24",
+   "name": "What makes a story land",
+   "item": "L6",
+   "what": "Facts persuade deliberate reasoning (the rider); stakes, specifics and feeling move emotion and intuition (the elephant). SUCCESs names six traits of ideas people remember: simple, unexpected, concrete, credible, emotional, stories. Duarte's structure moves between what is and what could be and ends on a call to action.",
+   "used": "",
+   "made": "",
+   "shipped": "",
+   "exam": [],
+   "chapter": "Ch 15: Techniques that make a story land; Make It Stick; Storytelling in day-to-day product work"
+  },
+  {
+   "id": "LL25",
+   "name": "The demo as an argument",
+   "item": "L6",
+   "what": "One claim (this product does a real job for a real person), supported in order by the person and the problem, the moment it works on the deployed product, the evidence, and what was learned. Small real numbers are strong evidence; projected or inflated ones are not. Rehearse out loud, timed, on camera.",
+   "used": "",
+   "made": "a recorded demo of one task in the product people use, from the user's first action to the result",
+   "shipped": "the demo shows real users' use, and someone acted on it (signed up, approved, paid)",
+   "exam": [
+    "LL-F-18"
+   ],
+   "chapter": "Ch 15: The Final Demo; Rehearse"
+  },
+  {
+   "id": "LL26",
+   "name": "Innovation capital and impression amplifiers",
+   "item": "L6",
+   "what": "Support comes from human capital (skills, passion), social capital (who vouches for you) and reputation capital (what you have done). Materialize, compare, story and commit amplify a true claim; used to make something false look true, they become deception.",
+   "used": "",
+   "made": "",
+   "shipped": "",
+   "exam": [],
+   "chapter": "Ch 15: Winning Support: Your Innovation Capital; Amplify: Make Them Believe"
+  },
+  {
+   "id": "LL27",
+   "name": "Beachhead and ideal customer profile",
+   "item": "L7",
+   "what": "The ideal customer profile names who gets the most value and is easiest to reach: their situation, current habit, where they gather, and what they pay for today. The beachhead is the narrowest group with the pain that you can reach by hand and win completely before widening.",
+   "used": "",
+   "made": "an ICP or beachhead named in a GTM or README file, with where those people gather",
+   "shipped": "users came from the named beachhead, recorded",
+   "exam": [
+    "LL-F-16"
+   ],
+   "chapter": "Ch 12: Who It Is For: The Beachhead"
+  },
+  {
+   "id": "LL28",
+   "name": "First users by hand",
+   "item": "L7",
+   "what": "Recruit the first users one at a time, by name, to learn what makes people say yes (a sprint target: 20 named people contacted, 5 using it). Predict replies and tries before sending, then compare. The six principles of persuasion (social proof, authority, scarcity, reciprocity, commitment and consistency, liking) amplify a true offer; pushing a product that does not deliver turns them into manipulation.",
+   "used": "outreach messages drafted or sent in sessions",
+   "made": "an outreach log committed: who was contacted, through what, and what happened, with the prediction",
+   "shipped": "people reached by hand became repeat users, recorded",
+   "exam": [
+    "LL-F-19"
+   ],
+   "chapter": "Ch 12: Your First Users, by Hand; Where the first twenty come from; The pitch conversation; Six principles of persuasion"
+  },
+  {
+   "id": "LL29",
+   "name": "Channel strategy",
+   "item": "L7",
+   "what": "A channel is a repeatable path by which strangers become users. Pick one or two where the customer already is and give each a fair test, comparing channels by the share of signups that activate and pay and by cost per customer. Buyers now also ask models, which cite community and reference sites, so being useful in public where buyers gather reaches both.",
+   "used": "",
+   "made": "a channel test recorded with who was reached and the result per step (directory listing, posts, ads, flyers)",
+   "shipped": "a channel chosen from recorded results, and users came from it",
+   "exam": [
+    "LL-F-04"
+   ],
+   "chapter": "Ch 12: Choosing Your Channel Strategy; A second audience: the models"
+  },
+  {
+   "id": "LL30",
+   "name": "Product-led versus sales-led growth",
+   "item": "L7",
+   "what": "Product-led growth lets people sign up and reach value alone; sales-led growth needs a person to reach out, demo and set up, which fits a complex product, a long setup, or a large deal.",
+   "used": "",
+   "made": "",
+   "shipped": "",
+   "exam": [
+    "LL-F-17"
+   ],
+   "chapter": "Ch 12: Choosing Your Channel Strategy"
+  }
+ ],
+ "exam_elsewhere": [],
+ "book_gaps": [
+  "Real users: the book never defines a real user (someone who does not build it, using it for its purpose) or asks for a dated usage record. A short section in Ch 12 Launch & Iterate, or Ch 14 Instrument the Core Action, should say what counts and how to keep a weekly users table.",
+  "Stopping a test early and planned sample size (the retired LL-F-11): Ch 14 What to do with 20 users teaches big effects and holdouts but not deciding the test size in advance or why peeking finds chance differences. One paragraph in Ch 14 Why random assignment works.",
+  "Writing the prediction before a test: Ch 12 asks for a prediction before outreach and Ch 14 before a cohort curve, but no section says a test plan is committed before the test starts. Ch 14 Cause Versus Coincidence should add a test-plan template (question, prediction, metric, size, date).",
+  "Stopping a product or idea from evidence: Keep, Change, or Kill covers features. Students shelved whole ideas after channel tests; Ch 14 Keep, Change, or Kill should add a paragraph on stopping the product.",
+  "Distribution through listings and app stores (an App Store listing, a directory, a marketplace): Ch 12 Choosing Your Channel Strategy names communities and Product Hunt only.",
+  "Choosing a launch market or pilot location: no section; Ch 12 Who It Is For could treat it as a beachhead choice.",
+  "Several concepts have no exam question: success definition and guardrails, revenue models and free tiers, the Business Model Canvas, reading feedback (NPS, AI themes), all of Ch 15 except the demo. The bank also has no Launch midterm items, which matches the course order."
+ ],
+ "evidence_notes": [
+  "Real users (L1, and every Shipped it): the packet has usage only as sentences in plans and reviews. A dated \"Users this sprint\" table in the /sprint-review template, or a committed metrics/weekly.md, would give a record; a read-only count from the product's database (distinct users by day) would make it checkable.",
+  "Instrumentation (L2): the packet shows an events migration or capture calls but not whether real rows arrived, or whether the analytics are shown to users. A count of event rows by name and date in the packet would show it.",
+  "Experiments (L3): the prediction must be committed before the test. Commit order in the packet shows this only when the plan and the result are in separate commits; it should flag a test file first committed with its result.",
+  "Outreach and channels (L7): outreach often lives in email, Slack, ads managers or private repos. The packet sees it only when a log is committed; ad spend and clicks need a screenshot or export in the repo.",
+  "Pricing tested with real people (L4 5): a Stripe link or checkout in code does not show anyone paid. A payment count (excluding the founder's own test purchase) would need a recorded export.",
+  "Demo (L6): the coder judges from Loom frames and the transcript. The packet does not tell a live app from localhost or a prototype, nor a fresh run from a result made earlier; Loom timestamps are estimates. A link check on the URL shown would help.",
+  "Used it for most Launch concepts is not visible in the session scan: launch work happens in browsers, email and analytics tools. Only SQL or analytics queries and outreach drafting in sessions show up."
+ ]
+}

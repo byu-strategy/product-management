@@ -1,0 +1,439 @@
+{
+ "axis": "Application Architecture",
+ "key": "architecture",
+ "items": {
+  "A1": "Client, server and deploy",
+  "A2": "Data and schema",
+  "A3": "Sign-in and access",
+  "A4": "APIs and integrations",
+  "A5": "Secrets, privacy and security",
+  "A6": "Version control, checks and tech debt"
+ },
+ "intro": "What runs where, what the app remembers, who may see what, and how a change goes live safely.",
+ "concepts": [
+  {
+   "id": "AA01",
+   "name": "Three places code runs, and the trust rule",
+   "item": "A1",
+   "what": "The browser belongs to the user, who can read and change anything there. The server runs your code and holds the secret keys. The database stores each record. A check that runs only in the browser can be skipped.",
+   "used": "",
+   "made": "",
+   "shipped": "",
+   "exam": [
+    "AA-F-11"
+   ],
+   "chapter": "Ch 7: Three Places Code Runs and Data Lives; Requests Connect the Places"
+  },
+  {
+   "id": "AA02",
+   "name": "Server and client code in a project",
+   "item": "A1",
+   "what": "File names and folders say what runs where: in Next.js, page.tsx is a screen, route.ts is an endpoint, and a file marked \"use client\" is downloaded to the browser with everything it imports. node_modules, build output and .env.local stay out of git.",
+   "used": "sessions place a check or a call in a named server file",
+   "made": "a server route or endpoint the student added, committed",
+   "shipped": "",
+   "exam": [],
+   "chapter": "Ch 7: The Files in a Next.js Project"
+  },
+  {
+   "id": "AA03",
+   "name": "State, render and events",
+   "item": "A1",
+   "what": "The screen is a function of state. A handler changes state through its setter, and the framework draws the screen again; a handler that edits a copy of the data leaves the screen unchanged.",
+   "used": "",
+   "made": "",
+   "shipped": "",
+   "exam": [
+    "AA-F-19"
+   ],
+   "chapter": "Ch 7: How the Code Works; The loop: state, render, event, state"
+  },
+  {
+   "id": "AA04",
+   "name": "Choosing a stack",
+   "item": "A1",
+   "what": "The set of tools for each layer: frontend, backend, database, hosting, sign-in. Pick the well-known option, and weigh who will maintain it after handoff.",
+   "used": "",
+   "made": "a decision record that names at least two stacks and the reason for the one chosen",
+   "shipped": "the chosen stack runs a product people outside the team reach",
+   "exam": [
+    "AA-F-08"
+   ],
+   "chapter": "Ch 7: Tech Stacks and Languages"
+  },
+  {
+   "id": "AA05",
+   "name": "Deploys, builds and hosts",
+   "item": "A1",
+   "what": "A host builds the code from the repository and serves it at an address; pushing to the main branch redeploys. A production build can fail where the development server worked. Hosts differ by what they run (Vercel for Next.js, Streamlit Community Cloud, GitHub Pages for static sites).",
+   "used": "deploy and build commands, or build errors fixed, in sessions",
+   "made": "this sprint's work live at an address others can open, or a fix to the live app from its build or runtime log",
+   "shipped": "people outside the team reach it, and the host choice is in a decision record",
+   "exam": [
+    "AW-M-05",
+    "AW-M-07",
+    "AA-F-05"
+   ],
+   "chapter": "Ch 2: Deploying a Prototype; Deployment with Vercel / GitHub Pages. Ch 9: Development server vs. production build"
+  },
+  {
+   "id": "AA06",
+   "name": "Environments and development data",
+   "item": "A1",
+   "what": "Each running copy of the app (laptop, preview, production) reads its own settings, and the settings decide which database it touches. Once real people use the app, develop against a separate database filled with seed data.",
+   "used": "",
+   "made": "a separate development or staging database, or seed data, committed",
+   "shipped": "real users' data kept out of development, recorded",
+   "exam": [
+    "AA-F-07",
+    "AA-F-21"
+   ],
+   "chapter": "Ch 9: Environments: Where Your Code Runs and Which Data It Touches; Which database? The settings decide. Ch 8: Develop against a disposable copy"
+  },
+  {
+   "id": "AA07",
+   "name": "Staging and feature flags",
+   "item": "A1",
+   "what": "Staging is a copy of production for trying a change before users see it. A feature flag lets deployed code reach some users before others. A change that takes effect for everyone at once, such as a migration, cannot hide behind a flag.",
+   "used": "",
+   "made": "a staging environment or a feature flag in the code",
+   "shipped": "a feature released to real users through a flag or staging, recorded",
+   "exam": [
+    "AA-F-22"
+   ],
+   "chapter": "Ch 9: Staging; Feature flags; Staging or a flag?"
+  },
+  {
+   "id": "AA08",
+   "name": "Logs, error reports and developer tools",
+   "item": "A1",
+   "what": "The browser console and network panel, the host's runtime logs, the database logs, and an error reporter show what users hit. A useful log line says what happened, where, and an id.",
+   "used": "logs or developer tools read in sessions to find a fault",
+   "made": "a fix made from a log or error report, or an error reporter set up",
+   "shipped": "errors from real users caught and fixed from the reports",
+   "exam": [
+    "AA-F-02"
+   ],
+   "chapter": "Ch 9: See What Is Happening: Logs and Error Reports. Ch 9c: Developer Tools"
+  },
+  {
+   "id": "AA09",
+   "name": "Tables, keys and relationships",
+   "item": "A2",
+   "what": "A table is a noun of the product, a row one instance, a column one fact with a type. A primary key identifies a row; a foreign key on the many side links two tables. Facts are stored once. Only a file or database outlives the session; page memory and local storage do not.",
+   "used": "",
+   "made": "tables with keys defined in a migration, ORM schema or schema file, which the product reads and writes",
+   "shipped": "real users' data lives there, and the schema choices are in a decision record",
+   "exam": [
+    "AA-F-04"
+   ],
+   "chapter": "Ch 8: The Data Model Is the Skeleton. Ch 9c: Where an App Keeps Data"
+  },
+  {
+   "id": "AA10",
+   "name": "Migrations and schema changes",
+   "item": "A2",
+   "what": "A migration is a file that makes one schema change, applied in order and kept in git. Changing a table that holds real rows means migrating them, and a rollback does not undo data, so add before you remove.",
+   "used": "migrations created or applied in sessions",
+   "made": "a migration or schema file committed this sprint, including one that imports existing data",
+   "shipped": "a schema change applied to a database real users rely on without losing data",
+   "exam": [
+    "AA-F-22"
+   ],
+   "chapter": "Ch 8: The Data Model Is the Skeleton (Migration). Ch 9: Rolling Back a Bad Deploy"
+  },
+  {
+   "id": "AA11",
+   "name": "Queries and joins",
+   "item": "A2",
+   "what": "SELECT, WHERE, ORDER BY, LIMIT and JOIN. A join drops rows with no match unless it is a LEFT JOIN; an update or delete with no WHERE changes every row; a query that matches nothing returns an empty list. An index makes reads on a column fast.",
+   "used": "SQL read or run in sessions",
+   "made": "",
+   "shipped": "",
+   "exam": [
+    "AA-F-20"
+   ],
+   "chapter": "Ch 8: Asking the Database a Question"
+  },
+  {
+   "id": "AA12",
+   "name": "Authentication versus authorization",
+   "item": "A3",
+   "what": "Authentication proves who a user is. Authorization decides what that user may do to each row, and it holds only where the user cannot reach: the server or the database, never a hidden button. Permissions never come from model output.",
+   "used": "",
+   "made": "",
+   "shipped": "",
+   "exam": [
+    "AA-F-10",
+    "AA-F-12"
+   ],
+   "chapter": "Ch 7: Who You Are, What You May Do"
+  },
+  {
+   "id": "AA13",
+   "name": "Sign-in and sessions",
+   "item": "A3",
+   "what": "Sign-in by password, a provider (OAuth) or a magic link gives the browser a signed token that every later request carries. The token expires and must never go in logs, chats or prompts.",
+   "used": "",
+   "made": "sign-in built in the product",
+   "shipped": "real users sign in",
+   "exam": [],
+   "chapter": "Ch 7: Who You Are, What You May Do"
+  },
+  {
+   "id": "AA14",
+   "name": "Row-level security",
+   "item": "A3",
+   "what": "Policies in the database that decide which rows each request may touch, as if a WHERE were added to every query. With security on and no policies, every read returns an empty list, not an error.",
+   "used": "",
+   "made": "a policy that stops one user from reading or changing another user's rows, committed",
+   "shipped": "real users' rows protected by the policies, and the rules recorded",
+   "exam": [
+    "AA-F-12",
+    "AA-F-28"
+   ],
+   "chapter": "Ch 8: Row Level Security: Enforce Access Where the Data Lives"
+  },
+  {
+   "id": "AA15",
+   "name": "Permission tests",
+   "item": "A3",
+   "what": "A test that signs in as one user, with the publishable key, and asks for data that user must not see. It keeps the access rules true as an agent changes the code.",
+   "used": "permission tests run in sessions",
+   "made": "a permission test committed, with a record that it ran",
+   "shipped": "the tests run on a product real users sign in to",
+   "exam": [
+    "AA-F-25"
+   ],
+   "chapter": "Ch 9b: Kinds of tests (permission tests). Ch 8: Row Level Security"
+  },
+  {
+   "id": "AA16",
+   "name": "Requests, responses and status codes",
+   "item": "A4",
+   "what": "A URL names the computer and the endpoint; DNS turns the name into an address. A request has a method, an address, headers and a body; a response has a status code (2xx worked, 4xx the request was the problem, 5xx the server was) and usually a JSON body.",
+   "used": "",
+   "made": "",
+   "shipped": "",
+   "exam": [
+    "AA-F-02"
+   ],
+   "chapter": "Ch 7: How a Request Crosses the Internet; Requests Connect the Places. Ch 8: Requests Are Contracts That Fail"
+  },
+  {
+   "id": "AA17",
+   "name": "The API contract",
+   "item": "A4",
+   "what": "An API is the set of requests a system agrees to answer, stated in its documentation. A change to the contract (a renamed field, a removed endpoint, a new required input) breaks the caller; other changes do not.",
+   "used": "",
+   "made": "",
+   "shipped": "",
+   "exam": [
+    "AA-F-26"
+   ],
+   "chapter": "Ch 7: Requests Connect the Places (API documentation). Ch 8: Requests Are Contracts That Fail"
+  },
+  {
+   "id": "AA18",
+   "name": "Handling failed calls",
+   "item": "A4",
+   "what": "Calls fail from the network, timeouts, sign-in, permission, rate limits and bad input. Code checks the response, retries where it is safe, and tells the user what happened without losing what they typed.",
+   "used": "",
+   "made": "the product calls another system's API and handles a failed call in code",
+   "shipped": "the integration works for real users, chosen in a decision record",
+   "exam": [],
+   "chapter": "Ch 8: Requests Are Contracts That Fail"
+  },
+  {
+   "id": "AA19",
+   "name": "Calling a model API from the server",
+   "item": "A4",
+   "what": "A model call is a server-side request made with the provider's SDK from a route handler, with the key read from the environment. It costs money and time on every call.",
+   "used": "",
+   "made": "a server route that calls a model API, committed",
+   "shipped": "real users use the feature, and the provider is chosen in a decision record",
+   "exam": [
+    "AA-F-11"
+   ],
+   "chapter": "Ch 11: Where the Call Lives"
+  },
+  {
+   "id": "AA20",
+   "name": "Integrations with other services",
+   "item": "A4",
+   "what": "Connecting to another company's system for payments, email, calendars or data: an OAuth connection on the user's behalf, a webhook the other system calls, or an API the product offers.",
+   "used": "",
+   "made": "an OAuth connection, webhook handler or offered endpoint in the product",
+   "shipped": "real users' accounts connected through it",
+   "exam": [],
+   "chapter": "not taught yet (Ch 8: Requests Are Contracts That Fail names Stripe, Resend and Twilio only)"
+  },
+  {
+   "id": "AA21",
+   "name": "Environment variables",
+   "item": "A5",
+   "what": "Settings kept outside the code, in .env.local and the host's settings, set separately for each environment. In Next.js only names starting with NEXT_PUBLIC_ reach the browser, so a secret never gets that prefix.",
+   "used": "",
+   "made": "secret keys read from environment variables, with an .env.example and .env files ignored by git",
+   "shipped": "",
+   "exam": [
+    "AA-F-02",
+    "AA-F-11",
+    "AA-F-13"
+   ],
+   "chapter": "Ch 8: Secrets and Sensitive Data. Ch 7: The Files in a Next.js Project. Ch 11: Where the Call Lives"
+  },
+  {
+   "id": "AA22",
+   "name": "Publishable key, token and secret key",
+   "item": "A5",
+   "what": "The publishable key is public and can reach only what row-level security allows; a token identifies one signed-in user and expires; the secret key bypasses the rules and stays on the server.",
+   "used": "",
+   "made": "",
+   "shipped": "",
+   "exam": [
+    "AA-F-27"
+   ],
+   "chapter": "Ch 7: Three credentials: publishable key, token, secret key; Supabase Introduction"
+  },
+  {
+   "id": "AA23",
+   "name": "A leaked secret",
+   "item": "A5",
+   "what": "A key committed to a public repository is published. Deleting it from the code does not help, because history keeps it: create a new key, revoke the old one, then fix .gitignore.",
+   "used": "",
+   "made": "no secret key, database file, log or personal data in the repo",
+   "shipped": "",
+   "exam": [
+    "AA-F-06"
+   ],
+   "chapter": "Ch 8: Secrets and Sensitive Data (Rotate a leaked key). Ch 7: The Files in a Next.js Project (Not in git)"
+  },
+  {
+   "id": "AA24",
+   "name": "Sensitive data and where it may go",
+   "item": "A5",
+   "what": "Personal, student and client data may go only where its rules allow. Sending it to a model, a log or an analytics event copies it to that company's servers, so send the least the task needs.",
+   "used": "",
+   "made": "protections written down and applied to data about people (consent, redaction, access limits)",
+   "shipped": "data about people outside the team handled under those protections, or a platform review passed",
+   "exam": [
+    "AA-F-14",
+    "AA-F-18"
+   ],
+   "chapter": "Ch 8: Secrets and Sensitive Data"
+  },
+  {
+   "id": "AA25",
+   "name": "Common web attacks",
+   "item": "A5",
+   "what": "Injected SQL, scripts injected into a page (cross-site scripting), forged requests from another site, and open endpoints with no sign-in. Each has a standard defense: parameterized queries, escaped output, checks on the server.",
+   "used": "",
+   "made": "a defense against one of them in the code, such as a content security policy",
+   "shipped": "",
+   "exam": [],
+   "chapter": "not taught yet"
+  },
+  {
+   "id": "AA26",
+   "name": "Commits, branches and pull requests",
+   "item": "A6",
+   "what": "A commit is a snapshot with a message. A branch builds a change without touching main; a pull request runs the checks, builds a preview and gets a review of the diff before the merge. Main stays releasable: branches are short and merge within a day or two, and unfinished work merges behind a flag.",
+   "used": "branches and pull requests opened in sessions",
+   "made": "branches or pull requests that contain code",
+   "shipped": "",
+   "exam": [
+    "AA-F-01",
+    "AA-F-29"
+   ],
+   "chapter": "Ch 9: Git: A Time Machine Plus Parallel Copies; Pull Requests: The Review Gate; Trunk-Based Development: Small Branches, Merged Often"
+  },
+  {
+   "id": "AA27",
+   "name": "Continuous integration",
+   "item": "A6",
+   "what": "Tests, type check, lint and build run automatically on every pull request, on a fresh machine, and mark it pass or fail.",
+   "used": "",
+   "made": "a CI workflow file that runs, with a run record",
+   "shipped": "checks run on a product real users depend on, and a record says what they catch",
+   "exam": [
+    "AA-F-16"
+   ],
+   "chapter": "Ch 9: Automated Checks: Tests, Types, and Lint"
+  },
+  {
+   "id": "AA28",
+   "name": "Automated tests",
+   "item": "A6",
+   "what": "Code that runs the app's code with a chosen input and checks the answer: unit, integration, end-to-end, regression. A passing suite means only that the checks someone wrote did not fail; for a bug, write a test that fails first.",
+   "used": "tests run in sessions",
+   "made": "tests committed, with a record this sprint that they ran",
+   "shipped": "tests guard a product real users depend on",
+   "exam": [
+    "AA-F-24",
+    "AA-F-30"
+   ],
+   "chapter": "Ch 9b: Tests: Code That Checks Your Code"
+  },
+  {
+   "id": "AA29",
+   "name": "Rolling back a bad deploy",
+   "item": "A6",
+   "what": "When the live site breaks, point it back at the last good deployment first, then fix. A rollback does not undo data changes.",
+   "used": "",
+   "made": "a recorded rollback or revert of a bad deploy",
+   "shipped": "",
+   "exam": [
+    "AA-F-23"
+   ],
+   "chapter": "Ch 9: Rolling Back a Bad Deploy"
+  },
+  {
+   "id": "AA30",
+   "name": "Technical debt",
+   "item": "A6",
+   "what": "Extra work later from a quick solution now, which makes every later change slower. Debt can be strategic (chosen, with a plan to repay) or accidental; pay it down when the code is about to be changed again.",
+   "used": "",
+   "made": "a recorded list of debt taken on, with a plan, or a commit that pays one down",
+   "shipped": "",
+   "exam": [
+    "AA-F-03"
+   ],
+   "chapter": "Ch 9b: What is Technical Debt?; Strategic vs. Accidental Debt; The Tech Debt Quadrant; When to Pay Down Tech Debt"
+  }
+ ],
+ "exam_elsewhere": [
+  {
+   "id": "AA-F-09",
+   "belongs": "AW21 untrusted model input (Agentic Workflow)"
+  },
+  {
+   "id": "AA-F-15",
+   "belongs": "S2 cost (AI Systems)"
+  },
+  {
+   "id": "AA-F-17",
+   "belongs": "AW20 streaming (Agentic Workflow); S2 latency (AI Systems)"
+  }
+ ],
+ "book_gaps": [
+  "Deploying is taught in Ch 2 (Deploying a Prototype; Deployment with Vercel / GitHub Pages), both marked MOVE. Move them to Ch 7 after Tech Stacks, and add how to pick a host for a Python app (Streamlit, Render, PythonAnywhere) and what a build log is.",
+  "Integrations with other services (OAuth connections on a user's behalf, webhooks, offering an API) are not taught. Ch 8 after Requests Are Contracts That Fail.",
+  "Common web attacks (SQL injection, cross-site scripting, forged requests, endpoints with no sign-in) are not taught. Ch 8, a section after Secrets and Sensitive Data.",
+  "Protections for data about people (consent, redaction, pseudonymizing interview or research data) are taught only as 'where data may go'. Ch 8: Secrets and Sensitive Data needs a part on consent and redaction, since A5 level 5 asks for them.",
+  "Importing existing data (a spreadsheet or old system into tables, with duplicates removed) is not taught, though A2 level 4 counts it. Ch 8 after The Data Model Is the Skeleton.",
+  "Data and schema assume Supabase. Many products store data in SQLite, an ORM schema or a platform's own store. Ch 8 should say what counts as a defined schema in those stacks.",
+  "Where an app keeps data (page memory, local storage, database) is only in the Ch 9c appendix. Ch 8 should open with it."
+ ],
+ "evidence_notes": [
+  "A link check of 200 shows the address answers, not that this sprint's commit is what is deployed. A deployment id or commit SHA from the host (or a /version endpoint) would show it.",
+  "Environment variables set on the host are not visible, so a feature that needs a key may not run in production. A smoke test of the live feature, saved, would show it.",
+  "Migration, schema and row-level security texts are often absent from the packet; only file names are listed. Include the text of migrations and schema files changed this sprint.",
+  "Test and CI runs leave no record unless the student commits output. The GitHub Actions run history for the repo would show runs and results.",
+  "Pull requests are listed without saying whether the branch holds code or only plans, or whether they were merged by the due date. The packet should list each PR's changed files and merge date.",
+  "A secret removed from the latest commit is still in history. A secret scan over the full history (for example gitleaks) would cover it.",
+  "Whether real users sign in (A3 level 5) needs a count of sign-ins from the auth table, dated. The packet cannot see it today.",
+  "Private code repos and non-web distribution (an App Store release) are not visible to the link check or the repo scan.",
+  "The session scan can show Used it for this axis from commands: build and deploy commands, git branch and gh pr, migration commands, test runs, and log reads."
+ ]
+}
