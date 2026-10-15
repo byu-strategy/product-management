@@ -8,26 +8,56 @@ Status: [ ] open, [~] in progress, [x] done, [?] needs Scott.
 
 ## 0. Sprint 2 rollout with builder profiles (Scott, 2026-10-14: profiles ship with Sprint 2)
 
-Stage A (no prerequisites, parallel)
-- [~] Roster refresh; packets for every student on the current format (first five rebuilt)
-- [ ] Drive files through the connector
-- [ ] Coder instructions: one packet against the concept lists and evidence rules, output checks earned (Used, Built, Shipped) with evidence, ref and date
-- [ ] Growth rule and code: center = self-rating; ring = checks newly earned on the axis as a share of its possible checks, on the 1 to 5 scale; each check named
-- [ ] Dossier in `sprint_feedback.py`: score card, profile, how you grew, what was reviewed, Sprint 3, questions, appendix (concept list)
+**Design (decided 2026-10-14).** Each spoke runs 0 to 100; 100 is the hiring bar. Practice from
+sprint work fills up to 50 (AI Systems 25), knowledge from the exams the rest. Practice = breadth
+(up to 25: share of the axis's practicable concepts shown in your own work) + depth (up to 25:
+highest level shown on the axis, 1 Followed, 2 Directed, 3 Decided, 4 Delivered, judged from all the
+evidence together). Knowledge-only concepts have no breadth check. Rings are labeled by source
+(sprint or exam), never shrink, and every point names its concept or depth level. The 1 to 5 scale
+is retired. Sprint 2 shows practice rings for Sprints 1 and 2; the midterm adds the first knowledge
+ring on Agentic Workflow, Discovery and Design.
 
-Stage B (needs A): is the coding faithful?
-- [ ] Agreement test: two independent coders, 12 students, Sprint 2; agreement and kappa per concept
-- [ ] Rewrite or drop concepts below target; settle Used versus Built per axis from the data
+Step 1. Inputs (parallel)
+- [x] Roster refresh
+- [~] Sprint 2 packets for every student, current format (first five rebuilt)
+- [ ] Sprint 1 packets checked: present for all, rebuilt on the current format if needed
+- [ ] Drive files through the connector, both sprints
 
-Stage C (needs B): production
-- [ ] Grading run, whole class
-- [?] Concept coding: two coders per student, Sprints 1 and 2, consensus only (about 8M tokens; Claude API batch proposed, cost estimate first)
+Step 2. Measures
+- [ ] Concept lists: one breadth check per practicable concept; knowledge-only concepts marked
+- [ ] Depth levels: four written levels per axis with one worked example each (`depth-levels.md`)
+- [ ] Coder instructions rewritten for breadth and depth (`concept-coder.md`)
+- [ ] Growth code: breadth and depth, per-axis split, rings by source, consensus (`builder_growth.py`)
 
-Stage D (needs C): review
-- [ ] Fairness check; build every dossier; disputed checks listed for Scott, never shown to students
+Step 3. Agreement test (Scott sees the numbers)
+- [ ] Two independent coders, 12 students, Sprint 2
+- [ ] Breadth agreement 80%+ ; depth same or one apart on 80%+ of axes
+- [ ] Rewrite or drop what falls short; rerun if needed
+
+Step 4. Dossier in the pipeline
+- [ ] `sprint_feedback.py` builds the dossier: score card (Plan first, /50), builder profile, how you
+      grew, what was reviewed, Sprint 3, questions, appendix (concept list); Scott's copy adds the
+      instructor band and the disputed calls
+
+Step 5. Production runs (after step 3 passes)
+- [?] Cost estimate for coding (Claude API batch proposed) and grading; Scott approves
+- [ ] Grading run, whole class (regrade the first five on current packets)
+- [ ] Coding run: two coders per student, Sprints 1 and 2; consensus only; depth takes the lower level
+- [ ] Growth computed for every student
+
+Step 6. Review
+- [ ] Fairness check on grades
+- [ ] Build every dossier and the review page
 - [?] Scott reviews the review page and a sample of dossiers
 
-Stage E: publish through `/publish-grades`
+Step 7. Publish
+- [?] `/publish-grades` (dossier attached on Canvas) after Scott approves
+
+Step 8. Skills catch up
+- [ ] `/grade-sprint`: coding, growth, dossier, token budget, linked-system rule
+- [ ] `/publish-grades`: attach the dossier HTML
+- [ ] `/sprint-review`: "Decisions this sprint" (choices from sessions, student names key ones) and
+      "Users this sprint" table; push to builder-template with Scott's OK
 
 ## 1. Concept lists (the spine)
 - [x] Agentic Workflow: `builder-concepts-agentic.md` (27 concepts, 72 checks)
