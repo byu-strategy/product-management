@@ -40,7 +40,8 @@ A blank cell means the check does not apply to that concept. Evidence rules from
 
 | Concept | Used it | Made it | Shipped it | Chapter |
 |---|---|---|---|---|
-| **AW15 Permissions and modes.** Allow, ask and deny rules; modes; where standing approvals are saved. | a permission mode chosen in sessions | committed allow, ask or deny rules | n/a | Ch 2: Blast Radius |
+| **AW15 Permission modes.** Manual, Accept edits, Plan, Auto (a second model reviews each action), Don't ask (pre-approved tools only, for scripts), and Bypass permissions (--dangerously-skip-permissions: no prompts and no safety checks, for containers only). What each lets run without asking, and when to use it. | the modes used in sessions (the scan counts turns in each) | n/a | n/a | Ch 2: The controls, from tightest to loosest |
+| **AW27 Permission rules.** Allow, ask and deny rules in a settings file: ask and deny hold in every mode, including auto and bypass; a boundary said only in chat does not. | a rule prompted or blocked in sessions | committed allow, ask or deny rules | n/a | Ch 2: Rules; The controls, from tightest to loosest |
 | **AW16 Blast radius and undo.** What an action can damage and what can be undone (/rewind, git); some actions are permanent. | /rewind or a revert in sessions | n/a | n/a | Ch 2: Blast Radius |
 | **AW17 Verifying agent work.** Done means you saw it work; a fresh-context review of agent-written code. | n/a | a recorded check of agent work (a review note, a test run, a check on the live site) | n/a | Ch 2: Done Means You Saw It Work |
 

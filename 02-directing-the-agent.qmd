@@ -531,10 +531,15 @@ Permission modes, cycled in the terminal with `Shift+Tab` (the status bar shows 
 | **Manual** (config value `default`) | Reads only | Sensitive work; you want to review every action |
 | **Accept edits** | Reads, file edits, and common file commands (`mkdir`, `touch`, `mv`, `cp`, `rm`, `sed`) inside your project | You are iterating on code and reviewing as you go |
 | **Plan** | Reads, plus exploring commands (no edits to your source) | Exploring before changing anything |
-| **Auto** | Most actions, with a background safety check that blocks risky ones | Long tasks where approving every prompt would be tedious |
-| **Bypass permissions** | Everything | Only inside an isolated container or virtual machine |
+| **Auto** | Most actions, after a second model reviews each one and blocks risky ones | Long tasks where approving every prompt would be tedious |
+| **Don't ask** (config value `dontAsk`) | Reads in your folders and the tools you pre-approved; anything else is refused, not asked | Scripts and automated runs (`claude -p`) with an exact list of allowed tools |
+| **Bypass permissions** (started with `--dangerously-skip-permissions`) | Everything, with no prompts and no safety checks | Only inside an isolated container or virtual machine |
 
-Depending on your version and plan, a new session may start in Auto or Manual; check the status bar. Note that Accept edits and Auto both let Claude run `rm` and `mv` without asking, which are group 2 actions: commit first.
+Recent versions of Claude Code start new terminal and VS Code sessions in Auto; check the status bar. Note that Accept edits and Auto both let Claude run `rm` and `mv` without asking, which are group 2 actions: commit first.
+
+**How auto mode decides.** In Auto, a second model, called the classifier, reviews each action before it runs, in place of you. It blocks actions that go beyond what you asked for, reach systems it does not recognize, or look driven by instructions in content Claude read, such as a web page or a ticket. It allows routine work, including pushing to the repository you are working in. If it blocks the same kind of action again and again, Claude Code goes back to asking you. A boundary you state in the chat ("don't deploy until I say so") counts as a block, but it lives only in the conversation: compacting the conversation can summarize it away. For a boundary that must hold, write an ask or deny rule [@anthropic2026modes].
+
+**Bypass permissions and `--dangerously-skip-permissions`.** The flag starts a session in bypass permissions mode, and its name is the warning: every permission prompt and every safety check is off, including the classifier. What still protects you is what runs outside the model's choices. Deny rules still block, hooks still run, and the few actions no mode approves on its own still ask. Allow rules no longer matter, since everything is allowed. In an interactive session started this way, plan mode's "no edits while planning" is not enforced. Run it only where the damage is contained: a container or virtual machine with nothing else on it, not your own laptop [@anthropic2026modes].
 
 For group 3, add **ask rules** for the commands that reach other people. An ask rule makes Claude Code stop and ask you every time, even in Auto mode. A deny rule blocks the command outright, in every mode, including bypass. In `.claude/settings.json`:
 
@@ -844,9 +849,14 @@ Pick "GitHub Actions" if your site has a build step, which anything beyond plain
   outside your laptop.
 - **Plan mode**: Claude reads files, explores, and writes a plan, and does not edit your source
   until you approve it. Enter it with `Shift+Tab` or `/plan`.
-- **Permission modes**: Manual, Accept edits, Plan, Auto, and Bypass permissions, cycled with
-  `Shift+Tab` in the terminal. Accept edits and Auto both run `rm` and `mv` without asking, so
-  commit first.
+- **Permission modes**: Manual, Accept edits, Plan, Auto, Don't ask, and Bypass permissions.
+  `Shift+Tab` cycles them in the terminal. Accept edits and Auto both run `rm` and `mv` without
+  asking, so commit first.
+- **Auto mode**: a second model, the classifier, reviews each action before it runs and blocks
+  risky ones. Ask and deny rules still apply. A boundary said only in chat can be lost when the
+  conversation is compacted; a rule cannot.
+- **`--dangerously-skip-permissions`**: starts bypass permissions mode, with no prompts and no
+  safety checks. Deny rules and hooks still apply. Use it only in a container or virtual machine.
 - **Sandbox**: an operating-system boundary on which folders shell commands may write and which
   network hosts they may reach. Off by default; turn it on with `/sandbox`.
 - **Subagent**: a worker with its own empty context window that gets only the task description
