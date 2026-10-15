@@ -149,7 +149,6 @@ A slash command is recognized at the start of a message; anything after it is it
 | `/resume` | Reopen an earlier conversation, by name or from a list |
 | `/rename` | Give this session a name, so you can find it in `/resume` later |
 | `/btw` | Ask a side question without adding it to the conversation |
-| `/remote-control` (or `/rc`) | Make this session reachable from claude.ai or the Claude app on your phone, so you can follow and reply while away from your computer (needs a Claude subscription) |
 | `/exit` | Leave Claude Code |
 | **Setting up** | |
 | `/init` | Write a starter CLAUDE.md for this project |
@@ -168,9 +167,14 @@ A slash command is recognized at the start of a message; anything after it is it
 | `/skills` | List the skills available to you |
 | `/mcp` | Manage connections to outside tools (MCP servers), including sign-in |
 | `/plugin` | Install and manage plugins |
+| **Working away from the keyboard** | |
+| `/remote-control` (or `/rc`) | Make this session reachable from the Claude mobile app or claude.ai/code, so you can follow it and reply from your phone while it keeps running on your computer (needs a Claude subscription) |
+| `/voice` | Speak your prompts: hold `Space` (or tap it) and talk, and your words are typed into the prompt (needs a Claude account and a microphone) |
 | **Checking work** | |
 | `/diff` | Review the changes in your files, including Claude's edits |
 | `/help` | Show available commands |
+
+**Your phone and your voice.** With Remote Control on, the Claude app on your phone (iOS or Android) shows the same session: you can read its progress, answer its questions, and send photos or files, while the code, your files, and your MCP servers stay on your computer. If the laptop sleeps or the network drops, the session reconnects when the computer is back online. `/voice` lets you talk instead of type, in the terminal or the VS Code extension; the audio is transcribed on Anthropic's servers and does not count toward your usage limits. It works without a separate dictation app [@anthropic2026remote; @anthropic2026voice].
 
 #### Your own commands
 
