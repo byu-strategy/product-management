@@ -21,7 +21,9 @@
    "shipped": "Interviews with people outside the team changed or held the product's direction, and a decision record cites them (D1 level 5).",
    "exam": [
     "D-M-05",
-    "D-M-06"
+    "D-M-06",
+    "D-F-21",
+    "D-F-22"
    ],
    "chapter": "Ch 4: Problem Interviews (The Mom Test); Conducting Effective Interviews"
   },
@@ -36,7 +38,9 @@
    "exam": [
     "D-M-07",
     "D-M-11",
-    "D-M-20"
+    "D-M-20",
+    "D-F-23",
+    "D-F-24"
    ],
    "chapter": "Ch 4: The Evidence Ladder: Said, Did, Paid"
   },
@@ -50,7 +54,9 @@
    "shipped": "",
    "exam": [
     "D-M-08",
-    "D-M-12"
+    "D-M-12",
+    "D-F-25",
+    "D-F-26"
    ],
    "chapter": "Ch 4: Interview Synthesis"
   },
@@ -63,7 +69,9 @@
    "made": "Built: a problem statement in the README, spec or synthesis that names no solution and cites what interviewees said.",
    "shipped": "Real users describe the problem in their own words in the record (D2 level 5).",
    "exam": [
-    "D-F-03"
+    "D-F-03",
+    "D-F-27",
+    "D-M-21"
    ],
    "chapter": "Ch 3: Why Most Products Fail; Problem vs. Solution Thinking. Ch 4: Problem Journaling"
   },
@@ -76,7 +84,9 @@
    "made": "Built: wrote a job statement, or a journey map of the whole job, from their own interviews, committed.",
    "shipped": "",
    "exam": [
-    "D-M-14"
+    "D-M-14",
+    "D-F-28",
+    "D-F-29"
    ],
    "chapter": "Ch 4: Jobs-to-be-Done Framework; The Five Kinds of Pain"
   },
@@ -90,7 +100,8 @@
    "shipped": "The product serves that beachhead, and the record says who was left out and why (D2 level 5).",
    "exam": [
     "D-F-04",
-    "D-F-13"
+    "D-F-13",
+    "D-M-30"
    ],
    "chapter": "Ch 4: Who It Is For, and Not For (Start narrow: the beachhead)"
   },
@@ -104,7 +115,8 @@
    "shipped": "",
    "exam": [
     "D-F-08",
-    "D-M-08"
+    "D-M-08",
+    "D-F-30"
    ],
    "chapter": "Ch 4: Who It Is For, and Not For (The user and the payer)"
   },
@@ -117,7 +129,9 @@
    "made": "",
    "shipped": "",
    "exam": [
-    "D-M-10"
+    "D-M-10",
+    "D-F-31",
+    "D-F-32"
    ],
    "chapter": "Ch 4: Can You Reach Them? The Access Test"
   },
@@ -130,7 +144,9 @@
    "made": "Built: wrote personas.md from their own interviews, with each persona's claims citing an interview note. A persona drafted before any interview does not count.",
    "shipped": "Real users describe the problem in their own words in the persona, and it says who was left out and why (D2 level 5).",
    "exam": [
-    "D-M-02"
+    "D-M-02",
+    "D-F-33",
+    "D-F-34"
    ],
    "chapter": "Ch 4: Building Personas"
   },
@@ -143,7 +159,9 @@
    "made": "Built: an insights or assumptions file that lists beliefs with a confidence level and the evidence for each, written before the checks that tested them.",
    "shipped": "",
    "exam": [
-    "D-M-11"
+    "D-M-11",
+    "D-F-35",
+    "D-F-36"
    ],
    "chapter": "Ch 4: Discovery Is Truth-Seeking (Six ways of knowing, all flawed; Thinking in probabilities)"
   },
@@ -157,7 +175,8 @@
    "shipped": "",
    "exam": [
     "D-F-01",
-    "D-F-02"
+    "D-F-02",
+    "D-M-31"
    ],
    "chapter": "Ch 4: Structure a Messy Problem: Issue Trees"
   },
@@ -171,7 +190,8 @@
    "shipped": "",
    "exam": [
     "D-F-12",
-    "D-F-15"
+    "D-F-15",
+    "D-M-32"
    ],
    "chapter": "Ch 4: The Four Risks and the Riskiest Assumption (What would have to be true)"
   },
@@ -184,7 +204,9 @@
    "made": "Built: an assumptions list with each assumption labeled by risk, committed.",
    "shipped": "",
    "exam": [
-    "D-F-15"
+    "D-F-15",
+    "D-F-37",
+    "D-M-22"
    ],
    "chapter": "Ch 4: The Four Risks and the Riskiest Assumption (The four risks)"
   },
@@ -198,7 +220,8 @@
    "shipped": "The result decided something, and a decision record cites it (D3 level 5).",
    "exam": [
     "D-F-05",
-    "D-F-10"
+    "D-F-10",
+    "D-M-33"
    ],
    "chapter": "Ch 4: The Four Risks and the Riskiest Assumption (The riskiest assumption)"
   },
@@ -212,7 +235,8 @@
    "shipped": "Run with people outside the team, and the result decided something in a decision record.",
    "exam": [
     "D-F-05",
-    "D-F-11"
+    "D-F-11",
+    "D-M-34"
    ],
    "chapter": "Ch 4: The Smallest Test"
   },
@@ -227,7 +251,8 @@
    "exam": [
     "D-M-09",
     "D-M-14",
-    "D-F-06"
+    "D-F-06",
+    "D-F-38"
    ],
    "chapter": "Ch 4: The Real Competitor Is the Current Habit"
   },
@@ -240,7 +265,9 @@
    "made": "Built: a committed importance and satisfaction table or chart built from interview data.",
    "shipped": "",
    "exam": [
-    "D-M-03"
+    "D-M-03",
+    "D-F-39",
+    "D-F-40"
    ],
    "chapter": "Ch 4: Evaluating Your Problems (Another lens: importance and satisfaction)"
   },
@@ -253,7 +280,9 @@
    "made": "Built: a written five forces reading of the product's industry, committed.",
    "shipped": "",
    "exam": [
-    "D-F-19"
+    "D-F-19",
+    "D-M-23",
+    "D-F-41"
    ],
    "chapter": "Ch 3: The five forces: how wide is the band?"
   },
@@ -266,7 +295,9 @@
    "made": "Built: a written list of factors the product drops, reduces, raises and adds compared with the alternatives, committed.",
    "shipped": "",
    "exam": [
-    "D-F-18"
+    "D-F-18",
+    "D-M-24",
+    "D-F-42"
    ],
    "chapter": "Ch 3: Blue oceans: widening the band"
   },
@@ -281,7 +312,8 @@
    "exam": [
     "D-F-09",
     "D-F-18",
-    "D-F-20"
+    "D-F-20",
+    "D-M-25"
    ],
    "chapter": "Ch 3: Moats: why the win lasts"
   },
@@ -309,7 +341,9 @@
    "made": "Built: a committed scoring of two or more candidate problems with the evidence for each score, and the one chosen.",
    "shipped": "",
    "exam": [
-    "D-M-01"
+    "D-M-01",
+    "D-F-43",
+    "D-F-44"
    ],
    "chapter": "Ch 4: Evaluating Your Problems; The Commitment Decision; Avoiding Premature Commitment. Appendix: Problem Discovery Framework (Scoring)"
   },
@@ -322,7 +356,9 @@
    "made": "Built: a written MVP scope naming the one thing users must do and a list of what is out, committed before the build.",
    "shipped": "Real users used the scoped MVP, and the record says what was cut and why.",
    "exam": [
-    "D-F-14"
+    "D-F-14",
+    "D-F-45",
+    "D-M-26"
    ],
    "chapter": "Ch 4: What is an MVP?; Minimum Viable, or Minimum Awesome?; MVP Scoping: The Art of Cutting"
   },
@@ -336,7 +372,8 @@
    "shipped": "Built what ranked first for real users, and the ranking cites what was learned (D5 level 5).",
    "exam": [
     "D-M-15",
-    "D-F-10"
+    "D-F-10",
+    "D-F-46"
    ],
    "chapter": "Ch 4: Feature Prioritization"
   },
@@ -349,7 +386,9 @@
    "made": "Built: a committed opportunity solution tree for the product, with each opportunity traced to interview notes.",
    "shipped": "",
    "exam": [
-    "D-M-13"
+    "D-M-13",
+    "D-F-47",
+    "D-F-48"
    ],
    "chapter": "Ch 4: Discovery Is Continuous"
   },
@@ -361,7 +400,11 @@
    "used": "",
    "made": "Built: the chapter's one-page product strategy (vision, where you play, how you win, moat, what you will not do), committed.",
    "shipped": "Built the chosen idea for real users, and a later decision record says whether the choice held (D6 level 5).",
-   "exam": [],
+   "exam": [
+    "D-F-49",
+    "D-F-50",
+    "D-M-27"
+   ],
    "chapter": "Ch 3: Vision before strategy; Strategy is choosing what not to do; Where to play, and how to win; Putting it to work"
   },
   {
@@ -372,7 +415,11 @@
    "used": "",
    "made": "Built: a written choice of this product or idea over at least one other, including who it is for and why it can win (D6 level 4).",
    "shipped": "Built the chosen idea for real users, and a later decision record says whether the choice held (D6 level 5).",
-   "exam": [],
+   "exam": [
+    "D-F-51",
+    "D-F-52",
+    "D-M-28"
+   ],
    "chapter": "Ch 4: You Are Your Best First Customer; Problem Journaling; Diverge Before You Converge"
   },
   {
@@ -386,7 +433,9 @@
    "exam": [
     "D-M-04",
     "D-M-16",
-    "D-M-19"
+    "D-M-19",
+    "D-F-54",
+    "D-F-53"
    ],
    "chapter": "Ch 3: Creating value, and capturing it"
   },
@@ -398,7 +447,11 @@
    "used": "Used: filled in the value proposition template for the product (sprint plan or README).",
    "made": "Built: a committed value proposition whose For line is the beachhead and whose Unlike line names the current habit, drawn from interviews.",
    "shipped": "Real users chose it over their current habit, recorded.",
-   "exam": [],
+   "exam": [
+    "D-F-56",
+    "D-M-29",
+    "D-F-55"
+   ],
    "chapter": "Ch 3: A test worth memorizing: DHM; Creating value, and capturing it (Elements of Value). Ch 4: Your Value Proposition"
   },
   {
@@ -410,7 +463,9 @@
    "made": "Built: a written check of the product's habit loop or engagement design against the reflection and directional tests, committed.",
    "shipped": "",
    "exam": [
-    "D-M-17"
+    "D-M-17",
+    "D-F-58",
+    "D-F-57"
    ],
    "chapter": "Ch 3: Understanding human nature cuts both ways; Aiming well: virtue and the golden mean. Appendix: Problem Discovery Framework (Gospel Framework)"
   }

@@ -20,7 +20,8 @@
    "made": "",
    "shipped": "",
    "exam": [
-    "AA-F-11"
+    "AA-F-11",
+    "AA-F-31"
    ],
    "chapter": "Ch 7: Three Places Code Runs and Data Lives; Requests Connect the Places"
   },
@@ -32,7 +33,10 @@
    "used": "sessions place a check or a call in a named server file",
    "made": "a server route or endpoint the student added, committed",
    "shipped": "",
-   "exam": [],
+   "exam": [
+    "AA-F-32",
+    "AA-F-33"
+   ],
    "chapter": "Ch 7: The Files in a Next.js Project"
   },
   {
@@ -44,7 +48,8 @@
    "made": "",
    "shipped": "",
    "exam": [
-    "AA-F-19"
+    "AA-F-19",
+    "AA-F-34"
    ],
    "chapter": "Ch 7: How the Code Works; The loop: state, render, event, state"
   },
@@ -57,7 +62,8 @@
    "made": "a decision record that names at least two stacks and the reason for the one chosen",
    "shipped": "the chosen stack runs a product people outside the team reach",
    "exam": [
-    "AA-F-08"
+    "AA-F-08",
+    "AA-F-35"
    ],
    "chapter": "Ch 7: Tech Stacks and Languages"
   },
@@ -72,7 +78,8 @@
    "exam": [
     "AW-M-05",
     "AW-M-07",
-    "AA-F-05"
+    "AA-F-05",
+    "AA-F-36"
    ],
    "chapter": "Ch 2: Deploying a Prototype; Deployment with Vercel / GitHub Pages. Ch 9: Development server vs. production build"
   },
@@ -86,7 +93,8 @@
    "shipped": "real users' data kept out of development, recorded",
    "exam": [
     "AA-F-07",
-    "AA-F-21"
+    "AA-F-21",
+    "AA-F-37"
    ],
    "chapter": "Ch 9: Environments: Where Your Code Runs and Which Data It Touches; Which database? The settings decide. Ch 8: Develop against a disposable copy"
   },
@@ -99,7 +107,8 @@
    "made": "a staging environment or a feature flag in the code",
    "shipped": "a feature released to real users through a flag or staging, recorded",
    "exam": [
-    "AA-F-22"
+    "AA-F-22",
+    "AA-F-38"
    ],
    "chapter": "Ch 9: Staging; Feature flags; Staging or a flag?"
   },
@@ -112,7 +121,8 @@
    "made": "a fix made from a log or error report, or an error reporter set up",
    "shipped": "errors from real users caught and fixed from the reports",
    "exam": [
-    "AA-F-02"
+    "AA-F-02",
+    "AA-F-39"
    ],
    "chapter": "Ch 9: See What Is Happening: Logs and Error Reports. Ch 9c: Developer Tools"
   },
@@ -125,7 +135,8 @@
    "made": "tables with keys defined in a migration, ORM schema or schema file, which the product reads and writes",
    "shipped": "real users' data lives there, and the schema choices are in a decision record",
    "exam": [
-    "AA-F-04"
+    "AA-F-04",
+    "AA-F-40"
    ],
    "chapter": "Ch 8: The Data Model Is the Skeleton. Ch 9c: Where an App Keeps Data"
   },
@@ -138,7 +149,8 @@
    "made": "a migration or schema file committed this sprint, including one that imports existing data",
    "shipped": "a schema change applied to a database real users rely on without losing data",
    "exam": [
-    "AA-F-22"
+    "AA-F-22",
+    "AA-F-41"
    ],
    "chapter": "Ch 8: The Data Model Is the Skeleton (Migration). Ch 9: Rolling Back a Bad Deploy"
   },
@@ -151,7 +163,8 @@
    "made": "",
    "shipped": "",
    "exam": [
-    "AA-F-20"
+    "AA-F-20",
+    "AA-F-42"
    ],
    "chapter": "Ch 8: Asking the Database a Question"
   },
@@ -177,7 +190,10 @@
    "used": "",
    "made": "sign-in built in the product",
    "shipped": "real users sign in",
-   "exam": [],
+   "exam": [
+    "AA-F-43",
+    "AA-F-44"
+   ],
    "chapter": "Ch 7: Who You Are, What You May Do"
   },
   {
@@ -203,7 +219,8 @@
    "made": "a permission test committed, with a record that it ran",
    "shipped": "the tests run on a product real users sign in to",
    "exam": [
-    "AA-F-25"
+    "AA-F-25",
+    "AA-F-45"
    ],
    "chapter": "Ch 9b: Kinds of tests (permission tests). Ch 8: Row Level Security"
   },
@@ -216,7 +233,8 @@
    "made": "",
    "shipped": "",
    "exam": [
-    "AA-F-02"
+    "AA-F-02",
+    "AA-F-46"
    ],
    "chapter": "Ch 7: How a Request Crosses the Internet; Requests Connect the Places. Ch 8: Requests Are Contracts That Fail"
   },
@@ -229,7 +247,8 @@
    "made": "",
    "shipped": "",
    "exam": [
-    "AA-F-26"
+    "AA-F-26",
+    "AA-F-47"
    ],
    "chapter": "Ch 7: Requests Connect the Places (API documentation). Ch 8: Requests Are Contracts That Fail"
   },
@@ -241,7 +260,10 @@
    "used": "",
    "made": "the product calls another system's API and handles a failed call in code",
    "shipped": "the integration works for real users, chosen in a decision record",
-   "exam": [],
+   "exam": [
+    "AA-F-48",
+    "AA-F-49"
+   ],
    "chapter": "Ch 8: Requests Are Contracts That Fail"
   },
   {
@@ -253,7 +275,8 @@
    "made": "a server route that calls a model API, committed",
    "shipped": "real users use the feature, and the provider is chosen in a decision record",
    "exam": [
-    "AA-F-11"
+    "AA-F-11",
+    "AA-F-50"
    ],
    "chapter": "Ch 11: Where the Call Lives"
   },
@@ -265,7 +288,10 @@
    "used": "",
    "made": "an OAuth connection, webhook handler or offered endpoint in the product",
    "shipped": "real users' accounts connected through it",
-   "exam": [],
+   "exam": [
+    "AA-F-51",
+    "AA-F-52"
+   ],
    "chapter": "not taught yet (Ch 8: Requests Are Contracts That Fail names Stripe, Resend and Twilio only)"
   },
   {
@@ -292,7 +318,8 @@
    "made": "",
    "shipped": "",
    "exam": [
-    "AA-F-27"
+    "AA-F-27",
+    "AA-F-53"
    ],
    "chapter": "Ch 7: Three credentials: publishable key, token, secret key; Supabase Introduction"
   },
@@ -305,7 +332,8 @@
    "made": "no secret key, database file, log or personal data in the repo",
    "shipped": "",
    "exam": [
-    "AA-F-06"
+    "AA-F-06",
+    "AA-F-54"
    ],
    "chapter": "Ch 8: Secrets and Sensitive Data (Rotate a leaked key). Ch 7: The Files in a Next.js Project (Not in git)"
   },
@@ -331,7 +359,10 @@
    "used": "",
    "made": "a defense against one of them in the code, such as a content security policy",
    "shipped": "",
-   "exam": [],
+   "exam": [
+    "AA-F-55",
+    "AA-F-56"
+   ],
    "chapter": "not taught yet"
   },
   {
@@ -357,7 +388,9 @@
    "made": "a CI workflow file that runs, with a run record",
    "shipped": "checks run on a product real users depend on, and a record says what they catch",
    "exam": [
-    "AA-F-16"
+    "AA-F-16",
+    "AA-F-57",
+    "AA-F-58"
    ],
    "chapter": "Ch 9: Automated Checks: Tests, Types, and Lint"
   },
@@ -384,7 +417,8 @@
    "made": "a recorded rollback or revert of a bad deploy",
    "shipped": "",
    "exam": [
-    "AA-F-23"
+    "AA-F-23",
+    "AA-F-59"
    ],
    "chapter": "Ch 9: Rolling Back a Bad Deploy"
   },
@@ -397,7 +431,8 @@
    "made": "a recorded list of debt taken on, with a plan, or a commit that pays one down",
    "shipped": "",
    "exam": [
-    "AA-F-03"
+    "AA-F-03",
+    "AA-F-60"
    ],
    "chapter": "Ch 9b: What is Technical Debt?; Strategic vs. Accidental Debt; The Tech Debt Quadrant; When to Pay Down Tech Debt"
   }

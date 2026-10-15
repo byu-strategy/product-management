@@ -34,7 +34,8 @@
    "made": "",
    "shipped": "",
    "exam": [
-    "AS-F-07"
+    "AS-F-07",
+    "AS-F-18"
    ],
    "chapter": "Ch 10: The context window is working memory"
   },
@@ -62,7 +63,8 @@
    "made": "a design around the output limit (splitting a job into parts, checking the stop reason), noted in a spec or the code",
    "shipped": "",
    "exam": [
-    "AS-F-14"
+    "AS-F-14",
+    "AS-F-19"
    ],
    "chapter": "Ch 10: Step 4: The model predicts the next token (one sentence); Ch 11: code samples only"
   },
@@ -75,7 +77,8 @@
    "made": "code that trims or summarizes history or splits a long input, with the limit it designs around named in a spec or the code",
    "shipped": "the limit is backed by numbers from the product (input sizes, turn counts), recorded",
    "exam": [
-    "AS-F-07"
+    "AS-F-07",
+    "AS-F-20"
    ],
    "chapter": "Ch 10: The context window is working memory; Ch 11: The API Remembers Nothing"
   },
@@ -102,7 +105,8 @@
    "made": "a cost estimate for an AI feature in the sprint plan or a spec, with each factor stated",
    "shipped": "",
    "exam": [
-    "AW-F-31"
+    "AW-F-31",
+    "AS-F-21"
    ],
    "chapter": "Ch 11: What It Costs; Ch 12: Every AI call is a cost"
   },
@@ -128,7 +132,10 @@
    "used": "",
    "made": "code that logs tokens or latency per model call, with the numbers saved in the repo",
    "shipped": "the product changed because of the numbers (a smaller model, a shorter prompt, a cap), recorded",
-   "exam": [],
+   "exam": [
+    "AS-F-22",
+    "AS-F-23"
+   ],
    "chapter": "Ch 11: What It Costs"
   },
   {
@@ -139,7 +146,10 @@
    "used": "",
    "made": "measured latency of a model call in the product, saved",
    "shipped": "",
-   "exam": [],
+   "exam": [
+    "AS-F-24",
+    "AS-F-25"
+   ],
    "chapter": "Ch 10: Step 3: Attention mixes in context; Step 4; Ch 11: What It Costs; Where It Breaks"
   },
   {
@@ -150,7 +160,10 @@
    "used": "",
    "made": "",
    "shipped": "",
-   "exam": [],
+   "exam": [
+    "AS-F-26",
+    "AS-F-27"
+   ],
    "chapter": "Ch 10: AI and Machine Learning; Under the Hood: The Math"
   },
   {
@@ -161,7 +174,10 @@
    "used": "",
    "made": "",
    "shipped": "",
-   "exam": [],
+   "exam": [
+    "AS-F-28",
+    "AS-F-29"
+   ],
    "chapter": "Ch 10: Step 3: Attention mixes in context"
   },
   {
@@ -173,7 +189,8 @@
    "made": "",
    "shipped": "",
    "exam": [
-    "AS-F-08"
+    "AS-F-08",
+    "AS-F-30"
    ],
    "chapter": "Ch 10: Step 4: The model predicts the next token"
   },
@@ -186,7 +203,8 @@
    "made": "",
    "shipped": "",
    "exam": [
-    "AS-F-16"
+    "AS-F-16",
+    "AS-F-31"
    ],
    "chapter": "Ch 10: Step 4: The model predicts the next token"
   },
@@ -213,7 +231,8 @@
    "made": "a product decision that supplies current facts (the date, live data, retrieved documents) because of the cutoff, recorded in a spec, decision record or the code",
    "shipped": "",
    "exam": [
-    "AS-F-06"
+    "AS-F-06",
+    "AS-F-32"
    ],
    "chapter": "Ch 10: Step 5: Pretraining on huge text"
   },
@@ -226,7 +245,8 @@
    "made": "",
    "shipped": "",
    "exam": [
-    "AS-F-13"
+    "AS-F-13",
+    "AS-F-33"
    ],
    "chapter": "Ch 10: Step 6: Fine-tuning and human feedback shape behavior"
   },
@@ -239,7 +259,8 @@
    "made": "a product prompt or design that counters agreement (asks for the case against, hides the user's preferred answer), recorded with the reason",
    "shipped": "",
    "exam": [
-    "AS-F-05"
+    "AS-F-05",
+    "AS-F-34"
    ],
    "chapter": "Ch 10: Step 6: Fine-tuning and human feedback shape behavior"
   },
@@ -252,7 +273,8 @@
    "made": "an embedding model called and its vectors stored in the product, committed",
    "shipped": "",
    "exam": [
-    "AS-F-02"
+    "AS-F-02",
+    "AS-F-35"
    ],
    "chapter": "Ch 10: Step 2: Tokens become embeddings; Ch 11: Grounding Answers in Your Data"
   },
@@ -265,7 +287,8 @@
    "made": "retrieval built into the product: chunks embedded and stored, nearest chunks fetched and sent with the question, committed",
    "shipped": "retrieval runs for real users and its quality was measured and changed because of the result",
    "exam": [
-    "AS-F-11"
+    "AS-F-11",
+    "AS-F-36"
    ],
    "chapter": "Ch 11: Grounding Answers in Your Data"
   },
@@ -277,7 +300,10 @@
    "used": "",
    "made": "chunking code with a stated chunk size and a vector column or table, committed",
    "shipped": "",
-   "exam": [],
+   "exam": [
+    "AS-F-37",
+    "AS-F-38"
+   ],
    "chapter": "Ch 11: Grounding Answers in Your Data"
   },
   {
@@ -289,7 +315,8 @@
    "made": "a retrieval test: questions with the chunk each should return, and the results, committed",
    "shipped": "retrieval changed because of the test result, with before and after numbers recorded",
    "exam": [
-    "AS-F-12"
+    "AS-F-12",
+    "AS-F-39"
    ],
    "chapter": "Ch 11: Grounding Answers in Your Data"
   },
@@ -316,7 +343,8 @@
    "made": "a check on model output built into the product, or a wrong output traced to its cause and fixed, committed",
    "shipped": "the check runs for real users and what it catches is recorded",
    "exam": [
-    "AS-F-10"
+    "AS-F-10",
+    "AS-F-40"
    ],
    "chapter": "Ch 10: Plausible is not true; Ch 11: Where It Breaks"
   },
@@ -329,7 +357,8 @@
    "made": "the product's core AI task run on realistic inputs including an edge case, with predictions and results, committed",
    "shipped": "",
    "exam": [
-    "AS-F-15"
+    "AS-F-15",
+    "AS-F-41"
    ],
    "chapter": "Ch 10: The jagged frontier"
   },
@@ -355,7 +384,10 @@
    "used": "",
    "made": "a decision record choosing a model that names an alternative and the reason",
    "shipped": "the choice backed by a comparison run in the product, with saved results",
-   "exam": [],
+   "exam": [
+    "AS-F-42",
+    "AS-F-43"
+   ],
    "chapter": "Ch 11: What It Costs (one paragraph, On choosing a model)"
   },
   {
@@ -366,7 +398,10 @@
    "used": "",
    "made": "a decision record that chooses a technique and names an alternative",
    "shipped": "the choice backed by a comparison run in the product, with saved results",
-   "exam": [],
+   "exam": [
+    "AS-F-44",
+    "AS-F-45"
+   ],
    "chapter": "not taught yet as a comparison (Ch 10: Prompting; Step 6; Ch 11: Grounding Answers in Your Data each cover one technique)"
   }
  ],

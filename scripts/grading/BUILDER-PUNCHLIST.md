@@ -34,7 +34,10 @@ Status: [ ] open, [~] in progress, [x] done, [?] needs Scott.
 - [?] Blueprint v2 drafted: `_materials/builder-exam/BLUEPRINT.md` (72 scored + 12 trial, 2 hours, weights unchanged, bank of 2 questions per concept, 3 for class 1-6 concepts)
 - [ ] Form assembly script: checks counts, type split, one question per concept per form
 - [x] Writing-guide rule changed: never repeat a question; a concept may return in a new situation (Scott, 2026-10-14)
-- [ ] Map all final items (seated and spare) to concepts, every axis
+- [x] Map all final items (seated and spare) to concepts, every axis
+- [x] Bank filled: every concept has 2+ final questions; class 1-6 concepts have a midterm twin (243 written 2026-10-14, all spares; 475 in the bank)
+- [ ] Review the new questions (agents flagged about 15 for a closer look; 7 marked beyond_taught, tied to book gaps)
+- [ ] build.py vocabulary list: 'migration' and 'lint' are now taught (Ch 8, Ch 9)
 - [ ] At least one seated final question per concept
 - [ ] Write questions for uncovered concepts; cut or reassign items that map to no concept
 - [x] Agentic Workflow spares written: routes, connectors, plugins, slash commands (two matching sets), modes, remote control, voice, messaging

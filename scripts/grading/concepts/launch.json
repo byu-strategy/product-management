@@ -20,7 +20,10 @@
    "used": "usage queries against the product's own data run in sessions",
    "made": "a dated usage record committed (metrics file, test note, or usage count) naming people outside the team",
    "shipped": "two or more people outside the team used it on two or more dates, on their own",
-   "exam": [],
+   "exam": [
+    "LL-F-20",
+    "LL-F-21"
+   ],
    "chapter": "Ch 12: Your First Users, by Hand; Launch & Iterate. Ch 14: Outcomes, not output"
   },
   {
@@ -32,7 +35,8 @@
    "made": "a release flag committed (a table or config naming who has the feature) and checked in server code",
    "shipped": "the feature released to real users ring by ring, with the rings recorded",
    "exam": [
-    "LL-F-13"
+    "LL-F-13",
+    "LL-F-22"
    ],
    "chapter": "Ch 12: Launch in rings"
   },
@@ -45,7 +49,8 @@
    "made": "the number named in a spec, README or metrics file, with why it shows value",
    "shipped": "chosen over at least one other number in a decision record, and reported from real users' data",
    "exam": [
-    "LL-F-05"
+    "LL-F-05",
+    "LL-F-23"
    ],
    "chapter": "Ch 14: Outcomes, not output; The North Star and the metrics under it"
   },
@@ -57,7 +62,10 @@
    "used": "",
    "made": "a success definition committed before the launch or test it judges",
    "shipped": "real users' results judged against it on its date, recorded",
-   "exam": [],
+   "exam": [
+    "LL-F-24",
+    "LL-F-25"
+   ],
    "chapter": "Ch 14: The North Star and the metrics under it; Write a success definition. Ch 12: Instrument it before you launch"
   },
   {
@@ -69,7 +77,8 @@
    "made": "",
    "shipped": "",
    "exam": [
-    "LL-F-05"
+    "LL-F-05",
+    "LL-F-26"
    ],
    "chapter": "Ch 14: Vanity, leading, and lagging"
   },
@@ -82,7 +91,8 @@
    "made": "an events table and logging calls (or analytics capture calls) committed for the core task. Analytics shown to users does not count",
    "shipped": "events from real users answered a question written down in advance",
    "exam": [
-    "LL-F-01"
+    "LL-F-01",
+    "LL-F-27"
    ],
    "chapter": "Ch 14: Instrument the Core Action. Ch 12: Instrument it before you launch"
   },
@@ -123,7 +133,8 @@
    "made": "",
    "shipped": "",
    "exam": [
-    "LL-F-15"
+    "LL-F-15",
+    "LL-F-28"
    ],
    "chapter": "Ch 14: Cause Versus Coincidence; Three ways a before-and-after fools you"
   },
@@ -150,7 +161,9 @@
    "made": "a holdout or small test with the planned size and the result recorded, including \"can't tell yet\"",
    "shipped": "",
    "exam": [
-    "LL-F-11"
+    "LL-F-11",
+    "LL-F-29",
+    "LL-F-30"
    ],
    "chapter": "Ch 14: What to do with 20 users"
   },
@@ -163,7 +176,8 @@
    "made": "a positioning statement or messaging file committed, naming the customer and the alternative it replaces",
    "shipped": "the position tested with real people (landing page, outreach replies) and what happened recorded",
    "exam": [
-    "LL-F-02"
+    "LL-F-02",
+    "LL-F-31"
    ],
    "chapter": "Ch 12: Positioning & Messaging; The positioning statement; Messages that convert; What AI can and cannot do for your messaging"
   },
@@ -176,7 +190,8 @@
    "made": "a price decision record with the ceiling, reference and floor and their sources",
    "shipped": "the price shown to real people and their response (payments, refusals) recorded",
    "exam": [
-    "LL-F-08"
+    "LL-F-08",
+    "LL-F-32"
    ],
    "chapter": "Ch 12: Pricing and AI Margins"
   },
@@ -189,7 +204,8 @@
    "made": "a cost-to-serve estimate per user, including the heaviest realistic user, committed",
    "shipped": "",
    "exam": [
-    "LL-F-12"
+    "LL-F-12",
+    "LL-F-33"
    ],
    "chapter": "Ch 12: Every AI call is a cost"
   },
@@ -201,7 +217,10 @@
    "used": "",
    "made": "a revenue model chosen in a decision record that names another model",
    "shipped": "real users paid under it",
-   "exam": [],
+   "exam": [
+    "LL-F-34",
+    "LL-F-35"
+   ],
    "chapter": "Ch 13: How Money Comes In: Revenue Models. Ch 12: Should you offer a free tier?"
   },
   {
@@ -212,7 +231,10 @@
    "used": "the canvas drafted with an agent in sessions",
    "made": "business-model-canvas.md committed, with each block marked evidence or guess",
    "shipped": "",
-   "exam": [],
+   "exam": [
+    "LL-F-36",
+    "LL-F-37"
+   ],
    "chapter": "Ch 13: What a Business Model Is; Drafting Your Canvas with Claude"
   },
   {
@@ -224,7 +246,8 @@
    "made": "a break-even or financial model with the variable costs per user, committed",
    "shipped": "",
    "exam": [
-    "LL-F-12"
+    "LL-F-12",
+    "LL-F-38"
    ],
    "chapter": "Ch 13: Unit Economics and Break-Even; Turn the canvas into a model and a slide"
   },
@@ -251,7 +274,8 @@
    "made": "a usage analysis of a feature or the product, with what it showed, committed",
    "shipped": "a feature or the product changed, cut or stopped because of real users' usage, with the record",
    "exam": [
-    "LL-F-03"
+    "LL-F-03",
+    "LL-F-39"
    ],
    "chapter": "Ch 14: Keep, Change, or Kill"
   },
@@ -264,7 +288,8 @@
    "made": "a decision record that changes the customer, message or channel and cites the evidence",
    "shipped": "the changed plan reached real users, recorded",
    "exam": [
-    "LL-F-07"
+    "LL-F-07",
+    "LL-F-40"
    ],
    "chapter": "Ch 12: When to change your GTM"
   },
@@ -276,7 +301,10 @@
    "used": "feedback grouped with a model in sessions, with quotes checked",
    "made": "a feedback synthesis with counts and quotes, committed",
    "shipped": "",
-   "exam": [],
+   "exam": [
+    "LL-F-41",
+    "LL-F-42"
+   ],
    "chapter": "Ch 14: What to do with 20 users; Asking How People Feel. Ch 12: Using AI on launch data"
   },
   {
@@ -287,7 +315,10 @@
    "used": "",
    "made": "",
    "shipped": "",
-   "exam": [],
+   "exam": [
+    "LL-F-43",
+    "LL-F-44"
+   ],
    "chapter": "Ch 15: A story has a job"
   },
   {
@@ -298,7 +329,10 @@
    "used": "",
    "made": "a story database file committed in the repo",
    "shipped": "",
-   "exam": [],
+   "exam": [
+    "LL-F-45",
+    "LL-F-46"
+   ],
    "chapter": "Ch 15: Build a story database"
   },
   {
@@ -309,7 +343,10 @@
    "used": "",
    "made": "",
    "shipped": "",
-   "exam": [],
+   "exam": [
+    "LL-F-47",
+    "LL-F-48"
+   ],
    "chapter": "Ch 15: Techniques that make a story land; Make It Stick; Storytelling in day-to-day product work"
   },
   {
@@ -321,7 +358,8 @@
    "made": "a recorded demo of one task in the product people use, from the user's first action to the result",
    "shipped": "the demo shows real users' use, and someone acted on it (signed up, approved, paid)",
    "exam": [
-    "LL-F-18"
+    "LL-F-18",
+    "LL-F-49"
    ],
    "chapter": "Ch 15: The Final Demo; Rehearse"
   },
@@ -333,7 +371,10 @@
    "used": "",
    "made": "",
    "shipped": "",
-   "exam": [],
+   "exam": [
+    "LL-F-50",
+    "LL-F-51"
+   ],
    "chapter": "Ch 15: Winning Support: Your Innovation Capital; Amplify: Make Them Believe"
   },
   {
@@ -345,7 +386,8 @@
    "made": "an ICP or beachhead named in a GTM or README file, with where those people gather",
    "shipped": "users came from the named beachhead, recorded",
    "exam": [
-    "LL-F-16"
+    "LL-F-16",
+    "LL-F-52"
    ],
    "chapter": "Ch 12: Who It Is For: The Beachhead"
   },
@@ -358,7 +400,8 @@
    "made": "an outreach log committed: who was contacted, through what, and what happened, with the prediction",
    "shipped": "people reached by hand became repeat users, recorded",
    "exam": [
-    "LL-F-19"
+    "LL-F-19",
+    "LL-F-53"
    ],
    "chapter": "Ch 12: Your First Users, by Hand; Where the first twenty come from; The pitch conversation; Six principles of persuasion"
   },
@@ -371,7 +414,8 @@
    "made": "a channel test recorded with who was reached and the result per step (directory listing, posts, ads, flyers)",
    "shipped": "a channel chosen from recorded results, and users came from it",
    "exam": [
-    "LL-F-04"
+    "LL-F-04",
+    "LL-F-54"
    ],
    "chapter": "Ch 12: Choosing Your Channel Strategy; A second audience: the models"
   },
@@ -384,7 +428,8 @@
    "made": "",
    "shipped": "",
    "exam": [
-    "LL-F-17"
+    "LL-F-17",
+    "LL-F-55"
    ],
    "chapter": "Ch 12: Choosing Your Channel Strategy"
   }
