@@ -26,15 +26,17 @@ from sprint_config import COURSE_ID, PLAN_FIELDS, PLAN_POINTS, SPRINTS
 
 TZ = ZoneInfo("America/Denver")
 DATA = Path.home() / "hubs/courses/_data/product-management"
-SHIPPED_CHARS = 40_000      # cap on artifact text per packet, about 10k tokens
-PER_FILE_CHARS = 6_000      # written work (specs, decisions, discovery, evals, docs)
+SHIPPED_CHARS = 20_000      # code text per packet, about 5k tokens (written work has its own budget)
+PER_FILE_CHARS = 10_000     # written work (specs, decisions, discovery, evals, docs): long enough for acceptance criteria
 CODE_FILE_CHARS = 3_000     # code: enough to see what it does
-SKIP = re.compile(r"^(sprints/|\.claude/|\.gitignore$|README\.md$|CLAUDE\.md$)|000-.*template"
+# Course-provided skills and settings are skipped; a skill the student wrote is their work (W2).
+SKIP = re.compile(r"^(sprints/|\.claude/skills/(eli5|learn|sprint-plan|sprint-review)/|\.claude/settings|\.gitignore$|README\.md$)|000-.*template"
                   r"|(^|/)(node_modules|dist|build|\.next|out|coverage|\.vercel)/"
                   r"|(^|/)(package-lock\.json|yarn\.lock|pnpm-lock\.yaml|bun\.lockb)$|\.(min\.js|min\.css|map)$")
 # Written work is read first, so a large code change cannot use up the budget before the specs,
 # decision records, discovery notes and evals the student wrote.
-WRITTEN = re.compile(r"\.(md|qmd|txt)$|^(specs|decisions|discovery|evals|docs|research|product)/", re.I)
+WRITTEN = re.compile(r"\.(md|qmd|txt)$|(^|/)(specs|decisions|discovery|evals|prompts|docs|research|gtm|learning)/", re.I)
+WRITTEN_CHARS = 100_000     # written work and code have separate budgets, so neither crowds out the other
 TEXT = re.compile(r"\.(md|txt|py|js|jsx|ts|tsx|html|css|json|csv|yml|yaml|toml|sql|qmd)$", re.I)
 
 
@@ -210,12 +212,11 @@ def doc_text(name, data):
     ext = name.lower().rsplit(".", 1)[-1]
     try:
         if ext == "docx":
-            import docx
-            d = docx.Document(io.BytesIO(data))
-            parts = [p.text for p in d.paragraphs if p.text.strip()]
-            for tb in d.tables:
-                parts += [" | ".join(c.text.strip() for c in row.cells) for row in tb.rows]
-            return "\n".join(parts)
+            # Read the XML directly: no dependency (an unrelated "docx" package shadows python-docx here).
+            xml = zipfile.ZipFile(io.BytesIO(data)).read("word/document.xml").decode("utf-8", "replace")
+            paras = ["".join(html.unescape(t) for t in re.findall(r"<w:t(?: [^>]*)?>([^<]*)</w:t>", para))
+                     for para in re.findall(r"<w:p[ >].*?</w:p>", xml, re.S)]
+            return "\n".join(x for x in paras if x.strip())
         if ext == "pptx":
             z = zipfile.ZipFile(io.BytesIO(data))
             slides = sorted((n for n in z.namelist() if re.match(r"ppt/slides/slide\d+\.xml$", n)),
@@ -255,10 +256,13 @@ def shipped(repo, commits, budget=SHIPPED_CHARS, image_dir=None, net_id=None, ma
                 # as written before the code it describes (commit order, not file dates).
                 first.setdefault(f["filename"], (c["sha"][:7], c["when"]))
     out, images = [], 0
+    budgets = {True: WRITTEN_CHARS * budget // SHIPPED_CHARS, False: budget}
     order = sorted(files, key=lambda n: (not (WRITTEN.search(n) or DOCS.search(n)), first[n][1]))
     for name in order:
         status = files[name]
         item = {"path": name, "status": status, "first_commit": first[name][0], "first_when": first[name][1]}
+        written = bool(WRITTEN.search(name) or DOCS.search(name))
+        budget = budgets[written]
         text = None
         if TEXT.search(name) and budget > 0:
             # One API call per file is slow on big repos, so fetch only files whose text fits the budget.
@@ -287,9 +291,9 @@ def shipped(repo, commits, budget=SHIPPED_CHARS, image_dir=None, net_id=None, ma
                     item["image"] = str(dest)
                     images += 1
         if text:
-            take = min(PER_FILE_CHARS if (WRITTEN.search(name) or DOCS.search(name)) else CODE_FILE_CHARS, budget)
+            take = min(PER_FILE_CHARS if written else CODE_FILE_CHARS, budget)
             item["text"] = text[:take] + ("\n[... truncated]" if len(text) > take else "")
-            budget -= len(item["text"])
+            budgets[written] -= len(item["text"])
         out.append(item)
     return out
 
