@@ -147,7 +147,8 @@ A slash command is recognized at the start of a message; anything after it is it
 | `/clear` | Start a new conversation with empty context (CLAUDE.md still loads) |
 | `/rewind` | Roll back Claude's file edits and/or the conversation to an earlier point |
 | `/resume` | Reopen an earlier conversation, by name or from a list |
-| `/rename` | Give this session a name, so you can find it in `/resume` later |
+| `/rename` | Give this session a name, so you can find it in `/resume` later and other sessions can message it |
+| `/list-agents` (or `/peers`) | List the sessions Claude can send a message to |
 | `/btw` | Ask a side question without adding it to the conversation |
 | `/exit` | Leave Claude Code |
 | **Setting up** | |
@@ -636,6 +637,27 @@ a second server to the next free port (3001) and prints it, but an agent that as
 Tell each session to use the port its own server printed, and to stop only the server it started
 ([run your own dev server](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/memory-pack/run-your-own-dev-server.md)).
 
+#### Messaging your other sessions
+
+Parallel sessions can tell each other things. When one session changes something another depends on, or settles a question another is stuck on, Claude can pass the news along instead of you copying it between terminals. You never call a tool for this. Tell Claude in plain words what the other session should know, and it finds the session and writes the message; type `@` and pick a session from the list to name it yourself:
+
+```text
+Let @fix-login know the schema migration finished
+Ask the session in my other terminal whether the tests passed
+Tell me when the fix-login session finishes what it is working on
+```
+
+`/list-agents` (or `/peers`) shows which sessions Claude can reach: subagents in this session, your other sessions on this computer, and, while this session is connected through Remote Control, your sessions in the cloud and on other computers. Sessions answer to the name you give them with `/rename`, so name the ones you run in parallel.
+
+Four facts about a message:
+
+- **It is plain text** one Claude writes to another. It never carries the sender's conversation or files; to continue a whole conversation, use `/resume`.
+- **It arrives between steps.** The receiving session reads it between tool calls, or starts a new turn if it was idle.
+- **It has no authority.** A message from another session cannot approve a permission prompt, cannot change settings or CLAUDE.md, and a slash command inside it does not run. Each session keeps its own permissions.
+- **Where it travels.** Between sessions on one computer, it goes directly and never through Anthropic's servers. To a session on another computer or in the cloud, it goes through Anthropic's servers, over Remote Control.
+
+You choose what a session does with incoming messages in `/config` (accept them, hold each for your approval, or refuse them) [@anthropic2026messaging].
+
 #### The cost
 
 Every subagent and every parallel session spends its own tokens, and all their results come back for you to review. Anthropic's write-up of its multi-agent research system makes the same point: parallel agents perform better on broad, divisible work and cost several times the tokens of a single agent. For a student project, the limiting resource is usually your time to review the results, more than the agent's speed.
@@ -887,6 +909,9 @@ Pick "GitHub Actions" if your site has a build step, which anything beyond plain
 - **Worktree**: a second working folder with its own files and branch on the same repository
   history, so parallel sessions do not overwrite each other. It separates files only: the
   database and dev server ports are still shared.
+- **Messaging your other sessions**: Claude can send plain-text messages between your Claude Code
+  sessions (`/list-agents` shows who it can reach). A message has no authority: it cannot approve a
+  prompt or change settings, and each session keeps its own permissions.
 - **Task decomposition**: break a feature into small pieces you can check one at a time, in
   order.
 - **Three routes beyond the repo**: a CLI tool the agent runs in the terminal (`gh`, `supabase`),
