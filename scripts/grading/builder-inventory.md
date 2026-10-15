@@ -9,7 +9,7 @@ LinkedIn's Associate Product Builder program, Google's APM program, or a builder
 technology company. LinkedIn's application is a 60-second demo of a product people use, with no
 resume, and it weighs judgment over tools; Google's APM loop tests product sense and technical
 reasoning at whiteboard level. Few students should reach 5 on an axis during the course; a strong
-student ends near 3, with 4 on the axes their product leaned on.
+student ends near 3, with 4 on the axes their product required most.
 
 ## The ladder (the same five levels for every item)
 
@@ -53,8 +53,8 @@ Levels 1 and 2 read the same for every item and are not repeated below.
 - 5: the result decided something, and the decision record cites it.
 - Old survey: none.
 
-**D4 Competitive landscape.** What else people use, and where the opening is.
-- 3: can explain why a product wins against the current alternative, including doing nothing.
+**D4 Competitive landscape.** What else people use for the problem, and what is missing from it.
+- 3: can explain why users would choose the product over what they use now, including doing nothing.
 - 4: wrote a comparison of the alternatives users actually use.
 - 5: the product's position comes from that comparison, and the student can defend it.
 - Old survey: Competitive landscape.
@@ -98,7 +98,7 @@ Levels 1 and 2 read the same for every item and are not repeated below.
 - Old survey: none.
 
 **G5 Critique and direction.** Saying specifically what is wrong and what to change.
-- 3: can critique a generated screen in specific terms, not "make it pop".
+- 3: can name specific problems in a generated screen and the change that fixes each.
 - 4: directed design changes in writing (to an agent or a teammate) and they shipped.
 - 5: can defend the product's design direction to someone who disagrees, with the record of why.
 - Old survey: UI critique; Design direction.
@@ -182,7 +182,7 @@ Levels 1 and 2 read the same for every item and are not repeated below.
 **A6 Version control and checks.** History, review, and what runs on every change.
 - 3: can explain branches, pull requests and continuous integration.
 - 4: works in branches or pull requests, or has automated tests or checks that run.
-- 5: checks guard a product real users depend on, and the student can say what they catch.
+- 5: checks run on a product real users depend on, and the student can say what they catch.
 - Old survey: Version control; Pull requests; CI.
 
 ## Agentic Workflow
@@ -204,7 +204,7 @@ Putting AI to work: directing coding agents, and building AI into the product.
 **W3 Checking agent output.** Reviewing, testing and limiting what agents do.
 - 3: can explain what to check in agent-written code, and what an agent may run unattended.
 - 4: caught and fixed an agent's error, with the record, or set permissions on purpose.
-- 5: has a routine for checking agent work that holds up in a product real users use.
+- 5: checks agent work the same way every time, in a product real users use.
 - Old survey: Code review of agent output; Testing AI-written code; Agent permissions.
 
 **W4 Prompts in the product.** Features driven by prompts the student wrote.
@@ -213,7 +213,7 @@ Putting AI to work: directing coding agents, and building AI into the product.
 - 5: real users use the feature, and prompt versions are kept with why each changed.
 - Old survey: Prompt engineering.
 
-**W5 Tool use and agent loops in the product.** The model acts, not just answers.
+**W5 Tool use and agent loops in the product.** The model calls tools and takes steps on its own.
 - 3: can explain tool calling, stopping conditions and retries.
 - 4: built tool use or a multi-step model action into the product.
 - 5: real users rely on it, with the loop's limits written down.
