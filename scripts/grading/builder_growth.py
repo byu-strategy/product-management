@@ -13,6 +13,10 @@ The spoke (decided 2026-10-14): 0 to 100 per axis, 100 = the hiring bar.
   - Depth: highest level shown on the axis so far (1 Followed to 4 Delivered), the lower of the two
     coders' levels each sprint; points = half of practice x level / 4.
 - Knowledge fills the rest from the exams (exam rings are added by the exam step, not here).
+- Start (Fall 2026 only, decided 2026-10-15): until the midterm measures knowledge, the core is the
+  September survey's self-rating mapped onto the knowledge share: (mean - 1) / 4 x (100 - practice
+  max), so 1 = 0 and 5 = the full knowledge share. The midterm replaces the core; the practice rings
+  keep their thickness. From next term a pre-test form sets the core instead.
 - Each sprint's ring is the practice points it added; rings never shrink.
 """
 import argparse
@@ -23,6 +27,7 @@ HERE = Path(__file__).resolve().parent
 DATA = Path.home() / "hubs/courses/_data/product-management"
 GRADING = DATA / "grading"
 PRACTICE = {"AI Systems": 25.0}          # every other axis: 50
+SURVEY = DATA / "baseline-charts-fall2026" / "students.json"
 LEVELS = {1: "Followed", 2: "Directed", 3: "Decided", 4: "Delivered"}
 
 
@@ -40,12 +45,25 @@ def practice_max(axis):
     return PRACTICE.get(axis, 50.0)
 
 
+def survey():
+    """net_id -> axis -> 1 to 5 mean self-rating from the September survey."""
+    return {x["net_id"]: x["means"] for x in json.loads(SURVEY.read_text())} if SURVEY.exists() else {}
+
+
+def start_core(means, axes):
+    """The survey self-rating as points on the knowledge share of each spoke."""
+    if not means:
+        return {}
+    return {ax: round((min(5, max(1, float(means[ax]))) - 1) / 4 * (100 - practice_max(ax)), 2)
+            for ax in axes if means.get(ax) is not None}
+
+
 def load(sprint, run, net_id):
     f = GRADING / f"sprint-{sprint}" / "concepts" / f"run-{run}" / f"{net_id}.json"
     return json.loads(f.read_text()) if f.exists() else None
 
 
-def growth(net_id, upto, C, axes):
+def growth(net_id, upto, C, axes, means=None):
     shown, depth_best, rings = set(), {}, []
     new_last, depth_last, disputed, nc_last = [], [], [], []
     for s in range(1, upto + 1):
@@ -100,7 +118,8 @@ def growth(net_id, upto, C, axes):
     for r in rings:
         for ax, v in r["points"].items():
             totals[ax] = round(totals.get(ax, 0) + v, 2)
-    return {"net_id": net_id, "sprint": upto, "rings": rings, "practice_total": totals,
+    return {"net_id": net_id, "sprint": upto, "start": {"source": "survey", "points": start_core(means, axes)},
+            "rings": rings, "practice_total": totals,
             "practice_max": {ax: practice_max(ax) for ax in axes}, "depth_best": depth_best,
             "concepts_shown": sorted(shown), "new": new_last, "depth": depth_last,
             "disputed": disputed, "not_counted": nc_last}
@@ -112,10 +131,11 @@ def main():
     ap.add_argument("--only", nargs="*")
     a = ap.parse_args()
     C, axes = concepts()
+    S = survey()
     out = GRADING / f"sprint-{a.sprint}" / "concepts"
     nets = a.only or sorted(p.stem for p in (out / "run-A").glob("*.json"))
     for n in nets:
-        G = growth(n, a.sprint, C, axes)
+        G = growth(n, a.sprint, C, axes, S.get(n))
         (out / f"growth-{n}.json").write_text(json.dumps(G, indent=1))
         print(n, G["practice_total"], f"new {len(G['new'])}, disputed {len(G['disputed'])}")
 

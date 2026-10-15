@@ -279,7 +279,9 @@ def profile_svg(G):
     for lvl in (25, 50, 75, 100):
         out.append(f'<polygon points="{poly([lvl] * 6)}" fill="none" stroke="{"#d5d9e0" if lvl == 100 else "#eceef2"}" '
                    f'stroke-width="{1.3 if lvl == 100 else .8}"/>')
-    totals = [0.0] * 6
+    core = ((G or {}).get("start") or {}).get("points") or {}
+    totals = [float(core.get(AXES[i], 0)) for i in range(6)]
+    core_vals = list(totals)
     layers = []
     for rg in (G or {}).get("rings") or []:
         pts = rg.get("points") or {}
@@ -291,7 +293,15 @@ def profile_svg(G):
     for s, vals in reversed(layers):  # outermost first, so each inner ring sits on top
         if vals:
             out.append(f'<polygon points="{poly(vals)}" fill="{SPRINT_COLORS.get(s, "#d97706")}" stroke="#fff" '
-                       f'stroke-width="1.5" stroke-linejoin="round"><title>Through Sprint {s}</title></polygon>')
+                       f'stroke-width=".8" stroke-linejoin="round"><title>Through Sprint {s}</title></polygon>')
+    if any(core_vals):  # the survey center sits innermost, on top of the rings
+        out.append(f'<polygon points="{poly(core_vals)}" fill="#c9d3e3" stroke="#fff" stroke-width=".8" '
+                   f'stroke-linejoin="round"><title>Your September survey</title></polygon>')
+    if G and any(totals):  # a dot at every value, so a small value next to a zero still shows
+        for i in range(6):
+            if totals[i] > 0:
+                x, y = pt(i, totals[i])
+                out.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="3" fill="#8a4a03" stroke="#fff" stroke-width="1"/>')
     for i, ax in enumerate(AXES):
         x, y = pt(i, 100)
         out.append(f'<line x1="{CX}" y1="{CY}" x2="{x:.1f}" y2="{y:.1f}" stroke="#d5d9e0" stroke-width=".7"/>')
@@ -519,10 +529,13 @@ def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott
     # ---- profile
     svg, drawn = profile_svg(G)
     if G:
-        sw = "".join(f'<span class=sw style="background:{SPRINT_COLORS.get(s, "#d97706")}"></span>Sprint {s} ' for s in drawn)
-        cap = (f"Each spoke runs from 0 to 100, the hiring bar. Each ring is one sprint's practice. {sw}"
-               if drawn else "Each spoke runs from 0 to 100, the hiring bar. No practice has been counted yet.")
-        cap = f"{cap}<br>Knowledge on each axis is added from the exams."
+        core_sw = ('<span class=sw style="background:#c9d3e3"></span>Your September survey '
+                   if any(((G.get("start") or {}).get("points") or {}).values()) else "")
+        sw = core_sw + "".join(f'<span class=sw style="background:{SPRINT_COLORS.get(s, "#d97706")}"></span>Sprint {s} ' for s in drawn)
+        cap = (f"Each spoke runs from 0 to 100, the hiring bar. The center is what you reported in the "
+               f"September survey; each ring outside it is one sprint's practice. {sw}"
+               if drawn else f"Each spoke runs from 0 to 100, the hiring bar. No practice has been counted yet. {sw}")
+        cap = f"{cap}<br>The midterm replaces the survey center with what you show on the exam."
     else:
         cap = "Your builder profile is being prepared."
 
