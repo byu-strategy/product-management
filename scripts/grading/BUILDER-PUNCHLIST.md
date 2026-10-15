@@ -6,6 +6,29 @@ show growth, the baseline survey sets the center. A change to one updates the ot
 
 Status: [ ] open, [~] in progress, [x] done, [?] needs Scott.
 
+## 0. Sprint 2 rollout with builder profiles (Scott, 2026-10-14: profiles ship with Sprint 2)
+
+Stage A (no prerequisites, parallel)
+- [~] Roster refresh; packets for every student on the current format (first five rebuilt)
+- [ ] Drive files through the connector
+- [ ] Coder instructions: one packet against the concept lists and evidence rules, output checks earned (Used, Built, Shipped) with evidence, ref and date
+- [ ] Growth rule and code: center = self-rating; ring = checks newly earned on the axis as a share of its possible checks, on the 1 to 5 scale; each check named
+- [ ] Dossier in `sprint_feedback.py`: score card, profile, how you grew, what was reviewed, Sprint 3, questions, appendix (concept list)
+
+Stage B (needs A): is the coding faithful?
+- [ ] Agreement test: two independent coders, 12 students, Sprint 2; agreement and kappa per concept
+- [ ] Rewrite or drop concepts below target; settle Used versus Built per axis from the data
+
+Stage C (needs B): production
+- [ ] Grading run, whole class
+- [?] Concept coding: two coders per student, Sprints 1 and 2, consensus only (about 8M tokens; Claude API batch proposed, cost estimate first)
+
+Stage D (needs C): review
+- [ ] Fairness check; build every dossier; disputed checks listed for Scott, never shown to students
+- [?] Scott reviews the review page and a sample of dossiers
+
+Stage E: publish through `/publish-grades`
+
 ## 1. Concept lists (the spine)
 - [x] Agentic Workflow: `builder-concepts-agentic.md` (27 concepts, 72 checks)
 - [x] Application Architecture, AI Systems, Discovery, Design, Launch and Learn (175 concepts in all; every bank question mapped)
