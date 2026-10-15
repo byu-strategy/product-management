@@ -635,9 +635,23 @@ Find the mistake: "I'll ask Claude to spin up three subagents: one builds the lo
 
 <!-- learn -->
 
-## Reach Beyond the Repo: MCP
+## Reach Beyond the Repo: CLI Tools, MCP, and APIs {#reach-beyond-the-repo-mcp}
 
-**MCP is how an agent gets tools and data it does not have.** By default, Claude Code can use your files, your terminal, and the web. Your tickets, your Supabase database, and a real browser to click through your app are outside that reach. The **Model Context Protocol (MCP)** is an open standard for connecting them: an MCP **server** wraps a system and exposes it to Claude as new tools.
+**An agent has three ways to reach a system outside your repo.** By default, Claude Code can use your files, your terminal, and the web. Your GitHub issues, your Supabase database, your deploys, and a real browser to click through your app are outside that reach until you connect them, by one of three routes.
+
+| Route | What it is | Example | Good for | Cost |
+|---|---|---|---|---|
+| **CLI tool** | A command-line program (CLI: command-line interface) that the agent runs in the terminal | `gh issue list`, `supabase db push`, `vercel logs` | Services with a command-line tool. Claude already knows the common ones, and they use the login you already have. | Each tool is installed and signed in once |
+| **MCP server** | A program or a URL that wraps one system and adds its actions to the agent as new tools | A browser server, a Supabase server, a ticket tracker | Systems with no command-line tool, or actions you want named and structured | Each server's tool list takes some context |
+| **Direct API call** | A request the agent writes itself, such as a `curl` command or a short script, sent with your key | `curl` to a service's REST API | A one-off pull from a service with neither of the above | You manage the key, and the agent writes the request each time |
+
+Try them in that order. If the service has a CLI, the agent can usually use it at once. If it has an MCP server, connect it. A direct API call works for almost anything, at the cost of handling a key.
+
+These routes are for the agent while you build. When your *product* calls an API, as when it sends a model request, that is part of the application itself ([Chapter 8](08-data-and-apis.qmd), [Chapter 11](11-models-in-your-product.qmd)).
+
+### MCP servers and connectors
+
+The **Model Context Protocol (MCP)** is an open standard for connecting an agent to outside tools and data [@mcp2024].
 
 | Building block | What it is |
 |---|---|
@@ -645,6 +659,9 @@ Find the mistake: "I'll ask Claude to spin up three subagents: one builds the lo
 | **Tools** | The actions the server offers, which appear to Claude as tools named `mcp__<server>__<tool>` |
 | **Scope** | Where the connection is saved: just you, or the project's `.mcp.json`, which you commit to share with your team |
 | **`/mcp`** | Lists your servers, their status, and handles sign-in |
+| **Connector** | The Claude app's name for an MCP server you add in its settings (Gmail, Google Drive, Slack, GitHub). Connectors you add in the app can also appear in Claude Code when you sign in with the same account, as tools named `mcp__claude_ai_<name>__<tool>`. |
+
+A connector and an MCP server are the same thing under two names: the app calls it a connector, and Claude Code calls it an MCP server.
 
 A good signal that you need one: you keep copying data into the chat from another tool. Connect the tool, and Claude reads it directly.
 
@@ -657,6 +674,10 @@ claude mcp add playwright -- npx -y @playwright/mcp@latest
 Now you can ask: "Open localhost:3000, sign up with a test email, and screenshot the dashboard." Claude runs its own check against the running app instead of guessing. Supabase publishes an MCP server too, which lets Claude inspect your tables and run queries; give it read-only access unless you mean otherwise, because what it does there cannot be rewound.
 
 Two costs. Each server's tool list takes some context. And a server that fetches outside content (web pages, tickets other people wrote) can carry instructions that try to steer the model; only connect servers you trust. [Chapter 11](11-models-in-your-product.qmd) covers that risk, prompt injection, in depth.
+
+### Plugins: a package, not a route
+
+A **plugin** bundles skills, slash commands, subagents, hooks, and MCP servers so someone can install the set at once with `/plugin`, from a marketplace (a repository that lists plugins). A plugin is a way to install or share building blocks. It is not a fourth route: if a plugin reaches an outside system, it does so through an MCP server, a CLI tool, or an API call inside it. Skills that come from a plugin carry its name, as in `plugin-name:skill-name`. An enabled plugin's skill and agent descriptions sit in Claude's context in every session, even when nothing from it runs, so turn off plugins you no longer use [@anthropic2026plugins].
 
 ::: {.callout-tip title="Try it"}
 Add the Playwright server, run `/mcp` to confirm it connected, and ask Claude to open your app and report one thing that looks broken. Did it find something your own reading of the code missed?
@@ -836,9 +857,16 @@ Pick "GitHub Actions" if your site has a build step, which anything beyond plain
   database and dev server ports are still shared.
 - **Task decomposition**: break a feature into small pieces you can check one at a time, in
   order.
+- **Three routes beyond the repo**: a CLI tool the agent runs in the terminal (`gh`, `supabase`),
+  an MCP server that adds a system's actions as tools, or a direct API call the agent writes with
+  your key. Try them in that order.
+- **CLI**: command-line interface, a program run by typing commands in the terminal.
 - **MCP**: the Model Context Protocol, an open standard for connecting an agent to outside tools
   and data. An MCP server wraps one system (a browser, a database, a ticket tracker) and exposes it
   as new tools. Connect only servers you trust.
+- **Connector**: the Claude app's name for an MCP server added in its settings.
+- **Plugin**: a package of skills, slash commands, subagents, hooks, and MCP servers, installed
+  together with `/plugin`. A way to share building blocks, not a way to reach outside data.
 - **Definition of done**: read the diff, run the app, and confirm the behavior you asked for
   against your acceptance criteria. Tests the agent wrote can miss the same case its code missed.
 - **Match the check to the risk**: if the diff shows the whole effect, reading it and a type
