@@ -143,10 +143,14 @@ def frames(vid, dest_dir, net_id):
     """Frames from a Loom, by its id. The video goes to a temp file and is deleted."""
     r = requests.post(f"https://www.loom.com/api/campaigns/sessions/{vid}/transcoded-url",
                       json={}, timeout=30)
-    if not r.ok or "url" not in r.json():
+    try:
+        url = r.json().get("url") if r.ok else None
+    except ValueError:  # Loom sometimes answers with an HTML page (rate limit, removed video)
+        url = None
+    if not url:
         return None
     with tempfile.NamedTemporaryFile(suffix=".mp4") as mp4:
-        mp4.write(requests.get(r.json()["url"], timeout=300).content)
+        mp4.write(requests.get(url, timeout=300).content)
         mp4.flush()
         return grab_frames(mp4.name, dest_dir, net_id)
 
