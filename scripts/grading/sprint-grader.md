@@ -281,6 +281,10 @@ For the demo, describe what the student did and what was on screen at which time
 the Loom home page and stay there, so the study guide never appears", "At 0:40 you click through
 to the live page and the count goes up."
 
+**No figures of speech.** Say what happened in literal terms: "most commits came on Oct 10",
+never "the work was bunched"; "the plan says it is deployed", never "it shows it landing". If a
+literal phrase says the same thing, use it.
+
 Everything below goes to the student, inside a feedback page that `sprint_feedback.py` builds
 around it with their name and scores. Write to the student as "you". Facts, no praise, no
 em dashes, no mention of lateness or of the setup items.
