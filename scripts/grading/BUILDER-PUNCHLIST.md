@@ -35,7 +35,7 @@ Status: [ ] open, [~] in progress, [x] done, [?] needs Scott.
 - [x] Ch 2: three routes beyond the repo, connectors, plugins, permission modes, commands to know, Remote Control, voice, messaging
 
 ## 5. Final exam (blueprint = concept lists)
-- [?] Change the writing-guide rule "do not repeat the same tested concept between midterm and final" to "never repeat a question; a concept may return in a new situation"
+- [x] Writing-guide rule changed: never repeat a question; a concept may return in a new situation (Scott, 2026-10-14)
 - [ ] Map all final items (seated and spare) to concepts, every axis
 - [ ] At least one seated final question per concept
 - [ ] Write questions for uncovered concepts; cut or reassign items that map to no concept
