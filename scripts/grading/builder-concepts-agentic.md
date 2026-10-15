@@ -4,10 +4,11 @@ The named concepts under the Agentic Workflow items in `builder-inventory.md`. P
 
 Each concept has up to four checks, each counted once:
 
-- **Know it**: says what it is and when to use it. Evidence: final exam questions on the concept
-  (and `/learn` checks). Self-rated in the survey until the exam.
+- **Know it**: says what it is and applies it on paper. Evidence: final exam questions on the concept,
+  all three types (know it, use it, predict it), and `/learn` checks. Self-rated in the survey until
+  the exam. (The exam's "use it" questions are scenarios on paper; the profile's "Used it" is real work.)
 - **Used it**: used it in their own work. Evidence: the `/sprint-review` session scan, or the repo.
-- **Made it**: built one. Evidence: a file they wrote, committed in a shared repo.
+- **Built it**: built their own. Evidence: a file they wrote, committed in a shared repo.
 - **Shipped it**: made it for real users and chose it on purpose (the inventory's level 5 rules).
 
 A blank cell means the check does not apply to that concept. Evidence rules from
@@ -15,7 +16,7 @@ A blank cell means the check does not apply to that concept. Evidence rules from
 
 ## W1 Directing coding agents
 
-| Concept | Used it | Made it | Shipped it | Chapter |
+| Concept | Used it | Built it | Shipped it | Chapter |
 |---|---|---|---|---|
 | **AW01 The agent loop and the harness.** A model in a loop with tools: it gathers context, acts, and checks. The model writes; the harness carries out the actions. | n/a | n/a | n/a | Ch 1: What Makes an Agent an Agent |
 | **AW02 Command line and packages.** Running commands, files and folders, package managers. | commands run in sessions | n/a | n/a | Ch 1: The Command Line |
@@ -27,7 +28,7 @@ A blank cell means the check does not apply to that concept. Evidence rules from
 
 ## W2 Agent tooling
 
-| Concept | Used it | Made it | Shipped it | Chapter |
+| Concept | Used it | Built it | Shipped it | Chapter |
 |---|---|---|---|---|
 | **AW08 Slash commands.** Commands run by name inside a session; text after the command is its argument. Must know by name: /context, /compact, /clear, /rewind, /resume, /rename, /list-agents (/peers), /btw, /exit, /remote-control (/rc), /voice, /init, /memory, /config, /model, /effort, /status, /usage, /add-dir, /plan, /permissions, /hooks, /sandbox, /skills, /mcp, /plugin, /diff, /help. | slash commands used in sessions (the scan lists them) | wrote a custom command or skill run by name | n/a | Ch 2: Claude Code: Slash Commands |
 | **AW09 Skills.** A saved procedure the agent runs by name, shared in the repo or kept personal. | a skill invoked in sessions | wrote .claude/skills/<own>/SKILL.md | others use it (a classmate, a team, users) | Ch 2: Claude Code: Skills |
@@ -40,7 +41,7 @@ A blank cell means the check does not apply to that concept. Evidence rules from
 
 ## W3 Checking agent output
 
-| Concept | Used it | Made it | Shipped it | Chapter |
+| Concept | Used it | Built it | Shipped it | Chapter |
 |---|---|---|---|---|
 | **AW15 Permission modes.** Manual, Accept edits, Plan, Auto (a second model reviews each action), Don't ask (pre-approved tools only, for scripts), and Bypass permissions (--dangerously-skip-permissions: no prompts and no safety checks, for containers only). What each lets run without asking, and when to use it. | the modes used in sessions (the scan counts turns in each) | n/a | n/a | Ch 2: The controls, from tightest to loosest |
 | **AW27 Permission rules.** Allow, ask and deny rules in a settings file: ask and deny hold in every mode, including auto and bypass; a boundary said only in chat does not. | a rule prompted or blocked in sessions | committed allow, ask or deny rules | n/a | Ch 2: Rules; The controls, from tightest to loosest |
@@ -49,7 +50,7 @@ A blank cell means the check does not apply to that concept. Evidence rules from
 
 ## W4 Prompts in the product
 
-| Concept | Used it | Made it | Shipped it | Chapter |
+| Concept | Used it | Built it | Shipped it | Chapter |
 |---|---|---|---|---|
 | **AW18 Prompts as product code.** Prompts in the product are versioned, tested and changed with reasons; examples for boundary cases. | n/a | a prompt file in the repo that the product uses | real users use the feature; versions kept with reasons | Ch 11: Prompts Are Product Code |
 | **AW19 Structured output.** Asking the model for output in a fixed shape the code can rely on. | n/a | a schema the product enforces on model output | real users use the feature | Ch 11: Getting Structured Output |
@@ -59,13 +60,13 @@ A blank cell means the check does not apply to that concept. Evidence rules from
 
 ## W5 Tool use and agent loops in the product
 
-| Concept | Used it | Made it | Shipped it | Chapter |
+| Concept | Used it | Built it | Shipped it | Chapter |
 |---|---|---|---|---|
 | **AW23 Tool calling and agent loops in the product.** The model chooses the next step or calls a tool; stopping rules and a point where a person decides. | n/a | a loop or tool call in the product, with a stopping rule | real users rely on it; limits written down | Ch 11: Tools and Agent Loops |
 
 ## W6 Evals and accuracy checks
 
-| Concept | Used it | Made it | Shipped it | Chapter |
+| Concept | Used it | Built it | Shipped it | Chapter |
 |---|---|---|---|---|
 | **AW24 Evals.** A set of cases with known answers, a baseline, noise, and graders (code for exact answers, a model as judge). | evals run, results saved | an eval set or scorer in the repo | a product decision made from saved results | Ch 11: Evals: Knowing Whether It Works |
 | **AW25 Choosing a model by measurement.** Picking a model by running the same cases on each, not by reputation. | n/a | a recorded comparison of models on the product's own cases | the product runs the chosen model for real users | Ch 11: one paragraph |

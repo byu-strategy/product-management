@@ -1,7 +1,7 @@
 # Builder system punch list (started 2026-10-14)
 
 One linked system: the concept list is the spine; the book teaches each concept, the final exam
-checks Know it, `/sprint-review` shows Used it, packets show Made it and Shipped it, tree rings
+checks Know it, `/sprint-review` shows Used it, packets show Built it and Shipped it, tree rings
 show growth, the baseline survey sets the center. A change to one updates the others.
 
 Status: [ ] open, [~] in progress, [x] done, [?] needs Scott.
@@ -24,7 +24,7 @@ Status: [ ] open, [~] in progress, [x] done, [?] needs Scott.
 ## 3. Evidence paths
 - [x] Agentic Workflow Used it: `/sprint-review` scan (skills, hooks, subagents, MCP, CLI, API calls, plugins, messages, modes, memory)
 - [x] Packets: written work first, commit order, authors, full messages, .docx
-- [ ] Each other axis: a packet or scan signal for every Used and Made check, or the check is marked not observable
+- [ ] Each other axis: a packet or scan signal for every Used and Built check, or the check is marked not observable
 - [ ] `/sprint-review` "Users this sprint" table (dated record for real users)
 
 ## 4. Book gaps
@@ -42,12 +42,12 @@ Status: [ ] open, [~] in progress, [x] done, [?] needs Scott.
 - [x] Agentic Workflow spares written: routes, connectors, plugins, slash commands (two matching sets), modes, remote control, voice, messaging
 
 ## 6. Growth and the dossier
-- [ ] Growth code on concept checks (Know, Used, Made, Shipped); each ring attributed to concepts
+- [ ] Growth code on concept checks (Know, Used, Built, Shipped); each ring attributed to concepts
 - [ ] Dossier: "How you grew" and the appendix show the concept list and the student's checks
 - [ ] Old survey answers mapped to concepts as a provisional center
 
 ## 7. Baseline survey
-- [ ] New survey from the concept lists: one grid per axis, Know / Used / Made boxes
+- [ ] New survey from the concept lists: one grid per axis, Know / Used / Built boxes
 - [ ] Parser and charts (`baseline_profiles.py`) read it
 
 ## Alongside

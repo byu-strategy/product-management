@@ -16,10 +16,11 @@ HERE = Path(__file__).resolve().parent
 EXAM = Path.home() / "Library/CloudStorage/OneDrive-BrighamYoungUniversity/3. Teaching/_materials/product-management/builder-exam"
 CHECKS = """Each concept has up to four checks, each counted once:
 
-- **Know it**: says what it is and when to use it. Evidence: final exam questions on the concept
-  (and `/learn` checks). Self-rated in the survey until the exam.
+- **Know it**: says what it is and applies it on paper. Evidence: final exam questions on the concept,
+  all three types (know it, use it, predict it), and `/learn` checks. Self-rated in the survey until
+  the exam. (The exam's "use it" questions are scenarios on paper; the profile's "Used it" is real work.)
 - **Used it**: used it in their own work. Evidence: the `/sprint-review` session scan, or the repo.
-- **Made it**: built one. Evidence: a file they wrote, committed in a shared repo.
+- **Built it**: built their own. Evidence: a file they wrote, committed in a shared repo.
 - **Shipped it**: made it for real users and chose it on purpose (the inventory's level 5 rules).
 
 A blank cell means the check does not apply to that concept. Evidence rules from
@@ -42,7 +43,7 @@ def build(key, items):
              f"The named concepts under the {d['axis']} items in `builder-inventory.md`. {d.get('intro', '')}".strip(), "",
              CHECKS, ""]
     for code, name in d["items"].items():
-        lines += [f"## {code} {name}", "", "| Concept | Used it | Made it | Shipped it | Chapter |", "|---|---|---|---|---|"]
+        lines += [f"## {code} {name}", "", "| Concept | Used it | Built it | Shipped it | Chapter |", "|---|---|---|---|---|"]
         for c in [c for c in C if c["item"] == code]:
             lines.append(f"| **{c['id']} {c['name']}.** {c['what']} | {c['used'] or 'n/a'} | {c['made'] or 'n/a'} | "
                          f"{c['shipped'] or 'n/a'} | {c['chapter']} |")
@@ -84,12 +85,12 @@ td{{border-bottom:1px solid #f0f1f4;padding:8px;vertical-align:top}}tr.grp td{{b
 .q.midterm{{background:#f3f4f6;color:#4a5262}}.q.retired{{text-decoration:line-through;opacity:.6}}.q.spare{{opacity:.8;border:1px dashed #9aa3b5}}.q.missing{{background:#fde8e8;color:#9b1c1c}}
 .key{{font-size:12.5px;color:#6b7385;margin:6px 0 14px}}td.k{{width:190px}}ul{{margin:4px 0 0 18px;padding:0}}</style>
 <h1>{e(d['axis'])}: concepts, checks, and the exam</h1>
-<p class=sub>Generated from concepts/{key}.json. Know it (the final exam), Used it (the session scan or the repo), Made it (a committed file), Shipped it (for real users, chosen on purpose). Hover a question id for its topic.</p>
+<p class=sub>Generated from concepts/{key}.json. Know it (the final exam), Used it (the session scan or the repo), Built it (a committed file), Shipped it (for real users, chosen on purpose). Hover a question id for its topic.</p>
 <div class=cards><div class=card><b>{len(C)}</b>concepts under {len(d['items'])} items</div><div class=card><b>{checks}</b>checks in all</div>
 <div class=card><b>{len(noq)}</b>concepts with no exam question</div><div class=card><b>{len(nofinal)}</b>with questions, none seated on the final</div>
 <div class=card><b>{len(unmapped)}</b>final questions on this axis mapped to no concept</div></div>
 <p class=key><span class="q final seated">final, seated</span> <span class="q final spare">spare</span> <span class="q midterm seated">midterm</span> <span class="q final retired">retired</span></p>
-<table><tr><th>Concept</th><th>Know it (exam questions)</th><th>Used it</th><th>Made it</th><th>Shipped it</th><th>Chapter</th></tr>{rows}</table>
+<table><tr><th>Concept</th><th>Know it (exam questions)</th><th>Used it</th><th>Built it</th><th>Shipped it</th><th>Chapter</th></tr>{rows}</table>
 <h3>Gaps</h3><ul><li><b>No question at all:</b> {e(", ".join(noq)) or "none"}</li>
 <li><b>Questions exist, none seated on the final:</b> {e(", ".join(nofinal)) or "none"}</li>
 <li><b>Final questions on this axis that map to no concept:</b> {" ".join(q(i) for i in unmapped) or "none"}</li>
