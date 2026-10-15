@@ -8,12 +8,8 @@ Status: [ ] open, [~] in progress, [x] done, [?] needs Scott.
 
 ## 1. Concept lists (the spine)
 - [x] Agentic Workflow: `builder-concepts-agentic.md` (27 concepts, 72 checks)
-- [~] Application Architecture
-- [~] AI Systems
-- [~] Discovery
-- [~] Design
-- [~] Launch and Learn
-- [ ] One generator for all six: concept list in the repo, coverage page (with exam mapping) in `_materials/builder-exam/`
+- [x] Application Architecture, AI Systems, Discovery, Design, Launch and Learn (175 concepts in all; every bank question mapped)
+- [x] One generator for all six: concept list in the repo, coverage page (with exam mapping) in `_materials/builder-exam/`
 - [ ] Inventory points to the concept lists; the 37 items become headings
 - [?] Scott reviews all six lists
 
@@ -31,10 +27,12 @@ Status: [ ] open, [~] in progress, [x] done, [?] needs Scott.
 - [?] "Script or model" section (Ch 2) and counterpart (Ch 11): waiting on the rest of Scott's note
 - [ ] Choosing a model or technique (S6 has one paragraph)
 - [ ] Ch 11's prompts, tool use and evals sit in the AI Systems part; Agentic Workflow by definition
-- [ ] Gaps found by each axis's concept list
+- [ ] Gaps found by each axis's concept list (listed at the end of each `builder-concepts-<axis>.md`; most common: how to write a decision record)
 - [x] Ch 2: three routes beyond the repo, connectors, plugins, permission modes, commands to know, Remote Control, voice, messaging
 
 ## 5. Final exam (blueprint = concept lists)
+- [?] Blueprint v2 drafted: `_materials/builder-exam/BLUEPRINT.md` (72 scored + 12 trial, 2 hours, weights unchanged, bank of 2 questions per concept, 3 for class 1-6 concepts)
+- [ ] Form assembly script: checks counts, type split, one question per concept per form
 - [x] Writing-guide rule changed: never repeat a question; a concept may return in a new situation (Scott, 2026-10-14)
 - [ ] Map all final items (seated and spare) to concepts, every axis
 - [ ] At least one seated final question per concept
