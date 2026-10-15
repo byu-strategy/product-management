@@ -52,6 +52,7 @@ def _student(base, r, p, row, sprint, cats, final):
         "next_sprint": r.get("next_sprint"),
         "scott_note": row.get("scott_note", ""),
         "pdf": f"feedback/{r['net_id']}.pdf",
+        "report": f"feedback/{r['net_id']}-scott.html", "student_report": f"feedback/{r['net_id']}.html",
         "comment": comment_text(row, sprint),
         "checks": r.get("demo_checks") or {},
         "difficulty": r.get("difficulty") or {},
@@ -69,6 +70,8 @@ def _student(base, r, p, row, sprint, cats, final):
             if (f.get("readme_where_to_see_it") or "").startswith("http") else None,
             {"label": "SpeedGrader", "href": f"{CANVAS}/courses/{COURSE_ID}/gradebook/speed_grader"
                                               f"?assignment_id={review_id}&student_id={p.get('canvas_user_id')}"},
+            {"label": "Report (your copy)", "href": f"feedback/{r['net_id']}-scott.html"},
+            {"label": "Student copy", "href": f"feedback/{r['net_id']}.html"},
             {"label": "Student PDF", "href": f"feedback/{r['net_id']}.pdf"},
         ] if x],
         "other_links": [l for l in (p.get("canvas") or {}).get("links", []) if "loom.com" not in l],
@@ -200,9 +203,10 @@ function show(i){cur=i;const s=S[i];history.replaceState(null,'','#'+s.id);
   <div class=cap><span class=t>${esc(f.at)}</span>${esc(f.note)}</div></figure>`).join('')}</div>`:'<p class=sub>No Loom frames. '+(s.other_links.length?'Other links submitted: '+s.other_links.map(l=>`<a href="${esc(l)}" target=_blank>${esc(l)}</a>`).join(', '):'No video submitted.')+'</p>';
  const checks=Object.keys(s.checks).length?`<dl class=checks>${Object.entries(s.checks).map(([k,v])=>`<dt>${esc(k.replace('_',' '))}</dt><dd>${esc(v)}</dd>`).join('')}</dl>`:'';
  const late=s.late_days?`<h4>Late work</h4><p>Submitted ${s.late_days} day(s) late; Canvas deducts ${Math.min(100,10*s.late_days)}%.</p>`:'';
- const paper=`<p class=sub>Canvas comment: <q>${esc(s.comment)}</q>, with this PDF attached.
-  <a href="${esc(s.pdf)}" target=_blank>Open the PDF in its own tab</a>.</p>
-  <iframe class=pdf src="${esc(s.pdf)}#view=FitH" title="Feedback PDF for ${esc(s.name)}"></iframe>`;
+ const paper=`<p class=sub>Canvas comment: <q>${esc(s.comment)}</q>, with <a href="${esc(s.pdf)}" target=_blank>the PDF</a> attached.
+  Below is your copy of the report (the yellow drawer is not in <a href="${esc(s.student_report)}" target=_blank>the student copy</a>).
+  <a href="${esc(s.report)}" target=_blank>Open it in its own tab</a>.</p>
+  <iframe class=pdf src="${esc(s.report)}" title="Sprint report for ${esc(s.name)}"></iframe>`;
  const d=s.difficulty,diff=d.assessed?`<section><h3>Difficulty</h3><div class=diffrow>
   <div><b>${d.predicted??'–'}</b><span>predicted</span></div><div><b>${d.student_actual??'–'}</b><span>their actual</span></div>
   <div><b style="color:var(--acc)">${d.assessed}</b><span>assessed</span></div><div><b>${d.baseline_on_axis??'–'}</b><span>baseline, ${esc(d.axis||'')}</span></div></div>
@@ -229,7 +233,7 @@ function show(i){cur=i;const s=S[i];history.replaceState(null,'','#'+s.id);
   ${s.artifacts.length?`<section><h3>Images from the work</h3><div class=frames>${s.artifacts.map(a=>`<figure class=frame><img loading=lazy src="${esc(a.src)}" data-cap="${esc(a.path)}" alt="${esc(a.path)}"><div class=cap>${esc(a.path)}</div></figure>`).join('')}</div></section>`:''}
   <section><h3>Demo, frame by frame</h3>${frames}</section>
   ${checks?`<section><h3>Demo checks</h3>${checks}</section>`:''}
-  <section><h3>The feedback PDF, exactly as it will be sent</h3>${paper}</section>
+  <section><h3>The report, as the student will read it</h3>${paper}</section>
   <section><h3>Evidence</h3>${ev||'<p class=sub>None.</p>'}</section>`;
  $('#dossier').scrollTop=0;
  document.querySelectorAll('.frame img').forEach(im=>im.onclick=()=>{$('#lb img').src=im.src;$('#lb div').textContent=im.dataset.cap;$('#lb').hidden=false});

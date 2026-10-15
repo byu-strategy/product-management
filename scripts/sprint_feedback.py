@@ -1,14 +1,19 @@
-"""Turn a sprint's grader results into Scott's review page, grades.csv, and a feedback page per student.
+"""Turn a sprint's grader results into Scott's review page, grades.csv, and a report per student.
 
 Run from the courses hub after the graders have written results:
 
-    python3 ~/courses/product-management/scripts/sprint_feedback.py --sprint 1
+    python3 ~/courses/product-management/scripts/sprint_feedback.py --sprint 2
 
 Reads   ~/hubs/courses/_data/product-management/grading/sprint-N/results/<net_id>.json
-        (one grader result each) and the packets beside them.
+        (one grader result each), the packets beside them, plans/plans.csv (the Plan score, Sprint 2
+        on), fairness.md, and the builder profile growth in concepts/growth-<net_id>.json when it
+        exists (builder_growth.py writes it; --growth-dir reads it from somewhere else).
 Writes  grading/sprint-N/review.html        every student, sortable, with evidence and frames
         grading/sprint-N/grades.csv         the gradebook /publish-grades reads
-        grading/sprint-N/feedback/<net_id>.html and .pdf   what the student receives
+        grading/sprint-N/feedback/<net_id>.html        the student's report (sprint_report.py)
+        grading/sprint-N/feedback/<net_id>-scott.html  the same report with the instructor drawer
+        grading/sprint-N/feedback/<net_id>.pdf         the student copy printed, drawers open;
+                                                       /publish-grades attaches it (--no-pdf skips)
 
 grades.csv is the one place to change a grade. Its override_* columns, `approved`, and
 `scott_note` are kept across reruns; everything else is rebuilt from the results. The final
@@ -170,8 +175,23 @@ def load(sprint):
     return base, out
 
 
-def validate(base, items):
+def growth_text(G):
+    """Every sentence in a growth file that the student reads."""
+    if not G:
+        return ""
+    out = []
+    for m in G.get("new") or []:
+        out += [m.get("did", ""), m.get("evidence", "")]
+    for d in G.get("depth") or []:
+        out.append(d.get("why", ""))
+    for x in G.get("not_counted") or []:
+        out += [x.get("what", ""), x.get("why", "")]
+    return " ".join(str(x) for x in out if x)
+
+
+def validate(base, items, growth=None):
     """Stop before building anything a student would read if a result is malformed."""
+    growth = growth or {}
     problems = []
     packets = {f.stem for f in base.glob("*.json")}
     for r, p in items:
@@ -186,11 +206,13 @@ def validate(base, items):
         text = " ".join([*(v for k, v in (r.get("feedback") or {}).items() if k in graded),
                          (r.get("difficulty") or {}).get("note") or "",
                          *((r.get("not_reviewed") or {}).get(k) or "" for k in ("summary", "detail")),
-                         r.get("next_sprint") or ""])
+                         r.get("next_sprint") or "",
+                         growth_text(growth.get(n))])
         import re as _re
         # Quoted text is the student's own words or their app's output, so it is not checked.
         plain_text = _re.sub(r"'[^']*'|\"[^\"]*\"|\u2018[^\u2019]*\u2019|\u201c[^\u201d]*\u201d", " ", text)
-        machine = _re.findall(r"\b(frames?|grader|artificial intelligence|it appears (?:that|to)|appears to be|the video shows)\b",
+        machine = _re.findall(r"\b(frames?|grader|artificial intelligence|it appears (?:that|to)|appears to be|the video shows|"
+                              r"session scan|coders?|packet)\b",
                               plain_text, _re.I)
         machine += _re.findall(r"(?<!Type )\bI\b(?!-)|\bI'(?:m|ve|d|ll)\b", plain_text)  # no first person
         # The baseline survey informs difficulty, but saying so invites students to underrate themselves.
@@ -242,272 +264,6 @@ def write_csv(base, items):
     return {r["net_id"]: r for r in rows}
 
 
-STUDENT_CSS = """
-body{font:15px/1.55 -apple-system,Segoe UI,Helvetica,Arial,sans-serif;color:#1d2330;max-width:720px;margin:32px auto;padding:0 20px}
-h1{font-size:22px;margin:0 0 4px}.sub{color:#5b6475;margin:0 0 24px}
-table{border-collapse:collapse;width:100%;margin:8px 0 24px}
-th,td{text-align:left;vertical-align:top;padding:10px 8px;border-bottom:1px solid #e3e6ec}
-th{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:#5b6475}
-td.pts{white-space:nowrap;font-weight:600;width:70px}
-.header-note{font-size:12px;line-height:1.5;color:#3d4452;background:#f3f4f7;border-radius:6px;padding:9px 12px;margin:0 0 18px}
-.header-note a{color:#2f5bd3}
-.disclaimer{margin-top:18px;padding-top:10px;border-top:1px solid #e3e6ec;font-size:12px;color:#5b6475}
-.appendix{page-break-before:always;break-before:page}
-.callout{border-left:3px solid #9a6700;background:#fbf6ea;padding:8px 12px;margin:10px 0 14px;border-radius:0 6px 6px 0}
-.callout p{margin:4px 0 0}.callout b{font-size:14px}
-.howto ol{padding-left:20px;margin:6px 0}
-table.turnin{font-size:12.5px;margin:4px 0 14px}table.turnin th,table.turnin td{padding:6px 6px;vertical-align:top}
-table.turnin td:last-child,table.turnin th:last-child{text-align:right}
-.todo{position:relative;padding-left:24px}.todo .box{position:absolute;left:0;top:4px;width:13px;height:13px;border:1.5px solid #5b6475;border-radius:3px}.howto li{margin-bottom:10px}
-.howto pre{font:12px/1.45 ui-monospace,SFMono-Regular,Menlo,monospace;background:#f3f4f7;padding:8px 10px;border-radius:6px;white-space:pre-wrap;margin:6px 0}
-.appendix .sub{margin-bottom:10px}
-table.src{font-size:13px}table.src td{padding:7px 8px}td.src{white-space:nowrap;font-weight:600;width:130px}
-code{font:12px ui-monospace,SFMono-Regular,Menlo,monospace;background:#f3f4f7;padding:0 3px;border-radius:3px;word-break:break-all}
-.hex{text-align:center;margin:4px 0 6px}.hex svg{max-width:100%;height:auto}
-h2{font-size:15px;margin:22px 0 6px}p{margin:0 0 10px}
-.total{font-size:28px;font-weight:700}
-"""
-
-
-def _when(iso):
-    return dt.datetime.fromisoformat(iso).strftime("%b %-d, %-I:%M %p") if iso else "unknown"
-
-
-def _mmss(s):
-    return f"{int(s) // 60}:{int(s) % 60:02d}" if s else None
-
-
-ASK_LINK = "https://slack.com/app_redirect?app=A0C2TDWPL4U&team=T097CK3UKB7"  # opens a DM with Course Monitor
-NEXT_SPRINT_TODO = """<section class=howto><h2>Before your next sprint</h2>
-<p class=todo><span class=box></span><b>Update your course skills.</b> <code>/sprint-plan</code> and
-<code>/sprint-review</code> were improved after Sprint 1 (among other things, <code>/sprint-review</code>
-now reads Codex sessions and summarizes work in your other repos). Your repo still has the old
-copies. Open Claude Code in your course repo folder and paste this:</p>
-<pre>Update my course skills from the class template. Download the latest .claude/skills/sprint-plan and .claude/skills/sprint-review folders from https://github.com/byu-strategy/builder-template (main branch) and replace mine with them. Do not change anything else. Then commit with the message "Refresh course skills" and push.</pre>
-<p class=todo><span class=box></span><b>If your plan changes mid-sprint, run <code>/sprint-plan</code> again.</b>
-It asks what is changing and why, updates the plan with a dated note, and commits it. Nothing to
-resubmit on Canvas: your plan link shows the current file.</p>
-<p class=todo><span class=box></span><b>On or before the Monday the sprint ends, by 11:59 PM, run <code>/sprint-review</code>.</b> It writes a
-report on your sprint, then asks you five short retro questions about it and saves your answers
-with the report in <code>sprints/sprint-N-review.md</code>. Commit and push the file, then submit
-its link and your Loom on Canvas.</p>
-<p class=todo><span class=box></span><b>Know what you turn in, and how:</b></p>
-<table class=turnin>
-<tr><th>Deliverable</th><th>Where it lives</th><th>How you turn it in</th><th>When</th><th>Points</th></tr>
-<tr><td><b>Plan</b></td><td><code>sprints/sprint-N-plan.md</code></td><td>Commit it, and paste its GitHub link into <b>Sprint N Plan</b> on Canvas. To change it later, run <code>/sprint-plan</code> again; no resubmitting</td><td>First Wednesday, 11:59 PM</td><td>10</td></tr>
-<tr><td><b>Output</b></td><td>What you finished, in any form: in your course repo, another repo, a link, or your demo</td><td>Nothing separate: list every place it lives under <b>Where the work lives</b> in your README</td><td>On or before the Monday the sprint ends, by 11:59 PM</td><td>20</td></tr>
-<tr><td><b>Review</b></td><td><code>sprints/sprint-N-review.md</code>: the <code>/sprint-review</code> report, with your retro at the bottom</td><td>Commit it, and paste its GitHub link into <b>Sprint N Wrap-up</b> on Canvas</td><td>On or before the Monday the sprint ends, by 11:59 PM</td><td>10</td></tr>
-<tr><td><b>Demo</b></td><td>Loom, 60 to 90 seconds</td><td>Paste the Loom share link into <b>Sprint N Wrap-up</b> on Canvas</td><td>On or before the Monday the sprint ends, by 11:59 PM</td><td>10</td></tr>
-</table>
-<p class=todo><span class=box></span><b>List where your work lives,</b> if any of it is outside your
-course repo. Steps below.</p></section>"""
-
-
-WHERE_WORK_LIVES = """<section class=howto><h2>If your work lives outside your course repo</h2>
-<p>Only what is in your course repo, or listed there, can count toward your sprint. If any of your
-work happens somewhere else (a company or team repo, a second project, a live app, a Google Doc,
-a Figma file, a deck), do these three things before your next sprint review.</p>
-<ol>
-<li><b>List it in your course repo's README.</b> Open <code>README.md</code> in your course repo and
-add this section below Context (replace the brackets, one line per place):
-<pre>## Where the work lives
-
-- **Repos:** [owner/repo-name], [shared with sdmurff, or not shared]
-- **Live:** [the URL of the app, page, store listing, or file]
-- **Docs:** [links to Google Docs, Figma files, decks]</pre>
-Then commit and push it:
-<pre>git add README.md &amp;&amp; git commit -m "List where the work lives" &amp;&amp; git push</pre></li>
-<li><b>Share each repo with Professor Murff if you can.</b> On GitHub, open the repo, then
-Settings, Collaborators, Add people, and enter <code>sdmurff</code>. Or run
-<code>gh api -X PUT repos/OWNER/REPO/collaborators/sdmurff</code> with the repo's owner and name.
-If the repo belongs to a company or an organization you do not administer, you do not have to
-share it: list it anyway, and <code>/sprint-review</code> will summarize its commits (dates and
-messages, never code).</li>
-<li><b>Make every link open.</b> Set Google Docs, Figma files, and decks to "Anyone with the link can
-view", or share them with <code>aifoundry.byu@gmail.com</code>. If you set "Anyone
-with the link", open each link in a private browser window to check it before you submit.</li>
-</ol></section>"""
-
-
-def appendix(p, sprint, reviewed_on, not_reviewed=None):
-    """What the feedback was based on, built from the packet itself: an exact record of what was
-    read, not anyone's summary of it. No sampling schedule, no internals."""
-    f = p.get("facts", {})
-    rows = []
-    unreadable = "Could not be read: your course repo was not shared with Professor Murff."
-    c = p.get("canvas") or {}
-    links = c.get("links") or []
-    if c.get("submitted_at"):
-        kinds = []
-        for l in links:
-            kinds.append("your Loom" if "loom.com" in l else "your repo" if "github.com" in l else
-                         "a video" if l in (f.get("non_loom_video") or []) else l)
-        rows.append(("Canvas submission", f"Submitted {_when(c['submitted_at'])}."
-                     + (f" Links: {', '.join(dict.fromkeys(kinds))}." if kinds else " No links.")))
-    else:
-        rows.append(("Canvas submission", "No submission found."))
-
-    plan = p.get("plan") or {}
-    ps = p.get("plan_submission") or {}
-    path = f"sprints/sprint-{sprint}-plan.md"
-    if sprint >= 2 and str(ps.get("source", "")).startswith("Canvas"):
-        rows.append(("Sprint plan", (f"Submitted on Canvas {_when(ps['submitted_at'])}. " if ps.get("submitted_at")
-                                     else "No plan submitted on Canvas. ")
-                     + (f"<code>{path}</code> in your repo, as it stood at the end, was also read." if plan.get("now") else "")))
-    elif plan.get("first_commit"):
-        n = plan.get("commits") or 1
-        rows.append(("Sprint plan", f"<code>{path}</code>: first committed {_when(plan['first_commit'])}"
-                     + (f", then revised ({n} commits). The first and final versions were both read." if n > 1
-                        else ". Read in full.")
-                     + (" Your retro (the reflection at the end of this file) was read too." if f.get("retro_filled") else "")))
-    else:
-        rows.append(("Sprint plan", "No plan found in your repo." if p.get("repo") else unreadable))
-
-    rv = p.get("review") or {}
-    rows.append(("Review", f"<code>sprints/sprint-{sprint}-review.md</code>, committed {_when(rv['first_commit'])}. Read in full"
-                 + (", including your retro at the bottom." if f.get("retro_location") == "review file" else ".")
-                 if rv.get("first_commit") else "No sprint review found in your repo." if p.get("repo") else unreadable))
-
-    repo = (p.get("repo") or "").replace("https://github.com/", "")
-    if repo:
-        cm = p.get("commits") or []
-        d0, d1 = ((dt.datetime.fromisoformat(cm[0]["when"]).strftime("%b %-d"),
-                   dt.datetime.fromisoformat(cm[-1]["when"]).strftime("%b %-d")) if cm else (None, None))
-        span = "" if not cm else f" on {d0}" if d0 == d1 else f" between {d0} and {d1}"
-        files = []
-        for x in p.get("shipped_files") or []:
-            note = ""
-            if x.get("image"):
-                note = " (viewed)"
-            elif x.get("text"):
-                pages = re.match(r"\[(\d+) pages\]", x["text"])
-                note = (f" ({pages.group(1)} pages)" if pages else "") + \
-                       (" (the first part)" if x["text"].endswith("[... truncated]") else "")
-            else:
-                note = " (listed)"
-            files.append(f"<code>{e(x['path'])}</code>{note}")
-        shown = files[:12] + ([f"and {len(files) - 12} more"] if len(files) > 12 else [])
-        rows.append(("Course repo", f"<code>{e(repo)}</code>: {len(cm)} commit{'s' * (len(cm) != 1)}{span}. "
-                     + (f"{len(files)} file{'s' * (len(files) != 1)} added or changed: " + ", ".join(shown) + "."
-                        if files else "No files added or changed besides the sprint files.")))
-    else:
-        rows.append(("Course repo", "No course repo was found shared with Professor Murff, so it could not be read."))
-
-    others = p.get("other_repos") or []
-    unshared = f.get("repos_named_but_not_shared") or []
-    if others or unshared:
-        parts = [f"<code>{e(o['repo'].replace('https://github.com/', ''))}</code>: {len(o.get('commits', []))} commits read"
-                 for o in others]
-        parts += [f"<code>{e(u)}</code>: listed but not shared, so not read" for u in unshared]
-        rows.append(("Other repos", "; ".join(parts) + "."))
-
-    dfiles = p.get("drive_files") or []
-    if dfiles:
-        rows.append(("Google files", "; ".join(
-            (f"{e(d.get('title') or d['url'])}: reviewed" + (" (the first part)" if d["text"].endswith("[... truncated]") else "")
-             if d["ok"] else f"{e(d['url'])}: not viewable by link or shared with aifoundry.byu@gmail.com, so not reviewed")
-            for d in dfiles) + "."))
-
-    checks = p.get("link_checks") or []
-    if checks:
-        rows.append(("Links", "; ".join(f"{e(l['url'])}: {'opened' if l.get('status') == 200 else 'did not open'}"
-                                         for l in checks) + "."))
-
-    v = p.get("loom") or {}
-    length = _mmss(v.get("seconds"))
-    host = "Loom" if not v.get("host") else "Video"
-    if v.get("frames") or v.get("transcript"):
-        seen = ("What you said and what was on screen." if v.get("transcript") and v.get("frames")
-                else "What was on screen." if v.get("frames") else "What you said.")
-        rows.append(("Demo", f"{host}{', ' + length if length else ''}. {seen}"))
-    elif v:
-        rows.append(("Demo", f"{host} link submitted, but the video could not be opened."))
-    else:
-        rows.append(("Demo", "No demo video submitted."))
-
-
-    trs = "".join(f"<tr><td class=src>{k}</td><td>{val}</td></tr>" for k, val in rows)
-    nr = (not_reviewed or {}).get("detail")
-    nr_block = f"<div class=callout><b>What couldn't be reviewed</b><p>{e(nr)}</p></div>" if nr else ""
-    return f"""<section class=appendix><h2>Appendix: what this feedback is based on</h2>
-<p class=sub>Reviewed {reviewed_on}. Everything below was reviewed; nothing else was.</p>
-<table class=src>{trs}</table>
-{nr_block}
-<p><b>How <code>/sprint-review</code> works.</b> It runs on your own computer at the end of the sprint.
-It lists the Claude Code and Codex projects you worked in during the sprint, asks which ones
-belonged to it, and reads only those, along with your commits. It then writes a report of when
-you worked, where you got stuck and how you got unstuck, what took the most time, which axis the
-work advanced, and how the work compared to your plan. Nothing leaves your computer except that
-report, and only when you commit it. The report is the main evidence for the Review score
-and for where your effort went.</p>
-<p><b>Not seen:</b> your Claude Code and Codex sessions (they stay on your computer; only your
-<code>/sprint-review</code> report was read), anything not committed or linked, and any repo you did not share.</p>
-</section>"""
-
-
-def student_page(r, p, row, sprint, points):
-    nr_sum = (r.get("not_reviewed") or {}).get("summary")
-    pk = DATA / f"grading/sprint-{sprint}/{r['net_id']}.json"
-    reviewed_on = dt.datetime.fromtimestamp(pk.stat().st_mtime).strftime("%b %-d, %Y") if pk.exists() else ""
-    total = sum(final(row, c) for c, _, _ in CATS)
-    trs = "".join(
-        f"<tr><td>{label}</td><td class=pts>{fmt(final(row, c))}/{mx}</td>"
-        f"<td>{e(r['feedback'][c])}</td></tr>" for c, label, mx in CATS)
-    extra = ""
-    shares = r.get("axes") or {}
-    if shares:
-        profile = p.get("baseline")
-        note = (" The line is your builder profile from the September baseline survey, your own 1 to 5 "
-                "rating on each axis.") if profile else ""
-        extra = (f"<h2>Where this sprint landed</h2><div class=hex>{hexagon(shares, profile)}</div>"
-                 f"<p>{e(focus_caption(shares))}{e(note)}</p>") + extra
-    if (r.get("difficulty") or {}).get("note"):
-        extra += f"<h2>How hard it was</h2><p>{e(r['difficulty']['note'])}</p>"
-    if r.get("next_sprint"):
-        extra += f"<h2>Something to consider for next sprint</h2><p>{e(r['next_sprint'])}</p>"
-    days = p.get("facts", {}).get("canvas_days_late", 0)
-    if days:
-        pct = min(100, 10 * days)
-        extra = (f"<h2>Late work</h2><p>You submitted this {days} day{'s' * (days > 1)} late. Under the "
-                 f"late work policy Canvas takes {pct}% off the score above, so your Canvas grade is "
-                 f"{fmt(round(total * (1 - pct / 100), 1))} / {points}.</p>") + extra
-    f = p.get("facts", {})
-    if sprint == 1 and not f.get("demo_is_loom") and f.get("non_loom_video"):
-        extra += ("<h2>Use Loom from Sprint 2 on</h2><p>Your demo was not on Loom. That cost nothing "
-                  "in Sprint 1. From Sprint 2 on, the demo has to be a Loom share "
-                  "link, and a demo anywhere else, or none, scores 0.</p>")
-    if sprint == 1 and p.get("repo"):
-        open_items = []
-        if f.get("readme_context_filled") is False:
-            open_items.append("fill in the context declaration in your README (your role, what you "
-                              "are working on, who it is for, and who uses your work)")
-        if open_items:
-            extra += ("<h2>Sprint 1 setup, still open</h2><p>Please " + " and ".join(open_items) +
-                      " before Sprint 2 is due. No points were taken off for this.</p>")
-    note = row.get("scott_note", "").strip()
-    if note:
-        extra += f"<h2>From Professor Murff</h2><p>{e(note)}</p>"
-    return f"""<!doctype html><html><head><meta charset=utf-8><title>Sprint {sprint} feedback</title>
-<style>{STUDENT_CSS}</style></head><body>
-<div class=header-note>This sprint feedback was generated with the assistance of Claude Code by reviewing
-everything you turned in. If you have a question about it, or believe something is incorrect or
-does not accurately represent your work, send a direct message to
-<a href="{ASK_LINK}">the Course Monitor app in the course Slack</a> saying what you think was missed.
-If the link does not open it, open Slack, search for <b>Course Monitor</b> (it is listed under
-Apps), and send it a message from its Messages tab. Please do not @mention it in the class channel,
-where everyone can see your question. Professor Murff reviews every message sent there. <b>Send grading questions only to Course
-Monitor:</b> questions sent by email or anywhere else may be missed.</div>
-<h1>Sprint {sprint} feedback, {e(p.get('preferred_first') or p.get('name', ''))}</h1>
-<p class=sub>MSB 341 Product Management</p>
-<p class=total>{fmt(total)} / {points}</p>
-{f'<div class=callout><p>{e(nr_sum)}</p></div>' if nr_sum else ''}
-<table><tr><th>Category</th><th>Score</th><th>What it was based on</th></tr>{trs}</table>
-{extra}
-{NEXT_SPRINT_TODO}
-{WHERE_WORK_LIVES}
-{appendix(p, sprint, reviewed_on, r.get("not_reviewed"))}</body></html>"""
-
-
 def review_page(base, items, rows, sprint, points):
     """Scott's grading dossier: every student, their scores, and the evidence behind them."""
     from sprint_dossier import render
@@ -515,10 +271,41 @@ def review_page(base, items, rows, sprint, points):
     (base / "review.html").chmod(0o600)
 
 
+def load_growth(sprint, net_ids, growth_dir=None):
+    """Builder profile growth per student, or nothing when builder_growth.py has not run for them."""
+    d = Path(growth_dir) if growth_dir else DATA / f"grading/sprint-{sprint}/concepts"
+    out = {}
+    for n in net_ids:
+        f = d / f"growth-{n}.json"
+        if f.exists():
+            G = json.loads(f.read_text())
+            if "rings" in G and "new" in G:  # the 0-to-100 shape; an older pilot file is ignored
+                out[n] = G
+    return out
+
+
+def side_inputs(base):
+    """The Plan scores, each student's course-skill status, and the fairness findings."""
+    plans = base / "plans/plans.csv"
+    plans = {r["net_id"]: r for r in csv.DictReader(open(plans))} if plans.exists() else {}
+    roster = DATA / "github-roster.csv"
+    skills = ({r["net_id"]: r.get("sprint_plan_skill", "") for r in csv.DictReader(open(roster))}
+              if roster.exists() else {})
+    fair = base / "fairness.md"
+    fairness = {}
+    if fair.exists():
+        for line in fair.read_text().splitlines():
+            m = re.match(r"- (\w+) \| (.*)", line)
+            if m:
+                fairness.setdefault(m.group(1), []).append(m.group(2))
+    return plans, skills, fairness
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--sprint", type=int, required=True)
-    ap.add_argument("--no-pdf", action="store_true")
+    ap.add_argument("--no-pdf", action="store_true", help="skip the PDFs /publish-grades attaches")
+    ap.add_argument("--growth-dir", help="read growth-<net_id>.json from here instead of sprint-N/concepts")
     a = ap.parse_args()
     global CATS
     CATS = categories(a.sprint)
@@ -526,14 +313,22 @@ def main():
     if not items:
         sys.exit(f"no results in {base / 'results'}")
     points = review_points(a.sprint)
-    validate(base, items)
+    growth = load_growth(a.sprint, [r["net_id"] for r, _ in items], a.growth_dir)
+    validate(base, items, growth)
     rows = write_csv(base, items)
+    plans, skills, fairness = side_inputs(base)
+    from sprint_report import render
     fb = base / "feedback"
     fb.mkdir(exist_ok=True)
     for r, p in items:
-        page = fb / f"{r['net_id']}.html"
-        page.write_text(student_page(r, p, rows[r["net_id"]], a.sprint, points))
-        page.chmod(0o600)
+        n = r["net_id"]
+        kw = dict(plan_row=plans.get(n), growth=growth.get(n), skills_status=skills.get(n, ""))
+        page = fb / f"{n}.html"
+        page.write_text(render(r, p, rows[n], a.sprint, CATS, final, **kw))
+        mine = fb / f"{n}-scott.html"
+        mine.write_text(render(r, p, rows[n], a.sprint, CATS, final, scott=True, fairness=fairness.get(n, []), **kw))
+        for x in (page, mine):
+            x.chmod(0o600)
         if not a.no_pdf:
             pdf = page.with_suffix(".pdf")
             subprocess.run(["weasyprint", "-q", str(page), str(pdf)], check=True)
@@ -541,8 +336,9 @@ def main():
     review_page(base, items, rows, a.sprint, points)
     low = sum(1 for r, _ in items if r.get("confidence") == "low")
     watch = sum(1 for r, _ in items if r.get("watch_loom"))
-    print(f"{len(items)} graded, {low} low confidence, {watch} Looms to watch")
-    print(f"  {base / 'review.html'}\n  {base / 'grades.csv'}\n  {fb}/")
+    print(f"{len(items)} graded, {low} low confidence, {watch} Looms to watch, "
+          f"{len(growth)} with a builder profile")
+    print(f"  {base / 'review.html'}\n  {base / 'grades.csv'}\n  {fb}/  (<net_id>.html student, <net_id>-scott.html yours)")
 
 
 if __name__ == "__main__":
