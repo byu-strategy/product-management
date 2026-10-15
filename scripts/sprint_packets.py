@@ -26,9 +26,15 @@ from sprint_config import COURSE_ID, PLAN_FIELDS, PLAN_POINTS, SPRINTS
 
 TZ = ZoneInfo("America/Denver")
 DATA = Path.home() / "hubs/courses/_data/product-management"
-SHIPPED_CHARS = 20_000      # cap on artifact text per packet, about 5k tokens
-PER_FILE_CHARS = 6_000
-SKIP = re.compile(r"^(sprints/|\.claude/|\.gitignore$|README\.md$|CLAUDE\.md$)|000-.*template")
+SHIPPED_CHARS = 40_000      # cap on artifact text per packet, about 10k tokens
+PER_FILE_CHARS = 6_000      # written work (specs, decisions, discovery, evals, docs)
+CODE_FILE_CHARS = 3_000     # code: enough to see what it does
+SKIP = re.compile(r"^(sprints/|\.claude/|\.gitignore$|README\.md$|CLAUDE\.md$)|000-.*template"
+                  r"|(^|/)(node_modules|dist|build|\.next|out|coverage|\.vercel)/"
+                  r"|(^|/)(package-lock\.json|yarn\.lock|pnpm-lock\.yaml|bun\.lockb)$|\.(min\.js|min\.css|map)$")
+# Written work is read first, so a large code change cannot use up the budget before the specs,
+# decision records, discovery notes and evals the student wrote.
+WRITTEN = re.compile(r"\.(md|qmd|txt)$|^(specs|decisions|discovery|evals|docs|research|product)/", re.I)
 TEXT = re.compile(r"\.(md|txt|py|js|jsx|ts|tsx|html|css|json|csv|yml|yaml|toml|sql|qmd)$", re.I)
 
 
@@ -240,14 +246,19 @@ def shipped(repo, commits, budget=SHIPPED_CHARS, image_dir=None, net_id=None, ma
     """Files added or changed by the sprint's commits, with capped text for the grader. Text files,
     Word, PowerPoint, PDF, and Excel are read; up to three images (mockups, charts, screenshots
     of the work) are saved for the grader to look at."""
-    files = {}
+    files, first = {}, {}
     for c in commits:
         for f in (gh(f"repos/{repo}/commits/{c['sha']}") or {}).get("files", []):
             if f["status"] != "removed" and not SKIP.search(f["filename"]):
                 files[f["filename"]] = f["status"]
+                # The first commit in the window that touched the file, so a spec can be checked
+                # as written before the code it describes (commit order, not file dates).
+                first.setdefault(f["filename"], (c["sha"][:7], c["when"]))
     out, images = [], 0
-    for name, status in files.items():
-        item = {"path": name, "status": status}
+    order = sorted(files, key=lambda n: (not (WRITTEN.search(n) or DOCS.search(n)), first[n][1]))
+    for name in order:
+        status = files[name]
+        item = {"path": name, "status": status, "first_commit": first[name][0], "first_when": first[name][1]}
         text = None
         if TEXT.search(name) and budget > 0:
             # One API call per file is slow on big repos, so fetch only files whose text fits the budget.
@@ -276,7 +287,7 @@ def shipped(repo, commits, budget=SHIPPED_CHARS, image_dir=None, net_id=None, ma
                     item["image"] = str(dest)
                     images += 1
         if text:
-            take = min(PER_FILE_CHARS, budget)
+            take = min(PER_FILE_CHARS if (WRITTEN.search(name) or DOCS.search(name)) else CODE_FILE_CHARS, budget)
             item["text"] = text[:take] + ("\n[... truncated]" if len(text) > take else "")
             budget -= len(item["text"])
         out.append(item)
@@ -327,7 +338,8 @@ def build(student, sub, plan_sub, cfg, due):
         log = gh_list(f"repos/{repo}/commits?since={start.astimezone(dt.timezone.utc).isoformat()}&per_page=100")
         commits = [{"sha": c["sha"], "when": local(c["commit"]["author"]["date"]).isoformat(),
                     "after_due": local(c["commit"]["author"]["date"]) > due,
-                    "message": c["commit"]["message"].split("\n")[0]} for c in reversed(log)]
+                    "author": (c.get("author") or {}).get("login") or c["commit"]["author"]["name"],
+                    "message": c["commit"]["message"].strip()[:600]} for c in reversed(log)]
         p["commits"] = [{k: v for k, v in c.items() if k != "sha"} | {"sha": c["sha"][:7]} for c in commits]
         p["shipped_files"] = shipped(repo, commits, image_dir=cfg["out"] / "frames", net_id=net_id)
 
@@ -439,10 +451,11 @@ def build(student, sub, plan_sub, cfg, due):
         log = gh_list(f"repos/{r}/commits?since={start.astimezone(dt.timezone.utc).isoformat()}&per_page=100")
         cs = [{"sha": c["sha"], "when": local(c["commit"]["author"]["date"]).isoformat(),
                "after_due": local(c["commit"]["author"]["date"]) > due,
-               "message": c["commit"]["message"].split("\n")[0]} for c in reversed(log)]
+               "author": (c.get("author") or {}).get("login") or c["commit"]["author"]["name"],
+               "message": c["commit"]["message"].strip()[:600]} for c in reversed(log)]
         p["other_repos"].append({"repo": f"https://github.com/{r}",
                                  "commits": [{k: v for k, v in c.items() if k != "sha"} | {"sha": c["sha"][:7]} for c in cs],
-                                 "files": shipped(r, cs, budget=8_000) if cs else []})
+                                 "files": shipped(r, cs, budget=20_000) if cs else []})
     unshared = sorted(named - shared_lower - {course} - {o.lower() for o in others})
     f["repos_named_but_not_shared"] = unshared
     # Every live link anywhere in the README, not only the "Where the work lives" section: students
