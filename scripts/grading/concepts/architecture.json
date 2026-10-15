@@ -19,6 +19,8 @@
    "used": "",
    "made": "",
    "shipped": "",
+   "knowledge_only": true,
+   "practice": "",
    "exam": [
     "AA-F-11",
     "AA-F-31"
@@ -33,6 +35,8 @@
    "used": "sessions place a check or a call in a named server file",
    "made": "a server route or endpoint the student added, committed",
    "shipped": "",
+   "knowledge_only": false,
+   "practice": "A server route, endpoint or server action file the student added (for example route.ts), committed.",
    "exam": [
     "AA-F-32",
     "AA-F-33"
@@ -47,6 +51,8 @@
    "used": "",
    "made": "",
    "shipped": "",
+   "knowledge_only": false,
+   "practice": "A committed component the student added or changed that holds state and changes it in an event handler (for example useState with an onClick or onChange handler).",
    "exam": [
     "AA-F-19",
     "AA-F-34"
@@ -61,6 +67,8 @@
    "used": "",
    "made": "a decision record that names at least two stacks and the reason for the one chosen",
    "shipped": "the chosen stack runs a product people outside the team reach",
+   "knowledge_only": false,
+   "practice": "A committed decision record or spec section that names at least two stacks or hosts and the reason for the one chosen.",
    "exam": [
     "AA-F-08",
     "AA-F-35"
@@ -75,6 +83,8 @@
    "used": "deploy and build commands, or build errors fixed, in sessions",
    "made": "this sprint's work live at an address others can open, or a fix to the live app from its build or runtime log",
    "shipped": "people outside the team reach it, and the host choice is in a decision record",
+   "knowledge_only": false,
+   "practice": "This sprint's work live at an address others can open (the packet's link check), or a commit that fixes the live app from its build or runtime log.",
    "exam": [
     "AW-M-05",
     "AW-M-07",
@@ -91,6 +101,8 @@
    "used": "",
    "made": "a separate development or staging database, or seed data, committed",
    "shipped": "real users' data kept out of development, recorded",
+   "knowledge_only": false,
+   "practice": "A committed configuration for a separate development or staging database, settings that differ by environment, or a seed data file.",
    "exam": [
     "AA-F-07",
     "AA-F-21",
@@ -106,6 +118,8 @@
    "used": "",
    "made": "a staging environment or a feature flag in the code",
    "shipped": "a feature released to real users through a flag or staging, recorded",
+   "knowledge_only": false,
+   "practice": "A staging environment or a feature flag in committed code that turns a feature on or off without a new deploy.",
    "exam": [
     "AA-F-22",
     "AA-F-38"
@@ -120,6 +134,8 @@
    "used": "logs or developer tools read in sessions to find a fault",
    "made": "a fix made from a log or error report, or an error reporter set up",
    "shipped": "errors from real users caught and fixed from the reports",
+   "knowledge_only": false,
+   "practice": "A commit whose message or record names an error from the browser console, the host's logs or an error reporter and fixes it, or an error reporter set up in committed code.",
    "exam": [
     "AA-F-02",
     "AA-F-39"
@@ -134,6 +150,8 @@
    "used": "",
    "made": "tables with keys defined in a migration, ORM schema or schema file, which the product reads and writes",
    "shipped": "real users' data lives there, and the schema choices are in a decision record",
+   "knowledge_only": false,
+   "practice": "A committed migration or schema file that defines tables with keys, which the product reads or writes.",
    "exam": [
     "AA-F-04",
     "AA-F-40"
@@ -148,6 +166,8 @@
    "used": "migrations created or applied in sessions",
    "made": "a migration or schema file committed this sprint, including one that imports existing data",
    "shipped": "a schema change applied to a database real users rely on without losing data",
+   "knowledge_only": false,
+   "practice": "A committed migration or schema file that adds or changes a table, which the product reads or writes, or one that imports existing data.",
    "exam": [
     "AA-F-22",
     "AA-F-41"
@@ -162,6 +182,8 @@
    "used": "SQL read or run in sessions",
    "made": "",
    "shipped": "",
+   "knowledge_only": false,
+   "practice": "A committed SQL query or query-builder call with a filter, an ordering or a join, which the product runs.",
    "exam": [
     "AA-F-20",
     "AA-F-42"
@@ -176,6 +198,8 @@
    "used": "",
    "made": "",
    "shipped": "",
+   "knowledge_only": true,
+   "practice": "",
    "exam": [
     "AA-F-10",
     "AA-F-12"
@@ -190,6 +214,8 @@
    "used": "",
    "made": "sign-in built in the product",
    "shipped": "real users sign in",
+   "knowledge_only": false,
+   "practice": "Sign-in (a password, a provider, or a magic link) built in committed code.",
    "exam": [
     "AA-F-43",
     "AA-F-44"
@@ -204,6 +230,8 @@
    "used": "",
    "made": "a policy that stops one user from reading or changing another user's rows, committed",
    "shipped": "real users' rows protected by the policies, and the rules recorded",
+   "knowledge_only": false,
+   "practice": "A committed row-level security policy, or a server-side ownership check, that stops one user from reading or changing another user's rows.",
    "exam": [
     "AA-F-12",
     "AA-F-28"
@@ -218,6 +246,8 @@
    "used": "permission tests run in sessions",
    "made": "a permission test committed, with a record that it ran",
    "shipped": "the tests run on a product real users sign in to",
+   "knowledge_only": false,
+   "practice": "A committed test that signs in as one user and checks that another user's data is refused, with a record that it ran.",
    "exam": [
     "AA-F-25",
     "AA-F-45"
@@ -232,6 +262,8 @@
    "used": "",
    "made": "",
    "shipped": "",
+   "knowledge_only": true,
+   "practice": "",
    "exam": [
     "AA-F-02",
     "AA-F-46"
@@ -246,6 +278,8 @@
    "used": "",
    "made": "",
    "shipped": "",
+   "knowledge_only": false,
+   "practice": "Committed documentation of the requests and responses of an endpoint the product offers or calls (an OpenAPI file, or a written list of routes with their inputs, outputs and error codes).",
    "exam": [
     "AA-F-26",
     "AA-F-47"
@@ -260,6 +294,8 @@
    "used": "",
    "made": "the product calls another system's API and handles a failed call in code",
    "shipped": "the integration works for real users, chosen in a decision record",
+   "knowledge_only": false,
+   "practice": "Committed code in which the product calls another system's API and handles a failed call (checks the status or catches the error, then shows or logs it).",
    "exam": [
     "AA-F-48",
     "AA-F-49"
@@ -274,6 +310,8 @@
    "used": "",
    "made": "a server route that calls a model API, committed",
    "shipped": "real users use the feature, and the provider is chosen in a decision record",
+   "knowledge_only": false,
+   "practice": "A committed server route or function that calls a model provider's API with the key read from an environment variable.",
    "exam": [
     "AA-F-11",
     "AA-F-50"
@@ -288,6 +326,8 @@
    "used": "",
    "made": "an OAuth connection, webhook handler or offered endpoint in the product",
    "shipped": "real users' accounts connected through it",
+   "knowledge_only": false,
+   "practice": "Committed code that connects the product to another company's service (payments, email, calendars or data) through its API, an OAuth connection, or a webhook handler. A model API is AA19.",
    "exam": [
     "AA-F-51",
     "AA-F-52"
@@ -302,6 +342,8 @@
    "used": "",
    "made": "secret keys read from environment variables, with an .env.example and .env files ignored by git",
    "shipped": "",
+   "knowledge_only": false,
+   "practice": "Committed code that reads secret keys from environment variables, with .env files listed in .gitignore.",
    "exam": [
     "AA-F-02",
     "AA-F-11",
@@ -317,6 +359,8 @@
    "used": "",
    "made": "",
    "shipped": "",
+   "knowledge_only": false,
+   "practice": "Committed code that uses the publishable key in browser code and reads the secret key only in server code.",
    "exam": [
     "AA-F-27",
     "AA-F-53"
@@ -331,6 +375,8 @@
    "used": "",
    "made": "no secret key, database file, log or personal data in the repo",
    "shipped": "",
+   "knowledge_only": false,
+   "practice": "A commit that removes a committed secret together with a record that the key was rotated, or a secret scan of the repo with its output saved.",
    "exam": [
     "AA-F-06",
     "AA-F-54"
@@ -345,6 +391,8 @@
    "used": "",
    "made": "protections written down and applied to data about people (consent, redaction, access limits)",
    "shipped": "data about people outside the team handled under those protections, or a platform review passed",
+   "knowledge_only": false,
+   "practice": "Protections for data about people (a consent note, a redaction step in code, or access limits) written down in a committed file and applied in the product or the student's research files.",
    "exam": [
     "AA-F-14",
     "AA-F-18"
@@ -359,6 +407,8 @@
    "used": "",
    "made": "a defense against one of them in the code, such as a content security policy",
    "shipped": "",
+   "knowledge_only": false,
+   "practice": "A committed defense against a named web attack (parameterized queries, output escaping, a content security policy, request forgery protection, or a redirect allow list), with the attack named in the code, a commit message or a record.",
    "exam": [
     "AA-F-55",
     "AA-F-56"
@@ -373,6 +423,8 @@
    "used": "branches and pull requests opened in sessions",
    "made": "branches or pull requests that contain code",
    "shipped": "",
+   "knowledge_only": false,
+   "practice": "A branch or pull request by the student that contains code.",
    "exam": [
     "AA-F-01",
     "AA-F-29"
@@ -387,6 +439,8 @@
    "used": "",
    "made": "a CI workflow file that runs, with a run record",
    "shipped": "checks run on a product real users depend on, and a record says what they catch",
+   "knowledge_only": false,
+   "practice": "A committed CI workflow file (for example in .github/workflows) with a record that it ran.",
    "exam": [
     "AA-F-16",
     "AA-F-57",
@@ -402,6 +456,8 @@
    "used": "tests run in sessions",
    "made": "tests committed, with a record this sprint that they ran",
    "shipped": "tests guard a product real users depend on",
+   "knowledge_only": false,
+   "practice": "Automated tests committed, with a record that they ran (saved output, a CI log, or a commit message that reports the result).",
    "exam": [
     "AA-F-24",
     "AA-F-30"
@@ -416,6 +472,8 @@
    "used": "",
    "made": "a recorded rollback or revert of a bad deploy",
    "shipped": "",
+   "knowledge_only": false,
+   "practice": "A recorded rollback or revert of a bad deploy (a revert commit, or a note naming the deployment the site was pointed back to).",
    "exam": [
     "AA-F-23",
     "AA-F-59"
@@ -430,6 +488,8 @@
    "used": "",
    "made": "a recorded list of debt taken on, with a plan, or a commit that pays one down",
    "shipped": "",
+   "knowledge_only": false,
+   "practice": "A committed list of technical debt taken on, with a plan for each item, or a commit whose message says it pays down a named piece of debt.",
    "exam": [
     "AA-F-03",
     "AA-F-60"

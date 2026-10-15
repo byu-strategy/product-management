@@ -143,8 +143,8 @@ Levels 1 and 2 read the same for every item and are not repeated below.
 
 **G4 Specs.** A description clear enough to build from.
 - 3: can explain what makes a spec testable.
-- 4: wrote a spec with acceptance criteria (a sprint plan with numbered checks counts), committed in an
-  earlier commit than the code it describes.
+- 4: wrote a spec with acceptance criteria, outside the sprint plan, committed in an earlier commit
+  than the code it describes. (The sprint plan is graded on its own and never counts as profile evidence.)
 - 5: shipped to real users against the spec, and recorded what changed in it and why.
 - Old survey: Spec writing.
 - Chapters: Ch 6b: User Stories; PRDs; The SDD Workflow; Stories and acceptance criteria.

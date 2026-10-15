@@ -19,6 +19,8 @@
    "used": "a tokenizer viewer or a token count checked in a session or a spec",
    "made": "",
    "shipped": "",
+   "knowledge_only": true,
+   "practice": "",
    "exam": [
     "AS-F-03",
     "AS-F-14"
@@ -33,6 +35,8 @@
    "used": "/context checked in sessions",
    "made": "",
    "shipped": "",
+   "knowledge_only": true,
+   "practice": "",
    "exam": [
     "AS-F-07",
     "AS-F-18"
@@ -47,6 +51,8 @@
    "used": "",
    "made": "the product stores the conversation or user facts in its database and decides what to resend, committed",
    "shipped": "",
+   "knowledge_only": false,
+   "practice": "Committed code that stores a conversation or facts about a user in the product's database and sends them with later model calls.",
    "exam": [
     "AS-F-01",
     "AS-F-04",
@@ -62,6 +68,8 @@
    "used": "",
    "made": "a design around the output limit (splitting a job into parts, checking the stop reason), noted in a spec or the code",
    "shipped": "",
+   "knowledge_only": false,
+   "practice": "Committed code that handles a model response cut off at the output limit (checks the stop reason, or splits the job into parts), with the limit named in a spec or the code.",
    "exam": [
     "AS-F-14",
     "AS-F-19"
@@ -76,6 +84,8 @@
    "used": "/compact or /clear used in sessions",
    "made": "code that trims or summarizes history or splits a long input, with the limit it designs around named in a spec or the code",
    "shipped": "the limit is backed by numbers from the product (input sizes, turn counts), recorded",
+   "knowledge_only": false,
+   "practice": "Committed code that trims, summarizes or splits what is sent to a model, with the limit it designs around named in a spec or the code.",
    "exam": [
     "AS-F-07",
     "AS-F-20"
@@ -90,6 +100,8 @@
    "used": "",
    "made": "",
    "shipped": "",
+   "knowledge_only": true,
+   "practice": "",
    "exam": [
     "AS-F-01",
     "AS-F-14"
@@ -104,6 +116,8 @@
    "used": "",
    "made": "a cost estimate for an AI feature in the sprint plan or a spec, with each factor stated",
    "shipped": "",
+   "knowledge_only": false,
+   "practice": "A cost estimate for an AI feature in a committed spec or decision record, with tokens per call, calls per user, users, and price per token each stated.",
    "exam": [
     "AW-F-31",
     "AS-F-21"
@@ -118,6 +132,8 @@
    "used": "",
    "made": "cache_control on a repeated prefix, or a stored model result reused instead of a new call, committed",
    "shipped": "the saving is measured on real traffic and recorded",
+   "knowledge_only": false,
+   "practice": "Committed code that sets cache_control on a repeated prompt prefix, or stores a model result and reuses it in place of a new call.",
    "exam": [
     "AW-F-28",
     "AW-F-31"
@@ -132,6 +148,8 @@
    "used": "",
    "made": "code that logs tokens or latency per model call, with the numbers saved in the repo",
    "shipped": "the product changed because of the numbers (a smaller model, a shorter prompt, a cap), recorded",
+   "knowledge_only": false,
+   "practice": "Committed code that logs input and output tokens or latency for each model call, with the numbers saved in the repo.",
    "exam": [
     "AS-F-22",
     "AS-F-23"
@@ -146,6 +164,8 @@
    "used": "",
    "made": "measured latency of a model call in the product, saved",
    "shipped": "",
+   "knowledge_only": false,
+   "practice": "A measured latency of a named model call in the product, saved in the repo.",
    "exam": [
     "AS-F-24",
     "AS-F-25"
@@ -160,6 +180,8 @@
    "used": "",
    "made": "",
    "shipped": "",
+   "knowledge_only": true,
+   "practice": "",
    "exam": [
     "AS-F-26",
     "AS-F-27"
@@ -174,6 +196,8 @@
    "used": "",
    "made": "",
    "shipped": "",
+   "knowledge_only": true,
+   "practice": "",
    "exam": [
     "AS-F-28",
     "AS-F-29"
@@ -188,6 +212,8 @@
    "used": "",
    "made": "",
    "shipped": "",
+   "knowledge_only": true,
+   "practice": "",
    "exam": [
     "AS-F-08",
     "AS-F-30"
@@ -202,6 +228,8 @@
    "used": "",
    "made": "",
    "shipped": "",
+   "knowledge_only": false,
+   "practice": "A temperature setting on a model call in committed code, with the reason for the value in a comment, spec or decision record.",
    "exam": [
     "AS-F-16",
     "AS-F-31"
@@ -216,6 +244,8 @@
    "used": "",
    "made": "",
    "shipped": "",
+   "knowledge_only": true,
+   "practice": "",
    "exam": [
     "AS-F-08",
     "AS-F-13"
@@ -230,6 +260,8 @@
    "used": "",
    "made": "a product decision that supplies current facts (the date, live data, retrieved documents) because of the cutoff, recorded in a spec, decision record or the code",
    "shipped": "",
+   "knowledge_only": false,
+   "practice": "Committed code or a record that supplies current facts to a model (today's date, live data, or retrieved documents) and says the model would not know them otherwise.",
    "exam": [
     "AS-F-06",
     "AS-F-32"
@@ -244,6 +276,8 @@
    "used": "",
    "made": "",
    "shipped": "",
+   "knowledge_only": true,
+   "practice": "",
    "exam": [
     "AS-F-13",
     "AS-F-33"
@@ -258,6 +292,8 @@
    "used": "prompts in sessions that ask the model for the case against or for criticism",
    "made": "a product prompt or design that counters agreement (asks for the case against, hides the user's preferred answer), recorded with the reason",
    "shipped": "",
+   "knowledge_only": true,
+   "practice": "",
    "exam": [
     "AS-F-05",
     "AS-F-34"
@@ -272,6 +308,8 @@
    "used": "",
    "made": "an embedding model called and its vectors stored in the product, committed",
    "shipped": "",
+   "knowledge_only": false,
+   "practice": "Committed code that calls an embedding model and stores the vectors in the product.",
    "exam": [
     "AS-F-02",
     "AS-F-35"
@@ -286,6 +324,8 @@
    "used": "",
    "made": "retrieval built into the product: chunks embedded and stored, nearest chunks fetched and sent with the question, committed",
    "shipped": "retrieval runs for real users and its quality was measured and changed because of the result",
+   "knowledge_only": false,
+   "practice": "Retrieval in committed code: stored chunks, the nearest ones fetched for a question, and those chunks sent to the model with the question.",
    "exam": [
     "AS-F-11",
     "AS-F-36"
@@ -300,6 +340,8 @@
    "used": "",
    "made": "chunking code with a stated chunk size and a vector column or table, committed",
    "shipped": "",
+   "knowledge_only": false,
+   "practice": "Committed chunking code with a stated chunk size, and a vector column or table that stores the chunks.",
    "exam": [
     "AS-F-37",
     "AS-F-38"
@@ -314,6 +356,8 @@
    "used": "",
    "made": "a retrieval test: questions with the chunk each should return, and the results, committed",
    "shipped": "retrieval changed because of the test result, with before and after numbers recorded",
+   "knowledge_only": false,
+   "practice": "A committed retrieval test: questions with the chunk each should return, and the results of a run.",
    "exam": [
     "AS-F-12",
     "AS-F-39"
@@ -328,6 +372,8 @@
    "used": "",
    "made": "a hallucination analysis: model claims checked against sources, with what was real, partly real and invented, committed",
    "shipped": "",
+   "knowledge_only": false,
+   "practice": "A committed analysis that checks a model's claims against sources and records which claims were correct, partly correct, and invented.",
    "exam": [
     "AS-F-08",
     "AS-F-10"
@@ -342,6 +388,8 @@
    "used": "",
    "made": "a check on model output built into the product, or a wrong output traced to its cause and fixed, committed",
    "shipped": "the check runs for real users and what it catches is recorded",
+   "knowledge_only": false,
+   "practice": "Committed code that checks the product's model output before it is used (a validation rule, required sources, a second independent pass, or a person approving), or a commit that traces a wrong product output to its cause and fixes it. Checks on the coding agent's output are AW17.",
    "exam": [
     "AS-F-10",
     "AS-F-40"
@@ -356,6 +404,8 @@
    "used": "",
    "made": "the product's core AI task run on realistic inputs including an edge case, with predictions and results, committed",
    "shipped": "",
+   "knowledge_only": false,
+   "practice": "The product's core AI task run on realistic inputs that include an edge case, with a prediction for each input and the results, committed.",
    "exam": [
     "AS-F-15",
     "AS-F-41"
@@ -370,6 +420,8 @@
    "used": "",
    "made": "a decision record naming a model option and a non-model option for one feature, and the reason for the choice",
    "shipped": "",
+   "knowledge_only": false,
+   "practice": "A committed decision record that names a model option and a non-model option for one feature and the reason for the choice.",
    "exam": [
     "AS-F-15",
     "AS-F-16"
@@ -384,6 +436,8 @@
    "used": "",
    "made": "a decision record choosing a model that names an alternative and the reason",
    "shipped": "the choice backed by a comparison run in the product, with saved results",
+   "knowledge_only": false,
+   "practice": "A committed decision record that chooses a model, names an alternative model, and gives the reason.",
    "exam": [
     "AS-F-42",
     "AS-F-43"
@@ -398,6 +452,8 @@
    "used": "",
    "made": "a decision record that chooses a technique and names an alternative",
    "shipped": "the choice backed by a comparison run in the product, with saved results",
+   "knowledge_only": false,
+   "practice": "A committed decision record that chooses prompting, retrieval or fine-tuning for a feature and names an alternative technique.",
    "exam": [
     "AS-F-44",
     "AS-F-45"

@@ -19,6 +19,8 @@
    "used": "a flow mapped in a plan or spec before the screens were built (commit order shows it)",
    "made": "a flow written down as steps or a list of states in a committed spec or design file",
    "shipped": "a flow changed because of what a person outside the team did, with the reason recorded",
+   "knowledge_only": false,
+   "practice": "A flow written as steps or a list of states in a committed spec or design file.",
    "exam": [
     "G-F-05",
     "G-F-18",
@@ -34,6 +36,8 @@
    "used": "empty, loading or error states present in the product (code or Loom)",
    "made": "built the error state for a flow, plus the empty and loading states where the flow has them, committed",
    "shipped": "a state added or changed after a real user got stuck in it, recorded",
+   "knowledge_only": false,
+   "practice": "Committed code that shows an empty, loading or error state for a flow, or a Loom moment that shows one.",
    "exam": [
     "G-M-08",
     "G-F-04",
@@ -49,6 +53,8 @@
    "used": "",
    "made": "",
    "shipped": "",
+   "knowledge_only": true,
+   "practice": "",
    "exam": [
     "G-M-01",
     "G-M-20",
@@ -65,6 +71,8 @@
    "used": "navigation chosen and named in the user's words",
    "made": "a committed navigation map or site structure, or card sort or tree test results",
    "shipped": "navigation changed after a card sort or tree test with real users, recorded",
+   "knowledge_only": false,
+   "practice": "A committed navigation map or site structure, or card sort or tree test results.",
    "exam": [
     "G-M-15",
     "G-F-14",
@@ -80,6 +88,8 @@
    "used": "an AI feature whose output arrives as a draft the user approves or edits",
    "made": "built at least two of the five blocks (expectations, evidence, draft, undo, confirmation) into an AI feature, committed",
    "shipped": "real users catch or correct wrong AI output through it, recorded",
+   "knowledge_only": false,
+   "practice": "Committed code in an AI feature that shows at least one of: what to expect about accuracy, the evidence behind an answer, output as an editable draft, undo, or a confirmation before acting.",
    "exam": [
     "G-F-16",
     "G-F-23",
@@ -95,6 +105,8 @@
    "used": "screens with one filled primary button",
    "made": "a written rule such as one primary action per screen, followed in the product",
    "shipped": "",
+   "knowledge_only": false,
+   "practice": "A committed design rule about hierarchy or the primary action (for example one primary action per screen), and screens in the Loom that follow it.",
    "exam": [
     "G-M-06",
     "G-F-24",
@@ -110,6 +122,8 @@
    "used": "",
    "made": "",
    "shipped": "",
+   "knowledge_only": true,
+   "practice": "",
    "exam": [
     "G-M-16",
     "G-M-21",
@@ -126,6 +140,8 @@
    "used": "",
    "made": "",
    "shipped": "",
+   "knowledge_only": true,
+   "practice": "",
    "exam": [
     "G-F-13",
     "G-M-17",
@@ -141,6 +157,8 @@
    "used": "",
    "made": "",
    "shipped": "",
+   "knowledge_only": true,
+   "practice": "",
    "exam": [
     "G-M-11",
     "G-M-13",
@@ -158,6 +176,8 @@
    "used": "screens use a small set of text sizes and spacing values",
    "made": "written rules (a type scale, spacing scale, color rules), committed, and the product follows them",
    "shipped": "",
+   "knowledge_only": false,
+   "practice": "Committed rules or tokens for a type scale, a spacing scale or color use, which the product's code uses.",
    "exam": [
     "G-F-30",
     "G-F-31",
@@ -173,6 +193,8 @@
    "used": "button labels and error messages written in the user's terms",
    "made": "rewritten interface copy or a committed copy rule in the spec or design rules",
    "shipped": "",
+   "knowledge_only": false,
+   "practice": "A committed copy rule in a spec or design rules file, or a commit whose message says it rewrites labels, buttons or error messages in the user's terms.",
    "exam": [
     "G-F-03",
     "G-F-32",
@@ -188,6 +210,8 @@
    "used": "a keyboard or contrast check run on the product",
    "made": "a committed accessibility rule or check result (contrast output, keyboard pass notes) and fixes that follow it",
    "shipped": "",
+   "knowledge_only": false,
+   "practice": "A committed accessibility rule or check result (contrast numbers, a keyboard pass note), with fixes that follow it.",
    "exam": [
     "G-F-02",
     "G-F-33",
@@ -203,6 +227,8 @@
    "used": "the product checked at phone and desktop widths",
    "made": "a responsive layout or a spec for mobile behavior, committed",
    "shipped": "platform chosen in a decision record naming the alternatives, and real users reach it on that platform",
+   "knowledge_only": false,
+   "practice": "A committed spec section or decision record about phone and desktop use (a mobile layout, a PWA, or a native app), or a commit whose message says it makes a screen work at phone width.",
    "exam": [
     "G-M-04",
     "G-M-02",
@@ -219,6 +245,8 @@
    "used": "screens built from shared components instead of one-off styling",
    "made": "shared components or design tokens used on three or more screens or page sections, committed",
    "shipped": "the system chosen over alternatives in a decision record, in a product real users use",
+   "knowledge_only": false,
+   "practice": "Shared components or design tokens, committed, used on more than one screen or page section.",
    "exam": [
     "G-F-01",
     "G-F-36",
@@ -234,6 +262,8 @@
    "used": "the rules load in sessions",
    "made": "a design rules section in CLAUDE.md, AGENTS.md or a spec, committed, and the product follows it",
    "shipped": "the rules changed because of what real users did, recorded",
+   "knowledge_only": false,
+   "practice": "A design rules section the student wrote in CLAUDE.md, AGENTS.md or a spec, committed.",
    "exam": [
     "G-F-37",
     "G-F-38",
@@ -249,6 +279,8 @@
    "used": "",
    "made": "",
    "shipped": "",
+   "knowledge_only": true,
+   "practice": "",
    "exam": [
     "G-F-10",
     "G-F-39",
@@ -264,6 +296,8 @@
    "used": "",
    "made": "stories written in a committed spec or sprint plan",
    "shipped": "",
+   "knowledge_only": false,
+   "practice": "User stories in the form As a [user], I want [goal] so that [benefit], in a committed spec outside the sprint plan.",
    "exam": [
     "G-F-40",
     "G-F-41",
@@ -279,6 +313,8 @@
    "used": "",
    "made": "a spec or sprint plan with numbered acceptance criteria, committed in an earlier commit than the code",
    "shipped": "shipped to real users against the criteria, with what changed in the spec and why recorded",
+   "knowledge_only": false,
+   "practice": "A committed spec, outside the sprint plan, with numbered or checkable acceptance criteria for a feature.",
    "exam": [
     "G-M-18",
     "G-F-11",
@@ -294,6 +330,8 @@
    "used": "",
    "made": "a committed PRD or spec that includes success metrics and an out-of-scope list",
    "shipped": "",
+   "knowledge_only": false,
+   "practice": "A committed PRD or spec that includes success metrics and an out-of-scope list.",
    "exam": [
     "G-F-43",
     "G-F-44",
@@ -309,6 +347,8 @@
    "used": "specs read by the agent before building (spec files opened in sessions)",
    "made": "spec files (requirements, design, tasks, or one spec file) committed before the code they describe",
    "shipped": "",
+   "knowledge_only": false,
+   "practice": "Spec files committed in an earlier commit than the code they describe.",
    "exam": [
     "G-F-45",
     "G-F-46",
@@ -324,6 +364,8 @@
    "used": "",
    "made": "a spec with decisions-made and considered-and-rejected sections, committed",
    "shipped": "",
+   "knowledge_only": false,
+   "practice": "A committed spec with a decisions-made section and a considered-and-rejected section.",
    "exam": [
     "G-M-14",
     "G-F-47",
@@ -339,6 +381,8 @@
    "used": "the spec and build-spec skills run in sessions",
    "made": "a committed punch list with items checked off, or a check sheet with results",
    "shipped": "",
+   "knowledge_only": false,
+   "practice": "A committed punch list with items checked off, or a check sheet with results.",
    "exam": [
     "G-F-49",
     "G-F-50",
@@ -354,6 +398,8 @@
    "used": "design prompts in sessions that name the element, the problem and the principle (seen in the scan's prompts)",
    "made": "a written design direction (in a spec, an issue, or a change note) that names the problem and the fix, and the change shipped",
    "shipped": "a design direction revised after people outside the team used the product, saying what changed and why",
+   "knowledge_only": false,
+   "practice": "A written design direction in a spec, issue or change note that names the element, the problem and the change, and a later commit that makes the change.",
    "exam": [
     "G-M-07",
     "G-F-51",
@@ -369,6 +415,8 @@
    "used": "several design options generated before one was chosen",
    "made": "a committed comparison of two or more design options with the reason for the one chosen",
    "shipped": "",
+   "knowledge_only": false,
+   "practice": "A committed comparison of two or more design options with the reason for the one chosen.",
    "exam": [
     "G-M-19",
     "G-F-53",
@@ -384,6 +432,8 @@
    "used": "a heuristic review run on the product",
    "made": "a committed heuristic review with the problems found and the fixes",
    "shipped": "",
+   "knowledge_only": false,
+   "practice": "A committed heuristic review of the product that names the heuristics, the problems found, and the fixes.",
    "exam": [
     "G-F-15",
     "G-F-55",
@@ -399,6 +449,8 @@
    "used": "",
    "made": "",
    "shipped": "",
+   "knowledge_only": true,
+   "practice": "",
    "exam": [
     "G-F-06",
     "G-F-56",
@@ -414,6 +466,8 @@
    "used": "a usability session run with someone outside the team",
    "made": "a committed note per session: who (no names needed), the tasks, and what the person did",
    "shipped": "",
+   "knowledge_only": false,
+   "practice": "A committed note for each session in which a person outside the team used the product, with the tasks and what the person did.",
    "exam": [
     "G-M-05",
     "G-M-03",
@@ -430,6 +484,8 @@
    "used": "",
    "made": "a committed synthesis of test notes with problems ranked by severity",
    "shipped": "",
+   "knowledge_only": false,
+   "practice": "A committed synthesis of usability test notes with the problems grouped and ranked by severity.",
    "exam": [
     "G-F-07",
     "G-F-59",
@@ -445,6 +501,8 @@
    "used": "",
    "made": "a change committed that cites a test finding",
    "shipped": "the product changed because of a usability test, and the change and a retest are recorded",
+   "knowledge_only": false,
+   "practice": "A commit that changes the product and cites a usability test finding.",
    "exam": [
     "G-F-08",
     "G-F-09",
@@ -460,6 +518,8 @@
    "used": "a sketch, wireframe or mockup made before building",
    "made": "a committed sketch, wireframe, mockup or prototype used to test a question before the feature was built",
    "shipped": "",
+   "knowledge_only": false,
+   "practice": "A committed sketch, wireframe, mockup or prototype, in an earlier commit than the feature it shows.",
    "exam": [
     "G-M-12",
     "G-M-22",

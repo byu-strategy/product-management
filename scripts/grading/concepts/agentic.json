@@ -19,6 +19,8 @@
    "used": "",
    "made": "",
    "shipped": "",
+   "knowledge_only": true,
+   "practice": "",
    "exam": [
     "AW-M-01",
     "AW-M-09",
@@ -38,6 +40,8 @@
    "used": "commands run in sessions",
    "made": "",
    "shipped": "",
+   "knowledge_only": false,
+   "practice": "A committed change to package.json or a lockfile that adds or removes a package the product uses.",
    "exam": [
     "AW-M-06",
     "AW-M-16",
@@ -54,6 +58,8 @@
    "used": "sessions started in the course repo; /remote-control or /voice used in sessions",
    "made": "a script that runs the agent without a person (non-interactive)",
    "shipped": "",
+   "knowledge_only": false,
+   "practice": "/remote-control, /voice or a non-interactive run listed in the session scan's \"Builder tools you used\" list in the review report, or a committed script that runs the agent without a person.",
    "exam": [
     "AW-M-17",
     "AW-M-18",
@@ -71,6 +77,8 @@
    "used": "the file loads in sessions",
    "made": "wrote its content (beyond the template), committed",
    "shipped": "",
+   "knowledge_only": false,
+   "practice": "Text the student wrote in CLAUDE.md or AGENTS.md beyond the template's text, committed.",
    "exam": [
     "AW-M-02",
     "AW-M-15",
@@ -88,6 +96,8 @@
    "used": "memory written or /clear, /compact used in sessions",
    "made": "wrote a memory entry or rule on purpose, committed",
    "shipped": "",
+   "knowledge_only": false,
+   "practice": "/clear, /compact or /memory listed in the session scan's \"Builder tools you used\" list in the review report, or a memory entry or rule the student added to CLAUDE.md or a memory file, committed.",
    "exam": [
     "AW-M-08",
     "AW-M-14",
@@ -106,6 +116,8 @@
    "used": "sessions in plan mode",
    "made": "",
    "shipped": "",
+   "knowledge_only": false,
+   "practice": "Plan mode listed in the session scan's \"Builder tools you used\" list in the review report.",
    "exam": [
     "AW-M-03",
     "AW-M-11",
@@ -122,6 +134,8 @@
    "used": "",
    "made": "committed .claude/settings.json",
    "shipped": "",
+   "knowledge_only": false,
+   "practice": "A .claude/settings.json the student added or changed beyond the template's copy, committed.",
    "exam": [
     "AW-M-04",
     "AW-M-13",
@@ -138,6 +152,8 @@
    "used": "slash commands used in sessions (the scan lists them)",
    "made": "wrote a custom command or skill run by name",
    "shipped": "",
+   "knowledge_only": false,
+   "practice": "A built-in slash command listed in the session scan's \"Builder tools you used\" list in the review report (the course's own skills, such as /sprint-plan, /sprint-review and /learn, do not count), or a custom command the student wrote, committed.",
    "exam": [
     "AW-F-36",
     "AW-F-41",
@@ -165,6 +181,8 @@
    "used": "a skill invoked in sessions",
    "made": "wrote .claude/skills/<own>/SKILL.md",
    "shipped": "others use it (a classmate, a team, users)",
+   "knowledge_only": false,
+   "practice": "A skill the student wrote in .claude/skills/<name>/SKILL.md, committed, or a skill that is not one of the course's skills listed in the session scan's \"Builder tools you used\" list in the review report.",
    "exam": [
     "AW-M-12",
     "AW-F-12",
@@ -180,6 +198,8 @@
    "used": "a hook ran in sessions",
    "made": "a hook committed in .claude/settings.json",
    "shipped": "",
+   "knowledge_only": false,
+   "practice": "A hook the student added to .claude/settings.json, committed, or a hook run listed in the session scan's \"Builder tools you used\" list in the review report.",
    "exam": [
     "AW-M-25",
     "AW-M-26",
@@ -198,6 +218,8 @@
    "used": "",
    "made": "",
    "shipped": "",
+   "knowledge_only": true,
+   "practice": "",
    "exam": [
     "AW-M-29",
     "AW-M-32",
@@ -214,6 +236,8 @@
    "used": "subagents launched in sessions",
    "made": "wrote .claude/agents/<name>.md",
    "shipped": "",
+   "knowledge_only": false,
+   "practice": "Subagents listed in the session scan's \"Builder tools you used\" list in the review report, or a subagent file the student wrote in .claude/agents/, committed.",
    "exam": [
     "AW-F-03",
     "AW-F-72",
@@ -229,6 +253,8 @@
    "used": "any of the three in sessions (the scan lists each)",
    "made": "added an MCP server to .mcp.json, or wrote a script or skill that wraps a CLI tool or an API",
    "shipped": "",
+   "knowledge_only": false,
+   "practice": "A CLI tool, MCP server or API call listed in the session scan's \"Builder tools you used\" list in the review report, or an MCP server the student added to .mcp.json, or a committed script or skill the student wrote that wraps a CLI tool or an API.",
    "exam": [
     "AW-M-27",
     "AW-F-16",
@@ -245,6 +271,8 @@
    "used": "a plugin installed and used (its skills appear as plugin:skill)",
    "made": "wrote a plugin (.claude-plugin/plugin.json)",
    "shipped": "others install it",
+   "knowledge_only": false,
+   "practice": "A plugin listed in the session scan's \"Builder tools you used\" list in the review report (its skills appear as plugin:skill), or a plugin the student wrote (.claude-plugin/plugin.json), committed.",
    "exam": [
     "AW-F-35",
     "AW-F-73",
@@ -260,6 +288,8 @@
    "used": "worktrees or messages to another session in sessions (the scan counts both)",
    "made": "",
    "shipped": "",
+   "knowledge_only": false,
+   "practice": "Worktrees or messages to another session listed in the session scan's \"Builder tools you used\" list in the review report.",
    "exam": [
     "AW-F-07",
     "AW-F-19",
@@ -277,6 +307,8 @@
    "used": "the modes used in sessions (the scan counts turns in each)",
    "made": "",
    "shipped": "",
+   "knowledge_only": false,
+   "practice": "Accept edits, Auto or Don't ask mode listed in the session scan's \"Builder tools you used\" list in the review report.",
    "exam": [
     "AW-F-22",
     "AW-F-37",
@@ -293,6 +325,8 @@
    "used": "a rule prompted or blocked in sessions",
    "made": "committed allow, ask or deny rules",
    "shipped": "",
+   "knowledge_only": false,
+   "practice": "Allow, ask or deny rules the student added to a committed settings file, or a rule that prompted or blocked an action listed in the session scan's \"Builder tools you used\" list in the review report.",
    "exam": [
     "AW-M-23",
     "AW-F-09",
@@ -310,6 +344,8 @@
    "used": "/rewind or a revert in sessions",
    "made": "",
    "shipped": "",
+   "knowledge_only": false,
+   "practice": "/rewind listed in the session scan's \"Builder tools you used\" list in the review report, or a revert commit the student made.",
    "exam": [
     "AW-M-19",
     "AW-M-20",
@@ -327,6 +363,8 @@
    "used": "",
    "made": "a recorded check of agent work (a review note, a test run, a check on the live site)",
    "shipped": "",
+   "knowledge_only": false,
+   "practice": "A committed record that the student checked agent-written work (a review note, saved test output, or a note of a check on the live site) that names what was checked and the result.",
    "exam": [
     "AW-M-10",
     "AW-F-02",
@@ -342,6 +380,8 @@
    "used": "",
    "made": "a prompt file in the repo that the product uses",
    "shipped": "real users use the feature; versions kept with reasons",
+   "knowledge_only": false,
+   "practice": "A prompt, in a prompt file or in the code, that the product sends to a model, added or changed by the student and committed.",
    "exam": [
     "AW-F-21",
     "AW-F-30",
@@ -357,6 +397,8 @@
    "used": "",
    "made": "a schema the product enforces on model output",
    "shipped": "real users use the feature",
+   "knowledge_only": false,
+   "practice": "Committed code that asks a model for output in a fixed shape (a JSON schema, a tool definition, or a structured output setting) and parses it before the product uses it.",
    "exam": [
     "AW-F-04",
     "AW-F-77",
@@ -372,6 +414,8 @@
    "used": "",
    "made": "a streamed response in the product",
    "shipped": "real users use the feature",
+   "knowledge_only": false,
+   "practice": "Committed code that shows a model's response on screen as it arrives, or a Loom moment that shows a streamed response in the product.",
    "exam": [
     "AW-F-32",
     "AW-F-78",
@@ -387,6 +431,8 @@
    "used": "",
    "made": "a guard on privileged actions in the product",
    "shipped": "real users use the guarded feature",
+   "knowledge_only": false,
+   "practice": "Committed code that guards an action the product takes from model output (a confirmation step, an allow list, or a check before the action runs), with a comment or record that names prompt injection or untrusted input as the reason.",
    "exam": [
     "AW-F-20",
     "AW-F-79",
@@ -402,6 +448,8 @@
    "used": "",
    "made": "",
    "shipped": "",
+   "knowledge_only": true,
+   "practice": "",
    "exam": [
     "AW-F-11",
     "AW-F-80",
@@ -417,6 +465,8 @@
    "used": "",
    "made": "a loop or tool call in the product, with a stopping rule",
    "shipped": "real users rely on it; limits written down",
+   "knowledge_only": false,
+   "practice": "Committed code in which the model chooses the next step or calls a tool the product defines, with a stopping rule (a step limit or an end condition) in the code.",
    "exam": [
     "AW-F-06",
     "AW-F-29",
@@ -432,6 +482,8 @@
    "used": "evals run, results saved",
    "made": "an eval set or scorer in the repo",
    "shipped": "a product decision made from saved results",
+   "knowledge_only": false,
+   "practice": "A committed set of test cases with known answers, or a scorer, for model or product output, with saved results from a run.",
    "exam": [
     "AW-F-05",
     "AW-F-13",
@@ -451,6 +503,8 @@
    "used": "",
    "made": "a recorded comparison of models on the product's own cases",
    "shipped": "the product runs the chosen model for real users",
+   "knowledge_only": false,
+   "practice": "A committed comparison that runs the same cases on two or more models and saves the results for each.",
    "exam": [
     "AW-F-08",
     "AW-F-81",

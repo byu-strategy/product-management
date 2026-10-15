@@ -19,6 +19,8 @@
    "used": "Used: interviewed people with a guide someone else wrote (the book's sample script, a teammate's, or an agent's), or asked an agent to check questions against the Mom Test rules (session scan). Notes show past-tense questions about the problem.",
    "made": "Built: wrote discovery/interview-guide.md (or similar) with past-tense questions about the problem, committed before the interview notes it was used for. Interviews that only collect the product's content do not count.",
    "shipped": "Interviews with people outside the team changed or held the product's direction, and a decision record cites them (D1 level 5).",
+   "knowledge_only": false,
+   "practice": "Interview notes in the repo written from the student's own conversations with people who have the problem, with questions about specific past events.",
    "exam": [
     "D-M-05",
     "D-M-06",
@@ -35,6 +37,8 @@
    "used": "Used: interview notes or a test note label claims said, did or paid (the repo), or the student asked an agent to tag notes by rung (session scan).",
    "made": "Built: a synthesis or insights file in which each key claim carries its rung and points to the interview or test that supports it.",
    "shipped": "",
+   "knowledge_only": false,
+   "practice": "A committed synthesis, insights file or test note in which claims are labeled said, did or paid.",
    "exam": [
     "D-M-07",
     "D-M-11",
@@ -52,6 +56,8 @@
    "used": "Used: filled in the book's synthesis template, or a teammate's synthesis, with their own interview notes.",
    "made": "Built: a committed synthesis file (synthesis.md, insights.md) that cites each interview note by file and states what changed or held.",
    "shipped": "",
+   "knowledge_only": false,
+   "practice": "A committed synthesis or insights file that cites the student's own interview notes by file and states what they showed.",
    "exam": [
     "D-M-08",
     "D-M-12",
@@ -68,6 +74,8 @@
    "used": "",
    "made": "Built: a problem statement in the README, spec or synthesis that names no solution and cites what interviewees said.",
    "shipped": "Real users describe the problem in their own words in the record (D2 level 5).",
+   "knowledge_only": false,
+   "practice": "A problem statement in the README, a spec or a synthesis file, written by the student and committed, that names a person, a situation and what goes wrong for them, and names no product or feature.",
    "exam": [
     "D-F-03",
     "D-F-27",
@@ -83,6 +91,8 @@
    "used": "Used: worked from a job statement someone else wrote (a teammate, the client brief, an agent's draft) to frame interviews or a spec.",
    "made": "Built: wrote a job statement, or a journey map of the whole job, from their own interviews, committed.",
    "shipped": "",
+   "knowledge_only": false,
+   "practice": "A job statement (When I am..., I want to..., so I can...) or a journey map of the whole job, written by the student and committed.",
    "exam": [
     "D-M-14",
     "D-F-28",
@@ -98,6 +108,8 @@
    "used": "",
    "made": "Built: a written target customer, narrow enough to name, with a not-for list, in the README, spec or value proposition.",
    "shipped": "The product serves that beachhead, and the record says who was left out and why (D2 level 5).",
+   "knowledge_only": false,
+   "practice": "A written target customer, narrow enough to name, with a list of who the product is not for, in the README, a spec or a value proposition, committed.",
    "exam": [
     "D-F-04",
     "D-F-13",
@@ -113,6 +125,8 @@
    "used": "",
    "made": "Built: a written user and payer for the product, with interview notes from the payer when they differ.",
    "shipped": "",
+   "knowledge_only": false,
+   "practice": "A committed file that names the product's user and its payer and says whether they are the same person.",
    "exam": [
     "D-F-08",
     "D-M-08",
@@ -128,6 +142,8 @@
    "used": "",
    "made": "",
    "shipped": "",
+   "knowledge_only": false,
+   "practice": "A committed note that names where the target users can be reached (places, channels or named groups) and whether the student can reach them.",
    "exam": [
     "D-M-10",
     "D-F-31",
@@ -143,6 +159,8 @@
    "used": "Used: worked from a persona someone else wrote (a teammate, the client, or an agent), for example in a spec or prompt (repo or session scan).",
    "made": "Built: wrote personas.md from their own interviews, with each persona's claims citing an interview note. A persona drafted before any interview does not count.",
    "shipped": "Real users describe the problem in their own words in the persona, and it says who was left out and why (D2 level 5).",
+   "knowledge_only": false,
+   "practice": "A personas file written by the student and committed, with each persona's details drawn from named interview notes.",
    "exam": [
     "D-M-02",
     "D-F-33",
@@ -158,6 +176,8 @@
    "used": "",
    "made": "Built: an insights or assumptions file that lists beliefs with a confidence level and the evidence for each, written before the checks that tested them.",
    "shipped": "",
+   "knowledge_only": false,
+   "practice": "A committed insights or assumptions file that lists beliefs, each with a confidence level and the evidence for it.",
    "exam": [
     "D-M-11",
     "D-F-35",
@@ -173,6 +193,8 @@
    "used": "Used: worked a question with an issue tree someone else drew (a teammate, an agent) or asked an agent to check a tree for overlaps and gaps (session scan).",
    "made": "Built: a committed issue tree for an open product question, with the leaf chosen to test and the questions excluded.",
    "shipped": "",
+   "knowledge_only": false,
+   "practice": "A committed issue tree that breaks an open product question into parts, with the part chosen to test marked.",
    "exam": [
     "D-F-01",
     "D-F-02",
@@ -188,6 +210,8 @@
    "used": "",
    "made": "Built: a committed list of conditions that would have to be true, each labeled with its risk and uncertainty.",
    "shipped": "",
+   "knowledge_only": false,
+   "practice": "A committed list of conditions that would have to be true for the product to work, each labeled with its risk or uncertainty.",
    "exam": [
     "D-F-12",
     "D-F-15",
@@ -203,6 +227,8 @@
    "used": "",
    "made": "Built: an assumptions list with each assumption labeled by risk, committed.",
    "shipped": "",
+   "knowledge_only": false,
+   "practice": "A committed assumptions list with each assumption labeled as a value, usability, feasibility or viability risk.",
    "exam": [
     "D-F-15",
     "D-F-37",
@@ -218,6 +244,8 @@
    "used": "Used: named a riskiest assumption in the sprint plan (\"My riskiest assumption is ___, and this sprint I will test it by ___\").",
    "made": "Built: named the assumption before checking it, ran a check that could prove it wrong, and committed the result (D3 level 4).",
    "shipped": "The result decided something, and a decision record cites it (D3 level 5).",
+   "knowledge_only": false,
+   "practice": "A committed file, outside the sprint plan, that names the product's riskiest assumption, the check run on it, and the result.",
    "exam": [
     "D-F-05",
     "D-F-10",
@@ -233,6 +261,8 @@
    "used": "Used: took part in or reused someone else's test (a teammate's landing page, a class template) and recorded its result.",
    "made": "Built: designed and ran one of the tests (a page, a hand-delivered service, a pre-order), with the action counted, its rung, a prediction set before, and the result committed.",
    "shipped": "Run with people outside the team, and the result decided something in a decision record.",
+   "knowledge_only": false,
+   "practice": "A committed note of a smoke test, fake door, concierge test, Wizard of Oz test or presell the student ran, with the action counted and the result.",
    "exam": [
     "D-F-05",
     "D-F-11",
@@ -248,6 +278,8 @@
    "used": "Used: asked \"What do you do today?\" in interviews, recorded per person (the repo).",
    "made": "Built: a written comparison of what users actually do today and the alternatives they use, from interviews, including doing nothing. A competitor price list with no user input does not count.",
    "shipped": "The product's position comes from that comparison, in a decision record (D4 level 5).",
+   "knowledge_only": false,
+   "practice": "A committed record, drawn from the student's own interviews, of what people do about the problem today, including doing nothing or a manual workaround.",
    "exam": [
     "D-M-09",
     "D-M-14",
@@ -264,6 +296,8 @@
    "used": "",
    "made": "Built: a committed importance and satisfaction table or chart built from interview data.",
    "shipped": "",
+   "knowledge_only": false,
+   "practice": "A committed table or chart that rates needs by importance and by satisfaction with current solutions, from interview data.",
    "exam": [
     "D-M-03",
     "D-F-39",
@@ -279,6 +313,8 @@
    "used": "",
    "made": "Built: a written five forces reading of the product's industry, committed.",
    "shipped": "",
+   "knowledge_only": true,
+   "practice": "",
    "exam": [
     "D-F-19",
     "D-M-23",
@@ -294,6 +330,8 @@
    "used": "",
    "made": "Built: a written list of factors the product drops, reduces, raises and adds compared with the alternatives, committed.",
    "shipped": "",
+   "knowledge_only": false,
+   "practice": "A committed list of the factors the product drops, reduces, raises and adds compared with the alternatives.",
    "exam": [
     "D-F-18",
     "D-M-24",
@@ -309,6 +347,8 @@
    "used": "",
    "made": "Built: a written moat statement for the product (the one-page strategy) that names a power and why it applies.",
    "shipped": "",
+   "knowledge_only": true,
+   "practice": "",
    "exam": [
     "D-F-09",
     "D-F-18",
@@ -325,6 +365,8 @@
    "used": "",
    "made": "Built: a written answer to the chapter's four questions: the incumbent, whom it overserves or leaves out, sustaining or disruptive entry, and what would have to improve.",
    "shipped": "",
+   "knowledge_only": true,
+   "practice": "",
    "exam": [
     "D-M-18",
     "D-F-16",
@@ -340,6 +382,8 @@
    "used": "Used: scored problems with the course's Problem Discovery Framework sheet (Sprint 2).",
    "made": "Built: a committed scoring of two or more candidate problems with the evidence for each score, and the one chosen.",
    "shipped": "",
+   "knowledge_only": false,
+   "practice": "A committed scoring of two or more candidate problems on frequency, intensity, willingness to pay or market size, with the evidence for each score and the problem chosen.",
    "exam": [
     "D-M-01",
     "D-F-43",
@@ -355,6 +399,8 @@
    "used": "",
    "made": "Built: a written MVP scope naming the one thing users must do and a list of what is out, committed before the build.",
    "shipped": "Real users used the scoped MVP, and the record says what was cut and why.",
+   "knowledge_only": false,
+   "practice": "A committed MVP scope that names the one thing users must do and lists what is left out.",
    "exam": [
     "D-F-14",
     "D-F-45",
@@ -370,6 +416,8 @@
    "used": "Used: ranked work with a framework someone else set up (a teammate's backlog, a template), or asked an agent to score features (session scan).",
    "made": "Built: a committed ranking of options in order, with the criteria and the evidence for each score shown.",
    "shipped": "Built what ranked first for real users, and the ranking cites what was learned (D5 level 5).",
+   "knowledge_only": false,
+   "practice": "A committed ranking of features or work items in order, with the criteria or framework (ICE, MoSCoW, the $100 test) shown.",
    "exam": [
     "D-M-15",
     "D-F-10",
@@ -385,6 +433,8 @@
    "used": "",
    "made": "Built: a committed opportunity solution tree for the product, with each opportunity traced to interview notes.",
    "shipped": "",
+   "knowledge_only": false,
+   "practice": "A committed opportunity solution tree for the product (outcome, opportunities, solutions, tests), with each opportunity traced to interview notes.",
    "exam": [
     "D-M-13",
     "D-F-47",
@@ -400,6 +450,8 @@
    "used": "",
    "made": "Built: the chapter's one-page product strategy (vision, where you play, how you win, moat, what you will not do), committed.",
    "shipped": "Built the chosen idea for real users, and a later decision record says whether the choice held (D6 level 5).",
+   "knowledge_only": false,
+   "practice": "A committed one-page product strategy that states the vision, where the product plays, how it wins, and what it will not do.",
    "exam": [
     "D-F-49",
     "D-F-50",
@@ -415,6 +467,8 @@
    "used": "",
    "made": "Built: a written choice of this product or idea over at least one other, including who it is for and why it can win (D6 level 4).",
    "shipped": "Built the chosen idea for real users, and a later decision record says whether the choice held (D6 level 5).",
+   "knowledge_only": false,
+   "practice": "A committed list of several candidate problems or ideas and a written choice of one over at least one other, with the reason.",
    "exam": [
     "D-F-51",
     "D-F-52",
@@ -430,6 +484,8 @@
    "used": "",
    "made": "Built: a written value stick for the product with willingness to pay, price, cost and willingness to sell estimated from evidence.",
    "shipped": "",
+   "knowledge_only": false,
+   "practice": "A committed value stick for the product with willingness to pay, price, cost and willingness to sell each estimated.",
    "exam": [
     "D-M-04",
     "D-M-16",
@@ -447,6 +503,8 @@
    "used": "Used: filled in the value proposition template for the product (sprint plan or README).",
    "made": "Built: a committed value proposition whose For line is the beachhead and whose Unlike line names the current habit, drawn from interviews.",
    "shipped": "Real users chose it over their current habit, recorded.",
+   "knowledge_only": false,
+   "practice": "A value proposition the student wrote beyond the template's text, naming the customer and the current habit the product replaces, committed.",
    "exam": [
     "D-F-56",
     "D-M-29",
@@ -462,6 +520,8 @@
    "used": "",
    "made": "Built: a written check of the product's habit loop or engagement design against the reflection and directional tests, committed.",
    "shipped": "",
+   "knowledge_only": false,
+   "practice": "A committed check of the product's habit loop or engagement design against the reflection test and the directional test.",
    "exam": [
     "D-M-17",
     "D-F-58",

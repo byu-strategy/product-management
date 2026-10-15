@@ -24,7 +24,7 @@ Step 1. Inputs (parallel)
 - [ ] Drive files through the connector, both sprints
 
 Step 2. Measures
-- [~] Concept lists: one breadth check per practicable concept; knowledge-only concepts marked
+- [x] Concept lists: one breadth check per practicable concept; knowledge-only concepts marked (29 of 175)
 - [x] Depth levels: four written levels per axis with one worked example each (`depth-levels.md`)
 - [x] Coder instructions rewritten for breadth and depth (`concept-coder.md`)
 - [x] Growth code: breadth and depth, per-axis split, rings by source, consensus (`builder_growth.py`, tested on synthetic codings)
