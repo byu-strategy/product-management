@@ -4,6 +4,32 @@ This course site is a living product. It gets better during the semester, and ev
 
 New entries appear at the top.
 
+## v2.11.2 (2026-10-14)
+
+Chapter 2 now explains every permission mode, lists the slash commands to know by name, and shows how to message your other sessions.
+
+- **Chapter 2: Blast Radius.** The permission modes table adds Don't ask, and names the flag
+  that starts Bypass permissions, `--dangerously-skip-permissions`. A new paragraph explains how
+  auto mode decides: a second model reviews each action before it runs, and a boundary you state
+  only in the chat can be lost when the conversation is compacted, so write a rule for any
+  boundary that must hold. Another paragraph explains what still protects you in bypass mode and
+  says to use it only in a container or virtual machine.
+- **Chapter 2: Slash Commands.** The table is now the commands to know by name, grouped by task:
+  managing the conversation, setting up, controlling what Claude can do, extending Claude,
+  working away from the keyboard, and checking work. New entries: `/resume`, `/rename`, `/usage`,
+  `/model`, `/effort`, `/btw`, `/exit`, `/add-dir`, `/sandbox`, `/skills`, `/plugin`, `/diff`,
+  `/list-agents`, `/remote-control`, and `/voice`.
+- **Chapter 2: Your phone and your voice.** How Remote Control lets you follow and reply to a
+  session from the Claude mobile app while it runs on your computer, and how `/voice` lets you
+  speak your prompts.
+- **Chapter 2: Messaging your other sessions.** A new subsection in Delegation and Parallel Work
+  on how parallel sessions pass messages to each other, what `/list-agents` shows, and what a
+  message can and cannot do.
+- **Key Concepts for Chapter 2** add entries for auto mode, `--dangerously-skip-permissions`, and
+  messaging your other sessions.
+- **Four new references** in the bibliography: the Claude Code documentation pages on permission
+  modes, Remote Control, voice dictation, and messaging your other sessions.
+
 ## v2.11.1 (2026-10-14)
 
 Chapter 2's section on reaching systems outside your repo now covers three routes an agent can use.
