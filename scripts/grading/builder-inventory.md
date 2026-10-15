@@ -5,6 +5,12 @@ survey asks students to place themselves on each item, and sprint evidence moves
 Supersedes the milestone list in `builder-milestones.md` (v0, the pilot) and the 50 items of the
 first baseline survey.
 
+**Concepts.** Under each item sit named concepts (hooks, skills, row level security, personas),
+each with its own checks: Know it, Used it, Built it, Shipped it. They live in `concepts/<axis>.json`;
+`builder_concepts.py` generates `builder-concepts-<axis>.md` here and, with the exam questions on
+each concept, `concepts-<axis>.html` in the private exam folder. The items below are the headings
+the concepts sit under; the ladder below describes what the checks add up to.
+
 v1.2 rewrote levels 4 and 5 from 25 coded Sprint 2 packets (`_data/.../builder-pilot/inventory-fit/`):
 what students actually did, and what a coder could and could not confirm from the packet. v1.3
 fixed the wording a second coding of the same 25 found ambiguous.
