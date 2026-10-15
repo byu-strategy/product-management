@@ -4,6 +4,21 @@ This course site is a living product. It gets better during the semester, and ev
 
 New entries appear at the top.
 
+## v2.11.3 (2026-10-14)
+
+Both exams now give full credit at 80% correct, and the final exam's format is set.
+
+- **Exam scoring.** On the midterm and the final, points = 25 × (your percent correct ÷ 80%),
+  up to 25. Scoring 80% or higher earns all 25 points.
+- **Final exam format.** The final is 84 questions in two hours. 72 count toward your score,
+  weighted by axis: Agentic Workflow 16, Application Architecture 14, AI Systems 11, Discovery 11,
+  Launch and Learn 11, and Design 9. The other 12 are unscored trial questions.
+- **Results by axis.** Each exam reports a result for each axis: Developing (below 50%),
+  Proficient (50% to 79%), or Strong (80% and up).
+- **Midterm question count corrected.** The midterm is 36 questions. The Assessments page had
+  said 40.
+- **Schedule.** The exam table on the Schedule page matches these changes.
+
 ## v2.11.2 (2026-10-14)
 
 Chapter 2 now explains every permission mode, lists the slash commands to know by name, and shows how to message your other sessions.
