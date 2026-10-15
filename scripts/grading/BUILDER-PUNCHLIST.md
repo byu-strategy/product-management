@@ -24,10 +24,10 @@ Step 1. Inputs (parallel)
 - [ ] Drive files through the connector, both sprints
 
 Step 2. Measures
-- [ ] Concept lists: one breadth check per practicable concept; knowledge-only concepts marked
-- [ ] Depth levels: four written levels per axis with one worked example each (`depth-levels.md`)
-- [ ] Coder instructions rewritten for breadth and depth (`concept-coder.md`)
-- [ ] Growth code: breadth and depth, per-axis split, rings by source, consensus (`builder_growth.py`)
+- [~] Concept lists: one breadth check per practicable concept; knowledge-only concepts marked
+- [x] Depth levels: four written levels per axis with one worked example each (`depth-levels.md`)
+- [x] Coder instructions rewritten for breadth and depth (`concept-coder.md`)
+- [x] Growth code: breadth and depth, per-axis split, rings by source, consensus (`builder_growth.py`, tested on synthetic codings)
 
 Step 3. Agreement test (Scott sees the numbers)
 - [ ] Two independent coders, 12 students, Sprint 2
@@ -35,7 +35,7 @@ Step 3. Agreement test (Scott sees the numbers)
 - [ ] Rewrite or drop what falls short; rerun if needed
 
 Step 4. Dossier in the pipeline
-- [ ] `sprint_feedback.py` builds the dossier: score card (Plan first, /50), builder profile, how you
+- [~] `sprint_feedback.py` builds the dossier: score card (Plan first, /50), builder profile, how you
       grew, what was reviewed, Sprint 3, questions, appendix (concept list); Scott's copy adds the
       instructor band and the disputed calls
 
