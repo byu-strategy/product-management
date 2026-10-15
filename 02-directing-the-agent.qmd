@@ -137,23 +137,39 @@ Run `/context` in a session and find your CLAUDE.md in the list. Then: (1) tell 
 
 ## Claude Code: Slash Commands
 
-A slash command is recognized at the start of a message; anything after it is its argument. The built-ins you will use most:
+A slash command is recognized at the start of a message; anything after it is its argument. Type `/` to see every command available to you. These are the ones to know by name, grouped by what you are doing:
 
-| Command | What It Does |
+| Command | What it does |
 |---------|--------------|
-| `/help` | Show available commands |
+| **Managing the conversation** | |
+| `/context` | Show what is filling the context window |
+| `/compact` | Summarize the conversation so far to free up context, and keep going on the same task |
+| `/clear` | Start a new conversation with empty context (CLAUDE.md still loads) |
+| `/rewind` | Roll back Claude's file edits and/or the conversation to an earlier point |
+| `/resume` | Reopen an earlier conversation, by name or from a list |
+| `/rename` | Give this session a name, so you can find it in `/resume` later |
+| `/btw` | Ask a side question without adding it to the conversation |
+| `/exit` | Leave Claude Code |
+| **Setting up** | |
 | `/init` | Write a starter CLAUDE.md for this project |
 | `/memory` | Open your CLAUDE.md files, turn auto memory on or off, and browse what Claude has saved |
-| `/context` | Show what is filling the context window |
-| `/clear` | Start a new conversation with empty context (CLAUDE.md still loads) |
-| `/compact` | Summarize the conversation so far to free up context, and keep going on the same task |
-| `/plan` | Switch into plan mode (read-only planning; see [Claude Code's plan mode](06b-specs.qmd#claude-codes-plan-mode)) |
-| `/rewind` | Roll back Claude's file edits and/or the conversation to an earlier point |
-| `/permissions` | Manage allow, ask, and deny rules |
-| `/mcp` | Manage connections to outside tools (MCP servers) |
-| `/hooks` | Show every hook that is set up and where it came from |
 | `/config` | Open settings (theme, model, and other preferences) |
+| `/model` | Switch the model, and save it as your default |
 | `/status` | Show version, model, and account |
+| `/usage` | Show what the session has cost and how much of your plan's usage limit you have used |
+| `/add-dir` | Give Claude access to another folder for this session |
+| **Controlling what Claude can do** | |
+| `/plan` | Switch into plan mode (read-only planning; see [Claude Code's plan mode](06b-specs.qmd#claude-codes-plan-mode)) |
+| `/permissions` | Manage allow, ask, and deny rules |
+| `/hooks` | Show every hook that is set up and where it came from |
+| `/sandbox` | Turn the sandbox on or off |
+| **Extending Claude** | |
+| `/skills` | List the skills available to you |
+| `/mcp` | Manage connections to outside tools (MCP servers), including sign-in |
+| `/plugin` | Install and manage plugins |
+| **Checking work** | |
+| `/diff` | Review the changes in your files, including Claude's edits |
+| `/help` | Show available commands |
 
 #### Your own commands
 
