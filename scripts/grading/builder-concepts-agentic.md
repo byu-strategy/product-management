@@ -27,7 +27,7 @@ A blank cell means the check does not apply to that concept. Evidence rules from
 
 | Concept | Used it | Made it | Shipped it | Chapter |
 |---|---|---|---|---|
-| **AW08 Slash commands.** Commands run by name inside a session; text after the command is its argument. Must know by name: /context, /compact, /clear, /rewind, /resume, /rename, /btw, /exit, /init, /memory, /config, /model, /status, /usage, /add-dir, /plan, /permissions, /hooks, /sandbox, /skills, /mcp, /plugin, /diff, /help. | slash commands used in sessions (the scan lists them) | wrote a custom command or skill run by name | n/a | Ch 2: Claude Code: Slash Commands |
+| **AW08 Slash commands.** Commands run by name inside a session; text after the command is its argument. Must know by name: /context, /compact, /clear, /rewind, /resume, /rename, /btw, /remote-control (/rc), /exit, /init, /memory, /config, /model, /status, /usage, /add-dir, /plan, /permissions, /hooks, /sandbox, /skills, /mcp, /plugin, /diff, /help. | slash commands used in sessions (the scan lists them) | wrote a custom command or skill run by name | n/a | Ch 2: Claude Code: Slash Commands |
 | **AW09 Skills.** A saved procedure the agent runs by name, shared in the repo or kept personal. | a skill invoked in sessions | wrote .claude/skills/<own>/SKILL.md | others use it (a classmate, a team, users) | Ch 2: Claude Code: Skills |
 | **AW10 Hooks.** A command that runs every time an event happens: guaranteed, unlike an instruction. | a hook ran in sessions | a hook committed in .claude/settings.json | n/a | Ch 2: Advice Versus Enforcement |
 | **AW11 Advice versus enforcement.** Instructions advise; hooks and permission rules enforce. Knowing which to use for a rule. | n/a | n/a | n/a | Ch 2: Advice Versus Enforcement |

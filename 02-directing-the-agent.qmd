@@ -149,6 +149,7 @@ A slash command is recognized at the start of a message; anything after it is it
 | `/resume` | Reopen an earlier conversation, by name or from a list |
 | `/rename` | Give this session a name, so you can find it in `/resume` later |
 | `/btw` | Ask a side question without adding it to the conversation |
+| `/remote-control` (or `/rc`) | Make this session reachable from claude.ai or the Claude app on your phone, so you can follow and reply while away from your computer (needs a Claude subscription) |
 | `/exit` | Leave Claude Code |
 | **Setting up** | |
 | `/init` | Write a starter CLAUDE.md for this project |
