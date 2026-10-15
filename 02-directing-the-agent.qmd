@@ -155,6 +155,7 @@ A slash command is recognized at the start of a message; anything after it is it
 | `/memory` | Open your CLAUDE.md files, turn auto memory on or off, and browse what Claude has saved |
 | `/config` | Open settings (theme, model, and other preferences) |
 | `/model` | Switch the model, and save it as your default |
+| `/effort` | Set how much the model reasons before it answers: low, medium, high, xhigh, max, or auto. Higher takes longer; you can also change it in `/model` |
 | `/status` | Show version, model, and account |
 | `/usage` | Show what the session has cost and how much of your plan's usage limit you have used |
 | `/add-dir` | Give Claude access to another folder for this session |
