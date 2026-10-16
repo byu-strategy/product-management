@@ -52,7 +52,7 @@
    "made": "",
    "shipped": "",
    "knowledge_only": false,
-   "practice": "A committed component the student added or changed that holds state and changes it in an event handler (for example useState with an onClick or onChange handler).",
+   "practice": "A component added or changed this sprint where the user's input changes state and that state changes what the screen shows (a filter, a form that validates, a toggle that reveals content), visible in the code and in the Loom or a live link. A single useState that only stores a field's value does not count.",
    "exam": [
     "AA-F-19",
     "AA-F-34"
@@ -84,7 +84,7 @@
    "made": "this sprint's work live at an address others can open, or a fix to the live app from its build or runtime log",
    "shipped": "people outside the team reach it, and the host choice is in a decision record",
    "knowledge_only": false,
-   "practice": "This sprint's work live at an address others can open (the packet's link check), or a commit that fixes the live app from its build or runtime log.",
+   "practice": "This sprint's own change live at an address others can open, shown working in the Loom or reached by the packet's link check on the page that holds the change (a homepage that returns 200 does not show the sprint's work by itself), or a commit that fixes the live app from its build or runtime log.",
    "exam": [
     "AW-M-05",
     "AW-M-07",

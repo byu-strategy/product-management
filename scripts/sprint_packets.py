@@ -30,14 +30,22 @@ SHIPPED_CHARS = 20_000      # code text per packet, about 5k tokens (written wor
 PER_FILE_CHARS = 10_000     # written work (specs, decisions, discovery, evals, docs): long enough for acceptance criteria
 CODE_FILE_CHARS = 3_000     # code: enough to see what it does
 # Course-provided skills and settings are skipped; a skill the student wrote is their work (W2).
-SKIP = re.compile(r"^(sprints/|\.claude/skills/(eli5|learn|sprint-plan|sprint-review)/|\.claude/settings|\.gitignore$|README\.md$)|000-.*template"
+SKIP = re.compile(r"^(sprints/|\.claude/skills/(eli5|learn|sprint-plan|sprint-review)/|README\.md$)|000-.*template"
                   r"|(^|/)(node_modules|dist|build|\.next|out|coverage|\.vercel)/"
                   r"|(^|/)(package-lock\.json|yarn\.lock|pnpm-lock\.yaml|bun\.lockb)$|\.(min\.js|min\.css|map)$")
 # Written work is read first, so a large code change cannot use up the budget before the specs,
 # decision records, discovery notes and evals the student wrote.
 WRITTEN = re.compile(r"\.(md|qmd|txt)$|(^|/)(specs|decisions|discovery|evals|prompts|docs|research|gtm|learning)/", re.I)
 WRITTEN_CHARS = 100_000     # written work and code have separate budgets, so neither crowds out the other
-TEXT = re.compile(r"\.(md|txt|py|js|jsx|ts|tsx|html|css|json|csv|yml|yaml|toml|sql|qmd)$", re.I)
+# Small files that say a lot about how the app is built (schema, row-level security, secrets kept out
+# of the repo, hooks and agent settings, tests, deploy config). Read before other code, on their own
+# budget, so a large feature cannot crowd them out (agreement test, 2026-10-15).
+SIGNAL = re.compile(r"(^|/)(migrations|supabase|prisma|tests?|__tests__|\.claude/(hooks|agents|commands))/|\.sql$|"
+                    r"(^|/)(\.gitignore|\.env\.example|\.env\.sample|\.mcp\.json|CLAUDE\.md|vercel\.json|"
+                    r"middleware\.[jt]s|schema\.prisma|\.claude/settings(\.local)?\.json)$|\.(test|spec)\.[jt]sx?$", re.I)
+SIGNAL_CHARS = 20_000
+SIGNAL_FILE_CHARS = 3_000
+TEXT = re.compile(r"\.(md|txt|py|js|jsx|ts|tsx|html|css|json|csv|yml|yaml|toml|sql|qmd|prisma)$|(^|/)\.(gitignore|env\.example|env\.sample)$", re.I)
 
 
 def local(iso):
@@ -202,10 +210,10 @@ DOCS = re.compile(r"\.(docx|pptx|pdf|xlsx)$", re.I)
 IMAGES = re.compile(r"\.(png|jpe?g|webp|gif)$", re.I)
 
 
-def raw(repo, path):
+def raw(repo, path, ref=None):
     """A file's bytes, any size up to GitHub's 100 MB, private repos included."""
     p = subprocess.run(["gh", "api", "-H", "Accept: application/vnd.github.raw",
-                        f"repos/{repo}/contents/{path}"], capture_output=True)
+                        f"repos/{repo}/contents/{path}" + (f"?ref={ref}" if ref else "")], capture_output=True)
     return p.stdout if p.returncode == 0 else None
 
 
@@ -247,40 +255,61 @@ def doc_text(name, data):
     return ""
 
 
-def shipped(repo, commits, budget=SHIPPED_CHARS, image_dir=None, net_id=None, max_images=3):
+def shipped(repo, commits, budget=SHIPPED_CHARS, image_dir=None, net_id=None, max_images=3, cutoff=None):
     """Files added or changed by the sprint's commits, with capped text for the grader. Text files,
     Word, PowerPoint, PDF, and Excel are read; up to three images (mockups, charts, screenshots
-    of the work) are saved for the grader to look at."""
-    files, first = {}, {}
+    of the work) are saved for the grader to look at.
+
+    Each file is read as of the last commit at or before `cutoff` that touched it (`as_of`), so work
+    done after the sprint never shows up as this sprint's. A file touched only after the cutoff is
+    listed with `after_window` and no text."""
+    files, first, last = {}, {}, {}
     for c in commits:
+        inside = cutoff is None or dt.datetime.fromisoformat(c["when"]) <= cutoff
         for f in (gh(f"repos/{repo}/commits/{c['sha']}") or {}).get("files", []):
-            if f["status"] != "removed" and not SKIP.search(f["filename"]):
-                files[f["filename"]] = f["status"]
-                # The first commit in the window that touched the file, so a spec can be checked
-                # as written before the code it describes (commit order, not file dates).
-                first.setdefault(f["filename"], (c["sha"][:7], c["when"]))
+            name = f["filename"]
+            if SKIP.search(name):
+                continue
+            if f["status"] == "removed":
+                if inside:
+                    files.pop(name, None)
+                    last.pop(name, None)
+                continue
+            files[name] = f["status"]
+            # The first commit in the window that touched the file, so a spec can be checked
+            # as written before the code it describes (commit order, not file dates).
+            first.setdefault(name, (c["sha"][:7], c["when"]))
+            if inside:
+                last[name] = c["sha"]
     out, images = [], 0
-    budgets = {True: WRITTEN_CHARS * budget // SHIPPED_CHARS, False: budget}
-    order = sorted(files, key=lambda n: (not (WRITTEN.search(n) or DOCS.search(n)), first[n][1]))
+    budgets = {"written": WRITTEN_CHARS * budget // SHIPPED_CHARS, "signal": SIGNAL_CHARS, "code": budget}
+    caps = {"written": PER_FILE_CHARS, "signal": SIGNAL_FILE_CHARS, "code": CODE_FILE_CHARS}
+    kind = lambda n: "written" if WRITTEN.search(n) or DOCS.search(n) else "signal" if SIGNAL.search(n) else "code"
+    rank = {"written": 0, "signal": 1, "code": 2}
+    order = sorted(files, key=lambda n: (rank[kind(n)], first[n][1]))
     for name in order:
-        status = files[name]
+        status, k = files[name], kind(name)
         item = {"path": name, "status": status, "first_commit": first[name][0], "first_when": first[name][1]}
-        written = bool(WRITTEN.search(name) or DOCS.search(name))
-        budget = budgets[written]
+        ref = last.get(name)
+        if not ref:
+            item["after_window"] = True
+            out.append(item)
+            continue
+        item["as_of"] = ref[:7]
         text = None
-        if TEXT.search(name) and budget > 0:
+        if TEXT.search(name) and budgets[k] > 0:
             # One API call per file is slow on big repos, so fetch only files whose text fits the budget.
-            meta = gh(f"repos/{repo}/contents/{name}") or {}
+            meta = gh(f"repos/{repo}/contents/{name}?ref={ref}") or {}
             item["bytes"] = meta.get("size")
             if meta.get("content"):
                 text = base64.b64decode(meta["content"]).decode("utf-8", "replace")
-        elif DOCS.search(name) and budget > 0:
-            data = raw(repo, name)
+        elif DOCS.search(name) and budgets[k] > 0:
+            data = raw(repo, name, ref)
             if data:
                 item["bytes"] = len(data)
                 text = doc_text(name, data)
         elif IMAGES.search(name) and image_dir and images < max_images:
-            data = raw(repo, name)
+            data = raw(repo, name, ref)
             if data:
                 image_dir.mkdir(parents=True, exist_ok=True)
                 src = image_dir / f"{net_id}-art-{images + 1}{Path(name).suffix.lower()}"
@@ -295,9 +324,9 @@ def shipped(repo, commits, budget=SHIPPED_CHARS, image_dir=None, net_id=None, ma
                     item["image"] = str(dest)
                     images += 1
         if text:
-            take = min(PER_FILE_CHARS if written else CODE_FILE_CHARS, budget)
+            take = min(caps[k], budgets[k])
             item["text"] = text[:take] + ("\n[... truncated]" if len(text) > take else "")
-            budgets[written] -= len(item["text"])
+            budgets[k] -= len(item["text"])
         out.append(item)
     return out
 
@@ -349,7 +378,14 @@ def build(student, sub, plan_sub, cfg, due):
                     "author": (c.get("author") or {}).get("login") or c["commit"]["author"]["name"],
                     "message": c["commit"]["message"].strip()[:600]} for c in reversed(log)]
         p["commits"] = [{k: v for k, v in c.items() if k != "sha"} | {"sha": c["sha"][:7]} for c in commits]
-        p["shipped_files"] = shipped(repo, commits, image_dir=cfg["out"] / "frames", net_id=net_id)
+        # The window closes at the due date, or at the Canvas submission when that came later (the late
+        # policy is applied separately). File text is read as of then.
+        at = sub.get("submitted_at")
+        cutoff = max(due, local(at)) if at else due
+        p["window_end"] = cutoff.isoformat()
+        for c in p["commits"]:
+            c["after_window"] = dt.datetime.fromisoformat(c["when"]) > cutoff
+        p["shipped_files"] = shipped(repo, commits, image_dir=cfg["out"] / "frames", net_id=net_id, cutoff=cutoff)
 
         f["plan_committed"] = bool(ph)
         f["plan_changed_during_sprint"] = bool(ph) and any(
@@ -463,7 +499,8 @@ def build(student, sub, plan_sub, cfg, due):
                "message": c["commit"]["message"].strip()[:600]} for c in reversed(log)]
         p["other_repos"].append({"repo": f"https://github.com/{r}",
                                  "commits": [{k: v for k, v in c.items() if k != "sha"} | {"sha": c["sha"][:7]} for c in cs],
-                                 "files": shipped(r, cs, budget=20_000) if cs else []})
+                                 "files": shipped(r, cs, budget=20_000, cutoff=p.get("window_end") and
+                                                  dt.datetime.fromisoformat(p["window_end"])) if cs else []})
     unshared = sorted(named - shared_lower - {course} - {o.lower() for o in others})
     f["repos_named_but_not_shared"] = unshared
     # Every live link anywhere in the README, not only the "Where the work lives" section: students

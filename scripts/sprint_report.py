@@ -597,41 +597,43 @@ def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott
             by_axis.setdefault(m["axis"], []).append(m)
         ctime = {c["sha"][:7]: c["when"] for c in (p.get("commits") or [])}
         order = sorted(AXES, key=lambda a: (-float(pts_now.get(a, 0)), AXES.index(a)))
-        trs = ""
+        # One row per axis; a row with something new this sprint opens to show it (depth first, then
+        # each new concept), so the table and its evidence are one list.
+        grew = ('<div class="gx gxh"><span>Axis</span><span>Depth reached</span><span class=gn>New concepts</span>'
+                '<span class=gp>This sprint</span><span class=gt>Total of 100</span></div>')
+        any_now = False
         for ax in order:
             tot = float(core.get(ax, 0)) + float(ptot.get(ax, 0))
             add = float(pts_now.get(ax, 0))
             lvl = best.get(ax, 0)
-            trs += (f'<tr><td class=ga>{e(ax.replace("Application Architecture", "App Architecture"))}</td>'
-                    f'<td class=gl>{f"{lvl} {LEVELS[lvl]}" if lvl else "<span class=qm>none yet</span>"}</td>'
-                    f'<td class=gn>{len(by_axis.get(ax, [])) or ""}</td>'
-                    f'<td class=gp>{"+" + pt(add) if round(add) else ""}</td>'
-                    f'<td class=gt><span class=gbar><i style="width:{min(100, tot):.0f}%"></i></span>{pt(tot)}</td></tr>')
-        grew = ('<table class=gtab><tr><th>Axis</th><th>Depth reached</th><th>New concepts</th><th>This sprint</th>'
-                f'<th>Total of 100</th></tr>{trs}</table>')
-        grew += '<div class=qax>This sprint</div>'
-        any_now = False
-        for ax in order:
             lst = sorted(by_axis.get(ax, []), key=lambda m: (when_key(m), ctime.get(str(m.get("ref", ""))[:7], "")), reverse=True)
             d = depth.get(ax)
+            cells = (f'<span class=gl>{f"{lvl} {LEVELS[lvl]}" if lvl else "<span class=qm>none yet</span>"}</span>'
+                     f'<span class=gn>{len(lst) or ""}</span>'
+                     f'<span class=gp>{"+" + pt(add) if round(add) else ""}</span>'
+                     f'<span class=gt><span class=gbar><i style="width:{min(100, tot):.0f}%"></i></span>{pt(tot)}</span>')
+            name = e(ax.replace("Application Architecture", "App Architecture"))
             if not lst and not d:
+                grew += f'<div class="gx gx0"><span class=qn>{name}</span>{cells}</div>'
                 continue
             any_now = True
-            grew += f'<div class=qsub>{e(ax)} <span>+{pt(pts_now.get(ax, 0))}</span></div>'
+            body = ""
             if d:
                 gain = d.get("gain")
                 right = f'level {d["level"]}, {e(d.get("name") or LEVELS.get(d["level"], ""))}'
                 if gain:
                     right += f'<span class=qp>+{pt(depth_points(ax, gain["from"], gain["to"]))}</span>'
-                body = f'<p>{e(d.get("why", ""))}</p><p class=qm>Level {d["level"]} means {LEVEL_TEXT.get(d["level"], "")}.</p>'
+                dbody = f'<p>{e(d.get("why", ""))}</p><p class=qm>Level {d["level"]} means {LEVEL_TEXT.get(d["level"], "")}.</p>'
                 if not gain and d.get("best_so_far", 0) >= d["level"]:
-                    body += f'<p class=qm>You reached level {d["best_so_far"]} on this axis before, so this adds no points.</p>'
-                grew += row("Depth", right, body, "dep")
+                    dbody += f'<p class=qm>You reached level {d["best_so_far"]} on this axis before, so this adds no points.</p>'
+                body += row("Depth", right, dbody, "dep")
             for m in lst:
                 link = ref_link(repo, m.get("ref"))
-                grew += row(e(m.get("name") or m["concept"]), f'<span class=qd>{e(short_date(m.get("when")))}</span>',
+                body += row(e(m.get("name") or m["concept"]), f'<span class=qd>{e(short_date(m.get("when")))}</span>',
                             f'<p>{e(m.get("did", ""))}</p><p class=qm>{e(m.get("evidence", ""))}{" · " + link if link else ""}</p>',
                             chips=book_chips(m.get("concept")))
+            grew += (f'<details class="q gx"><summary><span class=qn>{name}</span>{cells}</summary>'
+                     f'<div class=qb>{body}</div></details>')
         if not any_now:
             grew += "<p>No new concepts or depth were counted this sprint.</p>"
         earlier = G.get("earlier") or []
@@ -903,7 +905,7 @@ review or retro, work in a repo that is not shared, and anything the course gave
 // being read opens its own. Clicking an item inside a closed drawer opens the drawer.
 (()=>{{
 const nav=document.querySelector('nav.toc');
-const pick={{score:':scope>details.q',grew:':scope>.qax',next:':scope>ol.nsl>li.ns',appendix:'tr.apx'}};
+const pick={{score:':scope>details.q',grew:':scope>details.gx,:scope>.qax',next:':scope>ol.nsl>li.ns',appendix:'tr.apx'}};
 const label=el=>{{
   if(el.matches('details'))return el.querySelector('summary .qn').textContent;
   if(el.matches('li.ns'))return el.querySelector('.nst').textContent;
@@ -1042,10 +1044,15 @@ details.q.inst>summary .qn{color:#7a5a00}.instag{font-size:10.5px;background:#ff
 .qown{font-size:11.5px;color:var(--mute);margin-left:6px}
 .how{font-size:13px;color:#4a5262;background:#f7f8fa;border-radius:6px;padding:6px 10px;margin:6px 0 8px}
 .inote{background:#fff8e1;border:1px solid #f0d98a;border-radius:6px;padding:6px 10px;margin:0 0 8px;font-size:13px}.inote p{margin:2px 0}
-.gtab{width:100%;border-collapse:collapse;font-size:13.5px;margin:4px 0 6px}.gtab th{text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--mute);font-weight:600;padding:4px 6px;border-bottom:1px solid var(--line)}
-.gtab td{padding:7px 6px;border-bottom:1px solid #f3f4f6}.gtab .ga{font-weight:600}.gtab .gl{color:#4a5262}.gtab .gn{color:var(--mute);text-align:center}
-.gtab .gp{color:var(--amber);font-weight:600;text-align:right;white-space:nowrap}.gtab .gt{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
 .gbar{display:inline-block;width:70px;height:6px;background:#f1f2f5;border-radius:3px;margin-right:8px;vertical-align:1px;overflow:hidden}.gbar i{display:block;height:100%;background:#e2933a;border-radius:3px}
+.gx{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1.1fr) minmax(0,.8fr) minmax(0,.6fr) minmax(0,1.3fr);align-items:center;gap:8px;font-size:13.5px}
+.gx .gn{color:var(--mute);text-align:center}.gx .gp{color:var(--amber);font-weight:600;text-align:right;white-space:nowrap}.gx .gt{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}.gx .gl{color:#4a5262}
+.gxh{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--mute);font-weight:600;padding:4px 0;border-bottom:1px solid var(--line)}.gxh .gn,.gxh .gp{color:var(--mute);font-weight:600}
+div.gx0{padding:9px 0;border-bottom:1px solid var(--line)}div.gx0 .qn{font-weight:600}
+details.q.gx{display:block}details.q.gx>summary{display:grid;grid-template-columns:inherit;gap:8px}details.q.gx>summary .qn{font-weight:600}
+details.q.gx>summary{grid-template-columns:minmax(0,1.5fr) minmax(0,1.1fr) minmax(0,.8fr) minmax(0,.6fr) minmax(0,1.3fr)}
+details.q.gx>.qb{padding-left:14px}
+@media(max-width:560px){.gx .gn{display:none}.gx,details.q.gx>summary{grid-template-columns:minmax(0,1.4fr) minmax(0,1fr) minmax(0,.5fr) minmax(0,1.1fr)}.gbar{width:40px}}
 .qsub{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:var(--ink);margin:14px 0 0}.qsub span{color:var(--amber)}
 details.q.dep>summary .qn{font-style:italic;color:#4a5262}
 .capl{margin-left:10px;color:var(--mute);text-decoration:underline;text-decoration-color:#d5d9e0}

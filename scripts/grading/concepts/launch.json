@@ -310,7 +310,7 @@
    "made": "a usage analysis of a feature or the product, with what it showed, committed",
    "shipped": "a feature or the product changed, cut or stopped because of real users' usage, with the record",
    "knowledge_only": false,
-   "practice": "A committed analysis of how users used a feature or the product, with what it showed.",
+   "practice": "A committed analysis of how people outside the team used a feature or the product (counts, events, or notes from watching them), ending in a decision to keep, change or remove something, with the reason.",
    "exam": [
     "LL-F-03",
     "LL-F-39"

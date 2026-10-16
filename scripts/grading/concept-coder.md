@@ -19,7 +19,8 @@ uses the lower of your two levels. Record only what the packet lets a reader ver
 
 ## Breadth
 Record a concept when this sprint's evidence matches its `practice` sentence.
-- **This sprint only:** commits in the window (on or before the due date) and this sprint's Loom.
+- **This sprint only:** commits in the window (`window_end` in the packet: the due date, or the Canvas
+  submission if it came later; commits past it are marked `after_window`) and this sprint's Loom.
   Work copied in from before the course does not count. In a shared repo, credit follows the commit
   author.
 - **Course-provided material never counts:** the course's skills (sprint-plan, sprint-review, learn,
@@ -27,11 +28,26 @@ Record a concept when this sprint's evidence matches its `practice` sentence.
 - **One piece of work may show several concepts** only when it matches each concept's sentence on its
   own.
 - A claim made only in the retro or the review report does not count.
+- **The window is by commit date.** Work committed in the window counts even if the student did it
+  earlier; work that existed before the course (an imported project's history) does not. File text in
+  the packet is the version at the end of the window (`as_of` names the commit); a file marked
+  `after_window` was changed only later and counts in a later sprint.
+- **Two commit identities in a repo only the student commits to** (a laptop name and a GitHub login)
+  are both the student.
+- **Places named in a practice sentence are examples.** "In the README" or "in a decision record"
+  says what kind of evidence fits; the same content committed elsewhere counts.
+- **Work only in a repo that is not shared** (listed in `facts.repos_named_but_not_shared`) cannot be
+  checked and gets no credit and no depth level.
 
 ## Depth
 For each axis the sprint's work touched, assign one level from `depth-levels.md`, judged from all
 the evidence together. Give the one or two pieces of evidence that decided it, and if you hesitated
 between two levels, name the lower one as your level and say what would have settled it.
+- **One decision may count on two axes** when it meets each axis's level on its own (a database
+  choice weighed against product needs can be Decided on Architecture and on Discovery only if it
+  holds Discovery evidence too).
+- **Discovery without talking to or watching real people is level 1** at most, however much desk
+  research there is.
 
 ## Writing
 `did` and `why` are written to the student: second person, plain, literal, specific to their work,

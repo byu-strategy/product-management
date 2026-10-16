@@ -466,7 +466,7 @@
    "made": "a loop or tool call in the product, with a stopping rule",
    "shipped": "real users rely on it; limits written down",
    "knowledge_only": false,
-   "practice": "Committed code in which the model chooses the next step or calls a tool the product defines, with a stopping rule (a step limit or an end condition) in the code.",
+   "practice": "Committed code in which the model picks among two or more tools the product defines, the code runs the chosen tool and returns the result to the model, and a stopping rule (a step limit or an end condition) ends the loop. Sending a request to one provider or another does not count.",
    "exam": [
     "AW-F-06",
     "AW-F-29",
