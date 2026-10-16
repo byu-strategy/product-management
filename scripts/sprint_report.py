@@ -560,7 +560,7 @@ def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott
                             f'<p>{e(m.get("did", ""))}</p><p class=qm>{e(m.get("evidence", ""))}{" · " + link if link else ""}</p>')
         depth = [d for d in G.get("depth") or [] if d.get("level")]
         if depth:
-            grew += '<div class=qax>How you worked, by axis</div>'
+            grew += '<div class=qax>Depth by axis</div>'
             for d in depth:
                 gain = d.get("gain")
                 right = f'level {d["level"]}, {e(d.get("name") or LEVELS.get(d["level"], ""))}'
@@ -573,7 +573,7 @@ def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott
                 grew += row(e(d["axis"]), right, body)
         nc = G.get("not_counted") or []
         if nc:
-            grew += '<div class=qax>Seen, not counted</div>' + "".join(
+            grew += '<div class=qax>Work not counted</div>' + "".join(
                 row(e(x.get("name") or x.get("concept", "")), "not counted",
                     (f'<p>{e(x["what"])}</p>' if x.get("what") else "") + f'<p class=qm>{e(str(x.get("why", "")).capitalize())}.</p>'.replace("..", "."),
                     "muted") for x in nc)
@@ -722,7 +722,7 @@ and the highest level you have reached stays.</li>
 concept counts only when both checks find it in work you can point to: a commit or file in a shared repo, a shared Google
 file, a live link, or a moment in your Loom. Depth uses the lower of the two levels. Work described only in your sprint
 review or retro, work in a repo that is not shared, and anything the course gave you do not count; they appear under
-"Seen, not counted" with the reason.</p>
+"Work not counted" with the reason.</p>
 <p><b>Your profile never goes down,</b> it is not graded, and it does not change your score.</p>
 <table class=apt><tr><th>Concept</th><th>You</th></tr>{ap_rows}</table>"""
 
@@ -817,10 +817,40 @@ review or retro, work in a repo that is not shared, and anything the course gave
 {body}
 </main></div>
 <script>
-// Highlight the section being read in the contents list.
-const links=[...document.querySelectorAll('nav.toc a')];
-const io=new IntersectionObserver(es=>{{es.forEach(x=>{{if(x.isIntersecting){{links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+x.target.id))}}}})}},{{rootMargin:'-20% 0px -70% 0px'}});
+// Contents list, two levels: each section, and inside it the things a reader looks for (score
+// categories, axes, next steps, evidence rows, appendix axes). Second levels collapse; the section
+// being read opens its own. Clicking an item inside a closed drawer opens the drawer.
+(()=>{{
+const nav=document.querySelector('nav.toc');
+const pick={{score:':scope>details.q',grew:':scope>.qax',next:':scope>ol.nsl>li.ns',reviewed:':scope>details.q',appendix:'tr.apx'}};
+const label=el=>{{
+  if(el.matches('details'))return el.querySelector('summary .qn').textContent;
+  if(el.matches('li.ns'))return el.querySelector('.nst').textContent;
+  const f=el.firstChild;return (f&&f.nodeType===3?f.textContent:(el.querySelector('td')||el).childNodes[0].textContent);
+}};
+let k=0;
+nav.querySelectorAll(':scope>a').forEach(a=>{{
+  const sec=document.querySelector(a.getAttribute('href'));const sel=pick[sec.id];
+  const g=document.createElement('div');g.className='tg';a.before(g);g.append(a);
+  if(!sel)return;
+  const items=[...sec.querySelectorAll(sel)];if(!items.length)return;
+  const sub=document.createElement('div');sub.className='sub';
+  items.forEach(el=>{{
+    if(!el.id)el.id='t'+(k++);
+    const s=document.createElement('a');s.href='#'+el.id;
+    let t=label(el).trim().replace(/\s+/g,' ');s.textContent=t.length>44?t.slice(0,42)+'...':t;
+    s.onclick=()=>{{let d=el.closest('details')||el.querySelector(':scope>details');if(el.matches('details'))d=el;if(d)d.open=true}};
+    sub.append(s);
+  }});
+  const b=document.createElement('button');b.className='tw';b.setAttribute('aria-label','Show or hide');
+  b.onclick=()=>g.classList.toggle('open');g.prepend(b);g.append(sub);g.classList.add('has');
+}});
+const groups=[...nav.querySelectorAll('.tg')];
+const io=new IntersectionObserver(es=>{{es.forEach(x=>{{if(!x.isIntersecting)return;
+  groups.forEach(g=>{{const on=g.querySelector(':scope>a').getAttribute('href')==='#'+x.target.id;
+    g.querySelector(':scope>a').classList.toggle('on',on);if(on)g.classList.add('open')}})}})}},{{rootMargin:'-20% 0px -70% 0px'}});
 document.querySelectorAll('section.sec').forEach(s=>io.observe(s));
+}})();
 </script>
 </body></html>"""
 
@@ -834,6 +864,13 @@ nav.toc a,.tocm a{display:flex;justify-content:space-between;gap:8px;padding:6px
 nav.toc a small,.tocm a small{color:var(--mute);font-size:11.5px;white-space:nowrap;font-variant-numeric:tabular-nums}
 nav.toc a:hover{color:var(--ink);background:#fafafb}nav.toc a.on{border-left-color:var(--amber);color:var(--ink);font-weight:600}
 nav.toc a.inst{color:#7a5a00}
+.tg{position:relative}.tg>a{padding-left:22px}
+.tw{position:absolute;left:4px;top:6px;width:16px;height:20px;border:0;background:none;cursor:pointer;padding:0}
+.tw::before{content:"";display:block;width:5px;height:5px;border-right:1.5px solid var(--mute);border-bottom:1.5px solid var(--mute);transform:rotate(-45deg);margin:6px 0 0 4px;transition:transform .15s}
+.tg.open .tw::before{transform:rotate(45deg)}
+.sub{display:none;margin:0 0 6px}.tg.open .sub{display:block}
+nav.toc .sub a{font-size:12.5px;padding:3px 10px 3px 30px;color:var(--mute);border-left:2px solid var(--line)}
+nav.toc .sub a:hover{color:var(--ink)}
 main .qh{display:none}.tocm{display:none}
 section.sec{padding:8px 0 22px;border-bottom:1px solid var(--line);scroll-margin-top:16px}
 section.sec>h2{display:flex;justify-content:space-between;align-items:baseline;gap:14px;font-size:19px;margin:18px 0 10px}
