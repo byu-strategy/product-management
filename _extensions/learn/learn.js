@@ -34,11 +34,11 @@
     btn._t = setTimeout(function () { btn.classList.remove("learn-copied", "learn-failed"); btn.querySelector(".learn-icon").innerHTML = ICON; btn.querySelector(".learn-label").textContent = "Learn in Claude"; }, 2600);
   }
 
-  var INSTALL = "https://github.com/byu-strategy/builder-template#get-learn-in-an-existing-repo";
+  var INSTALL = "https://github.com/byu-strategy/builder-template#update-your-course-skills";
   function prompt(url) {
     return "Teach me this section of the course book with the learn skill: " + url + "\n\n" +
-      "If the learn skill is not installed in this repo, install it first with the command under " +
-      "\"Get /learn in an existing repo\" at " + INSTALL + ", then start the lesson.";
+      "If the learn skill is not installed in this repo, install it first with the steps under " +
+      "\"Update your course skills\" at " + INSTALL + ", then start the lesson.";
   }
 
   function init() {
