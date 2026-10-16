@@ -31,7 +31,7 @@ LEVELS = {1: "Followed", 2: "Directed", 3: "Decided", 4: "Delivered"}
 LEVEL_TEXT = {  # from depth-levels.md, in the student's terms
     1: "work on the axis follows a template, a tutorial, or the agent's defaults",
     2: "you said specifically what to build and checked that it worked",
-    3: "you challenged what the agent or the template proposed, weighed the options, and owned the trade-off, or found a problem yourself and fixed it with a judgment about the product",
+    3: "you challenged what the agent or the template proposed, weighed the options, and chose one with a stated reason, or found a problem yourself and fixed it with a judgment about the product",
     4: "people outside your team use it, and you changed the work because of what they did or said"}
 # One amber ramp, light at the center to dark at the newest ring; a sprint keeps its color in every report.
 SPRINT_COLORS = {1: "#f7d39c", 2: "#efb365", 3: "#e2933a", 4: "#c9761d", 5: "#a65d10", 6: "#80460a"}
@@ -45,11 +45,11 @@ RUBRIC = {
             "like, Predicted difficulty) earns 10.",
     "shipped": "Output is what you finished this sprint, judged against your plan as it stood at the end of "
                "the sprint and against how hard the work was. It counts when someone can check it: in a "
-               "shared repo, at a link, or working in your demo. Great work on an ambitious goal earns full "
-               "marks even when it falls a little short.",
+               "shared repo, at a link, or working in your demo. An ambitious goal that you nearly reach, "
+               "and account for in your retro, can earn full marks.",
     "review": "Your /sprint-review report and your retro. Full marks need every retro prompt answered and a "
               "response to something specific the report found. An empty retro earns at most half.",
-    "demo": "The real thing, working, with real content, on Loom. Up to about two minutes costs nothing.",
+    "demo": "The real thing, working, with real content, on Loom. A demo up to about two minutes long loses no points.",
 }
 CHECK_LABELS = {"on_screen": "On screen", "working": "Working", "real_content": "Real content",
                 "reachable": "Reachable", "matches_plan": "Matches the plan", "off_demo": "Off the demo",
@@ -825,7 +825,7 @@ def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott
             if s_ == cur and G.get("not_counted"):
                 out += '<div class=qax>Work not counted</div>' + "".join(
                     row(e(x.get("name") or x.get("concept", "")), "not counted",
-                        (f'<p>{e(x["what"])}</p>' if x.get("what") else "") + f'<p class=qm>{e(str(x.get("why", "")).capitalize())}.</p>'.replace("..", "."),
+                        (f'<p>{e(x["what"])}</p>' if x.get("what") else "") + f'<p class=qm>{e((lambda w: w[:1].upper() + w[1:])(str(x.get("why", "")).strip()))}.</p>'.replace("..", "."),
                         "muted", chips=book_chips(x.get("concept"))) for x in G["not_counted"])
             return out
 
