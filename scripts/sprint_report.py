@@ -258,7 +258,7 @@ CLAUDE_ICON = ('<svg viewBox="0 0 13 7" width="20" height="11" shape-rendering="
 # Copy prompt: the clipboard API, then the older copy command, then the visible box with the text selected.
 COACH_JS = """
 document.querySelectorAll('.ccbtn').forEach(b=>{
-  const ta=document.getElementById(b.dataset.copy),lab=b.querySelector('.cclabel'),box=ta.closest('details'),note=b.parentElement.querySelector('.ccnote');
+  const ta=document.getElementById(b.dataset.copy),lab=b.querySelector('.cclabel'),box=ta.closest('details'),note=b.closest('.coach').querySelector('.ccnote');
   const reset=()=>{lab.textContent='Copy prompt';b.classList.remove('ok','bad')};
   const done=()=>{lab.textContent='Copied';b.classList.add('ok');b.classList.remove('bad');note.textContent='';clearTimeout(b._t);b._t=setTimeout(reset,2000)};
   const fail=()=>{box.open=true;ta.focus();ta.select();b.classList.add('bad');
@@ -1052,16 +1052,12 @@ review or retro, work in a repo that is not shared, and anything the course gave
     score_lines += [(LABELS.get(c, c), fmt(final(row_, c)), mx, first_sentence((r.get("feedback") or {}).get(c, "")))
                     for c, _l, mx in graded]
     prompt_txt = coach_prompt(sprint, total, total_max, score_lines, steps, G)
-    first_step = (f'<p class=ccfirst><b>First step for Sprint {next_n}:</b> {steps[0][1]} '
-                  f'<a href="#next">All {n_steps} step{"s" * (n_steps != 1)}</a></p>') if steps else ""
-    next_line = (f'<div class="sm coach"><span class=cch>Go over this report with Claude Code</span>'
-                 f'<p class=cct>Copy this prompt into Claude Code in your project folder. It walks you through the report '
-                 f'and helps you plan Sprint {next_n}.</p>'
-                 f'<div class=ccrow><button type=button class=ccbtn data-copy=coachp aria-label="Copy the prompt for Claude Code">'
-                 f'{CLAUDE_ICON}<span class=cclabel>Copy prompt</span></button><span class=ccnote role=status aria-live=polite></span></div>'
+    next_line = (f'<div class="sm coach"><div class=cchead><span class=cch>Go over this report with Claude Code</span>'
+                 f'<button type=button class=ccbtn data-copy=coachp aria-label="Copy the prompt for Claude Code">'
+                 f'{CLAUDE_ICON}<span class=cclabel>Copy prompt</span></button></div>'
+                 f'<span class=ccnote role=status aria-live=polite></span>'
                  f'<details class=ccbox><summary>See the prompt</summary>'
-                 f'<textarea id=coachp readonly spellcheck=false rows=14>{e(prompt_txt)}</textarea></details>'
-                 f'{first_step}</div>')
+                 f'<textarea id=coachp readonly spellcheck=false rows=14>{e(prompt_txt)}</textarea></details></div>')
     parts_ = ([f"Plan {fmt(plan_pts)}"] if sprint > 1 else []) + [f"{LABELS.get(c, c)} {fmt(final(row_, c))}" for c, _l, _m in graded]
     summary = (f'<div class=smrow><div class=sm><span class=sml>Sprint {sprint} score</span>'
                f'<span class=smv>{fmt(total)}<small> / {total_max}</small></span><a class=sms href="#score">{" · ".join(parts_)}</a></div>'
@@ -1298,9 +1294,8 @@ a.bkc{display:inline-block;margin-left:6px;padding:0 6px;border-radius:999px;bac
 a.bkc:hover,a.bkc:focus-visible{background:#fcebd0;color:#80460a}
 .apt b{font-weight:400}.apt tr:not(.got) b{color:#7a8291}.apt tr.got b{color:var(--ink)}.apt tr.got .apd{color:var(--amber);font-weight:600}
 .apt tr.ko b,.apt tr.ko .apd{color:var(--mute);font-style:italic}.apd{white-space:nowrap;color:var(--mute);font-size:12.5px;text-align:right}
-.coach{background:#fff;gap:6px}.cch{font-size:16px;font-weight:600;line-height:1.35}
-.cct{margin:0;font-size:14px;color:#4a5262}
-.ccrow{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:4px 0 2px}
+.coach{background:#fff;gap:2px;padding-top:10px;padding-bottom:10px}.cch{font-size:15px;font-weight:600;line-height:1.35}
+.cchead{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.ccnote:empty{display:none}
 .ccbtn{display:inline-flex;align-items:center;gap:.4em;padding:.3em .9em .3em .7em;font:600 .86rem/1.4 system-ui,-apple-system,"Segoe UI",sans-serif;
   letter-spacing:.01em;color:#0057B8;background:#EEF4FB;border:1px solid #D3E1F1;border-radius:999px;cursor:pointer;transition:background .15s,border-color .15s}
 .ccbtn:hover,.ccbtn:focus-visible{background:#E1ECF8;border-color:#B9D0EA}.ccbtn:focus-visible{outline:2px solid #0057B8;outline-offset:2px}
@@ -1309,10 +1304,9 @@ a.bkc:hover,a.bkc:focus-visible{background:#fcebd0;color:#80460a}
 .ccbox{margin:2px 0 0}.ccbox>summary{cursor:pointer;font-size:12.5px;color:var(--mute);width:max-content}
 .ccbox textarea{display:block;box-sizing:border-box;width:100%;max-width:100%;margin:6px 0 0;padding:8px 10px;border:1px solid var(--line);border-radius:8px;
   background:#fbfbfc;font:12px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--ink);resize:vertical}
-.ccfirst{margin:6px 0 0;font-size:13.5px;color:#4a5262}.ccfirst b{color:var(--ink);font-weight:600}.ccfirst a{white-space:nowrap}
 @media(prefers-reduced-motion:reduce){.ccbtn{transition:none}}
 @media print{
- .ccrow,.ccbox{display:none}
+ .ccbtn,.ccbox{display:none}
  details::details-content{content-visibility:visible;display:block}
  details>summary{break-after:avoid}
  .video iframe{display:none}.video{aspect-ratio:auto;background:none}.video .poster{display:block;position:relative}
