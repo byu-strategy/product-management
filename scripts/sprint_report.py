@@ -762,7 +762,7 @@ review or retro, work in a repo that is not shared, and anything the course gave
             parts.append("<p><b>Builder profile</b> no growth file for this student yet.</p>")
         parts.append('<p class=ihow>To change a grade: edit <code>grades.csv</code> (override_*, scott_note, approved), then rerun '
                      '<code>sprint_feedback.py</code>.</p>')
-        band = big("Instructor only", "not in the student copy", "".join(parts), "inst")
+        band = "".join(parts)
 
     names = (p.get("name") or "").split()
     first = p.get("preferred_first") or (names[0] if names else "")
@@ -774,22 +774,81 @@ review or retro, work in a repo that is not shared, and anything the course gave
         due_txt = f"Due {d:%b} {d.day}, {d.year}"
     n_steps = len(steps)
     copy = "Scott's copy" if scott else ""
+    # Summary numbers: the profile total and what this sprint added.
+    prof_line, added = "", 0
+    if G:
+        core = (G.get("start") or {}).get("points") or {}
+        whole = sum(float(v) for v in core.values()) + sum(float(v) for v in (G.get("practice_total") or {}).values())
+        added = sum(float(v) for v in ((G.get("rings") or [{}])[-1].get("points") or {}).values())
+        prof_line = (f'<div class=sm><span class=sml>Builder profile</span><span class=smv>{round(whole)}<small> / 600</small></span>'
+                     f'<span class=sms>+{round(added)} this sprint, {whole / 6:.0f}% of a full-stack product builder</span></div>')
+    next_line = (f'<div class=sm><span class=sml>First step for Sprint {next_n}</span><span class=smt>{steps[0][1]}</span>'
+                 f'<a class=sms href="#next">all {n_steps}</a></div>') if steps else ""
+    summary = (f'<div class=smrow><div class=sm><span class=sml>Sprint {sprint} score</span>'
+               f'<span class=smv>{fmt(total)}<small> / {total_max}</small></span><a class=sms href="#score">by category</a></div>'
+               f'{prof_line}</div>{next_line}'
+               f'<figure class=qfig>{svg}<figcaption>{cap}</figcaption></figure>')
+    secs = []
+    if band:
+        secs.append(("inst", "Instructor only", "not in the student copy", band, "inst"))
+    secs += [
+        ("summary", "Summary", "", summary, ""),
+        ("score", "Your score", f'{fmt(total)} / {total_max}', score_body, ""),
+        ("grew", "How you grew", grew_right, grew, ""),
+        ("next", f"For Sprint {next_n}", f'{n_steps} step{"s" * (n_steps != 1)}' if n_steps else "", todo, ""),
+        ("reviewed", "What was reviewed", " · ".join(rev_bits), rev_body, ""),
+        ("questions", "Questions", "message Course Monitor", ask, ""),
+        ("appendix", "How the profile is computed", f"{n_all} concepts", appendix, "apxd"),
+    ]
+    short = {"score": f"{fmt(total)}/{total_max}", "grew": f"+{fmt(round(added))}" if G and added else "",
+             "next": str(n_steps) if n_steps else ""}
+    toc = "".join(f'<a href="#{i}" class="{c}"><span>{e(t)}</span><small>{short.get(i, "")}</small></a>'
+                  for i, t, r_, _b, c in secs)
+    body = "".join(f'<section id={i} class="sec {c}"><h2><span>{e(t)}</span><small>{r_}</small></h2>{b}</section>'
+                   for i, t, r_, b, c in secs)
     return f"""<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1">
-<title>Sprint {sprint} Report · {e(full)}{" (" + copy + ")" if copy else ""}</title><style>{CSS}</style></head><body>
-{band}
+<title>Sprint {sprint} Report · {e(full)}{" (" + copy + ")" if copy else ""}</title><style>{CSS}{TOC_CSS}</style></head><body>
+<div class=layout>
+<nav class=toc><div class=tocname>Sprint {sprint} Report<br><b>{e(full)}</b><br><span>{e(due_txt)}</span></div>{toc}</nav>
+<main>
 <header class=qh><span class=qtitle>Sprint {sprint} Report · {e(full)}</span><span>{e(due_txt)}</span></header>
-{big("Your score", f'<span class=qscore>{fmt(total)}<small> / {total_max}</small></span>', score_body, "score")}
-<h2 class=qlab>Your builder profile</h2>
-<figure class=qfig>{svg}<figcaption>{cap}</figcaption></figure>
-<div class=bigs>
-{big("How you grew", grew_right, grew)}
-{big("What was reviewed", " · ".join(rev_bits), rev_body)}
-{big(f"What to consider for Sprint {next_n}", f'{n_steps} step{"s" * (n_steps != 1)}' if n_steps else "", todo)}
-{big("Questions about this report?", "message Course Monitor", ask)}
-{big("Appendix: how your builder profile is computed", f"{n_all} concepts · the rules", appendix, "apxd")}
-</div>
+<details class=tocm><summary>Contents</summary>{toc}</details>
+{body}
+</main></div>
+<script>
+// Highlight the section being read in the contents list.
+const links=[...document.querySelectorAll('nav.toc a')];
+const io=new IntersectionObserver(es=>{{es.forEach(x=>{{if(x.isIntersecting){{links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+x.target.id))}}}})}},{{rootMargin:'-20% 0px -70% 0px'}});
+document.querySelectorAll('section.sec').forEach(s=>io.observe(s));
+</script>
 </body></html>"""
 
+
+TOC_CSS = '''
+body{max-width:none;margin:0;padding:0}
+.layout{display:grid;grid-template-columns:220px minmax(0,680px);gap:48px;justify-content:center;padding:28px 22px 80px}
+nav.toc{position:sticky;top:24px;align-self:start;font-size:13.5px;max-height:calc(100vh - 48px);overflow:auto}
+.tocname{font-size:12.5px;color:var(--mute);margin:0 0 14px;line-height:1.5}.tocname b{color:var(--ink);font-size:14px}
+nav.toc a,.tocm a{display:flex;justify-content:space-between;gap:8px;padding:6px 10px;border-left:2px solid var(--line);color:#4a5262}
+nav.toc a small,.tocm a small{color:var(--mute);font-size:11.5px;white-space:nowrap;font-variant-numeric:tabular-nums}
+nav.toc a:hover{color:var(--ink);background:#fafafb}nav.toc a.on{border-left-color:var(--amber);color:var(--ink);font-weight:600}
+nav.toc a.inst{color:#7a5a00}
+main .qh{display:none}.tocm{display:none}
+section.sec{padding:8px 0 22px;border-bottom:1px solid var(--line);scroll-margin-top:16px}
+section.sec>h2{display:flex;justify-content:space-between;align-items:baseline;gap:14px;font-size:19px;margin:18px 0 10px}
+section.sec>h2 small{font-size:13.5px;color:var(--mute);font-weight:400;font-variant-numeric:tabular-nums}
+section.inst{background:#fff8e1;border:1px solid #e8c766;border-radius:10px;padding:4px 18px 14px;font-size:12.5px}
+section.inst>h2{font-size:15px;color:#7a5a00}
+section.apxd>h2{font-size:16px;color:#4a5262}
+.smrow{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.sm{border:1px solid var(--line);border-radius:10px;background:#fbfbfc;padding:12px 16px;display:flex;flex-direction:column;gap:2px;margin-bottom:12px}
+.sml{font-size:11.5px;text-transform:uppercase;letter-spacing:.07em;color:var(--mute);font-weight:600}
+.smv{font-size:28px;font-weight:600;line-height:1.2}.smv small{font-size:.55em;color:var(--mute);font-weight:500}
+.sms{font-size:12.5px;color:var(--amber)}.smt{font-size:15px;line-height:1.45}
+@media (max-width:900px){.layout{display:block}nav.toc{display:none}main .qh{display:flex}
+ .tocm{display:block;border:1px solid var(--line);border-radius:8px;padding:8px 12px;margin:0 0 12px}.tocm summary{cursor:pointer;font-weight:600}}
+@media print{nav.toc,.tocm,script{display:none}.layout{display:block;padding:0}main .qh{display:flex}}
+'''
 
 CSS = '''
 :root{--ink:#1d2330;--mute:#7a8394;--line:#eceef2;--amber:#b45f04}
