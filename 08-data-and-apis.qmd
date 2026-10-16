@@ -4,16 +4,16 @@ title: "Data and APIs"
 
 ## Why This Matters
 
-Everything your product remembers lives in a database, and everything it borrows from the
-outside world arrives through an API (Chapter 7: a defined way for one program to ask another for
+Everything your product remembers lives in a database, and everything it gets from
+other services arrives through an API (Chapter 7: a defined way for one program to ask another for
 something). These two mechanics are most of what separates a
-prototype from a product. A prototype forgets when you refresh. A product does not.
+prototype from a product. A prototype loses its data when you refresh. A product keeps it.
 
-This chapter gives you four models: the data model is the skeleton of your product; a query
+This chapter gives you four models: the data model is the structure every screen depends on; a query
 is a few blocks that pick rows; the database decides who sees which rows; and
 every request can fail. It ends with the rules for secrets and for other people's data.
 
-## The Data Model Is the Skeleton
+## Design the Data Model First {#the-data-model-is-the-skeleton}
 
 **The model:** tables are the nouns of your product and keys are how they relate. The data
 model is the hardest thing to change later, so it deserves the most thought early.
@@ -180,7 +180,7 @@ the result is two rows: *Group chat scheduling chaos, 8* and *Expense tracking i
 
 ![The same query, one block at a time. The filter removes four of the six rows; the result is two rows.](images/diagrams/ch08-query-blocks.svg){#fig-query-blocks fig-alt="Four numbered query blocks on the left, each beside the table it produces. 1, FROM problems: start with the whole six-row table. 2, WHERE owner = 'ana' AND intensity >= 5: rows 1 and 2 are highlighted; rows 3, 4 and 5 are struck through with the note not ana, and row 6 is struck through with the note 3 < 5. 3, SELECT title, intensity: the two rows keep only those columns, Expense tracking is tedious 7, then Group chat scheduling chaos 8. 4, ORDER BY intensity DESC: the result table, outlined in blue, lists Group chat scheduling chaos 8 first and Expense tracking is tedious 7 second, labeled Result: 2 rows. A note says the query is written with SELECT first but run in this order: table, filter, columns, sort, then limit." width="100%"}
 
-Your app's code says the same thing in the Supabase client's words, block for block:
+Your app's code says the same thing in the Supabase client's syntax, block for block:
 
 ```javascript
 supabase.from('problems')                      // FROM
@@ -219,7 +219,7 @@ filter can change or erase every row in a table with one line: `DELETE FROM prob
 row or uses an **index**: a sorted lookup list it keeps on a column, like the index at the back
 of a book, so it can jump to the matching rows. Indexes make reads on large tables fast and make
 each write slightly slower. At student scale you rarely need to think about them; when a page
-gets slow as data grows, a missing index is the first suspect. Markus Winand's free *Use The
+gets slow as data grows, a missing index is the first thing to check. Markus Winand's free *Use The
 Index, Luke!* is the reference (see [Builder Resources](97-builder-resources.qmd)).
 
 ::: {.callout-tip title="Try it"}
@@ -270,7 +270,7 @@ WITH CHECK (auth.uid() = user_id);
 
 `auth.uid()` is the id of the signed-in user making the request, read from the session token
 the database can verify. `USING` filters which existing rows are visible; `WITH CHECK` tests the
-new row being written. Updates and deletes get policies of the same shape.
+new row being written. Updates and deletes get policies of the same form.
 
 **Without RLS,** anyone holding the publishable key, which means anyone who has loaded your
 site, can read and change every row in the table, signed in or not. **With RLS on and no
@@ -280,7 +280,7 @@ completely, which is exactly why it must never reach the browser.
 
 The same idea protects files. Supabase Storage keeps uploads in **buckets**, either public
 (anyone with the link can read, fine for profile pictures) or private, and a private bucket's
-access is set with policies of the same shape, for example "a user may read files in the folder
+access is set with policies of the same form, for example "a user may read files in the folder
 named with their own id."
 
 **Worked example.** A peer-feedback app shows each student only their own feedback, because the
@@ -302,7 +302,7 @@ policy, then run the drill again. This is also a standard check in the Peer Code
 many reasons: network, permission, limits, bad input, a bug on the other side. Good apps expect
 failure and tell the user what happened.
 
-Most products also borrow from other companies' APIs: Stripe for payments, Resend or SendGrid
+Most products also use other companies' APIs: Stripe for payments, Resend or SendGrid
 for email, Twilio for text messages, Anthropic for models. They all work the same way, over
 HTTP, the protocol your browser uses for every page. Chapter 7 shows the parts of one, the
 Claude API, in @fig-what-is-an-api.
@@ -508,7 +508,7 @@ it:
 
 The rule builders most often miss: **sending data somewhere is copying it to that company's
 servers.** A model prompt, an analytics event, an error report, a `console.log` on the server
-(which lands in Vercel's logs), and the files you let Claude Code read all leave your database.
+(which is written to Vercel's logs), and the files you let Claude Code read all leave your database.
 Before data goes somewhere, ask: does the user or client know it goes there, does the contract
 allow it, and does it need to go at all?
 
@@ -552,7 +552,7 @@ event `profile_updated` that includes the user's new phone number. Then search y
 - **CRUD**: Create, Read, Update, Delete. Update and delete pick rows with the same `WHERE`, so a
   missing filter changes or erases every row.
 - **Index**: a sorted lookup list on a column that makes reads fast and each write slightly
-  slower; the first suspect when a page slows as data grows.
+  slower; the first thing to check when a page slows as data grows.
 - **RLS (Row Level Security)**: policies in the database that decide which rows each request may
   touch, as if an extra `WHERE` were added to every query. In a Supabase app it is the only
   place access can be enforced.
@@ -566,7 +566,7 @@ event `profile_updated` that includes the user's new phone number. Then search y
 - **Requests fail**: a network error or timeout returns no status code at all. `fetch` throws
   only when no answer came back, so code must check `response.ok` and show the user what
   happened without losing what they typed.
-- **Public vs. secret keys**: publishable keys ship to the browser and can do only what your
+- **Public vs. secret keys**: publishable keys are sent to the browser and can do only what your
   rules allow; secret keys bypass your rules or spend your money, so they stay on the server.
   A call that carries a secret key goes from your server, never the browser.
 - **Environment variables**: settings kept outside the code, in `.env.local` and Vercel's

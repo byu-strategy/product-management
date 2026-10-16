@@ -1,6 +1,6 @@
 # Release Notes {.unnumbered}
 
-This course site is a living product. It gets better during the semester, and every meaningful update ships as a numbered release so you can see exactly what changed and when. The current version is shown in the footer of every page.
+This course site is updated during the semester, and every meaningful update is published as a numbered release so you can see exactly what changed and when. The current version is shown in the footer of every page.
 
 New entries appear at the top.
 
@@ -105,7 +105,7 @@ the terminal, interfaces, and how requests cross the internet.
 New appendix on Codex in the terminal and the ChatGPT desktop app, and scorecards comparing each CLI in VS Code with its desktop app.
 
 - **New appendix, "Codex in the Terminal and the ChatGPT Desktop App."** The Codex desktop app is now Codex mode inside the ChatGPT desktop app. The appendix covers what the CLI and the app share, which commands work in each, what the app adds (worktrees, a review pane, a built-in browser, scheduled tasks), what only the CLI does, and how to move a chat between them.
-- **New scorecards: the CLI in VS Code or the desktop app?** Both the Claude Code and the Codex appendices now score the two setups on 12 everyday jobs, such as finding files, reviewing changes, previewing your app, and running several agents at once, and explain where each one wins.
+- **New scorecards: the CLI in VS Code or the desktop app?** Both the Claude Code and the Codex appendices now score the two setups on 12 everyday jobs, such as finding files, reviewing changes, previewing your app, and running several agents at once, and explain which setup does each job better.
 - **"Claude Code and Other Coding Agents"** links each desktop app row to its comparison.
 - **Chapter 2:** a new figure shows the four steps of one CI run (push, install packages, build, run tests) and why CI becomes the slowest step when an agent writes the code, with a table defining each term.
 
@@ -242,7 +242,7 @@ How to turn in your plan, made plain.
 
 ## v2.4.0 (2026-09-30)
 
-Every sprint now has four deliverables with one name each, a clear place to turn each in, and a new home for your retro.
+Every sprint now has four deliverables with one name each, a clear place to turn each in, and a new place for your retro.
 
 - **Four deliverables: Plan, Shipped, Review, Demo.** The new [What you turn in, and how](00-assessments.qmd#what-you-turn-in-and-how) table lists each one: what it is, where it lives, how you turn it in, when, and how many points. The rubric uses the same four names.
 - **The end-of-sprint assignment is now called Sprint N Wrap-up** (it was Sprint N Review). You submit your review file and your Loom there.
@@ -273,12 +273,12 @@ What counts as an artifact, and one requirement removed.
 
 ## v2.3.2 (2026-09-30)
 
-What counts as shipped, where your work can live, and how difficulty now figures in.
+What counts as shipped, where your work can live, and how difficulty now counts.
 
 - **Your work has to be checkable, and it can live anywhere.** Shipped work can be in your course repo, in another repo listed in your README, or live at a link. Work nobody can check, anywhere, does not count as shipped.
 - **You never have to share a company repo.** Share it with Professor Murff and Nate if your team is comfortable with that. If not, list it under **Where the work lives** in your README and `/sprint-review` will summarize its commits (dates, messages, and file names, never code), or show the result through the live product, a store listing, or your Loom. See [Confidential company work](00-assessments.qmd#confidential-company-work).
 - **Your README has a new section, Where the work lives.** List every repo and live link someone would need to check what you shipped. Refresh your builder template skills to get the updated `/sprint-review`, which also reads Codex sessions now.
-- **From Sprint 2, "shipped" is weighed by how hard the work was for you.** Ambitious work you partly reach and account for in your retro can still earn full marks. Routine work you comfortably finish earns up to 15 of 20. Your predicted difficulty is still not graded.
+- **From Sprint 2, "shipped" is weighed by how hard the work was for you.** Ambitious work you partly complete and account for in your retro can still earn full marks. Routine work you comfortably finish earns up to 15 of 20. Your predicted difficulty is still not graded.
 
 ## v2.3.1 (2026-09-30)
 
@@ -292,7 +292,7 @@ Two rules for sprint deliverables, both taking effect with Sprint 2.
 From Sprint 2 on, each sprint is two Canvas assignments, the plan is graded for completion, and you can change your plan during the sprint.
 
 - **The plan is its own assignment.** Run `/sprint-plan`, commit the file, and paste the four fields (Goal, Why this, Done looks like, Predicted difficulty) into that sprint's Plan assignment on Canvas by the first Wednesday at 11:59 PM. On time with all four fields filled in earns all 10 points. Sprint 2's plan is due Friday, Oct 2, since this changed partway through its first week.
-- **You can change your plan.** Edit the plan file and add a `**Changes:**` line with the date, what changed, and why. Changes cost nothing. Your work is read against the plan as it stands at the end, and your retro says how it moved.
+- **You can change your plan.** Edit the plan file and add a `**Changes:**` line with the date, what changed, and why. Changes cost nothing. Your work is read against the plan as it stands at the end, and your retro says how it changed.
 - **The Review assignment is the other 40 points** (90 for Sprint 6: shipped 50, review 20, demo 20). Submit two links: your `sprints/sprint-N-review.md` on GitHub and your Loom. Keep the **Where to see it** line in your README pointing at what you shipped.
 - **The demo is 60 to 90 seconds, on Loom.** This corrects v2.2.1, which said 60. A few seconds over is fine.
 - **The schedule shows every plan due date,** in the sprint table and on each sprint's first class.
@@ -306,15 +306,15 @@ Starting with Sprint 2, the demo is shorter and has to be on Loom, and the Canva
 
 ## v2.2.0 (2026-09-15)
 
-Two new sections on how software actually gets built with agents, and diagrams throughout the book where chapters used to be walls of text.
+Two new sections on how software actually gets built with agents, and diagrams throughout the book where chapters used to be text only.
 
 - **New in Chapter 1: what makes an agent an agent.** A chatbot and a coding agent run on the same model. What separates them is access: reading your files, running commands, executing code, and creating real deliverables. The new section sits right before the command line setup and explains why this course runs in a terminal instead of a browser tab.
 - **New in Chapter 2: what this looks like at full scale.** A walk through OpenAI's internal "agentic software factory," where a human defines the outcome and agents handle the code, the tests, the review, the deploy, and the incident response. Three things to take from it as a product manager: your job is the outcome, verification is the bottleneck once writing code gets cheap, and deciding which changes need a human is itself a design decision. You are running a small version of the same system.
-- **The product loop is inverting.** Chapter 1 now covers the shift from idea, spec, design, build to idea, build, play, design. The spec does not disappear, it moves: you write it after you have learned something from a build instead of guessing beforehand.
-- **Chapter 4 opens with the whole map.** Dan Olsen's Lean Product Process shows which parts of product-market fit are the market's to decide and which are yours. Chapter 4 is the market half; Chapters 5 and 6 are the product half.
+- **The product loop is inverting.** Chapter 1 now covers the shift from idea, spec, design, build to idea, build, play, design. You still write the spec, after you have learned something from a build instead of guessing beforehand.
+- **Chapter 4 opens with the full process.** Dan Olsen's Lean Product Process shows which parts of product-market fit are the market's to decide and which are yours. Chapter 4 is the market half; Chapters 5 and 6 are the product half.
 - **Chapter 5 starts with the UX iceberg.** Visual design is the only layer above the waterline, and it is the layer an agent is best at. Interaction design, information architecture, and conceptual design are underneath, and they are where usable and unusable products diverge.
 - **A warning about AI-generated personas.** Chapter 4's persona section now shows a real worked example and names the failure mode: asking an agent for a persona before you have talked to anyone produces a plausible character with no information in it, and it will confirm whatever you already believed.
-- **Chapter 11 starts with the autonomy spectrum.** How much rope to give a model, from a bare call you control completely to agents deciding their own steps. Your default should be a fixed process with a model call inside it.
+- **Chapter 11 starts with the autonomy spectrum.** How much freedom to give a model, from a bare call you control completely to agents deciding their own steps. Your default should be a fixed process with a model call inside it.
 - **Inbound marketing has a second audience.** Chapter 12 now covers which sources models actually cite when buyers ask them instead of searching, and what that means for where you spend your effort.
 - **Diagrams where there were none.** Chapters 5, 7, 11, and 12 had no figures at all. They now have them, along with new diagrams in Chapters 1, 3, 4, and 9: the elements of value, a customer journey map, front-end and back-end architecture, and screenshots for the GitHub steps in Chapters 2 and 9.
 - **Further reading.** Added "Inside OpenAI's Agentic Software Factory" from The Pragmatic Engineer.
@@ -324,21 +324,21 @@ Two new sections on how software actually gets built with agents, and diagrams t
 The builder template is live, so you can create your repo and plan Sprint 1 today.
 
 - **The builder template is on GitHub.** Sprint 1 now links straight to it: [byu-strategy/builder-template](https://github.com/byu-strategy/builder-template). Click **Use this template**, create your repo, and add Professor Murff (`sdmurff`) and the TA, Nate (`nmccaul`), as collaborators. It comes with `/sprint-plan` and `/sprint-review` already installed.
-- **`/sprint-plan` reviews your whole plan before writing it.** After you answer all four questions, it checks whether the plan is a reasonable two-week sprint: a specific goal, a finish line someone else could check, a finish line that actually matches the goal, and work that is neither an afternoon nor a semester. It raises anything it finds once, and then the plan is yours.
+- **`/sprint-plan` reviews your whole plan before writing it.** After you answer all four questions, it checks whether the plan is a reasonable two-week sprint: a specific goal, an end result someone else could check, an end result that actually matches the goal, and work that takes more than an afternoon and less than a semester. It raises anything it finds once, and then you decide.
 - **The difficulty scale covers all five levels.** Every rating from 1 to 5 now has a description, and each is worded as a prediction about the work ahead.
 - **A setup prompt for Sprint 1.** The [Sprint 1](00-assessments.qmd#sprint-1) section has a prompt you paste into Claude Code. It walks you through creating your repo, adding collaborators, writing your context declaration, and committing your plan, and explains each step. The Sprint 1 plan is due Wednesday, September 16, 11:59 PM.
-- **The template fits every role.** Not everyone in this course ships software. The template's README, `CLAUDE.md`, and spec now describe work in any role, and the context declaration asks which hats you wear on your team. `/sprint-plan` reads your role and asks what shipped means for your kind of work.
+- **The template fits every role.** Not everyone in this course ships software. The template's README, `CLAUDE.md`, and spec now describe work in any role, and the context declaration asks which roles you have on your team. `/sprint-plan` reads your role and asks what shipped means for your kind of work.
 
 ## v2.1.0 (2026-09-08)
 
 Sprints are rewritten. Six sprints, two weeks each, and every one is the same assignment. Two new Claude Code skills plan and close them out.
 
-- **Every sprint is now the same assignment.** Same structure, same deliverables, same rubric, six times. What changes is what you decide to work on. The old sprints assumed everyone would be at the same stage at the same time: picking a problem in weeks 3 and 4, building an MVP in weeks 5 and 6. That is not how building works. You might spend two weeks on discovery, find out in week 7 that your idea is wrong, and go back to it. The assignment no longer presumes to know where you are.
+- **Every sprint is now the same assignment.** Same structure, same deliverables, same rubric, six times. What changes is what you decide to work on. The old sprints assumed everyone would be at the same stage at the same time: picking a problem in weeks 3 and 4, building an MVP in weeks 5 and 6. That is not how building works. You might spend two weeks on discovery, find out in week 7 that your idea is wrong, and go back to it. The assignment no longer assumes it knows where you are.
 - **Two weeks each, all of them.** Sprints used to run one, two, or three weeks depending on which one. Now every sprint is two weeks: Sept 14, Sept 28, Oct 12, Oct 26, Nov 9, and Nov 23.
 - **New: `/sprint-plan`.** Run it on day one. It asks what you are going to do, pushes back if the goal is vague or unmeasurable, and writes your plan file. Commit it that day; the timestamp is part of the grade.
 - **New: `/sprint-review`.** Run it at the end. It finds the Claude Code sessions from your sprint, asks you which projects belonged to it, and writes you a report: when you worked, where you got stuck and how you got unstuck, what took the longest, and which builder axis your work advanced. It reads only the projects you confirm, and nothing leaves your computer. Read it before you write your retro; it is usually more accurate about where two weeks went than memory is.
 - **Predict your own difficulty.** Each plan asks how hard you expect the work to be, 1 to 5, and each retro asks how hard it actually was. **This is not graded in either direction.** It is there so you can practice estimating.
-- **The demo is 90 seconds.** Down from five minutes, and it is the demo only. Show the thing working with real content. No slides, no intro. Your written retro carries the reflection.
+- **The demo is 90 seconds.** Down from five minutes, and it is the demo only. Show the thing working with real content. No slides, no intro. The reflection goes in your written retro.
 - **No separate final project.** Sprint 6 is the last sprint and the culmination, worth 100 points instead of 50, with a three-minute demo covering the semester.
 - **"Shipped" no longer means only code.** A landing page published at a URL, a pricing model your team can use, copy that is actually in use, an automation that runs, research written up and acted on, or analytics returning real data all count. The standard is that it is real and someone other than you can reach it, use it, or see it.
 - **The portfolio is no longer required.** Build one if you want it. Sprint 1 still asks for your company repo and a short declaration of what you are building, who it is for, and who your user is.
@@ -352,12 +352,12 @@ The whole course is rebuilt around six builder skills, two weeks each. New chapt
 
 - **The book is now organized around the six Builder axes.** Agentic Workflow, Discovery, Design, Application Architecture, AI Systems, and Launch and Learn, two weeks each across the semester. Every chapter, every drill, and both exams line up with one of the six, so when your baseline chart says an axis is weak you know exactly where to go. You will rate yourself on all six in week 1 and again in week 13 and see how the shape changed.
 - **The order changed on purpose.** Agentic Workflow comes first, so you ship something in week one that you do not fully understand, and Application Architecture comes in week seven, where you find out what you shipped. Every chapter has been renumbered to match the order you read them in.
-- **New chapter, How Models Work.** What a large language model actually does when it turns your prompt into text: supervised learning, neural networks, tokens, context windows, and prompting. If you have been treating the model as magic, this is where that stops.
+- **New chapter, How Models Work.** What a large language model actually does when it turns your prompt into text: supervised learning, neural networks, tokens, context windows, and prompting. If you have been treating the model as magic, this chapter explains the mechanism.
 - **New chapter, Models in Your Product.** Calling Claude from your own app: where the call lives and why your API key never goes in the browser, getting structured data back instead of prose you have to parse, streaming, what each call costs and how to price it before you ship, the ways model calls fail without raising an error, and how to build an eval so you know whether a change actually helped.
 - **New chapter, Anatomy of an Application.** Frontend, backend, database, and API, what each layer does and how they fit together, plus the tech stacks and languages this course uses and how to choose one for yourself.
 - **New chapter, Interface and Flow.** Frontend fundamentals, React, forms and state, responsive layout, and the platform decision between web, PWA, and native, all in one place.
 - **Quizzes are replaced by two exams.** Instead of ten in-class quizzes there is a **midterm** (Oct 20 to 26, covering the first six classes) and a **final** (Dec 14 to 17, cumulative). Both are in the testing center, on your own schedule within the window, closed book and proctored. Each is worth 5% of your grade, the same 50 points the quizzes were worth, so nothing else about grading changed. The final has ten questions per axis, so your score comes back as a six-sided profile you can compare against your own self assessment.
-- **Why the exams are closed book.** Nearly everything else you submit this semester is built with AI. These two sittings are the one place your own understanding is measured on its own. They are also deliberately low stakes: at 5% each, one rough morning is worth about two percent of your grade.
+- **Why the exams are closed book.** Nearly everything else you submit this semester is built with AI. These two sittings are the one place your own understanding is measured on its own. They are also deliberately low stakes: at 5% each, one bad exam is worth about two percent of your grade.
 - **Updated learning outcomes.** There are now five instead of four. The new one is about using AI coding agents well, including judgment about when to trust, verify, or override the tool, which is the most distinctive thing this course teaches and was not previously stated as an outcome.
 - **A clearer syllabus.** The course description now describes this course rather than the version taught under the old number, and names the real tools you will use. Required Materials leads with Claude Pro at $20 per month rather than requiring Max up front. The late work policy now covers testing center windows.
 - **Fixes and polish.** Growth and onboarding material moved out of the tech debt chapter into Going to Market where it belongs. Every chapter now opens with Why This Matters and closes with Key Concepts. Dates on the syllabus corrected to the Fall term.
@@ -390,14 +390,14 @@ Every reference in the book is now a clickable link, plus three more cited sourc
 Every borrowed idea in the book is now cited to a real source, plus a new appendix on the economics behind strategy and a clearer opening to the AIRE loop.
 
 - **Citations across the whole book.** Each chapter now credits the books and papers behind its ideas, with a linked reference list at the foot of the chapter and a new **Works Cited** page collecting the full bibliography (67 sources). Every entry was checked against an authoritative catalog.
-- **New appendix, The Logic of Value.** Derives the economics under the value stick, how producer surplus, profit, and return above the cost of capital are one idea seen at different depths, with diagrams.
+- **New appendix, The Logic of Value.** Derives the economics under the value stick, how producer surplus, profit, and return above the cost of capital are one idea measured at different levels of detail, with diagrams.
 - **Product Strategy:** a new section on creating value versus capturing it, with a value stick diagram showing where your margin sits between willingness to pay and willingness to sell.
 - **Chapter 1:** the AIRE loop is now framed as four plain questions (what do you want, what is true, what's the best option, what happened), opening with the Cheshire Cat as President Monson retold it.
 - **Fixes and polish:** embedded tweets now show author handles correctly.
 
 ## v1.2.0 (2026-07-20)
 
-A large release: a new Product Strategy chapter, the course reorganized around the AIRE loop, two new reference pages, and the schedule and assessments brought in line with the new structure.
+A large release: a new Product Strategy chapter, the course reorganized around the AIRE loop, two new reference pages, and the schedule and assessments updated to match the new structure.
 
 - **New chapter, Product Strategy** (in the Aim part): what game you are playing, where to play and how to win, moats, and the DHM test for a strong strategy.
 - **The course is now organized into five parts around the AIRE loop:** Foundations, Aim, Discover, Build, Grow, and a References section. Product Morality now sits in Aim (what is worth building), and Platform Strategy moves into Build.
@@ -425,12 +425,12 @@ Small additions to the discovery and storytelling material.
 
 ## v1.1.0 (2026-07-18)
 
-A large content release: a new chapter, a framework that ties the whole course together, and expanded discovery, storytelling, and grading material.
+A large content release: a new chapter, a framework that connects every part of the course, and expanded discovery, storytelling, and grading material.
 
 - **New chapter, Product Morality** (in Grow the Business): how to aim a product well, moral foundations, a reflection test for habit-forming products, and Aristotle's golden mean with a virtue table.
 - **Chapter 1 now opens with "The Loop: How This Course Works":** the AIRE loop the course runs on (Aim, Inform, Reason, Enact), why the decision factors multiply, and how each class runs as a practice.
 - **Chapter 3 now opens with "Discovery Is Truth-Seeking":** a belief-and-truth map with a new diagram, the six ways of knowing and why you triangulate, and how much evidence is enough before you commit.
-- **Storytelling and the Final Demo is now a full chapter:** building a story database, techniques that make a story land, and a three-part structure for the final video.
+- **Storytelling and the Final Demo is now a full chapter:** building a story database, techniques that make a story effective, and a three-part structure for the final video.
 - **New Playbook page, "Why This Class Works This Way,"** explaining the course design, including why the class is graded on decisions and learning rather than outcomes.
 - **Truth-seeking callbacks** added to Validating Opportunities, Testing with Users, and Measuring What Matters.
 - **Schedule:** scrimmages (Practices 11 and 12) are now described; Wednesday office hours; updated TA and course-number information.

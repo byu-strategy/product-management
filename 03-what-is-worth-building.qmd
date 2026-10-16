@@ -8,7 +8,7 @@ Building is cheap now, so the expensive mistake is building the wrong thing. Bef
 build well, you have to decide what deserves to exist. This chapter is the Aim end of the
 loop: whether there is a real problem worth solving, where you will compete and how you mean to win, how a product
 creates and captures value, and whether the thing you are considering is good for the people
-who will use it. Those belong together: a product that solves no real problem, cannot hold
+who will use it. Those belong together: a product that solves no real problem, cannot keep
 any of the value it creates, or harms the people who use it has failed the same test.
 
 ## Why Most Products Fail
@@ -65,7 +65,7 @@ The difference looks small and has large consequences. Solution thinking leads y
 stranger test: nobody has an AI-study-schedule problem. Strip out the product and ask what happens
 today: "Students taking five classes find out a big assignment is due tomorrow because the due
 dates live in five different Canvas courses and syllabi." A stranger can check that against their
-own week. It also opens answers the original idea would have hidden: a calendar export, a weekly
+own week. It also suggests answers the original idea would have excluded: a calendar export, a weekly
 email, a habit of checking one page. Some of those need no AI at all.
 
 A quick check you can run on any statement: if it contains an app, a feature, a technology, or the
@@ -88,7 +88,7 @@ critique your rewrites, but tell it to flag any word that implies a solution.
 
 ## Vision before strategy
 
-Before the strategy comes a **product vision**: a description of the better world your product creates, usually a few years out. Marty Cagan argues the vision is what recruits people, aligns decisions, and keeps a team going through the difficult middle of the work [@cagan2017inspired]. Strategy is how you get there; vision is the destination and the reason to go. Write the vision first, then let the strategy serve it.
+Before the strategy comes a **product vision**: a description of the better world your product creates, usually a few years out. Marty Cagan argues the vision is what recruits people, aligns decisions, and keeps a team going through the difficult middle of the work [@cagan2017inspired]. Strategy is how you reach the vision; the vision is the goal and the reason for the work. Write the vision first, then let the strategy serve it.
 
 <!-- learn -->
 
@@ -104,13 +104,13 @@ Roger Martin and A.G. Lafley (*Playing to Win*) [@lafley2013playing] reduce stra
 
 1. **What is your winning aspiration?** The purpose. What does winning look like?
 2. **Where will you play?** Which customers, segments, channels. (Your beachhead, the narrow first customer in [Finding and Validating the Problem](04-finding-and-validating-the-problem.qmd), is a where-to-play choice.)
-3. **How will you win?** Your source of advantage in that arena: cheaper, far better at one job, a network others cannot match.
+3. **How will you win?** Your source of advantage in that market: cheaper, far better at one job, a network others cannot match.
 4. **What capabilities must you have?** The few things you must be great at.
 5. **What management systems are required?** How you keep it running.
 
 For a student product, the first three matter most. Answer "where will you play" and "how will you win" in a sentence each, and you have written down more strategy than most startups do.
 
-One thing has changed about "where will you play." The old advice was to chase a large market,
+One thing has changed about "where will you play." The old advice was to target a large market,
 because the fixed cost of building was high enough that a small one could not repay it. That
 arithmetic is different now.
 
@@ -139,7 +139,7 @@ play. How you win is just as demanding as before.
 
 ## Creating value, and capturing it
 
-Strategy has to answer two different questions, and it is easy to collapse them into one. The first is whether your product *creates* value: is anyone better off for it existing? The second is whether you can *capture* any of that value: does enough of it come back to you to keep the business alive? They are separate questions, and a product can pass the first and fail the second.
+Strategy has to answer two different questions, and it is easy to treat them as one. The first is whether your product *creates* value: is anyone better off for it existing? The second is whether you can *capture* any of that value: does enough of it come back to you to keep the business operating? They are separate questions, and a product can pass the first and fail the second.
 
 Adam Brandenburger and Harborne Stuart formalized this, defining value created as willingness to pay minus willingness to sell [@brandenburger1996]. **Willingness to pay** is the most a customer would pay for your product before walking away. **Willingness to sell** is the least a supplier would accept to provide what you need to make it, including your own time. Felix Oberholzer-Gee later turned that into the diagram now commonly used to teach it, the value stick [@oberholzergee2021]. At the top sits the customer's willingness to pay. At the bottom sits the cost of what you use to build, your suppliers' and your own willingness to sell. The gap between them is the value your product *creates*. How that gap gets divided, how much the customer keeps as a good deal, how much suppliers take, and how much is left for you, is the value you *capture*.
 
@@ -151,7 +151,7 @@ The value stick is a diagram of standard economics. If you want the full derivat
 
 A common mistake is to assume that creating value is the hard part and capture will follow. It does not. Peter Thiel gives an example: US airlines create enormous value and keep almost none of it, while a single search company creates less and keeps far more [@thiel2014]. David Teece made the same point about innovators decades earlier: you can invent something new, create real value, and watch imitators and the owners of the pieces you depend on capture all of it [@teece1986]. Creating value is necessary. It is not sufficient.
 
-So where on the value stick do you land? That is a choice, but a *constrained* one. You do not simply decide to keep more of the gap. How much you can capture is set by industry structure you did not build and cannot change by deciding to, and the first job of strategy is to assess that structure accurately. Call the part of the stick between price and cost, your margin, the **band**. In [AIRE](01-building-with-ai-agents.qmd#the-loop-how-this-course-works) terms, the width of the band you can capture is something you *Inform* on, and where you position inside it is the *Aim*. Misjudging the band is an information failure. If you judge the band correctly and it is thin, you have made no mistake; you have learned that you should look for a different band.
+So where on the value stick do you end up? That is a choice, but a *constrained* one. You do not simply decide to keep more of the gap. How much you can capture is set by industry structure you did not build and cannot change by deciding to, and the first job of strategy is to assess that structure accurately. Call the part of the stick between price and cost, your margin, the **band**. In [AIRE](01-building-with-ai-agents.qmd#the-loop-how-this-course-works) terms, the width of the band you can capture is something you *Inform* on, and where you position inside it is the *Aim*. Misjudging the band is an information failure. If you judge the band correctly and it is thin, you have made no mistake; you have learned that you should look for a different band.
 
 Value comes in many kinds, and many of them are not functional. Bain's Elements of Value catalogs thirty
 distinct kinds, stacked from functional at the base through emotional and life changing up to social
@@ -188,7 +188,7 @@ cost. Perfect competition is the limit case, where price is pushed all the way d
 
 There is a third move, and it is the one to aim for. Instead of accepting the band the current industry allows and fighting for position inside it, you can redraw the boundary so you are measured against a different structure entirely. W. Chan Kim and Renée Mauborgne call the crowded, well-mapped markets *red oceans*, where rivals compete for a fixed amount of demand, and the uncontested space you create *blue oceans*, where for a while there are no direct rivals, no established substitutes, and no one has entered yet [@kim2005blue]. The goal is to exit the existing competition.
 
-Their method for this is *value innovation*: pursue differentiation and low cost at the same time instead of trading one for the other. On the value stick that means moving both ends at once, lifting willingness to pay while cutting cost, by dropping the factors your industry over-serves and adding factors it never offered. Cirque du Soleil cut the animals and star performers that made circuses expensive and added theatrical story and production that circuses never had, and landed in a space where neither circuses nor theater competed with it.
+Their method for this is *value innovation*: pursue differentiation and low cost at the same time instead of trading one for the other. On the value stick that means moving both ends at once, lifting willingness to pay while cutting cost, by dropping the factors your industry over-serves and adding factors it never offered. Cirque du Soleil cut the animals and star performers that made circuses expensive and added theatrical story and production that circuses never had, and ended up in a market where neither circuses nor theater competed with it.
 
 In AIRE this is discovery applied to the Aim instead of to the customer. Where the Mom Test (the customer-interview method in [Finding and Validating the Problem](04-finding-and-validating-the-problem.qmd)) informs you about needs *inside* a category, the blue ocean question informs you about where the category boundary could be *moved*: look across substitute industries, adjacent buyer groups, and complementary offerings for space no one is contesting. It is *Inform* in service of choosing a better place to play.
 
@@ -203,7 +203,7 @@ A blue ocean has an inherent problem, which the rest of this chapter addresses. 
 Winning once is not enough; the advantage has to last. Hamilton Helmer (*7 Powers*) [@helmer2016powers] catalogs the sources of durable advantage, or moats:
 
 - **Network effects**: the product gets more valuable as more people use it; each new user improves it for the others.
-- **Switching costs**: leaving is painful, so customers stay.
+- **Switching costs**: leaving is costly, so customers stay.
 - **Scale economies**: you get cheaper per unit as you grow.
 - **Brand**: trust and meaning competitors cannot quickly copy.
 - **Counter-positioning**: a newcomer uses a better business model that established companies will not copy, because copying it would hurt the business they already have.
@@ -241,11 +241,11 @@ The entrant's product starts out worse on the measure the incumbent's customers 
 | **New-market foothold** | A start with nonconsumers, people who did not buy any product of this kind before |
 | **Disruptive innovation** | The path an entrant follows from one of those footholds to the incumbent's mainstream customers |
 
-**What disruption is not.** By 2015, Christensen and his coauthors found that "disruptive" had come to mean any newcomer that shakes up an industry, and they argued that this usage is too broad [@christensen2015disruptive]. Their test case was Uber, and their answer was that Uber, in their sense of the word, is not a disruptive innovation. It started in neither foothold. A low-end foothold would have required taxis to overserve customers by being too plentiful, too easy to use, and too clean. And Uber did not mainly target nonconsumers: it launched in San Francisco, a well-served taxi market, and its customers were mostly people who already hired rides. Its service was rarely described as worse than a taxi's, and many would call it better. In the authors' reading, that makes most of its strategy sustaining innovation, and the taxi companies responded the way incumbents respond to sustaining threats, with their own hailing apps and with legal challenges to Uber's services.
+**What disruption is not.** By 2015, Christensen and his coauthors found that "disruptive" had come to mean any newcomer that changes how an industry works, and they argued that this usage is too broad [@christensen2015disruptive]. Their test case was Uber, and their answer was that Uber, in their sense of the word, is not a disruptive innovation. It started in neither foothold. A low-end foothold would have required taxis to overserve customers by being too plentiful, too easy to use, and too clean. And Uber did not mainly target nonconsumers: it launched in San Francisco, a well-served taxi market, and its customers were mostly people who already hired rides. Its service was rarely described as worse than a taxi's, and many would call it better. In the authors' reading, that makes most of its strategy sustaining innovation, and the taxi companies responded the way incumbents respond to sustaining threats, with their own hailing apps and with legal challenges to Uber's services.
 
 Netflix, in the same article, did follow a disruptive path. When it launched in 1997, it mailed DVDs that took several days to arrive, which did not appeal to most of Blockbuster's customers, who rented new releases on impulse. It appealed to a few groups: movie buffs who did not care about new releases, early owners of DVD players, and online shoppers. Blockbuster had little reason to respond. Later, streaming let Netflix offer Blockbuster's mainstream customers a wider selection at a low price, and Blockbuster failed to respond to that path in time and collapsed.
 
-Two more points from the article. Success is not part of the definition: many entrants follow a disruptive path and still fail. And entering head-on is the harder road. In Christensen's study of the disk drive industry, only 6% of entrants that attacked incumbents with sustaining innovations, better products for the incumbents' own customers, succeeded [@christensen2015disruptive].
+Two more points from the article. Success is not part of the definition: many entrants follow a disruptive path and still fail. And entering head-on is harder. In Christensen's study of the disk drive industry, only 6% of entrants that attacked incumbents with sustaining innovations, better products for the incumbents' own customers, succeeded [@christensen2015disruptive].
 
 **What it means for you.** Two connections are worth making, with some care. First, look at a low-end or new-market entrant on the [value stick](#creating-value-and-capturing-it). Its first customers' willingness to pay is low, because the product is worse on the usual measure, so the entrant can create value only if its cost is lower still. Building with AI tools lowers your cost to make a simple product, and the customers an incumbent ignores (a small group with a niche workflow, people priced out of the existing options) are the footholds the model describes. That is the classic entrant position. Second, when an incumbent adds AI features for the customers it already has, that is sustaining innovation, and the model predicts that the incumbent will usually win that contest. A student product that tries to be a slightly better version of an incumbent's product, for the incumbent's own customers, is in the 6% case. Compare counter-positioning in the list of moats above: in both cases the incumbent holds back because responding does not pay for the business it already runs. The model does not tell you how to win the foothold itself; the article says the theory has little to offer there beyond avoiding head-on competition with better-funded incumbents.
 
@@ -270,7 +270,7 @@ Gibson Biddle, from leading product at Netflix, offers a compact test for a good
 - **Hard to copy**: there is a moat, so the delight is defensible.
 - **Margin-enhancing**: it improves the business's margins, beyond adding volume.
 
-A product can delight and still lose (easily copied), or be defensible and still lose (nobody cares). DHM forces all three.
+A product can delight and still lose (easily copied), or be defensible and still lose (nobody cares). DHM requires all three.
 
 <!-- learn -->
 
@@ -284,11 +284,11 @@ Draft a one-page product strategy for your product:
 - **Your moat** (one sentence): why the win lasts.
 - **What you will NOT do** (a short list): the sacrifices.
 
-Then pressure-test it with AI, but adversarially. Do not ask "is this a good strategy?", it will flatter you. Ask: "Attack this strategy. Where is the moat weakest? What would a competitor with the same AI tools do to beat it? What am I refusing to sacrifice that I should?" A strategy should survive that attack before competitors make it for real.
+Then test it with AI, adversarially. Do not ask "is this a good strategy?", it will flatter you. Ask: "Attack this strategy. Where is the moat weakest? What would a competitor with the same AI tools do to beat it? What am I refusing to sacrifice that I should?" A strategy should survive that attack before competitors make it for real.
 
 ## Understanding human nature cuts both ways
 
-To build something people actually use, you have to understand how people actually work. Jonathan Haidt describes the mind as a small rider on a large elephant [@haidt2006happiness]. The rider is conscious reasoning. The elephant is emotion and habit: automatic, strong, and usually the one that decides where the two go. Daniel Kahneman draws the same split as a fast, automatic System 1 and a slow, deliberate System 2 [@kahneman2011thinking]. (The picture simplifies: the two are not separate parts of the brain, and the rider can train the elephant over time.) People also lean on mental shortcuts, accept defaults, and fall into habit loops. That knowledge is exactly what makes a product feel effortless and worth returning to.
+To build something people actually use, you have to understand how people actually work. Jonathan Haidt describes the mind as a small rider on a large elephant [@haidt2006happiness]. The rider is conscious reasoning. The elephant is emotion and habit: automatic, strong, and usually the one that decides where the two go. Daniel Kahneman draws the same split as a fast, automatic System 1 and a slow, deliberate System 2 [@kahneman2011thinking]. (The picture simplifies: the two are not separate parts of the brain, and the rider can train the elephant over time.) People also rely on mental shortcuts, accept defaults, and fall into habit loops. That knowledge is exactly what makes a product feel effortless and worth returning to.
 
 ![The rider (deliberate reasoning) can steer only when the elephant (emotion and intuition) is willing; when the two disagree, the elephant usually takes its own route. A product has to work for both, and the same understanding can be turned against the elephant. Adapted from Jonathan Haidt, *The Happiness Hypothesis* [@haidt2006happiness].](images/diagrams/ch03-rider-elephant.svg){#fig-rider-elephant fig-alt="A line drawing of a large elephant walking to the right with a small rider on its back holding the reins. The rider is labeled deliberate reasoning; the elephant is labeled emotion and intuition. Ahead of them the path forks. A dashed branch rising to the upper right is labeled route the rider chooses; a solid branch straight ahead is labeled route the elephant takes, and the elephant is walking onto the straight branch." width="100%"}
 
@@ -296,7 +296,7 @@ It is also exactly what makes a product manipulative. The same understanding of 
 
 ### Moral Foundations Theory
 
-People are not blank slates about right and wrong. Research on moral foundations finds a handful of intuitions that recur across cultures: care versus harm, fairness versus cheating, loyalty, authority, sanctity, and liberty [@haidt2012righteous]. You need not adopt the theory wholesale to take its practical point: your users bring moral intuitions to your product, and they feel it when a product treats them unfairly, wastes them, or degrades them, even when they cannot name why. Building against those intuitions costs you trust, which is the one asset a product cannot fake.
+People are not blank slates about right and wrong. Research on moral foundations finds a handful of intuitions that recur across cultures: care versus harm, fairness versus cheating, loyalty, authority, sanctity, and liberty [@haidt2012righteous]. You need not adopt the theory wholesale to take its practical point: your users bring moral intuitions to your product, and they feel it when a product treats them unfairly, wastes their time, or degrades them, even when they cannot name why. Building against those intuitions costs you trust, which is the one asset a product cannot fake.
 
 ### Hooked: engagement or exploitation
 

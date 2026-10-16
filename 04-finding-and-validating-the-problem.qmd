@@ -81,7 +81,7 @@ If the map tells you where a belief sits, the next question is how you gather th
 | **Intuition** | Product sense, taste | Your preferences are not your user's preferences. |
 | **Epiphany** | The insight in the shower | Feels convincing because it has not been tested. |
 
-Because each tool fails in its own way, **you triangulate**: you treat a belief as validated only when independent sources converge, an interview, plus a behavior in the data, plus a test that survives. The most common mistake is trusting a single source, usually your own logic or one enthusiastic user, and promoting it straight to certainty. That leads to False Confidence.
+Because each tool fails in its own way, **you triangulate**: you treat a belief as validated only when independent sources converge, an interview, plus a behavior in the data, plus a test that passes. The most common mistake is trusting a single source, usually your own logic or one enthusiastic user, and promoting it straight to certainty. That leads to False Confidence.
 
 How much evidence is enough depends on the stakes. A throwaway prototype needs almost none: go build it and learn. Committing the rest of the semester to one product needs a preponderance: real interviews, a customer who lives the problem, some signal they would pay. That is exactly what the conviction checks in the [Problem Discovery Framework](94-problem-discovery-framework.qmd), which you use in Sprint 2, ask you to weigh (see [Evaluating Your Problems](#evaluating-your-problems)). The posture throughout is to hold beliefs as probabilities: "I am maybe sixty percent sure" in place of "this is a great idea," and let each conversation move the number.
 
@@ -172,7 +172,7 @@ you have described the problem.
 
 The Jobs-to-be-Done (JTBD) framework, popularized by Clayton Christensen [@christensen2016luck], shifts focus from *what customers buy* to *why they buy it*. The core insight: customers "hire" products to do a job.
 
-The classic example is the milkshake [@christensen2016luck]. A fast-food chain wanted to sell more milkshakes, so they improved the recipe. Sales didn't budge. Then they asked a different question: *What job are people hiring the milkshake to do?*
+The classic example is the milkshake [@christensen2016luck]. A fast-food chain wanted to sell more milkshakes, so they improved the recipe. Sales didn't rise. Then they asked a different question: *What job are people hiring the milkshake to do?*
 
 They discovered that most milkshakes were bought in the morning by commuters. The "job" wasn't *enjoy a delicious treat*. It was *make my boring commute more interesting while keeping me full until lunch*. The milkshake's competition wasn't other milkshakes; it was bananas, bagels, and donuts. The fix was to make it thicker (lasts longer), add fruit chunks (more interesting), and offer it at the drive-through (more convenient).
 
@@ -287,8 +287,8 @@ beat any habit.
 For your current idea, write down (1) exactly what your target person does today, step by step,
 (2) what that habit costs them each week in time, money, or stress, and (3) every cost of
 switching to your product, including getting other people to switch. Then predict: is push plus
-pull larger than anxiety plus habit? Ask Claude to argue the side of the habit and see if your
-answer holds.
+pull larger than anxiety plus habit? Ask Claude to argue the side of the habit and see whether you
+still agree with your answer.
 :::
 
 ## Problem Interviews (The Mom Test)
@@ -326,7 +326,7 @@ This forces specificity. You'll learn:
 - What they actually did (not what they say they'd do)
 - What emotions came up
 - What solutions they tried
-- Why existing solutions fell short
+- Why existing solutions did not work
 
 #### Signs You're Onto Something
 
@@ -378,7 +378,7 @@ Three rules follow from the ladder:
    money [@fitzpatrick2013mom]. A second meeting is time; an introduction to their boss risks
    their reputation; a pre-order is money. Each is a step up from a compliment.
 3. **Tag every claim by its rung.** "Users want this" with only said-rung evidence is an
-   Unfounded Hunch dressed as an insight.
+   Unfounded Hunch presented as an insight.
 
 ::: {.callout-tip title="Try it"}
 Tag each of these interview notes as said, did, or paid:
@@ -484,13 +484,13 @@ and the person who pays for it may be different people.
 
 Geoffrey Moore's advice for new products is to win one narrow segment completely before
 expanding: a **beachhead**, a small market you can dominate and use as a base to move outward
-[@moore1991crossing]. A narrow segment works better early, for three reasons. Narrow people share the same habit, so
+[@moore1991crossing]. A narrow segment works better early, for three reasons. People in a narrow segment share the same habit, so
 one product can beat it. They talk to each other, so word spreads. And you can reach all of them,
 so you learn fast. For a student, a beachhead might be one dorm, one club, or one kind of small
-business in Provo. Ten people who love it teach you more than a thousand who shrug.
+business in Provo. Ten people who love it teach you more than a thousand who are indifferent.
 
 Say who it is **not** for, too. "Not for clubs with more than 200 members, not for clubs that
-collect dues by check" is a decision that keeps you from building for everyone and fitting no one.
+collect dues by check" is a decision that keeps you from trying to build for everyone and serving no one well.
 
 #### The user and the payer
 
@@ -562,7 +562,7 @@ you already believed.
 
 - Spends 6+ hours/week manually compiling reports
 - Can never get real-time data when executives ask
-- Marketing tools don't talk to each other
+- Marketing tools don't share data with each other
 
 **Job-to-be-Done:**
 
@@ -651,7 +651,7 @@ The opportunity zone is **high importance + low satisfaction**. These are proble
 **The model:** break a big question into parts that do not overlap and leave nothing out, then
 work the part that decides the answer.
 
-Discovery questions arrive messy: "Is this worth building?" "Why aren't people using my app?"
+Discovery questions are often messy: "Is this worth building?" "Why aren't people using my app?"
 Consultants handle messy questions with a short sequence of steps, and the steps apply directly
 to product work. They also set up the next section: the impact and uncertainty test in building
 block 3 is how you will pick your riskiest assumption. This section adapts them from the Management Consulting course (STRAT 325, chapter
@@ -684,7 +684,7 @@ week. Why is retention low?
 
 ```{mermaid}
 %%| label: fig-issue-tree
-%%| fig-cap: "An issue tree for low retention. The three first-level branches cover every sign-up exactly once, so the data can point to the branch that holds the problem."
+%%| fig-cap: "An issue tree for low retention. The three first-level branches cover every sign-up exactly once, so the data can show which branch contains the problem."
 %%| fig-alt: "A tree branching left to right from the question why do only 15 of 120 sign-ups use it weekly. Three branches: never activated, meaning never joined a group, which splits into did not understand what to do and no group existed for their class; activated, then left, which splits into group never met, group met but was not useful, and their need ended because the exam passed; and still active, which leads to what do these 15 have in common."
 %%{init: {'theme':'base','flowchart':{'curve':'basis','wrappingWidth':320,'nodeSpacing':22,'rankSpacing':56},'themeVariables':{'fontFamily':'Inter, Helvetica Neue, Helvetica, Arial, sans-serif','fontSize':'17px','primaryColor':'#F4F6F8','primaryBorderColor':'#D9DEE4','primaryTextColor':'#2C3E50','lineColor':'#8A939C'}}}%%
 flowchart LR
@@ -703,8 +703,8 @@ flowchart LR
   class A,B,C branch
 ```
 
-The tree changes what you do next. The instinct is "add features." The tree sends you to the
-data first: if 90 of the 105 missing users never joined a group, the problem sits in the first
+The tree changes what you do next. The instinct is "add features." With the tree, you check the
+data first: if 90 of the 105 missing users never joined a group, the problem is in the first
 branch (onboarding or empty classes), and no feature for active groups will help.
 
 #### Building block 3: prioritize by decision impact
@@ -784,7 +784,7 @@ A worked example. Idea: a dues tracker for student club treasurers.
 
 Two assumptions are high-uncertainty and fatal: value and the Venmo data. Value comes first,
 because if treasurers don't care, the data question never matters. But the feasibility one is
-cheap to check (an hour of reading and a spike) and could kill the idea in its current form, so
+cheap to check (an hour of reading and a spike) and could rule out the idea in its current form, so
 check it the same week.
 
 
@@ -885,7 +885,7 @@ The Commitment Decision asks whether you have enough evidence to commit. The mor
 
 **Sunk cost:** You've invested time, so you don't want to pivot. Cut your losses early. It's cheaper than building the wrong thing.
 
-**Founder fantasy:** You imagine the success, not the work. Fall in love with the problem, not the outcome.
+**Founder fantasy:** You imagine the success, not the work. Focus on the problem and the work it takes.
 
 <!-- learn -->
 
@@ -942,13 +942,13 @@ A **Minimum Viable Product** is the smallest thing you can put in front of real 
 your riskiest assumption and generates learning you can act on. Eric Ries, who gave the term its
 modern use, defines it by how much it teaches you for the least effort [@ries2011lean]. By that
 definition the smoke tests and concierge services above are MVPs: the Dropbox video was one. So
-an MVP sits on a spectrum, from no code at all to a working product with one core feature.
+MVPs range from no code at all to a working product with one core feature.
 
 The keyword *viable* is about honest signal: whatever you put in front of people has to deliver
 the experience well enough that their response tells you something. A broken prototype gets
 polite reactions that tell you nothing.
 
-The MVP and the build-measure-learn loop behind it come from Eric Ries, *The Lean Startup* (2011) [@ries2011lean]. The loop still holds, but AI has changed its balance: building is cheap now, so *measure* and *learn*, deciding what to build and confirming it worked, now take most of the effort.
+The MVP and the build-measure-learn loop behind it come from Eric Ries, *The Lean Startup* (2011) [@ries2011lean]. The loop still applies, but AI has changed its balance: building is cheap now, so *measure* and *learn*, deciding what to build and confirming it worked, now take most of the effort.
 
 ![Image source: The Lean Product Playbook by Dan Olsen [@olsen2015lean]](images/mvp.png)
 
@@ -956,7 +956,7 @@ The MVP and the build-measure-learn loop behind it come from Eric Ries, *The Lea
 
 ## Minimum Viable, or Minimum Awesome?
 
-Jeff Dyer and Nathan Furr push the MVP one step further, and it is worth taking. A merely *viable* product often tests badly: people are polite about something that barely works, so you cannot tell real demand from good manners. They argue instead for a **minimum awesome product**, still minimal, still one core action, but good enough at that one thing that people are delighted by it. An awesome-at-one-thing product gives you honest signal: people either love it or they do not, which is exactly what you are trying to learn. So cut scope to the minimum, then make what remains excellent.
+Jeff Dyer and Nathan Furr add one requirement to the MVP. A merely *viable* product often tests badly: people are polite about something that barely works, so you cannot tell real demand from good manners. They argue instead for a **minimum awesome product**, still minimal, still one core action, but good enough at that one thing that people are delighted by it. An awesome-at-one-thing product gives you honest signal: people either love it or they do not, which is exactly what you are trying to learn. So cut scope to the minimum, then make what remains excellent.
 
 *The minimum awesome product is from Nathan Furr and Jeff Dyer, [The Innovator's Method](https://hbr.org/books/chapters/the-innovators-method) (Harvard Business Review Press, 2014) [@furr2014method].*
 

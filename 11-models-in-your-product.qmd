@@ -29,20 +29,20 @@ Your default should be the second column. A fixed process with a model call insi
 cheap, and explainable to a user when it goes wrong. Move right only when the task
 branches in ways you cannot enumerate. Anthropic's [Building Effective
 Agents](https://www.anthropic.com/engineering/building-effective-agents) makes the same
-argument: start with the simplest workflow that works and add autonomy only when it pays.
+argument: start with the simplest workflow that works and add autonomy only when it is needed.
 
 ## Where the Call Lives
 
 **Your API key never goes in the browser.** An API key ([Chapter 7](07-anatomy-of-an-application.qmd))
 is the secret that tells Anthropic whose account is calling and who gets the bill. Putting it in
-browser code is the single most common way students leak credentials. Anything shipped to the
+browser code is the single most common way students leak credentials. Anything sent to the
 browser is readable by anyone who opens its developer tools (a built-in panel that shows a page's code),
 and a leaked key can be used until you notice the bill.
 
 In Next.js, that means model calls happen in a route handler (a `route.ts` file under `app/api/`
 that answers requests on the server, Chapter 7). Put
 the key in `.env.local` with no `NEXT_PUBLIC_` prefix, because that prefix is exactly what
-tells Next.js to ship a variable to the browser.
+tells Next.js to include a variable in the browser code.
 
 ```bash
 # .env.local  (git-ignored, never committed)
@@ -313,7 +313,7 @@ result back as the next message.** That is Chapter 10's harness, and in your pro
 is your code. You describe each tool with a name, a plain description, and a schema for its
 inputs; the model chooses when to ask for one.
 
-An **agent loop** repeats this until the model stops asking for tools. Left alone, a loop can
+An **agent loop** repeats this until the model stops asking for tools. Without limits, a loop can
 run forever, spend without limit, or take an action nobody approved. So every loop in a product
 needs three stopping rules:
 
@@ -381,7 +381,7 @@ const count = await client.messages.countTokens({
 console.log(count.input_tokens);
 ```
 
-**Do the arithmetic before you ship.** A feature that costs two cents per call is free at
+**Do the arithmetic before you ship.** A feature that costs two cents per call is cheap at
 demo scale and expensive at a thousand users a day. Put this line in your sprint plan for any
 AI feature:
 
@@ -444,7 +444,7 @@ like form input, and keep the defenses in code, where the model's output cannot 
 
 - **Least privilege:** give each tool only the access its job needs (read-only where possible).
 - **Approval before actions:** refunds, emails, deletes, and payments wait for a person or a rule in your code.
-- **No secrets in the prompt:** anything in the context can be coaxed back out.
+- **No secrets in the prompt:** anything in the context can be extracted by a well-crafted request.
 
 **Calls fail.** Rate limits (the API refusing calls because you sent too many too fast),
 timeouts, network errors. The SDK retries some of these for you,
@@ -474,7 +474,7 @@ change can look better on two tries by luck alone.
 **The situation.** Your app gets support emails, and you added an AI feature that reads each
 one and sorts it into one of three categories, `bug`, `billing`, or `feature request`, so the
 right person sees it. (It is the structured-output pattern from earlier in this chapter: the
-model returns one field from a fixed list.) Some emails land in the wrong category, and you
+model returns one field from a fixed list.) Some emails are put in the wrong category, and you
 want to change the prompt. Before you ship the change, you want to know whether it makes the
 feature better.
 
@@ -573,7 +573,7 @@ bigger than the noise? Which test cases changed? Commit the eval, the prompt, an
   flexibility and reduces predictability. Default to a fixed process with a model call inside
   it, and move right only when the task branches in ways you cannot list.
 - **Server-side only**: the API key lives in a route handler's environment variable, never in
-  browser code. A `NEXT_PUBLIC_` prefix is what would ship it to the browser.
+  browser code. A `NEXT_PUBLIC_` prefix is what would put it in the browser code.
 - **System prompt and content blocks**: the system prompt holds standing instructions, separate
   from the user's input; a response is a list of typed blocks, so filter for the text ones.
 - **Prompts are product code**: instructions, examples, and output format live in versioned

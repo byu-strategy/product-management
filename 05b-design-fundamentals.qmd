@@ -180,7 +180,7 @@ they comment on the colors and fonts.
 
 The older advice was "use the lowest fidelity that answers the question," and it rested on an
 assumption: each step up in fidelity took more work to make and to change. When every artifact was
-drawn or coded by hand, that was close to true. A coding agent broke the link. An agent writes an
+drawn or coded by hand, that was close to true. A coding agent made that assumption false. An agent writes an
 HTML mockup in a minute, and a frozen copy of real screens with one change takes minutes, while a
 polished Figma mockup is still hours of handwork. The figure plots both dimensions.
 
@@ -234,7 +234,7 @@ quick mockup or two, and confirm the direction before it writes the feature
 verify](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/memory-pack/design-first-then-verify.md)).
 Keep agent-made HTML mockups as single self-contained files in a `.mockups/` folder listed in
 `.gitignore`, have the agent finish by printing a clickable `file://` path, and never commit them;
-once the design is built, the mockup's job is done ([throwaway
+once the design is built, the mockup is no longer needed ([throwaway
 mockups](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/memory-pack/throwaway-mockups-gitignored.md);
 a [CLAUDE.md snippet](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/snippets/CLAUDE-md-mockups.md)
 that sets this up). For frozen real screens, the kit's
@@ -336,7 +336,7 @@ The conceptual model underlies the other four. Norman separates three versions o
 **design model** (how the designer thinks it works), the **user's model** (how the user thinks it
 works), and the **system image** (everything the product actually shows: screens, labels,
 messages, behavior). The user never talks to the designer. Their model is built only from the
-system image, so if the system image is unclear, the two models drift apart.
+system image, so if the system image is unclear, the two models differ.
 
 ShiftSwap's riskiest gap is exactly this. The design model says a posted shift remains the
 student's responsibility until a manager approves the trade. A student who taps **Give away** and
@@ -437,8 +437,8 @@ introduced Hick's and Fitts's laws in one line each; this section states them pr
 
 The Gestalt psychologists, beginning with Max Wertheimer's 1923 paper on perceptual grouping,
 described how the visual system groups elements before a person reads them; a century of later
-research has confirmed and extended the principles [@wagemans2012century]. Five principles do
-most of the work on a screen:
+research has confirmed and extended the principles [@wagemans2012century]. Five principles
+apply most often on a screen:
 
 | Principle | Statement | On a screen |
 |---|---|---|
@@ -450,7 +450,7 @@ most of the work on a screen:
 
 ![Five Gestalt principles, each shown on an interface element. Proximity is shown both ways: with equal gaps, each label could belong to the field above or below it; with the label close to its own field, the pairing is clear before anyone reads a word. Principles from Gestalt psychology [@wagemans2012century].](images/diagrams/ch05b-gestalt.svg){#fig-gestalt fig-alt="Six panels, each a Gestalt principle shown on an interface element. Proximity, equal gaps, marked wrong: the labels Date and Note sit midway between fields, so each could belong to the field above or below. Proximity, label close to its field, marked right: each label sits just above its own field, with a larger gap before the next pair. Similarity, same color, same kind: three shift rows, each with a blue underlined Swap link, read as the same kind of action. Enclosure, one card, one shift: two bordered cards, each holding the day, time, and location of one shift. Continuity, one line, one sequence: four numbered circles on one line, labeled Pick, Note, Confirm, Approve. Figure-ground, dialog in front, page behind: a dialog asking Give away Thursday's shift, with Cancel and Give away buttons, on top of a dimmed page." width="100%"}
 
-Gestalt grouping is why spacing is the first tool of layout. If the space between a label and its
+Gestalt grouping is why spacing is the first decision in layout. If the space between a label and its
 own field equals the space between that label and the field above, the screen is ambiguous before
 anyone reads it. The rule of thumb: space inside a group is smaller than space between groups.
 
@@ -726,7 +726,7 @@ agent find? Fix the one that both of you ranked highest, and check it in your ne
   knowing how to do it here, and the gap between doing it and knowing whether it worked.
 - **Norman's principles**: signifiers, mapping, constraints, and feedback close the two gulfs. The
   user's conceptual model is built only from the system image (everything the product shows), so
-  an unclear system image lets it drift from the design model.
+  an unclear system image lets it differ from the design model.
 - **Information architecture**: how content is organized, labeled, navigated, and searched.
   Organize and name it the way users think; card sorting builds a structure, and tree testing
   checks one.

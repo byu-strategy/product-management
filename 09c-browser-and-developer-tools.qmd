@@ -40,8 +40,8 @@ the current data, and React works out which parts of the DOM to change
 
 Two facts about browsers shape how apps are built:
 
-- **Each site is walled off.** A page cannot read your files or reach into a tab from another site.
-  That wall is what lets you open an unfamiliar site without it reading your email in the next tab.
+- **Each site is isolated from the others.** A page cannot read your files or reach into a tab from another site.
+  That isolation is what lets you open an unfamiliar site without it reading your email in the next tab.
 - **Everything sent to the browser belongs to the user.** The user can read and change any HTML,
   CSS, or JavaScript your server sends, and any data stored in their browser. A secret in browser
   code is not a secret, and a check that runs only in the browser can be switched off. This is the
@@ -87,7 +87,7 @@ of a page and choose **Inspect**. Five parts of it answer most questions a build
 
 | Panel | The question it answers | When you need it |
 |---|---|---|
-| **Network** | What requests went out, and what came back? | Something did not save or load. The status code says which side failed: a 400-range code means the request was wrong or refused, a 500-range code means the server broke ([Chapter 8](08-data-and-apis.qmd#requests-are-contracts-that-fail)) |
+| **Network** | What requests went out, and what came back? | Something did not save or load. The status code says which side failed: a 400-range code means the request was wrong or refused, a 500-range code means the server failed ([Chapter 8](08-data-and-apis.qmd#requests-are-contracts-that-fail)) |
 | **Console** | Did the code throw an error? | A blank screen, or a button that does nothing. Errors in the browser's JavaScript show up here in red |
 | **Elements** | What is on the page, and why does it look that way? | A layout looks wrong. Select an element to see its HTML and every CSS rule applied to it, and change a value to try a fix before asking for it |
 | **Application** | What does the browser remember? | Sign-in problems. The sign-in cookie and anything in local storage are listed here |
@@ -99,7 +99,7 @@ Open your app, then open developer tools and choose **Network**. Add a task. Fin
 click it and read **Payload** (what your browser sent) and **Response** (what your server sent
 back). This is steps 4 and 5 of the [request journey](07-anatomy-of-an-application.qmd#fig-request-journey),
 on your own app. Then open **Application**, find **Cookies**, and look for the sign-in cookie that
-rode along with the request.
+was sent with the request.
 :::
 
 When you report a bug to Claude, the console error and the failed request are the evidence. Paste
@@ -108,7 +108,7 @@ them in, or give Claude a way to read them itself, which is what the next sectio
 ## Claude in Chrome
 
 **Claude in Chrome** is a browser extension from Anthropic that lets Claude read pages, click,
-type, and move between tabs in your own browser. Connected to Claude Code, it closes a gap: Claude
+type, and move between tabs in your own browser. Connected to Claude Code, it works like this: Claude
 writes your app's code in the terminal, and then it can open the app in a browser, use it, and
 read the console and network requests, the same evidence you read in developer tools.
 

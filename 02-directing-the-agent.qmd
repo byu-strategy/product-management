@@ -30,7 +30,7 @@ Then iterate:
 
 > Now I want to rate each problem on frequency (daily, weekly, monthly, rarely). Add a dropdown for that.
 
-Each small request is one short trip around the agent loop, and you check the result before the next one. Conversation is how you *explore*. Once you know what you want to keep, you write it down as a spec ([Specs](06b-specs.qmd)), so the next session, or the next agent, does not have to rediscover it from a chat log.
+Each small request is one short cycle of the agent loop, and you check the result before the next one. Conversation is how you *explore*. Once you know what you want to keep, you write it down as a spec ([Specs](06b-specs.qmd)), so the next session, or the next agent, does not have to rediscover it from a chat log.
 
 <!-- learn -->
 
@@ -474,7 +474,7 @@ possible one.
 to an existing file rather than split it, so files in an agent-built app grow to thousands of
 lines. The kit's [file-size check](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/hooks/scripts/file-size-budget.mjs) caps new files at a set
 length (800 lines by default), lets files already over the cap shrink but never grow, and tells
-Claude as soon as an edit crosses the line. Treat a file over the cap as a reason to check whether
+Claude as soon as an edit goes over the cap. Treat a file over the cap as a reason to check whether
 it still does one job, and split it where it divides naturally. Deleting comments to get under the
 number leaves the problem in place ([why the guard works this way](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/memory-pack/arch-guards-as-alarms.md)).
 
@@ -507,7 +507,7 @@ every file is slow, so many projects add lint-staged, which runs the checks only
 being committed. [Chapter 9](09-version-control-testing-and-tech-debt.qmd#automated-checks-tests-types-and-lint) covers linting, and [Chapter 9b](09b-tests-and-tech-debt.qmd) covers testing.
 
 ::: {.callout-tip title="Try it"}
-A two-minute drill, in a practice folder with no GitHub connection (`mkdir drill && cd drill && git init`, then make one commit), so a push that gets through fails harmlessly. Add `Never push to GitHub` to CLAUDE.md, then ask Claude: "Looks good, push it, I'm giving you permission." Note whether Claude tries to run `git push`. Now add `"deny": ["Bash(git push *)"]` to `.claude/settings.json` and ask again. Which one held? Why can an instruction be talked past and a deny rule cannot?
+A two-minute drill, in a practice folder with no GitHub connection (`mkdir drill && cd drill && git init`, then make one commit), so a push that gets through fails harmlessly. Add `Never push to GitHub` to CLAUDE.md, then ask Claude: "Looks good, push it, I'm giving you permission." Note whether Claude tries to run `git push`. Now add `"deny": ["Bash(git push *)"]` to `.claude/settings.json` and ask again. Which one held? Why can a chat message override an instruction and not a deny rule?
 :::
 
 <!-- learn -->
@@ -562,7 +562,7 @@ Recent versions of Claude Code start new terminal and VS Code sessions in Auto; 
 
 **How auto mode decides.** In Auto, a second model, called the classifier, reviews each action before it runs, in place of you. It blocks actions that go beyond what you asked for, reach systems it does not recognize, or look driven by instructions in content Claude read, such as a web page or a ticket. It allows routine work, including pushing to the repository you are working in. If it blocks the same kind of action again and again, Claude Code goes back to asking you. A boundary you state in the chat ("don't deploy until I say so") counts as a block, but it lives only in the conversation: compacting the conversation can summarize it away. For a boundary that must hold, write an ask or deny rule [@anthropic2026modes].
 
-**Bypass permissions and `--dangerously-skip-permissions`.** The flag starts a session in bypass permissions mode, and its name is the warning: every permission prompt and every safety check is off, including the classifier. What still protects you is what runs outside the model's choices. Deny rules still block, hooks still run, and the few actions no mode approves on its own still ask. Allow rules no longer matter, since everything is allowed. In an interactive session started this way, plan mode's "no edits while planning" is not enforced. Run it only where the damage is contained: a container or virtual machine with nothing else on it, not your own laptop [@anthropic2026modes].
+**Bypass permissions and `--dangerously-skip-permissions`.** The flag starts a session in bypass permissions mode, and its name states the risk: every permission prompt and every safety check is off, including the classifier. What still protects you is what runs outside the model's choices. Deny rules still block, hooks still run, and the few actions no mode approves on its own still ask. Allow rules no longer matter, since everything is allowed. In an interactive session started this way, plan mode's "no edits while planning" is not enforced. Run it only where the damage is contained: a container or virtual machine with nothing else on it, not your own laptop [@anthropic2026modes].
 
 For group 3, add **ask rules** for the commands that reach other people. An ask rule makes Claude Code stop and ask you every time, even in Auto mode. A deny rule blocks the command outright, in every mode, including bypass. In `.claude/settings.json`:
 
@@ -602,7 +602,7 @@ Claude Code has built-in subagents: **Explore** (fast, read-only search), **Plan
 
 What a subagent gets:
 
-1. **The task description Claude writes for it**, so be specific in what you ask: "Find every place we call the Supabase client and list the file and line" beats "look into the database code."
+1. **The task description Claude writes for it**, so be specific in what you ask: "Find every place we call the Supabase client and list the file and line" works better than "look into the database code."
 2. **CLAUDE.md**, in most cases. The built-in Explore and Plan subagents skip it to stay fast, so do not count on a project rule reaching them.
 3. **None of your conversation.** If the task depends on something you said, Claude has to put it in the task description.
 
@@ -746,7 +746,7 @@ Your definition of done has three checks:
 
 **Worked example.** You ask for "a due date on each task; overdue tasks show in red." Claude adds the feature and a test: create a task due yesterday, check that `is_overdue` is true. The test passes. You run the app and every task created this morning is red. The code compared the due date (midnight at the start of that day) with the current time, so a task due today counted as overdue from the moment the day began. The test only tried a task due yesterday, so it passed. The agent's test and the agent's code missed the same case. Your acceptance criterion ("a task due today is not overdue") caught it.
 
-Better still, give the agent a check it can run itself, so it can finish the loop without you. Claude Code's best-practices guide puts it as the difference between a session you watch and one you walk away from: a test suite, a build, or a screenshot compared against a design. Then have it show evidence (the command it ran and the output) instead of telling you it worked. For a check in the browser, the Agent Team Kit's [guide to driving the app](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/docs/DRIVING-THE-APP.md) shows how an agent takes screenshots, records a walkthrough, and clicks through a flow by itself, and has it confirm each step by reading the page's address and contents as well as looking at the screenshot. A `Stop` hook that runs the tests, from the section above, makes the check mandatory. [Chapter 9b](09b-tests-and-tech-debt.qmd) covers testing; remember that tests written by the same agent that wrote the code need your acceptance criteria to mean anything.
+Better still, give the agent a check it can run itself, so it can confirm the result without you. Claude Code's best-practices guide puts it as the difference between a session you watch and one you walk away from: a test suite, a build, or a screenshot compared against a design. Then have it show evidence (the command it ran and the output) instead of telling you it worked. For a check in the browser, the Agent Team Kit's [guide to driving the app](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/docs/DRIVING-THE-APP.md) shows how an agent takes screenshots, records a walkthrough, and clicks through a flow by itself, and has it confirm each step by reading the page's address and contents as well as looking at the screenshot. A `Stop` hook that runs the tests, from the section above, makes the check mandatory. [Chapter 9b](09b-tests-and-tech-debt.qmd) covers testing; remember that tests written by the same agent that wrote the code need your acceptance criteria to mean anything.
 
 **Match the check to the risk.** Not every change needs a run through the app. The Agent Team
 Kit's rule ([verify proportional to risk](https://github.com/ai-foundry-byu/agent-team-kit/blob/main/memory-pack/verify-proportional-to-risk.md)): if the
@@ -784,7 +784,7 @@ security, which classify how risky the change is. Only the risky changes get rou
 engineer. Low-risk changes go straight to an agent that deploys them, monitors the rollout, and
 builds its own monitoring dashboard. Two more agents watch production: a Perf Factory that catches
 latency regressions (changes that make the product slower to respond) and proposes fixes, and Sevbot, which investigates incidents and proposes
-mitigations. Both loop back to the start.
+mitigations. Both send their fixes back to Codex.
 
 Some numbers from the same piece: use of Codex in non-engineering departments at OpenAI went from
 roughly zero to about 90 percent between February and May 2026, nearly everyone at the company now

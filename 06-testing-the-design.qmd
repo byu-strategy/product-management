@@ -175,13 +175,13 @@ Claude Code is useful here once the observing is done: paste in your notes and a
 | **Minor** | Annoying but doesn't block | Date field rejects "10/14" the first time; user retypes it and continues |
 | **Cosmetic** | Polish issue | Icon looks dated |
 
-Severity depends on what a problem does to the task, not on what kind of problem it is. A confusing label on the core action ("Submit" where the user expected "Post shift") can be Critical if testers stop there. Words are interface.
+Severity depends on what a problem does to the task, not on what kind of problem it is. A confusing label on the core action ("Submit" where the user expected "Post shift") can be Critical if testers stop there. Labels are part of the interface.
 
 **Fix critical and major issues first.** Don't let minor issues distract you from what matters.
 
 #### Fix the top issue and retest
 
-The loop is the point of the method:
+The method depends on repeating this loop:
 
 1. Pick the one or two highest-severity problems.
 2. Fix them, ideally with a precise prompt that names the problem and the principle (see [Directing an Agent on Design](05-interface-and-flow.qmd#directing-an-agent-on-design)).

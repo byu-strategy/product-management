@@ -15,7 +15,7 @@ Instead, TypeScript is compiled (or transpiled) into plain JavaScript. |
 | **C**        | Low-level, fast, portable; forms the basis of many other languages.          |
 | **C++**      | Extension of C with OOP features; used in systems, games, and high-performance apps. |
 | **C#**       | Microsoft’s language for .NET; popular in enterprise software and Unity games. |
-| **Go (Golang)** | Designed by Google; simple, fast, great for concurrency and cloud apps.     |
+| **Go (Golang)** | Designed by Google; simple, fast, suited to concurrency and cloud apps.     |
 | **Rust**     | Systems language focused on safety and performance; gaining popularity in infrastructure. |
 | **PHP**      | Server-side scripting language; powers many websites, including WordPress.   |
 | **Ruby**     | Simple and elegant syntax; best known for Ruby on Rails web framework.       |

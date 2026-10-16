@@ -139,6 +139,7 @@ You may be one of several Claude Code sessions working in this repo at the same 
 - **No em dashes, anywhere.** Not in course content, commit messages, code comments, or replies to Scott. Use a comma, colon, period, or "and" instead.
 - **Plain and factual.** Direct, not flowery or salesy. Scott adds the flourishes himself. This applies to all student-facing copy: syllabus text, assignment instructions, announcements.
 - **No emoji as UI or content decoration** unless explicitly asked.
+- **No mannered prose.** Mannered prose substitutes metaphor and flourish for direct statement. Instead of "a parameter worth varying," the mannered writer produces "a dial worth turning." Instead of "this point still matters," they write "this point earns its keep." The phrases exist to display the writer, not to convey the idea, and readers can tell. That is why mannered prose irritates: it makes the reader work harder so the writer can perform. It is also imprecise. Metaphors drag in connotations the writer did not choose and cannot control. The fix is to say what you mean. When a literal phrase is available, use it. This covers every chapter, caption, figure label, alt text, exercise, exam item and release note, whoever writes it, subagents included (brief them with this rule). An analogy chosen to teach a mental model is allowed when it is accurate and the text says where it breaks; the test is whether the figure of speech carries the idea or decorates it.
 
 ## Mockups and design iteration
 

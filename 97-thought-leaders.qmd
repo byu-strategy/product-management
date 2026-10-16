@@ -7,8 +7,8 @@ The people below are worth learning from. The first table is product management 
 The two after it are the accounts worth following while you build, and the ones worth
 following to understand where the field is heading.
 
-Follow fewer accounts than you think. A short feed you actually read beats a long one you
-scroll past.
+Follow fewer accounts than you think. A short feed you actually read is more useful than a long
+one you scroll past.
 
 One thing to know before you build a feed: **application architecture has almost no social
 media presence.** Nobody posts in depth about schema design, deploys, or CI. For that part

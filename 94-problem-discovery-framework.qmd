@@ -42,7 +42,7 @@ Both frustration and delight are valid signals pointing to product opportunities
 | Signal | Opportunity Type | Product Strategy |
 |---|---|---|
 | **Frustration** | Pain Reliever | Reduce friction; remove obstacles; solve problems |
-| **Delight** | Gain Creator | Amplify joy; create more of what works; enhance experiences |
+| **Delight** | Gain Creator | Increase enjoyment; create more of what works; enhance experiences |
 
 ::: {.callout-tip title="Frustration AND Delight"}
 Problems aren't only about pain. A frustration points to a **pain reliever** product. A delight points to a **gain creator** product. Both are valid starting points.
@@ -73,7 +73,7 @@ Problems aren't only about pain. A frustration points to a **pain reliever** pro
 
 | Sum | Level | Interpretation |
 |---|---|---|
-| 0–1 | Low | Weak foundation; reconsider |
+| 0–1 | Low | Weak conviction; reconsider |
 | 2 | Moderate | Worth exploring further |
 | 3–4 | High | Strong conviction to pursue |
 

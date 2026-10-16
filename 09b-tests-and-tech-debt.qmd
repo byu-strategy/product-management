@@ -146,7 +146,7 @@ test('rejects an intensity above 10', () => {
 | `});` | End of this test |
 
 **Integration test: several real pieces together.** The situation: Ana saves a problem, and the
-row that lands in the database must be marked as hers, or row-level security will hide it from
+row saved in the database must be marked as hers, or row-level security will hide it from
 her (or show it to someone else). An **integration test** checks that several real pieces work
 together: here, that the real `/api/problems` route saves a row to a real database. It runs
 against a **test database**: a separate Supabase project, or a local copy started with
@@ -406,7 +406,7 @@ more code than the product needs.
 
 Not all tech debt is bad. Some is intentional and strategic.
 
-**Strategic (deliberate) debt** makes sense when you are racing to validate that anyone wants
+**Strategic (deliberate) debt** makes sense when you need to find out quickly whether anyone wants
 the product, meeting a hard deadline such as a demo, or testing a hypothesis quickly. Example:
 
 > "We know this data model won't scale past 10,000 users, but we need to launch next week to test demand. If it works, we'll rebuild the database layer."

@@ -52,7 +52,7 @@ Agentic Workflow comes first on purpose. You will ship something in week one tha
 
 Every few weeks a portion of class is given over to small-group demos: you show your real, deployed product to three or four classmates, they tell you what worked and what confused them, and you spend the rest of the session building on what you heard.
 
-These are working sessions, not formal presentations. Bring something that runs. The first half of the course is mostly solo work, and these are your regular chance to see what classmates are building and to have people who have not seen your product try it before the final.
+These are informal working sessions. Bring something that runs. The first half of the course is mostly solo work, and these are your regular chance to see what classmates are building and to have people who have not seen your product try it before the final.
 
 ## Sprints
 

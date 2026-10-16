@@ -4,7 +4,7 @@ title: "Storytelling and the Final Demo"
 
 ## Why This Matters
 
-You spent the semester finding a truth about a customer and building something in response to it. Now you have to make someone else care. That is a different skill, and it is not optional. The best product loses to a worse one that is explained better. Your [Sprint 6](00-assessments.qmd#sprint-6) demo is a three-minute video, which is to say it is a story, and the ability to tell it well is the same ability you use in a customer interview, a landing page, a sales call, a stakeholder update, and a job interview.
+You spent the semester finding a truth about a customer and building something in response to it. Now you have to make someone else care. That is a different skill, and it is not optional. The best product loses to a worse one that is explained better. Your [Sprint 6](00-assessments.qmd#sprint-6) demo is a three-minute video that tells a story, and the ability to tell it well is the same ability you use in a customer interview, a landing page, a sales call, a stakeholder update, and a job interview.
 
 This chapter teaches you to build a supply of stories, to tell them well, and to shape the one story that matters most this semester: the story of what you built, why, and what happened when people used it.
 
@@ -19,7 +19,7 @@ Every story has a purpose, and the first question is always what that purpose is
 
 - **Aim.** What are you trying to communicate, and who are you trying to persuade? Persuade an investor, recruit a teammate, get a user to try the thing, help a stakeholder say yes.
 - **Approach.** Which story serves that aim? Pick from your database (below), do not invent one on the spot.
-- **Act.** Tell it, and watch whether it landed.
+- **Act.** Tell it, and watch how the audience responds.
 
 If you cannot say what a story is *for*, you are not ready to tell it.
 
@@ -35,10 +35,10 @@ Prompts for the list: *Tell me about the first time you... the last time you... 
 
 ## Techniques that make a story land
 
-- **Find the five-second moment.** Every good story has a single instant the whole thing turns on. Know exactly where yours is and slow down when you reach it. If a story has no such moment, it is a report.
+- **Find the five-second moment.** Every good story has a single moment where things change. Know exactly where yours is and slow down when you reach it. If a story has no such moment, it is a report.
 - **Show change.** A story is a before and an after. The listener needs to feel the difference between how things were and how they became. Without a change, it is not a story.
 - **Speak to the rider and the elephant.** Every listener is a rider (conscious, logical) on an elephant (subconscious, emotional). Facts persuade the rider. Stakes, specifics, and feeling move the elephant. You need both. For the rider, lead with your point (the Pyramid Principle: conclusion first, then the support [@minto1978pyramid]). For the elephant, make it concrete and human.
-- **Mind your body.** Posture, eye contact, and pace carry as much as words. Slouching weakens a good story. Stand up straight when you tell it.
+- **Mind your body.** Posture, eye contact, and pace communicate as much as words. Slouching weakens a good story. Stand up straight when you tell it.
 
 ![Every listener is a small rider (deliberate reasoning) on a large elephant (emotion and intuition). Facts move the rider; stakes, specifics, and feeling move the elephant. The rider can steer only where the elephant is willing to go. Adapted from Jonathan Haidt, *The Happiness Hypothesis* [@haidt2006happiness].](images/diagrams/ch03-rider-elephant.svg){#fig-rider-elephant-story fig-alt="A line drawing of a large elephant walking to the right with a small rider on its back holding the reins. The rider is labeled deliberate reasoning; the elephant is labeled emotion and intuition. Ahead of them the path forks. A dashed branch rising to the upper right is labeled route the rider chooses; a solid branch straight ahead is labeled route the elephant takes, and the elephant is walking onto the straight branch." width="100%"}
 
@@ -48,9 +48,9 @@ Prompts for the list: *Tell me about the first time you... the last time you... 
 
 ## Make It Stick
 
-Why are some ideas remembered while others are forgotten? Chip and Dan Heath studied ideas that people remember and found six traits, which they abbreviate as **SUCCESs**: **S**imple (one core idea), **U**nexpected (break a pattern, open a gap), **C**oncrete (specific images, not abstractions), **C**redible (a detail or number that makes it believable), **E**motional (make them feel as well as think), and **S**tories (wrap it in a narrative). When your pitch is not working, run it against the six and you will usually find the missing one. For QuizMe, "helps students study more effectively" is abstract; "Maya missed three questions on equilibrium and knew what to study" is Concrete, and "five of the eight students who finished a quiz came back the next week" is Credible.
+Why are some ideas remembered while others are forgotten? Chip and Dan Heath studied ideas that people remember and found six traits, which they abbreviate as **SUCCESs**: **S**imple (one core idea), **U**nexpected (break a pattern, open a gap), **C**oncrete (specific images, not abstractions), **C**redible (a detail or number that makes it believable), **E**motional (make them feel as well as think), and **S**tories (tell it as a narrative). When your pitch is not working, check it against the six and you will usually find the missing one. For QuizMe, "helps students study more effectively" is abstract; "Maya missed three questions on equilibrium and knew what to study" is Concrete, and "five of the eight students who finished a quiz came back the next week" is Credible.
 
-For structure, Nancy Duarte's advice is to move your audience deliberately between *what is* and *what could be*: open the gap between today's frustrating reality and the better future your product makes possible, then close on a clear call to action. The contrast between the two holds the audience's attention.
+For structure, Nancy Duarte's advice is to move your audience deliberately between *what is* and *what could be*: open the gap between today's frustrating reality and the better future your product makes possible, then end on a clear call to action. The contrast between the two holds the audience's attention.
 
 ![The shape of a persuasive talk. The beginning describes what is; a first turning point, which Duarte calls the call to adventure, shows what could be; the middle moves back and forth between the two; the call to action asks the audience to act, and the end stays on what could be. After Nancy Duarte's sparkline in Resonate [@duarte2010resonate].](images/diagrams/ch15-what-is-what-could-be.svg){#fig-what-is-what-could-be fig-alt="A line moves between two levels, What is at the bottom and What could be at the top, across three spans labeled Beginning, Middle: contrast, and End. In the beginning the line stays on What is, with the QuizMe example Maya rereads her notes. At a turning point labeled Call to adventure it rises to What could be. Through the middle it moves down and up between the two levels twice. At a second turning point labeled Call to action it rises to What could be and stays there through the end, with the example Maya knows what to study." width="100%"}
 
@@ -101,7 +101,7 @@ people tried it, five completed a quiz in their second week, and here is the cur
 evidence. "Three students used it before every quiz for a month, and here is what one of them
 said" is evidence too. Remember *resulting* [@duke2018bets], judging a decision only by how it turned out: you are graded on the quality of your
 decisions and your learning, not on how big the numbers are. A thoughtful product with three
-engaged users and an honest account of what they did beats a rushed one claiming fifty. Leaving
+engaged users and an honest account of what they did is better evidence than a rushed one claiming fifty. Leaving
 the evidence out entirely leaves the argument unsupported.
 
 **Worked example (QuizMe, in three minutes).** *Person and problem:* "Maya has a chemistry quiz
@@ -123,20 +123,20 @@ they show it is something you build on purpose, from three sources:
 - **Reputation capital:** what you have done, your track record. A shipped product with real users is reputation you can point to, and it is the easiest kind for a student to earn: ship the product and show it.
 
 Take an honest inventory of all three before you record. Your demo is far stronger when it shows a
-product and also a credible builder, with a network and a track record, standing behind it.
+product and also a credible builder with a network and a track record.
 
 *Innovation capital is from Jeff Dyer, Nathan Furr, and Curtis Lefrandt, Innovation Capital (Harvard Business Review Press, 2019) [@dyer2019innovation].*
 
 ### Amplify: Make Them Believe
 
-A demo carries information, and it also persuades. Jeff Dyer and his colleagues catalog the moves innovators use to win support for an idea, their **impression amplifiers**, and a few belong in your final pitch:
+A demo informs, and it also persuades. Jeff Dyer and his colleagues catalog the tactics innovators use to win support for an idea, their **impression amplifiers**, and a few belong in your final pitch:
 
 - **Materialize.** Show the real, working product, not slides. A working product is more convincing than any number of claims. This is why the demo shows the deployed product doing the core task, not mockups.
 - **Compare.** Anchor your product to something the audience already knows: "the [familiar product] for [your customer]." It makes an unfamiliar idea graspable in one line.
 - **Story.** Open on a specific person and a specific moment, not a market-size statistic. The story is what moves the elephant.
 - **Commit.** Show your own stake, the work you have put in and what you are willing to keep doing. Visible commitment makes others willing to back you.
 
-Used honestly, these help a good product get the hearing it deserves. Used to make a product that does not work look like it does, they become deception, the line the [Product Morality](03-what-is-worth-building.qmd) chapter draws (the book's own cautionary case is Theranos [@carreyrou2018badblood]). Amplify what is true; never invent it.
+Used honestly, these help a good product get fair consideration. Used to make a product that does not work look like it does, they become deception, the line the [Product Morality](03-what-is-worth-building.qmd) chapter draws (the book's own cautionary case is Theranos [@carreyrou2018badblood]). Amplify what is true; never invent it.
 
 *The impression amplifiers are from Jeff Dyer, Nathan Furr, and Curtis Lefrandt, Innovation Capital (Harvard Business Review Press, 2019) [@dyer2019innovation].*
 
@@ -151,11 +151,11 @@ Write your demo as five lines: the person, the problem, the moment it works, the
 ## Key Concepts
 
 - **A story has a job**: aim (what you want to communicate, and to whom), approach (which story
-  serves that aim), act (tell it and watch whether it landed). If you cannot say what a story is
+  serves that aim), act (tell it and watch how the audience responds). If you cannot say what a story is
   for, you are not ready to tell it.
 - **Story database**: a running list of at least 20 personal stories, kept in your repo, ready
   for interviews, demos, and pitches.
-- **Five-second moment**: the single instant a story turns on. Know where it is and slow down
+- **Five-second moment**: the single moment where the story changes. Know where it is and slow down
   there.
 - **Show change**: a story is a before and an after; without a change, it is a report.
 - **Rider and elephant**: every listener has deliberate reasoning (the rider) and emotion and

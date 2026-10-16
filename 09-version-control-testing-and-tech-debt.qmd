@@ -204,7 +204,7 @@ own computer, and push only if it passes. The site describes this as the style o
 teams whose members know what the others are working on. In the second, each change goes on a
 **short-lived feature branch**, worked on by one developer (or two when pair programming), that
 lasts no more than a couple of days and comes back to the trunk as a pull request, where a build
-server (a computer that runs the checks, such as GitHub Actions) runs them before the change lands. The site says a team of 16 or more people is
+server (a computer that runs the checks, such as GitHub Actions) runs them before the change is merged. The site says a team of 16 or more people is
 more productive with short-lived branches. Both styles are trunk-based: the trunk is the
 one place everyone's work meets, and nothing stays away from it for long.
 
@@ -234,14 +234,14 @@ is the Agent Team Kit's default, which it calls stay on main
 and it is the one-shared-folder column of the table in Chapter 2. You keep the sessions apart by
 giving each a different part of the app: one works on the search page, one on the sign-up email,
 one on the tests. There is no merge step, and each session sees the others' finished work as soon
-as it lands.
+as it is committed.
 
 Nothing in git stops two of those sessions from changing the same file. When it happens (the amber
 ring), the second session usually finds out right away: its build fails, a test fails, or `git
 status` shows a change it did not make. It reads the other session's commit and makes a new commit
 that fixes the clash (the green circle). Because the clash is one commit old, the fix is a few
 lines. The kit chooses this over worktrees on purpose: worktrees separate files, but the
-collisions that hurt most in its experience are in the dev server ports and the shared database,
+collisions that cause the most problems in its experience are in the dev server ports and the shared database,
 which every session shares either way, and each worktree branch adds a merge.
 
 Sessions sharing one `main` follow the rules from earlier in this chapter: stage and commit only
@@ -546,7 +546,7 @@ To choose, ask two questions about the change
    changed environment variable, or an edit to code every page uses runs before any flag is
    checked, so a flag cannot hide it. Try it on staging first.
 2. **If the first people who get it hit the worst case, whose data is harmed, and can it be
-   undone?** If the harm lands on your own team's data or can be reversed, a flag is enough: turn
+   undone?** If the harm is limited to your own team's data or can be reversed, a flag is enough: turn
    it on for yourself in production. If it could do something that cannot be undone to someone
    outside your team, such as email real users or charge a card, try it on staging first, then
    release it behind a flag.
@@ -620,7 +620,7 @@ You have two ways back:
 
 | Way back | What it does | When to use it |
 |---|---|---|
-| **Vercel Instant Rollback** | Points your live domain back at an earlier production deployment, in seconds. The code in git does not change | First move when the live site is broken. On the free Hobby plan you can roll back to the immediately previous deployment |
+| **Vercel Instant Rollback** | Points your live domain back at an earlier production deployment, in seconds. The code in git does not change | First step when the live site is broken. On the free Hobby plan you can roll back to the immediately previous deployment |
 | **`git revert <commit>`** | Makes a new commit that undoes an earlier one, keeping the history. Pushing it to `main` deploys the undo | To make the undo permanent in your code |
 
 One Vercel detail matters: after an Instant Rollback, Vercel stops sending new pushes to
@@ -654,14 +654,14 @@ A **log** is a line of text your code writes when something happens ("save faile
 browser, the chain of calls that led to it), collected automatically. Each of the three places
 from Chapter 7 keeps its own:
 
-| Where it ran | Where to look | What you find | Catch |
+| Where it ran | Where to look | What you find | Limitation |
 |---|---|---|---|
 | Browser | The **console** and **Network** panels in the browser's developer tools ([Developer Tools](09c-browser-and-developer-tools.qmd#developer-tools)) | Errors in frontend code, failed requests | Only on the machine in front of you; you see a user's console errors only if you reproduce the problem or use an error reporter |
 | Your server | **Vercel runtime logs** (project, then Logs) | Errors and `console.log` output from route handlers and server code | Kept for one hour on the Hobby plan, so look soon |
 | Database | **Supabase logs** (dashboard, Logs) | Rejected queries, auth failures, RLS denials | Separate from Vercel; check both |
 | All of the above, from real users | An **error reporter** such as Sentry | Every crash, grouped and counted, with an email alert | Takes a few minutes to set up; free tier is enough for a student product |
 
-Google's site reliability engineers suggest watching what users feel (requests that fail,
+Google's site reliability engineers suggest watching what users experience (requests that fail,
 requests that are slow) before anything internal [@beyer2016sre]. At student scale that means:
 know when a request fails, and know which one.
 

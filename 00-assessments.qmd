@@ -55,9 +55,9 @@ on your own schedule within the posted window. Both are closed book, proctored, 
 multiple choice.
 
 Almost everything else you submit in this course is built with AI assistance, and that is
-the point. These two sittings are the exception. They are the one place your own
+intended. These two sittings are the exception. They are the one place your own
 understanding is measured on its own, which is why they exist and why they are worth
-holding yourself to.
+preparing for.
 
 They are also deliberately low stakes. At 5% each, the difference between a rough exam and
 a strong one is about two percent of your course grade. That is enough to make preparing
@@ -164,7 +164,7 @@ licensing research had to come first.
 
 There is nothing to resubmit on Canvas: your plan link always shows the current file. Changes
 cost nothing. At the end, your work is read against the plan as it stands, and your
-retro says how it moved. A change with no note is the one thing to avoid: without it, nobody
+retro says how it changed. A change with no note is the one thing to avoid: without it, nobody
 reading your plan can tell what you set out to do.
 
 #### The two weeks
@@ -320,7 +320,7 @@ The standard sprint, plus two one-time items:
 
 1. **Your repo,** created from the [builder template](https://github.com/byu-strategy/builder-template), with Professor Murff (`sdmurff`) added as a collaborator.
 2. **A context declaration** in that repo's `README.md`: your role (most roles combine several
-   hats), what you are working on, who it is for, and who uses your work. "Not decided" is
+   kinds of work), what you are working on, who it is for, and who uses your work. "Not decided" is
    fine to start; choosing is a legitimate Sprint 1 goal. Later sprints are read against this.
    Revise it when it changes and note why.
 
@@ -338,7 +338,7 @@ explains each step as it goes. Plan on about an hour.
 4. Expand the prompt below, click the copy button, paste it into Claude, and press Enter.
 
 Partway through, Claude asks you to reopen VS Code inside your new repo folder and paste the
-same prompt again. That is expected: it checks what is already done and picks up there.
+same prompt again. That is expected: it checks what is already done and continues from there.
 
 **If you get stuck,** post your question in the [course Slack](https://join.slack.com/t/byustrategyprogram/shared_invite/zt-49zknsqc4-iJK8onSDn5ZqKLnaasHXQA). Include the last error message Claude showed you and the task number you were on.
 

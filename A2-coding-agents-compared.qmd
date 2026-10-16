@@ -48,7 +48,7 @@ The model is only part of an agent. The harness around it builds each request, c
 What the scores show:
 
 - **Claude Code** has the most complete harness here: every item but one, and the most commands and tools. The one it misses, undo that also reverses shell commands, is one Copilot CLI has.
-- **Copilot CLI** is close behind. It is weakest at checking calls: it has no rules file you can commit, so a rule has to be passed at launch or written as a hook. It is strongest at recovery, with an undo that restores files changed by shell commands too.
+- **Copilot CLI** scores second, four items behind. It is weakest at checking calls: it has no rules file you can commit, so a rule has to be passed at launch or written as a hook. It is strongest at recovery, with an undo that restores files changed by shell commands too.
 - **Codex** and **Antigravity CLI** tie. Codex is strong at enforcement (sandbox on by default, rules, a reviewer model) and weak at recovery, delegation, and context management (no file undo, no worktrees, no view of what fills the window). Antigravity is strong at instructions and permission rules, and weak in the same three places.
 - The gaps that matter most for this course are in **Recover**. Without a file undo, every edit the agent makes falls in group 2 of [Blast Radius](02-directing-the-agent.qmd#blast-radius): commit before you start.
 
@@ -56,7 +56,7 @@ What the scores show:
 This is our own checklist, not a published benchmark. Read it with three limits in mind:
 
 - **It counts capabilities, not quality.** A yes says a feature exists. It says nothing about how well it works, how reliable the agent is, or how good the model is. A tool with a lower score and a stronger model can still produce better work.
-- **It leans toward Claude Code.** The checklist comes from what this book teaches, and the book teaches with Claude Code, so Claude Code's features set the list. An item another tool has and Claude Code lacks gets in only if it fits a harness job, such as Copilot's shell-command undo.
+- **It favors Claude Code.** The checklist comes from what this book teaches, and the book teaches with Claude Code, so Claude Code's features set the list. An item another tool has and Claude Code lacks gets in only if it fits a harness job, such as Copilot's shell-command undo.
 - **It depends on the documentation.** Codex has no tools reference, so its tool count (6) counts only the tools its hooks page names; the real number is likely higher. A blank cell means "not documented," not "impossible."
 
 The counts were taken on October 10, 2026, from the same sources as the tables. Each job has a different number of items, so compare tools within a row before comparing totals.
@@ -621,7 +621,7 @@ Sources: [Copilot CLI](https://docs.github.com/en/copilot/concepts/copilot-surfa
 copilot --allow-tool='shell(git:*)' --deny-tool='shell(git push)'
 ```
 
-The approval you give during a session ("Yes, and approve TOOL for the rest of the running session") covers that tool for every later use in the session. Approving `rm ./old-file.txt` that way also approves `rm -rf ./*`. For a rule that holds every session, use a `preToolUse` hook.
+The approval you give during a session ("Yes, and approve TOOL for the rest of the running session") covers that tool for every later use in the session. Approving `rm ./old-file.txt` that way also approves `rm -rf ./*`. For a rule that applies in every session, use a `preToolUse` hook.
 
 **Hooks.** Copilot reads hooks from `.github/hooks/*.json` and also from your `.claude/settings.json`. Hooks written with Claude's event names (`PreToolUse`) get Claude-style matchers (`Bash`, `Edit|Write`) and a payload with `tool_name` and `tool_input`. Exit code 2 blocks. The arguments inside `tool_input` are Copilot's own, so test each Chapter 2 script with a harmless call before you rely on it.
 
@@ -637,6 +637,6 @@ Sources: [getting started](https://antigravity.google/docs/getting-started), [CL
 
 **Modes and permissions.** `Shift+Tab` cycles `default` (shows each file edit as a diff for you to accept), `accept-edits`, and `plan`. Separately, `allow`, `ask`, and `deny` rules cover actions such as `command(git push)`, `write_file(path)`, and `read_url(domain)`; deny beats ask, and ask beats allow. They live in your user settings file, not in the repo, so they do not travel with the project. Reading and writing files inside your workspace needs no rule; in `default` mode you still review each edit.
 
-**Hooks.** Hooks go in `.agents/hooks.json` and use different names from the other three tools. The shell tool is `run_command`, and its command is in `toolCall.args.CommandLine`. File edits are `write_to_file`, `replace_file_content`, and `multi_replace_file_content`, with the path in `toolCall.args.TargetFile`. A `PreToolUse` hook answers with JSON such as `{"decision": "deny", "reason": "..."}` instead of an exit code. Chapter 2's scripts need rewriting for these names. Note that `"allow"` approves the call without asking you, so a guard should not return it for commands it has no opinion about; check the [hooks](https://antigravity.google/docs/hooks) page for the current options.
+**Hooks.** Hooks go in `.agents/hooks.json` and use different names from the other three tools. The shell tool is `run_command`, and its command is in `toolCall.args.CommandLine`. File edits are `write_to_file`, `replace_file_content`, and `multi_replace_file_content`, with the path in `toolCall.args.TargetFile`. A `PreToolUse` hook answers with JSON such as `{"decision": "deny", "reason": "..."}` instead of an exit code. Chapter 2's scripts need rewriting for these names. Note that `"allow"` approves the call without asking you, so a guard should not return it for commands it is not meant to check; check the [hooks](https://antigravity.google/docs/hooks) page for the current options.
 
 **Undo.** `/rewind` rolls back the conversation. The reference does not say it restores files, and `/fork` copies the conversation, not your files. Use git.

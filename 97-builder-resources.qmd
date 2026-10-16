@@ -256,12 +256,12 @@ When we get there, tell me plainly what I still cannot do.
 
 ## AI Systems
 
-How the models work, and why they behave the way they do: the understanding underneath every AI
-feature you build.
+How the models work, and why they behave the way they do: the understanding every AI feature you
+build depends on.
 
 | Resource | Format | Why |
 |---|---|---|
-| **Start here:** [Deep Dive into LLMs like ChatGPT](https://www.youtube.com/watch?v=7xTGNNLPyMI), Andrej Karpathy | Video, 3.5h | Pretraining through hallucination, tool use, and RLHF, pitched at builders rather than researchers |
+| **Start here:** [Deep Dive into LLMs like ChatGPT](https://www.youtube.com/watch?v=7xTGNNLPyMI), Andrej Karpathy | Video, 3.5h | Pretraining through hallucination, tool use, and RLHF, made for builders rather than researchers |
 | [Neural networks](https://www.3blue1brown.com/topics/neural-networks), 3Blue1Brown | Video series, free | Neural networks, gradient descent, and transformers drawn out visually, ending with how a GPT predicts the next word |
 | [Intro to Large Language Models](https://www.youtube.com/watch?v=zjkBMFhNj_g), Andrej Karpathy | Video, 1h | The one-hour version: what a model is, how it is trained, and why it behaves as it does |
 | [Build a Large Language Model (From Scratch)](https://www.manning.com/books/build-a-large-language-model-from-scratch), Sebastian Raschka | Book, 2024 | Builds a small GPT step by step: tokens, embeddings, attention, pretraining, then fine-tuning. Most of the figures in the How Models Work chapter come from it. Free code at [LLMs-from-scratch](https://github.com/rasbt/LLMs-from-scratch) |
@@ -351,7 +351,7 @@ Putting AI to work, as the way you build and inside the product you build. This 
 | [Writing effective tools for agents](https://www.anthropic.com/engineering/writing-tools-for-agents), Anthropic | Article | Read before you write an MCP server, not after |
 | [Model Context Protocol](https://modelcontextprotocol.io) and [AGENTS.md](https://agents.md/) | Specs | Both are now multi-vendor open standards rather than one company's idea |
 | [How far can we push AI autonomy in code generation?](https://martinfowler.com/articles/pushing-ai-autonomy.html), Birgitta Böckeler | Article | The most rigorous treatment of where human review is still non-negotiable |
-| [Vibe coding and agentic engineering are getting closer than I'd like](https://simonwillison.net/2026/May/6/vibe-coding-and-agentic-engineering/), Simon Willison | Article | An honest admission that review discipline is eroding, from one of its advocates |
+| [Vibe coding and agentic engineering are getting closer than I'd like](https://simonwillison.net/2026/May/6/vibe-coding-and-agentic-engineering/), Simon Willison | Article | An honest admission that review discipline is declining, from one of its advocates |
 | [What happens after coding is solved](https://www.youtube.com/watch?v=We7BZVKbCVw), Boris Cherny, Feb 2026 | Podcast | The head of Claude Code on where agentic development is going. The most watched episode on this list |
 | [Claude Code and Cowork](https://www.youtube.com/watch?v=Ybrl4FYM57c), Fiona Fung, Jun 2026 | Podcast | The follow-up, four months later, on how the workflow changed again |
 | [Tool use with Claude](https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview) | Docs | Canonical reference for function calling and the agentic loop |

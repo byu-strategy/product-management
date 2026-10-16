@@ -17,15 +17,15 @@ We run those methods as a single loop called **AIRE**. Each step is a question, 
 - **Aim.** *What do you want?* The goal, and the values behind it: what value you are trying to create, for whom, and how much you mean to capture.
 - **Inform.** *What is true?* Go find out what is actually true about your customer and their problem. Gather evidence.
 - **Reason.** *What's the best option?* Lay out the real alternatives and choose among them. If there was only ever one option, you have not reasoned, you have rationalized.
-- **Enact.** *What happened?* Build it, ship it, and watch. The answer becomes the next turn's evidence, so you loop back with a sharper aim, better information, and clearer reasoning.
+- **Enact.** *What happened?* Build it, ship it, and watch. The answer becomes the next turn's evidence, so you loop back with a more precise aim, better information, and clearer reasoning.
 
 In short: what do you want, what is true, what's the best option, what happened.
 
-**Aim comes first on purpose.** Information is endless; without an aim you have no way to tell which facts matter, and discovery with no destination is just wandering. Lewis Carroll made the point in *Alice's Adventures in Wonderland* [@carroll1865], when Alice reaches a fork and asks the Cheshire Cat which way to go. President Thomas S. Monson retold it this way:
+**Aim comes first on purpose.** Information is endless; without an aim you have no way to tell which facts matter, and discovery with no goal gathers facts at random. Lewis Carroll made the point in *Alice's Adventures in Wonderland* [@carroll1865], when Alice reaches a fork and asks the Cheshire Cat which way to go. President Thomas S. Monson retold it this way:
 
 > The cat answers, "That depends where you want to go. If you do not know where you want to go, it doesn't matter which path you take."
 
-Alice does not know where she wants to go, so for her it does not matter. Monson's reading of the story is the reason Aim comes first: "Unlike Alice, we know where we want to go, and it does matter which way we go, for by choosing our path, we choose our destination" [@monson2016]. Answer *what do you want* first, and every question after it has a criterion. Skip it, and any road looks as good as any other.
+Alice does not know where she wants to go, so for her it does not matter. Monson's reading of the story is the reason Aim comes first: "Unlike Alice, we know where we want to go, and it does matter which way we go, for by choosing our path, we choose our destination" [@monson2016]. Answer *what do you want* first, and every question after it has a criterion. Skip it, and you have no reason to prefer one option over another.
 
 The course *is* this loop. Each step matches one stage of the work you will do this semester:
 
@@ -44,7 +44,7 @@ First, **the last three multiply, they do not add.** How good a decision turns o
 
 ![Outcome is the area the factors enclose, so the factors multiply. One factor near zero brings the outcome near zero. If the factors added, a long side could make up for a short one; because they multiply, it cannot.](images/diagrams/ch01-outcome-as-area.svg){#fig-outcome-as-area fig-alt="Two panels on the same axes. In each, the horizontal side is Belief, which is Information times Reasoning, and the vertical side is Execution. The left panel, every factor strong, is a large filled rectangle labeled Outcome, the full area. The right panel, one factor weak, has the same Belief side but Execution near zero, so the rectangle shrinks to a thin strip labeled Outcome near zero, almost no area left." width="100%"}
 
-Second, **most of the loop is about telling what you believe from what is true.** You will always have beliefs about your customer. Some are right, some are wrong, and the work of Inform and Reason is to close the gap. [Finding and Validating the Problem](04-finding-and-validating-the-problem.qmd) gives you a diagram of that: a map of where a belief can sit relative to the truth, and how to move it.
+Second, **most of the loop is about telling what you believe from what is true.** You will always have beliefs about your customer. Some are right, some are wrong, and the work of Inform and Reason is to find out which are which. [Finding and Validating the Problem](04-finding-and-validating-the-problem.qmd) gives you a diagram of that: a map of where a belief can sit relative to the truth, and how to move it.
 
 AIRE is the loop *you* run, across a sprint. Later in this chapter you will meet a second, much faster loop: the one the *agent* runs on every turn (gather context, act, check). Keep the two apart. AIRE decides what is worth building; the agent loop is how a piece of it gets built.
 
@@ -52,7 +52,7 @@ AIRE is the loop *you* run, across a sprint. Later in this chapter you will meet
 
 Class meets once a week: short periods of focused instruction to teach a skill, then live building with Claude Code. Each class has one emphasis, and we open it with a scripture and a quote tied to that emphasis.
 
-The scripture is not decoration, and it is not separate from the craft. This is BYU, and we take seriously Brigham Young's charge to Karl G. Maeser as he left to found this university: to "not teach even the alphabet or the multiplication tables without the Spirit of God." All truth is God's truth, and seeking it honestly, about a customer, a market, or anything else, is a spiritual act as much as a technical one. Faith, in the oldest sense, is not the absence of evidence; it is belief carried all the way into action. That is the Enact in AIRE: a belief you will not act on is dead. We will treat the whole loop that way, as work worth doing well and worth doing in good faith.
+The scripture is not decoration, and it is not separate from the craft. This is BYU, and we take seriously Brigham Young's charge to Karl G. Maeser as he left to found this university: to "not teach even the alphabet or the multiplication tables without the Spirit of God." All truth is God's truth, and seeking it honestly, about a customer, a market, or anything else, is a spiritual act as much as a technical one. Faith, in the oldest sense, does not mean believing without evidence; it means acting on what you believe. That is the Enact in AIRE: a belief you will not act on is dead. We will treat the whole loop that way, as work worth doing well and worth doing in good faith.
 
 <!-- learn -->
 
@@ -61,7 +61,7 @@ The scripture is not decoration, and it is not separate from the craft. This is 
 This course tracks six skills. Together they are what a full-stack AI product builder can
 do: one person who, with AI's help, can take a product from an idea to live software that
 customers use (the term is explained under [Where This Is Going](#where-this-is-going)). The six
-skills are the frame for everything that follows, and each part of the book in the sidebar is one
+skills organize everything that follows, and each part of the book in the sidebar is one
 of them.
 
 ![](images/diagrams/builder-axes.svg){fig-alt="A hexagon with one builder axis at each corner, clockwise from the upper left: Agentic Workflow, Discovery, Design, Launch and Learn, AI Systems, and Application Architecture, each with an icon. Faint rings inside mark levels from the center to the edge." fig-align="center" width="70%"}
@@ -83,7 +83,7 @@ the spec, the written description an agent builds from and you check the result 
 
 Each axis gets two weeks. You will rate yourself on all six this week (that first rating is your baseline) and again at the end
 of the semester, and you will get back a six-sided chart of your profile both times. The
-point of the baseline is not to judge you. It is so you know which axis is your weakest and
+baseline is there so you know which axis is your weakest and
 can spend your discretionary effort there.
 
 Agentic Workflow comes first because you need the tool before you can do anything
@@ -106,7 +106,7 @@ Product management is the work of identifying customer needs, aligning them with
 
 The principles apply to hardware and software alike, but this course is about software products built with AI's help.
 
-Product management as a job title traces to Hewlett-Packard in the 1940s. The idea is older: a 1931 Procter & Gamble memo described "Brand Men" whose responsibilities foreshadowed the role [@mcelroy1931].
+Product management as a job title traces to Hewlett-Packard in the 1940s. The idea is older: a 1931 Procter & Gamble memo described "Brand Men" whose responsibilities resembled the later role [@mcelroy1931].
 
 ![Image source: Wikimedia Commons](images/brand-men.jpg)
 
@@ -192,7 +192,7 @@ The term spread fast as a name for having AI write your code, often by voice. Co
 
 The practice is contested. Skeptics say it encourages a shallow relationship with code: builders who do not understand their systems, more bugs, and unclear accountability when something breaks. Supporters see the next step in a long trend. Compilers (programs that translate readable code into the instructions a computer chip runs) freed programmers from writing those low-level instructions, called assembly, by hand; language models free them from typing every character of syntax, so they can spend their attention on intent, design, and impact. Both camps are partly right, and this course is built on the overlap: let the agent write the syntax, and keep the understanding for yourself.
 
-Paul Graham, co-founder of Y Combinator (YC), came around:
+Paul Graham, co-founder of Y Combinator (YC), changed his mind:
 
 ::: tweet-center
 <blockquote class="twitter-tweet">
@@ -337,7 +337,7 @@ The term "vibe coding" sounds unserious, and often the practice is. Some enginee
 
 Don't be the reason your boss has to bring in a Vibe Code Cleanup Specialist.
 
-This course uses terms like "building with AI," "agentic coding," "AI builder," and "full-stack product builder" instead, and holds the work to a standard: code an agent wrote for you should stand up to review in a serious engineering organization.
+This course uses terms like "building with AI," "agentic coding," "AI builder," and "full-stack product builder" instead, and holds the work to a standard: code an agent wrote for you should pass review in a serious engineering organization.
 
 ## What Makes an Agent an Agent
 
@@ -393,7 +393,7 @@ One tool call, step by step, using the delete-button fix from the worked example
 3. **The checks, then the run.** Claude Code, the program running on your computer, receives
    the call. A hook can block it, and a permission rule either allows it, asks you, or denies
    it. Only then does Claude Code run the tool, and the file changes. Chapter 2 covers both,
-   and [PreToolUse up close](02-directing-the-agent.qmd#pretooluse-up-close) zooms in on this step.
+   and [PreToolUse up close](02-directing-the-agent.qmd#pretooluse-up-close) covers this step in detail.
 4. **The next request.** What the tool returned (a file's contents, a command's output, or an
    error message) is added to the conversation as text, and Claude Code sends a new request:
    the whole conversation so far, plus the result. The model keeps nothing between requests,
@@ -485,9 +485,9 @@ the model this way. The operating system offers an API too: every arrow into it 
 interface: commands are exact, they can be chained together, and they can be saved in a file and
 run again. It was also the hardest to learn, which is why the GUI took over. An agent removes the
 hard part. You describe what you want in plain English, and the agent writes and runs the
-commands. You get the command line's reach without memorizing it, which is why Claude Code is
+commands. You get what the command line can do without memorizing it, which is why Claude Code is
 built as a CLI. Two qualifications. A GUI is still the better tool for visual work, such as
-designing a screen or reading a chart. And the same reach that lets an agent do anything on your
+designing a screen or reading a chart. And the same access that lets an agent do anything on your
 computer lets it break anything, which is the subject of [Blast Radius](02-directing-the-agent.qmd#blast-radius) in
 Chapter 2.
 
@@ -627,7 +627,7 @@ A **package manager** installs, updates, and removes software from the command l
 
 ## VS Code
 
-Visual Studio Code is a free code editor from Microsoft and the home base for this course: a file browser, an editor, a built-in terminal, and the Claude Code extension in one window. Installation is in [Computer Setup](00-computer-setup.qmd). (On macOS, `brew install --cask visual-studio-code` installs it from the command line; `--cask` tells Homebrew it is a graphical app.)
+Visual Studio Code is a free code editor from Microsoft and the main workspace for this course: a file browser, an editor, a built-in terminal, and the Claude Code extension in one window. Installation is in [Computer Setup](00-computer-setup.qmd). (On macOS, `brew install --cask visual-studio-code` installs it from the command line; `--cask` tells Homebrew it is a graphical app.)
 
 ## Claude Code
 

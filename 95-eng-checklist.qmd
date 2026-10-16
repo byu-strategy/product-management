@@ -455,7 +455,7 @@ Before deploying to production, verify:
 
 ## 💡 Remember
 
-**Perfect is the enemy of shipped.**
+**Shipping a working product matters more than making it perfect.**
 
 Use this checklist as a guide; you do not have to meet every item before you ship. Early-stage products can ship with:
 - Basic error handling (not comprehensive monitoring)

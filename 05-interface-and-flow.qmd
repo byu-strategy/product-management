@@ -4,7 +4,7 @@ title: "Interface and Flow"
 
 ## Why This Matters
 
-Your product is only as good as the interface people use. An agent will happily generate a
+Your product is only as good as the interface people use. An agent will generate a
 working application that nobody can figure out how to use, and it will not tell you that it
 has. Judgment about the surface is yours.
 
@@ -30,7 +30,7 @@ unusable products actually diverge, and they are decided before a single style i
 
 ![Image source: The Lean Product Playbook by Dan Olsen](images/ux-iceberg.png){fig-alt="An iceberg divided into four horizontal layers. Only the top layer, visual design, sits above the waterline. Below the surface, from top to bottom: interaction design, information architecture, and conceptual design as the largest layer at the base."}
 
-A polished screen sitting on a confused conceptual model is the most common way an AI-built
+A polished screen built on a confused conceptual model is the most common way an AI-built
 application fails. This chapter works from the bottom of the iceberg up:
 
 ::::
@@ -73,7 +73,7 @@ example is invented for teaching.
 first, then design the screens it needs. A beautiful screen in the wrong flow is still wrong.
 
 This is the interaction design and information architecture layer of the iceberg made concrete.
-Agents are eager to produce screens, so if you ask for "a dashboard," you will get one, with
+Agents produce screens readily, so if you ask for "a dashboard," you will get one, with
 whatever steps the agent guessed. The flow is where you decide what the product actually asks of
 a person.
 
@@ -85,11 +85,11 @@ a person.
 | **Entry point** | Where the flow starts: a link, a notification, the home screen | How do they arrive, and what do they already know? |
 | **Steps** | Each screen or action in order | What is the one thing they do here? |
 | **Decisions** | Points where the path branches | What choice do they make, and what does each choice lead to? |
-| **Exits** | Every way the flow ends: success, cancel, error, giving up | Where do they land, and can they get back? |
+| **Exits** | Every way the flow ends: success, cancel, error, giving up | Where do they end up, and can they get back? |
 
 These combine in a simple way: a flow is a goal, reached from an entry point, through steps,
 split by decisions, and ending in exits. Count the steps and decisions; each one is a chance for
-someone to stop. Good flows remove steps the user does not care about and make every exit land
+someone to stop. Good flows remove steps the user does not care about and make every exit lead
 somewhere useful.
 
 #### Worked example: posting a shift on ShiftSwap
@@ -111,7 +111,7 @@ ENTRY  Home screen ("My shifts")
  CANCEL at any step before pickup -> shift returns to me, nothing sent
 ```
 
-![The same flow as a picture. The happy path is one line through five steps; three of the four ways it can end are off that path, and each needs a designed landing.](images/diagrams/ch05-shiftswap-flow.svg){#fig-shiftswap-flow fig-alt="Flow diagram of posting a shift on ShiftSwap. Entry at the My shifts home screen, then step 1 tap the Thursday shift, step 2 tap Give away this shift, step 3 add an optional note, step 4 confirm so the shift is posted. A dashed bracket under steps 1 to 4 leads to an exit: cancel before anyone picks it up, the shift returns and nothing is sent. From step 4 a decision asks whether someone picks it up within 48 hours. If yes, step 5 sends the manager an approval request, then a decision asks whether the manager approves; yes leads to the success exit, both notified and schedules updated. If the manager says no, the shift returns with the manager's reason. If nobody picks it up, the student gets a reminder 24 hours before the shift with an Ask a specific coworker option. The happy path is drawn in navy; the three off-path exits are outlined in blue." width="100%"}
+![The same flow as a picture. The happy path is one line through five steps; three of the four ways it can end are off that path, and each needs a designed screen.](images/diagrams/ch05-shiftswap-flow.svg){#fig-shiftswap-flow fig-alt="Flow diagram of posting a shift on ShiftSwap. Entry at the My shifts home screen, then step 1 tap the Thursday shift, step 2 tap Give away this shift, step 3 add an optional note, step 4 confirm so the shift is posted. A dashed bracket under steps 1 to 4 leads to an exit: cancel before anyone picks it up, the shift returns and nothing is sent. From step 4 a decision asks whether someone picks it up within 48 hours. If yes, step 5 sends the manager an approval request, then a decision asks whether the manager approves; yes leads to the success exit, both notified and schedules updated. If the manager says no, the shift returns with the manager's reason. If nobody picks it up, the student gets a reminder 24 hours before the shift with an Ask a specific coworker option. The happy path is drawn in navy; the three off-path exits are outlined in blue." width="100%"}
 
 Mapping it this way surfaces questions a screen mockup hides. Who counts as an "eligible"
 coworker? What does the original student see while waiting for approval? What happens if two
@@ -121,7 +121,7 @@ agent would otherwise make for you silently.
 ::: {.callout-tip title="Try it"}
 Write the flow for the single most important task in your own product in the format above:
 goal, entry, numbered steps, decisions, and every exit. Then count. If the core task has more than
-six steps or any exit that leaves the user stranded, mark the step you would remove or fix first.
+six steps or any exit that leaves the user with no next step, mark the step you would remove or fix first.
 Do this before you ask Claude Code for any new screen in Sprint 3, and paste the flow into the
 prompt.
 :::
@@ -152,7 +152,7 @@ items as by emphasizing the primary one.
 | **Weight** | Bolder text or a filled button | Bold everywhere, so bold means nothing |
 | **Contrast and color** | Darker, more saturated, or the one colored element | Five colors competing; color as the only signal |
 | **Spacing** | Surrounded by more white space | Cramming, so groups blur together |
-| **Position** | Top, left, or where the eye lands after the last action | Burying the primary action below the fold (the part of the page you must scroll to see) |
+| **Position** | Top, left, or where the eye goes after the last action | Burying the primary action below the fold (the part of the page you must scroll to see) |
 
 
 ::: {.concept data-c="DE08"}
@@ -304,7 +304,7 @@ real world** adds a second rule: use the user's words for things, never the data
 | **Headings and labels** | Name the thing in the user's terms | "Shifts I'm covering," never "Accepted transfers" |
 | **Error messages** | Explain what went wrong and how to fix it | Plain words, specific cause, a way forward, no blame |
 | **Empty states and hints** | Teach the next step at the moment it is needed | One sentence, one action |
-| **Confirmations** | Prove that the action happened | Say what changed and what happens next |
+| **Confirmations** | Show that the action happened | Say what changed and what happens next |
 
 The Nielsen Norman Group (NN/g), the usability research firm Jakob Nielsen co-founded, publishes error-message guidelines (Neusesser and Sunwall, 2023) that make the error row concrete. Put the
 message next to the problem, say specifically what is wrong instead of "An error occurred," offer a
@@ -424,7 +424,7 @@ while a component library makes the right choice the easiest one to type.
 ::: {.callout-tip title="Try it"}
 Open three screens of your app side by side. **Find the inconsistencies:** count how many
 different button styles, text sizes, and gray colors you see. Then write five design rules for your
-`CLAUDE.md` like the ones above, and ask Claude Code to bring one screen into line with them.
+`CLAUDE.md` like the ones above, and ask Claude Code to change one screen to follow them.
 :::
 
 ::::
@@ -461,9 +461,9 @@ The few that matter most for a student product:
 | **Robust** | Real HTML elements for real things (buttons, links, headings, form labels) so assistive technology can read them | The same structure helps search engines and agents read your page |
 
 An accurate analogy is the **curb cut**: the ramp cut into a sidewalk for wheelchair users is also
-used by people with strollers, suitcases, and bikes. Where it breaks: some accessibility needs pull
-in different directions (a user with low vision may want larger text that a dense dashboard cannot
-fit), so the baseline is a floor, and some users still need settings of their own.
+used by people with strollers, suitcases, and bikes. Where it breaks: some accessibility needs
+conflict (a user with low vision may want larger text that a dense dashboard cannot
+fit), so the baseline is a minimum, and some users still need settings of their own.
 
 ::: {.callout-tip title="Try it: the one-minute check"}
 1. Put your mouse away. Starting from the home screen, complete your core flow with only **Tab**,
@@ -486,8 +486,8 @@ semantic HTML and our existing components." The full checklist is in the
 :::: {.concept data-c="DE05"}
 
 **The model:** when your product's output can be wrong, design for that. Set expectations, show
-where an answer came from, let people edit and undo, and keep a human on the decisions that
-matter.
+where an answer came from, let people edit and undo, and have a person confirm the decisions
+that matter.
 
 Ordinary software does the same thing every time; a model may not. [Models in Your
 Product](11-models-in-your-product.qmd) explains why a model can be confidently wrong and what that

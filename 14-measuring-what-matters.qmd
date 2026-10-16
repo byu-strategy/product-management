@@ -10,7 +10,7 @@ Launch is the start of an experiment. This chapter is how you run it: decide wha
 before you ship, record what people actually do, follow them from arrival to coming back, tell a
 real effect from a coincidence, and decide which features to keep, change, or kill.
 
-Read a metric as [evidence](04-finding-and-validating-the-problem.qmd) that moves a belief up or down. It does not certify that you are right, or that you are worthy. And remember that outcomes carry luck: a good number can follow a poor decision and a bad number a sound one [@duke2018bets]. Track what updates your beliefs about the product, not what flatters them.
+Read a metric as [evidence](04-finding-and-validating-the-problem.qmd) that moves a belief up or down. It does not certify that you are right, or that you are worthy. And remember that outcomes carry luck: a good number can follow a poor decision and a bad number a sound one [@duke2018bets]. Track what updates your beliefs about the product, not what confirms them.
 
 ::: {.callout-note title="The running example: QuizMe"}
 This chapter continues the example from [Going to Market](12-going-to-market.qmd): QuizMe, an
@@ -96,8 +96,8 @@ The test: can this metric change what you do next week?
 **Lagging** indicators measure outcomes after the fact (revenue, churn: the share of users who
 stop using the product). **Leading** indicators
 move earlier and predict them (completing the core task in the first week, days since last
-visit, a feature adopted or ignored). Lagging indicators tell you the score; leading indicators
-tell you where to act. If churn is your problem, look for what churned users stopped doing first.
+visit, a feature adopted or ignored). Lagging indicators report the result; leading indicators
+show you where to act. If churn is your problem, look for what churned users stopped doing first.
 
 ::: {.callout-tip title="Try it"}
 Write your product's North Star and apply the test: name one way the number could go up while the
@@ -289,7 +289,7 @@ which step loses the largest share before you look.
 
 ## Retention Shows Whether It Works {#retention-is-the-truth}
 **The model:** group users by the week they started and watch who returns. Averages and running
-totals hide decay, because new arrivals keep refilling the bucket.
+totals hide decay, because new arrivals keep adding to the count.
 
 ### Cohorts
 
@@ -361,7 +361,7 @@ RIGHT:  dau = count(distinct user_id among events where created_at in last 24h)
 ```
 
 ### What improves retention {#retention-levers}
-| Lever | Description | Technical Implementation |
+| Method | Description | Technical Implementation |
 |-------|-------------|-------------------------|
 | **Habit formation** | Make the app part of a routine the user already has | Reminders tied to a real moment (the night before the quiz) |
 | **Increased value** | More usage = more value | Data accumulation, personalization |
@@ -417,7 +417,7 @@ season, the campaign, or noise.
 When a number moves right after you change something, two explanations compete: your change
 caused it, or something else happened at the same time. The data alone cannot tell them apart.
 
-### Three ways a before-and-after fools you
+### Three ways a before-and-after comparison misleads you
 
 Suppose you ship a new onboarding flow on Monday, and that week's activation rate jumps from 20 to
 35 percent. Before you credit the new flow, consider:
@@ -426,7 +426,7 @@ Suppose you ship a new onboarding flow on Monday, and that week's activation rat
    new signups were classmates who were told to finish the flow. The users changed, not only the
    product.
 2. **The campaign.** You posted in a club's group chat the same day. People who come from a
-   friend's recommendation behave differently from people who find you cold.
+   friend's recommendation behave differently from people who find you on their own.
 3. **Noise.** With 20 signups a week, one person is 5 percentage points. Three more people
    finishing the flow by chance moves the rate 15 points. Week-to-week swings that large happen
    with no change at all.
@@ -435,11 +435,11 @@ Suppose you ship a new onboarding flow on Monday, and that week's activation rat
 
 In a **randomized controlled experiment** (an **A/B test**), each new user is assigned at random
 to the old flow (A) or the new flow (B), during the same weeks. Because chance alone decides who gets
-which, the class assignment, the club post, and everything else you did not think of land on both
+which, the class assignment, the club post, and everything else you did not think of affect both
 groups about equally. The only systematic difference between the groups is the flow. So a
 difference in outcomes, if it is larger than chance would produce, was caused by the flow.
 
-![A before-and-after comparison credits the new flow with everything that changed that week. A randomized test spreads the other changes across both groups, so the flow is the only systematic difference.](images/diagrams/ch14-before-after-vs-ab.svg){#fig-before-after-vs-ab fig-alt="Two panels. Left, before and after: last week, with the old flow, activation was 20 percent; this week it is 35 percent, but this week also had a class assignment, a club chat post, and the noise of 20 signups, so four explanations compete for one number. Right, a randomized test: in the same weeks, each new user is assigned at random, half to group A with the old flow and half to group B with the new flow; the class assignment, the club post, and everything else land in both groups, so only the flow differs, and a gap larger than chance is its effect." width="100%"}
+![A before-and-after comparison credits the new flow with everything that changed that week. A randomized test spreads the other changes across both groups, so the flow is the only systematic difference.](images/diagrams/ch14-before-after-vs-ab.svg){#fig-before-after-vs-ab fig-alt="Two panels. Left, before and after: last week, with the old flow, activation was 20 percent; this week it is 35 percent, but this week also had a class assignment, a club chat post, and the noise of 20 signups, so four explanations compete for one number. Right, a randomized test: in the same weeks, each new user is assigned at random, half to group A with the old flow and half to group B with the new flow; the class assignment, the club post, and everything else affect both groups, so only the flow differs, and a gap larger than chance is its effect." width="100%"}
 
 Ron Kohavi, Diane Tang, and Ya Xu's *Trustworthy Online Controlled Experiments* is the standard
 reference [@kohavi2020trustworthy]. One of its lessons matters most at your scale: detecting the
@@ -500,7 +500,7 @@ A feature review takes ten minutes with your events:
 ![The feature review as a grid of usage against upkeep. A feature most active users touch is where an improvement reaches the most people; one few people use that is costly to maintain, and is not the core task, is a candidate to kill; one you have not logged has no place on the grid yet.](images/diagrams/ch14-keep-change-kill.svg){#fig-keep-change-kill fig-alt="A grid with share of active users who used a feature on the horizontal axis, from few to most, and upkeep cost on the vertical axis, from low to high. The whole right half, keep and invest, most active users touch it, so improvements reach the most people: quiz from notes, 90 percent, model cost per quiz. Top left, candidate to kill if it is not the core task: flashcard export, 5 percent, broke twice in two sprints. Bottom left, change it, then test whether it brings people back: study streaks, 30 percent, low upkeep. Off the grid, in a dashed box labeled can't tell: dark mode, not logged yet; add an event, then decide." width="100%"}
 
 A feature few people use, that breaks often, and that does not serve the core task is a candidate
-to remove. A feature most active users touch is where improvements pay off. A feature you cannot
+to remove. A feature most active users touch is where improvements reach the most people. A feature you cannot
 measure you cannot judge: add an event before you decide. When you remove one, tell the people who
 used it.
 

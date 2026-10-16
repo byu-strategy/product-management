@@ -10,18 +10,18 @@ If you build on someone's idea, credit them. That is both honest and how you lea
 
 A lot of product wisdom was written when building software was slow, expensive, and specialized. Some of that guidance is now dated. Three shifts matter most.
 
-- **Building got cheap, so the bottleneck moved.** The hard part is no longer *can we build it?* but *should we build it, and are we building the right thing?* Discovery and validation matter **more** now, not less, because it has never been easier to build the wrong thing quickly. "Write a detailed spec, then build" is giving way to "build a rough thing to think with." (Chapter 5 says this directly.)
+- **Building got cheap, so the bottleneck moved.** The hard part used to be *can we build it?*; now it is *should we build it, and are we building the right thing?* Discovery and validation matter **more** now, because it has never been easier to build the wrong thing quickly. "Write a detailed spec, then build" is giving way to "build a rough thing to think with." (Chapter 5 says this directly.)
 - **One person can now do the whole stack.** Frameworks written for cross-functional teams, hand-offs between PM, design, and engineering, still teach the right *thinking*, but you now fill every role yourself. Read them for the judgment and set aside the assumptions about team structure.
-- **AI can manufacture plausible-but-fake validation.** It will readily generate a persona, simulate an interview, and tell you your idea is great. That makes the old discipline, real people, real past behavior, more valuable, not less. AI can generate hypotheses quickly; only real people can confirm or refute them.
+- **AI can generate plausible-but-fake validation.** It will readily generate a persona, simulate an interview, and tell you your idea is great. That makes the old discipline, real people, real past behavior, more valuable. AI can generate hypotheses quickly; only real people can confirm or refute them.
 
-What has **not** changed: humans still have jobs to be done, still feel the same pains, still decide with the elephant and justify with the rider, still trust people before products. Taste, judgment, and the choice of what is worth building matter more than they did, because everyone now has the same cheap building power.
+What has **not** changed: humans still have jobs to be done, still feel the same pains, still decide with the elephant and justify with the rider, still trust people before products. Taste, judgment, and the choice of what is worth building matter more than they did, because everyone can now build cheaply.
 
 ## Foundations and mindset
 
 | Principle | Source | Where it lives | AI-era note |
 |---|---|---|---|
 | Product management as a craft; outcomes over output; discovery vs. delivery | Marty Cagan, *Inspired* / *Empowered* (SVPG) [@cagan2017inspired; @cagan2020empowered] | Ch 1; Ch 8 | The discovery/delivery split endures; the "empowered team" is now often a team of one plus AI |
-| Escaping the build trap (shipping features ≠ delivering value) | Melissa Perri, *Escaping the Build Trap* (2018) [@perri2018buildtrap] | Ch 8 | Sharper risk now: cheap building makes the build trap easier to fall into |
+| Escaping the build trap (shipping features ≠ delivering value) | Melissa Perri, *Escaping the Build Trap* (2018) [@perri2018buildtrap] | Ch 8 | Greater risk now: cheap building makes the build trap easier to fall into |
 | The Lean Startup: build-measure-learn, validated learning, pivot | Eric Ries, *The Lean Startup* (2011) [@ries2011lean] | Ch 5; Ch 9 | Build cost fell sharply; the loop still holds but "measure and learn" is now the expensive part |
 | Customer Development: "get out of the building" | Steve Blank, *The Four Steps to the Epiphany* (2005) [@blank2005four] | Ch 3–4 | AI can augment research; it cannot replace real customer contact |
 | The five discovery skills (Q/O/N/E → Associating) | Dyer, Gregersen & Christensen, "The Innovator's DNA," HBR (2009) [@dyer2009dna] | Ch 2 | Durable; these are the behaviors, not the tools |
@@ -53,9 +53,9 @@ What has **not** changed: humans still have jobs to be done, still feel the same
 
 | Principle | Source | Where it lives | AI-era note |
 |---|---|---|---|
-| Minimum Viable Product | Ries / Blank (lean lineage) [@ries2011lean; @blank2005four] | Ch 5 | The "minimum" is cheaper than ever; "viable" is the trap, hence MAP below |
+| Minimum Viable Product | Ries / Blank (lean lineage) [@ries2011lean; @blank2005four] | Ch 5 | The "minimum" is cheaper than ever; "viable" is the problem, hence MAP below |
 | Minimum Awesome Product | Furr & Dyer, *The Innovator's Method* (2014) [@furr2014method] | Ch 5 | More relevant now: cheap building means you can afford "awesome at one thing" |
-| User stories with acceptance criteria | Kent Beck / Mike Cohn (Agile/XP) [@beck1999xp; @cohn2004stories] | Ch 5 | Now also the interface you hand your AI; write them well |
+| User stories with acceptance criteria | Kent Beck / Mike Cohn (Agile/XP) [@beck1999xp; @cohn2004stories] | Ch 5 | Now also the instructions you give your AI; write them well |
 | Prioritization: MoSCoW, ICE, the $100 Test | Dai Clegg (MoSCoW); Sean Ellis (ICE); Hatch ($100 Test) [@clegg1994; @hatch_expeditionary] | Ch 5 | Durable; matters more as building more is easy |
 | Test demand before building: smoke test, Wizard of Oz | Lean-startup lineage, assembled by Hatch [@hatch_expeditionary] | Ch 5 | Still the cheapest test, even when building is cheap |
 | Usability: affordances and signifiers | Don Norman, *The Design of Everyday Things* (1988) [@norman2013design] | Ch 6 | AI generates usable-looking UIs fast; judging real usability matters more |
@@ -81,7 +81,7 @@ What has **not** changed: humans still have jobs to be done, still feel the same
 | Pirate Metrics: AARRR (acquisition, activation, retention, referral, revenue) | Dave McClure (2007) [@mcclure2007] | Ch 8 | Durable |
 | North Star metric | Sean Ellis / Amplitude lineage | Ch 8 | Durable |
 | Business Model Canvas | Osterwalder & Pigneur (2010); JTBD refinement by Jeff Dyer [@osterwalder2010business] | Ch 10 | Durable |
-| Influence: reciprocity, social proof, authority, scarcity, commitment, liking | Robert Cialdini, *Influence* (1984) [@cialdini1984influence] | Ch 9, Ch 12 | Durable; deploy honestly (see Product Morality) |
+| Influence: reciprocity, social proof, authority, scarcity, commitment, liking | Robert Cialdini, *Influence* (1984) [@cialdini1984influence] | Ch 9, Ch 12 | Durable; use them honestly (see Product Morality) |
 | Innovation Capital and the impression amplifiers | Dyer, Furr & Lefrandt, *Innovation Capital* (2019) [@dyer2019innovation] | Ch 9, Ch 12 | Durable |
 | Habit loops (trigger, action, variable reward, investment) | Nir Eyal, *Hooked* (2014) [@eyal2014hooked] | Product Morality | Use the reflection test; do not use it to exploit users |
 
@@ -106,4 +106,4 @@ What has **not** changed: humans still have jobs to be done, still feel the same
 
 ## How to use this page
 
-Do not try to read all of it at once. When a chapter borrows an idea, this page tells you whose work it comes from. Pick two or three sources a semester and read them closely. And when you find a principle written before 2023, ask the question this class keeps asking: *does that still hold now that building is cheap and everyone has an AI?* Sometimes yes, sometimes not, and knowing the difference is the skill.
+Do not try to read all of it at once. When a chapter borrows an idea, this page tells you whose work it comes from. Pick two or three sources a semester and read them closely. And when you find a principle written before 2023, ask the question this class keeps asking: *does that still hold now that building is cheap and everyone has an AI?* Sometimes it does and sometimes it does not, and this course teaches you to tell which.

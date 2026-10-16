@@ -5,7 +5,7 @@ title: "Business Models"
 ## Why This Matters
 
 A product that cannot pay for itself is a project. The business model is the argument for
-how value reaches you as well as your customer, and writing it down early surfaces the
+how value reaches you as well as your customer, and writing it down early reveals the
 assumptions you did not know you were making. For an AI product it also answers a question
 that traditional software rarely had to ask: does each additional user cost you more than
 they bring in?
@@ -668,7 +668,7 @@ Please read my `business-model-canvas.md` file now and create the presentation.
   as the core activity adds cost with every use. A canvas whose blocks contradict each other
   cannot work.
 - **Every block is a hypothesis**: mark each entry as evidence (an interview, a payment, usage
-  logs) or a guess, and test next the guesses that would sink the model if wrong.
+  logs) or a guess, and test next the guesses that would make the model fail if wrong.
 - **Revenue model**: the rule that turns use into money (subscription, usage-based, freemium,
   one-time, advertising, commission). Each works only if something specific is true about your
   customer and your costs.

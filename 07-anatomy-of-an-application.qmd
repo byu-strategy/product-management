@@ -25,7 +25,7 @@ and you can catch it when it puts something in the wrong place.
 
 ### Words in this chapter
 
-Every one of these comes up below. Come back here when one stops you.
+Every one of these comes up below. Come back here when you meet one you do not know.
 
 | Word | What it means |
 |---|---|
@@ -118,9 +118,9 @@ receive the answers, look up the correct ones itself, and compute the score.
 `216.198.79.67`. People use names instead, such as `your-app.vercel.app`, and a lookup service
 called **DNS** turns the name into the number. Once the browser has the number, it opens an
 encrypted connection to that computer and sends its request. Everything in the rest of this
-chapter rides on this one trip.
+chapter depends on this one trip.
 
-A web address, a **URL**, packs the whole trip into one line:
+A web address, a **URL**, names every part of the trip in one line:
 
 ![The four parts of a URL. The domain names the computer, and the path names the endpoint on it.](images/diagrams/ch07-url-anatomy.svg){#fig-url-anatomy fig-alt="The URL https://your-app.vercel.app/api/tasks?completed=false split into four labeled parts. Scheme, https://, how to connect. Domain, your-app.vercel.app, highlighted, which computer, by name. Path, /api/tasks, which endpoint. Query, ?completed=false, extra details." width="100%"}
 
@@ -275,7 +275,7 @@ opens a to-do app, signs in, loads their tasks, and asks an AI feature for help.
    and passes the result back. The secret key never leaves your server.
 
 Two things follow. Because the browser talks to the database directly in step 3, the
-database's own rules are the only guard on ordinary data. And anything that needs a secret, such
+database's own rules are the only check on ordinary data. And anything that needs a secret, such
 as a model call, a payment, or an email, goes through your server, as in step 4.
 
 #### Three credentials: publishable key, token, secret key
@@ -393,7 +393,7 @@ your job is to recognize each one when you read its code, so you can say what a 
 ask a precise question when something is wrong. This section uses React,
 the library this course builds with and the most widely used one. Svelte, Vue, and Angular are
 built on the same ideas (components, state, events) with different syntax, so what you learn
-here carries over.
+here applies to them too.
 
 #### Words used in this section
 
@@ -700,7 +700,7 @@ say what kind of data each value holds, so mistakes show up before the code runs
 that is the language of the browser. SQL turns up whenever you ask the database a question.
 Python appears when you are doing analysis or calling a model. You do not need fluency in any
 of them to ship. You need enough to read what the agent wrote and notice when it is wrong,
-which is a much lower bar and a much more useful one.
+which takes much less skill and is much more useful.
 
 **Choosing a stack.** Pick the boring one. Dan McKinley's essay "Choose Boring Technology"
 makes the case: every new tool spends attention you could spend on the product, and a
@@ -762,7 +762,7 @@ where the data lives, never only on the screen.
 
 The common mistake is to treat authorization as a screen problem: hide the Delete button from
 non-owners and call it done. The button is in the browser, and so is the request it would have
-sent, which anyone can send by hand. Authorization holds only when the database or server
+sent, which anyone can send by hand. Authorization works only when the database or server
 refuses the request.
 
 **Worked example.** A club app shows officers an "Edit roster" page. Members never see the

@@ -145,7 +145,7 @@ Claude Code has three ways for one Claude to work with another, and the two surf
 | **Cross-session messaging** | Back and forth: one session sends another a message with `SendMessage`; the other reads it when its current work finishes and can reply. `/list-agents` (alias `/peers`) shows who you can reach | Yes: your other local sessions, plus cloud and remote sessions while Remote Control is connected | Yes, in plain language ("tell the payments session the schema changed"), but only between sessions the app runs |
 | **Agent teams** | A lead Claude assigns tasks to teammate sessions from a shared task list, and they message each other | Yes | No |
 
-The catch is the boundary between surfaces. Through the app, Claude "doesn't see cloud sessions, or sessions you started from the terminal CLI or the VS Code extension, even in worktrees of the same project." If several sessions need to coordinate, run them all in the terminal or all in the app. A session can refuse incoming messages with the `crossSessionInbound` setting.
+The limitation is the boundary between surfaces. Through the app, Claude "doesn't see cloud sessions, or sessions you started from the terminal CLI or the VS Code extension, even in worktrees of the same project." If several sessions need to coordinate, run them all in the terminal or all in the app. A session can refuse incoming messages with the `crossSessionInbound` setting.
 
 ## Things that surprise people {#things-that-surprise-people}
 
@@ -201,12 +201,12 @@ Many people who started with the CLI in VS Code have moved to the desktop app, a
 
 Scores are 2 (does this well), 1 (does it partly, or with extra setup), or 0 (cannot). They are our judgment, based on what each product's documentation says it does, not on timed tests. Each row is worth the same, which may not match how you work: weight the rows you do most.
 
-**What the scores show.** The two setups win at different jobs:
+**What the scores show.** Each setup is better at different jobs:
 
-- **VS Code wins when you work on the code yourself.** Finding a file, clicking a path in Claude's output to land on the exact line, editing it with full editor support, using extensions, and handing Claude your editor's errors and selection all happen in one window. It also has every command and flag, and it is the better setup for work that spans several folders or several coordinating sessions ([above](#working-across-several-folders)).
-- **The app wins when you direct and review the agent.** Commenting on a diff line by line, watching Claude test its own change in the Browser pane, previewing a PDF or HTML file, and running several sessions side by side take less setup in the app than in VS Code.
+- **VS Code is better when you work on the code yourself.** Finding a file, clicking a path in Claude's output to open the exact line, editing it with full editor support, using extensions, and handing Claude your editor's errors and selection all happen in one window. It also has every command and flag, and it is the better setup for work that spans several folders or several coordinating sessions ([above](#working-across-several-folders)).
+- **The app is better when you direct and review the agent.** Commenting on a diff line by line, watching Claude test its own change in the Browser pane, previewing a PDF or HTML file, and running several sessions side by side take less setup in the app than in VS Code.
 
-The more of your time goes to reading and editing code, the more VS Code pays off. The more of it goes to giving instructions and reviewing results, the more the app does. You do not have to pick one: both read the same `CLAUDE.md`, skills, and settings, `/desktop` moves a session from the terminal to the app, and **Open in** sends any file from the app to VS Code.
+The more of your time goes to reading and editing code, the more useful VS Code is. The more of it goes to giving instructions and reviewing results, the more useful the app is. You do not have to pick one: both read the same `CLAUDE.md`, skills, and settings, `/desktop` moves a session from the terminal to the app, and **Open in** sends any file from the app to VS Code.
 
 ## Which one to use
 

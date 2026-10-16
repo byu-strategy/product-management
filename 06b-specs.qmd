@@ -164,7 +164,7 @@ Instead of asking the AI to "build the entire authentication system," you:
 4. Have AI implement one task at a time (implementation)
 5. Check each task against its acceptance criteria, then continue
 
-The goal is to **guide the AI through small, checkable changes instead of letting it improvise an entire feature**. Each task is one short trip around the agent loop with a clear check at the end.
+The goal is to **guide the AI through small, checkable changes instead of letting it improvise an entire feature**. Each task is one short pass through the agent loop with a clear check at the end.
 
 <!-- learn -->
 
@@ -262,7 +262,7 @@ Its section headings:
 ## Constraints in this repo
 ```
 
-Three of these sections do most of the work.
+Three of these sections matter most.
 
 - **Decisions already made** records what you settled while exploring: the wording, the empty
   state, the error state, what the feature is called. Without it, the build reopens those questions.

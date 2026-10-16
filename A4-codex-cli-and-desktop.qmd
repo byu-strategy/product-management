@@ -119,9 +119,9 @@ The same debate exists for Codex. This scorecard compares the **Codex CLI in VS 
 
 Scores are 2 (does this well), 1 (does it partly, or with extra setup), or 0 (cannot). They are our judgment, based on what each product's documentation says it does, not on timed tests. Each row is worth the same, which may not match how you work: weight the rows you do most.
 
-**What the scores show.** As with Claude Code, VS Code wins when you work on the code yourself and the app wins when you direct and review the agent. Two differences from the Claude comparison:
+**What the scores show.** As with Claude Code, VS Code scores higher when you work on the code yourself and the app scores higher when you direct and review the agent. Two differences from the Claude comparison:
 
-- **The Codex app has closed more of the file gap.** It has a file tree and `Cmd+P` file search, which the Claude app's documentation does not list. Clicking a path in the terminal to open a file at the exact line is still a VS Code strength.
+- **The Codex app comes closer to VS Code on files.** It has a file tree and `Cmd+P` file search, which the Claude app's documentation does not list. Clicking a path in the terminal to open a file at the exact line is still a VS Code strength.
 - **The Codex CLI gets less from VS Code than Claude Code does.** Claude Code's CLI opens its diffs in VS Code and reads the Problems panel; the Codex CLI's `/ide` adds open files and your selection, and nothing in the docs says it does more. For Codex, VS Code is mostly a good editor and terminal next to the agent rather than a connected one.
 
 The app is also where Codex gets its worktrees, which its CLI lacks, so running several Codex chats in parallel is much easier there.
@@ -130,4 +130,4 @@ The app is also where Codex gets its worktrees, which its CLI lacks, so running 
 
 OpenAI's docs give the use cases. The CLI is for when "you work from the terminal," "you need scripting or CI," "you want a local code review," or "you want to hand work to the cloud" ([Codex CLI](https://learn.chatgpt.com/docs/codex/cli)). The desktop app is for coordinating several projects, creating and reviewing files, using the browser and your computer, and scheduling recurring work ([desktop app](https://learn.chatgpt.com/docs/app)).
 
-The split is the same as for Claude Code. The terminal is the complete, scriptable surface, and the app is the better window for reviewing diffs, previewing your app, and running several chats in parallel. One difference matters for this course: the app's worktrees and **Handoff** give Codex the separate working copies that its CLI does not offer. Codex has no undo for file edits in either surface, so commit before you start ([Claude Code and Other Coding Agents](A2-coding-agents-compared.qmd#undo)).
+The split is the same as for Claude Code. The terminal is the complete, scriptable surface, and the app is better for reviewing diffs, previewing your app, and running several chats in parallel. One difference matters for this course: the app's worktrees and **Handoff** give Codex the separate working copies that its CLI does not offer. Codex has no undo for file edits in either surface, so commit before you start ([Claude Code and Other Coding Agents](A2-coding-agents-compared.qmd#undo)).

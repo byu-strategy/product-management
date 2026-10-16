@@ -15,8 +15,8 @@ a word (Step 1 below explains them). Its fluency, its knowledge, its randomness,
 confident mistakes all follow from that. The first half of the chapter builds a model from
 scratch, one building block at a time, the way Sebastian Raschka does in *Build a Large
 Language Model (From Scratch)* [@raschka2024build], the source of most of the figures here. The
-second half draws out what each block means for the product you are building. The math sits at
-the end, folded away, for anyone who wants it.
+second half draws out what each block means for the product you are building. The math is at
+the end, in collapsed sections, for anyone who wants it.
 
 ## AI and Machine Learning
 
@@ -51,7 +51,7 @@ Code, is assembled from the same six blocks:
 | 5 | Pretraining | Adjusts billions of numbers until the predictions match huge amounts of real text |
 | 6 | Fine-tuning and human feedback | Reshapes a text completer into an assistant that follows instructions |
 
-Steps 1 to 4 are the machine. Steps 5 and 6 are how its numbers get set.
+Steps 1 to 4 are the model itself. Steps 5 and 6 are how its numbers get set.
 
 ![Image by Sebastian Raschka](images/llm-overview.png)
 
@@ -92,7 +92,7 @@ of a feature that summarizes code.
 ### Step 2: Tokens become embeddings
 
 **An embedding turns each token ID into a long list of numbers (a vector) that works like
-coordinates. Tokens with similar meanings land near each other.** "Dog" sits near "puppy" and
+coordinates. Tokens with similar meanings are near each other.** "Dog" sits near "puppy" and
 far from "invoice". GPT-2's smallest version uses 768 numbers per token. The model learns these
 coordinates during training; nobody hand-writes them. A second embedding adds each token's
 position, since "dog bites man" and "man bites dog" use the same tokens.
@@ -111,7 +111,7 @@ hundreds, so two words can be close in one sense (both are animals) and far in a
 formal, one is slang).
 
 The same idea can run search in your product. An embedding model can place whole sentences or
-documents on the map, so "how do I get my money back" lands near your refund policy even though
+documents on the map, so "how do I get my money back" is placed near your refund policy even though
 they share no words. Retrieving the nearest pieces and handing them to the model is called
 retrieval-augmented generation (RAG), and Chapter 11 builds it. Remember that if
 retrieval fetches the wrong pieces, the model answers from them anyway, fluently.
@@ -210,7 +210,7 @@ later stages change how the model behaves far more than what it knows.** Two sta
 
 - **Instruction tuning** (supervised fine-tuning). The model trains on many example
   conversations, written or approved by people, in which a request is followed by a helpful
-  answer. It learns the shape "request, then answer". Raschka's book ends with this step and with
+  answer. It learns the pattern "request, then answer". Raschka's book ends with this step and with
   fine-tuning for a narrower task such as classifying spam.
 - **Learning from human feedback.** People compare pairs of answers and pick the better one. A
   second model learns to predict their preferences, and the assistant is trained to produce
@@ -223,7 +223,7 @@ Training on human approval has a side effect. People tend to rate agreement and 
 little higher than correction, so the model learns to agree. Researchers at Anthropic found this
 tendency, called **sycophancy**, across several assistants trained this way and traced it partly
 to the human preference data itself [@sharma2023sycophancy]. In practice: if you push back on a
-correct answer, a model may abandon it; if you ask "isn't my idea great?", it leans toward yes. A
+correct answer, a model may abandon it; if you ask "isn't my idea great?", it tends to say yes. A
 student in this course once asked Claude, mid-review, what level of sycophantic it was at and
 whether it could turn that down to healthy criticism. That is the right instinct. Ask for the
 case against, and judge disagreement on the evidence.
@@ -300,7 +300,7 @@ The model itself is stateless. When a chat app seems to remember your earlier me
 is resending the whole conversation with every new message. When Claude Code seems to remember
 your project's conventions, it is because it loads `CLAUDE.md` into the context at the start of
 every session. This is why `/clear` empties the context and `/compact` replaces a long history with a
-summary (Chapter 2): they are edits to working memory, the only memory there is.
+summary (Chapter 2): they are edits to working memory, the only memory the model has.
 
 ![The AI model (Claude, GPT, or any other) keeps nothing from one call to the next. The conversation exists only because your app stores it and sends the whole thing every time, so by call 3 it sends five messages to add one new one. ChatGPT and claude.ai work the same way behind the scenes.](images/diagrams/ch10-stateless-calls.svg){#fig-stateless-calls fig-alt="A band across the top reads: your app stores the conversation and sends all of it with every call. Below it, three API calls side by side. Call 1 sends one message: Tandem is my study app. Call 2 sends three: that first message, the model reply Who is it for, and the new message College freshmen. Call 3 sends all five, ending with the new message Write a tagline with its name, which works only because the name from call 1 was resent. The newest message in each call is highlighted in blue; the others are resent. Each stack flows into an AI model box labeled saves nothing." width="100%"}
 
@@ -373,7 +373,7 @@ Prompting follows directly from next-token prediction: **a prompt is the start o
 you are shaping it so that the most plausible continuation is the output you want.** Background
 narrows what is plausible. A role sets which kind of text it resembles. Examples show the
 pattern to continue. A template lets your code fill in live data. Prompts come in a few common
-shapes:
+types:
 
 <!-- MOVE: the prompt-type table is general prompting practice and may belong in ch02 (Agentic Workflow); kept here because it illustrates "shape the likely continuation". Prompts inside a product are covered in ch11, "Prompts Are Product Code". -->
 
