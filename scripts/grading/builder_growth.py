@@ -6,7 +6,7 @@ Reads, for each sprint up to --sprint, the two coders' files
 (shape in concept-coder.md) and writes
   _data/.../grading/sprint-<last>/concepts/growth-<net_id>.json
 
-The spoke (decided 2026-10-14): 0 to 100 per axis, 100 = the hiring bar.
+The spoke (decided 2026-10-14): 0 to 100 per axis, 100 = a full-stack product builder.
 - Practice fills up to PRACTICE[axis] points (50; AI Systems 25), half breadth, half depth.
   - Breadth: share of the axis's practicable concepts (not knowledge_only) shown in the student's
     own work, counted once, consensus of both coders.

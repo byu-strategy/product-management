@@ -262,7 +262,7 @@ def show_place(kind, v):
 # ---------------------------------------------------------------- the pictures
 
 def profile_svg(G):
-    """The builder profile: six spokes, 0 to 100 each (100 is the hiring bar). Practice rings
+    """The builder profile: six spokes, 0 to 100 each (100 is a full-stack product builder). Practice rings
     stack outward from the center, one per sprint in that sprint's color. Knowledge rings from the
     exams will stack outside them; none exist yet, so nothing is drawn for them. With no growth
     file, the empty hexagon."""
@@ -533,9 +533,9 @@ def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott
         core_sw = (f'<span class=sw style="background:{CORE_COLOR}"></span>Your September survey '
                    if any(((G.get("start") or {}).get("points") or {}).values()) else "")
         sw = core_sw + "".join(f'<span class=sw style="background:{SPRINT_COLORS.get(s, "#d97706")}"></span>Sprint {s} ' for s in drawn)
-        cap = (f"Each spoke runs from 0 to 100, the hiring bar. The center is what you reported in the "
+        cap = (f"Each spoke runs from 0 to 100, where 100 is a full-stack product builder. The center is what you reported in the "
                f"September survey; each ring outside it is one sprint's practice. {sw}"
-               if drawn else f"Each spoke runs from 0 to 100, the hiring bar. No practice has been counted yet. {sw}")
+               if drawn else f"Each spoke runs from 0 to 100, where 100 is a full-stack product builder. No practice has been counted yet. {sw}")
         cap = f"{cap}<br>The midterm replaces the survey center with what you show on the exam."
     else:
         cap = "Your builder profile is being prepared."
@@ -585,10 +585,10 @@ def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott
             grew = "<p>No new concepts or depth were counted this sprint.</p>"
         core = (G.get("start") or {}).get("points") or {}
         whole = sum(float(v) for v in core.values()) + sum(float(v) for v in (G.get("practice_total") or {}).values())
-        lead = (f'<p class=lead><b>{fmt(whole)} of 600</b> points, {whole / 6:.0f}% of the way to the hiring bar '
-                f'on all six axes (100 on each).')
+        lead = (f'<p class=lead><b>{fmt(whole)} of 600</b> points ({whole / 6:.0f}%). A full-stack product builder '
+                f'has 100 on each of the six axes.')
         if g_tot:
-            lead += f' This sprint added {fmt(g_tot)} points, {g_tot / 6:.1f}% of the way.'
+            lead += f' This sprint added {fmt(g_tot)} points ({g_tot / 6:.1f}%).'
         grew = lead + "</p>" + grew
     else:
         grew_right, grew = "being prepared", "<p>Your builder profile is being prepared.</p>"

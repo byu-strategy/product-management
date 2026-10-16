@@ -8,7 +8,7 @@ Status: [ ] open, [~] in progress, [x] done, [?] needs Scott.
 
 ## 0. Sprint 2 rollout with builder profiles (Scott, 2026-10-14: profiles ship with Sprint 2)
 
-**Design (decided 2026-10-14).** Each spoke runs 0 to 100; 100 is the hiring bar. Practice from
+**Design (decided 2026-10-14).** Each spoke runs 0 to 100; 100 is a full-stack product builder (internal anchor: hireable as an associate product builder; never said to students). Practice from
 sprint work fills up to 50 (AI Systems 25), knowledge from the exams the rest. Practice = breadth
 (up to 25: share of the axis's practicable concepts shown in your own work) + depth (up to 25:
 highest level shown on the axis, 1 Followed, 2 Directed, 3 Decided, 4 Delivered, judged from all the
