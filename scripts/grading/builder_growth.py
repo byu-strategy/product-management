@@ -27,10 +27,12 @@ The spoke (decided 2026-10-14): 0 to 100 per axis, 100 = a full-stack product bu
 """
 import argparse
 import json
+import os
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-DATA = Path.home() / "hubs/courses/_data/product-management"
+# PM_DATA points the run at another data folder (used by the API-versus-subagent comparison).
+DATA = Path(os.environ.get("PM_DATA") or Path.home() / "hubs/courses/_data/product-management")
 GRADING = DATA / "grading"
 PRACTICE = {"AI Systems": 25.0}          # every other axis: 50
 SURVEY = DATA / "baseline-charts-fall2026" / "students.json"

@@ -499,7 +499,13 @@ def build(student, sub, plan_sub, cfg, due):
                   re.findall(rf"(?<![\w/.-])({re.escape(student['github_username'])}/[\w.-]+)", text, re.I)}
     # Repos named bare under any owner ("`Sisk-Labs/echo`", "private repo Sisk-Labs/echo"); kept only
     # if the owner is a real GitHub account and the name is not a file path.
-    bare = set(re.findall(r"`([\w-]+/[\w.-]+)`", text)) | set(re.findall(r"\brepo(?:sitory)?\W{1,4}`?([\w-]+/[\w.-]+)", text, re.I))
+    # Model names (`openai/gpt-oss-120b`) and branches (`prod/main`, `origin/feature-x`) look the same,
+    # so known model publishers, git remotes and branch prefixes are skipped.
+    not_repo = re.compile(r"^(openai|anthropic|meta-llama|mistralai|google|qwen|deepseek-ai|groq|x-ai|xai|cohere|"
+                          r"huggingface|nvidia|microsoft|moonshotai|origin|upstream|prod|production|staging|dev|"
+                          r"feature|feat|fix|hotfix|release|refs|heads)/|/(main|master|develop|dev|head)$", re.I)
+    bare = {r for r in set(re.findall(r"`([\w-]+/[\w.-]+)`", text)) |
+            set(re.findall(r"\brepo(?:sitory)?\W{1,4}`?([\w-]+/[\w.-]+)", text, re.I)) if not not_repo.search(r)}
     for r in bare:
         r = r.lower().rstrip(".")
         if r in named or "." in r.split("/")[1][-6:] or r.split("/")[0] in {"src", "app", "docs", "specs", "sprints", "product", "lib",

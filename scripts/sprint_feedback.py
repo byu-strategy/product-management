@@ -21,13 +21,14 @@ score for a category is its override when one is set, the grader's score otherwi
 
 Nothing here touches Canvas. Student data stays in _data. This file holds none.
 """
-import argparse, csv, html, json, re, subprocess, sys, datetime as dt
+import argparse, csv, html, json, os, re, subprocess, sys, datetime as dt
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
 from sprint_config import categories, review_points
 
-DATA = Path.home() / "hubs/courses/_data/product-management"
+# PM_DATA points the run at another data folder (used by the API-versus-subagent comparison).
+DATA = Path(os.environ.get("PM_DATA") or Path.home() / "hubs/courses/_data/product-management")
 CATS = []  # set in main() from sprint_config: Sprint 1 includes the plan, later sprints do not
 KEEP = ["override_plan", "override_shipped", "override_review", "override_demo",
         "approved", "scott_note"]
