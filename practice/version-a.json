@@ -1,0 +1,923 @@
+{
+ "form": "Practice Version A",
+ "about": "Practice questions parallel to the MSB 341 midterm: same ideas and formats, different situations. Used by the /learn skill. These are practice questions, not exam questions.",
+ "cases": [
+  {
+   "id": "C-DE-A1",
+   "title": "Agent-built reservation screen: food pantry pickup app",
+   "text": "Dana is building a phone app for her campus food pantry. Students reserve a 15-minute pickup slot. Her core task is reserving a slot between classes, often while walking. An agent built the Reserve screen and checked it with a sample week where every day had open slots.\n\n**Reserve screen, top to bottom:**\n\n1. \"Reserve\": small blue text in the top corner, with no button shape.\n2. A large photo banner: \"Fresh food for every student.\"\n3. Seven day buttons showing Mon to Sun, with no dates.\n4. A grid of open time slots for the chosen day.\n5. A full-width red \"Clear\" button at the bottom that erases the chosen day and time at once."
+  },
+  {
+   "id": "C-DI-A1",
+   "title": "Interview: house-cleaning crew",
+   "text": "Priya interviews Rosa, who runs a six-person house-cleaning crew, for her scheduling app.\n\n**Priya:** Tell me about the last day that went wrong.\n\n**Rosa:** Tuesday. Two cleaners called in sick. I cleaned two houses myself. For the rest I called a staffing agency. They charge $60 per fill-in, and I used them four times last month.\n\n**Priya:** How do your cleaners handle a missed shift?\n\n**Rosa:** They text each other and swap. Often I hear about it from the client.\n\n**Priya:** Isn't it a hassle tracking supplies for every house?\n\n**Rosa:** I suppose, yeah. It's fine.\n\n**Priya:** My app finds a fill-in automatically. Would you use it?\n\n**Rosa:** I'd love that. I'd pay fifty a month."
+  }
+ ],
+ "option_lists": [
+  {
+   "id": "EMI-AW-A",
+   "instruction": "Match each situation to the best option. An option can be used more than once or not at all.",
+   "options": {
+    "A": "A Claude Code hook",
+    "B": "Plan mode",
+    "C": "A subagent",
+    "D": "The project's CLAUDE.md",
+    "E": "A skill",
+    "F": "A permission deny rule",
+    "G": "An MCP server",
+    "H": "Your personal ~/.claude/CLAUDE.md"
+   }
+  }
+ ],
+ "items": [
+  {
+   "id": "AW-A-01",
+   "axis": "Agentic Workflow",
+   "type": "use",
+   "format": "ext_matching",
+   "topic": "plan mode: explore and plan before editing",
+   "emi_list_id": "EMI-AW-A",
+   "stem": "Nadia wants Claude to read her sign-up code and write steps for adding Google sign-in, editing nothing until she accepts them.",
+   "answer": "B",
+   "rationale": "Plan mode lets Claude read files and write a plan without editing anything until you approve it. A deny rule would stop edits, but it gives no plan and keeps blocking after she approves.",
+   "distractors": {
+    "F": "A deny rule blocks edits but gives no plan to approve.",
+    "D": "Thinks an instruction in CLAUDE.md holds back edits."
+   },
+   "sections": [
+    "02-directing-the-agent.qmd#the-controls-from-tightest-to-loosest",
+    "02-directing-the-agent.qmd#claude-code-slash-commands"
+   ]
+  },
+  {
+   "id": "AW-A-02",
+   "axis": "Agentic Workflow",
+   "type": "use",
+   "format": "ext_matching",
+   "topic": "skills: a saved procedure run by name",
+   "emi_list_id": "EMI-AW-A",
+   "stem": "Before each release, Tom types the same eight steps for writing release notes. He wants to run them by typing a short name.",
+   "answer": "E",
+   "rationale": "A skill saves a procedure once and runs it by name, loading only when used. CLAUDE.md would load the eight steps into every session, release or not.",
+   "distractors": {
+    "D": "Thinks CLAUDE.md is for procedures run on demand.",
+    "A": "Thinks a hook runs when you type a name; it runs on an event."
+   },
+   "sections": [
+    "02-directing-the-agent.qmd#your-own-commands",
+    "02-directing-the-agent.qmd#claude-code-skills"
+   ]
+  },
+  {
+   "id": "AW-A-03",
+   "axis": "Agentic Workflow",
+   "type": "know",
+   "format": "single_best",
+   "topic": "/clear between unrelated tasks",
+   "stem": "You run /clear. Which of these is still in Claude's context afterward?",
+   "options": {
+    "A": "Your messages from before /clear",
+    "B": "Your project's CLAUDE.md",
+    "C": "A summary of the old conversation",
+    "D": "The files Claude read earlier"
+   },
+   "answer": "B",
+   "rationale": "/clear starts a new, empty conversation, and CLAUDE.md loads again as it does at the start of every session. A summary of the old conversation is what /compact keeps.",
+   "distractors": {
+    "A": "Thinks /clear keeps the conversation.",
+    "C": "Confuses /clear with /compact.",
+    "D": "Thinks file contents stay after the conversation is cleared."
+   },
+   "sections": [
+    "02-directing-the-agent.qmd#the-controls",
+    "02-directing-the-agent.qmd#claude-code-slash-commands"
+   ]
+  },
+  {
+   "id": "AW-A-04",
+   "axis": "Agentic Workflow",
+   "type": "use",
+   "format": "ext_matching",
+   "topic": "hooks: an action that runs every time",
+   "emi_list_id": "EMI-AW-A",
+   "stem": "Sam wants every terminal command Claude runs written to a log file, every time, without relying on Claude to remember.",
+   "answer": "A",
+   "rationale": "A hook runs automatically on an event, such as each time Claude uses its Bash tool, whatever the model decides. An instruction in CLAUDE.md is advice and can be skipped.",
+   "distractors": {
+    "D": "Thinks CLAUDE.md instructions are enforced.",
+    "E": "A skill runs only when invoked."
+   },
+   "sections": [
+    "02-directing-the-agent.qmd#claude-code-hooks",
+    "02-directing-the-agent.qmd#common-claude-code-hook-patterns"
+   ]
+  },
+  {
+   "id": "AW-A-05",
+   "axis": "Agentic Workflow",
+   "type": "know",
+   "format": "single_best",
+   "topic": "MCP: reach beyond the repo",
+   "stem": "Which situation suggests you need an MCP server?",
+   "options": {
+    "A": "You keep pasting data from another tool into the chat",
+    "B": "You keep retyping the same long prompt",
+    "C": "Claude forgets a project rule in new sessions",
+    "D": "Claude sometimes skips a required check"
+   },
+   "answer": "A",
+   "rationale": "An MCP server connects Claude to another system and gives it tools to read it directly, so you stop copying data in by hand.",
+   "distractors": {
+    "B": "That calls for a skill.",
+    "C": "That calls for CLAUDE.md.",
+    "D": "That calls for a hook."
+   },
+   "sections": [
+    "02-directing-the-agent.qmd#reach-beyond-the-repo-mcp"
+   ]
+  },
+  {
+   "id": "AW-A-06",
+   "axis": "Agentic Workflow",
+   "type": "predict",
+   "format": "single_best",
+   "topic": "blast radius: what /rewind can undo",
+   "stem": "Leo has not committed today. Claude edits several files with its edit tool, renames one file with mv, and deploys the site to Vercel. Leo runs /rewind to before all three. What is still changed?",
+   "options": {
+    "A": "Nothing; /rewind undoes all three",
+    "B": "Only the deploy to Vercel",
+    "C": "Only the file renamed with mv",
+    "D": "The file renamed with mv, and the deploy"
+   },
+   "answer": "D",
+   "rationale": "/rewind restores only changes made with Claude's edit tool. The mv rename needs git, and Leo has not committed, and the deploy has left his laptop.",
+   "distractors": {
+    "A": "Thinks /rewind recalls everything.",
+    "B": "Thinks /rewind tracks shell commands such as mv.",
+    "C": "Thinks /rewind can recall a deploy."
+   },
+   "sections": [
+    "02-directing-the-agent.qmd#blast-radius",
+    "02-directing-the-agent.qmd#what-can-be-undone",
+    "02-directing-the-agent.qmd#the-controls-from-tightest-to-loosest"
+   ]
+  },
+  {
+   "id": "AW-A-07",
+   "axis": "Agentic Workflow",
+   "type": "predict",
+   "format": "single_best",
+   "topic": "model or harness: which was the limit",
+   "stem": "Early in a long session, Ana told Claude to use metric units. Hours later, after Claude Code compacted the conversation, Claude writes miles. What was the limit?",
+   "options": {
+    "A": "The model; switching to a stronger one would fix it",
+    "B": "The harness: compaction dropped the early instruction",
+    "C": "The model learns rules only during its training",
+    "D": "The instruction was too short to follow"
+   },
+   "answer": "B",
+   "rationale": "When the window fills, Claude Code summarizes the conversation, and early instructions can be lost. That is a harness limit; putting the rule in CLAUDE.md, which loads again, fixes it.",
+   "distractors": {
+    "A": "Blames the model when the instruction was no longer in the request.",
+    "C": "Confuses training with what is in the request.",
+    "D": "Looks for a wording problem instead of a missing instruction."
+   },
+   "sections": [
+    "01-building-with-ai-agents.qmd#the-model-and-the-harness",
+    "01-building-with-ai-agents.qmd#the-agent-loop-gather-context-act-check"
+   ]
+  },
+  {
+   "id": "AW-A-08",
+   "axis": "Agentic Workflow",
+   "type": "use",
+   "format": "single_best",
+   "topic": "auto memory vs CLAUDE.md",
+   "stem": "Diego works on one repository from two computers, at home and in the lab. Claude saved his rule about date formats to auto memory at home. In the lab, Claude does not follow it. What is the best fix?",
+   "options": {
+    "A": "Turn auto memory off on both computers",
+    "B": "Correct Claude again until the lab computer saves it",
+    "C": "Add it to the project's CLAUDE.md and commit it",
+    "D": "Add it to ~/.claude/CLAUDE.md on the home computer"
+   },
+   "answer": "C",
+   "rationale": "Auto memory is saved per computer, and Claude decides what it saves. A committed project CLAUDE.md loads on every computer and for every teammate.",
+   "distractors": {
+    "A": "Thinks turning memory off spreads the rule.",
+    "B": "Relies on Claude deciding to save it again, on one more computer.",
+    "D": "A personal file on one computer does not reach the other."
+   },
+   "sections": [
+    "02-directing-the-agent.qmd#claude.md-and-auto-memory"
+   ]
+  },
+  {
+   "id": "AW-A-09",
+   "axis": "Agentic Workflow",
+   "type": "know",
+   "format": "single_best",
+   "topic": "tools: who carries out a tool call",
+   "stem": "The model wants to run a terminal command on your computer. What does it send to Claude Code?",
+   "options": {
+    "A": "A tool call naming Bash and the command",
+    "B": "Keystrokes typed into your terminal window",
+    "C": "The command's output, already worked out",
+    "D": "Nothing; it runs the command on its servers"
+   },
+   "answer": "A",
+   "rationale": "The model only writes text. It writes a tool call naming the Bash tool and the command, and Claude Code checks it against hooks and permissions before running it.",
+   "distractors": {
+    "B": "Thinks the model types into your terminal.",
+    "C": "Thinks the model can know a command's result without running it.",
+    "D": "Thinks the model can reach your computer from its own servers."
+   },
+   "sections": [
+    "01-building-with-ai-agents.qmd#tools-how-the-agent-acts-on-your-computer",
+    "01-building-with-ai-agents.qmd#the-model-and-the-harness"
+   ]
+  },
+  {
+   "id": "AW-A-10",
+   "axis": "Agentic Workflow",
+   "type": "know",
+   "format": "single_best",
+   "topic": "what each Claude app can reach (the harness)",
+   "stem": "What can Claude reach in the desktop app that it cannot reach in the claude.ai web chat?",
+   "options": {
+    "A": "A sandbox for running code",
+    "B": "Services such as Google Drive",
+    "C": "A different, stronger model",
+    "D": "The files on your own computer"
+   },
+   "answer": "D",
+   "rationale": "Every Claude app runs the same models; the harness decides how far they reach. Web chat runs code in a sandbox on Anthropic's servers, while the desktop app also works on your files.",
+   "distractors": {
+    "A": "Web chat has a code sandbox too.",
+    "B": "Web chat reaches such services through connectors.",
+    "C": "Thinks different apps run different models."
+   },
+   "sections": [
+    "01-building-with-ai-agents.qmd#what-makes-an-agent-an-agent",
+    "01-building-with-ai-agents.qmd#the-model-and-the-harness"
+   ]
+  },
+  {
+   "id": "AW-A-11",
+   "axis": "Agentic Workflow",
+   "type": "predict",
+   "format": "figure",
+   "topic": "one tool call: what a hook block does",
+   "figure": "https://byu-strategy.github.io/product-management/images/diagrams/ch01-one-tool-call.svg",
+   "figure_alt": "Two columns joined by four numbered arrows. Left column: the model, which writes text only. Right column: Claude Code, which runs on your computer. Arrow 1 goes from Claude Code to the model, carrying a card titled tools the model can call: Read(file_path), Edit(file_path, old, new), Bash(command), plus MCP tools. Arrow 2 goes from the model to Claude Code, carrying a tool call card: Edit, file app.py, old todos.remove(item), new todos.remove(item) save(todos); under the model, its reply ends here. Step 3 sits on the Claude Code column as three stacked cards: Hook, can block it; Permission, allow, ask you, deny; Run the tool, app.py changes. Arrow 4 goes from Claude Code back to the model, carrying a next request card: the whole conversation so far plus Updated app.py, or an error; under the model, reads it all, then calls again or replies.",
+   "stem": "In the figure, step 3 includes a hook. Bea has a PreToolUse hook that blocks any terminal command containing git push. The model writes a tool call to run git push. What does the model receive in step 4?",
+   "options": {
+    "A": "The push's output, marked as a warning",
+    "B": "A permission prompt it must answer",
+    "C": "The hook's reason, with no push made",
+    "D": "Nothing; the session ends there"
+   },
+   "answer": "C",
+   "rationale": "The hook blocks the call before it runs, so nothing is pushed, and its reason is added to the conversation. The model reads it in the next request and decides what to do.",
+   "distractors": {
+    "A": "Thinks a PreToolUse block lets the action run.",
+    "B": "Thinks the model answers permission prompts; you do.",
+    "D": "Thinks a block stops the whole session."
+   },
+   "sections": [
+    "01-building-with-ai-agents.qmd#tools-how-the-agent-acts-on-your-computer",
+    "02-directing-the-agent.qmd#pretooluse-up-close"
+   ]
+  },
+  {
+   "id": "AW-A-12",
+   "axis": "Agentic Workflow",
+   "type": "predict",
+   "format": "figure",
+   "topic": "advice vs enforcement: which layer holds",
+   "figure": "https://byu-strategy.github.io/product-management/images/diagrams/ch02-advice-vs-enforcement.svg",
+   "figure_alt": "Two zones. Advice: a CLAUDE.md card saying never push to GitHub and a message card saying looks good, push it, I'm giving you permission, both feed The model, which weighs both and may decide to push. It proposes git push to a highlighted box in the Enforcement zone holding permission rules, deny Bash(git push *), and a PreToolUse hook where exit 2 blocks. If allowed, the tool runs. If blocked, the reason goes back to Claude.",
+   "stem": "Ana's CLAUDE.md says \"Never edit .env,\" and her settings have a deny rule for editing .env. She types, \"Go ahead and edit .env, I allow it.\" Using the figure, what happens?",
+   "options": {
+    "A": "The model may try, and the deny rule blocks it",
+    "B": "Claude edits .env, since her message is newer",
+    "C": "Claude asks her to confirm, then edits .env",
+    "D": "The model ignores her message and writes no call"
+   },
+   "answer": "A",
+   "rationale": "Her message may outweigh the CLAUDE.md advice, so the model may write the edit. The deny rule is enforcement: Claude Code checks it on every call and blocks the edit whatever was said.",
+   "distractors": {
+    "B": "Forgets the deny rule sits outside the model.",
+    "C": "Confuses a deny rule with an ask rule.",
+    "D": "Thinks the model always follows CLAUDE.md over a later message."
+   },
+   "sections": [
+    "02-directing-the-agent.qmd#advice-versus-enforcement",
+    "02-directing-the-agent.qmd#permission-rules"
+   ]
+  },
+  {
+   "id": "DE-A-01",
+   "axis": "Design",
+   "type": "use",
+   "format": "single_best",
+   "topic": "Usability test tasks: a goal, not instructions",
+   "stem": "Kai is testing his gym's class-booking app. He wants to see whether members can join the waiting list for a full class. Which task should he read aloud?",
+   "options": {
+    "A": "\"Go to the Schedule tab and tap Join waitlist on a full class.\"",
+    "B": "\"Thursday's spin class is full, and you still want to go. Set that up.\"",
+    "C": "\"How likely are you to use our new waitlist feature this month?\"",
+    "D": "\"Show me how you would use the Join waitlist button on a class.\""
+   },
+   "answer": "B",
+   "rationale": "A goal in the member's own situation shows whether people can find the waiting list on their own. A task that names the tab or button only tests whether people can follow directions.",
+   "distractors": {
+    "A": "Gives the route and the button, so finding them is not tested.",
+    "C": "Asks for a prediction instead of watching behavior.",
+    "D": "Names the button, so finding it is not tested."
+   },
+   "sections": [
+    "06-testing-the-design.qmd#running-a-usability-test"
+   ]
+  },
+  {
+   "id": "DE-A-02",
+   "axis": "Design",
+   "type": "predict",
+   "format": "case_set",
+   "topic": "Hierarchy: what blocks the core task",
+   "case_id": "C-DE-A1",
+   "stem": "Which problem will slow students most on Dana's core task?",
+   "options": {
+    "A": "Reserve shown as small text with no button shape",
+    "B": "A large red Clear button that erases at once",
+    "C": "A photo banner taking the top of the screen",
+    "D": "Day buttons that show weekdays but no dates"
+   },
+   "answer": "A",
+   "rationale": "Reserving is the core task, and its only control is small, plain text in a far corner with no sign it can be tapped, so every student struggles with it every time. The Clear button is a real problem, but only when someone taps it by mistake.",
+   "distractors": {
+    "B": "Picks the scariest flaw instead of the one that blocks the core task every time.",
+    "C": "Wasted space, but it does not stop anyone.",
+    "D": "A minor gap that does not block reserving."
+   },
+   "sections": [
+    "05-interface-and-flow.qmd#attention-and-hierarchy",
+    "05b-design-fundamentals.qmd#fittss-law"
+   ]
+  },
+  {
+   "id": "DE-A-03",
+   "axis": "Design",
+   "type": "use",
+   "format": "case_set",
+   "topic": "Precise design direction to an agent",
+   "case_id": "C-DE-A1",
+   "stem": "Dana wants the agent to fix the Clear button. Which instruction is best?",
+   "options": {
+    "A": "\"Make the Clear button less alarming for students in a hurry.\"",
+    "B": "\"Ask 'Are you sure?' every time someone taps the Clear button.\"",
+    "C": "\"Make Clear a small text link, and show Undo after clearing.\"",
+    "D": "\"Review this screen against design best practices and fix it.\""
+   },
+   "answer": "C",
+   "rationale": "It says exactly what to change: lower Clear in the hierarchy so it is tapped less by mistake, and give a way to recover. The \"Are you sure?\" step is specific, but Clear stays the biggest thing on the screen.",
+   "distractors": {
+    "A": "States a goal, so the agent has to guess the change.",
+    "B": "Specific, but leaves Clear as the most prominent action.",
+    "D": "Hands the judgment back to the agent that made the screen."
+   },
+   "sections": [
+    "05-interface-and-flow.qmd#directing-an-agent-on-design",
+    "05b-design-fundamentals.qmd#nielsens-ten-usability-heuristics"
+   ]
+  },
+  {
+   "id": "DE-A-04",
+   "axis": "Design",
+   "type": "predict",
+   "format": "case_set",
+   "topic": "Empty state the sample data hid",
+   "case_id": "C-DE-A1",
+   "stem": "The agent checked the screen only with a week full of open slots. What will students most likely see that nobody designed?",
+   "options": {
+    "A": "A slow load while slots are fetched",
+    "B": "No message when a reservation fails",
+    "C": "No large-text version of the grid",
+    "D": "A day with no open slots left"
+   },
+   "answer": "D",
+   "rationale": "Slots fill up, so many students will pick a day with nothing open, and the agent never saw that empty state, so it shows no message and no next step. A failed reservation is a real gap, but rarer.",
+   "distractors": {
+    "A": "A real state, but brief.",
+    "B": "Important, but rarer than a full day.",
+    "C": "An accessibility setting, not a missing state."
+   },
+   "sections": [
+    "05-interface-and-flow.qmd#off-the-happy-path"
+   ]
+  },
+  {
+   "id": "DE-A-05",
+   "axis": "Design",
+   "type": "predict",
+   "format": "case_set",
+   "topic": "Conceptual model: what to test before committing",
+   "case_id": "C-DE-A1",
+   "stem": "Dana is considering four changes. Which one is most likely to change what students think the app is for, so she should watch students try it first?",
+   "options": {
+    "A": "Using a different photo in the banner at the top",
+    "B": "Making the day buttons larger and easier to tap",
+    "C": "Replacing the slot grid with one \"Get food now\" button",
+    "D": "Adding the date under each of the day buttons"
+   },
+   "answer": "C",
+   "rationale": "\"Get food now\" could make students think food is ready the moment they tap, which changes their conceptual model of the app, and only watching students shows how they read it. The other changes affect look or placement.",
+   "distractors": {
+    "A": "Changes appearance, not what the app is for.",
+    "B": "Small and easy to reverse; just make it.",
+    "D": "Adds a label without changing what the app does."
+   },
+   "sections": [
+    "05b-design-fundamentals.qmd#normans-principles-of-interaction",
+    "06-testing-the-design.qmd#what-is-usability-testing"
+   ]
+  },
+  {
+   "id": "DE-A-06",
+   "axis": "Design",
+   "type": "know",
+   "format": "single_best",
+   "topic": "Affordance vs signifier",
+   "stem": "In design, what is an affordance?",
+   "options": {
+    "A": "A visible cue showing where to act",
+    "B": "A response confirming that an action worked",
+    "C": "A layout that matches the thing it controls",
+    "D": "An action that an object makes possible"
+   },
+   "answer": "D",
+   "rationale": "An affordance is an action a thing makes possible, such as a door that can be pulled. The visible cue that tells you to pull (the handle) is the signifier.",
+   "distractors": {
+    "A": "Confuses affordance with signifier.",
+    "B": "Describes feedback.",
+    "C": "Describes mapping."
+   },
+   "sections": [
+    "06-testing-the-design.qmd#the-design-canon-behind-this",
+    "05b-design-fundamentals.qmd#normans-principles-of-interaction"
+   ]
+  },
+  {
+   "id": "DE-A-07",
+   "axis": "Design",
+   "type": "use",
+   "format": "single_best",
+   "topic": "Constraints and error prevention",
+   "stem": "Sam's sign-up form asks for date of birth in a plain text box. Many sign-ups fail because people type the date in different ways. Which change fixes this best?",
+   "options": {
+    "A": "Month, day, and year pickers in place of the text box",
+    "B": "A clearer error message shown after Submit is tapped",
+    "C": "Checking the date as soon as the person finishes typing",
+    "D": "An example of the date format shown above the box"
+   },
+   "answer": "A",
+   "rationale": "Pickers make a badly formatted date impossible, a constraint that prevents the error. Checking right after typing catches the mistake sooner, but people can still make it.",
+   "distractors": {
+    "B": "Improves recovery from an error the design could prevent.",
+    "C": "Catches the error earlier but still allows it.",
+    "D": "Relies on people reading instructions."
+   },
+   "sections": [
+    "05b-design-fundamentals.qmd#normans-principles-of-interaction",
+    "05b-design-fundamentals.qmd#nielsens-ten-usability-heuristics"
+   ]
+  },
+  {
+   "id": "DE-A-08",
+   "axis": "Design",
+   "type": "know",
+   "format": "single_best",
+   "topic": "Spec: recording rejected options",
+   "stem": "In a spec, where do you write an option you decided against, with your reason?",
+   "options": {
+    "A": "Open questions",
+    "B": "Intent",
+    "C": "Decisions already made",
+    "D": "Considered and rejected"
+   },
+   "answer": "D",
+   "rationale": "Considered and rejected lists each option you turned down and why, so the agent does not propose it again. Decisions already made records what you chose, not what you ruled out.",
+   "distractors": {
+    "A": "Marks a settled choice as undecided.",
+    "B": "Intent states what the feature is for.",
+    "C": "Records what was chosen, not what was ruled out."
+   },
+   "sections": [
+    "06b-specs.qmd#the-agent-team-kits-spec-and-build-spec-skills",
+    "06b-specs.qmd#build-first-then-spec-what-you-keep"
+   ]
+  },
+  {
+   "id": "DE-A-09",
+   "axis": "Design",
+   "type": "know",
+   "format": "single_best",
+   "topic": "Information architecture: tree test vs card sort",
+   "stem": "What is a card sort for?",
+   "options": {
+    "A": "Learning how people group features on their own",
+    "B": "Checking whether people can find items in a menu",
+    "C": "Seeing whether people can finish a task",
+    "D": "Finding which labels people say they like"
+   },
+   "answer": "A",
+   "rationale": "A card sort asks people to sort cards into groups that make sense to them, so it generates a structure. A tree test is the method that checks one.",
+   "distractors": {
+    "B": "Describes a tree test.",
+    "C": "Describes a usability test.",
+    "D": "Asks for opinions instead of watching what people do."
+   },
+   "sections": [
+    "05b-design-fundamentals.qmd#two-methods-card-sorting-and-tree-testing"
+   ]
+  },
+  {
+   "id": "DE-A-10",
+   "axis": "Design",
+   "type": "know",
+   "format": "single_best",
+   "topic": "Acceptance criteria: one observable result",
+   "stem": "A student's story is about booking a tutor. Which acceptance criterion is best?",
+   "options": {
+    "A": "Booking is quick, simple, and works on any phone",
+    "B": "Tapping Book on a tutor's profile adds it to My sessions",
+    "C": "Booking saves a new row in the sessions table",
+    "D": "Students can book in whatever way suits them"
+   },
+   "answer": "B",
+   "rationale": "A good acceptance criterion names the screen, the action, and one result anyone can observe, so the work can be checked against it. The sessions-table line says how to build it, not what the student sees.",
+   "distractors": {
+    "A": "Adjectives with nothing anyone could check.",
+    "C": "Specifies the build instead of the observable result.",
+    "D": "Open-ended, so it is never done."
+   },
+   "sections": [
+    "06b-specs.qmd#acceptance-criteria",
+    "06b-specs.qmd#sdd-in-practice-tips-and-gotchas"
+   ]
+  },
+  {
+   "id": "DE-A-11",
+   "axis": "Design",
+   "type": "predict",
+   "format": "figure",
+   "topic": "Gestalt: which principle explains the error",
+   "figure": "https://byu-strategy.github.io/product-management/images/diagrams/ch05b-gestalt.svg",
+   "figure_alt": "Six panels, each a Gestalt principle shown on an interface element. Proximity, equal gaps, marked wrong: the labels Date and Note sit midway between fields, so each could belong to the field above or below. Proximity, label close to its field, marked right: each label sits just above its own field, with a larger gap before the next pair. Similarity, same color, same kind: three shift rows, each with a blue underlined Swap link, read as the same kind of action. Enclosure, one card, one shift: two bordered cards, each holding the day, time, and location of one shift. Continuity, one line, one sequence: four numbered circles on one line, labeled Pick, Note, Confirm, Approve. Figure-ground, dialog in front, page behind: a dialog asking Give away Thursday's shift, with Cancel and Give away buttons, on top of a dimmed page.",
+   "stem": "Ana's settings page shows every link in blue, and the section headings are the same blue. Testers tap the headings and wait for something to open. Using the figure, which principle explains this?",
+   "options": {
+    "A": "Proximity: the headings sit close to the links",
+    "B": "Enclosure: each section has no card around it",
+    "C": "Similarity: the headings look like the links",
+    "D": "Figure-ground: the page has no dimmed background"
+   },
+   "answer": "C",
+   "rationale": "Elements that share a color are seen as the same kind of thing, so blue headings read as links. Keep the link color for links only.",
+   "distractors": {
+    "A": "Proximity groups items by distance, which does not make a heading look tappable.",
+    "B": "A card groups a section; it does not explain why a heading looks like a link.",
+    "D": "Figure-ground separates a dialog from the page behind it."
+   },
+   "sections": [
+    "05b-design-fundamentals.qmd#gestalt-grouping"
+   ]
+  },
+  {
+   "id": "DE-A-12",
+   "axis": "Design",
+   "type": "use",
+   "format": "figure",
+   "topic": "Fidelity: name the question, make the cheapest artifact",
+   "figure": "https://byu-strategy.github.io/product-management/images/diagrams/ch05b-fidelity-spectrum.svg",
+   "figure_alt": "A scatter chart. The horizontal axis is fidelity, how closely an artifact matches the shipped product, from low on the left to high on the right, divided into three shaded regions: sketch, mock, and prototype. The vertical axis is the time to make or change the artifact, on a scale marked seconds, minutes, hours, and days from bottom to top. Ten methods are plotted. Made by hand: a paper sketch, lowest fidelity, a few minutes; a whiteboard or Excalidraw sketch, slightly higher fidelity, a few minutes; a high-fidelity Figma mockup, in the mock region, hours; a clickable Figma prototype, at the start of the prototype region, between hours and days. Made by a coding agent: an ASCII mockup in the terminal, in the sketch region, seconds; gray boxes in HTML, low in the mock region, under a minute; an HTML mockup an agent writes, in the middle of the mock region, a minute or two; frozen real screens with one change, in the prototype region, a few minutes; a branch on a preview deployment, high fidelity, between minutes and hours. A production release sits at the top right, highest fidelity, days. For the four agent-made methods other than ASCII, a hollow circle marks the same artifact made by hand, with a dashed arrow down to its position today: gray boxes drawn in Figma or Balsamiq took about half an hour; an HTML mockup coded by hand took hours; frozen screens edited by hand took an hour or more; a preview branch coded by hand took days. The agent-made points sit low on the chart at every level of fidelity, so higher fidelity no longer means more time.",
+   "stem": "Ken's ordering app is live. He wants to know whether a new layout of the order page is readable and clear in its hierarchy before it is built. Using the figure, what should he make first?",
+   "options": {
+    "A": "A paper sketch of the new layout",
+    "B": "Frozen real screens with the one change",
+    "C": "A production release to all users",
+    "D": "A hand-drawn high-fidelity Figma mockup"
+   },
+   "answer": "B",
+   "rationale": "A look question needs a mockup, and for a product that already exists, frozen real screens with one change reach that fidelity in minutes. A sketch cannot show look, and the others cost hours or days.",
+   "distractors": {
+    "A": "Too low in fidelity to answer a question about look.",
+    "C": "Ships to everyone to answer a question a mockup can answer.",
+    "D": "Reaches the right fidelity, but with hours of handwork."
+   },
+   "sections": [
+    "05b-design-fundamentals.qmd#what-ai-changed-and-what-it-did-not",
+    "05b-design-fundamentals.qmd#fidelity-sketch-wireframe-mockup-prototype"
+   ]
+  },
+  {
+   "id": "DI-A-01",
+   "axis": "Discovery",
+   "type": "use",
+   "format": "single_best",
+   "topic": "willingness to pay from current spend",
+   "stem": "Nadia is building a tool that writes landscaping quotes from site photos. She wants to estimate what a landscaping company would pay for it. What should she do?",
+   "options": {
+    "A": "Have owners pick from three monthly prices",
+    "B": "Add up what writing quotes costs owners today",
+    "C": "Charge a share of the top invoicing app's price",
+    "D": "Ask owners how many hours it would save them"
+   },
+   "answer": "B",
+   "rationale": "What the problem already costs (the owner's evening hours, any office help paid for quotes) is real willingness to pay. Hours a tool would save is the owner's prediction about a tool that does not exist yet.",
+   "distractors": {
+    "A": "Believes a price picked from a list is evidence of what someone will pay.",
+    "C": "Treats another product's price as this customer's willingness to pay.",
+    "D": "Takes a predicted saving as a cost the owner already bears."
+   },
+   "sections": [
+    "04-finding-and-validating-the-problem.qmd#willingness-to-pay"
+   ]
+  },
+  {
+   "id": "DI-A-02",
+   "axis": "Discovery",
+   "type": "know",
+   "format": "single_best",
+   "topic": "value creation vs value capture",
+   "stem": "Two apps create the same value for customers, but one keeps far more of it. What best explains the difference?",
+   "options": {
+    "A": "One app is more useful to its customers",
+    "B": "One app cost less to build",
+    "C": "One faces weaker rivals, buyers, and suppliers",
+    "D": "One app has more customers"
+   },
+   "answer": "C",
+   "rationale": "How much value a business keeps depends on the forces around it: rivals, substitutes, entrants, buyers, and suppliers. Both apps create the same value, so usefulness cannot explain the gap.",
+   "distractors": {
+    "A": "Confuses value created with value captured.",
+    "B": "Thinks the cost of building decides the share kept.",
+    "D": "Thinks more customers means a bigger share of each customer's value."
+   },
+   "sections": [
+    "03-what-is-worth-building.qmd#creating-value-and-capturing-it",
+    "03-what-is-worth-building.qmd#the-five-forces-how-wide-is-the-band"
+   ]
+  },
+  {
+   "id": "DI-A-03",
+   "axis": "Discovery",
+   "type": "predict",
+   "format": "case_set",
+   "topic": "reading an interview for the real pain",
+   "case_id": "C-DI-A1",
+   "stem": "Priya builds a feature that tracks cleaning supplies for every house. What is most likely to happen?",
+   "options": {
+    "A": "Rosa rarely uses it, since her costly problem is sick days",
+    "B": "Rosa uses it weekly, since she agreed supplies are a hassle",
+    "C": "Rosa pays $50 a month for it, as she offered",
+    "D": "Rosa uses it often, since she loved Priya's idea"
+   },
+   "answer": "A",
+   "rationale": "Rosa's own story is about covering sick cleaners, and she pays an agency to do it. Supplies came only from Priya's leading question, and Rosa called it fine.",
+   "distractors": {
+    "B": "Takes the answer to a leading question as the main finding.",
+    "C": "Treats an offered future price as a commitment.",
+    "D": "Treats enthusiasm for a pitch as evidence of a problem."
+   },
+   "sections": [
+    "04-finding-and-validating-the-problem.qmd#the-evidence-ladder-said-did-paid",
+    "04-finding-and-validating-the-problem.qmd#signs-youre-onto-something"
+   ]
+  },
+  {
+   "id": "DI-A-04",
+   "axis": "Discovery",
+   "type": "predict",
+   "format": "case_set",
+   "topic": "leading questions",
+   "case_id": "C-DI-A1",
+   "stem": "Rosa's answer \"I suppose, yeah. It's fine\" tells Priya little about supplies. Why?",
+   "options": {
+    "A": "Priya asked about a typical week instead of one day",
+    "B": "Priya's question suggested the problem for Rosa to agree with",
+    "C": "Priya asked it too late in the interview",
+    "D": "Rosa was thinking about her sick cleaners instead"
+   },
+   "answer": "B",
+   "rationale": "When the question names the problem, agreement is cheap and polite, so it is not evidence Rosa has that problem. Her flat \"It's fine\" points the same way.",
+   "distractors": {
+    "A": "Mistakes a leading question for a generic one.",
+    "C": "Blames timing instead of the wording of the question.",
+    "D": "Explains the answer by Rosa's mood instead of the question."
+   },
+   "sections": [
+    "04-finding-and-validating-the-problem.qmd#rules-of-the-mom-test",
+    "04-finding-and-validating-the-problem.qmd#bad-questions-vs.-good-questions"
+   ]
+  },
+  {
+   "id": "DI-A-05",
+   "axis": "Discovery",
+   "type": "use",
+   "format": "case_set",
+   "topic": "evidence quality: said, did, paid",
+   "case_id": "C-DI-A1",
+   "stem": "Priya wants to know whether Rosa would pay to solve this problem. Which part of the interview is the strongest evidence?",
+   "options": {
+    "A": "She said she would pay fifty dollars a month",
+    "B": "She said she would love the app",
+    "C": "She cleaned two houses herself on Tuesday",
+    "D": "She paid an agency $60 per fill-in, four times last month"
+   },
+   "answer": "D",
+   "rationale": "Money already spent on the problem is on the paid rung, the strongest signal. Cleaning houses herself is real effort (did rung), but it cost time, not money.",
+   "distractors": {
+    "A": "Treats a guessed price as a commitment.",
+    "B": "Treats a compliment as payment evidence.",
+    "C": "Ranks time spent above money already paid."
+   },
+   "sections": [
+    "04-finding-and-validating-the-problem.qmd#the-evidence-ladder-said-did-paid"
+   ]
+  },
+  {
+   "id": "DI-A-06",
+   "axis": "Discovery",
+   "type": "use",
+   "format": "case_set",
+   "topic": "next step after one interview",
+   "case_id": "C-DI-A1",
+   "stem": "What should Priya do next?",
+   "options": {
+    "A": "Sign Rosa up at $50 a month and start building",
+    "B": "Survey owners on whether they would use the app",
+    "C": "Interview more owners, and cleaners who swap shifts",
+    "D": "Build the fill-in matching feature this week"
+   },
+   "answer": "C",
+   "rationale": "One interview is one person. Priya should check the sick-day problem with more owners and with the cleaners, who swap shifts before the owner hears about it.",
+   "distractors": {
+    "A": "Commits on one enthusiastic interview and a stated price.",
+    "B": "Asks a hypothetical question, the weakest kind of evidence.",
+    "D": "Starts building before confirming the problem with anyone but Rosa."
+   },
+   "sections": [
+    "04-finding-and-validating-the-problem.qmd#the-commitment-decision",
+    "04-finding-and-validating-the-problem.qmd#interview-synthesis"
+   ]
+  },
+  {
+   "id": "DI-A-07",
+   "axis": "Discovery",
+   "type": "predict",
+   "format": "single_best",
+   "topic": "current alternatives are the competition",
+   "stem": "Owen finds no app that helps community gardens assign plots. Most garden coordinators use a shared spreadsheet and a group text and say it works. Owen builds the app. What is most likely to happen?",
+   "options": {
+    "A": "Gardens adopt it quickly, since no app competes",
+    "B": "Gardens switch once it has a map of every plot",
+    "C": "A larger company builds the same app and wins",
+    "D": "Most gardens stay with the spreadsheet and group text"
+   },
+   "answer": "D",
+   "rationale": "The real competitor is what people do today. A spreadsheet and group text that work, and that everyone already uses, leave little push to switch.",
+   "distractors": {
+    "A": "Thinks no competing app means no competition.",
+    "B": "Thinks a new feature beats a habit that already works.",
+    "C": "Worries about copycats before any garden has switched."
+   },
+   "sections": [
+    "04-finding-and-validating-the-problem.qmd#the-real-competitor-is-the-current-habit"
+   ]
+  },
+  {
+   "id": "DI-A-08",
+   "axis": "Discovery",
+   "type": "know",
+   "format": "single_best",
+   "topic": "saturation stop rule",
+   "stem": "Your last three problem interviews told you nothing you had not already heard. What does that mean?",
+   "options": {
+    "A": "You have enough to act on",
+    "B": "Your questions are leading people",
+    "C": "The segment has no real problem",
+    "D": "You should switch to a survey"
+   },
+   "answer": "A",
+   "rationale": "That is saturation: when new interviews stop surprising you, you have heard enough to act. Repeated answers mean the pattern is stable.",
+   "distractors": {
+    "B": "Reads agreement across people as a sign of bad questions.",
+    "C": "Reads a stable pattern as the absence of a problem.",
+    "D": "Thinks counting answers is the next step after interviews."
+   },
+   "sections": [
+    "04-finding-and-validating-the-problem.qmd#interview-synthesis"
+   ]
+  },
+  {
+   "id": "DI-A-09",
+   "axis": "Discovery",
+   "type": "know",
+   "format": "single_best",
+   "topic": "Hooked loop and the reflection test",
+   "stem": "By the chapter's test, when is a habit-forming loop good for users?",
+   "options": {
+    "A": "Users open the app many times a day",
+    "B": "The loop includes a reward that varies",
+    "C": "The app earns more from engaged users",
+    "D": "Users, thinking calmly, are glad it works this way"
+   },
+   "answer": "D",
+   "rationale": "The loop's mechanics (trigger, action, reward, investment) are neutral. What matters is whether users, thinking it over calmly, would be glad it was designed that way.",
+   "distractors": {
+    "A": "Treats engagement as proof of benefit.",
+    "B": "Thinks one part of the loop makes it good or bad.",
+    "C": "Treats revenue as proof of benefit."
+   },
+   "sections": [
+    "03-what-is-worth-building.qmd#hooked-engagement-or-exploitation"
+   ]
+  },
+  {
+   "id": "DI-A-10",
+   "axis": "Discovery",
+   "type": "know",
+   "format": "single_best",
+   "topic": "disruption: low-end vs new-market foothold",
+   "stem": "In Christensen's model, an entrant first sells a cheaper, simpler product to customers the leader overserves. What is this called?",
+   "options": {
+    "A": "A new-market foothold",
+    "B": "A low-end foothold",
+    "C": "A sustaining innovation",
+    "D": "A head-on attack"
+   },
+   "answer": "B",
+   "rationale": "A low-end foothold starts with the leader's least demanding customers, whom it overserves, with a product good enough for them. Starting with people who bought nothing before is a new-market foothold.",
+   "distractors": {
+    "A": "Thinks any cheaper, simpler product starts a new market.",
+    "C": "Calls any improvement sustaining, though sustaining means better for the leader's best customers.",
+    "D": "Thinks selling to the leader's customers means attacking it head-on."
+   },
+   "sections": [
+    "03-what-is-worth-building.qmd#disruption-how-small-entrants-beat-leaders"
+   ]
+  },
+  {
+   "id": "DI-A-11",
+   "axis": "Discovery",
+   "type": "predict",
+   "format": "figure",
+   "topic": "value stick: a supplier lowers its price",
+   "figure": "https://byu-strategy.github.io/product-management/images/diagrams/ch03-value-stick.svg",
+   "figure_alt": "A vertical bar. Its top edge is labeled willingness to pay, the most the customer would give, and its bottom edge willingness to sell, the least suppliers would take. Two interior lines, price (what you actually charge) near the top and cost (what the inputs cost you) near the bottom, split the bar into three bands: customer's delight at the top, bracketed as the value the customer keeps; your margin in the middle, the largest band and highlighted, bracketed as the value you capture; and supplier's surplus at the bottom, bracketed as the value the supplier keeps. A larger bracket on the right spans the whole bar and is labeled total value created.",
+   "stem": "Arjun's tutoring app charges parents $10 a month, and parents would pay up to $15. His payment company would accept as little as $1 per user, and lowers what it charges him from $3 to $2. Nothing else changes. Using the value stick, what happens?",
+   "options": {
+    "A": "Total value created rises by $1",
+    "B": "Parents keep $1 more, since costs fell",
+    "C": "Arjun keeps $1 more; the payment company keeps $1 less",
+    "D": "Parents keep $1 more; Arjun keeps the same"
+   },
+   "answer": "C",
+   "rationale": "Value created is $15 minus $1, and neither end moved. Only the cost line fell, so $1 moved from the payment company to Arjun; the price did not change, so parents keep the same $5.",
+   "distractors": {
+    "A": "Confuses what Arjun pays with the supplier's willingness to sell.",
+    "B": "Assumes a cost cut reaches customers though the price did not change.",
+    "D": "Moves the price line instead of the cost line."
+   },
+   "sections": [
+    "03-what-is-worth-building.qmd#creating-value-and-capturing-it"
+   ]
+  },
+  {
+   "id": "DI-A-12",
+   "axis": "Discovery",
+   "type": "use",
+   "format": "figure",
+   "topic": "evidence ladder: placing statements on the rungs",
+   "figure": "https://byu-strategy.github.io/product-management/images/diagrams/ch04-evidence-ladder.svg",
+   "figure_alt": "Three steps rising from left to right. The lowest, Said, gray with a speech bubble icon, costs nothing; example: I'd totally use that. The middle, Did, light blue with a clock icon, costs time and effort; example: rebuilds the sheet every month. The highest, Paid, deep blue with a dollar coin icon, costs money; example: put down a 5 dollar deposit. A curved arrow rising over the steps reads harder to fake. Under the steps, the question that gets evidence at each rung: ask about someday, would you use it, under Said; ask about the last time, walk me through it, under Did; ask what it costs now, what have you spent on it, under Paid.",
+   "stem": "Elena interviews the owner of an auto repair shop about tracking parts orders. She notes:\n\n- (1) \"Last spring we paid a temp agency $1,500 to sort our parts invoices.\"\n- (2) \"I'd pay good money for this. When can I buy it?\"\n- (3) He showed her the spreadsheet he updates by hand every week.\n\nUsing the figure, order them from the lowest rung to the highest.",
+   "options": {
+    "A": "2, then 3, then 1",
+    "B": "2, then 1, then 3",
+    "C": "1, then 3, then 2",
+    "D": "3, then 2, then 1"
+   },
+   "answer": "A",
+   "rationale": "(2) is a prediction (said), (3) is effort he already spends (did), and (1) is money already paid (paid). Asking when he can buy is still something he said.",
+   "distractors": {
+    "B": "Ranks time spent above money already paid.",
+    "C": "Reverses the ladder.",
+    "D": "Treats an eager question about buying as stronger than real effort."
+   },
+   "sections": [
+    "04-finding-and-validating-the-problem.qmd#the-evidence-ladder-said-did-paid"
+   ]
+  }
+ ]
+}
