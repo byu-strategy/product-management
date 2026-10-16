@@ -591,88 +591,103 @@ def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott
         return str(int(v)) if v == int(v) else str(v)
 
     if G:
+        rings = [r_ for r_ in G.get("rings") or [] if r_.get("coded")]
         last = (G.get("rings") or [{}])[-1]
         pts_now = last.get("points") or {}
         core = (G.get("start") or {}).get("points") or {}
-        ptot = G.get("practice_total") or {}
-        depth = {d["axis"]: d for d in G.get("depth") or [] if d.get("level")}
-        best = G.get("depth_best") or {}
-        by_axis = {}
-        for m in G.get("new") or []:
-            by_axis.setdefault(m["axis"], []).append(m)
+        cur = G.get("sprint") or sprint
         ctime = {c["sha"][:7]: c["when"] for c in (p.get("commits") or [])}
-        order = sorted(AXES, key=lambda a: (-float(pts_now.get(a, 0)), AXES.index(a)))
-        # One row per axis; a row with something new this sprint opens to show it (depth first, then
-        # each new concept), so the table and its evidence are one list.
-        grew = ('<div class="gx gxh"><span>Axis</span><span>Depth reached</span><span class=gn>New concepts</span>'
-                '<span class=gp>This sprint</span><span class=gt>Total of 100</span></div>')
-        any_now = False
-        for ax in order:
-            tot = float(core.get(ax, 0)) + float(ptot.get(ax, 0))
-            add = float(pts_now.get(ax, 0))
-            lvl = best.get(ax, 0)
-            lst = sorted(by_axis.get(ax, []), key=lambda m: (when_key(m), ctime.get(str(m.get("ref", ""))[:7], "")), reverse=True)
-            d = depth.get(ax)
-            cells = (f'<span class=gl>{f"{lvl} {LEVELS[lvl]}" if lvl else "<span class=qm>none yet</span>"}</span>'
-                     f'<span class=gn>{len(lst) or ""}</span>'
-                     f'<span class=gp>{"+" + pt(add) if round(add) else ""}</span>'
-                     f'<span class=gt><span class=gbar><i style="width:{min(100, tot):.0f}%"></i></span>{pt(tot)}</span>')
-            name = e(ax.replace("Application Architecture", "App Architecture"))
-            if not lst and not d:
-                grew += f'<div class="gx gx0"><span class=qn>{name}</span>{cells}</div>'
-                continue
-            any_now = True
-            body = ""
-            if d:
-                gain = d.get("gain")
-                right = f'level {d["level"]}, {e(d.get("name") or LEVELS.get(d["level"], ""))}'
-                if gain:
-                    right += f'<span class=qp>+{pt1(depth_points(ax, gain["from"], gain["to"]))}</span>'
-                lv = d["level"]
-                dbody = f'<p><b>Level {lv}, {e(LEVELS.get(lv, ""))}:</b> {e(LEVEL_TEXT.get(lv, ""))}.</p>'
-                dbody += f'<p class=qm>What showed it: {e(d.get("why", ""))}</p>'
-                if gain:
-                    dbody += (f'<p class=qm>Moving from {"level " + str(gain["from"]) if gain["from"] else "no level"} to level {gain["to"]} '
-                              f'adds {pt1(depth_points(ax, gain["from"], gain["to"]))} points.</p>')
-                elif d.get("best_so_far", 0) >= lv:
-                    dbody += f'<p class=qm>You reached level {d["best_so_far"]} on this axis before, so this adds no points.</p>'
-                if lv < 4:
-                    dbody += f'<p class=qm>Next, level {lv + 1}, {e(LEVELS.get(lv + 1, ""))}: {e(LEVEL_TEXT.get(lv + 1, ""))}.</p>'
-                body += row("Depth", right, dbody, "dep")
-            for m in lst:
-                link = ref_link(repo, m.get("ref"))
-                body += row(e(m.get("name") or m["concept"]),
-                            f'<span class=qd>{e(short_date(m.get("when")))}</span><span class=qp>+{pt1(m.get("points", 0))}</span>',
-                            f'<p>{e(m.get("did", ""))}</p><p class=qm>{e(m.get("evidence", ""))}{" · " + link if link else ""}</p>',
-                            chips=book_chips(m.get("concept")))
-            grew += (f'<details class="q gx"><summary><span class=qn>{name}</span>{cells}</summary>'
-                     f'<div class=qb>{body}</div></details>')
-        if not any_now:
-            grew += "<p>No new concepts or depth were counted this sprint.</p>"
-        earlier = G.get("earlier") or []
-        for s_ in sorted({x["sprint"] for x in earlier}, reverse=True):
-            xs = [x for x in earlier if x["sprint"] == s_]
-            grew += f'<div class=qax>Sprint {s_} <span>+{pt(sum(float(x.get("points", 0)) for x in xs))}</span></div>'
-            for ax in AXES:
-                ax_x = [x for x in xs if x["axis"] == ax]
-                if not ax_x:
-                    continue
-                grew += f'<div class=qsub>{e(ax)} <span>+{pt(sum(float(x.get("points", 0)) for x in ax_x))}</span></div>'
-                for x in sorted(ax_x, key=lambda x: not x.get("depth")):
+
+        def concept_row(m):
+            link = ref_link(repo, m.get("ref"))
+            return row(e(m.get("name") or m["concept"]),
+                       f'<span class=qd>{e(short_date(m.get("when")))}</span><span class=qp>+{pt1(m.get("points", 0))}</span>',
+                       f'<p>{e(m.get("did", ""))}</p><p class=qm>{e(m.get("evidence", ""))}{" · " + link if link else ""}</p>',
+                       chips=book_chips(m.get("concept")))
+
+        def depth_row(ax, lv, why, gain, best_before):
+            right = f'level {lv}, {e(LEVELS.get(lv, ""))}'
+            if gain:
+                right += f'<span class=qp>+{pt1(depth_points(ax, gain["from"], gain["to"]))}</span>'
+            body = f'<p><b>Level {lv}, {e(LEVELS.get(lv, ""))}:</b> {e(LEVEL_TEXT.get(lv, ""))}.</p>'
+            if why:
+                body += f'<p class=qm>What showed it: {e(why)}</p>'
+            if gain:
+                body += (f'<p class=qm>Moving from {"level " + str(gain["from"]) if gain["from"] else "no level"} to level {gain["to"]} '
+                         f'adds {pt1(depth_points(ax, gain["from"], gain["to"]))} points.</p>')
+            elif best_before >= lv:
+                body += f'<p class=qm>You reached level {best_before} on this axis before, so this adds no points.</p>'
+            if lv < 4:
+                body += f'<p class=qm>Next, level {lv + 1}, {e(LEVELS.get(lv + 1, ""))}: {e(LEVEL_TEXT.get(lv + 1, ""))}.</p>'
+            return row("Depth", right, body, "dep")
+
+        def view(s_):
+            """The growth table as it stood at the end of sprint s_: each axis row opens to that
+            sprint's depth and new concepts."""
+            upto = [r_ for r_ in rings if r_["sprint"] <= s_]
+            ring = next((r_ for r_ in rings if r_["sprint"] == s_), {})
+            pts = ring.get("points") or {}
+            tot = {ax: float(core.get(ax, 0)) + sum(float((r_.get("points") or {}).get(ax, 0)) for r_ in upto) for ax in AXES}
+            reach, before = {}, {}
+            for r_ in upto:
+                for ax, g in (r_.get("depth") or {}).items():
+                    if r_["sprint"] < s_:
+                        before[ax] = max(before.get(ax, 0), g["to"])
+                    reach[ax] = max(reach.get(ax, 0), g["to"])
+            items, deps = {}, {}
+            if s_ == cur:
+                for m in G.get("new") or []:
+                    items.setdefault(m["axis"], []).append(m)
+                for d in G.get("depth") or []:
+                    if d.get("level"):
+                        deps[d["axis"]] = (d["level"], d.get("why", ""), d.get("gain"))
+            else:
+                for x in G.get("earlier") or []:
+                    if x["sprint"] != s_:
+                        continue
                     if x.get("depth"):
-                        grew += row("Depth", f'level {x["level"]}, {e(x["name"])}<span class=qp>+{pt1(x.get("points", 0))}</span>',
-                                    f'<p>{e(x.get("why", ""))}</p>', "dep")
+                        deps[x["axis"]] = (x["level"], x.get("why", ""), (ring.get("depth") or {}).get(x["axis"]))
                     else:
-                        link = ref_link(repo, x.get("ref"))
-                        grew += row(e(x["name"]), f'<span class=qd>{e(short_date(x.get("when")))}</span><span class=qp>+{pt1(x.get("points", 0))}</span>',
-                                    f'<p>{e(x.get("did", ""))}</p><p class=qm>{e(x.get("evidence", ""))}{" · " + link if link else ""}</p>',
-                                    chips=book_chips(x.get("concept")))
-        nc = G.get("not_counted") or []
-        if nc:
-            grew += '<div class=qax>Work not counted</div>' + "".join(
-                row(e(x.get("name") or x.get("concept", "")), "not counted",
-                    (f'<p>{e(x["what"])}</p>' if x.get("what") else "") + f'<p class=qm>{e(str(x.get("why", "")).capitalize())}.</p>'.replace("..", ".")
-, "muted", chips=book_chips(x.get("concept"))) for x in nc)
+                        items.setdefault(x["axis"], []).append(x)
+            order = sorted(AXES, key=lambda a: (-float(pts.get(a, 0)), AXES.index(a)))
+            out = ('<div class="gx gxh"><span>Axis</span><span>Depth reached</span><span class=gn>New concepts</span>'
+                   f'<span class=gp>Sprint {s_}</span><span class=gt>Total of 100</span></div>')
+            any_ = False
+            for ax in order:
+                lst = sorted(items.get(ax, []), key=lambda m: (when_key(m), ctime.get(str(m.get("ref", ""))[:7], "")), reverse=True)
+                lvl, add = reach.get(ax, 0), float(pts.get(ax, 0))
+                cells = (f'<span class=gl>{f"{lvl} {LEVELS[lvl]}" if lvl else "<span class=qm>none yet</span>"}</span>'
+                         f'<span class=gn>{len(lst) or ""}</span>'
+                         f'<span class=gp>{"+" + pt(add) if round(add) else ""}</span>'
+                         f'<span class=gt><span class=gbar><i style="width:{min(100, tot[ax]):.0f}%"></i></span>{pt(tot[ax])}</span>')
+                name = e(ax.replace("Application Architecture", "App Architecture"))
+                if not lst and ax not in deps:
+                    out += f'<div class="gx gx0"><span class=qn>{name}</span>{cells}</div>'
+                    continue
+                any_ = True
+                body = ""
+                if ax in deps:
+                    lv, why, gain = deps[ax]
+                    body += depth_row(ax, lv, why, gain, before.get(ax, 0))
+                body += "".join(concept_row(m) for m in lst)
+                out += (f'<details class="q gx"><summary><span class=qn>{name}</span>{cells}</summary>'
+                        f'<div class=qb>{body}</div></details>')
+            if not any_:
+                out += f"<p>No new concepts or depth were counted in Sprint {s_}.</p>"
+            if s_ == cur and G.get("not_counted"):
+                out += '<div class=qax>Work not counted</div>' + "".join(
+                    row(e(x.get("name") or x.get("concept", "")), "not counted",
+                        (f'<p>{e(x["what"])}</p>' if x.get("what") else "") + f'<p class=qm>{e(str(x.get("why", "")).capitalize())}.</p>'.replace("..", "."),
+                        "muted", chips=book_chips(x.get("concept"))) for x in G["not_counted"])
+            return out
+
+        shown = sorted({r_["sprint"] for r_ in rings} | {cur})
+        grew = ""
+        if len(shown) > 1:
+            grew += '<div class=gsw role=group aria-label="Show sprint">' + "".join(
+                f'<button type=button data-s={s_}{" class=on aria-pressed=true" if s_ == cur else " aria-pressed=false"}>Sprint {s_}</button>'
+                for s_ in shown) + '</div>'
+        grew += "".join(f'<div class=gview data-s={s_}{"" if s_ == cur else " hidden"}>{view(s_)}</div>' for s_ in shown)
         g_tot = sum(float(v) for v in pts_now.values())
         n_new = len(G.get("new") or [])
         grew_right = (f'+{pt(g_tot)} this sprint · {n_new} new concept{"s" * (n_new != 1)}' if g_tot else "nothing new counted")
@@ -918,7 +933,7 @@ review or retro, work in a repo that is not shared, and anything the course gave
 // being read opens its own. Clicking an item inside a closed drawer opens the drawer.
 (()=>{{
 const nav=document.querySelector('nav.toc');
-const pick={{score:':scope>details.q',grew:':scope>details.gx,:scope>.qax',next:':scope>ol.nsl>li.ns',appendix:'tr.apx'}};
+const pick={{score:':scope>details.q',grew:':scope>.gview:not([hidden])>details.gx,:scope>.gview:not([hidden])>.qax',next:':scope>ol.nsl>li.ns',appendix:'tr.apx'}};
 const label=el=>{{
   if(el.matches('details'))return el.querySelector('summary .qn').textContent;
   if(el.matches('li.ns'))return el.querySelector('.nst').textContent;
@@ -956,6 +971,10 @@ nav.querySelectorAll(':scope>a').forEach(a=>{{
   const all=on=>{{g.classList.toggle('open',on);g.querySelectorAll('.tg3').forEach(x=>x.classList.toggle('open',on))}};
   b.onclick=()=>all(!g.classList.contains('open'));a.addEventListener('click',()=>all(true));g.prepend(b);g.append(sub);g.classList.add('has');
 }});
+// Growth: one table, switched between sprints; the current sprint shows first.
+document.querySelectorAll('.gsw button').forEach(b=>b.onclick=()=>{{const w=b.closest('section')||document;
+  w.querySelectorAll('.gsw button').forEach(x=>{{x.classList.toggle('on',x===b);x.setAttribute('aria-pressed',x===b)}});
+  w.querySelectorAll('.gview').forEach(v=>v.hidden=v.dataset.s!==b.dataset.s)}});
 // Opening a drawer opens every drawer inside it, down to the last level.
 document.querySelectorAll('main details').forEach(d=>d.addEventListener('toggle',()=>{{if(d.open)d.querySelectorAll('details').forEach(x=>x.open=true)}}));
 const groups=[...nav.querySelectorAll('.tg')];
@@ -1058,6 +1077,8 @@ details.q.inst>summary .qn{color:#7a5a00}.instag{font-size:10.5px;background:#ff
 .how{font-size:13px;color:#4a5262;background:#f7f8fa;border-radius:6px;padding:6px 10px;margin:6px 0 8px}
 .inote{background:#fff8e1;border:1px solid #f0d98a;border-radius:6px;padding:6px 10px;margin:0 0 8px;font-size:13px}.inote p{margin:2px 0}
 .gbar{display:inline-block;width:70px;height:6px;background:#f1f2f5;border-radius:3px;margin-right:8px;vertical-align:1px;overflow:hidden}.gbar i{display:block;height:100%;background:#e2933a;border-radius:3px}
+.gsw{display:inline-flex;border:1px solid var(--line);border-radius:6px;overflow:hidden;margin:2px 0 10px}.gsw button{font:inherit;font-size:12.5px;padding:4px 12px;border:0;background:#fff;color:var(--mute);cursor:pointer}
+.gsw button+button{border-left:1px solid var(--line)}.gsw button.on{background:#fdf3e6;color:var(--ink);font-weight:600}.gsw button:focus-visible{outline:2px solid #2f5bd3;outline-offset:-2px}
 .gx{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1.1fr) minmax(0,.8fr) minmax(0,.6fr) minmax(0,1.3fr);align-items:center;gap:8px;font-size:13.5px}
 .gx .gn{color:var(--mute);text-align:center}.gx .gp{color:var(--amber);font-weight:600;text-align:right;white-space:nowrap}.gx .gt{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}.gx .gl{color:#4a5262}
 .gxh{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--mute);font-weight:600;padding:4px 0;border-bottom:1px solid var(--line)}.gxh .gn,.gxh .gp{color:var(--mute);font-weight:600}
