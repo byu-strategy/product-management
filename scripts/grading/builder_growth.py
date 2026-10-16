@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
-"""Builder profile growth from two independent concept codings (breadth and depth).
+"""Builder profile growth from concept codings (breadth and depth).
 
-Reads, for each sprint up to --sprint, the two coders' files
-  _data/.../grading/sprint-N/concepts/run-A/<net_id>.json and run-B/<net_id>.json
-(shape in concept-coder.md) and writes
+Reads, for each sprint up to --sprint, the coder's file and its check
+  _data/.../grading/sprint-N/concepts/run-A/<net_id>.json   (concept-coder.md)
+  _data/.../grading/sprint-N/concepts/run-V/<net_id>.json   (concept-verifier.md: drops and depth corrections)
+One coder plus a targeted check replaced two full coders on 2026-10-16 (Scott); a sprint coded the old way
+(run-A and run-B, no run-V) still reads as the consensus of both. Writes
   _data/.../grading/sprint-<last>/concepts/growth-<net_id>.json
 
 The spoke (decided 2026-10-14): 0 to 100 per axis, 100 = a full-stack product builder.
@@ -76,11 +78,29 @@ def load(sprint, run, net_id):
     return json.loads(f.read_text()) if f.exists() else None
 
 
+def verified(A, V):
+    """The coder's file with the check applied: dropped concepts removed, corrected depth levels used
+    (never higher than the coder's). Returned in the coder's shape, so it stands in for a second coder."""
+    drops = {x["concept"]: x for x in V.get("drop", [])}
+    fix = {x["axis"]: x for x in V.get("depth", [])}
+    depth = []
+    for d in A.get("depth", []):
+        f = fix.get(d["axis"])
+        if f and int(f["level"]) < int(d["level"]):
+            d = dict(d, level=int(f["level"]), why=f.get("why") or d.get("why", ""))
+        depth.append(d)
+    return {"breadth": [x for x in A.get("breadth", []) if x.get("concept") not in drops], "depth": depth,
+            "seen_not_counted": A.get("seen_not_counted", []), "_drops": drops}
+
+
 def growth(net_id, upto, C, axes, means=None):
     shown, depth_best, rings = set(), {}, []
     new_last, depth_last, disputed, nc_last, earlier = [], [], [], [], []
     for s in range(1, upto + 1):
-        A, B = load(s, "A", net_id), load(s, "B", net_id)
+        A, B, V = load(s, "A", net_id), load(s, "B", net_id), load(s, "V", net_id)
+        mode = "two coders" if B else "checked"
+        if A and V and not B:
+            B = verified(A, V)
         if not A or not B:
             rings.append({"sprint": s, "coded": False, "breadth": {}, "depth": {}, "points": {}})
             continue
@@ -133,8 +153,10 @@ def growth(net_id, upto, C, axes, means=None):
                 depth_last.append({"axis": ax, "level": lvl, "name": LEVELS.get(lvl, ""), "coder_levels": [la, lb],
                                    "why": use.get("why", ""), "evidence": use.get("evidence", []),
                                    "best_so_far": depth_best.get(ax, 0), "gain": ring_d.get(ax)})
+            drops = B.get("_drops", {})
             disputed = [{"concept": k, "name": C[k]["name"], "coder": "A" if k in ba else "B",
-                         "evidence": (ba.get(k) or bb.get(k)).get("evidence", "")} for k in sorted(set(ba) ^ set(bb))]
+                         "evidence": (ba.get(k) or bb.get(k)).get("evidence", ""),
+                         "why": drops.get(k, {}).get("why", "")} for k in sorted(set(ba) ^ set(bb))]
             nca = {x["concept"]: x for x in A.get("seen_not_counted", [])}
             ncb = {x["concept"]: x for x in B.get("seen_not_counted", [])}
             nc_last = [dict(nca[i], name=C.get(i, {}).get("name", i)) for i in sorted(set(nca) & set(ncb))]
@@ -142,7 +164,7 @@ def growth(net_id, upto, C, axes, means=None):
     for r in rings:
         for ax, v in r["points"].items():
             totals[ax] = round(totals.get(ax, 0) + v, 2)
-    return {"net_id": net_id, "sprint": upto, "start": {"source": "survey", "points": start_core(means, axes)},
+    return {"net_id": net_id, "sprint": upto, "check": mode if upto else "", "start": {"source": "survey", "points": start_core(means, axes)},
             "rings": rings, "practice_total": totals,
             "practice_max": {ax: practice_max(ax) for ax in axes}, "depth_best": depth_best,
             "concepts_shown": sorted(shown), "new": new_last, "depth": depth_last,

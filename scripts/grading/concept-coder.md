@@ -1,10 +1,12 @@
-# Concept coder: breadth and depth from one sprint's work (instructions for every coder)
+# Concept coder: breadth and depth from one sprint's work
 
 You read one student's sprint packet and record two things: which builder concepts show up in the
 student's own work this sprint (breadth), and how the student worked on each axis the sprint
-touched (depth). You are not grading: nothing you record changes a score. Two coders do this
-independently for every student; a concept counts only when both of you record it, and depth
-uses the lower of your two levels. Record only what the packet lets a reader verify.
+touched (depth). Nothing you record changes a score. One coder reads each packet (often the grader,
+in the same pass); a second check (`concept-verifier.md`) then re-reads only the evidence behind your
+close calls and your depth levels of 3 and 4, and may drop a credit or lower a level. Mark your close
+calls honestly: an unmarked weak credit is the one that slips through. Record only what the packet
+lets a reader verify.
 
 ## Read first
 1. `builder-inventory.md`: the **Evidence rules** section applies to everything you record.
@@ -70,7 +72,8 @@ saves new jobs to it.").
 {"net_id": "", "sprint": 2, "coder": "A",
  "breadth": [{"concept": "AA10", "when": "2026-10-08", "did": "...",
               "evidence": "short description a reader can check",
-              "ref": "commit sha (7 characters), file path, URL, or Loom m:ss"}],
+              "ref": "commit sha (7 characters), file path, URL, or Loom m:ss",
+              "borderline": "empty, or what makes this a close call"}],
  "depth": [{"axis": "Application Architecture", "level": 2, "why": "...",
             "evidence": ["commit 4f1e2ab: migration and test", "Loom 0:42: saves a job"],
             "unsure": "what would have settled a higher level, or empty"}],
@@ -78,3 +81,5 @@ saves new jobs to it.").
 ```
 
 `when` is the date of the commit or Loom that shows it. Use a commit sha for anything in a repo.
+Fill `borderline` when the evidence only partly matches the practice sentence, rests on a commit
+message without the file text, comes from the Loom alone, or turns on whose decision it was.

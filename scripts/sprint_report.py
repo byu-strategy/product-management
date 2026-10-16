@@ -975,7 +975,7 @@ sprint points are spread across its concepts). A concept counts once.</li>
 the next one looks like.</li>
 </ul>
 <p><b>What counts.</b> Work you can point to: a commit or file in a shared repo, a shared Google file, a live link, or a
-moment in your Loom. Your work is checked twice, independently, and a concept counts only when both checks find it. Work
+moment in your Loom. Close calls and the higher depth levels are checked a second time against that evidence. Work
 described only in your review or retro, work in a repo that is not shared, and anything the course gave you do not count;
 they appear under "Work not counted" with the reason.</p>
 <p><b>Your profile never goes down,</b> and it does not affect your grade.</p>
@@ -1007,15 +1007,20 @@ ones your work has shown say which sprint. Ones marked "measured on the exams" c
                      if fairness else "<p><b>Fairness check</b> no findings for this student</p>")
         if G:
             dis = G.get("disputed") or []
-            parts.append("<p><b>Disputed concepts</b> (one coder only, not counted; settle to add)</p><ul>" +
-                         "".join(f'<li>{e(d.get("name", d.get("concept", "")))} ({e(d.get("concept", ""))}), coder {e(str(d.get("coder", "")))}: '
-                                 f'{e(str(d.get("evidence", "")))}</li>' for d in dis) + "</ul>" if dis else
-                         "<p><b>Disputed concepts</b> none</p>")
+            checked = G.get("check") == "checked"
+            title = ("Dropped on the second check" if checked else "Disputed concepts") + \
+                    (" (not counted; settle to add)" if checked else " (one coder only, not counted; settle to add)")
+            parts.append(f"<p><b>{title}</b></p><ul>" +
+                         "".join(f'<li>{e(d.get("name", d.get("concept", "")))} ({e(d.get("concept", ""))})'
+                                 f'{"" if checked else ", coder " + e(str(d.get("coder", "")))}: {e(str(d.get("evidence", "")))}'
+                                 f'{" · dropped because " + e(d["why"]) if d.get("why") else ""}</li>' for d in dis) + "</ul>" if dis else
+                         f"<p><b>{title.split(' (')[0]}</b> none</p>")
             dl = G.get("depth") or []
             if dl:
-                parts.append("<p><b>Depth, the two coders</b></p><ul>" + "".join(
-                    f'<li>{e(d["axis"])}: A {e(str((d.get("coder_levels") or [None, None])[0]))}, '
-                    f'B {e(str((d.get("coder_levels") or [None, None])[1]))}, counted {e(str(d.get("level")))}</li>' for d in dl) + "</ul>")
+                lv = lambda d, i: e(str((d.get("coder_levels") or [None, None])[i]))
+                parts.append(f"<p><b>Depth, {'coder and check' if checked else 'the two coders'}</b></p><ul>" + "".join(
+                    (f'<li>{e(d["axis"])}: coded {lv(d, 0)}, after the check {lv(d, 1)}, counted {e(str(d.get("level")))}</li>' if checked else
+                     f'<li>{e(d["axis"])}: A {lv(d, 0)}, B {lv(d, 1)}, counted {e(str(d.get("level")))}</li>') for d in dl) + "</ul>")
         else:
             parts.append("<p><b>Builder profile</b> no growth file for this student yet.</p>")
         parts.append('<p class=ihow>To change a grade: edit <code>grades.csv</code> (override_*, scott_note, approved), then rerun '
