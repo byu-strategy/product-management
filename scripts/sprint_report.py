@@ -690,11 +690,12 @@ def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott
                        opened=(c == "demo"))  # the demo is what Scott looks at most, so it starts open
                    for c, label, mx in graded)
     days_late = f.get("canvas_days_late", 0) or 0
+    # The report shows the score that is posted; Canvas applies its own late deduction on top (Scott, 2026-10-16).
     wrap_canvas = review_total * (1 - min(100, 10 * days_late) / 100) if days_late else review_total
     if sprint == 1:
         total, total_max = review_total, review_max
         score_body = kids.replace('class="q kid"', 'class="q"')
-        canvas = f"In Canvas: Sprint 1 {fmt(wrap_canvas)}/{review_max}."
+        canvas = f"Posted to Canvas: Sprint 1 {fmt(review_total)}/{review_max}."
     else:
         ps = str((plan_row or {}).get("score", "")).strip()
         plan_pts = float(ps) if ps else 0.0
@@ -711,8 +712,8 @@ def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott
         score_body = (row("Plan" + ("" if ps else " <span class=qown>not submitted</span>"),
                           f"{fmt(plan_pts)}<small>/10</small>", plan_body)
                       + kids.replace('class="q kid"', 'class="q"'))
-        canvas = (f"In Canvas: Sprint {sprint} Plan {fmt(plan_pts)}/10 and Sprint {sprint} Wrap-up "
-                  f"{fmt(wrap_canvas)}/{review_max}.")
+        canvas = (f"Posted to Canvas: Sprint {sprint} Plan {fmt(plan_pts)}/10 and Sprint {sprint} Wrap-up "
+                  f"{fmt(review_total)}/{review_max}.")
     score_body += (f'<div class=qtotal><span>Sprint {sprint}</span><span>{fmt(total)}<small>/{total_max}</small></span></div>'
                    f'<p class=qm>{e(canvas)}</p>')
     note = (row_.get("scott_note") or "").strip()
@@ -1003,7 +1004,7 @@ ones your work has shown say which sprint. Ones marked "measured on the exams" c
             parts.append(f'<p><b>Axis split</b> {e(", ".join(f"{k} {round(v * 100)}%" for k, v in r["axes"].items()))}. {e(r.get("axes_why", ""))}</p>')
         if days_late:
             parts.append(f"<p><b>Late</b> {days_late} day(s) on Canvas: the Wrap-up shows {fmt(review_total)} here and "
-                         f"{fmt(wrap_canvas)} in Canvas after its automatic deduction. The student copy shows only the Canvas number.</p>")
+                         f"{fmt(wrap_canvas)} in Canvas after its automatic deduction. The student copy shows the posted score; Canvas shows the deduction.</p>")
         parts.append("<p><b>Raw flags</b></p><ul>" + "".join(f"<li><code>{e(x)}</code></li>" for x in r.get("flags") or []) + "</ul>"
                      if r.get("flags") else "<p><b>Raw flags</b> none</p>")
         parts.append("<p><b>Fairness check</b></p><ul>" + "".join(f"<li>{e(x)}</li>" for x in fairness) + "</ul>"
@@ -1112,7 +1113,7 @@ nav.querySelectorAll(':scope>a').forEach(a=>{{
   const link=(el,cls)=>{{
     if(!el.id)el.id='t'+(k++);
     const s=document.createElement('a');s.href='#'+el.id;if(cls)s.className=cls;
-    let t=label(el).trim().replace(/\s+/g,' ');const v=el.querySelector('.video');if(v&&v.closest('details')===el)t+=' (video)';
+    let t=label(el).trim().replace(/\\s+/g,' ');const v=el.querySelector('.video');if(v&&v.closest('details')===el)t+=' (video)';
     s.textContent=t.length>44?t.slice(0,42)+'...':t;
     // open the item and every drawer around it, so the target is visible
     s.onclick=()=>{{for(let d=el.matches('details')?el:el.closest('details');d;d=d.parentElement.closest('details'))d.open=true;

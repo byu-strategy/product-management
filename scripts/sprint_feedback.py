@@ -8,7 +8,7 @@ Reads   ~/hubs/courses/_data/product-management/grading/sprint-N/results/<net_id
         (one grader result each), the packets beside them, plans/plans.csv (the Plan score, Sprint 2
         on), fairness.md, and the builder profile growth in concepts/growth-<net_id>.json when it
         exists (builder_growth.py writes it; --growth-dir reads it from somewhere else).
-Writes  grading/sprint-N/review.html        every student, sortable, with evidence and frames
+Writes  grading/sprint-N/review.html        every student in a rail, each one's instructor report beside it
         grading/sprint-N/grades.csv         the gradebook /publish-grades reads
         grading/sprint-N/feedback/<net_id>.html        the student's report (sprint_report.py)
         grading/sprint-N/feedback/<net_id>-scott.html  the same report with the instructor drawer
@@ -268,11 +268,12 @@ def write_csv(base, items):
     return {r["net_id"]: r for r in rows}
 
 
-def review_page(base, items, rows, sprint, points):
-    """Scott's grading dossier: every student, their scores, and the evidence behind them."""
-    from sprint_dossier import render
-    (base / "review.html").write_text(render(base, items, rows, sprint, points, CATS, final))
-    (base / "review.html").chmod(0o600)
+def review_page(base, items, rows, sprint, points, plans, growth, fairness):
+    """Scott's review page: a rail of every student, and each one's instructor report beside it."""
+    import sprint_review_shell
+    out = base / "review.html"
+    out.write_text(sprint_review_shell.render(items, rows, sprint, plans, growth, fairness, points))
+    out.chmod(0o600)
 
 
 def load_growth(sprint, net_ids, growth_dir=None):
@@ -337,7 +338,7 @@ def main():
             pdf = page.with_suffix(".pdf")
             subprocess.run(["weasyprint", "-q", str(page), str(pdf)], check=True)
             pdf.chmod(0o600)
-    review_page(base, items, rows, a.sprint, points)
+    review_page(base, items, rows, a.sprint, points, plans, growth, fairness)
     low = sum(1 for r, _ in items if r.get("confidence") == "low")
     watch = sum(1 for r, _ in items if r.get("watch_loom"))
     print(f"{len(items)} graded, {low} low confidence, {watch} Looms to watch, "
