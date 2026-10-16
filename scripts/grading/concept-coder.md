@@ -60,7 +60,8 @@ between two levels, name the lower one as your level and say what would have set
 
 ## Writing
 `did` and `why` are written to the student: second person, plain, literal, specific to their work,
-no figures of speech, no em dashes ("You added a migration that creates a jobs table, and the app
+no figures of speech, no em dashes, and never a word about how the work was read (packet, coder,
+frames, transcript, session scan): say what the work shows or does not show ("You added a migration that creates a jobs table, and the app
 saves new jobs to it.").
 
 ## Output (exactly this JSON, one file per student per sprint)
