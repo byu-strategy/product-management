@@ -835,12 +835,25 @@ nav.querySelectorAll(':scope>a').forEach(a=>{{
   if(!sel)return;
   const items=[...sec.querySelectorAll(sel)];if(!items.length)return;
   const sub=document.createElement('div');sub.className='sub';
-  items.forEach(el=>{{
+  const link=(el,cls)=>{{
     if(!el.id)el.id='t'+(k++);
-    const s=document.createElement('a');s.href='#'+el.id;
-    let t=label(el).trim().replace(/\s+/g,' ');s.textContent=t.length>44?t.slice(0,42)+'...':t;
-    s.onclick=()=>{{let d=el.closest('details')||el.querySelector(':scope>details');if(el.matches('details'))d=el;if(d)d.open=true}};
-    sub.append(s);
+    const s=document.createElement('a');s.href='#'+el.id;if(cls)s.className=cls;
+    let t=label(el).trim().replace(/\s+/g,' ');const v=el.querySelector('.video');if(v&&v.closest('details')===el)t+=' (video)';
+    s.textContent=t.length>44?t.slice(0,42)+'...':t;
+    // open the item and every drawer around it, so the target is visible
+    s.onclick=()=>{{for(let d=el.matches('details')?el:el.closest('details');d;d=d.parentElement.closest('details'))d.open=true}};
+    return s;
+  }};
+  items.forEach(el=>{{
+    const s=link(el);
+    const kids=el.matches('details')?[...el.querySelectorAll(':scope>.qb>details.q')]:[];
+    if(!kids.length){{sub.append(s);return}}
+    const g3=document.createElement('div');g3.className='tg3';
+    const b3=document.createElement('button');b3.className='tw3';b3.setAttribute('aria-label','Show or hide');
+    b3.onclick=()=>g3.classList.toggle('open');
+    const s3=document.createElement('div');s3.className='sub3';
+    kids.forEach(kd=>s3.append(link(kd)));
+    g3.append(b3,s,s3);sub.append(g3);
   }});
   const b=document.createElement('button');b.className='tw';b.setAttribute('aria-label','Show or hide');
   b.onclick=()=>g.classList.toggle('open');g.prepend(b);g.append(sub);g.classList.add('has');
@@ -871,6 +884,11 @@ nav.toc a.inst{color:#7a5a00}
 .sub{display:none;margin:0 0 6px}.tg.open .sub{display:block}
 nav.toc .sub a{font-size:12.5px;padding:3px 10px 3px 30px;color:var(--mute);border-left:2px solid var(--line)}
 nav.toc .sub a:hover{color:var(--ink)}
+.tg3{position:relative}.tw3{position:absolute;left:16px;top:3px;width:14px;height:18px;border:0;background:none;cursor:pointer;padding:0}
+.tw3::before{content:"";display:block;width:4px;height:4px;border-right:1.5px solid var(--mute);border-bottom:1.5px solid var(--mute);transform:rotate(-45deg);margin:6px 0 0 4px;transition:transform .15s}
+.tg3.open .tw3::before{transform:rotate(45deg)}
+.sub3{display:none}.tg3.open .sub3{display:block}
+nav.toc .sub3 a{font-size:12px;padding:2px 10px 2px 44px}
 main .qh{display:none}.tocm{display:none}
 section.sec{padding:8px 0 22px;border-bottom:1px solid var(--line);scroll-margin-top:16px}
 section.sec>h2{display:flex;justify-content:space-between;align-items:baseline;gap:14px;font-size:19px;margin:18px 0 10px}
