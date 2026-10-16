@@ -83,8 +83,9 @@ PASSAGES = HERE / "grading" / "book-passages.json"  # book_passages.py writes it
 BOOK = "https://byu-strategy.github.io/product-management/"
 
 
-def book_links(cid):
-    """Links to the book passages that teach a concept: 'Ch 5: Off the Happy Path', one per passage."""
+def book_refs(cid):
+    """The book pages that teach a concept, one per page (the page highlights every passage on it):
+    [(chapter label, section title, url)], at most three."""
     global _P
     try:
         _P
@@ -92,19 +93,27 @@ def book_links(cid):
         _P = json.loads(PASSAGES.read_text()) if PASSAGES.exists() else {}
     out, pages = [], set()
     for x in _P.get(cid or "", []):
-        if x["page"] in pages or len(pages) == 3:  # one link per page: the page highlights every passage
+        if x["page"] in pages or len(pages) == 3:
             continue
         pages.add(x["page"])
         m = re.match(r"0*(\d+b?)-", x["page"])
-        ch = f"Ch {m.group(1)}" if m else "Appendix"
         href = f'{BOOK}{x["page"]}?c={cid}' + (f'#{x["anchor"]}' if x.get("anchor") else "")
-        out.append(f'<a class=bk href="{e(href)}" target=_blank rel=noopener>{e(ch)}: {e(x.get("section", ""))}</a>')
-    return " · ".join(out)
+        out.append((f"Ch {m.group(1)}" if m else "Appendix", x.get("section", ""), href))
+    return out
 
 
-def book_line(cid):
-    links = book_links(cid)
-    return f'<p class=qm>In the book: {links}</p>' if links else ""
+def book_chips(cid):
+    """Small chapter chips that open the passage; the section title shows on hover."""
+    return "".join(f'<a class=bkc href="{e(h)}" target=_blank rel=noopener title="{e(sec)}">{e(ch)}</a>'
+                   for ch, sec, h in book_refs(cid))
+
+
+def book_name(cid, name):
+    """The concept's name, linked to its first passage, followed by its chapter chips."""
+    refs = book_refs(cid)
+    if not refs:
+        return e(name)
+    return f'<a class=bkn href="{e(refs[0][2])}" target=_blank rel=noopener>{e(name)}</a>{book_chips(cid)}'
 
 
 def load_concepts():
@@ -375,8 +384,8 @@ def commit_strip(days, by_day):
 
 # ---------------------------------------------------------------- drawers
 
-def row(title, right, body, cls=""):
-    return (f'<details class="q {cls}"><summary><span class=qn>{title}</span><span class=qr>{right}</span></summary>'
+def row(title, right, body, cls="", chips=""):
+    return (f'<details class="q {cls}"><summary><span class=qn>{title}{chips}</span><span class=qr>{right}</span></summary>'
             f'<div class=qb>{body}</div></details>')
 
 
@@ -620,8 +629,8 @@ def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott
             for m in lst:
                 link = ref_link(repo, m.get("ref"))
                 grew += row(e(m.get("name") or m["concept"]), f'<span class=qd>{e(short_date(m.get("when")))}</span>',
-                            f'<p>{e(m.get("did", ""))}</p><p class=qm>{e(m.get("evidence", ""))}{" · " + link if link else ""}</p>'
-                            + book_line(m.get("concept")))
+                            f'<p>{e(m.get("did", ""))}</p><p class=qm>{e(m.get("evidence", ""))}{" · " + link if link else ""}</p>',
+                            chips=book_chips(m.get("concept")))
         if not any_now:
             grew += "<p>No new concepts or depth were counted this sprint.</p>"
         earlier = G.get("earlier") or []
@@ -640,14 +649,14 @@ def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott
                     else:
                         link = ref_link(repo, x.get("ref"))
                         grew += row(e(x["name"]), f'<span class=qd>{e(short_date(x.get("when")))}</span>',
-                                    f'<p>{e(x.get("did", ""))}</p><p class=qm>{e(x.get("evidence", ""))}{" · " + link if link else ""}</p>'
-                                    + book_line(x.get("concept")))
+                                    f'<p>{e(x.get("did", ""))}</p><p class=qm>{e(x.get("evidence", ""))}{" · " + link if link else ""}</p>',
+                                    chips=book_chips(x.get("concept")))
         nc = G.get("not_counted") or []
         if nc:
             grew += '<div class=qax>Work not counted</div>' + "".join(
                 row(e(x.get("name") or x.get("concept", "")), "not counted",
                     (f'<p>{e(x["what"])}</p>' if x.get("what") else "") + f'<p class=qm>{e(str(x.get("why", "")).capitalize())}.</p>'.replace("..", ".")
-                    + book_line(x.get("concept")), "muted") for x in nc)
+, "muted", chips=book_chips(x.get("concept"))) for x in nc)
         g_tot = sum(float(v) for v in pts_now.values())
         n_new = len(G.get("new") or [])
         grew_right = (f'+{pt(g_tot)} this sprint · {n_new} new concept{"s" * (n_new != 1)}' if g_tot else "nothing new counted")
@@ -772,9 +781,8 @@ def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott
                 n_all += 1
                 s_ = shown_in.get(c["id"])
                 status = ("measured on the exams" if c.get("knowledge_only") else f"shown, Sprint {s_}" if s_ else "")
-                links = book_links(c["id"])
-                ap_rows += (f'<tr class="{"got" if s_ else ""}{" ko" if c.get("knowledge_only") else ""}"><td><b>{e(c["name"])}</b>'
-                            f'{"<br><span class=apb>" + links + "</span>" if links else ""}</td><td class=apd>{e(status)}</td></tr>')
+                ap_rows += (f'<tr class="{"got" if s_ else ""}{" ko" if c.get("knowledge_only") else ""}"><td><b>{book_name(c["id"], c["name"])}</b>'
+                            f'</td><td class=apd>{e(status)}</td></tr>')
     appendix = f"""
 <p><b>What a spoke means.</b> Each of the six spokes runs from 0 to 100. 100 on every spoke is a full-stack product
 builder. A spoke fills from two sources: practice, from your sprints, and knowledge, from the exams.</p>
@@ -1076,7 +1084,10 @@ table.turnin{font-size:12px;margin:4px 0 6px}table.turnin th,table.turnin td{pad
 .apt tr.api td{font-size:12.5px;font-weight:600;color:#4a5262;padding:12px 6px 4px;border-bottom:1px solid var(--line)}
 .apt tr.api span{font-weight:400;color:var(--mute);margin-left:8px}
 .apt td:first-child{padding-left:16px}.apt tr.apx td:first-child,.apt tr.api td:first-child{padding-left:10px}
-.apb{font-size:12px}.apb a,a.bk{color:#80460a;text-decoration:none;border-bottom:1px dotted #c9761d}.apb a:hover,a.bk:hover{border-bottom-style:solid}
+a.bkn{color:inherit;text-decoration:none}a.bkn:hover,a.bkn:focus-visible{text-decoration:underline;text-decoration-color:#c9761d;text-underline-offset:3px}
+a.bkc{display:inline-block;margin-left:7px;padding:0 6px;border:1px solid #efd3a8;border-radius:999px;background:#fdf6ec;
+  font-size:11px;font-weight:500;line-height:17px;color:#80460a;text-decoration:none;vertical-align:1px;white-space:nowrap}
+a.bkc:hover,a.bkc:focus-visible{background:#fcebd0;border-color:#e2933a}
 .apt tr:not(.got) b{font-weight:500;color:#4a5262}.apt tr.got b{color:var(--ink)}.apt tr.got .apd{color:var(--amber);font-weight:600}
 .apt tr.ko b{color:var(--mute)}.apd{white-space:nowrap;color:var(--mute);font-size:12.5px;text-align:right}
 @media print{
