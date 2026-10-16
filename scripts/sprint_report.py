@@ -5,10 +5,11 @@ Scott's copy, which adds a closed yellow "Instructor only" drawer at the top and
 drawers, the grader's reasons, the demo checks, the Loom stills and the transcript. Everything
 else is identical, so what Scott reviews is what the student reads.
 
-Layout (approved 2026-10-14): a title line, the score drawer, the builder profile hexagon (always
-in view), then closed drawers: How you grew, What was reviewed, What to consider for next sprint,
-Questions, and the Appendix on how the profile is computed. Native <details>, no scripts, inline
-CSS and SVG, images embedded; printing opens every drawer.
+Layout (approved 2026-10-14, revised 2026-10-15): a sticky contents list on the left and open
+sections: Summary (score, profile total, first next step, the hexagon), Score, Growth, Next steps,
+Evidence reviewed, Questions, Profile method; Scott's copy adds Instructor notes first. Detail
+(evidence, reasons, Loom stills) stays in <details>. Inline CSS and SVG, one small script that
+highlights the current section, images embedded; printing hides the contents list.
 
 Student-facing text here follows the course's feedback rules: second person, plain, literal, no
 em dashes, and it never mentions lateness, how evidence was gathered, or the baseline survey.
@@ -29,7 +30,7 @@ LEVELS = {1: "Followed", 2: "Directed", 3: "Decided", 4: "Delivered"}
 LEVEL_TEXT = {  # from depth-levels.md, in the student's terms
     1: "work on the axis follows a template, a tutorial, or the agent's defaults",
     2: "you said specifically what to build and checked that it worked",
-    3: "you challenged what the agent or the template proposed, weighed the options, and owned the trade-off, or caught and fixed what went wrong",
+    3: "you challenged what the agent or the template proposed, weighed the options, and owned the trade-off, or found a problem yourself and fixed it with a judgment about the product",
     4: "people outside your team rely on it, and you changed the work because of what they did or said"}
 # One amber ramp, light at the center to dark at the newest ring; a sprint keeps its color in every report.
 SPRINT_COLORS = {1: "#f7d39c", 2: "#efb365", 3: "#e2933a", 4: "#c9761d", 5: "#a65d10", 6: "#80460a"}
@@ -790,15 +791,15 @@ review or retro, work in a repo that is not shared, and anything the course gave
                f'<figure class=qfig>{svg}<figcaption>{cap}</figcaption></figure>')
     secs = []
     if band:
-        secs.append(("inst", "Instructor only", "not in the student copy", band, "inst"))
+        secs.append(("inst", "Instructor notes", "not in the student copy", band, "inst"))
     secs += [
         ("summary", "Summary", "", summary, ""),
-        ("score", "Your score", f'{fmt(total)} / {total_max}', score_body, ""),
-        ("grew", "How you grew", grew_right, grew, ""),
-        ("next", f"For Sprint {next_n}", f'{n_steps} step{"s" * (n_steps != 1)}' if n_steps else "", todo, ""),
-        ("reviewed", "What was reviewed", " · ".join(rev_bits), rev_body, ""),
+        ("score", "Score", f'{fmt(total)} / {total_max}', score_body, ""),
+        ("grew", "Growth", grew_right, grew, ""),
+        ("next", "Next steps", f'{n_steps} step{"s" * (n_steps != 1)}' if n_steps else "", todo, ""),
+        ("reviewed", "Evidence reviewed", " · ".join(rev_bits), rev_body, ""),
         ("questions", "Questions", "message Course Monitor", ask, ""),
-        ("appendix", "How the profile is computed", f"{n_all} concepts", appendix, "apxd"),
+        ("appendix", "Profile method", f"{n_all} concepts", appendix, "apxd"),
     ]
     short = {"score": f"{fmt(total)}/{total_max}", "grew": f"+{fmt(round(added))}" if G and added else "",
              "next": str(n_steps) if n_steps else ""}

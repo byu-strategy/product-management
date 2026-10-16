@@ -13,7 +13,7 @@ say what would have settled it.
 |---|---|---|
 | 1 | **Followed** | Work on the axis exists, but it follows the template, a tutorial, or the agent's defaults. Little sign of the student's own choices: no spec, generic prompts, no sign they checked the result. |
 | 2 | **Directed** | The student said specifically what to build and checked that it worked: a spec or acceptance criteria, specific instructions, a Loom or test showing the result works as intended. |
-| 3 | **Decided** | The student challenged what the agent or the template proposed, weighed the options, and owned the trade-off, or caught and fixed what the agent got wrong. Evidence: a decision record, a session where the student rejected or overruled the agent's proposal with a reason, a choice between named options in the session scan or the review report, a retro that explains why in their own words, a fix commit after they found a problem. |
+| 3 | **Decided** | The student challenged what the agent or the template proposed, weighed the options, and owned the trade-off, or caught and fixed what the agent got wrong. Evidence: a decision record, a session where the student rejected or overruled the agent's proposal with a reason, a choice between named options in the session scan or the review report, a retro that explains why in their own words, a fix commit after they found a problem. A fix counts only when the student found the problem (in testing, review, or use, not the agent repairing its own error in the same session) and the fix took a judgment about the product: data, access, hosting, cost, or behavior. Build errors, typos, dependency and config repairs stay at the level the rest of the work shows. |
 | 4 | **Delivered** | People outside the team use it, and the student changed the work because of what those people did or said. Evidence must come from the student's own sessions (the review report's "Users this sprint" list: reading production rows or logs about real users, handling a user's report) tied to a commit that changed the work. Shipping to production alone is not level 4, and users named only in the retro or the review's prose do not count. |
 
 Rules: the evidence rules in `builder-inventory.md` apply (checkable evidence; this sprint only;
@@ -33,7 +33,7 @@ them reported a failure.
 **Application Architecture.** Level 1: the template's database and deploy, unchanged. Level 2: a
 migration adding a table the app reads and writes, with a test or Loom showing it work. Level 3: a
 decision record choosing a host over two named alternatives, or a commit fixing a row-level
-security rule the student found was too open. Level 4: outside users sign in and store data, and
+security rule the student found was too open. Not level 3: fixing a failed deploy, a missing environment variable, or a type error, even when the student noticed it. Level 4: outside users sign in and store data, and
 the student changed an access rule after a user reported seeing the wrong data.
 
 **AI Systems.** Level 1: a model call copied from an example. Level 2: the student measured token
