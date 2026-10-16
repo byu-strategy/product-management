@@ -50,6 +50,11 @@ between two levels, name the lower one as your level and say what would have set
 - **One decision may count on two axes** when it meets each axis's level on its own (a database
   choice weighed against product needs can be Decided on Architecture and on Discovery only if it
   holds Discovery evidence too).
+- **Whose decision it is.** A decision record supports level 3 only when the choice is the student's:
+  the student proposed it, or chose between options the agent offered and the record gives the
+  student's own reason. A record the agent wrote and the student only approved ("per Eli's approval")
+  supports level 2. A record that follows a problem the student found in use (a failed test, a real
+  user's report) counts as the student's.
 - **Discovery without talking to or watching real people is level 1** at most, however much desk
   research there is.
 

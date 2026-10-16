@@ -45,6 +45,7 @@ SIGNAL = re.compile(r"(^|/)(migrations|supabase|prisma|tests?|__tests__|\.claude
                     r"(^|/)(\.gitignore|\.env\.example|\.env\.sample|\.mcp\.json|CLAUDE\.md|vercel\.json|"
                     r"middleware\.[jt]s|schema\.prisma|\.claude/settings(\.local)?\.json)$|\.(test|spec)\.[jt]sx?$", re.I)
 SIGNAL_CHARS = 20_000
+CORE = re.compile(r"(llm|agent|tool|prompt|model|claude|openai|anthropic|chat|ai|api|route|server|handler|action|lib)[\w-]*(/|\.[jt]sx?$|\.py$)", re.I)
 SIGNAL_FILE_CHARS = 3_000
 TEXT = re.compile(r"\.(md|txt|py|js|jsx|ts|tsx|html|css|json|csv|yml|yaml|toml|sql|qmd|prisma)$|(^|/)\.(gitignore|env\.example|env\.sample)$", re.I)
 
@@ -287,7 +288,9 @@ def shipped(repo, commits, budget=SHIPPED_CHARS, image_dir=None, net_id=None, ma
     caps = {"written": PER_FILE_CHARS, "signal": SIGNAL_FILE_CHARS, "code": CODE_FILE_CHARS}
     kind = lambda n: "written" if WRITTEN.search(n) or DOCS.search(n) else "signal" if SIGNAL.search(n) else "code"
     rank = {"written": 0, "signal": 1, "code": 2}
-    order = sorted(files, key=lambda n: (rank[kind(n)], first[n][1]))
+    # Within code, the files that hold the product's logic come before UI and boilerplate.
+    core = lambda n: 0 if CORE.search(n) else 1
+    order = sorted(files, key=lambda n: (rank[kind(n)], core(n), first[n][1]))
     for name in order:
         status, k = files[name], kind(name)
         item = {"path": name, "status": status, "first_commit": first[name][0], "first_when": first[name][1]}
@@ -356,10 +359,21 @@ def build(student, sub, plan_sub, cfg, due):
         n = cfg["sprint"]
         plan_path, review_path = f"sprints/sprint-{n}-plan.md", f"sprints/sprint-{n}-review.md"
         ph, rh = history(repo, plan_path), history(repo, review_path)
+        # The window closes at the due date, or at the Canvas submission when that came later (the late
+        # policy is applied separately). Plan, review, README and every file are read as of then.
+        at = sub.get("submitted_at")
+        cutoff = max(due, local(at)) if at else due
+
+        def as_of(path, hist=None):
+            hist = history(repo, path) if hist is None else hist
+            inside = [sha for sha, t in hist if t <= cutoff]
+            return file_at(repo, path, inside[-1]) if inside else (file_at(repo, path) if not hist else None)
+
         plan_first = file_at(repo, plan_path, ph[0][0]) if ph else None
-        plan_now = file_at(repo, plan_path)
-        review = file_at(repo, review_path)
-        readme = file_at(repo, "README.md") or ""
+        plan_now = as_of(plan_path, ph)
+        review = as_of(review_path, rh)
+        readme = as_of("README.md") or ""
+        f["edited_after_window"] = [x for x, h in (("plan", ph), ("review", rh)) if any(t > cutoff for _, t in h)]
         at_due = [sha for sha, t in ph if t <= due]
         p["plan"] = {"first_commit": ph[0][1].isoformat() if ph else None, "commits": len(ph),
                      "as_committed_day_one": plan_first, "now": plan_now,
@@ -379,10 +393,6 @@ def build(student, sub, plan_sub, cfg, due):
                     "author": (c.get("author") or {}).get("login") or c["commit"]["author"]["name"],
                     "message": c["commit"]["message"].strip()[:1500]} for c in reversed(log)]
         p["commits"] = [{k: v for k, v in c.items() if k != "sha"} | {"sha": c["sha"][:7]} for c in commits]
-        # The window closes at the due date, or at the Canvas submission when that came later (the late
-        # policy is applied separately). File text is read as of then.
-        at = sub.get("submitted_at")
-        cutoff = max(due, local(at)) if at else due
         p["window_end"] = cutoff.isoformat()
         for c in p["commits"]:
             c["after_window"] = dt.datetime.fromisoformat(c["when"]) > cutoff
