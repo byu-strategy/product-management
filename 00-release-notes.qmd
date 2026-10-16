@@ -4,6 +4,27 @@ This course site is updated during the semester, and every meaningful update is 
 
 New entries appear at the top.
 
+## v2.12.0 (2026-10-16)
+
+Sprint reports can now open the exact passage that teaches each skill, and the practice exam is ready for `/learn`.
+
+- **Your builder profile, explained.** A new section on the Assessments page describes the profile in your
+  sprint reports: six areas from 0 to 100, filled by your sprint work and the exams. The syllabus, Chapter 1,
+  the Schedule and Builder Resources now point to it.
+- **Highlighted passages.** A link from your sprint report opens the chapter with the passages for that skill
+  highlighted, and a bar at the bottom steps through them. Chapters 5 and 5b are tagged so far.
+- **Practice exam.** Practice Version A is available to `/learn`, which can also take a concept id, for
+  example `/learn DE02`.
+- **Questions about your sprint report.** Reply to the Canvas comment your report came with. The Assessments
+  page now says so.
+- **Exam question types.** The Assessments page now describes the three kinds of exam question the same way
+  everywhere: know it, use it, predict it.
+- **Chapter 2.** A paragraph explains which settings file wins when two disagree.
+- **Plainer writing.** The book was edited throughout to say things directly, and a few headings were
+  renamed. Old links to them still work.
+- **Fixes and polish.** The Schedule uses class numbers for each axis, old mentions of drills and quizzes are
+  gone, and the Peer Code Review is turned in on Canvas.
+
 ## v2.11.3 (2026-10-14)
 
 Both exams now give full credit at 80% correct, and the final exam's format is set.
