@@ -33,7 +33,11 @@ Record a concept when this sprint's evidence matches its `practice` sentence.
   the packet is the version at the end of the window (`as_of` names the commit); a file marked
   `after_window` was changed only later and counts in a later sprint.
 - **Two commit identities in a repo only the student commits to** (a laptop name and a GitHub login)
-  are both the student.
+  are both the student. So are commits authored by the student's agent (`claude`, Claude Code,
+  Copilot, Cursor): directing an agent is the course's way of building.
+- **Code copied in from another repo** counts in the window it was committed only when the packet
+  dates the work after the course began (Sep 2, 2026): dated files, test fixtures, decision records,
+  commit history. With no such date, record it under `seen_not_counted`.
 - **Places named in a practice sentence are examples.** "In the README" or "in a decision record"
   says what kind of evidence fits; the same content committed elsewhere counts.
 - **Work only in a repo that is not shared** (listed in `facts.repos_named_but_not_shared`) cannot be

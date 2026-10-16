@@ -129,7 +129,9 @@ goal comfortably hit earns nothing extra.
   the "Your retro" section at the bottom of the review file (`retro_location`), five prompts:
   did you hit the goal, what did the report show you, why the plan changed if it did, actual
   difficulty and why it differed, and what will you change next sprint. In Sprint 1 it was the
-  three fields at the end of the plan file. 0 if no report is committed. Retro empty
+  three fields at the end of the plan file. Where the retro sits is not graded: a retro written in
+  the plan file, or answering an older set of prompts, is judged on what it answers, and the
+  location is never mentioned to the student. 0 if no report is committed. Retro empty
   (`retro_filled` false): at most half. Full marks need every prompt answered and a response to
   something specific the report found. When the review was run is not graded: a student may
   finish early, and a report covering 10 days is judged on what it covers. Never deduct for or

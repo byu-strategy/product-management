@@ -26,9 +26,9 @@ from sprint_config import COURSE_ID, PLAN_FIELDS, PLAN_POINTS, SPRINTS
 
 TZ = ZoneInfo("America/Denver")
 DATA = Path.home() / "hubs/courses/_data/product-management"
-SHIPPED_CHARS = 20_000      # code text per packet, about 5k tokens (written work has its own budget)
+SHIPPED_CHARS = 40_000      # code text per packet, about 10k tokens (written work has its own budget)
 PER_FILE_CHARS = 10_000     # written work (specs, decisions, discovery, evals, docs): long enough for acceptance criteria
-CODE_FILE_CHARS = 3_000     # code: enough to see what it does
+CODE_FILE_CHARS = 6_000     # code: enough to see what it does (3,000 cut off tool loops and error handling)
 # Course-provided skills and the sprint plan and review files (read separately) are skipped; a skill
 # the student wrote is their work (W2), and so is anything else they put in sprints/.
 SKIP = re.compile(r"^(sprints/sprint-\d+-(plan|review)\.md$|\.claude/skills/(eli5|learn|sprint-plan|sprint-review)/|README\.md$)|000-.*template"
@@ -377,7 +377,7 @@ def build(student, sub, plan_sub, cfg, due):
         commits = [{"sha": c["sha"], "when": local(c["commit"]["author"]["date"]).isoformat(),
                     "after_due": local(c["commit"]["author"]["date"]) > due,
                     "author": (c.get("author") or {}).get("login") or c["commit"]["author"]["name"],
-                    "message": c["commit"]["message"].strip()[:600]} for c in reversed(log)]
+                    "message": c["commit"]["message"].strip()[:1500]} for c in reversed(log)]
         p["commits"] = [{k: v for k, v in c.items() if k != "sha"} | {"sha": c["sha"][:7]} for c in commits]
         # The window closes at the due date, or at the Canvas submission when that came later (the late
         # policy is applied separately). File text is read as of then.
@@ -389,11 +389,17 @@ def build(student, sub, plan_sub, cfg, due):
         p["shipped_files"] = shipped(repo, commits, image_dir=cfg["out"] / "frames", net_id=net_id, cutoff=cutoff)
 
         f["plan_committed"] = bool(ph)
-        f["plan_changed_during_sprint"] = bool(ph) and any(
-            field(plan_first, k) != field(plan_now, k) for k in ("Goal", "Done looks like"))
+        # A change is an edited Goal or Done line, or a section added during the sprint that updates
+        # the plan ("## Scope update (Oct 6)", "## October 12 amendment", "**Amended done looks like:**").
+        change_head = re.compile(r"^\s*(?:#+\s*|\*\*)[^\n]*\b(chang|amend|updat|revis|scope)\w*", re.I | re.M)
+        added = {x.group(0).strip() for x in change_head.finditer(plan_now or "")} - \
+                {x.group(0).strip() for x in change_head.finditer(plan_first or "")}
+        added = {a for a in added if "Only if the plan changes" not in a}
+        f["plan_changed_during_sprint"] = bool(ph) and (bool(added) or any(
+            field(plan_first, k) != field(plan_now, k) for k in ("Goal", "Done looks like")))
         # "**Changes:**" from /sprint-plan, or a hand-written "**Change (Oct 6):**" with a reason.
         # The template's own placeholder line does not count.
-        f["plan_change_noted"] = any(
+        f["plan_change_noted"] = bool(ph) and bool(added) or any(
             "Only if the plan changes" not in m.group(0) for m in
             re.finditer(r"^\s*(?:#+\s*|\*\*)Changes?\b[^\n]*?:?\**\s*\S[^\n]*", plan_now or "", re.I | re.M))
         m = re.search(r"\*\*Where to see it:\*\*\s*(.+)", readme)
@@ -416,7 +422,8 @@ def build(student, sub, plan_sub, cfg, due):
         f["review_edited_after_first_commit"] = len(rh) > 1
         m = re.search(r"\*\*Window:\*\*\s*\S+\s+to\s+(\S+)", review or "")
         f["review_window_end"] = m.group(1) if m else None
-        f["readme_context_filled"] = "[Your product" not in readme and "[the hats you wear" not in readme
+        m = re.search(r"## Context\n(.*?)(?=\n## |\Z)", readme, re.S)
+        f["readme_context_filled"] = bool(m) and not re.search(r"\[(the hats you wear|your product, or your part|the customer or segment|the specific person)", m.group(1), re.I)
         f["commits_after_due"] = sum(c["after_due"] for c in commits)
         f["plan_edited_after_due"] = any(t > due for _, t in ph)
     else:
@@ -480,6 +487,16 @@ def build(student, sub, plan_sub, cfg, due):
     if student.get("github_username"):
         named |= {u.lower().rstrip(".") for u in
                   re.findall(rf"(?<![\w/.-])({re.escape(student['github_username'])}/[\w.-]+)", text, re.I)}
+    # Repos named bare under any owner ("`Sisk-Labs/echo`", "private repo Sisk-Labs/echo"); kept only
+    # if the owner is a real GitHub account and the name is not a file path.
+    bare = set(re.findall(r"`([\w-]+/[\w.-]+)`", text)) | set(re.findall(r"\brepo(?:sitory)?\W{1,4}`?([\w-]+/[\w.-]+)", text, re.I))
+    for r in bare:
+        r = r.lower().rstrip(".")
+        if r in named or "." in r.split("/")[1][-6:] or r.split("/")[0] in {"src", "app", "docs", "specs", "sprints", "product", "lib",
+                                                                          "api", "public", "decisions", "design", "test", "tests"}:
+            continue
+        if gh(f"users/{r.split('/')[0]}"):
+            named.add(r)
     course = (repo_url or "").replace("https://github.com/", "").strip("/").lower()
     mine = {r for r, owner in cfg["shared"].items() if owner.lower() == (student.get("github_username") or "#").lower()}
     others = [r for r in cfg["shared"] if r.lower() != course and (r in mine or r.lower() in named)]
@@ -497,7 +514,7 @@ def build(student, sub, plan_sub, cfg, due):
         cs = [{"sha": c["sha"], "when": local(c["commit"]["author"]["date"]).isoformat(),
                "after_due": local(c["commit"]["author"]["date"]) > due,
                "author": (c.get("author") or {}).get("login") or c["commit"]["author"]["name"],
-               "message": c["commit"]["message"].strip()[:600]} for c in reversed(log)]
+               "message": c["commit"]["message"].strip()[:1500]} for c in reversed(log)]
         p["other_repos"].append({"repo": f"https://github.com/{r}",
                                  "commits": [{k: v for k, v in c.items() if k != "sha"} | {"sha": c["sha"][:7]} for c in cs],
                                  "files": shipped(r, cs, budget=20_000, cutoff=p.get("window_end") and
