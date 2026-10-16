@@ -29,7 +29,7 @@ LEVELS = {1: "Followed", 2: "Directed", 3: "Decided", 4: "Delivered"}
 LEVEL_TEXT = {  # from depth-levels.md, in the student's terms
     1: "work on the axis follows a template, a tutorial, or the agent's defaults",
     2: "you said specifically what to build and checked that it worked",
-    3: "you weighed options and owned the trade-off, or caught and fixed what went wrong",
+    3: "you challenged what the agent or the template proposed, weighed the options, and owned the trade-off, or caught and fixed what went wrong",
     4: "people outside your team rely on it, and you changed the work because of what they did or said"}
 # One amber ramp, light at the center to dark at the newest ring; a sprint keeps its color in every report.
 SPRINT_COLORS = {1: "#f7d39c", 2: "#efb365", 3: "#e2933a", 4: "#c9761d", 5: "#a65d10", 6: "#80460a"}
