@@ -1,7 +1,8 @@
 # Depth levels: how a student works on an axis (practice, one level per axis per sprint)
 
-Depth is half of the practice score on each spoke (up to 25 of the 50 practice points; on AI
-Systems, up to 12.5 of 25). A coder reads all of one sprint's evidence together (repo and commit
+Depth is 30% of the practice score on each spoke (up to 15 of the 50 practice points; on AI
+Systems, up to 7.5 of 25). Level 1 earns no points, level 2 earns 20% of the depth points, level 3
+earns 50%, and level 4 earns all of them (weighting D, decided 2026-10-16). A coder reads all of one sprint's evidence together (repo and commit
 history, the review report and its session-scan lists, the Loom, the plan, the retro) and assigns
 each axis the sprint's work touched one level. An axis the sprint did not touch gets no level.
 

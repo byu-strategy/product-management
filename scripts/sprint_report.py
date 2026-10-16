@@ -25,7 +25,9 @@ ASK_LINK = "https://slack.com/app_redirect?app=A0C2TDWPL4U&team=T097CK3UKB7"  # 
 # Flat-top hexagon, same positions as the course's builder profile charts.
 AXES = ["Discovery", "Design", "Launch and Learn", "AI Systems", "Application Architecture", "Agentic Workflow"]
 ANGLES = [-60, 0, 60, 120, 180, 240]
-PRACTICE = {"AI Systems": 25.0}  # every other axis: 50 (builder_growth.py holds the same rule)
+import sys
+sys.path.insert(0, str(HERE / "grading"))
+from builder_growth import PRACTICE, BREADTH_SHARE, LEVEL_SHARE, depth_points  # one copy of the weights
 LEVELS = {1: "Followed", 2: "Directed", 3: "Decided", 4: "Delivered"}
 LEVEL_TEXT = {  # from depth-levels.md, in the student's terms
     1: "work on the axis follows a template, a tutorial, or the agent's defaults",
@@ -582,7 +584,7 @@ def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott
                 gain = d.get("gain")
                 right = f'level {d["level"]}, {e(d.get("name") or LEVELS.get(d["level"], ""))}'
                 if gain:
-                    right += f'<span class=qp>+{pt(practice_max(ax) / 2 * (gain["to"] - gain["from"]) / 4)}</span>'
+                    right += f'<span class=qp>+{pt(depth_points(ax, gain["from"], gain["to"]))}</span>'
                 body = f'<p>{e(d.get("why", ""))}</p><p class=qm>Level {d["level"]} means {LEVEL_TEXT.get(d["level"], "")}.</p>'
                 if not gain and d.get("best_so_far", 0) >= d["level"]:
                     body += f'<p class=qm>You reached level {d["best_so_far"]} on this axis before, so this adds no points.</p>'
@@ -725,7 +727,7 @@ def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott
     for ax in [a for a in AXES if a in CL] + [a for a in CL if a not in AXES]:
         cs = CL[ax]["concepts"]
         practicable = [c for c in cs if not c.get("knowledge_only")]
-        each = practice_max(ax) / 2 / len(practicable) if practicable else 0
+        each = practice_max(ax) * BREADTH_SHARE / len(practicable) if practicable else 0
         ap_rows += (f'<tr class=apx><td colspan=2>{e(ax)} <span>practice up to {fmt(practice_max(ax))}; '
                     f'each concept {fmt(each)}</span></td></tr>')
         for c in cs:
@@ -740,14 +742,14 @@ def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott
 builder. A spoke fills from two sources: practice, from your sprints, and knowledge, from the exams.</p>
 <p><b>Reading the chart.</b> The lightest center is what you reported in the September survey; each ring outside it is one
 sprint's practice, darker for later sprints. The midterm replaces the survey center with what you show on the exam.</p>
-<p><b>Practice</b> fills up to 50 points on each spoke (25 on AI Systems, where the exams carry more of the weight). Half of
-that is breadth and half is depth.</p>
+<p><b>Practice</b> fills up to 50 points on each spoke (25 on AI Systems, where the exams carry more of the weight). Of that,
+70% is breadth and 30% is depth.</p>
 <ul>
 <li><b>Breadth</b> is the share of the axis's concepts, listed below, that your own work has shown. Each concept counts once:
 showing it again in a later sprint adds nothing.</li>
 <li><b>Depth</b> is the highest level you have worked at on the axis: 1 Followed ({LEVEL_TEXT[1]}), 2 Directed
-({LEVEL_TEXT[2]}), 3 Decided ({LEVEL_TEXT[3]}), 4 Delivered ({LEVEL_TEXT[4]}). Each level is a quarter of the depth half,
-and the highest level you have reached stays.</li>
+({LEVEL_TEXT[2]}), 3 Decided ({LEVEL_TEXT[3]}), 4 Delivered ({LEVEL_TEXT[4]}). Level 1 earns no depth points, level 2 earns 20% of
+them, level 3 earns 50%, and level 4 earns all of them. The highest level you have reached stays.</li>
 </ul>
 <p><b>Knowledge</b> fills the rest of each spoke from the exams. Concepts marked "measured on the exams" below count only there.</p>
 <p><b>How a sprint is counted.</b> Each sprint, your work is checked twice, independently, against the concepts below. A

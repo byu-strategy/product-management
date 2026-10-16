@@ -7,11 +7,14 @@ Reads, for each sprint up to --sprint, the two coders' files
   _data/.../grading/sprint-<last>/concepts/growth-<net_id>.json
 
 The spoke (decided 2026-10-14): 0 to 100 per axis, 100 = a full-stack product builder.
-- Practice fills up to PRACTICE[axis] points (50; AI Systems 25), half breadth, half depth.
+- Practice fills up to PRACTICE[axis] points (50; AI Systems 25): 70% breadth, 30% depth (weighting
+  D, decided 2026-10-16; was 50/50 with linear levels, which paid three quarters of all growth out
+  of depth by Sprint 2 and left little for Sprints 3 to 6).
   - Breadth: share of the axis's practicable concepts (not knowledge_only) shown in the student's
     own work, counted once, consensus of both coders.
   - Depth: highest level shown on the axis so far (1 Followed to 4 Delivered), the lower of the two
-    coders' levels each sprint; points = half of practice x level / 4.
+    coders' levels each sprint; points = depth share x LEVEL_SHARE[level] (1: 0, 2: 20%, 3: 50%,
+    4: 100%), so following a template earns nothing and real users are the largest step.
 - Knowledge fills the rest from the exams (exam rings are added by the exam step, not here).
 - Start (Fall 2026 only, decided 2026-10-15): until the midterm measures knowledge, the core is the
   September survey's self-rating mapped onto the knowledge share: (mean - 1) / 4 x (100 - practice
@@ -29,6 +32,8 @@ GRADING = DATA / "grading"
 PRACTICE = {"AI Systems": 25.0}          # every other axis: 50
 SURVEY = DATA / "baseline-charts-fall2026" / "students.json"
 LEVELS = {1: "Followed", 2: "Directed", 3: "Decided", 4: "Delivered"}
+BREADTH_SHARE = 0.7
+LEVEL_SHARE = {0: 0.0, 1: 0.0, 2: 0.2, 3: 0.5, 4: 1.0}
 
 
 def concepts():
@@ -43,6 +48,14 @@ def concepts():
 
 def practice_max(axis):
     return PRACTICE.get(axis, 50.0)
+
+
+def concept_points(axis, axes):
+    return practice_max(axis) * BREADTH_SHARE / axes[axis]
+
+
+def depth_points(axis, frm, to):
+    return practice_max(axis) * (1 - BREADTH_SHARE) * (LEVEL_SHARE[to] - LEVEL_SHARE[frm])
 
 
 def survey():
@@ -82,14 +95,14 @@ def growth(net_id, upto, C, axes, means=None):
         ring_b, ring_d, pts = {}, {}, {}
         for k in new:
             ax = C[k]["axis"]
-            p = (practice_max(ax) / 2) / axes[ax]
+            p = concept_points(ax, axes)
             ring_b.setdefault(ax, []).append(k)
             pts[ax] = pts.get(ax, 0) + p
         for ax in set(da) & set(db):
             lvl = min(int(da[ax]["level"]), int(db[ax]["level"]))
             prev = depth_best.get(ax, 0)
             if lvl > prev:
-                gain = (practice_max(ax) / 2) * (lvl - prev) / 4
+                gain = depth_points(ax, prev, lvl)
                 pts[ax] = pts.get(ax, 0) + gain
                 ring_d[ax] = {"from": prev, "to": lvl}
                 depth_best[ax] = lvl
@@ -99,18 +112,18 @@ def growth(net_id, upto, C, axes, means=None):
             for k in new:
                 a_, c = ba[k], C[k]
                 earlier.append({"sprint": s, "concept": k, "name": c["name"], "axis": c["axis"],
-                                "points": round((practice_max(c["axis"]) / 2) / axes[c["axis"]], 2),
+                                "points": round(concept_points(c["axis"], axes), 2),
                                 "when": a_.get("when", ""), "did": a_.get("did", ""),
                                 "evidence": a_.get("evidence", ""), "ref": a_.get("ref", "")})
             for ax, g in ring_d.items():
                 earlier.append({"sprint": s, "depth": True, "axis": ax, "level": g["to"], "name": LEVELS[g["to"]],
-                                "points": round((practice_max(ax) / 2) * (g["to"] - g["from"]) / 4, 2),
+                                "points": round(depth_points(ax, g["from"], g["to"]), 2),
                                 "why": (da[ax] if int(da[ax]["level"]) <= int(db[ax]["level"]) else db[ax]).get("why", "")})
         if s == upto:
             for k in new:
                 a, c = ba[k], C[k]
                 new_last.append({"concept": k, "name": c["name"], "item": c["item"], "axis": c["axis"],
-                                 "points": round((practice_max(c["axis"]) / 2) / axes[c["axis"]], 2),
+                                 "points": round(concept_points(c["axis"], axes), 2),
                                  "when": a.get("when", ""), "did": a.get("did", ""), "evidence": a.get("evidence", ""),
                                  "ref": a.get("ref", ""), "evidence_b": bb[k].get("evidence", "")})
             for ax in sorted(set(da) | set(db)):
