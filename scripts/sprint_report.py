@@ -31,7 +31,7 @@ LEVEL_TEXT = {  # from depth-levels.md, in the student's terms
     1: "work on the axis follows a template, a tutorial, or the agent's defaults",
     2: "you said specifically what to build and checked that it worked",
     3: "you challenged what the agent or the template proposed, weighed the options, and owned the trade-off, or found a problem yourself and fixed it with a judgment about the product",
-    4: "people outside your team rely on it, and you changed the work because of what they did or said"}
+    4: "people outside your team use it, and you changed the work because of what they did or said"}
 # One amber ramp, light at the center to dark at the newest ring; a sprint keeps its color in every report.
 SPRINT_COLORS = {1: "#f7d39c", 2: "#efb365", 3: "#e2933a", 4: "#c9761d", 5: "#a65d10", 6: "#80460a"}
 CORE_COLOR = "#fcebd0"  # the starting core: the lightest step of the same amber ramp
@@ -724,8 +724,8 @@ def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott
             ap_rows += (f'<tr class="{"got" if s_ else ""}{" ko" if c.get("knowledge_only") else ""}"><td><b>{e(c["name"])}</b>'
                         f'{"<br><span class=qm>" + e(item) + "</span>" if item else ""}</td><td class=apd>{e(status)}</td></tr>')
     appendix = f"""
-<p><b>What a spoke means.</b> Each of the six spokes runs from 0 to 100. 100 is the level the course treats as ready to be
-hired to do that kind of work. A spoke fills from two sources: practice, from your sprints, and knowledge, from the exams.</p>
+<p><b>What a spoke means.</b> Each of the six spokes runs from 0 to 100. 100 on every spoke is a full-stack product
+builder. A spoke fills from two sources: practice, from your sprints, and knowledge, from the exams.</p>
 <p><b>Practice</b> fills up to 50 points on each spoke (25 on AI Systems, where the exams carry more of the weight). Half of
 that is breadth and half is depth.</p>
 <ul>
