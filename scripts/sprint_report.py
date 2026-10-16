@@ -946,8 +946,8 @@ def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott
         cs = CL[ax]["concepts"]
         practicable = [c for c in cs if not c.get("knowledge_only")]
         each = practice_max(ax) * BREADTH_SHARE / len(practicable) if practicable else 0
-        ap_rows += ('<tr class=apg><td colspan=2></td></tr>' if ap_rows else '') + (f'<tr class=apx><td colspan=2>{e(ax)} <span>practice up to {fmt(practice_max(ax))}; '
-                    f'each concept {fmt(each)}</span></td></tr>')
+        ap_rows += ('<tr class=apg><td colspan=2></td></tr>' if ap_rows else '') + (f'<tr class=apx><td colspan=2>{e(ax)} <span>up to {fmt(practice_max(ax))} from sprints · '
+                    f'{fmt(each)} per concept</span></td></tr>')
         items = list(CL[ax]["items"]) + sorted({c.get("item") for c in cs} - set(CL[ax]["items"]), key=str)
         for code in items:
             group = [c for c in cs if c.get("item") == code]
@@ -959,31 +959,32 @@ def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott
             for c in group:
                 n_all += 1
                 s_ = shown_in.get(c["id"])
-                status = ("measured on the exams" if c.get("knowledge_only") else f"shown, Sprint {s_}" if s_ else "")
+                status = ("measured on the exams" if c.get("knowledge_only") else f"Sprint {s_}" if s_ else "")
                 ap_rows += (f'<tr class="{"got" if s_ else ""}{" ko" if c.get("knowledge_only") else ""}"><td><b>{book_name(c["id"], c["name"])}</b>'
                             f'</td><td class=apd>{e(status)}</td></tr>')
     appendix = f"""
-<p><b>What a spoke means.</b> Each of the six spokes runs from 0 to 100. 100 on every spoke is a full-stack product
-builder. A spoke fills from two sources: practice, from your sprints, and knowledge, from the exams.</p>
-<p><b>Reading the chart.</b> The lightest center is what you reported in the September survey; each ring outside it is one
-sprint's practice, darker for later sprints. The midterm replaces the survey center with what you show on the exam.</p>
-<p><b>Practice</b> fills up to 50 points on each spoke (25 on AI Systems, where the exams carry more of the weight). Of that,
-70% is breadth and 30% is depth.</p>
+<p><b>Your builder profile.</b> The six-sided chart shows the six areas a product builder works in. Each area runs from 0
+to 100, and 100 in all six is a full-stack product builder: someone who can find a problem worth solving, design and build
+the product, and get it to real users.</p>
+<p><b>Where the points come from.</b> Up to half of each area comes from your sprint work (a quarter on AI Systems), and
+the rest from the exams. Until the midterm, the center of the chart is your own rating from the September survey. Each ring
+outside it is one sprint, darker for later sprints. The midterm replaces the center with your exam result.</p>
+<p><b>Sprint work earns points two ways.</b></p>
 <ul>
-<li><b>Breadth</b> is the share of the axis's concepts, listed below, that your own work has shown. Each concept counts once:
-showing it again in a later sprint adds nothing.</li>
-<li><b>Depth</b> is the highest level you have worked at on the axis: 1 Followed ({LEVEL_TEXT[1]}), 2 Directed
-({LEVEL_TEXT[2]}), 3 Decided ({LEVEL_TEXT[3]}), 4 Delivered ({LEVEL_TEXT[4]}). Level 1 earns no depth points, level 2 earns 20% of
-them, level 3 earns 50%, and level 4 earns all of them. The highest level you have reached stays.</li>
+<li><b>Concepts:</b> the first time your work shows a concept from the list below, it earns its points (70% of an area's
+sprint points are spread across its concepts). A concept counts once.</li>
+<li><b>Depth:</b> the highest level you have worked at in an area (the other 30%). Level 1, Followed, earns nothing; level
+2, Directed, 20%; level 3, Decided, 50%; level 4, Delivered, all of it. Each report says what your level means and what
+the next one looks like.</li>
 </ul>
-<p><b>Knowledge</b> fills the rest of each spoke from the exams. Concepts marked "measured on the exams" below count only there.</p>
-<p><b>How a sprint is counted.</b> Each sprint, your work is checked twice, independently, against the concepts below. A
-concept counts only when both checks find it in work you can point to: a commit or file in a shared repo, a shared Google
-file, a live link, or a moment in your Loom. Depth uses the lower of the two levels. Work described only in your sprint
-review or retro, work in a repo that is not shared, and anything the course gave you do not count; they appear under
-"Work not counted" with the reason.</p>
-<p><b>Your profile never goes down,</b> it is not graded, and it does not change your score.</p>
-<table class=apt><tr><th>Concept</th><th>You</th></tr>{ap_rows}</table>"""
+<p><b>What counts.</b> Work you can point to: a commit or file in a shared repo, a shared Google file, a live link, or a
+moment in your Loom. Your work is checked twice, independently, and a concept counts only when both checks find it. Work
+described only in your review or retro, work in a repo that is not shared, and anything the course gave you do not count;
+they appear under "Work not counted" with the reason.</p>
+<p><b>Your profile never goes down,</b> and it does not affect your grade.</p>
+<p><b>The concept list.</b> Every concept in the course, by area and topic, with a link to where the book teaches it. The
+ones your work has shown say which sprint. Ones marked "measured on the exams" count only on the exams.</p>
+<table class=apt><tr><th>Concept</th><th>Shown</th></tr>{ap_rows}</table>"""
 
     # ---- instructor band
     band = ""
@@ -1097,7 +1098,7 @@ review or retro, work in a repo that is not shared, and anything the course gave
 const nav=document.querySelector('nav.toc');
 const pick={{score:':scope>details.q',grew:':scope>.gview:not([hidden])>details.gx,:scope>.gview:not([hidden])>.qax',next:':scope>ol.nsl>li.ns',appendix:'tr.apx'}};
 const label=el=>{{
-  if(el.matches('details'))return el.querySelector('summary .qn').textContent;
+  if(el.matches('details')){{const q=el.querySelector('summary .qn').cloneNode(true);q.querySelectorAll('.bkc').forEach(x=>x.remove());return q.textContent}}
   if(el.matches('li.ns'))return el.querySelector('.nst').textContent;
   const f=el.firstChild;return (f&&f.nodeType===3?f.textContent:(el.querySelector('td')||el).childNodes[0].textContent);
 }};
