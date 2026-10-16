@@ -89,9 +89,32 @@ points = 25 × (your percent correct ÷ 80%), up to 25. For example, 80% or high
 50% on that axis), Proficient (50% to 79%), or Strong (80% and up). The exam measures what you know
 on each axis, one part of your builder profile; your sprint work shows what you have built.
 
-Questions are application rather than recall. Expect "which of these is a leading indicator
-for this product" rather than "define leading indicator." Reading the chapters is the
-preparation; skimming them is not.
+**The three kinds of questions.** Both exams use the same three kinds, in roughly equal numbers:
+
+- **Know it** asks what something is or what it is for. Example: what does a leading indicator
+  tell you that a lagging indicator does not?
+- **Use it** gives you a short situation and asks which tool, step, or choice fits it. Example:
+  which of these is a leading indicator for this product?
+- **Predict it** describes a setup or a result and asks what will happen, or what went wrong and
+  why. Example: the team watched this metric for a month; why did it fail to warn them?
+
+Reading the chapters is the preparation; skimming them is not.
+
+## Your builder profile {#builder-profile}
+
+Your sprint reports include a builder profile: a six-sided chart with one area for each of the six
+builder axes, each scored from 0 to 100. It shows what you can do, and it is not part of your grade.
+
+- **Sprint work fills up to half of each area** (a quarter on AI Systems). It counts the concepts on
+  that axis you have shown in your own work, and the depth level of that work, from following a
+  template to changing the product because of what real users did.
+- **The exams fill the rest.** Your midterm and final results on each axis set this part.
+- **The starting center.** Until the midterm, the center of the chart is your own rating from the
+  September survey. The midterm tests three axes (Agentic Workflow, Discovery, and Design), and on
+  those three your midterm result replaces the survey rating. That can move the center up or down.
+  On the other three axes the survey rating stays the center until the final measures them.
+- **Sprint rings never shrink.** Each sprint adds a ring outside the center for what that sprint
+  showed. Once a ring is added, it stays.
 
 ## Sprints
 
@@ -587,7 +610,7 @@ Make a copy of the [Peer Code Review submission template](https://docs.google.co
 - Your written review covering architecture, code quality, security, and 3 specific suggestions
 - Notes from your hands-on testing session
 
-Submit the link to your completed Google Doc on Learning Suite.
+Submit the link to your completed Google Doc on Canvas, in the **Peer Code Review** assignment.
 
 **Grading Rubric (50 points)**
 

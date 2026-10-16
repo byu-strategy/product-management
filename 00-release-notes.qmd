@@ -267,7 +267,7 @@ One less setup step.
 
 What counts as an artifact, and one requirement removed.
 
-- **Any real artifact counts, on any of the six axes.** Go-to-market, user research, design, and workflow work count as much as code. Markdown, Word documents, slide decks, spreadsheets, PDFs, images, and live links are all fine, as long as the work is real and someone else can open it. See [Any real artifact counts](00-assessments.qmd#any-real-artifact-counts) for examples by axis.
+- **Any real artifact counts, on any of the six axes.** Go-to-market, user research, design, and workflow work count as much as code. Markdown, Word documents, slide decks, spreadsheets, PDFs, images, and live links are all fine, as long as the work is real and someone else can open it. See [Any real artifact counts](00-assessments.qmd#any-real-artifact-counts-as-output) for examples by axis.
 - **Interview notes and recordings.** Commit notes and synthesis with names removed, and keep recordings out of the repo.
 - **The five-of-six axis requirement is gone.** Your sprints no longer need to cover a set number of axes. Work where your product needs you.
 

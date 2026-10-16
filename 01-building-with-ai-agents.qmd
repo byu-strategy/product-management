@@ -81,10 +81,11 @@ precisely. That work happens before the build, in Discovery and Design. The last
 the spec, the written description an agent builds from and you check the result against
 ([Specs](06b-specs.qmd)).
 
-Each axis gets two weeks. You will rate yourself on all six this week (that first rating is your baseline) and again at the end
-of the semester, and you will get back a six-sided chart of your profile both times. The
-baseline is there so you know which axis is your weakest and
-can spend your discretionary effort there.
+Each axis gets about two weeks. You will rate yourself on all six this week, and that rating is your
+baseline. From then on, each sprint report shows your builder profile: a six-sided chart, 0 to 100
+on each axis, filled by your sprint work and the two exams. [Your builder profile](00-assessments.qmd#builder-profile)
+explains how. The baseline is there so you know which axis is your weakest and can spend your
+discretionary effort there.
 
 Agentic Workflow comes first because you need the tool before you can do anything
 else. You will ship something in week one that you do not fully understand, and that is

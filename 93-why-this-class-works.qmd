@@ -30,7 +30,7 @@ We run class as a working session rather than a lecture because that is how skil
 
 The most important idea is that low-stakes work and graded judgment are two different jobs, and they need opposite stakes.
 
-- **Low-stakes work should be safe to fail.** Quizzes, drills, and sprint check-ins exist to cause learning. They are low-stakes on purpose. The point is to make your errors early, when they cost few points and feedback can fix them. Treat them as your best preparation.
+- **Low-stakes work should be safe to fail.** The `/learn` checks and the sprint plans exist to cause learning. They are low-stakes on purpose. The point is to make your errors early, when they cost few or no points and feedback can fix them. Treat them as your best preparation.
 - **Grades are based on the real work.** Most of your grade is on building an actual product, the whole game in junior form, iterated with feedback. That is the thing worth certifying, and it is the thing employers and customers care about.
 - **No single high-stakes final.** Pressure consumes the working memory you need to perform, and it hurts your best thinking most. Weight is distributed and, where possible, retakeable, so one bad day does not determine your grade.
 - **Feedback is about the work.** Comments aimed at the task help. Praise or criticism aimed at the self, like "you're smart" or "you're behind," mostly hurts. Expect specific, task-focused feedback.

@@ -7,7 +7,7 @@ Builder axes.
 
 ![](images/diagrams/builder-axes.svg){fig-alt="A hexagon with one builder axis at each corner, clockwise from the upper left: Agentic Workflow, Discovery, Design, Launch and Learn, AI Systems, and Application Architecture, each with an icon. Faint rings inside mark levels from the center to the edge." fig-align="center" width="70%"}
 
-**How to use this.** Do not work through it top to bottom. Find your lowest axis on your baseline
+**How to use this.** Do not work through it top to bottom. Find your lowest axis on your builder
 profile, start with the one item marked **Start here**, and come back for the rest when you need
 it.
 
@@ -57,8 +57,8 @@ We track six skills, called the Builder axes:
   6. Launch and Learn, instrumentation, metrics, activation and retention,
      experiments, positioning and pricing
 
-I rated myself 1 to 5 on every axis and got back a six-sided chart of my
-profile. I am working on one axis at a time, starting with my weakest.
+My course gives me a builder profile, a six-sided chart scored 0 to 100 on
+every axis. I am working on one axis at a time, starting with my weakest.
 
 You are my tutor for Discovery: what to build, and for whom.
 
@@ -134,8 +134,8 @@ We track six skills, called the Builder axes:
   6. Launch and Learn, instrumentation, metrics, activation and retention,
      experiments, positioning and pricing
 
-I rated myself 1 to 5 on every axis and got back a six-sided chart of my
-profile. I am working on one axis at a time, starting with my weakest.
+My course gives me a builder profile, a six-sided chart scored 0 to 100 on
+every axis. I am working on one axis at a time, starting with my weakest.
 
 You are my tutor for Design: the surface and the flow.
 
@@ -218,8 +218,8 @@ We track six skills, called the Builder axes:
   6. Launch and Learn, instrumentation, metrics, activation and retention,
      experiments, positioning and pricing
 
-I rated myself 1 to 5 on every axis and got back a six-sided chart of my
-profile. I am working on one axis at a time, starting with my weakest.
+My course gives me a builder profile, a six-sided chart scored 0 to 100 on
+every axis. I am working on one axis at a time, starting with my weakest.
 
 You are my tutor for Application Architecture: how the application is
 structured, shipped, and kept safe.
@@ -301,8 +301,8 @@ We track six skills, called the Builder axes:
   6. Launch and Learn, instrumentation, metrics, activation and retention,
      experiments, positioning and pricing
 
-I rated myself 1 to 5 on every axis and got back a six-sided chart of my
-profile. I am working on one axis at a time, starting with my weakest.
+My course gives me a builder profile, a six-sided chart scored 0 to 100 on
+every axis. I am working on one axis at a time, starting with my weakest.
 
 You are my tutor for AI Systems: how the models work, and why they behave the
 way they do.
@@ -390,8 +390,8 @@ We track six skills, called the Builder axes:
   6. Launch and Learn, instrumentation, metrics, activation and retention,
      experiments, positioning and pricing
 
-I rated myself 1 to 5 on every axis and got back a six-sided chart of my
-profile. I am working on one axis at a time, starting with my weakest.
+My course gives me a builder profile, a six-sided chart scored 0 to 100 on
+every axis. I am working on one axis at a time, starting with my weakest.
 
 You are my tutor for Agentic Workflow: putting AI to work, as the way I build
 and inside the product.
@@ -474,8 +474,8 @@ We track six skills, called the Builder axes:
   6. Launch and Learn, instrumentation, metrics, activation and retention,
      experiments, positioning and pricing
 
-I rated myself 1 to 5 on every axis and got back a six-sided chart of my
-profile. I am working on one axis at a time, starting with my weakest.
+My course gives me a builder profile, a six-sided chart scored 0 to 100 on
+every axis. I am working on one axis at a time, starting with my weakest.
 
 You are my tutor for Launch and Learn: getting it in front of people and
 finding out whether it worked.

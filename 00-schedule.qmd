@@ -11,20 +11,20 @@ Below is the planned schedule. Dates, topics, and assignments may adjust as need
 
 ## The six axes
 
-The course is built around six builder skills, two weeks each. You will rate yourself on all six in week 1 and again at the end, and the chapters, the drills, and both exams are organized the same way.
+The course is built around six builder skills, about two weeks each. You rate yourself on all six in week 1, and your sprint reports then show a [builder profile](00-assessments.qmd#builder-profile) on the same six axes. The chapters, the sprints, and both exams are organized the same way.
 
 ![](images/diagrams/builder-axes.svg){fig-alt="A hexagon with one builder axis at each corner, clockwise from the upper left: Agentic Workflow, Discovery, Design, Launch and Learn, AI Systems, and Application Architecture, each with an icon. Faint rings inside mark levels from the center to the edge." fig-align="center" width="70%"}
 
-| Axis | The question it answers | Weeks |
+| Axis | The question it answers | Classes |
 |---|---|---|
 | **Agentic Workflow** | How do I put AI to work, as the way I build and inside the product? | 1–2 |
 | **Discovery** | What should I build, for whom, and should I? | 3–4 |
-| **Design** | What does the surface look like, how does it flow, and how do I write it down so an agent can build it? | 5–6b |
+| **Design** | What does the surface look like, how does it flow, and how do I write it down so an agent can build it? | 5–6 |
 | **Application Architecture** | How is it structured, shipped, and kept safe? | 7–8 |
 | **AI Systems** | How do the models work, and why do they behave the way they do? | 9–10 |
 | **Launch and Learn** | How do people find it, and did it work? | 11–12 |
 
-Agentic Workflow comes first on purpose. You will ship something in week one that you do not fully understand, and you will spend week seven learning what you shipped.
+Agentic Workflow comes first on purpose. You will ship something in week one that you do not fully understand, and you will spend classes 7 and 8 learning what you shipped.
 
 ## Weekly schedule
 
