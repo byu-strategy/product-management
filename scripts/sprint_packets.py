@@ -482,7 +482,7 @@ def build(student, sub, plan_sub, cfg, due):
     where = m.group(1) if m else ""
     text = (where + " " + " ".join(links) + " " + ((p.get("plan") or {}).get("now") or "") + " " +
             ((p.get("review") or {}).get("text") or ""))
-    named = {re.sub(r"\.git$", "", u.lower()) for u in re.findall(r"github\.com/([\w.-]+/[\w.-]+)", text)}
+    named = {re.sub(r"\.git$", "", u.lower().rstrip(".")) for u in re.findall(r"github\.com/([\w.-]+/[\w.-]+)", text)}
     # The review report names repos bare ("Spencer24601/RememberMe"); take those under the student's own account.
     if student.get("github_username"):
         named |= {u.lower().rstrip(".") for u in
