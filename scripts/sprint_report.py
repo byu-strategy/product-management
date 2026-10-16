@@ -859,7 +859,8 @@ nav.querySelectorAll(':scope>a').forEach(a=>{{
     let t=label(el).trim().replace(/\s+/g,' ');const v=el.querySelector('.video');if(v&&v.closest('details')===el)t+=' (video)';
     s.textContent=t.length>44?t.slice(0,42)+'...':t;
     // open the item and every drawer around it, so the target is visible
-    s.onclick=()=>{{for(let d=el.matches('details')?el:el.closest('details');d;d=d.parentElement.closest('details'))d.open=true}};
+    s.onclick=()=>{{for(let d=el.matches('details')?el:el.closest('details');d;d=d.parentElement.closest('details'))d.open=true;
+      el.querySelectorAll('details').forEach(x=>x.open=true)}};
     return s;
   }};
   items.forEach(el=>{{
@@ -874,8 +875,11 @@ nav.querySelectorAll(':scope>a').forEach(a=>{{
     g3.append(b3,s,s3);sub.append(g3);
   }});
   const b=document.createElement('button');b.className='tw';b.setAttribute('aria-label','Show or hide');
-  b.onclick=()=>g.classList.toggle('open');g.prepend(b);g.append(sub);g.classList.add('has');
+  const all=on=>{{g.classList.toggle('open',on);g.querySelectorAll('.tg3').forEach(x=>x.classList.toggle('open',on))}};
+  b.onclick=()=>all(!g.classList.contains('open'));a.addEventListener('click',()=>all(true));g.prepend(b);g.append(sub);g.classList.add('has');
 }});
+// Opening a drawer opens every drawer inside it, down to the last level.
+document.querySelectorAll('main details').forEach(d=>d.addEventListener('toggle',()=>{{if(d.open)d.querySelectorAll('details').forEach(x=>x.open=true)}}));
 const groups=[...nav.querySelectorAll('.tg')];
 const io=new IntersectionObserver(es=>{{es.forEach(x=>{{if(!x.isIntersecting)return;
   groups.forEach(g=>{{const on=g.querySelector(':scope>a').getAttribute('href')==='#'+x.target.id;
