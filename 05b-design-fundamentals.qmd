@@ -52,6 +52,9 @@ schedule. The example is invented for teaching.
 
 ## UI, UX, and Product Design
 
+
+:::: {.concept data-c="DE03"}
+
 **The model: user interface (UI) design is the screen; user experience (UX) design is everything a
 person goes through to reach a goal, across screens and outside them; product design covers both,
 plus the choice of problem and how the product makes money.** Each scope contains the one before
@@ -84,7 +87,13 @@ which scope you are working in.
 > change any styling. List every message the student and the coworker receive, on screen and off,
 > in order, and mark any step where one of them does not know what happens next."
 
+::::
+
+
 ## The Design Process: Diverge, Then Converge, Twice
+
+
+:::: {.concept data-c="DE24"}
 
 **The model: good design alternates between widening the options (diverging) and narrowing to one
 (converging), and it does this twice: first on the problem, then on the solution.** The UK Design
@@ -120,9 +129,15 @@ process is not linear
 > covered. Make them differ in the flow, not the styling. For each, write the steps as a numbered
 > list and say what it assumes about the student and the manager. Do not write code yet."
 
+::::
+
+
 <!-- REVIEW: dates checked 2026-10-10 on the Design Council's history page and Framework for Innovation page ("Launched in 2004"). The brief for this chapter said 2005, a date common in secondary sources; the Design Council's own pages say developed from 2003 and shared publicly from 2004, so the text follows them. -->
 
 ## Fidelity: Sketch, Wireframe, Mockup, Prototype
+
+
+:::: {.concept data-c="DE30"}
 
 **The model: fidelity is how closely a design artifact matches the shipped product. First name
 the question you need answered and the fidelity that answers it. Then make the cheapest artifact
@@ -237,7 +252,13 @@ an ASCII mockup of each screen in the flow, in the terminal, with no code writte
 before anything is built.
 :::
 
+::::
+
+
 ## Design Tools: Paper, Figma, Claude, and Code
+
+
+:::: {.concept data-c="DE30"}
 
 **The model: pick the tool by the question and by who has to work in the file with you.** Every method
 in the fidelity chart above can produce a screen; they differ in how long they take, what they make
@@ -284,7 +305,13 @@ A decision rule:
 If you are embedded on a company team, use the tool the team's designers use. Your design file is
 for them as much as for you.
 
+::::
+
+
 ## Norman's Principles of Interaction
+
+
+:::: {.concept data-c="DE09"}
 
 **The model: a person using a product must work out what they can do and then work out what
 happened. Don Norman's principles (signifiers, mapping, constraints, feedback, and a conceptual
@@ -326,7 +353,13 @@ which is why Jakob's law matters.
 > list every screen, label, and message that teaches it, and every place where what the screen
 > shows could lead a user to a different model. Do not change code yet."
 
+::::
+
+
 ## Information Architecture
+
+
+:::: {.concept data-c="DE04"}
 
 **The model: information architecture (IA) is how content is organized, named, and connected so
 people can find what they came for. Organize by how users think about the content, name things
@@ -380,13 +413,25 @@ to the wrong place is the first thing to rename.
 > in the user's words, and list every place in the app the label appears so we change it
 > everywhere."
 
+::::
+
+
 ## How People Perceive a Screen
+
+
+:::: {.concept data-c="DE07 DE08"}
 
 **The model: people see groups before they read words, move to targets at a speed set by size and
 distance, take longer to choose as the number of options grows, and can hold only a few things in
 mind at once. These are measured regularities of human perception and movement, so a screen that
 ignores them is slower for everyone.** [Interface and Flow](05-interface-and-flow.qmd#attention-and-hierarchy)
 introduced Hick's and Fitts's laws in one line each; this section states them precisely.
+
+::::
+
+
+
+:::: {.concept data-c="DE07"}
 
 #### Gestalt grouping
 
@@ -408,6 +453,12 @@ most of the work on a screen:
 Gestalt grouping is why spacing is the first tool of layout. If the space between a label and its
 own field equals the space between that label and the field above, the screen is ambiguous before
 anyone reads it. The rule of thumb: space inside a group is smaller than space between groups.
+
+::::
+
+
+
+:::: {.concept data-c="DE08"}
 
 #### Fitts's law
 
@@ -450,17 +501,35 @@ means showing information instead of making people remember it from a previous s
 shift's date and time on the confirm dialog), using defaults, and splitting a long form into short
 steps.
 
+::::
+
+
+
+:::: {.concept data-c="DE16"}
+
 **Jakob's law**, Jakob Nielsen's observation that "users spend most of their time on other sites"
 ([Nielsen, 2000](https://www.nngroup.com/articles/end-of-web-design/)), adds the user's history to
 the load: a convention people already know costs them nothing to use. [Interface and
 Flow](05-interface-and-flow.qmd#decide-once-design-systems-and-familiar-patterns) covers it.
+
+::::
+
+
+
+:::: {.concept data-c="DE07 DE08"}
 
 > "On the shift detail screen: the label 'Date' is 24px from its own field and 24px from the field
 > above, so the pairing is ambiguous (Gestalt proximity). Put labels 4px above their own field and
 > 24px below the previous field. Make Give away this shift full width and at least 48px tall at the
 > bottom (Fitts's law). Move Message manager and Add to calendar into a More menu (Hick's law)."
 
+::::
+
+
 ## Visual Design Fundamentals
+
+
+:::: {.concept data-c="DE10"}
 
 **The model: visual design is a small set of decisions made once and reused: one or two typefaces
 in a fixed type scale, a fixed spacing scale on a grid, and a small palette with one accent color
@@ -515,6 +584,12 @@ choices.
 
 ![The three scales of a visual system, with ShiftSwap values. Left, a type scale of six sizes. Middle, a spacing scale on a 4px base, used on shift cards so the space inside a card is smaller than the space between cards. Right, text colors with their contrast ratio on white, computed with the WCAG formula: the light gray passes only for large text, and the lightest gray fails.](images/diagrams/ch05b-visual-fundamentals.svg){#fig-visual-fundamentals fig-alt="Three columns. Type scale, six sizes in pixels, drawn at 1.25 times so the smallest stays legible: 30 page title, 24 section, 20 card title, 16 body text, highlighted, 14 secondary, 12 caption. Spacing scale, steps on a 4px base: bars of 4, 8, 12, 16, 24, 32, and 48. Below them, two shift cards, Monday and Thursday, marked with 16 pixels of padding, 8 pixels between the lines inside a card, and 24 pixels between the cards, so space inside a group is smaller than space between groups. Color contrast, each color on white: body text 11.0 to 1, passes; secondary text 5.9 to 1, passes; accent blue 6.9 to 1, passes; light gray 3.1 to 1, large text only; lightest gray 2.3 to 1, fails. The WCAG 2.2 minimum is 4.5 to 1 for normal text and 3 to 1 for large text." width="100%"}
 
+::::
+
+
+
+:::: {.concept data-c="DE10 DE14"}
+
 #### From decisions to tokens
 
 Each list above becomes a set of **design tokens**, the named values every component draws from
@@ -539,7 +614,13 @@ the Tailwind theme, so the agent can use only those values:
 > Check every text color against its background and report any pair below 4.5:1 for normal text or
 > 3:1 for large text."
 
+::::
+
+
 ## Nielsen's Ten Usability Heuristics
+
+
+:::: {.concept data-c="DE25"}
 
 **The model: ten broad rules of thumb, published by Jakob Nielsen in 1994, summarize what makes an
 interface usable. Reviewing a screen against all ten finds many problems before you put it in
@@ -588,6 +669,9 @@ name the three heuristics it breaks most, with the element for each. Then run th
 above on the same screen. **Compare:** which problems did only you find, and which did only the
 agent find? Fix the one that both of you ranked highest, and check it in your next usability test.
 :::
+
+::::
+
 
 ## Words Used in This Chapter
 

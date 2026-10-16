@@ -79,6 +79,34 @@ def practice_max(axis):
     return PRACTICE.get(axis, 50.0)
 
 
+PASSAGES = HERE / "grading" / "book-passages.json"  # book_passages.py writes it
+BOOK = "https://byu-strategy.github.io/product-management/"
+
+
+def book_links(cid):
+    """Links to the book passages that teach a concept: 'Ch 5: Off the Happy Path', one per passage."""
+    global _P
+    try:
+        _P
+    except NameError:
+        _P = json.loads(PASSAGES.read_text()) if PASSAGES.exists() else {}
+    out, pages = [], set()
+    for x in _P.get(cid or "", []):
+        if x["page"] in pages or len(pages) == 3:  # one link per page: the page highlights every passage
+            continue
+        pages.add(x["page"])
+        m = re.match(r"0*(\d+b?)-", x["page"])
+        ch = f"Ch {m.group(1)}" if m else "Appendix"
+        href = f'{BOOK}{x["page"]}?c={cid}' + (f'#{x["anchor"]}' if x.get("anchor") else "")
+        out.append(f'<a class=bk href="{e(href)}" target=_blank rel=noopener>{e(ch)}: {e(x.get("section", ""))}</a>')
+    return " · ".join(out)
+
+
+def book_line(cid):
+    links = book_links(cid)
+    return f'<p class=qm>In the book: {links}</p>' if links else ""
+
+
 def load_concepts():
     """Every concept on every axis, in list order. Tolerates lists without knowledge_only."""
     out = {}
@@ -592,7 +620,8 @@ def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott
             for m in lst:
                 link = ref_link(repo, m.get("ref"))
                 grew += row(e(m.get("name") or m["concept"]), f'<span class=qd>{e(short_date(m.get("when")))}</span>',
-                            f'<p>{e(m.get("did", ""))}</p><p class=qm>{e(m.get("evidence", ""))}{" · " + link if link else ""}</p>')
+                            f'<p>{e(m.get("did", ""))}</p><p class=qm>{e(m.get("evidence", ""))}{" · " + link if link else ""}</p>'
+                            + book_line(m.get("concept")))
         if not any_now:
             grew += "<p>No new concepts or depth were counted this sprint.</p>"
         earlier = G.get("earlier") or []
@@ -611,13 +640,14 @@ def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott
                     else:
                         link = ref_link(repo, x.get("ref"))
                         grew += row(e(x["name"]), f'<span class=qd>{e(short_date(x.get("when")))}</span>',
-                                    f'<p>{e(x.get("did", ""))}</p><p class=qm>{e(x.get("evidence", ""))}{" · " + link if link else ""}</p>')
+                                    f'<p>{e(x.get("did", ""))}</p><p class=qm>{e(x.get("evidence", ""))}{" · " + link if link else ""}</p>'
+                                    + book_line(x.get("concept")))
         nc = G.get("not_counted") or []
         if nc:
             grew += '<div class=qax>Work not counted</div>' + "".join(
                 row(e(x.get("name") or x.get("concept", "")), "not counted",
-                    (f'<p>{e(x["what"])}</p>' if x.get("what") else "") + f'<p class=qm>{e(str(x.get("why", "")).capitalize())}.</p>'.replace("..", "."),
-                    "muted") for x in nc)
+                    (f'<p>{e(x["what"])}</p>' if x.get("what") else "") + f'<p class=qm>{e(str(x.get("why", "")).capitalize())}.</p>'.replace("..", ".")
+                    + book_line(x.get("concept")), "muted") for x in nc)
         g_tot = sum(float(v) for v in pts_now.values())
         n_new = len(G.get("new") or [])
         grew_right = (f'+{pt(g_tot)} this sprint · {n_new} new concept{"s" * (n_new != 1)}' if g_tot else "nothing new counted")
@@ -730,13 +760,21 @@ def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott
         each = practice_max(ax) * BREADTH_SHARE / len(practicable) if practicable else 0
         ap_rows += (f'<tr class=apx><td colspan=2>{e(ax)} <span>practice up to {fmt(practice_max(ax))}; '
                     f'each concept {fmt(each)}</span></td></tr>')
-        for c in cs:
-            n_all += 1
-            s_ = shown_in.get(c["id"])
-            status = ("measured on the exams" if c.get("knowledge_only") else f"shown, Sprint {s_}" if s_ else "")
-            item = CL[ax]["items"].get(c.get("item"), "")
-            ap_rows += (f'<tr class="{"got" if s_ else ""}{" ko" if c.get("knowledge_only") else ""}"><td><b>{e(c["name"])}</b>'
-                        f'{"<br><span class=qm>" + e(item) + "</span>" if item else ""}</td><td class=apd>{e(status)}</td></tr>')
+        items = list(CL[ax]["items"]) + sorted({c.get("item") for c in cs} - set(CL[ax]["items"]), key=str)
+        for code in items:
+            group = [c for c in cs if c.get("item") == code]
+            if not group:
+                continue
+            got = sum(1 for c in group if shown_in.get(c["id"]))
+            ap_rows += (f'<tr class=api><td colspan=2>{e(CL[ax]["items"].get(code) or "Other")}'
+                        f'<span>{got} of {len(group)} shown</span></td></tr>')
+            for c in group:
+                n_all += 1
+                s_ = shown_in.get(c["id"])
+                status = ("measured on the exams" if c.get("knowledge_only") else f"shown, Sprint {s_}" if s_ else "")
+                links = book_links(c["id"])
+                ap_rows += (f'<tr class="{"got" if s_ else ""}{" ko" if c.get("knowledge_only") else ""}"><td><b>{e(c["name"])}</b>'
+                            f'{"<br><span class=apb>" + links + "</span>" if links else ""}</td><td class=apd>{e(status)}</td></tr>')
     appendix = f"""
 <p><b>What a spoke means.</b> Each of the six spokes runs from 0 to 100. 100 on every spoke is a full-stack product
 builder. A spoke fills from two sources: practice, from your sprints, and knowledge, from the exams.</p>
@@ -816,7 +854,7 @@ review or retro, work in a repo that is not shared, and anything the course gave
         whole = sum(float(v) for v in core.values()) + sum(float(v) for v in (G.get("practice_total") or {}).values())
         added = sum(float(v) for v in ((G.get("rings") or [{}])[-1].get("points") or {}).values())
         prof_line = (f'<div class=sm><span class=sml>Builder profile</span><span class=smv>{round(whole)}<small> / 600</small></span>'
-                     f'<span class=sms>+{round(added)} this sprint, {whole / 6:.0f}% of a full-stack product builder</span></div>')
+                     f'<span class=sms>+{round(added)} this sprint, {whole / 6:.0f}% towards a full-stack product builder</span></div>')
     next_line = (f'<div class=sm><span class=sml>First step for Sprint {next_n}</span><span class=smt>{steps[0][1]}</span>'
                  f'<a class=sms href="#next">all {n_steps}</a></div>') if steps else ""
     parts_ = ([f"Plan {fmt(plan_pts)}"] if sprint > 1 else []) + [f"{LABELS.get(c, c)} {fmt(final(row_, c))}" for c, _l, _m in graded]
@@ -1030,8 +1068,14 @@ svg text.v{font:600 10.5px -apple-system,Helvetica,Arial,sans-serif;fill:#1d2330
 svg text.ax{font:11px -apple-system,Helvetica,Arial,sans-serif;fill:#3d4452}svg text.ax2{font:9.5px -apple-system,Helvetica,Arial,sans-serif;fill:#8a93a3}
 table.turnin{font-size:12px;margin:4px 0 6px}table.turnin th,table.turnin td{padding:5px 6px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
 .apt{width:100%;border-collapse:collapse;font-size:13.5px;margin-top:10px}.apt th{text-align:left;font-size:11.5px;color:var(--mute);font-weight:600;padding:4px 6px;border-bottom:1px solid var(--line)}
-.apt td{padding:6px 6px;border-bottom:1px solid #f3f4f6;vertical-align:top}.apt tr.apx td{font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--mute);font-weight:600;padding-top:16px}
-.apt tr.apx span{text-transform:none;letter-spacing:0;font-weight:400;margin-left:6px}
+.apt td{padding:6px 6px;border-bottom:1px solid #f3f4f6;vertical-align:top}
+.apt tr.apx td{position:sticky;top:0;z-index:2;font-size:14px;font-weight:700;color:var(--ink);background:#fcebd0;
+  padding:9px 10px;border-top:14px solid #fff;border-bottom:2px solid #e2933a}
+.apt tr.apx span{font-size:12.5px;font-weight:400;color:#6b4a1c;margin-left:8px}
+.apt tr.api td{font-size:12.5px;font-weight:600;color:#4a5262;padding:12px 6px 4px;border-bottom:1px solid var(--line)}
+.apt tr.api span{font-weight:400;color:var(--mute);margin-left:8px}
+.apt td:first-child{padding-left:16px}.apt tr.apx td:first-child,.apt tr.api td:first-child{padding-left:10px}
+.apb{font-size:12px}.apb a,a.bk{color:#80460a;text-decoration:none;border-bottom:1px dotted #c9761d}.apb a:hover,a.bk:hover{border-bottom-style:solid}
 .apt tr:not(.got) b{font-weight:500;color:#4a5262}.apt tr.got b{color:var(--ink)}.apt tr.got .apd{color:var(--amber);font-weight:600}
 .apt tr.ko b{color:var(--mute)}.apd{white-space:nowrap;color:var(--mute);font-size:12.5px;text-align:right}
 @media print{

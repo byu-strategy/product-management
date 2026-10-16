@@ -72,6 +72,8 @@ csl: chicago-author-date.csl
 # Adds a "Learn in Claude" button to each ## section that states "**The model:**" (_extensions/learn)
 filters:
   - learn
+  # ?c=DE02 links highlight the passages tagged with that builder concept (_extensions/concepts)
+  - concepts
   # Topics | Weeks switch in the left rail; the weeks are in _weeks.yml (_extensions/week-view)
   - week-view
 

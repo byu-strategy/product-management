@@ -1,0 +1,1911 @@
+{
+ "AA01": [
+  {
+   "page": "07-anatomy-of-an-application.html",
+   "anchor": "three-places-code-runs-and-data-lives",
+   "section": "Three Places Code Runs and Data Lives",
+   "tagged": false
+  },
+  {
+   "page": "07-anatomy-of-an-application.html",
+   "anchor": "requests-connect-the-places",
+   "section": "Requests Connect the Places",
+   "tagged": false
+  }
+ ],
+ "AA03": [
+  {
+   "page": "07-anatomy-of-an-application.html",
+   "anchor": "how-the-code-works",
+   "section": "How the Code Works",
+   "tagged": false
+  },
+  {
+   "page": "07-anatomy-of-an-application.html",
+   "anchor": "the-loop-state-render-event-state",
+   "section": "The loop: state, render, event, state",
+   "tagged": false
+  }
+ ],
+ "AA04": [
+  {
+   "page": "07-anatomy-of-an-application.html",
+   "anchor": "tech-stacks-and-languages",
+   "section": "Tech Stacks and Languages",
+   "tagged": false
+  }
+ ],
+ "AA05": [
+  {
+   "page": "02-directing-the-agent.html",
+   "anchor": "deploying-a-prototype",
+   "section": "Deploying a Prototype",
+   "tagged": false
+  },
+  {
+   "page": "02-directing-the-agent.html",
+   "anchor": "deployment-with-vercel-github-pages",
+   "section": "Deployment with Vercel / GitHub Pages",
+   "tagged": false
+  }
+ ],
+ "AA06": [
+  {
+   "page": "09-version-control-testing-and-tech-debt.html",
+   "anchor": "environments-where-your-code-runs-and-which-data-it-touches",
+   "section": "Environments: Where Your Code Runs and Which Data It Touches",
+   "tagged": false
+  },
+  {
+   "page": "09-version-control-testing-and-tech-debt.html",
+   "anchor": "which-database-the-settings-decide",
+   "section": "Which database? The settings decide",
+   "tagged": false
+  }
+ ],
+ "AA07": [
+  {
+   "page": "09-version-control-testing-and-tech-debt.html",
+   "anchor": "staging-or-a-flag",
+   "section": "Staging or a flag?",
+   "tagged": false
+  }
+ ],
+ "AA08": [
+  {
+   "page": "09-version-control-testing-and-tech-debt.html",
+   "anchor": "see-what-is-happening-logs-and-error-reports",
+   "section": "See What Is Happening: Logs and Error Reports",
+   "tagged": false
+  }
+ ],
+ "AA09": [
+  {
+   "page": "08-data-and-apis.html",
+   "anchor": "the-data-model-is-the-skeleton",
+   "section": "The Data Model Is the Skeleton",
+   "tagged": false
+  }
+ ],
+ "AA10": [
+  {
+   "page": "08-data-and-apis.html",
+   "anchor": "the-data-model-is-the-skeleton",
+   "section": "The Data Model Is the Skeleton",
+   "tagged": false
+  },
+  {
+   "page": "09-version-control-testing-and-tech-debt.html",
+   "anchor": "rolling-back-a-bad-deploy",
+   "section": "Rolling Back a Bad Deploy",
+   "tagged": false
+  }
+ ],
+ "AA11": [
+  {
+   "page": "08-data-and-apis.html",
+   "anchor": "asking-the-database-a-question",
+   "section": "Asking the Database a Question",
+   "tagged": false
+  }
+ ],
+ "AA12": [
+  {
+   "page": "07-anatomy-of-an-application.html",
+   "anchor": "who-you-are-what-you-may-do",
+   "section": "Who You Are, What You May Do",
+   "tagged": false
+  }
+ ],
+ "AA13": [
+  {
+   "page": "07-anatomy-of-an-application.html",
+   "anchor": "who-you-are-what-you-may-do",
+   "section": "Who You Are, What You May Do",
+   "tagged": false
+  }
+ ],
+ "AA14": [
+  {
+   "page": "08-data-and-apis.html",
+   "anchor": "row-level-security-enforce-access-where-the-data-lives",
+   "section": "Row Level Security: Enforce Access Where the Data Lives",
+   "tagged": false
+  }
+ ],
+ "AA15": [
+  {
+   "page": "09b-tests-and-tech-debt.html",
+   "anchor": "kinds-of-tests",
+   "section": "Kinds of tests",
+   "tagged": false
+  }
+ ],
+ "AA16": [
+  {
+   "page": "07-anatomy-of-an-application.html",
+   "anchor": "how-a-request-crosses-the-internet",
+   "section": "How a Request Crosses the Internet",
+   "tagged": false
+  },
+  {
+   "page": "07-anatomy-of-an-application.html",
+   "anchor": "requests-connect-the-places",
+   "section": "Requests Connect the Places",
+   "tagged": false
+  },
+  {
+   "page": "08-data-and-apis.html",
+   "anchor": "requests-are-contracts-that-fail",
+   "section": "Requests Are Contracts That Fail",
+   "tagged": false
+  }
+ ],
+ "AA17": [
+  {
+   "page": "07-anatomy-of-an-application.html",
+   "anchor": "requests-connect-the-places",
+   "section": "Requests Connect the Places",
+   "tagged": false
+  },
+  {
+   "page": "08-data-and-apis.html",
+   "anchor": "requests-are-contracts-that-fail",
+   "section": "Requests Are Contracts That Fail",
+   "tagged": false
+  }
+ ],
+ "AA18": [
+  {
+   "page": "08-data-and-apis.html",
+   "anchor": "requests-are-contracts-that-fail",
+   "section": "Requests Are Contracts That Fail",
+   "tagged": false
+  }
+ ],
+ "AA19": [
+  {
+   "page": "11-models-in-your-product.html",
+   "anchor": "where-the-call-lives",
+   "section": "Where the Call Lives",
+   "tagged": false
+  }
+ ],
+ "AA21": [
+  {
+   "page": "08-data-and-apis.html",
+   "anchor": "secrets-and-sensitive-data",
+   "section": "Secrets and Sensitive Data",
+   "tagged": false
+  },
+  {
+   "page": "11-models-in-your-product.html",
+   "anchor": "where-the-call-lives",
+   "section": "Where the Call Lives",
+   "tagged": false
+  }
+ ],
+ "AA22": [
+  {
+   "page": "07-anatomy-of-an-application.html",
+   "anchor": "three-credentials-publishable-key-token-secret-key",
+   "section": "Three credentials: publishable key, token, secret key",
+   "tagged": false
+  },
+  {
+   "page": "07-anatomy-of-an-application.html",
+   "anchor": "supabase-introduction",
+   "section": "Supabase Introduction",
+   "tagged": false
+  }
+ ],
+ "AA23": [
+  {
+   "page": "08-data-and-apis.html",
+   "anchor": "secrets-and-sensitive-data",
+   "section": "Secrets and Sensitive Data",
+   "tagged": false
+  }
+ ],
+ "AA24": [
+  {
+   "page": "08-data-and-apis.html",
+   "anchor": "secrets-and-sensitive-data",
+   "section": "Secrets and Sensitive Data",
+   "tagged": false
+  }
+ ],
+ "AA26": [
+  {
+   "page": "09-version-control-testing-and-tech-debt.html",
+   "anchor": "git-a-time-machine-plus-parallel-copies",
+   "section": "Git: A Time Machine Plus Parallel Copies",
+   "tagged": false
+  },
+  {
+   "page": "09-version-control-testing-and-tech-debt.html",
+   "anchor": "pull-requests-the-review-gate",
+   "section": "Pull Requests: The Review Gate",
+   "tagged": false
+  },
+  {
+   "page": "09-version-control-testing-and-tech-debt.html",
+   "anchor": "trunk-based-development-small-branches-merged-often",
+   "section": "Trunk-Based Development: Small Branches, Merged Often",
+   "tagged": false
+  }
+ ],
+ "AA27": [
+  {
+   "page": "09-version-control-testing-and-tech-debt.html",
+   "anchor": "automated-checks-tests-types-and-lint",
+   "section": "Automated Checks: Tests, Types, and Lint",
+   "tagged": false
+  }
+ ],
+ "AA28": [
+  {
+   "page": "09b-tests-and-tech-debt.html",
+   "anchor": "tests-code-that-checks-your-code",
+   "section": "Tests: Code That Checks Your Code",
+   "tagged": false
+  }
+ ],
+ "AA29": [
+  {
+   "page": "09-version-control-testing-and-tech-debt.html",
+   "anchor": "rolling-back-a-bad-deploy",
+   "section": "Rolling Back a Bad Deploy",
+   "tagged": false
+  }
+ ],
+ "AS01": [
+  {
+   "page": "10-how-models-work.html",
+   "anchor": "step-1-text-becomes-tokens",
+   "section": "Step 1: Text becomes tokens",
+   "tagged": false
+  }
+ ],
+ "AS02": [
+  {
+   "page": "10-how-models-work.html",
+   "anchor": "the-context-window-is-working-memory",
+   "section": "The context window is working memory",
+   "tagged": false
+  }
+ ],
+ "AS03": [
+  {
+   "page": "10-how-models-work.html",
+   "anchor": "the-context-window-is-working-memory",
+   "section": "The context window is working memory",
+   "tagged": false
+  }
+ ],
+ "AS04": [
+  {
+   "page": "10-how-models-work.html",
+   "anchor": "step-4-the-model-predicts-the-next-token",
+   "section": "Step 4: The model predicts the next token",
+   "tagged": false
+  }
+ ],
+ "AS05": [
+  {
+   "page": "10-how-models-work.html",
+   "anchor": "the-context-window-is-working-memory",
+   "section": "The context window is working memory",
+   "tagged": false
+  }
+ ],
+ "AS06": [
+  {
+   "page": "10-how-models-work.html",
+   "anchor": "step-1-text-becomes-tokens",
+   "section": "Step 1: Text becomes tokens",
+   "tagged": false
+  }
+ ],
+ "AS07": [
+  {
+   "page": "11-models-in-your-product.html",
+   "anchor": "what-it-costs",
+   "section": "What It Costs",
+   "tagged": false
+  }
+ ],
+ "AS08": [
+  {
+   "page": "11-models-in-your-product.html",
+   "anchor": "what-it-costs",
+   "section": "What It Costs",
+   "tagged": false
+  }
+ ],
+ "AS09": [
+  {
+   "page": "11-models-in-your-product.html",
+   "anchor": "what-it-costs",
+   "section": "What It Costs",
+   "tagged": false
+  }
+ ],
+ "AS10": [
+  {
+   "page": "10-how-models-work.html",
+   "anchor": "step-3-attention-mixes-in-context",
+   "section": "Step 3: Attention mixes in context",
+   "tagged": false
+  }
+ ],
+ "AS12": [
+  {
+   "page": "10-how-models-work.html",
+   "anchor": "ai-and-machine-learning",
+   "section": "AI and Machine Learning",
+   "tagged": false
+  },
+  {
+   "page": "10-how-models-work.html",
+   "anchor": "under-the-hood-the-math",
+   "section": "Under the Hood: The Math",
+   "tagged": false
+  }
+ ],
+ "AS13": [
+  {
+   "page": "10-how-models-work.html",
+   "anchor": "step-3-attention-mixes-in-context",
+   "section": "Step 3: Attention mixes in context",
+   "tagged": false
+  }
+ ],
+ "AS14": [
+  {
+   "page": "10-how-models-work.html",
+   "anchor": "step-4-the-model-predicts-the-next-token",
+   "section": "Step 4: The model predicts the next token",
+   "tagged": false
+  }
+ ],
+ "AS15": [
+  {
+   "page": "10-how-models-work.html",
+   "anchor": "step-4-the-model-predicts-the-next-token",
+   "section": "Step 4: The model predicts the next token",
+   "tagged": false
+  }
+ ],
+ "AS16": [
+  {
+   "page": "10-how-models-work.html",
+   "anchor": "step-5-pretraining-on-huge-text",
+   "section": "Step 5: Pretraining on huge text",
+   "tagged": false
+  }
+ ],
+ "AS17": [
+  {
+   "page": "10-how-models-work.html",
+   "anchor": "step-5-pretraining-on-huge-text",
+   "section": "Step 5: Pretraining on huge text",
+   "tagged": false
+  }
+ ],
+ "AS18": [
+  {
+   "page": "10-how-models-work.html",
+   "anchor": "step-6-fine-tuning-and-human-feedback-shape-behavior",
+   "section": "Step 6: Fine-tuning and human feedback shape behavior",
+   "tagged": false
+  }
+ ],
+ "AS19": [
+  {
+   "page": "10-how-models-work.html",
+   "anchor": "step-6-fine-tuning-and-human-feedback-shape-behavior",
+   "section": "Step 6: Fine-tuning and human feedback shape behavior",
+   "tagged": false
+  }
+ ],
+ "AS20": [
+  {
+   "page": "10-how-models-work.html",
+   "anchor": "step-2-tokens-become-embeddings",
+   "section": "Step 2: Tokens become embeddings",
+   "tagged": false
+  }
+ ],
+ "AS21": [
+  {
+   "page": "11-models-in-your-product.html",
+   "anchor": "grounding-answers-in-your-data",
+   "section": "Grounding Answers in Your Data",
+   "tagged": false
+  }
+ ],
+ "AS22": [
+  {
+   "page": "11-models-in-your-product.html",
+   "anchor": "grounding-answers-in-your-data",
+   "section": "Grounding Answers in Your Data",
+   "tagged": false
+  }
+ ],
+ "AS23": [
+  {
+   "page": "11-models-in-your-product.html",
+   "anchor": "grounding-answers-in-your-data",
+   "section": "Grounding Answers in Your Data",
+   "tagged": false
+  }
+ ],
+ "AS24": [
+  {
+   "page": "10-how-models-work.html",
+   "anchor": "plausible-is-not-true",
+   "section": "Plausible is not true",
+   "tagged": false
+  }
+ ],
+ "AS25": [
+  {
+   "page": "10-how-models-work.html",
+   "anchor": "plausible-is-not-true",
+   "section": "Plausible is not true",
+   "tagged": false
+  }
+ ],
+ "AS26": [
+  {
+   "page": "10-how-models-work.html",
+   "anchor": "the-jagged-frontier",
+   "section": "The jagged frontier",
+   "tagged": false
+  }
+ ],
+ "AS27": [
+  {
+   "page": "11-models-in-your-product.html",
+   "anchor": "where-it-breaks",
+   "section": "Where It Breaks",
+   "tagged": false
+  }
+ ],
+ "AS28": [
+  {
+   "page": "11-models-in-your-product.html",
+   "anchor": "what-it-costs",
+   "section": "What It Costs",
+   "tagged": false
+  }
+ ],
+ "AS29": [
+  {
+   "page": "10-how-models-work.html",
+   "anchor": "prompting",
+   "section": "Prompting",
+   "tagged": false
+  }
+ ],
+ "AW01": [
+  {
+   "page": "01-building-with-ai-agents.html",
+   "anchor": "what-makes-an-agent-an-agent",
+   "section": "What Makes an Agent an Agent",
+   "tagged": false
+  }
+ ],
+ "AW02": [
+  {
+   "page": "01-building-with-ai-agents.html",
+   "anchor": "the-command-line",
+   "section": "The Command Line",
+   "tagged": false
+  }
+ ],
+ "AW03": [
+  {
+   "page": "01-building-with-ai-agents.html",
+   "anchor": "one-engine-many-surfaces",
+   "section": "One engine, many surfaces",
+   "tagged": false
+  }
+ ],
+ "AW04": [
+  {
+   "page": "02-directing-the-agent.html",
+   "anchor": "it-knows-only-what-it-can-see",
+   "section": "It Knows Only What It Can See",
+   "tagged": false
+  }
+ ],
+ "AW06": [
+  {
+   "page": "06b-specs.html",
+   "anchor": "the-sdd-workflow",
+   "section": "The SDD Workflow",
+   "tagged": false
+  }
+ ],
+ "AW08": [
+  {
+   "page": "02-directing-the-agent.html",
+   "anchor": "claude-code-slash-commands",
+   "section": "Claude Code: Slash Commands",
+   "tagged": false
+  }
+ ],
+ "AW09": [
+  {
+   "page": "02-directing-the-agent.html",
+   "anchor": "claude-code-skills",
+   "section": "Claude Code: Skills",
+   "tagged": false
+  }
+ ],
+ "AW10": [
+  {
+   "page": "02-directing-the-agent.html",
+   "anchor": "advice-versus-enforcement",
+   "section": "Advice Versus Enforcement",
+   "tagged": false
+  }
+ ],
+ "AW11": [
+  {
+   "page": "02-directing-the-agent.html",
+   "anchor": "advice-versus-enforcement",
+   "section": "Advice Versus Enforcement",
+   "tagged": false
+  }
+ ],
+ "AW12": [
+  {
+   "page": "02-directing-the-agent.html",
+   "anchor": "delegation-and-parallel-work",
+   "section": "Delegation and Parallel Work",
+   "tagged": false
+  }
+ ],
+ "AW13": [
+  {
+   "page": "02-directing-the-agent.html",
+   "anchor": "reach-beyond-the-repo-mcp",
+   "section": "Reach Beyond the Repo: CLI Tools, MCP, and APIs",
+   "tagged": false
+  }
+ ],
+ "AW14": [
+  {
+   "page": "02-directing-the-agent.html",
+   "anchor": "parallel-work-needs-separate-copies-of-the-files",
+   "section": "Parallel work needs separate copies of the files",
+   "tagged": false
+  },
+  {
+   "page": "02-directing-the-agent.html",
+   "anchor": "messaging-your-other-sessions",
+   "section": "Messaging your other sessions",
+   "tagged": false
+  }
+ ],
+ "AW15": [
+  {
+   "page": "02-directing-the-agent.html",
+   "anchor": "the-controls-from-tightest-to-loosest",
+   "section": "The controls, from tightest to loosest",
+   "tagged": false
+  }
+ ],
+ "AW16": [
+  {
+   "page": "02-directing-the-agent.html",
+   "anchor": "blast-radius",
+   "section": "Blast Radius",
+   "tagged": false
+  }
+ ],
+ "AW17": [
+  {
+   "page": "02-directing-the-agent.html",
+   "anchor": "done-means-you-saw-it-work",
+   "section": "Done Means You Saw It Work",
+   "tagged": false
+  }
+ ],
+ "AW18": [
+  {
+   "page": "11-models-in-your-product.html",
+   "anchor": "prompts-are-product-code",
+   "section": "Prompts Are Product Code",
+   "tagged": false
+  }
+ ],
+ "AW19": [
+  {
+   "page": "11-models-in-your-product.html",
+   "anchor": "getting-structured-output",
+   "section": "Getting Structured Output",
+   "tagged": false
+  }
+ ],
+ "AW20": [
+  {
+   "page": "11-models-in-your-product.html",
+   "anchor": "streaming",
+   "section": "Streaming",
+   "tagged": false
+  }
+ ],
+ "AW21": [
+  {
+   "page": "11-models-in-your-product.html",
+   "anchor": "where-it-breaks",
+   "section": "Where It Breaks",
+   "tagged": false
+  }
+ ],
+ "AW22": [
+  {
+   "page": "11-models-in-your-product.html",
+   "anchor": "where-it-breaks",
+   "section": "Where It Breaks",
+   "tagged": false
+  }
+ ],
+ "AW23": [
+  {
+   "page": "11-models-in-your-product.html",
+   "anchor": "tools-and-agent-loops",
+   "section": "Tools and Agent Loops",
+   "tagged": false
+  }
+ ],
+ "AW24": [
+  {
+   "page": "11-models-in-your-product.html",
+   "anchor": "evals-knowing-whether-it-works",
+   "section": "Evals: Knowing Whether It Works",
+   "tagged": false
+  }
+ ],
+ "AW26": [
+  {
+   "page": "02-directing-the-agent.html",
+   "anchor": "plugins-a-package-not-a-route",
+   "section": "Plugins: a package, not a route",
+   "tagged": false
+  }
+ ],
+ "AW27": [
+  {
+   "page": "02-directing-the-agent.html",
+   "anchor": "the-controls-from-tightest-to-loosest",
+   "section": "The controls, from tightest to loosest",
+   "tagged": false
+  }
+ ],
+ "DE01": [
+  {
+   "page": "05-interface-and-flow.html",
+   "anchor": "flows-before-screens",
+   "section": "Flows Before Screens",
+   "tagged": true,
+   "covers": [
+    "flows-before-screens",
+    "the-building-blocks",
+    "worked-example-posting-a-shift-on-shiftswap"
+   ]
+  }
+ ],
+ "DE02": [
+  {
+   "page": "05-interface-and-flow.html",
+   "anchor": "off-the-happy-path",
+   "section": "Off the Happy Path",
+   "tagged": true,
+   "covers": [
+    "off-the-happy-path",
+    "the-building-blocks-2",
+    "worked-example-my-shifts-in-four-states"
+   ]
+  }
+ ],
+ "DE03": [
+  {
+   "page": "05-interface-and-flow.html",
+   "anchor": "why-this-matters",
+   "section": "Why This Matters",
+   "tagged": true,
+   "covers": [
+    "why-this-matters"
+   ]
+  },
+  {
+   "page": "05b-design-fundamentals.html",
+   "anchor": "ui-ux-and-product-design",
+   "section": "UI, UX, and Product Design",
+   "tagged": true,
+   "covers": [
+    "ui-ux-and-product-design"
+   ]
+  }
+ ],
+ "DE04": [
+  {
+   "page": "05b-design-fundamentals.html",
+   "anchor": "information-architecture",
+   "section": "Information Architecture",
+   "tagged": true,
+   "covers": [
+    "information-architecture",
+    "two-methods-card-sorting-and-tree-testing"
+   ]
+  }
+ ],
+ "DE05": [
+  {
+   "page": "05-interface-and-flow.html",
+   "anchor": "designing-for-an-uncertain-ai",
+   "section": "Designing for an Uncertain AI",
+   "tagged": true,
+   "covers": [
+    "designing-for-an-uncertain-ai",
+    "the-building-blocks-6",
+    "worked-example-reading-the-schedule-photo"
+   ]
+  }
+ ],
+ "DE06": [
+  {
+   "page": "05-interface-and-flow.html",
+   "anchor": "attention-and-hierarchy",
+   "section": "Attention and Hierarchy",
+   "tagged": true,
+   "covers": [
+    "attention-and-hierarchy",
+    "the-building-blocks-1",
+    "worked-example-the-shiftswap-shift-detail-screen"
+   ]
+  }
+ ],
+ "DE07": [
+  {
+   "page": "05b-design-fundamentals.html",
+   "anchor": "how-people-perceive-a-screen",
+   "section": "How People Perceive a Screen",
+   "tagged": true,
+   "covers": [
+    "how-people-perceive-a-screen"
+   ]
+  },
+  {
+   "page": "05b-design-fundamentals.html",
+   "anchor": "gestalt-grouping",
+   "section": "How People Perceive a Screen",
+   "tagged": true,
+   "covers": [
+    "how-people-perceive-a-screen",
+    "gestalt-grouping"
+   ]
+  },
+  {
+   "page": "05b-design-fundamentals.html",
+   "anchor": "cognitive-load-and-jakobs-law",
+   "section": "How People Perceive a Screen",
+   "tagged": true,
+   "covers": [
+    "how-people-perceive-a-screen",
+    "cognitive-load-and-jakobs-law"
+   ]
+  }
+ ],
+ "DE08": [
+  {
+   "page": "05-interface-and-flow.html",
+   "anchor": "the-building-blocks-1",
+   "section": "Attention and Hierarchy",
+   "tagged": true,
+   "covers": [
+    "attention-and-hierarchy",
+    "the-building-blocks-1"
+   ]
+  },
+  {
+   "page": "05b-design-fundamentals.html",
+   "anchor": "how-people-perceive-a-screen",
+   "section": "How People Perceive a Screen",
+   "tagged": true,
+   "covers": [
+    "how-people-perceive-a-screen"
+   ]
+  },
+  {
+   "page": "05b-design-fundamentals.html",
+   "anchor": "fittss-law",
+   "section": "How People Perceive a Screen",
+   "tagged": true,
+   "covers": [
+    "how-people-perceive-a-screen",
+    "gestalt-grouping",
+    "fittss-law",
+    "hicks-law",
+    "cognitive-load-and-jakobs-law"
+   ]
+  },
+  {
+   "page": "05b-design-fundamentals.html",
+   "anchor": "cognitive-load-and-jakobs-law",
+   "section": "How People Perceive a Screen",
+   "tagged": true,
+   "covers": [
+    "how-people-perceive-a-screen",
+    "cognitive-load-and-jakobs-law"
+   ]
+  }
+ ],
+ "DE09": [
+  {
+   "page": "05b-design-fundamentals.html",
+   "anchor": "normans-principles-of-interaction",
+   "section": "Norman's Principles of Interaction",
+   "tagged": true,
+   "covers": [
+    "normans-principles-of-interaction"
+   ]
+  }
+ ],
+ "DE10": [
+  {
+   "page": "05b-design-fundamentals.html",
+   "anchor": "visual-design-fundamentals",
+   "section": "Visual Design Fundamentals",
+   "tagged": true,
+   "covers": [
+    "visual-design-fundamentals",
+    "typography",
+    "layout-and-grid",
+    "color"
+   ]
+  },
+  {
+   "page": "05b-design-fundamentals.html",
+   "anchor": "from-decisions-to-tokens",
+   "section": "Visual Design Fundamentals",
+   "tagged": true,
+   "covers": [
+    "visual-design-fundamentals",
+    "color",
+    "from-decisions-to-tokens"
+   ]
+  }
+ ],
+ "DE11": [
+  {
+   "page": "05-interface-and-flow.html",
+   "anchor": "words-are-interface",
+   "section": "Words Are Interface",
+   "tagged": true,
+   "covers": [
+    "words-are-interface",
+    "the-building-blocks-3",
+    "worked-example-three-rewrites"
+   ]
+  }
+ ],
+ "DE12": [
+  {
+   "page": "05-interface-and-flow.html",
+   "anchor": "accessible-by-default",
+   "section": "Accessible by Default",
+   "tagged": true,
+   "covers": [
+    "accessible-by-default",
+    "the-building-blocks-5"
+   ]
+  }
+ ],
+ "DE13": [
+  {
+   "page": "05-interface-and-flow.html",
+   "anchor": "web-mobile-or-both",
+   "section": "Web, Mobile, or Both",
+   "tagged": true,
+   "covers": [
+    "web-mobile-or-both"
+   ]
+  },
+  {
+   "page": "05-interface-and-flow.html",
+   "anchor": "making-your-app-mobile-responsive",
+   "section": "Making Your App Mobile-Responsive",
+   "tagged": true,
+   "covers": [
+    "making-your-app-mobile-responsive",
+    "mobile-ux-essentials"
+   ]
+  }
+ ],
+ "DE14": [
+  {
+   "page": "05-interface-and-flow.html",
+   "anchor": "decide-once-design-systems-and-familiar-patterns",
+   "section": "Decide Once: Design Systems and Familiar Patterns",
+   "tagged": true,
+   "covers": [
+    "decide-once-design-systems-and-familiar-patterns"
+   ]
+  },
+  {
+   "page": "05-interface-and-flow.html",
+   "anchor": "the-building-blocks-4",
+   "section": "Decide Once: Design Systems and Familiar Patterns",
+   "tagged": true,
+   "covers": [
+    "decide-once-design-systems-and-familiar-patterns",
+    "the-building-blocks-4"
+   ]
+  },
+  {
+   "page": "05-interface-and-flow.html",
+   "anchor": "why-this-matters-more-with-an-agent",
+   "section": "Decide Once: Design Systems and Familiar Patterns",
+   "tagged": true,
+   "covers": [
+    "decide-once-design-systems-and-familiar-patterns",
+    "why-this-matters-more-with-an-agent"
+   ]
+  },
+  {
+   "page": "05b-design-fundamentals.html",
+   "anchor": "from-decisions-to-tokens",
+   "section": "Visual Design Fundamentals",
+   "tagged": true,
+   "covers": [
+    "visual-design-fundamentals",
+    "color",
+    "from-decisions-to-tokens"
+   ]
+  }
+ ],
+ "DE15": [
+  {
+   "page": "05-interface-and-flow.html",
+   "anchor": "why-this-matters-more-with-an-agent",
+   "section": "Decide Once: Design Systems and Familiar Patterns",
+   "tagged": true,
+   "covers": [
+    "decide-once-design-systems-and-familiar-patterns",
+    "the-building-blocks-4",
+    "why-this-matters-more-with-an-agent"
+   ]
+  },
+  {
+   "page": "05-interface-and-flow.html",
+   "anchor": "why-this-matters-more-with-an-agent",
+   "section": "Decide Once: Design Systems and Familiar Patterns",
+   "tagged": true,
+   "covers": [
+    "decide-once-design-systems-and-familiar-patterns",
+    "why-this-matters-more-with-an-agent"
+   ]
+  }
+ ],
+ "DE16": [
+  {
+   "page": "05-interface-and-flow.html",
+   "anchor": "decide-once-design-systems-and-familiar-patterns",
+   "section": "Decide Once: Design Systems and Familiar Patterns",
+   "tagged": true,
+   "covers": [
+    "decide-once-design-systems-and-familiar-patterns"
+   ]
+  },
+  {
+   "page": "05b-design-fundamentals.html",
+   "anchor": "cognitive-load-and-jakobs-law",
+   "section": "How People Perceive a Screen",
+   "tagged": true,
+   "covers": [
+    "how-people-perceive-a-screen",
+    "cognitive-load-and-jakobs-law"
+   ]
+  }
+ ],
+ "DE17": [
+  {
+   "page": "06b-specs.html",
+   "anchor": "user-stories",
+   "section": "User Stories",
+   "tagged": false
+  }
+ ],
+ "DE18": [
+  {
+   "page": "06b-specs.html",
+   "anchor": "acceptance-criteria",
+   "section": "Acceptance Criteria",
+   "tagged": false
+  },
+  {
+   "page": "06b-specs.html",
+   "anchor": "kiros-three-files-and-ears",
+   "section": "Kiro's three files and EARS",
+   "tagged": false
+  },
+  {
+   "page": "06b-specs.html",
+   "anchor": "the-agent-team-kits-spec-and-build-spec-skills",
+   "section": "The Agent Team Kit's spec and build-spec Skills",
+   "tagged": false
+  }
+ ],
+ "DE21": [
+  {
+   "page": "06b-specs.html",
+   "anchor": "the-agent-team-kits-spec-and-build-spec-skills",
+   "section": "The Agent Team Kit's spec and build-spec Skills",
+   "tagged": false
+  }
+ ],
+ "DE22": [
+  {
+   "page": "06b-specs.html",
+   "anchor": "the-agent-team-kits-spec-and-build-spec-skills",
+   "section": "The Agent Team Kit's spec and build-spec Skills",
+   "tagged": false
+  }
+ ],
+ "DE23": [
+  {
+   "page": "05-interface-and-flow.html",
+   "anchor": "directing-an-agent-on-design",
+   "section": "Directing an Agent on Design",
+   "tagged": true,
+   "covers": [
+    "directing-an-agent-on-design",
+    "the-building-blocks-of-a-design-instruction",
+    "taste-is-a-skill"
+   ]
+  }
+ ],
+ "DE24": [
+  {
+   "page": "05b-design-fundamentals.html",
+   "anchor": "the-design-process-diverge-then-converge-twice",
+   "section": "The Design Process: Diverge, Then Converge, Twice",
+   "tagged": true,
+   "covers": [
+    "the-design-process-diverge-then-converge-twice"
+   ]
+  }
+ ],
+ "DE25": [
+  {
+   "page": "05b-design-fundamentals.html",
+   "anchor": "nielsens-ten-usability-heuristics",
+   "section": "Nielsen's Ten Usability Heuristics",
+   "tagged": true,
+   "covers": [
+    "nielsens-ten-usability-heuristics",
+    "running-a-quick-heuristic-review-with-an-agent"
+   ]
+  }
+ ],
+ "DE26": [
+  {
+   "page": "06-testing-the-design.html",
+   "anchor": "the-curse-of-knowledge",
+   "section": "The Curse of Knowledge",
+   "tagged": false
+  },
+  {
+   "page": "06-testing-the-design.html",
+   "anchor": "what-to-observe",
+   "section": "What to Observe",
+   "tagged": false
+  }
+ ],
+ "DE27": [
+  {
+   "page": "06-testing-the-design.html",
+   "anchor": "what-is-usability-testing",
+   "section": "What is Usability Testing?",
+   "tagged": false
+  },
+  {
+   "page": "06-testing-the-design.html",
+   "anchor": "running-a-usability-test",
+   "section": "Running a Usability Test",
+   "tagged": false
+  },
+  {
+   "page": "06-testing-the-design.html",
+   "anchor": "testing-at-scale",
+   "section": "Testing at Scale",
+   "tagged": false
+  }
+ ],
+ "DE28": [
+  {
+   "page": "06-testing-the-design.html",
+   "anchor": "synthesizing-feedback",
+   "section": "Synthesizing Feedback",
+   "tagged": false
+  },
+  {
+   "page": "06-testing-the-design.html",
+   "anchor": "the-affinity-mapping-process",
+   "section": "The Affinity Mapping Process",
+   "tagged": false
+  },
+  {
+   "page": "06-testing-the-design.html",
+   "anchor": "severity-scoring",
+   "section": "Severity Scoring",
+   "tagged": false
+  }
+ ],
+ "DE29": [
+  {
+   "page": "06-testing-the-design.html",
+   "anchor": "fix-the-top-issue-and-retest",
+   "section": "Fix the top issue and retest",
+   "tagged": false
+  },
+  {
+   "page": "06-testing-the-design.html",
+   "anchor": "iteration-frameworks",
+   "section": "Iteration Frameworks",
+   "tagged": false
+  },
+  {
+   "page": "06-testing-the-design.html",
+   "anchor": "responding-to-feedback-without-overreacting",
+   "section": "Responding to Feedback Without Overreacting",
+   "tagged": false
+  }
+ ],
+ "DE30": [
+  {
+   "page": "05b-design-fundamentals.html",
+   "anchor": "fidelity-sketch-wireframe-mockup-prototype",
+   "section": "Fidelity: Sketch, Wireframe, Mockup, Prototype",
+   "tagged": true,
+   "covers": [
+    "fidelity-sketch-wireframe-mockup-prototype",
+    "fidelity-and-effort-are-separate",
+    "what-ai-changed-and-what-it-did-not"
+   ]
+  },
+  {
+   "page": "05b-design-fundamentals.html",
+   "anchor": "design-tools-paper-figma-claude-and-code",
+   "section": "Design Tools: Paper, Figma, Claude, and Code",
+   "tagged": true,
+   "covers": [
+    "design-tools-paper-figma-claude-and-code"
+   ]
+  }
+ ],
+ "DI01": [
+  {
+   "page": "04-finding-and-validating-the-problem.html",
+   "anchor": "conducting-effective-interviews",
+   "section": "Conducting Effective Interviews",
+   "tagged": false
+  }
+ ],
+ "DI02": [
+  {
+   "page": "04-finding-and-validating-the-problem.html",
+   "anchor": "the-evidence-ladder-said-did-paid",
+   "section": "The Evidence Ladder: Said, Did, Paid",
+   "tagged": false
+  }
+ ],
+ "DI03": [
+  {
+   "page": "04-finding-and-validating-the-problem.html",
+   "anchor": "interview-synthesis",
+   "section": "Interview Synthesis",
+   "tagged": false
+  }
+ ],
+ "DI04": [
+  {
+   "page": "04-finding-and-validating-the-problem.html",
+   "anchor": "problem-journaling",
+   "section": "Problem Journaling",
+   "tagged": false
+  }
+ ],
+ "DI05": [
+  {
+   "page": "04-finding-and-validating-the-problem.html",
+   "anchor": "jobs-to-be-done-framework",
+   "section": "Jobs-to-be-Done Framework",
+   "tagged": false
+  },
+  {
+   "page": "04-finding-and-validating-the-problem.html",
+   "anchor": "the-five-kinds-of-pain",
+   "section": "The Five Kinds of Pain",
+   "tagged": false
+  }
+ ],
+ "DI06": [
+  {
+   "page": "04-finding-and-validating-the-problem.html",
+   "anchor": "who-it-is-for-and-not-for",
+   "section": "Who It Is For, and Not For",
+   "tagged": false
+  }
+ ],
+ "DI07": [
+  {
+   "page": "04-finding-and-validating-the-problem.html",
+   "anchor": "who-it-is-for-and-not-for",
+   "section": "Who It Is For, and Not For",
+   "tagged": false
+  }
+ ],
+ "DI08": [
+  {
+   "page": "04-finding-and-validating-the-problem.html",
+   "anchor": "can-you-reach-them-the-access-test",
+   "section": "Can You Reach Them? The Access Test",
+   "tagged": false
+  }
+ ],
+ "DI09": [
+  {
+   "page": "04-finding-and-validating-the-problem.html",
+   "anchor": "building-personas",
+   "section": "Building Personas",
+   "tagged": false
+  }
+ ],
+ "DI10": [
+  {
+   "page": "04-finding-and-validating-the-problem.html",
+   "anchor": "discovery-is-truth-seeking",
+   "section": "Discovery Is Truth-Seeking",
+   "tagged": false
+  }
+ ],
+ "DI11": [
+  {
+   "page": "04-finding-and-validating-the-problem.html",
+   "anchor": "structure-a-messy-problem-issue-trees",
+   "section": "Structure a Messy Problem: Issue Trees",
+   "tagged": false
+  }
+ ],
+ "DI12": [
+  {
+   "page": "04-finding-and-validating-the-problem.html",
+   "anchor": "the-four-risks-and-the-riskiest-assumption",
+   "section": "The Four Risks and the Riskiest Assumption",
+   "tagged": false
+  }
+ ],
+ "DI13": [
+  {
+   "page": "04-finding-and-validating-the-problem.html",
+   "anchor": "the-four-risks-and-the-riskiest-assumption",
+   "section": "The Four Risks and the Riskiest Assumption",
+   "tagged": false
+  }
+ ],
+ "DI14": [
+  {
+   "page": "04-finding-and-validating-the-problem.html",
+   "anchor": "the-four-risks-and-the-riskiest-assumption",
+   "section": "The Four Risks and the Riskiest Assumption",
+   "tagged": false
+  }
+ ],
+ "DI15": [
+  {
+   "page": "04-finding-and-validating-the-problem.html",
+   "anchor": "the-smallest-test",
+   "section": "The Smallest Test",
+   "tagged": false
+  }
+ ],
+ "DI16": [
+  {
+   "page": "04-finding-and-validating-the-problem.html",
+   "anchor": "the-real-competitor-is-the-current-habit",
+   "section": "The Real Competitor Is the Current Habit",
+   "tagged": false
+  }
+ ],
+ "DI17": [
+  {
+   "page": "04-finding-and-validating-the-problem.html",
+   "anchor": "evaluating-your-problems",
+   "section": "Evaluating Your Problems",
+   "tagged": false
+  }
+ ],
+ "DI18": [
+  {
+   "page": "03-what-is-worth-building.html",
+   "anchor": "the-five-forces-how-wide-is-the-band",
+   "section": "The five forces: how wide is the band?",
+   "tagged": false
+  }
+ ],
+ "DI19": [
+  {
+   "page": "03-what-is-worth-building.html",
+   "anchor": "blue-oceans-widening-the-band",
+   "section": "Blue oceans: widening the band",
+   "tagged": false
+  }
+ ],
+ "DI20": [
+  {
+   "page": "03-what-is-worth-building.html",
+   "anchor": "moats-why-the-win-lasts",
+   "section": "Moats: why the win lasts",
+   "tagged": false
+  }
+ ],
+ "DI21": [
+  {
+   "page": "03-what-is-worth-building.html",
+   "anchor": "disruption-how-small-entrants-beat-leaders",
+   "section": "Disruption: how small entrants beat leaders",
+   "tagged": false
+  }
+ ],
+ "DI23": [
+  {
+   "page": "04-finding-and-validating-the-problem.html",
+   "anchor": "what-is-an-mvp",
+   "section": "What is an MVP?",
+   "tagged": false
+  },
+  {
+   "page": "04-finding-and-validating-the-problem.html",
+   "anchor": "minimum-viable-or-minimum-awesome",
+   "section": "Minimum Viable, or Minimum Awesome?",
+   "tagged": false
+  },
+  {
+   "page": "04-finding-and-validating-the-problem.html",
+   "anchor": "mvp-scoping-the-art-of-cutting",
+   "section": "MVP Scoping: The Art of Cutting",
+   "tagged": false
+  }
+ ],
+ "DI24": [
+  {
+   "page": "04-finding-and-validating-the-problem.html",
+   "anchor": "feature-prioritization",
+   "section": "Feature Prioritization",
+   "tagged": false
+  }
+ ],
+ "DI25": [
+  {
+   "page": "04-finding-and-validating-the-problem.html",
+   "anchor": "discovery-is-continuous",
+   "section": "Discovery Is Continuous",
+   "tagged": false
+  }
+ ],
+ "DI26": [
+  {
+   "page": "03-what-is-worth-building.html",
+   "anchor": "vision-before-strategy",
+   "section": "Vision before strategy",
+   "tagged": false
+  },
+  {
+   "page": "03-what-is-worth-building.html",
+   "anchor": "strategy-is-choosing-what-not-to-do",
+   "section": "Strategy is choosing what not to do",
+   "tagged": false
+  },
+  {
+   "page": "03-what-is-worth-building.html",
+   "anchor": "where-to-play-and-how-to-win",
+   "section": "Where to play, and how to win",
+   "tagged": false
+  },
+  {
+   "page": "03-what-is-worth-building.html",
+   "anchor": "putting-it-to-work",
+   "section": "Putting it to work",
+   "tagged": false
+  }
+ ],
+ "DI27": [
+  {
+   "page": "04-finding-and-validating-the-problem.html",
+   "anchor": "you-are-your-best-first-customer",
+   "section": "You Are Your Best First Customer",
+   "tagged": false
+  },
+  {
+   "page": "04-finding-and-validating-the-problem.html",
+   "anchor": "problem-journaling",
+   "section": "Problem Journaling",
+   "tagged": false
+  },
+  {
+   "page": "04-finding-and-validating-the-problem.html",
+   "anchor": "diverge-before-you-converge",
+   "section": "Diverge Before You Converge",
+   "tagged": false
+  }
+ ],
+ "DI28": [
+  {
+   "page": "03-what-is-worth-building.html",
+   "anchor": "creating-value-and-capturing-it",
+   "section": "Creating value, and capturing it",
+   "tagged": false
+  }
+ ],
+ "DI29": [
+  {
+   "page": "03-what-is-worth-building.html",
+   "anchor": "a-test-worth-memorizing-dhm",
+   "section": "A test worth memorizing: DHM",
+   "tagged": false
+  },
+  {
+   "page": "03-what-is-worth-building.html",
+   "anchor": "creating-value-and-capturing-it",
+   "section": "Creating value, and capturing it",
+   "tagged": false
+  },
+  {
+   "page": "04-finding-and-validating-the-problem.html",
+   "anchor": "your-value-proposition",
+   "section": "Your Value Proposition",
+   "tagged": false
+  }
+ ],
+ "LL01": [
+  {
+   "page": "12-going-to-market.html",
+   "anchor": "your-first-users-by-hand",
+   "section": "Your First Users, by Hand",
+   "tagged": false
+  },
+  {
+   "page": "12-going-to-market.html",
+   "anchor": "launch-iterate",
+   "section": "Launch & Iterate",
+   "tagged": false
+  },
+  {
+   "page": "14-measuring-what-matters.html",
+   "anchor": "outcomes-not-output",
+   "section": "Outcomes, not output",
+   "tagged": false
+  }
+ ],
+ "LL02": [
+  {
+   "page": "12-going-to-market.html",
+   "anchor": "launch-in-rings",
+   "section": "Launch in rings",
+   "tagged": false
+  }
+ ],
+ "LL03": [
+  {
+   "page": "14-measuring-what-matters.html",
+   "anchor": "outcomes-not-output",
+   "section": "Outcomes, not output",
+   "tagged": false
+  },
+  {
+   "page": "14-measuring-what-matters.html",
+   "anchor": "the-north-star-and-the-metrics-under-it",
+   "section": "The North Star and the metrics under it",
+   "tagged": false
+  }
+ ],
+ "LL04": [
+  {
+   "page": "14-measuring-what-matters.html",
+   "anchor": "the-north-star-and-the-metrics-under-it",
+   "section": "The North Star and the metrics under it",
+   "tagged": false
+  },
+  {
+   "page": "14-measuring-what-matters.html",
+   "anchor": "write-a-success-definition",
+   "section": "Write a success definition",
+   "tagged": false
+  },
+  {
+   "page": "12-going-to-market.html",
+   "anchor": "instrument-it-before-you-launch",
+   "section": "Instrument it before you launch",
+   "tagged": false
+  }
+ ],
+ "LL05": [
+  {
+   "page": "14-measuring-what-matters.html",
+   "anchor": "vanity-leading-and-lagging",
+   "section": "Vanity, leading, and lagging",
+   "tagged": false
+  }
+ ],
+ "LL06": [
+  {
+   "page": "14-measuring-what-matters.html",
+   "anchor": "instrument-the-core-action",
+   "section": "Instrument the Core Action",
+   "tagged": false
+  },
+  {
+   "page": "12-going-to-market.html",
+   "anchor": "instrument-it-before-you-launch",
+   "section": "Instrument it before you launch",
+   "tagged": false
+  }
+ ],
+ "LL07": [
+  {
+   "page": "14-measuring-what-matters.html",
+   "anchor": "signups-are-not-adoption",
+   "section": "Signups Are Not Adoption",
+   "tagged": false
+  },
+  {
+   "page": "14-measuring-what-matters.html",
+   "anchor": "the-funnel",
+   "section": "The funnel",
+   "tagged": false
+  },
+  {
+   "page": "14-measuring-what-matters.html",
+   "anchor": "onboarding-is-the-activation-step",
+   "section": "Onboarding is the activation step",
+   "tagged": false
+  }
+ ],
+ "LL08": [
+  {
+   "page": "14-measuring-what-matters.html",
+   "anchor": "retention-is-the-truth",
+   "section": "Retention Shows Whether It Works",
+   "tagged": false
+  },
+  {
+   "page": "14-measuring-what-matters.html",
+   "anchor": "cohorts",
+   "section": "Cohorts",
+   "tagged": false
+  },
+  {
+   "page": "14-measuring-what-matters.html",
+   "anchor": "why-totals-lie",
+   "section": "Why totals mislead",
+   "tagged": false
+  },
+  {
+   "page": "14-measuring-what-matters.html",
+   "anchor": "engagement-measures-count-people",
+   "section": "Engagement measures count people",
+   "tagged": false
+  }
+ ],
+ "LL09": [
+  {
+   "page": "14-measuring-what-matters.html",
+   "anchor": "cause-versus-coincidence",
+   "section": "Cause Versus Coincidence",
+   "tagged": false
+  },
+  {
+   "page": "14-measuring-what-matters.html",
+   "anchor": "three-ways-a-before-and-after-fools-you",
+   "section": "Three ways a before-and-after fools you",
+   "tagged": false
+  }
+ ],
+ "LL10": [
+  {
+   "page": "14-measuring-what-matters.html",
+   "anchor": "why-random-assignment-works",
+   "section": "Why random assignment works",
+   "tagged": false
+  }
+ ],
+ "LL11": [
+  {
+   "page": "14-measuring-what-matters.html",
+   "anchor": "what-to-do-with-20-users",
+   "section": "What to do with 20 users",
+   "tagged": false
+  }
+ ],
+ "LL12": [
+  {
+   "page": "12-going-to-market.html",
+   "anchor": "positioning-messaging",
+   "section": "Positioning & Messaging",
+   "tagged": false
+  },
+  {
+   "page": "12-going-to-market.html",
+   "anchor": "the-positioning-statement",
+   "section": "The positioning statement",
+   "tagged": false
+  },
+  {
+   "page": "12-going-to-market.html",
+   "anchor": "messages-that-convert",
+   "section": "Messages that convert",
+   "tagged": false
+  },
+  {
+   "page": "12-going-to-market.html",
+   "anchor": "what-ai-can-and-cannot-do-for-your-messaging",
+   "section": "What AI can and cannot do for your messaging",
+   "tagged": false
+  }
+ ],
+ "LL13": [
+  {
+   "page": "12-going-to-market.html",
+   "anchor": "pricing-and-ai-margins",
+   "section": "Pricing and AI Margins",
+   "tagged": false
+  }
+ ],
+ "LL14": [
+  {
+   "page": "12-going-to-market.html",
+   "anchor": "every-ai-call-is-a-cost",
+   "section": "Every AI call is a cost",
+   "tagged": false
+  }
+ ],
+ "LL15": [
+  {
+   "page": "13-business-models.html",
+   "anchor": "how-money-comes-in-revenue-models",
+   "section": "How Money Comes In: Revenue Models",
+   "tagged": false
+  },
+  {
+   "page": "12-going-to-market.html",
+   "anchor": "should-you-offer-a-free-tier",
+   "section": "Should you offer a free tier?",
+   "tagged": false
+  }
+ ],
+ "LL16": [
+  {
+   "page": "13-business-models.html",
+   "anchor": "what-a-business-model-is",
+   "section": "What a Business Model Is",
+   "tagged": false
+  },
+  {
+   "page": "13-business-models.html",
+   "anchor": "drafting-your-canvas-with-claude",
+   "section": "Drafting Your Canvas with Claude",
+   "tagged": false
+  }
+ ],
+ "LL17": [
+  {
+   "page": "13-business-models.html",
+   "anchor": "unit-economics-and-break-even",
+   "section": "Unit Economics and Break-Even",
+   "tagged": false
+  },
+  {
+   "page": "13-business-models.html",
+   "anchor": "turn-the-canvas-into-a-model-and-a-slide",
+   "section": "Turn the canvas into a model and a slide",
+   "tagged": false
+  }
+ ],
+ "LL18": [
+  {
+   "page": "13-business-models.html",
+   "anchor": "unit-economics-and-break-even",
+   "section": "Unit Economics and Break-Even",
+   "tagged": false
+  },
+  {
+   "page": "14-measuring-what-matters.html",
+   "anchor": "money-metrics",
+   "section": "Money Metrics",
+   "tagged": false
+  }
+ ],
+ "LL19": [
+  {
+   "page": "14-measuring-what-matters.html",
+   "anchor": "keep-change-or-kill",
+   "section": "Keep, Change, or Kill",
+   "tagged": false
+  }
+ ],
+ "LL20": [
+  {
+   "page": "12-going-to-market.html",
+   "anchor": "when-to-change-your-gtm",
+   "section": "When to change your GTM",
+   "tagged": false
+  }
+ ],
+ "LL21": [
+  {
+   "page": "14-measuring-what-matters.html",
+   "anchor": "what-to-do-with-20-users",
+   "section": "What to do with 20 users",
+   "tagged": false
+  },
+  {
+   "page": "14-measuring-what-matters.html",
+   "anchor": "asking-how-people-feel",
+   "section": "Asking How People Feel",
+   "tagged": false
+  },
+  {
+   "page": "12-going-to-market.html",
+   "anchor": "using-ai-on-launch-data",
+   "section": "Using AI on launch data",
+   "tagged": false
+  }
+ ],
+ "LL22": [
+  {
+   "page": "15-storytelling-and-the-final-demo.html",
+   "anchor": "a-story-has-a-job",
+   "section": "A story has a job",
+   "tagged": false
+  }
+ ],
+ "LL23": [
+  {
+   "page": "15-storytelling-and-the-final-demo.html",
+   "anchor": "build-a-story-database",
+   "section": "Build a story database",
+   "tagged": false
+  }
+ ],
+ "LL24": [
+  {
+   "page": "15-storytelling-and-the-final-demo.html",
+   "anchor": "techniques-that-make-a-story-land",
+   "section": "Techniques that make a story land",
+   "tagged": false
+  },
+  {
+   "page": "15-storytelling-and-the-final-demo.html",
+   "anchor": "make-it-stick",
+   "section": "Make It Stick",
+   "tagged": false
+  },
+  {
+   "page": "15-storytelling-and-the-final-demo.html",
+   "anchor": "storytelling-in-day-to-day-product-work",
+   "section": "Storytelling in day-to-day product work",
+   "tagged": false
+  }
+ ],
+ "LL25": [
+  {
+   "page": "15-storytelling-and-the-final-demo.html",
+   "anchor": "the-final-demo",
+   "section": "The Final Demo",
+   "tagged": false
+  },
+  {
+   "page": "15-storytelling-and-the-final-demo.html",
+   "anchor": "rehearse",
+   "section": "Rehearse",
+   "tagged": false
+  }
+ ],
+ "LL26": [
+  {
+   "page": "15-storytelling-and-the-final-demo.html",
+   "anchor": "winning-support-your-innovation-capital",
+   "section": "Winning Support: Your Innovation Capital",
+   "tagged": false
+  },
+  {
+   "page": "15-storytelling-and-the-final-demo.html",
+   "anchor": "amplify-make-them-believe",
+   "section": "Amplify: Make Them Believe",
+   "tagged": false
+  }
+ ],
+ "LL27": [
+  {
+   "page": "12-going-to-market.html",
+   "anchor": "who-it-is-for-the-beachhead",
+   "section": "Who It Is For: The Beachhead",
+   "tagged": false
+  }
+ ],
+ "LL28": [
+  {
+   "page": "12-going-to-market.html",
+   "anchor": "your-first-users-by-hand",
+   "section": "Your First Users, by Hand",
+   "tagged": false
+  },
+  {
+   "page": "12-going-to-market.html",
+   "anchor": "where-the-first-twenty-come-from",
+   "section": "Where the first twenty come from",
+   "tagged": false
+  },
+  {
+   "page": "12-going-to-market.html",
+   "anchor": "the-pitch-conversation",
+   "section": "The pitch conversation",
+   "tagged": false
+  },
+  {
+   "page": "12-going-to-market.html",
+   "anchor": "the-levers-of-persuasion",
+   "section": "Six principles of persuasion",
+   "tagged": false
+  }
+ ],
+ "LL29": [
+  {
+   "page": "12-going-to-market.html",
+   "anchor": "choosing-your-channel-strategy",
+   "section": "Choosing Your Channel Strategy",
+   "tagged": false
+  },
+  {
+   "page": "12-going-to-market.html",
+   "anchor": "a-second-audience-the-models",
+   "section": "A second audience: the models",
+   "tagged": false
+  }
+ ],
+ "LL30": [
+  {
+   "page": "12-going-to-market.html",
+   "anchor": "choosing-your-channel-strategy",
+   "section": "Choosing Your Channel Strategy",
+   "tagged": false
+  }
+ ]
+}

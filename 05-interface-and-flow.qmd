@@ -14,6 +14,9 @@ happens off the happy path.** The **happy path** is the run through the product 
 goes right; "off the happy path" is everything else, such as a first visit with no data, a slow
 load, or a failed save.
 
+
+:::: {.concept data-c="DE03"}
+
 It helps to be precise about what "the surface" means. Dan Olsen's UX iceberg splits it into four
 layers [@olsen2015lean]. Visual design (colors, fonts, spacing) is the only one above the
 waterline, and it is the one an agent is best at. The three underneath are where usable and
@@ -29,6 +32,9 @@ unusable products actually diverge, and they are decided before a single style i
 
 A polished screen sitting on a confused conceptual model is the most common way an AI-built
 application fails. This chapter works from the bottom of the iceberg up:
+
+::::
+
 
 | Section | The idea you should leave with |
 |---|---|
@@ -59,6 +65,9 @@ example is invented for teaching.
 :::
 
 ## Flows Before Screens
+
+
+:::: {.concept data-c="DE01"}
 
 **The model:** a flow is the sequence of steps a user takes to finish one task. Map the flow
 first, then design the screens it needs. A beautiful screen in the wrong flow is still wrong.
@@ -117,7 +126,13 @@ Do this before you ask Claude Code for any new screen in Sprint 3, and paste the
 prompt.
 :::
 
+::::
+
+
 ## Attention and Hierarchy
+
+
+:::: {.concept data-c="DE06"}
 
 **The model:** each screen gets one primary action. Size, weight, spacing, and contrast tell
 people what matters before they read a word, so use them to rank everything on the screen.
@@ -139,6 +154,9 @@ items as by emphasizing the primary one.
 | **Spacing** | Surrounded by more white space | Cramming, so groups blur together |
 | **Position** | Top, left, or where the eye lands after the last action | Burying the primary action below the fold (the part of the page you must scroll to see) |
 
+
+::: {.concept data-c="DE08"}
+
 Three principles from Jon Yablonski's [Laws of UX](https://lawsofux.com/) explain why the ranking
 matters:
 
@@ -148,6 +166,9 @@ matters:
   should be big and close to where the user's attention (or thumb) already is.
 - **Von Restorff effect**: the item that differs from its neighbors is the one noticed and
   remembered. Make the primary action the one that differs.
+
+:::
+
 
 #### Worked example: the ShiftSwap shift detail screen
 
@@ -175,7 +196,13 @@ screen in grayscale first is a good second check: if the hierarchy only works be
 is fragile.
 :::
 
+::::
+
+
 ## Off the Happy Path
+
+
+:::: {.concept data-c="DE02"}
 
 **The model:** a screen is a picture of the app's current state, and the app has more states than
 the one you demoed. Empty, loading, error, and partial states are where users get stuck. Design
@@ -253,7 +280,13 @@ the raw text of an exception for the error state. Find the worst of the four in 
 it this sprint.
 :::
 
+::::
+
+
 ## Words Are Interface
+
+
+:::: {.concept data-c="DE11"}
 
 **The model:** labels, buttons, and messages are the instructions for using your product. They
 tell people what will happen and what to do next. Specific beats clever.
@@ -298,11 +331,23 @@ Open your app and copy out every button label, every heading, and the text of on
 says what happened and what to do.
 :::
 
+::::
+
+
 ## Decide Once: Design Systems and Familiar Patterns
+
+
+:::: {.concept data-c="DE14 DE16"}
 
 **The model:** a design system makes each design decision one time, so a button looks and behaves
 the same everywhere. Familiar patterns beat novel ones, because users bring their expectations
 from every other app they use.
+
+::::
+
+
+
+:::: {.concept data-c="DE16"}
 
 **Jakob's Law** (from Laws of UX) states the second half: users spend most of their time in other
 products, so they expect yours to work the same way. A trash-can icon deletes, a gear opens
@@ -310,6 +355,12 @@ settings, swiping left on a list row reveals actions on a phone. Every place you
 convention, the user has to spend time learning it. The [Apple Human Interface
 Guidelines](https://developer.apple.com/design/human-interface-guidelines/) are the canonical
 reference for what those conventions are on Apple platforms.
+
+::::
+
+
+
+:::: {.concept data-c="DE14"}
 
 #### The building blocks
 
@@ -323,6 +374,12 @@ reference for what those conventions are on Apple platforms.
 
 Refactoring UI's advice to **limit your choices** is the same idea at small scale: pick a short
 spacing scale and type scale up front and use only those, so you never decide "14px or 15px?" again.
+
+::::
+
+
+
+:::: {.concept data-c="DE15"}
 
 #### Why this matters more with an agent
 
@@ -358,15 +415,27 @@ An analogy: a design system is the house style guide a newspaper gives every rep
 hundred writers produce one paper. Where it breaks: a style guide is advice a reporter can ignore,
 while a component library makes the right choice the easiest one to type.
 
+::::
+
+
+
+:::: {.concept data-c="DE14 DE15"}
+
 ::: {.callout-tip title="Try it"}
 Open three screens of your app side by side. **Find the inconsistencies:** count how many
 different button styles, text sizes, and gray colors you see. Then write five design rules for your
 `CLAUDE.md` like the ones above, and ask Claude Code to bring one screen into line with them.
 :::
 
+::::
+
+
 <!-- learn -->
 
 ## Accessible by Default
+
+
+:::: {.concept data-c="DE12"}
 
 **The model:** sufficient contrast, full keyboard use, and screen-reader support are the
 baseline, the same as the app not crashing. Building them in from the start makes the product
@@ -408,7 +477,13 @@ semantic HTML and our existing components." The full checklist is in the
 [Engineering Checklist](95-eng-checklist.qmd).
 :::
 
+::::
+
+
 ## Designing for an Uncertain AI
+
+
+:::: {.concept data-c="DE05"}
 
 **The model:** when your product's output can be wrong, design for that. Set expectations, show
 where an answer came from, let people edit and undo, and keep a human on the decisions that
@@ -458,7 +533,13 @@ five blocks above. Which one is missing? Sketch, in words, the one change that w
 catch the mistake before it costs them anything.
 :::
 
+::::
+
+
 ## Directing an Agent on Design
+
+
+:::: {.concept data-c="DE23"}
 
 **The model:** say exactly what to change and why, with a reference. Taste is knowing what is
 wrong and being able to say it precisely.
@@ -511,9 +592,15 @@ which breaks one primary action per screen." Then turn the three sentences into 
 using the table above, and compare the result to what "make it better" produces.
 :::
 
+::::
+
+
 ## Web, Mobile, or Both
 
 <!-- MOVE: the platform decision belongs in ch07 (Anatomy of an Application) or ch12 (Going to Market) because it is an architecture and distribution choice, not a design one. Kept here in short form because students may have studied it for the Oct 20 midterm. -->
+
+
+:::: {.concept data-c="DE13"}
 
 **The model:** most student products should start as a responsive web app (a website that
 adjusts its layout to any screen size). Go to the app stores
@@ -603,7 +690,13 @@ and you have the team to support it. **React Native** fits when you need native 
 your team already knows JavaScript and React.
 :::
 
+::::
+
+
 ## Making Your App Mobile-Responsive
+
+
+:::: {.concept data-c="DE13"}
 
 **The model:** design for the small screen first, then let the layout expand at set widths
 (breakpoints). A phone layout forces the hierarchy decision, because there is room for only one
@@ -634,6 +727,9 @@ Open your app in the browser's device toolbar at 375px wide (an iPhone-sized scr
 mistakes:** anything cut off, any tap target smaller than a fingertip, any input that zooms the page
 when tapped. Fix the worst one with a precise prompt.
 :::
+
+::::
+
 
 ## How the Surface Is Built (Reference)
 

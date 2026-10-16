@@ -1,0 +1,25 @@
+/* A tagged passage (concepts.lua) is plain until a ?c= link marks it. */
+.concept { scroll-margin-top: 90px; }
+.concept-on {
+  background: #FFF8EC;
+  box-shadow: -14px 0 0 #FFF8EC, -17px 0 0 #E2933A;
+  border-radius: 2px;
+}
+.concept-on .concept-on { box-shadow: none; }
+.concept-bar {
+  position: fixed; left: 50%; bottom: 18px; transform: translateX(-50%); z-index: 1050;
+  display: flex; align-items: center; gap: .5em; max-width: calc(100vw - 32px);
+  padding: .45em .5em .45em .9em; border-radius: 999px;
+  font: 500 .88rem/1.3 system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: #1d2330; background: #fff; border: 1px solid #E8C99A;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, .12);
+}
+.concept-name { font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.concept-count { color: #6b7280; white-space: nowrap; }
+.concept-bar button {
+  width: 28px; height: 28px; border-radius: 50%; border: 1px solid #E8C99A; background: #FFF8EC;
+  font-size: 1.05rem; line-height: 1; color: #80460A; cursor: pointer;
+}
+.concept-bar button:hover, .concept-bar button:focus-visible { background: #fcebd0; }
+.concept-bar button:focus-visible { outline: 2px solid #0057B8; outline-offset: 2px; }
+@media print { .concept-bar { display: none; } .concept-on { background: none; box-shadow: none; } }
