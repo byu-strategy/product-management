@@ -22,9 +22,9 @@
    "knowledge_only": false,
    "practice": "A flow written as steps or a list of states in a committed spec or design file.",
    "exam": [
-    "G-F-05",
-    "G-F-18",
-    "G-M-23"
+    "DE-F-05",
+    "DE-F-18",
+    "DE-M-23"
    ],
    "chapter": "Ch 5: Flows Before Screens"
   },
@@ -39,9 +39,9 @@
    "knowledge_only": false,
    "practice": "Committed code that shows an empty, loading or error state for a flow, or a Loom moment that shows one.",
    "exam": [
-    "G-M-08",
-    "G-F-04",
-    "G-F-19"
+    "DE-M-08",
+    "DE-F-04",
+    "DE-F-19"
    ],
    "chapter": "Ch 5: Off the Happy Path"
   },
@@ -56,10 +56,10 @@
    "knowledge_only": true,
    "practice": "",
    "exam": [
-    "G-M-01",
-    "G-M-20",
-    "G-F-20",
-    "G-F-21"
+    "DE-M-01",
+    "DE-M-20",
+    "DE-F-20",
+    "DE-F-21"
    ],
    "chapter": "Ch 5b: UI, UX, and Product Design; Ch 5: Why This Matters"
   },
@@ -74,9 +74,9 @@
    "knowledge_only": false,
    "practice": "A committed navigation map or site structure, or card sort or tree test results.",
    "exam": [
-    "G-M-15",
-    "G-F-14",
-    "G-F-22"
+    "DE-M-15",
+    "DE-F-14",
+    "DE-F-22"
    ],
    "chapter": "Ch 5b: Information Architecture; Two methods: card sorting and tree testing"
   },
@@ -91,9 +91,9 @@
    "knowledge_only": false,
    "practice": "Committed code in an AI feature that shows at least one of: what to expect about accuracy, the evidence behind an answer, output as an editable draft, undo, or a confirmation before acting.",
    "exam": [
-    "G-F-16",
-    "G-F-23",
-    "G-M-24"
+    "DE-F-16",
+    "DE-F-23",
+    "DE-M-24"
    ],
    "chapter": "Ch 5: Designing for an Uncertain AI"
   },
@@ -108,9 +108,9 @@
    "knowledge_only": false,
    "practice": "A committed design rule about hierarchy or the primary action (for example one primary action per screen), and screens in the Loom that follow it.",
    "exam": [
-    "G-M-06",
-    "G-F-24",
-    "G-F-25"
+    "DE-M-06",
+    "DE-F-24",
+    "DE-F-25"
    ],
    "chapter": "Ch 5: Attention and Hierarchy"
   },
@@ -125,10 +125,10 @@
    "knowledge_only": true,
    "practice": "",
    "exam": [
-    "G-M-16",
-    "G-M-21",
-    "G-F-26",
-    "G-F-27"
+    "DE-M-16",
+    "DE-M-21",
+    "DE-F-26",
+    "DE-F-27"
    ],
    "chapter": "Ch 5b: How People Perceive a Screen; Gestalt grouping"
   },
@@ -143,9 +143,9 @@
    "knowledge_only": true,
    "practice": "",
    "exam": [
-    "G-F-13",
-    "G-M-17",
-    "G-F-17"
+    "DE-F-13",
+    "DE-M-17",
+    "DE-F-17"
    ],
    "chapter": "Ch 5b: Fitts's law; Hick's law; Cognitive load and Jakob's law; Ch 5: Attention and Hierarchy"
   },
@@ -160,11 +160,11 @@
    "knowledge_only": true,
    "practice": "",
    "exam": [
-    "G-M-11",
-    "G-M-13",
-    "G-M-09",
-    "G-F-28",
-    "G-F-29"
+    "DE-M-11",
+    "DE-M-13",
+    "DE-M-09",
+    "DE-F-28",
+    "DE-F-29"
    ],
    "chapter": "Ch 5b: Norman's Principles of Interaction; Ch 6: The Design Canon Behind This"
   },
@@ -179,9 +179,9 @@
    "knowledge_only": false,
    "practice": "Committed rules or tokens for a type scale, a spacing scale or color use, which the product's code uses.",
    "exam": [
-    "G-F-30",
-    "G-F-31",
-    "G-M-25"
+    "DE-F-30",
+    "DE-F-31",
+    "DE-M-25"
    ],
    "chapter": "Ch 5b: Visual Design Fundamentals; Typography; Layout and grid; Color"
   },
@@ -196,9 +196,9 @@
    "knowledge_only": false,
    "practice": "A committed copy rule in a spec or design rules file, or a commit whose message says it rewrites labels, buttons or error messages in the user's terms.",
    "exam": [
-    "G-F-03",
-    "G-F-32",
-    "G-M-26"
+    "DE-F-03",
+    "DE-F-32",
+    "DE-M-26"
    ],
    "chapter": "Ch 5: Words Are Interface"
   },
@@ -213,9 +213,9 @@
    "knowledge_only": false,
    "practice": "A committed accessibility rule or check result (contrast numbers, a keyboard pass note), with fixes that follow it.",
    "exam": [
-    "G-F-02",
-    "G-F-33",
-    "G-M-27"
+    "DE-F-02",
+    "DE-F-33",
+    "DE-M-27"
    ],
    "chapter": "Ch 5: Accessible by Default"
   },
@@ -230,10 +230,10 @@
    "knowledge_only": false,
    "practice": "A committed spec section or decision record about phone and desktop use (a mobile layout, a PWA, or a native app), or a commit whose message says it makes a screen work at phone width.",
    "exam": [
-    "G-M-04",
-    "G-M-02",
-    "G-F-34",
-    "G-F-35"
+    "DE-M-04",
+    "DE-M-02",
+    "DE-F-34",
+    "DE-F-35"
    ],
    "chapter": "Ch 5: Web, Mobile, or Both; Making Your App Mobile-Responsive"
   },
@@ -248,9 +248,9 @@
    "knowledge_only": false,
    "practice": "Shared components or design tokens, committed, used on more than one screen or page section.",
    "exam": [
-    "G-F-01",
-    "G-F-36",
-    "G-M-28"
+    "DE-F-01",
+    "DE-F-36",
+    "DE-M-28"
    ],
    "chapter": "Ch 5: Decide Once: Design Systems and Familiar Patterns; Ch 5b: From decisions to tokens"
   },
@@ -265,9 +265,9 @@
    "knowledge_only": false,
    "practice": "A design rules section the student wrote in CLAUDE.md, AGENTS.md or a spec, committed.",
    "exam": [
-    "G-F-37",
-    "G-F-38",
-    "G-M-29"
+    "DE-F-37",
+    "DE-F-38",
+    "DE-M-29"
    ],
    "chapter": "Ch 5: Decide Once: Design Systems and Familiar Patterns (Why this matters more with an agent)"
   },
@@ -282,9 +282,9 @@
    "knowledge_only": true,
    "practice": "",
    "exam": [
-    "G-F-10",
-    "G-F-39",
-    "G-M-30"
+    "DE-F-10",
+    "DE-F-39",
+    "DE-M-30"
    ],
    "chapter": "Ch 5: Decide Once: Design Systems and Familiar Patterns; Ch 5b: Cognitive load and Jakob's law"
   },
@@ -299,9 +299,9 @@
    "knowledge_only": false,
    "practice": "User stories in the form As a [user], I want [goal] so that [benefit], in a committed spec outside the sprint plan.",
    "exam": [
-    "G-F-40",
-    "G-F-41",
-    "G-M-31"
+    "DE-F-40",
+    "DE-F-41",
+    "DE-M-31"
    ],
    "chapter": "Ch 6b: User Stories"
   },
@@ -316,9 +316,9 @@
    "knowledge_only": false,
    "practice": "A committed spec, outside the sprint plan, with numbered or checkable acceptance criteria for a feature.",
    "exam": [
-    "G-M-18",
-    "G-F-11",
-    "G-F-42"
+    "DE-M-18",
+    "DE-F-11",
+    "DE-F-42"
    ],
    "chapter": "Ch 6b: Acceptance Criteria; Kiro's three files and EARS; The Agent Team Kit's spec and build-spec Skills"
   },
@@ -333,9 +333,9 @@
    "knowledge_only": false,
    "practice": "A committed PRD or spec that includes success metrics and an out-of-scope list.",
    "exam": [
-    "G-F-43",
-    "G-F-44",
-    "G-M-32"
+    "DE-F-43",
+    "DE-F-44",
+    "DE-M-32"
    ],
    "chapter": "Ch 6b: Product Requirements Documents (PRDs)"
   },
@@ -350,9 +350,9 @@
    "knowledge_only": false,
    "practice": "Spec files committed in an earlier commit than the code they describe.",
    "exam": [
-    "G-F-45",
-    "G-F-46",
-    "G-M-33"
+    "DE-F-45",
+    "DE-F-46",
+    "DE-M-33"
    ],
    "chapter": "Ch 6b: Build first, then spec what you keep; Why SDD Matters; When to Use SDD vs. Pure Vibe Coding; The SDD Workflow; Major SDD Approaches"
   },
@@ -367,9 +367,9 @@
    "knowledge_only": false,
    "practice": "A committed spec with a decisions-made section and a considered-and-rejected section.",
    "exam": [
-    "G-M-14",
-    "G-F-47",
-    "G-F-48"
+    "DE-M-14",
+    "DE-F-47",
+    "DE-F-48"
    ],
    "chapter": "Ch 6b: The Agent Team Kit's spec and build-spec Skills"
   },
@@ -384,9 +384,9 @@
    "knowledge_only": false,
    "practice": "A committed punch list with items checked off, or a check sheet with results.",
    "exam": [
-    "G-F-49",
-    "G-F-50",
-    "G-M-34"
+    "DE-F-49",
+    "DE-F-50",
+    "DE-M-34"
    ],
    "chapter": "Ch 6b: The Agent Team Kit's spec and build-spec Skills"
   },
@@ -401,9 +401,9 @@
    "knowledge_only": false,
    "practice": "A written design direction in a spec, issue or change note that names the element, the problem and the change, and a later commit that makes the change.",
    "exam": [
-    "G-M-07",
-    "G-F-51",
-    "G-F-52"
+    "DE-M-07",
+    "DE-F-51",
+    "DE-F-52"
    ],
    "chapter": "Ch 5: Directing an Agent on Design; Taste is a skill"
   },
@@ -418,9 +418,9 @@
    "knowledge_only": false,
    "practice": "A committed comparison of two or more design options with the reason for the one chosen.",
    "exam": [
-    "G-M-19",
-    "G-F-53",
-    "G-F-54"
+    "DE-M-19",
+    "DE-F-53",
+    "DE-F-54"
    ],
    "chapter": "Ch 5b: The Design Process: Diverge, Then Converge, Twice"
   },
@@ -435,9 +435,9 @@
    "knowledge_only": false,
    "practice": "A committed heuristic review of the product that names the heuristics, the problems found, and the fixes.",
    "exam": [
-    "G-F-15",
-    "G-F-55",
-    "G-M-35"
+    "DE-F-15",
+    "DE-F-55",
+    "DE-M-35"
    ],
    "chapter": "Ch 5b: Nielsen's Ten Usability Heuristics; Running a quick heuristic review with an agent"
   },
@@ -452,9 +452,9 @@
    "knowledge_only": true,
    "practice": "",
    "exam": [
-    "G-F-06",
-    "G-F-56",
-    "G-M-36"
+    "DE-F-06",
+    "DE-F-56",
+    "DE-M-36"
    ],
    "chapter": "Ch 6: The Curse of Knowledge; What to Observe"
   },
@@ -469,10 +469,10 @@
    "knowledge_only": false,
    "practice": "A committed note for each session in which a person outside the team used the product, with the tasks and what the person did.",
    "exam": [
-    "G-M-05",
-    "G-M-03",
-    "G-F-57",
-    "G-F-58"
+    "DE-M-05",
+    "DE-M-03",
+    "DE-F-57",
+    "DE-F-58"
    ],
    "chapter": "Ch 6: What is Usability Testing?; Running a Usability Test; Testing at Scale"
   },
@@ -487,9 +487,9 @@
    "knowledge_only": false,
    "practice": "A committed synthesis of usability test notes with the problems grouped and ranked by severity.",
    "exam": [
-    "G-F-07",
-    "G-F-59",
-    "G-M-37"
+    "DE-F-07",
+    "DE-F-59",
+    "DE-M-37"
    ],
    "chapter": "Ch 6: Synthesizing Feedback; The Affinity Mapping Process; Severity Scoring"
   },
@@ -504,9 +504,9 @@
    "knowledge_only": false,
    "practice": "A commit that changes the product and cites a usability test finding.",
    "exam": [
-    "G-F-08",
-    "G-F-09",
-    "G-M-10"
+    "DE-F-08",
+    "DE-F-09",
+    "DE-M-10"
    ],
    "chapter": "Ch 6: Fix the top issue and retest; Iteration Frameworks; Responding to Feedback Without Overreacting"
   },
@@ -521,10 +521,10 @@
    "knowledge_only": false,
    "practice": "A committed sketch, wireframe, mockup or prototype, in an earlier commit than the feature it shows.",
    "exam": [
-    "G-M-12",
-    "G-M-22",
-    "G-F-12",
-    "G-F-60"
+    "DE-M-12",
+    "DE-M-22",
+    "DE-F-12",
+    "DE-F-60"
    ],
    "chapter": "Ch 5b: Fidelity: Sketch, Wireframe, Mockup, Prototype; Design Tools: Paper, Figma, Claude, and Code"
   }

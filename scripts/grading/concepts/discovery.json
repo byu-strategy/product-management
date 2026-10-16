@@ -22,10 +22,10 @@
    "knowledge_only": false,
    "practice": "Interview notes in the repo written from the student's own conversations with people who have the problem, with questions about specific past events.",
    "exam": [
-    "D-M-05",
-    "D-M-06",
-    "D-F-21",
-    "D-F-22"
+    "DI-M-05",
+    "DI-M-06",
+    "DI-F-21",
+    "DI-F-22"
    ],
    "chapter": "Ch 4: Problem Interviews (The Mom Test); Conducting Effective Interviews"
   },
@@ -40,11 +40,11 @@
    "knowledge_only": false,
    "practice": "A committed synthesis, insights file or test note in which claims are labeled said, did or paid.",
    "exam": [
-    "D-M-07",
-    "D-M-11",
-    "D-M-20",
-    "D-F-23",
-    "D-F-24"
+    "DI-M-07",
+    "DI-M-11",
+    "DI-M-20",
+    "DI-F-23",
+    "DI-F-24"
    ],
    "chapter": "Ch 4: The Evidence Ladder: Said, Did, Paid"
   },
@@ -59,10 +59,10 @@
    "knowledge_only": false,
    "practice": "A committed synthesis or insights file that cites the student's own interview notes by file and states what they showed.",
    "exam": [
-    "D-M-08",
-    "D-M-12",
-    "D-F-25",
-    "D-F-26"
+    "DI-M-08",
+    "DI-M-12",
+    "DI-F-25",
+    "DI-F-26"
    ],
    "chapter": "Ch 4: Interview Synthesis"
   },
@@ -77,9 +77,9 @@
    "knowledge_only": false,
    "practice": "A problem statement in the README, a spec or a synthesis file, written by the student and committed, that names a person, a situation and what goes wrong for them, and names no product or feature.",
    "exam": [
-    "D-F-03",
-    "D-F-27",
-    "D-M-21"
+    "DI-F-03",
+    "DI-F-27",
+    "DI-M-21"
    ],
    "chapter": "Ch 3: Why Most Products Fail; Problem vs. Solution Thinking. Ch 4: Problem Journaling"
   },
@@ -94,9 +94,9 @@
    "knowledge_only": false,
    "practice": "A job statement (When I am..., I want to..., so I can...) or a journey map of the whole job, written by the student and committed.",
    "exam": [
-    "D-M-14",
-    "D-F-28",
-    "D-F-29"
+    "DI-M-14",
+    "DI-F-28",
+    "DI-F-29"
    ],
    "chapter": "Ch 4: Jobs-to-be-Done Framework; The Five Kinds of Pain"
   },
@@ -111,9 +111,9 @@
    "knowledge_only": false,
    "practice": "A written target customer, narrow enough to name, with a list of who the product is not for, in the README, a spec or a value proposition, committed.",
    "exam": [
-    "D-F-04",
-    "D-F-13",
-    "D-M-30"
+    "DI-F-04",
+    "DI-F-13",
+    "DI-M-30"
    ],
    "chapter": "Ch 4: Who It Is For, and Not For (Start narrow: the beachhead)"
   },
@@ -128,9 +128,9 @@
    "knowledge_only": false,
    "practice": "A committed file that names the product's user and its payer and says whether they are the same person.",
    "exam": [
-    "D-F-08",
-    "D-M-08",
-    "D-F-30"
+    "DI-F-08",
+    "DI-M-08",
+    "DI-F-30"
    ],
    "chapter": "Ch 4: Who It Is For, and Not For (The user and the payer)"
   },
@@ -145,9 +145,9 @@
    "knowledge_only": false,
    "practice": "A committed note that names where the target users can be reached (places, channels or named groups) and whether the student can reach them.",
    "exam": [
-    "D-M-10",
-    "D-F-31",
-    "D-F-32"
+    "DI-M-10",
+    "DI-F-31",
+    "DI-F-32"
    ],
    "chapter": "Ch 4: Can You Reach Them? The Access Test"
   },
@@ -162,9 +162,9 @@
    "knowledge_only": false,
    "practice": "A personas file written by the student and committed, with each persona's details drawn from named interview notes.",
    "exam": [
-    "D-M-02",
-    "D-F-33",
-    "D-F-34"
+    "DI-M-02",
+    "DI-F-33",
+    "DI-F-34"
    ],
    "chapter": "Ch 4: Building Personas"
   },
@@ -179,9 +179,9 @@
    "knowledge_only": false,
    "practice": "A committed insights or assumptions file that lists beliefs, each with a confidence level and the evidence for it.",
    "exam": [
-    "D-M-11",
-    "D-F-35",
-    "D-F-36"
+    "DI-M-11",
+    "DI-F-35",
+    "DI-F-36"
    ],
    "chapter": "Ch 4: Discovery Is Truth-Seeking (Six ways of knowing, all flawed; Thinking in probabilities)"
   },
@@ -196,9 +196,9 @@
    "knowledge_only": false,
    "practice": "A committed issue tree that breaks an open product question into parts, with the part chosen to test marked.",
    "exam": [
-    "D-F-01",
-    "D-F-02",
-    "D-M-31"
+    "DI-F-01",
+    "DI-F-02",
+    "DI-M-31"
    ],
    "chapter": "Ch 4: Structure a Messy Problem: Issue Trees"
   },
@@ -213,9 +213,9 @@
    "knowledge_only": false,
    "practice": "A committed list of conditions that would have to be true for the product to work, each labeled with its risk or uncertainty.",
    "exam": [
-    "D-F-12",
-    "D-F-15",
-    "D-M-32"
+    "DI-F-12",
+    "DI-F-15",
+    "DI-M-32"
    ],
    "chapter": "Ch 4: The Four Risks and the Riskiest Assumption (What would have to be true)"
   },
@@ -230,9 +230,9 @@
    "knowledge_only": false,
    "practice": "A committed assumptions list with each assumption labeled as a value, usability, feasibility or viability risk.",
    "exam": [
-    "D-F-15",
-    "D-F-37",
-    "D-M-22"
+    "DI-F-15",
+    "DI-F-37",
+    "DI-M-22"
    ],
    "chapter": "Ch 4: The Four Risks and the Riskiest Assumption (The four risks)"
   },
@@ -247,9 +247,9 @@
    "knowledge_only": false,
    "practice": "A committed file, outside the sprint plan, that names the product's riskiest assumption, the check run on it, and the result.",
    "exam": [
-    "D-F-05",
-    "D-F-10",
-    "D-M-33"
+    "DI-F-05",
+    "DI-F-10",
+    "DI-M-33"
    ],
    "chapter": "Ch 4: The Four Risks and the Riskiest Assumption (The riskiest assumption)"
   },
@@ -264,9 +264,9 @@
    "knowledge_only": false,
    "practice": "A committed note of a smoke test, fake door, concierge test, Wizard of Oz test or presell the student ran, with the action counted and the result.",
    "exam": [
-    "D-F-05",
-    "D-F-11",
-    "D-M-34"
+    "DI-F-05",
+    "DI-F-11",
+    "DI-M-34"
    ],
    "chapter": "Ch 4: The Smallest Test"
   },
@@ -281,10 +281,10 @@
    "knowledge_only": false,
    "practice": "A committed record, drawn from the student's own interviews, of what people do about the problem today, including doing nothing or a manual workaround.",
    "exam": [
-    "D-M-09",
-    "D-M-14",
-    "D-F-06",
-    "D-F-38"
+    "DI-M-09",
+    "DI-M-14",
+    "DI-F-06",
+    "DI-F-38"
    ],
    "chapter": "Ch 4: The Real Competitor Is the Current Habit"
   },
@@ -299,9 +299,9 @@
    "knowledge_only": false,
    "practice": "A committed table or chart that rates needs by importance and by satisfaction with current solutions, from interview data.",
    "exam": [
-    "D-M-03",
-    "D-F-39",
-    "D-F-40"
+    "DI-M-03",
+    "DI-F-39",
+    "DI-F-40"
    ],
    "chapter": "Ch 4: Evaluating Your Problems (Another lens: importance and satisfaction)"
   },
@@ -316,9 +316,9 @@
    "knowledge_only": true,
    "practice": "",
    "exam": [
-    "D-F-19",
-    "D-M-23",
-    "D-F-41"
+    "DI-F-19",
+    "DI-M-23",
+    "DI-F-41"
    ],
    "chapter": "Ch 3: The five forces: how wide is the band?"
   },
@@ -333,9 +333,9 @@
    "knowledge_only": false,
    "practice": "A committed list of the factors the product drops, reduces, raises and adds compared with the alternatives.",
    "exam": [
-    "D-F-18",
-    "D-M-24",
-    "D-F-42"
+    "DI-F-18",
+    "DI-M-24",
+    "DI-F-42"
    ],
    "chapter": "Ch 3: Blue oceans: widening the band"
   },
@@ -350,10 +350,10 @@
    "knowledge_only": true,
    "practice": "",
    "exam": [
-    "D-F-09",
-    "D-F-18",
-    "D-F-20",
-    "D-M-25"
+    "DI-F-09",
+    "DI-F-18",
+    "DI-F-20",
+    "DI-M-25"
    ],
    "chapter": "Ch 3: Moats: why the win lasts"
   },
@@ -368,9 +368,9 @@
    "knowledge_only": true,
    "practice": "",
    "exam": [
-    "D-M-18",
-    "D-F-16",
-    "D-F-17"
+    "DI-M-18",
+    "DI-F-16",
+    "DI-F-17"
    ],
    "chapter": "Ch 3: Disruption: how small entrants beat leaders"
   },
@@ -385,9 +385,9 @@
    "knowledge_only": false,
    "practice": "A committed scoring of two or more candidate problems on frequency, intensity, willingness to pay or market size, with the evidence for each score and the problem chosen.",
    "exam": [
-    "D-M-01",
-    "D-F-43",
-    "D-F-44"
+    "DI-M-01",
+    "DI-F-43",
+    "DI-F-44"
    ],
    "chapter": "Ch 4: Evaluating Your Problems; The Commitment Decision; Avoiding Premature Commitment. Appendix: Problem Discovery Framework (Scoring)"
   },
@@ -402,9 +402,9 @@
    "knowledge_only": false,
    "practice": "A committed MVP scope that names the one thing users must do and lists what is left out.",
    "exam": [
-    "D-F-14",
-    "D-F-45",
-    "D-M-26"
+    "DI-F-14",
+    "DI-F-45",
+    "DI-M-26"
    ],
    "chapter": "Ch 4: What is an MVP?; Minimum Viable, or Minimum Awesome?; MVP Scoping: The Art of Cutting"
   },
@@ -419,9 +419,9 @@
    "knowledge_only": false,
    "practice": "A committed ranking of features or work items in order, with the criteria or framework (ICE, MoSCoW, the $100 test) shown.",
    "exam": [
-    "D-M-15",
-    "D-F-10",
-    "D-F-46"
+    "DI-M-15",
+    "DI-F-10",
+    "DI-F-46"
    ],
    "chapter": "Ch 4: Feature Prioritization"
   },
@@ -436,9 +436,9 @@
    "knowledge_only": false,
    "practice": "A committed opportunity solution tree for the product (outcome, opportunities, solutions, tests), with each opportunity traced to interview notes.",
    "exam": [
-    "D-M-13",
-    "D-F-47",
-    "D-F-48"
+    "DI-M-13",
+    "DI-F-47",
+    "DI-F-48"
    ],
    "chapter": "Ch 4: Discovery Is Continuous"
   },
@@ -453,9 +453,9 @@
    "knowledge_only": false,
    "practice": "A committed one-page product strategy that states the vision, where the product plays, how it wins, and what it will not do.",
    "exam": [
-    "D-F-49",
-    "D-F-50",
-    "D-M-27"
+    "DI-F-49",
+    "DI-F-50",
+    "DI-M-27"
    ],
    "chapter": "Ch 3: Vision before strategy; Strategy is choosing what not to do; Where to play, and how to win; Putting it to work"
   },
@@ -470,9 +470,9 @@
    "knowledge_only": false,
    "practice": "A committed list of several candidate problems or ideas and a written choice of one over at least one other, with the reason.",
    "exam": [
-    "D-F-51",
-    "D-F-52",
-    "D-M-28"
+    "DI-F-51",
+    "DI-F-52",
+    "DI-M-28"
    ],
    "chapter": "Ch 4: You Are Your Best First Customer; Problem Journaling; Diverge Before You Converge"
   },
@@ -487,11 +487,11 @@
    "knowledge_only": false,
    "practice": "A committed value stick for the product with willingness to pay, price, cost and willingness to sell each estimated.",
    "exam": [
-    "D-M-04",
-    "D-M-16",
-    "D-M-19",
-    "D-F-54",
-    "D-F-53"
+    "DI-M-04",
+    "DI-M-16",
+    "DI-M-19",
+    "DI-F-54",
+    "DI-F-53"
    ],
    "chapter": "Ch 3: Creating value, and capturing it"
   },
@@ -506,9 +506,9 @@
    "knowledge_only": false,
    "practice": "A value proposition the student wrote beyond the template's text, naming the customer and the current habit the product replaces, committed.",
    "exam": [
-    "D-F-56",
-    "D-M-29",
-    "D-F-55"
+    "DI-F-56",
+    "DI-M-29",
+    "DI-F-55"
    ],
    "chapter": "Ch 3: A test worth memorizing: DHM; Creating value, and capturing it (Elements of Value). Ch 4: Your Value Proposition"
   },
@@ -523,16 +523,16 @@
    "knowledge_only": false,
    "practice": "A committed check of the product's habit loop or engagement design against the reflection test and the directional test.",
    "exam": [
-    "D-M-17",
-    "D-F-58",
-    "D-F-57"
+    "DI-M-17",
+    "DI-F-58",
+    "DI-F-57"
    ],
    "chapter": "Ch 3: Understanding human nature cuts both ways; Aiming well: virtue and the golden mean. Appendix: Problem Discovery Framework (Gospel Framework)"
   }
  ],
  "exam_elsewhere": [
   {
-   "id": "D-F-07",
+   "id": "DI-F-07",
    "belongs": "G4 Specs (Design); retired"
   }
  ],

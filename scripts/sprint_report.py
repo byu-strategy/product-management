@@ -758,7 +758,7 @@ def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott
         cs = CL[ax]["concepts"]
         practicable = [c for c in cs if not c.get("knowledge_only")]
         each = practice_max(ax) * BREADTH_SHARE / len(practicable) if practicable else 0
-        ap_rows += (f'<tr class=apx><td colspan=2>{e(ax)} <span>practice up to {fmt(practice_max(ax))}; '
+        ap_rows += ('<tr class=apg><td colspan=2></td></tr>' if ap_rows else '') + (f'<tr class=apx><td colspan=2>{e(ax)} <span>practice up to {fmt(practice_max(ax))}; '
                     f'each concept {fmt(each)}</span></td></tr>')
         items = list(CL[ax]["items"]) + sorted({c.get("item") for c in cs} - set(CL[ax]["items"]), key=str)
         for code in items:
@@ -1070,7 +1070,8 @@ table.turnin{font-size:12px;margin:4px 0 6px}table.turnin th,table.turnin td{pad
 .apt{width:100%;border-collapse:collapse;font-size:13.5px;margin-top:10px}.apt th{text-align:left;font-size:11.5px;color:var(--mute);font-weight:600;padding:4px 6px;border-bottom:1px solid var(--line)}
 .apt td{padding:6px 6px;border-bottom:1px solid #f3f4f6;vertical-align:top}
 .apt tr.apx td{position:sticky;top:0;z-index:2;font-size:14px;font-weight:700;color:var(--ink);background:#fcebd0;
-  padding:9px 10px;border-top:14px solid #fff;border-bottom:2px solid #e2933a}
+  padding:9px 10px;border:0;box-shadow:inset 0 -2px 0 #e2933a}
+.apt tr.apg td{height:18px;padding:0;border:0}
 .apt tr.apx span{font-size:12.5px;font-weight:400;color:#6b4a1c;margin-left:8px}
 .apt tr.api td{font-size:12.5px;font-weight:600;color:#4a5262;padding:12px 6px 4px;border-bottom:1px solid var(--line)}
 .apt tr.api span{font-weight:400;color:var(--mute);margin-left:8px}
