@@ -313,7 +313,7 @@ def profile_svg(G):
         out.append(f'<text x="{lx:.1f}" y="{ly - 6:.1f}" text-anchor="{anchor}" font-size="12.5" fill="#1d2330">{e(name)}</text>')
         if G:
             out.append(f'<text x="{lx:.1f}" y="{ly + 10:.1f}" text-anchor="{anchor}" font-size="12.5" font-weight="700" '
-                       f'fill="#b45f04">{fmt(totals[i])}</text>')
+                       f'fill="#b45f04">{round(totals[i])}</text>')
     out.append("</svg>")
     return "".join(out), [s for s, v in layers if v]
 
@@ -492,9 +492,9 @@ def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott
     def cat_body(c):
         fb = (r.get("feedback") or {}).get(c, "")
         if c == "shipped":
-            return f"<p>{e(fb)}</p>" + how_scored(c) + output_evidence()
+            return f"<p>{e(fb)}</p>" + how_scored(c) + "<!--DIFF-->" + output_evidence()
         if c == "review":
-            return f"<p>{e(fb)}</p>" + how_scored(c) + review_evidence()
+            return f"<p>{e(fb)}</p>" + how_scored(c) + "<!--DAYS-->" + review_evidence()
         if c == "demo":
             return demo_head() + f"<p>{e(fb)}</p>" + how_scored(c) + demo_scott()
         return f"<p>{e(fb)}</p>" + how_scored(c)
@@ -537,43 +537,79 @@ def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott
         core_sw = (f'<span class=sw style="background:{CORE_COLOR}"></span>Your September survey '
                    if any(((G.get("start") or {}).get("points") or {}).values()) else "")
         sw = core_sw + "".join(f'<span class=sw style="background:{SPRINT_COLORS.get(s, "#d97706")}"></span>Sprint {s} ' for s in drawn)
-        cap = (f"Each spoke runs from 0 to 100, where 100 is a full-stack product builder. The center is what you reported in the "
-               f"September survey; each ring outside it is one sprint's practice. {sw}"
-               if drawn else f"Each spoke runs from 0 to 100, where 100 is a full-stack product builder. No practice has been counted yet. {sw}")
-        cap = f"{cap}<br>The midterm replaces the survey center with what you show on the exam."
+        cap = f'{sw}<a href="#appendix" class=capl>How to read this</a>'
     else:
         cap = "Your builder profile is being prepared."
 
-    # ---- how you grew
+    # ---- how you grew: one table by axis, then this sprint's evidence by axis, then earlier sprints
+    def pt(x):
+        return str(round(float(x)))
+
     if G:
         last = (G.get("rings") or [{}])[-1]
         pts_now = last.get("points") or {}
+        core = (G.get("start") or {}).get("points") or {}
+        ptot = G.get("practice_total") or {}
+        depth = {d["axis"]: d for d in G.get("depth") or [] if d.get("level")}
+        best = G.get("depth_best") or {}
         by_axis = {}
         for m in G.get("new") or []:
             by_axis.setdefault(m["axis"], []).append(m)
         ctime = {c["sha"][:7]: c["when"] for c in (p.get("commits") or [])}
-        grew = ""
-        for ax in sorted(by_axis, key=lambda a: (-float(pts_now.get(a, 0)), AXES.index(a) if a in AXES else 9)):
-            lst = sorted(by_axis[ax], key=lambda m: (when_key(m), ctime.get(str(m.get("ref", ""))[:7], "")), reverse=True)
-            grew += f'<div class=qax>{e(ax)} <span>+{fmt(pts_now.get(ax, 0))}</span></div>'
-            for m in lst:
-                right = f'<span class=qd>{e(short_date(m.get("when")))}</span><span class=qp>+{fmt(m.get("points", 0))}</span>'
-                link = ref_link(repo, m.get("ref"))
-                grew += row(e(m.get("name") or m["concept"]), right,
-                            f'<p>{e(m.get("did", ""))}</p><p class=qm>{e(m.get("evidence", ""))}{" · " + link if link else ""}</p>')
-        depth = [d for d in G.get("depth") or [] if d.get("level")]
-        if depth:
-            grew += '<div class=qax>Depth by axis</div>'
-            for d in depth:
+        order = sorted(AXES, key=lambda a: (-float(pts_now.get(a, 0)), AXES.index(a)))
+        trs = ""
+        for ax in order:
+            tot = float(core.get(ax, 0)) + float(ptot.get(ax, 0))
+            add = float(pts_now.get(ax, 0))
+            lvl = best.get(ax, 0)
+            trs += (f'<tr><td class=ga>{e(ax.replace("Application Architecture", "App Architecture"))}</td>'
+                    f'<td class=gl>{f"{lvl} {LEVELS[lvl]}" if lvl else "<span class=qm>none yet</span>"}</td>'
+                    f'<td class=gn>{len(by_axis.get(ax, [])) or ""}</td>'
+                    f'<td class=gp>{"+" + pt(add) if round(add) else ""}</td>'
+                    f'<td class=gt><span class=gbar><i style="width:{min(100, tot):.0f}%"></i></span>{pt(tot)}</td></tr>')
+        grew = ('<table class=gtab><tr><th>Axis</th><th>Depth reached</th><th>New concepts</th><th>This sprint</th>'
+                f'<th>Total of 100</th></tr>{trs}</table>')
+        grew += '<div class=qax>This sprint</div>'
+        any_now = False
+        for ax in order:
+            lst = sorted(by_axis.get(ax, []), key=lambda m: (when_key(m), ctime.get(str(m.get("ref", ""))[:7], "")), reverse=True)
+            d = depth.get(ax)
+            if not lst and not d:
+                continue
+            any_now = True
+            grew += f'<div class=qsub>{e(ax)} <span>+{pt(pts_now.get(ax, 0))}</span></div>'
+            if d:
                 gain = d.get("gain")
                 right = f'level {d["level"]}, {e(d.get("name") or LEVELS.get(d["level"], ""))}'
                 if gain:
-                    pts = practice_max(d["axis"]) / 2 * (gain["to"] - gain["from"]) / 4
-                    right += f'<span class=qp>+{fmt(pts)}</span>'
+                    right += f'<span class=qp>+{pt(practice_max(ax) / 2 * (gain["to"] - gain["from"]) / 4)}</span>'
                 body = f'<p>{e(d.get("why", ""))}</p><p class=qm>Level {d["level"]} means {LEVEL_TEXT.get(d["level"], "")}.</p>'
                 if not gain and d.get("best_so_far", 0) >= d["level"]:
                     body += f'<p class=qm>You reached level {d["best_so_far"]} on this axis before, so this adds no points.</p>'
-                grew += row(e(d["axis"]), right, body)
+                grew += row("Depth", right, body, "dep")
+            for m in lst:
+                link = ref_link(repo, m.get("ref"))
+                grew += row(e(m.get("name") or m["concept"]), f'<span class=qd>{e(short_date(m.get("when")))}</span>',
+                            f'<p>{e(m.get("did", ""))}</p><p class=qm>{e(m.get("evidence", ""))}{" · " + link if link else ""}</p>')
+        if not any_now:
+            grew += "<p>No new concepts or depth were counted this sprint.</p>"
+        earlier = G.get("earlier") or []
+        for s_ in sorted({x["sprint"] for x in earlier}, reverse=True):
+            xs = [x for x in earlier if x["sprint"] == s_]
+            grew += f'<div class=qax>Sprint {s_} <span>+{pt(sum(float(x.get("points", 0)) for x in xs))}</span></div>'
+            for ax in AXES:
+                ax_x = [x for x in xs if x["axis"] == ax]
+                if not ax_x:
+                    continue
+                grew += f'<div class=qsub>{e(ax)} <span>+{pt(sum(float(x.get("points", 0)) for x in ax_x))}</span></div>'
+                for x in sorted(ax_x, key=lambda x: not x.get("depth")):
+                    if x.get("depth"):
+                        grew += row("Depth", f'level {x["level"]}, {e(x["name"])}<span class=qp>+{pt(x.get("points", 0))}</span>',
+                                    f'<p>{e(x.get("why", ""))}</p>', "dep")
+                    else:
+                        link = ref_link(repo, x.get("ref"))
+                        grew += row(e(x["name"]), f'<span class=qd>{e(short_date(x.get("when")))}</span>',
+                                    f'<p>{e(x.get("did", ""))}</p><p class=qm>{e(x.get("evidence", ""))}{" · " + link if link else ""}</p>')
         nc = G.get("not_counted") or []
         if nc:
             grew += '<div class=qax>Work not counted</div>' + "".join(
@@ -581,39 +617,14 @@ def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott
                     (f'<p>{e(x["what"])}</p>' if x.get("what") else "") + f'<p class=qm>{e(str(x.get("why", "")).capitalize())}.</p>'.replace("..", "."),
                     "muted") for x in nc)
         g_tot = sum(float(v) for v in pts_now.values())
-        n_ax = len([v for v in pts_now.values() if v])
         n_new = len(G.get("new") or [])
-        grew_right = (f'+{fmt(g_tot)} on {n_ax} {"axis" if n_ax == 1 else "axes"} · {n_new} new concept{"s" * (n_new != 1)}'
-                      if g_tot else "nothing new counted")
-        if not grew:
-            grew = "<p>No new concepts or depth were counted this sprint.</p>"
-        earlier = G.get("earlier") or []
-        for s_ in sorted({x["sprint"] for x in earlier}, reverse=True):
-            xs = [x for x in earlier if x["sprint"] == s_]
-            pts_s = sum(float(x.get("points", 0)) for x in xs)
-            grew += f'<div class=qax>Sprint {s_} <span>+{fmt(pts_s)}</span></div>'
-            for x in sorted(xs, key=lambda x: (x.get("depth", False), AXES.index(x["axis"]) if x["axis"] in AXES else 9)):
-                if x.get("depth"):
-                    grew += row(f'{e(x["axis"])}: level {x["level"]}, {e(x["name"])}', f'<span class=qp>+{fmt(x["points"])}</span>',
-                                f'<p>{e(x.get("why", ""))}</p>')
-                else:
-                    link = ref_link(repo, x.get("ref"))
-                    right = (f'<span class=qd>{e(x["axis"].replace("Application Architecture", "App Architecture"))}</span>'
-                             f'<span class=qp>+{fmt(x.get("points", 0))}</span>')
-                    grew += row(e(x["name"]), right, f'<p>{e(x.get("did", ""))}</p>'
-                                f'<p class=qm>{e(x.get("evidence", ""))}{" · " + link if link else ""}</p>')
-        core = (G.get("start") or {}).get("points") or {}
-        whole = sum(float(v) for v in core.values()) + sum(float(v) for v in (G.get("practice_total") or {}).values())
-        lead = (f'<p class=lead><b>{fmt(whole)} of 600</b> points ({whole / 6:.0f}%). A full-stack product builder '
-                f'has 100 on each of the six axes.')
-        if g_tot:
-            lead += f' This sprint added {fmt(g_tot)} points ({g_tot / 6:.1f}%).'
-        grew = lead + "</p>" + grew
+        grew_right = (f'+{pt(g_tot)} this sprint · {n_new} new concept{"s" * (n_new != 1)}' if g_tot else "nothing new counted")
     else:
         grew_right, grew = "being prepared", "<p>Your builder profile is being prepared.</p>"
 
     # ---- what was reviewed
     rev_bits, rev_body = [], ""
+    diff_row = days_row = nv_row = ""
     if diff.get("assessed"):
         rev_bits.append(f'difficulty {diff["assessed"]} of 5')
         note_ = diff.get("note") or ""
@@ -624,7 +635,7 @@ def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott
             lead += f"<p>{e(note_)}</p>"
         elif note_:
             lead = f"<p>{e(note_)}</p>"
-        rev_body += row("How hard it was", f'{diff["assessed"]} of 5',
+        diff_row = row("How hard it was", f'{diff["assessed"]} of 5',
                         lead + f'<p class=qm>On the course scale, {diff["assessed"]} is "{SCALE.get(int(diff["assessed"]), "")}".</p>')
     if rep.get("sessions"):
         rev_bits.append(f'{rep["sessions"]} agent sessions')
@@ -645,13 +656,12 @@ def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott
         end = max(end, dt.date.fromisoformat(due[:10])) if end else dt.date.fromisoformat(due[:10])
     if start and end and (end - start).days < 40:
         days = [start + dt.timedelta(i) for i in range((end - start).days + 1)]
-        rev_body += row("Day by day", "commits", commit_strip(days, by_day))
+        days_row = row("Day by day", f"{n_commits} commits", commit_strip(days, by_day))
     nv = rep.get("not_visible")
     if nv:
         nv = nv.strip().rstrip(".")
-        rev_body += row("What the review could not see", "", f"<p>{e(nv[:1].upper() + nv[1:])}.</p>")
-    if not rev_body:
-        rev_body = "<p>Nothing to show.</p>"
+        nv_row = row("What the review could not see", "", f"<p>{e(nv[:1].upper() + nv[1:])}.</p>")
+    score_body = score_body.replace("<!--DIFF-->", diff_row).replace("<!--DAYS-->", days_row + nv_row)
 
     # ---- next sprint steps: what keeps work from counting, then suggestions, then setup
     steps = []
@@ -681,6 +691,8 @@ def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott
                                                  "chang": "Change", "stor": "Store", "compar": "Compare",
                                                  "scor": "Score", "spreading": "Spread"}.get(m.group(1), m.group(1).capitalize()), s_)
         steps.append(("try", e(s_[0].upper() + s_[1:] + "."), "", ""))
+    fmt_like = re.compile(r"\b(retro|README|review\.md|plan\.md|/sprint-plan|/sprint-review)\b", re.I)
+    steps.sort(key=lambda st: {"try": 0 if not fmt_like.search(st[1]) else 2, "counts": 1}.get(st[0], 3))
     if skills_status in ("OLD", "missing"):
         steps.append(("house", "Update your course skills.",
                       "Your repo has an older <code>/sprint-plan</code>. Open Claude Code in your course repo and paste this.", SKILLS_PASTE))
@@ -726,6 +738,8 @@ def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott
     appendix = f"""
 <p><b>What a spoke means.</b> Each of the six spokes runs from 0 to 100. 100 on every spoke is a full-stack product
 builder. A spoke fills from two sources: practice, from your sprints, and knowledge, from the exams.</p>
+<p><b>Reading the chart.</b> The lightest center is what you reported in the September survey; each ring outside it is one
+sprint's practice, darker for later sprints. The midterm replaces the survey center with what you show on the exam.</p>
 <p><b>Practice</b> fills up to 50 points on each spoke (25 on AI Systems, where the exams carry more of the weight). Half of
 that is breadth and half is depth.</p>
 <ul>
@@ -803,8 +817,9 @@ review or retro, work in a repo that is not shared, and anything the course gave
                      f'<span class=sms>+{round(added)} this sprint, {whole / 6:.0f}% of a full-stack product builder</span></div>')
     next_line = (f'<div class=sm><span class=sml>First step for Sprint {next_n}</span><span class=smt>{steps[0][1]}</span>'
                  f'<a class=sms href="#next">all {n_steps}</a></div>') if steps else ""
+    parts_ = ([f"Plan {fmt(plan_pts)}"] if sprint > 1 else []) + [f"{LABELS.get(c, c)} {fmt(final(row_, c))}" for c, _l, _m in graded]
     summary = (f'<div class=smrow><div class=sm><span class=sml>Sprint {sprint} score</span>'
-               f'<span class=smv>{fmt(total)}<small> / {total_max}</small></span><a class=sms href="#score">by category</a></div>'
+               f'<span class=smv>{fmt(total)}<small> / {total_max}</small></span><a class=sms href="#score">{" · ".join(parts_)}</a></div>'
                f'{prof_line}</div>{next_line}'
                f'<figure class=qfig>{svg}<figcaption>{cap}</figcaption></figure>')
     secs = []
@@ -815,7 +830,6 @@ review or retro, work in a repo that is not shared, and anything the course gave
         ("score", "Score", f'{fmt(total)} / {total_max}', score_body, ""),
         ("grew", "Growth", grew_right, grew, ""),
         ("next", "Next steps", f'{n_steps} step{"s" * (n_steps != 1)}' if n_steps else "", todo, ""),
-        ("reviewed", "Evidence reviewed", " · ".join(rev_bits), rev_body, ""),
         ("questions", "Questions", "message Course Monitor", ask, ""),
         ("appendix", "Methodology", f"{n_all} concepts", appendix, "apxd"),
     ]
@@ -840,7 +854,7 @@ review or retro, work in a repo that is not shared, and anything the course gave
 // being read opens its own. Clicking an item inside a closed drawer opens the drawer.
 (()=>{{
 const nav=document.querySelector('nav.toc');
-const pick={{score:':scope>details.q',grew:':scope>.qax',next:':scope>ol.nsl>li.ns',reviewed:':scope>details.q',appendix:'tr.apx'}};
+const pick={{score:':scope>details.q',grew:':scope>.qax',next:':scope>ol.nsl>li.ns',appendix:'tr.apx'}};
 const label=el=>{{
   if(el.matches('details'))return el.querySelector('summary .qn').textContent;
   if(el.matches('li.ns'))return el.querySelector('.nst').textContent;
@@ -979,6 +993,13 @@ details.q.inst>summary .qn{color:#7a5a00}.instag{font-size:10.5px;background:#ff
 .qown{font-size:11.5px;color:var(--mute);margin-left:6px}
 .how{font-size:13px;color:#4a5262;background:#f7f8fa;border-radius:6px;padding:6px 10px;margin:6px 0 8px}
 .inote{background:#fff8e1;border:1px solid #f0d98a;border-radius:6px;padding:6px 10px;margin:0 0 8px;font-size:13px}.inote p{margin:2px 0}
+.gtab{width:100%;border-collapse:collapse;font-size:13.5px;margin:4px 0 6px}.gtab th{text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--mute);font-weight:600;padding:4px 6px;border-bottom:1px solid var(--line)}
+.gtab td{padding:7px 6px;border-bottom:1px solid #f3f4f6}.gtab .ga{font-weight:600}.gtab .gl{color:#4a5262}.gtab .gn{color:var(--mute);text-align:center}
+.gtab .gp{color:var(--amber);font-weight:600;text-align:right;white-space:nowrap}.gtab .gt{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.gbar{display:inline-block;width:70px;height:6px;background:#f1f2f5;border-radius:3px;margin-right:8px;vertical-align:1px;overflow:hidden}.gbar i{display:block;height:100%;background:#e2933a;border-radius:3px}
+.qsub{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:var(--ink);margin:14px 0 0}.qsub span{color:var(--amber)}
+details.q.dep>summary .qn{font-style:italic;color:#4a5262}
+.capl{margin-left:10px;color:var(--mute);text-decoration:underline;text-decoration-color:#d5d9e0}
 .qtotal{display:flex;justify-content:space-between;padding:10px 0 2px;font-weight:600}
 .snote{background:#f3f4f7;border-radius:8px;padding:8px 12px;margin:8px 0 0;font-size:14px}.snote p{margin:2px 0 0}
 ol.nsl{list-style:none;margin:6px 0 10px;padding:0}
