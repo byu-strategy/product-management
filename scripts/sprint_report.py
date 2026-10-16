@@ -6,7 +6,7 @@ drawers, the grader's reasons, the demo checks, the Loom stills and the transcri
 else is identical, so what Scott reviews is what the student reads.
 
 Layout (approved 2026-10-14, revised 2026-10-15): a sticky contents list on the left and open
-sections: Summary (score, profile total, first next step, the hexagon), Score, Growth, Next steps,
+sections: Summary (score, profile total, the Claude Code coach prompt with the first next step, the hexagon), Score, Growth, Next steps,
 Evidence reviewed, Questions, Methodology; Scott's copy adds Instructor notes first. Detail
 (evidence, reasons, Loom stills) stays in <details>. Inline CSS and SVG, one small script that
 highlights the current section, images embedded; printing hides the contents list.
@@ -123,6 +123,154 @@ def load_concepts():
         d = json.loads(f.read_text())
         out[d["axis"]] = {"items": d.get("items") or {}, "concepts": d.get("concepts") or []}
     return out
+
+
+# ---------------------------------------------------------------- the sprint coach prompt
+# The Summary card copies one prompt per student. It carries the report's facts, so the
+# sprint-coach skill in the student's repo can go over the report without the report open.
+
+COURSE_RULES = BOOK + "00-assessments.html#sprints"
+TEMPLATE_REPO = "https://github.com/byu-strategy/builder-template"
+
+
+def plain(h):
+    """Report HTML (a next step's title or detail) as plain text."""
+    return " ".join(html.unescape(re.sub(r"<[^>]+>", "", h or "")).split())
+
+
+def first_sentence(t):
+    t = " ".join((t or "").split())
+    m = re.match(r"(.+?[.!?])(?=\s+[A-Z(]|$)", t)
+    return m.group(1) if m else t
+
+
+def coach_gaps(G, k=4):
+    """Two to four concepts worth learning next, each with a book passage: first the ones the
+    student worked near but that did not count yet, then unshown concepts in the same item as
+    something this sprint showed, taken in turn from each item. [(id, name, url, why)]"""
+    if not G:
+        return []
+    CL = load_concepts()
+    by_id = {c["id"]: c for d in CL.values() for c in d["concepts"]}
+    shown = set(G.get("concepts_shown") or [])
+    out, seen = [], set()
+
+    def add(cid, why):
+        c = by_id.get(cid) or {}
+        refs = book_refs(cid)
+        if not cid or cid in seen or cid in shown or not refs or c.get("knowledge_only"):
+            return
+        seen.add(cid)
+        out.append((cid, c.get("name") or cid, refs[0][2], why))
+
+    for x in G.get("not_counted") or []:
+        why = str(x.get("why") or "").strip()
+        add(x.get("concept"), "Work on this did not count yet" + (f": {why[:1].lower() + why[1:]}" if why else "."))
+    queues, items_seen = [], set()
+    for m in sorted(G.get("new") or [], key=lambda m: -float(m.get("points") or 0)):
+        ax, item = m.get("axis"), m.get("item")
+        if (ax, item) in items_seen or ax not in CL:
+            continue
+        items_seen.add((ax, item))
+        label = CL[ax]["items"].get(item) or ax
+        why = f'It sits next to {m.get("concept")} {m.get("name")}, which you showed this sprint, under {label}.'
+        queues.append([(c["id"], why) for c in CL[ax]["concepts"] if c.get("item") == item])
+    while len(out) < k and any(queues):
+        for q in queues:
+            while q and len(out) < k:
+                before = len(out)
+                add(*q.pop(0))
+                if len(out) > before:
+                    break
+    if len(out) < 2:  # little shown this sprint: the next concepts on the axis worked hardest
+        pts = (G.get("rings") or [{}])[-1].get("points") or {}
+        for ax in sorted(pts, key=lambda a: -float(pts[a] or 0)):
+            for c in (CL.get(ax) or {}).get("concepts", []):
+                if len(out) >= 2:
+                    break
+                add(c["id"], f"A next concept on {ax}, where most of this sprint's work was.")
+    return out[:k]
+
+
+def coach_prompt(sprint, total, total_max, score_lines, steps, G):
+    """The prompt a student pastes into Claude Code: their voice, plain text, the report's facts."""
+    nxt = sprint + 1
+    L = [f"Here is my Sprint {sprint} report from MSB 341 (Product Management). Go over it with me "
+         f"and help me plan Sprint {nxt}.",
+         "",
+         "Run the sprint-coach skill. If it is missing, install it from the course template: copy "
+         f".claude/skills/sprint-coach from {TEMPLATE_REPO} (main branch) into this repo, then read "
+         "its SKILL.md and follow it.",
+         "",
+         f"SCORE: {fmt(total)} of {total_max}"]
+    L += [f"- {name}: {s} of {mx}. {reason}".rstrip() for name, s, mx, reason in score_lines]
+    L += ["", "NEXT STEPS, in the report's order"]
+    if steps:
+        for i, (_k, t, d, code) in enumerate(steps, 1):
+            L.append(f"{i}. {plain(t)}" + (f" {plain(d)}" if d else ""))
+            if code:
+                L += ["   Text the report gives to paste:"] + [f"   | {x}" for x in code.splitlines()]
+    else:
+        L.append("- None. The repo and README are set.")
+    L += ["", "GROWTH THIS SPRINT (depth levels: 1 Followed, 2 Directed, 3 Decided, 4 Delivered)"]
+    if G:
+        depth = {d["axis"]: d["level"] for d in G.get("depth") or [] if d.get("level")}
+        best = G.get("depth_best") or {}
+        new = {}
+        for m in G.get("new") or []:
+            new.setdefault(m["axis"], []).append(f'{m["concept"]} {m.get("name", "")}'.strip())
+        nothing = []
+        for ax in AXES:
+            b = int(best.get(ax) or 0)
+            if ax in depth or ax in new:
+                lv = depth.get(ax)
+                line = f"- {ax}: " + (f"depth level {lv}, {LEVELS[lv]}" if lv else "no depth level this sprint")
+                if b and b != lv:
+                    line += f" (highest so far: level {b}, {LEVELS[b]})"
+                line += ". New concepts: " + ("; ".join(new[ax]) if ax in new else "none") + "."
+                L.append(line)
+            elif b:
+                L.append(f"- {ax}: nothing new this sprint (highest so far: level {b}, {LEVELS[b]}).")
+            else:
+                nothing.append(ax)
+        if nothing:
+            L.append("- Nothing yet: " + ", ".join(nothing) + ".")
+    else:
+        L.append("- My builder profile is still being prepared, so the report shows no growth yet.")
+    gaps = coach_gaps(G)
+    L += ["", "GAPS WORTH LEARNING (each opens the course book at its passage)"]
+    L += [f"- {cid} {name}: {url}  {why}" for cid, name, url, why in gaps] or ["- None listed in this report."]
+    L += ["", "POINTERS",
+          f"- Course rules for sprints: {COURSE_RULES}",
+          f"- My Sprint {sprint} review and retro: sprints/sprint-{sprint}-review.md",
+          f"- My Sprint {nxt} plan: sprints/sprint-{nxt}-plan.md"]
+    return "\n".join(L)
+
+
+# The Claude mark used on the course book's Learn buttons (_extensions/learn/learn.js).
+CLAUDE_ICON = ('<svg viewBox="0 0 13 7" width="20" height="11" shape-rendering="crispEdges" aria-hidden="true"><g fill="#D97757">'
+               '<rect x="2" y="0" width="9" height="1"/><rect x="2" y="1" width="9" height="1"/><rect x="2" y="2" width="1" height="1"/>'
+               '<rect x="4" y="2" width="5" height="1"/><rect x="10" y="2" width="1" height="1"/><rect x="0" y="3" width="13" height="1"/>'
+               '<rect x="2" y="4" width="9" height="1"/><rect x="2" y="5" width="9" height="1"/><rect x="2" y="6" width="1" height="1"/>'
+               '<rect x="4" y="6" width="1" height="1"/><rect x="8" y="6" width="1" height="1"/><rect x="10" y="6" width="1" height="1"/></g>'
+               '<rect x="3" y="2" width="1" height="1" fill="#1F1F1F"/><rect x="9" y="2" width="1" height="1" fill="#1F1F1F"/></svg>')
+
+# Copy prompt: the clipboard API, then the older copy command, then the visible box with the text selected.
+COACH_JS = """
+document.querySelectorAll('.ccbtn').forEach(b=>{
+  const ta=document.getElementById(b.dataset.copy),lab=b.querySelector('.cclabel'),box=ta.closest('details'),note=b.parentElement.querySelector('.ccnote');
+  const reset=()=>{lab.textContent='Copy prompt';b.classList.remove('ok','bad')};
+  const done=()=>{lab.textContent='Copied';b.classList.add('ok');b.classList.remove('bad');note.textContent='';clearTimeout(b._t);b._t=setTimeout(reset,2000)};
+  const fail=()=>{box.open=true;ta.focus();ta.select();b.classList.add('bad');
+    note.textContent='Copying did not work here. The prompt is selected below: press '+(/Mac|iPhone|iPad/.test(navigator.platform)?'Cmd+C':'Ctrl+C')+' to copy it.'};
+  const legacy=()=>{try{const t=document.createElement('textarea');t.value=ta.value;t.setAttribute('readonly','');t.style.position='fixed';t.style.opacity='0';
+    document.body.appendChild(t);t.select();const ok=document.execCommand('copy');t.remove();return ok}catch(e){return false}};
+  b.addEventListener('click',()=>{
+    const p=(navigator.clipboard&&window.isSecureContext)?navigator.clipboard.writeText(ta.value):Promise.reject();
+    p.then(done,()=>legacy()?done():fail());
+  });
+});
+"""
 
 
 # ---------------------------------------------------------------- small helpers
@@ -894,8 +1042,26 @@ review or retro, work in a repo that is not shared, and anything the course gave
         added = sum(float(v) for v in ((G.get("rings") or [{}])[-1].get("points") or {}).values())
         prof_line = (f'<div class=sm><span class=sml>Builder profile</span><span class=smv>{round(whole)}<small> / 600</small></span>'
                      f'<span class=sms>+{round(added)} this sprint, {whole / 6:.0f}% towards a full-stack product builder</span></div>')
-    next_line = (f'<div class=sm><span class=sml>First step for Sprint {next_n}</span><span class=smt>{steps[0][1]}</span>'
-                 f'<a class=sms href="#next">all {n_steps}</a></div>') if steps else ""
+    # Go over this report with Claude Code: one button copies a prompt that carries the report's facts.
+    score_lines = []
+    if sprint > 1:
+        pr = plan_row or {}
+        reason = ("All four fields are there." if ps and not pr.get("fields_missing") else
+                  f"Missing: {pr['fields_missing']}." if ps else f"No plan was turned in on Canvas for Sprint {sprint}.")
+        score_lines.append(("Plan", fmt(plan_pts), 10, reason))
+    score_lines += [(LABELS.get(c, c), fmt(final(row_, c)), mx, first_sentence((r.get("feedback") or {}).get(c, "")))
+                    for c, _l, mx in graded]
+    prompt_txt = coach_prompt(sprint, total, total_max, score_lines, steps, G)
+    first_step = (f'<p class=ccfirst><b>First step for Sprint {next_n}:</b> {steps[0][1]} '
+                  f'<a href="#next">All {n_steps} step{"s" * (n_steps != 1)}</a></p>') if steps else ""
+    next_line = (f'<div class="sm coach"><span class=cch>Go over this report with Claude Code</span>'
+                 f'<p class=cct>Copy this prompt into Claude Code in your project folder. It walks you through the report '
+                 f'and helps you plan Sprint {next_n}.</p>'
+                 f'<div class=ccrow><button type=button class=ccbtn data-copy=coachp aria-label="Copy the prompt for Claude Code">'
+                 f'{CLAUDE_ICON}<span class=cclabel>Copy prompt</span></button><span class=ccnote role=status aria-live=polite></span></div>'
+                 f'<details class=ccbox><summary>See the prompt</summary>'
+                 f'<textarea id=coachp readonly spellcheck=false rows=14>{e(prompt_txt)}</textarea></details>'
+                 f'{first_step}</div>')
     parts_ = ([f"Plan {fmt(plan_pts)}"] if sprint > 1 else []) + [f"{LABELS.get(c, c)} {fmt(final(row_, c))}" for c, _l, _m in graded]
     summary = (f'<div class=smrow><div class=sm><span class=sml>Sprint {sprint} score</span>'
                f'<span class=smv>{fmt(total)}<small> / {total_max}</small></span><a class=sms href="#score">{" · ".join(parts_)}</a></div>'
@@ -989,7 +1155,7 @@ const io=new IntersectionObserver(es=>{{es.forEach(x=>{{if(!x.isIntersecting)ret
     g.querySelector(':scope>a').classList.toggle('on',on);if(on)g.classList.add('open')}})}})}},{{rootMargin:'-20% 0px -70% 0px'}});
 document.querySelectorAll('section.sec').forEach(s=>io.observe(s));
 }})();
-</script>
+{COACH_JS}</script>
 </body></html>"""
 
 
@@ -1132,7 +1298,21 @@ a.bkc{display:inline-block;margin-left:6px;padding:0 6px;border-radius:999px;bac
 a.bkc:hover,a.bkc:focus-visible{background:#fcebd0;color:#80460a}
 .apt b{font-weight:400}.apt tr:not(.got) b{color:#7a8291}.apt tr.got b{color:var(--ink)}.apt tr.got .apd{color:var(--amber);font-weight:600}
 .apt tr.ko b,.apt tr.ko .apd{color:var(--mute);font-style:italic}.apd{white-space:nowrap;color:var(--mute);font-size:12.5px;text-align:right}
+.coach{background:#fff;gap:6px}.cch{font-size:16px;font-weight:600;line-height:1.35}
+.cct{margin:0;font-size:14px;color:#4a5262}
+.ccrow{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:4px 0 2px}
+.ccbtn{display:inline-flex;align-items:center;gap:.4em;padding:.3em .9em .3em .7em;font:600 .86rem/1.4 system-ui,-apple-system,"Segoe UI",sans-serif;
+  letter-spacing:.01em;color:#0057B8;background:#EEF4FB;border:1px solid #D3E1F1;border-radius:999px;cursor:pointer;transition:background .15s,border-color .15s}
+.ccbtn:hover,.ccbtn:focus-visible{background:#E1ECF8;border-color:#B9D0EA}.ccbtn:focus-visible{outline:2px solid #0057B8;outline-offset:2px}
+.ccbtn svg{flex:none;display:block}.ccbtn.ok{color:#2C7A4C;background:#E8F4EC;border-color:#B7DBC3}
+.ccbtn.bad{color:#B03A3A;background:#FBEDED;border-color:#EBC5C5}.ccnote{font-size:12.5px;color:#B03A3A}
+.ccbox{margin:2px 0 0}.ccbox>summary{cursor:pointer;font-size:12.5px;color:var(--mute);width:max-content}
+.ccbox textarea{display:block;box-sizing:border-box;width:100%;max-width:100%;margin:6px 0 0;padding:8px 10px;border:1px solid var(--line);border-radius:8px;
+  background:#fbfbfc;font:12px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--ink);resize:vertical}
+.ccfirst{margin:6px 0 0;font-size:13.5px;color:#4a5262}.ccfirst b{color:var(--ink);font-weight:600}.ccfirst a{white-space:nowrap}
+@media(prefers-reduced-motion:reduce){.ccbtn{transition:none}}
 @media print{
+ .ccrow,.ccbox{display:none}
  details::details-content{content-visibility:visible;display:block}
  details>summary{break-after:avoid}
  .video iframe{display:none}.video{aspect-ratio:auto;background:none}.video .poster{display:block;position:relative}
