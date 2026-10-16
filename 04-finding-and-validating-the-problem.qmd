@@ -962,7 +962,7 @@ Jeff Dyer and Nathan Furr add one requirement to the MVP. A merely *viable* prod
 
 <!-- learn -->
 
-## MVP Scoping: The Art of Cutting
+## MVP Scoping: Deciding What to Cut {#mvp-scoping-the-art-of-cutting}
 
 Most founders include too much in their MVP. They think "just one more feature" will make it viable. It usually does not. Every feature adds:
 

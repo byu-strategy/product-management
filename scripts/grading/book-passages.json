@@ -83,7 +83,7 @@
   {
    "page": "08-data-and-apis.html",
    "anchor": "the-data-model-is-the-skeleton",
-   "section": "The Data Model Is the Skeleton",
+   "section": "Design the Data Model First",
    "tagged": false
   }
  ],
@@ -91,7 +91,7 @@
   {
    "page": "08-data-and-apis.html",
    "anchor": "the-data-model-is-the-skeleton",
-   "section": "The Data Model Is the Skeleton",
+   "section": "Design the Data Model First",
    "tagged": false
   },
   {
@@ -1400,7 +1400,7 @@
   {
    "page": "04-finding-and-validating-the-problem.html",
    "anchor": "mvp-scoping-the-art-of-cutting",
-   "section": "MVP Scoping: The Art of Cutting",
+   "section": "MVP Scoping: Deciding What to Cut",
    "tagged": false
   }
  ],
@@ -1634,7 +1634,7 @@
   {
    "page": "14-measuring-what-matters.html",
    "anchor": "three-ways-a-before-and-after-fools-you",
-   "section": "Three ways a before-and-after fools you",
+   "section": "Three ways a before-and-after comparison misleads you",
    "tagged": false
   }
  ],
@@ -1792,7 +1792,7 @@
   {
    "page": "15-storytelling-and-the-final-demo.html",
    "anchor": "a-story-has-a-job",
-   "section": "A story has a job",
+   "section": "Decide what the story is for",
    "tagged": false
   }
  ],
@@ -1808,7 +1808,7 @@
   {
    "page": "15-storytelling-and-the-final-demo.html",
    "anchor": "techniques-that-make-a-story-land",
-   "section": "Techniques that make a story land",
+   "section": "Techniques that make a story persuasive and memorable",
    "tagged": false
   },
   {

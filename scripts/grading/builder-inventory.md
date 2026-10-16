@@ -208,7 +208,7 @@ Levels 1 and 2 read the same for every item and are not repeated below.
   aloud. A tour of screens, or features described and not shown, does not count.
 - 5: the demo shows real users' use of the product, and someone acted on it (a user signed up, a sponsor approved, a client paid).
 - Old survey: none.
-- Chapters: Ch 15: A story has a job; The Final Demo.
+- Chapters: Ch 15: Decide what the story is for; The Final Demo.
 
 **L7 Reaching users.** Getting the product in front of the people it is for.
 - 3: can explain where the first users will come from and how to reach them.
@@ -235,7 +235,7 @@ Levels 1 and 2 read the same for every item and are not repeated below.
   the store (a spreadsheet, an old system, with duplicates removed) also counts.
 - 5: real users' data lives there, and the schema choices are in a decision record.
 - Old survey: Database schema design.
-- Chapters: Ch 8: The Data Model Is the Skeleton; Asking the Database a Question.
+- Chapters: Ch 8: Design the Data Model First; Asking the Database a Question.
 
 **A3 Sign-in and access.** Who you are, and what you may see.
 - 3: can explain authentication versus authorization.

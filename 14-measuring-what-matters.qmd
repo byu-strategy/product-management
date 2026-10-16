@@ -417,7 +417,7 @@ season, the campaign, or noise.
 When a number moves right after you change something, two explanations compete: your change
 caused it, or something else happened at the same time. The data alone cannot tell them apart.
 
-### Three ways a before-and-after comparison misleads you
+### Three ways a before-and-after comparison misleads you {#three-ways-a-before-and-after-fools-you}
 
 Suppose you ship a new onboarding flow on Monday, and that week's activation rate jumps from 20 to
 35 percent. Before you credit the new flow, consider:

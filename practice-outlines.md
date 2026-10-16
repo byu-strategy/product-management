@@ -225,7 +225,7 @@ Covers practices 1 through 6: Agentic Workflow, Discovery, Design. 40 items.
 - **Coach's story:** your own career arc as a through-line: the same truth-seeking loop under every job.
 - **Season ritual:** **End-of-course bookend.** Students take the closing hexagon survey and lay it beside their week 1 baseline, then reopen their Sprint 1 plan next to what they have now and write down what changed. Active learning feels like less progress than it is; this is the antidote.
 - **Film:** a strong final demo from a prior cohort, read for story structure (problem, change, demo).
-- **Install:** storytelling and the final demo: a story has a job, the story database, making it stick.
+- **Install:** storytelling and the final demo: deciding what the story is for, the story database, making it stick.
 - **Drill:** draft and rehearse the three-minute Sprint 6 demo: the problem, a live demo, and what you learned.
 - **Reading / due:** [Storytelling and the Final Demo](15-storytelling-and-the-final-demo.qmd).
 

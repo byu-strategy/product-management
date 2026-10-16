@@ -634,7 +634,7 @@ the old code now runs against changed data. This is one more reason the schema d
 a migration that deletes.
 
 This is also why a migration should run on your development copy of the database before the live
-one (Chapter 8, The Data Model Is the Skeleton).
+one (Chapter 8, Design the Data Model First).
 
 ![Instant Rollback moves the domain back to the last good deploy in seconds. All three deploys share one database, so the data stays as deploy 3 left it.](images/diagrams/ch09-rollback.svg){#fig-rollback fig-alt="A globe icon labeled your live domain, what users reach, sits above three deployment cards: Deploy 1; Deploy 2, last good, outlined in blue; Deploy 3, broken, tinted red. A faded dashed arrow labeled before runs from the domain to Deploy 3. A solid blue arrow labeled Instant Rollback, seconds, runs from the domain to Deploy 2. All three deploys connect by dotted lines to one wide card below: One database, shared by every deploy. Rollback does not undo what deploy 3 changed in the data." width="100%"}
 

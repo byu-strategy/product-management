@@ -156,7 +156,7 @@
     "AA-F-04",
     "AA-F-40"
    ],
-   "chapter": "Ch 8: The Data Model Is the Skeleton. Ch 9c: Where an App Keeps Data"
+   "chapter": "Ch 8: Design the Data Model First. Ch 9c: Where an App Keeps Data"
   },
   {
    "id": "AA10",
@@ -172,7 +172,7 @@
     "AA-F-22",
     "AA-F-41"
    ],
-   "chapter": "Ch 8: The Data Model Is the Skeleton (Migration). Ch 9: Rolling Back a Bad Deploy"
+   "chapter": "Ch 8: Design the Data Model First (Migration). Ch 9: Rolling Back a Bad Deploy"
   },
   {
    "id": "AA11",
@@ -516,7 +516,7 @@
   "Integrations with other services (OAuth connections on a user's behalf, webhooks, offering an API) are not taught. Ch 8 after Requests Are Contracts That Fail.",
   "Common web attacks (SQL injection, cross-site scripting, forged requests, endpoints with no sign-in) are not taught. Ch 8, a section after Secrets and Sensitive Data.",
   "Protections for data about people (consent, redaction, pseudonymizing interview or research data) are taught only as 'where data may go'. Ch 8: Secrets and Sensitive Data needs a part on consent and redaction, since A5 level 5 asks for them.",
-  "Importing existing data (a spreadsheet or old system into tables, with duplicates removed) is not taught, though A2 level 4 counts it. Ch 8 after The Data Model Is the Skeleton.",
+  "Importing existing data (a spreadsheet or old system into tables, with duplicates removed) is not taught, though A2 level 4 counts it. Ch 8 after Design the Data Model First.",
   "Data and schema assume Supabase. Many products store data in SQLite, an ORM schema or a platform's own store. Ch 8 should say what counts as a defined schema in those stacks.",
   "Where an app keeps data (page memory, local storage, database) is only in the Ch 9c appendix. Ch 8 should open with it."
  ],

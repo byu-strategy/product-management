@@ -13,7 +13,7 @@ This chapter continues the example from [Going to Market](12-going-to-market.qmd
 app that turns a student's lecture notes into a practice quiz, for $4 a month.
 :::
 
-## A story has a job
+## Decide what the story is for {#a-story-has-a-job}
 
 Every story has a purpose, and the first question is always what that purpose is. Work through three steps. The first, Aim, is the same first step as the course's loop in [chapter 01](01-building-with-ai-agents.qmd):
 
@@ -33,7 +33,7 @@ Prompts for the list: *Tell me about the first time you... the last time you... 
 
 <!-- learn -->
 
-## Techniques that make a story land
+## Techniques that make a story persuasive and memorable {#techniques-that-make-a-story-land}
 
 - **Find the five-second moment.** Every good story has a single moment where things change. Know exactly where yours is and slow down when you reach it. If a story has no such moment, it is a report.
 - **Show change.** A story is a before and an after. The listener needs to feel the difference between how things were and how they became. Without a change, it is not a story.
@@ -150,7 +150,7 @@ Write your demo as five lines: the person, the problem, the moment it works, the
 
 ## Key Concepts
 
-- **A story has a job**: aim (what you want to communicate, and to whom), approach (which story
+- **Decide what the story is for**: aim (what you want to communicate, and to whom), approach (which story
   serves that aim), act (tell it and watch how the audience responds). If you cannot say what a story is
   for, you are not ready to tell it.
 - **Story database**: a running list of at least 20 personal stories, kept in your repo, ready

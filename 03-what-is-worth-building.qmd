@@ -286,7 +286,7 @@ Draft a one-page product strategy for your product:
 
 Then test it with AI, adversarially. Do not ask "is this a good strategy?", it will flatter you. Ask: "Attack this strategy. Where is the moat weakest? What would a competitor with the same AI tools do to beat it? What am I refusing to sacrifice that I should?" A strategy should survive that attack before competitors make it for real.
 
-## Understanding human nature cuts both ways
+## Understanding human nature: to serve users or to exploit them {#understanding-human-nature-cuts-both-ways}
 
 To build something people actually use, you have to understand how people actually work. Jonathan Haidt describes the mind as a small rider on a large elephant [@haidt2006happiness]. The rider is conscious reasoning. The elephant is emotion and habit: automatic, strong, and usually the one that decides where the two go. Daniel Kahneman draws the same split as a fast, automatic System 1 and a slow, deliberate System 2 [@kahneman2011thinking]. (The picture simplifies: the two are not separate parts of the brain, and the rider can train the elephant over time.) People also rely on mental shortcuts, accept defaults, and fall into habit loops. That knowledge is exactly what makes a product feel effortless and worth returning to.
 
@@ -396,7 +396,7 @@ Not every product touches all three. The question is directional: for the needs 
   did.
 - **DHM** (Gibson Biddle): a good product strategy Delights customers in Hard-to-copy,
   Margin-enhancing ways, all three at once.
-- **Human nature cuts both ways**: the rider (deliberate reasoning) steers only when the elephant
+- **Human nature: serve or exploit**: the rider (deliberate reasoning) steers only when the elephant
   (emotion and habit) is willing (Haidt). The same knowledge of people that removes friction can
   engineer compulsion.
 - **Moral foundations** (Haidt): users bring moral intuitions such as care, fairness, loyalty,
