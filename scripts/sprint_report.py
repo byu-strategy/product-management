@@ -384,8 +384,8 @@ def commit_strip(days, by_day):
 
 # ---------------------------------------------------------------- drawers
 
-def row(title, right, body, cls="", chips=""):
-    return (f'<details class="q {cls}"><summary><span class=qn>{title}{chips}</span><span class=qr>{right}</span></summary>'
+def row(title, right, body, cls="", chips="", opened=False):
+    return (f'<details class="q {cls}"{" open" if opened else ""}><summary><span class=qn>{title}{chips}</span><span class=qr>{right}</span></summary>'
             f'<div class=qb>{body}</div></details>')
 
 
@@ -538,7 +538,8 @@ def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott
             return demo_head() + f"<p>{e(fb)}</p>" + how_scored(c) + demo_scott()
         return f"<p>{e(fb)}</p>" + how_scored(c)
 
-    kids = "".join(row(LABELS.get(c, label), f"{fmt(final(row_, c))}<small>/{mx}</small>", cat_body(c), "kid")
+    kids = "".join(row(LABELS.get(c, label), f"{fmt(final(row_, c))}<small>/{mx}</small>", cat_body(c), "kid",
+                       opened=(c == "demo"))  # the demo is what Scott looks at most, so it starts open
                    for c, label, mx in graded)
     days_late = f.get("canvas_days_late", 0) or 0
     wrap_canvas = review_total * (1 - min(100, 10 * days_late) / 100) if days_late else review_total
@@ -1076,20 +1077,20 @@ svg text.v{font:600 10.5px -apple-system,Helvetica,Arial,sans-serif;fill:#1d2330
 svg text.ax{font:11px -apple-system,Helvetica,Arial,sans-serif;fill:#3d4452}svg text.ax2{font:9.5px -apple-system,Helvetica,Arial,sans-serif;fill:#8a93a3}
 table.turnin{font-size:12px;margin:4px 0 6px}table.turnin th,table.turnin td{padding:5px 6px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
 .apt{width:100%;border-collapse:collapse;font-size:13.5px;margin-top:10px}.apt th{text-align:left;font-size:11.5px;color:var(--mute);font-weight:600;padding:4px 6px;border-bottom:1px solid var(--line)}
-.apt td{padding:6px 6px;border-bottom:1px solid #f3f4f6;vertical-align:top}
+.apt td{padding:4px 6px;border:0;vertical-align:top}
 .apt tr.apx td{position:sticky;top:0;z-index:2;font-size:14px;font-weight:700;color:var(--ink);background:#fcebd0;
   padding:9px 10px;border:0;box-shadow:inset 0 -2px 0 #e2933a}
 .apt tr.apg td{height:18px;padding:0;border:0}
 .apt tr.apx span{font-size:12.5px;font-weight:400;color:#6b4a1c;margin-left:8px}
-.apt tr.api td{font-size:12.5px;font-weight:600;color:#4a5262;padding:12px 6px 4px;border-bottom:1px solid var(--line)}
-.apt tr.api span{font-weight:400;color:var(--mute);margin-left:8px}
-.apt td:first-child{padding-left:16px}.apt tr.apx td:first-child,.apt tr.api td:first-child{padding-left:10px}
+.apt tr.api td{font-size:13.5px;font-weight:600;color:var(--ink);padding:16px 6px 3px}
+.apt tr.api span{font-size:12.5px;font-weight:400;color:var(--mute);margin-left:8px}
+.apt td:first-child{padding-left:34px}.apt tr.apx td:first-child,.apt tr.api td:first-child{padding-left:10px}
 a.bkn{color:inherit;text-decoration:none}a.bkn:hover,a.bkn:focus-visible{text-decoration:underline;text-decoration-color:#c9761d;text-underline-offset:3px}
-a.bkc{display:inline-block;margin-left:7px;padding:0 6px;border:1px solid #efd3a8;border-radius:999px;background:#fdf6ec;
-  font-size:11px;font-weight:500;line-height:17px;color:#80460a;text-decoration:none;vertical-align:1px;white-space:nowrap}
-a.bkc:hover,a.bkc:focus-visible{background:#fcebd0;border-color:#e2933a}
-.apt tr:not(.got) b{font-weight:500;color:#4a5262}.apt tr.got b{color:var(--ink)}.apt tr.got .apd{color:var(--amber);font-weight:600}
-.apt tr.ko b{color:var(--mute)}.apd{white-space:nowrap;color:var(--mute);font-size:12.5px;text-align:right}
+a.bkc{display:inline-block;margin-left:6px;padding:0 6px;border-radius:999px;background:#fbf3e7;
+  font-size:10.5px;font-weight:500;font-style:normal;line-height:16px;color:#9a6a2e;text-decoration:none;vertical-align:1px;white-space:nowrap}
+a.bkc:hover,a.bkc:focus-visible{background:#fcebd0;color:#80460a}
+.apt b{font-weight:400}.apt tr:not(.got) b{color:#7a8291}.apt tr.got b{color:var(--ink)}.apt tr.got .apd{color:var(--amber);font-weight:600}
+.apt tr.ko b,.apt tr.ko .apd{color:var(--mute);font-style:italic}.apd{white-space:nowrap;color:var(--mute);font-size:12.5px;text-align:right}
 @media print{
  details::details-content{content-visibility:visible;display:block}
  details>summary{break-after:avoid}
