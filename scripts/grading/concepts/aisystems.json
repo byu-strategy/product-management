@@ -74,7 +74,7 @@
     "AS-F-14",
     "AS-F-19"
    ],
-   "chapter": "Ch 10: Step 4: The model predicts the next token (one sentence); Ch 11: code samples only"
+   "chapter": "Ch 10: Step 4: The model predicts the next token (one sentence)"
   },
   {
    "id": "AS05",
@@ -170,7 +170,7 @@
     "AS-F-24",
     "AS-F-25"
    ],
-   "chapter": "Ch 10: Step 3: Attention mixes in context; Step 4; Ch 11: What It Costs; Where It Breaks"
+   "chapter": "Ch 10: Step 3: Attention mixes in context; Step 4: The model predicts the next token; Ch 11: What It Costs; Where It Breaks"
   },
   {
    "id": "AS12",
@@ -478,11 +478,11 @@
   "Cost to serve and margin per user is owned by Launch and Learn (LL14); AI Systems keeps the per-call cost concepts."
  ],
  "evidence_notes": [
-  "The session scan counts slash commands, so /context, /compact and /clear are visible for AS02 and AS05. It cannot see token counts or cost per session; adding the session's token totals to the scan would make AS06 visible as Used it.",
-  "Product token usage, latency and cost live in the product's logs or provider dashboard, which the packet does not see. Only numbers saved in the repo (a usage log, a measured table in a spec) count for S2 level 4.",
-  "Database or page latency is not model latency. A coder needs the S2 statement to say model or service calls, as v1.3 does, and the record to say which call was timed.",
+  "The session scan counts slash commands, so /context, /compact and /clear are visible for AS02 and AS05. It cannot see token counts or cost per session; adding the session's token totals to the scan would make AS06 checkable as practice.",
+  "Product token usage, latency and cost live in the product's logs or provider dashboard, which the packet does not see. Only numbers saved in the repo (a usage log, a measured table in a spec) count as S2 practice evidence.",
+  "Database or page latency is not model latency. A coder needs the S2 practice sentence to say model or service calls, and the record to say which call was timed.",
   "Many S4 and S5 builds sit in code that calls a model inside the product. A private repo the coder cannot open hides them; the packet should list which repos were shared.",
-  "S3 concepts (pretraining, attention, RLHF, the cutoff) rarely show in a build. Level 3 comes from /learn checks and the final; level 4 needs a recorded decision that names the training fact it depends on, which students seldom write. A prompt in the decision template (what can the model not know here?) would surface it.",
+  "S3 concepts (pretraining, attention, RLHF, the cutoff) rarely show in a build, so the exams measure most of them. Depth level 3 (Decided) from S3 needs a recorded decision that names the training fact it depends on, which students seldom write. A prompt in the decision template (what can the model not know here?) would surface it.",
   "A cost estimate (AS07) and a margin calculation (AS11) are often in the sprint plan or a pricing doc rather than code. The packet should include the plan and any pricing file so they can be checked.",
   "A check on model output (AS25) and a check on the coding agent's output (W3) look the same in a commit. The coder needs to know whether the checked output is produced by the product for its users or by the agent building it."
  ]

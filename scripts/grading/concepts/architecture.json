@@ -91,7 +91,7 @@
     "AA-F-05",
     "AA-F-36"
    ],
-   "chapter": "Ch 2: Deploying a Prototype; Deployment with Vercel / GitHub Pages. Ch 9: Development server vs. production build"
+   "chapter": "Ch 2: Deploying a Prototype; Deployment with Vercel / GitHub Pages. Ch 9: The three environments you already have"
   },
   {
    "id": "AA06",
@@ -108,7 +108,7 @@
     "AA-F-21",
     "AA-F-37"
    ],
-   "chapter": "Ch 9: Environments: Where Your Code Runs and Which Data It Touches; Which database? The settings decide. Ch 8: Develop against a disposable copy"
+   "chapter": "Ch 9: Environments: Where Your Code Runs and Which Data It Touches; Which database? The settings decide. Ch 8: Design the Data Model First"
   },
   {
    "id": "AA07",
@@ -124,7 +124,7 @@
     "AA-F-22",
     "AA-F-38"
    ],
-   "chapter": "Ch 9: Staging; Feature flags; Staging or a flag?"
+   "chapter": "Ch 9: Staging: a copy of production for trying a change; Feature flags: one deploy, and a setting for who sees it; Staging or a flag?"
   },
   {
    "id": "AA08",
@@ -252,7 +252,7 @@
     "AA-F-25",
     "AA-F-45"
    ],
-   "chapter": "Ch 9b: Kinds of tests (permission tests). Ch 8: Row Level Security"
+   "chapter": "Ch 9b: Kinds of tests (permission tests). Ch 8: Row Level Security: Enforce Access Where the Data Lives"
   },
   {
    "id": "AA16",
@@ -527,8 +527,8 @@
   "Test and CI runs leave no record unless the student commits output. The GitHub Actions run history for the repo would show runs and results.",
   "Pull requests are listed without saying whether the branch holds code or only plans, or whether they were merged by the due date. The packet should list each PR's changed files and merge date.",
   "A secret removed from the latest commit is still in history. A secret scan over the full history (for example gitleaks) would cover it.",
-  "Whether real users sign in (A3 level 5) needs a count of sign-ins from the auth table, dated. The packet cannot see it today.",
+  "Whether outside users sign in (depth level 4, Delivered, through A3) needs a count of sign-ins from the auth table, dated. The packet cannot see it today.",
   "Private code repos and non-web distribution (an App Store release) are not visible to the link check or the repo scan.",
-  "The session scan can show Used it for this axis from commands: build and deploy commands, git branch and gh pr, migration commands, test runs, and log reads."
+  "The session scan can show practice evidence for this axis from commands: build and deploy commands, git branch and gh pr, migration commands, test runs, and log reads."
  ]
 }

@@ -13,6 +13,14 @@
    "tagged": false
   }
  ],
+ "AA02": [
+  {
+   "page": "07-anatomy-of-an-application.html",
+   "anchor": "the-files-in-a-next.js-project",
+   "section": "The Files in a Next.js Project",
+   "tagged": false
+  }
+ ],
  "AA03": [
   {
    "page": "07-anatomy-of-an-application.html",
@@ -47,6 +55,12 @@
    "anchor": "deployment-with-vercel-github-pages",
    "section": "Deployment with Vercel / GitHub Pages",
    "tagged": false
+  },
+  {
+   "page": "09-version-control-testing-and-tech-debt.html",
+   "anchor": "the-three-environments-you-already-have",
+   "section": "The three environments you already have",
+   "tagged": false
   }
  ],
  "AA06": [
@@ -61,9 +75,27 @@
    "anchor": "which-database-the-settings-decide",
    "section": "Which database? The settings decide",
    "tagged": false
+  },
+  {
+   "page": "08-data-and-apis.html",
+   "anchor": "the-data-model-is-the-skeleton",
+   "section": "Design the Data Model First",
+   "tagged": false
   }
  ],
  "AA07": [
+  {
+   "page": "09-version-control-testing-and-tech-debt.html",
+   "anchor": "staging-a-copy-of-production-for-trying-a-change",
+   "section": "Staging: a copy of production for trying a change",
+   "tagged": false
+  },
+  {
+   "page": "09-version-control-testing-and-tech-debt.html",
+   "anchor": "feature-flags-one-deploy-and-a-setting-for-who-sees-it",
+   "section": "Feature flags: one deploy, and a setting for who sees it",
+   "tagged": false
+  },
   {
    "page": "09-version-control-testing-and-tech-debt.html",
    "anchor": "staging-or-a-flag",
@@ -77,6 +109,12 @@
    "anchor": "see-what-is-happening-logs-and-error-reports",
    "section": "See What Is Happening: Logs and Error Reports",
    "tagged": false
+  },
+  {
+   "page": "09c-browser-and-developer-tools.html",
+   "anchor": "developer-tools",
+   "section": "Developer Tools",
+   "tagged": false
   }
  ],
  "AA09": [
@@ -84,6 +122,12 @@
    "page": "08-data-and-apis.html",
    "anchor": "the-data-model-is-the-skeleton",
    "section": "Design the Data Model First",
+   "tagged": false
+  },
+  {
+   "page": "09c-browser-and-developer-tools.html",
+   "anchor": "where-an-app-keeps-data",
+   "section": "Where an App Keeps Data",
    "tagged": false
   }
  ],
@@ -138,6 +182,12 @@
    "page": "09b-tests-and-tech-debt.html",
    "anchor": "kinds-of-tests",
    "section": "Kinds of tests",
+   "tagged": false
+  },
+  {
+   "page": "08-data-and-apis.html",
+   "anchor": "row-level-security-enforce-access-where-the-data-lives",
+   "section": "Row Level Security: Enforce Access Where the Data Lives",
    "tagged": false
   }
  ],
@@ -199,6 +249,12 @@
    "tagged": false
   },
   {
+   "page": "07-anatomy-of-an-application.html",
+   "anchor": "the-files-in-a-next.js-project",
+   "section": "The Files in a Next.js Project",
+   "tagged": false
+  },
+  {
    "page": "11-models-in-your-product.html",
    "anchor": "where-the-call-lives",
    "section": "Where the Call Lives",
@@ -224,6 +280,12 @@
    "page": "08-data-and-apis.html",
    "anchor": "secrets-and-sensitive-data",
    "section": "Secrets and Sensitive Data",
+   "tagged": false
+  },
+  {
+   "page": "07-anatomy-of-an-application.html",
+   "anchor": "the-files-in-a-next.js-project",
+   "section": "The Files in a Next.js Project",
    "tagged": false
   }
  ],
@@ -279,6 +341,32 @@
    "tagged": false
   }
  ],
+ "AA30": [
+  {
+   "page": "09b-tests-and-tech-debt.html",
+   "anchor": "what-is-technical-debt",
+   "section": "What is Technical Debt?",
+   "tagged": false
+  },
+  {
+   "page": "09b-tests-and-tech-debt.html",
+   "anchor": "strategic-vs.-accidental-debt",
+   "section": "Strategic vs. Accidental Debt",
+   "tagged": false
+  },
+  {
+   "page": "09b-tests-and-tech-debt.html",
+   "anchor": "the-tech-debt-quadrant-fowler2009",
+   "section": "The Tech Debt Quadrant [@fowler2009]",
+   "tagged": false
+  },
+  {
+   "page": "09b-tests-and-tech-debt.html",
+   "anchor": "when-to-pay-down-tech-debt",
+   "section": "When to Pay Down Tech Debt",
+   "tagged": false
+  }
+ ],
  "AS01": [
   {
    "page": "10-how-models-work.html",
@@ -301,6 +389,12 @@
    "anchor": "the-context-window-is-working-memory",
    "section": "The context window is working memory",
    "tagged": false
+  },
+  {
+   "page": "11-models-in-your-product.html",
+   "anchor": "the-api-remembers-nothing",
+   "section": "The API Remembers Nothing",
+   "tagged": false
   }
  ],
  "AS04": [
@@ -317,6 +411,12 @@
    "anchor": "the-context-window-is-working-memory",
    "section": "The context window is working memory",
    "tagged": false
+  },
+  {
+   "page": "11-models-in-your-product.html",
+   "anchor": "the-api-remembers-nothing",
+   "section": "The API Remembers Nothing",
+   "tagged": false
   }
  ],
  "AS06": [
@@ -325,6 +425,12 @@
    "anchor": "step-1-text-becomes-tokens",
    "section": "Step 1: Text becomes tokens",
    "tagged": false
+  },
+  {
+   "page": "11-models-in-your-product.html",
+   "anchor": "what-it-costs",
+   "section": "What It Costs",
+   "tagged": false
   }
  ],
  "AS07": [
@@ -332,6 +438,12 @@
    "page": "11-models-in-your-product.html",
    "anchor": "what-it-costs",
    "section": "What It Costs",
+   "tagged": false
+  },
+  {
+   "page": "12-going-to-market.html",
+   "anchor": "every-ai-call-is-a-cost",
+   "section": "Every AI call is a cost",
    "tagged": false
   }
  ],
@@ -356,6 +468,24 @@
    "page": "10-how-models-work.html",
    "anchor": "step-3-attention-mixes-in-context",
    "section": "Step 3: Attention mixes in context",
+   "tagged": false
+  },
+  {
+   "page": "10-how-models-work.html",
+   "anchor": "step-4-the-model-predicts-the-next-token",
+   "section": "Step 4: The model predicts the next token",
+   "tagged": false
+  },
+  {
+   "page": "11-models-in-your-product.html",
+   "anchor": "what-it-costs",
+   "section": "What It Costs",
+   "tagged": false
+  },
+  {
+   "page": "11-models-in-your-product.html",
+   "anchor": "where-it-breaks",
+   "section": "Where It Breaks",
    "tagged": false
   }
  ],
@@ -435,6 +565,12 @@
    "anchor": "step-2-tokens-become-embeddings",
    "section": "Step 2: Tokens become embeddings",
    "tagged": false
+  },
+  {
+   "page": "11-models-in-your-product.html",
+   "anchor": "grounding-answers-in-your-data",
+   "section": "Grounding Answers in Your Data",
+   "tagged": false
   }
  ],
  "AS21": [
@@ -467,6 +603,12 @@
    "anchor": "plausible-is-not-true",
    "section": "Plausible is not true",
    "tagged": false
+  },
+  {
+   "page": "11-models-in-your-product.html",
+   "anchor": "where-it-breaks",
+   "section": "Where It Breaks",
+   "tagged": false
   }
  ],
  "AS25": [
@@ -474,6 +616,12 @@
    "page": "10-how-models-work.html",
    "anchor": "plausible-is-not-true",
    "section": "Plausible is not true",
+   "tagged": false
+  },
+  {
+   "page": "11-models-in-your-product.html",
+   "anchor": "where-it-breaks",
+   "section": "Where It Breaks",
    "tagged": false
   }
  ],
@@ -491,6 +639,12 @@
    "anchor": "where-it-breaks",
    "section": "Where It Breaks",
    "tagged": false
+  },
+  {
+   "page": "10-how-models-work.html",
+   "anchor": "the-jagged-frontier",
+   "section": "The jagged frontier",
+   "tagged": false
   }
  ],
  "AS28": [
@@ -506,6 +660,12 @@
    "page": "10-how-models-work.html",
    "anchor": "prompting",
    "section": "Prompting",
+   "tagged": false
+  },
+  {
+   "page": "10-how-models-work.html",
+   "anchor": "step-6-fine-tuning-and-human-feedback-shape-behavior",
+   "section": "Step 6: Fine-tuning and human feedback shape behavior",
    "tagged": false
   }
  ],
@@ -531,6 +691,12 @@
    "anchor": "one-engine-many-surfaces",
    "section": "One engine, many surfaces",
    "tagged": false
+  },
+  {
+   "page": "02-directing-the-agent.html",
+   "anchor": "claude-code-slash-commands",
+   "section": "Claude Code: Slash Commands",
+   "tagged": false
   }
  ],
  "AW04": [
@@ -539,13 +705,77 @@
    "anchor": "it-knows-only-what-it-can-see",
    "section": "It Knows Only What It Can See",
    "tagged": false
+  },
+  {
+   "page": "02-directing-the-agent.html",
+   "anchor": "claude.md-your-projects-memory",
+   "section": "CLAUDE.md: your project's memory",
+   "tagged": false
+  },
+  {
+   "page": "02-directing-the-agent.html",
+   "anchor": "where-claude.md-files-live",
+   "section": "Where CLAUDE.md files live",
+   "tagged": false
+  }
+ ],
+ "AW05": [
+  {
+   "page": "02-directing-the-agent.html",
+   "anchor": "it-knows-only-what-it-can-see",
+   "section": "It Knows Only What It Can See",
+   "tagged": false
+  },
+  {
+   "page": "02-directing-the-agent.html",
+   "anchor": "what-fills-the-window",
+   "section": "What fills the window",
+   "tagged": false
+  },
+  {
+   "page": "02-directing-the-agent.html",
+   "anchor": "the-controls",
+   "section": "The controls",
+   "tagged": false
+  },
+  {
+   "page": "02-directing-the-agent.html",
+   "anchor": "claude.md-and-auto-memory",
+   "section": "CLAUDE.md and auto memory",
+   "tagged": false
   }
  ],
  "AW06": [
   {
    "page": "06b-specs.html",
-   "anchor": "the-sdd-workflow",
-   "section": "The SDD Workflow",
+   "anchor": "claude-codes-plan-mode",
+   "section": "Claude Code's plan mode",
+   "tagged": false
+  },
+  {
+   "page": "02-directing-the-agent.html",
+   "anchor": "the-controls-from-tightest-to-loosest",
+   "section": "The controls, from tightest to loosest",
+   "tagged": false
+  }
+ ],
+ "AW07": [
+  {
+   "page": "02-directing-the-agent.html",
+   "anchor": "permission-rules",
+   "section": "Permission rules",
+   "tagged": false
+  },
+  {
+   "page": "02-directing-the-agent.html",
+   "anchor": "claude-code-hooks",
+   "section": "Claude Code hooks",
+   "tagged": false
+  },
+  {
+   "page": "A3-claude-code-cli-and-desktop.html",
+   "anchor": "the-same-engine",
+   "section": "The same engine",
    "tagged": false
   }
  ],
@@ -691,6 +921,20 @@
    "tagged": false
   }
  ],
+ "AW25": [
+  {
+   "page": "11-models-in-your-product.html",
+   "anchor": "what-it-costs",
+   "section": "What It Costs",
+   "tagged": false
+  },
+  {
+   "page": "11-models-in-your-product.html",
+   "anchor": "evals-knowing-whether-it-works",
+   "section": "Evals: Knowing Whether It Works",
+   "tagged": false
+  }
+ ],
  "AW26": [
   {
    "page": "02-directing-the-agent.html",
@@ -700,6 +944,12 @@
   }
  ],
  "AW27": [
+  {
+   "page": "02-directing-the-agent.html",
+   "anchor": "permission-rules",
+   "section": "Permission rules",
+   "tagged": false
+  },
   {
    "page": "02-directing-the-agent.html",
    "anchor": "the-controls-from-tightest-to-loosest",
@@ -1062,6 +1312,46 @@
    "tagged": false
   }
  ],
+ "DE19": [
+  {
+   "page": "06b-specs.html",
+   "anchor": "product-requirements-documents-prds",
+   "section": "Product Requirements Documents (PRDs)",
+   "tagged": false
+  }
+ ],
+ "DE20": [
+  {
+   "page": "06b-specs.html",
+   "anchor": "build-first-then-spec-what-you-keep",
+   "section": "Build first, then spec what you keep",
+   "tagged": false
+  },
+  {
+   "page": "06b-specs.html",
+   "anchor": "why-sdd-matters-especially-for-pms",
+   "section": "Why SDD Matters (Especially for PMs)",
+   "tagged": false
+  },
+  {
+   "page": "06b-specs.html",
+   "anchor": "when-to-use-sdd-vs.-pure-vibe-coding",
+   "section": "When to Use SDD vs. Pure Vibe Coding",
+   "tagged": false
+  },
+  {
+   "page": "06b-specs.html",
+   "anchor": "the-sdd-workflow",
+   "section": "The SDD Workflow",
+   "tagged": false
+  },
+  {
+   "page": "06b-specs.html",
+   "anchor": "major-sdd-approaches",
+   "section": "Major SDD Approaches",
+   "tagged": false
+  }
+ ],
  "DE21": [
   {
    "page": "06b-specs.html",
@@ -1213,6 +1503,12 @@
  "DI01": [
   {
    "page": "04-finding-and-validating-the-problem.html",
+   "anchor": "problem-interviews-the-mom-test",
+   "section": "Problem Interviews (The Mom Test)",
+   "tagged": false
+  },
+  {
+   "page": "04-finding-and-validating-the-problem.html",
    "anchor": "conducting-effective-interviews",
    "section": "Conducting Effective Interviews",
    "tagged": false
@@ -1235,6 +1531,18 @@
   }
  ],
  "DI04": [
+  {
+   "page": "03-what-is-worth-building.html",
+   "anchor": "why-most-products-fail",
+   "section": "Why Most Products Fail",
+   "tagged": false
+  },
+  {
+   "page": "03-what-is-worth-building.html",
+   "anchor": "problem-vs.-solution-thinking",
+   "section": "Problem vs. Solution Thinking",
+   "tagged": false
+  },
   {
    "page": "04-finding-and-validating-the-problem.html",
    "anchor": "problem-journaling",
@@ -1384,6 +1692,32 @@
    "tagged": false
   }
  ],
+ "DI22": [
+  {
+   "page": "04-finding-and-validating-the-problem.html",
+   "anchor": "evaluating-your-problems",
+   "section": "Evaluating Your Problems",
+   "tagged": false
+  },
+  {
+   "page": "04-finding-and-validating-the-problem.html",
+   "anchor": "the-commitment-decision",
+   "section": "The Commitment Decision",
+   "tagged": false
+  },
+  {
+   "page": "04-finding-and-validating-the-problem.html",
+   "anchor": "avoiding-premature-commitment",
+   "section": "Avoiding Premature Commitment",
+   "tagged": false
+  },
+  {
+   "page": "94-problem-discovery-framework.html",
+   "anchor": "scoring",
+   "section": "Scoring",
+   "tagged": false
+  }
+ ],
  "DI23": [
   {
    "page": "04-finding-and-validating-the-problem.html",
@@ -1491,6 +1825,26 @@
    "page": "04-finding-and-validating-the-problem.html",
    "anchor": "your-value-proposition",
    "section": "Your Value Proposition",
+   "tagged": false
+  }
+ ],
+ "DI30": [
+  {
+   "page": "03-what-is-worth-building.html",
+   "anchor": "understanding-human-nature-cuts-both-ways",
+   "section": "Understanding human nature: to serve users or to exploit them",
+   "tagged": false
+  },
+  {
+   "page": "03-what-is-worth-building.html",
+   "anchor": "aiming-well-virtue-and-the-golden-mean",
+   "section": "Aiming well: virtue and the golden mean",
+   "tagged": false
+  },
+  {
+   "page": "94-problem-discovery-framework.html",
+   "anchor": "gospel-framework",
+   "section": "Gospel Framework",
    "tagged": false
   }
  ],

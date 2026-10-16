@@ -67,19 +67,129 @@ def concepts():
     return C
 
 
+def book_files():
+    """The chapter files in _quarto.yml, in book order. Files not listed there (drafts, slides,
+    anything in _archive/) are not part of the book and are never read."""
+    out = []
+    for line in (BOOK / "_quarto.yml").read_text().split("\n"):
+        m = re.match(r"^\s*-\s+([\w.-]+\.qmd)\s*$", line)
+        if m and (BOOK / m.group(1)).exists():
+            out.append(BOOK / m.group(1))
+    return out
+
+
 def chapter_files():
-    """'5' -> 05-interface-and-flow.qmd, '5b' -> 05b-..., from the book's file names."""
+    """'5' -> 05-interface-and-flow.qmd, '5b' -> 05b-..., '9c' -> 09c-..., 'A1' -> A1-...,
+    from the book's file names in _quarto.yml order."""
     out = {}
-    for f in sorted(BOOK.glob("*.qmd")):
-        m = re.match(r"(\d+b?)-", f.name)
+    for f in book_files():
+        m = re.match(r"(\d+[a-z]?|A\d+)-", f.name)
         if m:
             out.setdefault(m.group(1).lstrip("0") or "0", f)
     return out
 
 
+def title(f):
+    m = re.search(r'^title:\s*"?(.*?)"?\s*$', f.read_text(), re.M)
+    return m.group(1) if m else f.stem
+
+
+def norm(text):
+    """Heading text for matching: no citations, markup or punctuation, lower case."""
+    t = re.sub(r"\[@[^\]]*\]", "", text)
+    t = re.sub(r"[^\w\s]", " ", t.lower().replace("\u2019", "").replace("'", ""))
+    return " ".join(t.split())
+
+
+def no_paren(text):
+    return re.sub(r"\s*\([^)]*\)\s*$", "", text).strip()
+
+
+def find_heading(f, part):
+    """The heading in f that `part` names, matched without case, punctuation or citations. Tried in
+    order: the whole text; with a trailing parenthetical dropped from either side; the heading's
+    text before its first colon ("Staging" for "Staging: a copy of production ...")."""
+    H = headings(f)
+    passes = (lambda h, w: norm(h[1]) == w,
+              lambda h, w: norm(no_paren(h[1])) == w,
+              lambda h, w: ":" in h[1] and norm(h[1].split(":")[0]) == w)
+    for test in passes:
+        for want in (norm(part), norm(no_paren(part))):
+            h = next((h for h in H if test(h, want)), None)
+            if h:
+                return h
+    return None
+
+
+def split_top(text):
+    """Split on ';' outside parentheses."""
+    out, depth, cur = [], 0, ""
+    for ch in text:
+        depth += (ch == "(") - (ch == ")")
+        if ch == ";" and depth <= 0:
+            out.append(cur)
+            cur = ""
+        else:
+            cur += ch
+    return [x.strip() for x in out + [cur] if x.strip()]
+
+
+def parse_refs(field):
+    """A concept's `chapter` field as (chapter key or 'Appendix', [section names]) blocks:
+    "Ch 9b: What is Technical Debt?; Strategic vs. Accidental Debt. Appendix: Problem Discovery
+    Framework (Scoring)". A block starts at "Ch N" or "Appendix" (at the start, or after '.', ';'
+    or '('); sections split on ';' outside parentheses, so periods, colons and question marks
+    inside a heading are kept."""
+    starts = list(re.finditer(r"(?:^|(?<=[.;]\s)|(?<=\())(?:Ch\s+(\d+[a-z]?|A\d+)|(Appendix))\b\s*:?\s*", field))
+    out = []
+    for i, m in enumerate(starts):
+        body = field[m.end(): starts[i + 1].start() if i + 1 < len(starts) else len(field)].strip()
+        if body.count(")") > body.count("("):
+            body = body[:body.rindex(")")]
+        body = re.sub(r"[.;(]\s*$", "", body.strip())
+        out.append((m.group(1).lstrip("0") if m.group(1) else "Appendix", split_top(body)))
+    return out
+
+
+def resolve(field, files, unresolved, cid):
+    found = []
+    for key, parts in parse_refs(field):
+        if key == "Appendix":
+            for part in parts:
+                f = next((f for f in book_files() if norm(title(f)) == norm(no_paren(part))), None)
+                sub = re.search(r"\(([^)]*)\)\s*$", part)
+                h = find_heading(f, sub.group(1)) if f and sub else None
+                if f:
+                    found.append((f, h))
+                else:
+                    unresolved.append(f"{cid}: Appendix: {part}")
+            continue
+        f = files.get(key)
+        if not f:
+            unresolved.append(f"{cid}: Ch {key} (no such chapter)")
+            continue
+        if not parts:
+            found.append((f, None))
+        for part in parts:
+            h = find_heading(f, part)
+            if h:
+                found.append((f, h))
+            else:
+                unresolved.append(f"{cid}: Ch {key}: {part}")
+    out = []
+    for f, h in found:
+        e = {"page": f.stem + ".html", "anchor": h[2] if h else "", "section": h[1] if h else title(f), "tagged": False}
+        if e not in out:
+            out.append(e)
+    return out
+
+
+UNRESOLVED = []
+
+
 def build():
     C, P, unknown = concepts(), {}, []
-    for f in sorted(BOOK.glob("*.qmd")):
+    for f in book_files():
         H, L = headings(f), f.read_text().split("\n")
         stack, spans, code = [], [], False
         for i, line in enumerate(L):
@@ -111,24 +221,18 @@ def build():
                          "tagged": True, "covers": [h[2] for h in above + inside]}
                 if entry not in P.setdefault(cid, []):
                     P[cid].append(entry)
-    files, missing = chapter_files(), []
+    files, missing, unresolved = chapter_files(), [], []
     for cid, c in C.items():
         if cid in P:
             continue
-        found = []
-        for m in re.finditer(r"Ch\s+(\w+):\s*([^.]*?)(?=\.\s*Ch|$)", c.get("chapter", "")):
-            f = files.get(m.group(1))
-            if not f:
-                continue
-            H = {h[1].lower(): h for h in headings(f)}
-            for part in re.split(r";\s*", m.group(2)):
-                h = H.get(re.sub(r"\s*\(.*$", "", part).strip().lower())
-                if h:
-                    found.append({"page": f.stem + ".html", "anchor": h[2], "section": h[1], "tagged": False})
+        found = resolve(c.get("chapter", ""), files, unresolved, cid)
         if found:
             P[cid] = found
         else:
             missing.append(f"{cid} {c['name']}: {c.get('chapter', '')}")
+    # a field that says "not taught yet" names sections that only partly cover it; not stale
+    untaught = {cid for cid, c in C.items() if c.get("chapter", "").lower().startswith("not taught")}
+    UNRESOLVED[:] = [x for x in unresolved if x.split(":")[0] not in untaught]
     return P, unknown, missing, C
 
 
@@ -179,6 +283,8 @@ if __name__ == "__main__":
         print("  unknown concept id in a tag:", x)
     for x in missing:
         print("  no passage:", x)
+    for x in UNRESOLVED:
+        print("  section not found (stale `chapter` reference):", x)
     ex = exam_check(P, C)
     print(f"exam: {len(ex)} disagreements")
     for x in ex:

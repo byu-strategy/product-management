@@ -546,7 +546,6 @@
   "Design system reuse (DE14): counting the screens that use a shared component needs a code search the packet does not include. Adding import counts per shared component to the packet would make 'three or more screens' checkable.",
   "Spec text (DE18 to DE22): packets often drop spec texts under the text budget, so acceptance criteria and decisions sections cannot be read. Commit order still settles 'before the code'. Giving spec files priority in the packet would fix it.",
   "Design direction (DE23): directions to an agent are in the user's prompts, which the session scan reads but does not classify. Directions to a teammate or another tool (Cursor) are not visible. A scan count of prompts with a screenshot attached, or naming an element and a principle, would help.",
-  "Usability testing (DE27 to DE29): one record may meet G5 and G6; it counts for each only when it meets each statement on its own. Session note texts are often absent from the packet.",
-  "Know it: DE10 (typography, grid, color), DE15 (design rules for the agent), DE17 (user stories), DE19 (PRD), DE20 (spec-driven development) and DE22 (punch list and check sheet) have no exam question."
+  "Usability testing (DE27 to DE29): one record may be evidence for concepts under both G5 and G6; it counts for each concept only when it meets that concept's practice sentence on its own. Session note texts are often absent from the packet."
  ]
 }

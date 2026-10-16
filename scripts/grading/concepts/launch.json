@@ -505,12 +505,12 @@
   "Several concepts have no exam question: success definition and guardrails, revenue models and free tiers, the Business Model Canvas, reading feedback (NPS, AI themes), all of Ch 15 except the demo. The bank also has no Launch midterm items, which matches the course order."
  ],
  "evidence_notes": [
-  "Real users (L1, and every Shipped it): the packet has usage only as sentences in plans and reviews. A dated \"Users this sprint\" table in the /sprint-review template, or a committed metrics/weekly.md, would give a record; a read-only count from the product's database (distinct users by day) would make it checkable.",
+  "Real users (L1, and depth level 4 on every axis): the packet used to have usage only as sentences in plans and reviews. The review's \"Users this sprint\" list is now the record depth level 4 accepts; a read-only count from the product's database (distinct users by day) would make it checkable.",
   "Instrumentation (L2): the packet shows an events migration or capture calls but not whether real rows arrived, or whether the analytics are shown to users. A count of event rows by name and date in the packet would show it.",
   "Experiments (L3): the prediction must be committed before the test. Commit order in the packet shows this only when the plan and the result are in separate commits; it should flag a test file first committed with its result.",
   "Outreach and channels (L7): outreach often lives in email, Slack, ads managers or private repos. The packet sees it only when a log is committed; ad spend and clicks need a screenshot or export in the repo.",
-  "Pricing tested with real people (L4 5): a Stripe link or checkout in code does not show anyone paid. A payment count (excluding the founder's own test purchase) would need a recorded export.",
+  "Pricing tested with real people (L4): a Stripe link or checkout in code does not show anyone paid. A payment count (excluding the founder's own test purchase) would need a recorded export.",
   "Demo (L6): the coder judges from Loom frames and the transcript. The packet does not tell a live app from localhost or a prototype, nor a fresh run from a result made earlier; Loom timestamps are estimates. A link check on the URL shown would help.",
-  "Used it for most Launch concepts is not visible in the session scan: launch work happens in browsers, email and analytics tools. Only SQL or analytics queries and outreach drafting in sessions show up."
+  "Practice for most Launch concepts is not visible in the session scan: launch work happens in browsers, email and analytics tools. Only SQL or analytics queries and outreach drafting in sessions show up."
  ]
 }

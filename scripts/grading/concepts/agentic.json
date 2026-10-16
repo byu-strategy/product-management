@@ -67,7 +67,7 @@
     "AW-F-52",
     "AW-F-59"
    ],
-   "chapter": "Ch 1: One engine, many surfaces; Ch 2: Your phone and your voice"
+   "chapter": "Ch 1: One engine, many surfaces; Ch 2: Claude Code: Slash Commands"
   },
   {
    "id": "AW04",
@@ -86,7 +86,7 @@
     "AW-F-60",
     "AW-F-61"
    ],
-   "chapter": "Ch 2: It Knows Only What It Can See; Project Overview"
+   "chapter": "Ch 2: It Knows Only What It Can See; CLAUDE.md: your project's memory; Where CLAUDE.md files live"
   },
   {
    "id": "AW05",
@@ -106,7 +106,7 @@
     "AW-F-62",
     "AW-F-63"
    ],
-   "chapter": "Ch 2: Development Notes"
+   "chapter": "Ch 2: It Knows Only What It Can See; What fills the window; The controls; CLAUDE.md and auto memory"
   },
   {
    "id": "AW06",
@@ -124,7 +124,7 @@
     "AW-F-64",
     "AW-F-65"
    ],
-   "chapter": "Ch 2; Ch 6b: The SDD Workflow"
+   "chapter": "Ch 6b: Claude Code's plan mode; Ch 2: The controls, from tightest to loosest"
   },
   {
    "id": "AW07",
@@ -142,7 +142,7 @@
     "AW-F-66",
     "AW-F-67"
    ],
-   "chapter": "Ch 2: Rules"
+   "chapter": "Ch 2: Permission rules; Claude Code hooks. Ch A3: The same engine"
   },
   {
    "id": "AW08",
@@ -334,7 +334,7 @@
     "AW-F-38",
     "AW-F-40"
    ],
-   "chapter": "Ch 2: Rules; The controls, from tightest to loosest"
+   "chapter": "Ch 2: Permission rules; The controls, from tightest to loosest"
   },
   {
    "id": "AW16",
@@ -510,7 +510,7 @@
     "AW-F-81",
     "AW-F-89"
    ],
-   "chapter": "Ch 11: one paragraph"
+   "chapter": "Ch 11: What It Costs; Evals: Knowing Whether It Works"
   }
  ],
  "exam_elsewhere": [

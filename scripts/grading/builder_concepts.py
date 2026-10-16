@@ -2,7 +2,8 @@
 """Build the builder concept lists from concepts/<axis>.json.
 
 For each axis, writes:
-  builder-concepts-<key>.md in this folder: the concept list and its checks (no exam content), and
+  builder-concepts-<key>.md in this folder: the concept list, its practice checks and knowledge-only
+  concepts (no exam content), and
   concepts-<key>.html in the private exam folder: the same list with the exam questions on each
   concept, which ones are seated on the final, and the gaps.
 Run with no arguments for every axis, or name axis keys: python3 builder_concepts.py agentic design
@@ -14,17 +15,17 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 EXAM = Path.home() / "Library/CloudStorage/OneDrive-BrighamYoungUniversity/3. Teaching/_materials/product-management/builder-exam"
-CHECKS = """Each concept has up to four checks, each counted once:
+CHECKS = """Each concept is measured in up to two ways:
 
-- **Know it**: says what it is and applies it on paper. Evidence: final exam questions on the concept,
-  all three types (know it, use it, predict it), and `/learn` checks. Self-rated in the survey until
-  the exam. (The exam's "use it" questions are scenarios on paper; the profile's "Used it" is real work.)
-- **Used it**: used it in their own work. Evidence: the `/sprint-review` session scan, or the repo.
-- **Built it**: built their own. Evidence: a file they wrote, committed in a shared repo.
-- **Shipped it**: made it for real users and chose it on purpose (the inventory's level 5 rules).
+- **Know it** (every concept): the exams. Midterm and final questions on the concept come in three
+  types (know it, use it, predict it). The September survey self-rating stands in until the midterm.
+- **Practice** (every concept not marked knowledge only): the student's own work shows it, counted
+  once. The **Practice** column says what counts as evidence: the `/sprint-review` session scan's
+  "Builder tools you used" list, or a file in a shared repo. This is the breadth half of the profile's
+  practice score; depth (`depth-levels.md`) is assigned per axis, not per concept.
 
-A blank cell means the check does not apply to that concept. Evidence rules from
-`builder-inventory.md` apply."""
+A concept marked **knowledge only** has no practice check: it is measured by the exams alone.
+Evidence rules are in `concept-coder.md` and `depth-levels.md`."""
 
 
 def exam_items():
@@ -36,17 +37,20 @@ def exam_items():
     return out
 
 
+def practice(c):
+    return "knowledge only (exams)" if c.get("knowledge_only") else (c.get("practice") or "n/a")
+
+
 def build(key, items):
     d = json.loads((HERE / "concepts" / f"{key}.json").read_text())
     C = d["concepts"]
     lines = [f"# {d['axis']} concepts (draft, generated from concepts/{key}.json)", "",
-             f"The named concepts under the {d['axis']} items in `builder-inventory.md`. {d.get('intro', '')}".strip(), "",
+             f"The named concepts under the {d['axis']} items. {d.get('intro', '')}".strip(), "",
              CHECKS, ""]
     for code, name in d["items"].items():
-        lines += [f"## {code} {name}", "", "| Concept | Used it | Built it | Shipped it | Chapter |", "|---|---|---|---|---|"]
+        lines += [f"## {code} {name}", "", "| Concept | Practice | Chapter |", "|---|---|---|"]
         for c in [c for c in C if c["item"] == code]:
-            lines.append(f"| **{c['id']} {c['name']}.** {c['what']} | {c['used'] or 'n/a'} | {c['made'] or 'n/a'} | "
-                         f"{c['shipped'] or 'n/a'} | {c['chapter']} |")
+            lines.append(f"| **{c['id']} {c['name']}.** {c['what']} | {practice(c)} | {c['chapter']} |")
         lines.append("")
     for title, field in (("Book gaps", "book_gaps"), ("Evidence a packet or the session scan cannot see yet", "evidence_notes")):
         if d.get(field):
@@ -61,16 +65,15 @@ def build(key, items):
         return sum(1 for i in ids if items.get(i, {}).get("exam") == "final" and items[i].get("role") == "seated")
     rows = ""
     for code, name in d["items"].items():
-        rows += f'<tr class=grp><td colspan=6>{code} {e(name)}</td></tr>'
+        rows += f'<tr class=grp><td colspan=4>{code} {e(name)}</td></tr>'
         for c in [c for c in C if c["item"] == code]:
             fs = seated(c["exam"])
             know = (" ".join(q(i) for i in c["exam"]) or '<span class=gap>no question</span>') + \
                 (f'<div class=fs>{fs} seated on the final</div>' if fs else ('<div class="fs gap">none seated on the final</div>' if c["exam"] else ""))
-            na = "<span class=na>n/a</span>"
-            rows += (f'<tr><td><b>{e(c["name"])}</b><div class=m>{e(c["what"])}</div></td><td class=k>{know}</td>'
-                     f'<td>{e(c["used"]) or na}</td><td>{e(c["made"]) or na}</td><td>{e(c["shipped"]) or na}</td>'
-                     f'<td class=m>{e(c["chapter"])}</td></tr>')
-    checks = sum(1 + bool(c["used"]) + bool(c["made"]) + bool(c["shipped"]) for c in C)
+            prac = '<span class=na>knowledge only</span>' if c.get("knowledge_only") else e(c.get("practice") or "")
+            rows += (f'<tr><td><b>{e(c["id"])} {e(c["name"])}</b><div class=m>{e(c["what"])}</div></td><td class=k>{know}</td>'
+                     f'<td>{prac}</td><td class=m>{e(c["chapter"])}</td></tr>')
+    checks = sum(1 + (not c.get("knowledge_only") and bool(c.get("practice"))) for c in C)
     noq = [c["name"] for c in C if not c["exam"]]
     nofinal = [c["name"] for c in C if c["exam"] and not seated(c["exam"])]
     mapped = {i for c in C for i in c["exam"]} | {x["id"] for x in d.get("exam_elsewhere", [])}
@@ -88,12 +91,12 @@ td{{border-bottom:1px solid #f0f1f4;padding:8px;vertical-align:top}}tr.grp td{{b
 .q.midterm{{background:#f3f4f6;color:#4a5262}}.q.retired{{text-decoration:line-through;opacity:.6}}.q.spare{{opacity:.8;border:1px dashed #9aa3b5}}.q.missing{{background:#fde8e8;color:#9b1c1c}}
 .key{{font-size:12.5px;color:#6b7385;margin:6px 0 14px}}td.k{{width:190px}}ul{{margin:4px 0 0 18px;padding:0}}</style>
 <h1>{e(d['axis'])}: concepts, checks, and the exam</h1>
-<p class=sub>Generated from concepts/{key}.json. Know it (the final exam), Used it (the session scan or the repo), Built it (a committed file), Shipped it (for real users, chosen on purpose). Hover a question id for its topic.</p>
+<p class=sub>Generated from concepts/{key}.json. Know it (the exams) and Practice (the student's own work, counted once; knowledge-only concepts have none). Hover a question id for its topic.</p>
 <div class=cards><div class=card><b>{len(C)}</b>concepts under {len(d['items'])} items</div><div class=card><b>{checks}</b>checks in all</div>
 <div class=card><b>{len(noq)}</b>concepts with no exam question</div><div class=card><b>{len(nofinal)}</b>with questions, none seated on the final</div>
 <div class=card><b>{len(unmapped)}</b>final questions on this axis mapped to no concept</div></div>
 <p class=key><span class="q final seated">final, seated</span> <span class="q final spare">spare</span> <span class="q midterm seated">midterm</span> <span class="q final retired">retired</span></p>
-<table><tr><th>Concept</th><th>Know it (exam questions)</th><th>Used it</th><th>Built it</th><th>Shipped it</th><th>Chapter</th></tr>{rows}</table>
+<table><tr><th>Concept</th><th>Know it (exam questions)</th><th>Practice</th><th>Chapter</th></tr>{rows}</table>
 <h3>Gaps</h3><ul><li><b>No question at all:</b> {e(", ".join(noq)) or "none"}</li>
 <li><b>Questions exist, none seated on the final:</b> {e(", ".join(nofinal)) or "none"}</li>
 <li><b>Final questions on this axis that map to no concept:</b> {" ".join(q(i) for i in unmapped) or "none"}</li>

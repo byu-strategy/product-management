@@ -15,7 +15,7 @@ the exam and /learn share. An id not on that list is a warning at render time. T
 each concept's name as `data-cn` so concepts.js can label the passage, and loads concepts.js only
 on pages with a tagged passage. concepts.js reads `?c=DE02` from the address, which is how a
 sprint report links to a passage, and highlights every passage for that concept.
-`scripts/grading/builder_concepts.py --passages` writes the map the reports read.
+`scripts/grading/book_passages.py` writes the map the reports read (book-passages.json).
 ]]
 
 local DIR = "scripts/grading/concepts"
