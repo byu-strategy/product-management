@@ -31,8 +31,9 @@ LEVEL_TEXT = {  # from depth-levels.md, in the student's terms
     2: "you said specifically what to build and checked that it worked",
     3: "you weighed options and owned the trade-off, or caught and fixed what went wrong",
     4: "people outside your team rely on it, and you changed the work because of what they did or said"}
-# One color per sprint, lightest first; a sprint keeps its color in every report.
-SPRINT_COLORS = {1: "#f9d29a", 2: "#e89a3d", 3: "#c96f0a", 4: "#a85a06", 5: "#874604", 6: "#663403"}
+# One amber ramp, light at the center to dark at the newest ring; a sprint keeps its color in every report.
+SPRINT_COLORS = {1: "#f7d39c", 2: "#efb365", 3: "#e2933a", 4: "#c9761d", 5: "#a65d10", 6: "#80460a"}
+CORE_COLOR = "#fcebd0"  # the starting core: the lightest step of the same amber ramp
 SCALE = {1: "something you already knew how to do", 2: "mostly known, a few small gaps",
          3: "something new to learn, with a clear path", 4: "a lot to learn, and the path was not clear",
          5: "unclear whether it was possible at all"}
@@ -295,7 +296,7 @@ def profile_svg(G):
             out.append(f'<polygon points="{poly(vals)}" fill="{SPRINT_COLORS.get(s, "#d97706")}" stroke="#fff" '
                        f'stroke-width=".8" stroke-linejoin="round"><title>Through Sprint {s}</title></polygon>')
     if any(core_vals):  # the survey center sits innermost, on top of the rings
-        out.append(f'<polygon points="{poly(core_vals)}" fill="#c9d3e3" stroke="#fff" stroke-width=".8" '
+        out.append(f'<polygon points="{poly(core_vals)}" fill="{CORE_COLOR}" stroke="#fff" stroke-width=".8" '
                    f'stroke-linejoin="round"><title>Your September survey</title></polygon>')
     if G and any(totals):  # a dot at every value, so a small value next to a zero still shows
         for i in range(6):
@@ -529,7 +530,7 @@ def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott
     # ---- profile
     svg, drawn = profile_svg(G)
     if G:
-        core_sw = ('<span class=sw style="background:#c9d3e3"></span>Your September survey '
+        core_sw = (f'<span class=sw style="background:{CORE_COLOR}"></span>Your September survey '
                    if any(((G.get("start") or {}).get("points") or {}).values()) else "")
         sw = core_sw + "".join(f'<span class=sw style="background:{SPRINT_COLORS.get(s, "#d97706")}"></span>Sprint {s} ' for s in drawn)
         cap = (f"Each spoke runs from 0 to 100, the hiring bar. The center is what you reported in the "
