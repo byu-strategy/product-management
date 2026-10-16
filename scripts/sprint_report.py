@@ -55,10 +55,13 @@ RUBRIC = {
 CHECK_LABELS = {"on_screen": "On screen", "working": "Working", "real_content": "Real content",
                 "reachable": "Reachable", "matches_plan": "Matches the plan", "off_demo": "Off the demo",
                 "readable": "Readable"}
-SKILLS_PASTE = ("Update my course skills from the class template. Download the latest "
-                ".claude/skills/sprint-plan and .claude/skills/sprint-review folders from "
-                "https://github.com/byu-strategy/builder-template (main branch) and replace mine with them. "
-                "Do not change anything else. Then commit with the message \"Refresh course skills\" and push.")
+# The one install recipe, the same text as the builder-template README's "Update your course skills".
+SKILLS_PASTE = ("Update my course skills from the class template. Clone https://github.com/byu-strategy/builder-template "
+                "(main branch) into a temporary folder outside this repo with `git clone --depth 1`. For each folder in "
+                "the template's `.claude/skills`, replace the folder with the same name in this repo's `.claude/skills` "
+                "with the template's copy, and add any that are missing. Do not change any other skill or any other file "
+                "in this repo. Delete the temporary folder, then commit only `.claude/skills` with the message "
+                "\"Update course skills\" and push. Then tell me to start a new Claude Code session so the updated skills load.")
 README_PASTE = ("## Where the work lives\n\n- **Repos:** [owner/repo-name], [shared with sdmurff, or not shared]\n"
                 "- **Live:** [the URL of the app, page, store listing, or file]\n"
                 "- **Docs:** [links to Google Docs, Figma files, decks]")
@@ -199,9 +202,9 @@ def coach_prompt(sprint, total, total_max, score_lines, steps, G):
     L = [f"Here is my Sprint {sprint} report from MSB 341 (Product Management). Go over it with me "
          f"and help me plan Sprint {nxt}.",
          "",
-         "Run the sprint-coach skill. If it is missing, install it from the course template: copy "
-         f".claude/skills/sprint-coach from {TEMPLATE_REPO} (main branch) into this repo, then read "
-         "its SKILL.md and follow it.",
+         "Run the sprint-coach skill. If it is missing, first update my course skills the way the course "
+         f"template's README says ({TEMPLATE_REPO}#update-your-course-skills), then read "
+         ".claude/skills/sprint-coach/SKILL.md and follow it in this session.",
          "",
          f"SCORE: {fmt(total)} of {total_max}"]
     L += [f"- {name}: {s} of {mx}. {reason}".rstrip() for name, s, mx, reason in score_lines]
@@ -917,7 +920,7 @@ def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott
     steps.sort(key=lambda st: {"try": 0 if not fmt_like.search(st[1]) else 2, "counts": 1}.get(st[0], 3))
     if skills_status in ("OLD", "missing"):
         steps.append(("house", "Update your course skills.",
-                      "Your repo has an older <code>/sprint-plan</code>. Open Claude Code in your course repo and paste this.", SKILLS_PASTE))
+                      "Your repo has an older copy of the course skills (<code>/sprint-plan</code> or <code>/sprint-review</code>). Open Claude Code in your course repo and paste this.", SKILLS_PASTE))
     tag = {"counts": "so all your work counts", "try": "from your review", "house": "setup"}
     lis = ""
     for i, (k, t, d, code) in enumerate(steps, 1):

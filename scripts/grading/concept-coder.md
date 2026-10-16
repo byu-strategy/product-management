@@ -17,7 +17,8 @@ lets a reader verify.
    recorded (they come from the exams).
 4. The packet (JSON): plan, review report and retro (including any session-scan lists), README,
    commits (author, full message), shipped_files (text, and the first commit that touched each file),
-   other_repos, Loom transcript and summary, link checks, Google files. Do not open frame images.
+   other_repos, Loom transcript and summary, link checks, Google files. When you code in the same pass as grading, the Loom frames you opened for the grade
+   are evidence too; a coder working alone does not open them.
    Use nothing outside the packet.
 
 ## Evidence rules
@@ -46,7 +47,7 @@ Record a concept when this sprint's evidence matches its `practice` sentence.
   submission if it came later; commits past it are marked `after_window`) and this sprint's Loom.
   Work copied in from before the course does not count. In a shared repo, credit follows the commit
   author.
-- **Course-provided material never counts:** the course's skills (sprint-plan, sprint-review, learn,
+- **Course-provided material never counts:** the course's skills (sprint-plan, sprint-review, sprint-coach, learn,
   eli5), template files, and the sprint plan and review files themselves.
 - **One piece of work may show several concepts** only when it matches each concept's sentence on its
   own.

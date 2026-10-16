@@ -224,7 +224,10 @@ def side_inputs(base):
     plans = base / "plans/plans.csv"
     plans = {r["net_id"]: r for r in csv.DictReader(open(plans))} if plans.exists() else {}
     roster = DATA / "github-roster.csv"
-    skills = ({r["net_id"]: r.get("sprint_plan_skill", "") for r in csv.DictReader(open(roster))}
+    # "OLD" or "missing" when either course skill is out of date (sprint-review gained a version
+    # marker on 2026-10-16), so the report's update step fires for either.
+    worst = lambda r: next((v for v in ("missing", "OLD") if v in (r.get("sprint_plan_skill", ""), r.get("sprint_review_skill", ""))), "new")
+    skills = ({r["net_id"]: worst(r) for r in csv.DictReader(open(roster))}
               if roster.exists() else {})
     fair = base / "fairness.md"
     fairness = {}
