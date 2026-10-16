@@ -7,7 +7,7 @@ else is identical, so what Scott reviews is what the student reads.
 
 Layout (approved 2026-10-14, revised 2026-10-15): a sticky contents list on the left and open
 sections: Summary (score, profile total, first next step, the hexagon), Score, Growth, Next steps,
-Evidence reviewed, Questions, Profile method; Scott's copy adds Instructor notes first. Detail
+Evidence reviewed, Questions, Methodology; Scott's copy adds Instructor notes first. Detail
 (evidence, reasons, Loom stills) stays in <details>. Inline CSS and SVG, one small script that
 highlights the current section, images embedded; printing hides the contents list.
 
@@ -817,7 +817,7 @@ review or retro, work in a repo that is not shared, and anything the course gave
         ("next", "Next steps", f'{n_steps} step{"s" * (n_steps != 1)}' if n_steps else "", todo, ""),
         ("reviewed", "Evidence reviewed", " · ".join(rev_bits), rev_body, ""),
         ("questions", "Questions", "message Course Monitor", ask, ""),
-        ("appendix", "Profile method", f"{n_all} concepts", appendix, "apxd"),
+        ("appendix", "Methodology", f"{n_all} concepts", appendix, "apxd"),
     ]
     short = {"score": f"{fmt(total)}/{total_max}", "grew": f"+{fmt(round(added))}" if G and added else "",
              "next": str(n_steps) if n_steps else ""}
