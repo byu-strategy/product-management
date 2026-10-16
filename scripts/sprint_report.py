@@ -20,7 +20,6 @@ from pathlib import Path
 e = html.escape
 HERE = Path(__file__).resolve().parent
 CONCEPTS = HERE / "grading" / "concepts"
-ASK_LINK = "https://slack.com/app_redirect?app=A0C2TDWPL4U&team=T097CK3UKB7"  # a DM with Course Monitor
 
 # Flat-top hexagon, same positions as the course's builder profile charts.
 AXES = ["Discovery", "Design", "Launch and Learn", "AI Systems", "Application Architecture", "Agentic Workflow"]
@@ -928,12 +927,9 @@ def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott
     next_n = sprint + 1
 
     # ---- questions
-    ask = (f'<p>Message <a href="{ASK_LINK}">Course Monitor</a> in the course Slack. Say which part of this report you mean, '
-           'and what you think it missed or got wrong.</p>'
-           '<p>If the link does not open it, open Slack, search for <b>Course Monitor</b> (it is listed under Apps), and send it '
-           'a message from its Messages tab. Please do not @mention it in the class channel, where everyone can see your '
-           'question. Professor Murff reads every message sent there. Send grading questions only to Course Monitor: questions '
-           'sent by email or anywhere else may be missed.</p>')
+    ask = (f'<p>Reply to the comment this report came with, on the Sprint {sprint}{" Wrap-up" if sprint > 1 else ""} '
+           f'assignment in Canvas. Say which part of the report you mean, and what you '
+           'think it missed or got wrong. Professor Murff reads every reply. Questions sent anywhere else may be missed.</p>')
 
     # ---- appendix
     CL = load_concepts()
@@ -1073,7 +1069,7 @@ ones your work has shown say which sprint. Ones marked "measured on the exams" c
         ("score", "Score", f'{fmt(total)} / {total_max}', score_body, ""),
         ("grew", "Growth", grew_right, grew, ""),
         ("next", "Next steps", f'{n_steps} step{"s" * (n_steps != 1)}' if n_steps else "", todo, ""),
-        ("questions", "Questions", "message Course Monitor", ask, ""),
+        ("questions", "Questions", "reply on Canvas", ask, ""),
         ("appendix", "Methodology", f"{n_all} concepts", appendix, "apxd"),
     ]
     short = {"score": f"{fmt(total)}/{total_max}", "grew": f"+{fmt(round(added))}" if G and added else "",

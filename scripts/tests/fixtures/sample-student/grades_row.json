@@ -1,0 +1,23 @@
+{
+  "net_id": "sample1",
+  "name": "Jordan Rivera",
+  "preferred_first": "Jordan",
+  "canvas_user_id": "000000",
+  "confidence": "medium",
+  "watch_loom": "False",
+  "plan": "",
+  "shipped": "20",
+  "review": "7",
+  "demo": "10",
+  "grader_total": "37",
+  "override_plan": "",
+  "override_shipped": "",
+  "override_review": "",
+  "override_demo": "",
+  "approved": "",
+  "scott_note": "",
+  "final_total": "37",
+  "flags": "late: commits_after_due = 2 (4d9b3e7 'Sprint 3 plan' and a0c6f48, Oct 13); Canvas on time | retro_location 'plan file', but commit 8e5f2d0 also put the retro in the review file; review_window_end is null | shipped_files stops at 25 code files; no text for the interview notes, briefs, or ranking in sprints/discovery/, so discovery was credited from commits b47c0d2 and f7e3c19 and the report | Discovery work is not shown in the demo | voice check: feedback mentions the ai; confirm it refers to the student's own work",
+  "loom": "",
+  "repo": "https://github.com/sample-student/shiftswap"
+}

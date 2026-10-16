@@ -1,4 +1,5 @@
-"""Post approved sprint grades to Canvas (the Review assignment; Sprint 1's single assignment), each with the student's feedback PDF attached.
+"""Post approved sprint grades to Canvas (the Review assignment; Sprint 1's single assignment), each with the student's HTML report attached
+(it opens in the browser from the comment; tested with the Test Student, 2026-10-16).
 
 Run from the courses hub, after Scott has reviewed review.html and marked rows approved:
 
@@ -30,24 +31,28 @@ LOG_COLS = ["net_id", "canvas_user_id", "score", "posted_at", "comment_file_id"]
 
 
 def comment_text(row, sprint):
-    return (f"{row['preferred_first'] or row['name']}, your Sprint {sprint} score is "
-            f"{row['final_total']}. The attached PDF covers each category and something to "
-            f"consider for next sprint.")
+    return (f"{row['preferred_first'] or row['name']}, your Sprint {sprint} report is attached. Open it in your "
+            f"browser: it covers each category, your builder profile, and next steps for Sprint {sprint + 1}. "
+            f"Questions about the grade: reply to this comment.")
 
 
-def upload(cfg, aid, uid, pdf):
+def report_name(sprint):
+    return f"sprint-{sprint}-report.html"
+
+
+def upload(cfg, aid, uid, pdf, name):
     """Canvas three-step upload of a submission comment file; returns the file id."""
     base = cfg["url"].rstrip("/")
     base = base if base.endswith("/api/v1") else base + "/api/v1"
     h = {"Authorization": f"Bearer {cfg['token']}"}
     r = requests.post(f"{base}/courses/{COURSE_ID}/assignments/{aid}/submissions/{uid}/comments/files",
-                      headers=h, data={"name": pdf.name, "size": pdf.stat().st_size,
-                                       "content_type": "application/pdf"}, timeout=60)
+                      headers=h, data={"name": name, "size": pdf.stat().st_size,
+                                       "content_type": "text/html"}, timeout=60)
     r.raise_for_status()
     slot = r.json()
     with open(pdf, "rb") as fh:
         up = requests.post(slot["upload_url"], data=slot["upload_params"],
-                           files={"file": (pdf.name, fh, "application/pdf")},
+                           files={"file": (name, fh, "text/html")},
                            allow_redirects=False, timeout=120)
     if up.status_code in (301, 302, 303):
         up = requests.get(up.headers["Location"], headers=h, timeout=60)
@@ -62,7 +67,7 @@ def main():
     g.add_argument("--send", action="store_true")
     g.add_argument("--test", metavar="NET_ID")
     ap.add_argument("--replace", action="store_true",
-                    help="re-post rows already posted (rebuilt PDFs): delete this script's earlier feedback "
+                    help="re-post rows already posted (rebuilt reports): delete this script's earlier feedback "
                          "comment for each student, then post the new one, so nobody gets two")
     a = ap.parse_args()
 
@@ -84,9 +89,9 @@ def main():
         if posted.get(r["net_id"]) == r["final_total"] and not a.replace:
             skipped.append((r["net_id"], f"already posted {r['final_total']}"))
             continue
-        pdf = base / "feedback" / f"{r['net_id']}.pdf"
+        pdf = base / "feedback" / f"{r['net_id']}.html"
         if not pdf.exists():
-            skipped.append((r["net_id"], "no feedback PDF"))
+            skipped.append((r["net_id"], "no report"))
             continue
         todo.append((r, pdf))
 
@@ -97,7 +102,7 @@ def main():
     print(f"{asg['name']} ({aid}), {asg['points_possible']:g} points, "
           f"manual posting {'on' if asg.get('post_manually') else 'OFF'}")
     for r, pdf in todo:
-        print(f"  {r['net_id']:10} {r['final_total']:>5}  {pdf.name}  \"{comment_text(r, a.sprint)}\"")
+        print(f"  {r['net_id']:10} {r['final_total']:>5}  {report_name(a.sprint)}  \"{comment_text(r, a.sprint)}\"")
     print(f"{len(todo)} to post, {len(skipped)} skipped"
           + "".join(f"\n  skip {n}: {why}" for n, why in skipped if why != "not approved")
           + (f"\n  {sum(1 for _, w in skipped if w == 'not approved')} not approved yet" if skipped else ""))
@@ -130,10 +135,10 @@ def main():
             if a.replace:  # remove only the earlier comment that carried this student's feedback PDF
                 sub = api.get(f"/assignments/{aid}/submissions/{uid}", params={"include[]": ["submission_comments"]})
                 for c in sub.get("submission_comments", []):
-                    if any(x.get("display_name") == pdf.name for x in c.get("attachments", [])):
+                    if any(x.get("display_name") in (report_name(a.sprint), f"{r['net_id']}.pdf") for x in c.get("attachments", [])):
                         requests.delete(f"{base}/courses/{COURSE_ID}/assignments/{aid}/submissions/{uid}/comments/{c['id']}",
                                         headers={"Authorization": f"Bearer {cfg['token']}"}, timeout=30)
-            fid = upload(cfg, aid, uid, pdf)
+            fid = upload(cfg, aid, uid, pdf, report_name(a.sprint))
             api.put(f"/assignments/{aid}/submissions/{uid}", json={
                 "submission": {"posted_grade": r["final_total"]},
                 "comment": {"text_comment": comment_text(r, a.sprint), "file_ids": [fid]}})

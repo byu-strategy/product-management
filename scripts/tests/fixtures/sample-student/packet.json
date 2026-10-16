@@ -1,0 +1,561 @@
+{
+ "net_id": "sample1",
+ "name": "Jordan Rivera",
+ "preferred_first": "Jordan",
+ "canvas_user_id": "000000",
+ "canvas": {
+  "submitted_at": "2026-10-12T20:16:52-06:00",
+  "late": false,
+  "seconds_late": 0,
+  "links": [
+   "https://shiftswap.example.com",
+   "https://github.com/sample-student/shiftswap/blob/main/sprints/sprint-2-review.md"
+  ]
+ },
+ "repo": "https://github.com/sample-student/shiftswap",
+ "facts": {
+  "canvas_submitted": true,
+  "canvas_late": false,
+  "demo_is_loom": true,
+  "non_loom_video": [],
+  "plan_committed": true,
+  "plan_changed_during_sprint": true,
+  "plan_change_noted": true,
+  "readme_where_to_see_it": null,
+  "retro_location": "plan file",
+  "retro_filled": true,
+  "review_committed": true,
+  "review_on_time": true,
+  "review_edited_after_first_commit": true,
+  "review_window_end": null,
+  "readme_context_filled": true,
+  "commits_after_due": 2,
+  "plan_edited_after_due": false,
+  "plan_submitted": true,
+  "plan_on_time": false,
+  "plan_fields_missing": [],
+  "plan_score": 10,
+  "canvas_days_late": 0,
+  "loom_seconds": 68,
+  "repos_named_but_not_shared": []
+ },
+ "plan": {
+  "first_commit": "2026-09-28T20:14:05-06:00",
+  "commits": 3,
+  "as_committed_day_one": "# Sprint 2 Plan\n\n**Goal:** Turn ShiftSwap into something the circulation desk crew at the campus library could use for real: a rebuilt UI with clear flows and empty, loading and error states, a reader that turns a photo of the paper schedule into shifts, and a manager approval step for every swap. Then spend the rest of the sprint on discovery with student employees, ending with 3-5 ranked ideas for what to build next.\n\n**Why this:** In Sprint 1 the app worked only if shifts were typed in by hand, and nobody on the crew will do that. The photo reader removes that step. The approval step is what the desk manager said she needs before she would let anyone use it. The discovery is because I have only talked to myself about this problem so far, and I want the next sprint to come from what other student employees say.\n\n**Done looks like:**\n- **ShiftSwap:** a student can post a shift, a coworker can pick it up, and the manager can approve or decline it, all on the live app. The UI is rebuilt on shadcn/ui with empty, loading and error states. A photo of the paper schedule becomes a draft of shifts that the student can edit and undo before saving. Students see only their own shifts and swaps. The manager and both students get a text message when a swap changes.\n- **Discovery:** interviews with at least 5 student employees, a short brief for each of 3-5 ideas (the problem, who has it, and the evidence it matters), and a ranking that picks one for Sprint 3.\n\n**Predicted difficulty:** 4\n",
+  "now": "# Sprint 2 Plan\n\n**Goal:** Turn ShiftSwap into something the circulation desk crew at the campus library could use for real: a rebuilt UI with clear flows and empty, loading and error states, a reader that turns a photo of the paper schedule into shifts, and a manager approval step for every swap. Then spend the rest of the sprint on discovery with student employees, ending with 3-5 ranked ideas for what to build next.\n\n**Why this:** In Sprint 1 the app worked only if shifts were typed in by hand, and nobody on the crew will do that. The photo reader removes that step. The approval step is what the desk manager said she needs before she would let anyone use it. The discovery is because I have only talked to myself about this problem so far, and I want the next sprint to come from what other student employees say.\n\n**Done looks like:**\n- **ShiftSwap:** a student can post a shift, a coworker can pick it up, and the manager can approve or decline it, all on the live app. The UI is rebuilt on shadcn/ui with empty, loading and error states. A photo of the paper schedule becomes a draft of shifts that the student can edit and undo before saving. Students see only their own shifts and swaps. The manager and both students get an email when a swap changes. Text message alerts are not required this sprint.\n- **Discovery:** interviews with at least 5 student employees, a short brief for each of 3-5 ideas (the problem, who has it, and the evidence it matters), and a ranking that picks one for Sprint 3.\n\n**Predicted difficulty:** 4\n\n**Change (Oct 6):** Text message alerts are no longer required. Email through Resend covers the same need for now. Text messages cost money per message and need a verified phone number for every student, and I want the crew to try the app before I pay for anything.\n\n**Actual difficulty:** 5\n\n**Why it differed:** Row-level security took much longer than I expected. I did not understand how a policy decides which rows a person can see, and I had to work through it table by table before the manager view and the student view both worked.\n\n**Retro:** I hit my goal. Posting, picking up and approving a shift all work on the live app, and the photo reader turned this week's paper schedule into 64 shifts that I only had to fix in two places. The UI is rebuilt with real empty and error states, which I had skipped in Sprint 1. I interviewed 6 student employees and the desk manager, wrote five idea briefs, and ranked them. I picked open-shift alerts for Sprint 3. I also started using a subagent to turn my interview notes into themes while I kept building.\n\nWhat changes next sprint:\n- I want to understand row-level security well enough to write a policy without trial and error.\n- I'll test each feature on my phone before I commit it, because most of the crew will use ShiftSwap on a phone.\n- I'll ask two people from the crew to use the app for a real swap and write down where they get stuck.\n- I'll keep a short log of each decision I make about the data, so I can explain it to the manager.\n",
+  "at_due_date": null
+ },
+ "review": {
+  "first_commit": "2026-10-12T20:08:35-06:00",
+  "commits": 2,
+  "text": "# Sprint 2 Review\n\n**Window:** 2026-09-28 (plan committed 8:14 PM) to 2026-10-12\n**Sessions reviewed:** 11 in 1 project (0 sessions excluded). Some of them started before the window; only activity after the plan commit is counted.\n\n## When you worked\n\nYou were active on 11 of the 15 days (Sep 28, 29; Oct 1, 2, 5, 6, 7, 8, 10, 11, 12). That's 142 prompts and 38 commits. The work was spread out, with three peaks:\n- **Oct 1 to 2:** the UI rebuild on shadcn/ui: shift board, post and pick-up flows, empty and error states, design tokens.\n- **Oct 6:** the busiest day of the sprint (47 prompts, 14 commits).\n- **Oct 10 to 12:** the double-booking fix and discovery, then a run of manager and week-view features (58 prompts across the three days).\n\nSep 30, Oct 3, Oct 4 and Oct 9 had no activity. Oct 5 had one prompt.\n\n## Where you got stuck\n\n- **Row-level security for swaps (Oct 6).** About 20 prompts went back and forth over the policies:\n  - The first policy let a student read every swap at the location, so the manager view and the student view looked the same.\n  - The manager role was checked from the sign-in token, which did not carry it, so approvals failed with a permission error.\n  - SQL had to be pasted into the Supabase editor again after a policy name collided with an old one.\n  - It ended the same day: students read only swaps they posted or picked up, and only the decide route can change a swap's status.\n- **Double-booked shifts after a re-scan (Oct 8 to 10).**\n  - On Oct 8, a re-scan of the updated paper schedule inserted every shift a second time. Nine shifts showed twice, and three students looked double-booked on the week view.\n  - On Oct 10, the first cleanup query deleted both copies of two shifts and had to be undone from the import history.\n  - It ended Oct 10 with a unique key on each shift (person, start, end, location), re-scans that update matching shifts instead of adding them, and the nine duplicates removed.\n- **The conflict check on pick-up (Oct 11 to 12).** The request was rephrased three times.\n  - First the check ran only at the confirm step, so a student found out about a conflict after choosing the shift.\n  - Then the check ignored class times saved in the profile.\n  - Then overlapping shifts were hidden from the week view instead of marked.\n  - Each was fixed in turn, ending with overlapping shifts marked and the Pick up button disabled with the reason (`71c0e5b`).\n\n## What took the most time\n\nBy prompt volume, **Oct 6 was a third of the sprint** (47 of 142 prompts):\n- The schedule photo reader, with its draft table and structured output\n- The check-schedule-import skill\n- The manager approval flow and email notices\n- Row-level security for swaps\n- Logging progress\n\n**Oct 10 was next** (25 prompts). It was split between the double-booking fix and discovery: writing the interview-synthesizer agent and running it on notes from seven interviews.\n\n**Oct 11 to 12** (33 prompts) went into the board and the manager queue:\n- Keyboard support and undo in the draft table\n- Shift notes\n- The conflict check\n- Decline reasons\n- Empty states for managers, import history and an error state for the photo reader\n\nDiscovery took roughly 15 prompts in all.\n\n## Axis\n\n**Application Architecture**, with Design a close second. The biggest single block of time went into data and access work: the photo reader's server route, swap tables, row-level security, the manager role, and the re-scan fix. UI work came close behind (the shadcn/ui rebuild, the week view, states off the happy path, the approval queue).\n\n## Against your plan\n\n**Goal was:** a rebuilt UI with clear flows and states, a schedule-photo reader, and a manager approval step, usable by the circulation desk crew; then discovery with student employees ending with 3-5 ranked ideas.\n\n**Met.**\n\n| Done looks like | Result |\n|---|---|\n| Post, pick up and approve work end to end on the live app | Met. All three flows run on shiftswap.example.com (`b2c08e1`, `b5d0e72`) |\n| UI rebuilt on shadcn/ui with empty, loading and error states | Met. Rebuilt Oct 2 (`3f1a9c2`), loading states Oct 8, more empty and error states Oct 12 |\n| Schedule photo becomes an editable draft with undo | Met (`c94d1b0`, `16f9a3c`). The Oct 8 re-scan double-booked nine shifts; fixed Oct 10 |\n| Students see only their own shifts and swaps | Met. Row-level security on shifts (Sprint 1) and swaps (`6e4f13a`) |\n| Manager and students notified when a swap changes | Met by email (`b2c08e1`). Text messages were dropped by the Oct 6 plan change |\n| Interviews with at least 5 student employees | Met. Notes from 6 student employees and the desk manager in `sprints/discovery/interviews/` |\n| A brief for each of 3-5 ideas | Met. Five briefs in `sprints/discovery/` |\n| A ranking that picks one for Sprint 3 | Met. `ranking.md` scores all five; on Oct 12 it picked open-shift alerts, which was not the top-scored idea, and gives the reason |\n\n## Retro\n\nAnswers are also in `sprint-2-plan.md`.\n\n**Actual difficulty:** 5 (predicted 4)\n\n**Why it differed:** Row-level security took much longer than I expected. I did not understand how a policy decides which rows a person can see, and I had to work through it table by table before the manager view and the student view both worked.\n\n**Did you hit the goal?** Yes. Posting, picking up and approving a shift all work on the live app, and the photo reader turned this week's paper schedule into 64 shifts that I only had to fix in two places. I interviewed 6 student employees and the desk manager, wrote five idea briefs, and picked open-shift alerts for Sprint 3.\n\n**What happened:** The UI is rebuilt with real empty and error states, which I had skipped in Sprint 1. I also started using a subagent to turn my interview notes into themes while I kept building.\n\n**What changes next sprint:**\n- I want to understand row-level security well enough to write a policy without trial and error.\n- I'll test each feature on my phone before I commit it, because most of the crew will use ShiftSwap on a phone.\n- I'll ask two people from the crew to use the app for a real swap and write down where they get stuck.\n- I'll keep a short log of each decision I make about the data, so I can explain it to the manager.\n"
+ },
+ "next_sprint_plan": "# Sprint 3 Plan\n\n**Goal:** Put ShiftSwap in front of the circulation desk crew for real swaps, and add open-shift alerts: when a shift is posted, every student who is free at that time and under 20 hours that week gets an email, and the first one to accept it sends it to the manager. Keep the two Sprint 2 retro commitments: test on a phone before each commit, and log each data decision.\n\n**Why this:** The ranking scored automatic scheduling from availability higher, but the manager said in her interview that the real pain is shifts that nobody picks up, and alerts can be built and tried in two weeks. The crew starts a new schedule on Oct 26, which is a natural time to switch from the group chat.\n\n**Done looks like:**\n- When a shift is posted, only students who are free and under 20 hours that week get an alert.\n- The first student to accept gets the shift sent to the manager; everyone else sees it is taken.\n- At least 4 crew members complete a real swap through ShiftSwap.\n- The manager approves at least one swap from her phone without help.\n- Sprint 2 retro: every commit tested on a phone first, and a decision log in `docs/decisions.md`.\n\n**Predicted difficulty:** 3\n",
+ "readme": "# ShiftSwap\n\n## Context\n\n**What I'm building:** ShiftSwap, an app for student employees at a campus job. A student who\ncannot work a shift posts it, a coworker picks it up, and the manager approves the swap. One AI\nfeature reads the shifts from a photo of the paper schedule, so nobody has to type them in.\n\n**My role:** Solo builder, using Claude Code as my development partner.\n\n**My user:** Student employees at the campus library circulation desk (14 people), and their\nmanager, who approves every swap.\n\n## Where the work lives\n\n| What | Where |\n|---|---|\n| ShiftSwap code (app, photo reader, swap flow, tests) | This repo: `app/`, `components/`, `lib/`, `supabase/migrations/`, `tests/` |\n| Live app | https://shiftswap.example.com (sign in with a test account; each student sees only their own shifts) |\n| Database | Supabase. Schema and row-level security policies are in `supabase/migrations/` |\n| Sprint plans, reviews and progress logs | `sprints/` |\n| Sprint 2 discovery: interview notes, 5 idea briefs, ranking | `sprints/discovery/` |\n| Custom skill and agent | `.claude/skills/check-schedule-import/`, `.claude/agents/interview-synthesizer.md` |\n\n## How ShiftSwap works\n\n| Step | Who | What happens |\n|---|---|---|\n| Import | Manager or student | Upload a photo of the paper schedule; the reader returns a draft of shifts to check, edit and save |\n| Post | Student | Pick one of your shifts, add a note, and post it to the board |\n| Pick up | Coworker | Open a posted shift, see any conflict with your own shifts, and pick it up |\n| Approve | Manager | Approve or decline in the queue; approving moves the shift to the new person |\n| Notice | Everyone involved | An email goes to both students and the manager when a swap changes |\n\n### Run it locally\n\n```\npnpm install\npnpm dev\n```\n\nThe app opens at http://localhost:3000. It needs a `.env.local` with `NEXT_PUBLIC_SUPABASE_URL`,\n`NEXT_PUBLIC_SUPABASE_ANON_KEY`, `ANTHROPIC_API_KEY` and `RESEND_API_KEY`. The file is gitignored.\n\n### The schedule photo reader\n\nThe route in `app/api/schedule-photo/route.ts` sends the photo to a vision model and asks for\nstructured output: each shift's person, day, start, end and location, with a confidence flag.\nThe result comes back as a draft. Nothing is saved until the student reviews it: any row can be\nedited or removed, Undo restores the last change, and low-confidence rows are highlighted. The\nphoto is deleted after the draft is saved, because the paper schedule lists phone numbers.\n\n### Tests\n\n```\npnpm test\n```\n\nTests cover the time parser, the draft table's undo, and the swap rules (who can read a swap,\nand who can approve one).\n",
+ "commits": [
+  {
+   "when": "2026-10-02T00:54:04-06:00",
+   "after_due": false,
+   "author": "sample-student",
+   "message": "Rebuild the shift board, post and pick-up flows on shadcn/ui\n\n- Shift board: this week's open shifts, my shifts, and swaps waiting on me\n- Post a shift: pick one of my shifts, add a note, confirm\n- Pick up a shift: details, then confirm\n- Empty states for no open shifts and no shifts this week\n- Error state with Retry when the shifts query fails\n- Color, type and radius tokens in app/globals.css\n- shadcn/ui Button, Card, Dialog, Badge and Table\n- Sign-in page uses the same card and button\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>",
+   "sha": "3f1a9c2"
+  },
+  {
+   "when": "2026-10-06T11:41:36-06:00",
+   "after_due": false,
+   "author": "sample-student",
+   "message": "Explain a too-large schedule photo instead of failing\n\nPhotos over 8 MB now open a page that states the limit and how to retake\nthe photo at a lower resolution.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>",
+   "sha": "a72e0d4"
+  },
+  {
+   "when": "2026-10-06T11:52:45-06:00",
+   "after_due": false,
+   "author": "sample-student",
+   "message": "Read the paper schedule's real layout: days across, names down\n\n- One column per day, one row per person, as on the circulation desk sheet\n- A cell with two time blocks becomes two shifts\n- Times like 7a-11 and 1:30-5p are normalized to 24-hour time\n- Blank and crossed-out cells are skipped\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>",
+   "sha": "5be81f7"
+  },
+  {
+   "when": "2026-10-06T12:42:34-06:00",
+   "after_due": false,
+   "author": "sample-student",
+   "message": "Schedule photo reader: shifts arrive as an editable draft\n\nThe route at app/api/schedule-photo sends the photo to a vision model and\nasks for structured output: each shift's person, day, start, end and\nlocation, with a confidence flag. Nothing is saved until the student\nreviews the draft: each row can be edited or removed, and low-confidence\nrows are highlighted.\n\n- lib/schedule-photo/prompt.ts: the prompt and the JSON schema\n- Needs ANTHROPIC_API_KEY (.env.local locally, Vercel env online)\n- Falls back to manual entry if the model refuses or the JSON does not parse\n\nCo-Authored-By: Claude Opu",
+   "sha": "c94d1b0"
+  },
+  {
+   "when": "2026-10-06T12:48:56-06:00",
+   "after_due": false,
+   "author": "sample-student",
+   "message": "Sprint 2 plan: text message alerts no longer required\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>",
+   "sha": "0e6b3a8"
+  },
+  {
+   "when": "2026-10-06T12:52:48-06:00",
+   "after_due": false,
+   "author": "sample-student",
+   "message": "Open a draft saved by the check-schedule-import skill\n\nThe import page can load a draft .json written in Claude Code, so a photo\ncan be read and checked locally before it reaches the app.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>",
+   "sha": "d81c5e7"
+  },
+  {
+   "when": "2026-10-06T12:59:24-06:00",
+   "after_due": false,
+   "author": "sample-student",
+   "message": "check-schedule-import skill: compare a draft against the photo\n\nThe skill reads the draft and the photo, lists every shift it would change\nand why, and writes a corrected draft the import page opens for review.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>",
+   "sha": "47ad2f9"
+  },
+  {
+   "when": "2026-10-06T14:16:18-06:00",
+   "after_due": false,
+   "author": "sample-student",
+   "message": "Manager approval flow with email notices\n\nWhen a coworker picks up a shift, the swap goes to the manager's queue as\npending. The manager approves or declines in the app; approving moves the\nshift to the new person. Both students and the manager get an email\nthrough Resend.\n\n- app/(manager)/approvals/page.tsx: the queue, oldest first\n- app/api/swaps/[id]/decide/route.ts: approve or decline, manager only\n- supabase/migrations/20261006200000_swap_requests.sql\n- lib/email.ts: Resend sender, RESEND_API_KEY from env\n- tests/swaps.test.ts\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>",
+   "sha": "b2c08e1"
+  },
+  {
+   "when": "2026-10-06T14:32:22-06:00",
+   "after_due": false,
+   "author": "sample-student",
+   "message": "Row-level security for swaps: students see only their own\n\nA student can read a swap only when they posted it or picked it up.\nManagers read every swap at their location. Only the decide route,\nrunning as the manager, can change a swap's status.\n\n- supabase/migrations/20261006210000_swap_rls.sql\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>",
+   "sha": "6e4f13a"
+  },
+  {
+   "when": "2026-10-06T14:43:25-06:00",
+   "after_due": false,
+   "author": "sample-student",
+   "message": "Add the manager role for the circulation desk\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>",
+   "sha": "f3d92b7"
+  },
+  {
+   "when": "2026-10-06T15:07:42-06:00",
+   "after_due": false,
+   "author": "sample-student",
+   "message": "Keep the schedule's week and location on every imported shift\n\n- The week comes from the date printed in the schedule header, not today\n- Location comes from the schedule title (Circulation, Periodicals)\n- Re-imports keep swaps that are already approved\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>",
+   "sha": "1c8a5e0"
+  },
+  {
+   "when": "2026-10-06T15:11:55-06:00",
+   "after_due": false,
+   "author": "sample-student",
+   "message": "Sprint 2 progress log for Oct 6\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>",
+   "sha": "9a7c2d4"
+  },
+  {
+   "when": "2026-10-06T15:23:25-06:00",
+   "after_due": false,
+   "author": "sample-student",
+   "message": "Sprint 2 log: row-level security check and import finding\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>",
+   "sha": "e05b81c"
+  },
+  {
+   "when": "2026-10-06T15:26:49-06:00",
+   "after_due": false,
+   "author": "sample-student",
+   "message": "Skipped rows are recorded, not dropped\n\n- Rows the reader cannot place (no name match, unreadable time) go to\n  skipped_imports with the reason\n- The draft shows how many rows were skipped, with a link to the list\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>",
+   "sha": "72f4e9a"
+  },
+  {
+   "when": "2026-10-06T15:28:27-06:00",
+   "after_due": false,
+   "author": "sample-student",
+   "message": "Sprint 2 log: importer fix\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>",
+   "sha": "3d6a0f5"
+  },
+  {
+   "when": "2026-10-07T23:45:14-06:00",
+   "after_due": false,
+   "author": "sample-student",
+   "message": "Week view: my shifts and open shifts on one calendar\n\nA week grid with my shifts in solid color and open shifts outlined.\nTapping an open shift opens its pick-up dialog.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>",
+   "sha": "c8b17e3"
+  },
+  {
+   "when": "2026-10-07T23:50:07-06:00",
+   "after_due": false,
+   "author": "sample-student",
+   "message": "Swap status badges: pending, approved, declined\n\nEach swap shows its status with a Badge from the design system, and the\nboard groups swaps by status.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>",
+   "sha": "84e2a9f"
+  },
+  {
+   "when": "2026-10-07T23:53:58-06:00",
+   "after_due": false,
+   "author": "sample-student",
+   "message": "Sprint 2 log: week view and status badges\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>",
+   "sha": "0f5d3b6"
+  },
+  {
+   "when": "2026-10-08T00:03:53-06:00",
+   "after_due": false,
+   "author": "sample-student",
+   "message": "Loading skeletons for the board and the week view\n\nThe board and the week grid show placeholder rows while shifts load,\ninstead of an empty page that then jumps.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>",
+   "sha": "a9e6c41"
+  },
+  {
+   "when": "2026-10-08T00:15:59-06:00",
+   "after_due": false,
+   "author": "sample-student",
+   "message": "Re-scan an updated schedule photo; delete photos after reading\n\nA manager can re-scan when the paper schedule changes. The photo is\ndeleted from storage once the draft is saved, because the paper schedule\nlists coworkers' phone numbers. Only the extracted shifts are kept.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>",
+   "sha": "5d20f8b"
+  },
+  {
+   "when": "2026-10-10T21:02:11-06:00",
+   "after_due": false,
+   "author": "sample-student",
+   "message": "Fix double-booked shifts after a re-scan\n\nA re-scan inserted every shift again, so nine shifts showed twice and three\nstudents looked double-booked. Shifts now have a unique key (person, start,\nend, location), and a re-scan updates matching shifts instead of adding\nthem. The nine duplicates were removed.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>",
+   "sha": "e6a1f97"
+  },
+  {
+   "when": "2026-10-10T21:37:11-06:00",
+   "after_due": false,
+   "author": "sample-student",
+   "message": "Discovery: interview notes and 5 idea briefs\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>",
+   "sha": "b47c0d2"
+  },
+  {
+   "when": "2026-10-11T22:06:55-06:00",
+   "after_due": false,
+   "author": "sample-student",
+   "message": "Tab moves between cells in the draft table, Shift+Tab moves back\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>",
+   "sha": "2e9f5a1"
+  },
+  {
+   "when": "2026-10-11T22:29:34-06:00",
+   "after_due": false,
+   "author": "sample-student",
+   "message": "Editing a draft row no longer scrolls the table back to the top\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>",
+   "sha": "c61d8e4"
+  },
+  {
+   "when": "2026-10-11T22:36:39-06:00",
+   "after_due": false,
+   "author": "sample-student",
+   "message": "Shift notes: say why you are posting and what the shift involves\n\nA note on a posted shift (for example 'opening shift, needs keys') shows\nin the pick-up dialog. Stored in shifts.note.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>",
+   "sha": "8f3b2a7"
+  },
+  {
+   "when": "2026-10-11T22:43:32-06:00",
+   "after_due": false,
+   "author": "sample-student",
+   "message": "Conflict check on pick-up\n\nThe pick-up dialog checks the shift against the student's own shifts and\nthe class times saved in their profile, and names the conflict.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>",
+   "sha": "4a1e7c9"
+  },
+  {
+   "when": "2026-10-11T23:01:28-06:00",
+   "after_due": false,
+   "author": "sample-student",
+   "message": "Managers can give a reason when they decline a swap\n\nThe decline button opens a short reason field. The reason is saved on the\nswap and included in the email to both students.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>",
+   "sha": "d93b6f2"
+  },
+  {
+   "when": "2026-10-11T23:06:48-06:00",
+   "after_due": false,
+   "author": "sample-student",
+   "message": "Open shifts that overlap your own say so before you tap\n\nThe week view marks an overlapping shift 'Conflicts with your 2:00 PM\nshift', and the Pick up button is disabled with that reason.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>",
+   "sha": "71c0e5b"
+  },
+  {
+   "when": "2026-10-11T23:50:56-06:00",
+   "after_due": false,
+   "author": "sample-student",
+   "message": "Approval queue shows the whole swap and the weekly hours limit\n\nEach row shows the shift, who posted it, who picked it up, and whether the\nnew person would go over 20 hours that week, the campus limit for student\nemployees. Approve and Decline are one tap each.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>",
+   "sha": "e8b4d23"
+  },
+  {
+   "when": "2026-10-11T23:57:13-06:00",
+   "after_due": false,
+   "author": "sample-student",
+   "message": "Undo and redo in the draft table, with Ctrl+Z and Ctrl+Shift+Z\n\nUndo restores the last edited or removed row. The keys work inside the\ntable, and an Undo button sits above it.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>",
+   "sha": "16f9a3c"
+  },
+  {
+   "when": "2026-10-12T10:58:28-06:00",
+   "after_due": false,
+   "author": "sample-student",
+   "message": "Declined swaps go back on the board with the manager's reason\n\nA declined shift used to disappear, and the student who posted it could\nnot tell what happened. Declining now returns the shift to open, shows the\nreason on the poster's swap, and emails both students.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>",
+   "sha": "b5d0e72"
+  },
+  {
+   "when": "2026-10-12T15:42:46-06:00",
+   "after_due": false,
+   "author": "sample-student",
+   "message": "Empty state for managers with no pending swaps, with a link to the week view\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>",
+   "sha": "3a8e1f6"
+  },
+  {
+   "when": "2026-10-12T15:53:40-06:00",
+   "after_due": false,
+   "author": "sample-student",
+   "message": "Import history lists every scan with its week, shift count and skipped rows\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>",
+   "sha": "9c2b7d4"
+  },
+  {
+   "when": "2026-10-12T19:05:41-06:00",
+   "after_due": false,
+   "author": "sample-student",
+   "message": "Error state when the photo reader is unavailable, with manual entry\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>",
+   "sha": "0d4f8a2"
+  },
+  {
+   "when": "2026-10-12T19:32:45-06:00",
+   "after_due": false,
+   "author": "sample-student",
+   "message": "Discovery: ranking of five ideas and the Sprint 3 pick (open-shift alerts)\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>",
+   "sha": "f7e3c19"
+  },
+  {
+   "when": "2026-10-12T19:36:14-06:00",
+   "after_due": false,
+   "author": "sample-student",
+   "message": "Sprint submission checklist\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>",
+   "sha": "6b1d0a4"
+  },
+  {
+   "when": "2026-10-12T19:42:01-06:00",
+   "after_due": false,
+   "author": "sample-student",
+   "message": "Board shows the location of each shift; Sprint 2 log for Oct 11-12\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>",
+   "sha": "2f8c6e5"
+  },
+  {
+   "when": "2026-10-12T20:08:35-06:00",
+   "after_due": false,
+   "author": "sample-student",
+   "message": "Sprint 2 review and retro\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>",
+   "sha": "c3a7b91"
+  },
+  {
+   "when": "2026-10-12T20:12:51-06:00",
+   "after_due": false,
+   "author": "sample-student",
+   "message": "Sprint 2: retro in the review, Where the work lives updated\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>",
+   "sha": "8e5f2d0"
+  },
+  {
+   "when": "2026-10-13T14:46:04-06:00",
+   "after_due": true,
+   "author": "sample-student",
+   "message": "Sprint 3 plan\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>",
+   "sha": "4d9b3e7"
+  },
+  {
+   "when": "2026-10-13T21:26:37-06:00",
+   "after_due": true,
+   "author": "sample-student",
+   "message": "Phone layout: the week view becomes a day list below 640px\n\nOn a phone the week grid is too narrow to read, so it becomes one day at a\ntime with arrows to move between days. The board's filters fold into a\nsheet.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>",
+   "sha": "a0c6f48"
+  }
+ ],
+ "shipped_files": [
+  {
+   "path": "package.json",
+   "status": "modified",
+   "first_commit": "c94d1b0",
+   "first_when": "2026-10-06T12:42:34-06:00",
+   "bytes": 468,
+   "text": "{\n  \"name\": \"shiftswap\",\n  \"private\": true,\n  \"scripts\": {\n    \"dev\": \"next dev\",\n    \"build\": \"next build\",\n    \"test\": \"vitest run\"\n  },\n  \"dependencies\": {\n    \"@anthropic-ai/sdk\": \"^0.40.0\",\n    \"@supabase/ssr\": \"^0.5.2\",\n    \"@supabase/supabase-js\": \"^2.45.4\",\n    \"next\": \"15.0.3\",\n    \"react\": \"19.0.0\",\n    \"react-dom\": \"19.0.0\",\n    \"resend\": \"^4.0.1\",\n    \"zod\": \"^3.23.8\"\n  },\n  \"devDependencies\": {\n    \"typescript\": \"^5.6.3\",\n    \"vitest\": \"^2.1.4\"\n  }\n}\n"
+  },
+  {
+   "path": ".claude/skills/check-schedule-import/SKILL.md",
+   "status": "added",
+   "first_commit": "47ad2f9",
+   "first_when": "2026-10-06T12:59:24-06:00",
+   "bytes": 1769,
+   "text": "---\nname: check-schedule-import\ndescription: Check a ShiftSwap schedule draft against the photo it came from before it is saved. Reads the draft the import page wrote (imports/_work/draft.json) and the photo, lists every shift that looks wrong and why, and writes draft-checked.json, which the import page opens for review. Use when the user says \"/check-schedule-import\", \"check the draft\", or \"check this schedule\".\n---\n\n# Check a schedule draft\n\nThe import page (`pnpm dev`, http://localhost:3000/import) has a **Check in Claude Code** button. It writes the draft and the photo to `imports/_work/`. This skill reads both and writes a checked draft back.\n\n## Steps\n\n1. Read `imports/_work/draft.json`. Each row has `person`, `day`, `start`, `end`, `location` and `confidence`.\n2. Open `imports/_work/photo.jpg` and find the same grid: days across the top, names down the side.\n3. For each row, check the cell it came from. Flag a row when:\n   - the time in the cell does not match `start` or `end`\n   - the name is not on the roster in `imports/_work/roster.json`\n   - two rows give the same person overlapping times on the same day\n   - a cell in the photo has a time but no row in the draft\n4. Do not change a row you are unsure about. Mark it `needs_review` with a one-line reason.\n5. Write `imports/_work/draft-checked.json` with the same rows, each with `status` (`ok`, `fixed` or `needs_review`) and `reason`.\n6. Print a short summary: how many rows were ok, fixed, and need review.\n\n## Rules\n\n- Never save to Supabase. The student saves from the import page after reviewing.\n- Never add a person who is not on the roster.\n- Times are 24-hour, local time, on the week printed in the schedule header.\n- Phone numbers on the photo are never copied into any file.\n"
+  },
+  {
+   "path": ".claude/agents/interview-synthesizer.md",
+   "status": "added",
+   "first_commit": "b47c0d2",
+   "first_when": "2026-10-10T21:37:11-06:00",
+   "bytes": 1594,
+   "text": "---\nname: interview-synthesizer\ndescription: \"Use to turn raw interview notes with student employees into themes for ShiftSwap discovery. Reads every file in sprints/discovery/interviews/, groups what people said into problems, counts how many people raised each one, and quotes the notes as evidence. Does not invent quotes or problems.\"\ntools: Read, Write, Glob\n---\n\nYou turn interview notes into a short list of problems, with evidence.\n\n## Input\n\nEach file in `sprints/discovery/interviews/` is one interview: who (role only, never a name), date, and notes. Some notes are typed during the interview, some are written up after.\n\n## What to produce\n\nWrite `sprints/discovery/themes.md` with:\n\n1. **Problems**, one heading each, ordered by how many people raised them.\n2. Under each problem:\n   - **Who raised it:** the roles and the count (for example, 4 of 7: 3 student employees, the manager).\n   - **What they said:** two or three short quotes copied exactly from the notes, each with its file name.\n   - **How they handle it today:** what people do now (group chat, asking in person, swapping without telling the manager).\n   - **How often:** only if the notes say so.\n3. **Surprises:** anything that went against what ShiftSwap assumes.\n4. **Gaps:** questions the interviews did not answer.\n\n## Rules\n\n- Quote only words that are in the notes. If a point is a paraphrase, say so.\n- Never write a person's name, phone number or email. Use their role.\n- Do not suggest features. The ranking is a separate step.\n- If fewer than three people raised a problem, say that it is a weak signal.\n"
+  },
+  {
+   "path": "app/globals.css",
+   "status": "modified",
+   "first_commit": "3f1a9c2",
+   "first_when": "2026-10-02T00:54:04-06:00",
+   "bytes": 5087,
+   "text": "/* ShiftSwap tokens. Components come from shadcn/ui and read these variables, so a change\n   here changes every button, card and badge. */\n@tailwind base;\n@tailwind components;\n@tailwind utilities;\n\n@layer base {\n  :root {\n    --background: 40 20% 98%;\n    --foreground: 222 20% 14%;\n    --card: 0 0% 100%;\n    --card-foreground: 222 20% 14%;\n    --primary: 214 70% 34%;\n    --primary-foreground: 0 0% 100%;\n    --muted: 220 14% 94%;\n    --muted-foreground: 220 9% 42%;\n    --border: 220 13% 88%;\n    --ring: 214 70% 34%;\n    --radius: 0.6rem;\n\n    /* Shift states: one color each, used by Badge and the week view */\n    --shift-mine: 214 70% 34%;\n    --shift-open: 152 45% 32%;\n    --shift-pending: 38 92% 40%;\n    --shift-declined: 0 65% 45%;\n    --shift-conflict: 0 65% 45%;\n\n    --font-sans: \"Inter\", system-ui, sans-serif;\n    --text-xs: 0.75rem;\n    --text-sm: 0.875rem;\n    --text-base: 1rem;\n    --text-lg: 1.125rem;\n    --text-xl: 1.375rem;\n  }\n\n  .dark {\n    --background: 222 20% 9%;\n    --foreground: 40 20% 96%;\n    --card: 222 18% 13%;\n    --card-foreground: 40 20% 96%;\n    --primary: 214 80% 66%;\n    --primary-foreground: 222 20% 9%;\n    --muted: 222 14% 18%;\n    --muted-foreground: 220 9% 66%;\n    --border: 222 12% 24%;\n    --shift-mine: 214 80% 66%;\n    --shift-open: 152 45% 56%;\n    --shift-pending: 38 92% 60%;\n    --shift-declined: 0 70% 64%;\n    --shift-conflict: 0 70% 64%;\n  }\n\n  body {\n    @apply bg-background text-foreground;\n    font-family: var(--font-sans);\n    font-size: var(--text-base);\n  }\n}\n\n/* Week view grid: seven columns on wide screens, time down the side. */\n.week-grid {\n  display: grid;\n  grid-template-columns: 4rem repeat(7, minmax(0, 1fr));\n  gap: 1px;\n  background: hsl(var(--border));\n}\n.week-grid > div { background: hsl(var(--card)); min-height: 2.5rem; }\n\n.shift-block {\n  border-radius: calc(var(--radius) - 2px);\n  padding: 0.25rem 0.5rem;\n  font-size: var(--text-sm);\n  border: 1px solid transparent;\n}\n.shift-block[data-state=\"mine\"] { background: hsl(var(--shift-mine)); color: hsl(var(--primary-foreground)); }\n.shift-block[data-state=\"open\"] { border-color: hsl(var(--shift-open)); color: hsl(var(--shift-open)); }\n.shift-block[data-state=\"pending\"] { border-style: dashed; border-color: hsl(var(--shift-pending)); }\n.shift-block[data-state=\"conflict\"] { border-color: hsl(var(--shift-conflict)); opacity: .7; }\n\n/* Empty and error states share one layout: icon, one line, one action. */\n.state-panel {\n  display: grid;\n  justify-items: center;\n  gap: 0.75rem;\n  padding: 3rem 1rem;\n  color: hsl(var(--muted-foreground));\n  text-align: center;\n}\n.state-panel h2 { font-size: var(--text-lg); color: hsl(var(--foreground)); }\n\n[... truncated]"
+  },
+  {
+   "path": "app/(app)/board/page.tsx",
+   "status": "modified",
+   "first_commit": "3f1a9c2",
+   "first_when": "2026-10-02T00:54:04-06:00",
+   "bytes": 3171,
+   "text": "import { createClient } from \"@/lib/supabase/server\";\nimport { Card, CardContent, CardHeader, CardTitle } from \"@/components/ui/card\";\nimport { Badge } from \"@/components/ui/badge\";\nimport { Button } from \"@/components/ui/button\";\nimport { EmptyState } from \"@/components/states/empty-state\";\nimport { ErrorState } from \"@/components/states/error-state\";\nimport { ShiftCard } from \"@/components/shift-card\";\nimport { SwapCard } from \"@/components/swap-card\";\nimport { startOfWeek, endOfWeek } from \"@/lib/dates\";\n\n// The shift board: this week's open shifts, my shifts, and swaps waiting on me.\n// Row-level security decides what comes back, so these queries never filter by user.\nexport default async function BoardPage() {\n  const supabase = await createClient();\n  const from = startOfWeek(new Date());\n  const to = endOfWeek(new Date());\n\n  const [open, mine, swaps] = await Promise.all([\n    supabase.from(\"shifts\").select(\"*\").eq(\"status\", \"open\").gte(\"starts_at\", from).lte(\"starts_at\", to).order(\"starts_at\"),\n    supabase.from(\"shifts\").select(\"*\").eq(\"is_mine\", true).gte(\"starts_at\", from).lte(\"starts_at\", to).order(\"starts_at\"),\n    supabase.from(\"swap_requests\").select(\"*, shift:shifts(*)\").in(\"status\", [\"pending\", \"declined\"]).order(\"created_at\"),\n  ]);\n\n  if (open.error || mine.error || swaps.error) {\n    return (\n      <ErrorState\n        title=\"Shifts did not load\"\n        detail=\"ShiftSwap could not reach the schedule. Your shifts are safe.\"\n        action={{ label: \"Retry\", href: \"/board\" }}\n      />\n    );\n  }\n\n  return (\n    <div className=\"grid gap-6 lg:grid-cols-3\">\n      <Card>\n        <CardHeader><CardTitle>Open shifts this week</CardTitle></CardHeader>\n        <CardContent className=\"grid gap-2\">\n          {open.data.length === 0 ? (\n            <EmptyState title=\"No open shifts\" detail=\"When a coworker posts a shift, it shows up here.\" />\n          ) : (\n            open.data.map((s) => <ShiftCard key={s.id} shift={s} action=\"pick-up\" />)\n          )}\n        </CardContent>\n      </Card>\n\n      <Card>\n        <CardHeader><CardTitle>My shifts</CardTitle></CardHeader>\n        <CardContent className=\"grid gap-2\">\n          {mine.data.length === 0 ? (\n            <EmptyState\n              title=\"No shifts this week\"\n              detail=\"Import the paper schedule to fill in your shifts.\"\n              action={{ label: \"Import a schedule photo\", href: \"/import\" }}\n            />\n          ) : (\n            mine.data.map((s) => <ShiftCard key={s.id} shift={s} action=\"post\" />)\n          )}\n        </CardContent>\n      </Card>\n\n      <Card>\n        <CardHeader><CardTitle>Swaps</CardTitle></CardHeader>\n        <CardContent className=\"grid gap-2\">\n          {swaps.data.length === 0 ? (\n            <EmptyState title=\"No swaps in progress\" detail=\"Swaps you post or pick up wait here for the manager.\" />\n          ) : (\n            swaps.data.map((w) => <SwapCard key={w.id} swap={w} />)\n          )}\n          <Button asChild variant=\"outline\"><a hr\n[... truncated]"
+  },
+  {
+   "path": "lib/schedule-photo/normalize.ts",
+   "status": "modified",
+   "first_commit": "3f1a9c2",
+   "first_when": "2026-10-02T00:54:04-06:00",
+   "bytes": 4490,
+   "text": "// Turns the times written on the paper schedule into 24-hour start and end times.\n// The circulation desk sheet uses forms like \"7a-11\", \"1:30-5p\", \"11-3\" and \"12-4:30\".\n\nexport type RawCell = { person: string; day: string; text: string };\nexport type Shift = { person: string; day: string; start: string; end: string };\n\nconst RANGE = /^(\\d{1,2})(?::(\\d{2}))?\\s*([ap])?\\s*[-\\u2013to]+\\s*(\\d{1,2})(?::(\\d{2}))?\\s*([ap])?$/i;\n\nfunction to24(h: number, m: number, ap: string | undefined, fallbackPm: boolean): string {\n  let hour = h;\n  const pm = ap ? ap.toLowerCase() === \"p\" : fallbackPm;\n  if (pm && hour < 12) hour += 12;\n  if (!pm && hour === 12) hour = 0;\n  return `${String(hour).padStart(2, \"0\")}:${String(m).padStart(2, \"0\")}`;\n}\n\n// A cell can hold two blocks (\"7a-11, 1-5p\"), which become two shifts.\nexport function splitBlocks(text: string): string[] {\n  return text\n    .split(/[,;\\n]/)\n    .map((t) => t.trim())\n    .filter((t) => t && !/^(x+|off|-+)$/i.test(t));\n}\n\nexport function parseRange(text: string): { start: string; end: string } | null {\n  const m = text.replace(/\\s+/g, \" \").match(RANGE);\n  if (!m) return null;\n  const [, h1, m1, ap1, h2, m2, ap2] = m;\n  const startH = Number(h1);\n  const endH = Number(h2);\n  // The desk opens at 7 AM and closes at 11 PM, so an hour of 1 to 6 without a/p is PM.\n  const start = to24(startH, Number(m1 ?? 0), ap1, startH >= 1 && startH <= 6);\n  const end = to24(endH, Number(m2 ?? 0), ap2 ?? (endH <= startH ? \"p\" : ap1), endH >= 1 && endH <= 6);\n  if (end <= start) return null;\n  return { start, end };\n}\n\nexport function normalize(cells: RawCell[]): { shifts: Shift[]; skipped: { cell: RawCell; reason: string }[] } {\n  const shifts: Shift[] = [];\n  const skipped: { cell: RawCell; reason: string }[] = [];\n  for (const cell of cells) {\n    for (const block of splitBlocks(cell.text)) {\n      const r = parseRange(block);\n      if (r) shifts.push({ person: cell.person, day: cell.day, ...r });\n      else skipped.push({ cell, reason: `could not read \"${block}\" as a time range` });\n    }\n  }\n  return { shifts, skipped };\n}\n\n[... truncated]"
+  },
+  {
+   "path": "lib/schedule-photo/draft.ts",
+   "status": "modified",
+   "first_commit": "3f1a9c2",
+   "first_when": "2026-10-02T00:54:04-06:00",
+   "bytes": 4714,
+   "text": "// The draft a schedule photo becomes. Nothing here touches the database: the student edits\n// the draft, and only Save writes the shifts. Every change is pushed onto a history stack\n// so Undo can restore it.\n\nimport type { Shift } from \"./normalize\";\n\nexport type DraftRow = Shift & {\n  id: string;\n  location: string;\n  confidence: \"high\" | \"low\";\n  removed?: boolean;\n};\n\nexport type Draft = {\n  week: string; // Monday of the week printed in the schedule header, YYYY-MM-DD\n  rows: DraftRow[];\n  past: DraftRow[][];\n  future: DraftRow[][];\n};\n\nexport function createDraft(week: string, rows: DraftRow[]): Draft {\n  return { week, rows, past: [], future: [] };\n}\n\nfunction commit(d: Draft, rows: DraftRow[]): Draft {\n  return { ...d, rows, past: [...d.past, d.rows], future: [] };\n}\n\nexport function editRow(d: Draft, id: string, patch: Partial<DraftRow>): Draft {\n  return commit(d, d.rows.map((r) => (r.id === id ? { ...r, ...patch, confidence: \"high\" } : r)));\n}\n\nexport function removeRow(d: Draft, id: string): Draft {\n  return commit(d, d.rows.map((r) => (r.id === id ? { ...r, removed: true } : r)));\n}\n\nexport function undo(d: Draft): Draft {\n  if (d.past.length === 0) return d;\n  const prev = d.past[d.past.length - 1];\n  return { ...d, rows: prev, past: d.past.slice(0, -1), future: [d.rows, ...d.future] };\n}\n\nexport function redo(d: Draft): Draft {\n  if (d.future.length === 0) return d;\n  const [next, ...rest] = d.future;\n  return { ...d, rows: next, past: [...d.past, d.rows], future: rest };\n}\n\n// The key that makes a shift unique. A re-scan updates a shift with the same key instead\n// of inserting it again (added Oct 10, after a re-scan double-booked nine shifts).\nexport function shiftKey(r: Pick<DraftRow, \"person\" | \"day\" | \"start\" | \"end\" | \"location\">): string {\n  return [r.person.toLowerCase(), r.day, r.start, r.end, r.location].join(\"|\");\n}\n\n// Rows to save: removed rows are left out, and two rows with the same key become one.\nexport function rowsToSave(d: Draft): DraftRow[] {\n  const seen = new Map<string, DraftRow>();\n  for (const r of d.rows) {\n    if (r.removed) continue;\n    seen.set(shiftKey(r), r);\n  }\n  return [...seen.values()];\n}\n\nexport function lowConfidenceCount(d: Draft): number {\n  return d.rows.filter((r) => !r.removed && r.confidence === \"low\").length;\n}\n\n[... truncated]"
+  },
+  {
+   "path": "tests/schedule-import.test.ts",
+   "status": "modified",
+   "first_commit": "3f1a9c2",
+   "first_when": "2026-10-02T00:54:04-06:00",
+   "bytes": 4741,
+   "text": "import { describe, expect, it } from \"vitest\";\nimport { parseRange, splitBlocks, normalize } from \"@/lib/schedule-photo/normalize\";\nimport { createDraft, editRow, removeRow, undo, redo, rowsToSave } from \"@/lib/schedule-photo/draft\";\n\ndescribe(\"parseRange\", () => {\n  it(\"reads the forms used on the desk schedule\", () => {\n    expect(parseRange(\"7a-11\")).toEqual({ start: \"07:00\", end: \"11:00\" });\n    expect(parseRange(\"1:30-5p\")).toEqual({ start: \"13:30\", end: \"17:00\" });\n    expect(parseRange(\"11-3\")).toEqual({ start: \"11:00\", end: \"15:00\" });\n    expect(parseRange(\"12-4:30\")).toEqual({ start: \"12:00\", end: \"16:30\" });\n  });\n\n  it(\"returns null for text that is not a time range\", () => {\n    expect(parseRange(\"call me\")).toBeNull();\n    expect(parseRange(\"5-5\")).toBeNull();\n  });\n});\n\ndescribe(\"splitBlocks\", () => {\n  it(\"splits a cell with two blocks and skips crossed-out cells\", () => {\n    expect(splitBlocks(\"7a-11, 1-5p\")).toEqual([\"7a-11\", \"1-5p\"]);\n    expect(splitBlocks(\"xx\")).toEqual([]);\n    expect(splitBlocks(\"OFF\")).toEqual([]);\n  });\n});\n\ndescribe(\"normalize\", () => {\n  it(\"records what it could not read instead of dropping it\", () => {\n    const { shifts, skipped } = normalize([\n      { person: \"A\", day: \"Mon\", text: \"7a-11\" },\n      { person: \"B\", day: \"Mon\", text: \"see me\" },\n    ]);\n    expect(shifts).toHaveLength(1);\n    expect(skipped[0].reason).toContain(\"see me\");\n  });\n});\n\nconst row = (id: string, start = \"07:00\") => ({\n  id, person: \"A\", day: \"Mon\", start, end: \"11:00\", location: \"Circulation\", confidence: \"high\" as const,\n});\n\ndescribe(\"draft undo\", () => {\n  it(\"undoes an edit and redoes it\", () => {\n    let d = createDraft(\"2026-10-05\", [row(\"1\")]);\n    d = editRow(d, \"1\", { start: \"08:00\" });\n    expect(d.rows[0].start).toBe(\"08:00\");\n    d = undo(d);\n    expect(d.rows[0].start).toBe(\"07:00\");\n    d = redo(d);\n    expect(d.rows[0].start).toBe(\"08:00\");\n  });\n\n  it(\"undoes a removed row\", () => {\n    let d = createDraft(\"2026-10-05\", [row(\"1\")]);\n    d = removeRow(d, \"1\");\n    expect(rowsToSave(d)).toHaveLength(0);\n    d = undo(d);\n    expect(rowsToSave(d)).toHaveLength(1);\n  });\n});\n\ndescribe(\"re-scan\", () => {\n  it(\"never saves the same shift twice\", () => {\n    const d = createDraft(\"2026-10-05\", [row(\"1\"), row(\"2\")]);\n    expect(rowsToSave(d)).toHaveLength(1);\n  });\n});\n\n[... truncated]"
+  },
+  {
+   "path": "app/import/too-large/page.tsx",
+   "status": "added",
+   "first_commit": "a72e0d4",
+   "first_when": "2026-10-06T11:41:36-06:00",
+   "bytes": 4016,
+   "text": "import Link from \"next/link\";\nimport { Card, CardContent, CardHeader, CardTitle } from \"@/components/ui/card\";\nimport { Button } from \"@/components/ui/button\";\n\n// Shown when a schedule photo is over the 8 MB upload limit. Same tokens and components as\n// the rest of the app, so it reads as part of ShiftSwap and not as a browser error.\nexport default function TooLargePage() {\n  return (\n    <main className=\"mx-auto max-w-lg p-6\">\n      <Card>\n        <CardHeader>\n          <CardTitle>That photo is too large</CardTitle>\n        </CardHeader>\n        <CardContent className=\"grid gap-4 text-sm text-muted-foreground\">\n          <p>\n            Schedule photos can be up to 8 MB. Phone cameras often save larger files, especially\n            in their highest quality setting.\n          </p>\n          <ol className=\"list-decimal pl-5 grid gap-2\">\n            <li>Retake the photo with the camera set to a lower resolution, or</li>\n            <li>Take a screenshot of the photo and upload the screenshot, or</li>\n            <li>Photograph one half of the schedule at a time and import each half.</li>\n          </ol>\n          <p>\n            Keep the whole grid in the frame, with the dates at the top. The reader uses the\n            header date to know which week the shifts belong to.\n          </p>\n          <div className=\"flex gap-2\">\n            <Button asChild><Link href=\"/import\">Try another photo</Link></Button>\n            <Button asChild variant=\"outline\"><Link href=\"/import?manual=1\">Enter shifts by hand</Link></Button>\n          </div>\n        </CardContent>\n      </Card>\n    </main>\n  );\n}\n\n[... truncated]"
+  },
+  {
+   "path": "lib/schedule-photo/grid.ts",
+   "status": "modified",
+   "first_commit": "5be81f7",
+   "first_when": "2026-10-06T11:52:45-06:00",
+   "bytes": 4133,
+   "text": "// Finds the schedule grid in the vision model's output: days across the top, names down\n// the side. The model returns cells with a row label, a column label and the text in the cell.\n\nimport type { RawCell } from \"./normalize\";\n\nconst DAYS = [\"mon\", \"tue\", \"wed\", \"thu\", \"fri\", \"sat\", \"sun\"];\n\nexport type ModelCell = { row: string; column: string; text: string };\n\nexport function dayFromColumn(column: string): string | null {\n  const c = column.trim().toLowerCase().slice(0, 3);\n  const i = DAYS.indexOf(c);\n  return i === -1 ? null : DAYS[i];\n}\n\n// Names are matched to the roster by first name and last initial, the way the desk\n// manager writes them on the sheet.\nexport function matchPerson(label: string, roster: { id: string; first: string; last: string }[]): string | null {\n  const [first, last = \"\"] = label.trim().split(/\\s+/);\n  const hits = roster.filter(\n    (p) =>\n      p.first.toLowerCase() === first.toLowerCase() &&\n      (!last || p.last.toLowerCase().startsWith(last.replace(\".\", \"\").toLowerCase())),\n  );\n  return hits.length === 1 ? hits[0].id : null; // an ambiguous name matches nobody\n}\n\nexport function toCells(cells: ModelCell[], roster: { id: string; first: string; last: string }[]) {\n  const out: RawCell[] = [];\n  const skipped: { cell: ModelCell; reason: string }[] = [];\n  for (const cell of cells) {\n    const day = dayFromColumn(cell.column);\n    const person = matchPerson(cell.row, roster);\n    if (!day) skipped.push({ cell, reason: `column \"${cell.column}\" is not a day` });\n    else if (!person) skipped.push({ cell, reason: `no single roster match for \"${cell.row}\"` });\n    else if (cell.text.trim()) out.push({ person, day, text: cell.text });\n  }\n  return { cells: out, skipped };\n}\n\n[... truncated]"
+  },
+  {
+   "path": "app/api/schedule-photo/route.ts",
+   "status": "added",
+   "first_commit": "c94d1b0",
+   "first_when": "2026-10-06T12:42:34-06:00"
+  },
+  {
+   "path": "lib/schedule-photo/prompt.ts",
+   "status": "modified",
+   "first_commit": "c94d1b0",
+   "first_when": "2026-10-06T12:42:34-06:00"
+  },
+  {
+   "path": "next.config.ts",
+   "status": "modified",
+   "first_commit": "c94d1b0",
+   "first_when": "2026-10-06T12:42:34-06:00"
+  },
+  {
+   "path": "app/api/swaps/[id]/decide/route.ts",
+   "status": "added",
+   "first_commit": "b2c08e1",
+   "first_when": "2026-10-06T14:16:18-06:00"
+  },
+  {
+   "path": "app/(manager)/approvals/page.tsx",
+   "status": "modified",
+   "first_commit": "b2c08e1",
+   "first_when": "2026-10-06T14:16:18-06:00"
+  },
+  {
+   "path": "components/swap-card.tsx",
+   "status": "added",
+   "first_commit": "b2c08e1",
+   "first_when": "2026-10-06T14:16:18-06:00"
+  },
+  {
+   "path": "lib/email.ts",
+   "status": "modified",
+   "first_commit": "b2c08e1",
+   "first_when": "2026-10-06T14:16:18-06:00"
+  },
+  {
+   "path": "lib/swaps.ts",
+   "status": "modified",
+   "first_commit": "b2c08e1",
+   "first_when": "2026-10-06T14:16:18-06:00"
+  },
+  {
+   "path": "supabase/migrations/20261006200000_swap_requests.sql",
+   "status": "modified",
+   "first_commit": "b2c08e1",
+   "first_when": "2026-10-06T14:16:18-06:00"
+  },
+  {
+   "path": "tests/swaps.test.ts",
+   "status": "modified",
+   "first_commit": "b2c08e1",
+   "first_when": "2026-10-06T14:16:18-06:00"
+  },
+  {
+   "path": "supabase/migrations/20261006210000_swap_rls.sql",
+   "status": "added",
+   "first_commit": "6e4f13a",
+   "first_when": "2026-10-06T14:32:22-06:00"
+  },
+  {
+   "path": "supabase/migrations/20261006212000_manager_role.sql",
+   "status": "added",
+   "first_commit": "f3d92b7",
+   "first_when": "2026-10-06T14:43:25-06:00"
+  },
+  {
+   "path": "supabase/migrations/20261007000000_skipped_imports.sql",
+   "status": "added",
+   "first_commit": "72f4e9a",
+   "first_when": "2026-10-06T15:26:49-06:00"
+  },
+  {
+   "path": "components/week-view.tsx",
+   "status": "modified",
+   "first_commit": "4a1e7c9",
+   "first_when": "2026-10-11T22:43:32-06:00"
+  },
+  {
+   "path": "app/(manager)/approvals/queue.tsx",
+   "status": "modified",
+   "first_commit": "e8b4d23",
+   "first_when": "2026-10-11T23:50:56-06:00"
+  }
+ ],
+ "plan_submission": {
+  "source": "Canvas (linked file sample-student/shiftswap/sprints/sprint-2-plan.md)",
+  "submitted_at": "2026-10-04T19:08:50-06:00",
+  "text": "# Sprint 2 Plan\n\n**Goal:** Turn ShiftSwap into something the circulation desk crew at the campus library could use for real: a rebuilt UI with clear flows and empty, loading and error states, a reader that turns a photo of the paper schedule into shifts, and a manager approval step for every swap. Then spend the rest of the sprint on discovery with student employees, ending with 3-5 ranked ideas for what to build next.\n\n**Why this:** In Sprint 1 the app worked only if shifts were typed in by hand, and nobody on the crew will do that. The photo reader removes that step. The approval step is what the desk manager said she needs before she would let anyone use it. The discovery is because I have only talked to myself about this problem so far, and I want the next sprint to come from what other student employees say.\n\n**Done looks like:**\n- **ShiftSwap:** a student can post a shift, a coworker can pick it up, and the manager can approve or decline it, all on the live app. The UI is rebuilt on shadcn/ui with empty, loading and error states. A photo of the paper schedule becomes a draft of shifts that the student can edit and undo before saving. Students see only their own shifts and swaps. The manager and both students get a text message when a swap changes.\n- **Discovery:** interviews with at least 5 student employees, a short brief for each of 3-5 ideas (the problem, who has it, and the evidence it matters), and a ranking that picks one for Sprint 3.\n\n**Predicted difficulty:** 4\n"
+ },
+ "loom": {
+  "url": "https://www.loom.com/share/00000000000000000000000000000000",
+  "title": "ShiftSwap Sprint 2 demo",
+  "seconds": 68,
+  "loom_summary": "This demo shows ShiftSwap after Sprint 2. The builder imports a photo of the paper schedule, which comes back as a draft of 64 shifts with two rows highlighted for review, edits one row and uses Undo. A shift is posted, picked up by a test coworker, and approved by the manager in the approval queue. The week view shows open shifts and marks one that conflicts with the student's own shift.",
+  "chapters": null,
+  "transcript": "Okay, this is ShiftSwap. This is the board, with open shifts this week, my shifts, and swaps. It looks a lot better than last sprint. The big one is this: I take a photo of the paper schedule from the desk and upload it, and it comes back as a draft. Sixty-four shifts. These two are yellow because it wasn't sure, so I fix this one, it said 1 to 5 and it's 1:30, and if I mess up I can hit Undo. Then save. Now I post my Thursday shift with a note. I'm signed in as a test coworker here, and I pick it up. And this is the manager view, the approval queue. It shows if the person would go over 20 hours. Approve. And it moves to the new person and everybody gets an email. Last thing, the week view. Open shifts are outlined, and this one says it conflicts with my 2 PM shift, so I can't pick it up. That's where it's at. It pushed me a lot, especially the security part.",
+  "frames": []
+ },
+ "other_repos": [],
+ "link_checks": [
+  {
+   "url": "https://shiftswap.example.com",
+   "status": 200,
+   "final_url": "https://shiftswap.example.com/",
+   "title": "ShiftSwap"
+  },
+  {
+   "url": "http://localhost:3000",
+   "status": null,
+   "error": "ConnectionError"
+  }
+ ],
+ "baseline": {
+  "Discovery": 2.0,
+  "Design": 1.67,
+  "Application Architecture": 1.08,
+  "AI Systems": 1.86,
+  "Agentic Workflow": 1.92,
+  "Launch and Learn": 1.71
+ },
+ "google_links": [],
+ "assignment": {
+  "id": 0,
+  "name": "Sprint 2 Wrap-up",
+  "points": 40.0,
+  "due": "2026-10-12T23:59:59-06:00",
+  "extended": false
+ }
+}
