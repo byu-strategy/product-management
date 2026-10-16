@@ -8,14 +8,14 @@ Status: [ ] open, [~] in progress, [x] done, [?] needs Scott.
 
 ## 0. Sprint 2 rollout with builder profiles (Scott, 2026-10-14: profiles ship with Sprint 2)
 
-**Design (decided 2026-10-14).** Each spoke runs 0 to 100; 100 is a full-stack product builder (internal anchor: hireable as an associate product builder; never said to students). Practice from
-sprint work fills up to 50 (AI Systems 25), knowledge from the exams the rest. Practice = breadth
-(up to 25: share of the axis's practicable concepts shown in your own work) + depth (up to 25:
-highest level shown on the axis, 1 Followed, 2 Directed, 3 Decided, 4 Delivered, judged from all the
-evidence together). Knowledge-only concepts have no breadth check. Rings are labeled by source
-(sprint or exam), never shrink, and every point names its concept or depth level. The 1 to 5 scale
-is retired. Sprint 2 shows practice rings for Sprints 1 and 2; the midterm adds the first knowledge
-ring on Agentic Workflow, Discovery and Design.
+**Design, as of 2026-10-16.** Each axis runs 0 to 100; 100 is a full-stack product builder. Sprint
+work fills up to 50 (AI Systems 25): 70% breadth (share of the axis's practicable concepts shown),
+30% depth (highest level: Followed earns 0, Directed 20%, Decided 50%, Delivered 100%). Exams fill the
+rest; the midterm replaces the September self-rating center on the three axes it tests (up or down),
+the September rating stays as a dashed outline, and sprint rings never shrink. One coder per student
+(in the grading pass) plus a targeted check of close calls and depth 3-4 (`concept-verifier.md`)
+replaced two full coders on 2026-10-16. The report and review page are locked by
+`scripts/tests/test_report.py`. Coherence audit: `_materials/product-management/coherence-audit-2026-10-16.md`.
 
 Step 1. Inputs (parallel)
 - [x] Roster refresh

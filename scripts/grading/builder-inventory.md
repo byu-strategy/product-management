@@ -1,3 +1,7 @@
+> **Superseded 2026-10-16** except for the item headings, which the concept lists still use. The
+> scoring here (a five-level ladder, axis = mean of items, Know/Used/Built/Shipped) is retired; the
+> evidence rules now live in `concept-coder.md` and the depth levels in `depth-levels.md`.
+
 # Builder inventory (draft v1.3, 2026-10-14)
 
 One list of 37 items (six per axis, seven in Launch and Learn), used two ways: the baseline

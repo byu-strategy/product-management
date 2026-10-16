@@ -6,13 +6,14 @@ drawers, the grader's reasons, the demo checks, the Loom stills and the transcri
 else is identical, so what Scott reviews is what the student reads.
 
 Layout (approved 2026-10-14, revised 2026-10-15): a sticky contents list on the left and open
-sections: Summary (score, profile total, the Claude Code coach prompt with the first next step, the hexagon), Score, Growth, Next steps,
+sections: Summary (score, profile total, the Claude Code coach card, the chart), Score, Growth, Next steps,
 Evidence reviewed, Questions, Methodology; Scott's copy adds Instructor notes first. Detail
 (evidence, reasons, Loom stills) stays in <details>. Inline CSS and SVG, one small script that
 highlights the current section, images embedded; printing hides the contents list.
 
 Student-facing text here follows the course's feedback rules: second person, plain, literal, no
-em dashes, and it never mentions lateness, how evidence was gathered, or the baseline survey.
+em dashes, and it never mentions lateness or how evidence was gathered. The September survey appears
+only as the profile's starting center (chart legend, Methodology), never tied to difficulty.
 """
 import base64, html, io, json, math, re, datetime as dt
 from pathlib import Path
@@ -49,7 +50,7 @@ RUBRIC = {
                "and account for in your retro, can earn full marks.",
     "review": "Your /sprint-review report and your retro. Full marks need every retro prompt answered and a "
               "response to something specific the report found. An empty retro earns at most half.",
-    "demo": "The real thing, working, with real content, on Loom. A demo up to about two minutes long loses no points.",
+    "demo": "The real thing, working, with real content, on Loom. Aim for 60 to 90 seconds; a demo up to about two minutes long loses no points.",
 }
 CHECK_LABELS = {"on_screen": "On screen", "working": "Working", "real_content": "Real content",
                 "reachable": "Reachable", "matches_plan": "Matches the plan", "off_demo": "Off the demo",
@@ -64,9 +65,9 @@ README_PASTE = ("## Where the work lives\n\n- **Repos:** [owner/repo-name], [sha
 TURNIN = """<table class=turnin>
 <tr><th>Deliverable</th><th>Where it lives</th><th>How you turn it in</th><th>When</th><th>Points</th></tr>
 <tr><td><b>Plan</b></td><td><code>sprints/sprint-N-plan.md</code></td><td>Commit it, and paste its GitHub link into <b>Sprint N Plan</b> on Canvas. To change it later, run <code>/sprint-plan</code> again; no resubmitting</td><td>First Wednesday, 11:59 PM</td><td>10</td></tr>
-<tr><td><b>Output</b></td><td>What you finished, in any form: in your course repo, another repo, a link, or your demo</td><td>Nothing separate: list every place it lives under <b>Where the work lives</b> in your README</td><td>The Monday the sprint ends, 11:59 PM</td><td>20</td></tr>
-<tr><td><b>Review</b></td><td><code>sprints/sprint-N-review.md</code>: the <code>/sprint-review</code> report, with your retro at the bottom</td><td>Commit it, and paste its GitHub link into <b>Sprint N Wrap-up</b> on Canvas</td><td>The Monday the sprint ends, 11:59 PM</td><td>10</td></tr>
-<tr><td><b>Demo</b></td><td>Loom, 60 to 90 seconds</td><td>Paste the Loom share link into <b>Sprint N Wrap-up</b> on Canvas</td><td>The Monday the sprint ends, 11:59 PM</td><td>10</td></tr>
+<tr><td><b>Output</b></td><td>What you finished, in any form: in your course repo, another repo, a link, or your demo</td><td>Nothing separate: list every place it lives under <b>Where the work lives</b> in your README</td><td>{DUE}</td><td>{OUT}</td></tr>
+<tr><td><b>Review</b></td><td><code>sprints/sprint-N-review.md</code>: the <code>/sprint-review</code> report, with your retro at the bottom</td><td>Commit it, and paste its GitHub link into <b>Sprint N Wrap-up</b> on Canvas</td><td>{DUE}</td><td>{REV}</td></tr>
+<tr><td><b>Demo</b></td><td>Loom, {DEMO_LEN}</td><td>Paste the Loom share link into <b>Sprint N Wrap-up</b> on Canvas</td><td>{DUE}</td><td>{DEM}</td></tr>
 </table>"""
 
 
@@ -95,9 +96,10 @@ def book_refs(cid):
         if x["page"] in pages or len(pages) == 3:
             continue
         pages.add(x["page"])
-        m = re.match(r"0*(\d+b?)-", x["page"])
+        m = re.match(r"0*(\d+)([a-z]?)-", x["page"])
         href = f'{BOOK}{x["page"]}?c={cid}' + (f'#{x["anchor"]}' if x.get("anchor") else "")
-        out.append((f"Ch {m.group(1)}" if m else "Appendix", x.get("section", ""), href))
+        label = f"Ch {m.group(1)}{m.group(2)}" if m and int(m.group(1)) < 90 else "Appendix"
+        out.append((label, x.get("section", ""), href))
     return out
 
 
@@ -157,7 +159,7 @@ def coach_gaps(G, k=4):
     def add(cid, why):
         c = by_id.get(cid) or {}
         refs = book_refs(cid)
-        if not cid or cid in seen or cid in shown or not refs or c.get("knowledge_only"):
+        if not cid or cid in seen or cid in shown or not refs:
             return
         seen.add(cid)
         out.append((cid, c.get("name") or cid, refs[0][2], why))
@@ -923,7 +925,13 @@ def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott
         lis += (f'<li class="ns {k}"><span class=nsn>{i}</span><div><div class=nst>{t} <span class=nsk>{tag[k]}</span></div>'
                 f'{body}</div></li>')
     todo = (f"<ol class=nsl>{lis}</ol>" if lis else "<p>Nothing to fix: your repo and README are set.</p>")
-    todo += sub("What you turn in, and how", "the four deliverables", TURNIN)
+    from sprint_config import GRADED
+    nn = sprint + 1
+    pts = {c: mx for c, _l, mx in GRADED[nn]} if nn in GRADED else {"shipped": 20, "review": 10, "demo": 10}
+    turnin = (TURNIN.replace("{OUT}", str(pts["shipped"])).replace("{REV}", str(pts["review"])).replace("{DEM}", str(pts["demo"]))
+              .replace("{DUE}", "Thursday, December 10, 11:59 PM" if nn == 6 else "The Monday the sprint ends, 11:59 PM")
+              .replace("{DEMO_LEN}", "about three minutes" if nn == 6 else "60 to 90 seconds"))
+    todo += sub("What you turn in, and how", "the four deliverables", turnin)
     next_n = sprint + 1
 
     # ---- questions
@@ -960,12 +968,14 @@ def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott
                 ap_rows += (f'<tr class="{"got" if s_ else ""}{" ko" if c.get("knowledge_only") else ""}"><td><b>{book_name(c["id"], c["name"])}</b>'
                             f'</td><td class=apd>{e(status)}</td></tr>')
     appendix = f"""
-<p><b>Your builder profile.</b> The six-sided chart shows the six areas a product builder works in. Each area runs from 0
+<p><b>Your builder profile.</b> The six-sided chart shows the six areas (the axes of the chart) a product builder works in. Each area runs from 0
 to 100, and 100 in all six is a full-stack product builder: someone who can find a problem worth solving, design and build
 the product, and get it to real users.</p>
 <p><b>Where the points come from.</b> Up to half of each area comes from your sprint work (a quarter on AI Systems), and
 the rest from the exams. Until the midterm, the center of the chart is your own rating from the September survey. Each ring
-outside it is one sprint, darker for later sprints. The midterm replaces the center with your exam result.</p>
+outside it is one sprint, darker for later sprints. The midterm replaces the center with your exam result on the three areas
+it tests (Agentic Workflow, Discovery, Design), which can move the center up or down; your September rating stays on the chart
+as a dashed outline. The final exam does the same for all six areas.</p>
 <p><b>Sprint work earns points two ways.</b></p>
 <ul>
 <li><b>Concepts:</b> the first time your work shows a concept from the list below, it earns its points (70% of an area's
@@ -977,8 +987,10 @@ the next one looks like.</li>
 <p><b>What counts.</b> Work you can point to: a commit or file in a shared repo, a shared Google file, a live link, or a
 moment in your Loom. Close calls and the higher depth levels are checked a second time against that evidence. Work
 described only in your review or retro, work in a repo that is not shared, and anything the course gave you do not count;
-they appear under "Work not counted" with the reason.</p>
-<p><b>Your profile never goes down,</b> and it does not affect your grade.</p>
+they appear under "Work not counted" with the reason. A few concepts and depth level 4 rely on lists that the current
+<code>/sprint-review</code> writes ("Builder tools you used" and "Users this sprint"); a Sprint 2 review made with an older
+version could not show them, so update your course skills before your next review.</p>
+<p><b>Your sprint rings never shrink,</b> and the profile does not affect your grade.</p>
 <p><b>The concept list.</b> Every concept in the course, by area and topic, with a link to where the book teaches it. The
 ones your work has shown say which sprint. Ones marked "measured on the exams" count only on the exams.</p>
 <table class=apt><tr><th>Concept</th><th>Shown</th></tr>{ap_rows}</table>"""

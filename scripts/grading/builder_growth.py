@@ -13,9 +13,10 @@ The spoke (decided 2026-10-14): 0 to 100 per axis, 100 = a full-stack product bu
   D, decided 2026-10-16; was 50/50 with linear levels, which paid three quarters of all growth out
   of depth by Sprint 2 and left little for Sprints 3 to 6).
   - Breadth: share of the axis's practicable concepts (not knowledge_only) shown in the student's
-    own work, counted once, consensus of both coders.
+    own work, counted once, after the second check (or, for sprints coded the old way, consensus of
+    both coders).
   - Depth: highest level shown on the axis so far (1 Followed to 4 Delivered), the lower of the two
-    coders' levels each sprint; points = depth share x LEVEL_SHARE[level] (1: 0, 2: 20%, 3: 50%,
+    coders' levels each sprint (now: the coder's level, lowered by the check if it lowered it); points = depth share x LEVEL_SHARE[level] (1: 0, 2: 20%, 3: 50%,
     4: 100%), so following a template earns nothing and real users are the largest step.
 - Knowledge fills the rest from the exams (exam rings are added by the exam step, not here).
 - Start (Fall 2026 only, decided 2026-10-15): until the midterm measures knowledge, the core is the

@@ -1,6 +1,6 @@
 # Depth levels: how a student works on an axis (practice, one level per axis per sprint)
 
-Depth is 30% of the practice score on each spoke (up to 15 of the 50 practice points; on AI
+Depth is 30% of the practice score on each axis (up to 15 of the 50 practice points; on AI
 Systems, up to 7.5 of 25). Level 1 earns no points, level 2 earns 20% of the depth points, level 3
 earns 50%, and level 4 earns all of them (weighting D, decided 2026-10-16). A coder reads all of one sprint's evidence together (repo and commit
 history, the review report and its session-scan lists, the Loom, the plan, the retro) and assigns
@@ -15,9 +15,9 @@ say what would have settled it.
 | 1 | **Followed** | Work on the axis exists, but it follows the template, a tutorial, or the agent's defaults. Little sign of the student's own choices: no spec, generic prompts, no sign they checked the result. |
 | 2 | **Directed** | The student said specifically what to build and checked that it worked: a spec or acceptance criteria, specific instructions, a Loom or test showing the result works as intended. |
 | 3 | **Decided** | The student challenged what the agent or the template proposed, weighed the options, and chose one with a stated reason, or caught and fixed what the agent got wrong. Evidence: a decision record, a session where the student rejected or overruled the agent's proposal with a reason, a choice between named options in the session scan or the review report, a retro that explains why in their own words, a fix commit after they found a problem. A fix counts only when the student found the problem (in testing, review, or use, not the agent repairing its own error in the same session) and the fix took a judgment about the product: data, access, hosting, cost, or behavior. Build errors, typos, dependency and config repairs stay at the level the rest of the work shows. |
-| 4 | **Delivered** | People outside the team use it, and the student changed the work because of what those people did or said. Evidence must come from the student's own sessions (the review report's "Users this sprint" list: reading production rows or logs about real users, handling a user's report) tied to a commit that changed the work. Shipping to production alone is not level 4, and users named only in the retro or the review's prose do not count. |
+| 4 | **Delivered** | People outside the team use it, and the student changed the work because of what those people did or said. Evidence: a dated record of real users (the review's "Users this sprint" list, or a committed feedback or test note, a usage count, a support message, a payment, or their data on screen in the Loom; the full rule is in `concept-coder.md`) tied to a commit that changed the work because of them. Shipping to production alone is not level 4, and users named only in the retro or the review's prose do not count. |
 
-Rules: the evidence rules in `builder-inventory.md` apply (checkable evidence; this sprint only;
+Rules: the evidence rules in `concept-coder.md` apply (checkable evidence; this sprint only;
 course-provided material never counts; credit follows the commit author in a shared repo). A
 claim made only in the retro does not reach level 2 or above by itself; the retro can explain
 evidence that is there. Depth on the profile is sticky: the highest level shown in any sprint stays.

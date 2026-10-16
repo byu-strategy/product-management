@@ -22,14 +22,14 @@ the same commit as the site change.
 | Plan submitted on time with Goal, Why this, Done looks like, Predicted difficulty (scored in code) | Assessments: Sprint 1 setup; later the Plan assignment | Sprint 1 |
 | Output: real and finished (not a template, placeholder, or outline) | Rubric | Sprint 1 |
 | Output: checkable by the course, privately (repo, shared or summarized repo, a link, or shown in the demo) | "It is in your repo" (Sprint 1); "The course can check it, privately" (v2.4.4) | Sprint 1 |
-| Output: raised for ambitious, hard work partly reached | Rubric, "an ambitious goal you miss and account for" | Sprint 1 |
+| Output: raised for ambitious, hard work partly reached | Rubric, "an ambitious goal you partly reach and account for" | Sprint 1 |
 | Output: routine work comfortably finished capped at 75% | Rubric (v2.3.2, Sep 30) | Sprint 2 |
 | Review: report committed | Rubric | Sprint 1 |
 | Review: retro engages with what the report says | Rubric | Sprint 1 |
 | Review: Sprint 1 retro answers its template (did you hit the goal, what happened, what changes next sprint) | Assessments, Sprint 1 retro fields | Sprint 1 only |
 | Review: retro answers all five `/sprint-review` questions | Assessments (v2.4.0 to v2.4.2, Sep 30) | Sprint 2 |
 | Demo: the real thing, working, with real content | Rubric | Sprint 1 |
-| Demo: length, more than about two minutes, at most minus 1 | Rubric ("Ninety seconds", then "60 to 90 seconds") | Sprint 1 |
+| Demo: length, more than about two minutes (Sprint 6: more than about three and a half), at most minus 1 | Rubric ("Ninety seconds", then "60 to 90 seconds"; Sprint 6 "runs to three minutes") | Sprint 1 |
 | Demo: not a Loom scores 0 (set in code) | Assessments and Wrap-up pages (v2.3.1, Sep 30) | Sprint 2 |
 | Late work, 10% per day (Canvas and code, never the grader) | Syllabus late work policy | Sprint 1 |
 
@@ -143,7 +143,7 @@ goal comfortably hit earns nothing extra.
   planning work, scrolling through the actual documents is the demo. Narration while the screen
   shows nothing relevant is not. If there are no frames, judge from the transcript, score at
   most 7 if the student mostly narrates, and set `watch_loom` true. Set `watch_loom` true
-  whenever the frames do not settle the score. Length: up to about two minutes costs nothing;
+  whenever the frames do not settle the score. Length: up to about two minutes (Sprint 6: about three and a half) loses no points;
   longer, at most minus 1. Sprint 1 did not require Loom specifically, so another video host
   costs nothing in Sprint 1; grade it from whatever frames and transcript the packet has. From
   Sprint 2 on, a demo that is not a Loom scores 0; the script sets that, so do not grade it or
@@ -241,7 +241,7 @@ sees part of the sprint: the plan says what it aimed at, the review measures whe
 went, the artifacts show what came out. Where they agree, that settles it. Where they disagree,
 weight effort and output over intent (a plan to do discovery that produced a deployed app
 leans Application Architecture), and say so in `axes_why`. Include only axes with real work;
-most sprints have one to three. This becomes the hexagon on the student's feedback page.
+most sprints have one to three. It appears in Scott's instructor notes (the axis split), never on the student's copy.
 
 ## Output, per student
 

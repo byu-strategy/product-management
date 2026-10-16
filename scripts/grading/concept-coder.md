@@ -9,7 +9,8 @@ calls honestly: an unmarked weak credit is the one that slips through. Record on
 lets a reader verify.
 
 ## Read first
-1. `builder-inventory.md`: the **Evidence rules** section applies to everything you record.
+1. The **Evidence rules** below apply to everything you record (they replace the old rules in
+   `builder-inventory.md`, which is kept only for its item headings).
 2. `depth-levels.md`: the four levels and one example per axis.
 3. The six concept lists, `concepts/*.json`. For each concept, the `practice` field says what in a
    packet shows it in the student's own work. Concepts with `"knowledge_only": true` are never
@@ -18,6 +19,26 @@ lets a reader verify.
    commits (author, full message), shipped_files (text, and the first commit that touched each file),
    other_repos, Loom transcript and summary, link checks, Google files. Do not open frame images.
    Use nothing outside the packet.
+
+## Evidence rules
+- **Checkable.** Evidence is something a reader can open: a commit or file in a shared repo, a shared
+  Google file, a live link, or a moment in the Loom. A sentence in the retro or README, or work
+  described only in the `/sprint-review` report, does not count by itself; the retro can explain
+  evidence that is there.
+- **What counts as a record.** A committed file or a commit message that names the result. The parts
+  may be in different files. "Before the code" means an earlier commit, not the same commit.
+- **Real users** (one rule, for breadth and depth): people who do not build the product, using it for its
+  purpose, shown by a dated record: the review's "Users this sprint" list, or a committed feedback or
+  test note, a usage count, a support message, a payment, or their data on screen in the Loom. A
+  business partner, coworker or client who uses it and does not build it is a real user. Users named
+  only in the retro or the review's prose do not count.
+- **Session-scan rows.** The review's "Builder tools you used" list is checkable evidence for the
+  Agentic Workflow concepts that name it. For plan mode, either the "Plan mode" row or `plan` under
+  "Permission modes" counts. Permission modes are listed by their raw names (`acceptEdits`, `auto`,
+  `dontAsk`, `bypassPermissions`); any of these counts for AW15. The course's own skills
+  (sprint-plan, sprint-review, sprint-coach, learn, eli5) never count as the student's own skills.
+  Subagents count when the student wrote one (`.claude/agents/`) or named one in their instructions;
+  a built-in search agent Claude Code started on its own does not.
 
 ## Breadth
 Record a concept when this sprint's evidence matches its `practice` sentence.
