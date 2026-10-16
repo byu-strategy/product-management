@@ -87,7 +87,6 @@
    "knowledge_only": true,
    "practice": "",
    "exam": [
-    "LL-F-05",
     "LL-F-26"
    ],
    "chapter": "Ch 14: Vanity, leading, and lagging"
@@ -119,7 +118,6 @@
    "knowledge_only": false,
    "practice": "A funnel or activation rate computed from the product's events, committed as a query, a script, or a metrics file with the numbers.",
    "exam": [
-    "LL-F-04",
     "LL-F-07"
    ],
    "chapter": "Ch 14: Signups Are Not Adoption; The funnel; Onboarding is the activation step"
@@ -135,8 +133,7 @@
    "knowledge_only": false,
    "practice": "A cohort retention table computed from the product's data, committed.",
    "exam": [
-    "LL-F-14",
-    "LL-F-06"
+    "LL-F-14"
    ],
    "chapter": "Ch 14: Retention Shows Whether It Works; Cohorts; Why totals mislead; Engagement measures count people"
   },
@@ -183,7 +180,6 @@
    "knowledge_only": false,
    "practice": "A committed record of a holdout or small test with its planned size and the result, including a result of cannot tell yet.",
    "exam": [
-    "LL-F-11",
     "LL-F-29",
     "LL-F-30"
    ],
@@ -232,7 +228,6 @@
    "knowledge_only": false,
    "practice": "A committed estimate of the AI cost to serve one user, including the heaviest realistic user.",
    "exam": [
-    "LL-F-12",
     "LL-F-33"
    ],
    "chapter": "Ch 12: Every AI call is a cost"
@@ -328,7 +323,6 @@
    "knowledge_only": false,
    "practice": "A committed decision record that changes the customer, message or channel and cites the evidence for the change.",
    "exam": [
-    "LL-F-07",
     "LL-F-40"
    ],
    "chapter": "Ch 12: When to change your GTM"
@@ -363,7 +357,7 @@
     "LL-F-43",
     "LL-F-44"
    ],
-   "chapter": "Ch 15: Decide what the story is for"
+   "chapter": "Ch 15: Decide what the story is for. Ch 15: Techniques that make a story persuasive and memorable"
   },
   {
    "id": "LL23",
@@ -472,7 +466,6 @@
    "knowledge_only": false,
    "practice": "A committed record of a channel test (a listing, posts, ads or flyers) with who was reached and the result.",
    "exam": [
-    "LL-F-04",
     "LL-F-54"
    ],
    "chapter": "Ch 12: Choosing Your Channel Strategy; A second audience: the models"

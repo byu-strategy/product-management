@@ -86,8 +86,6 @@
    "knowledge_only": false,
    "practice": "This sprint's own change live at an address others can open, shown working in the Loom or reached by the packet's link check on the page that holds the change (a homepage that returns 200 does not show the sprint's work by itself), or a commit that fixes the live app from its build or runtime log.",
    "exam": [
-    "AW-M-05",
-    "AW-M-07",
     "AA-F-05",
     "AA-F-36"
    ],
@@ -104,7 +102,6 @@
    "knowledge_only": false,
    "practice": "A committed configuration for a separate development or staging database, settings that differ by environment, or a seed data file.",
    "exam": [
-    "AA-F-07",
     "AA-F-21",
     "AA-F-37"
    ],
@@ -137,7 +134,6 @@
    "knowledge_only": false,
    "practice": "A commit whose message or record names an error from the browser console, the host's logs or an error reporter and fixes it, or an error reporter set up in committed code.",
    "exam": [
-    "AA-F-02",
     "AA-F-39"
    ],
    "chapter": "Ch 9: See What Is Happening: Logs and Error Reports. Ch 9c: Developer Tools"
@@ -169,7 +165,6 @@
    "knowledge_only": false,
    "practice": "A committed migration or schema file that adds or changes a table, which the product reads or writes, or one that imports existing data.",
    "exam": [
-    "AA-F-22",
     "AA-F-41"
    ],
    "chapter": "Ch 8: Design the Data Model First (Migration). Ch 9: Rolling Back a Bad Deploy"
@@ -201,8 +196,7 @@
    "knowledge_only": true,
    "practice": "",
    "exam": [
-    "AA-F-10",
-    "AA-F-12"
+    "AA-F-10"
    ],
    "chapter": "Ch 7: Who You Are, What You May Do"
   },
@@ -220,7 +214,7 @@
     "AA-F-43",
     "AA-F-44"
    ],
-   "chapter": "Ch 7: Who You Are, What You May Do"
+   "chapter": "Ch 7: Who You Are, What You May Do. Ch 7: Three credentials: publishable key, token, secret key"
   },
   {
    "id": "AA14",
@@ -265,7 +259,6 @@
    "knowledge_only": true,
    "practice": "",
    "exam": [
-    "AA-F-02",
     "AA-F-46"
    ],
    "chapter": "Ch 7: How a Request Crosses the Internet; Requests Connect the Places. Ch 8: Requests Are Contracts That Fail"
@@ -313,7 +306,6 @@
    "knowledge_only": false,
    "practice": "A committed server route or function that calls a model provider's API with the key read from an environment variable.",
    "exam": [
-    "AA-F-11",
     "AA-F-50"
    ],
    "chapter": "Ch 11: Where the Call Lives"
@@ -346,7 +338,6 @@
    "practice": "Committed code that reads secret keys from environment variables, with .env files listed in .gitignore.",
    "exam": [
     "AA-F-02",
-    "AA-F-11",
     "AA-F-13"
    ],
    "chapter": "Ch 8: Secrets and Sensitive Data. Ch 7: The Files in a Next.js Project. Ch 11: Where the Call Lives"
@@ -442,11 +433,10 @@
    "knowledge_only": false,
    "practice": "A committed CI workflow file (for example in .github/workflows) with a record that it ran.",
    "exam": [
-    "AA-F-16",
     "AA-F-57",
     "AA-F-58"
    ],
-   "chapter": "Ch 9: Automated Checks: Tests, Types, and Lint"
+   "chapter": "Ch 9: Automated Checks: Tests, Types, and Lint. Ch 9: Pull Requests: The Review Gate"
   },
   {
    "id": "AA28",

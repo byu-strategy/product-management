@@ -22,7 +22,6 @@
    "knowledge_only": true,
    "practice": "",
    "exam": [
-    "AW-M-01",
     "AW-M-09",
     "AW-M-21",
     "AW-M-24",
@@ -44,7 +43,6 @@
    "practice": "A committed change to package.json or a lockfile that adds or removes a package the product uses.",
    "exam": [
     "AW-M-06",
-    "AW-M-16",
     "AW-F-57",
     "AW-F-58"
    ],
@@ -62,12 +60,10 @@
    "practice": "/remote-control, /voice or a non-interactive run listed in the session scan's \"Builder tools you used\" list in the review report, or a committed script that runs the agent without a person.",
    "exam": [
     "AW-M-17",
-    "AW-M-18",
-    "AW-F-18",
     "AW-F-52",
     "AW-F-59"
    ],
-   "chapter": "Ch 1: One engine, many surfaces; Ch 2: Claude Code: Slash Commands"
+   "chapter": "Ch 1: One engine, many surfaces; Ch 2: Claude Code: Slash Commands. Ch 1: Code your first app"
   },
   {
    "id": "AW04",
@@ -81,10 +77,9 @@
    "practice": "Text the student wrote in CLAUDE.md or AGENTS.md beyond the template's text, committed.",
    "exam": [
     "AW-M-02",
-    "AW-M-15",
-    "AW-F-23",
     "AW-F-60",
-    "AW-F-61"
+    "AW-F-61",
+    "AW-M-04"
    ],
    "chapter": "Ch 2: It Knows Only What It Can See; CLAUDE.md: your project's memory; Where CLAUDE.md files live"
   },
@@ -99,10 +94,8 @@
    "knowledge_only": false,
    "practice": "/clear, /compact or /memory listed in the session scan's \"Builder tools you used\" list in the review report, or a memory entry or rule the student added to CLAUDE.md or a memory file, committed.",
    "exam": [
-    "AW-M-08",
     "AW-M-14",
     "AW-M-22",
-    "AW-F-17",
     "AW-F-62",
     "AW-F-63"
    ],
@@ -119,7 +112,6 @@
    "knowledge_only": false,
    "practice": "Plan mode listed in the session scan's \"Builder tools you used\" list in the review report.",
    "exam": [
-    "AW-M-03",
     "AW-M-11",
     "AW-F-64",
     "AW-F-65"
@@ -137,8 +129,6 @@
    "knowledge_only": false,
    "practice": "A .claude/settings.json the student added or changed beyond the template's copy, committed.",
    "exam": [
-    "AW-M-04",
-    "AW-M-13",
     "AW-F-66",
     "AW-F-67"
    ],
@@ -167,7 +157,6 @@
     "AW-F-49",
     "AW-F-50",
     "AW-F-51",
-    "AW-F-52",
     "AW-F-53",
     "AW-M-33"
    ],
@@ -205,7 +194,6 @@
     "AW-M-26",
     "AW-M-31",
     "AW-F-01",
-    "AW-F-14",
     "AW-F-69"
    ],
    "chapter": "Ch 2: Advice Versus Enforcement"
@@ -257,7 +245,6 @@
    "practice": "A CLI tool, MCP server or API call listed in the session scan's \"Builder tools you used\" list in the review report, or an MCP server the student added to .mcp.json, or a committed script or skill the student wrote that wraps a CLI tool or an API.",
    "exam": [
     "AW-M-27",
-    "AW-F-16",
     "AW-F-33",
     "AW-F-34"
    ],
@@ -330,7 +317,6 @@
    "exam": [
     "AW-M-23",
     "AW-F-09",
-    "AW-F-15",
     "AW-F-38",
     "AW-F-40"
    ],
@@ -349,7 +335,6 @@
    "exam": [
     "AW-M-19",
     "AW-M-20",
-    "AW-F-10",
     "AW-F-74",
     "AW-F-75"
    ],

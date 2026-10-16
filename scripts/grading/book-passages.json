@@ -167,6 +167,12 @@
    "anchor": "who-you-are-what-you-may-do",
    "section": "Who You Are, What You May Do",
    "tagged": false
+  },
+  {
+   "page": "07-anatomy-of-an-application.html",
+   "anchor": "three-credentials-publishable-key-token-secret-key",
+   "section": "Three credentials: publishable key, token, secret key",
+   "tagged": false
   }
  ],
  "AA14": [
@@ -323,6 +329,12 @@
    "anchor": "automated-checks-tests-types-and-lint",
    "section": "Automated Checks: Tests, Types, and Lint",
    "tagged": false
+  },
+  {
+   "page": "09-version-control-testing-and-tech-debt.html",
+   "anchor": "pull-requests-the-review-gate",
+   "section": "Pull Requests: The Review Gate",
+   "tagged": false
   }
  ],
  "AA28": [
@@ -431,6 +443,18 @@
    "anchor": "what-it-costs",
    "section": "What It Costs",
    "tagged": false
+  },
+  {
+   "page": "11-models-in-your-product.html",
+   "anchor": "the-api-remembers-nothing",
+   "section": "The API Remembers Nothing",
+   "tagged": false
+  },
+  {
+   "page": "10-how-models-work.html",
+   "anchor": "the-context-window-is-working-memory",
+   "section": "The context window is working memory",
+   "tagged": false
   }
  ],
  "AS07": [
@@ -486,6 +510,12 @@
    "page": "11-models-in-your-product.html",
    "anchor": "where-it-breaks",
    "section": "Where It Breaks",
+   "tagged": false
+  },
+  {
+   "page": "11-models-in-your-product.html",
+   "anchor": "streaming",
+   "section": "Streaming",
    "tagged": false
   }
  ],
@@ -696,6 +726,12 @@
    "page": "02-directing-the-agent.html",
    "anchor": "claude-code-slash-commands",
    "section": "Claude Code: Slash Commands",
+   "tagged": false
+  },
+  {
+   "page": "01-building-with-ai-agents.html",
+   "anchor": "code-your-first-app",
+   "section": "Code your first app",
    "tagged": false
   }
  ],
@@ -2147,6 +2183,12 @@
    "page": "15-storytelling-and-the-final-demo.html",
    "anchor": "a-story-has-a-job",
    "section": "Decide what the story is for",
+   "tagged": false
+  },
+  {
+   "page": "15-storytelling-and-the-final-demo.html",
+   "anchor": "techniques-that-make-a-story-land",
+   "section": "Techniques that make a story persuasive and memorable",
    "tagged": false
   }
  ],

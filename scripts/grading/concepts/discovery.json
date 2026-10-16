@@ -129,7 +129,6 @@
    "practice": "A committed file that names the product's user and its payer and says whether they are the same person.",
    "exam": [
     "DI-F-08",
-    "DI-M-08",
     "DI-F-30"
    ],
    "chapter": "Ch 4: Who It Is For, and Not For (The user and the payer)"
@@ -179,7 +178,6 @@
    "knowledge_only": false,
    "practice": "A committed insights or assumptions file that lists beliefs, each with a confidence level and the evidence for it.",
    "exam": [
-    "DI-M-11",
     "DI-F-35",
     "DI-F-36"
    ],
@@ -214,7 +212,6 @@
    "practice": "A committed list of conditions that would have to be true for the product to work, each labeled with its risk or uncertainty.",
    "exam": [
     "DI-F-12",
-    "DI-F-15",
     "DI-M-32"
    ],
    "chapter": "Ch 4: The Four Risks and the Riskiest Assumption (What would have to be true)"
@@ -247,7 +244,6 @@
    "knowledge_only": false,
    "practice": "A committed file, outside the sprint plan, that names the product's riskiest assumption, the check run on it, and the result.",
    "exam": [
-    "DI-F-05",
     "DI-F-10",
     "DI-M-33"
    ],
@@ -282,7 +278,6 @@
    "practice": "A committed record, drawn from the student's own interviews, of what people do about the problem today, including doing nothing or a manual workaround.",
    "exam": [
     "DI-M-09",
-    "DI-M-14",
     "DI-F-06",
     "DI-F-38"
    ],
@@ -333,7 +328,6 @@
    "knowledge_only": false,
    "practice": "A committed list of the factors the product drops, reduces, raises and adds compared with the alternatives.",
    "exam": [
-    "DI-F-18",
     "DI-M-24",
     "DI-F-42"
    ],
@@ -420,7 +414,6 @@
    "practice": "A committed ranking of features or work items in order, with the criteria or framework (ICE, MoSCoW, the $100 test) shown.",
    "exam": [
     "DI-M-15",
-    "DI-F-10",
     "DI-F-46"
    ],
    "chapter": "Ch 4: Feature Prioritization"

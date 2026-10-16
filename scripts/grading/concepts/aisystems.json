@@ -54,7 +54,6 @@
    "knowledge_only": false,
    "practice": "Committed code that stores a conversation or facts about a user in the product's database and sends them with later model calls.",
    "exam": [
-    "AS-F-01",
     "AS-F-04",
     "AS-F-09"
    ],
@@ -71,7 +70,6 @@
    "knowledge_only": false,
    "practice": "Committed code that handles a model response cut off at the output limit (checks the stop reason, or splits the job into parts), with the limit named in a spec or the code.",
    "exam": [
-    "AS-F-14",
     "AS-F-19"
    ],
    "chapter": "Ch 10: Step 4: The model predicts the next token (one sentence)"
@@ -87,7 +85,6 @@
    "knowledge_only": false,
    "practice": "Committed code that trims, summarizes or splits what is sent to a model, with the limit it designs around named in a spec or the code.",
    "exam": [
-    "AS-F-07",
     "AS-F-20"
    ],
    "chapter": "Ch 10: The context window is working memory; Ch 11: The API Remembers Nothing"
@@ -103,10 +100,9 @@
    "knowledge_only": true,
    "practice": "",
    "exam": [
-    "AS-F-01",
-    "AS-F-14"
+    "AS-F-01"
    ],
-   "chapter": "Ch 10: Step 1: Text becomes tokens; Ch 11: What It Costs"
+   "chapter": "Ch 10: Step 1: Text becomes tokens; Ch 11: What It Costs. Ch 11: The API Remembers Nothing. Ch 10: The context window is working memory"
   },
   {
    "id": "AS07",
@@ -119,7 +115,6 @@
    "knowledge_only": false,
    "practice": "A cost estimate for an AI feature in a committed spec or decision record, with tokens per call, calls per user, users, and price per token each stated.",
    "exam": [
-    "AW-F-31",
     "AS-F-21"
    ],
    "chapter": "Ch 11: What It Costs; Ch 12: Every AI call is a cost"
@@ -170,7 +165,7 @@
     "AS-F-24",
     "AS-F-25"
    ],
-   "chapter": "Ch 10: Step 3: Attention mixes in context; Step 4: The model predicts the next token; Ch 11: What It Costs; Where It Breaks"
+   "chapter": "Ch 10: Step 3: Attention mixes in context; Step 4: The model predicts the next token; Ch 11: What It Costs; Where It Breaks. Ch 11: Streaming"
   },
   {
    "id": "AS12",
@@ -231,7 +226,6 @@
    "knowledge_only": false,
    "practice": "A temperature setting on a model call in committed code, with the reason for the value in a comment, spec or decision record.",
    "exam": [
-    "AS-F-16",
     "AS-F-31"
    ],
    "chapter": "Ch 10: Step 4: The model predicts the next token"
@@ -247,7 +241,6 @@
    "knowledge_only": true,
    "practice": "",
    "exam": [
-    "AS-F-08",
     "AS-F-13"
    ],
    "chapter": "Ch 10: Step 5: Pretraining on huge text"
@@ -279,7 +272,6 @@
    "knowledge_only": true,
    "practice": "",
    "exam": [
-    "AS-F-13",
     "AS-F-33"
    ],
    "chapter": "Ch 10: Step 6: Fine-tuning and human feedback shape behavior"
@@ -375,7 +367,6 @@
    "knowledge_only": false,
    "practice": "A committed analysis that checks a model's claims against sources and records which claims were correct, partly correct, and invented.",
    "exam": [
-    "AS-F-08",
     "AS-F-10"
    ],
    "chapter": "Ch 10: Plausible is not true; Ch 11: Where It Breaks"
@@ -391,7 +382,6 @@
    "knowledge_only": false,
    "practice": "Committed code that checks the product's model output before it is used (a validation rule, required sources, a second independent pass, or a person approving), or a commit that traces a wrong product output to its cause and fixes it. Checks on the coding agent's output are AW17.",
    "exam": [
-    "AS-F-10",
     "AS-F-40"
    ],
    "chapter": "Ch 10: Plausible is not true; Ch 11: Where It Breaks"
@@ -423,7 +413,6 @@
    "knowledge_only": false,
    "practice": "A committed decision record that names a model option and a non-model option for one feature and the reason for the choice.",
    "exam": [
-    "AS-F-15",
     "AS-F-16"
    ],
    "chapter": "Ch 11: Where It Breaks; Ch 10: The jagged frontier"

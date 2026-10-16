@@ -244,6 +244,8 @@ def exam_check(P, C):
     items = {}
     for f in sorted(EXAM.glob("*.json")) if EXAM.exists() else []:
         for x in json.loads(f.read_text()).get("items", []):
+            if x.get("role") == "retired":
+                continue
             items[x["id"]] = x
     if not items:
         return ["exam bank not reachable; exam check skipped"]
