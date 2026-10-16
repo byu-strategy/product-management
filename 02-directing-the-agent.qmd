@@ -279,6 +279,8 @@ Rules live in a settings file under `permissions`: `.claude/settings.json` in yo
 
 The first rule lets Claude run your tests without asking (`npm` is the command that runs a JavaScript project's scripts, and `*` matches anything after it). `Read(./.env)` blocks Claude's file tools from reading the secrets file, and a Read deny also blocks editing it. It matters in VS Code too: when `claude` runs in VS Code's terminal, text you select in the editor goes with your next prompt, even from `.env`, and this rule stops that as well ([Claude Code in the VS Code terminal](A3-claude-code-cli-and-desktop.qmd#claude-code-in-the-vs-code-terminal)). `Bash(git push *)` stops the push command as Claude usually writes it. One limit to know: a Bash rule matches the *text* of the command, so the same action written another way (through a script, say) will not match it. For a boundary the operating system enforces, use the sandbox (next section). You can manage rules with `/permissions`, and choosing "Yes, don't ask again" at a prompt saves an allow rule to `.claude/settings.local.json`.
 
+Settings can come from several files, and when two disagree the more specific one wins: your local project settings (`.claude/settings.local.json`) win over the shared project settings (`.claude/settings.json`), which win over your user settings for every project (`~/.claude/settings.json`). An organization's managed settings, when there are any, win over all three. Permission rules from all the files are combined, and a deny in any of them still overrides an allow in another.
+
 #### Claude Code hooks
 
 A hook is a command that runs **automatically** when something happens, every time, whatever
