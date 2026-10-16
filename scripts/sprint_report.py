@@ -881,6 +881,12 @@ nav.querySelectorAll(':scope>a').forEach(a=>{{
 // Opening a drawer opens every drawer inside it, down to the last level.
 document.querySelectorAll('main details').forEach(d=>d.addEventListener('toggle',()=>{{if(d.open)d.querySelectorAll('details').forEach(x=>x.open=true)}}));
 const groups=[...nav.querySelectorAll('.tg')];
+// Expand all / Collapse all: the contents list and every drawer in the page.
+const bar=document.createElement('div');bar.className='tocbar';
+[['Expand all',true],['Collapse all',false]].forEach(([t,on])=>{{const x=document.createElement('button');x.textContent=t;
+  x.onclick=()=>{{nav.querySelectorAll('.tg.has,.tg3').forEach(g=>g.classList.toggle('open',on));
+    document.querySelectorAll('main details').forEach(d=>d.open=on)}};bar.append(x)}});
+nav.querySelector('.tocname').after(bar);
 const io=new IntersectionObserver(es=>{{es.forEach(x=>{{if(!x.isIntersecting)return;
   groups.forEach(g=>{{const on=g.querySelector(':scope>a').getAttribute('href')==='#'+x.target.id;
     g.querySelector(':scope>a').classList.toggle('on',on);if(on)g.classList.add('open')}})}})}},{{rootMargin:'-20% 0px -70% 0px'}});
@@ -906,6 +912,7 @@ nav.toc a.inst{color:#7a5a00}
 .sub{display:none;margin:0 0 6px}.tg.open .sub{display:block}
 nav.toc .sub a{font-size:12.5px;padding:3px 10px 3px 30px;color:var(--mute);border-left:2px solid var(--line)}
 nav.toc .sub a:hover{color:var(--ink)}
+.tocbar{display:flex;gap:6px;margin:0 0 12px}.tocbar button{font:12px inherit;font-family:inherit;color:#4a5262;background:#f5f6f8;border:1px solid var(--line);border-radius:6px;padding:3px 9px;cursor:pointer}.tocbar button:hover{color:var(--ink);border-color:#d5d9e0}
 .tg3{position:relative}.tw3{position:absolute;left:16px;top:3px;width:14px;height:18px;border:0;background:none;cursor:pointer;padding:0}
 .tw3::before{content:"";display:block;width:4px;height:4px;border-right:1.5px solid var(--mute);border-bottom:1.5px solid var(--mute);transform:rotate(-45deg);margin:6px 0 0 4px;transition:transform .15s}
 .tg3.open .tw3::before{transform:rotate(45deg)}
