@@ -585,6 +585,11 @@ def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott
     def pt(x):
         return str(round(float(x)))
 
+    def pt1(x):
+        """Item points to one decimal, so a row's items visibly add up to its total."""
+        v = round(float(x), 1)
+        return str(int(v)) if v == int(v) else str(v)
+
     if G:
         last = (G.get("rings") or [{}])[-1]
         pts_now = last.get("points") or {}
@@ -622,14 +627,22 @@ def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott
                 gain = d.get("gain")
                 right = f'level {d["level"]}, {e(d.get("name") or LEVELS.get(d["level"], ""))}'
                 if gain:
-                    right += f'<span class=qp>+{pt(depth_points(ax, gain["from"], gain["to"]))}</span>'
-                dbody = f'<p>{e(d.get("why", ""))}</p><p class=qm>Level {d["level"]} means {LEVEL_TEXT.get(d["level"], "")}.</p>'
-                if not gain and d.get("best_so_far", 0) >= d["level"]:
+                    right += f'<span class=qp>+{pt1(depth_points(ax, gain["from"], gain["to"]))}</span>'
+                lv = d["level"]
+                dbody = f'<p><b>Level {lv}, {e(LEVELS.get(lv, ""))}:</b> {e(LEVEL_TEXT.get(lv, ""))}.</p>'
+                dbody += f'<p class=qm>What showed it: {e(d.get("why", ""))}</p>'
+                if gain:
+                    dbody += (f'<p class=qm>Moving from {"level " + str(gain["from"]) if gain["from"] else "no level"} to level {gain["to"]} '
+                              f'adds {pt1(depth_points(ax, gain["from"], gain["to"]))} points.</p>')
+                elif d.get("best_so_far", 0) >= lv:
                     dbody += f'<p class=qm>You reached level {d["best_so_far"]} on this axis before, so this adds no points.</p>'
+                if lv < 4:
+                    dbody += f'<p class=qm>Next, level {lv + 1}, {e(LEVELS.get(lv + 1, ""))}: {e(LEVEL_TEXT.get(lv + 1, ""))}.</p>'
                 body += row("Depth", right, dbody, "dep")
             for m in lst:
                 link = ref_link(repo, m.get("ref"))
-                body += row(e(m.get("name") or m["concept"]), f'<span class=qd>{e(short_date(m.get("when")))}</span>',
+                body += row(e(m.get("name") or m["concept"]),
+                            f'<span class=qd>{e(short_date(m.get("when")))}</span><span class=qp>+{pt1(m.get("points", 0))}</span>',
                             f'<p>{e(m.get("did", ""))}</p><p class=qm>{e(m.get("evidence", ""))}{" · " + link if link else ""}</p>',
                             chips=book_chips(m.get("concept")))
             grew += (f'<details class="q gx"><summary><span class=qn>{name}</span>{cells}</summary>'
@@ -647,11 +660,11 @@ def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott
                 grew += f'<div class=qsub>{e(ax)} <span>+{pt(sum(float(x.get("points", 0)) for x in ax_x))}</span></div>'
                 for x in sorted(ax_x, key=lambda x: not x.get("depth")):
                     if x.get("depth"):
-                        grew += row("Depth", f'level {x["level"]}, {e(x["name"])}<span class=qp>+{pt(x.get("points", 0))}</span>',
+                        grew += row("Depth", f'level {x["level"]}, {e(x["name"])}<span class=qp>+{pt1(x.get("points", 0))}</span>',
                                     f'<p>{e(x.get("why", ""))}</p>', "dep")
                     else:
                         link = ref_link(repo, x.get("ref"))
-                        grew += row(e(x["name"]), f'<span class=qd>{e(short_date(x.get("when")))}</span>',
+                        grew += row(e(x["name"]), f'<span class=qd>{e(short_date(x.get("when")))}</span><span class=qp>+{pt1(x.get("points", 0))}</span>',
                                     f'<p>{e(x.get("did", ""))}</p><p class=qm>{e(x.get("evidence", ""))}{" · " + link if link else ""}</p>',
                                     chips=book_chips(x.get("concept")))
         nc = G.get("not_counted") or []

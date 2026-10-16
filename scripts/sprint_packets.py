@@ -29,8 +29,9 @@ DATA = Path.home() / "hubs/courses/_data/product-management"
 SHIPPED_CHARS = 20_000      # code text per packet, about 5k tokens (written work has its own budget)
 PER_FILE_CHARS = 10_000     # written work (specs, decisions, discovery, evals, docs): long enough for acceptance criteria
 CODE_FILE_CHARS = 3_000     # code: enough to see what it does
-# Course-provided skills and settings are skipped; a skill the student wrote is their work (W2).
-SKIP = re.compile(r"^(sprints/|\.claude/skills/(eli5|learn|sprint-plan|sprint-review)/|README\.md$)|000-.*template"
+# Course-provided skills and the sprint plan and review files (read separately) are skipped; a skill
+# the student wrote is their work (W2), and so is anything else they put in sprints/.
+SKIP = re.compile(r"^(sprints/sprint-\d+-(plan|review)\.md$|\.claude/skills/(eli5|learn|sprint-plan|sprint-review)/|README\.md$)|000-.*template"
                   r"|(^|/)(node_modules|dist|build|\.next|out|coverage|\.vercel)/"
                   r"|(^|/)(package-lock\.json|yarn\.lock|pnpm-lock\.yaml|bun\.lockb)$|\.(min\.js|min\.css|map)$")
 # Written work is read first, so a large code change cannot use up the budget before the specs,
