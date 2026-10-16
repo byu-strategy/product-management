@@ -1166,16 +1166,17 @@ nav.toc a small,.tocm a small{color:var(--mute);font-size:11.5px;white-space:now
 nav.toc a:hover{color:var(--ink);background:#fafafb}nav.toc a.on{border-left-color:var(--amber);color:var(--ink);font-weight:600}
 nav.toc a.inst{color:#7a5a00}
 .tg{position:relative}nav.toc .tg>a{padding-left:22px}
-.tw{position:absolute;left:4px;top:6px;width:16px;height:20px;border:0;background:none;cursor:pointer;padding:0}
-.tw::before{content:"";display:block;width:5px;height:5px;border-right:1.5px solid var(--mute);border-bottom:1.5px solid var(--mute);transform:rotate(-45deg);margin:6px 0 0 4px;transition:transform .15s}
-.tg.open .tw::before{transform:rotate(45deg)}
+/* Tree carets: one chevron drawn as a mask, centered on the first line of its row, pointing right when closed and down when open. */
+.tw,.tw3{position:absolute;display:grid;place-items:center;border:0;background:none;cursor:pointer;padding:0;border-radius:4px}
+.tw::before,.tw3::before{content:"";width:12px;height:12px;background:var(--mute);-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M6 3.5 10.5 8 6 12.5' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M6 3.5 10.5 8 6 12.5' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat;transition:transform .15s}
+.tw:hover::before,.tw3:hover::before{background:var(--ink)}.tw:focus-visible,.tw3:focus-visible{outline:2px solid #2f5bd3}
+.tw{left:3px;top:6px;width:18px;height:1.6em}
+.tg.open .tw::before,.tg3.open .tw3::before{transform:rotate(90deg)}
 .sub{display:none;margin:0 0 6px}.tg.open .sub{display:block}
 nav.toc .sub a{font-size:12.5px;padding:3px 10px 3px 30px;color:var(--mute);border-left:2px solid var(--line)}
 nav.toc .sub a:hover{color:var(--ink)}
 .tocbar{display:flex;gap:6px;margin:0 0 12px}.tocbar button{font:12px inherit;font-family:inherit;color:#4a5262;background:#f5f6f8;border:1px solid var(--line);border-radius:6px;padding:3px 9px;cursor:pointer}.tocbar button:hover{color:var(--ink);border-color:#d5d9e0}
-.tg3{position:relative}.tw3{position:absolute;left:16px;top:3px;width:14px;height:18px;border:0;background:none;cursor:pointer;padding:0}
-.tw3::before{content:"";display:block;width:4px;height:4px;border-right:1.5px solid var(--mute);border-bottom:1.5px solid var(--mute);transform:rotate(-45deg);margin:6px 0 0 4px;transition:transform .15s}
-.tg3.open .tw3::before{transform:rotate(45deg)}
+.tg3{position:relative}.tw3{left:14px;top:3px;width:16px;height:1.6em;font-size:12.5px}.tw3::before{width:11px;height:11px}
 .sub3{display:none}.tg3.open .sub3{display:block}
 nav.toc .sub3 a{font-size:12px;padding:2px 10px 2px 44px}
 main .qh{display:none}.tocm{display:none}
