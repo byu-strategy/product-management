@@ -160,7 +160,7 @@ Good discovery follows an order: **generate many options before you narrow.** Ge
 
 So resist the urge to pick early. Your problem journal is the diverging half: capture dozens of frictions without filtering. Looking widely, across different people, contexts, and moments, surfaces problems you would never have reasoned your way to from your desk. Only once you have a long list do you start scoring and cutting ([Evaluating Your Problems](#evaluating-your-problems), below). The wider you diverge, the better the thing you eventually converge on.
 
-*Diverge/converge discipline adapted from Nile Hatch, [Expeditionary Innovation](https://github.com/nilehatch/exp_innov/). [@hatch_expeditionary]*
+*Diverge/converge discipline adapted from Nile Hatch, [Expeditionary Innovation](https://ei.nilehatch.com/). [@hatch_expeditionary]*
 
 <!-- learn -->
 
@@ -246,7 +246,7 @@ Jobs come in three types; the *pain* behind a job comes in five kinds, and namin
 
 When you interview, listen across all five. The pains people mention first are usually functional; the ones that actually drive them to pay are often emotional or social. This complements the Self-Determination lens in [Sprint 2](00-assessments.qmd#sprint-2) (autonomy, competence, relatedness): that lens explains *why* a pain matters; these five categories catalog *how* it hurts.
 
-*Five pain categories from Nile Hatch, [Expeditionary Innovation](https://github.com/nilehatch/exp_innov/) [@hatch_expeditionary].*
+*Five pain categories from Nile Hatch, [Expeditionary Innovation](https://ei.nilehatch.com/) [@hatch_expeditionary].*
 
 <!-- learn -->
 
@@ -437,7 +437,7 @@ After 5+ interviews, patterns emerge. Synthesize what you learned into actionabl
 ::: {.callout-note title="How many interviews is enough?"}
 There is no fixed number. The rule: **stop when new interviews stop surprising you.** Early on, every conversation adds something. As you approach saturation, you start hearing the same problems, quotes, and workarounds you have already heard, and the information each new interview adds drops toward zero. When two or three in a row tell you nothing new, you have enough to act. If every interview still surprises you, keep going; your sample is probably too narrow.
 
-*The saturation ("information entropy") stop rule is from Nile Hatch, [Expeditionary Innovation](https://github.com/nilehatch/exp_innov/) [@hatch_expeditionary].*
+*The saturation ("information entropy") stop rule is from Nile Hatch, [Expeditionary Innovation](https://ei.nilehatch.com/) [@hatch_expeditionary].*
 :::
 
 #### Synthesis Template
@@ -524,7 +524,7 @@ A real, painful, frequent problem is still not an opportunity if you cannot reac
 
 If you cannot reach a segment cheaply now, as a student, you will not reach them cheaply as a founder. Either find a reachable beachhead within the market or reconsider the problem.
 
-*The access test is adapted from Nile Hatch, [Expeditionary Innovation](https://github.com/nilehatch/exp_innov/).* [@hatch_expeditionary]
+*The access test is adapted from Nile Hatch, [Expeditionary Innovation](https://ei.nilehatch.com/).* [@hatch_expeditionary]
 
 <!-- learn -->
 
@@ -629,7 +629,7 @@ Three ways to keep your scores honest:
 - **Score intensity out of ten (the "Ouch Factor").** Force yourself to rate how much it hurts, 1 to 10, per person. Vague intensity hides weak opportunities.
 - **Watch both failure modes.** A *false positive* is polite agreement ("sure, I'd use that") for a problem no one really has. A *false negative* is a real pain you missed because you framed the question badly. Seek disconfirming evidence for the first; re-ask in different words to catch the second.
 
-*Ouch Factor, workaround-spend, and false-positive/negative framing from Nile Hatch, [Expeditionary Innovation](https://github.com/nilehatch/exp_innov/).* [@hatch_expeditionary]
+*Ouch Factor, workaround-spend, and false-positive/negative framing from Nile Hatch, [Expeditionary Innovation](https://ei.nilehatch.com/).* [@hatch_expeditionary]
 :::
 
 #### Another lens: importance and satisfaction
@@ -839,7 +839,7 @@ Building is cheap now, so sometimes the build *is* the cheapest test, especially
 and feasibility. But a working app tested on friends sits on the said rung for value. Whatever
 you build, attach a real action (a sign-up, a return visit, a payment) to it.
 
-*Smoke test and Wizard of Oz framing from Nile Hatch, [Expeditionary Innovation](https://github.com/nilehatch/exp_innov/); both are established lean-startup techniques he assembles into the method [@hatch_expeditionary].*
+*Smoke test and Wizard of Oz framing from Nile Hatch, [Expeditionary Innovation](https://ei.nilehatch.com/); both are established lean-startup techniques he assembles into the method [@hatch_expeditionary].*
 
 ::: {.callout-tip title="Try it"}
 For your riskiest assumption, design two of the four tests. For each, write what you will do,
@@ -1037,7 +1037,7 @@ The $100 Test is a fast way to force prioritization. Imagine you have exactly **
 
 It works because it forces trade-offs that a flat must / should / could list lets you avoid: you feel the cost of every feature you fund. Run it on yourself, and better, run it with a few target users and watch where *they* put the money.
 
-*The $100 Test is from Nile Hatch, [Expeditionary Innovation](https://github.com/nilehatch/exp_innov/) [@hatch_expeditionary].*
+*The $100 Test is from Nile Hatch, [Expeditionary Innovation](https://ei.nilehatch.com/) [@hatch_expeditionary].*
 
 <!-- learn -->
 
