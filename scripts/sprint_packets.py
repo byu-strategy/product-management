@@ -45,7 +45,7 @@ SIGNAL = re.compile(r"(^|/)(migrations|supabase|prisma|tests?|__tests__|\.claude
                     r"(^|/)(\.gitignore|\.env\.example|\.env\.sample|\.mcp\.json|CLAUDE\.md|vercel\.json|"
                     r"middleware\.[jt]s|schema\.prisma|\.claude/settings(\.local)?\.json)$|\.(test|spec)\.[jt]sx?$", re.I)
 SIGNAL_CHARS = 20_000
-CORE = re.compile(r"(llm|agent|tool|prompt|model|claude|openai|anthropic|chat|ai|api|route|server|handler|action|lib)[\w-]*(/|\.[jt]sx?$|\.py$)", re.I)
+CORE = re.compile(r"(^|/)(llm|agents?|tools?|prompts?|models?|claude|openai|anthropic|chat|ai|api|routes?|server|handlers?|actions?|lib)(?=[\w-]*(/|\.[jt]sx?$|\.py$))", re.I)
 SIGNAL_FILE_CHARS = 3_000
 TEXT = re.compile(r"\.(md|txt|py|js|jsx|ts|tsx|html|css|json|csv|yml|yaml|toml|sql|qmd|prisma)$|(^|/)\.(gitignore|env\.example|env\.sample)$", re.I)
 
