@@ -554,6 +554,33 @@ def build(student, sub, plan_sub, cfg, due):
         if m:
             google.setdefault(m.group(1) or m.group(2), u)
     p["google_links"] = [{"file_id": k, "url": v} for k, v in google.items()]
+    return trim_after_window(p)
+
+
+def trim_after_window(p):
+    """Work after the window is set aside by every reader, so the packet keeps only what it takes to say
+    so (a count, the dates, a few commit subjects, the paths) instead of every commit and file. Cut the
+    largest packets by more than half (mckayw23 carried 370 commits after his window)."""
+    end = p.get("window_end")
+    if not end:
+        return p
+    cut = dt.datetime.fromisoformat(end)
+
+    def split(commits, files):
+        late = [c for c in commits if dt.datetime.fromisoformat(c["when"]) > cut]
+        keep = [c for c in commits if dt.datetime.fromisoformat(c["when"]) <= cut]
+        late_files = [f["path"] for f in files if f.get("after_window")]
+        summary = None
+        if late or late_files:
+            summary = {"commits": len(late), "first": late[0]["when"][:10] if late else None,
+                       "last": late[-1]["when"][:10] if late else None,
+                       "subjects": [c["message"].split("\n")[0][:100] for c in late[:15]],
+                       "files": len(late_files), "paths": late_files[:25]}
+        return keep, [f for f in files if not f.get("after_window")], summary
+
+    p["commits"], p["shipped_files"], p["after_window"] = split(p.get("commits") or [], p.get("shipped_files") or [])
+    for o in p.get("other_repos") or []:
+        o["commits"], o["files"], o["after_window"] = split(o.get("commits") or [], o.get("files") or [])
     return p
 
 

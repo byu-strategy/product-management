@@ -1,0 +1,1529 @@
+[
+ {
+  "axis": "Agentic Workflow",
+  "items": {
+   "W1": "Directing coding agents",
+   "W2": "Agent tooling",
+   "W3": "Checking agent output",
+   "W4": "Prompts in the product",
+   "W5": "Tool use and agent loops in the product",
+   "W6": "Evals and accuracy checks"
+  },
+  "evidence_notes": "",
+  "concepts": [
+   {
+    "id": "AW01",
+    "name": "The agent loop and the harness",
+    "item": "W1",
+    "what": "A model in a loop with tools: it gathers context, acts, and checks. The model writes; the harness carries out the actions.",
+    "practice": "",
+    "knowledge_only": true
+   },
+   {
+    "id": "AW02",
+    "name": "Command line and packages",
+    "item": "W1",
+    "what": "Running commands, files and folders, package managers.",
+    "practice": "A committed change to package.json or a lockfile that adds or removes a package the product uses.",
+    "knowledge_only": false
+   },
+   {
+    "id": "AW03",
+    "name": "Launching and surfaces",
+    "item": "W1",
+    "what": "Starting the agent in the right folder; the same engine in the terminal, desktop, IDE and web; following a session from the Claude mobile app (Remote Control); speaking prompts (/voice); non-interactive runs.",
+    "practice": "/remote-control, /voice or a non-interactive run listed in the session scan's \"Builder tools you used\" list in the review report, or a committed script that runs the agent without a person.",
+    "knowledge_only": false
+   },
+   {
+    "id": "AW04",
+    "name": "Project instructions (CLAUDE.md, AGENTS.md)",
+    "item": "W1",
+    "what": "A file the agent reads at the start of every session: decisions, constraints, traps. Advisory, not enforced.",
+    "practice": "Text the student wrote in CLAUDE.md or AGENTS.md beyond the template's text, committed.",
+    "knowledge_only": false
+   },
+   {
+    "id": "AW05",
+    "name": "Memory and context",
+    "item": "W1",
+    "what": "What persists between sessions (auto memory, CLAUDE.md) and what does not; /clear and /compact.",
+    "practice": "/clear, /compact or /memory listed in the session scan's \"Builder tools you used\" list in the review report, or a memory entry or rule the student added to CLAUDE.md or a memory file, committed.",
+    "knowledge_only": false
+   },
+   {
+    "id": "AW06",
+    "name": "Plan mode",
+    "item": "W1",
+    "what": "Claude reads, explores and writes a plan without editing your files until you approve it. Writing the spec it builds from is Design's spec-driven development (DE20).",
+    "practice": "Plan mode listed in the session scan's \"Builder tools you used\" list in the review report.",
+    "knowledge_only": false
+   },
+   {
+    "id": "AW07",
+    "name": "Settings and their scope",
+    "item": "W1",
+    "what": "Project settings versus global settings, and which wins.",
+    "practice": "A .claude/settings.json the student added or changed beyond the template's copy, committed.",
+    "knowledge_only": false
+   },
+   {
+    "id": "AW08",
+    "name": "Slash commands",
+    "item": "W2",
+    "what": "Commands run by name inside a session; text after the command is its argument. Must know by name: /context, /compact, /clear, /rewind, /resume, /rename, /list-agents (/peers), /btw, /exit, /remote-control (/rc), /voice, /init, /memory, /config, /model, /effort, /status, /usage, /add-dir, /plan, /permissions, /hooks, /sandbox, /skills, /mcp, /plugin, /diff, /help.",
+    "practice": "A built-in slash command listed in the session scan's \"Builder tools you used\" list in the review report (the course's own skills, such as /sprint-plan, /sprint-review and /learn, do not count), or a custom command the student wrote, committed.",
+    "knowledge_only": false
+   },
+   {
+    "id": "AW09",
+    "name": "Skills",
+    "item": "W2",
+    "what": "A saved procedure the agent runs by name, shared in the repo or kept personal.",
+    "practice": "A skill the student wrote in .claude/skills/<name>/SKILL.md, committed, or a skill that is not one of the course's skills listed in the session scan's \"Builder tools you used\" list in the review report.",
+    "knowledge_only": false
+   },
+   {
+    "id": "AW10",
+    "name": "Hooks",
+    "item": "W2",
+    "what": "A command that runs every time an event happens: guaranteed, unlike an instruction.",
+    "practice": "A hook the student added to .claude/settings.json, committed, or a hook run listed in the session scan's \"Builder tools you used\" list in the review report.",
+    "knowledge_only": false
+   },
+   {
+    "id": "AW11",
+    "name": "Advice versus enforcement",
+    "item": "W2",
+    "what": "Instructions advise; hooks and permission rules enforce. Knowing which to use for a rule.",
+    "practice": "",
+    "knowledge_only": true
+   },
+   {
+    "id": "AW12",
+    "name": "Subagents",
+    "item": "W2",
+    "what": "A separate agent with its own context, used to protect the main one or to work in parallel.",
+    "practice": "Subagents listed in the session scan's \"Builder tools you used\" list in the review report, or a subagent file the student wrote in .claude/agents/, committed.",
+    "knowledge_only": false
+   },
+   {
+    "id": "AW13",
+    "name": "Reaching outside the repo: CLI tools, MCP servers, API calls",
+    "item": "W2",
+    "what": "Three routes to a system outside the repo: a CLI tool the agent runs (gh, supabase), an MCP server that adds the system's actions as tools (in the Claude app, a connector), or a direct API call the agent writes with a key. Choosing the route for a case.",
+    "practice": "A CLI tool, MCP server or API call listed in the session scan's \"Builder tools you used\" list in the review report, or an MCP server the student added to .mcp.json, or a committed script or skill the student wrote that wraps a CLI tool or an API.",
+    "knowledge_only": false
+   },
+   {
+    "id": "AW26",
+    "name": "Plugins",
+    "item": "W2",
+    "what": "A package of skills, slash commands, subagents, hooks and MCP servers installed together with /plugin. A way to share building blocks, not a route to outside data; an enabled plugin costs context every session.",
+    "practice": "A plugin listed in the session scan's \"Builder tools you used\" list in the review report (its skills appear as plugin:skill), or a plugin the student wrote (.claude-plugin/plugin.json), committed.",
+    "knowledge_only": false
+   },
+   {
+    "id": "AW14",
+    "name": "Parallel sessions, worktrees and messaging",
+    "item": "W2",
+    "what": "Several agents at once, each in its own working copy, and messages between them: /list-agents shows who Claude can reach; a message is plain text with no authority (it cannot approve a prompt or change settings).",
+    "practice": "Worktrees or messages to another session listed in the session scan's \"Builder tools you used\" list in the review report.",
+    "knowledge_only": false
+   },
+   {
+    "id": "AW15",
+    "name": "Permission modes",
+    "item": "W3",
+    "what": "Manual, Accept edits, Plan, Auto (a second model reviews each action), Don't ask (pre-approved tools only, for scripts), and Bypass permissions (--dangerously-skip-permissions: no prompts and no safety checks, for containers only). What each lets run without asking, and when to use it.",
+    "practice": "Accept edits, Auto or Don't ask mode listed in the session scan's \"Builder tools you used\" list in the review report.",
+    "knowledge_only": false
+   },
+   {
+    "id": "AW27",
+    "name": "Permission rules",
+    "item": "W3",
+    "what": "Allow, ask and deny rules in a settings file: ask and deny hold in every mode, including auto and bypass; a boundary said only in chat does not.",
+    "practice": "Allow, ask or deny rules the student added to a committed settings file, or a rule that prompted or blocked an action listed in the session scan's \"Builder tools you used\" list in the review report.",
+    "knowledge_only": false
+   },
+   {
+    "id": "AW16",
+    "name": "Blast radius and undo",
+    "item": "W3",
+    "what": "What an action can damage and what can be undone (/rewind, git); some actions are permanent.",
+    "practice": "/rewind listed in the session scan's \"Builder tools you used\" list in the review report, or a revert commit the student made.",
+    "knowledge_only": false
+   },
+   {
+    "id": "AW17",
+    "name": "Verifying agent work",
+    "item": "W3",
+    "what": "Done means you saw it work; a fresh-context review of agent-written code.",
+    "practice": "A committed record that the student checked agent-written work (a review note, saved test output, or a note of a check on the live site) that names what was checked and the result.",
+    "knowledge_only": false
+   },
+   {
+    "id": "AW18",
+    "name": "Prompts as product code",
+    "item": "W4",
+    "what": "Prompts in the product are versioned, tested and changed with reasons; examples for boundary cases.",
+    "practice": "A prompt, in a prompt file or in the code, that the product sends to a model, added or changed by the student and committed.",
+    "knowledge_only": false
+   },
+   {
+    "id": "AW19",
+    "name": "Structured output",
+    "item": "W4",
+    "what": "Asking the model for output in a fixed shape the code can rely on.",
+    "practice": "Committed code that asks a model for output in a fixed shape (a JSON schema, a tool definition, or a structured output setting) and parses it before the product uses it.",
+    "knowledge_only": false
+   },
+   {
+    "id": "AW20",
+    "name": "Streaming and the AI surface",
+    "item": "W4",
+    "what": "Showing output as it arrives, and the states an AI feature passes through.",
+    "practice": "Committed code that shows a model's response on screen as it arrives, or a Loom moment that shows a streamed response in the product.",
+    "knowledge_only": false
+   },
+   {
+    "id": "AW21",
+    "name": "Untrusted model input",
+    "item": "W4",
+    "what": "Text the model reads can carry instructions (prompt injection); privileged actions need a guard.",
+    "practice": "Committed code that guards an action the product takes from model output (a confirmation step, an allow list, or a check before the action runs), with a comment or record that names prompt injection or untrusted input as the reason.",
+    "knowledge_only": false
+   },
+   {
+    "id": "AW22",
+    "name": "Non-determinism",
+    "item": "W4",
+    "what": "The same input can give different output; a feature must work across runs.",
+    "practice": "",
+    "knowledge_only": true
+   },
+   {
+    "id": "AW23",
+    "name": "Tool calling and agent loops in the product",
+    "item": "W5",
+    "what": "The model chooses the next step or calls a tool; stopping rules and a point where a person decides.",
+    "practice": "Committed code in which the model picks among two or more tools the product defines, the code runs the chosen tool and returns the result to the model, and a stopping rule (a step limit or an end condition) ends the loop. Sending a request to one provider or another does not count.",
+    "knowledge_only": false
+   },
+   {
+    "id": "AW24",
+    "name": "Evals",
+    "item": "W6",
+    "what": "A set of cases with known answers, a baseline, noise, and graders (code for exact answers, a model as judge).",
+    "practice": "A committed set of test cases with known answers, or a scorer, for model or product output, with saved results from a run.",
+    "knowledge_only": false
+   },
+   {
+    "id": "AW25",
+    "name": "Choosing a model by measurement",
+    "item": "W6",
+    "what": "Picking a model by running the same cases on each, not by reputation.",
+    "practice": "A committed comparison that runs the same cases on two or more models and saves the results for each.",
+    "knowledge_only": false
+   }
+  ]
+ },
+ {
+  "axis": "AI Systems",
+  "items": {
+   "S1": "Tokens and the context window",
+   "S2": "Cost and latency",
+   "S3": "How models are made",
+   "S4": "Retrieval and embeddings",
+   "S5": "Hallucination and verification",
+   "S6": "Choosing a model or technique"
+  },
+  "evidence_notes": [
+   "The session scan counts slash commands, so /context, /compact and /clear are visible for AS02 and AS05. It cannot see token counts or cost per session; adding the session's token totals to the scan would make AS06 checkable as practice.",
+   "Product token usage, latency and cost live in the product's logs or provider dashboard, which the packet does not see. Only numbers saved in the repo (a usage log, a measured table in a spec) count as S2 practice evidence.",
+   "Database or page latency is not model latency. A coder needs the S2 practice sentence to say model or service calls, and the record to say which call was timed.",
+   "Many S4 and S5 builds sit in code that calls a model inside the product. A private repo the coder cannot open hides them; the packet should list which repos were shared.",
+   "S3 concepts (pretraining, attention, RLHF, the cutoff) rarely show in a build, so the exams measure most of them. Depth level 3 (Decided) from S3 needs a recorded decision that names the training fact it depends on, which students seldom write. A prompt in the decision template (what can the model not know here?) would surface it.",
+   "A cost estimate (AS07) and a margin calculation (AS11) are often in the sprint plan or a pricing doc rather than code. The packet should include the plan and any pricing file so they can be checked.",
+   "A check on model output (AS25) and a check on the coding agent's output (W3) look the same in a commit. The coder needs to know whether the checked output is produced by the product for its users or by the agent building it."
+  ],
+  "concepts": [
+   {
+    "id": "AS01",
+    "name": "Tokens",
+    "item": "S1",
+    "what": "The model reads and writes tokens, pieces of text with ID numbers from a fixed vocabulary, about three quarters of an English word. Tokens are the unit of cost, speed and every limit, and code and other languages use more tokens per word.",
+    "practice": "",
+    "knowledge_only": true
+   },
+   {
+    "id": "AS02",
+    "name": "The context window",
+    "item": "S1",
+    "what": "The most tokens the model can take in at once: instructions, documents, the conversation so far, and its answer. When it fills, something is dropped or summarized, and what was dropped is gone.",
+    "practice": "",
+    "knowledge_only": true
+   },
+   {
+    "id": "AS03",
+    "name": "The stateless model",
+    "item": "S1",
+    "what": "Each call starts from zero, and the model's weights do not change from use. A conversation exists only because the app resends the history, and a correction given in one chat does not reach the next.",
+    "practice": "Committed code that stores a conversation or facts about a user in the product's database and sends them with later model calls.",
+    "knowledge_only": false
+   },
+   {
+    "id": "AS04",
+    "name": "The output limit",
+    "item": "S1",
+    "what": "A separate cap, in tokens, on how much the model writes in one call (max_tokens). An answer that reaches it stops mid-sentence.",
+    "practice": "Committed code that handles a model response cut off at the output limit (checks the stop reason, or splits the job into parts), with the limit named in a spec or the code.",
+    "knowledge_only": false
+   },
+   {
+    "id": "AS05",
+    "name": "Keeping a long context in bounds",
+    "item": "S1",
+    "what": "Trimming, summarizing or chunking what is sent so the important tokens stay in the window. /compact and /clear do this for a Claude Code session; a product needs its own rule.",
+    "practice": "Committed code that trims, summarizes or splits what is sent to a model, with the limit it designs around named in a spec or the code.",
+    "knowledge_only": false
+   },
+   {
+    "id": "AS06",
+    "name": "Per-token pricing",
+    "item": "S2",
+    "what": "Model APIs bill per input token and per output token, and output costs about five times input on Anthropic's current models. A long conversation costs more each turn because every turn resends everything.",
+    "practice": "",
+    "knowledge_only": true
+   },
+   {
+    "id": "AS07",
+    "name": "Estimating a feature's cost",
+    "item": "S2",
+    "what": "Tokens per call (in and out) times calls per user per day times users times price per token, done before shipping. A cost that is small in a demo can be large at a thousand users a day.",
+    "practice": "A cost estimate for an AI feature in a committed spec or decision record, with tokens per call, calls per user, users, and price per token each stated.",
+    "knowledge_only": false
+   },
+   {
+    "id": "AS08",
+    "name": "Caching",
+    "item": "S2",
+    "what": "Prompt caching keeps a repeated opening of the prompt (a long system prompt or reference document) ready so repeated calls pay a fraction for it. Storing a model's answer and reusing it avoids the call altogether when the input has not changed.",
+    "practice": "Committed code that sets cache_control on a repeated prompt prefix, or stores a model result and reuses it in place of a new call.",
+    "knowledge_only": false
+   },
+   {
+    "id": "AS09",
+    "name": "Measuring usage",
+    "item": "S2",
+    "what": "Every response reports its input and output tokens (usage), and a call's input can be counted before it is sent. Measured numbers replace guesses about cost and latency.",
+    "practice": "Committed code that logs input and output tokens or latency for each model call, with the numbers saved in the repo.",
+    "knowledge_only": false
+   },
+   {
+    "id": "AS10",
+    "name": "What drives latency",
+    "item": "S2",
+    "what": "The model writes one token at a time, so long outputs are slow; attention runs over the whole context, so long inputs are slower too; larger models are slower than small ones. A call can take one second or ten.",
+    "practice": "A measured latency of a named model call in the product, saved in the repo.",
+    "knowledge_only": false
+   },
+   {
+    "id": "AS12",
+    "name": "Machine learning and training",
+    "item": "S3",
+    "what": "A model learns from examples of inputs paired with outputs: a loss measures its error and gradient descent adjusts every parameter a small step to lower it. A language model is a large neural network trained this way on text.",
+    "practice": "",
+    "knowledge_only": true
+   },
+   {
+    "id": "AS13",
+    "name": "Attention and the transformer",
+    "item": "S3",
+    "what": "Attention lets each token draw on every earlier token, so its numbers reflect its context; a transformer repeats attention in stacked blocks. It runs over the whole context, which is why longer prompts cost more and take longer.",
+    "practice": "",
+    "knowledge_only": true
+   },
+   {
+    "id": "AS14",
+    "name": "Next-token prediction",
+    "item": "S3",
+    "what": "The model scores every token in its vocabulary, turns the scores into probabilities, picks one, appends it, and runs again until a stop token or the output limit. The model generates an answer token by token; it does not look one up.",
+    "practice": "",
+    "knowledge_only": true
+   },
+   {
+    "id": "AS15",
+    "name": "Sampling and temperature",
+    "item": "S3",
+    "what": "The next token is drawn from the probabilities, so the same input can give different output; temperature sets how random the draw is. Even temperature 0 is not fully deterministic, and newer models do not allow changing it.",
+    "practice": "A temperature setting on a model call in committed code, with the reason for the value in a comment, spec or decision record.",
+    "knowledge_only": false
+   },
+   {
+    "id": "AS16",
+    "name": "Pretraining and the base model",
+    "item": "S3",
+    "what": "Self-supervised training on huge amounts of text, where each next token is its own label, sets the weights. The result is a base model that continues text and can follow examples in the prompt (few-shot) but is not yet an assistant.",
+    "practice": "",
+    "knowledge_only": true
+   },
+   {
+    "id": "AS17",
+    "name": "Knowledge cutoff",
+    "item": "S3",
+    "what": "Pretraining text stops at a date, and nothing after it is in the weights. The model does not know today's date, recent changes or new library versions unless the prompt supplies them.",
+    "practice": "Committed code or a record that supplies current facts to a model (today's date, live data, or retrieved documents) and says the model would not know them otherwise.",
+    "knowledge_only": false
+   },
+   {
+    "id": "AS18",
+    "name": "Instruction tuning and human feedback",
+    "item": "S3",
+    "what": "Later training on example conversations and on people's preferences between answers (RLHF) turns a text completer into an assistant. It changes behavior far more than knowledge.",
+    "practice": "",
+    "knowledge_only": true
+   },
+   {
+    "id": "AS19",
+    "name": "Sycophancy",
+    "item": "S3",
+    "what": "Because people rate agreement a little higher than correction, the model learns to agree and may drop a correct answer when pushed. Ask for the case against, and judge disagreement on the evidence.",
+    "practice": "",
+    "knowledge_only": true
+   },
+   {
+    "id": "AS20",
+    "name": "Embeddings",
+    "item": "S4",
+    "what": "A list of numbers that places a token, sentence or document on a map of meaning, so similar meanings sit close together. Search by embedding matches meaning, and it can miss exact strings such as part numbers or IDs.",
+    "practice": "Committed code that calls an embedding model and stores the vectors in the product.",
+    "knowledge_only": false
+   },
+   {
+    "id": "AS21",
+    "name": "Retrieval-augmented generation (RAG)",
+    "item": "S4",
+    "what": "Find the pieces of your own documents nearest in meaning to the question and put them in the prompt, so the model answers from them. It supplies text at question time and does not change the model; it addresses the cutoff and private data, and moves the risk to retrieval.",
+    "practice": "Retrieval in committed code: stored chunks, the nearest ones fetched for a question, and those chunks sent to the model with the question.",
+    "knowledge_only": false
+   },
+   {
+    "id": "AS22",
+    "name": "Chunking and the vector store",
+    "item": "S4",
+    "what": "Documents are split into passages of a few hundred tokens, the unit that gets retrieved, and each passage is stored next to its embedding (in Supabase, a pgvector column). Documents and questions must be embedded with the same model.",
+    "practice": "Committed chunking code with a stated chunk size, and a vector column or table that stores the chunks.",
+    "knowledge_only": false
+   },
+   {
+    "id": "AS23",
+    "name": "Where retrieval fails",
+    "item": "S4",
+    "what": "A document never loaded, the wrong chunks fetched, or an answer given anyway: each still produces a fluent, cited answer. Test retrieval on its own by checking, for each test question, whether the right chunk came back.",
+    "practice": "A committed retrieval test: questions with the chunk each should return, and the results of a run.",
+    "knowledge_only": false
+   },
+   {
+    "id": "AS24",
+    "name": "Hallucination",
+    "item": "S5",
+    "what": "Fluent, confident output that is false. The model produces the most plausible continuation and nothing inside it checks whether plausible is true, so its confidence says nothing about accuracy.",
+    "practice": "A committed analysis that checks a model's claims against sources and records which claims were correct, partly correct, and invented.",
+    "knowledge_only": false
+   },
+   {
+    "id": "AS25",
+    "name": "Checking model output against a source",
+    "item": "S5",
+    "what": "Anything that matters is checked against something trusted: required quotes or sources, a validation rule, a second independent pass, or a person approving before it is used. Where a wrong answer is expensive, the check sits in the path.",
+    "practice": "Committed code that checks the product's model output before it is used (a validation rule, required sources, a second independent pass, or a person approving), or a commit that traces a wrong product output to its cause and fixes it. Checks on the coding agent's output are AW17.",
+    "knowledge_only": false
+   },
+   {
+    "id": "AS26",
+    "name": "The jagged frontier",
+    "item": "S5",
+    "what": "Models are strong at some tasks and fail at nearby tasks that look no harder, such as exact counting or long arithmetic, and the edge moves with each release. Test your own task; reputation will not tell you.",
+    "practice": "The product's core AI task run on realistic inputs that include an edge case, with a prediction for each input and the results, committed.",
+    "knowledge_only": false
+   },
+   {
+    "id": "AS27",
+    "name": "When not to use a model",
+    "item": "S6",
+    "what": "Anything that must be exact or stable (an ID, a price, a sum, a permission check) comes from code. Use the model for the part that needs language and judgment.",
+    "practice": "A committed decision record that names a model option and a non-model option for one feature and the reason for the choice.",
+    "knowledge_only": false
+   },
+   {
+    "id": "AS28",
+    "name": "Model tiers: capability, cost and speed",
+    "item": "S6",
+    "what": "Larger models are more capable and cost more per token and run slower; the smallest fit simple, high-volume, latency-sensitive work. Start with the most capable and move down only when measurement shows the smaller one is good enough.",
+    "practice": "A committed decision record that chooses a model, names an alternative model, and gives the reason.",
+    "knowledge_only": false
+   },
+   {
+    "id": "AS29",
+    "name": "Prompting, retrieval or fine-tuning",
+    "item": "S6",
+    "what": "Prompting (instructions and examples) changes one call; retrieval supplies facts at question time; fine-tuning retrains the model and changes its behavior; it is a poor way to add facts that change. Try them in that order of cost.",
+    "practice": "A committed decision record that chooses prompting, retrieval or fine-tuning for a feature and names an alternative technique.",
+    "knowledge_only": false
+   }
+  ]
+ },
+ {
+  "axis": "Application Architecture",
+  "items": {
+   "A1": "Client, server and deploy",
+   "A2": "Data and schema",
+   "A3": "Sign-in and access",
+   "A4": "APIs and integrations",
+   "A5": "Secrets, privacy and security",
+   "A6": "Version control, checks and tech debt"
+  },
+  "evidence_notes": [
+   "A link check of 200 shows the address answers, not that this sprint's commit is what is deployed. A deployment id or commit SHA from the host (or a /version endpoint) would show it.",
+   "Environment variables set on the host are not visible, so a feature that needs a key may not run in production. A smoke test of the live feature, saved, would show it.",
+   "Migration, schema and row-level security texts are often absent from the packet; only file names are listed. Include the text of migrations and schema files changed this sprint.",
+   "Test and CI runs leave no record unless the student commits output. The GitHub Actions run history for the repo would show runs and results.",
+   "Pull requests are listed without saying whether the branch holds code or only plans, or whether they were merged by the due date. The packet should list each PR's changed files and merge date.",
+   "A secret removed from the latest commit is still in history. A secret scan over the full history (for example gitleaks) would cover it.",
+   "Whether outside users sign in (depth level 4, Delivered, through A3) needs a count of sign-ins from the auth table, dated. The packet cannot see it today.",
+   "Private code repos and non-web distribution (an App Store release) are not visible to the link check or the repo scan.",
+   "The session scan can show practice evidence for this axis from commands: build and deploy commands, git branch and gh pr, migration commands, test runs, and log reads."
+  ],
+  "concepts": [
+   {
+    "id": "AA01",
+    "name": "Three places code runs, and the trust rule",
+    "item": "A1",
+    "what": "The browser belongs to the user, who can read and change anything there. The server runs your code and holds the secret keys. The database stores each record. A check that runs only in the browser can be skipped.",
+    "practice": "",
+    "knowledge_only": true
+   },
+   {
+    "id": "AA02",
+    "name": "Server and client code in a project",
+    "item": "A1",
+    "what": "File names and folders say what runs where: in Next.js, page.tsx is a screen, route.ts is an endpoint, and a file marked \"use client\" is downloaded to the browser with everything it imports. node_modules, build output and .env.local stay out of git.",
+    "practice": "A server route, endpoint or server action file the student added (for example route.ts), committed.",
+    "knowledge_only": false
+   },
+   {
+    "id": "AA03",
+    "name": "State, render and events",
+    "item": "A1",
+    "what": "The screen is a function of state. A handler changes state through its setter, and the framework draws the screen again; a handler that edits a copy of the data leaves the screen unchanged.",
+    "practice": "A component added or changed this sprint where the user's input changes state and that state changes what the screen shows (a filter, a form that validates, a toggle that reveals content), visible in the code and in the Loom or a live link. A single useState that only stores a field's value does not count.",
+    "knowledge_only": false
+   },
+   {
+    "id": "AA04",
+    "name": "Choosing a stack",
+    "item": "A1",
+    "what": "The set of tools for each layer: frontend, backend, database, hosting, sign-in. Pick the well-known option, and weigh who will maintain it after handoff.",
+    "practice": "A committed decision record or spec section that names at least two stacks or hosts and the reason for the one chosen.",
+    "knowledge_only": false
+   },
+   {
+    "id": "AA05",
+    "name": "Deploys, builds and hosts",
+    "item": "A1",
+    "what": "A host builds the code from the repository and serves it at an address; pushing to the main branch redeploys. A production build can fail where the development server worked. Hosts differ by what they run (Vercel for Next.js, Streamlit Community Cloud, GitHub Pages for static sites).",
+    "practice": "This sprint's own change live at an address others can open, shown working in the Loom or reached by the packet's link check on the page that holds the change (a homepage that returns 200 does not show the sprint's work by itself), or a commit that fixes the live app from its build or runtime log.",
+    "knowledge_only": false
+   },
+   {
+    "id": "AA06",
+    "name": "Environments and development data",
+    "item": "A1",
+    "what": "Each running copy of the app (laptop, preview, production) reads its own settings, and the settings decide which database it touches. Once real people use the app, develop against a separate database filled with seed data.",
+    "practice": "A committed configuration for a separate development or staging database, settings that differ by environment, or a seed data file.",
+    "knowledge_only": false
+   },
+   {
+    "id": "AA07",
+    "name": "Staging and feature flags",
+    "item": "A1",
+    "what": "Staging is a copy of production for trying a change before users see it. A feature flag lets deployed code reach some users before others. A change that takes effect for everyone at once, such as a migration, cannot hide behind a flag.",
+    "practice": "A staging environment or a feature flag in committed code that turns a feature on or off without a new deploy.",
+    "knowledge_only": false
+   },
+   {
+    "id": "AA08",
+    "name": "Logs, error reports and developer tools",
+    "item": "A1",
+    "what": "The browser console and network panel, the host's runtime logs, the database logs, and an error reporter show what users hit. A useful log line says what happened, where, and an id.",
+    "practice": "A commit whose message or record names an error from the browser console, the host's logs or an error reporter and fixes it, or an error reporter set up in committed code.",
+    "knowledge_only": false
+   },
+   {
+    "id": "AA09",
+    "name": "Tables, keys and relationships",
+    "item": "A2",
+    "what": "A table is a noun of the product, a row one instance, a column one fact with a type. A primary key identifies a row; a foreign key on the many side links two tables. Facts are stored once. Only a file or database outlives the session; page memory and local storage do not.",
+    "practice": "A committed migration or schema file that defines tables with keys, which the product reads or writes.",
+    "knowledge_only": false
+   },
+   {
+    "id": "AA10",
+    "name": "Migrations and schema changes",
+    "item": "A2",
+    "what": "A migration is a file that makes one schema change, applied in order and kept in git. Changing a table that holds real rows means migrating them, and a rollback does not undo data, so add before you remove.",
+    "practice": "A committed migration or schema file that adds or changes a table, which the product reads or writes, or one that imports existing data.",
+    "knowledge_only": false
+   },
+   {
+    "id": "AA11",
+    "name": "Queries and joins",
+    "item": "A2",
+    "what": "SELECT, WHERE, ORDER BY, LIMIT and JOIN. A join drops rows with no match unless it is a LEFT JOIN; an update or delete with no WHERE changes every row; a query that matches nothing returns an empty list. An index makes reads on a column fast.",
+    "practice": "A committed SQL query or query-builder call with a filter, an ordering or a join, which the product runs.",
+    "knowledge_only": false
+   },
+   {
+    "id": "AA12",
+    "name": "Authentication versus authorization",
+    "item": "A3",
+    "what": "Authentication proves who a user is. Authorization decides what that user may do to each row, and it holds only where the user cannot reach: the server or the database, never a hidden button. Permissions never come from model output.",
+    "practice": "",
+    "knowledge_only": true
+   },
+   {
+    "id": "AA13",
+    "name": "Sign-in and sessions",
+    "item": "A3",
+    "what": "Sign-in by password, a provider (OAuth) or a magic link gives the browser a signed token that every later request carries. The token expires and must never go in logs, chats or prompts.",
+    "practice": "Sign-in (a password, a provider, or a magic link) built in committed code.",
+    "knowledge_only": false
+   },
+   {
+    "id": "AA14",
+    "name": "Row-level security",
+    "item": "A3",
+    "what": "Policies in the database that decide which rows each request may touch, as if a WHERE were added to every query. With security on and no policies, every read returns an empty list, not an error.",
+    "practice": "A committed row-level security policy, or a server-side ownership check, that stops one user from reading or changing another user's rows.",
+    "knowledge_only": false
+   },
+   {
+    "id": "AA15",
+    "name": "Permission tests",
+    "item": "A3",
+    "what": "A test that signs in as one user, with the publishable key, and asks for data that user must not see. It keeps the access rules true as an agent changes the code.",
+    "practice": "A committed test that signs in as one user and checks that another user's data is refused, with a record that it ran.",
+    "knowledge_only": false
+   },
+   {
+    "id": "AA16",
+    "name": "Requests, responses and status codes",
+    "item": "A4",
+    "what": "A URL names the computer and the endpoint; DNS turns the name into an address. A request has a method, an address, headers and a body; a response has a status code (2xx worked, 4xx the request was the problem, 5xx the server was) and usually a JSON body.",
+    "practice": "",
+    "knowledge_only": true
+   },
+   {
+    "id": "AA17",
+    "name": "The API contract",
+    "item": "A4",
+    "what": "An API is the set of requests a system agrees to answer, stated in its documentation. A change to the contract (a renamed field, a removed endpoint, a new required input) breaks the caller; other changes do not.",
+    "practice": "Committed documentation of the requests and responses of an endpoint the product offers or calls (an OpenAPI file, or a written list of routes with their inputs, outputs and error codes).",
+    "knowledge_only": false
+   },
+   {
+    "id": "AA18",
+    "name": "Handling failed calls",
+    "item": "A4",
+    "what": "Calls fail from the network, timeouts, sign-in, permission, rate limits and bad input. Code checks the response, retries where it is safe, and tells the user what happened without losing what they typed.",
+    "practice": "Committed code in which the product calls another system's API and handles a failed call (checks the status or catches the error, then shows or logs it).",
+    "knowledge_only": false
+   },
+   {
+    "id": "AA19",
+    "name": "Calling a model API from the server",
+    "item": "A4",
+    "what": "A model call is a server-side request made with the provider's SDK from a route handler, with the key read from the environment. It costs money and time on every call.",
+    "practice": "A committed server route or function that calls a model provider's API with the key read from an environment variable.",
+    "knowledge_only": false
+   },
+   {
+    "id": "AA20",
+    "name": "Integrations with other services",
+    "item": "A4",
+    "what": "Connecting to another company's system for payments, email, calendars or data: an OAuth connection on the user's behalf, a webhook the other system calls, or an API the product offers.",
+    "practice": "Committed code that connects the product to another company's service (payments, email, calendars or data) through its API, an OAuth connection, or a webhook handler. A model API is AA19.",
+    "knowledge_only": false
+   },
+   {
+    "id": "AA21",
+    "name": "Environment variables",
+    "item": "A5",
+    "what": "Settings kept outside the code, in .env.local and the host's settings, set separately for each environment. In Next.js only names starting with NEXT_PUBLIC_ reach the browser, so a secret never gets that prefix.",
+    "practice": "Committed code that reads secret keys from environment variables, with .env files listed in .gitignore.",
+    "knowledge_only": false
+   },
+   {
+    "id": "AA22",
+    "name": "Publishable key, token and secret key",
+    "item": "A5",
+    "what": "The publishable key is public and can reach only what row-level security allows; a token identifies one signed-in user and expires; the secret key bypasses the rules and stays on the server.",
+    "practice": "Committed code that uses the publishable key in browser code and reads the secret key only in server code.",
+    "knowledge_only": false
+   },
+   {
+    "id": "AA23",
+    "name": "A leaked secret",
+    "item": "A5",
+    "what": "A key committed to a public repository is published. Deleting it from the code does not help, because history keeps it: create a new key, revoke the old one, then fix .gitignore.",
+    "practice": "A commit that removes a committed secret together with a record that the key was rotated, or a secret scan of the repo with its output saved.",
+    "knowledge_only": false
+   },
+   {
+    "id": "AA24",
+    "name": "Sensitive data and where it may go",
+    "item": "A5",
+    "what": "Personal, student and client data may go only where its rules allow. Sending it to a model, a log or an analytics event copies it to that company's servers, so send the least the task needs.",
+    "practice": "Protections for data about people (a consent note, a redaction step in code, or access limits) written down in a committed file and applied in the product or the student's research files.",
+    "knowledge_only": false
+   },
+   {
+    "id": "AA25",
+    "name": "Common web attacks",
+    "item": "A5",
+    "what": "Injected SQL, scripts injected into a page (cross-site scripting), forged requests from another site, and open endpoints with no sign-in. Each has a standard defense: parameterized queries, escaped output, checks on the server.",
+    "practice": "A committed defense against a named web attack (parameterized queries, output escaping, a content security policy, request forgery protection, or a redirect allow list), with the attack named in the code, a commit message or a record.",
+    "knowledge_only": false
+   },
+   {
+    "id": "AA26",
+    "name": "Commits, branches and pull requests",
+    "item": "A6",
+    "what": "A commit is a snapshot with a message. A branch builds a change without touching main; a pull request runs the checks, builds a preview and gets a review of the diff before the merge. Main stays releasable: branches are short and merge within a day or two, and unfinished work merges behind a flag.",
+    "practice": "A branch or pull request by the student that contains code.",
+    "knowledge_only": false
+   },
+   {
+    "id": "AA27",
+    "name": "Continuous integration",
+    "item": "A6",
+    "what": "Tests, type check, lint and build run automatically on every pull request, on a fresh machine, and mark it pass or fail.",
+    "practice": "A committed CI workflow file (for example in .github/workflows) with a record that it ran.",
+    "knowledge_only": false
+   },
+   {
+    "id": "AA28",
+    "name": "Automated tests",
+    "item": "A6",
+    "what": "Code that runs the app's code with a chosen input and checks the answer: unit, integration, end-to-end, regression. A passing suite means only that the checks someone wrote did not fail; for a bug, write a test that fails first.",
+    "practice": "Automated tests committed, with a record that they ran (saved output, a CI log, or a commit message that reports the result).",
+    "knowledge_only": false
+   },
+   {
+    "id": "AA29",
+    "name": "Rolling back a bad deploy",
+    "item": "A6",
+    "what": "When the live site breaks, point it back at the last good deployment first, then fix. A rollback does not undo data changes.",
+    "practice": "A recorded rollback or revert of a bad deploy (a revert commit, or a note naming the deployment the site was pointed back to).",
+    "knowledge_only": false
+   },
+   {
+    "id": "AA30",
+    "name": "Technical debt",
+    "item": "A6",
+    "what": "Extra work later from a quick solution now, which makes every later change slower. Debt can be strategic (chosen, with a plan to repay) or accidental; pay it down when the code is about to be changed again.",
+    "practice": "A committed list of technical debt taken on, with a plan for each item, or a commit whose message says it pays down a named piece of debt.",
+    "knowledge_only": false
+   }
+  ]
+ },
+ {
+  "axis": "Design",
+  "items": {
+   "G1": "User flows and states",
+   "G2": "Visual fundamentals",
+   "G3": "Design system",
+   "G4": "Specs",
+   "G5": "Critique and direction",
+   "G6": "Usability testing"
+  },
+  "evidence_notes": [
+   "States (DE02): a packet sees code and nine Loom frames, which usually show the happy path. An empty, loading or error state is confirmed only if the spec lists the states or the Loom shows one. Asking for a Flow and states list in the spec would make it visible.",
+   "Flow written down (DE01): several Sprint 2 flows exist only in code (a Steps component, a route list). The coder cannot tell a route list from a flow. A named spec section would settle it.",
+   "Design rules (DE10, DE12, DE15): rules sometimes live only in commit messages or code comments, and contrast and keyboard checks leave no record unless output is saved. A committed check result (contrast numbers, a keyboard-pass note) would make them checkable.",
+   "Design system reuse (DE14): counting the screens that use a shared component needs a code search the packet does not include. Adding import counts per shared component to the packet would make 'three or more screens' checkable.",
+   "Spec text (DE18 to DE22): packets often drop spec texts under the text budget, so acceptance criteria and decisions sections cannot be read. Commit order still settles 'before the code'. Giving spec files priority in the packet would fix it.",
+   "Design direction (DE23): directions to an agent are in the user's prompts, which the session scan reads but does not classify. Directions to a teammate or another tool (Cursor) are not visible. A scan count of prompts with a screenshot attached, or naming an element and a principle, would help.",
+   "Usability testing (DE27 to DE29): one record may be evidence for concepts under both G5 and G6; it counts for each concept only when it meets that concept's practice sentence on its own. Session note texts are often absent from the packet."
+  ],
+  "concepts": [
+   {
+    "id": "DE01",
+    "name": "Flows before screens",
+    "item": "G1",
+    "what": "A flow is the steps a user takes to finish one task: a goal, an entry point, steps, decisions, and exits. Map it and count the steps before designing or prompting for screens.",
+    "practice": "A flow written as steps or a list of states in a committed spec or design file.",
+    "knowledge_only": false
+   },
+   {
+    "id": "DE02",
+    "name": "States off the happy path",
+    "item": "G1",
+    "what": "The happy path is the run where everything goes right. Empty, loading, error and partial states each say what is true now and what the user can do next; a button that changes data shows a loading state and disables itself until the request finishes.",
+    "practice": "Committed code that shows an empty, loading or error state for a flow, or a Loom moment that shows one.",
+    "knowledge_only": false
+   },
+   {
+    "id": "DE03",
+    "name": "UI, UX and product design (the UX iceberg)",
+    "item": "G1",
+    "what": "UI is the screens; UX is the whole experience of getting a task done, including what happens off the screen; product design also decides what the product is. Visual polish sits on top of interaction design, information architecture and the conceptual layer, where usable and unusable products differ.",
+    "practice": "",
+    "knowledge_only": true
+   },
+   {
+    "id": "DE04",
+    "name": "Information architecture",
+    "item": "G1",
+    "what": "How content is organized, labeled, navigated and searched, in the user's terms. Navigation patterns (tab bar, sidebar, top navigation, hub and spoke, breadcrumbs) fit different products. A card sort shows how people group things; a tree test checks whether they can find things in a proposed structure.",
+    "practice": "A committed navigation map or site structure, or card sort or tree test results.",
+    "knowledge_only": false
+   },
+   {
+    "id": "DE05",
+    "name": "Designing for an uncertain AI",
+    "item": "G1",
+    "what": "When a model's output can be wrong, the screen sets expectations, shows the evidence behind the answer, presents output as an editable draft, makes dismiss and undo one step, and asks a person to confirm costly actions.",
+    "practice": "Committed code in an AI feature that shows at least one of: what to expect about accuracy, the evidence behind an answer, output as an editable draft, undo, or a confirmation before acting.",
+    "knowledge_only": false
+   },
+   {
+    "id": "DE06",
+    "name": "Visual hierarchy and one primary action",
+    "item": "G2",
+    "what": "Size, weight, contrast, spacing and position rank what is on the screen. Each screen gets one primary action and the rest are de-emphasized. The squint test: blur the screen; what still stands out should be the primary action.",
+    "practice": "A committed design rule about hierarchy or the primary action (for example one primary action per screen), and screens in the Loom that follow it.",
+    "knowledge_only": false
+   },
+   {
+    "id": "DE07",
+    "name": "Gestalt grouping",
+    "item": "G2",
+    "what": "People see items as a group when they are close together, look alike, or share a boundary. Space inside a group should be smaller than the space between groups, or a label reads as belonging to the wrong field.",
+    "practice": "",
+    "knowledge_only": true
+   },
+   {
+    "id": "DE08",
+    "name": "Fitts's law, Hick's law and cognitive load",
+    "item": "G2",
+    "what": "Fitts: a target is faster to hit when it is larger and closer. Hick: more options take longer to choose among, for a choice among unfamiliar options. Cognitive load: show what the user needs at the step where they need it, so they recognize it instead of recalling it.",
+    "practice": "",
+    "knowledge_only": true
+   },
+   {
+    "id": "DE09",
+    "name": "Norman's principles and the conceptual model",
+    "item": "G2",
+    "what": "An affordance is an action a thing makes possible; a signifier is the visible cue that it is there. Mapping, constraints and feedback close the gulfs of execution and evaluation. The user's model of how the product works is built only from the system image, so a change that alters what users think the product is for needs testing first.",
+    "practice": "",
+    "knowledge_only": true
+   },
+   {
+    "id": "DE10",
+    "name": "Typography, layout grid and color",
+    "item": "G2",
+    "what": "A short type scale, a spacing scale and a grid, and color used by meaning with one accent. Limiting the choices up front means each one is made once.",
+    "practice": "Committed rules or tokens for a type scale, a spacing scale or color use, which the product's code uses.",
+    "knowledge_only": false
+   },
+   {
+    "id": "DE11",
+    "name": "Words are interface",
+    "item": "G2",
+    "what": "Labels, buttons and messages are instructions. Buttons are verb plus object, errors say what happened and how to fix it, names use the user's words, and confirmations say what changed.",
+    "practice": "A committed copy rule in a spec or design rules file, or a commit whose message says it rewrites labels, buttons or error messages in the user's terms.",
+    "knowledge_only": false
+   },
+   {
+    "id": "DE12",
+    "name": "Accessibility baseline (WCAG)",
+    "item": "G2",
+    "what": "Text contrast at least 4.5:1 (3:1 for large text), every action works by keyboard with visible focus, touch targets large enough, a label on every input, and real HTML elements so screen readers can read them.",
+    "practice": "A committed accessibility rule or check result (contrast numbers, a keyboard pass note), with fixes that follow it.",
+    "knowledge_only": false
+   },
+   {
+    "id": "DE13",
+    "name": "Web, mobile, or both; mobile-first layout",
+    "item": "G2",
+    "what": "Most student products start as a responsive web app; a PWA, Capacitor, or native app is chosen for use away from a desk, device hardware, or store distribution. Mobile-first means the phone layout is the default and wider screens add columns at set breakpoints, with touch targets sized for a thumb.",
+    "practice": "A committed spec section or decision record about phone and desktop use (a mobile layout, a PWA, or a native app), or a commit whose message says it makes a screen work at phone width.",
+    "knowledge_only": false
+   },
+   {
+    "id": "DE14",
+    "name": "Design system: tokens, components, patterns",
+    "item": "G3",
+    "what": "A design system makes each decision once. Tokens hold the raw choices (colors, type sizes, spacing, radius); components are built from tokens with defined variants and states; patterns combine components to solve a recurring problem. A component library the agent already knows (shadcn/ui) keeps sessions consistent.",
+    "practice": "Shared components or design tokens, committed, used on more than one screen or page section.",
+    "knowledge_only": false
+   },
+   {
+    "id": "DE15",
+    "name": "Design rules written for the agent",
+    "item": "G3",
+    "what": "An agent has no memory between sessions and will restyle each new screen. A short design rules section in CLAUDE.md or the spec (which components, one primary button, spacing scale, empty states, icon set) turns one-time decisions into standing instructions.",
+    "practice": "A design rules section the student wrote in CLAUDE.md, AGENTS.md or a spec, committed.",
+    "knowledge_only": false
+   },
+   {
+    "id": "DE16",
+    "name": "Jakob's law and familiar patterns",
+    "item": "G3",
+    "what": "Users spend most of their time in other products and expect yours to work the same way. Each invented convention is something users must learn; platform guidelines record the conventions.",
+    "practice": "",
+    "knowledge_only": true
+   },
+   {
+    "id": "DE17",
+    "name": "User stories",
+    "item": "G4",
+    "what": "As a [type of user], I want [goal] so that [benefit]. A story names a user and an outcome; \"build login\" or \"make it faster\" does not.",
+    "practice": "User stories in the form As a [user], I want [goal] so that [benefit], in a committed spec outside the sprint plan.",
+    "knowledge_only": false
+   },
+   {
+    "id": "DE18",
+    "name": "Acceptance criteria",
+    "item": "G4",
+    "what": "The conditions that must be true for a story to be done, and the check held against the agent's work. Each criterion states one observable result, names the user and screen, and names the check that confirms it (walk, unit, or structure); a criterion about who can see something gets its opposite as a separate criterion. EARS phrases a requirement as WHEN ... THE SYSTEM SHALL.",
+    "practice": "A committed spec, outside the sprint plan, with numbered or checkable acceptance criteria for a feature.",
+    "knowledge_only": false
+   },
+   {
+    "id": "DE19",
+    "name": "Product requirements document (PRD)",
+    "item": "G4",
+    "what": "A document that says what is being built, why, for whom, and how success is measured: overview, objectives, stories with criteria, functional and non-functional requirements, success metrics, and out of scope.",
+    "practice": "A committed PRD or spec that includes success metrics and an out-of-scope list.",
+    "knowledge_only": false
+   },
+   {
+    "id": "DE20",
+    "name": "Spec-driven development",
+    "item": "G4",
+    "what": "Write the spec before code you intend to keep: requirements, design, then tasks, built one checkable task at a time. Explore with throwaway code to learn, then spec what you keep. Kiro's three files, GitHub Spec Kit (with a constitution of non-negotiable principles), and a plan saved to files package the same workflow.",
+    "practice": "Spec files committed in an earlier commit than the code they describe.",
+    "knowledge_only": false
+   },
+   {
+    "id": "DE21",
+    "name": "Decisions already made, considered and rejected",
+    "item": "G4",
+    "what": "A spec records what was settled while exploring (wording, empty and error states, names) and each option turned down with the reason, so the next session does not reopen the question or propose the rejected option again.",
+    "practice": "A committed spec with a decisions-made section and a considered-and-rejected section.",
+    "knowledge_only": false
+   },
+   {
+    "id": "DE22",
+    "name": "Punch list and check sheet",
+    "item": "G4",
+    "what": "The spec's build steps as an ordered checklist, each naming the files it touches and the criteria it closes, so a fresh session can resume. Browser-checked criteria go into a check sheet of Go, Do, Expect lines worked by hand.",
+    "practice": "A committed punch list with items checked off, or a check sheet with results.",
+    "knowledge_only": false
+   },
+   {
+    "id": "DE23",
+    "name": "Precise design direction",
+    "item": "G5",
+    "what": "A design instruction says where, what is wrong, why (the principle), what to change, and a reference such as a screenshot or a named component. For a redesign, ask first for a list of what the new design removes (a subtraction audit). Taste is naming specific problems against stated principles.",
+    "practice": "A written design direction in a spec, issue or change note that names the element, the problem and the change, and a later commit that makes the change.",
+    "knowledge_only": false
+   },
+   {
+    "id": "DE24",
+    "name": "Double Diamond: diverge, then converge, twice",
+    "item": "G5",
+    "what": "Design widens and narrows twice: explore the problem, define it, then generate several solutions before choosing one. Builders using an agent most often skip the second widening and build the first solution.",
+    "practice": "A committed comparison of two or more design options with the reason for the one chosen.",
+    "knowledge_only": false
+   },
+   {
+    "id": "DE25",
+    "name": "Nielsen's ten usability heuristics",
+    "item": "G5",
+    "what": "Ten rules of thumb (visibility of system status, match with the real world, user control, consistency, error prevention, recognition over recall, and others) for reviewing a screen. A heuristic review, by a person or an agent, finds likely problems; it does not replace watching users.",
+    "practice": "A committed heuristic review of the product that names the heuristics, the problems found, and the fixes.",
+    "knowledge_only": false
+   },
+   {
+    "id": "DE26",
+    "name": "Curse of knowledge: watch, do not ask",
+    "item": "G6",
+    "what": "The builder cannot see the product as a newcomer does. Watching what people do shows problems that asking their opinion hides; a task completed is not the same as a task understood.",
+    "practice": "",
+    "knowledge_only": true
+   },
+   {
+    "id": "DE27",
+    "name": "Running a usability test",
+    "item": "G6",
+    "what": "About five people from the target group per round, three to five tasks written as goals (never as click instructions), a think-aloud script, and a moderator who stays quiet and does not help. Watching a few people comes before counting many with analytics or A/B tests.",
+    "practice": "A committed note for each session in which a person outside the team used the product, with the tasks and what the person did.",
+    "knowledge_only": false
+   },
+   {
+    "id": "DE28",
+    "name": "Affinity mapping and severity scoring",
+    "item": "G6",
+    "what": "Group observations into themes, then rank problems as critical, major, minor or cosmetic. Fix what blocks the core task first.",
+    "practice": "A committed synthesis of usability test notes with the problems grouped and ranked by severity.",
+    "knowledge_only": false
+   },
+   {
+    "id": "DE29",
+    "name": "Fix the top issue and retest",
+    "item": "G6",
+    "what": "Fix the one or two most severe problems, run the same tasks with new people, and check the problem is gone and nothing new broke. Keep what works; weigh feedback by frequency, severity and source instead of acting on single opinions. Repeated failure to show value across rounds is a reason to consider a pivot.",
+    "practice": "A commit that changes the product and cites a usability test finding.",
+    "knowledge_only": false
+   },
+   {
+    "id": "DE30",
+    "name": "Fidelity: the cheapest artifact for the question",
+    "item": "G6",
+    "what": "Sketch, wireframe, mockup and prototype differ in how finished they look and how much they do; fidelity and effort are separate. Name the question first, then make the cheapest artifact that answers it. Polish invites comments on polish.",
+    "practice": "A committed sketch, wireframe, mockup or prototype, in an earlier commit than the feature it shows.",
+    "knowledge_only": false
+   }
+  ]
+ },
+ {
+  "axis": "Discovery",
+  "items": {
+   "D1": "User interviews",
+   "D2": "Problem and who it is for",
+   "D3": "Assumption tests",
+   "D4": "Competitive landscape",
+   "D5": "Prioritization",
+   "D6": "What to build"
+  },
+  "evidence_notes": [
+   "Interview order: an interview counts as problem-interview evidence only if it happened before the student showed the product, and an interview that only collects the product's content does not count. Both need the interview text and date. The packet often lists discovery/ files with no text (the text budget runs out). Put discovery/ files ahead of code in the packet's text budget.",
+   "Assumption named before the check (assumption-test practice) needs commit order between the assumptions file and the test note. The packet shows commit hashes but a coder cannot always tell which came first; listing each discovery file's first-commit date in the packet would settle it.",
+   "Practice for most Discovery concepts happens outside the repo and outside Claude Code (talking to people, a whiteboard). The session scan sees only an agent asked to draft or check a guide, a persona, a tree or a ranking. A \"Discovery this sprint\" table in the /sprint-review template (what was done, with whom, date, file) would give the scan something to read.",
+   "Agent-written versus student-written: a persona, synthesis or assumptions list drafted by an agent from nothing looks the same in the repo as one built from interviews. The session scan could flag discovery files an agent wrote before any interview note existed.",
+   "For depth level 4 (Delivered) on Discovery, the people involved are often interviewees, who have not used the product. The packet cannot tell an interviewee from a user; the review's \"Users this sprint\" list separates them.",
+   "Smoke tests and presells record their result as counts (visits, sign-ups, deposits) that live in a landing-page tool or Stripe, not the repo. Ask students to commit the counts with a date in the test note.",
+   "Several Ch 3 concepts (five forces, blue ocean, moats, disruption, value stick, DHM, reflection test) are rarely written down in a student repo; their practice evidence rests on the one-page product strategy. Asking for that page as a committed strategy.md in Sprint 2 would make them visible."
+  ],
+  "concepts": [
+   {
+    "id": "DI01",
+    "name": "Problem interviews (the Mom Test)",
+    "item": "D1",
+    "what": "Ask about their life, not your idea; ask about specific past events, not hypothetical futures; listen more than you talk. The most useful question: \"Walk me through the last time you experienced this problem.\" A leading or hypothetical question produces polite agreement that predicts nothing.",
+    "practice": "Interview notes in the repo written from the student's own conversations with people who have the problem, with questions about specific past events.",
+    "knowledge_only": false
+   },
+   {
+    "id": "DI02",
+    "name": "The evidence ladder: said, did, paid",
+    "item": "D1",
+    "what": "What people said is weak evidence, what they did is stronger, what they paid is strongest, because each rung costs more to fake. The past is on the did rung and the future on the said rung, so tag every claim by its rung.",
+    "practice": "A committed synthesis, insights file or test note in which claims are labeled said, did or paid.",
+    "knowledge_only": false
+   },
+   {
+    "id": "DI03",
+    "name": "Interview synthesis and saturation",
+    "item": "D1",
+    "what": "After several interviews, write the validated problem statement, who you talked to, key insights tagged by rung, quotes, and next steps. Stop interviewing when new interviews stop surprising you, and widen the sample when one person is all you have.",
+    "practice": "A committed synthesis or insights file that cites the student's own interview notes by file and states what they showed.",
+    "knowledge_only": false
+   },
+   {
+    "id": "DI04",
+    "name": "Problem statement and the stranger test",
+    "item": "D2",
+    "what": "A problem statement names a person, a situation, and what goes wrong for them today, with no product, feature or technology in it. A stranger who lives it would recognize it; a solution statement only makes sense to someone who heard the pitch (the Idea Trap).",
+    "practice": "A problem statement in the README, a spec or a synthesis file, written by the student and committed, that names a person, a situation and what goes wrong for them, and names no product or feature.",
+    "knowledge_only": false
+   },
+   {
+    "id": "DI05",
+    "name": "Jobs to be done",
+    "item": "D2",
+    "what": "People hire a product to make progress in a situation: \"When I'm [situation], I want to [motivation], so I can [outcome],\" with no product in the middle slot. Jobs are functional, emotional and social; pains are physical, functional, financial, emotional and social; a journey map shows where in the job the pain sits.",
+    "practice": "A job statement (When I am..., I want to..., so I can...) or a journey map of the whole job, written by the student and committed.",
+    "knowledge_only": false
+   },
+   {
+    "id": "DI06",
+    "name": "Who it is for, and who it is not for",
+    "item": "D2",
+    "what": "Win one narrow segment completely before expanding (Moore): people who share the same habit, talk to each other, and can all be reached. Say who it is not for. Segments that share a job can still differ in situation and pain.",
+    "practice": "A written target customer, narrow enough to name, with a list of who the product is not for, in the README, a spec or a value proposition, committed.",
+    "knowledge_only": false
+   },
+   {
+    "id": "DI07",
+    "name": "User versus payer",
+    "item": "D2",
+    "what": "The person who uses the product and the person who pays for it may differ. The user cares whether it is easy, the payer whether it is worth the money, so you need evidence from both.",
+    "practice": "A committed file that names the product's user and its payer and says whether they are the same person.",
+    "knowledge_only": false
+   },
+   {
+    "id": "DI08",
+    "name": "The access test",
+    "item": "D2",
+    "what": "A real problem is not an opportunity if you cannot reach the people who have it. Check location (where they gather), engagement (will they respond) and reciprocity (what you offer in return).",
+    "practice": "A committed note that names where the target users can be reached (places, channels or named groups) and whether the student can reach them.",
+    "knowledge_only": false
+   },
+   {
+    "id": "DI09",
+    "name": "Personas",
+    "item": "D2",
+    "what": "A fictional but realistic customer that summarizes interview evidence you already have. A persona generated before talking to anyone, by a person or an agent, contains no information and confirms what you already believed.",
+    "practice": "A personas file written by the student and committed, with each persona's details drawn from named interview notes.",
+    "knowledge_only": false
+   },
+   {
+    "id": "DI10",
+    "name": "Belief versus truth and triangulation",
+    "item": "D3",
+    "what": "A map of what you believe, what is true, and how much evidence you have; False Confidence (sure, and wrong) is the most dangerous region. Every way of knowing can mislead, so treat a belief as validated only when independent sources agree. Good evidence would look different if you were wrong.",
+    "practice": "A committed insights or assumptions file that lists beliefs, each with a confidence level and the evidence for it.",
+    "knowledge_only": false
+   },
+   {
+    "id": "DI11",
+    "name": "Issue trees and MECE",
+    "item": "D3",
+    "what": "Break a messy question into parts that do not overlap and leave nothing out (mutually exclusive, collectively exhaustive), splitting until each leaf can be checked with evidence. Work first on the branch with high impact, high uncertainty and testability, and skip any question that fails the so-what test (would the answer change what we build?).",
+    "practice": "A committed issue tree that breaks an open product question into parts, with the part chosen to test marked.",
+    "knowledge_only": false
+   },
+   {
+    "id": "DI12",
+    "name": "What would have to be true",
+    "item": "D3",
+    "what": "State the idea as a hypothesis on day one, then list the specific conditions that must hold for it to work (Roger Martin). Each condition can be tested; a vague belief cannot.",
+    "practice": "A committed list of conditions that would have to be true for the product to work, each labeled with its risk or uncertainty.",
+    "knowledge_only": false
+   },
+   {
+    "id": "DI13",
+    "name": "The four risks",
+    "item": "D3",
+    "what": "Value (will they want it), usability (can they use it), feasibility (can we build it), viability (does it work as a business). A MECE list of how a product fails. Teams over-test feasibility and under-test value; a working app proves only that it could be built.",
+    "practice": "A committed assumptions list with each assumption labeled as a value, usability, feasibility or viability risk.",
+    "knowledge_only": false
+   },
+   {
+    "id": "DI14",
+    "name": "Riskiest assumption",
+    "item": "D3",
+    "what": "The condition that is both most uncertain and most fatal if false. Test it before anything else, even before a cheaper quick win, because work on other parts is wasted if it fails.",
+    "practice": "A committed file, outside the sprint plan, that names the product's riskiest assumption, the check run on it, and the result.",
+    "knowledge_only": false
+   },
+   {
+    "id": "DI15",
+    "name": "The smallest test: smoke test, fake door, concierge, Wizard of Oz, presell",
+    "item": "D3",
+    "what": "Before building, fake it, do it by hand, or sell it first. Choose by learning per hour: the highest evidence rung on the riskiest assumption for the fewest hours. A working app shown to friends stays on the said rung for value.",
+    "practice": "A committed note of a smoke test, fake door, concierge test, Wizard of Oz test or presell the student ran, with the action counted and the result.",
+    "knowledge_only": false
+   },
+   {
+    "id": "DI16",
+    "name": "The current habit and the forces of progress",
+    "item": "D4",
+    "what": "The main competitor is what the person does today: a spreadsheet, a group text, or nothing. A person switches only when push plus pull outweighs anxiety plus habit (Moesta), so the product must beat the habit by more than the cost of switching. No rival app does not mean no competition.",
+    "practice": "A committed record, drawn from the student's own interviews, of what people do about the problem today, including doing nothing or a manual workaround.",
+    "knowledge_only": false
+   },
+   {
+    "id": "DI17",
+    "name": "Importance versus satisfaction",
+    "item": "D4",
+    "what": "Plot needs by how much they matter and how well current solutions meet them (Olsen). The opportunity is high importance with low satisfaction; high importance with high satisfaction means competing with what already works.",
+    "practice": "A committed table or chart that rates needs by importance and by satisfaction with current solutions, from interview data.",
+    "knowledge_only": false
+   },
+   {
+    "id": "DI18",
+    "name": "Five forces",
+    "item": "D4",
+    "what": "Rivalry, new entrants and substitutes decide whether an industry can hold price above cost; buyer and supplier power decide whether a neighbor can bargain your share away (Porter). The forces describe the industry, not whether your product is strongest in it.",
+    "practice": "",
+    "knowledge_only": true
+   },
+   {
+    "id": "DI19",
+    "name": "Blue ocean and value innovation",
+    "item": "D4",
+    "what": "Create uncontested space by raising willingness to pay and cutting cost at once, dropping what the industry over-serves and adding what it never offered (Kim and Mauborgne). A blue ocean has no barriers, so it needs a moat to stay yours.",
+    "practice": "A committed list of the factors the product drops, reduces, raises and adds compared with the alternatives.",
+    "knowledge_only": false
+   },
+   {
+    "id": "DI20",
+    "name": "Moats (7 Powers)",
+    "item": "D4",
+    "what": "Sources of durable advantage (Helmer): network effects, switching costs, scale economies, brand, counter-positioning, cornered resource, process power. Ask what stops the next builder with the same AI tools from copying you next week. An incumbent's switching costs can close an apparent opening.",
+    "practice": "",
+    "knowledge_only": true
+   },
+   {
+    "id": "DI21",
+    "name": "Disruption",
+    "item": "D4",
+    "what": "Incumbents improve for their most demanding customers and overshoot the rest (sustaining innovation). An entrant starts in a low-end foothold (overserved customers) or a new-market foothold (nonconsumers) and moves upmarket (Christensen). Fast growth that hurts incumbents is not disruption by itself.",
+    "practice": "",
+    "knowledge_only": true
+   },
+   {
+    "id": "DI22",
+    "name": "Scoring problems and the commitment decision",
+    "item": "D5",
+    "what": "Score candidate problems on frequency, intensity, willingness to pay and market size, then check conviction and technical feasibility. Estimate willingness to pay from what the problem costs today, not from a price people name. Commit when five or more interviews show signals above the said rung, the habit to beat is named, and a small test has not disproved the riskiest assumption; watch for solution love, confirmation bias, sunk cost and founder fantasy.",
+    "practice": "A committed scoring of two or more candidate problems on frequency, intensity, willingness to pay or market size, with the evidence for each score and the problem chosen.",
+    "knowledge_only": false
+   },
+   {
+    "id": "DI23",
+    "name": "MVP and scoping",
+    "item": "D5",
+    "what": "The smallest thing that tests the riskiest assumption with real users and produces learning you can act on (Ries); it can be a smoke test or one core feature. Cut to the one thing users must be able to do, then make that excellent (minimum awesome). With fixed time, hold the time and cut scope, stating in writing what is out.",
+    "practice": "A committed MVP scope that names the one thing users must do and lists what is left out.",
+    "knowledge_only": false
+   },
+   {
+    "id": "DI24",
+    "name": "Prioritization frameworks: ICE, MoSCoW, the $100 test",
+    "item": "D5",
+    "what": "ICE scores impact times confidence over effort; MoSCoW sorts must, should, could and won't; the $100 test forces an uneven split of a fixed budget. A score is only as good as the evidence behind it: a high confidence rating with no evidence is a guess.",
+    "practice": "A committed ranking of features or work items in order, with the criteria or framework (ICE, MoSCoW, the $100 test) shown.",
+    "knowledge_only": false
+   },
+   {
+    "id": "DI25",
+    "name": "Continuous discovery and the opportunity solution tree",
+    "item": "D5",
+    "what": "Keep talking to customers every sprint (Torres). The tree runs outcome, opportunities, solutions, experiments; every solution must sit under an opportunity you actually discovered, and every experiment tests one assumption behind a solution.",
+    "practice": "A committed opportunity solution tree for the product (outcome, opportunities, solutions, tests), with each opportunity traced to interview notes.",
+    "knowledge_only": false
+   },
+   {
+    "id": "DI26",
+    "name": "Product strategy: vision, where to play, how to win, what not to do",
+    "item": "D6",
+    "what": "A vision describes the better world the product creates (Cagan). Strategy is a small set of hard choices, including what not to do (Porter); for a student product the key choices are where to play and how to win (Lafley and Martin). Building is cheap now, so a small market can be worth it.",
+    "practice": "A committed one-page product strategy that states the vision, where the product plays, how it wins, and what it will not do.",
+    "knowledge_only": false
+   },
+   {
+    "id": "DI27",
+    "name": "Diverge before you converge",
+    "item": "D6",
+    "what": "Generate many candidate problems before judging any, then narrow on purpose. A problem journal captures every friction without filtering; seizing the first idea is premature convergence.",
+    "practice": "A committed list of several candidate problems or ideas and a written choice of one over at least one other, with the reason.",
+    "knowledge_only": false
+   },
+   {
+    "id": "DI28",
+    "name": "The value stick: creating and capturing value",
+    "item": "D6",
+    "what": "Value created is willingness to pay minus willingness to sell (Brandenburger and Stuart). Price and cost divide it into what the customer keeps, what the maker captures, and what suppliers keep. Creating value does not guarantee capturing it; industry structure limits the share.",
+    "practice": "A committed value stick for the product with willingness to pay, price, cost and willingness to sell each estimated.",
+    "knowledge_only": false
+   },
+   {
+    "id": "DI29",
+    "name": "DHM and the value proposition",
+    "item": "D6",
+    "what": "DHM (Biddle): a good strategy delights customers in hard-to-copy, margin-enhancing ways, all three at once. The value proposition template states for whom, which problem, the category, the benefit, unlike which alternatives (the current habit first), and the differentiator; the Value Proposition Canvas and Bain's Elements of Value check it against the customer's jobs, pains and gains.",
+    "practice": "A value proposition the student wrote beyond the template's text, naming the customer and the current habit the product replaces, committed.",
+    "knowledge_only": false
+   },
+   {
+    "id": "DI30",
+    "name": "The reflection test and the directional test",
+    "item": "D6",
+    "what": "Habit-forming products run trigger, action, variable reward, investment (Eyal); the mechanics are neutral. The test: would the user, in a calm and reflective moment, be glad you designed it this way? For the needs it touches, does the product expand agency, support becoming, and deepen connection?",
+    "practice": "A committed check of the product's habit loop or engagement design against the reflection test and the directional test.",
+    "knowledge_only": false
+   }
+  ]
+ },
+ {
+  "axis": "Launch and Learn",
+  "items": {
+   "L1": "Shipping to real people",
+   "L2": "Metrics and instrumentation",
+   "L3": "Experiments",
+   "L4": "Positioning, pricing and business model",
+   "L5": "Acting on usage",
+   "L6": "Telling the product's story",
+   "L7": "Reaching users"
+  },
+  "evidence_notes": [
+   "Real users (L1, and depth level 4 on every axis): the packet used to have usage only as sentences in plans and reviews. The review's \"Users this sprint\" list is now the record depth level 4 accepts; a read-only count from the product's database (distinct users by day) would make it checkable.",
+   "Instrumentation (L2): the packet shows an events migration or capture calls but not whether real rows arrived, or whether the analytics are shown to users. A count of event rows by name and date in the packet would show it.",
+   "Experiments (L3): the prediction must be committed before the test. Commit order in the packet shows this only when the plan and the result are in separate commits; it should flag a test file first committed with its result.",
+   "Outreach and channels (L7): outreach often lives in email, Slack, ads managers or private repos. The packet sees it only when a log is committed; ad spend and clicks need a screenshot or export in the repo.",
+   "Pricing tested with real people (L4): a Stripe link or checkout in code does not show anyone paid. A payment count (excluding the founder's own test purchase) would need a recorded export.",
+   "Demo (L6): the coder judges from Loom frames and the transcript. The packet does not tell a live app from localhost or a prototype, nor a fresh run from a result made earlier; Loom timestamps are estimates. A link check on the URL shown would help.",
+   "Practice for most Launch concepts is not visible in the session scan: launch work happens in browsers, email and analytics tools. Only SQL or analytics queries and outreach drafting in sessions show up."
+  ],
+  "concepts": [
+   {
+    "id": "LL01",
+    "name": "Real users and launched versus used",
+    "item": "L1",
+    "what": "A launch puts the product where people can reach it; use is people who do not build it doing its main task on their own. A real user is shown by a dated record (a usage count, a feedback note, a payment), and repeat use on separate days matters more than a first try.",
+    "practice": "A committed, dated usage record (a metrics file, test note or usage count) that names people outside the team who used the product.",
+    "knowledge_only": false
+   },
+   {
+    "id": "LL02",
+    "name": "Launch in rings and deploy versus release",
+    "item": "L1",
+    "what": "Launch to widening groups: a private beta of people invited by hand, a public beta for the beachhead, then a wider launch. A merge deploys code; a release flag, checked on the server, decides who sees it, so each ring is reached by changing the flag with no new deploy.",
+    "practice": "A committed release flag (a table or config naming who has a feature) checked in server code, or a committed record of which group got the product first and which group next.",
+    "knowledge_only": false
+   },
+   {
+    "id": "LL03",
+    "name": "North Star metric",
+    "item": "L2",
+    "what": "The one number that best shows the value customers get, It measures an outcome (whether users are better off); how much the team built is output. Test: could it go up while the product got worse? If so, it counts activity. Input metrics are the drivers that move it.",
+    "practice": "One number named in a committed spec, README or metrics file as the measure of whether the product works, with why it shows value.",
+    "knowledge_only": false
+   },
+   {
+    "id": "LL04",
+    "name": "Success definition and guardrails",
+    "item": "L2",
+    "what": "Written before launch: the value metric, a threshold, guardrail metrics that must not get worse (such as AI cost per active user or error rate), and a judgment date. Without the threshold and date any result can be read as a success.",
+    "practice": "A committed success definition (the metric, a threshold, and a date) in an earlier commit than the launch or test it judges.",
+    "knowledge_only": false
+   },
+   {
+    "id": "LL05",
+    "name": "Vanity, leading and lagging metrics",
+    "item": "L2",
+    "what": "A vanity metric (total signups, page views, time in app) feels good and changes no decision; an actionable one can change what you do next week. Leading indicators move early and predict an outcome; lagging indicators (revenue, churn) report it after the fact.",
+    "practice": "",
+    "knowledge_only": true
+   },
+   {
+    "id": "LL06",
+    "name": "Events and instrumenting the core action",
+    "item": "L2",
+    "what": "An event is one row: who, what, when, and details. Log the four to six events that trace the core task from start to finish, tied to the user, before launch, and check that real rows arrive. Signed-in users may insert only their own events and nobody reads them from the browser; signed-out visitors go through an analytics service or a server route.",
+    "practice": "An events table and logging calls, or analytics capture calls, committed for the product's core task. Analytics shown to users does not count.",
+    "knowledge_only": false
+   },
+   {
+    "id": "LL07",
+    "name": "The funnel and activation",
+    "item": "L2",
+    "what": "Follow people from arrival to first value to coming back (AARRR: acquisition, activation, retention, revenue, referral). Each rate is a share of the step before it. Activation is the first moment a user gets the promised value; with high acquisition and low activation (a leaky bucket), fix activation, usually onboarding, before buying more traffic.",
+    "practice": "A funnel or activation rate computed from the product's events, committed as a query, a script, or a metrics file with the numbers.",
+    "knowledge_only": false
+   },
+   {
+    "id": "LL08",
+    "name": "Cohort retention, churn and stickiness",
+    "item": "L2",
+    "what": "Group users by start week and track the share still active N periods later. Totals can rise from new signups while every cohort keeps less. Curve shape points to the cause: a steep first drop to the first experience, steady decline to the core value, flattening to a group that stays. Churn and DAU/MAU count distinct people, never events.",
+    "practice": "A cohort retention table computed from the product's data, committed.",
+    "knowledge_only": false
+   },
+   {
+    "id": "LL09",
+    "name": "Cause versus coincidence",
+    "item": "L3",
+    "what": "A before-and-after change can come from the calendar, a campaign, or noise, and the data alone cannot tell them apart from the change you made.",
+    "practice": "",
+    "knowledge_only": true
+   },
+   {
+    "id": "LL10",
+    "name": "Randomized test (A/B test)",
+    "item": "L3",
+    "what": "Assign users to A or B at random in the same weeks, so the change is the only systematic difference and a gap larger than chance is its effect. It proves an effect on the metric measured, for those users in that period; it says nothing about other metrics, later outcomes, or why. State the prediction before it starts.",
+    "practice": "A committed test plan with a prediction, in an earlier commit than the result, for a test that assigned users to versions at random, and the result recorded.",
+    "knowledge_only": false
+   },
+   {
+    "id": "LL11",
+    "name": "Learning with small numbers",
+    "item": "L3",
+    "what": "With about 20 users, look only for big effects, hold out a random group in the same weeks, watch people use it, and say \"can't tell yet\" when the data cannot decide. Run a test to the size planned in advance; stopping when one version looks ahead finds differences that are chance.",
+    "practice": "A committed record of a holdout or small test with its planned size and the result, including a result of cannot tell yet.",
+    "knowledge_only": false
+   },
+   {
+    "id": "LL12",
+    "name": "Positioning and the competitive alternative",
+    "item": "L4",
+    "what": "Why a specific person picks you over what they do today (usually a spreadsheet, a group text, or nothing), said in their words. Start from that competitive alternative, then unique attributes, value, who cares most, and the category. A positioning statement is the internal reference for all messaging, and every sentence of it should pass the \"So what?\" test. A model's opinion of copy is a guess from its training text; only real people's replies, clicks and signups show which message works.",
+    "practice": "A committed positioning statement or messaging file that names the customer and the alternative the product replaces.",
+    "knowledge_only": false
+   },
+   {
+    "id": "LL13",
+    "name": "Value-based pricing: ceiling, reference, floor",
+    "item": "L4",
+    "what": "Price between what the problem is worth to the customer (the ceiling, from what it costs them today, never from asking what they would pay) and your cost to serve (the floor), with what they pay for alternatives as the reference. The value estimate rests on assumptions about how the customer uses what is saved.",
+    "practice": "A committed price decision with the ceiling, reference and floor and the source of each.",
+    "knowledge_only": false
+   },
+   {
+    "id": "LL14",
+    "name": "AI cost to serve and gross margin",
+    "item": "L4",
+    "what": "Cost per user is cost per AI action times actions per month. Gross margin is price minus cost to serve, divided by price. On a flat price, a heavy user of an AI product can cost more than they pay, so check the distribution of usage as well as the average.",
+    "practice": "A committed estimate of the AI cost to serve one user, including the heaviest realistic user.",
+    "knowledge_only": false
+   },
+   {
+    "id": "LL15",
+    "name": "Revenue models and free tiers",
+    "item": "L4",
+    "what": "The rule that turns use into money: subscription, usage-based, freemium, one-time, advertising, or commission. Each works only if something specific holds about the customer and costs. A flat price is simple and carries the heavy-user risk; usage pricing tracks cost; a free tier needs a usage cap.",
+    "practice": "A committed decision record that chooses a revenue model and names another model.",
+    "knowledge_only": false
+   },
+   {
+    "id": "LL16",
+    "name": "Business Model Canvas",
+    "item": "L4",
+    "what": "A one-page model in ten blocks (customer segments, jobs-to-be-done, value proposition, channels, relationships, revenue, resources, activities, partners, costs). The blocks constrain each other, and every block is a hypothesis to mark as evidence or guess. A model can draft every block, and fills gaps with plausible guesses.",
+    "practice": "A committed Business Model Canvas for the product with all ten blocks filled in.",
+    "knowledge_only": false
+   },
+   {
+    "id": "LL17",
+    "name": "Unit economics and break-even",
+    "item": "L4",
+    "what": "Look at one customer. Contribution margin is price minus variable cost (model calls, payment fees). Break-even is fixed costs divided by contribution margin. If each customer costs more than they bring in, more customers make it worse.",
+    "practice": "A committed break-even or financial model with the variable costs per user stated.",
+    "knowledge_only": false
+   },
+   {
+    "id": "LL18",
+    "name": "Lifetime value and acquisition cost",
+    "item": "L4",
+    "what": "Margin-based LTV is contribution margin per month times the months a customer stays; using revenue overstates it, by a lot for an AI product. CAC is what you spend in money and time to win one paying customer. If CAC exceeds LTV, each new customer loses money; a common rule of thumb is LTV at least three times CAC.",
+    "practice": "A committed CAC per channel or LTV calculation from recorded spend and retention.",
+    "knowledge_only": false
+   },
+   {
+    "id": "LL19",
+    "name": "Keep, change, or kill",
+    "item": "L5",
+    "what": "Every feature carries upkeep. Retire one that few use, that costs upkeep, and that does not serve the core task, after logging it long enough to judge; tell the people who rely on it and give them a path. The same reasoning applies to stopping a product.",
+    "practice": "A committed analysis of how people outside the team used a feature or the product (counts, events, or notes from watching them), ending in a decision to keep, change or remove something, with the reason.",
+    "knowledge_only": false
+   },
+   {
+    "id": "LL20",
+    "name": "When to change the go-to-market plan",
+    "item": "L5",
+    "what": "Change the plan when people sign up but do not reach value, a channel given a fair test brings almost no one, customers describe the product in other words, or a customer costs more to acquire than they bring in. Then interview again, rewrite messaging in their words, narrow the customer, or try the next channel.",
+    "practice": "A committed decision record that changes the customer, message or channel and cites the evidence for the change.",
+    "knowledge_only": false
+   },
+   {
+    "id": "LL21",
+    "name": "Reading what people say: NPS, comments and AI themes",
+    "item": "L5",
+    "what": "Combine the numbers with what interviews, sessions and comments show (data-informed), unless the data came from a clean test with enough people. At student scale one NPS answer moves the score five points or more, so read the comments. A model can group feedback into themes with the quotes behind each; it cannot tell you why a number moved.",
+    "practice": "A committed synthesis of user feedback (comments, survey or NPS responses) with counts and quotes.",
+    "knowledge_only": false
+   },
+   {
+    "id": "LL22",
+    "name": "Decide what the story is for",
+    "item": "L6",
+    "what": "Aim (what to communicate, and to whom), approach (which story serves it), act (tell it and watch how the audience responds). A story shows a change, a before and an after; without one it is a report. Setting, method, audience and purpose are chosen on purpose.",
+    "practice": "",
+    "knowledge_only": true
+   },
+   {
+    "id": "LL23",
+    "name": "Story database",
+    "item": "L6",
+    "what": "A running list of at least 20 personal stories, each with its five-second moment, kept ready for interviews, demos and pitches.",
+    "practice": "A committed story database file with the student's own stories.",
+    "knowledge_only": false
+   },
+   {
+    "id": "LL24",
+    "name": "What makes a story persuasive and memorable",
+    "item": "L6",
+    "what": "Facts persuade deliberate reasoning (the rider); stakes, specifics and feeling move emotion and intuition (the elephant). SUCCESs names six traits of ideas people remember: simple, unexpected, concrete, credible, emotional, stories. Duarte's structure moves between what is and what could be and ends on a call to action.",
+    "practice": "",
+    "knowledge_only": true
+   },
+   {
+    "id": "LL25",
+    "name": "The demo as an argument",
+    "item": "L6",
+    "what": "One claim (this product does a real job for a real person), supported in order by the person and the problem, the moment it works on the deployed product, the evidence, and what was learned. Small real numbers are strong evidence; projected or inflated ones are not. Rehearse out loud, timed, on camera.",
+    "practice": "A Loom moment that shows one task done in the product people use, from the user's first action to the result.",
+    "knowledge_only": false
+   },
+   {
+    "id": "LL26",
+    "name": "Innovation capital and impression amplifiers",
+    "item": "L6",
+    "what": "Support comes from human capital (skills, passion), social capital (who vouches for you) and reputation capital (what you have done). Materialize, compare, story and commit amplify a true claim; used to make something false look true, they become deception.",
+    "practice": "",
+    "knowledge_only": true
+   },
+   {
+    "id": "LL27",
+    "name": "Beachhead and ideal customer profile",
+    "item": "L7",
+    "what": "The ideal customer profile names who gets the most value and is easiest to reach: their situation, current habit, where they gather, and what they pay for today. The beachhead is the narrowest group with the pain that you can reach by hand and win completely before widening.",
+    "practice": "An ideal customer profile or beachhead named in a committed GTM file or README, with where those people gather.",
+    "knowledge_only": false
+   },
+   {
+    "id": "LL28",
+    "name": "First users by hand",
+    "item": "L7",
+    "what": "Recruit the first users one at a time, by name, to learn what makes people say yes (a sprint target: 20 named people contacted, 5 using it). Predict replies and tries before sending, then compare. The six principles of persuasion (social proof, authority, scarcity, reciprocity, commitment and consistency, liking) amplify a true offer; pushing a product that does not deliver turns them into manipulation.",
+    "practice": "A committed outreach log: who was contacted, through what channel, and what happened.",
+    "knowledge_only": false
+   },
+   {
+    "id": "LL29",
+    "name": "Channel strategy",
+    "item": "L7",
+    "what": "A channel is a repeatable path by which strangers become users. Pick one or two where the customer already is and give each a fair test, comparing channels by the share of signups that activate and pay and by cost per customer. Buyers now also ask models, which cite community and reference sites, so being useful in public where buyers gather reaches both.",
+    "practice": "A committed record of a channel test (a listing, posts, ads or flyers) with who was reached and the result.",
+    "knowledge_only": false
+   },
+   {
+    "id": "LL30",
+    "name": "Product-led versus sales-led growth",
+    "item": "L7",
+    "what": "Product-led growth lets people sign up and reach value alone; sales-led growth needs a person to reach out, demo and set up, which fits a complex product, a long setup, or a large deal.",
+    "practice": "A committed decision record or GTM file that chooses product-led or sales-led growth for the product and gives the reason.",
+    "knowledge_only": false
+   }
+  ]
+ }
+]

@@ -12,7 +12,7 @@ lets a reader verify.
 1. The **Evidence rules** below apply to everything you record (they replace the old rules in
    `builder-inventory.md`, which is kept only for its item headings).
 2. `depth-levels.md`: the four levels and one example per axis.
-3. The six concept lists, `concepts/*.json`. For each concept, the `practice` field says what in a
+3. The six concept lists, in one file: `concepts-for-coders.json` (written from `concepts/*.json` by `builder_concepts.py`; read it once, in one call). For each concept, the `practice` field says what in a
    packet shows it in the student's own work. Concepts with `"knowledge_only": true` are never
    recorded (they come from the exams).
 4. The packet (JSON): plan, review report and retro (including any session-scan lists), README,

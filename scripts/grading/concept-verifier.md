@@ -6,7 +6,7 @@ recoding the sprint: do not add credits, and do not re-read the whole packet.
 
 ## Read first
 `concept-coder.md` (all of it: the window, whose decision it is, what counts), `depth-levels.md`,
-and the practice sentence of each concept you check (`concepts/*.json`).
+and the practice sentence of each concept you check (`concepts-for-coders.json`).
 
 ## What you check
 1. Every breadth credit with a non-empty `borderline`.

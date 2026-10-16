@@ -125,6 +125,18 @@ td:not(:first-child),th:not(:first-child){{text-align:right}}tr.t td{{font-weigh
 {rows}<tr class=t><td>Total</td>{"".join(f"<td>{x}</td>" for x in t)}</tr></table>""")
 
 
+def coder_list():
+    """concepts-for-coders.json: only what a concept coder uses (id, name, topic, what it is, the practice
+    check, knowledge-only), about half the size of the full lists, which every coder reads at every step."""
+    out = []
+    for f in sorted((HERE / "concepts").glob("*.json")):
+        d = json.loads(f.read_text())
+        out.append({"axis": d["axis"], "items": d["items"], "evidence_notes": d.get("evidence_notes", ""),
+                    "concepts": [{k: c[k] for k in ("id", "name", "item", "what", "practice", "knowledge_only") if k in c}
+                                 for c in d["concepts"]]})
+    (HERE / "concepts-for-coders.json").write_text(json.dumps(out, indent=1, ensure_ascii=False) + "\n")
+
+
 if __name__ == "__main__":
     keys = sys.argv[1:] or sorted(p.stem for p in (HERE / "concepts").glob("*.json"))
     items = exam_items()
@@ -132,3 +144,4 @@ if __name__ == "__main__":
         build(k, items)
     if not sys.argv[1:]:
         overview()
+    coder_list()
