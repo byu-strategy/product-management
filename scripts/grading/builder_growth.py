@@ -65,7 +65,7 @@ def load(sprint, run, net_id):
 
 def growth(net_id, upto, C, axes, means=None):
     shown, depth_best, rings = set(), {}, []
-    new_last, depth_last, disputed, nc_last = [], [], [], []
+    new_last, depth_last, disputed, nc_last, earlier = [], [], [], [], []
     for s in range(1, upto + 1):
         A, B = load(s, "A", net_id), load(s, "B", net_id)
         if not A or not B:
@@ -95,6 +95,17 @@ def growth(net_id, upto, C, axes, means=None):
                 depth_best[ax] = lvl
         rings.append({"sprint": s, "coded": True, "breadth": ring_b, "depth": ring_d,
                       "points": {k: round(v, 2) for k, v in pts.items()}})
+        if s < upto:
+            for k in new:
+                a_, c = ba[k], C[k]
+                earlier.append({"sprint": s, "concept": k, "name": c["name"], "axis": c["axis"],
+                                "points": round((practice_max(c["axis"]) / 2) / axes[c["axis"]], 2),
+                                "when": a_.get("when", ""), "did": a_.get("did", ""),
+                                "evidence": a_.get("evidence", ""), "ref": a_.get("ref", "")})
+            for ax, g in ring_d.items():
+                earlier.append({"sprint": s, "depth": True, "axis": ax, "level": g["to"], "name": LEVELS[g["to"]],
+                                "points": round((practice_max(ax) / 2) * (g["to"] - g["from"]) / 4, 2),
+                                "why": (da[ax] if int(da[ax]["level"]) <= int(db[ax]["level"]) else db[ax]).get("why", "")})
         if s == upto:
             for k in new:
                 a, c = ba[k], C[k]
@@ -122,7 +133,7 @@ def growth(net_id, upto, C, axes, means=None):
             "rings": rings, "practice_total": totals,
             "practice_max": {ax: practice_max(ax) for ax in axes}, "depth_best": depth_best,
             "concepts_shown": sorted(shown), "new": new_last, "depth": depth_last,
-            "disputed": disputed, "not_counted": nc_last}
+            "disputed": disputed, "not_counted": nc_last, "earlier": earlier}
 
 
 def main():

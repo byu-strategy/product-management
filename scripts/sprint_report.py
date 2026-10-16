@@ -391,13 +391,16 @@ def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott
                 body += f"<p>How hard the work was raised this score by {m.group(1)} point{'s' * (m.group(1) != '1')}.</p>"
             elif eff.startswith("capped"):
                 body += "<p>How hard the work was capped this score at 75% of the points.</p>"
-        if scott:
-            body += inst_sub("Reasons", "", f"<p>{e((r.get('reasons') or {}).get(c, ''))}</p>")
+        out = f'<div class=how><b>How it was scored.</b> {body.replace("<p>", "").replace("</p>", " ").strip()}</div>'
+        if scott:  # inline, in the instructor color: no drawer for a short note
+            out += (f'<div class=inote><b>Reasons</b> <span class=instag>instructor only</span>'
+                    f'<p>{e((r.get("reasons") or {}).get(c, ""))}</p>')
             if c == "demo" and r.get("demo_checks"):
-                body += inst_sub("Demo checks", "", "<table class=chk>" + "".join(
+                out += "<table class=chk>" + "".join(
                     f"<tr><td class=k>{CHECK_LABELS.get(k, k)}</td><td>{e(str(v))}</td></tr>"
-                    for k, v in r["demo_checks"].items()) + "</table>")
-        return sub("How it was scored", "", body)
+                    for k, v in r["demo_checks"].items()) + "</table>"
+            out += "</div>"
+        return out
 
     def output_evidence():
         out = ""
@@ -514,12 +517,12 @@ def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott
                          + (f"<p>Missing: {e(plan_row['fields_missing'])}.</p>" if (plan_row or {}).get("fields_missing") else ""))
             text = (p.get("plan_submission") or {}).get("text")
             if text:
-                plan_body += sub("Your plan, as turned in", "", f'<div class=doc>{md(text, repo)}</div>')
+                plan_body += f'<p class=qm>Your plan, as turned in:</p><div class="doc scroll">{md(text, repo)}</div>'
         else:
             plan_body = f"<p>No plan was turned in on Canvas for Sprint {sprint}.</p><p>{e(RUBRIC['plan'])}</p>"
-        score_body = (row("Sprint plan" + ("" if ps else " <span class=qown>not submitted</span>"),
+        score_body = (row("Plan" + ("" if ps else " <span class=qown>not submitted</span>"),
                           f"{fmt(plan_pts)}<small>/10</small>", plan_body)
-                      + row("Sprint review", f"{fmt(review_total)}<small>/{review_max}</small>", kids))
+                      + kids.replace('class="q kid"', 'class="q"'))
         canvas = (f"In Canvas: Sprint {sprint} Plan {fmt(plan_pts)}/10 and Sprint {sprint} Wrap-up "
                   f"{fmt(wrap_canvas)}/{review_max}.")
     score_body += (f'<div class=qtotal><span>Sprint {sprint}</span><span>{fmt(total)}<small>/{total_max}</small></span></div>'
@@ -584,6 +587,21 @@ def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott
                       if g_tot else "nothing new counted")
         if not grew:
             grew = "<p>No new concepts or depth were counted this sprint.</p>"
+        earlier = G.get("earlier") or []
+        for s_ in sorted({x["sprint"] for x in earlier}, reverse=True):
+            xs = [x for x in earlier if x["sprint"] == s_]
+            pts_s = sum(float(x.get("points", 0)) for x in xs)
+            grew += f'<div class=qax>Sprint {s_} <span>+{fmt(pts_s)}</span></div>'
+            for x in sorted(xs, key=lambda x: (x.get("depth", False), AXES.index(x["axis"]) if x["axis"] in AXES else 9)):
+                if x.get("depth"):
+                    grew += row(f'{e(x["axis"])}: level {x["level"]}, {e(x["name"])}', f'<span class=qp>+{fmt(x["points"])}</span>',
+                                f'<p>{e(x.get("why", ""))}</p>')
+                else:
+                    link = ref_link(repo, x.get("ref"))
+                    right = (f'<span class=qd>{e(x["axis"].replace("Application Architecture", "App Architecture"))}</span>'
+                             f'<span class=qp>+{fmt(x.get("points", 0))}</span>')
+                    grew += row(e(x["name"]), right, f'<p>{e(x.get("did", ""))}</p>'
+                                f'<p class=qm>{e(x.get("evidence", ""))}{" · " + link if link else ""}</p>')
         core = (G.get("start") or {}).get("points") or {}
         whole = sum(float(v) for v in core.values()) + sum(float(v) for v in (G.get("practice_total") or {}).values())
         lead = (f'<p class=lead><b>{fmt(whole)} of 600</b> points ({whole / 6:.0f}%). A full-stack product builder '
@@ -877,7 +895,7 @@ nav.toc a,.tocm a{display:flex;justify-content:space-between;gap:8px;padding:6px
 nav.toc a small,.tocm a small{color:var(--mute);font-size:11.5px;white-space:nowrap;font-variant-numeric:tabular-nums}
 nav.toc a:hover{color:var(--ink);background:#fafafb}nav.toc a.on{border-left-color:var(--amber);color:var(--ink);font-weight:600}
 nav.toc a.inst{color:#7a5a00}
-.tg{position:relative}.tg>a{padding-left:22px}
+.tg{position:relative}nav.toc .tg>a{padding-left:22px}
 .tw{position:absolute;left:4px;top:6px;width:16px;height:20px;border:0;background:none;cursor:pointer;padding:0}
 .tw::before{content:"";display:block;width:5px;height:5px;border-right:1.5px solid var(--mute);border-bottom:1.5px solid var(--mute);transform:rotate(-45deg);margin:6px 0 0 4px;transition:transform .15s}
 .tg.open .tw::before{transform:rotate(45deg)}
@@ -948,6 +966,8 @@ details.q.inst>summary .qn{color:#7a5a00}.instag{font-size:10.5px;background:#ff
 .qax{display:flex;justify-content:space-between;font-size:12px;color:var(--mute);margin:18px 0 2px;text-transform:uppercase;letter-spacing:.05em}.qax span{color:var(--amber);font-weight:600;letter-spacing:0}
 .qd{color:var(--mute)}.qp{display:inline-block;min-width:44px;text-align:right;color:var(--amber);font-weight:600}
 .qown{font-size:11.5px;color:var(--mute);margin-left:6px}
+.how{font-size:13px;color:#4a5262;background:#f7f8fa;border-radius:6px;padding:6px 10px;margin:6px 0 8px}
+.inote{background:#fff8e1;border:1px solid #f0d98a;border-radius:6px;padding:6px 10px;margin:0 0 8px;font-size:13px}.inote p{margin:2px 0}
 .qtotal{display:flex;justify-content:space-between;padding:10px 0 2px;font-weight:600}
 .snote{background:#f3f4f7;border-radius:8px;padding:8px 12px;margin:8px 0 0;font-size:14px}.snote p{margin:2px 0 0}
 ol.nsl{list-style:none;margin:6px 0 10px;padding:0}

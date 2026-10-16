@@ -186,6 +186,8 @@ def growth_text(G):
         out.append(d.get("why", ""))
     for x in G.get("not_counted") or []:
         out += [x.get("what", ""), x.get("why", "")]
+    for x in G.get("earlier") or []:
+        out += [x.get("did", ""), x.get("evidence", ""), x.get("why", "")]
     return " ".join(str(x) for x in out if x)
 
 
