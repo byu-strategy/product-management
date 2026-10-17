@@ -931,6 +931,10 @@ def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott
         steps.append(("counts", f"Share {e(u)} with sdmurff, or list it.",
                       "If you administer it, add <code>sdmurff</code> as a collaborator. If it belongs to a company you cannot "
                       "share, list it in your README, and <code>/sprint-review</code> will summarize its commits (dates and messages, never code).", ""))
+    # Work kept somewhere private that is not a repo (a local folder, a Google Doc, a private artifact):
+    # set per student in the packet's facts after the audit, each with its own wording.
+    for req in f.get("share_requests") or []:
+        steps.append(("counts", e(req["title"]), re.sub(r"`([^`]+)`", r"<code>\1</code>", e(req["body"])), ""))
     bad_docs = [x for x in rr["extra"] + [y for it in rr["listed"] for y in it["places"]] if x[2] == "bad" and "google" in x[1]]
     bad_docs += [d for d in p.get("drive_files") or [] if not d.get("ok")] if not bad_docs else []
     if bad_docs:
