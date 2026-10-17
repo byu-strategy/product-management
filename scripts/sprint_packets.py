@@ -54,9 +54,24 @@ def local(iso):
     return dt.datetime.fromisoformat(iso.replace("Z", "+00:00")).astimezone(TZ)
 
 
+def wait_for_rate_limit(stderr):
+    """GitHub allows 5,000 API calls an hour. Hitting the limit used to return None, which reads as a
+    missing file; now the build waits for the reset and the caller retries."""
+    if "rate limit" not in (stderr or "").lower():
+        return False
+    import time
+    reset = subprocess.run(["gh", "api", "rate_limit", "--jq", ".resources.core.reset"], capture_output=True, text=True).stdout.strip()
+    wait = max(30, int(reset or 0) - int(time.time()) + 5) if reset.isdigit() else 300
+    print(f"GitHub rate limit reached; waiting {wait // 60} min", flush=True)
+    time.sleep(wait)
+    return True
+
+
 def gh(path, jq=None):
     cmd = ["gh", "api", path] + (["--jq", jq] if jq else [])
     p = subprocess.run(cmd, capture_output=True, text=True)
+    while p.returncode and wait_for_rate_limit(p.stderr):
+        p = subprocess.run(cmd, capture_output=True, text=True)
     if p.returncode:
         return None
     return p.stdout if jq else json.loads(p.stdout)
@@ -64,7 +79,10 @@ def gh(path, jq=None):
 
 def gh_list(path):
     """Every item of a paginated list endpoint, not just the first 100."""
-    p = subprocess.run(["gh", "api", "--paginate", path, "--jq", ".[] | tojson"], capture_output=True, text=True)
+    cmd = ["gh", "api", "--paginate", path, "--jq", ".[] | tojson"]
+    p = subprocess.run(cmd, capture_output=True, text=True)
+    while p.returncode and wait_for_rate_limit(p.stderr):
+        p = subprocess.run(cmd, capture_output=True, text=True)
     return [json.loads(l) for l in p.stdout.splitlines() if l.strip()] if p.returncode == 0 else []
 
 
@@ -214,8 +232,11 @@ IMAGES = re.compile(r"\.(png|jpe?g|webp|gif)$", re.I)
 
 def raw(repo, path, ref=None):
     """A file's bytes, any size up to GitHub's 100 MB, private repos included."""
-    p = subprocess.run(["gh", "api", "-H", "Accept: application/vnd.github.raw",
-                        f"repos/{repo}/contents/{path}" + (f"?ref={ref}" if ref else "")], capture_output=True)
+    cmd = ["gh", "api", "-H", "Accept: application/vnd.github.raw",
+           f"repos/{repo}/contents/{path}" + (f"?ref={ref}" if ref else "")]
+    p = subprocess.run(cmd, capture_output=True)
+    while p.returncode and wait_for_rate_limit(p.stderr.decode("utf-8", "replace")):
+        p = subprocess.run(cmd, capture_output=True)
     return p.stdout if p.returncode == 0 else None
 
 
