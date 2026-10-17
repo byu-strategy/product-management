@@ -50,7 +50,7 @@ RUBRIC = {
                "and account for in your retro, can earn full marks.",
     "review": "Your /sprint-review report and your retro. Full marks need every retro prompt answered and a "
               "response to something specific the report found. An empty retro earns at most half.",
-    "demo": "The real thing, working, with real content, on Loom. Aim for 60 to 90 seconds; a demo up to four minutes long loses no points.",
+    "demo": "The real thing, working, with real content, on Loom. Aim for 2 to 3 minutes. {LENGTH}",
 }
 CHECK_LABELS = {"on_screen": "On screen", "working": "Working", "real_content": "Real content",
                 "reachable": "Reachable", "matches_plan": "Matches the plan", "off_demo": "Off the demo",
@@ -84,6 +84,16 @@ def practice_max(axis):
 
 PASSAGES = HERE / "grading" / "book-passages.json"  # book_passages.py writes it
 BOOK = "https://byu-strategy.github.io/product-management/"
+
+
+def demo_length(sprint):
+    """The published demo length rule for this sprint (00-assessments.qmd, "Demo length", 2026-10-16)."""
+    if sprint == 1:
+        return "A demo up to about two minutes long lost no points."
+    if sprint in (2, 3):
+        return "A demo up to 3:30 loses no points, and one past 3:30 loses at most 1."
+    line = "4:30" if sprint == 6 else "3:30"
+    return f"A demo up to {line} loses no points; each started 30 seconds past {line} costs 1 point."
 
 
 def book_refs(cid):
@@ -574,7 +584,7 @@ def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott
     review_max = sum(mx for _, _, mx in graded)
 
     def how_scored(c):
-        body = f"<p>{e(RUBRIC[c])}</p>"
+        body = f"<p>{e(RUBRIC[c].replace('{LENGTH}', demo_length(sprint)))}</p>"
         if c == "shipped":
             eff = (diff.get("effect_on_shipped") or "none").strip()
             m = re.match(r"raised by (\d+(?:\.\d+)?)", eff)
@@ -933,7 +943,7 @@ def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott
     pts = {c: mx for c, _l, mx in GRADED[nn]} if nn in GRADED else {"shipped": 20, "review": 10, "demo": 10}
     turnin = (TURNIN.replace("{OUT}", str(pts["shipped"])).replace("{REV}", str(pts["review"])).replace("{DEM}", str(pts["demo"]))
               .replace("{DUE}", "Thursday, December 10, 11:59 PM" if nn == 6 else "The Monday the sprint ends, 11:59 PM")
-              .replace("{DEMO_LEN}", "about three minutes" if nn == 6 else "60 to 90 seconds"))
+              .replace("{DEMO_LEN}", "3 to 4 minutes" if nn == 6 else "2 to 3 minutes"))
     todo += sub("What you turn in, and how", "the four deliverables", turnin)
     next_n = sprint + 1
 
