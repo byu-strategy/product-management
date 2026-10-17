@@ -590,8 +590,6 @@ def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott
             m = re.match(r"raised by (\d+(?:\.\d+)?)", eff)
             if m:
                 body += f"<p>How hard the work was raised this score by {m.group(1)} point{'s' * (m.group(1) != '1')}.</p>"
-            elif eff.startswith("capped"):
-                body += "<p>How hard the work was capped this score at 75% of the points.</p>"
         out = f'<div class=how><b>How it was scored.</b> {body.replace("<p>", "").replace("</p>", " ").strip()}</div>'
         if scott:  # inline, in the instructor color: no drawer for a short note
             out += (f'<div class=inote><b>Reasons</b> <span class=instag>instructor only</span>'

@@ -23,7 +23,6 @@ the same commit as the site change.
 | Output: real and finished (not a template, placeholder, or outline) | Rubric | Sprint 1 |
 | Output: checkable by the course, privately (repo, shared or summarized repo, a link, or shown in the demo) | "It is in your repo" (Sprint 1); "The course can check it, privately" (v2.4.4) | Sprint 1 |
 | Output: raised for ambitious, hard work partly reached | Rubric, "an ambitious goal you partly reach and account for" | Sprint 1 |
-| Output: routine work comfortably finished capped at 75% | Rubric (v2.3.2, Sep 30) | Sprint 2 |
 | Review: report committed | Rubric | Sprint 1 |
 | Review: retro engages with what the report says | Rubric | Sprint 1 |
 | Review: Sprint 1 retro answers its template (did you hit the goal, what happened, what changes next sprint) | Assessments, Sprint 1 retro fields | Sprint 1 only |
@@ -207,8 +206,9 @@ How it affects **Output**:
 
 - **Sprint 1: raise only.** An ambitious goal (assessed 4 or 5) partly reached and accounted
   for in the retro can earn full marks. Difficulty never lowers a Sprint 1 score.
-- **Sprint 2 on: both ways.** Routine work (assessed 1 or 2) comfortably finished earns at most
-  75% of output (15 of 20, 37 of 50).
+- **No fixed cap for routine work (removed 2026-10-17, v2.12.2, before Sprint 2 grades were
+  released).** Routine work comfortably finished is still weighed by how hard it was: it can lose
+  a point or two of Output, never a set share, and the feedback states the facts of the work.
 - **Ambitious work missed a little earns full marks (every sprint; Scott, 2026-10-14).** When the
   work was ambitious (assessed 4 or 5) and what was produced is really great work, give full
   Output even if one or two `Done looks like` items were missed or only partly reached. Name the
@@ -267,7 +267,7 @@ The key `shipped` holds the **Output** category (kept for compatibility). Never 
   "axes": {"Discovery": 0.7, "Launch and Learn": 0.3},
   "axes_why": "for Scott, one or two sentences on how plan, review, and artifacts combined",
   "difficulty": {"assessed": 3, "axis": "...", "baseline_on_axis": 0.0, "predicted": 0, "student_actual": 0,
-                 "why": "for Scott, one or two sentences", "effect_on_shipped": "none | raised by N | capped",
+                 "why": "for Scott, one or two sentences", "effect_on_shipped": "none | raised by N | lowered by N",
                  "note": "for the student"}
 }
 ```

@@ -313,8 +313,7 @@ starts past 4:30.
 The plan is graded for completion, and your predicted difficulty is not graded. Aim high.
 From Sprint 2 on, output is weighed by how hard the work actually was for you, judged from
 the work itself: an ambitious goal you partly reach and
-account for in your retro can still earn full marks, and routine work you comfortably finish
-earns up to 15 of 20.
+account for in your retro can still earn full marks.
 
 **Questions about your sprint feedback:** reply to the Canvas comment your sprint report came
 with, saying which part of the report you mean and what you think was missed. Professor Murff
