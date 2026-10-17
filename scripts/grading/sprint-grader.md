@@ -28,7 +28,7 @@ the same commit as the site change.
 | Review: Sprint 1 retro answers its template (did you hit the goal, what happened, what changes next sprint) | Assessments, Sprint 1 retro fields | Sprint 1 only |
 | Review: retro answers all five `/sprint-review` questions | Assessments (v2.4.0 to v2.4.2, Sep 30) | Sprint 2 |
 | Demo: the real thing, working, with real content | Rubric | Sprint 1 |
-| Demo: length. Sprint 1: more than about two minutes, at most minus 1. Sprint 2: waived, no length deduction (Scott, 2026-10-17). Sprint 3: past 3:30, at most minus 1. Sprints 4 and 5: minus 1 for each started 30 seconds past 3:30. Sprint 6: the same, past 4:30 | Rubric, "Demo length" (published 2026-10-16; for Sprints 2 and 3 it replaces a stricter earlier length rule, so it only lowers deductions) | Sprint 1 |
+| Demo: length. Sprint 1: more than about two minutes, at most minus 1. Sprint 2: waived, no length deduction (Scott, 2026-10-17). Sprints 3 to 5: minus 1 for each started 30 seconds past 3:30. Sprint 6: the same, past 4:30 | Rubric, "Demo length" (published 2026-10-16; Sprint 3 scale published 2026-10-17, v2.12.3, before any Sprint 3 demo was due) | Sprint 1 |
 | Demo: not a Loom scores 0 (set in code) | Assessments and Wrap-up pages (v2.3.1, Sep 30) | Sprint 2 |
 | Late work, 10% per day (Canvas and code, never the grader) | Syllabus late work policy | Sprint 1 |
 
@@ -143,7 +143,7 @@ goal comfortably hit earns nothing extra.
   shows nothing relevant is not. If there are no frames, judge from the transcript, score at
   most 7 if the student mostly narrates, and set `watch_loom` true. Set `watch_loom` true
   whenever the frames do not settle the score. Length (published scale, `00-assessments.qmd` "Demo length"): up to 3:30 loses no points (Sprint 6: 4:30).
-  Past it: Sprints 2 and 3 at most minus 1; from Sprint 4, minus 1 for each started 30 seconds
+  Past it: Sprint 2 waived (no length deduction); from Sprint 3, minus 1 for each started 30 seconds
   (3:31 to 4:00 minus 1, 4:01 to 4:30 minus 2, 4:31 to 5:00 minus 3; Sprint 6 shifted by a minute). Sprint 1
   used about two minutes, at most minus 1. Never mention length as a fault under the line. Sprint 1 did not require Loom specifically, so another video host
   costs nothing in Sprint 1; grade it from whatever frames and transcript the packet has. From

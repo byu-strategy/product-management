@@ -305,10 +305,9 @@ the first category; the Wrap-up assignment is the other three.
 | **Review** | 10 | 20 | Report committed, with your retro answering all five questions and responding to something specific in the report. |
 | **Demo** | 10 | 20 | 2 to 3 minutes on Loom, the real thing, working, with real content. A demo that is not a Loom scores 0. Length rules below. |
 
-**Demo length.** Aim for 2 to 3 minutes. A demo up to 3:30 loses no points. From Sprint 4, each started
-30 seconds past 3:30 costs 1 point (3:31 to 4:00 is minus 1, 4:01 to 4:30 minus 2, 4:31 to 5:00 minus 3). In
-Sprints 2 and 3, a demo past 3:30 loses at most 1 point. Sprint 6 aims for 3 to 4 minutes, and the same scale
-starts past 4:30.
+**Demo length.** Aim for 2 to 3 minutes. A demo up to 3:30 loses no points. From Sprint 3, each started
+30 seconds past 3:30 costs 1 point (3:31 to 4:00 is minus 1, 4:01 to 4:30 minus 2, 4:31 to 5:00 minus 3).
+Sprint 6 aims for 3 to 4 minutes, and the same scale starts past 4:30.
 
 The plan is graded for completion, and your predicted difficulty is not graded. Aim high.
 From Sprint 2 on, output is weighed by how hard the work actually was for you, judged from

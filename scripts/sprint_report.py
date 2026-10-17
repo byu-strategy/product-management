@@ -90,8 +90,8 @@ def demo_length(sprint):
     """The published demo length rule for this sprint (00-assessments.qmd, "Demo length", 2026-10-16)."""
     if sprint == 1:
         return "A demo up to about two minutes long lost no points."
-    if sprint in (2, 3):
-        return "A demo up to 3:30 loses no points, and one past 3:30 loses at most 1."
+    if sprint == 2:
+        return "Demo length was not scored this sprint."
     line = "4:30" if sprint == 6 else "3:30"
     return f"A demo up to {line} loses no points; each started 30 seconds past {line} costs 1 point."
 
