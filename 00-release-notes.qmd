@@ -4,6 +4,16 @@ This course site is updated during the semester, and every meaningful update is 
 
 New entries appear at the top.
 
+## v2.12.1 (2026-10-16)
+
+Sprint demos can now run longer.
+
+- **Demo length.** Aim for 2 to 3 minutes instead of 60 to 90 seconds. A demo up to 3:30 loses no points.
+  From Sprint 4, each started 30 seconds past 3:30 costs 1 point. In Sprints 2 and 3, a demo past 3:30
+  loses at most 1 point. Sprint 6 aims for 3 to 4 minutes, with the line at 4:30. Details are under
+  "Demo length" on the Assessments page.
+- **Learn buttons.** The setup link in the prompt they copy now points to "Update your course skills".
+
 ## v2.12.0 (2026-10-16)
 
 Sprint reports can now open the exact passage that teaches each skill, and the practice exam is ready for `/learn`.
