@@ -4,6 +4,14 @@ This course site is updated during the semester, and every meaningful update is 
 
 New entries appear at the top.
 
+## v2.12.3 (2026-10-17)
+
+The demo length scale now starts with Sprint 3.
+
+- **Demo length.** Aim for 2 to 3 minutes. A demo up to 3:30 loses no points. From Sprint 3, each started
+  30 seconds past 3:30 costs 1 point (3:31 to 4:00 is minus 1, 4:01 to 4:30 minus 2, 4:31 to 5:00 minus 3).
+  Sprint 2 demos are not scored for length. Details are under "Demo length" on the Assessments page.
+
 ## v2.12.2 (2026-10-17)
 
 The fixed cap on routine work is removed.
