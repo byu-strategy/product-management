@@ -612,7 +612,12 @@ def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott
             eff = (diff.get("effect_on_shipped") or "none").strip()
             m = re.match(r"raised by (\d+(?:\.\d+)?)", eff)
             if m:
-                body += f"<p>How hard the work was raised this score by {m.group(1)} point{'s' * (m.group(1) != '1')}.</p>"
+                # When the work was scored easier than the student rated it, the raise came from how much they
+                # took on and pushed through; saying "how hard the work was" beside "closer to a 3" contradicts.
+                easier = (diff.get("assessed") is not None and diff.get("student_actual") is not None
+                          and float(diff["assessed"]) < float(diff["student_actual"]))
+                what = "How much you took on and pushed through" if easier else "How hard the work was"
+                body += f"<p>{what} raised this score by {m.group(1)} point{'s' * (m.group(1) != '1')}.</p>"
         out = f'<div class=how><b>How it was scored.</b> {body.replace("<p>", "").replace("</p>", " ").strip()}</div>'
         if scott:  # inline, in the instructor color: no drawer for a short note
             out += (f'<div class=inote><b>Reasons</b> <span class=instag>instructor only</span>'
@@ -934,7 +939,7 @@ def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott
     # Work kept somewhere private that is not a repo (a local folder, a Google Doc, a private artifact):
     # set per student in the packet's facts after the audit, each with its own wording.
     for req in f.get("share_requests") or []:
-        steps.append(("counts", e(req["title"]), re.sub(r"`([^`]+)`", r"<code>\1</code>", e(req["body"])), ""))
+        steps.append((req.get("kind", "counts"), e(req["title"]), re.sub(r"`([^`]+)`", r"<code>\1</code>", e(req["body"])), ""))
     bad_docs = [x for x in rr["extra"] + [y for it in rr["listed"] for y in it["places"]] if x[2] == "bad" and "google" in x[1]]
     bad_docs += [d for d in p.get("drive_files") or [] if not d.get("ok")] if not bad_docs else []
     if bad_docs:
