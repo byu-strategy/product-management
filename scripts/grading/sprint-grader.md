@@ -218,6 +218,58 @@ How it affects **Output**:
   features not finished, is full marks; a difficulty-4 goal where only a scaffold and a plan came
   out is not.
 
+### Effort and progress (how hard the work was, read from the whole sprint)
+
+The rubric weighs Output "by how hard the work was for you". Difficulty above is one part of that;
+effort and progress are the rest. Rate both from the packet, 1 to 5, and record them in
+`effort_review` (Scott only; never in anything the student reads).
+
+**Effort:** how much real work went into the sprint's goal, on whichever of the six axes the sprint
+was about. Every axis is legitimate work; customer contact counts only when the sprint was that kind
+of work. Evidence:
+- the amount of work, and coming back to it at least once. Bunched work is normal (students have
+  jobs); the only weak pattern is little work in one short sitting at the deadline. One long push
+  that produced a lot is rated on the amount.
+- prompts, sessions, tool calls, subagents and commits from the review and the repo. They are real
+  signal (directing agents is a skill this course teaches), read in context: an automated run can
+  make a hundred commits, and a discovery sprint makes fewer commits than a build sprint.
+- problems pushed through: the review's "Where you got stuck", how long each lasted and how it ended,
+  checked against the commits.
+- attempts, including approaches that failed or were rolled back.
+
+| | Effort |
+|---|---|
+| 1 | Little work, in one short sitting at the deadline |
+| 2 | Light work, or one sitting with modest output |
+| 3 | A solid sprint's worth, in at least two blocks, or one big push with substantial output |
+| 4 | Heavy work: several hard problems pushed through, spread out or in a few big blocks |
+| 5 | Exceptional amount and persistence, however it was scheduled |
+
+**Progress:** how far the work moved during the sprint, from where it started, against the plan
+and read with the goal's ambition. A changed goal is judged against what was first aimed at, with
+credit for a well-reasoned change. Skill growth (new concepts, harder work than before) can only
+raise this rating: an advanced builder may gain fewer new concepts while doing harder work.
+
+| | Progress |
+|---|---|
+| 1 | Nothing new exists or works |
+| 2 | Small movement; the goal mostly unmet |
+| 3 | Real movement: part of an ambitious goal, or most of a moderate one |
+| 4 | Substantial: most of an ambitious goal, or a moderate one fully done and working |
+| 5 | Well past where it started |
+
+How they move Output (both ways, inside the published sentence):
+- **Up.** Effort 4 or 5 with progress 3 or higher counts as ambitious work even when difficulty was
+  assessed 3: misses in `Done looks like` cost little, and full Output is open when the retro
+  accounts for them. Effort 5 with progress 4 or higher is full Output.
+- **Down, a little.** Effort 1 or 2 on routine work (difficulty 1 or 2) comfortably met may lose one
+  or two points of Output. Never a fixed share.
+- **Never from missing evidence.** Excluded sessions, private repos, Codex-only work and work away
+  from the computer hide effort. When the work is hidden, rate what is visible, say so in
+  `effort_review.hidden`, and do not lower a score for it; flag it for Scott.
+- Never write hours, effort or progress ratings, or "effort" as a score word in student text. The
+  feedback states the work as facts, as everywhere else.
+
 Never tell the student that their baseline or starting point was used, in `difficulty.note` or
 anywhere else they will read: no "baseline", "starting point", "where you started", or their
 axis score. Knowing it would invite students to underrate themselves on future surveys. Explain
