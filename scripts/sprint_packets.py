@@ -380,19 +380,36 @@ def build(student, sub, plan_sub, cfg, due):
         n = cfg["sprint"]
         plan_path, review_path = f"sprints/sprint-{n}-plan.md", f"sprints/sprint-{n}-review.md"
         ph, rh = history(repo, plan_path), history(repo, review_path)
+        # A student who keeps the sprint in a second repo links its plan or review on Canvas
+        # (dspring1 and jr115534 in Sprint 2). When the course repo has no review, read that repo's.
+        review_repo = repo
+        if not rh:
+            for r in dict.fromkeys(re.findall(r"github\.com/([\w.-]+/[\w.-]+)/blob/", " ".join(links))):
+                r = r.removesuffix(".git")
+                if r.lower() == repo.lower():
+                    continue
+                r_rh = history(r, review_path)
+                if r_rh:
+                    review_repo, rh = r, r_rh
+                    r_ph = history(r, plan_path)
+                    if r_ph and not ph:  # the whole sprint lives there: plan, README and commits too
+                        repo, ph = r, r_ph
+                    p["sprint_repo"] = f"https://github.com/{r}"
+                    break
         # The window closes at the due date, or at the Canvas submission when that came later (the late
         # policy is applied separately). Plan, review, README and every file are read as of then.
         at = sub.get("submitted_at")
         cutoff = max(due, local(at)) if at else due
 
-        def as_of(path, hist=None):
-            hist = history(repo, path) if hist is None else hist
+        def as_of(path, hist=None, in_repo=None):
+            in_repo = in_repo or repo
+            hist = history(in_repo, path) if hist is None else hist
             inside = [sha for sha, t in hist if t <= cutoff]
-            return file_at(repo, path, inside[-1]) if inside else (file_at(repo, path) if not hist else None)
+            return file_at(in_repo, path, inside[-1]) if inside else (file_at(in_repo, path) if not hist else None)
 
         plan_first = file_at(repo, plan_path, ph[0][0]) if ph else None
         plan_now = as_of(plan_path, ph)
-        review = as_of(review_path, rh)
+        review = as_of(review_path, rh, review_repo)
         readme = as_of("README.md") or ""
         f["edited_after_window"] = [x for x, h in (("plan", ph), ("review", rh)) if any(t > cutoff for _, t in h)]
         at_due = [sha for sha, t in ph if t <= due]
