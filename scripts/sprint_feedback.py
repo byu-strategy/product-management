@@ -137,14 +137,21 @@ def validate(base, items, growth=None):
         # Quoted text is the student's own words or their app's output, so it is not checked.
         plain_text = _re.sub(r"(?<!\w)'.*?'(?!\w)|\"[^\"]*\"|\u2018.*?\u2019(?!\w)|\u201c[^\u201d]*\u201d", " ", text)
         # File paths and the student's own terms ("campaign packet" is a carrier filing) are not our words.
-        check_text = _re.sub(r"\S*/\S+|\S+\.(?:md|json|js|ts|py|csv|html)\b|\b(?:(?:10DLC )?campaign|teach) packets?\b|What I am (?:working on|building)", " ", plain_text, flags=_re.I)
+        check_text = _re.sub(r"\S*/\S+|\S+\.(?:md|json|js|ts|py|csv|html)\b|\b(?:(?:10DLC )?campaign|teach) packets?\b|What I am (?:working on|building)|How I will know if it works", " ", plain_text, flags=_re.I)
+        # Words a reviewer confirmed name the student's own product (an eval "baseline", a "release
+        # packet" builder, an iframe "frame"), listed per student in the result's "voice_ok".
+        for w in r.get("voice_ok") or []:
+            check_text = _re.sub(rf"\b{_re.escape(w)}s?\b", " ", check_text, flags=_re.I)
+        plain_ok = plain_text
+        for w in r.get("voice_ok") or []:
+            plain_ok = _re.sub(rf"\b{_re.escape(w)}s?\b", " ", plain_ok, flags=_re.I)
         machine = _re.findall(r"\b(frames?|grader|artificial intelligence|it appears (?:that|to)|appears to be|the video shows|"
                               r"session scan|coders?|packet)\b",
                               check_text, _re.I)
         machine += _re.findall(r"(?<!Type )\bI\b(?!-)|\bI'(?:m|ve|d|ll)\b", check_text)  # no first person
         # The baseline survey informs difficulty, but saying so invites students to underrate themselves.
         machine += _re.findall(r"\b(baseline|starting point|where you started|self-rating|self-rated|"
-                               r"starting at \d|at \d\.\d+ on|starting where you)\b", plain_text, _re.I)
+                               r"starting at \d|at \d\.\d+ on|starting where you)\b", plain_ok, _re.I)
         # Mannered prose (grading/student-voice.md): stock figures of speech a literal phrase replaces.
         # A backstop only; the step 3b read catches the rest.
         machine += [f"mannered: {m}" for m in _re.findall(
