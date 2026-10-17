@@ -50,6 +50,24 @@ SIGNAL_FILE_CHARS = 3_000
 TEXT = re.compile(r"\.(md|txt|py|js|jsx|ts|tsx|html|css|json|csv|yml|yaml|toml|sql|qmd|prisma)$|(^|/)\.(gitignore|env\.example|env\.sample)$", re.I)
 
 
+
+def path_or_branch(r, text):
+    """True when an owner/name match is really a folder path or a git branch, not a repo."""
+    esc = re.escape(r)
+    as_path = re.search(rf"(?i)(?<!github\.com/)(?<![\w.-]){esc}/[\w.-]", text) or \
+        re.search(rf"(?i)(?<!github\.com)/{esc}\b", text)
+    as_branch = re.search(rf"(?i)(?:branch|PR\s*#?\d+)\W{{1,4}}`?{esc}\b|\b{esc}`?\)?\s+branch", text)
+    return bool(as_path or as_branch or r.split("/")[0] in {"discovery", "interviews", "supabase", "agents", "claude",
+                                                             "social", "codex", "cursor", "copilot", "chore", "wip"})
+
+
+def private_bare_repos(text):
+    """Repo names given without an owner and called private: "`elders-quorum-web`, private GitHub repo"."""
+    pat = (r"`([\w.-]+)`\s*[,(]?\s*(?:a\s+)?private(?: GitHub| company)? repo"
+           r"|private(?: GitHub| company)? repo(?:sitory)?,?\s+`([\w.-]+)`")
+    return sorted({(a or b).lower() for a, b in re.findall(pat, text, re.I)
+                   if "/" not in (a or b) and "." not in (a or b)[-5:]})
+
 def local(iso):
     return dt.datetime.fromisoformat(iso.replace("Z", "+00:00")).astimezone(TZ)
 
@@ -573,7 +591,11 @@ def build(student, sub, plan_sub, cfg, due):
                                  "commits": [{k: v for k, v in c.items() if k != "sha"} | {"sha": c["sha"][:7]} for c in cs],
                                  "files": shipped(r, cs, budget=20_000, cutoff=p.get("window_end") and
                                                   dt.datetime.fromisoformat(p["window_end"])) if cs else []})
-    unshared = sorted(named - shared_lower - {course} - {o.lower() for o in others})
+    unshared = sorted(r for r in named - shared_lower - {course} - {o.lower() for o in others} if not path_or_branch(r, text))
+    # A private repo named without its owner ("`elders-quorum-web`, private GitHub repo") still needs a share line.
+    for b in private_bare_repos(text):
+        if not any(b == u.split("/")[-1] for u in set(unshared) | shared_lower | {o.lower() for o in others} | {course}):
+            unshared.append(b)
     f["repos_named_but_not_shared"] = unshared
     # Every live link anywhere in the README, not only the "Where the work lives" section: students
     # put them under Live:, Where to see it, or in prose, and an unchecked link is our gap, not theirs.

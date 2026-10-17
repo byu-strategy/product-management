@@ -74,6 +74,29 @@ TURNIN = """<table class=turnin>
 </table>"""
 
 
+
+# "You might consider committing X" becomes "Commit X". Doubled consonants (committ, runn, plann)
+# lose a letter; stems that need a silent e get it back; anything not a gerund is left alone.
+SILENT_E = {"hav", "writ", "shar", "us", "sav", "mak", "mov", "giv", "tak", "includ", "chang", "stor", "compar",
+            "scor", "hid", "rid", "describ", "nam", "updat", "creat", "remov", "replac", "continu", "argu", "valu", "measur",
+            "reduc", "produc", "introduc", "prepar", "separat", "automat", "documen", "captur", "receiv",
+            "declin", "defin", "combin", "explor", "rewrit", "retir", "merg", "issu", "schedul", "pric", "rais",
+            "us", "clos", "notic", "decid", "locat", "translat", "validat", "generat", "estimat", "calculat"}
+NOT_GERUND = {"anything", "nothing", "something", "everything", "morning", "evening", "string", "thing", "ring",
+              "king", "spring", "during", "bring", "sing", "wing", "ceiling"}
+
+
+def imperative(word):
+    w = word.lower()
+    if w in NOT_GERUND or not w.endswith("ing") or len(w) < 5:
+        return word
+    stem = w[:-3]
+    if stem in SILENT_E:
+        return stem + "e"
+    if len(stem) >= 3 and stem[-1] == stem[-2] and stem[-1] not in "lszdf" + "aeiou":
+        return stem[:-1]
+    return stem
+
 def fmt(x):
     return f"{round(float(x), 1):g}"
 
@@ -919,11 +942,13 @@ def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott
     nxt = r.get("next_sprint") or ""
     for sent in [x for x in re.split(r"(?<=\.)\s+(?=You might)", nxt) if x.strip()]:
         s_ = re.sub(r"^You might (also )?consider ", "", sent.strip()).rstrip(".")
-        s_ = re.sub(r"^(\w+?)ing\b", lambda m: {"lett": "Let", "runn": "Run", "hav": "Have", "writ": "Write",
-                                                 "shar": "Share", "us": "Use", "sav": "Save", "mak": "Make",
-                                                 "mov": "Move", "giv": "Give", "tak": "Take", "includ": "Include",
-                                                 "chang": "Change", "stor": "Store", "compar": "Compare",
-                                                 "scor": "Score", "spreading": "Spread"}.get(m.group(1), m.group(1).capitalize()), s_)
+        s_ = re.sub(r"^(\w+?ing)\b", lambda m: imperative(m.group(1)).capitalize(), s_)
+        # A second verb in the same sentence: "Recording X, and writing down Y" -> "and write down Y".
+        # Only before an example: in "such as tapping a band and watching the tip", the gerunds stay.
+        m_ex = re.search(r"\b(?:such as|for example|for instance|like)\b", s_)
+        head, tail = (s_[:m_ex.start()], s_[m_ex.start():]) if m_ex else (s_, "")
+        head = re.sub(r"\b(and|then|or) (\w+ing)\b", lambda m: f"{m.group(1)} {imperative(m.group(2))}", head)
+        s_ = head + tail
         steps.append(("try", e(s_[0].upper() + s_[1:] + "."), "", ""))
     fmt_like = re.compile(r"\b(retro|README|review\.md|plan\.md|/sprint-plan|/sprint-review)\b", re.I)
     steps.sort(key=lambda st: {"try": 0 if not fmt_like.search(st[1]) else 2, "counts": 1}.get(st[0], 3))
