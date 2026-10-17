@@ -715,7 +715,8 @@ def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott
         if ps:
             when = (plan_row or {}).get("submitted_at") or ""
             plan_body = (f"<p>{e(RUBRIC['plan'])}</p>" + (f"<p class=qm>Turned in on Canvas {e(when)}.</p>" if when else "")
-                         + (f"<p>Missing: {e(plan_row['fields_missing'])}.</p>" if (plan_row or {}).get("fields_missing") else ""))
+                         + (f"<p>Missing: {e(plan_row['fields_missing'])}.</p>" if (plan_row or {}).get("fields_missing") else "")
+                         + (f"<p>{e(plan_row['note'])}</p>" if (plan_row or {}).get("note") else ""))
             text = (p.get("plan_submission") or {}).get("text")
             if text:
                 plan_body += f'<p class=qm>Your plan, as turned in:</p><div class="doc scroll">{md(text, repo)}</div>'
@@ -1072,7 +1073,8 @@ ones your work has shown say which sprint. Ones marked "measured on the exams" c
     score_lines = []
     if sprint > 1:
         pr = plan_row or {}
-        reason = ("All four fields are there." if ps and not pr.get("fields_missing") else
+        reason = (pr["note"] if pr.get("note") else
+                  "All four fields are there." if ps and not pr.get("fields_missing") else
                   f"Missing: {pr['fields_missing']}." if ps else f"No plan was turned in on Canvas for Sprint {sprint}.")
         score_lines.append(("Plan", fmt(plan_pts), 10, reason))
     score_lines += [(LABELS.get(c, c), fmt(final(row_, c)), mx, first_sentence((r.get("feedback") or {}).get(c, "")))

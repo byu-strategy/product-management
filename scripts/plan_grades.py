@@ -34,7 +34,7 @@ from sprint_config import COURSE_ID, PLAN_FIELDS, PLAN_POINTS, SPRINTS
 TZ = ZoneInfo("America/Denver")
 DATA = Path.home() / "hubs/courses/_data/product-management"
 COLS = ["net_id", "name", "preferred_first", "canvas_user_id", "submitted_at", "late",
-        "fields_missing", "score", "has_feedback", "how"]
+        "fields_missing", "score", "has_feedback", "how", "note"]
 e = html.escape
 
 
@@ -146,6 +146,8 @@ def main():
 
     base = DATA / f"grading/sprint-{a.sprint}/plans"
     (base / "feedback").mkdir(parents=True, exist_ok=True)
+    ov = base / "overrides.csv"
+    overrides = {r["net_id"]: r for r in csv.DictReader(open(ov))} if ov.exists() else {}
     rows = []
     for s in roster:
         sub = subs.get(str(s["canvas_user_id"]), {})
@@ -161,6 +163,13 @@ def main():
                "late": "yes" if sub.get("late") else "", "fields_missing": ", ".join(missing),
                "score": (PLAN_POINTS if not missing else 0) if text else "",
                "has_feedback": "yes" if fb else "", "_feedback": fb, "how": how}
+        # Scott's hand decisions (plans/overrides.csv: net_id,score,note), e.g. a plan committed on time
+        # but never turned in on Canvas. The note is shown to the student in the report's Plan row.
+        if s["net_id"] in overrides:
+            o = overrides[s["net_id"]]
+            row["score"] = int(o["score"]) if str(o["score"]).strip() else row["score"]
+            row["note"] = o.get("note", "")
+            row["how"] = (row["how"] + "; " if row["how"] else "") + "override"
         rows.append(row)
         if text:
             pk = base / f"{s['net_id']}.json"
