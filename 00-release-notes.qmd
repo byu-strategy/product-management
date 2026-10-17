@@ -4,6 +4,14 @@ This course site is updated during the semester, and every meaningful update is 
 
 New entries appear at the top.
 
+## v2.12.2 (2026-10-17)
+
+The fixed cap on routine work is removed.
+
+- **No 15-of-20 cap.** Routine work you comfortably finish no longer has a fixed cap on Output. Output is
+  still weighed by how hard the work was for you, and an ambitious goal you partly reach and account for in
+  your retro can still earn full marks. This applies from Sprint 2, whose grades are not yet released.
+
 ## v2.12.1 (2026-10-16)
 
 Sprint demos can now run longer.
