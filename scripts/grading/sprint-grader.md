@@ -29,7 +29,7 @@ the same commit as the site change.
 | Review: Sprint 1 retro answers its template (did you hit the goal, what happened, what changes next sprint) | Assessments, Sprint 1 retro fields | Sprint 1 only |
 | Review: retro answers all five `/sprint-review` questions | Assessments (v2.4.0 to v2.4.2, Sep 30) | Sprint 2 |
 | Demo: the real thing, working, with real content | Rubric | Sprint 1 |
-| Demo: length, more than about two minutes (Sprint 6: more than about three and a half), at most minus 1 | Rubric ("Ninety seconds", then "60 to 90 seconds"; Sprint 6 "runs to three minutes") | Sprint 1 |
+| Demo: length, more than four minutes, at most minus 1 (Scott, 2026-10-16: nothing comes off below four minutes, every sprint including Sprint 6) | Rubric ("Ninety seconds", then "60 to 90 seconds"; Sprint 6 "runs to three minutes") | Sprint 1 |
 | Demo: not a Loom scores 0 (set in code) | Assessments and Wrap-up pages (v2.3.1, Sep 30) | Sprint 2 |
 | Late work, 10% per day (Canvas and code, never the grader) | Syllabus late work policy | Sprint 1 |
 
@@ -143,8 +143,8 @@ goal comfortably hit earns nothing extra.
   planning work, scrolling through the actual documents is the demo. Narration while the screen
   shows nothing relevant is not. If there are no frames, judge from the transcript, score at
   most 7 if the student mostly narrates, and set `watch_loom` true. Set `watch_loom` true
-  whenever the frames do not settle the score. Length: up to about two minutes (Sprint 6: about three and a half) loses no points;
-  longer, at most minus 1. Sprint 1 did not require Loom specifically, so another video host
+  whenever the frames do not settle the score. Length: up to four minutes loses no points, in every sprint;
+  longer than four minutes, at most minus 1. Never mention a demo's length as a fault below four minutes. Sprint 1 did not require Loom specifically, so another video host
   costs nothing in Sprint 1; grade it from whatever frames and transcript the packet has. From
   Sprint 2 on, a demo that is not a Loom scores 0; the script sets that, so do not grade it or
   mention the host.
