@@ -137,7 +137,7 @@ def validate(base, items, growth=None):
         # Quoted text is the student's own words or their app's output, so it is not checked.
         plain_text = _re.sub(r"(?<!\w)'.*?'(?!\w)|\"[^\"]*\"|\u2018.*?\u2019(?!\w)|\u201c[^\u201d]*\u201d", " ", text)
         # File paths and the student's own terms ("campaign packet" is a carrier filing) are not our words.
-        check_text = _re.sub(r"\S*/\S+|\S+\.(?:md|json|js|ts|py|csv|html)\b|\b(?:10DLC )?campaign packet\b|What I am (?:working on|building)", " ", plain_text, flags=_re.I)
+        check_text = _re.sub(r"\S*/\S+|\S+\.(?:md|json|js|ts|py|csv|html)\b|\b(?:(?:10DLC )?campaign|teach) packets?\b|What I am (?:working on|building)", " ", plain_text, flags=_re.I)
         machine = _re.findall(r"\b(frames?|grader|artificial intelligence|it appears (?:that|to)|appears to be|the video shows|"
                               r"session scan|coders?|packet)\b",
                               check_text, _re.I)

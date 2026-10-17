@@ -29,7 +29,7 @@ the same commit as the site change.
 | Review: Sprint 1 retro answers its template (did you hit the goal, what happened, what changes next sprint) | Assessments, Sprint 1 retro fields | Sprint 1 only |
 | Review: retro answers all five `/sprint-review` questions | Assessments (v2.4.0 to v2.4.2, Sep 30) | Sprint 2 |
 | Demo: the real thing, working, with real content | Rubric | Sprint 1 |
-| Demo: length. Sprint 1: more than about two minutes, at most minus 1. Sprints 2 and 3: past 3:30, at most minus 1. Sprints 4 and 5: minus 1 for each started 30 seconds past 3:30. Sprint 6: the same, past 4:30 | Rubric, "Demo length" (published 2026-10-16, before Sprint 4) | Sprint 1 | Rubric ("Ninety seconds", then "60 to 90 seconds"; Sprint 6 "runs to three minutes") | Sprint 1 |
+| Demo: length. Sprint 1: more than about two minutes, at most minus 1. Sprints 2 and 3: past 3:30, at most minus 1. Sprints 4 and 5: minus 1 for each started 30 seconds past 3:30. Sprint 6: the same, past 4:30 | Rubric, "Demo length" (published 2026-10-16; for Sprints 2 and 3 it replaces a stricter earlier length rule, so it only lowers deductions) | Sprint 1 |
 | Demo: not a Loom scores 0 (set in code) | Assessments and Wrap-up pages (v2.3.1, Sep 30) | Sprint 2 |
 | Late work, 10% per day (Canvas and code, never the grader) | Syllabus late work policy | Sprint 1 |
 
