@@ -4,6 +4,14 @@ This course site is updated during the semester, and every meaningful update is 
 
 New entries appear at the top.
 
+## v2.12.4 (2026-10-19)
+
+Testing the Design has a new quote on watching users.
+
+- **Testing the Design.** "What is Usability Testing?" now includes a post from Garry Tan, president and CEO of
+  Y Combinator, on watching people use your software without saying anything, and a note on how his ten users
+  fit the five-user rule.
+
 ## v2.12.3 (2026-10-17)
 
 The demo length scale now starts with Sprint 3.
