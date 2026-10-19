@@ -36,6 +36,28 @@ Norman's other principles (mapping, constraints, feedback, and the conceptual mo
 
 Usability testing is observing real users attempt to accomplish real tasks with your product. It's not a demo. It's not a survey. It's watching someone struggle (or succeed) while you stay quiet and take notes.
 
+Garry Tan, president and CEO of Y Combinator, gives founders the same instruction:
+
+::: tweet-center
+<blockquote class="twitter-tweet">
+
+<p lang="en" dir="ltr">
+
+The point of a startup is to make usable technology for others. When you make software, you have to watch at least 10 people use it. Sit next to them and say absolutely nothing. Force yourself to marinate in the failure of your product design.<br><br>Every version 1 of any software…
+
+</p>
+
+— Garry Tan (\@garrytan) <a href="https://twitter.com/garrytan/status/1849137742200135761?ref_src=twsrc%5Etfw">October 23, 2024</a>
+
+</blockquote>
+:::
+
+```{=html}
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+```
+
+His ten users fit the five-user rule below: ten sessions run best as two rounds of five, with a fix between them.
+
 **What usability testing reveals:**
 - Where users get stuck or confused
 - What they expect vs. what they get
