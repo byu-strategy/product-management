@@ -181,6 +181,10 @@ def first_sentence(t):
     return m.group(1) if m else t
 
 
+# A reason that starts with a name or an acronym keeps its capital after the colon.
+PROPER_START = r"(?:Claude|GitHub|Canvas|Loom|Supabase|Vercel|Slack|Google|Resend|Stripe|Granola|Procore|I)\b|[A-Z]{2}"
+
+
 def coach_gaps(G, k=4):
     """Two to four concepts worth learning next, each with a book passage: first the ones the
     student worked near but that did not count yet, then unshown concepts in the same item as
@@ -202,7 +206,7 @@ def coach_gaps(G, k=4):
 
     for x in G.get("not_counted") or []:
         why = str(x.get("why") or "").strip()
-        add(x.get("concept"), "Work on this did not count yet" + (f": {why[:1].lower() + why[1:]}" if why else "."))
+        add(x.get("concept"), "Work on this did not count yet" + (f": {why if re.match(PROPER_START, why) else why[:1].lower() + why[1:]}" if why else "."))
     queues, items_seen = [], set()
     for m in sorted(G.get("new") or [], key=lambda m: -float(m.get("points") or 0)):
         ax, item = m.get("axis"), m.get("item")
