@@ -65,6 +65,12 @@ public, launched, or used by anyone.
 ambiguous, give the student the benefit of the doubt, and never take Output points because work
 was local-only, private, unlaunched, or not used by anyone.
 
+**Sprint 1 grace (Scott, 2026-10-20: "very graceful on the first one; we're building this as we
+go").** Applies to Sprint 1 only, for every student: a committed plan earns the Plan's 10 even if
+late; a committed report earns Review 10 whatever the retro holds; any demo showing real work earns
+at least 8; Output takes no points for work the course could not check, only for work that was
+not done; late deductions are waived on Canvas. A category with nothing submitted stays 0.
+
 **Any real artifact counts, on any of the six axes.** Go-to-market, research, design, and
 workflow are as legitimate as code: interview notes and synthesis, personas, a pitch deck, a
 pricing or financial model, a Word or PDF write-up, a Figma file or mockups, a `CLAUDE.md` or
