@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 980" role="img" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
   <title>Claude Code: the model, the built-in harness, and your harness</title>
-  <desc>Three concentric rings, labeled Claude Code as a whole. At the center, the model. Around it, the built-in harness, which holds the context window, the tool-call check, and the tools, connected in a loop around the model: the context window feeds the model, the model's tool call goes to the check, the check passes it to the tools, and the tools' results return to the context window. The outer ring is your harness, in three sectors, each with an arrow to the part of the built-in harness it changes. Read by the model: CLAUDE.md, auto memory, and skills, into the context window. Enforced by the harness: permission rules, into the tool-call check, and hooks, into the built-in harness. Called by the model: MCP servers and subagents, into the tools. Outside the rings, you send messages into the context window. An arrow labeled actions leaves the tools and all three rings to reach files, the terminal, the web, and outside services.</desc>
+  <desc>Three concentric rings, labeled Claude Code as a whole. At the center, the model. Around it, the built-in harness, which holds the context window, the tool-call check, and the tools, connected in a loop around the model: the context window feeds the model, the model's tool call goes to the check, the check passes it to the tools, and the tools' results return to the context window. The outer ring is your harness, in three sectors, each with an arrow to the part of the built-in harness it changes. Read by the model: CLAUDE.md, auto memory, and skills, into the context window. Enforced by the harness: permission rules, into the tool-call check, and hooks, into the built-in harness. Called by the model: MCP servers and subagents, into the tools. Outside the rings, you send messages to the built-in harness and get replies back. An arrow labeled actions leaves the tools and all three rings to reach the world outside: your project files; the terminal, where git, gh, and other CLIs run; the web, for search and pages; and apps such as GitHub and Supabase.</desc>
   <defs>
     <marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#0057B8"/></marker>
     <marker id="an" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#002E5D"/></marker>
@@ -82,19 +82,25 @@
   <circle cx="70" cy="128" r="30" fill="#E6EEF7"/>
   <g transform="translate(55,113) scale(1.25)" fill="none" stroke="#002E5D" stroke-width="1.76" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></g>
   <text x="70" y="186" text-anchor="middle" font-size="19" font-weight="700" fill="#002E5D">You</text>
-  <path d="M104 140 C200 180 300 300 334 430" stroke="#002E5D" stroke-width="2" fill="none" marker-end="url(#an)"/>
-  <text x="150" y="232" text-anchor="middle" font-size="16" fill="#5A6672">messages</text>
+  <path d="M106 128 C190 140 280 210 330 292" stroke="#002E5D" stroke-width="2" fill="none" marker-end="url(#an)"/>
+  <text x="262" y="136" text-anchor="middle" font-size="16" fill="#5A6672">messages</text>
+  <path d="M314 312 C260 244 180 182 100 168" stroke="#002E5D" stroke-width="2" fill="none" marker-end="url(#an)"/>
+  <text x="168" y="226" text-anchor="middle" font-size="16" fill="#5A6672">replies</text>
 
   <!-- Out to the world -->
   <path d="M548 626 V884" stroke="#002E5D" stroke-width="2.5" fill="none" marker-end="url(#an)"/>
   <text x="536" y="800" text-anchor="end" font-size="16" fill="#5A6672">actions</text>
-  <rect x="190" y="892" width="620" height="64" rx="10" fill="#FFFFFF" stroke="#D9DEE4" stroke-width="1.5"/>
-  <g transform="translate(226,911) scale(1.083)" fill="none" stroke="#002E5D" stroke-width="2.03" stroke-linecap="round" stroke-linejoin="round"><path d="m6 14 1.5-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.54 6a2 2 0 0 1-1.95 1.5H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H18a2 2 0 0 1 2 2v2"/></g>
-  <text x="262" y="931" font-size="18" font-weight="600" fill="#2C3E50">Files</text>
-  <g transform="translate(350,911) scale(1.083)" fill="none" stroke="#002E5D" stroke-width="2.03" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" x2="20" y1="19" y2="19"/></g>
-  <text x="386" y="931" font-size="18" font-weight="600" fill="#2C3E50">Terminal</text>
-  <g transform="translate(500,911) scale(1.083)" fill="none" stroke="#002E5D" stroke-width="2.03" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></g>
-  <text x="536" y="931" font-size="18" font-weight="600" fill="#2C3E50">Web</text>
-  <g transform="translate(616,911) scale(1.083)" fill="none" stroke="#002E5D" stroke-width="2.03" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22v-5"/><path d="M9 8V2"/><path d="M15 8V2"/><path d="M18 8v5a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4V8Z"/></g>
-  <text x="652" y="931" font-size="18" font-weight="600" fill="#2C3E50">Services</text>
+  <rect x="120" y="890" width="760" height="72" rx="10" fill="#FFFFFF" stroke="#D9DEE4" stroke-width="1.5"/>
+  <g transform="translate(146,906) scale(1.083)" fill="none" stroke="#002E5D" stroke-width="2.03" stroke-linecap="round" stroke-linejoin="round"><path d="m6 14 1.5-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.54 6a2 2 0 0 1-1.95 1.5H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H18a2 2 0 0 1 2 2v2"/></g>
+  <text x="184" y="920" font-size="18" font-weight="600" fill="#2C3E50">Files</text>
+  <text x="184" y="943" font-size="15" fill="#5A6672">your project</text>
+  <g transform="translate(320,906) scale(1.083)" fill="none" stroke="#002E5D" stroke-width="2.03" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" x2="20" y1="19" y2="19"/></g>
+  <text x="358" y="920" font-size="18" font-weight="600" fill="#2C3E50">Terminal</text>
+  <text x="358" y="943" font-size="15" fill="#5A6672">git, gh, other CLIs</text>
+  <g transform="translate(530,906) scale(1.083)" fill="none" stroke="#002E5D" stroke-width="2.03" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></g>
+  <text x="568" y="920" font-size="18" font-weight="600" fill="#2C3E50">Web</text>
+  <text x="568" y="943" font-size="15" fill="#5A6672">search, pages</text>
+  <g transform="translate(690,906) scale(1.083)" fill="none" stroke="#002E5D" stroke-width="2.03" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22v-5"/><path d="M9 8V2"/><path d="M15 8V2"/><path d="M18 8v5a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4V8Z"/></g>
+  <text x="728" y="920" font-size="18" font-weight="600" fill="#2C3E50">Apps</text>
+  <text x="728" y="943" font-size="15" fill="#5A6672">GitHub, Supabase</text>
 </svg>
