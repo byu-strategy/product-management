@@ -4,6 +4,17 @@ This course site is updated during the semester, and every meaningful update is 
 
 New entries appear at the top.
 
+## v2.12.9 (2026-10-20)
+
+The sprint rubric now says what a demo shows for each kind of work, how goals that depend on other people are graded, and exactly what the retro costs.
+
+- **Goals that need someone else to say yes.** Signing design partners, getting a customer to pay, or reaching signups is graded on the asks you made and can show: who you asked, when, what you asked for, and what they said. A no or a "not yet" costs no points when the ask is on record and your retro says what you learned. Selling and outreach now has its own row in the table of what output means.
+- **What your demo shows.** A new table on the Assessments page says what "working" means for each kind of sprint, from clicking through a product feature to opening your notes for research or showing your deck, asks, and pipeline for selling. Keep real names, emails, and phone numbers off the screen; open the copies in your repo with names removed instead.
+- **Review.** Any answer in your retro can respond to something specific in the report. Each question left unanswered costs 1 point, a retro that responds to nothing specific loses 2, and an empty retro earns at most half.
+- **Sprint reports.** The "How hard it was" line now says what difficulty did to your score.
+- **Demo length.** The sprint steps now say 2 to 3 minutes, matching the rubric.
+- These changes only raise scores, so Sprints 1 and 2 were regraded under them for the whole class. No score went down.
+
 ## v2.12.8 (2026-10-20)
 
 The Claude Code figure now describes its parts as layers, and the demo rules say how to share your Loom.
