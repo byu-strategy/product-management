@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 980" role="img" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
   <title>Claude Code: the model, the built-in harness, and your harness</title>
-  <desc>Three concentric rings, labeled Claude Code as a whole. At the center, the model. Around it, the built-in harness, which holds the context window, the tool-call check, and the tools, connected in a loop around the model: the context window feeds the model, the model's tool call goes to the check, the check passes it to the tools, and the tools' results return to the context window. The outer ring is your harness, in three sectors, each with an arrow to the part of the built-in harness it changes. Read by the model: CLAUDE.md, auto memory, and skills, into the context window. Enforced by the harness: permission rules, into the tool-call check, and hooks, into the built-in harness. Called by the model: MCP servers and subagents, into the tools. Outside the rings, you send messages to the built-in harness and get replies back. An arrow labeled actions leaves the tools and all three rings to reach the world outside: your project files; the terminal, where git, gh, and other CLIs run; the web, for search and pages; and apps such as GitHub and Supabase.</desc>
+  <desc>Three concentric rings, labeled Claude Code as a whole. At the center, the model. Around it, the built-in harness, which holds the context window, the tool-call check, and the tools, connected in a loop around the model: the context window feeds the model, the model's tool call goes to the check, the check passes it to the tools, and the tools' results return to the context window. The outer ring is your harness, in three sectors, each with an arrow to the part of the built-in harness it changes. Read by the model: CLAUDE.md, auto memory, and skills, into the context window. Enforced by the harness: permission rules, into the tool-call check, and hooks, into the built-in harness. Called by the model: MCP servers and subagents, into the tools. Outside the rings, you send messages, which go into the context window, and get replies back from the built-in harness. An arrow labeled actions leaves the tools and all three rings to reach the world outside: your project files; the terminal, where git, gh, and other CLIs run; the web, for search and pages; and apps such as GitHub and Supabase.</desc>
   <defs>
     <marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#0057B8"/></marker>
     <marker id="an" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#002E5D"/></marker>
@@ -82,10 +82,12 @@
   <circle cx="70" cy="128" r="30" fill="#E6EEF7"/>
   <g transform="translate(55,113) scale(1.25)" fill="none" stroke="#002E5D" stroke-width="1.76" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></g>
   <text x="70" y="186" text-anchor="middle" font-size="19" font-weight="700" fill="#002E5D">You</text>
-  <path d="M106 128 C190 140 280 210 330 292" stroke="#002E5D" stroke-width="2" fill="none" marker-end="url(#an)"/>
-  <text x="262" y="136" text-anchor="middle" font-size="16" fill="#5A6672">messages</text>
-  <path d="M314 312 C260 244 180 182 100 168" stroke="#002E5D" stroke-width="2" fill="none" marker-end="url(#an)"/>
-  <text x="168" y="226" text-anchor="middle" font-size="16" fill="#5A6672">replies</text>
+  <path d="M106 136 C220 170 320 290 340 430" stroke="#002E5D" stroke-width="2" fill="none" marker-end="url(#an)"/>
+  <path d="M292 373 C240 300 180 200 100 168" stroke="#002E5D" stroke-width="2" fill="none" marker-end="url(#an)"/>
+  <rect x="226" y="246" width="88" height="26" rx="13" fill="#FFFFFF" stroke="#D9DEE4" stroke-width="1.25"/>
+  <text x="270" y="264" text-anchor="middle" font-size="15" fill="#5A6672">messages</text>
+  <rect x="121" y="190" width="70" height="26" rx="13" fill="#FFFFFF" stroke="#D9DEE4" stroke-width="1.25"/>
+  <text x="156" y="208" text-anchor="middle" font-size="15" fill="#5A6672">replies</text>
 
   <!-- Out to the world -->
   <path d="M548 626 V884" stroke="#002E5D" stroke-width="2.5" fill="none" marker-end="url(#an)"/>
