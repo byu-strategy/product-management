@@ -81,7 +81,14 @@ SILENT_E = {"hav", "writ", "shar", "us", "sav", "mak", "mov", "giv", "tak", "inc
             "scor", "hid", "rid", "describ", "nam", "updat", "creat", "remov", "replac", "continu", "argu", "valu", "measur",
             "reduc", "produc", "introduc", "prepar", "separat", "automat", "documen", "captur", "receiv",
             "declin", "defin", "combin", "explor", "rewrit", "retir", "merg", "issu", "schedul", "pric", "rais",
-            "us", "clos", "notic", "decid", "locat", "translat", "validat", "generat", "estimat", "calculat"}
+            "us", "clos", "notic", "decid", "locat", "translat", "validat", "generat", "estimat", "calculat",
+            "choos", "los", "chas", "rul", "typ", "guid", "provid", "requir", "secur", "configur", "compil",
+            "manag", "engag", "packag", "leverag", "encourag", "arrang", "challeng", "promot", "quot", "vot",
+            "not", "invit", "involv", "solv", "resolv", "serv", "observ", "reserv", "achiev", "believ", "retriev",
+            "advertis", "organiz", "summariz", "priorit", "prioritiz", "optimiz", "personaliz", "recogniz",
+            "analyz", "authoriz", "emphasiz", "minimiz", "maximiz", "standardiz", "finaliz", "pars", "fus",
+            "abus", "excus", "paus", "caus", "rais", "prais", "purchas", "releas", "increas", "decreas", "eras",
+            "phras", "bas", "cas", "us", "examin", "determin", "outlin", "pipelin", "timelin", "deadlin"}
 NOT_GERUND = {"anything", "nothing", "something", "everything", "morning", "evening", "string", "thing", "ring",
               "king", "spring", "during", "bring", "sing", "wing", "ceiling"}
 
