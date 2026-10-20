@@ -618,7 +618,10 @@ def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott
     review_max = sum(mx for _, _, mx in graded)
 
     def how_scored(c):
-        body = f"<p>{e(RUBRIC[c].replace('{LENGTH}', demo_length(sprint)))}</p>"
+        rub = RUBRIC[c].replace('{LENGTH}', demo_length(sprint))
+        if sprint == 1:  # Sprint 1 took any video host; Loom became required in Sprint 2
+            rub = rub.replace(', on Loom.', ', on any video host.')
+        body = f"<p>{e(rub)}</p>"
         if c == "shipped":
             eff = (diff.get("effect_on_shipped") or "none").strip()
             m = re.match(r"raised by (\d+(?:\.\d+)?)", eff)
