@@ -213,8 +213,8 @@ nothing leaves your machine except the report.
 Answer in your own words. It saves your answers exactly as you write them at the bottom of
 `sprints/sprint-N-review.md`, then commits and pushes the file.
 
-**3. Record a 60 to 90 second demo on [Loom](https://www.loom.com).** Show the thing working, with real content. No slides, no intro,
-no reflection. A minute or so of the actual thing. Loom only: not Google Drive, YouTube, or an uploaded
+**3. Record a 2 to 3 minute demo on [Loom](https://www.loom.com).** Show your work, working, with real content, as
+described in [What your demo shows](#what-your-demo-shows). No intro and no reflection: the actual work. Loom only: not Google Drive, YouTube, or an uploaded
 file. Submit the Loom share link. A demo that is not a Loom scores 0. **Make sure Professor Murff can see your video: in Loom's Share settings, set it to "Anyone with the
 link" or share it with scott.murff@byu.edu.** A video he cannot open is not graded until it is shared.
 
@@ -252,10 +252,32 @@ What counts is that it is real, finished for this sprint, and checkable by the c
 | Marketing or sales copy | The copy is written and finished, not an outline |
 | An automation or workflow | It runs, and your demo shows it running |
 | Research or discovery | The findings are written up, with what you concluded from them |
+| Selling or outreach | The asks are made and on record: who you asked, when, what you asked for, and what they said |
+| Recruiting partners, customers, or payers | The same: graded on the asks you made and can show (see [Goals that need someone else to say yes](#grading-rubric)) |
 | Analytics or measurement | The tracking is set up and returning real data |
 
 If your work does not fit any of these, say what output means for it in your plan file before
 the sprint starts.
+
+### What your demo shows
+
+"Working" in the Demo rubric depends on the kind of work. Show the work itself, opened, for
+most of the video.
+
+| If your sprint was | Your demo shows |
+|---|---|
+| A product feature | The feature in use: click through it |
+| Frontend or design work | The interface or designs, clicked or scrolled through |
+| A landing page or campaign | The page live, with its sign-up or checkout used |
+| Pricing or financial modeling | The model, with one input changed and the result it gives |
+| Marketing or sales copy | The finished copy, where it will run |
+| An automation or workflow | It running, start to finish |
+| Research or discovery | One or two of your notes opened, and what you concluded |
+| Selling or outreach | Your deck, the asks you sent, and your pipeline |
+| Analytics or measurement | The dashboard returning real data |
+
+Keep real names, emails, and phone numbers off the screen. Open the copies in your repo, with
+names removed, instead of the original notes or your CRM.
 
 #### Any real artifact counts as output
 
@@ -302,9 +324,9 @@ the first category; the Wrap-up assignment is the other three.
 | Category | Points | Sprint 6 | What earns full marks |
 |---|--:|--:|---|
 | **Plan** | 10 | 10 | Its GitHub link submitted on Canvas by Wednesday, 11:59 PM, with Goal, Why this, Done looks like, and Predicted difficulty all filled in. Graded for completion. |
-| **Output** | 20 | 50 | Real, finished, and checkable by the course; it does not have to be public or used by anyone. Read against your plan as it stands at the end, and weighed by how hard the work was for you. |
+| **Output** | 20 | 50 | Real, finished, and checkable by the course; it does not have to be public or used by anyone. Read against your plan as it stands at the end, and weighed by how hard the work was for you. A goal that needs someone else's yes is graded on the asks you made. |
 | **Review** | 10 | 20 | Report committed, with your retro answering all five questions and responding to something specific in the report. |
-| **Demo** | 10 | 20 | 2 to 3 minutes on Loom, the real thing, working, with real content. A demo that is not a Loom scores 0. Set it to "Anyone with the link" or share it with scott.murff@byu.edu. Length rules below. |
+| **Demo** | 10 | 20 | 2 to 3 minutes on Loom of your work, working, as described in [What your demo shows](#what-your-demo-shows), with real content. A demo that is not a Loom scores 0. Set it to "Anyone with the link" or share it with scott.murff@byu.edu. Length rules below. |
 
 **Demo length.** Aim for 2 to 3 minutes. A demo up to 3:30 loses no points. From Sprint 3, each started
 30 seconds past 3:30 costs 1 point (3:31 to 4:00 is minus 1, 4:01 to 4:30 minus 2, 4:31 to 5:00 minus 3).
@@ -314,6 +336,14 @@ The plan is graded for completion, and your predicted difficulty is not graded. 
 From Sprint 2 on, output is weighed by how hard the work actually was for you, judged from
 the work itself: an ambitious goal you partly reach and
 account for in your retro can still earn full marks.
+
+**Goals that need someone else to say yes.** Some goals depend on other people: signing design
+partners, getting a customer to pay, reaching a number of signups. You control the asks; you do
+not control the answers. For these goals, Output is graded on the asks you made and can show:
+who you asked, when, what you asked for, and what they said. A no, or a "not yet," costs no
+points when the ask is on record and your retro says what you learned from it. When you plan
+one of these goals, write the asks into it, for example "Ask 10 contractors to be design
+partners, and sign 2."
 
 **Questions about your sprint feedback:** reply to the Canvas comment your sprint report came
 with, saying which part of the report you mean and what you think was missed. Professor Murff

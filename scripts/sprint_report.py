@@ -50,7 +50,7 @@ RUBRIC = {
                "and account for in your retro, can earn full marks.",
     "review": "Your /sprint-review report and your retro. Full marks need every retro prompt answered and a "
               "response to something specific the report found. An empty retro earns at most half.",
-    "demo": "The real thing, working, with real content, on Loom. Aim for 2 to 3 minutes. {LENGTH}",
+    "demo": "Your work, working, with real content, on Loom, as the course's \"What your demo shows\" table describes. Aim for 2 to 3 minutes. {LENGTH}",
 }
 CHECK_LABELS = {"on_screen": "On screen", "working": "Working", "real_content": "Real content",
                 "reachable": "Reachable", "matches_plan": "Matches the plan", "off_demo": "Off the demo",

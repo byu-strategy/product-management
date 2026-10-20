@@ -23,11 +23,12 @@ the same commit as the site change.
 | Output: real and finished (not a template, placeholder, or outline) | Rubric | Sprint 1 |
 | Output: checkable by the course, privately (repo, shared or summarized repo, a link, or shown in the demo) | "It is in your repo" (Sprint 1); "The course can check it, privately" (v2.4.4) | Sprint 1 |
 | Output: raised for ambitious, hard work partly reached | Rubric, "an ambitious goal you partly reach and account for" | Sprint 1 |
+| Output: a goal that needs someone else's yes (design partners, a customer paying, signups) is graded on the asks made and on record; a no or "not yet" costs nothing when the retro says what was learned (Scott, 2026-10-20; loosens, so it applies to Sprints 1 and 2) | Rubric, "Goals that need someone else to say yes" | Sprint 1 |
 | Review: report committed | Rubric | Sprint 1 |
 | Review: retro engages with what the report says | Rubric | Sprint 1 |
 | Review: Sprint 1 retro answers its template (did you hit the goal, what happened, what changes next sprint) | Assessments, Sprint 1 retro fields | Sprint 1 only |
 | Review: retro answers all five `/sprint-review` questions | Assessments (v2.4.0 to v2.4.2, Sep 30) | Sprint 2 |
-| Demo: the real thing, working, with real content | Rubric | Sprint 1 |
+| Demo: the work, working, with real content, where "working" depends on the kind of work (Scott, 2026-10-20: the "What your demo shows" table loosens "working" for non-product sprints, so it applies to Sprints 1 and 2) | Rubric; Assessments, "What your demo shows" | Sprint 1 |
 | Demo: length. Sprint 1: more than about two minutes, at most minus 1. Sprint 2: waived, no length deduction (Scott, 2026-10-17). Sprints 3 to 5: minus 1 for each started 30 seconds past 3:30. Sprint 6: the same, past 4:30 | Rubric, "Demo length" (published 2026-10-16; Sprint 3 scale published 2026-10-17, v2.12.3, before any Sprint 3 demo was due) | Sprint 1 |
 | Demo: not a Loom scores 0 (set in code) | Assessments and Wrap-up pages (v2.3.1, Sep 30) | Sprint 2 |
 | Demo: a Loom the course cannot open is not graded until shared, either with scott.murff@byu.edu or "Anyone with the link" (Scott, 2026-10-20; loosens the Sprint 2 practice, so it applies to Sprint 2) | Assessments page, step 3 | Sprint 2 |
@@ -49,7 +50,7 @@ score or comment on plan quality.
 |---|--:|--:|---|
 | **Output** (key `shipped`) | 20 | 50 | Real, finished, and checkable by the course. It does not have to be public, launched, or used by anyone. Read against the plan as it stands at the end. |
 | **Review** (`review`) | 10 | 20 | Report committed, with the retro answering each prompt and responding to something specific in the report. |
-| **Demo** (`demo`) | 10 | 20 | A minute or so, the real thing, working, with real content. |
+| **Demo** (`demo`) | 10 | 20 | 2 to 3 minutes of the work, working as the "What your demo shows" table below describes, with real content. |
 
 The packet's `assignment.points` and sprint number tell you which column applies. Caps below
 are given as a share of the category's maximum.
@@ -106,6 +107,12 @@ goal comfortably hit earns nothing extra.
 - **A finish line blocked by someone else is not scored.** When an outside party blocks the
   plan's done line (an exam registration, a client's access, an approval), score the progress
   toward it instead of the missed finish, and say in the feedback what was blocked.
+- **A goal that needs someone else's yes is graded on the asks.** Design partners signed, a
+  customer paying, a number of signups: score the asks the student made and can show (who, when,
+  what was asked, what they said). A no, a reschedule, or no reply yet costs nothing when the ask
+  is on record and the retro says what was learned. An ask with no record (no note, message,
+  screenshot, or pipeline entry) is not checkable. Too few asks for the goal can still cost
+  Output, the same as any unfinished plan item.
 - **In an approved unusual sprint, the student's own account counts as evidence of progress.**
   What the retro and the demo describe earns credit even with nothing committed; checkable
   evidence (a module log, badges, results) earns more. A vague account ("more learning to do")
@@ -141,7 +148,15 @@ goal comfortably hit earns nothing extra.
   chapters. The frames show what was on screen; the transcript shows what was said. No video
   submitted: 0. Showing the real artifacts counts as showing the thing: for research or
   planning work, scrolling through the actual documents is the demo. Narration while the screen
-  shows nothing relevant is not. If there are no frames, judge from the transcript, score at
+  shows nothing relevant is not. "Working" depends on the kind of work (published table, "What
+  your demo shows"): a product feature clicked through; designs clicked or scrolled; a landing
+  page live with its sign-up or checkout used; a model with one input changed; copy where it will
+  run; an automation running; research as one or two notes opened with the conclusion; selling or
+  outreach as the deck, the asks sent, and the pipeline; analytics returning real data. A demo
+  that shows its kind's artifacts for most of the video earns full Demo. Never take points for
+  keeping personal information off the screen: a student who shows a list of note titles instead
+  of opening notes with real names loses nothing for it, and the feedback may suggest opening the
+  copies in the repo with names removed. If there are no frames, judge from the transcript, score at
   most 7 if the student mostly narrates, and set `watch_loom` true. Set `watch_loom` true
   whenever the frames do not settle the score. Length (published scale, `00-assessments.qmd` "Demo length"): up to 3:30 loses no points (Sprint 6: 4:30).
   Past it: Sprint 2 waived (no length deduction); from Sprint 3, minus 1 for each started 30 seconds
@@ -162,7 +177,9 @@ goal comfortably hit earns nothing extra.
   1. **on_screen**: how many of the nine frames show the thing itself (app, document, model,
      page) rather than slides, face cam alone, a desktop, or an unrelated tab.
   2. **working**: does something change between frames because the student did something (a
-     click, a new page, a number updating), or is it a static screen scrolled past.
+     click, a new page, a number updating), or is it a static screen scrolled past. For research,
+     selling, or planning work, moving between the actual documents (notes, deck, asks, pipeline)
+     counts as working.
   3. **real_content**: real names and data, or placeholders and test records.
   4. **reachable**: a public URL visible, or `localhost`, or a local file only. This also
      informs Output.
