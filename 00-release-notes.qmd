@@ -4,6 +4,14 @@ This course site is updated during the semester, and every meaningful update is 
 
 New entries appear at the top.
 
+## v2.12.6 (2026-10-20)
+
+The Claude Code map in Directing the Agent is clearer about settings and plugins.
+
+- **Directing the Agent.** In the three-ring figure, settings.json now lists permission rules, hooks, model,
+  and effort. Plugins appear as a package from a marketplace that installs parts of your harness, drawn
+  outside the rings with a dashed arrow.
+
 ## v2.12.5 (2026-10-20)
 
 Directing the Agent opens with a new map of Claude Code.
