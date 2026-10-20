@@ -30,10 +30,10 @@ DATA = Path.home() / "hubs/courses/_data/product-management"
 LOG_COLS = ["net_id", "canvas_user_id", "score", "posted_at", "comment_file_id"]
 
 
-def comment_text(row, sprint):
+def comment_text(row, sprint, note=""):
     return (f"{row['preferred_first'] or row['name']}, your Sprint {sprint} report is attached. Open it in your "
             f"browser: it covers each category, your builder profile, and next steps for Sprint {sprint + 1}. "
-            f"Questions about the grade: reply to this comment.")
+            f"Questions about the grade: reply to this comment." + (f" {note}" if note else ""))
 
 
 def report_name(sprint):
@@ -69,6 +69,8 @@ def main():
     ap.add_argument("--replace", action="store_true",
                     help="re-post rows already posted (rebuilt reports): delete this script's earlier feedback "
                          "comment for each student, then post the new one, so nobody gets two")
+    ap.add_argument("--note", default="",
+                    help="a sentence added to the comment, e.g. that the report was updated after a regrade")
     a = ap.parse_args()
 
     base = DATA / f"grading/sprint-{a.sprint}"
@@ -102,7 +104,7 @@ def main():
     print(f"{asg['name']} ({aid}), {asg['points_possible']:g} points, "
           f"manual posting {'on' if asg.get('post_manually') else 'OFF'}")
     for r, pdf in todo:
-        print(f"  {r['net_id']:10} {r['final_total']:>5}  {report_name(a.sprint)}  \"{comment_text(r, a.sprint)}\"")
+        print(f"  {r['net_id']:10} {r['final_total']:>5}  {report_name(a.sprint)}  \"{comment_text(r, a.sprint, a.note)}\"")
     print(f"{len(todo)} to post, {len(skipped)} skipped"
           + "".join(f"\n  skip {n}: {why}" for n, why in skipped if why != "not approved")
           + (f"\n  {sum(1 for _, w in skipped if w == 'not approved')} not approved yet" if skipped else ""))
@@ -132,7 +134,8 @@ def main():
         base = base if base.endswith("/api/v1") else base + "/api/v1"
         for r, pdf in todo:
             uid = r["canvas_user_id"]
-            if a.replace:  # remove only the earlier comment that carried this student's feedback PDF
+            # A changed score replaces the earlier report rather than adding a second one (2026-10-20 regrade).
+            if a.replace or r["net_id"] in posted:  # remove only the earlier comment that carried this student's report
                 sub = api.get(f"/assignments/{aid}/submissions/{uid}", params={"include[]": ["submission_comments"]})
                 for c in sub.get("submission_comments", []):
                     if any(x.get("display_name") in (report_name(a.sprint), f"{r['net_id']}.pdf") for x in c.get("attachments", [])):
@@ -141,7 +144,7 @@ def main():
             fid = upload(cfg, aid, uid, pdf, report_name(a.sprint))
             api.put(f"/assignments/{aid}/submissions/{uid}", json={
                 "submission": {"posted_grade": r["final_total"]},
-                "comment": {"text_comment": comment_text(r, a.sprint), "file_ids": [fid]}})
+                "comment": {"text_comment": comment_text(r, a.sprint, a.note), "file_ids": [fid]}})
             got = api.get(f"/assignments/{aid}/submissions/{uid}")
             # Canvas applies the late policy itself, so its score can be lower by points_deducted.
             ok = abs((got.get("score") or 0) + (got.get("points_deducted") or 0) - float(r["final_total"])) < 0.01
