@@ -325,7 +325,7 @@ the first category; the Wrap-up assignment is the other three.
 |---|--:|--:|---|
 | **Plan** | 10 | 10 | Its GitHub link submitted on Canvas by Wednesday, 11:59 PM, with Goal, Why this, Done looks like, and Predicted difficulty all filled in. Graded for completion. |
 | **Output** | 20 | 50 | Real, finished, and checkable by the course; it does not have to be public or used by anyone. Read against your plan as it stands at the end, and weighed by how hard the work was for you. A goal that needs someone else's yes is graded on the asks you made. |
-| **Review** | 10 | 20 | Report committed, with your retro answering all five questions and responding to something specific in the report. |
+| **Review** | 10 | 20 | Report committed, with your retro answering all five questions and responding to something specific in the report, in any of its answers. Each question left unanswered costs 1 point. A retro that responds to nothing specific in the report loses 2 points. An empty retro earns at most half. |
 | **Demo** | 10 | 20 | 2 to 3 minutes on Loom of your work, working, as described in [What your demo shows](#what-your-demo-shows), with real content. A demo that is not a Loom scores 0. Set it to "Anyone with the link" or share it with scott.murff@byu.edu. Length rules below. |
 
 **Demo length.** Aim for 2 to 3 minutes. A demo up to 3:30 loses no points. From Sprint 3, each started

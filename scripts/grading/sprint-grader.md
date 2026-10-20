@@ -25,7 +25,7 @@ the same commit as the site change.
 | Output: raised for ambitious, hard work partly reached | Rubric, "an ambitious goal you partly reach and account for" | Sprint 1 |
 | Output: a goal that needs someone else's yes (design partners, a customer paying, signups) is graded on the asks made and on record; a no or "not yet" costs nothing when the retro says what was learned (Scott, 2026-10-20; loosens, so it applies to Sprints 1 and 2) | Rubric, "Goals that need someone else to say yes" | Sprint 1 |
 | Review: report committed | Rubric | Sprint 1 |
-| Review: retro engages with what the report says | Rubric | Sprint 1 |
+| Review: retro engages with what the report says. Fixed amounts (Scott, 2026-10-20; loosens, so it applies to Sprints 1 and 2, and no score goes below what it was): any answer can carry the response; no specific response anywhere, minus 2; each prompt left unanswered, minus 1; empty retro, at most half | Rubric | Sprint 1 |
 | Review: Sprint 1 retro answers its template (did you hit the goal, what happened, what changes next sprint) | Assessments, Sprint 1 retro fields | Sprint 1 only |
 | Review: retro answers all five `/sprint-review` questions | Assessments (v2.4.0 to v2.4.2, Sep 30) | Sprint 2 |
 | Demo: the work, working, with real content, where "working" depends on the kind of work (Scott, 2026-10-20: the "What your demo shows" table loosens "working" for non-product sprints, so it applies to Sprints 1 and 2) | Rubric; Assessments, "What your demo shows" | Sprint 1 |
@@ -140,7 +140,11 @@ goal comfortably hit earns nothing extra.
   the plan file, or answering an older set of prompts, is judged on what it answers, and the
   location is never mentioned to the student. 0 if no report is committed. Retro empty
   (`retro_filled` false): at most half. Full marks need every prompt answered and a response to
-  something specific the report found. When the review was run is not graded: a student may
+  something specific the report found (a number, a finding, a risk, or a claim it flagged). Any
+  answer can carry that response: a next-sprint change that answers a report finding counts the
+  same as the "what did the report show you" answer. The amounts are fixed: no specific response
+  anywhere in the retro is minus 2; each prompt left unanswered is minus 1; both can apply. Never
+  take more than these for a filled retro, and never take points for how deep a response goes. When the review was run is not graded: a student may
   finish early, and a report covering 10 days is judged on what it covers. Never deduct for or
   mention the review window.
 - **Demo:** judge from `loom.frames` (nine full-resolution screenshots spread evenly across

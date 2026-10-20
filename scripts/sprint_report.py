@@ -49,7 +49,8 @@ RUBRIC = {
                "shared repo, at a link, or working in your demo. An ambitious goal that you nearly reach, "
                "and account for in your retro, can earn full marks.",
     "review": "Your /sprint-review report and your retro. Full marks need every retro prompt answered and a "
-              "response to something specific the report found. An empty retro earns at most half.",
+              "response, in any answer, to something specific the report found. Each prompt left unanswered "
+              "costs 1 point, no specific response costs 2, and an empty retro earns at most half.",
     "demo": "Your work, working, with real content, on Loom, as the course's \"What your demo shows\" table describes. Aim for 2 to 3 minutes. {LENGTH}",
 }
 CHECK_LABELS = {"on_screen": "On screen", "working": "Working", "real_content": "Real content",
@@ -911,8 +912,20 @@ def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott
             lead += f"<p>{e(note_)}</p>"
         elif note_:
             lead = f"<p>{e(note_)}</p>"
+        # Students read "the work was closer to a 3" as a deduction (Spencer Layton, Chris Hoerler, Oct 2026), so the
+        # row always says what difficulty did to the score.
+        eff_ = (diff.get("effect_on_shipped") or "none").strip()
+        m_ = re.match(r"(raised|lowered) by (\d+(?:\.\d+)?)", eff_)
+        if m_:
+            n_ = m_.group(2)
+            effect = f"It {m_.group(1)} your Output by {n_} point{'s' * (n_ != '1')}."
+        elif eff_.startswith(("raised", "lowered")):
+            effect = f"It {eff_.split()[0]} your Output."
+        else:
+            effect = "It did not change your score."
         diff_row = row("How hard it was", f'{diff["assessed"]} of 5',
-                        lead + f'<p class=qm>On the course scale, {diff["assessed"]} is "{SCALE.get(int(diff["assessed"]), "")}".</p>')
+                        lead + f'<p>{effect}</p>'
+                        + f'<p class=qm>On the course scale, {diff["assessed"]} is "{SCALE.get(int(diff["assessed"]), "")}".</p>')
     if rep.get("sessions"):
         rev_bits.append(f'{rep["sessions"]} agent sessions')
     by_day = {}
