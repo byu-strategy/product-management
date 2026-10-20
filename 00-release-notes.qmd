@@ -4,6 +4,18 @@ This course site is updated during the semester, and every meaningful update is 
 
 New entries appear at the top.
 
+## v2.12.5 (2026-10-20)
+
+Directing the Agent opens with a new map of Claude Code.
+
+- **Directing the Agent.** A new figure at the top of the chapter shows Claude Code as three rings: the model,
+  the built-in harness, and your harness. Your harness is split into what the model reads (CLAUDE.md, rules
+  files, output styles, auto memory, skills), what adds tools (MCP connections, subagents, workflows), and what
+  the harness applies (settings.json: permission rules, hooks, the model, plugins). Plugins install parts of
+  your harness.
+- **New sections in Directing the Agent.** Rules files (`.claude/rules/`, including rules that load only for
+  matching files, and how they differ from permission rules), output styles, and workflows.
+
 ## v2.12.4 (2026-10-19)
 
 Testing the Design has a new quote on watching users.
