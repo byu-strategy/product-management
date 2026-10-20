@@ -233,6 +233,40 @@ def other_video(url, dest_dir, net_id):
     return out
 
 
+def canvas_video(file_id, dest_dir, net_id):
+    """A video uploaded straight into the Canvas submission (an embedded recording or an attached
+    file), not a link. Missed until 2026-10-20: one Sprint 1 demo, uploaded on time, scored 0
+    because only links were read. Frames as for any video; the transcript comes from Whisper,
+    since Canvas uploads have no captions. The video goes to a temp file and is deleted."""
+    cfg = load_config()
+    base = cfg["url"].rstrip("/").replace("/api/v1", "")
+    H = {"Authorization": f"Bearer {cfg['token']}"}
+    meta = requests.get(f"{base}/api/v1/files/{file_id}", headers=H, timeout=30)
+    if not meta.ok:
+        return {"url": f"{base}/files/{file_id}", "error": f"Canvas file {file_id}: HTTP {meta.status_code}"}
+    m = meta.json()
+    out = {"url": f"{base}/courses/{COURSE_ID}/files/{file_id}", "title": m.get("display_name"),
+           "uploaded_at": m.get("created_at")}
+    with tempfile.TemporaryDirectory() as tmp:
+        v = Path(tmp) / "v.mp4"
+        v.write_bytes(requests.get(m["url"], headers=H, timeout=600).content)
+        try:
+            out["seconds"] = round(float(subprocess.run(
+                ["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", str(v)],
+                capture_output=True, text=True).stdout))
+        except ValueError:
+            out["error"] = "not a readable video"
+            return out
+        out["frames"] = grab_frames(v, dest_dir, net_id)
+        w = subprocess.run(["whisper", str(v), "--model", "small", "--language", "en", "--output_format", "txt",
+                            "--output_dir", tmp], capture_output=True, text=True, timeout=1800)
+        t = Path(tmp) / "v.txt"
+        out["transcript"] = t.read_text().strip() if t.exists() else None
+        if not t.exists():
+            out["transcript_status"] = (w.stderr.strip().splitlines() or ["whisper failed"])[-1][:200]
+    return out
+
+
 def check_link(url):
     """Does a shipped link load? Status, final URL, and page title; no judgment."""
     try:
@@ -392,6 +426,10 @@ def build(student, sub, plan_sub, cfg, due):
     f["canvas_late"] = bool(sub.get("late"))
     f["demo_is_loom"] = bool(loom_links)
     f["non_loom_video"] = [l for l in links if re.search(r"drive\.google|youtu|sharepoint|clickup|vimeo", l)]
+    f["canvas_video"] = list(dict.fromkeys(
+        re.findall(r"media_attachments_iframe/(\d+)", body)
+        + [str(a["id"]) for a in sub.get("attachments") or []
+           if str(a.get("content-type") or "").startswith("video") or a.get("mime_class") == "video"]))
 
     if repo_url:
         repo = repo_url.replace("https://github.com/", "").strip("/")
@@ -528,6 +566,11 @@ def build(student, sub, plan_sub, cfg, due):
         f["loom_seconds"] = p["loom"].get("seconds")
         vid = p["loom"]["url"].rsplit("/", 1)[1]
         p["loom"]["frames"] = frames(vid, cfg["out"] / "frames", net_id)
+    elif f["canvas_video"] and cfg["sprint"] == 1:
+        v = canvas_video(f["canvas_video"][0], cfg["out"] / "frames", net_id)
+        p["loom"] = v | {"host": "not Loom"}
+        f["loom_seconds"] = v.get("seconds")
+        f["other_video_readable"] = bool(v.get("frames"))
     elif f["non_loom_video"] and cfg["sprint"] == 1:
         v = other_video(f["non_loom_video"][0], cfg["out"] / "frames", net_id)
         p["loom"] = v | {"host": "not Loom"}
