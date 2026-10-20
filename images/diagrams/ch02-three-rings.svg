@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 980" role="img" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
-  <title>Claude Code: the model, the harness, and what you add</title>
-  <desc>Three concentric rings, labeled Claude Code as a whole. At the center, the model. Around it, the harness, which holds the context window, the tool-call check, and the tools, connected in a loop around the model: the context window feeds the model, the model's tool call goes to the check, the check passes it to the tools, and the tools' results return to the context window. The outer ring is what you add, in three sectors, each with an arrow to the part of the harness it changes. Read by the model: your messages, CLAUDE.md, auto memory, and skills, into the context window. Enforced by the harness: permission rules, into the tool-call check, and hooks, into the harness. Called by the model: MCP servers and subagents, into the tools. An arrow labeled actions leaves the tools and all three rings to reach files, the terminal, the web, and outside services.</desc>
+  <title>Claude Code: the model, the built-in harness, and your harness</title>
+  <desc>Three concentric rings, labeled Claude Code as a whole. At the center, the model. Around it, the built-in harness, which holds the context window, the tool-call check, and the tools, connected in a loop around the model: the context window feeds the model, the model's tool call goes to the check, the check passes it to the tools, and the tools' results return to the context window. The outer ring is your harness, in three sectors, each with an arrow to the part of the built-in harness it changes. Read by the model: CLAUDE.md, auto memory, and skills, into the context window. Enforced by the harness: permission rules, into the tool-call check, and hooks, into the built-in harness. Called by the model: MCP servers and subagents, into the tools. Outside the rings, you send messages into the context window. An arrow labeled actions leaves the tools and all three rings to reach files, the terminal, the web, and outside services.</desc>
   <defs>
     <marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#0057B8"/></marker>
     <marker id="an" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#002E5D"/></marker>
@@ -21,9 +21,11 @@
   <line x1="730" y1="470" x2="880" y2="470" stroke="#8A939C" stroke-width="1.5" stroke-dasharray="5 5"/>
   <line x1="385" y1="669" x2="310" y2="799" stroke="#8A939C" stroke-width="1.5" stroke-dasharray="5 5"/>
 
+
   <!-- Harness ring -->
   <circle cx="500" cy="470" r="230" fill="url(#gHarness)" stroke="#B9D0EA" stroke-width="2"/>
-  <text x="418" y="322" text-anchor="middle" font-size="17" font-weight="700" letter-spacing="1.2" fill="#002E5D">THE HARNESS</text>
+  <text x="426" y="314" text-anchor="middle" font-size="16" font-weight="700" letter-spacing="1.2" fill="#002E5D">BUILT-IN</text>
+  <text x="426" y="334" text-anchor="middle" font-size="16" font-weight="700" letter-spacing="1.2" fill="#002E5D">HARNESS</text>
 
   <!-- Model -->
   <circle cx="500" cy="470" r="70" fill="url(#gModel)" filter="url(#sh)"/>
@@ -50,11 +52,10 @@
   <!-- Sector: read by the model -->
   <text x="196" y="372" text-anchor="middle" font-size="15" font-weight="600" letter-spacing="1.2" fill="#5A6672">READ BY</text>
   <text x="196" y="392" text-anchor="middle" font-size="15" font-weight="600" letter-spacing="1.2" fill="#5A6672">THE MODEL</text>
-  <text x="196" y="438" text-anchor="middle" font-size="18" font-weight="600" fill="#2C3E50">Your messages</text>
-  <text x="196" y="474" text-anchor="middle" font-size="18" font-weight="600" fill="#2C3E50">CLAUDE.md</text>
-  <text x="196" y="510" text-anchor="middle" font-size="18" font-weight="600" fill="#2C3E50">Auto memory</text>
-  <text x="196" y="546" text-anchor="middle" font-size="18" font-weight="600" fill="#2C3E50">Skills</text>
-  <path d="M268 418 V554" stroke="#0057B8" stroke-width="2" fill="none"/>
+  <text x="196" y="440" text-anchor="middle" font-size="18" font-weight="600" fill="#2C3E50">CLAUDE.md</text>
+  <text x="196" y="476" text-anchor="middle" font-size="18" font-weight="600" fill="#2C3E50">Auto memory</text>
+  <text x="196" y="512" text-anchor="middle" font-size="18" font-weight="600" fill="#2C3E50">Skills</text>
+  <path d="M268 420 V520" stroke="#0057B8" stroke-width="2" fill="none"/>
   <path d="M268 470 H293" stroke="#0057B8" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
 
   <!-- Sector: enforced by the harness -->
@@ -71,6 +72,18 @@
   <text x="700" y="738" text-anchor="middle" font-size="18" font-weight="600" fill="#2C3E50">MCP servers</text>
   <text x="700" y="772" text-anchor="middle" font-size="18" font-weight="600" fill="#2C3E50">Subagents</text>
   <path d="M624 722 C606 700 596 670 592 634" stroke="#0057B8" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
+
+  <!-- Outer ring label -->
+  <text x="96" y="846" text-anchor="middle" font-size="18" font-weight="700" letter-spacing="1.4" fill="#002E5D">YOUR</text>
+  <text x="96" y="870" text-anchor="middle" font-size="18" font-weight="700" letter-spacing="1.4" fill="#002E5D">HARNESS</text>
+  <line x1="130" y1="824" x2="236" y2="724" stroke="#002E5D" stroke-width="1.5"/>
+
+  <!-- You, outside the rings -->
+  <circle cx="70" cy="128" r="30" fill="#E6EEF7"/>
+  <g transform="translate(55,113) scale(1.25)" fill="none" stroke="#002E5D" stroke-width="1.76" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></g>
+  <text x="70" y="186" text-anchor="middle" font-size="19" font-weight="700" fill="#002E5D">You</text>
+  <path d="M104 140 C200 180 300 300 334 430" stroke="#002E5D" stroke-width="2" fill="none" marker-end="url(#an)"/>
+  <text x="150" y="232" text-anchor="middle" font-size="16" fill="#5A6672">messages</text>
 
   <!-- Out to the world -->
   <path d="M548 626 V884" stroke="#002E5D" stroke-width="2.5" fill="none" marker-end="url(#an)"/>
