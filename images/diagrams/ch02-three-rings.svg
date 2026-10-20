@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 980" role="img" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
   <title>Claude Code: the model, the built-in harness, and your harness</title>
-  <desc>Three concentric rings, labeled Claude Code as a whole. At the center, the model. Around it, the built-in harness, which holds the context window, the tool-call check, and the tools, connected in a loop around the model: the context window feeds the model, the model's tool call goes to the check, the check passes it to the tools, and the tools' results return to the context window. The outer ring is your harness, in three sectors, each with an arrow to the part of the built-in harness it changes. Read by the model, all markdown files: CLAUDE.md, rules files in .claude/rules/, MEMORY.md for auto memory, and SKILL.md for each skill, into the context window. Enforced by the harness: permission rules, into the tool-call check, and hooks, into the built-in harness. Adds tools: subagents and MCP connections, which the Claude app calls connectors, into the tools. Outside the ring, a label marks plugins, which install several of these parts at once. Outside the rings, you send messages, which go into the context window, and the model's replies come back to you. Two arrows connect the tools with the world outside all three rings, actions going out and output coming back, which the tools pass on as results. The world outside holds your project files; the terminal, where git, gh, and other CLIs run; the web, for search and pages; and apps such as GitHub and Supabase.</desc>
+  <desc>Three concentric rings, labeled Claude Code as a whole. At the center, the model. Around it, the built-in harness, which holds the context window, the tool-call check, and the tools, connected in a loop: the context window feeds the model, the model's tool call goes to the check, the check passes it to the tools, and the tools' results return to the context window. The outer ring is your harness, in three sectors, each with an arrow to the part of the built-in harness it changes. Read by the model, all markdown files: CLAUDE.md, rules files in rules/, output styles in output-styles/, MEMORY.md for auto memory, and SKILL.md for each skill, into the context window. Applied by the harness: settings.json, which holds permission rules, with an arrow into the tool-call check, and hooks and other settings, with an arrow into the built-in harness. Adds tools: MCP connections, which the Claude app calls connectors, subagents, and workflows, into the tools. Outside the ring, a label marks plugins, which install several of these parts at once. Outside the rings, you send messages, which go into the context window, and the model's replies come back to you. Two arrows connect the tools with the world outside all three rings, actions going out and output coming back, which the tools pass on as results. The world outside holds your project files; the terminal, where git, gh, and other CLIs run; the web, for search and pages; and apps such as GitHub and Supabase.</desc>
   <defs>
     <marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#0057B8"/></marker>
     <marker id="an" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#002E5D"/></marker>
@@ -45,35 +45,39 @@
 
   <rect x="523" y="566" width="104" height="60" rx="8" fill="#FFFFFF" stroke="#B9D0EA" stroke-width="1.5"/>
   <text x="575" y="602" text-anchor="middle" font-size="17" font-weight="600" fill="#002E5D">Tools</text>
-  <path d="M627 344 C690 380 700 540 634 590" stroke="#002E5D" stroke-width="2" fill="none" marker-end="url(#an)"/>
+  <path d="M596 374 V560" stroke="#002E5D" stroke-width="2" fill="none" marker-end="url(#an)"/>
   <path d="M523 600 C440 610 360 580 350 512" stroke="#8A939C" stroke-width="1.75" fill="none" marker-end="url(#ag)"/>
   <rect x="374" y="572" width="70" height="26" rx="13" fill="#FFFFFF" stroke="#D9DEE4" stroke-width="1.25"/>
   <text x="409" y="590" text-anchor="middle" font-size="15" fill="#5A6672">results</text>
 
   <!-- Sector: read by the model -->
-  <text x="196" y="372" text-anchor="middle" font-size="15" font-weight="600" letter-spacing="1.2" fill="#5A6672">READ BY</text>
-  <text x="196" y="392" text-anchor="middle" font-size="15" font-weight="600" letter-spacing="1.2" fill="#5A6672">THE MODEL</text>
-  <text x="192" y="432" text-anchor="middle" font-size="16" font-family="Menlo, Consolas, monospace" fill="#2C3E50">CLAUDE.md</text>
-  <text x="192" y="467" text-anchor="middle" font-size="16" font-family="Menlo, Consolas, monospace" fill="#2C3E50">.claude/rules/</text>
-  <text x="192" y="502" text-anchor="middle" font-size="16" font-family="Menlo, Consolas, monospace" fill="#2C3E50">MEMORY.md</text>
-  <text x="192" y="537" text-anchor="middle" font-size="16" font-family="Menlo, Consolas, monospace" fill="#2C3E50">SKILL.md</text>
-  <path d="M266 412 V545" stroke="#0057B8" stroke-width="2" fill="none"/>
+  <text x="196" y="356" text-anchor="middle" font-size="15" font-weight="600" letter-spacing="1.2" fill="#5A6672">READ BY</text>
+  <text x="196" y="376" text-anchor="middle" font-size="15" font-weight="600" letter-spacing="1.2" fill="#5A6672">THE MODEL</text>
+  <text x="189" y="420" text-anchor="middle" font-size="16" font-family="Menlo, Consolas, monospace" fill="#2C3E50">CLAUDE.md</text>
+  <text x="189" y="452" text-anchor="middle" font-size="16" font-family="Menlo, Consolas, monospace" fill="#2C3E50">rules/</text>
+  <text x="189" y="484" text-anchor="middle" font-size="16" font-family="Menlo, Consolas, monospace" fill="#2C3E50">output-styles/</text>
+  <text x="189" y="516" text-anchor="middle" font-size="16" font-family="Menlo, Consolas, monospace" fill="#2C3E50">MEMORY.md</text>
+  <text x="189" y="548" text-anchor="middle" font-size="16" font-family="Menlo, Consolas, monospace" fill="#2C3E50">SKILL.md</text>
+  <path d="M266 402 V556" stroke="#0057B8" stroke-width="2" fill="none"/>
   <path d="M266 470 H293" stroke="#0057B8" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
 
-  <!-- Sector: enforced by the harness -->
-  <text x="669" y="166" text-anchor="middle" font-size="15" font-weight="600" letter-spacing="1.2" fill="#5A6672">ENFORCED BY</text>
-  <text x="669" y="186" text-anchor="middle" font-size="15" font-weight="600" letter-spacing="1.2" fill="#5A6672">THE HARNESS</text>
-  <text x="669" y="228" text-anchor="middle" font-size="18" font-weight="600" fill="#2C3E50">Permission rules</text>
-  <text x="730" y="264" text-anchor="middle" font-size="18" font-weight="600" fill="#2C3E50">Hooks</text>
-  <path d="M612 238 L586 300" stroke="#0057B8" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
-  <path d="M718 274 L688 318" stroke="#0057B8" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
+  <!-- Sector: applied by the harness -->
+  <text x="669" y="150" text-anchor="middle" font-size="15" font-weight="600" letter-spacing="1.2" fill="#5A6672">APPLIED BY</text>
+  <text x="669" y="170" text-anchor="middle" font-size="15" font-weight="600" letter-spacing="1.2" fill="#5A6672">THE HARNESS</text>
+  <text x="669" y="208" text-anchor="middle" font-size="16" font-family="Menlo, Consolas, monospace" fill="#2C3E50">settings.json</text>
+  <text x="652" y="244" text-anchor="middle" font-size="17" font-weight="600" fill="#2C3E50">Permission rules</text>
+  <text x="760" y="280" text-anchor="middle" font-size="17" font-weight="600" fill="#2C3E50">Hooks</text>
+  <text x="768" y="304" text-anchor="middle" font-size="15" fill="#5A6672">other settings</text>
+  <path d="M606 254 L586 300" stroke="#0057B8" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
+  <path d="M712 290 L682 322" stroke="#0057B8" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
 
   <!-- Sector: adds tools -->
-  <text x="680" y="682" text-anchor="middle" font-size="15" font-weight="600" letter-spacing="1.2" fill="#5A6672">ADDS TOOLS</text>
-  <text x="680" y="716" text-anchor="middle" font-size="18" font-weight="600" fill="#2C3E50">Subagents</text>
-  <text x="680" y="748" text-anchor="middle" font-size="18" font-weight="600" fill="#2C3E50">MCP connections</text>
-  <text x="680" y="768" text-anchor="middle" font-size="15" fill="#5A6672">or connectors</text>
-  <path d="M660 664 L634 630" stroke="#0057B8" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
+  <text x="795" y="506" text-anchor="middle" font-size="15" font-weight="600" letter-spacing="1.2" fill="#5A6672">ADDS TOOLS</text>
+  <text x="795" y="542" text-anchor="middle" font-size="17" font-weight="600" fill="#2C3E50">MCP connections</text>
+  <text x="795" y="561" text-anchor="middle" font-size="15" fill="#5A6672">or connectors</text>
+  <text x="795" y="594" text-anchor="middle" font-size="17" font-weight="600" fill="#2C3E50">Subagents</text>
+  <text x="795" y="626" text-anchor="middle" font-size="17" font-weight="600" fill="#2C3E50">Workflows</text>
+  <path d="M722 572 C690 584 666 596 634 598" stroke="#0057B8" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
 
   <!-- Plugins: package parts of your harness -->
   <text x="906" y="812" text-anchor="middle" font-size="18" font-weight="600" fill="#2C3E50">Plugins</text>
