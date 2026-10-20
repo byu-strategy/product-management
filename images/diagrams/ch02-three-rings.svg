@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 980" role="img" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
   <title>Claude Code: the model, the built-in harness, and your harness</title>
-  <desc>Three concentric rings, labeled Claude Code as a whole. At the center, the model. Around it, the built-in harness, which holds the context window, the tool-call check, and the tools, connected in a loop: the context window feeds the model, the model's tool call goes to the check, the check passes it to the tools, and the tools' results return to the context window. The outer ring is your harness, in three sectors, each with an arrow to the part of the built-in harness it changes. Read by the model, all markdown: the files CLAUDE.md, MEMORY.md for auto memory, and SKILL.md for each skill, then the folders rules/ and output-styles/, into the context window. Applied by the harness: settings.json, which holds permission rules, hooks, the model, the effort level, and more, with an arrow into the built-in harness. Adds tools: MCP connections, which the Claude app calls connectors, subagents, and workflows, into the tools. Outside the rings, a package labeled Plugin, from a marketplace, has a dashed arrow labeled installs that stops at the outer edge of your harness, since a plugin can add parts to any of the three sectors. Outside the rings, you send messages, which go into the context window, and the model's replies come back to you. Two arrows connect the tools with the world outside all three rings, actions going out and output coming back, which the tools pass on as results. The world outside holds your project files; the terminal, where git, gh, and other CLIs run; the web, for search and pages; and apps such as GitHub and Supabase.</desc>
+  <desc>Three concentric rings, labeled Claude Code as a whole. At the center, the model. Around it, the built-in harness, which holds the context window, the tool-call permission check, and the tools, connected in a loop: the context window feeds the model, the model's tool call goes to the permission check, which passes it to the tools, and the tools' results return to the context window. The outer ring is your harness, in three sectors, each with an arrow to the part of the built-in harness it changes. Read by the model, all markdown: the files CLAUDE.md, MEMORY.md for auto memory, and SKILL.md for each skill, then the folders rules/ and output-styles/, into the context window. Applied by the harness: settings.json, which holds permission rules, hooks, the model, the effort level, and more, with an arrow into the built-in harness. Adds tools: MCP connections, which the Claude app calls connectors, subagents, and workflows, into the tools. Outside the rings, a package labeled Plugin, from a marketplace, has a dashed arrow labeled installs that stops at the outer edge of your harness, since a plugin can add parts to any of the three sectors. Outside the rings, you send messages, which go into the context window, and the model's replies come back to you. Two arrows connect the tools with the world outside all three rings, actions going out and output coming back, which the tools pass on as results. The world outside holds your project files; the terminal, where git, gh, and other CLIs run; the web, for search and pages; and apps such as GitHub and Supabase.</desc>
   <defs>
     <marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#0057B8"/></marker>
     <marker id="an" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#002E5D"/></marker>
@@ -38,9 +38,9 @@
   <text x="350" y="487" text-anchor="middle" font-size="17" font-weight="600" fill="#002E5D">window</text>
   <path d="M402 470 H424" stroke="#002E5D" stroke-width="2" fill="none" marker-end="url(#an)"/>
 
-  <rect x="523" y="306" width="104" height="68" rx="8" fill="#FFFFFF" stroke="#B9D0EA" stroke-width="1.5"/>
-  <text x="575" y="335" text-anchor="middle" font-size="17" font-weight="600" fill="#002E5D">Tool-call</text>
-  <text x="575" y="357" text-anchor="middle" font-size="17" font-weight="600" fill="#002E5D">check</text>
+  <rect x="498" y="306" width="154" height="68" rx="8" fill="#FFFFFF" stroke="#B9D0EA" stroke-width="1.5"/>
+  <text x="575" y="335" text-anchor="middle" font-size="16" font-weight="600" fill="#002E5D">Tool-call</text>
+  <text x="575" y="357" text-anchor="middle" font-size="16" font-weight="600" fill="#002E5D">permission check</text>
   <path d="M536 410 L554 381" stroke="#002E5D" stroke-width="2" fill="none" marker-end="url(#an)"/>
 
   <rect x="523" y="566" width="104" height="60" rx="8" fill="#FFFFFF" stroke="#B9D0EA" stroke-width="1.5"/>
@@ -67,7 +67,7 @@
   <text x="664" y="214" text-anchor="middle" font-size="16" font-family="Menlo, Consolas, monospace" fill="#2C3E50">settings.json</text>
   <text x="664" y="236" text-anchor="middle" font-size="15" fill="#5A6672">permission rules, hooks,</text>
   <text x="664" y="255" text-anchor="middle" font-size="15" fill="#5A6672">model, effort, and more</text>
-  <path d="M676 266 L662 300" stroke="#0057B8" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
+  <path d="M690 266 L676 302" stroke="#0057B8" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
 
   <!-- Sector: adds tools -->
   <text x="795" y="506" text-anchor="middle" font-size="15" font-weight="600" letter-spacing="1.2" fill="#5A6672">ADDS TOOLS</text>
