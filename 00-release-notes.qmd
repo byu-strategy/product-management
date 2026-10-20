@@ -4,6 +4,16 @@ This course site is updated during the semester, and every meaningful update is 
 
 New entries appear at the top.
 
+## v2.12.8 (2026-10-20)
+
+The Claude Code figure now describes its parts as layers, and the demo rules say how to share your Loom.
+
+- **Directing the Agent.** The Claude Code figure and its caption call its three parts layers instead of
+  rings: the model, the built-in harness, and your harness as the outer layer.
+- **Assessments.** The demo rules, the deliverables table, and the rubric now say to make sure Professor
+  Murff can see your video: in Loom's Share settings, set it to "Anyone with the link" or share it with
+  scott.murff@byu.edu. A video he cannot open is not graded until it is shared.
+
 ## v2.12.7 (2026-10-20)
 
 The three-ring figure in Directing the Agent names its permission step precisely.
