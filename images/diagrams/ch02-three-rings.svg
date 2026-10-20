@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 980" role="img" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
   <title>Claude Code: the model, the built-in harness, and your harness</title>
-  <desc>Three concentric rings, labeled Claude Code as a whole. At the center, the model. Around it, the built-in harness, which holds the context window, the tool-call check, and the tools, connected in a loop: the context window feeds the model, the model's tool call goes to the check, the check passes it to the tools, and the tools' results return to the context window. The outer ring is your harness, in three sectors, each with an arrow to the part of the built-in harness it changes. Read by the model, all markdown: the files CLAUDE.md, MEMORY.md for auto memory, and SKILL.md for each skill, then the folders rules/ and output-styles/, into the context window. Applied by the harness: settings.json, which holds permission rules, with an arrow into the tool-call check, and hooks and other settings, with an arrow into the built-in harness. Adds tools: MCP connections, which the Claude app calls connectors, subagents, and workflows, into the tools. Outside the ring, a label marks plugins, which install several of these parts at once. Outside the rings, you send messages, which go into the context window, and the model's replies come back to you. Two arrows connect the tools with the world outside all three rings, actions going out and output coming back, which the tools pass on as results. The world outside holds your project files; the terminal, where git, gh, and other CLIs run; the web, for search and pages; and apps such as GitHub and Supabase.</desc>
+  <desc>Three concentric rings, labeled Claude Code as a whole. At the center, the model. Around it, the built-in harness, which holds the context window, the tool-call check, and the tools, connected in a loop: the context window feeds the model, the model's tool call goes to the check, the check passes it to the tools, and the tools' results return to the context window. The outer ring is your harness, in three sectors, each with an arrow to the part of the built-in harness it changes. Read by the model, all markdown: the files CLAUDE.md, MEMORY.md for auto memory, and SKILL.md for each skill, then the folders rules/ and output-styles/, into the context window. Applied by the harness: settings.json, which holds permission rules, hooks, and more, with an arrow into the built-in harness. Adds tools: MCP connections, which the Claude app calls connectors, subagents, and workflows, into the tools. A label on the outer ring reads: your harness, you write it, or install parts as plugins. Outside the rings, you send messages, which go into the context window, and the model's replies come back to you. Two arrows connect the tools with the world outside all three rings, actions going out and output coming back, which the tools pass on as results. The world outside holds your project files; the terminal, where git, gh, and other CLIs run; the web, for search and pages; and apps such as GitHub and Supabase.</desc>
   <defs>
     <marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#0057B8"/></marker>
     <marker id="an" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#002E5D"/></marker>
@@ -62,14 +62,12 @@
   <path d="M266 470 H293" stroke="#0057B8" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
 
   <!-- Sector: applied by the harness -->
-  <text x="669" y="150" text-anchor="middle" font-size="15" font-weight="600" letter-spacing="1.2" fill="#5A6672">APPLIED BY</text>
-  <text x="669" y="170" text-anchor="middle" font-size="15" font-weight="600" letter-spacing="1.2" fill="#5A6672">THE HARNESS</text>
-  <text x="669" y="208" text-anchor="middle" font-size="16" font-family="Menlo, Consolas, monospace" fill="#2C3E50">settings.json</text>
-  <text x="652" y="244" text-anchor="middle" font-size="17" font-weight="600" fill="#2C3E50">Permission rules</text>
-  <text x="760" y="280" text-anchor="middle" font-size="17" font-weight="600" fill="#2C3E50">Hooks</text>
-  <text x="768" y="304" text-anchor="middle" font-size="15" fill="#5A6672">other settings</text>
-  <path d="M606 254 L586 300" stroke="#0057B8" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
-  <path d="M712 290 L682 322" stroke="#0057B8" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
+  <text x="645" y="146" text-anchor="middle" font-size="15" font-weight="600" letter-spacing="1.2" fill="#5A6672">APPLIED BY</text>
+  <text x="645" y="166" text-anchor="middle" font-size="15" font-weight="600" letter-spacing="1.2" fill="#5A6672">THE HARNESS</text>
+  <text x="664" y="214" text-anchor="middle" font-size="16" font-family="Menlo, Consolas, monospace" fill="#2C3E50">settings.json</text>
+  <text x="664" y="236" text-anchor="middle" font-size="15" fill="#5A6672">permission rules,</text>
+  <text x="664" y="255" text-anchor="middle" font-size="15" fill="#5A6672">hooks, and more</text>
+  <path d="M676 266 L662 300" stroke="#0057B8" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
 
   <!-- Sector: adds tools -->
   <text x="795" y="506" text-anchor="middle" font-size="15" font-weight="600" letter-spacing="1.2" fill="#5A6672">ADDS TOOLS</text>
@@ -79,16 +77,13 @@
   <text x="795" y="626" text-anchor="middle" font-size="17" font-weight="600" fill="#2C3E50">Workflows</text>
   <path d="M722 572 C690 584 666 596 634 598" stroke="#0057B8" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
 
-  <!-- Plugins: package parts of your harness -->
-  <text x="906" y="812" text-anchor="middle" font-size="18" font-weight="600" fill="#2C3E50">Plugins</text>
-  <text x="906" y="834" text-anchor="middle" font-size="15" fill="#5A6672">install several</text>
-  <text x="906" y="853" text-anchor="middle" font-size="15" fill="#5A6672">parts at once</text>
-  <line x1="882" y1="792" x2="800" y2="700" stroke="#002E5D" stroke-width="1.5"/>
-
   <!-- Outer ring label -->
-  <text x="96" y="846" text-anchor="middle" font-size="18" font-weight="700" letter-spacing="1.4" fill="#002E5D">YOUR</text>
-  <text x="96" y="870" text-anchor="middle" font-size="18" font-weight="700" letter-spacing="1.4" fill="#002E5D">HARNESS</text>
-  <line x1="130" y1="824" x2="236" y2="724" stroke="#002E5D" stroke-width="1.5"/>
+  <text x="92" y="782" text-anchor="middle" font-size="18" font-weight="700" letter-spacing="1.4" fill="#002E5D">YOUR</text>
+  <text x="92" y="806" text-anchor="middle" font-size="18" font-weight="700" letter-spacing="1.4" fill="#002E5D">HARNESS</text>
+  <text x="92" y="832" text-anchor="middle" font-size="15" fill="#5A6672">you write it, or</text>
+  <text x="92" y="852" text-anchor="middle" font-size="15" fill="#5A6672">install parts</text>
+  <text x="92" y="872" text-anchor="middle" font-size="15" fill="#5A6672">as plugins</text>
+  <line x1="124" y1="762" x2="226" y2="700" stroke="#002E5D" stroke-width="1.5"/>
 
   <!-- You, outside the rings -->
   <circle cx="70" cy="128" r="30" fill="#E6EEF7"/>
