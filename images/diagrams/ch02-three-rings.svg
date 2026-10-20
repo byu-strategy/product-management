@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 980" role="img" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
   <title>Claude Code: the model, the built-in harness, and your harness</title>
-  <desc>Three concentric rings, labeled Claude Code as a whole. At the center, the model. Around it, the built-in harness, which holds the context window, the tool-call check, and the tools, connected in a loop around the model: the context window feeds the model, the model's tool call goes to the check, the check passes it to the tools, and the tools' results return to the context window. The outer ring is your harness, in three sectors, each with an arrow to the part of the built-in harness it changes. Read by the model: CLAUDE.md, auto memory, and skills, into the context window. Enforced by the harness: permission rules, into the tool-call check, and hooks, into the built-in harness. Adds tools: MCP connections and subagents, into the tools. Outside the rings, you send messages, which go into the context window, and the model's replies come back to you. Two arrows connect the tools with the world outside all three rings, actions going out and output coming back, which the tools pass on as results. The world outside holds your project files; the terminal, where git, gh, and other CLIs run; the web, for search and pages; and apps such as GitHub and Supabase.</desc>
+  <desc>Three concentric rings, labeled Claude Code as a whole. At the center, the model. Around it, the built-in harness, which holds the context window, the tool-call check, and the tools, connected in a loop around the model: the context window feeds the model, the model's tool call goes to the check, the check passes it to the tools, and the tools' results return to the context window. The outer ring is your harness, in three sectors, each with an arrow to the part of the built-in harness it changes. Read by the model: CLAUDE.md, auto memory, and skills, into the context window. Enforced by the harness: permission rules, into the tool-call check, and hooks, into the built-in harness. Adds tools: subagents and MCP connections, which the Claude app calls connectors, into the tools. Outside the ring, a label marks plugins, which install several of these parts at once. Outside the rings, you send messages, which go into the context window, and the model's replies come back to you. Two arrows connect the tools with the world outside all three rings, actions going out and output coming back, which the tools pass on as results. The world outside holds your project files; the terminal, where git, gh, and other CLIs run; the web, for search and pages; and apps such as GitHub and Supabase.</desc>
   <defs>
     <marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#0057B8"/></marker>
     <marker id="an" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#002E5D"/></marker>
@@ -67,11 +67,18 @@
   <path d="M612 238 L586 300" stroke="#0057B8" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
   <path d="M718 274 L688 318" stroke="#0057B8" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
 
-  <!-- Sector: called by the model -->
-  <text x="694" y="690" text-anchor="middle" font-size="15" font-weight="600" letter-spacing="1.2" fill="#5A6672">ADDS TOOLS</text>
-  <text x="690" y="738" text-anchor="middle" font-size="18" font-weight="600" fill="#2C3E50">MCP connections</text>
-  <text x="690" y="772" text-anchor="middle" font-size="18" font-weight="600" fill="#2C3E50">Subagents</text>
-  <path d="M666 652 L636 618" stroke="#0057B8" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
+  <!-- Sector: adds tools -->
+  <text x="680" y="682" text-anchor="middle" font-size="15" font-weight="600" letter-spacing="1.2" fill="#5A6672">ADDS TOOLS</text>
+  <text x="680" y="716" text-anchor="middle" font-size="18" font-weight="600" fill="#2C3E50">Subagents</text>
+  <text x="680" y="748" text-anchor="middle" font-size="18" font-weight="600" fill="#2C3E50">MCP connections</text>
+  <text x="680" y="768" text-anchor="middle" font-size="15" fill="#5A6672">or connectors</text>
+  <path d="M660 664 L634 630" stroke="#0057B8" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
+
+  <!-- Plugins: package parts of your harness -->
+  <text x="906" y="812" text-anchor="middle" font-size="18" font-weight="600" fill="#2C3E50">Plugins</text>
+  <text x="906" y="834" text-anchor="middle" font-size="15" fill="#5A6672">install several</text>
+  <text x="906" y="853" text-anchor="middle" font-size="15" fill="#5A6672">parts at once</text>
+  <line x1="882" y1="792" x2="800" y2="700" stroke="#002E5D" stroke-width="1.5"/>
 
   <!-- Outer ring label -->
   <text x="96" y="846" text-anchor="middle" font-size="18" font-weight="700" letter-spacing="1.4" fill="#002E5D">YOUR</text>
@@ -90,12 +97,12 @@
   <text x="275" y="194" text-anchor="middle" font-size="15" fill="#5A6672">replies</text>
 
   <!-- Out to the world -->
-  <path d="M548 626 V884" stroke="#002E5D" stroke-width="2.5" fill="none" marker-end="url(#an)"/>
-  <path d="M602 888 V632" stroke="#002E5D" stroke-width="2.5" fill="none" marker-end="url(#an)"/>
-  <rect x="511" y="731" width="74" height="26" rx="13" fill="#FFFFFF" stroke="#D9DEE4" stroke-width="1.25"/>
-  <text x="548" y="749" text-anchor="middle" font-size="15" fill="#5A6672">actions</text>
-  <rect x="567" y="799" width="70" height="26" rx="13" fill="#FFFFFF" stroke="#D9DEE4" stroke-width="1.25"/>
-  <text x="602" y="817" text-anchor="middle" font-size="15" fill="#5A6672">output</text>
+  <path d="M540 626 V884" stroke="#002E5D" stroke-width="2.5" fill="none" marker-end="url(#an)"/>
+  <path d="M582 888 V632" stroke="#002E5D" stroke-width="2.5" fill="none" marker-end="url(#an)"/>
+  <rect x="503" y="731" width="74" height="26" rx="13" fill="#FFFFFF" stroke="#D9DEE4" stroke-width="1.25"/>
+  <text x="540" y="749" text-anchor="middle" font-size="15" fill="#5A6672">actions</text>
+  <rect x="547" y="799" width="70" height="26" rx="13" fill="#FFFFFF" stroke="#D9DEE4" stroke-width="1.25"/>
+  <text x="582" y="817" text-anchor="middle" font-size="15" fill="#5A6672">output</text>
   <rect x="120" y="890" width="760" height="72" rx="10" fill="#FFFFFF" stroke="#D9DEE4" stroke-width="1.5"/>
   <g transform="translate(146,906) scale(1.083)" fill="none" stroke="#002E5D" stroke-width="2.03" stroke-linecap="round" stroke-linejoin="round"><path d="m6 14 1.5-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.54 6a2 2 0 0 1-1.95 1.5H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H18a2 2 0 0 1 2 2v2"/></g>
   <text x="184" y="920" font-size="18" font-weight="600" fill="#2C3E50">Files</text>
