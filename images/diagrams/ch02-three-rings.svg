@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 980" role="img" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
   <title>Claude Code: the model, the built-in harness, and your harness</title>
-  <desc>Three concentric rings, labeled Claude Code as a whole. At the center, the model. Around it, the built-in harness, which holds the context window, the tool-call check, and the tools, connected in a loop around the model: the context window feeds the model, the model's tool call goes to the check, the check passes it to the tools, and the tools' results return to the context window. The outer ring is your harness, in three sectors, each with an arrow to the part of the built-in harness it changes. Read by the model: CLAUDE.md, auto memory, and skills, into the context window. Enforced by the harness: permission rules, into the tool-call check, and hooks, into the built-in harness. Adds tools: subagents and MCP connections, which the Claude app calls connectors, into the tools. Outside the ring, a label marks plugins, which install several of these parts at once. Outside the rings, you send messages, which go into the context window, and the model's replies come back to you. Two arrows connect the tools with the world outside all three rings, actions going out and output coming back, which the tools pass on as results. The world outside holds your project files; the terminal, where git, gh, and other CLIs run; the web, for search and pages; and apps such as GitHub and Supabase.</desc>
+  <desc>Three concentric rings, labeled Claude Code as a whole. At the center, the model. Around it, the built-in harness, which holds the context window, the tool-call check, and the tools, connected in a loop around the model: the context window feeds the model, the model's tool call goes to the check, the check passes it to the tools, and the tools' results return to the context window. The outer ring is your harness, in three sectors, each with an arrow to the part of the built-in harness it changes. Read by the model: CLAUDE.md, rules files in .claude/rules/, auto memory, and skills, into the context window. Enforced by the harness: permission rules, into the tool-call check, and hooks, into the built-in harness. Adds tools: subagents and MCP connections, which the Claude app calls connectors, into the tools. Outside the ring, a label marks plugins, which install several of these parts at once. Outside the rings, you send messages, which go into the context window, and the model's replies come back to you. Two arrows connect the tools with the world outside all three rings, actions going out and output coming back, which the tools pass on as results. The world outside holds your project files; the terminal, where git, gh, and other CLIs run; the web, for search and pages; and apps such as GitHub and Supabase.</desc>
   <defs>
     <marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#0057B8"/></marker>
     <marker id="an" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#002E5D"/></marker>
@@ -53,11 +53,12 @@
   <!-- Sector: read by the model -->
   <text x="196" y="372" text-anchor="middle" font-size="15" font-weight="600" letter-spacing="1.2" fill="#5A6672">READ BY</text>
   <text x="196" y="392" text-anchor="middle" font-size="15" font-weight="600" letter-spacing="1.2" fill="#5A6672">THE MODEL</text>
-  <text x="196" y="440" text-anchor="middle" font-size="18" font-weight="600" fill="#2C3E50">CLAUDE.md</text>
-  <text x="196" y="476" text-anchor="middle" font-size="18" font-weight="600" fill="#2C3E50">Auto memory</text>
-  <text x="196" y="512" text-anchor="middle" font-size="18" font-weight="600" fill="#2C3E50">Skills</text>
-  <path d="M268 420 V520" stroke="#0057B8" stroke-width="2" fill="none"/>
-  <path d="M268 470 H293" stroke="#0057B8" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
+  <text x="196" y="432" text-anchor="middle" font-size="18" font-weight="600" fill="#2C3E50">CLAUDE.md</text>
+  <text x="192" y="467" text-anchor="middle" font-size="16" font-family="Menlo, Consolas, monospace" fill="#2C3E50">.claude/rules/</text>
+  <text x="196" y="502" text-anchor="middle" font-size="18" font-weight="600" fill="#2C3E50">Auto memory</text>
+  <text x="196" y="537" text-anchor="middle" font-size="18" font-weight="600" fill="#2C3E50">Skills</text>
+  <path d="M266 412 V545" stroke="#0057B8" stroke-width="2" fill="none"/>
+  <path d="M266 470 H293" stroke="#0057B8" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
 
   <!-- Sector: enforced by the harness -->
   <text x="669" y="166" text-anchor="middle" font-size="15" font-weight="600" letter-spacing="1.2" fill="#5A6672">ENFORCED BY</text>
