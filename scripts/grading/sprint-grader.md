@@ -30,6 +30,7 @@ the same commit as the site change.
 | Demo: the real thing, working, with real content | Rubric | Sprint 1 |
 | Demo: length. Sprint 1: more than about two minutes, at most minus 1. Sprint 2: waived, no length deduction (Scott, 2026-10-17). Sprints 3 to 5: minus 1 for each started 30 seconds past 3:30. Sprint 6: the same, past 4:30 | Rubric, "Demo length" (published 2026-10-16; Sprint 3 scale published 2026-10-17, v2.12.3, before any Sprint 3 demo was due) | Sprint 1 |
 | Demo: not a Loom scores 0 (set in code) | Assessments and Wrap-up pages (v2.3.1, Sep 30) | Sprint 2 |
+| Demo: a Loom the course cannot open is not graded until shared, either with scott.murff@byu.edu or "Anyone with the link" (Scott, 2026-10-20; loosens the Sprint 2 practice, so it applies to Sprint 2) | Assessments page, step 3 | Sprint 2 |
 | Late work, 10% per day (Canvas and code, never the grader) | Syllabus late work policy | Sprint 1 |
 
 Not rules, never deductions: when `/sprint-review` was run; plan changes, noted or not; which tool
@@ -149,6 +150,11 @@ goal comfortably hit earns nothing extra.
   costs nothing in Sprint 1; grade it from whatever frames and transcript the packet has. From
   Sprint 2 on, a demo that is not a Loom scores 0; the script sets that, so do not grade it or
   mention the host.
+  A Loom that will not open (`loom.title` "Private Video", no frames or transcript) is not a
+  fault in the work: score demo 0 for now, set `watch_loom` true, and say in the feedback that the
+  video could not be opened and will be graded once it is shared with scott.murff@byu.edu or set
+  to "Anyone with the link" in Loom's Share settings. Scott may be able to watch one shared only
+  with him; the score is then set from his viewing.
 
   Write one `demo_notes` entry per frame (its time and what is on screen, specific enough that
   the student recognizes the moment), then answer each `demo_checks` item from the frames and

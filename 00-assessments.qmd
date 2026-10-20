@@ -215,7 +215,9 @@ Answer in your own words. It saves your answers exactly as you write them at the
 
 **3. Record a 60 to 90 second demo on [Loom](https://www.loom.com).** Show the thing working, with real content. No slides, no intro,
 no reflection. A minute or so of the actual thing. Loom only: not Google Drive, YouTube, or an uploaded
-file. Submit the Loom share link. A demo that is not a Loom scores 0.
+file. Submit the Loom share link. A demo that is not a Loom scores 0. The course has to be able to watch it:
+in Loom's Share settings, either share it with scott.murff@byu.edu or set it to "Anyone with the link".
+A Loom the course cannot open is not graded until it is shared.
 
 **4. Submit two links in that sprint's Wrap-up assignment on Canvas:** your review file on
 GitHub (`sprints/sprint-N-review.md`, with your retro at the bottom) and your Loom demo. Before
