@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 980" role="img" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
   <title>Claude Code: the model, the built-in harness, and your harness</title>
-  <desc>Three concentric rings, labeled Claude Code as a whole. At the center, the model. Around it, the built-in harness, which holds the context window, the tool-call check, and the tools, connected in a loop around the model: the context window feeds the model, the model's tool call goes to the check, the check passes it to the tools, and the tools' results return to the context window. The outer ring is your harness, in three sectors, each with an arrow to the part of the built-in harness it changes. Read by the model: CLAUDE.md, auto memory, and skills, into the context window. Enforced by the harness: permission rules, into the tool-call check, and hooks, into the built-in harness. Called by the model: MCP servers and subagents, into the tools. Outside the rings, you send messages, which go into the context window, and get replies back from the built-in harness. An arrow labeled actions leaves the tools and all three rings to reach the world outside: your project files; the terminal, where git, gh, and other CLIs run; the web, for search and pages; and apps such as GitHub and Supabase.</desc>
+  <desc>Three concentric rings, labeled Claude Code as a whole. At the center, the model. Around it, the built-in harness, which holds the context window, the tool-call check, and the tools, connected in a loop around the model: the context window feeds the model, the model's tool call goes to the check, the check passes it to the tools, and the tools' results return to the context window. The outer ring is your harness, in three sectors, each with an arrow to the part of the built-in harness it changes. Read by the model: CLAUDE.md, auto memory, and skills, into the context window. Enforced by the harness: permission rules, into the tool-call check, and hooks, into the built-in harness. Called by the model: MCP servers and subagents, into the tools. Outside the rings, you send messages, which go into the context window, and the model's replies come back to you. Two arrows connect the tools with the world outside all three rings, actions going out and output coming back, which the tools pass on as results. The world outside holds your project files; the terminal, where git, gh, and other CLIs run; the web, for search and pages; and apps such as GitHub and Supabase.</desc>
   <defs>
     <marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#0057B8"/></marker>
     <marker id="an" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#002E5D"/></marker>
@@ -24,8 +24,8 @@
 
   <!-- Harness ring -->
   <circle cx="500" cy="470" r="230" fill="url(#gHarness)" stroke="#B9D0EA" stroke-width="2"/>
-  <text x="426" y="314" text-anchor="middle" font-size="16" font-weight="700" letter-spacing="1.2" fill="#002E5D">BUILT-IN</text>
-  <text x="426" y="334" text-anchor="middle" font-size="16" font-weight="700" letter-spacing="1.2" fill="#002E5D">HARNESS</text>
+  <text x="500" y="262" text-anchor="middle" font-size="16" font-weight="700" letter-spacing="1.2" fill="#002E5D">BUILT-IN</text>
+  <text x="500" y="284" text-anchor="middle" font-size="16" font-weight="700" letter-spacing="1.2" fill="#002E5D">HARNESS</text>
 
   <!-- Model -->
   <circle cx="500" cy="470" r="70" fill="url(#gModel)" filter="url(#sh)"/>
@@ -47,7 +47,8 @@
   <text x="575" y="602" text-anchor="middle" font-size="17" font-weight="600" fill="#002E5D">Tools</text>
   <path d="M627 344 C690 380 700 540 634 590" stroke="#002E5D" stroke-width="2" fill="none" marker-end="url(#an)"/>
   <path d="M523 600 C440 610 360 580 350 512" stroke="#8A939C" stroke-width="1.75" fill="none" marker-end="url(#ag)"/>
-  <text x="430" y="630" text-anchor="middle" font-size="16" fill="#5A6672">results</text>
+  <rect x="374" y="572" width="70" height="26" rx="13" fill="#FFFFFF" stroke="#D9DEE4" stroke-width="1.25"/>
+  <text x="409" y="590" text-anchor="middle" font-size="15" fill="#5A6672">results</text>
 
   <!-- Sector: read by the model -->
   <text x="196" y="372" text-anchor="middle" font-size="15" font-weight="600" letter-spacing="1.2" fill="#5A6672">READ BY</text>
@@ -71,7 +72,7 @@
   <text x="700" y="696" text-anchor="middle" font-size="15" font-weight="600" letter-spacing="1.2" fill="#5A6672">THE MODEL</text>
   <text x="700" y="738" text-anchor="middle" font-size="18" font-weight="600" fill="#2C3E50">MCP servers</text>
   <text x="700" y="772" text-anchor="middle" font-size="18" font-weight="600" fill="#2C3E50">Subagents</text>
-  <path d="M624 722 C606 700 596 670 592 634" stroke="#0057B8" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
+  <path d="M666 652 L636 618" stroke="#0057B8" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
 
   <!-- Outer ring label -->
   <text x="96" y="846" text-anchor="middle" font-size="18" font-weight="700" letter-spacing="1.4" fill="#002E5D">YOUR</text>
@@ -82,16 +83,20 @@
   <circle cx="70" cy="128" r="30" fill="#E6EEF7"/>
   <g transform="translate(55,113) scale(1.25)" fill="none" stroke="#002E5D" stroke-width="1.76" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></g>
   <text x="70" y="186" text-anchor="middle" font-size="19" font-weight="700" fill="#002E5D">You</text>
-  <path d="M106 136 C220 170 320 290 340 430" stroke="#002E5D" stroke-width="2" fill="none" marker-end="url(#an)"/>
-  <path d="M292 373 C240 300 180 200 100 168" stroke="#002E5D" stroke-width="2" fill="none" marker-end="url(#an)"/>
-  <rect x="226" y="246" width="88" height="26" rx="13" fill="#FFFFFF" stroke="#D9DEE4" stroke-width="1.25"/>
-  <text x="270" y="264" text-anchor="middle" font-size="15" fill="#5A6672">messages</text>
-  <rect x="121" y="190" width="70" height="26" rx="13" fill="#FFFFFF" stroke="#D9DEE4" stroke-width="1.25"/>
-  <text x="156" y="208" text-anchor="middle" font-size="15" fill="#5A6672">replies</text>
+  <path d="M104 146 C220 180 320 290 340 430" stroke="#002E5D" stroke-width="2" fill="none" marker-end="url(#an)"/>
+  <path d="M452 419 C400 300 250 120 108 110" stroke="#002E5D" stroke-width="2" fill="none" marker-end="url(#an)"/>
+  <rect x="258" y="300" width="88" height="26" rx="13" fill="#FFFFFF" stroke="#D9DEE4" stroke-width="1.25"/>
+  <text x="302" y="318" text-anchor="middle" font-size="15" fill="#5A6672">messages</text>
+  <rect x="240" y="176" width="70" height="26" rx="13" fill="#FFFFFF" stroke="#D9DEE4" stroke-width="1.25"/>
+  <text x="275" y="194" text-anchor="middle" font-size="15" fill="#5A6672">replies</text>
 
   <!-- Out to the world -->
   <path d="M548 626 V884" stroke="#002E5D" stroke-width="2.5" fill="none" marker-end="url(#an)"/>
-  <text x="536" y="800" text-anchor="end" font-size="16" fill="#5A6672">actions</text>
+  <path d="M602 888 V632" stroke="#002E5D" stroke-width="2.5" fill="none" marker-end="url(#an)"/>
+  <rect x="511" y="731" width="74" height="26" rx="13" fill="#FFFFFF" stroke="#D9DEE4" stroke-width="1.25"/>
+  <text x="548" y="749" text-anchor="middle" font-size="15" fill="#5A6672">actions</text>
+  <rect x="567" y="799" width="70" height="26" rx="13" fill="#FFFFFF" stroke="#D9DEE4" stroke-width="1.25"/>
+  <text x="602" y="817" text-anchor="middle" font-size="15" fill="#5A6672">output</text>
   <rect x="120" y="890" width="760" height="72" rx="10" fill="#FFFFFF" stroke="#D9DEE4" stroke-width="1.5"/>
   <g transform="translate(146,906) scale(1.083)" fill="none" stroke="#002E5D" stroke-width="2.03" stroke-linecap="round" stroke-linejoin="round"><path d="m6 14 1.5-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.54 6a2 2 0 0 1-1.95 1.5H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H18a2 2 0 0 1 2 2v2"/></g>
   <text x="184" y="920" font-size="18" font-weight="600" fill="#2C3E50">Files</text>
