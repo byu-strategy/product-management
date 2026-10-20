@@ -4,6 +4,14 @@ This course site is updated during the semester, and every meaningful update is 
 
 New entries appear at the top.
 
+## v2.12.7 (2026-10-20)
+
+The three-ring figure in Directing the Agent names its permission step precisely.
+
+- **Directing the Agent.** The box between the model and its tools is now called the tool-call permission
+  check, and the caption says what acts there: your PreToolUse hooks, then your permission rules, then the
+  permission mode or a prompt to you.
+
 ## v2.12.6 (2026-10-20)
 
 The Claude Code map in Directing the Agent is clearer about settings and plugins.
