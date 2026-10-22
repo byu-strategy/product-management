@@ -4,6 +4,15 @@ This course site is updated during the semester, and every meaningful update is 
 
 New entries appear at the top.
 
+## v2.12.10 (2026-10-22)
+
+Diagrams that were missing now appear, and the belief-versus-truth figure in Finding and Validating the Problem is clearer about evidence.
+
+- **Missing diagrams.** Three diagrams showed only a caption over an empty box: the issue tree in Finding and Validating the Problem, and the diagrams in Specs: Designing the Build and Anatomy of an Application. All three now appear.
+- **Belief-versus-truth figure.** The shading inside the circles now matches the evidence bar: lighter means more evidence. The bar now runs the full height of the circles, with its mark on the dashed "enough evidence to act" line.
+- **Two regions renamed.** Founded Bet and Unfounded Hunch are now Correct Assumption and Wrong Assumption. Both rest on the same thin evidence, so from the inside they look the same, and only a test tells you which one you hold.
+- **Evidence from building.** The figure and the text now say that some evidence comes only from building a small version and putting it in front of customers.
+
 ## v2.12.9 (2026-10-20)
 
 The sprint rubric now says what a demo shows for each kind of work, how goals that depend on other people are graded, and exactly what the retro costs.
