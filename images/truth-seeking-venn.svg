@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 810" font-family="Helvetica, Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 820" font-family="Helvetica, Arial, sans-serif">
   <defs>
     <!-- The evidence scale, used by the bar and inside both circles (both span y 170 to 710): lighter means more evidence -->
     <linearGradient id="evWash" x1="0" y1="170" x2="0" y2="710" gradientUnits="userSpaceOnUse">
@@ -13,7 +13,7 @@
     </clipPath>
   </defs>
 
-  <rect x="0" y="0" width="1120" height="810" fill="#ffffff"/>
+  <rect x="0" y="0" width="1120" height="820" fill="#ffffff"/>
 
   <!-- Title -->
   <text x="500" y="46" text-anchor="middle" font-size="27" font-weight="700" fill="#002E5D">Your Beliefs vs. the Truth About Your Customer</text>
@@ -92,5 +92,6 @@
   </g>
 
   <!-- Bottom caption -->
-  <text x="500" y="788" text-anchor="middle" font-size="13.5" fill="#5a6672">Move beliefs into the overlap (believe what is true) and above the line (get evidence) before you build.</text>
+  <text x="500" y="778" text-anchor="middle" font-size="13.5" fill="#5a6672">Move beliefs into the overlap (believe what is true) and above the line (get evidence).</text>
+  <text x="500" y="798" text-anchor="middle" font-size="13.5" fill="#5a6672">Some evidence comes only from building a small version and putting it in front of customers.</text>
 </svg>

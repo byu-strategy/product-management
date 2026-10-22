@@ -66,7 +66,7 @@ Those six regions each show up in real product work:
 
 A correct assumption and a wrong assumption have the same evidence behind them, so from the inside they look the same. Only a test tells you which one you hold.
 
-The work has three parts. **Grow the overlap** by making more of your beliefs true, which means discarding the false ones. **Pull truths into it** by going and finding what you do not yet know. And **push your beliefs above the evidence line**, from assumption toward validated insight, before you commit the semester to them.
+The work has three parts. **Grow the overlap** by making more of your beliefs true, which means discarding the false ones. **Pull truths into it** by going and finding what you do not yet know. And **push your beliefs above the evidence line**, from assumption toward validated insight, before you commit the semester to them. Get the evidence you can before you build. Some of it comes only from building: a small version in front of real customers is also a test.
 
 Two failure modes account for most failed products. The first is building from **False Confidence**: shipping a thing you were sure about and never checked. The second is never leaving **Available but Unseen**: a truth was one interview away and you built on a guess instead.
 
