@@ -1,12 +1,21 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 790" font-family="Helvetica, Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 810" font-family="Helvetica, Arial, sans-serif">
   <defs>
     <linearGradient id="evScale" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="#0057B8"/>
       <stop offset="1" stop-color="#e9eef5"/>
     </linearGradient>
+    <!-- Same scale, laid over both circles: darker means more evidence -->
+    <linearGradient id="evWash" x1="0" y1="170" x2="0" y2="710" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0057B8" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#0057B8" stop-opacity="0"/>
+    </linearGradient>
+    <clipPath id="bothCircles">
+      <circle cx="400" cy="440" r="270"/>
+      <circle cx="660" cy="440" r="270"/>
+    </clipPath>
   </defs>
 
-  <rect x="0" y="0" width="1120" height="790" fill="#ffffff"/>
+  <rect x="0" y="0" width="1120" height="810" fill="#ffffff"/>
 
   <!-- Title -->
   <text x="500" y="46" text-anchor="middle" font-size="27" font-weight="700" fill="#002E5D">Your Beliefs vs. the Truth About Your Customer</text>
@@ -20,17 +29,19 @@
   <circle cx="400" cy="440" r="270" fill="#0057B8" fill-opacity="0.06" stroke="#002E5D" stroke-width="2.5"/>
   <circle cx="660" cy="440" r="270" fill="#E1A200" fill-opacity="0.07" stroke="#8A5A00" stroke-width="2.5"/>
 
+  <rect x="130" y="170" width="800" height="540" fill="url(#evWash)" clip-path="url(#bothCircles)"/>
+
   <!-- Evidence threshold line -->
   <line x1="120" y1="440" x2="905" y2="440" stroke="#9aa4ad" stroke-width="1.5" stroke-dasharray="7 6"/>
   <text x="150" y="431" font-size="12.5" font-style="italic" fill="#6b7580">enough evidence to act</text>
 
   <!-- Evidence scale bar -->
-  <text x="1006" y="205" text-anchor="middle" font-size="12.5" font-weight="700" fill="#3d4750">MORE</text>
-  <text x="1006" y="222" text-anchor="middle" font-size="12.5" font-weight="700" fill="#3d4750">evidence</text>
-  <rect x="991" y="238" width="30" height="330" rx="6" fill="url(#evScale)" stroke="#c7ccd2" stroke-width="1"/>
-  <line x1="985" y1="403" x2="1027" y2="403" stroke="#6b7580" stroke-width="1.5"/>
-  <text x="1006" y="592" text-anchor="middle" font-size="12.5" font-weight="700" fill="#3d4750">LESS</text>
-  <text x="1006" y="609" text-anchor="middle" font-size="12.5" font-weight="700" fill="#3d4750">evidence</text>
+  <text x="1006" y="141" text-anchor="middle" font-size="12.5" font-weight="700" fill="#3d4750">MORE</text>
+  <text x="1006" y="158" text-anchor="middle" font-size="12.5" font-weight="700" fill="#3d4750">evidence</text>
+  <rect x="991" y="170" width="30" height="540" rx="6" fill="url(#evScale)" stroke="#c7ccd2" stroke-width="1"/>
+  <line x1="985" y1="440" x2="1027" y2="440" stroke="#6b7580" stroke-width="1.5"/>
+  <text x="1006" y="732" text-anchor="middle" font-size="12.5" font-weight="700" fill="#3d4750">LESS</text>
+  <text x="1006" y="749" text-anchor="middle" font-size="12.5" font-weight="700" fill="#3d4750">evidence</text>
 
   <!-- ===== Region: False Confidence (belief, not true, high evidence) ===== -->
   <g>
@@ -81,5 +92,5 @@
   </g>
 
   <!-- Bottom caption -->
-  <text x="500" y="762" text-anchor="middle" font-size="13.5" fill="#5a6672">Move beliefs into the overlap (believe what is true) and above the line (get evidence) before you build.</text>
+  <text x="500" y="788" text-anchor="middle" font-size="13.5" fill="#5a6672">Move beliefs into the overlap (believe what is true) and above the line (get evidence) before you build.</text>
 </svg>
