@@ -123,7 +123,7 @@ Reusable scripture-and-quote pairings for the opener, each tied to a product poi
 - Emphasis: Believe it in proportion to the evidence.
 - Scripture: "Faith is not to have a perfect knowledge of things; therefore if ye have faith ye hope for things which are not seen, which are true." (Alma 32:21)
 - Quote: "It is the mark of an educated mind to rest satisfied with the degree of precision which the nature of the subject admits." (Aristotle)
-- Product tie: a right hunch and a wrong hunch look the same until you test them. Cross the evidence threshold before you commit the semester.
+- Product tie: a correct assumption and a wrong assumption look the same until you test them. Cross the evidence threshold before you commit the semester.
 
 **For a user-research practice (Ch 6)**
 
