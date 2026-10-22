@@ -140,6 +140,7 @@ In practice, you'll often start with vibe coding to explore, then transition to 
 Most SDD approaches follow a similar pattern:
 
 ```{mermaid}
+%%| eval: true
 graph LR
     A[Requirements] --> B[Design]
     B --> C[Tasks]

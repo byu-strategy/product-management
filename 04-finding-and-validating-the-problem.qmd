@@ -683,6 +683,7 @@ A worked example. You launched a study-group finder; 120 students signed up and 
 week. Why is retention low?
 
 ```{mermaid}
+%%| eval: true
 %%| label: fig-issue-tree
 %%| fig-cap: "An issue tree for low retention. The three first-level branches cover every sign-up exactly once, so the data can show which branch contains the problem."
 %%| fig-alt: "A tree branching left to right from the question why do only 15 of 120 sign-ups use it weekly. Three branches: never activated, meaning never joined a group, which splits into did not understand what to do and no group existed for their class; activated, then left, which splits into group never met, group met but was not useful, and their need ended because the exam passed; and still active, which leads to what do these 15 have in common."

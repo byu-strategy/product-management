@@ -235,6 +235,7 @@ top to bottom; each arrow is one message. `INSERT` is the SQL command that adds 
 Created` is the status code that says the new task was saved.
 
 ```{mermaid}
+%%| eval: true
 sequenceDiagram
     participant User
     participant Browser as Browser (frontend)
