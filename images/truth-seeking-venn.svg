@@ -3,7 +3,9 @@
     <!-- The evidence scale, used by the bar and inside both circles (both span y 170 to 710): lighter means more evidence -->
     <linearGradient id="evWash" x1="0" y1="170" x2="0" y2="710" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#002E5D" stop-opacity="0"/>
-      <stop offset="1" stop-color="#002E5D" stop-opacity="0.3"/>
+      <stop offset="0.18" stop-color="#002E5D" stop-opacity="0"/>
+      <stop offset="0.6" stop-color="#002E5D" stop-opacity="0.14"/>
+      <stop offset="1" stop-color="#002E5D" stop-opacity="0.44"/>
     </linearGradient>
     <clipPath id="bothCircles">
       <circle cx="400" cy="440" r="270"/>
