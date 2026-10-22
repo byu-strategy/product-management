@@ -1,13 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 810" font-family="Helvetica, Arial, sans-serif">
   <defs>
     <linearGradient id="evScale" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#0057B8"/>
-      <stop offset="1" stop-color="#e9eef5"/>
+      <stop offset="0" stop-color="#F4F7FB"/>
+      <stop offset="1" stop-color="#002E5D"/>
     </linearGradient>
-    <!-- Same scale, laid over both circles: darker means more evidence -->
+    <!-- Same scale, laid over both circles: lighter means more evidence -->
     <linearGradient id="evWash" x1="0" y1="170" x2="0" y2="710" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#0057B8" stop-opacity="0.22"/>
-      <stop offset="1" stop-color="#0057B8" stop-opacity="0"/>
+      <stop offset="0" stop-color="#002E5D" stop-opacity="0"/>
+      <stop offset="1" stop-color="#002E5D" stop-opacity="0.24"/>
     </linearGradient>
     <clipPath id="bothCircles">
       <circle cx="400" cy="440" r="270"/>
