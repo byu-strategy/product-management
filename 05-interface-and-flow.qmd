@@ -6,11 +6,11 @@ title: "Interface and Flow"
 
 Your product is only as good as the interface people use. An agent will generate a
 working application that nobody can figure out how to use, and it will not tell you that it
-has. Judgment about the surface is yours.
+has. Judging whether people can use it is your job.
 
 :::: {.concept data-c="DE03"}
 
-It helps to be precise about what "the surface" means. Dan Olsen's UX iceberg splits it into four
+It helps to be precise about what "the interface" means. Dan Olsen's UX iceberg splits it into four
 layers [@olsen2015lean]. Visual design (colors, fonts, spacing) is the only one above the
 waterline, and it is the one an agent is best at. The three underneath are where usable and
 unusable products actually diverge, and they are decided before a single style is chosen:
@@ -131,8 +131,8 @@ prompt.
 people what matters before they read a word, so use them to rank everything on the screen.
 
 People do not read a screen top to bottom. They scan it, and their eyes go to whatever stands out.
-If everything stands out equally, nothing does, and the user has to read every label to find the
-next step. Adam Wathan and Steve Schoger's [Refactoring UI](https://www.refactoringui.com/), the
+If every element is equally prominent, the user has to read every label to find the next
+step. Adam Wathan and Steve Schoger's [Refactoring UI](https://www.refactoringui.com/), the
 start-here resource for this axis, is built around that point: hierarchy is the main thing that
 makes an interface look designed, and you create it as much by **de-emphasizing** the secondary
 items as by emphasizing the primary one.
@@ -185,8 +185,8 @@ Take a screenshot of your main screen. Before squinting, write down the one acti
 user to take. Now squint. **Predict** what a first-time user clicks first, and explain which property
 (size, weight, contrast, spacing, position) draws them there. If the prediction and your
 intended action differ, list the two changes that would fix it. Refactoring UI's advice to try the
-screen in grayscale first is a good second check: if the hierarchy only works because of color, it
-is fragile.
+screen in grayscale first is a good second check: if the hierarchy depends on color alone, it
+fails for people who cannot tell the colors apart.
 :::
 
 ::::

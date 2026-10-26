@@ -139,7 +139,7 @@ browser to your server and back:
 4. **Send the HTTP request.** The method, the path, some headers, and a body.
 5. **Get the HTTP response.** A status code, some headers, and a body.
 
-On the wire, steps 4 and 5 look like this (the classic text form; newer connections send the same
+Sent over the network, steps 4 and 5 look like this (the classic text form; newer connections send the same
 parts in a more compact form):
 
 ```http
@@ -697,7 +697,7 @@ of them to ship. You need enough to read what the agent wrote and notice when it
 which takes much less skill and is much more useful.
 
 **Choosing a stack.** Pick the boring one. Dan McKinley's essay "Choose Boring Technology"
-makes the case: every new tool spends attention you could spend on the product, and a
+makes the case: every new tool takes time to learn, time you could spend on the product, and a
 well-known tool's failure modes are already documented [@mckinley2015boring]. There is
 also a reason specific to AI: an agent writes better code in a popular stack because it has seen
 far more of it. The stack that is well documented, widely used, and already familiar to your
