@@ -303,6 +303,14 @@
    "tagged": false
   }
  ],
+ "AA25": [
+  {
+   "page": "08-data-and-apis.html",
+   "anchor": "keep-untrusted-text-as-data",
+   "section": "Keep Untrusted Text as Data",
+   "tagged": false
+  }
+ ],
  "AA26": [
   {
    "page": "09-version-control-testing-and-tech-debt.html",
@@ -376,6 +384,36 @@
    "page": "09b-tests-and-tech-debt.html",
    "anchor": "when-to-pay-down-tech-debt",
    "section": "When to Pay Down Tech Debt",
+   "tagged": false
+  }
+ ],
+ "AA31": [
+  {
+   "page": "08-data-and-apis.html",
+   "anchor": "your-endpoints-are-public",
+   "section": "Your Endpoints Are Public",
+   "tagged": false
+  }
+ ],
+ "AA32": [
+  {
+   "page": "08-data-and-apis.html",
+   "anchor": "your-endpoints-are-public",
+   "section": "Your Endpoints Are Public",
+   "tagged": false
+  },
+  {
+   "page": "11-models-in-your-product.html",
+   "anchor": "what-it-costs",
+   "section": "What It Costs",
+   "tagged": false
+  }
+ ],
+ "AA33": [
+  {
+   "page": "95-eng-checklist.html",
+   "anchor": "security-review",
+   "section": "Security",
    "tagged": false
   }
  ],

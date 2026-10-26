@@ -618,6 +618,14 @@
     "knowledge_only": false
    },
    {
+    "id": "AA31",
+    "name": "Your endpoints are public",
+    "item": "A3",
+    "what": "Anyone can send a request to a route or a Server Action directly, with any body, signed in or not. Before it does any work, each one checks who is calling and whether the record named in the request is theirs. A route that queries as the signed-in user keeps row-level security; a route that uses the secret key skips it and must check ownership itself.",
+    "practice": "A committed route or Server Action that checks the signed-in user and then either queries as that user, so row-level security applies, or checks in code that the record belongs to the user before acting.",
+    "knowledge_only": false
+   },
+   {
     "id": "AA16",
     "name": "Requests, responses and status codes",
     "item": "A4",
@@ -691,10 +699,26 @@
    },
    {
     "id": "AA25",
-    "name": "Common web attacks",
+    "name": "Keep untrusted text as data",
     "item": "A5",
-    "what": "Injected SQL, scripts injected into a page (cross-site scripting), forged requests from another site, and open endpoints with no sign-in. Each has a standard defense: parameterized queries, escaped output, checks on the server.",
-    "practice": "A committed defense against a named web attack (parameterized queries, output escaping, a content security policy, request forgery protection, or a redirect allow list), with the attack named in the code, a commit message or a record.",
+    "what": "Text from users, other services and models is data: show it as text and pass it to the database as a value. Joined into a SQL string it becomes SQL injection, which parameterized queries prevent; inserted into the page as HTML it becomes cross-site scripting, which React prevents by default until dangerouslySetInnerHTML, Markdown with raw HTML, or a user-supplied link turns that protection off. Model output counts as untrusted text.",
+    "practice": "A committed defense against SQL injection or cross-site scripting (a query that passes user text as a value in place of joined SQL, a link allow list, a sanitizer, or rendering that replaces dangerouslySetInnerHTML or rehype-raw), with the attack named in the code, a commit message or a record.",
+    "knowledge_only": false
+   },
+   {
+    "id": "AA32",
+    "name": "Limits on paid calls",
+    "item": "A5",
+    "what": "A route that calls a paid API, such as a model, spends money for whoever calls it. Cap each user's calls in code and answer 429 past the cap, and set a monthly spend limit on the provider account, which holds even if the code has a bug.",
+    "practice": "A committed per-user limit on a paid call (a count checked before the call, answering 429 past the cap), or a committed record of the monthly spend limit set on the provider account.",
+    "knowledge_only": false
+   },
+   {
+    "id": "AA33",
+    "name": "Accounts, repository and packages",
+    "item": "A5",
+    "what": "The accounts that hold the keys (GitHub, the host, the database, the model provider) need two-factor sign-in. GitHub push protection blocks a push that contains a recognized key; Dependabot and npm audit report packages with known vulnerabilities. A package name a model suggests may not exist, or may belong to an attacker, so check it before installing.",
+    "practice": "A committed Dependabot configuration (.github/dependabot.yml), or saved npm audit output together with a commit that fixes what it reported.",
     "knowledge_only": false
    },
    {

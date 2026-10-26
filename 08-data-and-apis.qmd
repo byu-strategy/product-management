@@ -11,8 +11,8 @@ prototype from a product. A prototype loses its data when you refresh. A product
 
 This chapter gives you four models: the data model is the structure every screen depends on; a query
 is a few blocks that pick rows; the database decides who sees which rows; and
-every request can fail. It ends with how to protect your own endpoints, how to show content you
-did not write, and the rules for secrets and for other people's data.
+every request can fail. It ends with how to protect your own endpoints, how to keep text from users and models from
+being run as code, and the rules for secrets and for other people's data.
 
 ## Design the Data Model First {#the-data-model-is-the-skeleton}
 
@@ -537,16 +537,34 @@ choose **Copy as fetch**, change the id to one of A's records, and run it in the
 answer should be 404 or 403, never A's data.
 :::
 
-## Showing Content You Did Not Write
+## Keep Untrusted Text as Data
 
-**The model:** text from users, from other services, and from models is data. Show it as text.
-Never insert it into your page as HTML.
+**The model:** text from users, from other services, and from models is data. Show it on the
+page as text, and pass it to the database as a value. Wherever the code treats it as part of a
+command, in the page's HTML or in a database query, whoever wrote the text can make that command
+do something else.
 
-If a page inserts someone else's text as HTML, that text can carry a `<script>` tag or an image
-tag with code attached, and the code runs in every visitor's browser, signed in as that visitor.
-This attack is called **cross-site scripting** (XSS). React prevents it by default:
-`<p>{comment.text}</p>` shows the text exactly as written, and any tags in it appear as plain
-characters. Three things turn that protection off:
+**In a database query: SQL injection.** Suppose a search route builds its query by joining the
+user's text into a string of SQL:
+
+```typescript
+// DANGER: the user's text becomes part of the command
+const query = `SELECT * FROM tasks WHERE task_text = '${search}'`;
+```
+
+A user who searches for `x' OR '1'='1` turns the filter into one that matches every row, and
+other text can change or delete data. This attack is called **SQL injection**. The defense is a
+**parameterized query**: the command and the user's text are sent to the database separately, so
+the text is only ever compared as a value. The Supabase client does this for you:
+`.eq("task_text", search)` sends `search` as a value. The risk comes back wherever code joins text
+into SQL by hand: a raw query string, or a database function that assembles its SQL from its
+inputs.
+
+**In the page: cross-site scripting.** If a page inserts someone else's text as HTML, that text
+can carry a `<script>` tag or an image tag with code attached, and the code runs in every
+visitor's browser, signed in as that visitor. This attack is called **cross-site scripting**
+(XSS). React prevents it by default: `<p>{comment.text}</p>` shows the text exactly as written,
+and any tags in it appear as plain characters. Three things turn that protection off:
 
 - **`dangerouslySetInnerHTML`**, React's way to insert raw HTML. Never pass it text from a user or
   a model.
@@ -562,9 +580,10 @@ clicking. Show model output the same way you show user text, and load images onl
 have chosen.
 
 ::: {.callout-tip title="Try it"}
-Search your repo for `dangerouslySetInnerHTML`, `innerHTML`, and `rehype-raw`. For each one you
-find, say where the text comes from. If any of it comes from a user or a model, ask Claude Code to
-show it as plain text or Markdown without raw HTML.
+Search your repo for `dangerouslySetInnerHTML`, `innerHTML`, `rehype-raw`, and SQL written as a
+string with `${` inside it. For each one you find, say where the text comes from. If any of it
+comes from a user or a model, ask Claude Code to show it as plain text, or to pass it to the
+database as a value.
 :::
 
 ## Secrets and Sensitive Data
@@ -689,9 +708,11 @@ event `profile_updated` that includes the user's new phone number. Then search y
   use. A route that uses the secret key skips RLS, so it must check ownership itself.
 - **Spend limits**: a per-user cap on paid calls in your code, and a monthly limit on the
   provider account that holds even if the code has a bug.
-- **Cross-site scripting (XSS)**: text from users or models inserted as HTML runs code in
-  visitors' browsers. React shows text safely by default; `dangerouslySetInnerHTML`, Markdown
-  with raw HTML allowed, and user-supplied links turn that protection off.
+- **Keep untrusted text as data**: text from users and models is shown as text and passed to the
+  database as a value. Joined into SQL, it becomes **SQL injection**, which parameterized queries
+  prevent; inserted as HTML, it becomes **cross-site scripting (XSS)**, which React prevents by
+  default until `dangerouslySetInnerHTML`, Markdown with raw HTML, or a user-supplied link turns
+  that protection off.
 - **Public vs. secret keys**: publishable keys are sent to the browser and can do only what your
   rules allow; secret keys bypass your rules or spend your money, so they stay on the server.
   A call that carries a secret key goes from your server, never the browser.

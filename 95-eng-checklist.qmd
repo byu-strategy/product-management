@@ -58,9 +58,10 @@ route, a table, or a package.
   the provider account.
 
 ### Content and models
-- [ ] **No text from a user or a model is shown as HTML.** No `dangerouslySetInnerHTML` or
-  `rehype-raw` on that text, and user-supplied links accept only `http` and `https`
-  ([Chapter 8](08-data-and-apis.qmd#showing-content-you-did-not-write)).
+- [ ] **No text from a user or a model is shown as HTML or joined into SQL.** No
+  `dangerouslySetInnerHTML` or `rehype-raw` on that text, user-supplied links accept only `http`
+  and `https`, and queries pass user text as a value
+  ([Chapter 8](08-data-and-apis.qmd#keep-untrusted-text-as-data)).
 - [ ] **Model output decides no permission, price, or action by itself.** Costly actions wait for
   a person or a rule in code, and each tool gets only the access its job needs
   ([Chapter 11](11-models-in-your-product.qmd#where-it-breaks)).

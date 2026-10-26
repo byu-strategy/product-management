@@ -249,6 +249,22 @@
    "chapter": "Ch 9b: Kinds of tests (permission tests). Ch 8: Row Level Security: Enforce Access Where the Data Lives"
   },
   {
+   "id": "AA31",
+   "name": "Your endpoints are public",
+   "item": "A3",
+   "what": "Anyone can send a request to a route or a Server Action directly, with any body, signed in or not. Before it does any work, each one checks who is calling and whether the record named in the request is theirs. A route that queries as the signed-in user keeps row-level security; a route that uses the secret key skips it and must check ownership itself.",
+   "used": "",
+   "made": "a route or Server Action that checks the caller and the record's owner",
+   "shipped": "",
+   "knowledge_only": false,
+   "practice": "A committed route or Server Action that checks the signed-in user and then either queries as that user, so row-level security applies, or checks in code that the record belongs to the user before acting.",
+   "exam": [
+    "AA-F-61",
+    "AA-F-62"
+   ],
+   "chapter": "Ch 8: Your Endpoints Are Public"
+  },
+  {
    "id": "AA16",
    "name": "Requests, responses and status codes",
    "item": "A4",
@@ -392,19 +408,51 @@
   },
   {
    "id": "AA25",
-   "name": "Common web attacks",
+   "name": "Keep untrusted text as data",
    "item": "A5",
-   "what": "Injected SQL, scripts injected into a page (cross-site scripting), forged requests from another site, and open endpoints with no sign-in. Each has a standard defense: parameterized queries, escaped output, checks on the server.",
+   "what": "Text from users, other services and models is data: show it as text and pass it to the database as a value. Joined into a SQL string it becomes SQL injection, which parameterized queries prevent; inserted into the page as HTML it becomes cross-site scripting, which React prevents by default until dangerouslySetInnerHTML, Markdown with raw HTML, or a user-supplied link turns that protection off. Model output counts as untrusted text.",
    "used": "",
-   "made": "a defense against one of them in the code, such as a content security policy",
+   "made": "a defense against injection or cross-site scripting in the code",
    "shipped": "",
    "knowledge_only": false,
-   "practice": "A committed defense against a named web attack (parameterized queries, output escaping, a content security policy, request forgery protection, or a redirect allow list), with the attack named in the code, a commit message or a record.",
+   "practice": "A committed defense against SQL injection or cross-site scripting (a query that passes user text as a value in place of joined SQL, a link allow list, a sanitizer, or rendering that replaces dangerouslySetInnerHTML or rehype-raw), with the attack named in the code, a commit message or a record.",
    "exam": [
     "AA-F-55",
     "AA-F-56"
    ],
-   "chapter": "not taught yet"
+   "chapter": "Ch 8: Keep Untrusted Text as Data"
+  },
+  {
+   "id": "AA32",
+   "name": "Limits on paid calls",
+   "item": "A5",
+   "what": "A route that calls a paid API, such as a model, spends money for whoever calls it. Cap each user's calls in code and answer 429 past the cap, and set a monthly spend limit on the provider account, which holds even if the code has a bug.",
+   "used": "",
+   "made": "a per-user limit on a paid call",
+   "shipped": "",
+   "knowledge_only": false,
+   "practice": "A committed per-user limit on a paid call (a count checked before the call, answering 429 past the cap), or a committed record of the monthly spend limit set on the provider account.",
+   "exam": [
+    "AA-F-63",
+    "AA-F-64"
+   ],
+   "chapter": "Ch 8: Your Endpoints Are Public. Ch 11: What It Costs"
+  },
+  {
+   "id": "AA33",
+   "name": "Accounts, repository and packages",
+   "item": "A5",
+   "what": "The accounts that hold the keys (GitHub, the host, the database, the model provider) need two-factor sign-in. GitHub push protection blocks a push that contains a recognized key; Dependabot and npm audit report packages with known vulnerabilities. A package name a model suggests may not exist, or may belong to an attacker, so check it before installing.",
+   "used": "",
+   "made": "dependency alerts or an audit set up and acted on",
+   "shipped": "",
+   "knowledge_only": false,
+   "practice": "A committed Dependabot configuration (.github/dependabot.yml), or saved npm audit output together with a commit that fixes what it reported.",
+   "exam": [
+    "AA-F-65",
+    "AA-F-66"
+   ],
+   "chapter": "Appendix: Engineering Checklist (Security)"
   },
   {
    "id": "AA26",
@@ -504,11 +552,11 @@
  "book_gaps": [
   "Deploying is taught in Ch 2 (Deploying a Prototype; Deployment with Vercel / GitHub Pages), both marked MOVE. Move them to Ch 7 after Tech Stacks, and add how to pick a host for a Python app (Streamlit, Render, PythonAnywhere) and what a build log is.",
   "Integrations with other services (OAuth connections on a user's behalf, webhooks, offering an API) are not taught. Ch 8 after Requests Are Contracts That Fail.",
-  "Common web attacks (SQL injection, cross-site scripting, forged requests, endpoints with no sign-in) are not taught. Ch 8, a section after Secrets and Sensitive Data.",
   "Protections for data about people (consent, redaction, pseudonymizing interview or research data) are taught only as 'where data may go'. Ch 8: Secrets and Sensitive Data needs a part on consent and redaction, since A5 level 5 asks for them.",
   "Importing existing data (a spreadsheet or old system into tables, with duplicates removed) is not taught, though A2 level 4 counts it. Ch 8 after Design the Data Model First.",
   "Data and schema assume Supabase. Many products store data in SQLite, an ORM schema or a platform's own store. Ch 8 should say what counts as a defined schema in those stacks.",
-  "Where an app keeps data (page memory, local storage, database) is only in the Ch 9c appendix. Ch 8 should open with it."
+  "Where an app keeps data (page memory, local storage, database) is only in the Ch 9c appendix. Ch 8 should open with it.",
+  "Accounts, repository and packages (AA33) is taught only as a list of checks in the Engineering Checklist's Security section. A short passage in Ch 9 (version control) would give it a chapter home."
  ],
  "evidence_notes": [
   "A link check of 200 shows the address answers, not that this sprint's commit is what is deployed. A deployment id or commit SHA from the host (or a /version endpoint) would show it.",
