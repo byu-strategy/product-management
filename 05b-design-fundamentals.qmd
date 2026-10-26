@@ -79,7 +79,7 @@ will not adopt the app because their payroll system already handles trades, no f
 UI and UX scopes into four layers: visual design, interaction design, information architecture,
 and conceptual design.
 
-In this course you hold all three scopes at once, and so does the agent. That is the risk: an
+In this course you work in all three scopes at once, and so does the agent. That is the risk: an
 agent asked for a screen will make UX and product decisions inside it without saying so. Tell it
 which scope you are working in.
 
@@ -572,7 +572,7 @@ choices.
 - **A small palette.** Neutrals (a range of grays for text, borders, and backgrounds), one accent
   color for the primary action and links, and semantic colors for meaning: red for errors and
   destructive actions, green for success, sometimes amber for warnings.
-- **One accent.** If the accent appears on everything, it marks nothing. In ShiftSwap the accent
+- **One accent.** If the accent appears on everything, it no longer shows which action is primary. In ShiftSwap the accent
   blue is used for the primary button, links, and the selected tab, and nowhere else.
 - **Contrast is measured, not judged by eye.** WCAG 2.2 requires a contrast ratio of at least 4.5:1
   for normal text and 3:1 for large text, and 3:1 for interface components such as input borders and

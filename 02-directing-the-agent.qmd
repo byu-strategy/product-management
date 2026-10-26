@@ -612,7 +612,7 @@ For each task, name which of the three groups it belongs to, how you would undo 
 
 ## Delegation and Parallel Work
 
-**A subagent starts with an empty context window and returns a summary. Parallel sessions need separate copies of the files. Both cost tokens and attention.** (A **token** is the unit a model reads and writes text in, roughly a short word or part of one. Usage limits and API prices are counted in tokens.)
+**A subagent starts with an empty context window and returns a summary. Parallel sessions need separate copies of the files. Both cost tokens and your time to review the results.** (A **token** is the unit a model reads and writes text in, roughly a short word or part of one. Usage limits and API prices are counted in tokens.)
 
 ![A subagent reads in its own window and sends back only a summary. A worktree gives a second session its own folder and branch on the same history.](images/diagrams/ch02-subagent-vs-worktree.svg){#fig-subagent-vs-worktree fig-alt="Two panels. Subagent, a helper inside one session: Your session sends a task description down to a subagent window full of lines labeled 50 files read stay in here; a highlighted arrow labeled summary only returns one line to your session. Worktree, two sessions at once: Session A works in the my-app folder on branch main, Session B in a fix-login folder on its own branch; both folders sit on one shared repository history. A note: ignored files such as .env start out missing." width="100%"}
 

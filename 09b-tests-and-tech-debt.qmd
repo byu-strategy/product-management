@@ -79,7 +79,7 @@ specification): both mark a file of tests, which the app itself never runs. `npm
 whatever command the `"test"` line in `package.json` (the file that lists your project's packages
 and its named commands) names, so open that file to see what it does in your repo.
 
-**Why there seem to be a thousand test files.** Search a project for "test" and most of what you
+**Why there seem to be so many test files.** Search a project for "test" and most of what you
 find belongs to other people. The folder `node_modules` holds the code of every package your app
 depends on, and many packages ship their own test files inside it. In one Next.js and Supabase
 app checked while writing this chapter, 17 test files were the app's own and 394 sat inside
@@ -385,7 +385,7 @@ The metaphor comes from finance: just like financial debt, technical debt [@cunn
 
 - **Accumulates interest**: every later change in that part of the code takes longer, so the longer you wait to pay it down, the more expensive it becomes
 - **Can be strategic**: Sometimes borrowing makes sense
-- **Can be crippling**: Too much debt slows everything down
+- **Can grow too large**: Too much debt slows everything down
 
 **Examples of technical debt:**
 
@@ -450,7 +450,7 @@ might be deleted soon (pivoting); the cost of cleaning up exceeds the benefit; o
 deadline has real consequences.
 
 **The Boy Scout Rule:** Leave the code better than you found it [@martinrc2008clean]. When you're
-working in an area, clean up a little. Incremental improvements compound over time.
+working in an area, clean up a little. Small improvements add up over time.
 
 Agent-written code adds one kind of debt that nobody decides to take on: a file that grows past a
 thousand lines one reasonable edit at a time. A file-size check (Chapter 2, Common Claude Code

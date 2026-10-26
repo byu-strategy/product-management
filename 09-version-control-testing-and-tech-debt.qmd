@@ -31,7 +31,7 @@ and review. Changes move through four places:
 | **Remote Repository** | A copy of your project on GitHub (or similar) |
 
 A **commit** is one snapshot plus a message saying what changed and why. Small commits with
-clear messages are what make the time machine useful: "Add rating to problems" is a point you
+clear messages are what make the history useful: "Add rating to problems" is a point you
 can return to; "updates" is not.
 
 **How you start.** Your course repo was created from the builder template, so it already has

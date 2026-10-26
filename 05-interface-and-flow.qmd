@@ -729,14 +729,14 @@ when tapped. Fix the worst one with a precise prompt.
 You will not write much of this by hand, but you should know the parts so you can read what the
 agent wrote and catch it when something is off.
 
-| Building block | What it does | Analogy (and where it breaks) |
-|---|---|---|
-| **HTML** | Structure: headings, paragraphs, links, buttons, inputs, containers (`<h1>`, `<p>`, `<a>`, `<button>`, `<input>`, `<div>`) | The frame of a house. Breaks: HTML also carries meaning, a `<button>` is announced as a button, so the right element matters for accessibility |
-| **CSS** | Styling: color, size, spacing, layout, and responsive rules (`@media` queries) | Paint and furniture placement |
-| **Tailwind CSS** | CSS as short utility classes in the markup (`bg-green-500 px-4 py-2 rounded`) | |
-| **JavaScript** | Behavior: responds to clicks and typing, talks to the server | The wiring |
-| **React** | Builds the UI from reusable **components**, functions that return UI. Components take **props** (inputs) and hold **state** (data that changes) | |
-| **Next.js** | The React framework this course uses: routing, server rendering, deployment | |
+| Building block | What it does |
+|---|---|
+| **HTML** | Structure: headings, paragraphs, links, buttons, inputs, containers (`<h1>`, `<p>`, `<a>`, `<button>`, `<input>`, `<div>`). Each element also says what the thing is: a `<button>` is announced as a button, so the right element matters for accessibility |
+| **CSS** | Styling: color, size, spacing, layout, and responsive rules (`@media` queries) |
+| **Tailwind CSS** | CSS as short utility classes in the markup (`bg-green-500 px-4 py-2 rounded`) |
+| **JavaScript** | Behavior: responds to clicks and typing, talks to the server |
+| **React** | Builds the UI from reusable **components**, functions that return UI. Components take **props** (inputs) and hold **state** (data that changes) |
+| **Next.js** | The React framework this course uses: routing, server rendering, deployment |
 
 Chapter 7 reads a React component line by line, including how a change in state makes React
 draw the screen again, which is why loading, empty, and error are each a state you design: see

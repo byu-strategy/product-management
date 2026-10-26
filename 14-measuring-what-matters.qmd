@@ -10,7 +10,7 @@ Launch is the start of an experiment. This chapter is how you run it: decide wha
 before you ship, record what people actually do, follow them from arrival to coming back, tell a
 real effect from a coincidence, and decide which features to keep, change, or kill.
 
-Read a metric as [evidence](04-finding-and-validating-the-problem.qmd) that moves a belief up or down. It does not certify that you are right, or that you are worthy. And remember that outcomes carry luck: a good number can follow a poor decision and a bad number a sound one [@duke2018bets]. Track what updates your beliefs about the product, not what confirms them.
+Read a metric as [evidence](04-finding-and-validating-the-problem.qmd) that moves a belief up or down. It does not certify that you are right, or that you are worthy. And remember that outcomes depend partly on luck: a good number can follow a poor decision and a bad number a sound one [@duke2018bets]. Track what updates your beliefs about the product, not what confirms them.
 
 ::: {.callout-note title="The running example: QuizMe"}
 This chapter continues the example from [Going to Market](12-going-to-market.qmd): QuizMe, an

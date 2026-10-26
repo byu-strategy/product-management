@@ -296,7 +296,7 @@ It is also exactly what makes a product manipulative. The same understanding of 
 
 ### Moral Foundations Theory
 
-People are not blank slates about right and wrong. Research on moral foundations finds a handful of intuitions that recur across cultures: care versus harm, fairness versus cheating, loyalty, authority, sanctity, and liberty [@haidt2012righteous]. You need not adopt the theory wholesale to take its practical point: your users bring moral intuitions to your product, and they feel it when a product treats them unfairly, wastes their time, or degrades them, even when they cannot name why. Building against those intuitions costs you trust, which is the one asset a product cannot fake.
+People are not blank slates about right and wrong. Research on moral foundations finds a handful of intuitions that recur across cultures: care versus harm, fairness versus cheating, loyalty, authority, sanctity, and liberty [@haidt2012righteous]. You need not adopt the theory wholesale to take its practical point: your users bring moral intuitions to your product, and they feel it when a product treats them unfairly, wastes their time, or degrades them, even when they cannot name why. Building against those intuitions costs you their trust.
 
 ### Hooked: engagement or exploitation
 
@@ -342,7 +342,7 @@ The Sprint 2 framework gives you a practical way to check your aim. For the need
 
 - **Agency.** Does it expand what users can do and choose, or does it quietly narrow them?
 - **Becoming.** Does it help them grow and become more capable, or keep them dependent and stuck?
-- **Connection.** Does it strengthen real relationships, or substitute a thinner thing for them?
+- **Connection.** Does it strengthen real relationships, or replace them with weaker substitutes?
 
 Not every product touches all three. The question is directional: for the needs you do touch, are you on the right side of them? A product that expands agency, supports becoming, and deepens connection is aimed well, and it tends to build lasting trust, which cheaper tactics do not.
 

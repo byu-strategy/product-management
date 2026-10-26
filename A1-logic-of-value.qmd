@@ -135,7 +135,7 @@ $$
 
 ![The value stick with its middle split into the tranches beneath it. Willingness to pay is the whole height. It splits into the four cost-and-return claims the firm must fund, variable cost, fixed cost, normal profit, economic profit, plus the consumer surplus the customer keeps. The value the firm and customer share, above every cost and the normal return, is CS plus EP.](images/diagrams/A1-value-decomposition.svg){#fig-value-decomposition fig-alt="A tall vertical bar spanning from a variable cost floor at the bottom to willingness to pay at the top. From bottom to top the bands are variable costs, fixed costs, normal profit, economic profit, and consumer surplus. A price line sits between economic profit and consumer surplus. Left brackets mark revenue and producer surplus; right brackets mark economic profit as the value the firm captures, consumer surplus as what the customer keeps, and the two together as value created and shared." width="100%"}
 
-This is exactly the value stick, now derived rather than drawn. The full height of the stick, willingness to pay down to willingness to sell, is $CS + EP$ plus the normal returns that any firm would require. The interior lines that the strategy chapter draws by hand, price and cost, are where $CS$, $EP$, and the supplier's share meet.
+This is exactly the value stick, now derived from that identity. The full height of the stick, willingness to pay down to willingness to sell, is $CS + EP$ plus the normal returns that any firm would require. The interior lines that the strategy chapter draws by hand, price and cost, are where $CS$, $EP$, and the supplier's share meet.
 
 ## Where strategy enters
 
@@ -145,9 +145,9 @@ In perfect competition, $EP \to 0$. The whole gap goes to customers and supplier
 
 The framework also clarifies two familiar strategic moves.
 
-**Red ocean versus blue ocean** [@kim2005blue] is redistribution versus expansion. In a fixed market, total surplus is fixed, and competition is a fight over how the existing $CS + PS$ is divided. A firm can push for more producer surplus at rivals' expense, or convert consumer surplus into economic profit by raising price toward willingness to pay. Both are redistributive, moving the interior lines of the stick without changing its height. Blue ocean, in this language, is a shift of the frontier itself: value innovation that lifts willingness to pay and cuts cost at the same time, enlarging total surplus rather than redividing it.
+**Red ocean versus blue ocean** [@kim2005blue] is redistribution versus expansion. In a fixed market, total surplus is fixed, and competition only changes how the existing $CS + PS$ is divided. A firm can push for more producer surplus at rivals' expense, or convert consumer surplus into economic profit by raising price toward willingness to pay. Both are redistributive, moving the interior lines of the stick without changing its height. Blue ocean, in this language, is a shift of the frontier itself: value innovation that lifts willingness to pay and cuts cost at the same time, enlarging total surplus rather than redividing it.
 
-**Schumpeter's creative destruction** [@schumpeter1942capitalism] is the dynamic version. Positive economic profit is a signal that attracts entry and imitation, which is precisely the force that competes $EP$ back toward zero. The firm's answer is to keep moving the frontier, to keep creating new surplus faster than the old surplus is competed away. Economic profit, in this view, is never permanent. It is a temporary rent that strategy exists to renew.
+**Schumpeter's creative destruction** [@schumpeter1942capitalism] is the dynamic version. Positive economic profit is a signal that attracts entry and imitation, which is precisely the force that competes $EP$ back toward zero. The firm's answer is to keep moving the frontier, to keep creating new surplus faster than the old surplus is competed away. Economic profit, in this view, is never permanent. It is a temporary rent that a firm must keep renewing through strategy.
 
 ## Where this sits
 

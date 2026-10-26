@@ -632,7 +632,7 @@ Visual Studio Code is a free code editor from Microsoft and the main workspace f
 
 ## Claude Code
 
-Claude Code is Anthropic's coding agent. You describe what you want in plain language; it reads your project, plans, edits files across the codebase, runs commands and tests, and reports back, asking your permission for actions you have not pre-approved. It will not build a polished, complicated application by itself, but it does much of the construction while you direct it.
+Claude Code is Anthropic's coding agent. You describe what you want in plain language; it reads your project, plans, edits files across the codebase, runs commands and tests, and reports back, asking your permission for actions you have not pre-approved. It will not build a polished, complicated application by itself, but it writes much of the code while you direct it.
 
 {{< video https://www.youtube.com/embed/GqjvaBUk3Tc >}}
 

@@ -4,7 +4,7 @@ title: "Storytelling and the Final Demo"
 
 ## Why This Matters
 
-You spent the semester finding a truth about a customer and building something in response to it. Now you have to make someone else care. That is a different skill, and it is not optional. The best product loses to a worse one that is explained better. Your [Sprint 6](00-assessments.qmd#sprint-6) demo is a three-minute video that tells a story, and the ability to tell it well is the same ability you use in a customer interview, a landing page, a sales call, a stakeholder update, and a job interview.
+You spent the semester finding a truth about a customer and building something in response to it. Now you have to make someone else care. That is a different skill, and it is not optional. A good product can lose to a worse one that is explained better. Your [Sprint 6](00-assessments.qmd#sprint-6) demo is a three-minute video that tells a story, and the ability to tell it well is the same ability you use in a customer interview, a landing page, a sales call, a stakeholder update, and a job interview.
 
 This chapter teaches you to build a supply of stories, to tell them well, and to shape the one story that matters most this semester: the story of what you built, why, and what happened when people used it.
 

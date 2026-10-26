@@ -123,7 +123,7 @@ WRAP-UP (1 minute)
 "Thank you so much. This was really helpful."
 ```
 
-The follow-up questions ask about what just happened. Avoid "What would you change?": it invites a design opinion, and opinions are exactly what this method is built to get past.
+The follow-up questions ask about what just happened. Avoid "What would you change?": it invites a design opinion, and this method relies on observed behavior instead of opinions.
 
 #### During the Session
 
