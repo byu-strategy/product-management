@@ -4,6 +4,14 @@ This course site is updated during the semester, and every meaningful update is 
 
 New entries appear at the top.
 
+## v2.12.12 (2026-10-26)
+
+A heading in Storytelling and the Final Demo is renamed, and two passages are more precise.
+
+- **Storytelling and the Final Demo.** The section "Amplify: Make Them Believe" is now "Impression Amplifiers," the term the section teaches.
+- **Directing the Agent.** The comparison between your project and OpenAI's agent system now says that each part of your setup corresponds to one of theirs, without claiming the two differ only in scale.
+- **Interface and Flow.** Key Concepts no longer repeats the chapter summary that was removed from the opening.
+
 ## v2.12.11 (2026-10-26)
 
 Wording throughout the book is plainer.
