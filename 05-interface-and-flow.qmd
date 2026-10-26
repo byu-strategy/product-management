@@ -744,8 +744,6 @@ draw the screen again, which is why loading, empty, and error are each a state y
 
 ## Key Concepts
 
-- **The chapter's model**: design is deciding where the user's attention goes. Every screen should
-  make the next step obvious, and most of what users experience happens off the happy path.
 - **Happy path**: the run through the product where everything goes right.
 - **UX iceberg** (Dan Olsen): visual design above the waterline; interaction design, information
   architecture, and conceptual design underneath, where usable and unusable products diverge.

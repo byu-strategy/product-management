@@ -855,10 +855,10 @@ decision that makes the whole system work. Not every change needs a person, and 
 otherwise just moves the bottleneck to you. Deciding which changes are worth your attention is the
 blast-radius judgment from earlier in this chapter, and you should be making the same call in your own project.
 
-You are running a small version of this factory. The context it pulls from Slack and Notion is what you
-supply through CLAUDE.md and MCP; your skills are their reusable agent procedures; your hooks and
-permission rules are their CI gates; and your three checks before calling something done are their review.
-Only the scale differs.
+Your own project has a smaller counterpart to each part of this system. The context it pulls from Slack and
+Notion corresponds to what you supply through CLAUDE.md and MCP; your skills correspond to their reusable
+agent procedures; your hooks and permission rules correspond to their CI gates; and your three checks before
+calling something done correspond to their review.
 
 Writing that definition of done is the subject of [Specs](06b-specs.qmd), in the Design part of
 the book: user stories, acceptance criteria, PRDs, and the spec-driven workflow.
