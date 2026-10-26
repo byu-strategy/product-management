@@ -11,7 +11,8 @@ prototype from a product. A prototype loses its data when you refresh. A product
 
 This chapter gives you four models: the data model is the structure every screen depends on; a query
 is a few blocks that pick rows; the database decides who sees which rows; and
-every request can fail. It ends with the rules for secrets and for other people's data.
+every request can fail. It ends with how to protect your own endpoints, how to show content you
+did not write, and the rules for secrets and for other people's data.
 
 ## Design the Data Model First {#the-data-model-is-the-skeleton}
 
@@ -449,6 +450,123 @@ and sign out in another tab and click it. Ask Claude Code to make every case sho
 message without losing what the user typed.
 :::
 
+## Your Endpoints Are Public
+
+**The model:** every route in `app/api/` is an address anyone on the internet can send a request
+to, with any body they choose. Your page is one caller among many. Before a route does any work,
+it checks three things: who is calling, whether the row they named is theirs, and whether they
+have used up their share of anything that costs money.
+
+This is the browser rule from Chapter 7 applied to your own server. The page that calls
+`/api/suggest` only sends a request, and anyone can send the same request from a script or from
+developer tools: with a different task id, without signing in, or ten thousand times in a row.
+**Server Actions** (functions marked `"use server"` that a form can call directly) are endpoints
+too. Next.js's documentation says each one is reachable by a direct `POST` request and should
+verify authentication and authorization inside itself, even when the page that shows the form
+already checked ([How to think about data security in
+Next.js](https://nextjs.org/docs/app/guides/data-security)).
+
+| Check | The question | Without it |
+|---|---|---|
+| **Who is calling?** | Is a user signed in, and is the token real? | Anyone, signed in or not, can use the feature |
+| **Is the row theirs?** | Does the record named in the request belong to this user? | A user changes the id in the request and reads or changes someone else's data |
+| **How much may they use?** | Has this user passed their limit on paid calls? | One account, or one script, spends your whole model budget |
+
+The second check is where row-level security either keeps working or stops. A route that queries
+Supabase as the user (the server client from `lib/supabase/server.ts`, which reads the sign-in
+cookie) gets the same RLS filtering the browser gets, so a row that is not theirs does not come
+back. A route that uses the secret key skips RLS, so the route has to check ownership itself, for
+example by adding `.eq("user_id", user.id)` to every query. Use the secret key in a route only
+when the job needs access across users, such as an admin report or a payment notice from Stripe.
+
+```typescript
+// app/api/suggest/route.ts
+import { createClient } from "@/lib/supabase/server";
+
+const DAILY_LIMIT = 50;
+
+export async function POST(req: Request) {
+  const supabase = await createClient(); // queries as the signed-in user, so RLS applies
+
+  // 1. Who is calling?
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) return Response.json({ error: "Sign in first" }, { status: 401 });
+
+  // 2. Is the row theirs? RLS returns nothing for another user's task.
+  const { taskId } = await req.json();
+  const { data: task } = await supabase
+    .from("tasks").select("task_text").eq("id", taskId).single();
+  if (!task) return Response.json({ error: "Task not found" }, { status: 404 });
+
+  // 3. How much may they use? Count this user's calls in the last 24 hours.
+  const since = new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString();
+  const { count } = await supabase
+    .from("ai_calls").select("*", { count: "exact", head: true })
+    .eq("user_id", user.id).gte("created_at", since);
+  if ((count ?? 0) >= DAILY_LIMIT) {
+    return Response.json({ error: "Daily limit reached" }, { status: 429 });
+  }
+  await supabase.from("ai_calls").insert({ user_id: user.id });
+
+  // Only now call the model with task.task_text (Chapter 11).
+}
+```
+
+`getUser()` asks Supabase Auth to confirm the token, so a forged or expired one gets `null`.
+The route answers 404 for a task that is not theirs as well as for one that does not exist,
+which tells a stranger nothing about which ids are real. The `ai_calls` table needs RLS policies
+like the ones above, so each user can insert and count only their own rows.
+
+The third check matters most for AI features. Each model call costs money, and the route that
+makes it holds your key, so an unprotected route lets anyone spend your budget through your app.
+Use two limits together: a per-user cap in your code, as above, and a monthly spend limit on the
+whole account, set in your model provider's console. The account limit still holds if your code
+has a bug.
+
+**Worked example.** A student ships a "summarize my notes" feature. The route sends whatever text
+arrives to the model and never checks who sent it. Someone sees the route's address in the
+browser's Network panel and writes a loop that sends it a long document every second. The bill
+grows until the student notices, days later. With the three checks, the loop gets 401 until it
+signs in, and a signed-in account stops at its daily cap with 429.
+
+::: {.callout-tip title="Try it: call your own routes"}
+List every `route.ts` under `app/api/` and every `"use server"` function in your repo. For each,
+write which of the three checks it makes, and on which line. Then run the two-account drill
+against one route: signed in as B, open the Network panel, right-click a request your app sends,
+choose **Copy as fetch**, change the id to one of A's records, and run it in the Console. The
+answer should be 404 or 403, never A's data.
+:::
+
+## Showing Content You Did Not Write
+
+**The model:** text from users, from other services, and from models is data. Show it as text.
+Never insert it into your page as HTML.
+
+If a page inserts someone else's text as HTML, that text can carry a `<script>` tag or an image
+tag with code attached, and the code runs in every visitor's browser, signed in as that visitor.
+This attack is called **cross-site scripting** (XSS). React prevents it by default:
+`<p>{comment.text}</p>` shows the text exactly as written, and any tags in it appear as plain
+characters. Three things turn that protection off:
+
+- **`dangerouslySetInnerHTML`**, React's way to insert raw HTML. Never pass it text from a user or
+  a model.
+- **A Markdown renderer set to allow raw HTML.** `react-markdown` does not render HTML inside
+  Markdown unless you add a plugin such as `rehype-raw`. Leave it out for text you did not write.
+- **Links whose address comes from a user.** Accept only addresses that start with `https://` or
+  `http://`, so a `javascript:` address cannot run code when someone clicks it.
+
+Model output belongs on this list. Prompt injection (Chapter 11) can steer what a model writes,
+and one known attack has the model write an image whose address carries the user's private data
+to another site. When the page shows the image, the browser requests that address without anyone
+clicking. Show model output the same way you show user text, and load images only from sites you
+have chosen.
+
+::: {.callout-tip title="Try it"}
+Search your repo for `dangerouslySetInnerHTML`, `innerHTML`, and `rehype-raw`. For each one you
+find, say where the text comes from. If any of it comes from a user or a model, ask Claude Code to
+show it as plain text or Markdown without raw HTML.
+:::
+
 ## Secrets and Sensitive Data
 
 **The model:** an API key is a password. Personal and client data has rules about where it may
@@ -566,6 +684,14 @@ event `profile_updated` that includes the user's new phone number. Then search y
 - **Requests fail**: a network error or timeout returns no status code at all. `fetch` throws
   only when no answer came back, so code must check `response.ok` and show the user what
   happened without losing what they typed.
+- **Your endpoints are public**: anyone can call a route or a Server Action directly. Each one
+  checks who is calling, whether the row named in the request is theirs, and how much they may
+  use. A route that uses the secret key skips RLS, so it must check ownership itself.
+- **Spend limits**: a per-user cap on paid calls in your code, and a monthly limit on the
+  provider account that holds even if the code has a bug.
+- **Cross-site scripting (XSS)**: text from users or models inserted as HTML runs code in
+  visitors' browsers. React shows text safely by default; `dangerouslySetInnerHTML`, Markdown
+  with raw HTML allowed, and user-supplied links turn that protection off.
 - **Public vs. secret keys**: publishable keys are sent to the browser and can do only what your
   rules allow; secret keys bypass your rules or spend your money, so they stay on the server.
   A call that carries a secret key goes from your server, never the browser.

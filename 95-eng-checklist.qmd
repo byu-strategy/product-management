@@ -30,24 +30,68 @@ A practical guide for building production-grade software. Use this when promptin
 
 ---
 
-## 🔒 Security
+## Security {#security-review}
 
-### Authentication & Authorization
-- [ ] **Never trust user input** - Validate and sanitize everything
-- [ ] **Use environment variables** - Never hardcode API keys or secrets
-- [ ] **Implement proper auth** - JWT tokens, session management, password hashing
-- [ ] **Row-level security** - Users should only access their own data
-- [ ] **HTTPS everywhere** - No exceptions in production
+The checks for a Next.js and Supabase app built with an agent. Each one links to the chapter
+that explains it. Run them before you invite real users, and again whenever the agent adds a
+route, a table, or a package.
 
-### Common Vulnerabilities (OWASP Top 10)
-- [ ] **SQL Injection** - Use parameterized queries, never string concatenation
-- [ ] **XSS (Cross-Site Scripting)** - Sanitize HTML input, escape output
-- [ ] **CSRF (Cross-Site Request Forgery)** - Use CSRF tokens on forms
-- [ ] **Broken authentication** - Implement rate limiting, 2FA where needed
-- [ ] **Sensitive data exposure** - Encrypt passwords, don't log secrets
+### Where code runs
+- [ ] **No secret in browser code.** Every `NEXT_PUBLIC_` variable is public by design, and no
+  key is typed into a `"use client"` file ([Chapter 8](08-data-and-apis.qmd#secrets-and-sensitive-data)).
+- [ ] **Every check that protects data or money also runs on the server or in the database.**
+  Checks in the browser are for speed only ([Chapter 7](07-anatomy-of-an-application.qmd#three-places-code-runs-and-data-lives)).
+
+### The database
+- [ ] **RLS is on for every table, with a policy for each action the app uses.** Supabase's
+  Security Advisor (in the dashboard under Advisors) lists every table without it as an error
+  ([Chapter 8](08-data-and-apis.qmd#row-level-security-enforce-access-where-the-data-lives)).
+- [ ] **The two-account drill passes.** Signed in as user B, you cannot see, change, or delete
+  user A's records through the screens, by changing ids, or with a direct query.
+- [ ] **Private files are in private storage buckets, with policies.**
+
+### Your endpoints
+- [ ] **Every route and Server Action checks who is calling, whether the row is theirs, and how
+  much they may use** ([Chapter 8](08-data-and-apis.qmd#your-endpoints-are-public)). A route
+  that uses the secret key checks ownership itself.
+- [ ] **Paid calls have two limits:** a per-user cap in your code and a monthly spend limit on
+  the provider account.
+
+### Content and models
+- [ ] **No text from a user or a model is shown as HTML.** No `dangerouslySetInnerHTML` or
+  `rehype-raw` on that text, and user-supplied links accept only `http` and `https`
+  ([Chapter 8](08-data-and-apis.qmd#showing-content-you-did-not-write)).
+- [ ] **Model output decides no permission, price, or action by itself.** Costly actions wait for
+  a person or a rule in code, and each tool gets only the access its job needs
+  ([Chapter 11](11-models-in-your-product.qmd#where-it-breaks)).
+
+### Data
+- [ ] **Logs, analytics events, and prompts carry ids, not personal data.** Check what each
+  server `console.log` prints ([Chapter 8](08-data-and-apis.qmd#secrets-and-sensitive-data)).
+- [ ] **No real student or client data goes into an AI tool** until the contract and the tool's
+  data terms allow it. Build with made-up data.
+
+### Accounts, repo, and packages
+- [ ] **Two-factor sign-in is on** for GitHub, Vercel, Supabase, and your model provider's
+  console. Those accounts hold every key the app uses.
+- [ ] **GitHub push protection is on, and you never bypass it.** It blocks a push that contains a
+  recognized kind of key, and it is on by default for public repositories. If it blocks you,
+  rotate the key.
+- [ ] **Dependabot alerts are on** (repo Settings, then Code security), so GitHub warns you when a
+  package you use has a known vulnerability. `npm audit` gives the same list on your laptop.
+- [ ] **Every package the agent installs is one you meant to install.** Check the name on
+  npmjs.com before installing: models sometimes suggest package names that do not exist, and
+  attackers publish harmful packages under names like those. Review changes to `package.json`
+  in every pull request.
+- [ ] **A leaked key is rotated, not only deleted from the code**
+  ([Chapter 8](08-data-and-apis.qmd#secrets-and-sensitive-data)).
+- [ ] **The agent cannot reach production by accident.** Production keys stay out of
+  `.env.local`, and the agent works against a development database
+  ([Chapter 8](08-data-and-apis.qmd#the-data-model-is-the-skeleton),
+  [Chapter 2](02-directing-the-agent.qmd#blast-radius)).
 
 **Example prompt for AI:**
-> "Review this API endpoint for security vulnerabilities. Check for: SQL injection, XSS, authentication bypass, and rate limiting."
+> "Review this repo against the Security section of the Engineering Checklist. For each item, say pass or fail, and give the file and line that shows it. Do not change anything yet."
 
 ---
 
@@ -423,12 +467,7 @@ Before deploying to production, verify:
 - [ ] Database queries optimized
 
 ### Security
-- [ ] All inputs validated and sanitized
-- [ ] Authentication working correctly
-- [ ] Authorization checks in place
-- [ ] HTTPS enabled
-- [ ] Security headers configured
-- [ ] Dependencies scanned for vulnerabilities
+- [ ] Every check in [Security](#security-review) passes
 
 ### Reliability
 - [ ] Error monitoring configured (Sentry)
