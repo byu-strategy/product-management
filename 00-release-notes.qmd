@@ -4,6 +4,13 @@ This course site is updated during the semester, and every meaningful update is 
 
 New entries appear at the top.
 
+## v2.12.11 (2026-10-26)
+
+Wording throughout the book is plainer.
+
+- **Shorter chapter openings.** Interface and Flow and Anatomy of an Application no longer open with a two-sentence summary of the chapter. Each chapter's ideas are unchanged.
+- **Plainer wording.** Across the book, figurative phrases were replaced with literal ones that say the same thing, for example "if the hierarchy depends on color alone, it fails for people who cannot tell the colors apart" in place of "it is fragile."
+
 ## v2.12.10 (2026-10-22)
 
 Diagrams that were missing now appear, and the belief-versus-truth figure in Finding and Validating the Problem is clearer about evidence.
