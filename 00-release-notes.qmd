@@ -4,6 +4,12 @@ This course site is updated during the semester, and every meaningful update is 
 
 New entries appear at the top.
 
+## v2.12.13 (2026-10-26)
+
+The figure at the start of The Browser, Developer Tools, and Claude in Chrome now shows correctly how a page is built.
+
+- **How the browser builds a page.** The figure used to show HTML, CSS, and JavaScript all feeding the DOM. It now shows that the HTML builds the DOM, JavaScript changes it, and the CSS styles each element when the screen is drawn. The CSS is not part of the DOM. The paragraph above the figure says the same.
+
 ## v2.12.12 (2026-10-26)
 
 A heading in Storytelling and the Final Demo is renamed, and two passages are more precise.
