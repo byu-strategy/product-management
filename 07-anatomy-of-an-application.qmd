@@ -9,13 +9,6 @@ decisions for you. That was on purpose. You cannot learn everything before you b
 anything, and the fastest way to understand a **stack** (the set of technologies an app is
 built from) is to already have one running.
 
-Now you find out what you have been shipping. The model for this chapter and the next two
-fits in two sentences:
-
-> **An app is a few places where code runs and data lives, connected by requests. Most bugs
-> and breaches come from something sitting in the wrong place, or from trusting the wrong
-> side.**
-
 Every web or mobile product is built from the same handful of blocks: the user's browser, a
 server, a database, and the requests that pass between them. Once you can say which block a
 piece of code or data belongs in, you can direct an agent instead of hoping it guesses right,
