@@ -8,13 +8,6 @@ Your product is only as good as the interface people use. An agent will generate
 working application that nobody can figure out how to use, and it will not tell you that it
 has. Judgment about the surface is yours.
 
-The model for this whole chapter fits in two sentences. **Design is deciding where the user's
-attention goes. Every screen should make the next step obvious, and most of what users experience
-happens off the happy path.** The **happy path** is the run through the product where everything
-goes right; "off the happy path" is everything else, such as a first visit with no data, a slow
-load, or a failed save.
-
-
 :::: {.concept data-c="DE03"}
 
 It helps to be precise about what "the surface" means. Dan Olsen's UX iceberg splits it into four
