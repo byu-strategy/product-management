@@ -343,6 +343,7 @@ The key `shipped` holds the **Output** category (kept for compatibility). Never 
   "flags": ["late: ...", "setup: README context not filled", "..."],
   "watch_loom": false,
   "confidence": "high | medium | low",
+  "effort_review": {"effort": 1, "progress": 1, "why": "...", "hidden": "... or null"},
   "demo_notes": [{"at": "0:05", "sees": "..."}],
   "demo_checks": {"on_screen": "...", "working": "...", "real_content": "...",
                   "reachable": "...", "matches_plan": "...", "off_demo": "...", "readable": "..."},

@@ -512,7 +512,7 @@ def build(student, sub, plan_sub, cfg, due):
         # Sprint 1 put the retro at the end of the plan file. From Sprint 2 it is the "Your retro"
         # section at the bottom of the review file, five prompts the student answers.
         old_style = all(field(plan_now, k) for k in ("Actual difficulty", "Why it differed", "Retro"))
-        m = re.search(r"##\s*Your retro\s*(.*)", review or "", re.S)
+        m = re.search(r"##\s*(?:Your\s+)?retro\b\s*(.*)", review or "", re.S | re.I)
         answered = ""
         if m:
             answered = re.sub(r"\*Written by you.*?\*|\*\*[^*]+\?\*\*|\*\*Actual difficulty:\*\*|"
@@ -590,7 +590,9 @@ def build(student, sub, plan_sub, cfg, due):
     readme_text = p.get("readme") or ""
     m = re.search(r"## Where the work lives\n(.*?)(?=\n## |\Z)", readme_text, re.S)
     where = m.group(1) if m else ""
-    text = (where + " " + " ".join(links) + " " + ((p.get("plan") or {}).get("now") or "") + " " +
+    # The Plan assignment's Canvas link counts too: a plan kept in a team repo names that repo only there.
+    plan_links = re.findall(r"https?://github\.com/[^\s<\"]+", (plan_sub or {}).get("body") or "")
+    text = (where + " " + " ".join(links + plan_links) + " " + ((p.get("plan") or {}).get("now") or "") + " " +
             ((p.get("review") or {}).get("text") or ""))
     named = {re.sub(r"\.git$", "", u.lower().rstrip(".")) for u in re.findall(r"github\.com/([\w.-]+/[\w.-]+)", text)}
     # The review report names repos bare ("Spencer24601/RememberMe"); take those under the student's own account.
