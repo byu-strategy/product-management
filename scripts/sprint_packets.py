@@ -105,6 +105,40 @@ def gh_list(path):
     return [json.loads(l) for l in p.stdout.splitlines() if l.strip()] if p.returncode == 0 else []
 
 
+BRANCH_Q = """query($owner:String!,$name:String!,$since:GitTimestamp!){repository(owner:$owner,name:$name){
+ refs(refPrefix:"refs/heads/",first:30,orderBy:{field:TAG_COMMIT_DATE,direction:DESC}){nodes{name target{... on Commit{
+  committedDate history(since:$since,first:100){nodes{oid message author{name date user{login}}}}}}}}}}"""
+
+
+def branch_commits(repo, since):
+    """Commits since `since` on every recently active branch, newest first, one per sha. Students on a
+    team often work on `dev` or feature branches and merge to main later or never; reading only the
+    default branch found none of paxchan's 100+ Sprint 3 commits in smartbldr-app (2026-10-28).
+    Falls back to the default branch if the query fails. Each item has the REST commit shape."""
+    owner, name = repo.split("/", 1)
+    iso = since.astimezone(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    cmd = ["gh", "api", "graphql", "-f", f"query={BRANCH_Q}", "-f", f"owner={owner}", "-f", f"name={name}", "-f", f"since={iso}"]
+    p = subprocess.run(cmd, capture_output=True, text=True)
+    while p.returncode and wait_for_rate_limit(p.stderr):
+        p = subprocess.run(cmd, capture_output=True, text=True)
+    try:
+        refs = json.loads(p.stdout)["data"]["repository"]["refs"]["nodes"]
+    except Exception:
+        return gh_list(f"repos/{repo}/commits?since={iso}&per_page=100")
+    seen = {}
+    for ref in refs:
+        t = ref.get("target") or {}
+        if not t.get("committedDate") or t["committedDate"] < iso:
+            continue  # refs are newest first, but keep going: the order is by the tip's date
+        for c in (t.get("history") or {}).get("nodes") or []:
+            a = c.get("author") or {}
+            if c["oid"] not in seen and (a.get("date") or "") >= iso[:10]:  # skip work rebased in from before
+                seen[c["oid"]] = {"sha": c["oid"], "branch": ref["name"],
+                                  "author": {"login": (a.get("user") or {}).get("login")} if a.get("user") else None,
+                                  "commit": {"author": {"date": a.get("date"), "name": a.get("name")}, "message": c["message"]}}
+    return sorted(seen.values(), key=lambda c: c["commit"]["author"]["date"] or "", reverse=True)
+
+
 def file_at(repo, path, ref=None):
     q = f"repos/{repo}/contents/{path}" + (f"?ref={ref}" if ref else "")
     c = gh(q, ".content")
@@ -482,7 +516,7 @@ def build(student, sub, plan_sub, cfg, due):
         p["next_sprint_plan"] = next_plan[:4000] if next_plan else None
         p["readme"] = readme[:4000]
         start = ph[0][1] if ph else due - dt.timedelta(days=14)
-        log = gh_list(f"repos/{repo}/commits?since={start.astimezone(dt.timezone.utc).isoformat()}&per_page=100")
+        log = branch_commits(repo, start)
         commits = [{"sha": c["sha"], "when": local(c["commit"]["author"]["date"]).isoformat(),
                     "after_due": local(c["commit"]["author"]["date"]) > due,
                     "author": (c.get("author") or {}).get("login") or c["commit"]["author"]["name"],
@@ -628,11 +662,14 @@ def build(student, sub, plan_sub, cfg, due):
         else due - dt.timedelta(days=14)
     p["other_repos"] = []
     for r in others[:4]:
-        log = gh_list(f"repos/{r}/commits?since={start.astimezone(dt.timezone.utc).isoformat()}&per_page=100")
+        log = branch_commits(r, start)
+        # A busy team repo can hold hundreds of commits: messages shrink so the list stays about 60k characters.
+        cap = max(160, min(1500, 60_000 // max(1, len(log))))
         cs = [{"sha": c["sha"], "when": local(c["commit"]["author"]["date"]).isoformat(),
                "after_due": local(c["commit"]["author"]["date"]) > due,
                "author": (c.get("author") or {}).get("login") or c["commit"]["author"]["name"],
-               "message": c["commit"]["message"].strip()[:1500]} for c in reversed(log)]
+               "branch": c.get("branch"),
+               "message": c["commit"]["message"].strip()[:cap]} for c in reversed(log)]
         p["other_repos"].append({"repo": f"https://github.com/{r}",
                                  "commits": [{k: v for k, v in c.items() if k != "sha"} | {"sha": c["sha"][:7]} for c in cs],
                                  "files": shipped(r, cs, budget=20_000, cutoff=p.get("window_end") and
