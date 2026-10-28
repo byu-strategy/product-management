@@ -5,9 +5,9 @@ student. Everything you need is in it; do not browse the repo or the web.
 
 ## Before you grade
 
-Read `~/hubs/courses/_data/product-management/grading/worked-examples.md` if it exists. It holds
-real submissions with scores Scott approved. Hold every student to the same standard: similar
-evidence gets a similar score. Never mention those students in anything you write.
+Hold every student to the same standard: similar evidence gets a similar score. (The Sprint 1
+worked examples were retired on 2026-10-28: they applied a review cap that was never published, and
+the batch grader never read them.)
 
 ## Only published rules cost points
 
