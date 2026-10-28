@@ -194,6 +194,9 @@ goal comfortably hit earns nothing extra.
   4. **reachable**: a public URL visible, or `localhost`, or a local file only. This also
      informs Output.
   5. **matches_plan**: which "done looks like" items from the final plan (`plan.now`) appear on screen.
+     This informs Output and the feedback. It never costs Demo points: a demo that shows its kind's
+     artifacts for most of the video earns full Demo even when some plan items do not appear
+     (fairness check, 2026-10-28).
   6. **off_demo**: time spent on intro, slides, or reflection instead of the thing.
   7. **readable**: text too small to read at the zoom used. Feedback only, never scored.
 - **Late:** `canvas_late`, `review_on_time` false, or `commits_after_due`. Do not deduct for
