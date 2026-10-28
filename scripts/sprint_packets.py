@@ -56,7 +56,8 @@ def path_or_branch(r, text):
     esc = re.escape(r)
     as_path = re.search(rf"(?i)(?<!github\.com/)(?<![\w.-]){esc}/[\w.-]", text) or \
         re.search(rf"(?i)(?<!github\.com)/{esc}\b", text)
-    as_branch = re.search(rf"(?i)(?:branch|PR\s*#?\d+)\W{{1,4}}`?{esc}\b|\b{esc}`?\)?\s+branch", text)
+    as_branch = re.search(rf"(?i)(?:branch|PR\s*#?\d+)\W{{1,4}}`?{esc}\b|\b{esc}`?\)?\s+branch", text) or \
+        re.search(rf"(?i)\b(?:on|from|into|merged?)\s+`?{esc}`?[^.\n]{{0,25}}\b(?:main|master)\b", text)
     return bool(as_path or as_branch or r.split("/")[0] in {"discovery", "interviews", "supabase", "agents", "claude",
                                                              "social", "codex", "cursor", "copilot", "chore", "wip"})
 
