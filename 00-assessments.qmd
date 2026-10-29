@@ -345,7 +345,14 @@ points when the ask is on record and your retro says what you learned from it. W
 one of these goals, write the asks into it, for example "Ask 10 contractors to be design
 partners, and sign 2."
 
-**Questions about your sprint feedback:** reply to the Canvas comment your sprint report came
+**Disputing a deduction.** From Sprint 3, your sprint report lists each point deducted, with
+the rule behind it. If you think one is wrong, use its Dispute button: it opens a page where you
+say why and add links, screenshots, or notes, with no sign-in. Disputes are open for one week
+after grades are released, and Professor Murff replies to each one by email. A review looks at
+the deduction again against the rubric, so it can raise your score, leave it as it is, or lower
+it.
+
+**Other questions about your sprint feedback:** reply to the Canvas comment your sprint report came
 with, saying which part of the report you mean and what you think was missed. Professor Murff
 reads every reply. Questions sent by email or anywhere else may be missed. (Sprint 1 questions
 can still go to the Course Monitor app in the course Slack.)
