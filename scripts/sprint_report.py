@@ -5,9 +5,11 @@ Scott's copy, which adds a closed yellow "Instructor only" drawer at the top and
 drawers, the grader's reasons, the demo checks, the Loom stills and the transcript. Everything
 else is identical, so what Scott reviews is what the student reads.
 
-Layout (approved 2026-10-14, revised 2026-10-15): a sticky contents list on the left and open
-sections: Summary (score, profile total, the Claude Code coach card, the chart), Score, Growth, Next steps,
-Evidence reviewed, Questions, Methodology; Scott's copy adds Instructor notes first. Detail
+Layout (approved 2026-10-14, revised 2026-10-15 and 2026-10-29): a sticky contents list on the left and open
+sections: Summary (score, profile total, the Claude Code coach card, the clickable tree-ring chart), Score (four
+rows, each with one Evidence drawer, then Point deductions with a Dispute link per item into the Strategy app),
+Next steps, Growth (with the closed "Seen this sprint, not yet in your profile" drawer), Questions or disputes,
+How grading works; Scott's copy adds Instructor notes first. Colors are the Strategy app's BYU tokens. Detail
 (evidence, reasons, Loom stills) stays in <details>. Inline CSS and SVG, one small script that
 highlights the current section, images embedded; printing hides the contents list.
 
@@ -34,9 +36,30 @@ LEVEL_TEXT = {  # from depth-levels.md, in the student's terms
     2: "you said specifically what to build and checked that it worked",
     3: "you challenged what the agent or the template proposed, weighed the options, and chose one with a stated reason, or found a problem yourself and fixed it with a judgment about the product",
     4: "people outside your team use it, and you changed the work because of what they did or said"}
-# One amber ramp, light at the center to dark at the newest ring; a sprint keeps its color in every report.
-SPRINT_COLORS = {1: "#f7d39c", 2: "#efb365", 3: "#e2933a", 4: "#c9761d", 5: "#a65d10", 6: "#80460a"}
-CORE_COLOR = "#fcebd0"  # the starting core: the lightest step of the same amber ramp
+# BYU navy tints, light at the center to dark at the newest ring; a sprint keeps its color in every report.
+# Colors follow the Strategy app's tokens (website/src/app/globals.css): navy #002E5D, royal #003DA5 (2026-10-29).
+SPRINT_COLORS = {1: "#A9BFDA", 2: "#7C9CC4", 3: "#5A7FAE", 4: "#3D6596", 5: "#244C7E", 6: "#0F3766"}
+CORE_COLOR = "#DCE6F2"  # the starting core: the lightest step of the same navy ramp
+NAVY, ROYAL = "#002E5D", "#003DA5"
+# Where each deduction can be disputed: the Strategy app, no sign-in (grade disputes, 2026-10-29).
+DISPUTE_BASE = "https://strategy.byu.edu/app/dispute/"
+# Concepts seen but not counted, grouped by what would let them count. `unreadable` is our limit, not the
+# student's, so it goes to Scott's notes only.
+NOT_YET = {
+    "unproven": ("Shown, not proven working",
+                 "commit the output of a test run (or turn on CI), or show it working in your demo, so the course can see it ran."),
+    "tool_not_product": ("Built with a tool, not in your product",
+                         "put the logic in your own product code, where your code decides what happens."),
+    "after_due": ("Done after the due date", None),
+    "not_shared": ("In a place the course cannot open",
+                   "share the repo with sdmurff, or the file with aifoundry.byu@gmail.com, or list it in your README."),
+    "described_only": ("Described, with nothing to check",
+                       "commit the file, or link it from your README, so the course can open it."),
+    "course_given": ("Supplied by the course or a template",
+                     "change it or build on it yourself; what the course gave you does not count on its own."),
+    "before_course": ("Dated before the course began",
+                      "new work on it during a sprint counts; work that existed before Sep 2 does not."),
+}
 SCALE = {1: "something you already knew how to do", 2: "mostly known, a few small gaps",
          3: "something new to learn, with a clear path", 4: "a lot to learn, and the path was not clear",
          5: "unclear whether it was possible at all"}
@@ -514,8 +537,11 @@ def profile_svg(G):
         return " ".join(f"{x:.1f},{y:.1f}" for x, y in (pt(i, vals[i]) for i in range(6)))
 
     out = ['<svg viewBox="0 30 540 360" width="100%" role="img" aria-label="Builder profile: six axes, 0 to 100 each">']
+    # Soft bands behind the grid, as on the Strategy app's consultant diamond.
+    out.append(f'<polygon points="{poly([100] * 6)}" fill="#EEF3F9"/><polygon points="{poly([87.5] * 6)}" fill="#F6F8FB"/>'
+               f'<polygon points="{poly([62.5] * 6)}" fill="#fff"/>')
     for lvl in (25, 50, 75, 100):
-        out.append(f'<polygon points="{poly([lvl] * 6)}" fill="none" stroke="{"#d5d9e0" if lvl == 100 else "#eceef2"}" '
+        out.append(f'<polygon points="{poly([lvl] * 6)}" fill="none" stroke="{"#CCCCCC" if lvl == 100 else "#E5E5E5"}" '
                    f'stroke-width="{1.3 if lvl == 100 else .8}"/>')
     core = ((G or {}).get("start") or {}).get("points") or {}
     totals = [float(core.get(AXES[i], 0)) for i in range(6)]
@@ -530,26 +556,27 @@ def profile_svg(G):
         layers.append((rg["sprint"], list(totals)))
     for s, vals in reversed(layers):  # outermost first, so each inner ring sits on top
         if vals:
-            out.append(f'<polygon points="{poly(vals)}" fill="{SPRINT_COLORS.get(s, "#d97706")}" stroke="#fff" '
+            out.append(f'<polygon data-s="{s}" points="{poly(vals)}" fill="{SPRINT_COLORS.get(s, NAVY)}" stroke="#fff" '
                        f'stroke-width=".8" stroke-linejoin="round"><title>Through Sprint {s}</title></polygon>')
     if any(core_vals):  # the survey center sits innermost, on top of the rings
-        out.append(f'<polygon points="{poly(core_vals)}" fill="{CORE_COLOR}" stroke="#fff" stroke-width=".8" '
+        out.append(f'<polygon class="core" points="{poly(core_vals)}" fill="{CORE_COLOR}" stroke="#fff" stroke-width=".8" '
                    f'stroke-linejoin="round"><title>Your September survey</title></polygon>')
     if G and any(totals):  # a dot at every value, so a small value next to a zero still shows
         for i in range(6):
             if totals[i] > 0:
                 x, y = pt(i, totals[i])
-                out.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="3" fill="#8a4a03" stroke="#fff" stroke-width="1"/>')
+                out.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="3" fill="{NAVY}" stroke="#fff" stroke-width="1"/>')
     for i, ax in enumerate(AXES):
         x, y = pt(i, 100)
-        out.append(f'<line x1="{CX}" y1="{CY}" x2="{x:.1f}" y2="{y:.1f}" stroke="#d5d9e0" stroke-width=".7"/>')
+        out.append(f'<line x1="{CX}" y1="{CY}" x2="{x:.1f}" y2="{y:.1f}" stroke="#CCCCCC" stroke-width=".7"/>')
         lx, ly = pt(i, 121)
         anchor = "start" if lx > CX + 5 else "end" if lx < CX - 5 else "middle"
         name = ax.replace("Application Architecture", "App Architecture")
-        out.append(f'<text x="{lx:.1f}" y="{ly - 6:.1f}" text-anchor="{anchor}" font-size="12.5" fill="#1d2330">{e(name)}</text>')
+        out.append(f'<text class=axl data-axis="{e(name)}" x="{lx:.1f}" y="{ly - 6:.1f}" text-anchor="{anchor}" font-size="12.5" '
+                   f'font-weight="600" fill="{NAVY}">{e(name)}</text>')
         if G:
             out.append(f'<text x="{lx:.1f}" y="{ly + 10:.1f}" text-anchor="{anchor}" font-size="12.5" font-weight="700" '
-                       f'fill="#b45f04">{round(totals[i])}</text>')
+                       f'fill="{ROYAL}">{round(totals[i])}</text>')
     out.append("</svg>")
     return "".join(out), [s for s, v in layers if v]
 
@@ -570,12 +597,12 @@ def commit_strip(days, by_day):
         if n:
             h = max(2, H * n / mx)
             bw = min(16, colw * .6)
-            out.append(f'<rect x="{cx - bw / 2:.1f}" y="{top + H - h:.1f}" width="{bw:.1f}" height="{h:.1f}" rx="2" fill="#d97706"/>'
+            out.append(f'<rect x="{cx - bw / 2:.1f}" y="{top + H - h:.1f}" width="{bw:.1f}" height="{h:.1f}" rx="2" fill="{ROYAL}"/>'
                        f'<text x="{cx:.1f}" y="{top + H - h - 4:.1f}" text-anchor="middle" class="v">{n}</text>')
         label = f"{d:%b} {d.day}" if i == 0 or d.day == 1 else str(d.day)
         out.append(f'<text x="{cx:.1f}" y="{top + H + 14}" text-anchor="middle" class="ax">{label}</text>'
                    f'<text x="{cx:.1f}" y="{top + H + 27}" text-anchor="middle" class="ax2">{d:%a}</text></g>')
-    out.append(f'<line x1="0" x2="{W}" y1="{top + H}" y2="{top + H}" stroke="#d5d9e0"/></svg>')
+    out.append(f'<line x1="0" x2="{W}" y1="{top + H}" y2="{top + H}" stroke="#CCCCCC"/></svg>')
     return "".join(out)
 
 
@@ -595,6 +622,126 @@ def big(title, right, body, cls=""):
             f'<div class=bb>{body}</div></details>')
 
 
+def evi(title, right, body):
+    """One part inside a category's Evidence drawer: a subheading, not another drawer."""
+    return f'<div class=evi><h4>{title}{f" <small>{right}</small>" if right else ""}</h4>{body}</div>'
+
+
+def ev_drawer(parts):
+    """A category's evidence, all in one drawer (2026-10-29: drawers inside drawers were hard to read)."""
+    body = "".join(x for x in parts if x)
+    n = body.count("<div class=evi>")
+    return row("Evidence", f'{n} part{"s" * (n != 1)}', body, "ev") if n else ""
+
+
+def not_yet(items, s_):
+    """Concepts the work touched that could not count yet, grouped by what would let them count, closed by
+    default (2026-10-29). Items we could not read are our limit, so they are left out here (Scott's notes)."""
+    groups = {}
+    for x in items:
+        k = x.get("kind") or "other"
+        if k != "unreadable":
+            groups.setdefault(k, []).append(x)
+    if not groups:
+        return ""
+    cap = lambda w: (w[:1].upper() + w[1:]).rstrip(".") + "." if w else ""
+    body = ""
+    for k in [k for k in NOT_YET if k in groups] + [k for k in groups if k not in NOT_YET]:
+        title, fix = NOT_YET.get(k, ("Not counted yet", ""))
+        lead = (f'<p class=fix><b>Nothing to do:</b> this counts toward Sprint {s_ + 1}, the sprint it was done in.</p>' if k == "after_due"
+                else f'<p class=fix><b>To make it count:</b> {e(fix)}</p>' if fix else "")
+        lis = "".join(f'<li><span class=nm>{e(x.get("name") or x.get("concept", ""))}</span>{book_chips(x.get("concept"))}'
+                      f'<span class=wh>{e(x.get("what") or "")}</span>'
+                      + (f'<span class=why>{e(cap(str(x.get("why") or "").strip()))}</span>' if k not in NOT_YET or k == "other" else "")
+                      + '</li>' for x in groups[k])
+        n = len(groups[k])
+        body += (f'<div class="ncg{" later" if k == "after_due" else ""}"><div class=ngh><span>{title}</span>'
+                 f'<small>{n} item{"s" * (n != 1)}</small></div>{lead}<ul>{lis}</ul></div>')
+    total = sum(len(v) for v in groups.values())
+    return (f'<details class=ncx id=notyet><summary><h3>Seen this sprint, not yet in your profile'
+            f'<small>{total} item{"s" * (total != 1)}</small></h3></summary>'
+            '<p class=nci>Concepts your work touched that could not be added to your builder profile yet. They do not '
+            'affect your grade. Each group says what would let them count.</p>' + body + '</details>')
+
+
+CAT_OF = {"shipped": "Output", "review": "Report and retro", "demo": "Demo", "plan": "Plan"}
+
+
+def deductions_block(r, sprint, cats, dispute, outcomes, scott):
+    """Every point lost, one row each, with its rule, how to earn it next time, and a Dispute link to the
+    Strategy app (grade disputes, 2026-10-29). Scott's copy adds the grader's reason and the passage it rests on."""
+    ds = [d for d in r.get("deductions") or [] if float(d.get("points") or 0) > 0]
+    if not ds:
+        return '<div class=deds id=deds><h3 class=sub><span>Point deductions</span><small>none</small></h3><p>No points deducted.</p></div>'
+    published = rule_sources()
+    order = {c: i for i, (c, _l, _m) in enumerate(cats)}
+    ds.sort(key=lambda d: (order.get(d.get("category"), 9), d.get("id", "")))
+    total = sum(float(d["points"]) for d in ds)
+    outcomes = outcomes or {}
+    rows_ = ""
+    for d in ds:
+        did = str(d.get("id", ""))
+        oc = outcomes.get(did) or {}
+        st = oc.get("status")
+        if st in ("upheld", "changed"):
+            ch = float(oc.get("points_changed") or 0)
+            action = (f'<span class="dst ok">{"Restored" if ch > 0 else "Lowered"} {fmt(abs(ch))} point{"s" * (abs(ch) != 1)} on review</span>'
+                      if ch else '<span class=dst>Reviewed, no change</span>')
+        elif st == "denied":
+            action = '<span class=dst>Kept after review</span>'
+        elif st == "open":
+            action = '<span class=dst>Disputed</span>'
+        elif dispute and dispute.get("token"):
+            action = (f'<a class=dbtn href="{DISPUTE_BASE}{e(dispute["token"])}#{e(did)}" target=_blank rel="noopener noreferrer">'
+                      f'Dispute</a>')
+        else:
+            action = ""
+        src = published.get(d.get("rule_id"), "")
+        inst = ""
+        if scott:
+            inst = (f'<div class=inote><b>Reason</b> <span class=instag>instructor only</span> <code>{e(str(d.get("rule_id", "")))}</code>'
+                    f'<p>{e(d.get("reason") or "")}</p>'
+                    + (f'<p class=qm>{e(d.get("excerpt_ref") or "")}</p><pre class=dex>{e(d["excerpt"])}</pre>' if d.get("excerpt") else "")
+                    + "</div>")
+        rows_ += (f'<div class=ded id=ded-{e(did)}><div class=dh><span class=dp>&minus;{fmt(float(d["points"]))}</span>'
+                  f'<span class=dt>{e(d.get("what", ""))}<span class=dcat>{CAT_OF.get(d.get("category"), "")}</span></span>{action}</div>'
+                  f'<div class=dx><p class=rule>Rule: {e(RULE_TEXT.get(d.get("rule_id"), ""))}'
+                  + (f' <span>{e(src)}</span>' if src else "") + '</p>'
+                  + (f'<p class=fix><b>To earn it next time:</b> {e(d["fix"])}</p>' if d.get("fix") else "")
+                  + f'</div>{inst}</div>')
+    n = len(ds)
+    closes = (f' Disputes are open until {e(dispute["closes"])}.' if dispute and dispute.get("closes") else "")
+    note = ('<p class=dnote>Think one is wrong? Use its Dispute button: no sign-in needed. A review can raise or lower the score.'
+            f'{closes}</p>' if dispute and dispute.get("token") else "")
+    return (f'<div class=deds id=deds><h3 class=sub><span>Point deductions</span>'
+            f'<small>{fmt(total)} point{"s" * (total != 1)}, {n} item{"s" * (n != 1)}</small></h3>{note}{rows_}</div>')
+
+
+# What a student reads for each rule: the rubric's wording, one sentence (rule IDs: grading/sprint-grader.md).
+RULE_TEXT = {
+    "out-real": "Output counts when it is real and finished, read against your plan as it stood at the end of the sprint.",
+    "out-checkable": "Output counts when the course can check it: in a shared repo, at a link, or working in your demo.",
+    "out-ambitious": "An ambitious goal you partly reach, and account for in your retro, can earn full marks.",
+    "out-needs-yes": "A goal that needs someone else's yes is graded on the asks you made and recorded.",
+    "rev-committed": "Your /sprint-review report is committed.",
+    "rev-retro": "Each retro prompt left unanswered costs 1 point; no response to something specific the report found costs 2; an empty retro earns at most half.",
+    "rev-s1-template": "The Sprint 1 retro answers its template: did you hit the goal, what happened, what changes next sprint.",
+    "rev-five-questions": "The retro answers all five /sprint-review questions.",
+    "demo-working": "The demo shows your work, working, with real content, as the \"What your demo shows\" table describes.",
+    "demo-length": "Minus 1 for each started 30 seconds past the demo's length limit.",
+    "demo-not-loom": "The demo has to be a Loom share link.",
+    "demo-unopenable": "The demo is graded once the course can open the Loom.",
+}
+
+
+RULE_SRC = {k: ("Published in the rubric" if k.startswith(("out-", "rev-committed", "rev-retro", "demo-working", "demo-length"))
+                else "Published on the Assessments page") for k in RULE_TEXT}
+
+
+def rule_sources():
+    return RULE_SRC
+
+
 def inst_sub(title, right, body):
     """A drawer only Scott's copy has, marked so it is never mistaken for student text."""
     return row(f'{title} <span class=instag>instructor only</span>', right, body, "s inst")
@@ -603,8 +750,10 @@ def inst_sub(title, right, body):
 # ---------------------------------------------------------------- the page
 
 def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott=False,
-           fairness=(), skills_status="", flags_withheld=()):
-    """One student's report. `final(row, cat)` gives a category's score after overrides."""
+           fairness=(), skills_status="", flags_withheld=(), dispute=None, outcomes=None):
+    """One student's report. `final(row, cat)` gives a category's score after overrides.
+    `dispute` is {"token": ..., "closes": "Nov 5"} when deductions can be disputed in the Strategy app;
+    `outcomes` is {deduction id: {"status", "points_changed"}} once disputes are resolved."""
     net = r["net_id"]
     repo = (p.get("repo") or "").replace("https://github.com/", "").strip("/")
     f = p.get("facts") or {}
@@ -648,7 +797,7 @@ def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott
         out = ""
         nr = r.get("not_reviewed") or {}
         if nr.get("detail") or nr.get("summary"):
-            out += sub("What could not be reviewed", "", f"<p>{e(nr.get('detail') or nr.get('summary'))}</p>")
+            out += evi("What could not be reviewed", "", f"<p>{e(nr.get('detail') or nr.get('summary'))}</p>")
         rr = readme_replay(p)
         if rr["has_section"]:
             rows_ = []
@@ -662,7 +811,7 @@ def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott
         if rr["extra"]:
             body += ('<p class=qm>Found during your sprint, not listed in your README:</p>' +
                      "".join(f'<div>{show_place(k, v)} <span class="st {c}">{e(msg)}</span></div>' for k, v, c, msg in rr["extra"]))
-        out += sub("Where your work lives", f'{len(rr["listed"])} listed' if rr["has_section"] else "not listed", body)
+        out += evi("Where your work lives", f'{len(rr["listed"])} listed' if rr["has_section"] else "not listed", body)
         files = [x for x in p.get("shipped_files") or [] if x.get("path")]
         for o in p.get("other_repos") or []:
             files += [dict(x, _repo=o["repo"].replace("https://github.com/", "").strip("/")) for x in o.get("shipped_files") or []]
@@ -670,14 +819,14 @@ def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott
             trs = "".join(
                 f'<tr><td><a href="https://github.com/{e(x.get("_repo") or repo)}/blob/{e(x.get("first_commit") or "HEAD")}/{e(x["path"])}">'
                 f'{e(x["path"])}</a></td><td class=r>{e(x.get("status") or "")}</td></tr>' for x in files)
-            out += sub("Files added or changed", f"{len(files)}", f"<div class=scroll><table class=axt>{trs}</table></div>")
+            out += evi("Files added or changed", f"{len(files)}", f"<div class=scroll><table class=axt>{trs}</table></div>")
         imgs = []
         for x in p.get("shipped_files") or []:
             src = img_b64(x["image"], 480) if x.get("image") and Path(x["image"]).exists() else None
             if src:
                 imgs.append(f'<figure><img src="{src}" alt="{e(x["path"])}"><figcaption>{e(x["path"])}</figcaption></figure>')
         if imgs:
-            out += sub("Images from your work", f"{len(imgs)}", f'<div class=frames>{"".join(imgs)}</div>')
+            out += evi("Images from your work", f"{len(imgs)}", f'<div class=frames>{"".join(imgs)}</div>')
         return out
 
     def review_evidence():
@@ -692,10 +841,10 @@ def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott
                             f'<code>{e(c["sha"][:7])}</code></a></td><td>{e(c["message"].splitlines()[0] if c.get("message") else "")}</td>'
                             f'<td class=r>{e(rname.split("/")[-1])}</td></tr>')
         if crow:
-            out += sub("Commits", f"{len(crow)}", f'<div class=scroll><table class=axt>{"".join(crow)}</table></div>')
+            out += evi("Commits", f"{len(crow)}", f'<div class=scroll><table class=axt>{"".join(crow)}</table></div>')
         text = (p.get("review") or {}).get("text")
         if text:
-            out += sub("Your sprint review, as graded", "full report", f'<div class=doc>{md(text, repo)}</div>')
+            out += evi("Your sprint review, as graded", "full report", f'<div class=doc>{md(text, repo)}</div>')
         return out
 
     def demo_head():
@@ -734,15 +883,15 @@ def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott
     def cat_body(c):
         fb = (r.get("feedback") or {}).get(c, "")
         if c == "shipped":
-            return f"<p>{e(fb)}</p>" + how_scored(c) + "<!--DIFF-->" + output_evidence()
+            return f"<p>{e(fb)}</p>" + how_scored(c) + "<!--EV:shipped-->" + output_evidence() + "<!--/EV-->"
         if c == "review":
-            return f"<p>{e(fb)}</p>" + how_scored(c) + "<!--DAYS-->" + review_evidence()
+            return f"<p>{e(fb)}</p>" + how_scored(c) + "<!--EV:review-->" + review_evidence() + "<!--/EV-->"
         if c == "demo":
             return demo_head() + f"<p>{e(fb)}</p>" + how_scored(c) + demo_scott()
         return f"<p>{e(fb)}</p>" + how_scored(c)
 
-    kids = "".join(row(LABELS.get(c, label), f"{fmt(final(row_, c))}<small>/{mx}</small>", cat_body(c), "kid",
-                       opened=(c == "demo"))  # the demo is what Scott looks at most, so it starts open
+    # All closed: the point deductions under the rows are what a student reads first (2026-10-29).
+    kids = "".join(row(LABELS.get(c, label), f"{fmt(final(row_, c))}<small>/{mx}</small>", cat_body(c), "kid")
                    for c, label, mx in graded)
     days_late = f.get("canvas_days_late", 0) or 0
     # The report shows the score that is posted; Canvas applies its own late deduction on top (Scott, 2026-10-16).
@@ -770,8 +919,7 @@ def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott
                       + kids.replace('class="q kid"', 'class="q"'))
         canvas = (f"Posted to Canvas: Sprint {sprint} Plan {fmt(plan_pts)}/10 and Sprint {sprint} Wrap-up "
                   f"{fmt(review_total)}/{review_max}.")
-    score_body += (f'<div class=qtotal><span>Sprint {sprint}</span><span>{fmt(total)}<small>/{total_max}</small></span></div>'
-                   f'<p class=qm>{e(canvas)}</p>')
+    score_body += deductions_block(r, sprint, cats, dispute, outcomes, scott)
     note = (row_.get("scott_note") or "").strip()
     if note:
         score_body += f'<div class=snote><b>From Professor Murff</b><p>{e(note)}</p></div>'
@@ -781,7 +929,8 @@ def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott
     if G:
         core_sw = (f'<span class=sw style="background:{CORE_COLOR}"></span>Your September survey '
                    if any(((G.get("start") or {}).get("points") or {}).values()) else "")
-        sw = core_sw + "".join(f'<span class=sw style="background:{SPRINT_COLORS.get(s, "#d97706")}"></span>Sprint {s} ' for s in drawn)
+        sw = core_sw + "".join(f'<button type=button class=lg data-s="{s}"><span class=sw style="background:{SPRINT_COLORS.get(s, NAVY)}">'
+                               f'</span>Sprint {s}</button> ' for s in drawn)
         cap = f'{sw}<a href="#appendix" class=capl>How to read this</a>'
     else:
         cap = "Your builder profile is being prepared."
@@ -879,11 +1028,8 @@ def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott
                         f'<div class=qb>{body}</div></details>')
             if not any_:
                 out += f"<p>No new concepts or depth were counted in Sprint {s_}.</p>"
-            if s_ == cur and G.get("not_counted"):
-                out += '<div class=qax>Work not counted</div>' + "".join(
-                    row(e(x.get("name") or x.get("concept", "")), "not counted",
-                        (f'<p>{e(x["what"])}</p>' if x.get("what") else "") + f'<p class=qm>{e((lambda w: w[:1].upper() + w[1:])(str(x.get("why", "")).strip()))}.</p>'.replace("..", "."),
-                        "muted", chips=book_chips(x.get("concept"))) for x in G["not_counted"])
+            if s_ == cur:
+                out += not_yet(G.get("not_counted") or [], s_)
             return out
 
         shown = sorted({r_["sprint"] for r_ in rings} | {cur})
@@ -923,7 +1069,7 @@ def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott
             effect = f"It {eff_.split()[0]} your Output."
         else:
             effect = "It did not change your score."
-        diff_row = row("How hard it was", f'{diff["assessed"]} of 5',
+        diff_row = evi("How hard it was", f'{diff["assessed"]} of 5',
                         lead + f'<p>{effect}</p>'
                         + f'<p class=qm>On the course scale, {diff["assessed"]} is "{SCALE.get(int(diff["assessed"]), "")}".</p>')
     if rep.get("sessions"):
@@ -945,12 +1091,14 @@ def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott
         end = max(end, dt.date.fromisoformat(due[:10])) if end else dt.date.fromisoformat(due[:10])
     if start and end and (end - start).days < 40:
         days = [start + dt.timedelta(i) for i in range((end - start).days + 1)]
-        days_row = row("Day by day", f"{n_commits} commits", commit_strip(days, by_day))
+        days_row = evi("Day by day", f"{n_commits} commits", commit_strip(days, by_day))
     nv = rep.get("not_visible")
     if nv:
         nv = nv.strip().rstrip(".")
-        nv_row = row("What the review could not see", "", f"<p>{e(nv[:1].upper() + nv[1:])}.</p>")
-    score_body = score_body.replace("<!--DIFF-->", diff_row).replace("<!--DAYS-->", days_row + nv_row)
+        nv_row = evi("What the review could not see", "", f"<p>{e(nv[:1].upper() + nv[1:])}.</p>")
+    first_parts = {"shipped": diff_row, "review": days_row + nv_row}
+    score_body = re.sub(r"<!--EV:(\w+)-->(.*?)<!--/EV-->",
+                        lambda m: ev_drawer([first_parts.get(m.group(1), ""), m.group(2)]), score_body, flags=re.S)
 
     # ---- next sprint steps: what keeps work from counting, then suggestions, then setup
     steps = []
@@ -997,7 +1145,10 @@ def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott
         body = (f"<p>{d}</p>" if d else "") + (sub("What to paste", "", f"<pre>{e(code)}</pre>") if code else "")
         lis += (f'<li class="ns {k}"><span class=nsn>{i}</span><div><div class=nst>{t} <span class=nsk>{tag[k]}</span></div>'
                 f'{body}</div></li>')
-    todo = (f"<ol class=nsl>{lis}</ol>" if lis else "<p>Nothing to fix: your repo and README are set.</p>")
+    has_ded = any(float(d.get("points") or 0) > 0 for d in r.get("deductions") or [])
+    intro = ('<p class=nsi>Each point deduction above says how to earn those points next sprint.'
+             f'{" Beyond those:" if lis else ""}</p>' if has_ded else "")
+    todo = intro + (f"<ol class=nsl>{lis}</ol>" if lis else "" if has_ded else "<p>Nothing to fix: your repo and README are set.</p>")
     from sprint_config import GRADED
     nn = sprint + 1
     pts = {c: mx for c, _l, mx in GRADED[nn]} if nn in GRADED else {"shipped": 20, "review": 10, "demo": 10}
@@ -1008,9 +1159,11 @@ def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott
     next_n = sprint + 1
 
     # ---- questions
-    ask = (f'<p>Reply to the comment this report came with, on the Sprint {sprint}{" Wrap-up" if sprint > 1 else ""} '
-           f'assignment in Canvas. Say which part of the report you mean, and what you '
-           'think it missed or got wrong. Professor Murff reads every reply. Questions sent anywhere else may be missed.</p>')
+    ask = ((f'<p><b>To dispute a deduction,</b> use its Dispute button under <a href="#deds">Point deductions</a>. '
+            'No sign-in needed.</p>' if dispute and dispute.get("token") else "")
+           + f'<p><b>For any other question,</b> reply to the comment this report came with, on the Sprint {sprint}'
+           f'{" Wrap-up" if sprint > 1 else ""} assignment in Canvas, and say which part of the report you mean. '
+           'Professor Murff reads every reply. Questions sent anywhere else may be missed.</p>')
 
     # ---- appendix
     CL = load_concepts()
@@ -1060,7 +1213,7 @@ the next one looks like.</li>
 <p><b>What counts.</b> Work you can point to: a commit or file in a shared repo, a shared Google file, a live link, or a
 moment in your Loom. Close calls and the higher depth levels are checked a second time against that evidence. Work
 described only in your review or retro, work in a repo that is not shared, and anything the course gave you do not count;
-they appear under "Work not counted" with the reason. A few concepts and depth level 4 rely on lists that the current
+they appear under "Seen this sprint, not yet in your profile", with what would let them count. A few concepts and depth level 4 rely on lists that the current
 <code>/sprint-review</code> writes ("Builder tools you used" and "Users this sprint"); a Sprint 2 review made with an older
 version could not show them, so update your course skills before your next review.</p>
 <p><b>Your sprint rings never shrink,</b> and the profile does not affect your grade.</p>
@@ -1108,6 +1261,10 @@ ones your work has shown say which sprint. Ones marked "measured on the exams" c
                      f'<li>{e(d["axis"])}: A {lv(d, 0)}, B {lv(d, 1)}, counted {e(str(d.get("level")))}</li>') for d in dl) + "</ul>")
         else:
             parts.append("<p><b>Builder profile</b> no growth file for this student yet.</p>")
+        unread = [x for x in ((G or {}).get("not_counted") or []) if x.get("kind") == "unreadable"]
+        if unread:
+            parts.append("<p><b>Could not be read</b> (left out of the student copy; fix the packet and recode)</p><ul>" + "".join(
+                f'<li>{e(x.get("name") or x.get("concept", ""))}: {e(x.get("what") or "")}. {e(x.get("why") or "")}</li>' for x in unread) + "</ul>")
         parts.append('<p class=ihow>To change a grade: edit <code>grades.csv</code> (override_*, scott_note, approved), then rerun '
                      '<code>sprint_feedback.py</code>.</p>')
         band = "".join(parts)
@@ -1147,21 +1304,27 @@ ones your work has shown say which sprint. Ones marked "measured on the exams" c
                  f'<span class=ccnote role=status aria-live=polite></span>'
                  f'<details class=ccbox><summary>See the prompt</summary>'
                  f'<textarea id=coachp readonly spellcheck=false rows=14>{e(prompt_txt)}</textarea></details></div>')
+    lost = [d for d in r.get("deductions") or [] if float(d.get("points") or 0) > 0]
+    lost_pts = sum(float(d["points"]) for d in lost)
+    lost_line = (f'<a class="sms lost" href="#deds">{fmt(lost_pts)} point{"s" * (lost_pts != 1)} deducted in {len(lost)} '
+                 f'item{"s" * (len(lost) != 1)}{", each open to dispute" if dispute and dispute.get("token") else ""}</a>' if lost else "")
     parts_ = ([f"Plan {fmt(plan_pts)}"] if sprint > 1 else []) + [f"{LABELS.get(c, c)} {fmt(final(row_, c))}" for c, _l, _m in graded]
     summary = (f'<div class=smrow><div class=sm><span class=sml>Sprint {sprint} score</span>'
-               f'<span class=smv>{fmt(total)}<small> / {total_max}</small></span><a class=sms href="#score">{" · ".join(parts_)}</a></div>'
+               f'<span class=smv>{fmt(total)}<small> / {total_max}</small></span><a class=sms href="#score">{" · ".join(parts_)}</a>{lost_line}</div>'
                f'{prof_line}</div>{next_line}'
-               f'<figure class=qfig>{svg}<figcaption>{cap}</figcaption></figure>')
+               f'<figure class=qfig>{svg}<figcaption>{cap}</figcaption>'
+               + ('<p class=rhint>Click a ring, an axis, or a sprint to see where you grew</p>' if G and drawn else "")
+               + '</figure>')
     secs = []
     if band:
         secs.append(("inst", "Instructor notes", "not in the student copy", band, "inst"))
     secs += [
         ("summary", "Summary", "", summary, ""),
-        ("score", "Score", f'{fmt(total)} / {total_max}', score_body, ""),
-        ("grew", "Growth", grew_right, grew, ""),
+        ("score", "Score", f'{fmt(total)} / {total_max}, posted to Canvas', score_body, ""),
         ("next", "Next steps", f'{n_steps} step{"s" * (n_steps != 1)}' if n_steps else "", todo, ""),
-        ("questions", "Questions", "reply on Canvas", ask, ""),
-        ("appendix", "Methodology", f"{n_all} concepts", appendix, "apxd"),
+        ("grew", "Growth", grew_right, grew, ""),
+        ("questions", "Questions or disputes" if dispute and dispute.get("token") else "Questions", "", ask, ""),
+        ("appendix", "How grading works", f"{n_all} concepts", appendix, "apxd"),
     ]
     short = {"score": f"{fmt(total)}/{total_max}", "grew": f"+{fmt(round(added))}" if G and added else "",
              "next": str(n_steps) if n_steps else ""}
@@ -1170,12 +1333,13 @@ ones your work has shown say which sprint. Ones marked "measured on the exams" c
     body = "".join(f'<section id={i} class="sec {c}"><h2><span>{e(t)}</span><small>{r_}</small></h2>{b}</section>'
                    for i, t, r_, b, c in secs)
     return f"""<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1">
-<title>Sprint {sprint} Report · {e(full)}{" (" + copy + ")" if copy else ""}</title><style>{CSS}{TOC_CSS}</style></head><body>
+<title>Sprint {sprint} Report · {e(full)}{" (" + copy + ")" if copy else ""}</title>{FONTS}<style>{CSS}{TOC_CSS}</style></head><body>
 <div class=layout>
 <nav class=toc><div class=tocname>Sprint {sprint} Report<br><b>{e(full)}</b><br><span>{e(due_txt)}</span></div>{toc}</nav>
 <main>
 <header class=qh><span class=qtitle>Sprint {sprint} Report · {e(full)}</span><span>{e(due_txt)}</span></header>
 <details class=tocm><summary>Contents</summary>{toc}</details>
+<div class=brand><b>MSB 341 Product Management</b><span>BYU Marriott School of Business</span></div>
 {body}
 </main></div>
 <script>
@@ -1184,7 +1348,7 @@ ones your work has shown say which sprint. Ones marked "measured on the exams" c
 // being read opens its own. Clicking an item inside a closed drawer opens the drawer.
 (()=>{{
 const nav=document.querySelector('nav.toc');
-const pick={{score:':scope>details.q',grew:':scope>.gview:not([hidden])>details.gx,:scope>.gview:not([hidden])>.qax',next:':scope>ol.nsl>li.ns',appendix:'tr.apx'}};
+const pick={{score:':scope>details.q',grew:':scope>.gview:not([hidden])>details.gx,:scope>.gview:not([hidden])>.qax',appendix:'tr.apx'}};
 const label=el=>{{
   if(el.matches('details')){{const q=el.querySelector('summary .qn').cloneNode(true);q.querySelectorAll('.bkc').forEach(x=>x.remove());return q.textContent}}
   if(el.matches('li.ns'))return el.querySelector('.nst').textContent;
@@ -1200,7 +1364,7 @@ nav.querySelectorAll(':scope>a').forEach(a=>{{
   const link=(el,cls)=>{{
     if(!el.id)el.id='t'+(k++);
     const s=document.createElement('a');s.href='#'+el.id;if(cls)s.className=cls;
-    let t=label(el).trim().replace(/\\s+/g,' ');const v=el.querySelector('.video');if(v&&v.closest('details')===el)t+=' (video)';
+    let t=label(el).trim().replace(/\\s+/g,' ');
     s.textContent=t.length>44?t.slice(0,42)+'...':t;
     // open the item and every drawer around it, so the target is visible
     s.onclick=()=>{{for(let d=el.matches('details')?el:el.closest('details');d;d=d.parentElement.closest('details'))d.open=true;
@@ -1240,9 +1404,50 @@ const io=new IntersectionObserver(es=>{{es.forEach(x=>{{if(!x.isIntersecting)ret
     g.querySelector(':scope>a').classList.toggle('on',on);if(on)g.classList.add('open')}})}})}},{{rootMargin:'-20% 0px -70% 0px'}});
 document.querySelectorAll('section.sec').forEach(s=>io.observe(s));
 }})();
-{COACH_JS}</script>
+{COACH_JS}
+{RINGS_JS}</script>
 </body></html>"""
 
+
+# The rings route to Growth (2026-10-29): hover a ring for that sprint's points on the nearest axis, click a
+# ring, an axis name, or a sprint in the legend to open that growth. Axis names are found by their text.
+RINGS_JS = r"""
+(()=>{
+const fig=document.querySelector('.qfig'),svg=fig&&fig.querySelector('svg');if(!svg)return;
+const tip=document.createElement('div');tip.className='rtip';fig.append(tip);
+const CX=270,CY=200;
+const axes=[...svg.querySelectorAll('text.axl')].map(t=>{const x=+t.getAttribute('x'),y=+t.getAttribute('y')+6;
+  return{t,short:t.dataset.axis,a:Math.atan2(y-CY,x-CX)}});
+const nearest=a=>axes.reduce((b,x)=>{const d=Math.abs(Math.atan2(Math.sin(a-x.a),Math.cos(a-x.a)));return d<b.d?{d,x}:b},{d:9}).x;
+const svgPt=ev=>{const p=svg.createSVGPoint();p.x=ev.clientX;p.y=ev.clientY;return p.matrixTransform(svg.getScreenCTM().inverse())};
+const rowFor=(s,ax)=>[...document.querySelectorAll(`.gview[data-s="${s}"] .gx`)].find(r=>{const q=r.querySelector('.qn');return q&&q.textContent.trim()===ax.short});
+const info=(s,ax)=>{const r=rowFor(s,ax);if(!r)return null;const g=r.querySelector('.gp'),n=r.querySelector('.gn');
+  return{pts:(g&&g.textContent.trim())||'',n:(n&&n.textContent.trim())||'',open:r.matches('details')}};
+const rings=[...svg.querySelectorAll('polygon[data-s]')];if(!rings.length)return;
+const latest=Math.max(...rings.map(p=>+p.dataset.s));
+const go=(s,ax)=>{document.querySelector(`.gsw button[data-s="${s}"]`)?.click();
+  let r=ax&&rowFor(s,ax);if(!r||!r.matches('details'))r=ax?null:document.querySelector(`.gview[data-s="${s}"] details.gx`);
+  if(!r){document.getElementById('grew').scrollIntoView({behavior:'smooth'});return}
+  r.open=true;r.classList.remove('flash');void r.offsetWidth;r.classList.add('flash');r.scrollIntoView({behavior:'smooth',block:'center'})};
+axes.forEach(x=>x.t.addEventListener('click',()=>go(latest,x)));
+document.querySelectorAll('.lg').forEach(b=>b.onclick=()=>go(b.dataset.s,null));
+rings.forEach(pg=>{
+  const s=pg.dataset.s;pg.querySelector('title')?.remove();
+  pg.addEventListener('mousemove',ev=>{
+    const p=svgPt(ev),ax=nearest(Math.atan2(p.y-CY,p.x-CX)),i=info(s,ax);
+    svg.classList.add('hov');rings.forEach(x=>x!==pg&&x.classList.remove('on'));pg.classList.add('on');
+    const fr=fig.getBoundingClientRect();tip.style.left=(ev.clientX-fr.left)+'px';tip.style.top=(ev.clientY-fr.top)+'px';tip.style.opacity=1;
+    tip.innerHTML=`Sprint ${s} &middot; ${ax.short} <b>${i&&i.pts?i.pts:'no growth'}</b>`+
+      (i&&i.n?`<small>${i.n} new concept${i.n==='1'?'':'s'} &middot; click to see them</small>`:i&&i.open?'<small>click to see what counted</small>':'<small>nothing counted on this axis</small>');
+  });
+  pg.addEventListener('mouseleave',()=>{svg.classList.remove('hov');pg.classList.remove('on');tip.style.opacity=0});
+  pg.addEventListener('click',ev=>{const p=svgPt(ev);go(s,nearest(Math.atan2(p.y-CY,p.x-CX)))});
+});
+})();
+"""
+
+FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
+         '<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">')
 
 TOC_CSS = '''
 body{max-width:none;margin:0;padding:0}
@@ -1257,13 +1462,13 @@ nav.toc a.inst{color:#7a5a00}
 /* Tree carets: one chevron drawn as a mask, centered on the first line of its row, pointing right when closed and down when open. */
 .tw,.tw3{position:absolute;display:grid;place-items:center;border:0;background:none;cursor:pointer;padding:0;border-radius:4px}
 .tw::before,.tw3::before{content:"";width:12px;height:12px;background:var(--mute);-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M6 3.5 10.5 8 6 12.5' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M6 3.5 10.5 8 6 12.5' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat;transition:transform .15s}
-.tw:hover::before,.tw3:hover::before{background:var(--ink)}.tw:focus-visible,.tw3:focus-visible{outline:2px solid #2f5bd3}
+.tw:hover::before,.tw3:hover::before{background:var(--ink)}.tw:focus-visible,.tw3:focus-visible{outline:2px solid #003DA5}
 .tw{left:3px;top:6px;width:18px;height:1.6em}
 .tg.open .tw::before,.tg3.open .tw3::before{transform:rotate(90deg)}
 .sub{display:none;margin:0 0 6px}.tg.open .sub{display:block}
 nav.toc .sub a{font-size:12.5px;padding:3px 10px 3px 30px;color:var(--mute);border-left:2px solid var(--line)}
 nav.toc .sub a:hover{color:var(--ink)}
-.tocbar{display:flex;gap:6px;margin:0 0 12px}.tocbar button{font:12px inherit;font-family:inherit;color:#4a5262;background:#f5f6f8;border:1px solid var(--line);border-radius:6px;padding:3px 9px;cursor:pointer}.tocbar button:hover{color:var(--ink);border-color:#d5d9e0}
+.tocbar{display:flex;gap:6px;margin:0 0 12px}.tocbar button{font:12px inherit;font-family:inherit;color:#4a5262;background:#F5F7FA;border:1px solid var(--line);border-radius:6px;padding:3px 9px;cursor:pointer}.tocbar button:hover{color:var(--ink);border-color:#CCCCCC}
 .tg3{position:relative}.tw3{left:14px;top:3px;width:16px;height:1.6em;font-size:12.5px}.tw3::before{width:11px;height:11px}
 .sub3{display:none}.tg3.open .sub3{display:block}
 nav.toc .sub3 a{font-size:12px;padding:2px 10px 2px 44px}
@@ -1275,7 +1480,7 @@ section.inst{background:#fff8e1;border:1px solid #e8c766;border-radius:10px;padd
 section.inst>h2{font-size:15px;color:#7a5a00}
 section.apxd>h2{font-size:16px;color:#4a5262}
 .smrow{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.sm{border:1px solid var(--line);border-radius:10px;background:#fbfbfc;padding:12px 16px;display:flex;flex-direction:column;gap:2px;margin-bottom:12px}
+.sm{border:1px solid var(--line);border-radius:10px;background:#F7F9FC;padding:12px 16px;display:flex;flex-direction:column;gap:2px;margin-bottom:12px}
 .sml{font-size:11.5px;text-transform:uppercase;letter-spacing:.07em;color:var(--mute);font-weight:600}
 .smv{font-size:28px;font-weight:600;line-height:1.2}.smv small{font-size:.55em;color:var(--mute);font-weight:500}
 .sms{font-size:12.5px;color:var(--amber)}.smt{font-size:15px;line-height:1.45}
@@ -1285,10 +1490,10 @@ section.apxd>h2{font-size:16px;color:#4a5262}
 '''
 
 CSS = '''
-:root{--ink:#1d2330;--mute:#7a8394;--line:#eceef2;--amber:#b45f04}
-body{font:15px/1.6 -apple-system,"Segoe UI",Helvetica,Arial,sans-serif;color:var(--ink);max-width:640px;margin:28px auto 80px;padding:0 22px}
-a{color:#2f5bd3;text-decoration:none}
-code{font:12px ui-monospace,SFMono-Regular,Menlo,monospace;background:#f3f4f7;padding:0 3px;border-radius:3px}
+:root{--ink:#002E5D;--body:#1A1A1A;--mute:#666666;--line:#E5E5E5;--amber:#003DA5;--navy:#002E5D;--royal:#003DA5;--tint:#EEF4FB}
+body{font:15px/1.6 "IBM Plex Sans",-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;color:var(--body);max-width:640px;margin:28px auto 80px;padding:0 22px}
+a{color:#003DA5;text-decoration:none}
+code{font:12px ui-monospace,SFMono-Regular,Menlo,monospace;background:#EEF1F5;padding:0 3px;border-radius:3px}
 .qh{display:flex;justify-content:space-between;align-items:baseline;font-size:14px;color:var(--mute);margin:0 0 14px}
 .qtitle{color:var(--ink);font-weight:600;font-size:15px}
 .qscore{font-size:26px;font-weight:600;color:var(--ink)}.qscore small,.qr small,.qtotal small{font-size:.65em;color:var(--mute);font-weight:500}
@@ -1305,7 +1510,7 @@ details.big .bt::before{content:"";display:inline-block;width:7px;height:7px;bor
 details.big[open]>summary .bt::before{transform:rotate(45deg)}
 details.big .br{font-size:13.5px;color:var(--mute);text-align:right;font-variant-numeric:tabular-nums}
 details.big>.bb{padding:0 2px 18px 23px}
-details.big.score{border:1px solid var(--line);border-radius:10px;background:#fbfbfc}
+details.big.score{border:1px solid var(--line);border-radius:10px;background:#F7F9FC}
 details.big.score>summary{padding:16px 18px;align-items:center}details.big.score>.bb{padding:0 18px 16px 41px}
 details.big.score .bt{font-size:12.5px;text-transform:uppercase;letter-spacing:.07em;color:var(--mute)}
 details.big.inst{background:#fff8e1;border:1px solid #e8c766;border-radius:10px;margin:0 0 16px;font-size:12.5px}
@@ -1316,7 +1521,7 @@ details.q{border-bottom:1px solid var(--line)}details.q>summary{list-style:none;
 details.q>summary::-webkit-details-marker{display:none}
 details.q>summary .qn::after{content:"";display:inline-block;width:5px;height:5px;border-right:1.5px solid var(--mute);border-bottom:1.5px solid var(--mute);transform:rotate(-45deg);margin-left:8px;vertical-align:2px;transition:transform .15s}
 details.q[open]>summary .qn::after{transform:rotate(45deg)}
-details.q>summary:focus-visible,details.big>summary:focus-visible{outline:2px solid #2f5bd3;outline-offset:2px}
+details.q>summary:focus-visible,details.big>summary:focus-visible{outline:2px solid #003DA5;outline-offset:2px}
 .qr{color:var(--mute);font-size:13.5px;white-space:nowrap;font-variant-numeric:tabular-nums}
 details.q.muted .qn{color:var(--mute)}
 details.q.s{border-bottom:1px solid #f3f4f6}details.q.s>summary{padding:6px 0;font-size:13.5px}details.q.s .qr{font-size:12.5px}
@@ -1328,9 +1533,9 @@ details.q.inst>summary .qn{color:#7a5a00}.instag{font-size:10.5px;background:#ff
 .qown{font-size:11.5px;color:var(--mute);margin-left:6px}
 .how{font-size:13px;color:#4a5262;background:#f7f8fa;border-radius:6px;padding:6px 10px;margin:6px 0 8px}
 .inote{background:#fff8e1;border:1px solid #f0d98a;border-radius:6px;padding:6px 10px;margin:0 0 8px;font-size:13px}.inote p{margin:2px 0}
-.gbar{display:inline-block;width:70px;height:6px;background:#f1f2f5;border-radius:3px;margin-right:8px;vertical-align:1px;overflow:hidden}.gbar i{display:block;height:100%;background:#e2933a;border-radius:3px}
+.gbar{display:inline-block;width:70px;height:6px;background:#f1f2f5;border-radius:3px;margin-right:8px;vertical-align:1px;overflow:hidden}.gbar i{display:block;height:100%;background:#003DA5;border-radius:3px}
 .gsw{display:inline-flex;border:1px solid var(--line);border-radius:6px;overflow:hidden;margin:2px 0 10px}.gsw button{font:inherit;font-size:12.5px;padding:4px 12px;border:0;background:#fff;color:var(--mute);cursor:pointer}
-.gsw button+button{border-left:1px solid var(--line)}.gsw button.on{background:#fdf3e6;color:var(--ink);font-weight:600}.gsw button:focus-visible{outline:2px solid #2f5bd3;outline-offset:-2px}
+.gsw button+button{border-left:1px solid var(--line)}.gsw button.on{background:#EEF4FB;color:var(--ink);font-weight:600}.gsw button:focus-visible{outline:2px solid #003DA5;outline-offset:-2px}
 .gx{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1.1fr) minmax(0,.8fr) minmax(0,.6fr) minmax(0,1.3fr);align-items:center;gap:8px;font-size:13.5px}
 .gx .gn{color:var(--mute);text-align:center}.gx .gp{color:var(--amber);font-weight:600;text-align:right;white-space:nowrap}.gx .gt{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}.gx .gl{color:#4a5262}
 .gxh{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--mute);font-weight:600;padding:4px 0;border-bottom:1px solid var(--line)}.gxh .gn,.gxh .gp{color:var(--mute);font-weight:600}
@@ -1341,59 +1546,59 @@ details.q.gx>.qb{padding-left:14px}
 @media(max-width:560px){.gx .gn{display:none}.gx,details.q.gx>summary{grid-template-columns:minmax(0,1.4fr) minmax(0,1fr) minmax(0,.5fr) minmax(0,1.1fr)}.gbar{width:40px}}
 .qsub{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:var(--ink);margin:14px 0 0}.qsub span{color:var(--amber)}
 details.q.dep>summary .qn{font-style:italic;color:#4a5262}
-.capl{margin-left:10px;color:var(--mute);text-decoration:underline;text-decoration-color:#d5d9e0}
+.capl{margin-left:10px;color:var(--mute);text-decoration:underline;text-decoration-color:#CCCCCC}
 .qtotal{display:flex;justify-content:space-between;padding:10px 0 2px;font-weight:600}
-.snote{background:#f3f4f7;border-radius:8px;padding:8px 12px;margin:8px 0 0;font-size:14px}.snote p{margin:2px 0 0}
+.snote{background:#EEF1F5;border-radius:8px;padding:8px 12px;margin:8px 0 0;font-size:14px}.snote p{margin:2px 0 0}
 ol.nsl{list-style:none;margin:6px 0 10px;padding:0}
 li.ns{display:flex;gap:14px;padding:12px 0;border-bottom:1px solid var(--line)}li.ns:last-child{border-bottom:0}
-.nsn{flex:none;width:26px;height:26px;border-radius:50%;background:#fdf1e2;color:var(--amber);font-weight:600;font-size:13.5px;display:flex;align-items:center;justify-content:center;margin-top:1px}
+.nsn{flex:none;width:26px;height:26px;border-radius:50%;background:#EEF4FB;color:var(--amber);font-weight:600;font-size:13.5px;display:flex;align-items:center;justify-content:center;margin-top:1px}
 li.ns.counts .nsn{background:var(--amber);color:#fff}li.ns.house .nsn{background:#f1f2f5;color:var(--mute)}
 li.ns>div{flex:1;min-width:0}.nst{font-size:15px;line-height:1.45}
 .nsk{display:inline-block;font-size:11px;color:var(--mute);border:1px solid var(--line);border-radius:10px;padding:0 7px;margin-left:4px;vertical-align:1px;white-space:nowrap}
-li.ns.counts .nsk{color:var(--amber);border-color:#f3d3a8}
+li.ns.counts .nsk{color:var(--amber);border-color:#B9D0EA}
 li.ns p{font-size:13.5px;color:#4a5262;margin:3px 0 0}li.ns details.q{border:0;margin-top:2px}
-.qb pre{font:12px/1.45 ui-monospace,Menlo,monospace;background:#f5f6f8;padding:8px 10px;border-radius:6px;white-space:pre-wrap}
+.qb pre{font:12px/1.45 ui-monospace,Menlo,monospace;background:#F5F7FA;padding:8px 10px;border-radius:6px;white-space:pre-wrap}
 .doc{border:1px solid var(--line);border-radius:8px;padding:4px 14px;font-size:13px;overflow-wrap:anywhere}
 .doc h1{font-size:17px;margin:10px 0 6px}.doc h2{font-size:14.5px}.doc h3{font-size:13.5px}.doc table{font-size:12px;border-collapse:collapse}.doc td,.doc th{border:1px solid var(--line);padding:3px 6px}
 .qb table{font-size:12.5px;border-collapse:collapse;width:100%}
-table.chk td,table.rm td,table.axt td{padding:4px 6px;border-bottom:1px solid #f0f2f5;vertical-align:top}table.chk td.k,table.rm td.k{font-weight:600;white-space:nowrap;width:120px}
+table.chk td,table.rm td,table.axt td{padding:4px 6px;border-bottom:1px solid #EEF1F5;vertical-align:top}table.chk td.k,table.rm td.k{font-weight:600;white-space:nowrap;width:120px}
 table.axt code{white-space:nowrap}table.axt td.r{color:var(--mute);white-space:nowrap;width:1%}table.axt td.w{white-space:nowrap;color:var(--mute)}table.axt a{word-break:break-all}
 @media screen{.scroll{max-height:320px;overflow:auto}}
 .st{display:inline-block;font-size:11px;border-radius:9px;padding:0 7px;margin-left:4px;white-space:nowrap}
-.st.ok{background:#e6f4ea;color:#1e6b34}.st.bad{background:#fdecea;color:#a1271b}.st.na{background:#eef0f3;color:#4a5263}
+.st.ok{background:#EEF4EC;color:#44693D}.st.bad{background:#fdecea;color:#9E2A2B}.st.na{background:#eef0f3;color:#4a5263}
 .frames{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}.frames figure{margin:0}.frames img{width:100%;border-radius:4px;border:1px solid var(--line)}
 .frames figcaption{font-size:11px;color:var(--mute);line-height:1.4}
 .video{position:relative;aspect-ratio:16/10;border-radius:8px;overflow:hidden;background:#11151c;margin:0 0 6px}
 .video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}.video .poster{display:none}
 .dmeta{font-size:12px;color:var(--mute);margin:0 0 8px}.tr{font-size:13px;line-height:1.55;color:#2a303c}
-svg text.v{font:600 10.5px -apple-system,Helvetica,Arial,sans-serif;fill:#1d2330}
+svg text.v{font:600 10.5px -apple-system,Helvetica,Arial,sans-serif;fill:#002E5D}
 svg text.ax{font:11px -apple-system,Helvetica,Arial,sans-serif;fill:#3d4452}svg text.ax2{font:9.5px -apple-system,Helvetica,Arial,sans-serif;fill:#8a93a3}
 table.turnin{font-size:12px;margin:4px 0 6px}table.turnin th,table.turnin td{padding:5px 6px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
 .apt{width:100%;border-collapse:collapse;font-size:13.5px;margin-top:10px}.apt th{text-align:left;font-size:11.5px;color:var(--mute);font-weight:600;padding:4px 6px;border-bottom:1px solid var(--line)}
 .apt td{padding:4px 6px;border:0;vertical-align:top}
-.apt tr.apx td{position:sticky;top:0;z-index:2;font-size:14px;font-weight:700;color:var(--ink);background:#fcebd0;
-  padding:9px 10px;border:0;box-shadow:inset 0 -2px 0 #e2933a}
+.apt tr.apx td{position:sticky;top:0;z-index:2;font-size:14px;font-weight:700;color:var(--ink);background:#DCE6F2;
+  padding:9px 10px;border:0;box-shadow:inset 0 -2px 0 #003DA5}
 .apt tr.apg td{height:18px;padding:0;border:0}
-.apt tr.apx span{font-size:12.5px;font-weight:400;color:#6b4a1c;margin-left:8px}
+.apt tr.apx span{font-size:12.5px;font-weight:400;color:#002E5D;margin-left:8px}
 .apt tr.api td{font-size:13.5px;font-weight:600;color:var(--ink);padding:16px 6px 3px}
 .apt tr.api span{font-size:12.5px;font-weight:400;color:var(--mute);margin-left:8px}
 .apt td:first-child{padding-left:34px}.apt tr.apx td:first-child,.apt tr.api td:first-child{padding-left:10px}
-a.bkn{color:inherit;text-decoration:none}a.bkn:hover,a.bkn:focus-visible{text-decoration:underline;text-decoration-color:#c9761d;text-underline-offset:3px}
-a.bkc{display:inline-block;margin-left:6px;padding:0 6px;border-radius:999px;background:#fbf3e7;
-  font-size:10.5px;font-weight:500;font-style:normal;line-height:16px;color:#9a6a2e;text-decoration:none;vertical-align:1px;white-space:nowrap}
-a.bkc:hover,a.bkc:focus-visible{background:#fcebd0;color:#80460a}
+a.bkn{color:inherit;text-decoration:none}a.bkn:hover,a.bkn:focus-visible{text-decoration:underline;text-decoration-color:#003DA5;text-underline-offset:3px}
+a.bkc{display:inline-block;margin-left:6px;padding:0 6px;border-radius:999px;background:#F6F9FD;
+  font-size:10.5px;font-weight:500;font-style:normal;line-height:16px;color:#003DA5;text-decoration:none;vertical-align:1px;white-space:nowrap}
+a.bkc:hover,a.bkc:focus-visible{background:#DCE6F2;color:#002E5D}
 .apt b{font-weight:400}.apt tr:not(.got) b{color:#7a8291}.apt tr.got b{color:var(--ink)}.apt tr.got .apd{color:var(--amber);font-weight:600}
 .apt tr.ko b,.apt tr.ko .apd{color:var(--mute);font-style:italic}.apd{white-space:nowrap;color:var(--mute);font-size:12.5px;text-align:right}
 .coach{background:#fff;gap:2px;padding-top:10px;padding-bottom:10px}.cch{font-size:15px;font-weight:600;line-height:1.35}
 .cchead{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.ccnote:empty{display:none}
 .ccbtn{display:inline-flex;align-items:center;gap:.4em;padding:.3em .9em .3em .7em;font:600 .86rem/1.4 system-ui,-apple-system,"Segoe UI",sans-serif;
-  letter-spacing:.01em;color:#0057B8;background:#EEF4FB;border:1px solid #D3E1F1;border-radius:999px;cursor:pointer;transition:background .15s,border-color .15s}
-.ccbtn:hover,.ccbtn:focus-visible{background:#E1ECF8;border-color:#B9D0EA}.ccbtn:focus-visible{outline:2px solid #0057B8;outline-offset:2px}
+  letter-spacing:.01em;color:#003DA5;background:#EEF4FB;border:1px solid #D3E1F1;border-radius:999px;cursor:pointer;transition:background .15s,border-color .15s}
+.ccbtn:hover,.ccbtn:focus-visible{background:#E1ECF8;border-color:#B9D0EA}.ccbtn:focus-visible{outline:2px solid #003DA5;outline-offset:2px}
 .ccbtn svg{flex:none;display:block}.ccbtn.ok{color:#2C7A4C;background:#E8F4EC;border-color:#B7DBC3}
 .ccbtn.bad{color:#B03A3A;background:#FBEDED;border-color:#EBC5C5}.ccnote{font-size:12.5px;color:#B03A3A}
 .ccbox{margin:2px 0 0}.ccbox>summary{cursor:pointer;font-size:12.5px;color:var(--mute);width:max-content}
 .ccbox textarea{display:block;box-sizing:border-box;width:100%;max-width:100%;margin:6px 0 0;padding:8px 10px;border:1px solid var(--line);border-radius:8px;
-  background:#fbfbfc;font:12px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--ink);resize:vertical}
+  background:#F7F9FC;font:12px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--ink);resize:vertical}
 @media(prefers-reduced-motion:reduce){.ccbtn{transition:none}}
 @media print{
  .ccbtn,.ccbox{display:none}
@@ -1402,4 +1607,49 @@ a.bkc:hover,a.bkc:focus-visible{background:#fcebd0;color:#80460a}
  .video iframe{display:none}.video{aspect-ratio:auto;background:none}.video .poster{display:block;position:relative}
  .video .poster img{width:100%;border-radius:8px}.scroll{max-height:none}
 }
+/* BYU brand (Strategy app tokens) and the 2026-10-29 layout: three text levels, point deductions, one Evidence drawer */
+h1,h2,h3,h4,.qn,.qtitle,.smv,.cch,.dt,.nst{color:var(--navy)}
+code,.qb pre,.dex{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace}
+section.sec>h2{font-size:22px;font-weight:600;letter-spacing:-.01em;border-bottom:2px solid var(--navy);padding-bottom:6px}
+.sml{color:var(--navy);letter-spacing:.08em}
+.sm{border-radius:14px;box-shadow:0 2px 8px rgba(0,46,93,.06)}
+.brand{margin:0 0 18px;padding:10px 14px;background:var(--navy);color:#fff;border-radius:10px;display:flex;justify-content:space-between;align-items:baseline;gap:12px;font-size:13px}
+.brand b{font-weight:600;letter-spacing:.08em;text-transform:uppercase;font-size:12px}.brand span{color:#B9D0EA}
+#score>details.q>summary .qn{font-weight:600}
+h3.sub,.ncx h3{display:flex;justify-content:space-between;align-items:baseline;gap:12px;font-size:16px;font-weight:600;margin:0 0 6px}
+h3.sub small,.ncx h3 small{font-size:13px;font-weight:400;color:var(--mute)}
+.deds{margin:22px 0 4px}.dnote{font-size:13px;color:var(--mute);margin:0 0 8px}
+.ded{border:1px solid var(--line);border-radius:10px;margin:0 0 8px;padding:12px 14px}
+.ded .dh{display:grid;grid-template-columns:38px 1fr auto;gap:10px;align-items:baseline}
+.ded .dp{font-weight:700;color:#B3321C;font-variant-numeric:tabular-nums;font-size:15px}
+.ded .dt{font-weight:600}.ded .dcat{display:block;font-weight:400;font-size:12.5px;color:var(--mute);margin-top:1px}
+.dbtn{font-size:12.5px;border:1px solid #CCCCCC;background:#fff;border-radius:6px;padding:3px 10px;color:var(--navy);white-space:nowrap}
+.dbtn:hover,.dbtn:focus-visible{border-color:var(--royal);color:var(--royal)}
+.dst{font-size:12px;color:var(--mute);white-space:nowrap}.dst.ok{color:#44693D}
+.ded .dx{margin:3px 0 0 48px;font-size:13.5px}.ded .dx p{margin:2px 0}.ded .rule{color:var(--mute)}.ded .fix b{font-weight:600}
+.ded .inote{margin:8px 0 0 48px}.dex{white-space:pre-wrap;font-size:12px;background:#fff;border-radius:6px;padding:6px 8px;margin:4px 0 0}
+.nsi{margin:0 0 8px;color:var(--mute);font-size:14px}
+.evi{padding:8px 0 10px;border-top:1px solid #EEF1F5}.evi:first-child{border-top:0}
+.evi h4{margin:2px 0 6px;font-size:14px;font-weight:600}.evi h4 small{font-weight:400;color:var(--mute);font-size:12.5px;margin-left:4px}
+.doc{background:#F7F9FC;border-left:3px solid #E5E9EF}
+.doc h1{font-size:14.5px;margin:10px 0 4px}.doc h2{font-size:13.5px;margin:10px 0 3px}.doc h3{font-size:13px}
+.ncx{margin:18px 0 4px;border:1px solid var(--line);border-radius:10px;padding:12px 16px 4px;background:#F7F9FC}
+.ncx>summary{display:block;list-style:none;cursor:pointer;padding-bottom:8px}.ncx>summary::-webkit-details-marker{display:none}
+.ncx h3{margin:0;font-size:14.5px}.ncx h3 small::after{content:" \\203A";display:inline-block;margin-left:6px;transition:transform .15s}
+.ncx[open] h3 small::after{transform:rotate(90deg)}
+.ncx .nci{margin:0 0 10px;font-size:13.5px;color:var(--mute)}
+.ncg{border-top:1px solid var(--line);padding:10px 0 8px}.ncg .ngh{display:flex;justify-content:space-between;gap:12px;font-weight:600;font-size:13.5px;color:var(--navy)}
+.ncg .ngh small{font-weight:400;color:var(--mute)}.ncg .fix{margin:2px 0 6px;font-size:13.5px}.ncg .fix b{color:var(--royal);font-weight:600}
+.ncg ul{margin:0;padding:0;list-style:none}.ncg li{font-size:13.5px;padding:3px 0;display:flex;flex-wrap:wrap;gap:4px 8px;align-items:baseline}
+.ncg li .nm{font-weight:500}.ncg li .wh,.ncg li .why{color:var(--mute)}.ncg.later .ngh,.ncg.later .fix b{color:#44693D}
+.qfig{position:relative}.qfig svg polygon[data-s]{cursor:pointer;transition:opacity .15s}
+.qfig svg.hov polygon[data-s]:not(.on),.qfig svg.hov polygon.core{opacity:.35}.qfig svg polygon.on{stroke:var(--navy);stroke-width:2}
+.qfig svg text.axl{cursor:pointer}.qfig svg text.axl:hover{fill:var(--royal)}
+.rtip{position:absolute;pointer-events:none;background:var(--navy);color:#fff;font-size:12.5px;line-height:1.45;padding:7px 10px;border-radius:7px;white-space:nowrap;transform:translate(-50%,-115%);opacity:0;transition:opacity .1s;text-align:left}
+.rtip b{color:#F2CD00;font-weight:600}.rtip small{display:block;color:#B9D0EA;font-size:11.5px}
+.lg{font:inherit;font-size:12px;color:var(--mute);background:none;border:1px solid transparent;border-radius:5px;padding:1px 6px 1px 0;cursor:pointer}.lg:hover{border-color:#CCCCCC;color:var(--navy)}
+.rhint{font-size:12.5px;color:var(--mute);text-align:center;margin:2px 0 0}
+details.gx.flash>summary{animation:flash 1.6s ease-out}@keyframes flash{0%,30%{background:#E1ECF8}100%{background:transparent}}
+.sms.lost{display:block;margin-top:4px}
+@media print{.dbtn,.rhint{display:none}.ncx{display:block}}
 '''

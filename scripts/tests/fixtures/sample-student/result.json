@@ -70,7 +70,7 @@
     "review": "Your report is committed and your retro answers whether you hit the goal, what happened, your actual difficulty, and what changes next sprint. It does not answer what the report showed you or respond to anything it found, such as Oct 6 taking a third of all prompts or the Oct 8 re-scan that double-booked nine shifts.",
     "demo": "Full marks: in about a minute you show the live app with the real desk schedule, the photo becoming a draft at 0:19, a swap approved at 0:49, and the conflict on the week view at 1:04."
   },
-  "next_sprint": "You might consider answering 'what did the report show you' with one specific finding, for example why the Oct 8 re-scan inserted every shift a second time, and what you would check before the next change that writes to the shifts table. You might also consider showing the discovery ranking for a few seconds in the demo when discovery is part of the plan.",
+  "next_sprint": "You might consider showing the discovery ranking for a few seconds in the demo when discovery is part of the plan.",
   "not_reviewed": {
     "summary": null,
     "detail": "Nothing that affected a score: your plan, sprint review, the app code and live app, and your full demo were reviewed, and the discovery work in sprints/discovery/ was credited from commits b47c0d2 and f7e3c19."
@@ -90,5 +90,29 @@
     "why": "A vision-model reader with structured output and an editable draft, row-level security with a separate manager role, and an approval flow with email, all new to the student, with a stuck point that took days (the re-scan, Oct 8 to 10).",
     "effect_on_shipped": "none",
     "note": "You predicted a 4 and rated it a 5; the work was closer to a 4: a photo reader that returns an editable draft, row-level security that keeps each student to their own swaps, and a manager approval flow, with the re-scan fix taking from Oct 8 to Oct 10 to get right."
-  }
+  },
+  "deductions": [
+    {
+      "id": "R1",
+      "category": "review",
+      "points": 1,
+      "rule_id": "rev-retro",
+      "what": "No answer to “What did the report show you?”",
+      "fix": "One or two sentences on something in the report you did not expect, for example that Oct 6 held a third of all prompts.",
+      "reason": "The retro has answers under four prompts; the heading “What did the report show you?” has no text under it.",
+      "excerpt": "## Retro\n**What did the report show you?**\n\n**What changes next sprint?** Smaller commits, and a test before every migration.",
+      "excerpt_ref": "sprints/sprint-2-review.md, lines 38 to 41"
+    },
+    {
+      "id": "R2",
+      "category": "review",
+      "points": 2,
+      "rule_id": "rev-retro",
+      "what": "No response to anything specific the report found",
+      "fix": "Name one finding, such as the Oct 8 re-scan that double-booked nine shifts, and say what you will do differently because of it.",
+      "reason": "No answer mentions a finding from the report: not the Oct 6 prompt count, not the Oct 8 re-scan.",
+      "excerpt": null,
+      "excerpt_ref": null
+    }
+  ]
 }

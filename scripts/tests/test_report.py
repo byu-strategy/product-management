@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """Locks the sprint report and the review page: builds both copies of the report and the review page
 for a fictional student (fixtures/sample-student: Jordan Rivera, ShiftSwap; no real student data) and
-checks what Scott approved on 2026-10-16. /grade-sprint runs this before building any reports; a
+checks what Scott approved on 2026-10-16, revised 2026-10-29 (itemized point deductions with Dispute links,
+Next steps before Growth, one Evidence drawer per category, clickable tree rings, the "not yet in your
+profile" drawer, BYU brand colors). /grade-sprint runs this before building any reports; a
 failure means a change broke something students or Scott rely on.
 
     /opt/anaconda3/bin/python3 scripts/tests/test_report.py
@@ -24,8 +26,12 @@ FX = HERE / "fixtures" / "sample-student"
 L = lambda n: json.loads((FX / n).read_text())
 r, p, G, row_, plan_row = L("result.json"), L("packet.json"), L("growth.json"), L("grades_row.json"), L("plan_row.json")
 CATS = categories(2)
-student = render(r, p, row_, 2, CATS, final, plan_row=plan_row, growth=G, skills_status="")
-scott = render(r, p, row_, 2, CATS, final, plan_row=plan_row, growth=G, skills_status="", scott=True, fairness=[])
+DIS = {"token": "TEST_TOKEN_abc", "closes": "Nov 5"}
+student = render(r, p, row_, 2, CATS, final, plan_row=plan_row, growth=G, skills_status="", dispute=DIS)
+scott = render(r, p, row_, 2, CATS, final, plan_row=plan_row, growth=G, skills_status="", scott=True, fairness=[], dispute=DIS)
+plain = render(r, p, row_, 2, CATS, final, plan_row=plan_row, growth=G, skills_status="")  # no dispute link
+resolved = render(r, p, row_, 2, CATS, final, plan_row=plan_row, growth=G, skills_status="", dispute=DIS,
+                  outcomes={"R1": {"status": "upheld", "points_changed": 1}, "R2": {"status": "denied"}})
 review = sprint_review_shell.render([(r, p)], {p["net_id"]: row_}, 2, {p["net_id"]: plan_row},
                                    {p["net_id"]: G}, {}, 40)
 
@@ -77,9 +83,45 @@ for w in ("spoke", "knowledge fills", "Practice</b>"):
     check(w not in student, f"old Methodology wording: {w}")
 check("Where the points come from" in student and "The concept list" in student, "Methodology sections")
 
-# Questions go to Canvas; the posted score is shown, Canvas carries any late deduction
-check("Reply to the comment" in student and "Course Monitor" not in student, "questions go to a Canvas comment reply")
-check("Posted to Canvas:" in student and "In Canvas:" not in student, "posted score line")
+# Section order: Next steps before Growth (2026-10-29)
+for h in (student, scott):
+    check(h.find("id=score") < h.find("id=next") < h.find("id=grew") < h.find("id=questions") < h.find("id=appendix"),
+          "section order: Score, Next steps, Growth, Questions, How grading works")
+check("How grading works" in student and "Methodology</span>" not in student, "How grading works heading")
+
+# Questions: disputes through the Dispute buttons, everything else as a Canvas comment reply
+check("Questions or disputes" in student and "use its Dispute button" in student, "disputes section")
+check("reply to the comment this report came with" in student and "Course Monitor" not in student, "questions go to a Canvas comment reply")
+check("posted to Canvas" in student and "class=qtotal" not in student, "posted score in the Score heading, no total row")
+
+# Point deductions: one row each, rule and fix shown, Dispute links to the Strategy app; reasons only in Scott's copy
+check("Point deductions" in student and student.count("class=ded ") == 2, "two itemized deductions")
+check(student.count('href="https://strategy.byu.edu/app/dispute/TEST_TOKEN_abc#R') == 2, "a Dispute link per deduction")
+check("To earn it next time:" in student and "Rule: " in student, "rule and fix under each deduction")
+check("open until Nov 5" in student, "dispute window shown")
+check("The retro has answers under four prompts" in scott and "The retro has answers under four prompts" not in student,
+      "grader's reason in Scott's copy only")
+check("/app/dispute/" not in plain and "Questions or disputes" not in plain, "no dispute link without a token")
+check("Restored 1 point" in resolved and "Kept after review" in resolved and "/app/dispute/" not in resolved.split("id=next")[0].split("id=deds")[1],
+      "resolved deductions show their outcome instead of a Dispute link")
+check("3 points deducted in 2 items" in student, "summary card names the deductions")
+check("Each point deduction above says how to earn" in student, "next steps point to the deductions")
+
+# Evidence: one drawer per category, parts as subheadings
+check(student.count('<details class="q ev">') == 2 and "<div class=evi><h4>Commits" in student, "one Evidence drawer per category")
+
+# Tree rings: tagged rings, axis labels, legend buttons, the hover and click script
+check(student.count("polygon data-s=") >= 2 and student.count("class=axl") == 6, "rings and axis labels are clickable")
+check("class=lg data-s=" in student and "Click a ring, an axis, or a sprint" in student and "const rowFor" in student, "ring routing")
+
+# Not yet in the profile: a closed drawer grouped by what would count; unreadable items only in Scott's notes
+check("<details class=ncx id=notyet>" in student and "Work not counted" not in student, "not-yet drawer, closed")
+check("To make it count:" in student and "Nothing to do:" in student, "not-yet groups say what would count")
+check("could not be read for this review" not in st and "Could not be read" in sc, "unreadable items in Scott's notes only")
+
+# Brand: the Strategy app's navy and royal, IBM Plex Sans, the course bar
+check("#002E5D" in student and "#003DA5" in student and "IBM Plex Sans" in student and "#b45f04" not in student, "BYU brand colors")
+check("MSB 341 Product Management" in student, "course bar")
 
 # Student voice: no em dashes, nothing about how evidence was gathered, lateness, or the survey and difficulty
 check("—" not in st, "em dash in the student copy")

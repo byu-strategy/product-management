@@ -17,22 +17,22 @@ Anything else you notice (a weak habit, a better practice) may appear in feedbac
 never as lost points. When Scott adds a rule, it is added here with the sprint it starts in, in
 the same commit as the site change.
 
-| Rule that can cost points | Where students were told | Applies from |
-|---|---|---|
-| Plan submitted on time with Goal, Why this, Done looks like, Predicted difficulty (scored in code) | Assessments: Sprint 1 setup; later the Plan assignment | Sprint 1 |
-| Output: real and finished (not a template, placeholder, or outline) | Rubric | Sprint 1 |
-| Output: checkable by the course, privately (repo, shared or summarized repo, a link, or shown in the demo) | "It is in your repo" (Sprint 1); "The course can check it, privately" (v2.4.4) | Sprint 1 |
-| Output: raised for ambitious, hard work partly reached | Rubric, "an ambitious goal you partly reach and account for" | Sprint 1 |
-| Output: a goal that needs someone else's yes (design partners, a customer paying, signups) is graded on the asks made and on record; a no or "not yet" costs nothing when the retro says what was learned (Scott, 2026-10-20; loosens, so it applies to Sprints 1 and 2) | Rubric, "Goals that need someone else to say yes" | Sprint 1 |
-| Review: report committed | Rubric | Sprint 1 |
-| Review: retro engages with what the report says. Fixed amounts (Scott, 2026-10-20; loosens, so it applies to Sprints 1 and 2, and no score goes below what it was): any answer can carry the response; no specific response anywhere, minus 2; each prompt left unanswered, minus 1; empty retro, at most half | Rubric | Sprint 1 |
-| Review: Sprint 1 retro answers its template (did you hit the goal, what happened, what changes next sprint) | Assessments, Sprint 1 retro fields | Sprint 1 only |
-| Review: retro answers all five `/sprint-review` questions | Assessments (v2.4.0 to v2.4.2, Sep 30) | Sprint 2 |
-| Demo: the work, working, with real content, where "working" depends on the kind of work (Scott, 2026-10-20: the "What your demo shows" table loosens "working" for non-product sprints, so it applies to Sprints 1 and 2) | Rubric; Assessments, "What your demo shows" | Sprint 1 |
-| Demo: length. Sprint 1: more than about two minutes, at most minus 1. Sprint 2: waived, no length deduction (Scott, 2026-10-17). Sprints 3 to 5: minus 1 for each started 30 seconds past 3:30. Sprint 6: the same, past 4:30 | Rubric, "Demo length" (published 2026-10-16; Sprint 3 scale published 2026-10-17, v2.12.3, before any Sprint 3 demo was due) | Sprint 1 |
-| Demo: not a Loom scores 0 (set in code) | Assessments and Wrap-up pages (v2.3.1, Sep 30) | Sprint 2 |
-| Demo: a Loom the course cannot open is not graded until shared, either with scott.murff@byu.edu or "Anyone with the link" (Scott, 2026-10-20; loosens the Sprint 2 practice, so it applies to Sprint 2) | Assessments page, step 3 | Sprint 2 |
-| Late work, 10% per day (Canvas and code, never the grader) | Syllabus late work policy | Sprint 1 |
+| ID | Rule that can cost points | Where students were told | Applies from |
+|---|---|---|---|
+| `plan-complete` | Plan submitted on time with Goal, Why this, Done looks like, Predicted difficulty (scored in code) | Assessments: Sprint 1 setup; later the Plan assignment | Sprint 1 |
+| `out-real` | Output: real and finished (not a template, placeholder, or outline) | Rubric | Sprint 1 |
+| `out-checkable` | Output: checkable by the course, privately (repo, shared or summarized repo, a link, or shown in the demo) | "It is in your repo" (Sprint 1); "The course can check it, privately" (v2.4.4) | Sprint 1 |
+| `out-ambitious` | Output: raised for ambitious, hard work partly reached | Rubric, "an ambitious goal you partly reach and account for" | Sprint 1 |
+| `out-needs-yes` | Output: a goal that needs someone else's yes (design partners, a customer paying, signups) is graded on the asks made and on record; a no or "not yet" costs nothing when the retro says what was learned (Scott, 2026-10-20; loosens, so it applies to Sprints 1 and 2) | Rubric, "Goals that need someone else to say yes" | Sprint 1 |
+| `rev-committed` | Review: report committed | Rubric | Sprint 1 |
+| `rev-retro` | Review: retro engages with what the report says. Fixed amounts (Scott, 2026-10-20; loosens, so it applies to Sprints 1 and 2, and no score goes below what it was): any answer can carry the response; no specific response anywhere, minus 2; each prompt left unanswered, minus 1; empty retro, at most half | Rubric | Sprint 1 |
+| `rev-s1-template` | Review: Sprint 1 retro answers its template (did you hit the goal, what happened, what changes next sprint) | Assessments, Sprint 1 retro fields | Sprint 1 only |
+| `rev-five-questions` | Review: retro answers all five `/sprint-review` questions | Assessments (v2.4.0 to v2.4.2, Sep 30) | Sprint 2 |
+| `demo-working` | Demo: the work, working, with real content, where "working" depends on the kind of work (Scott, 2026-10-20: the "What your demo shows" table loosens "working" for non-product sprints, so it applies to Sprints 1 and 2) | Rubric; Assessments, "What your demo shows" | Sprint 1 |
+| `demo-length` | Demo: length. Sprint 1: more than about two minutes, at most minus 1. Sprint 2: waived, no length deduction (Scott, 2026-10-17). Sprints 3 to 5: minus 1 for each started 30 seconds past 3:30. Sprint 6: the same, past 4:30 | Rubric, "Demo length" (published 2026-10-16; Sprint 3 scale published 2026-10-17, v2.12.3, before any Sprint 3 demo was due) | Sprint 1 |
+| `demo-not-loom` | Demo: not a Loom scores 0 (set in code) | Assessments and Wrap-up pages (v2.3.1, Sep 30) | Sprint 2 |
+| `demo-unopenable` | Demo: a Loom the course cannot open is not graded until shared, either with scott.murff@byu.edu or "Anyone with the link" (Scott, 2026-10-20; loosens the Sprint 2 practice, so it applies to Sprint 2) | Assessments page, step 3 | Sprint 2 |
+| `late` | Late work, 10% per day (Canvas and code, never the grader) | Syllabus late work policy | Sprint 1 |
 
 Not rules, never deductions: when `/sprint-review` was run; plan changes, noted or not; which tool
 the work was built in; repo names; public or private repos; where in the README a link sits;
@@ -351,6 +351,12 @@ The key `shipped` holds the **Output** category (kept for compatibility). Never 
   "demo_checks": {"on_screen": "...", "working": "...", "real_content": "...",
                   "reachable": "...", "matches_plan": "...", "off_demo": "...", "readable": "..."},
   "feedback": {"shipped": "...", "review": "...", "demo": "..."},
+  "deductions": [{"id": "R1", "category": "review", "points": 1, "rule_id": "rev-retro",
+                  "what": "No answer to “What did the report show you?”",
+                  "fix": "One or two sentences on something in the report you did not expect, for example that Oct 6 held a third of all prompts.",
+                  "reason": "for Scott: what was read and what was missing",
+                  "excerpt": "up to 600 characters quoted from the file the deduction rests on, or null",
+                  "excerpt_ref": "sprints/sprint-3-review.md, lines 36 to 44, or Loom 1:42 to 2:10, or null"}],
   "next_sprint": "...",
   "not_reviewed": {"summary": "... or null", "detail": "..."},
   "axes": {"Discovery": 0.7, "Launch and Learn": 0.3},
@@ -401,6 +407,22 @@ em dashes, no mention of lateness or of the setup items.
     score could not be reviewed; otherwise `null`. It ends with "Details and what to do are in
     the appendix."
   Same voice rules as the rest. Never mention confidence levels.
+- `deductions`: every point lost, one item each, so a student can see and dispute each one. Rules:
+  - `id`: the category letter and a number, in order: `O1`, `O2` (Output), `R1` (Report and retro), `D1` (Demo).
+  - `category`: `shipped`, `review` or `demo`. For each category the items' `points` add up exactly to the
+    category's maximum minus its score. A full score has no items. `sprint_feedback.py` refuses to build otherwise.
+  - `rule_id`: the ID from "Only published rules cost points" that this loss rests on, and it must apply to
+    the sprint being graded. No ID, no deduction.
+  - `what`: one short line naming what was missing, as a heading the student reads ("Survey analysis in the
+    plan is not committed"). Same voice rules as `feedback`.
+  - `fix`: one sentence the student reads under "To earn it next time": concrete, fitting their work.
+  - `reason` (Scott only): what was read and why it fell short, citing the file, commit or Loom moment.
+  - `excerpt` and `excerpt_ref` (Scott only): the exact passage the deduction rests on, quoted from the
+    packet, and where it is, so a dispute can be settled by reading it. For the demo, the Loom times.
+    `null` when the deduction is about something absent with no passage to quote.
+  - One loss per item. The retro rule's fixed amounts are separate items: each prompt left unanswered is
+    its own minus 1, and no specific response anywhere is one minus 2.
+  - `next_sprint` must not repeat a deduction's `fix`; the report already shows it.
 - `next_sprint`: one to three suggestions for next sprint, offered, not prescribed. Start with
   "You might consider" and keep each suggestion specific and concrete, taken from the rubric or
   from their own report. "You might consider committing each finished document the day you

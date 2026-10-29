@@ -421,31 +421,36 @@
       "concept": "AA28",
       "what": "tests/schedule-import.test.ts and tests/swaps.test.ts",
       "why": "No saved output, CI log or commit message reports that the tests ran and what they returned.",
-      "name": "Automated tests"
+      "name": "Automated tests",
+      "kind": "unproven"
     },
     {
       "concept": "AW23",
       "what": "The check-schedule-import skill's steps",
       "why": "Claude Code decides when the skill runs and when it stops, so the loop is not in your committed product code.",
-      "name": "Tool calling and agent loops in the product"
+      "name": "Tool calling and agent loops in the product",
+      "kind": "tool_not_product"
     },
     {
       "concept": "DE13",
       "what": "Day list and folded filters on narrow screens",
       "why": "Commit a0c6f48 is dated 2026-10-13, after the Sprint 2 due date.",
-      "name": "Web, mobile, or both; mobile-first layout"
+      "name": "Web, mobile, or both; mobile-first layout",
+      "kind": "after_due"
     },
     {
       "concept": "DI09",
       "what": "Personas committed with the Sprint 3 pick",
       "why": "The personas file could not be read for this review, so whether its details come from the interview notes cannot be checked.",
-      "name": "Personas"
+      "name": "Personas",
+      "kind": "unreadable"
     },
     {
       "concept": "DI24",
       "what": "ranking.md scoring the five ideas",
       "why": "The ranking file's text could not be read for this review, so the order and criteria cannot be checked.",
-      "name": "Prioritization frameworks: ICE, MoSCoW, the $100 test"
+      "name": "Prioritization frameworks: ICE, MoSCoW, the $100 test",
+      "kind": "unreadable"
     }
   ],
   "earlier": [

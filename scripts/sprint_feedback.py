@@ -21,7 +21,7 @@ score for a category is its override when one is set, the grader's score otherwi
 
 Nothing here touches Canvas. Student data stays in _data. This file holds none.
 """
-import argparse, csv, html, json, os, re, subprocess, sys, datetime as dt
+import argparse, csv, html, json, os, re, secrets, subprocess, sys, datetime as dt
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
@@ -88,6 +88,12 @@ def load(sprint):
                 "Your demo was not a Loom share link. The demo has to be on Loom, so Demo is 0."
                 if other else "No Loom demo was submitted, so Demo is 0.")
             r["reasons"]["demo"] = "Not a Loom link (" + (", ".join(other) or "no video") + "): 0 by rule."
+            mx = dict((c, m) for c, _l, m in categories(sprint))["demo"]
+            r["deductions"] = [d for d in r.get("deductions") or [] if d.get("category") != "demo"] + [{
+                "id": "D1", "category": "demo", "points": mx, "rule_id": "demo-not-loom",
+                "what": "No Loom demo" if not other else "The demo is not a Loom share link",
+                "fix": "Record the demo in Loom and paste its share link into the Wrap-up on Canvas.",
+                "reason": r["reasons"]["demo"], "excerpt": None, "excerpt_ref": None}]
         # Adding the TA as a collaborator was dropped as a requirement (2026-09-30).
         r["flags"] = [x for x in r.get("flags", []) if not re.search(r"\bTA\b|nmccaul|collaborator", x)]
         days = p.get("facts", {}).get("canvas_days_late", 0)
@@ -114,7 +120,42 @@ def growth_text(G):
     return " ".join(str(x) for x in out if x)
 
 
-def validate(base, items, growth=None):
+def published_rules(sprint):
+    """Rule IDs that can cost points in this sprint, from the table in grading/sprint-grader.md."""
+    ok = set()
+    for line in (Path(__file__).parent / "grading/sprint-grader.md").read_text().splitlines():
+        m = re.match(r"\| `([\w-]+)` \|.*\| Sprint (\d+)( only)? \|\s*$", line)
+        if m and (sprint == int(m.group(2)) if m.group(3) else sprint >= int(m.group(2))):
+            ok.add(m.group(1))
+    return ok - {"late", "plan-complete"}  # Canvas and code apply these, never a grader
+
+
+def check_deductions(r, sprint):
+    """Every lost point is one itemized deduction under a published rule (grade disputes, 2026-10-29)."""
+    out, n = [], r.get("net_id", "?")
+    rules = published_rules(sprint)
+    ds = r.get("deductions")
+    if ds is None:
+        return [f"{n}: no deductions list"]
+    ids = [d.get("id") for d in ds]
+    if len(ids) != len(set(ids)):
+        out.append(f"{n}: repeated deduction ids {ids}")
+    for c, _l, mx in CATS:
+        if c == "plan":
+            continue
+        lost = mx - float((r.get("scores") or {}).get(c, 0))
+        got = sum(float(d.get("points") or 0) for d in ds if d.get("category") == c)
+        if abs(lost - got) > 1e-6:
+            out.append(f"{n}: {c} lost {lost:g} but its deductions add up to {got:g}")
+    for d in ds:
+        if d.get("rule_id") not in rules:
+            out.append(f"{n}: deduction {d.get('id')} rests on {d.get('rule_id')!r}, not a published rule for Sprint {sprint}")
+        if not d.get("what") or not d.get("fix"):
+            out.append(f"{n}: deduction {d.get('id')} needs both what and fix")
+    return out
+
+
+def validate(base, items, growth=None, sprint=0):
     """Stop before building anything a student would read if a result is malformed."""
     growth = growth or {}
     problems = []
@@ -132,6 +173,7 @@ def validate(base, items, growth=None):
                          (r.get("difficulty") or {}).get("note") or "",
                          *((r.get("not_reviewed") or {}).get(k) or "" for k in ("summary", "detail")),
                          r.get("next_sprint") or "",
+                         *(f'{d.get("what", "")} {d.get("fix", "")}' for d in r.get("deductions") or []),
                          growth_text(growth.get(n))])
         import re as _re
         # Quoted text is the student's own words or their app's output, so it is not checked.
@@ -169,6 +211,8 @@ def validate(base, items, growth=None):
         if soft:
             r.setdefault("flags", []).append("voice check: feedback mentions " + ", ".join(soft) +
                                              "; confirm it refers to the student's own work")
+        if sprint >= 3:  # itemized deductions start with Sprint 3
+            problems += check_deductions(r, sprint)
         if "\u2014" in text:
             problems.append(f"{n}: em dash in student feedback")
         if _re.search(r"\b(submitted|committed|turned in|pushed)\b[^.]{0,40}\blate\b|\blate (submission|penalty|work)\b|"
@@ -247,6 +291,30 @@ def side_inputs(base):
     return plans, skills, fairness
 
 
+def dispute_inputs(base, sprint, net_ids):
+    """Each student's dispute link token (kept across rebuilds, so a posted report's link keeps working),
+    the window's close date, and the outcomes /resolve-dispute has recorded. Sprint 3 on."""
+    if sprint < 3:
+        return {}, None, {}
+    f = base / "dispute-tokens.json"
+    tokens = json.loads(f.read_text()) if f.exists() else {}
+    new = [n for n in net_ids if n not in tokens]
+    for n in new:
+        tokens[n] = secrets.token_urlsafe(32)
+    if new or not f.exists():
+        f.write_text(json.dumps(tokens, indent=1))
+    f.chmod(0o600)
+    w = base / "dispute-window.json"
+    closes = None
+    if w.exists():
+        c = json.loads(w.read_text()).get("closes")
+        if c:
+            d = dt.datetime.fromisoformat(c)
+            closes = f"{d:%b} {d.day}"
+    o = base / "dispute-outcomes.json"
+    return tokens, closes, (json.loads(o.read_text()) if o.exists() else {})
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--sprint", type=int, required=True)
@@ -260,15 +328,17 @@ def main():
         sys.exit(f"no results in {base / 'results'}")
     points = review_points(a.sprint)
     growth = load_growth(a.sprint, [r["net_id"] for r, _ in items], a.growth_dir)
-    validate(base, items, growth)
+    validate(base, items, growth, a.sprint)
     rows = write_csv(base, items)
     plans, skills, fairness = side_inputs(base)
+    tokens, closes, outcomes = dispute_inputs(base, a.sprint, [r["net_id"] for r, _ in items])
     from sprint_report import render
     fb = base / "feedback"
     fb.mkdir(exist_ok=True)
     for r, p in items:
         n = r["net_id"]
-        kw = dict(plan_row=plans.get(n), growth=growth.get(n), skills_status=skills.get(n, ""))
+        kw = dict(plan_row=plans.get(n), growth=growth.get(n), skills_status=skills.get(n, ""),
+                  dispute={"token": tokens[n], "closes": closes} if n in tokens else None, outcomes=outcomes.get(n))
         page = fb / f"{n}.html"
         page.write_text(render(r, p, rows[n], a.sprint, CATS, final, **kw))
         mine = fb / f"{n}-scott.html"
