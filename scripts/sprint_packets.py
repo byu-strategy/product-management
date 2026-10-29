@@ -773,6 +773,12 @@ def main():
         p["assignment"] = {"id": cfg["review"], "name": assignment["name"],
                            "points": assignment["points_possible"], "due": due.isoformat(),
                            "extended": due != class_due}
+        # Share requests are written by hand after the audit (grade-sprint step 2); a rebuild keeps them.
+        old = out / f"{s['net_id']}.json"
+        if old.exists():
+            kept = (json.loads(old.read_text()).get("facts") or {}).get("share_requests")
+            if kept:
+                p.setdefault("facts", {})["share_requests"] = kept
         (out / f"{s['net_id']}.json").write_text(json.dumps(p, indent=1))
         (out / f"{s['net_id']}.json").chmod(0o600)
         print(f"{s['net_id']:10} {len(json.dumps(p)) // 4:>6} tokens  "
