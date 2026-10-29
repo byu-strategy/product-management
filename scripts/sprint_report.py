@@ -1107,7 +1107,8 @@ def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott
         steps.append(("counts", 'Add a "Where the work lives" section to your README.',
                       "Only what is in your course repo, or listed there, can count toward your sprint. Add it below Context, one line per place.",
                       README_PASTE))
-    for u in f.get("repos_named_but_not_shared") or []:
+    asked = " ".join(q.get("title", "") + " " + q.get("body", "") for q in f.get("share_requests") or []).lower()
+    for u in [u for u in f.get("repos_named_but_not_shared") or [] if u.lower() not in asked]:  # a share request covers it
         steps.append(("counts", f"Share {e(u)} with sdmurff, or list it.",
                       "If you administer it, add <code>sdmurff</code> as a collaborator. If it belongs to a company you cannot "
                       "share, list it in your README, and <code>/sprint-review</code> will summarize its commits (dates and messages, never code).", ""))
