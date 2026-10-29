@@ -35,3 +35,11 @@ The other rules, unchanged:
 
 Before reports are built, every student-facing sentence is checked against this file (step 3b of
 `/grade-sprint`), and `sprint_feedback.py` refuses to build when it finds a stock figure of speech.
+
+## Never "the course can" or "the course cannot"
+
+Scott, 2026-10-29: "the course" does not open, check or see anything. Name who it is shared with, or
+not: "not shared with Professor Murff (GitHub `sdmurff`)", "so Professor Murff can open it", "not shared
+with aifoundry.byu@gmail.com" for a Google file, "set the Loom to Anyone with the link or share it with
+scott.murff@byu.edu". Never "which the course cannot open", "so the course can check it", "work the
+course could not check".

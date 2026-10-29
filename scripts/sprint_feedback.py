@@ -215,6 +215,10 @@ def validate(base, items, growth=None, sprint=0):
             problems += check_deductions(r, sprint)
         if "\u2014" in text:
             problems.append(f"{n}: em dash in student feedback")
+        # Scott, 2026-10-29: never "the course can/cannot open"; name who it is (not) shared with (student-voice.md).
+        req = " ".join(q.get("title", "") + " " + q.get("body", "") for q in (p.get("facts") or {}).get("share_requests") or [])
+        if _re.search(r"\bthe course (?:can|cannot|could|can't|couldn't)\b", text + " " + req, _re.I):
+            problems.append(f"{n}: says 'the course can/cannot'; name who it is shared with (Professor Murff, GitHub sdmurff)")
         if _re.search(r"\b(submitted|committed|turned in|pushed)\b[^.]{0,40}\blate\b|\blate (submission|penalty|work)\b|"
                       r"\bafter the (deadline|due date)\b|\bpast the deadline\b|\bseconds after\b|\bafter due\b",
                       plain_text, _re.I):

@@ -47,14 +47,14 @@ DISPUTE_BASE = "https://strategy.byu.edu/app/dispute/"
 # student's, so it goes to Scott's notes only.
 NOT_YET = {
     "unproven": ("Shown, not proven working",
-                 "commit the output of a test run (or turn on CI), or show it working in your demo, so the course can see it ran."),
+                 "commit the output of a test run (or turn on CI), or show it working in your demo, so Professor Murff can see it ran."),
     "tool_not_product": ("Built with a tool, not in your product",
                          "put the logic in your own product code, where your code decides what happens."),
     "after_due": ("Done after the due date", None),
-    "not_shared": ("In a place the course cannot open",
+    "not_shared": ("Not shared with Professor Murff",
                    "share the repo with sdmurff, or the file with aifoundry.byu@gmail.com, or list it in your README."),
     "described_only": ("Described, with nothing to check",
-                       "commit the file, or link it from your README, so the course can open it."),
+                       "commit the file, or link it from your README, so Professor Murff can open it."),
     "course_given": ("Supplied by the course or a template",
                      "change it or build on it yourself; what the course gave you does not count on its own."),
     "before_course": ("Dated before the course began",
@@ -720,7 +720,7 @@ def deductions_block(r, sprint, cats, dispute, outcomes, scott):
 # What a student reads for each rule: the rubric's wording, one sentence (rule IDs: grading/sprint-grader.md).
 RULE_TEXT = {
     "out-real": "Output counts when it is real and finished, read against your plan as it stood at the end of the sprint.",
-    "out-checkable": "Output counts when the course can check it: in a shared repo, at a link, or working in your demo.",
+    "out-checkable": "Output counts when Professor Murff can check it: in a repo shared with him (GitHub `sdmurff`), at a link, or working in your demo.",
     "out-ambitious": "An ambitious goal you partly reach, and account for in your retro, can earn full marks.",
     "out-needs-yes": "A goal that needs someone else's yes is graded on the asks you made and recorded.",
     "rev-committed": "Your /sprint-review report is committed.",
@@ -730,7 +730,7 @@ RULE_TEXT = {
     "demo-working": "The demo shows your work, working, with real content, as the \"What your demo shows\" table describes.",
     "demo-length": "Minus 1 for each started 30 seconds past the demo's length limit.",
     "demo-not-loom": "The demo has to be a Loom share link.",
-    "demo-unopenable": "The demo is graded once the course can open the Loom.",
+    "demo-unopenable": "The demo is graded once the Loom is set to \"Anyone with the link\" or shared with scott.murff@byu.edu.",
 }
 
 

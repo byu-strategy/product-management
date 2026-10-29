@@ -108,7 +108,7 @@ saves new jobs to it.").
 `unproven` (shown or claimed, not shown working: tests with no run output, a feature only described working),
 `tool_not_product` (built with a tool such as a Claude Code skill or agent, not in the product's own code),
 `after_due` (done after the due date; it counts toward the next sprint),
-`not_shared` (in a repo or file the course cannot open),
+`not_shared` (in a repo or file not shared with Professor Murff),
 `described_only` (only in the review or retro, with nothing committed or linked),
 `course_given` (supplied by the course or a template),
 `before_course` (dated before the course began),
