@@ -164,7 +164,7 @@ def validate(base, items, growth=None, sprint=0):
     """Stop before building anything a student would read if a result is malformed."""
     growth = growth or {}
     problems = []
-    packets = {f.stem for f in base.glob("*.json")}
+    packets = {f.stem for f in base.glob("*.json") if not f.name.startswith(("_", "dispute-"))}  # not the dispute state files
     for r, p in items:
         n = r.get("net_id", "?")
         for c, _, mx in CATS:
