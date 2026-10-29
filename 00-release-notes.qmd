@@ -4,6 +4,14 @@ This course site is updated during the semester, and every meaningful update is 
 
 New entries appear at the top.
 
+## v2.12.14 (2026-10-29)
+
+You can now dispute a point deduction from your sprint report, and Data and APIs has two new security sections.
+
+- **Disputing a deduction.** From Sprint 3, your sprint report lists each point deducted with the rule behind it, and each has a Dispute button. It opens a page where you say why and add links, screenshots, or notes, with no sign-in. Disputes are open for one week after grades are released, and a review can raise your score, leave it, or lower it. See the Grading rubric section of Assessments.
+- **Data and APIs.** New sections: Your Endpoints Are Public, and Showing Content You Did Not Write.
+- **Engineering Checklist.** The security section is rewritten for the course's stack: where code runs, the database, your endpoints, content and models, data, and accounts, repo, and packages.
+
 ## v2.12.13 (2026-10-26)
 
 The figure at the start of The Browser, Developer Tools, and Claude in Chrome now shows correctly how a page is built.
