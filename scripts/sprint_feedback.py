@@ -104,6 +104,9 @@ def load(sprint):
     return base, out
 
 
+NOT_YET_KINDS = {"unproven", "tool_not_product", "after_due", "not_shared", "described_only", "course_given", "before_course"}
+
+
 def growth_text(G):
     """Every sentence in a growth file that the student reads."""
     if not G:
@@ -113,8 +116,10 @@ def growth_text(G):
         out += [m.get("did", ""), m.get("evidence", "")]
     for d in G.get("depth") or []:
         out.append(d.get("why", ""))
-    for x in G.get("not_counted") or []:
-        out += [x.get("what", ""), x.get("why", "")]
+    for x in G.get("not_counted") or []:  # what the report shows: no unreadable items, and `why` only for an unknown kind
+        if x.get("kind") == "unreadable":
+            continue
+        out += [x.get("what", "")] + ([] if x.get("kind") in NOT_YET_KINDS else [x.get("why", "")])
     for x in G.get("earlier") or []:
         out += [x.get("did", ""), x.get("evidence", ""), x.get("why", "")]
     return " ".join(str(x) for x in out if x)
@@ -217,7 +222,7 @@ def validate(base, items, growth=None, sprint=0):
             problems.append(f"{n}: em dash in student feedback")
         # Scott, 2026-10-29: never "the course can/cannot open"; name who it is (not) shared with (student-voice.md).
         req = " ".join(q.get("title", "") + " " + q.get("body", "") for q in (p.get("facts") or {}).get("share_requests") or [])
-        if _re.search(r"\bthe course (?:can|cannot|could|can't|couldn't)\b", text + " " + req, _re.I):
+        if _re.search(r"\bthe course (?:can|cannot|could|can't|couldn't)\b|\b(?:with|to) the course\b", text + " " + req, _re.I):
             problems.append(f"{n}: says 'the course can/cannot'; name who it is shared with (Professor Murff, GitHub sdmurff)")
         if _re.search(r"\b(submitted|committed|turned in|pushed)\b[^.]{0,40}\blate\b|\blate (submission|penalty|work)\b|"
                       r"\bafter the (deadline|due date)\b|\bpast the deadline\b|\bseconds after\b|\bafter due\b",
