@@ -243,7 +243,7 @@ def cmd_resolve(a):
     DB().patch("grade_disputes", {"status": status, "points_changed": change, "resolution_note": a.note,
                                   "resolved_at": dt.datetime.now(dt.timezone.utc).isoformat()}, id=f"eq.{x['id']}")
     print(f"{x['ticket']} marked {status} in the app. Next: sprint_feedback.py --sprint {sprint} --no-pdf, then "
-          f"post_grades.py --sprint {sprint} --test {n} (dry run first, through /publish-grades).")
+          f"post_grades.py --sprint {sprint} --test {n} --replace (dry run first, through /publish-grades; on every decision).")
 
 
 def cmd_reply(a):
