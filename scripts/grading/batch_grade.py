@@ -88,7 +88,7 @@ def req(cid, kind, user):
 
 
 def students(sprint):
-    return sorted(f.stem for f in (DATA / f"sprint-{sprint}").glob("*.json"))
+    return sorted(f.stem for f in (DATA / f"sprint-{sprint}").glob("*.json") if not f.name.startswith(("_", "dispute-")))
 
 
 def packet_text(sprint, n):

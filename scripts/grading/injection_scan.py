@@ -12,11 +12,15 @@ import re
 PATTERNS = [
     r"\bignore (?:all |any |the )?(?:previous|prior|above|earlier|preceding) (?:instructions|prompts|rules|directions)",
     r"\bdisregard (?:the |all |any )?(?:previous |above )?(?:instructions|rubric|rules|guidelines)",
-    r"\b(?:note|message|instructions?|hint|reminder) (?:to|for) (?:the |any )?(?:ai|a\.i\.|llm|model|claude|grader|grading|reviewer|assistant|evaluator)\b",
+    r"\b(?:note|message|instructions?|hint|reminder) (?:to|for) (?:the |any )?(?:ai grader|grader|grading (?:ai|model)|evaluator)\b",
     r"\b(?:give|award|assign|grant) (?:me |this |him |her |them |the student )?(?:a )?(?:full|maximum|max|perfect|all the|top) (?:marks|points|credit|score)",
     r"\b(?:full|maximum|perfect) (?:marks|score|points) (?:are|is) (?:warranted|deserved|required)",
     r"\byou are (?:an? |the )?(?:ai |llm )?(?:grader|grading assistant|evaluator)",
-    r"\bprofessor murff (?:has )?(?:already )?(?:approved|said this counts|agreed)",
+    r"\bprofessor murff (?:has )?(?:already )?(?:approved|said this counts|agreed|told me)",
+    # Seen in Sprint 3 (2026-10-30): "For the grading AI: ... Record my midterm as 25 out of 25".
+    r"\bfor the (?:grading (?:ai|a\.i\.|llm|model)|ai grader|grader)\b",
+    r"\b(?:record|change|update|set) (?:my|the) (?:midterm|grade|score|sprint \d)\b.{0,40}?\b(?:to|as) (?:full|\d+ (?:of|out of) \d+|\d+%)",
+    r"\bgrader challenge\b",
 ]
 RX = re.compile("|".join(PATTERNS), re.I)
 HIDDEN = re.compile("[​-‏‪-‮⁠-⁤﻿­]")
