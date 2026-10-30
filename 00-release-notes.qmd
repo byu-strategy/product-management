@@ -4,6 +4,12 @@ This course site is updated during the semester, and every meaningful update is 
 
 New entries appear at the top.
 
+## v2.12.17 (2026-10-29)
+
+Your course skills now keep themselves up to date.
+
+- **Course skills update themselves.** `/sprint-plan`, `/sprint-review`, `/sprint-coach`, `/learn`, and `/eli5` each bring all of your course skills up to date as their first step. The Learn in Claude button and your sprint report's Copy prompt button do the same when you paste their prompt. If your repo's skills are from before today, paste either prompt once, or use the prompt under "Update your course skills" in your repo's README.
+
 ## v2.12.16 (2026-10-29)
 
 Retro question 2 now asks how many hours you worked, and the review rubric is simpler.
