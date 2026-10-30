@@ -2,12 +2,12 @@
  "net_id": "sample1",
  "scores": {
   "shipped": 20,
-  "review": 7,
+  "review": 8,
   "demo": 10
  },
  "reasons": {
   "shipped": "plan.now items covered: post, pick-up and approve flows on the live app (b2c08e1, b5d0e72), the UI rebuilt on shadcn/ui with empty, loading and error states (3f1a9c2, a9e6c41, 0d4f8a2), the photo reader returning an editable draft with undo (c94d1b0, 16f9a3c), row-level security on swaps (6e4f13a), email notices with text messages dropped per the Oct 6 change, and seven interviews, five briefs and a ranking (b47c0d2, f7e3c19). Live at shiftswap.example.com (200). Assessed 4, no cap.",
-  "review": "Report committed and retro filled. The retro answers hit-the-goal, what happened, actual difficulty with a reason, and next sprint, and the Oct 6 change note gives the reason for the plan change; it has no answer to 'what did the report show you' and does not respond to any report finding (Oct 6 as a third of all prompts, the Oct 8 re-scan that double-booked nine shifts, discovery at about 15 prompts).",
+  "review": "Report committed and retro filled. The retro answers hit-the-goal, hours (about 14), and actual difficulty with a reason. The retro has answers under three of five prompts; 'If the plan changed, why?' and 'What will you change next sprint?' are empty. Minus 1 each.",
   "demo": "68 seconds, 9 of 9 moments on the live app with the real desk schedule: board (0:04), photo import (0:11), draft with low-confidence rows and undo (0:19 to 0:26), post and pick-up (0:34, 0:41), manager approval (0:49 to 0:56), week view conflict (1:04)."
  },
  "flags": [
@@ -67,7 +67,7 @@
  },
  "feedback": {
   "shipped": "Full marks: your plan's items are all there, with post, pick-up and approval working on the live app, the photo reader returning an editable draft with undo in c94d1b0, the rebuilt UI with its empty and error states, and seven interviews, five briefs and a ranking in sprints/discovery/.",
-  "review": "Your report is committed and your retro answers whether you hit the goal, what happened, your actual difficulty, and what changes next sprint. It does not answer what the report showed you or respond to anything it found, such as Oct 6 taking a third of all prompts or the Oct 8 re-scan that double-booked nine shifts.",
+  "review": "Your report is committed and your retro answers whether you hit the goal, how many hours you worked, and your actual difficulty. It does not say why the plan changed on Oct 6 or what you will change next sprint.",
   "demo": "Full marks: in about a minute you show the live app with the real desk schedule, the photo becoming a draft at 0:19, a swap approved at 0:49, and the conflict on the week view at 1:04."
  },
  "next_sprint": "You might consider showing the discovery ranking for a few seconds in the demo when discovery is part of the plan.",
@@ -97,20 +97,20 @@
    "category": "review",
    "points": 1,
    "rule_id": "rev-retro",
-   "what": "No answer to “What did the report show you?”",
-   "fix": "One or two sentences on something in the report you did not expect, for example that Oct 6 held a third of all prompts.",
-   "reason": "The retro has answers under four prompts; the heading “What did the report show you?” has no text under it.",
-   "excerpt": "## Retro\n**What did the report show you?**\n\n**What changes next sprint?** Smaller commits, and a test before every migration.",
+   "what": "No answer to “If the plan changed, why?”",
+   "fix": "One or two sentences on why the plan changed on Oct 6, for example that the scheduling bug had to come before the export.",
+   "reason": "The plan's Oct 6 change note drops the export; the retro heading “If the plan changed, why?” has no text under it.",
+   "excerpt": "**If the plan changed, why?**\n\n**Actual difficulty:** 4. The migration took longer than I thought.",
    "excerpt_ref": "sprints/sprint-2-review.md, lines 38 to 41"
   },
   {
    "id": "R2",
    "category": "review",
-   "points": 2,
+   "points": 1,
    "rule_id": "rev-retro",
-   "what": "No response to anything specific the report found",
-   "fix": "Name one finding, such as the Oct 8 re-scan that double-booked nine shifts, and say what you will do differently because of it.",
-   "reason": "No answer mentions a finding from the report: not the Oct 6 prompt count, not the Oct 8 re-scan.",
+   "what": "No answer to “What will you change next sprint?”",
+   "fix": "Name one specific change, such as running the tests before every migration after the Oct 8 re-scan that double-booked nine shifts.",
+   "reason": "The last retro heading has no text under it.",
    "excerpt": null,
    "excerpt_ref": null
   }

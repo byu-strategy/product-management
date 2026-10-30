@@ -112,12 +112,12 @@ for _k, _q in RULE_TEXT.items():
     if _k not in QUOTE_EXEMPT:
         check(" ".join(_q.split()).lower() in _site.lower(), f"rule {_k} quotes the Assessments page word for word")
 check("open until Nov 5" in student, "dispute window shown")
-check("The retro has answers under four prompts" in scott and "The retro has answers under four prompts" not in student,
+check("The retro has answers under three of five prompts" in scott and "The retro has answers under three of five prompts" not in student,
       "grader's reason in Scott's copy only")
 check("/app/dispute/" not in plain and "Questions or disputes" not in plain, "no dispute link without a token")
 check("Restored 1 point" in resolved and "Kept after review" in resolved and "/app/dispute/" not in resolved.split("id=next")[0].split("id=deds")[1],
       "resolved deductions show their outcome instead of a Dispute link")
-check("3 points deducted in 2 items" in student, "summary card names the deductions")
+check("2 points deducted in 2 items" in student, "summary card names the deductions")
 check("Each point deduction above says how to earn" in student, "next steps point to the deductions")
 
 # Evidence: one drawer per category, parts as subheadings
