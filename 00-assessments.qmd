@@ -108,11 +108,12 @@ builder axes, each scored from 0 to 100. It shows what you can do, and it is not
 - **Sprint work fills up to half of each area** (a quarter on AI Systems). It counts the concepts on
   that axis you have shown in your own work, and the depth level of that work, from following a
   template to changing the product because of what real users did.
-- **The exams fill the rest.** Your midterm and final results on each axis set this part.
-- **The starting center.** Until the midterm, the center of the chart is your own rating from the
-  September survey. The midterm tests three axes (Agentic Workflow, Discovery, and Design), and on
-  those three your midterm result replaces the survey rating. That can move the center up or down.
-  On the other three axes the survey rating stays the center until the final measures them.
+- **The exams fill the rest.** The midterm tests three axes (Agentic Workflow, Discovery, and
+  Design) and fills half of the exam part of those three, at the share of questions you got right.
+  It shows as its own ring. The final fills the rest, on all six axes.
+- **The starting center.** The center of the chart is your own rating from the September survey,
+  counted on the part of each axis that no exam has measured yet. After the midterm it counts for
+  half as much on the three axes the midterm tested, and a dashed outline shows your full rating.
 - **Sprint rings never shrink.** Each sprint adds a ring outside the center for what that sprint
   showed. Once a ring is added, it stays.
 

@@ -110,6 +110,14 @@ check("How useful is this report?" in student and student.count('name=rating val
       and 'name=token value="TEST_TOKEN_abc"' in student and "/api/report-feedback" in student,
       "report feedback form: five ratings, a comment, sent in place with the link token")
 check("/api/report-feedback" not in plain, "no feedback form without a token")
+# The midterm ring (2026-10-29): outside the sprint rings, its own legend entry and Growth block, never question text
+check('polygon class=exam data-exam="midterm"' in student and 'href="#midterm"' in student, "midterm ring and its legend entry")
+check('<div class=mt id=midterm><h3 class=sub><span>Midterm</span>' in student and "27 of 36 right" in student
+      and "<th>Predict it</th>" in student, "Midterm block in Growth with Know it, Use it, Predict it")
+check(student.index("id=midterm") > student.index("id=grew") and student.index("id=midterm") < student.index("id=appendix"),
+      "the Midterm block sits in Growth")
+check("polygon class=sept" in student, "the full September rating as a dashed outline once an exam measured part of it")
+check("The gold ring is the" in student and "replaces the center" not in student, "Appendix A explains the midterm ring")
 check(student.count('<form class=dform data-ded="R') == 2 and 'data-api="' in student and "/api/report-dispute" in student,
       "a dispute drawer under each deduction, posting in place")
 check("class=dform" not in scott and "class=dform" not in plain, "no drawer in Scott's copy or without a token")

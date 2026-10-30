@@ -1,593 +1,680 @@
 {
-  "net_id": "sample1",
-  "sprint": 2,
-  "start": {
-    "source": "survey",
-    "points": {
-      "Agentic Workflow": 11.5,
-      "AI Systems": 16.13,
-      "Application Architecture": 1.0,
-      "Design": 8.38,
-      "Discovery": 12.5,
-      "Launch and Learn": 8.88
-    }
+ "net_id": "sample1",
+ "sprint": 2,
+ "start": {
+  "source": "survey",
+  "points": {
+   "Agentic Workflow": 5.75,
+   "AI Systems": 16.13,
+   "Application Architecture": 1.0,
+   "Design": 4.19,
+   "Discovery": 6.25,
+   "Launch and Learn": 8.88
   },
-  "rings": [
-    {
-      "sprint": 1,
-      "coded": true,
-      "breadth": {
-        "Application Architecture": [
-          "AA02",
-          "AA05",
-          "AA10",
-          "AA13",
-          "AA14"
-        ],
-        "AI Systems": [
-          "AS25"
-        ],
-        "Agentic Workflow": [
-          "AW02",
-          "AW12"
-        ],
-        "Design": [
-          "DE02"
-        ]
-      },
-      "depth": {
-        "Design": {
-          "from": 0,
-          "to": 1
-        },
-        "AI Systems": {
-          "from": 0,
-          "to": 2
-        },
-        "Application Architecture": {
-          "from": 0,
-          "to": 2
-        },
-        "Agentic Workflow": {
-          "from": 0,
-          "to": 2
-        }
-      },
-      "points": {
-        "Application Architecture": 9.48,
-        "AI Systems": 2.42,
-        "Agentic Workflow": 5.92,
-        "Design": 1.46
-      }
+  "survey_full": {
+   "Agentic Workflow": 11.5,
+   "AI Systems": 16.13,
+   "Application Architecture": 1.0,
+   "Design": 8.38,
+   "Discovery": 12.5,
+   "Launch and Learn": 8.88
+  }
+ },
+ "rings": [
+  {
+   "sprint": 1,
+   "coded": true,
+   "breadth": {
+    "Application Architecture": [
+     "AA02",
+     "AA05",
+     "AA10",
+     "AA13",
+     "AA14"
+    ],
+    "AI Systems": [
+     "AS25"
+    ],
+    "Agentic Workflow": [
+     "AW02",
+     "AW12"
+    ],
+    "Design": [
+     "DE02"
+    ]
+   },
+   "depth": {
+    "Design": {
+     "from": 0,
+     "to": 1
     },
-    {
-      "sprint": 2,
-      "coded": true,
-      "breadth": {
-        "Application Architecture": [
-          "AA19",
-          "AA20",
-          "AA21",
-          "AA24"
-        ],
-        "Agentic Workflow": [
-          "AW09",
-          "AW18",
-          "AW19"
-        ],
-        "Design": [
-          "DE05",
-          "DE10",
-          "DE14"
-        ],
-        "Discovery": [
-          "DI27"
-        ]
-      },
-      "depth": {
-        "Design": {
-          "from": 1,
-          "to": 3
-        },
-        "Discovery": {
-          "from": 0,
-          "to": 2
-        },
-        "Application Architecture": {
-          "from": 2,
-          "to": 3
-        }
-      },
-      "points": {
-        "Application Architecture": 9.69,
-        "Agentic Workflow": 4.38,
-        "Design": 11.88,
-        "Discovery": 4.3
-      }
+    "AI Systems": {
+     "from": 0,
+     "to": 2
+    },
+    "Application Architecture": {
+     "from": 0,
+     "to": 2
+    },
+    "Agentic Workflow": {
+     "from": 0,
+     "to": 2
     }
-  ],
-  "practice_total": {
-    "Application Architecture": 19.17,
+   },
+   "points": {
+    "Application Architecture": 9.48,
     "AI Systems": 2.42,
-    "Agentic Workflow": 10.3,
-    "Design": 13.34,
+    "Agentic Workflow": 5.92,
+    "Design": 1.46
+   }
+  },
+  {
+   "sprint": 2,
+   "coded": true,
+   "breadth": {
+    "Application Architecture": [
+     "AA19",
+     "AA20",
+     "AA21",
+     "AA24"
+    ],
+    "Agentic Workflow": [
+     "AW09",
+     "AW18",
+     "AW19"
+    ],
+    "Design": [
+     "DE05",
+     "DE10",
+     "DE14"
+    ],
+    "Discovery": [
+     "DI27"
+    ]
+   },
+   "depth": {
+    "Design": {
+     "from": 1,
+     "to": 3
+    },
+    "Discovery": {
+     "from": 0,
+     "to": 2
+    },
+    "Application Architecture": {
+     "from": 2,
+     "to": 3
+    }
+   },
+   "points": {
+    "Application Architecture": 9.69,
+    "Agentic Workflow": 4.38,
+    "Design": 11.88,
     "Discovery": 4.3
+   }
+  }
+ ],
+ "practice_total": {
+  "Application Architecture": 19.17,
+  "AI Systems": 2.42,
+  "Agentic Workflow": 10.3,
+  "Design": 13.34,
+  "Discovery": 4.3
+ },
+ "practice_max": {
+  "Agentic Workflow": 50.0,
+  "AI Systems": 25.0,
+  "Application Architecture": 50.0,
+  "Design": 50.0,
+  "Discovery": 50.0,
+  "Launch and Learn": 50.0
+ },
+ "depth_best": {
+  "Design": 3,
+  "AI Systems": 2,
+  "Application Architecture": 3,
+  "Agentic Workflow": 2,
+  "Discovery": 2
+ },
+ "concepts_shown": [
+  "AA02",
+  "AA05",
+  "AA10",
+  "AA13",
+  "AA14",
+  "AA19",
+  "AA20",
+  "AA21",
+  "AA24",
+  "AS25",
+  "AW02",
+  "AW09",
+  "AW12",
+  "AW18",
+  "AW19",
+  "DE02",
+  "DE05",
+  "DE10",
+  "DE14",
+  "DI27"
+ ],
+ "new": [
+  {
+   "concept": "AA19",
+   "name": "Calling a model API from the server",
+   "item": "A4",
+   "axis": "Application Architecture",
+   "points": 1.3,
+   "when": "2026-10-06",
+   "did": "You added a server route, app/api/schedule-photo/route.ts, that sends the schedule photo to a vision model with the key read from ANTHROPIC_API_KEY.",
+   "evidence": "commit message c94d1b0: route at app/api/schedule-photo; needs ANTHROPIC_API_KEY (.env.local locally, Vercel env online)",
+   "ref": "c94d1b0",
+   "evidence_b": "commit c94d1b0: app/api/schedule-photo/route.ts calls the vision model; needs ANTHROPIC_API_KEY (.env.local locally, Vercel env online)"
   },
-  "practice_max": {
-    "Agentic Workflow": 50.0,
-    "AI Systems": 25.0,
-    "Application Architecture": 50.0,
-    "Design": 50.0,
-    "Discovery": 50.0,
-    "Launch and Learn": 50.0
+  {
+   "concept": "AA20",
+   "name": "Integrations with other services",
+   "item": "A4",
+   "axis": "Application Architecture",
+   "points": 1.3,
+   "when": "2026-10-06",
+   "did": "You connected ShiftSwap to Resend so both students and the manager get an email when a swap is approved or declined.",
+   "evidence": "commit message b2c08e1; lib/email.ts, app/api/swaps/[id]/decide/route.ts",
+   "ref": "b2c08e1",
+   "evidence_b": "commit b2c08e1: lib/email.ts sends through Resend from the decide route"
   },
-  "depth_best": {
-    "Design": 3,
-    "AI Systems": 2,
-    "Application Architecture": 3,
-    "Agentic Workflow": 2,
-    "Discovery": 2
+  {
+   "concept": "AA21",
+   "name": "Environment variables",
+   "item": "A5",
+   "axis": "Application Architecture",
+   "points": 1.3,
+   "when": "2026-10-06",
+   "did": "Your vision model and Resend keys are read from environment variables locally and on Vercel, and .env files are ignored by git.",
+   "evidence": "commit message c94d1b0; .env* ignored since commit c0a91f4",
+   "ref": "c94d1b0",
+   "evidence_b": "commit c94d1b0 (ANTHROPIC_API_KEY from .env.local or Vercel env); .env* ignored since c0a91f4"
   },
-  "concepts_shown": [
-    "AA02",
-    "AA05",
-    "AA10",
-    "AA13",
-    "AA14",
-    "AA19",
-    "AA20",
-    "AA21",
-    "AA24",
-    "AS25",
-    "AW02",
-    "AW09",
-    "AW12",
-    "AW18",
-    "AW19",
-    "DE02",
-    "DE05",
-    "DE10",
-    "DE14",
-    "DI27"
-  ],
-  "new": [
-    {
-      "concept": "AA19",
-      "name": "Calling a model API from the server",
-      "item": "A4",
-      "axis": "Application Architecture",
-      "points": 1.3,
-      "when": "2026-10-06",
-      "did": "You added a server route, app/api/schedule-photo/route.ts, that sends the schedule photo to a vision model with the key read from ANTHROPIC_API_KEY.",
-      "evidence": "commit message c94d1b0: route at app/api/schedule-photo; needs ANTHROPIC_API_KEY (.env.local locally, Vercel env online)",
-      "ref": "c94d1b0",
-      "evidence_b": "commit c94d1b0: app/api/schedule-photo/route.ts calls the vision model; needs ANTHROPIC_API_KEY (.env.local locally, Vercel env online)"
-    },
-    {
-      "concept": "AA20",
-      "name": "Integrations with other services",
-      "item": "A4",
-      "axis": "Application Architecture",
-      "points": 1.3,
-      "when": "2026-10-06",
-      "did": "You connected ShiftSwap to Resend so both students and the manager get an email when a swap is approved or declined.",
-      "evidence": "commit message b2c08e1; lib/email.ts, app/api/swaps/[id]/decide/route.ts",
-      "ref": "b2c08e1",
-      "evidence_b": "commit b2c08e1: lib/email.ts sends through Resend from the decide route"
-    },
-    {
-      "concept": "AA21",
-      "name": "Environment variables",
-      "item": "A5",
-      "axis": "Application Architecture",
-      "points": 1.3,
-      "when": "2026-10-06",
-      "did": "Your vision model and Resend keys are read from environment variables locally and on Vercel, and .env files are ignored by git.",
-      "evidence": "commit message c94d1b0; .env* ignored since commit c0a91f4",
-      "ref": "c94d1b0",
-      "evidence_b": "commit c94d1b0 (ANTHROPIC_API_KEY from .env.local or Vercel env); .env* ignored since c0a91f4"
-    },
-    {
-      "concept": "AA24",
-      "name": "Sensitive data and where it may go",
-      "item": "A5",
-      "axis": "Application Architecture",
-      "points": 1.3,
-      "when": "2026-10-08",
-      "did": "Schedule photos are deleted from storage once the draft is saved, because the paper schedule lists coworkers' phone numbers; only the extracted shifts are kept.",
-      "evidence": "commit message 5d20f8b",
-      "ref": "5d20f8b",
-      "evidence_b": "commit 5d20f8b message"
-    },
-    {
-      "concept": "AW09",
-      "name": "Skills",
-      "item": "W2",
-      "axis": "Agentic Workflow",
-      "points": 1.46,
-      "when": "2026-10-06",
-      "did": "You wrote a check-schedule-import skill that compares a draft against the photo it came from, flags rows that do not match under rules you set, and writes a checked draft the import page opens for review.",
-      "evidence": ".claude/skills/check-schedule-import/SKILL.md",
-      "ref": "47ad2f9",
-      "evidence_b": ".claude/skills/check-schedule-import/SKILL.md added"
-    },
-    {
-      "concept": "AW18",
-      "name": "Prompts as product code",
-      "item": "W4",
-      "axis": "Agentic Workflow",
-      "points": 1.46,
-      "when": "2026-10-06",
-      "did": "You added a prompt in lib/schedule-photo/prompt.ts that asks the model to read each shift's person, day, start, end and location from the schedule grid.",
-      "evidence": "commit message c94d1b0 names prompt.ts: the prompt and the JSON schema",
-      "ref": "c94d1b0",
-      "evidence_b": "commit c94d1b0 message: lib/schedule-photo/prompt.ts: prompt and JSON schema"
-    },
-    {
-      "concept": "AW19",
-      "name": "Structured output",
-      "item": "W4",
-      "axis": "Agentic Workflow",
-      "points": 1.46,
-      "when": "2026-10-06",
-      "did": "The photo reader asks the model for structured output (each shift's fields plus a confidence flag), and the app parses it before showing the draft, falling back to manual entry if it does not parse.",
-      "evidence": "commit message c94d1b0: structured output; falls back to manual entry if the JSON does not parse",
-      "ref": "c94d1b0",
-      "evidence_b": "commit c94d1b0 message: structured output with a confidence flag, manual-entry fallback"
-    },
-    {
-      "concept": "DE05",
-      "name": "Designing for an uncertain AI",
-      "item": "G1",
-      "axis": "Design",
-      "points": 1.46,
-      "when": "2026-10-06",
-      "did": "The photo reader's result arrives as a draft: low-confidence rows are highlighted, every row can be edited or removed, and nothing is saved until the student reviews it.",
-      "evidence": "commit message c94d1b0: nothing is saved until the student reviews the draft; low-confidence rows are highlighted",
-      "ref": "c94d1b0",
-      "evidence_b": "commit c94d1b0 message"
-    },
-    {
-      "concept": "DE10",
-      "name": "Typography, layout grid and color",
-      "item": "G2",
-      "axis": "Design",
-      "points": 1.46,
-      "when": "2026-10-02",
-      "did": "You defined color, type and radius tokens, including one color per shift state and a dark theme, and the shadcn/ui components and the week view use them.",
-      "evidence": "app/globals.css :root tokens; .shift-block uses var(--shift-open) and others",
-      "ref": "3f1a9c2",
-      "evidence_b": "app/globals.css :root tokens"
-    },
-    {
-      "concept": "DE14",
-      "name": "Design system: tokens, components, patterns",
-      "item": "G3",
-      "axis": "Design",
-      "points": 1.46,
-      "when": "2026-10-06",
-      "did": "Your too-large-photo page uses the same shadcn/ui Card and Button and the same tokens as the rest of the app, so it reads as part of ShiftSwap.",
-      "evidence": "app/import/too-large/page.tsx comment: Same tokens and components as the rest of the app",
-      "ref": "a72e0d4",
-      "evidence_b": "app/import/too-large/page.tsx: 'Same tokens and components as the rest of the app'"
-    },
-    {
-      "concept": "DI27",
-      "name": "Diverge before you converge",
-      "item": "D6",
-      "axis": "Discovery",
-      "points": 1.3,
-      "when": "2026-10-12",
-      "did": "You interviewed seven people, wrote briefs on five ideas, and committed a written pick of one, open-shift alerts, for Sprint 3.",
-      "evidence": "commit b47c0d2 (interview notes and 5 idea briefs) and commit f7e3c19 (ranking and Sprint 3 pick)",
-      "ref": "f7e3c19",
-      "evidence_b": "commit b47c0d2 (interview notes and 5 idea briefs) and f7e3c19 (Sprint 3 pick); sprints/discovery/ranking.md"
-    }
-  ],
-  "depth": [
-    {
-      "axis": "AI Systems",
-      "level": 2,
-      "name": "Directed",
-      "coder_levels": [
-        2,
-        2
-      ],
-      "why": "You built the schedule-photo reader with a prompt, structured output, a confidence flag on each shift, a manual-entry fallback and a student reviewing the draft, plus a skill that checks a draft against the photo.",
-      "evidence": [
-        "commit c94d1b0: schedule photo reader with an editable draft",
-        "commit 47ad2f9: check-schedule-import skill"
-      ],
-      "best_so_far": 2,
-      "gain": null
-    },
-    {
-      "axis": "Agentic Workflow",
-      "level": 2,
-      "name": "Directed",
-      "coder_levels": [
-        2,
-        2
-      ],
-      "why": "You wrote a skill and a subagent with specific instructions and used them: the skill checks schedule drafts before they reach the app, and the subagent turned seven interviews into themes.",
-      "evidence": [
-        "commit 47ad2f9: check-schedule-import skill",
-        "commit b47c0d2: interview-synthesizer subagent"
-      ],
-      "best_so_far": 2,
-      "gain": null
-    },
-    {
-      "axis": "Application Architecture",
-      "level": 3,
-      "name": "Decided",
-      "coder_levels": [
-        3,
-        3
-      ],
-      "why": "You found problems with your own data in testing and made judgment calls to fix them: a re-scan updates matching shifts instead of adding them, unreadable rows are recorded instead of dropped, and photos with phone numbers are deleted after reading. You also limited who can change a swap to the manager, through one route.",
-      "evidence": [
-        "commit e6a1f97: re-scans update matching shifts, duplicates removed",
-        "commit 6e4f13a: only the decide route can change a swap's status"
-      ],
-      "best_so_far": 3,
-      "gain": {
-        "from": 2,
-        "to": 3
+  {
+   "concept": "AA24",
+   "name": "Sensitive data and where it may go",
+   "item": "A5",
+   "axis": "Application Architecture",
+   "points": 1.3,
+   "when": "2026-10-08",
+   "did": "Schedule photos are deleted from storage once the draft is saved, because the paper schedule lists coworkers' phone numbers; only the extracted shifts are kept.",
+   "evidence": "commit message 5d20f8b",
+   "ref": "5d20f8b",
+   "evidence_b": "commit 5d20f8b message"
+  },
+  {
+   "concept": "AW09",
+   "name": "Skills",
+   "item": "W2",
+   "axis": "Agentic Workflow",
+   "points": 1.46,
+   "when": "2026-10-06",
+   "did": "You wrote a check-schedule-import skill that compares a draft against the photo it came from, flags rows that do not match under rules you set, and writes a checked draft the import page opens for review.",
+   "evidence": ".claude/skills/check-schedule-import/SKILL.md",
+   "ref": "47ad2f9",
+   "evidence_b": ".claude/skills/check-schedule-import/SKILL.md added"
+  },
+  {
+   "concept": "AW18",
+   "name": "Prompts as product code",
+   "item": "W4",
+   "axis": "Agentic Workflow",
+   "points": 1.46,
+   "when": "2026-10-06",
+   "did": "You added a prompt in lib/schedule-photo/prompt.ts that asks the model to read each shift's person, day, start, end and location from the schedule grid.",
+   "evidence": "commit message c94d1b0 names prompt.ts: the prompt and the JSON schema",
+   "ref": "c94d1b0",
+   "evidence_b": "commit c94d1b0 message: lib/schedule-photo/prompt.ts: prompt and JSON schema"
+  },
+  {
+   "concept": "AW19",
+   "name": "Structured output",
+   "item": "W4",
+   "axis": "Agentic Workflow",
+   "points": 1.46,
+   "when": "2026-10-06",
+   "did": "The photo reader asks the model for structured output (each shift's fields plus a confidence flag), and the app parses it before showing the draft, falling back to manual entry if it does not parse.",
+   "evidence": "commit message c94d1b0: structured output; falls back to manual entry if the JSON does not parse",
+   "ref": "c94d1b0",
+   "evidence_b": "commit c94d1b0 message: structured output with a confidence flag, manual-entry fallback"
+  },
+  {
+   "concept": "DE05",
+   "name": "Designing for an uncertain AI",
+   "item": "G1",
+   "axis": "Design",
+   "points": 1.46,
+   "when": "2026-10-06",
+   "did": "The photo reader's result arrives as a draft: low-confidence rows are highlighted, every row can be edited or removed, and nothing is saved until the student reviews it.",
+   "evidence": "commit message c94d1b0: nothing is saved until the student reviews the draft; low-confidence rows are highlighted",
+   "ref": "c94d1b0",
+   "evidence_b": "commit c94d1b0 message"
+  },
+  {
+   "concept": "DE10",
+   "name": "Typography, layout grid and color",
+   "item": "G2",
+   "axis": "Design",
+   "points": 1.46,
+   "when": "2026-10-02",
+   "did": "You defined color, type and radius tokens, including one color per shift state and a dark theme, and the shadcn/ui components and the week view use them.",
+   "evidence": "app/globals.css :root tokens; .shift-block uses var(--shift-open) and others",
+   "ref": "3f1a9c2",
+   "evidence_b": "app/globals.css :root tokens"
+  },
+  {
+   "concept": "DE14",
+   "name": "Design system: tokens, components, patterns",
+   "item": "G3",
+   "axis": "Design",
+   "points": 1.46,
+   "when": "2026-10-06",
+   "did": "Your too-large-photo page uses the same shadcn/ui Card and Button and the same tokens as the rest of the app, so it reads as part of ShiftSwap.",
+   "evidence": "app/import/too-large/page.tsx comment: Same tokens and components as the rest of the app",
+   "ref": "a72e0d4",
+   "evidence_b": "app/import/too-large/page.tsx: 'Same tokens and components as the rest of the app'"
+  },
+  {
+   "concept": "DI27",
+   "name": "Diverge before you converge",
+   "item": "D6",
+   "axis": "Discovery",
+   "points": 1.3,
+   "when": "2026-10-12",
+   "did": "You interviewed seven people, wrote briefs on five ideas, and committed a written pick of one, open-shift alerts, for Sprint 3.",
+   "evidence": "commit b47c0d2 (interview notes and 5 idea briefs) and commit f7e3c19 (ranking and Sprint 3 pick)",
+   "ref": "f7e3c19",
+   "evidence_b": "commit b47c0d2 (interview notes and 5 idea briefs) and f7e3c19 (Sprint 3 pick); sprints/discovery/ranking.md"
+  }
+ ],
+ "depth": [
+  {
+   "axis": "AI Systems",
+   "level": 2,
+   "name": "Directed",
+   "coder_levels": [
+    2,
+    2
+   ],
+   "why": "You built the schedule-photo reader with a prompt, structured output, a confidence flag on each shift, a manual-entry fallback and a student reviewing the draft, plus a skill that checks a draft against the photo.",
+   "evidence": [
+    "commit c94d1b0: schedule photo reader with an editable draft",
+    "commit 47ad2f9: check-schedule-import skill"
+   ],
+   "best_so_far": 2,
+   "gain": null
+  },
+  {
+   "axis": "Agentic Workflow",
+   "level": 2,
+   "name": "Directed",
+   "coder_levels": [
+    2,
+    2
+   ],
+   "why": "You wrote a skill and a subagent with specific instructions and used them: the skill checks schedule drafts before they reach the app, and the subagent turned seven interviews into themes.",
+   "evidence": [
+    "commit 47ad2f9: check-schedule-import skill",
+    "commit b47c0d2: interview-synthesizer subagent"
+   ],
+   "best_so_far": 2,
+   "gain": null
+  },
+  {
+   "axis": "Application Architecture",
+   "level": 3,
+   "name": "Decided",
+   "coder_levels": [
+    3,
+    3
+   ],
+   "why": "You found problems with your own data in testing and made judgment calls to fix them: a re-scan updates matching shifts instead of adding them, unreadable rows are recorded instead of dropped, and photos with phone numbers are deleted after reading. You also limited who can change a swap to the manager, through one route.",
+   "evidence": [
+    "commit e6a1f97: re-scans update matching shifts, duplicates removed",
+    "commit 6e4f13a: only the decide route can change a swap's status"
+   ],
+   "best_so_far": 3,
+   "gain": {
+    "from": 2,
+    "to": 3
+   }
+  },
+  {
+   "axis": "Design",
+   "level": 3,
+   "name": "Decided",
+   "coder_levels": [
+    3,
+    3
+   ],
+   "why": "You found in testing that the pick-up and decline flows did not do what you meant and changed them on purpose: overlapping shifts are marked before you tap, and declined shifts go back on the board with the manager's reason.",
+   "evidence": [
+    "commit 71c0e5b: overlapping shifts say so before you tap",
+    "commit b5d0e72: declined swaps return with the reason"
+   ],
+   "best_so_far": 3,
+   "gain": {
+    "from": 1,
+    "to": 3
+   }
+  },
+  {
+   "axis": "Discovery",
+   "level": 2,
+   "name": "Directed",
+   "coder_levels": [
+    2,
+    3
+   ],
+   "why": "You set out what to pull from each interview in the interview-synthesizer's instructions, ran it on seven interviews, wrote five briefs, and committed a pick for Sprint 3.",
+   "evidence": [
+    "commit b47c0d2: interview notes and 5 idea briefs",
+    "commit f7e3c19: Sprint 3 pick"
+   ],
+   "best_so_far": 2,
+   "gain": {
+    "from": 0,
+    "to": 2
+   }
+  },
+  {
+   "axis": "Launch and Learn",
+   "level": null,
+   "name": "",
+   "coder_levels": [
+    null,
+    1
+   ],
+   "why": "Your demo walks through features (the photo reader, a swap, the week view) with test accounts, and the desk crew has not used ShiftSwap for a real swap yet.",
+   "evidence": [
+    "Demo 0:00 to 1:08: tour of ShiftSwap features"
+   ],
+   "best_so_far": 0,
+   "gain": null
+  }
+ ],
+ "disputed": [
+  {
+   "concept": "AA03",
+   "name": "State, render and events",
+   "coder": "B",
+   "evidence": "commits c8b17e3 and 84e2a9f"
+  },
+  {
+   "concept": "AA25",
+   "name": "Common web attacks",
+   "coder": "A",
+   "evidence": "commit message 6e4f13a; migrations 20261006210000_swap_rls.sql and 20261006212000_manager_role.sql"
+  },
+  {
+   "concept": "AS05",
+   "name": "Keeping a long context in bounds",
+   "coder": "A",
+   "evidence": ".claude/skills/check-schedule-import/SKILL.md step 4: unsure rows are marked, not changed"
+  },
+  {
+   "concept": "DE02",
+   "name": "States off the happy path",
+   "coder": "A",
+   "evidence": "app/import/too-large/page.tsx; commit message a72e0d4"
+  }
+ ],
+ "not_counted": [
+  {
+   "concept": "AA28",
+   "what": "tests/schedule-import.test.ts and tests/swaps.test.ts",
+   "why": "No saved output, CI log or commit message reports that the tests ran and what they returned.",
+   "name": "Automated tests",
+   "kind": "unproven"
+  },
+  {
+   "concept": "AW23",
+   "what": "The check-schedule-import skill's steps",
+   "why": "Claude Code decides when the skill runs and when it stops, so the loop is not in your committed product code.",
+   "name": "Tool calling and agent loops in the product",
+   "kind": "tool_not_product"
+  },
+  {
+   "concept": "DE13",
+   "what": "Day list and folded filters on narrow screens",
+   "why": "Commit a0c6f48 is dated 2026-10-13, after the Sprint 2 due date.",
+   "name": "Web, mobile, or both; mobile-first layout",
+   "kind": "after_due"
+  },
+  {
+   "concept": "DI09",
+   "what": "Personas committed with the Sprint 3 pick",
+   "why": "The personas file could not be read for this review, so whether its details come from the interview notes cannot be checked.",
+   "name": "Personas",
+   "kind": "unreadable"
+  },
+  {
+   "concept": "DI24",
+   "what": "ranking.md scoring the five ideas",
+   "why": "The ranking file's text could not be read for this review, so the order and criteria cannot be checked.",
+   "name": "Prioritization frameworks: ICE, MoSCoW, the $100 test",
+   "kind": "unreadable"
+  }
+ ],
+ "earlier": [
+  {
+   "sprint": 1,
+   "concept": "AA02",
+   "name": "Server and client code in a project",
+   "axis": "Application Architecture",
+   "points": 1.3,
+   "when": "2026-09-28",
+   "did": "You added a server route that saves typed-in shifts after checking that the start is before the end.",
+   "evidence": "app/api/shifts/route.ts",
+   "ref": "71b3e0a"
+  },
+  {
+   "sprint": 1,
+   "concept": "AA05",
+   "name": "Deploys, builds and hosts",
+   "axis": "Application Architecture",
+   "points": 1.3,
+   "when": "2026-09-28",
+   "did": "You deployed ShiftSwap to Vercel, and the live address loads.",
+   "evidence": "https://shiftswap.example.com returns 200 with title ShiftSwap",
+   "ref": "e2d4c58"
+  },
+  {
+   "sprint": 1,
+   "concept": "AA10",
+   "name": "Migrations and schema changes",
+   "axis": "Application Architecture",
+   "points": 1.3,
+   "when": "2026-09-28",
+   "did": "You added Supabase migrations for profiles and shifts tables, and the app saves the shifts students type in to them.",
+   "evidence": "supabase/migrations/20260928220150_shiftswap_schema.sql; commit 5f6e2b9 app reads and writes shifts",
+   "ref": "c0a91f4"
+  },
+  {
+   "sprint": 1,
+   "concept": "AA13",
+   "name": "Sign-in and sessions",
+   "axis": "Application Architecture",
+   "points": 1.3,
+   "when": "2026-09-28",
+   "did": "You built sign-in on Supabase: students create an account and sign in before they see any shifts.",
+   "evidence": "commit message 5f6e2b9: sign in, add shifts, see my week; README How ShiftSwap works",
+   "ref": "5f6e2b9"
+  },
+  {
+   "sprint": 1,
+   "concept": "AA14",
+   "name": "Row-level security",
+   "axis": "Application Architecture",
+   "points": 1.3,
+   "when": "2026-09-28",
+   "did": "Your migrations add per-user row-level security on shifts, so each student reads and writes only their own shifts.",
+   "evidence": "commit message c0a91f4: tables with per-user row level security",
+   "ref": "c0a91f4"
+  },
+  {
+   "sprint": 1,
+   "concept": "AS25",
+   "name": "Checking model output against a source",
+   "axis": "AI Systems",
+   "points": 0.92,
+   "when": "2026-09-25",
+   "did": "You tested a first photo reader by reading one week's schedule twice and listing every shift where the two readings disagree, then checked those by hand against the paper.",
+   "evidence": "scripts/compare-readings.ts writes the disagreements to a review file",
+   "ref": "93ad7c1"
+  },
+  {
+   "sprint": 1,
+   "concept": "AW02",
+   "name": "Command line and packages",
+   "axis": "Agentic Workflow",
+   "points": 1.46,
+   "when": "2026-09-25",
+   "did": "You added the Anthropic SDK and vitest to package.json and ran them from the command line.",
+   "evidence": "package.json modified; scripts/compare-readings.ts imports @anthropic-ai/sdk",
+   "ref": "93ad7c1"
+  },
+  {
+   "sprint": 1,
+   "concept": "AW12",
+   "name": "Subagents",
+   "axis": "Agentic Workflow",
+   "points": 1.46,
+   "when": "2026-09-25",
+   "did": "You wrote a schedule-reader subagent that copies each cell of the schedule exactly, marks unclear times instead of guessing, and reports what it could not read.",
+   "evidence": ".claude/agents/schedule-reader.md",
+   "ref": "b8e04f2"
+  },
+  {
+   "sprint": 1,
+   "concept": "DE02",
+   "name": "States off the happy path",
+   "axis": "Design",
+   "points": 1.46,
+   "when": "2026-09-28",
+   "did": "The app tells a student when a shift's end time is before its start time, instead of saving it without a message.",
+   "evidence": "commit message e2d4c58",
+   "ref": "e2d4c58"
+  },
+  {
+   "sprint": 1,
+   "depth": true,
+   "axis": "Design",
+   "level": 1,
+   "name": "Followed",
+   "points": 0.0,
+   "why": "The first screens (sign in, my week, add a shift) were built in one session, and there is no written flow for them yet."
+  },
+  {
+   "sprint": 1,
+   "depth": true,
+   "axis": "AI Systems",
+   "level": 2,
+   "name": "Directed",
+   "points": 1.5,
+   "why": "You designed the first photo reader around the fact that a model can misread handwriting: two readings, a list of disagreements, and a person's check before saving."
+  },
+  {
+   "sprint": 1,
+   "depth": true,
+   "axis": "Application Architecture",
+   "level": 2,
+   "name": "Directed",
+   "points": 3.0,
+   "why": "You set exact rules for shifts (start before end, no overlap for one person) and wrote tests that show the rules working, then added a schema with per-user access rules and deployed the app."
+  },
+  {
+   "sprint": 1,
+   "depth": true,
+   "axis": "Agentic Workflow",
+   "level": 2,
+   "name": "Directed",
+   "points": 3.0,
+   "why": "You wrote your own subagent with specific rules for copying the schedule exactly and used it as a second reader, so the model's work is checked by design."
+  }
+ ],
+ "exams": [
+  {
+   "exam": "midterm",
+   "taken": "Fri 10/23",
+   "share": 0.5,
+   "correct": 27,
+   "of": 36,
+   "points": {
+    "Agentic Workflow": 20.83,
+    "Discovery": 18.75,
+    "Design": 16.67
+   },
+   "axes": {
+    "Agentic Workflow": {
+     "correct": 10,
+     "of": 12,
+     "pct": 0.8333,
+     "points": 20.83,
+     "max": 25.0,
+     "by_type": {
+      "know": {
+       "correct": 4,
+       "of": 4
+      },
+      "use": {
+       "correct": 3,
+       "of": 4
+      },
+      "predict": {
+       "correct": 3,
+       "of": 4
       }
+     }
     },
-    {
-      "axis": "Design",
-      "level": 3,
-      "name": "Decided",
-      "coder_levels": [
-        3,
-        3
-      ],
-      "why": "You found in testing that the pick-up and decline flows did not do what you meant and changed them on purpose: overlapping shifts are marked before you tap, and declined shifts go back on the board with the manager's reason.",
-      "evidence": [
-        "commit 71c0e5b: overlapping shifts say so before you tap",
-        "commit b5d0e72: declined swaps return with the reason"
-      ],
-      "best_so_far": 3,
-      "gain": {
-        "from": 1,
-        "to": 3
+    "Discovery": {
+     "correct": 9,
+     "of": 12,
+     "pct": 0.75,
+     "points": 18.75,
+     "max": 25.0,
+     "by_type": {
+      "know": {
+       "correct": 3,
+       "of": 4
+      },
+      "use": {
+       "correct": 3,
+       "of": 4
+      },
+      "predict": {
+       "correct": 3,
+       "of": 4
       }
+     }
     },
-    {
-      "axis": "Discovery",
-      "level": 2,
-      "name": "Directed",
-      "coder_levels": [
-        2,
-        3
-      ],
-      "why": "You set out what to pull from each interview in the interview-synthesizer's instructions, ran it on seven interviews, wrote five briefs, and committed a pick for Sprint 3.",
-      "evidence": [
-        "commit b47c0d2: interview notes and 5 idea briefs",
-        "commit f7e3c19: Sprint 3 pick"
-      ],
-      "best_so_far": 2,
-      "gain": {
-        "from": 0,
-        "to": 2
+    "Design": {
+     "correct": 8,
+     "of": 12,
+     "pct": 0.6667,
+     "points": 16.67,
+     "max": 25.0,
+     "by_type": {
+      "know": {
+       "correct": 3,
+       "of": 4
+      },
+      "use": {
+       "correct": 2,
+       "of": 4
+      },
+      "predict": {
+       "correct": 3,
+       "of": 4
       }
-    },
-    {
-      "axis": "Launch and Learn",
-      "level": null,
-      "name": "",
-      "coder_levels": [
-        null,
-        1
-      ],
-      "why": "Your demo walks through features (the photo reader, a swap, the week view) with test accounts, and the desk crew has not used ShiftSwap for a real swap yet.",
-      "evidence": [
-        "Demo 0:00 to 1:08: tour of ShiftSwap features"
-      ],
-      "best_so_far": 0,
-      "gain": null
+     }
     }
-  ],
-  "disputed": [
-    {
-      "concept": "AA03",
-      "name": "State, render and events",
-      "coder": "B",
-      "evidence": "commits c8b17e3 and 84e2a9f"
-    },
-    {
-      "concept": "AA25",
-      "name": "Common web attacks",
-      "coder": "A",
-      "evidence": "commit message 6e4f13a; migrations 20261006210000_swap_rls.sql and 20261006212000_manager_role.sql"
-    },
-    {
-      "concept": "AS05",
-      "name": "Keeping a long context in bounds",
-      "coder": "A",
-      "evidence": ".claude/skills/check-schedule-import/SKILL.md step 4: unsure rows are marked, not changed"
-    },
-    {
-      "concept": "DE02",
-      "name": "States off the happy path",
-      "coder": "A",
-      "evidence": "app/import/too-large/page.tsx; commit message a72e0d4"
-    }
-  ],
-  "not_counted": [
-    {
-      "concept": "AA28",
-      "what": "tests/schedule-import.test.ts and tests/swaps.test.ts",
-      "why": "No saved output, CI log or commit message reports that the tests ran and what they returned.",
-      "name": "Automated tests",
-      "kind": "unproven"
-    },
-    {
-      "concept": "AW23",
-      "what": "The check-schedule-import skill's steps",
-      "why": "Claude Code decides when the skill runs and when it stops, so the loop is not in your committed product code.",
-      "name": "Tool calling and agent loops in the product",
-      "kind": "tool_not_product"
-    },
-    {
-      "concept": "DE13",
-      "what": "Day list and folded filters on narrow screens",
-      "why": "Commit a0c6f48 is dated 2026-10-13, after the Sprint 2 due date.",
-      "name": "Web, mobile, or both; mobile-first layout",
-      "kind": "after_due"
-    },
-    {
-      "concept": "DI09",
-      "what": "Personas committed with the Sprint 3 pick",
-      "why": "The personas file could not be read for this review, so whether its details come from the interview notes cannot be checked.",
-      "name": "Personas",
-      "kind": "unreadable"
-    },
-    {
-      "concept": "DI24",
-      "what": "ranking.md scoring the five ideas",
-      "why": "The ranking file's text could not be read for this review, so the order and criteria cannot be checked.",
-      "name": "Prioritization frameworks: ICE, MoSCoW, the $100 test",
-      "kind": "unreadable"
-    }
-  ],
-  "earlier": [
-    {
-      "sprint": 1,
-      "concept": "AA02",
-      "name": "Server and client code in a project",
-      "axis": "Application Architecture",
-      "points": 1.3,
-      "when": "2026-09-28",
-      "did": "You added a server route that saves typed-in shifts after checking that the start is before the end.",
-      "evidence": "app/api/shifts/route.ts",
-      "ref": "71b3e0a"
-    },
-    {
-      "sprint": 1,
-      "concept": "AA05",
-      "name": "Deploys, builds and hosts",
-      "axis": "Application Architecture",
-      "points": 1.3,
-      "when": "2026-09-28",
-      "did": "You deployed ShiftSwap to Vercel, and the live address loads.",
-      "evidence": "https://shiftswap.example.com returns 200 with title ShiftSwap",
-      "ref": "e2d4c58"
-    },
-    {
-      "sprint": 1,
-      "concept": "AA10",
-      "name": "Migrations and schema changes",
-      "axis": "Application Architecture",
-      "points": 1.3,
-      "when": "2026-09-28",
-      "did": "You added Supabase migrations for profiles and shifts tables, and the app saves the shifts students type in to them.",
-      "evidence": "supabase/migrations/20260928220150_shiftswap_schema.sql; commit 5f6e2b9 app reads and writes shifts",
-      "ref": "c0a91f4"
-    },
-    {
-      "sprint": 1,
-      "concept": "AA13",
-      "name": "Sign-in and sessions",
-      "axis": "Application Architecture",
-      "points": 1.3,
-      "when": "2026-09-28",
-      "did": "You built sign-in on Supabase: students create an account and sign in before they see any shifts.",
-      "evidence": "commit message 5f6e2b9: sign in, add shifts, see my week; README How ShiftSwap works",
-      "ref": "5f6e2b9"
-    },
-    {
-      "sprint": 1,
-      "concept": "AA14",
-      "name": "Row-level security",
-      "axis": "Application Architecture",
-      "points": 1.3,
-      "when": "2026-09-28",
-      "did": "Your migrations add per-user row-level security on shifts, so each student reads and writes only their own shifts.",
-      "evidence": "commit message c0a91f4: tables with per-user row level security",
-      "ref": "c0a91f4"
-    },
-    {
-      "sprint": 1,
-      "concept": "AS25",
-      "name": "Checking model output against a source",
-      "axis": "AI Systems",
-      "points": 0.92,
-      "when": "2026-09-25",
-      "did": "You tested a first photo reader by reading one week's schedule twice and listing every shift where the two readings disagree, then checked those by hand against the paper.",
-      "evidence": "scripts/compare-readings.ts writes the disagreements to a review file",
-      "ref": "93ad7c1"
-    },
-    {
-      "sprint": 1,
-      "concept": "AW02",
-      "name": "Command line and packages",
-      "axis": "Agentic Workflow",
-      "points": 1.46,
-      "when": "2026-09-25",
-      "did": "You added the Anthropic SDK and vitest to package.json and ran them from the command line.",
-      "evidence": "package.json modified; scripts/compare-readings.ts imports @anthropic-ai/sdk",
-      "ref": "93ad7c1"
-    },
-    {
-      "sprint": 1,
-      "concept": "AW12",
-      "name": "Subagents",
-      "axis": "Agentic Workflow",
-      "points": 1.46,
-      "when": "2026-09-25",
-      "did": "You wrote a schedule-reader subagent that copies each cell of the schedule exactly, marks unclear times instead of guessing, and reports what it could not read.",
-      "evidence": ".claude/agents/schedule-reader.md",
-      "ref": "b8e04f2"
-    },
-    {
-      "sprint": 1,
-      "concept": "DE02",
-      "name": "States off the happy path",
-      "axis": "Design",
-      "points": 1.46,
-      "when": "2026-09-28",
-      "did": "The app tells a student when a shift's end time is before its start time, instead of saving it without a message.",
-      "evidence": "commit message e2d4c58",
-      "ref": "e2d4c58"
-    },
-    {
-      "sprint": 1,
-      "depth": true,
-      "axis": "Design",
-      "level": 1,
-      "name": "Followed",
-      "points": 0.0,
-      "why": "The first screens (sign in, my week, add a shift) were built in one session, and there is no written flow for them yet."
-    },
-    {
-      "sprint": 1,
-      "depth": true,
-      "axis": "AI Systems",
-      "level": 2,
-      "name": "Directed",
-      "points": 1.5,
-      "why": "You designed the first photo reader around the fact that a model can misread handwriting: two readings, a list of disagreements, and a person's check before saving."
-    },
-    {
-      "sprint": 1,
-      "depth": true,
-      "axis": "Application Architecture",
-      "level": 2,
-      "name": "Directed",
-      "points": 3.0,
-      "why": "You set exact rules for shifts (start before end, no overlap for one person) and wrote tests that show the rules working, then added a schema with per-user access rules and deployed the app."
-    },
-    {
-      "sprint": 1,
-      "depth": true,
-      "axis": "Agentic Workflow",
-      "level": 2,
-      "name": "Directed",
-      "points": 3.0,
-      "why": "You wrote your own subagent with specific rules for copying the schedule exactly and used it as a second reader, so the model's work is checked by design."
-    }
-  ]
+   }
+  }
+ ]
 }

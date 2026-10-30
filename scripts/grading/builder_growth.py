@@ -24,6 +24,10 @@ The spoke (decided 2026-10-14): 0 to 100 per axis, 100 = a full-stack product bu
   max), so 1 = 0 and 5 = the full knowledge share. The midterm replaces the core; the practice rings
   keep their thickness. From next term a pre-test form sets the core instead.
 - Each sprint's ring is the practice points it added; rings never shrink.
+- Exams (Scott, 2026-10-29): the midterm is its own ring, from midterm_ring.py (grading/midterm/ring-<net_id>.json).
+  It fills its share (MIDTERM_SHARE, a half) of the knowledge half of the three axes it tests, at the plain share
+  of questions right. On those axes the survey core keeps only the part no exam has measured yet, and the full
+  self-rating is kept as start.survey_full for the chart's dashed outline. The final fills the rest.
 """
 import argparse
 import json
@@ -39,6 +43,7 @@ SURVEY = DATA / "baseline-charts-fall2026" / "students.json"
 LEVELS = {1: "Followed", 2: "Directed", 3: "Decided", 4: "Delivered"}
 BREADTH_SHARE = 0.7
 LEVEL_SHARE = {0: 0.0, 1: 0.0, 2: 0.2, 3: 0.5, 4: 1.0}
+MIDTERM = GRADING / "midterm"
 
 
 def concepts():
@@ -74,6 +79,26 @@ def start_core(means, axes):
         return {}
     return {ax: round((min(5, max(1, float(means[ax]))) - 1) / 4 * (100 - practice_max(ax)), 2)
             for ax in axes if means.get(ax) is not None}
+
+
+def exams(net_id):
+    """The exam rings a student has: [{"exam", "taken", "points": {axis: pts}, "share", "axes": {...}}]."""
+    p = MIDTERM / f"ring-{net_id}.json"
+    if not p.exists():
+        return []
+    m = json.loads(p.read_text())
+    return [{"exam": "midterm", "taken": m.get("taken"), "share": m["share"], "correct": m["correct"], "of": m["of"],
+             "points": {ax: v["points"] for ax, v in m["axes"].items()}, "axes": m["axes"]}]
+
+
+def measured_core(core, rings):
+    """The survey core minus the share of each axis's knowledge an exam has measured."""
+    out = dict(core)
+    for r in rings:
+        for ax in r["points"]:
+            if ax in out:
+                out[ax] = round(out[ax] * (1 - r["share"]), 2)
+    return out
 
 
 def load(sprint, run, net_id):
@@ -167,7 +192,10 @@ def growth(net_id, upto, C, axes, means=None):
     for r in rings:
         for ax, v in r["points"].items():
             totals[ax] = round(totals.get(ax, 0) + v, 2)
-    return {"net_id": net_id, "sprint": upto, "check": mode if upto else "", "start": {"source": "survey", "points": start_core(means, axes)},
+    core, ex = start_core(means, axes), exams(net_id)
+    return {"net_id": net_id, "sprint": upto, "check": mode if upto else "",
+            "start": {"source": "survey", "points": measured_core(core, ex), "survey_full": core},
+            "exams": ex,
             "rings": rings, "practice_total": totals,
             "practice_max": {ax: practice_max(ax) for ax in axes}, "depth_best": depth_best,
             "concepts_shown": sorted(shown), "new": new_last, "depth": depth_last,

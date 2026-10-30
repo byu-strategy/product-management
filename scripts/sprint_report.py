@@ -41,6 +41,9 @@ LEVEL_TEXT = {  # from depth-levels.md, in the student's terms
 # Colors follow the Strategy app's tokens (website/src/app/globals.css): navy #002E5D, royal #003DA5 (2026-10-29).
 SPRINT_COLORS = {1: "#A9BFDA", 2: "#7C9CC4", 3: "#5A7FAE", 4: "#3D6596", 5: "#244C7E", 6: "#0F3766"}
 CORE_COLOR = "#DCE6F2"  # the starting core: the lightest step of the same navy ramp
+# The midterm ring (2026-10-29): outside the sprint rings, in a hue off the navy ramp so it reads as an exam.
+EXAM_COLOR = {"midterm": "#C9A54C"}
+EXAM_LABEL = {"midterm": "Midterm"}
 NAVY, ROYAL = "#002E5D", "#003DA5"
 # Where each deduction can be disputed: the Strategy app, no sign-in (grade disputes, 2026-10-29).
 DISPUTE_BASE = "https://strategy.byu.edu/app/dispute/"
@@ -584,6 +587,16 @@ def profile_svg(G):
             continue
         totals = [totals[i] + float(pts.get(AXES[i], 0)) for i in range(6)]
         layers.append((rg["sprint"], list(totals)))
+    exam_layers = []
+    for ex in (G or {}).get("exams") or []:
+        pts = ex.get("points") or {}
+        totals = [totals[i] + float(pts.get(AXES[i], 0)) for i in range(6)]
+        exam_layers.append((ex, list(totals)))
+    for ex, vals in reversed(exam_layers):
+        per = {a: f'{v["correct"]} of {v["of"]} right, +{fmt(round(float(v["points"]), 1))}' for a, v in (ex.get("axes") or {}).items()}
+        out.append(f'<polygon class=exam data-exam="{e(ex["exam"])}" data-per="{e(json.dumps(per))}" points="{poly(vals)}" '
+                   f'fill="{EXAM_COLOR.get(ex["exam"], ROYAL)}" stroke="#fff" stroke-width=".8" stroke-linejoin="round">'
+                   f'<title>{EXAM_LABEL.get(ex["exam"], ex["exam"])}</title></polygon>')
     for s, vals in reversed(layers):  # outermost first, so each inner ring sits on top
         if vals:
             out.append(f'<polygon data-s="{s}" points="{poly(vals)}" fill="{SPRINT_COLORS.get(s, NAVY)}" stroke="#fff" '
@@ -591,6 +604,11 @@ def profile_svg(G):
     if any(core_vals):  # the survey center sits innermost, on top of the rings
         out.append(f'<polygon class="core" points="{poly(core_vals)}" fill="{CORE_COLOR}" stroke="#fff" stroke-width=".8" '
                    f'stroke-linejoin="round"><title>Your September survey</title></polygon>')
+    full = ((G or {}).get("start") or {}).get("survey_full") or {}
+    if exam_layers and any(abs(float(full.get(a, 0)) - float(core.get(a, 0))) > .01 for a in AXES):
+        # The full September self-rating, where an exam has since measured part of it.
+        out.append(f'<polygon class=sept points="{poly([float(full.get(AXES[i], 0)) for i in range(6)])}" fill="none" '
+                   f'stroke="{NAVY}" stroke-width="1.1" stroke-dasharray="3 3" opacity=".55"><title>Your September survey, in full</title></polygon>')
     if G and any(totals):  # a dot at every value, so a small value next to a zero still shows
         for i in range(6):
             if totals[i] > 0:
@@ -608,7 +626,7 @@ def profile_svg(G):
             out.append(f'<text x="{lx:.1f}" y="{ly + 10:.1f}" text-anchor="{anchor}" font-size="12.5" font-weight="700" '
                        f'fill="{ROYAL}">{round(totals[i])}</text>')
     out.append("</svg>")
-    return "".join(out), [s for s, v in layers if v]
+    return "".join(out), [s for s, v in layers if v] + [ex["exam"] for ex, _v in exam_layers]
 
 
 def commit_strip(days, by_day):
@@ -1001,8 +1019,11 @@ def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott
     if G:
         core_sw = (f'<span class=sw style="background:{CORE_COLOR}"></span>Your September survey '
                    if any(((G.get("start") or {}).get("points") or {}).values()) else "")
-        sw = core_sw + "".join(f'<button type=button class=lg data-s="{s}"><span class=sw style="background:{SPRINT_COLORS.get(s, NAVY)}">'
-                               f'</span>Sprint {s}</button> ' for s in drawn)
+        sw = core_sw + "".join(
+            (f'<button type=button class=lg data-s="{s}"><span class=sw style="background:{SPRINT_COLORS.get(s, NAVY)}">'
+             f'</span>Sprint {s}</button> ') if isinstance(s, int) else
+            (f'<a class=lgx href="#midterm"><span class=sw style="background:{EXAM_COLOR.get(s, ROYAL)}"></span>'
+             f'{EXAM_LABEL.get(s, s)}</a> ') for s in drawn)
         cap = f'{sw}<a href="#a-profile" class=capl>How to read this</a>'
     else:
         cap = "Your builder profile is being prepared."
@@ -1111,6 +1132,21 @@ def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott
                 f'<button type=button data-s={s_}{" class=on aria-pressed=true" if s_ == cur else " aria-pressed=false"}>Sprint {s_}</button>'
                 for s_ in shown) + '</div>'
         grew += "".join(f'<div class=gview data-s={s_}{"" if s_ == cur else " hidden"}>{view(s_)}</div>' for s_ in shown)
+        for ex in G.get("exams") or []:
+            def tcell(v, t):
+                c = (v.get("by_type") or {}).get(t)
+                return f'<td class=num>{c["correct"]} of {c["of"]}</td>' if c else "<td></td>"
+            rows_m = "".join(
+                f'<tr><td>{e(a)}</td><td class=num><b>{v["correct"]} of {v["of"]}</b></td>'
+                + "".join(tcell(v, t) for t in ("know", "use", "predict"))
+                + f'<td class=num>+{fmt(round(float(v["points"]), 1))} <small>of {fmt(v["max"])}</small></td></tr>'
+                for a, v in (ex.get("axes") or {}).items())
+            m_tot = sum(float(v["points"]) for v in (ex.get("axes") or {}).values())
+            grew += (f'<div class=mt id=midterm><h3 class=sub><span>{EXAM_LABEL.get(ex["exam"], ex["exam"])}</span>'
+                     f'<small>{ex["correct"]} of {ex["of"]} right · +{fmt(round(m_tot, 1))}</small></h3>'
+                     f'<p>The midterm measured what you know in three areas. Each question right earns its share of half of the '
+                     f'area\'s exam points; the final exam measures the other half and the other three areas.</p>'
+                     f'<table class=mtt><tr><th>Area</th><th>Right</th><th>Know it</th><th>Use it</th><th>Predict it</th><th>Points</th></tr>{rows_m}</table></div>')
         g_tot = sum(float(v) for v in pts_now.values())
         n_new = len(G.get("new") or [])
         grew_right = (f'+{pt(g_tot)} this sprint · {n_new} new concept{"s" * (n_new != 1)}' if g_tot else "nothing new counted")
@@ -1276,10 +1312,11 @@ to 100, and 100 in all six is a full-stack product builder: someone who can find
 the product, and get it to real users.</p>
 <h3 class=sub id=a-points><span>Where the points come from</span></h3>
 <p>Up to half of each area comes from your sprint work (a quarter on AI Systems), and
-the rest from the exams. Until the midterm, the center of the chart is your own rating from the September survey. Each ring
-outside it is one sprint, darker for later sprints. The midterm replaces the center with your exam result on the three areas
-it tests (Agentic Workflow, Discovery, Design), which can move the center up or down; your September rating stays on the chart
-as a dashed outline. The final exam does the same for all six areas.</p>
+the rest from the exams. The center of the chart is your own rating from the September survey, counted on the part of each
+area's exam points no exam has measured yet. Each ring outside it is one sprint, darker for later sprints. The gold ring is the
+midterm: it tested three areas (Agentic Workflow, Discovery, Design), and each question you got right earns its share of half of
+those areas' exam points, so on those three areas the September rating now counts for the other half only. The dashed outline
+shows your full September rating. The final exam measures the rest, in all six areas.</p>
 <h3 class=sub id=a-earn><span>How sprint work earns points</span></h3>
 <p>Sprint work earns points two ways.</p>
 <ul>
@@ -1370,7 +1407,8 @@ ones your work has shown say which sprint. Ones marked "measured on the exams" c
     prof_line, added = "", 0
     if G:
         core = (G.get("start") or {}).get("points") or {}
-        whole = sum(float(v) for v in core.values()) + sum(float(v) for v in (G.get("practice_total") or {}).values())
+        whole = (sum(float(v) for v in core.values()) + sum(float(v) for v in (G.get("practice_total") or {}).values())
+                 + sum(float(v) for ex in G.get("exams") or [] for v in (ex.get("points") or {}).values()))
         added = sum(float(v) for v in ((G.get("rings") or [{}])[-1].get("points") or {}).values())
         prof_line = (f'<div class=sm><span class=sml>Builder profile</span><span class=smv>{round(whole)}<small> / 600</small></span>'
                      f'<span class=sms>+{round(added)} this sprint, {whole / 6:.0f}% towards a full-stack product builder</span></div>')
@@ -1448,7 +1486,7 @@ ones your work has shown say which sprint. Ones marked "measured on the exams" c
 // being read opens its own. Clicking an item inside a closed drawer opens the drawer.
 (()=>{{
 const nav=document.querySelector('nav.toc');
-const pick={{score:':scope>details.q,:scope>.deds>h3.sub,:scope>.qa>h3.sub',grew:':scope>.gview:not([hidden])>details.gx,:scope>.gview:not([hidden])>.qax,:scope details.ncx',appendix:':scope>h3.sub',concepts:'tr.apx'}};
+const pick={{score:':scope>details.q,:scope>.deds>h3.sub,:scope>.qa>h3.sub',grew:':scope>.gview:not([hidden])>details.gx,:scope>.gview:not([hidden])>.qax,:scope details.ncx,:scope>#midterm>h3.sub',appendix:':scope>h3.sub',concepts:'tr.apx'}};
 const label=el=>{{
   if(el.matches('h3'))return el.querySelector('span').textContent;
   if(el.matches('details.ncx'))return el.querySelector('h3').firstChild.textContent;
@@ -1586,6 +1624,16 @@ const go=(s,ax)=>{document.querySelector(`.gsw button[data-s="${s}"]`)?.click();
   r.open=true;r.classList.remove('flash');void r.offsetWidth;r.classList.add('flash');r.scrollIntoView({behavior:'smooth',block:'center'})};
 axes.forEach(x=>x.t.addEventListener('click',()=>go(latest,x)));
 document.querySelectorAll('.lg').forEach(b=>b.onclick=()=>go(b.dataset.s,null));
+svg.querySelectorAll('polygon.exam').forEach(pg=>{
+  const per=JSON.parse(pg.dataset.per||'{}'),name=pg.querySelector('title')?.textContent||'Exam';pg.querySelector('title')?.remove();
+  pg.addEventListener('mousemove',ev=>{const p=svgPt(ev),ax=nearest(Math.atan2(p.y-CY,p.x-CX));
+    const full=Object.keys(per).find(k=>k.replace('Application Architecture','App Architecture')===ax.short);
+    svg.classList.add('hov');pg.classList.add('on');
+    const fr=fig.getBoundingClientRect();tip.style.left=(ev.clientX-fr.left)+'px';tip.style.top=(ev.clientY-fr.top)+'px';tip.style.opacity=1;
+    tip.innerHTML=`${name} &middot; ${ax.short} <b>${full?per[full]:'not tested'}</b><small>click to see your midterm</small>`});
+  pg.addEventListener('mouseleave',()=>{svg.classList.remove('hov');pg.classList.remove('on');tip.style.opacity=0});
+  pg.addEventListener('click',()=>{const m=document.getElementById('midterm');if(m)m.scrollIntoView({behavior:'smooth',block:'center'})});
+});
 rings.forEach(pg=>{
   const s=pg.dataset.s;pg.querySelector('title')?.remove();
   pg.addEventListener('mousemove',ev=>{
@@ -1823,6 +1871,11 @@ h3.sub small,.ncx h3 small{font-size:13px;font-weight:400;color:var(--mute)}
 .ncg .ngh small{font-weight:400;color:var(--mute)}.ncg .fix{margin:2px 0 6px;font-size:13.5px}.ncg .fix b{color:var(--royal);font-weight:600}
 .ncg ul{margin:0;padding:0;list-style:none}.ncg li{font-size:13.5px;padding:3px 0;display:flex;flex-wrap:wrap;gap:4px 8px;align-items:baseline}
 .ncg li .nm{font-weight:500}.ncg li .wh,.ncg li .why{color:var(--mute)}.ncg.later .ngh,.ncg.later .fix b{color:#44693D}
+.mt{margin:18px 0 6px}.mt p{font-size:13.5px;color:#4a5262;margin:2px 0 8px}
+.mtt{width:100%;border-collapse:collapse;font-size:13.5px}.mtt th{text-align:left;font-size:11.5px;color:var(--mute);font-weight:600;padding:4px 6px;border-bottom:1px solid var(--line)}
+.mtt td{padding:6px;border-bottom:1px solid var(--line)}.mtt .num{font-variant-numeric:tabular-nums;white-space:nowrap}.mtt small{color:var(--mute)}
+.lgx{color:inherit;text-decoration:none;cursor:pointer}.lgx:hover{color:var(--royal)}
+.qfig svg polygon.exam{cursor:pointer;transition:opacity .15s}.qfig svg.hov polygon.exam:not(.on){opacity:.35}
 .qfig{position:relative}.qfig svg polygon[data-s]{cursor:pointer;transition:opacity .15s}
 .qfig svg.hov polygon[data-s]:not(.on),.qfig svg.hov polygon.core{opacity:.35}.qfig svg polygon.on{stroke:var(--navy);stroke-width:2}
 .qfig svg text.axl{cursor:pointer}.qfig svg text.axl:hover{fill:var(--royal)}
