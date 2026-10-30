@@ -209,7 +209,9 @@ goal comfortably hit earns nothing extra.
      (fairness check, 2026-10-28).
   6. **off_demo**: time spent on intro, slides, or reflection instead of the thing.
   7. **readable**: text too small to read at the zoom used. Feedback only, never scored.
-- **Late:** `canvas_late`, `review_on_time` false, or `commits_after_due`. Do not deduct for
+- **Late:** `canvas_late` or `review_on_time` false. Flag it as `late: ...`. Commits after the due
+  date alone (`commits_after_due`, usually the next sprint's plan) are not lateness: flag those as
+  `after due date: ...`, never `late:`, and only when they matter to the grade. Do not deduct for
   lateness in any category, including Output, and do not mention lateness in `reasons` as a
   cause of a lower score or anywhere in `feedback`. Flag it only. Scott applies the late policy.
 - **Credit only this sprint's work, whenever it was done.** `commits` and `shipped_files` run

@@ -26,9 +26,9 @@ from sprint_config import COURSE_ID, PLAN_FIELDS, PLAN_POINTS, SPRINTS
 
 TZ = ZoneInfo("America/Denver")
 DATA = Path.home() / "hubs/courses/_data/product-management"
-SHIPPED_CHARS = 40_000      # code text per packet, about 10k tokens (written work has its own budget)
-PER_FILE_CHARS = 10_000     # written work (specs, decisions, discovery, evals, docs): long enough for acceptance criteria
-CODE_FILE_CHARS = 6_000     # code: enough to see what it does (3,000 cut off tool loops and error handling)
+SHIPPED_CHARS = 100_000     # code text per packet, about 25k tokens (written work has its own budget); 40k cut long files off (2026-10-29)
+PER_FILE_CHARS = 20_000     # written work (specs, decisions, discovery, evals, docs); 10k cut specs off at the Definition of done (2026-10-29)
+CODE_FILE_CHARS = 15_000    # code: a whole typical file (6k cut an 8k app.js off; 3k cut off tool loops and error handling)
 # Course-provided skills and the sprint plan and review files (read separately) are skipped; a skill
 # the student wrote is their work (W2), and so is anything else they put in sprints/.
 SKIP = re.compile(r"^(sprints/sprint-\d+-(plan|review)\.md$|\.claude/skills/(eli5|learn|sprint-plan|sprint-review)/|README\.md$)|000-.*template"
