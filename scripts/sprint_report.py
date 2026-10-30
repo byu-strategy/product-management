@@ -1232,8 +1232,7 @@ def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott
     next_n = sprint + 1
 
     # ---- questions
-    ask = ((f'<p><b>To dispute a deduction,</b> use its Dispute button under <a href="#deds">Point deductions</a>. '
-            'No sign-in needed.</p>' if dispute and dispute.get("token") else "")
+    ask = ((f'<p><b>To dispute a deduction,</b> use its Dispute button under <a href="#deds">Point deductions</a>.</p>' if dispute and dispute.get("token") else "")
            + f'<p><b>For any other question,</b> reply to the comment this report came with, on the Sprint {sprint}'
            f'{" Wrap-up" if sprint > 1 else ""} assignment in Canvas, and say which part of the report you mean. '
            'Professor Murff reads every reply. Questions sent anywhere else may be missed.</p>')
