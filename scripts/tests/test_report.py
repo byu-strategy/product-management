@@ -102,9 +102,10 @@ check(all(f'id={x}><span>' in student for x in ("a-profile", "a-points", "a-earn
 
 # Questions: disputes through the Dispute buttons, everything else as a Canvas comment reply
 check("Questions or disputes" in student and "use its Dispute button" in student, "disputes section")
-check("How useful is this report?" in student and student.count('report-feedback/TEST_TOKEN_abc?r=') == 5,
-      "report feedback card with a 1 to 5 link each")
-check("report-feedback/" not in plain, "no feedback card without a token")
+check("How useful is this report?" in student and student.count('name=rating value=') == 5
+      and 'name=token value="TEST_TOKEN_abc"' in student and "/api/report-feedback" in student,
+      "report feedback form: five ratings, a comment, sent in place with the link token")
+check("/api/report-feedback" not in plain, "no feedback form without a token")
 check("reply to the comment this report came with" in student and "Course Monitor" not in student, "questions go to a Canvas comment reply")
 check("posted to Canvas" in student and "class=qtotal" not in student, "posted score in the Score heading, no total row")
 

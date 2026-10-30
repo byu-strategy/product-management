@@ -18,7 +18,7 @@ Student-facing text here follows the course's feedback rules: second person, pla
 em dashes, and it never mentions lateness or how evidence was gathered. The September survey appears
 only as the profile's starting center (chart legend, Methodology), never tied to difficulty.
 """
-import base64, html, io, json, math, re, datetime as dt
+import base64, html, io, json, math, os, re, datetime as dt
 from pathlib import Path
 
 e = html.escape
@@ -44,8 +44,9 @@ CORE_COLOR = "#DCE6F2"  # the starting core: the lightest step of the same navy 
 NAVY, ROYAL = "#002E5D", "#003DA5"
 # Where each deduction can be disputed: the Strategy app, no sign-in (grade disputes, 2026-10-29).
 DISPUTE_BASE = "https://strategy.byu.edu/app/dispute/"
-# Feedback on the report itself (Scott, 2026-10-29): the same secret link as disputes, so no sign-in.
-FEEDBACK_BASE = "https://strategy.byu.edu/app/report-feedback/"
+# Feedback on the report itself (Scott, 2026-10-29): posted from the report to the Strategy app with the same
+# secret link as disputes, so no sign-in and no new page. REPORT_API overrides the host for a local test.
+FEEDBACK_API = os.environ.get("REPORT_API", "https://strategy.byu.edu") + "/api/report-feedback"
 # Concepts seen but not counted, grouped by what would let them count. `unreadable` is our limit, not the
 # student's, so it goes to Scott's notes only.
 NOT_YET = {
@@ -333,6 +334,23 @@ CLAUDE_ICON = ('<svg viewBox="0 0 13 7" width="20" height="11" shape-rendering="
 
 # Copy prompt: the clipboard API, then the older copy command, then the visible box with the text selected.
 COACH_JS = """
+document.querySelectorAll('form.rfb').forEach(f=>{
+  const btn=f.querySelector('.rfbsend'),st=f.querySelector('.rfbst');
+  const say=(t,c)=>{st.textContent=t;st.className='rfbst'+(c?' '+c:'')};
+  f.addEventListener('change',()=>{if(st.classList.contains('ok'))say('');});
+  f.addEventListener('submit',ev=>{
+    if(!f.rating.value)return;
+    ev.preventDefault();
+    btn.disabled=true;btn.textContent='Sending...';say('');
+    const body=new URLSearchParams(new FormData(f));body.set('js','1');
+    fetch(f.action,{method:'POST',body,mode:'cors',credentials:'omit'}).then(r=>r.json()).then(j=>{
+      btn.disabled=false;
+      if(j.ok){btn.textContent='Update feedback';say('Sent. Thank you.','ok')}
+      else{btn.textContent='Send feedback';say(j.error||'It could not be sent. Try again.','bad')}
+    }).catch(()=>{btn.disabled=false;btn.textContent='Send feedback';
+      say('Opening a new tab to send it.');HTMLFormElement.prototype.submit.call(f)});
+  });
+});
 document.querySelectorAll('.ccbtn').forEach(b=>{
   const ta=document.getElementById(b.dataset.copy),lab=b.querySelector('.cclabel'),box=ta.closest('details'),note=b.closest('.coach').querySelector('.ccnote');
   const reset=()=>{lab.textContent='Copy prompt';b.classList.remove('ok','bad')};
@@ -1342,14 +1360,18 @@ ones your work has shown say which sprint. Ones marked "measured on the exams" c
                  f'<details class=ccbox><summary>See the prompt</summary>'
                  f'<textarea id=coachp readonly spellcheck=false rows=14>{e(prompt_txt)}</textarea></details></div>')
     if dispute and dispute.get("token"):
-        fb = f'{FEEDBACK_BASE}{e(dispute["token"])}'
-        next_line += (f'<div class="sm coach rfb"><div class=cchead><span class=cch>How useful is this report?</span>'
-                      f'<span class=rfbw><span class=rfbs role=group aria-label="Rate this report from 1, not useful, to 5, very useful">'
-                      + "".join(f'<a class=rfbn href="{fb}?r={n}" target=_blank rel="noopener noreferrer" '
-                                f'aria-label="{n} of 5">{n}</a>' for n in range(1, 6))
+        next_line += (f'<form class="sm coach rfb" method=post action="{FEEDBACK_API}" target=_blank>'
+                      f'<div class=cchead><span class=cch id=rfbq>How useful is this report?</span>'
+                      f'<span class=rfbw><span class=rfbs role=radiogroup aria-labelledby=rfbq>'
+                      + "".join(f'<label class=rfbn><input type=radio name=rating value={n} required>'
+                                f'<span aria-label="{n} of 5">{n}</span></label>' for n in range(1, 6))
                       + '</span><span class=rfbh><span>Not useful</span><span>Very useful</span></span></span></div>'
-                      f'<span class=rfbnote>Pick a number, then tell Professor Murff what helped and what to change. '
-                      f'<a href="{fb}" target=_blank rel="noopener noreferrer">Give feedback</a>. No sign-in.</span></div>')
+                      '<textarea name=text rows=2 maxlength=4000 aria-label="Your comments" '
+                      'placeholder="What helped, and what should change? (optional)"></textarea>'
+                      f'<input type=hidden name=token value="{e(dispute["token"])}">'
+                      '<input class=rfbhp name=website tabindex=-1 autocomplete=off aria-hidden=true>'
+                      '<div class=rfbf><span class=rfbst role=status aria-live=polite></span>'
+                      '<button type=submit class=rfbsend>Send feedback</button></div></form>')
     lost = [d for d in r.get("deductions") or [] if float(d.get("points") or 0) > 0]
     lost_pts = sum(float(d["points"]) for d in lost)
     lost_line = (f'<a class="sms lost" href="#deds">{fmt(lost_pts)} point{"s" * (lost_pts != 1)} deducted in {len(lost)} '
@@ -1640,7 +1662,16 @@ a.bkc:hover,a.bkc:focus-visible{background:#DCE6F2;color:#002E5D}
 .rfbn:hover,.rfbn:focus-visible{border-color:#003DA5;background:#F5F7FA;color:#003DA5}
 .rfbw{display:inline-flex;flex-direction:column;gap:3px}
 .rfbh{display:flex;justify-content:space-between;font-size:11.5px;color:var(--mute);white-space:nowrap}
-.rfbnote{display:block;margin-top:6px;font-size:13px;color:var(--mute)}
+.rfbn{cursor:pointer;position:relative}.rfbn input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.rfbn:has(input:checked){background:#003DA5;border-color:#003DA5;color:#fff}.rfbn:has(input:focus-visible){outline:2px solid #003DA5;outline-offset:2px}
+.rfb textarea{display:block;width:100%;box-sizing:border-box;margin-top:10px;font:inherit;font-size:14px;color:var(--ink);padding:8px 10px;
+ border:1px solid var(--line);border-radius:8px;background:#fff;resize:vertical;min-height:2.6em}
+.rfb textarea:focus{outline:2px solid #003DA5;outline-offset:0;border-color:#003DA5}
+.rfbhp{position:absolute;left:-9999px;width:1px;height:1px}
+.rfbf{display:flex;align-items:center;justify-content:flex-end;gap:12px;margin-top:8px}
+.rfbst{font-size:13px;color:var(--mute)}.rfbst.bad{color:#A3251B}.rfbst.ok{color:#1F6E43}
+.rfbsend{font:600 .86rem/1.4 inherit;font-family:inherit;color:#fff;background:#003DA5;border:1px solid #003DA5;border-radius:8px;padding:.4em 1em;cursor:pointer;transition:background .12s,transform .06s}
+.rfbsend:hover{background:#002E5D}.rfbsend:active{transform:translateY(1px)}.rfbsend:disabled{opacity:.6;cursor:default}
 .coach{background:#fff;gap:2px;padding-top:10px;padding-bottom:10px}.cch{font-size:15px;font-weight:600;line-height:1.35}
 .cchead{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.ccnote:empty{display:none}
 .ccbtn{display:inline-flex;align-items:center;gap:.4em;padding:.3em .9em .3em .7em;font:600 .86rem/1.4 system-ui,-apple-system,"Segoe UI",sans-serif;
