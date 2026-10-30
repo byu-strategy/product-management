@@ -47,6 +47,9 @@ DISPUTE_BASE = "https://strategy.byu.edu/app/dispute/"
 # Feedback on the report itself (Scott, 2026-10-29): posted from the report to the Strategy app with the same
 # secret link as disputes, so no sign-in and no new page. REPORT_API overrides the host for a local test.
 FEEDBACK_API = os.environ.get("REPORT_API", "https://strategy.byu.edu") + "/api/report-feedback"
+# Disputes from inside the report: a drawer under each deduction posts here (Scott, 2026-10-29). The Dispute link
+# to the app's dispute page stays underneath as the fallback when the report's script cannot run.
+DISPUTE_API = os.environ.get("REPORT_API", "https://strategy.byu.edu") + "/api/report-dispute"
 # Concepts seen but not counted, grouped by what would let them count. `unreadable` is our limit, not the
 # student's, so it goes to Scott's notes only.
 NOT_YET = {
@@ -719,8 +722,8 @@ def deductions_block(r, sprint, cats, dispute, outcomes, scott):
         elif st == "open":
             action = '<span class=dst>Disputed</span>'
         elif dispute and dispute.get("token"):
-            action = (f'<a class=dbtn href="{DISPUTE_BASE}{e(dispute["token"])}#{e(did)}" target=_blank rel="noopener noreferrer">'
-                      f'Dispute</a>')
+            action = (f'<a class=dbtn data-ded="{e(did)}" href="{DISPUTE_BASE}{e(dispute["token"])}#{e(did)}" target=_blank '
+                      f'rel="noopener noreferrer" aria-expanded=false>Dispute</a>')
         else:
             action = ""
         src = published.get(d.get("rule_id"), "")
@@ -735,13 +738,36 @@ def deductions_block(r, sprint, cats, dispute, outcomes, scott):
                   f'<div class=dx><p class=rule>Rubric: &ldquo;{e(RULE_TEXT.get(d.get("rule_id"), ""))}&rdquo;'
                   + (f' <span>({e(src)})</span>' if src else "") + '</p>'
                   + (f'<p class=fix><b>To earn it next time:</b> {e(d["fix"])}</p>' if d.get("fix") else "")
-                  + f'</div>{inst}</div>')
+                  + f'</div>{dispute_form(did) if dispute and dispute.get("token") and not scott and not st else ""}{inst}</div>')
     n = len(ds)
     closes = (f' Disputes are open until {e(dispute["closes"])}.' if dispute and dispute.get("closes") else "")
     note = ('<p class=dnote>Think one is wrong? Use its Dispute button: no sign-in needed. A review can raise or lower the score.'
             f'{closes}</p>' if dispute and dispute.get("token") else "")
-    return (f'<div class=deds id=deds><h3 class=sub><span>Point deductions</span>'
+    live = f' data-api="{DISPUTE_API}" data-token="{e(dispute["token"])}"' if dispute and dispute.get("token") and not scott else ""
+    return (f'<div class=deds id=deds{live}><h3 class=sub><span>Point deductions</span>'
             f'<small>{fmt(total)} point{"s" * (total != 1)}, {n} item{"s" * (n != 1)}</small></h3>{note}{rows_}</div>')
+
+
+def dispute_form(did):
+    """The drawer the Dispute button opens under its deduction: why, then evidence, then Send. Hidden until the
+    report's script turns the Dispute link into a toggle; without the script the link opens the dispute page."""
+    i = e(did)
+    return (f'<form class=dform data-ded="{i}" hidden novalidate>'
+            f'<label class=dfl for=dw-{i}>Why are you disputing this?</label>'
+            f'<textarea id=dw-{i} name=why rows=4 maxlength=4000 required '
+            f'placeholder="For example: my retro answers this in the third paragraph."></textarea>'
+            f'<div class=dfl>Evidence <span>optional</span></div>'
+            f'<label class=dfs for=dl-{i}>Links, one per line</label>'
+            f'<textarea id=dl-{i} name=links rows=2 placeholder="https://"></textarea>'
+            f'<label class=dfs for=dn-{i}>Anything else</label>'
+            f'<textarea id=dn-{i} name=notes rows=2></textarea>'
+            f'<label class=dfs for=df-{i}>Screenshots or PDFs <span>up to 5, 10 MB each</span></label>'
+            f'<input id=df-{i} type=file name=files multiple '
+            f'accept="image/png,image/jpeg,image/gif,image/webp,application/pdf">'
+            f'<input class=rfbhp name=website tabindex=-1 autocomplete=off aria-hidden=true>'
+            f'<div class=dff><span class=dfst role=status aria-live=polite></span>'
+            f'<button type=button class=dfcancel>Cancel</button><button type=submit class=rfbsend>Send dispute</button></div>'
+            f'</form>')
 
 
 # What a student reads for each rule: the rubric's wording, one sentence (rule IDs: grading/sprint-grader.md).
@@ -1482,8 +1508,61 @@ const io=new IntersectionObserver(es=>{{es.forEach(x=>{{if(!x.isIntersecting)ret
 document.querySelectorAll('section.sec').forEach(s=>io.observe(s));
 }})();
 {COACH_JS}
+{DISPUTE_JS}
 {RINGS_JS}</script>
 </body></html>"""
+
+
+# The dispute drawer (Scott, 2026-10-29). On load it asks the app which deductions are already disputed and whether
+# the window is open, since the report itself is a fixed file. Send runs the dispute page's own two steps: signed
+# uploads straight to private storage when there are files, then the dispute.
+DISPUTE_JS = r"""
+(()=>{const box=document.querySelector('.deds[data-api]');if(!box)return;
+const api=box.dataset.api,token=box.dataset.token;
+const post=o=>fetch(api,{method:'POST',body:JSON.stringify(Object.assign({token},o)),mode:'cors',credentials:'omit'}).then(r=>r.json());
+const day=s=>new Date(s).toLocaleDateString(undefined,{month:'short',day:'numeric'});
+const btnOf=k=>box.querySelector('.dbtn[data-ded="'+k+'"]'),formOf=k=>box.querySelector('form.dform[data-ded="'+k+'"]');
+const mark=(k,txt,ok)=>{const b=btnOf(k);if(b){const sp=document.createElement('span');sp.className='dst'+(ok?' ok':'');sp.textContent=txt;b.replaceWith(sp)}
+  const f=formOf(k);if(f)f.remove()};
+box.querySelectorAll('.dbtn[data-ded]').forEach(b=>b.addEventListener('click',ev=>{const f=formOf(b.dataset.ded);if(!f)return;
+  ev.preventDefault();f.hidden=!f.hidden;b.setAttribute('aria-expanded',String(!f.hidden));if(!f.hidden)f.elements.why.focus()}));
+box.querySelectorAll('form.dform').forEach(f=>{
+  const k=f.dataset.ded,el=f.elements,btn=f.querySelector('.rfbsend'),st=f.querySelector('.dfst');
+  const say=(t,bad)=>{st.textContent=t;st.className='dfst'+(bad?' bad':'')};
+  f.querySelector('.dfcancel').onclick=()=>{f.hidden=true;const b=btnOf(k);if(b)b.setAttribute('aria-expanded','false')};
+  f.addEventListener('submit',async ev=>{ev.preventDefault();if(btn.disabled)return;
+    const why=el.why.value.trim();
+    if(why.length<10){say('Say why in at least 10 characters.',true);el.why.focus();return}
+    const files=[...el.files.files];
+    if(files.length>5){say('Up to 5 files.',true);return}
+    const big=files.find(x=>x.size>10*1024*1024);if(big){say(big.name+' is over 10 MB.',true);return}
+    const input={why,links:el.links.value.split(/\s*\n\s*/).map(x=>x.trim()).filter(Boolean),
+      notes:el.notes.value.trim()?[el.notes.value.trim()]:[],files:files.map(x=>({name:x.name,mime:x.type,size:x.size}))};
+    const website=el.website.value;
+    btn.disabled=true;btn.textContent='Sending...';say('');
+    const fail=m=>{btn.disabled=false;btn.textContent='Send dispute';say(m,true)};
+    try{
+      let disputeId,paths=[];
+      if(files.length){
+        const p=await post({action:'prepare',dedKey:k,input,website});if(!p.ok)return fail(p.error);disputeId=p.disputeId;
+        for(const [i,u] of p.uploads.entries()){say('Uploading '+files[i].name+'...');
+          const r=await fetch(u.url,{method:'PUT',body:files[i],headers:{'content-type':files[i].type,'x-upsert':'false',
+            apikey:p.anonKey,authorization:'Bearer '+p.anonKey}});
+          if(!r.ok)return fail(files[i].name+' did not upload. Try again.');paths.push(u.path)}}
+      const r=await post({action:'send',dedKey:k,input,website,disputeId,paths});
+      if(!r.ok)return fail(r.error||"That didn't send. Try again.");
+      mark(k,'Disputed '+day(r.createdAt));
+      const m=document.createElement('p');m.className='dsent';m.setAttribute('role','status');
+      m.textContent='Dispute sent. Professor Murff reviews it and replies by email.';document.getElementById('ded-'+k).append(m);
+    }catch(e){fail("That didn't send. Check your connection and try again.")}
+  });
+});
+post({action:'status'}).then(j=>{if(!j||!j.ok)return;
+  j.deductions.forEach(d=>{if(d.status)mark(d.dedKey,d.status==='open'?'Disputed '+day(d.disputedAt):'Reviewed')});
+  if(!j.open)box.querySelectorAll('.dbtn[data-ded]').forEach(b=>mark(b.dataset.ded,'Disputes closed'));
+}).catch(()=>{});
+})();
+"""
 
 
 # The rings route to Growth (2026-10-29): hover a ring for that sprint's points on the nearest axis, click a
@@ -1716,6 +1795,19 @@ h3.sub small,.ncx h3 small{font-size:13px;font-weight:400;color:var(--mute)}
 .dbtn{font-size:12.5px;border:1px solid #CCCCCC;background:#fff;border-radius:6px;padding:3px 10px;color:var(--navy);white-space:nowrap}
 .dbtn:hover,.dbtn:focus-visible{border-color:var(--royal);color:var(--royal)}
 .dst{font-size:12px;color:var(--mute);white-space:nowrap}.dst.ok{color:#44693D}
+.dbtn[aria-expanded=true]{border-color:var(--royal);color:var(--royal);background:#F5F7FA}
+.dform{margin:10px 0 2px 48px;padding:12px 14px;border:1px solid var(--line);border-radius:8px;background:#F5F7FA}
+.dform[hidden]{display:none}
+.dfl{display:block;font-weight:600;color:var(--navy);font-size:14px;margin:0 0 4px}.dfl span,.dfs span{font-weight:400;color:var(--mute);font-size:12.5px;margin-left:4px}
+.dfs{display:block;font-size:13px;color:#4a5262;margin:8px 0 3px}
+.dform textarea{display:block;width:100%;box-sizing:border-box;font:inherit;font-size:14px;color:var(--ink);padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:#fff;resize:vertical}
+.dform textarea:focus{outline:2px solid #003DA5;outline-offset:0;border-color:#003DA5}
+.dform textarea[name=why]{margin-bottom:12px}
+.dform input[type=file]{font-size:13px}
+.dff{display:flex;align-items:center;justify-content:flex-end;gap:10px;margin-top:12px}
+.dfst{font-size:13px;color:var(--mute);margin-right:auto}.dfst.bad{color:#A3251B}
+.dfcancel{font:inherit;font-size:13px;background:none;border:0;color:#4a5262;cursor:pointer;padding:.4em .6em}.dfcancel:hover{color:var(--ink)}
+.dsent{margin:10px 0 2px 48px;font-size:13.5px;color:#44693D}
 .ded .dx{margin:3px 0 0 48px;font-size:13.5px}.ded .dx p{margin:2px 0}.ded .rule{color:var(--mute)}.ded .fix b{font-weight:600}
 .ded .inote{margin:8px 0 0 48px}.dex{white-space:pre-wrap;font-size:12px;background:#fff;border-radius:6px;padding:6px 8px;margin:4px 0 0}
 .nsi{margin:0 0 8px;color:var(--mute);font-size:14px}

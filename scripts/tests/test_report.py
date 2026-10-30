@@ -110,6 +110,10 @@ check("How useful is this report?" in student and student.count('name=rating val
       and 'name=token value="TEST_TOKEN_abc"' in student and "/api/report-feedback" in student,
       "report feedback form: five ratings, a comment, sent in place with the link token")
 check("/api/report-feedback" not in plain, "no feedback form without a token")
+check(student.count('<form class=dform data-ded="R') == 2 and 'data-api="' in student and "/api/report-dispute" in student,
+      "a dispute drawer under each deduction, posting in place")
+check("class=dform" not in scott and "class=dform" not in plain, "no drawer in Scott's copy or without a token")
+check("class=dform" not in resolved, "no drawer under a deduction already reviewed")
 check("reply to the comment this report came with" in student and "Course Monitor" not in student, "questions go to a Canvas comment reply")
 check("posted to Canvas" in student and "class=qtotal" not in student, "posted score in the Score heading, no total row")
 
