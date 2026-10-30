@@ -353,10 +353,10 @@ after grades are released, and Professor Murff replies to each one by email. A r
 the deduction again against the rubric, so it can raise your score, leave it as it is, or lower
 it.
 
-**Other questions about your sprint feedback:** reply to the Canvas comment your sprint report came
-with, saying which part of the report you mean and what you think was missed. Professor Murff
-reads every reply. Questions sent by email or anywhere else may be missed. (Sprint 1 questions
-can still go to the Course Monitor app in the course Slack.)
+**Sprints 1 and 2, and other questions about your sprint feedback:** those reports have no Dispute
+button, so add a comment on that sprint's assignment in Canvas, saying which part of the report you
+mean and what you think was missed. Professor Murff reads every comment. Questions sent by email,
+Slack, or anywhere else may be missed.
 
 ### Confidential company work
 

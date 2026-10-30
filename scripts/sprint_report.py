@@ -1025,7 +1025,8 @@ def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott
     score_body += "<!--ASK-->"
     note = (row_.get("scott_note") or "").strip()
     if note:
-        score_body += f'<div class=snote><b>From Professor Murff</b><p>{e(note)}</p></div>'
+        paras = "".join(f"<p>{e(p.strip())}</p>" for p in re.split(r"\n\s*\n", note) if p.strip())
+        score_body += f'<div class=snote><b>From Professor Murff</b>{paras}</div>'
 
     # ---- profile
     svg, drawn = profile_svg(G)
