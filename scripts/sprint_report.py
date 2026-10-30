@@ -335,21 +335,26 @@ CLAUDE_ICON = ('<svg viewBox="0 0 13 7" width="20" height="11" shape-rendering="
 # Copy prompt: the clipboard API, then the older copy command, then the visible box with the text selected.
 COACH_JS = """
 document.querySelectorAll('form.rfb').forEach(f=>{
+  // A rating saves the moment it is picked (Scott, 2026-10-29); the comment goes with the button. Each save sends both,
+  // so one answer per report always holds the latest rating and comment.
   const btn=f.querySelector('.rfbsend'),st=f.querySelector('.rfbst');
   const say=(t,c)=>{st.textContent=t;st.className='rfbst'+(c?' '+c:'')};
-  f.addEventListener('change',()=>{if(st.classList.contains('ok'))say('');});
-  f.addEventListener('submit',ev=>{
-    if(!f.rating.value)return;
-    ev.preventDefault();
-    btn.disabled=true;btn.textContent='Sending...';say('');
+  let sent=false;
+  const send=(what)=>{
     const body=new URLSearchParams(new FormData(f));body.set('js','1');
-    fetch(f.action,{method:'POST',body,mode:'cors',credentials:'omit'}).then(r=>r.json()).then(j=>{
-      btn.disabled=false;
-      if(j.ok){btn.textContent='Update feedback';say('Sent. Thank you.','ok')}
-      else{btn.textContent='Send feedback';say(j.error||'It could not be sent. Try again.','bad')}
-    }).catch(()=>{btn.disabled=false;btn.textContent='Send feedback';
-      say('Opening a new tab to send it.');HTMLFormElement.prototype.submit.call(f)});
-  });
+    if(what==='comment'){btn.disabled=true;btn.textContent='Sending...'}
+    say(what==='rating'?'Saving...':'');
+    return fetch(f.action,{method:'POST',body,mode:'cors',credentials:'omit'}).then(r=>r.json()).then(j=>{
+      btn.disabled=false;btn.textContent=f.text.value.trim()&&what==='comment'||sent?'Update comment':'Send comment';
+      if(!j.ok){say(j.error||'It could not be saved. Try again.','bad');return}
+      if(what==='comment'&&f.text.value.trim())sent=true;
+      say(what==='rating'?'Rating saved. Add a comment if you like.':'Sent. Thank you.','ok');
+    }).catch(()=>{btn.disabled=false;btn.textContent='Send comment';
+      if(what==='comment'){say('Opening a new tab to send it.');HTMLFormElement.prototype.submit.call(f)}
+      else say('The rating could not be saved from here. Use Send comment.','bad')});
+  };
+  f.querySelectorAll('input[name=rating]').forEach(x=>x.addEventListener('change',()=>send('rating')));
+  f.addEventListener('submit',ev=>{if(!f.rating.value)return;ev.preventDefault();send('comment')});
 });
 document.querySelectorAll('.ccbtn').forEach(b=>{
   const ta=document.getElementById(b.dataset.copy),lab=b.querySelector('.cclabel'),box=ta.closest('details'),note=b.closest('.coach').querySelector('.ccnote');
@@ -1373,7 +1378,7 @@ ones your work has shown say which sprint. Ones marked "measured on the exams" c
                       f'<input type=hidden name=token value="{e(dispute["token"])}">'
                       '<input class=rfbhp name=website tabindex=-1 autocomplete=off aria-hidden=true>'
                       '<div class=rfbf><span class=rfbst role=status aria-live=polite></span>'
-                      '<button type=submit class=rfbsend>Send feedback</button></div></form>')
+                      '<button type=submit class=rfbsend>Send comment</button></div></form>')
     lost = [d for d in r.get("deductions") or [] if float(d.get("points") or 0) > 0]
     lost_pts = sum(float(d["points"]) for d in lost)
     lost_line = (f'<a class="sms lost" href="#deds">{fmt(lost_pts)} point{"s" * (lost_pts != 1)} deducted in {len(lost)} '
