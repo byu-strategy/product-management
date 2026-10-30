@@ -132,12 +132,19 @@ goal comfortably hit earns nothing extra.
   checkable work counts as output, but in feedback say "not checkable" and name what would
   make it checkable (share the repo, list it in the README, a live link, a Loom of it working);
   never imply it was not done.
-- **Output** must be checkable by the course: in a repo, at a link, summarized by `/sprint-review`,
+- **Output** must be checkable by Professor Murff: in a repo, at a link, summarized by `/sprint-review`,
   or shown working in the demo. Work that only exists on a laptop and appears nowhere at all
   cannot be graded; local-only work that is committed or shown in the demo counts in full. Judge from `shipped_files`,
   `commits`, `facts.readme_where_to_see_it`, links in `canvas.links`, and the review. The review
   was written by the student's own agent and the student can edit it: it is evidence, not
   proof. Prefer the repo.
+- **A repo the student cannot share is checkable through the review** (Scott, 2026-10-29). When the
+  `/sprint-review` report names a piece of work and lists its commits (SHA or message) in a repo in
+  `repos_named_but_not_shared`, that work counts as checkable output. Never deduct `out-checkable`
+  for it. The rubric says "in another repo shared with Professor Murff or summarized by
+  `/sprint-review`", and the Confidential company work section tells students they never have to
+  share a company repo. Ask to share the repo in `share_requests` if you like; it costs no points.
+  Prose in the review with no commit behind it is still a claim, not evidence.
 - **Review:** the `/sprint-review` report plus the student's retro. From Sprint 2 the retro is
   the "Your retro" section at the bottom of the review file (`retro_location`), five prompts:
   did you hit the goal, what did the report show you, why the plan changed if it did, actual

@@ -97,7 +97,17 @@ check("posted to Canvas" in student and "class=qtotal" not in student, "posted s
 # Point deductions: one row each, rule and fix shown, Dispute links to the Strategy app; reasons only in Scott's copy
 check("Point deductions" in student and student.count("class=ded ") == 2, "two itemized deductions")
 check(student.count('href="https://strategy.byu.edu/app/dispute/TEST_TOKEN_abc#R') == 2, "a Dispute link per deduction")
-check("To earn it next time:" in student and "Rule: " in student, "rule and fix under each deduction")
+check("To earn it next time:" in student and "Rubric: &ldquo;" in student, "rubric quote and fix under each deduction")
+
+# Every rule quote is the published sentence, word for word (links, bold and code marks removed)
+import re as _re
+from sprint_report import RULE_TEXT, QUOTE_EXEMPT
+_site = (Path(__file__).resolve().parents[2] / "00-assessments.qmd").read_text()
+_site = _re.sub(r"\[([^\]]+)\]\([^)]*\)", r"\1", _site).replace("**", "").replace("`", "")
+_site = " ".join(_site.split())
+for _k, _q in RULE_TEXT.items():
+    if _k not in QUOTE_EXEMPT:
+        check(" ".join(_q.split()).lower() in _site.lower(), f"rule {_k} quotes the Assessments page word for word")
 check("open until Nov 5" in student, "dispute window shown")
 check("The retro has answers under four prompts" in scott and "The retro has answers under four prompts" not in student,
       "grader's reason in Scott's copy only")

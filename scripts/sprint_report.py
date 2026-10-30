@@ -705,8 +705,8 @@ def deductions_block(r, sprint, cats, dispute, outcomes, scott):
                     + "</div>")
         rows_ += (f'<div class=ded id=ded-{e(did)}><div class=dh><span class=dp>&minus;{fmt(float(d["points"]))}</span>'
                   f'<span class=dt>{e(d.get("what", ""))}<span class=dcat>{CAT_OF.get(d.get("category"), "")}</span></span>{action}</div>'
-                  f'<div class=dx><p class=rule>Rule: {e(RULE_TEXT.get(d.get("rule_id"), ""))}'
-                  + (f' <span>{e(src)}</span>' if src else "") + '</p>'
+                  f'<div class=dx><p class=rule>Rubric: &ldquo;{e(RULE_TEXT.get(d.get("rule_id"), ""))}&rdquo;'
+                  + (f' <span>({e(src)})</span>' if src else "") + '</p>'
                   + (f'<p class=fix><b>To earn it next time:</b> {e(d["fix"])}</p>' if d.get("fix") else "")
                   + f'</div>{inst}</div>')
     n = len(ds)
@@ -718,24 +718,40 @@ def deductions_block(r, sprint, cats, dispute, outcomes, scott):
 
 
 # What a student reads for each rule: the rubric's wording, one sentence (rule IDs: grading/sprint-grader.md).
+# Each deduction quotes the published sentence it rests on (Scott, 2026-10-29: a summary dropped
+# "or summarized by /sprint-review" and cost a student 4 points). tests/test_report.py checks that
+# every quote still appears in 00-assessments.qmd, so a rubric edit stops the build until it matches.
 RULE_TEXT = {
-    "out-real": "Output counts when it is real and finished, read against your plan as it stood at the end of the sprint.",
-    "out-checkable": "Output counts when Professor Murff can check it: in a repo shared with him (GitHub `sdmurff`), at a link, or working in your demo.",
-    "out-ambitious": "An ambitious goal you partly reach, and account for in your retro, can earn full marks.",
-    "out-needs-yes": "A goal that needs someone else's yes is graded on the asks you made and recorded.",
-    "rev-committed": "Your /sprint-review report is committed.",
-    "rev-retro": "Each retro prompt left unanswered costs 1 point; no response to something specific the report found costs 2; an empty retro earns at most half.",
+    "out-real": "Something real and finished exists now that did not two weeks ago.",
+    "out-checkable": "Professor Murff can check it, privately. It is in your course repo, in another repo shared with Professor Murff or summarized by /sprint-review, at a link, or shown working in your demo.",
+    "out-ambitious": "An ambitious goal you partly reach and account for in your retro can still earn full marks.",
+    "out-needs-yes": "For these goals, Output is graded on the asks you made and can show: who you asked, when, what you asked for, and what they said.",
+    "rev-committed": "The review, committed: the /sprint-review report with your answers to its five retro questions at the bottom.",
+    "rev-retro": "Each question left unanswered costs 1 point. A retro that responds to nothing specific in the report loses 2 points. An empty retro earns at most half.",
     "rev-s1-template": "The Sprint 1 retro answers its template: did you hit the goal, what happened, what changes next sprint.",
-    "rev-five-questions": "The retro answers all five /sprint-review questions.",
-    "demo-working": "The demo shows your work, working, with real content, as the \"What your demo shows\" table describes.",
-    "demo-length": "Minus 1 for each started 30 seconds past the demo's length limit.",
-    "demo-not-loom": "The demo has to be a Loom share link.",
-    "demo-unopenable": "The demo is graded once the Loom is set to \"Anyone with the link\" or shared with scott.murff@byu.edu.",
+    "rev-five-questions": "Report committed, with your retro answering all five questions and responding to something specific in the report, in any of its answers.",
+    "demo-working": "2 to 3 minutes on Loom of your work, working, as described in What your demo shows, with real content.",
+    "demo-length": "A demo up to 3:30 loses no points. From Sprint 3, each started 30 seconds past 3:30 costs 1 point (3:31 to 4:00 is minus 1, 4:01 to 4:30 minus 2, 4:31 to 5:00 minus 3).",
+    "demo-not-loom": "A demo that is not a Loom scores 0.",
+    "demo-unopenable": "A video he cannot open is not graded until it is shared.",
 }
 
-
-RULE_SRC = {k: ("Published in the rubric" if k.startswith(("out-", "rev-committed", "rev-retro", "demo-working", "demo-length"))
-                else "Published on the Assessments page") for k in RULE_TEXT}
+# Where each quote is published: Assessments page, section heading.
+RULE_SRC = {
+    "out-real": "Assessments, What you have to have",
+    "out-checkable": "Assessments, What you have to have",
+    "out-ambitious": "Assessments, Grading rubric",
+    "out-needs-yes": "Assessments, Grading rubric",
+    "rev-committed": "Assessments, What you have to have",
+    "rev-retro": "Assessments, Grading rubric",
+    "rev-s1-template": "Assessments, Sprint 1",
+    "rev-five-questions": "Assessments, Grading rubric",
+    "demo-working": "Assessments, Grading rubric",
+    "demo-length": "Assessments, Grading rubric",
+    "demo-not-loom": "Assessments, Grading rubric",
+    "demo-unopenable": "Assessments, How every sprint works",
+}
+QUOTE_EXEMPT = {"rev-s1-template"}   # Sprint 1 only, graded before quotes; no single published sentence
 
 
 def rule_sources():
