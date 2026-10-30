@@ -3,7 +3,7 @@ report on the right. The reports are the same files the students get (feedback/<
 with the instructor notes), so what Scott reviews is exactly what goes out.
 
 Order: the students who most need a look come first (low confidence, a Loom to watch, fairness
-findings, disputed concepts), then the rest by total, lowest first. Approving still happens in
+findings, concepts the check dropped), then the rest by total, lowest first. Approving still happens in
 grades.csv ("approve all", "approve everyone but X"); the rail shows the result after a rebuild.
 """
 import html
@@ -43,11 +43,11 @@ def render(items, rows, sprint, plans, growth, fairness, review_max):
         if [x for x in fairness.get(n) or [] if not x.lower().startswith("no findings")]:
             needs.append("fairness")
         if G.get("disputed"):
-            needs.append(f"{len(G['disputed'])} disputed")
+            needs.append(f"{len(G['disputed'])} concept{'s' * (len(G['disputed']) != 1)} dropped")
         people.append({
             "id": n, "name": p.get("name") or row.get("name") or n,
             "total": fmt(total), "max": total_max, "pct": total / total_max if total_max else 0,
-            "conf": conf, "needs": needs, "look": bool([x for x in needs if not x.endswith("disputed")]) or conf == "medium",
+            "conf": conf, "needs": needs, "look": bool([x for x in needs if not x.endswith(("dropped", "disputed"))]) or conf == "medium",
             "approved": (row.get("approved") or "").strip().lower() == "yes",
             "grew": round(sum(num(v) for v in ((G.get("rings") or [{}])[-1].get("points") or {}).values())) if G else None,
         })

@@ -294,7 +294,9 @@ def side_inputs(base):
     fairness = {}
     if fair.exists():
         for line in fair.read_text().splitlines():
-            m = re.match(r"- (\w+) \| (.*)", line)
+            # A finding is "- net_id | FINDING | ..."; anything else (a "Holds" note, a borderline call,
+            # a resolved finding) stays in the file for Scott and never raises the chip.
+            m = re.match(r"- (\w+) \| FINDING \| (.*)", line)
             if m:
                 fairness.setdefault(m.group(1), []).append(m.group(2))
     return plans, skills, fairness
