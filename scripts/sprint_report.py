@@ -928,8 +928,10 @@ def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott
             return demo_head() + f"<p>{e(fb)}</p>" + how_scored(c) + demo_scott()
         return f"<p>{e(fb)}</p>" + how_scored(c)
 
-    # All closed: the point deductions under the rows are what a student reads first (2026-10-29).
-    kids = "".join(row(LABELS.get(c, label), f"{fmt(final(row_, c))}<small>/{mx}</small>", cat_body(c), "kid")
+    # All closed except Demo, so the student's own video is right there (Scott, 2026-10-29); the point
+    # deductions under the rows are what a student reads first.
+    kids = "".join(row(LABELS.get(c, label), f"{fmt(final(row_, c))}<small>/{mx}</small>", cat_body(c), "kid",
+                       opened=(c == "demo"))
                    for c, label, mx in graded)
     days_late = f.get("canvas_days_late", 0) or 0
     # The report shows the score that is posted; Canvas applies its own late deduction on top (Scott, 2026-10-16).

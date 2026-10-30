@@ -102,6 +102,10 @@ check(all(f'id={x}><span>' in student for x in ("a-profile", "a-points", "a-earn
 
 # Questions: disputes through the Dispute buttons, everything else as a Canvas comment reply
 check("Questions or disputes" in student and "use its Dispute button" in student, "disputes section")
+_q = re.findall(r'<details class="q[^"]*"( open)?><summary><span class=qn>([^<]+)', student.split("id=score")[1].split("id=deds")[0])
+check([(t.strip(), bool(o)) for o, t in _q if t.strip() != "Evidence"] == [("Plan", False), ("Output", False), ("Report and retro", False), ("Demo", True)]
+      and not any(o for o, t in _q if t.strip() == "Evidence"),
+      f"only the Demo drawer starts open: {_q}")
 check("How useful is this report?" in student and student.count('name=rating value=') == 5
       and 'name=token value="TEST_TOKEN_abc"' in student and "/api/report-feedback" in student,
       "report feedback form: five ratings, a comment, sent in place with the link token")
