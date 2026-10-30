@@ -4,6 +4,13 @@ This course site is updated during the semester, and every meaningful update is 
 
 New entries appear at the top.
 
+## v2.12.19 (2026-10-30)
+
+Questions about Sprints 1 and 2 now go to Canvas comments.
+
+- **Sprint feedback questions.** Sprints 1 and 2 reports have no Dispute button, so add a comment on that sprint's assignment in Canvas. Slack and email are no longer used for grading questions. See Disputing a deduction in Assessments.
+- **Builder profile.** The dashed outline of your full September rating is gone from the chart. Nothing about your scores changed.
+
 ## v2.12.18 (2026-10-30)
 
 Your builder profile now has a midterm ring.
