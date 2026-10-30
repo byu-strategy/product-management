@@ -36,9 +36,12 @@
 
   var INSTALL = "https://github.com/byu-strategy/builder-template#update-your-course-skills";
   function prompt(url) {
+    // The paste is also a chance to bring every course skill up to date, even in a repo whose
+    // skills predate the self-refresh (Scott, 2026-10-29).
     return "Teach me this section of the course book with the learn skill: " + url + "\n\n" +
-      "If the learn skill is not installed in this repo, install it first with the steps under " +
-      "\"Update your course skills\" at " + INSTALL + ", then start the lesson.";
+      "First, update my course skills: if .claude/skills/refresh-skills/refresh.py exists, run it with python3; " +
+      "if it does not, update them with the steps under \"Update your course skills\" at " + INSTALL +
+      ". Then read .claude/skills/learn/SKILL.md from disk and follow it in this session to start the lesson.";
   }
 
   function init() {

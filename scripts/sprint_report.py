@@ -270,9 +270,10 @@ def coach_prompt(sprint, total, total_max, score_lines, steps, G):
     L = [f"Here is my Sprint {sprint} report from MSB 341 (Product Management). Go over it with me "
          f"and help me plan Sprint {nxt}.",
          "",
-         "Run the sprint-coach skill. If it is missing, first update my course skills the way the course "
-         f"template's README says ({TEMPLATE_REPO}#update-your-course-skills), then read "
-         ".claude/skills/sprint-coach/SKILL.md and follow it in this session.",
+         "First, update my course skills: if .claude/skills/refresh-skills/refresh.py exists, run it with "
+         "python3; if it does not, update them the way the course template's README says "
+         f"({TEMPLATE_REPO}#update-your-course-skills). Then read .claude/skills/sprint-coach/SKILL.md from "
+         "disk and follow it in this session.",
          "",
          f"SCORE: {fmt(total)} of {total_max}"]
     L += [f"- {name}: {s} of {mx}. {reason}".rstrip() for name, s, mx, reason in score_lines]

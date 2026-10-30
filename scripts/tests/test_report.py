@@ -64,6 +64,7 @@ check('class=ccbtn' in student and "Copy prompt" in student, "Copy prompt button
 check("See the prompt" in student, "prompt drawer")
 check("First step for Sprint" not in student, "first-step line was removed from the card")
 check("sprint-coach" in student, "prompt names the sprint-coach skill")
+check("refresh-skills/refresh.py" in student, "the coach prompt updates the course skills first")
 
 # Growth: one table with a sprint switch, rows that open, item points that add up
 check('class=gsw' in student and 'data-s=1' in student and 'data-s=2' in student, "growth sprint switch")
