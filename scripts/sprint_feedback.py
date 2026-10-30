@@ -319,10 +319,14 @@ def dispute_inputs(base, sprint, net_ids):
     w = base / "dispute-window.json"
     closes = None
     if w.exists():
-        c = json.loads(w.read_text()).get("closes")
+        # Shown in course time: 11:59 PM in Utah is already the next day in UTC.
+        win = json.loads(w.read_text())
+        from zoneinfo import ZoneInfo
+        c = win.get("closes")
         if c:
-            d = dt.datetime.fromisoformat(c)
-            closes = f"{d:%b} {d.day}"
+            d = dt.datetime.fromisoformat(c.replace("Z", "+00:00")).astimezone(ZoneInfo("America/Denver"))
+            o_ = dt.date.fromisoformat(win["opens"]) if win.get("opens") else None
+            closes = {"opens": f"{o_:%a, %b} {o_.day}" if o_ else None, "closes": f"{d:%a, %b} {d.day}"}
     o = base / "dispute-outcomes.json"
     return tokens, closes, (json.loads(o.read_text()) if o.exists() else {})
 

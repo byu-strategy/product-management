@@ -26,7 +26,7 @@ FX = HERE / "fixtures" / "sample-student"
 L = lambda n: json.loads((FX / n).read_text())
 r, p, G, row_, plan_row = L("result.json"), L("packet.json"), L("growth.json"), L("grades_row.json"), L("plan_row.json")
 CATS = categories(2)
-DIS = {"token": "TEST_TOKEN_abc", "closes": "Nov 5"}
+DIS = {"token": "TEST_TOKEN_abc", "closes": {"opens": "Mon, Nov 2", "closes": "Mon, Nov 9"}}
 student = render(r, p, row_, 2, CATS, final, plan_row=plan_row, growth=G, skills_status="", dispute=DIS)
 scott = render(r, p, row_, 2, CATS, final, plan_row=plan_row, growth=G, skills_status="", scott=True, fairness=[], dispute=DIS)
 plain = render(r, p, row_, 2, CATS, final, plan_row=plan_row, growth=G, skills_status="")  # no dispute link
@@ -156,7 +156,10 @@ _site = " ".join(_site.split())
 for _k, _q in RULE_TEXT.items():
     if _k not in QUOTE_EXEMPT:
         check(" ".join(_q.split()).lower() in _site.lower(), f"rule {_k} quotes the Assessments page word for word")
-check("open until Nov 5" in student, "dispute window shown")
+check("Disputes are open from <b>Mon, Nov 2</b> through <b>Mon, Nov 9 at 11:59 PM</b>." in student
+      and student.index("class=dwin") < student.index("class=ded "), "the dispute window, both dates, under Point deductions")
+_nowin = render(r, p, row_, 2, CATS, final, plan_row=plan_row, growth=G, skills_status="", dispute={"token": "TEST_TOKEN_abc", "closes": None})
+check("Disputes are open for one week after grades are posted." in _nowin, "before the window is set, the report says how long it lasts")
 check("The retro has answers under three of five prompts" in scott and "The retro has answers under three of five prompts" not in student,
       "grader's reason in Scott's copy only")
 check("/app/dispute/" not in plain and "Questions or disputes" not in plain, "no dispute link without a token")

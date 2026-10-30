@@ -758,12 +758,25 @@ def deductions_block(r, sprint, cats, dispute, outcomes, scott):
                   + (f'<p class=fix><b>To earn it next time:</b> {e(d["fix"])}</p>' if d.get("fix") else "")
                   + f'</div>{dispute_form(did) if dispute and dispute.get("token") and not scott and not st else ""}{inst}</div>')
     n = len(ds)
-    closes = (f' Disputes are open until {e(dispute["closes"])}.' if dispute and dispute.get("closes") else "")
-    note = ('<p class=dnote>Think something is wrong? Use the Dispute button to explain. A review can raise or lower the score.'
-            f'{closes}</p>' if dispute and dispute.get("token") else "")
+    note = (f'<p class=dwin>{window_text(dispute)}</p>'
+            '<p class=dnote>Think something is wrong? Use the Dispute button to explain. A review can raise or lower the score.</p>'
+            if dispute and dispute.get("token") else "")
     live = f' data-api="{DISPUTE_API}" data-token="{e(dispute["token"])}"' if dispute and dispute.get("token") and not scott else ""
     return (f'<div class=deds id=deds{live}><h3 class=sub><span>Point deductions</span>'
             f'<small>{fmt(total)} point{"s" * (total != 1)}, {n} item{"s" * (n != 1)}</small></h3>{note}{rows_}</div>')
+
+
+def window_text(dispute):
+    """When disputes are open, stated plainly under Point deductions (Scott, 2026-10-29). `closes` is
+    {"opens": "Mon, Nov 2", "closes": "Mon, Nov 9"} once the window is set, or a bare date from older builds."""
+    w = (dispute or {}).get("closes")
+    if isinstance(w, dict) and w.get("opens"):
+        return f'Disputes are open from <b>{e(w["opens"])}</b> through <b>{e(w["closes"])} at 11:59 PM</b>.'
+    if isinstance(w, dict) and w.get("closes"):
+        return f'Disputes are open through <b>{e(w["closes"])} at 11:59 PM</b>.'
+    if isinstance(w, str) and w:
+        return f'Disputes are open through <b>{e(w)} at 11:59 PM</b>.'
+    return "Disputes are open for one week after grades are posted."
 
 
 def dispute_form(did):
@@ -1834,7 +1847,7 @@ section.sec>h2{font-size:22px;font-weight:600;letter-spacing:-.01em;border-botto
 #score>details.q>summary .qn{font-weight:600}
 h3.sub,.ncx h3{display:flex;justify-content:space-between;align-items:baseline;gap:12px;font-size:16px;font-weight:600;margin:0 0 6px}
 h3.sub small,.ncx h3 small{font-size:13px;font-weight:400;color:var(--mute)}
-.deds{margin:22px 0 4px}.dnote{font-size:13px;color:var(--mute);margin:0 0 8px}
+.deds{margin:22px 0 4px}.dwin{font-size:14px;color:var(--navy);margin:0 0 4px}.dwin b{font-weight:600}.dnote{font-size:13px;color:var(--mute);margin:0 0 8px}
 .ded{border:1px solid var(--line);border-radius:10px;margin:0 0 8px;padding:12px 14px}
 .ded .dh{display:grid;grid-template-columns:38px 1fr auto;gap:10px;align-items:baseline}
 .ded .dp{font-weight:700;color:#B3321C;font-variant-numeric:tabular-nums;font-size:15px}

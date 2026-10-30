@@ -187,12 +187,16 @@ def rule_source(rid):
 
 
 def cmd_window(a):
-    """Disputes close a week after release (Scott, 2026-10-29): 11:59 PM course time on the given date."""
-    closes = due(a.date)
-    (base(a.sprint) / "dispute-window.json").write_text(json.dumps({"closes": closes}))
+    """Disputes open the day grades are posted and close a week later at 11:59 PM course time (Scott, 2026-10-29).
+    Give the posting date; the report shows both dates under Point deductions."""
+    opens = dt.date.fromisoformat(a.date)
+    close_day = opens + dt.timedelta(days=7)
+    closes = due(close_day.isoformat())
+    (base(a.sprint) / "dispute-window.json").write_text(json.dumps({"opens": opens.isoformat(), "closes": closes}))
     DB().patch("grade_dispute_links", {"closes_at": closes}, course=f"eq.{COURSE}", sprint=f"eq.{a.sprint}")
     local = dt.datetime.fromisoformat(closes.replace("Z", "+00:00")).astimezone(__import__("zoneinfo").ZoneInfo("America/Denver"))
-    print(f"Sprint {a.sprint} disputes close {local:%a %b %-d, %-I:%M %p} (course time). Rebuild the reports to show it.")
+    print(f"Sprint {a.sprint} disputes open {opens:%a %b %-d} and close {local:%a %b %-d, %-I:%M %p} (course time). "
+          "Rebuild the reports and sync to show it.")
 
 
 # ---------------------------------------------------------------- read
@@ -303,7 +307,7 @@ def main():
     ap.add_argument("--sprint", type=int)
     sp = ap.add_subparsers(dest="cmd", required=True)
     s = sp.add_parser("sync"); s.add_argument("--only", nargs="*")
-    s = sp.add_parser("window"); s.add_argument("date", help="YYYY-MM-DD, course time; closes at 11:59 PM")
+    s = sp.add_parser("window"); s.add_argument("date", help="the posting date, YYYY-MM-DD; closes 7 days later at 11:59 PM course time")
     sp.add_parser("list")
     s = sp.add_parser("pull"); s.add_argument("ticket")
     s = sp.add_parser("resolve"); s.add_argument("ticket"); s.add_argument("decision", choices=["restore", "change", "keep"])
