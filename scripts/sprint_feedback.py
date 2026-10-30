@@ -206,7 +206,7 @@ def validate(base, items, growth=None, sprint=0):
             r"\b(earns? (?:its|their) keep|moves? the needle|low-hanging fruit|heavy lifting|deep dive|game[- ]changer|"
             r"nail(?:s|ed)? (?:it|the)|shines?|rabbit hole|bread and butter|double-edged|at the end of the day|"
             r"front and center|in the weeds|sweet spot|silver bullet|home run|slam dunk|secret sauce|superpower|"
-            r"the real test|tip of the iceberg|hit the ground running|"
+            r"the real test|tip of the iceberg|hit the ground running|full marks|"
             r"dial worth turning|pulls? (?:its|their) weight|carries? the day|lands? (?:well|cleanly|the))\b", check_text, _re.I)]
         if machine:
             problems.append(f"{n}: student feedback reads as machine-written ({', '.join(sorted(set(m.lower() for m in machine)))})")

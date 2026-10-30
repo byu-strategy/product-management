@@ -46,7 +46,7 @@ A sprint has four categories. You score three of them. The plan's 10 points are 
 (submitted on time with all four fields) and are computed in code as `facts.plan_score`; never
 score or comment on plan quality.
 
-| Category | Sprints 1 to 5 | Sprint 6 | Full marks |
+| Category | Sprints 1 to 5 | Sprint 6 | Full points |
 |---|--:|--:|---|
 | **Output** (key `shipped`) | 20 | 50 | Real, finished, and checkable by the course. It does not have to be public, launched, or used by anyone. Read against the plan as it stands at the end. |
 | **Review** (`review`) | 10 | 20 | Report committed, with the retro answering each prompt. |
@@ -81,7 +81,7 @@ before judging output. A template, a placeholder, or a file with only headings i
 work.
 
 Difficulty is not a score of its own; it moves Output only as set out under Difficulty below.
-Great work on an ambitious goal earns full marks even when the student missed it a little; a safe
+Great work on an ambitious goal earns full points even when the student missed it a little; a safe
 goal comfortably hit earns nothing extra.
 
 ## Rules
@@ -157,7 +157,7 @@ goal comfortably hit earns nothing extra.
   three fields at the end of the plan file. Where the retro sits is not graded: a retro written in
   the plan file, or answering an older set of prompts, is judged on what it answers, and the
   location is never mentioned to the student. 0 if no report is committed. Retro empty
-  (`retro_filled` false): at most half. Full marks need every required prompt answered. The amounts are fixed: each prompt left
+  (`retro_filled` false): at most half. Full points need every required prompt answered. The amounts are fixed: each prompt left
   unanswered is minus 1. (Sprints 1 and 2 also took 2 for no response to something specific the
   report found; that rule ended with Sprint 3.) Never
   take more than these for a filled retro, and never take points for how deep a response goes. When the review was run is not graded: a student may
@@ -253,17 +253,17 @@ on Application Architecture and a 2 for someone at 4.5. Their `Predicted difficu
 How it affects **Output**:
 
 - **Sprint 1: raise only.** An ambitious goal (assessed 4 or 5) partly reached and accounted
-  for in the retro can earn full marks. Difficulty never lowers a Sprint 1 score.
+  for in the retro can earn full points. Difficulty never lowers a Sprint 1 score.
 - **No fixed cap for routine work (removed 2026-10-17, v2.12.2, before Sprint 2 grades were
   released).** Routine work comfortably finished is still weighed by how hard it was: it can lose
   a point or two of Output, never a set share, and the feedback states the facts of the work.
-- **Ambitious work missed a little earns full marks (every sprint; Scott, 2026-10-14).** When the
+- **Ambitious work missed a little earns full points (every sprint; Scott, 2026-10-14).** When the
   work was ambitious (assessed 4 or 5) and what was produced is really great work, give full
   Output even if one or two `Done looks like` items were missed or only partly reached. Name the
   misses in the feedback as facts, without a deduction. Take points only when the misses leave
   the output thin: little real work came out of the sprint, not a hard goal fallen a little short
   of. Example: a difficulty-4 app that works end to end on real data, with one of four planned
-  features not finished, is full marks; a difficulty-4 goal where only a scaffold and a plan came
+  features not finished, is full points; a difficulty-4 goal where only a scaffold and a plan came
   out is not.
 
 ### Effort and progress (how hard the work was, read from the whole sprint)

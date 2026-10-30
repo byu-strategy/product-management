@@ -322,7 +322,7 @@ Difficulty is not graded in either direction. Rate it honestly.
 50 points, or 100 for Sprint 6. The same four categories every sprint. The Plan assignment is
 the first category; the Wrap-up assignment is the other three.
 
-| Category | Points | Sprint 6 | What earns full marks |
+| Category | Points | Sprint 6 | What earns full points |
 |---|--:|--:|---|
 | **Plan** | 10 | 10 | Its GitHub link submitted on Canvas by Wednesday, 11:59 PM, with Goal, Why this, Done looks like, and Predicted difficulty all filled in. Graded for completion. |
 | **Output** | 20 | 50 | Real, finished, and checkable by the course; it does not have to be public or used by anyone. Read against your plan as it stands at the end, and weighed by how hard the work was for you. A goal that needs someone else's yes is graded on the asks you made. |
@@ -336,7 +336,7 @@ Sprint 6 aims for 3 to 4 minutes, and the same scale starts past 4:30.
 The plan is graded for completion, and your predicted difficulty is not graded. Aim high.
 From Sprint 2 on, output is weighed by how hard the work actually was for you, judged from
 the work itself: an ambitious goal you partly reach and
-account for in your retro can still earn full marks.
+account for in your retro can still earn full points.
 
 **Goals that need someone else to say yes.** Some goals depend on other people: signing design
 partners, getting a customer to pay, reaching a number of signups. You control the asks; you do

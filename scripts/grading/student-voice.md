@@ -43,3 +43,8 @@ not: "not shared with Professor Murff (GitHub `sdmurff`)", "so Professor Murff c
 with aifoundry.byu@gmail.com" for a Google file, "set the Loom to Anyone with the link or share it with
 scott.murff@byu.edu". Never "which the course cannot open", "so the course can check it", "work the
 course could not check".
+
+## Say "full points", never "full marks"
+
+Scott, 2026-10-29: "I would never say that." Write "Full points: ..." in feedback and "full points" anywhere a
+student reads. The build refuses "full marks".

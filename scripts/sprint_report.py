@@ -80,8 +80,8 @@ RUBRIC = {
     "shipped": "Output is what you finished this sprint, judged against your plan as it stood at the end of "
                "the sprint and against how hard the work was. It counts when someone can check it: in a "
                "shared repo, at a link, or working in your demo. An ambitious goal that you nearly reach, "
-               "and account for in your retro, can earn full marks.",
-    "review": "Your /sprint-review report and your retro. Full marks need every retro prompt answered and a "
+               "and account for in your retro, can earn full points.",
+    "review": "Your /sprint-review report and your retro. Full points need every retro prompt answered and a "
               "response, in any answer, to something specific the report found. Each prompt left unanswered "
               "costs 1 point, no specific response costs 2, and an empty retro earns at most half.",
     "demo": "Your work, working, with real content, on Loom, as the course's \"What your demo shows\" table describes. Aim for 2 to 3 minutes. {LENGTH}",
@@ -795,7 +795,7 @@ def dispute_form(did):
 RULE_TEXT = {
     "out-real": "Something real and finished exists now that did not two weeks ago.",
     "out-checkable": "Professor Murff can check it, privately. It is in your course repo, in another repo shared with Professor Murff or summarized by /sprint-review, at a link, or shown working in your demo.",
-    "out-ambitious": "An ambitious goal you partly reach and account for in your retro can still earn full marks.",
+    "out-ambitious": "An ambitious goal you partly reach and account for in your retro can still earn full points.",
     "out-needs-yes": "For these goals, Output is graded on the asks you made and can show: who you asked, when, what you asked for, and what they said.",
     "rev-committed": "The review, committed: the /sprint-review report with your answers to its five retro questions at the bottom.",
     "rev-retro": "Each question left unanswered costs 1 point. An empty retro earns at most half.",
