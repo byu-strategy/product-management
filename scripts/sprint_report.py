@@ -1343,7 +1343,7 @@ ones your work has shown say which sprint. Ones marked "measured on the exams" c
                  f'<textarea id=coachp readonly spellcheck=false rows=14>{e(prompt_txt)}</textarea></details></div>')
     if dispute and dispute.get("token"):
         fb = f'{FEEDBACK_BASE}{e(dispute["token"])}'
-        next_line += (f'<div class="sm coach rfb"><div class=cchead><span class=cch>How useful was this report?</span>'
+        next_line += (f'<div class="sm coach rfb"><div class=cchead><span class=cch>How useful is this report?</span>'
                       f'<span class=rfbw><span class=rfbs role=group aria-label="Rate this report from 1, not useful, to 5, very useful">'
                       + "".join(f'<a class=rfbn href="{fb}?r={n}" target=_blank rel="noopener noreferrer" '
                                 f'aria-label="{n} of 5">{n}</a>' for n in range(1, 6))
