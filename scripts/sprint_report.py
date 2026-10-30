@@ -7,9 +7,10 @@ else is identical, so what Scott reviews is what the student reads.
 
 Layout (approved 2026-10-14, revised 2026-10-15 and 2026-10-29): a sticky contents list on the left and open
 sections: Summary (score, profile total, the Claude Code coach card, the clickable tree-ring chart), Score (four
-rows, each with one Evidence drawer, then Point deductions with a Dispute link per item into the Strategy app),
-Next steps, Growth (with the closed "Seen this sprint, not yet in your profile" drawer), Questions or disputes,
-How grading works; Scott's copy adds Instructor notes first. Colors are the Strategy app's BYU tokens. Detail
+rows, each with one Evidence drawer, then Point deductions with a Dispute link per item into the Strategy app, then
+Questions or disputes), Next steps, Growth (with the closed "Seen this sprint, not yet in your profile" drawer),
+Appendix A: How grading works, Appendix B: Concept list. Every section is an h2 styled alike; its parts are h3.sub, nested
+under it in the contents list (2026-10-29). Scott's copy adds Instructor notes first. Colors are the Strategy app's BYU tokens. Detail
 (evidence, reasons, Loom stills) stays in <details>. Inline CSS and SVG, one small script that
 highlights the current section, images embedded; printing hides the contents list.
 
@@ -937,6 +938,7 @@ def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott
         canvas = (f"Posted to Canvas: Sprint {sprint} Plan {fmt(plan_pts)}/10 and Sprint {sprint} Wrap-up "
                   f"{fmt(review_total)}/{review_max}.")
     score_body += deductions_block(r, sprint, cats, dispute, outcomes, scott)
+    score_body += "<!--ASK-->"
     note = (row_.get("scott_note") or "").strip()
     if note:
         score_body += f'<div class=snote><b>From Professor Murff</b><p>{e(note)}</p></div>'
@@ -948,7 +950,7 @@ def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott
                    if any(((G.get("start") or {}).get("points") or {}).values()) else "")
         sw = core_sw + "".join(f'<button type=button class=lg data-s="{s}"><span class=sw style="background:{SPRINT_COLORS.get(s, NAVY)}">'
                                f'</span>Sprint {s}</button> ' for s in drawn)
-        cap = f'{sw}<a href="#appendix" class=capl>How to read this</a>'
+        cap = f'{sw}<a href="#a-profile" class=capl>How to read this</a>'
     else:
         cap = "Your builder profile is being prepared."
 
@@ -1183,6 +1185,10 @@ def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott
            f'{" Wrap-up" if sprint > 1 else ""} assignment in Canvas, and say which part of the report you mean. '
            'Professor Murff reads every reply. Questions sent anywhere else may be missed.</p>')
 
+    # Questions sit under Score, right after the deductions they mostly concern (Scott, 2026-10-29).
+    q_title = "Questions or disputes" if dispute and dispute.get("token") else "Questions"
+    score_body = score_body.replace("<!--ASK-->", f'<div class=qa id=questions><h3 class=sub><span>{q_title}</span></h3>{ask}</div>')
+
     # ---- appendix
     CL = load_concepts()
     shown_in = {}
@@ -1212,30 +1218,35 @@ def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott
                 ap_rows += (f'<tr class="{"got" if s_ else ""}{" ko" if c.get("knowledge_only") else ""}"><td><b>{book_name(c["id"], c["name"])}</b>'
                             f'</td><td class=apd>{e(status)}</td></tr>')
     appendix = f"""
-<p><b>Your builder profile.</b> The six-sided chart shows the six areas (the axes of the chart) a product builder works in. Each area runs from 0
+<h3 class=sub id=a-profile><span>Your builder profile</span></h3>
+<p>The six-sided chart shows the six areas (the axes of the chart) a product builder works in. Each area runs from 0
 to 100, and 100 in all six is a full-stack product builder: someone who can find a problem worth solving, design and build
 the product, and get it to real users.</p>
-<p><b>Where the points come from.</b> Up to half of each area comes from your sprint work (a quarter on AI Systems), and
+<h3 class=sub id=a-points><span>Where the points come from</span></h3>
+<p>Up to half of each area comes from your sprint work (a quarter on AI Systems), and
 the rest from the exams. Until the midterm, the center of the chart is your own rating from the September survey. Each ring
 outside it is one sprint, darker for later sprints. The midterm replaces the center with your exam result on the three areas
 it tests (Agentic Workflow, Discovery, Design), which can move the center up or down; your September rating stays on the chart
 as a dashed outline. The final exam does the same for all six areas.</p>
-<p><b>Sprint work earns points two ways.</b></p>
+<h3 class=sub id=a-earn><span>How sprint work earns points</span></h3>
+<p>Sprint work earns points two ways.</p>
 <ul>
-<li><b>Concepts:</b> the first time your work shows a concept from the list below, it earns its points (70% of an area's
+<li><b>Concepts:</b> the first time your work shows a concept from the concept list (Appendix B), it earns its points (70% of an area's
 sprint points are spread across its concepts). A concept counts once.</li>
 <li><b>Depth:</b> the highest level you have worked at in an area (the other 30%). Level 1, Followed, earns nothing; level
 2, Directed, 20%; level 3, Decided, 50%; level 4, Delivered, all of it. Each report says what your level means and what
 the next one looks like.</li>
 </ul>
-<p><b>What counts.</b> Work you can point to: a commit or file in a shared repo, a shared Google file, a live link, or a
+<h3 class=sub id=a-counts><span>What counts</span></h3>
+<p>Work you can point to: a commit or file in a shared repo, a shared Google file, a live link, or a
 moment in your Loom. Close calls and the higher depth levels are checked a second time against that evidence. Work
-described only in your review or retro, work in a repo that is not shared, and anything the course gave you do not count;
+described only in your review or retro, work in a repo that is not shared unless your <code>/sprint-review</code> report lists
+its commits, and anything the course gave you do not count;
 they appear under "Seen this sprint, not yet in your profile", with what would let them count. A few concepts and depth level 4 rely on lists that the current
 <code>/sprint-review</code> writes ("Builder tools you used" and "Users this sprint"); a Sprint 2 review made with an older
 version could not show them, so update your course skills before your next review.</p>
-<p><b>Your sprint rings never shrink,</b> and the profile does not affect your grade.</p>
-<p><b>The concept list.</b> Every concept in the course, by area and topic, with a link to where the book teaches it. The
+<p>Your sprint rings never shrink, and the profile does not affect your grade.</p>
+<!--APX-B--><p>Every concept in the course, by area and topic, with a link to where the book teaches it. The
 ones your work has shown say which sprint. Ones marked "measured on the exams" count only on the exams.</p>
 <table class=apt><tr><th>Concept</th><th>Shown</th></tr>{ap_rows}</table>"""
 
@@ -1347,8 +1358,8 @@ ones your work has shown say which sprint. Ones marked "measured on the exams" c
         ("score", "Score", f'{fmt(total)} / {total_max}, posted to Canvas', score_body, ""),
         ("next", "Next steps", f'{n_steps} step{"s" * (n_steps != 1)}' if n_steps else "", todo, ""),
         ("grew", "Growth", grew_right, grew, ""),
-        ("questions", "Questions or disputes" if dispute and dispute.get("token") else "Questions", "", ask, ""),
-        ("appendix", "How grading works", f"{n_all} concepts", appendix, "apxd"),
+        ("appendix", "Appendix A: How grading works", "", appendix.split("<!--APX-B-->")[0], ""),
+        ("concepts", "Appendix B: Concept list", f"{n_all} concepts", appendix.split("<!--APX-B-->")[1], ""),
     ]
     short = {"score": f"{fmt(total)}/{total_max}", "grew": f"+{fmt(round(added))}" if G and added else "",
              "next": str(n_steps) if n_steps else ""}
@@ -1372,8 +1383,10 @@ ones your work has shown say which sprint. Ones marked "measured on the exams" c
 // being read opens its own. Clicking an item inside a closed drawer opens the drawer.
 (()=>{{
 const nav=document.querySelector('nav.toc');
-const pick={{score:':scope>details.q',grew:':scope>.gview:not([hidden])>details.gx,:scope>.gview:not([hidden])>.qax',appendix:'tr.apx'}};
+const pick={{score:':scope>details.q,:scope>.deds>h3.sub,:scope>.qa>h3.sub',grew:':scope>.gview:not([hidden])>details.gx,:scope>.gview:not([hidden])>.qax,:scope details.ncx',appendix:':scope>h3.sub',concepts:'tr.apx'}};
 const label=el=>{{
+  if(el.matches('h3'))return el.querySelector('span').textContent;
+  if(el.matches('details.ncx'))return el.querySelector('h3').firstChild.textContent;
   if(el.matches('details')){{const q=el.querySelector('summary .qn').cloneNode(true);q.querySelectorAll('.bkc').forEach(x=>x.remove());return q.textContent}}
   if(el.matches('li.ns'))return el.querySelector('.nst').textContent;
   const f=el.firstChild;return (f&&f.nodeType===3?f.textContent:(el.querySelector('td')||el).childNodes[0].textContent);
@@ -1502,7 +1515,6 @@ section.sec>h2{display:flex;justify-content:space-between;align-items:baseline;g
 section.sec>h2 small{font-size:13.5px;color:var(--mute);font-weight:400;font-variant-numeric:tabular-nums}
 section.inst{background:#fff8e1;border:1px solid #e8c766;border-radius:10px;padding:4px 18px 14px;font-size:12.5px}
 section.inst>h2{font-size:15px;color:#7a5a00}
-section.apxd>h2{font-size:16px;color:#4a5262}
 .smrow{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .sm{border:1px solid var(--line);border-radius:10px;background:#F7F9FC;padding:12px 16px;display:flex;flex-direction:column;gap:2px;margin-bottom:12px}
 .sml{font-size:11.5px;text-transform:uppercase;letter-spacing:.07em;color:var(--mute);font-weight:600}
@@ -1540,7 +1552,6 @@ details.big.score .bt{font-size:12.5px;text-transform:uppercase;letter-spacing:.
 details.big.inst{background:#fff8e1;border:1px solid #e8c766;border-radius:10px;margin:0 0 16px;font-size:12.5px}
 details.big.inst>summary{padding:10px 16px}details.big.inst .bt{font-size:14px}details.big.inst>.bb{padding:0 16px 12px}
 .igrid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:4px 0 8px}.inst ul{margin:2px 0 8px;padding-left:18px}.inst p{margin:6px 0}.ihow{color:#7a5a00}
-details.big.apxd .bt{font-size:15px;color:#4a5262}
 details.q{border-bottom:1px solid var(--line)}details.q>summary{list-style:none;display:flex;justify-content:space-between;gap:12px;padding:9px 0;cursor:pointer}
 details.q>summary::-webkit-details-marker{display:none}
 details.q>summary .qn::after{content:"";display:inline-block;width:5px;height:5px;border-right:1.5px solid var(--mute);border-bottom:1.5px solid var(--mute);transform:rotate(-45deg);margin-left:8px;vertical-align:2px;transition:transform .15s}
@@ -1659,7 +1670,7 @@ h3.sub small,.ncx h3 small{font-size:13px;font-weight:400;color:var(--mute)}
 .doc h1{font-size:14.5px;margin:10px 0 4px}.doc h2{font-size:13.5px;margin:10px 0 3px}.doc h3{font-size:13px}
 .ncx{margin:18px 0 4px;border:1px solid var(--line);border-radius:10px;padding:12px 16px 4px;background:#F7F9FC}
 .ncx>summary{display:block;list-style:none;cursor:pointer;padding-bottom:8px}.ncx>summary::-webkit-details-marker{display:none}
-.ncx h3{margin:0;font-size:14.5px}.ncx h3 small::after{content:" \\203A";display:inline-block;margin-left:6px;transition:transform .15s}
+.ncx h3{margin:0}.ncx h3 small::after{content:" \\203A";display:inline-block;margin-left:6px;transition:transform .15s}
 .ncx[open] h3 small::after{transform:rotate(90deg)}
 .ncx .nci{margin:0 0 10px;font-size:13.5px;color:var(--mute)}
 .ncg{border-top:1px solid var(--line);padding:10px 0 8px}.ncg .ngh{display:flex;justify-content:space-between;gap:12px;font-weight:600;font-size:13.5px;color:var(--navy)}

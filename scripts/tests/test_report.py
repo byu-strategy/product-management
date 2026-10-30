@@ -52,7 +52,7 @@ st, sc = text(student), text(scott)
 
 # Both copies: sections and order
 for h in (student, scott):
-    for sec in ('id=summary', 'id=score', 'id=grew', 'id=next', 'id=questions', 'id=appendix'):
+    for sec in ('id=summary', 'id=score', 'id=grew', 'id=next', 'id=questions', 'id=appendix', 'id=concepts'):
         check(sec in h or sec.replace("=", '="') in h, f"section missing: {sec}")
 
 # Instructor notes only in Scott's copy
@@ -82,13 +82,23 @@ for row in re.findall(r'<details class="q gx">(.*?)</details></div></details>', 
 # Methodology in plain words
 for w in ("spoke", "knowledge fills", "Practice</b>"):
     check(w not in student, f"old Methodology wording: {w}")
-check("Where the points come from" in student and "The concept list" in student, "Methodology sections")
+check("Where the points come from" in student and "Appendix B: Concept list" in student, "appendix sections")
 
 # Section order: Next steps before Growth (2026-10-29)
 for h in (student, scott):
-    check(h.find("id=score") < h.find("id=next") < h.find("id=grew") < h.find("id=questions") < h.find("id=appendix"),
-          "section order: Score, Next steps, Growth, Questions, How grading works")
-check("How grading works" in student and "Methodology</span>" not in student, "How grading works heading")
+    check(h.find("id=score") < h.find("id=deds") < h.find("id=questions") < h.find("id=next") < h.find("id=grew")
+          < h.find("id=appendix") < h.find("id=concepts"),
+          "order: Score (deductions, then questions), Next steps, Growth, Appendix A, Appendix B")
+check("Appendix A: How grading works" in student and "Methodology</span>" not in student, "Appendix A heading")
+
+# One heading hierarchy (2026-10-29): sections are h2 and all styled alike; their parts are h3.sub, which
+# the contents list nests under them. Questions is an h3 under Score, not its own section.
+import re as _re2
+_h2 = _re2.findall(r'<section id=(\w+) class="sec ([^"]*)"><h2>', student)
+check([i for i, _c in _h2] == ["summary", "score", "next", "grew", "appendix", "concepts"], f"student sections are exactly the six: {_h2}")
+check(all(c.strip() == "" for _i, c in _h2), "every student section heading has the same style")
+check('<div class=qa id=questions><h3 class=sub>' in student, "Questions is an h3 under Score")
+check(all(f'id={x}><span>' in student for x in ("a-profile", "a-points", "a-earn", "a-counts")), "Appendix A topics are h3 headings")
 
 # Questions: disputes through the Dispute buttons, everything else as a Canvas comment reply
 check("Questions or disputes" in student and "use its Dispute button" in student, "disputes section")
