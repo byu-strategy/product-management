@@ -741,7 +741,7 @@ def deductions_block(r, sprint, cats, dispute, outcomes, scott):
                   + f'</div>{dispute_form(did) if dispute and dispute.get("token") and not scott and not st else ""}{inst}</div>')
     n = len(ds)
     closes = (f' Disputes are open until {e(dispute["closes"])}.' if dispute and dispute.get("closes") else "")
-    note = ('<p class=dnote>Think one is wrong? Use its Dispute button: no sign-in needed. A review can raise or lower the score.'
+    note = ('<p class=dnote>Think something is wrong? Use the Dispute button to explain. A review can raise or lower the score.'
             f'{closes}</p>' if dispute and dispute.get("token") else "")
     live = f' data-api="{DISPUTE_API}" data-token="{e(dispute["token"])}"' if dispute and dispute.get("token") and not scott else ""
     return (f'<div class=deds id=deds{live}><h3 class=sub><span>Point deductions</span>'
