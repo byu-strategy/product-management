@@ -4,6 +4,14 @@ This course site is updated during the semester, and every meaningful update is 
 
 New entries appear at the top.
 
+## v2.12.16 (2026-10-29)
+
+Retro question 2 now asks how many hours you worked, and the review rubric is simpler.
+
+- **New retro question 2.** `/sprint-review` now asks: "How many hours do you estimate you worked on this sprint, all in, including time away from Claude Code?" It replaces "What did the report show you?". Your estimate is never graded on the number. To get this version, refresh your course skills with the prompt in your README before you run `/sprint-review` for Sprint 4.
+- **Review rubric.** Your retro no longer has to respond to something specific in the report. Each question left unanswered still costs 1 point. This applies from Sprint 3.
+- **Point deductions in your report** now quote the sentence of the rubric each one rests on.
+
 ## v2.12.15 (2026-10-29)
 
 The grading rubric now says who checks your work.
