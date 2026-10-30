@@ -33,7 +33,8 @@ LOG_COLS = ["net_id", "canvas_user_id", "score", "posted_at", "comment_file_id"]
 def comment_text(row, sprint, note=""):
     return (f"{row['preferred_first'] or row['name']}, your Sprint {sprint} report is attached. Open it in your "
             f"browser: it covers each category, your builder profile, and next steps for Sprint {sprint + 1}. "
-            f"Questions about the grade: reply to this comment." + (f" {note}" if note else ""))
+            + (f"To dispute a deduction, use its Dispute button in the report. Other questions: reply to this comment."
+               if sprint >= 3 else "Questions about the grade: reply to this comment.") + (f" {note}" if note else ""))
 
 
 def report_name(sprint):
