@@ -1453,8 +1453,7 @@ ones your work has shown say which sprint. Ones marked "measured on the exams" c
     parts_ = ([f"Plan {fmt(plan_pts)}"] if sprint > 1 else []) + [f"{LABELS.get(c, c)} {fmt(final(row_, c))}" for c, _l, _m in graded]
     note = (row_.get("scott_note") or "").strip()
     note_html = ('<div class=snote><b>From Professor Murff</b>'
-                 + "".join("<p>" + re.sub("([\U0001F300-\U0001FAFF\u2600-\u27BF])", r"<span class=emo>\1</span>", e(p.strip()))
-                           + "</p>" for p in re.split(r"\n\s*\n", note) if p.strip())
+                 + "".join(f"<p>{e(p.strip())}</p>" for p in re.split(r"\n\s*\n", note) if p.strip())
                  + '</div>') if note else ""
     summary = (f'{note_html}<div class=smrow><div class=sm><span class=sml>Sprint {sprint} score</span>'
                f'<span class=smv>{fmt(total)}<small> / {total_max}</small></span><a class=sms href="#score">{" · ".join(parts_)}</a>{lost_line}</div>'
@@ -1758,7 +1757,7 @@ details.q.gx>.qb{padding-left:14px}
 details.q.dep>summary .qn{font-style:italic;color:#4a5262}
 .capl{margin-left:10px;color:var(--mute);text-decoration:underline;text-decoration-color:#CCCCCC}
 .qtotal{display:flex;justify-content:space-between;padding:10px 0 2px;font-weight:600}
-.snote{background:#EEF1F5;border-left:4px solid #002E5D;border-radius:4px;padding:12px 16px;margin:0 0 16px;font-size:15px;line-height:1.5}.snote b{color:#002E5D}.snote p{margin:6px 0 0}.snote .emo{font-size:28px;line-height:1;vertical-align:middle}
+.snote{background:#EEF1F5;border-left:4px solid #002E5D;border-radius:4px;padding:12px 16px;margin:0 0 16px;font-size:15px;line-height:1.5}.snote b{color:#002E5D}.snote p{margin:6px 0 0}
 ol.nsl{list-style:none;margin:6px 0 10px;padding:0}
 li.ns{display:flex;gap:14px;padding:12px 0;border-bottom:1px solid var(--line)}li.ns:last-child{border-bottom:0}
 .nsn{flex:none;width:26px;height:26px;border-radius:50%;background:#EEF4FB;color:var(--amber);font-weight:600;font-size:13.5px;display:flex;align-items:center;justify-content:center;margin-top:1px}
