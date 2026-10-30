@@ -141,8 +141,8 @@ Every sprint has the same four deliverables.
 | **Demo** | 2 to 3 minutes on Loom of the work, working | Loom | Paste the Loom share link into **Sprint N Wrap-up** on Canvas. Set the Loom to "Anyone with the link" or share it with scott.murff@byu.edu | On or before the Monday the sprint ends, by 11:59 PM | 10 |
 
 **Retro**, short for retrospective, is your part of the review: your answers to the five
-questions `/sprint-review` asks after it shows you the report. Did you hit the goal, what did
-the report show you, why did the plan change if it did, how hard was it really, and what will you
+questions `/sprint-review` asks after it shows you the report. Did you hit the goal, about how
+many hours did you work, why did the plan change if it did, how hard was it really, and what will you
 change next sprint. It saves your answers word for word with the report.
 
 Sprint 6 is worth 100: Plan 10, Output 50, Review 20, Demo 20, and its wrap-up is due Thursday, December 10, the last day of class.
@@ -205,7 +205,7 @@ nothing leaves your machine except the report.
 **2. Answer its five retro questions.** After showing you the report, `/sprint-review` asks:
 
 1. Did you hit the goal? Yes, partly, or no, and why.
-2. What did the report show you that you didn't expect, or wouldn't have noticed yourself?
+2. How many hours do you estimate you worked on this sprint, all in, including time away from Claude Code?
 3. If the plan changed, why?
 4. Actual difficulty, 1 to 5, and why it differed from what you predicted.
 5. What will you change next sprint?
@@ -325,7 +325,7 @@ the first category; the Wrap-up assignment is the other three.
 |---|--:|--:|---|
 | **Plan** | 10 | 10 | Its GitHub link submitted on Canvas by Wednesday, 11:59 PM, with Goal, Why this, Done looks like, and Predicted difficulty all filled in. Graded for completion. |
 | **Output** | 20 | 50 | Real, finished, and checkable by the course; it does not have to be public or used by anyone. Read against your plan as it stands at the end, and weighed by how hard the work was for you. A goal that needs someone else's yes is graded on the asks you made. |
-| **Review** | 10 | 20 | Report committed, with your retro answering all five questions and responding to something specific in the report, in any of its answers. Each question left unanswered costs 1 point. A retro that responds to nothing specific in the report loses 2 points. An empty retro earns at most half. |
+| **Review** | 10 | 20 | Report committed, with your retro answering all five questions. Each question left unanswered costs 1 point. An empty retro earns at most half. Your hours estimate is never graded on the number. |
 | **Demo** | 10 | 20 | 2 to 3 minutes on Loom of your work, working, as described in [What your demo shows](#what-your-demo-shows), with real content. A demo that is not a Loom scores 0. Set it to "Anyone with the link" or share it with scott.murff@byu.edu. Length rules below. |
 
 **Demo length.** Aim for 2 to 3 minutes. A demo up to 3:30 loses no points. From Sprint 3, each started

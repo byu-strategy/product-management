@@ -103,6 +103,33 @@ def final(row, cat):
 
 # ---------------------------------------------------------------- sync
 
+def plan_score(sprint, n):
+    """From Sprint 2 the Plan is its own assignment, scored by plan_grades.py into plans/plans.csv."""
+    p = base(sprint) / "plans/plans.csv"
+    row = next((x for x in csv.DictReader(open(p)) if x["net_id"] == n), None) if p.exists() else None
+    return float(row["score"]) if row and str(row.get("score", "")).strip() else None
+
+
+def record(r, row, sprint, ro):
+    """The student-sprint record (migration 075): identifiers, each category's score, and hours three
+    ways. Hours are Scott's data only; nothing here reaches a student."""
+    mx = {c: m for c, _l, m in categories(sprint)}
+    sc = lambda c: (final(row, c) if row and str(row.get(c, "")).strip() + str(row.get(f"override_{c}", "")).strip() else None)
+    h = r.get("hours") or {}
+    num = lambda v: float(v) if isinstance(v, (int, float)) else None
+    return {
+        "canvas_user_id": str((row or {}).get("canvas_user_id") or ro.get("canvas_user_id") or "") or None,
+        "repo": (row or {}).get("repo") or None,
+        "plan_score": plan_score(sprint, r["net_id"]) if sprint > 1 else sc("plan"), "plan_max": 10 if sprint > 1 else None,
+        "output_score": sc("shipped"), "output_max": mx.get("shipped"),
+        "retro_score": sc("review"), "retro_max": mx.get("review"),
+        "demo_score": sc("demo"), "demo_max": mx.get("demo"),
+        "confidence": r.get("confidence"),
+        "hours_self": num(h.get("self")), "hours_self_text": h.get("self_text"),
+        "hours_session": num(h.get("session")), "hours_est": num(h.get("est")), "hours_est_why": h.get("est_why"),
+    }
+
+
 def cmd_sync(a):
     b = base(a.sprint)
     tokens = json.loads((b / "dispute-tokens.json").read_text())
@@ -128,6 +155,7 @@ def cmd_sync(a):
             "token_hash": hashlib.sha256(tokens[n].encode()).hexdigest(), "course": COURSE, "sprint": a.sprint,
             "net_id": n, "student_name": p.get("name") or ro["name"], "first_name": ro.get("preferred_first") or ro["name"].split()[0],
             "email": ro["email"], "review_score": score, "review_max": review_max, "closes_at": closes,
+            **record(r, row, a.sprint, ro),
             "updated_at": dt.datetime.now(dt.timezone.utc).isoformat()}], "course,sprint,net_id")[0]
         n_links += 1
         # A deduction someone already disputed is never replaced; the rest follow the current result.

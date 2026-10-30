@@ -727,9 +727,9 @@ RULE_TEXT = {
     "out-ambitious": "An ambitious goal you partly reach and account for in your retro can still earn full marks.",
     "out-needs-yes": "For these goals, Output is graded on the asks you made and can show: who you asked, when, what you asked for, and what they said.",
     "rev-committed": "The review, committed: the /sprint-review report with your answers to its five retro questions at the bottom.",
-    "rev-retro": "Each question left unanswered costs 1 point. A retro that responds to nothing specific in the report loses 2 points. An empty retro earns at most half.",
+    "rev-retro": "Each question left unanswered costs 1 point. An empty retro earns at most half.",
     "rev-s1-template": "The Sprint 1 retro answers its template: did you hit the goal, what happened, what changes next sprint.",
-    "rev-five-questions": "Report committed, with your retro answering all five questions and responding to something specific in the report, in any of its answers.",
+    "rev-five-questions": "Report committed, with your retro answering all five questions.",
     "demo-working": "2 to 3 minutes on Loom of your work, working, as described in What your demo shows, with real content.",
     "demo-length": "A demo up to 3:30 loses no points. From Sprint 3, each started 30 seconds past 3:30 costs 1 point (3:31 to 4:00 is minus 1, 4:01 to 4:30 minus 2, 4:31 to 5:00 minus 3).",
     "demo-not-loom": "A demo that is not a Loom scores 0.",
@@ -1251,6 +1251,12 @@ ones your work has shown say which sprint. Ones marked "measured on the exams" c
                          f'{e(str(diff.get("axis", "")))}, baseline {e(str(diff.get("baseline_on_axis", "")))}; predicted '
                          f'{e(str(diff.get("predicted")))}, student said {e(str(diff.get("student_actual")))}; effect on Output: '
                          f'{e(str(diff.get("effect_on_shipped") or "none"))}. {e(diff.get("why", ""))}</p>')
+        h = r.get("hours") or {}
+        if h:
+            hv = lambda k: fmt(float(h[k])) if h.get(k) is not None else "none"
+            parts.append(f'<p class=ihours><b>Hours</b> (never shown to students): student estimate {hv("self")}'
+                         + (f' (&ldquo;{e(h["self_text"])}&rdquo;)' if h.get("self_text") else "")
+                         + f', active session time {hv("session")}, grader estimate {hv("est")}. {e(h.get("est_why") or "")}</p>')
         if r.get("axes"):
             parts.append(f'<p><b>Axis split</b> {e(", ".join(f"{k} {round(v * 100)}%" for k, v in r["axes"].items()))}. {e(r.get("axes_why", ""))}</p>')
         if days_late:

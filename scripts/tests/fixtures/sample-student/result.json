@@ -1,118 +1,125 @@
 {
-  "net_id": "sample1",
-  "scores": {
-    "shipped": 20,
-    "review": 7,
-    "demo": 10
+ "net_id": "sample1",
+ "scores": {
+  "shipped": 20,
+  "review": 7,
+  "demo": 10
+ },
+ "reasons": {
+  "shipped": "plan.now items covered: post, pick-up and approve flows on the live app (b2c08e1, b5d0e72), the UI rebuilt on shadcn/ui with empty, loading and error states (3f1a9c2, a9e6c41, 0d4f8a2), the photo reader returning an editable draft with undo (c94d1b0, 16f9a3c), row-level security on swaps (6e4f13a), email notices with text messages dropped per the Oct 6 change, and seven interviews, five briefs and a ranking (b47c0d2, f7e3c19). Live at shiftswap.example.com (200). Assessed 4, no cap.",
+  "review": "Report committed and retro filled. The retro answers hit-the-goal, what happened, actual difficulty with a reason, and next sprint, and the Oct 6 change note gives the reason for the plan change; it has no answer to 'what did the report show you' and does not respond to any report finding (Oct 6 as a third of all prompts, the Oct 8 re-scan that double-booked nine shifts, discovery at about 15 prompts).",
+  "demo": "68 seconds, 9 of 9 moments on the live app with the real desk schedule: board (0:04), photo import (0:11), draft with low-confidence rows and undo (0:19 to 0:26), post and pick-up (0:34, 0:41), manager approval (0:49 to 0:56), week view conflict (1:04)."
+ },
+ "flags": [
+  "late: commits_after_due = 2 (4d9b3e7 'Sprint 3 plan' and a0c6f48, Oct 13); Canvas on time",
+  "retro_location 'plan file', but commit 8e5f2d0 also put the retro in the review file; review_window_end is null",
+  "shipped_files stops at 25 code files; no text for the interview notes, briefs, or ranking in sprints/discovery/, so discovery was credited from commits b47c0d2 and f7e3c19 and the report",
+  "Discovery work is not shown in the demo"
+ ],
+ "watch_loom": false,
+ "confidence": "medium",
+ "demo_notes": [
+  {
+   "at": "0:04",
+   "sees": "ShiftSwap board at shiftswap.example.com: open shifts this week (5), My shifts (4), Swaps with one pending badge"
   },
-  "reasons": {
-    "shipped": "plan.now items covered: post, pick-up and approve flows on the live app (b2c08e1, b5d0e72), the UI rebuilt on shadcn/ui with empty, loading and error states (3f1a9c2, a9e6c41, 0d4f8a2), the photo reader returning an editable draft with undo (c94d1b0, 16f9a3c), row-level security on swaps (6e4f13a), email notices with text messages dropped per the Oct 6 change, and seven interviews, five briefs and a ranking (b47c0d2, f7e3c19). Live at shiftswap.example.com (200). Assessed 4, no cap.",
-    "review": "Report committed and retro filled. The retro answers hit-the-goal, what happened, actual difficulty with a reason, and next sprint, and the Oct 6 change note gives the reason for the plan change; it has no answer to 'what did the report show you' and does not respond to any report finding (Oct 6 as a third of all prompts, the Oct 8 re-scan that double-booked nine shifts, discovery at about 15 prompts).",
-    "demo": "68 seconds, 9 of 9 moments on the live app with the real desk schedule: board (0:04), photo import (0:11), draft with low-confidence rows and undo (0:19 to 0:26), post and pick-up (0:34, 0:41), manager approval (0:49 to 0:56), week view conflict (1:04)."
+  {
+   "at": "0:11",
+   "sees": "Import a schedule photo page with a phone photo of the circulation desk sheet selected and an Upload button"
   },
-  "flags": [
-    "late: commits_after_due = 2 (4d9b3e7 'Sprint 3 plan' and a0c6f48, Oct 13); Canvas on time",
-    "retro_location 'plan file', but commit 8e5f2d0 also put the retro in the review file; review_window_end is null",
-    "shipped_files stops at 25 code files; no text for the interview notes, briefs, or ranking in sprints/discovery/, so discovery was credited from commits b47c0d2 and f7e3c19 and the report",
-    "Discovery work is not shown in the demo"
-  ],
-  "watch_loom": false,
-  "confidence": "medium",
-  "demo_notes": [
-    {
-      "at": "0:04",
-      "sees": "ShiftSwap board at shiftswap.example.com: open shifts this week (5), My shifts (4), Swaps with one pending badge"
-    },
-    {
-      "at": "0:11",
-      "sees": "Import a schedule photo page with a phone photo of the circulation desk sheet selected and an Upload button"
-    },
-    {
-      "at": "0:19",
-      "sees": "Draft table with 64 shifts; two rows highlighted as low confidence; Undo button above the table"
-    },
-    {
-      "at": "0:26",
-      "sees": "One highlighted row edited from 13:00 to 13:30; Undo and Save draft buttons visible"
-    },
-    {
-      "at": "0:34",
-      "sees": "Post a shift dialog for a Thursday 14:00 to 18:00 shift with the note 'closing shift, needs keys'"
-    },
-    {
-      "at": "0:41",
-      "sees": "Signed in as a test coworker: pick-up dialog for the same shift, no conflicts found, Pick up button"
-    },
-    {
-      "at": "0:49",
-      "sees": "Manager approval queue: one pending swap with poster, picker, and 'Weekly hours after swap: 16 of 20'"
-    },
-    {
-      "at": "0:56",
-      "sees": "Swap shown as Approved with a green badge; shift now listed under the coworker"
-    },
-    {
-      "at": "1:04",
-      "sees": "Week view: open shifts outlined; one marked 'Conflicts with your 2:00 PM shift' with Pick up disabled"
-    }
-  ],
-  "demo_checks": {
-    "on_screen": "9 of 9 show the app itself.",
-    "working": "Yes: the photo becomes a draft (0:19), a row is edited and undone (0:26), a shift is posted and picked up (0:34, 0:41), and the manager approves it (0:49 to 0:56). 0:56 to 1:04 moves to the week view.",
-    "real_content": "Real content: the circulation desk's paper schedule, 64 shifts.",
-    "reachable": "Public URL shiftswap.example.com visible; shifts are private to each signed-in account.",
-    "matches_plan": "Photo reader with draft and undo (0:11 to 0:26), post, pick-up and approval (0:34 to 0:56), rebuilt UI throughout. The interviews, briefs and ranking do not appear.",
-    "off_demo": "None; you start in the app.",
-    "readable": "Readable at the zoom used."
+  {
+   "at": "0:19",
+   "sees": "Draft table with 64 shifts; two rows highlighted as low confidence; Undo button above the table"
   },
-  "feedback": {
-    "shipped": "Full marks: your plan's items are all there, with post, pick-up and approval working on the live app, the photo reader returning an editable draft with undo in c94d1b0, the rebuilt UI with its empty and error states, and seven interviews, five briefs and a ranking in sprints/discovery/.",
-    "review": "Your report is committed and your retro answers whether you hit the goal, what happened, your actual difficulty, and what changes next sprint. It does not answer what the report showed you or respond to anything it found, such as Oct 6 taking a third of all prompts or the Oct 8 re-scan that double-booked nine shifts.",
-    "demo": "Full marks: in about a minute you show the live app with the real desk schedule, the photo becoming a draft at 0:19, a swap approved at 0:49, and the conflict on the week view at 1:04."
+  {
+   "at": "0:26",
+   "sees": "One highlighted row edited from 13:00 to 13:30; Undo and Save draft buttons visible"
   },
-  "next_sprint": "You might consider showing the discovery ranking for a few seconds in the demo when discovery is part of the plan.",
-  "not_reviewed": {
-    "summary": null,
-    "detail": "Nothing that affected a score: your plan, sprint review, the app code and live app, and your full demo were reviewed, and the discovery work in sprints/discovery/ was credited from commits b47c0d2 and f7e3c19."
+  {
+   "at": "0:34",
+   "sees": "Post a shift dialog for a Thursday 14:00 to 18:00 shift with the note 'closing shift, needs keys'"
   },
-  "axes": {
-    "Application Architecture": 0.5,
-    "Design": 0.35,
-    "Discovery": 0.15
+  {
+   "at": "0:41",
+   "sees": "Signed in as a test coworker: pick-up dialog for the same shift, no conflicts found, Pick up button"
   },
-  "axes_why": "The report tags Application Architecture (the photo reader's server route, swap tables, row-level security, the manager role, the re-scan fix) with Design close behind, and the commits agree; discovery took about 15 prompts and produced seven interviews, five briefs and a ranking.",
-  "difficulty": {
-    "assessed": 4,
-    "axis": "Application Architecture",
-    "baseline_on_axis": 1.08,
-    "predicted": 4,
-    "student_actual": 5,
-    "why": "A vision-model reader with structured output and an editable draft, row-level security with a separate manager role, and an approval flow with email, all new to the student, with a stuck point that took days (the re-scan, Oct 8 to 10).",
-    "effect_on_shipped": "none",
-    "note": "You predicted a 4 and rated it a 5; the work was closer to a 4: a photo reader that returns an editable draft, row-level security that keeps each student to their own swaps, and a manager approval flow, with the re-scan fix taking from Oct 8 to Oct 10 to get right."
+  {
+   "at": "0:49",
+   "sees": "Manager approval queue: one pending swap with poster, picker, and 'Weekly hours after swap: 16 of 20'"
   },
-  "deductions": [
-    {
-      "id": "R1",
-      "category": "review",
-      "points": 1,
-      "rule_id": "rev-retro",
-      "what": "No answer to “What did the report show you?”",
-      "fix": "One or two sentences on something in the report you did not expect, for example that Oct 6 held a third of all prompts.",
-      "reason": "The retro has answers under four prompts; the heading “What did the report show you?” has no text under it.",
-      "excerpt": "## Retro\n**What did the report show you?**\n\n**What changes next sprint?** Smaller commits, and a test before every migration.",
-      "excerpt_ref": "sprints/sprint-2-review.md, lines 38 to 41"
-    },
-    {
-      "id": "R2",
-      "category": "review",
-      "points": 2,
-      "rule_id": "rev-retro",
-      "what": "No response to anything specific the report found",
-      "fix": "Name one finding, such as the Oct 8 re-scan that double-booked nine shifts, and say what you will do differently because of it.",
-      "reason": "No answer mentions a finding from the report: not the Oct 6 prompt count, not the Oct 8 re-scan.",
-      "excerpt": null,
-      "excerpt_ref": null
-    }
-  ]
+  {
+   "at": "0:56",
+   "sees": "Swap shown as Approved with a green badge; shift now listed under the coworker"
+  },
+  {
+   "at": "1:04",
+   "sees": "Week view: open shifts outlined; one marked 'Conflicts with your 2:00 PM shift' with Pick up disabled"
+  }
+ ],
+ "demo_checks": {
+  "on_screen": "9 of 9 show the app itself.",
+  "working": "Yes: the photo becomes a draft (0:19), a row is edited and undone (0:26), a shift is posted and picked up (0:34, 0:41), and the manager approves it (0:49 to 0:56). 0:56 to 1:04 moves to the week view.",
+  "real_content": "Real content: the circulation desk's paper schedule, 64 shifts.",
+  "reachable": "Public URL shiftswap.example.com visible; shifts are private to each signed-in account.",
+  "matches_plan": "Photo reader with draft and undo (0:11 to 0:26), post, pick-up and approval (0:34 to 0:56), rebuilt UI throughout. The interviews, briefs and ranking do not appear.",
+  "off_demo": "None; you start in the app.",
+  "readable": "Readable at the zoom used."
+ },
+ "feedback": {
+  "shipped": "Full marks: your plan's items are all there, with post, pick-up and approval working on the live app, the photo reader returning an editable draft with undo in c94d1b0, the rebuilt UI with its empty and error states, and seven interviews, five briefs and a ranking in sprints/discovery/.",
+  "review": "Your report is committed and your retro answers whether you hit the goal, what happened, your actual difficulty, and what changes next sprint. It does not answer what the report showed you or respond to anything it found, such as Oct 6 taking a third of all prompts or the Oct 8 re-scan that double-booked nine shifts.",
+  "demo": "Full marks: in about a minute you show the live app with the real desk schedule, the photo becoming a draft at 0:19, a swap approved at 0:49, and the conflict on the week view at 1:04."
+ },
+ "next_sprint": "You might consider showing the discovery ranking for a few seconds in the demo when discovery is part of the plan.",
+ "not_reviewed": {
+  "summary": null,
+  "detail": "Nothing that affected a score: your plan, sprint review, the app code and live app, and your full demo were reviewed, and the discovery work in sprints/discovery/ was credited from commits b47c0d2 and f7e3c19."
+ },
+ "axes": {
+  "Application Architecture": 0.5,
+  "Design": 0.35,
+  "Discovery": 0.15
+ },
+ "axes_why": "The report tags Application Architecture (the photo reader's server route, swap tables, row-level security, the manager role, the re-scan fix) with Design close behind, and the commits agree; discovery took about 15 prompts and produced seven interviews, five briefs and a ranking.",
+ "difficulty": {
+  "assessed": 4,
+  "axis": "Application Architecture",
+  "baseline_on_axis": 1.08,
+  "predicted": 4,
+  "student_actual": 5,
+  "why": "A vision-model reader with structured output and an editable draft, row-level security with a separate manager role, and an approval flow with email, all new to the student, with a stuck point that took days (the re-scan, Oct 8 to 10).",
+  "effect_on_shipped": "none",
+  "note": "You predicted a 4 and rated it a 5; the work was closer to a 4: a photo reader that returns an editable draft, row-level security that keeps each student to their own swaps, and a manager approval flow, with the re-scan fix taking from Oct 8 to Oct 10 to get right."
+ },
+ "deductions": [
+  {
+   "id": "R1",
+   "category": "review",
+   "points": 1,
+   "rule_id": "rev-retro",
+   "what": "No answer to “What did the report show you?”",
+   "fix": "One or two sentences on something in the report you did not expect, for example that Oct 6 held a third of all prompts.",
+   "reason": "The retro has answers under four prompts; the heading “What did the report show you?” has no text under it.",
+   "excerpt": "## Retro\n**What did the report show you?**\n\n**What changes next sprint?** Smaller commits, and a test before every migration.",
+   "excerpt_ref": "sprints/sprint-2-review.md, lines 38 to 41"
+  },
+  {
+   "id": "R2",
+   "category": "review",
+   "points": 2,
+   "rule_id": "rev-retro",
+   "what": "No response to anything specific the report found",
+   "fix": "Name one finding, such as the Oct 8 re-scan that double-booked nine shifts, and say what you will do differently because of it.",
+   "reason": "No answer mentions a finding from the report: not the Oct 6 prompt count, not the Oct 8 re-scan.",
+   "excerpt": null,
+   "excerpt_ref": null
+  }
+ ],
+ "hours": {
+  "self": 12,
+  "self_text": "about 10 to 14 hours",
+  "session": 7.5,
+  "est": 11,
+  "est_why": "Nine session days and two interviews held offline."
+ }
 }

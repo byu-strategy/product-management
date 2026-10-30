@@ -97,6 +97,8 @@ check("posted to Canvas" in student and "class=qtotal" not in student, "posted s
 # Point deductions: one row each, rule and fix shown, Dispute links to the Strategy app; reasons only in Scott's copy
 check("Point deductions" in student and student.count("class=ded ") == 2, "two itemized deductions")
 check(student.count('href="https://strategy.byu.edu/app/dispute/TEST_TOKEN_abc#R') == 2, "a Dispute link per deduction")
+check("class=ihours" in scott and "class=ihours" not in student and "about 10 to 14 hours" not in student,
+      "hours only in Scott's copy")
 check("To earn it next time:" in student and "Rubric: &ldquo;" in student, "rubric quote and fix under each deduction")
 
 # Every rule quote is the published sentence, word for word (links, bold and code marks removed)

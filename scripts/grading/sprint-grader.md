@@ -25,7 +25,7 @@ the same commit as the site change.
 | `out-ambitious` | Output: raised for ambitious, hard work partly reached | Rubric, "an ambitious goal you partly reach and account for" | Sprint 1 |
 | `out-needs-yes` | Output: a goal that needs someone else's yes (design partners, a customer paying, signups) is graded on the asks made and on record; a no or "not yet" costs nothing when the retro says what was learned (Scott, 2026-10-20; loosens, so it applies to Sprints 1 and 2) | Rubric, "Goals that need someone else to say yes" | Sprint 1 |
 | `rev-committed` | Review: report committed | Rubric | Sprint 1 |
-| `rev-retro` | Review: retro engages with what the report says. Fixed amounts (Scott, 2026-10-20; loosens, so it applies to Sprints 1 and 2, and no score goes below what it was): any answer can carry the response; no specific response anywhere, minus 2; each prompt left unanswered, minus 1; empty retro, at most half | Rubric | Sprint 1 |
+| `rev-retro` | Review: retro answers its prompts. Each prompt left unanswered, minus 1; empty retro, at most half. From Sprint 3 there is no requirement to respond to something specific in the report, and "What did the report show you?" is not a required prompt (Scott, 2026-10-29: question 2 became the hours estimate; loosens, applied to Sprint 3; Sprints 1 and 2 stay as posted). Sprints 1 and 2: no specific response anywhere, minus 2 | Rubric | Sprint 1 |
 | `rev-s1-template` | Review: Sprint 1 retro answers its template (did you hit the goal, what happened, what changes next sprint) | Assessments, Sprint 1 retro fields | Sprint 1 only |
 | `rev-five-questions` | Review: retro answers all five `/sprint-review` questions | Assessments (v2.4.0 to v2.4.2, Sep 30) | Sprint 2 |
 | `demo-working` | Demo: the work, working, with real content, where "working" depends on the kind of work (Scott, 2026-10-20: the "What your demo shows" table loosens "working" for non-product sprints, so it applies to Sprints 1 and 2) | Rubric; Assessments, "What your demo shows" | Sprint 1 |
@@ -49,7 +49,7 @@ score or comment on plan quality.
 | Category | Sprints 1 to 5 | Sprint 6 | Full marks |
 |---|--:|--:|---|
 | **Output** (key `shipped`) | 20 | 50 | Real, finished, and checkable by the course. It does not have to be public, launched, or used by anyone. Read against the plan as it stands at the end. |
-| **Review** (`review`) | 10 | 20 | Report committed, with the retro answering each prompt and responding to something specific in the report. |
+| **Review** (`review`) | 10 | 20 | Report committed, with the retro answering each prompt. |
 | **Demo** (`demo`) | 10 | 20 | 2 to 3 minutes of the work, working as the "What your demo shows" table below describes, with real content. |
 
 The packet's `assignment.points` and sprint number tell you which column applies. Caps below
@@ -147,16 +147,19 @@ goal comfortably hit earns nothing extra.
   Prose in the review with no commit behind it is still a claim, not evidence.
 - **Review:** the `/sprint-review` report plus the student's retro. From Sprint 2 the retro is
   the "Your retro" section at the bottom of the review file (`retro_location`), five prompts:
-  did you hit the goal, what did the report show you, why the plan changed if it did, actual
-  difficulty and why it differed, and what will you change next sprint. In Sprint 1 it was the
+  did you hit the goal, how many hours the student estimates they worked (from Sprint 4; Sprints 2
+  and 3 asked "what did the report show you"), why the plan changed if it did, actual difficulty and
+  why it differed, and what will you change next sprint. From Sprint 3, "what did the report show
+  you" is never required: a retro answering the other four is complete. In Sprint 4 a student who
+  had not refreshed their skills may answer the old question 2 instead of hours: that retro is
+  complete too, with no deduction (record `hours_self` as null). The hours answer is never judged
+  on the number. In Sprint 1 it was the
   three fields at the end of the plan file. Where the retro sits is not graded: a retro written in
   the plan file, or answering an older set of prompts, is judged on what it answers, and the
   location is never mentioned to the student. 0 if no report is committed. Retro empty
-  (`retro_filled` false): at most half. Full marks need every prompt answered and a response to
-  something specific the report found (a number, a finding, a risk, or a claim it flagged). Any
-  answer can carry that response: a next-sprint change that answers a report finding counts the
-  same as the "what did the report show you" answer. The amounts are fixed: no specific response
-  anywhere in the retro is minus 2; each prompt left unanswered is minus 1; both can apply. Never
+  (`retro_filled` false): at most half. Full marks need every required prompt answered. The amounts are fixed: each prompt left
+  unanswered is minus 1. (Sprints 1 and 2 also took 2 for no response to something specific the
+  report found; that rule ended with Sprint 3.) Never
   take more than these for a filled retro, and never take points for how deep a response goes. When the review was run is not graded: a student may
   finish early, and a report covering 10 days is judged on what it covers. Never deduct for or
   mention the review window.
@@ -354,12 +357,14 @@ The key `shipped` holds the **Output** category (kept for compatibility). Never 
   "watch_loom": false,
   "confidence": "high | medium | low",
   "effort_review": {"effort": 1, "progress": 1, "why": "...", "hidden": "... or null"},
+  "hours": {"self": 12, "self_text": "about 10-14 hours", "session": 7.5, "est": 11,
+            "est_why": "..."},
   "demo_notes": [{"at": "0:05", "sees": "..."}],
   "demo_checks": {"on_screen": "...", "working": "...", "real_content": "...",
                   "reachable": "...", "matches_plan": "...", "off_demo": "...", "readable": "..."},
   "feedback": {"shipped": "...", "review": "...", "demo": "..."},
   "deductions": [{"id": "R1", "category": "review", "points": 1, "rule_id": "rev-retro",
-                  "what": "No answer to “What did the report show you?”",
+                  "what": "No answer to “If the plan changed, why?”",
                   "fix": "One or two sentences on something in the report you did not expect, for example that Oct 6 held a third of all prompts.",
                   "reason": "for Scott: what was read and what was missing",
                   "excerpt": "up to 600 characters quoted from the file the deduction rests on, or null",
@@ -414,6 +419,18 @@ em dashes, no mention of lateness or of the setup items.
     score could not be reviewed; otherwise `null`. It ends with "Details and what to do are in
     the appendix."
   Same voice rules as the rest. Never mention confidence levels.
+- `hours` (Scott only; never in anything the student reads, never a reason for a score; Scott,
+  2026-10-29, to set hours against grades and disputes over time):
+  - `self`: the student's own estimate from the retro's hours question, as a number (a range gives
+    its midpoint, "about 10" gives 10); `self_text` is their answer word for word. Both null when
+    the retro has no hours question or no answer.
+  - `session`: the number on the review's "Active session time" line, or null when it has none.
+    Copy it; never compute it.
+  - `est`: your own estimate of the hours the sprint's work took, all in, from all the evidence:
+    session days and prompt volume, commits and what they hold, offline work the review or retro
+    describes (interviews, meetings, outreach), and the work's size. One number, with `est_why`
+    in one or two sentences naming what it rests on. Make it before you read `self`, and never
+    move it toward the student's number.
 - `deductions`: every point lost, one item each, so a student can see and dispute each one. Rules:
   - `id`: the category letter and a number, in order: `O1`, `O2` (Output), `R1` (Report and retro), `D1` (Demo).
   - `category`: `shipped`, `review` or `demo`. For each category the items' `points` add up exactly to the
