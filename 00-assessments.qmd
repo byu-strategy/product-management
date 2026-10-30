@@ -113,7 +113,7 @@ builder axes, each scored from 0 to 100. It shows what you can do, and it is not
   It shows as its own ring. The final fills the rest, on all six axes.
 - **The starting center.** The center of the chart is your own rating from the September survey,
   counted on the part of each axis that no exam has measured yet. After the midterm it counts for
-  half as much on the three axes the midterm tested, and a dashed outline shows your full rating.
+  half as much on the three axes the midterm tested.
 - **Sprint rings never shrink.** Each sprint adds a ring outside the center for what that sprint
   showed. Once a ring is added, it stays.
 

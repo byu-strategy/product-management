@@ -604,11 +604,6 @@ def profile_svg(G):
     if any(core_vals):  # the survey center sits innermost, on top of the rings
         out.append(f'<polygon class="core" points="{poly(core_vals)}" fill="{CORE_COLOR}" stroke="#fff" stroke-width=".8" '
                    f'stroke-linejoin="round"><title>Your September survey</title></polygon>')
-    full = ((G or {}).get("start") or {}).get("survey_full") or {}
-    if exam_layers and any(abs(float(full.get(a, 0)) - float(core.get(a, 0))) > .01 for a in AXES):
-        # The full September self-rating, where an exam has since measured part of it.
-        out.append(f'<polygon class=sept points="{poly([float(full.get(AXES[i], 0)) for i in range(6)])}" fill="none" '
-                   f'stroke="{NAVY}" stroke-width="1.1" stroke-dasharray="3 3" opacity=".55"><title>Your September survey, in full</title></polygon>')
     if G and any(totals):  # a dot at every value, so a small value next to a zero still shows
         for i in range(6):
             if totals[i] > 0:
@@ -1023,10 +1018,6 @@ def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott
                   f"{fmt(review_total)}/{review_max}.")
     score_body += deductions_block(r, sprint, cats, dispute, outcomes, scott)
     score_body += "<!--ASK-->"
-    note = (row_.get("scott_note") or "").strip()
-    if note:
-        paras = "".join(f"<p>{e(p.strip())}</p>" for p in re.split(r"\n\s*\n", note) if p.strip())
-        score_body += f'<div class=snote><b>From Professor Murff</b>{paras}</div>'
 
     # ---- profile
     svg, drawn = profile_svg(G)
@@ -1329,8 +1320,7 @@ the product, and get it to real users.</p>
 the rest from the exams. The center of the chart is your own rating from the September survey, counted on the part of each
 area's exam points no exam has measured yet. Each ring outside it is one sprint, darker for later sprints. The gold ring is the
 midterm: it tested three areas (Agentic Workflow, Discovery, Design), and each question you got right earns its share of half of
-those areas' exam points, so on those three areas the September rating now counts for the other half only. The dashed outline
-shows your full September rating. The final exam measures the rest, in all six areas.</p>
+those areas' exam points, so on those three areas the September rating now counts for the other half only. The final exam measures the rest, in all six areas.</p>
 <h3 class=sub id=a-earn><span>How sprint work earns points</span></h3>
 <p>Sprint work earns points two ways.</p>
 <ul>
@@ -1461,7 +1451,11 @@ ones your work has shown say which sprint. Ones marked "measured on the exams" c
     lost_line = (f'<a class="sms lost" href="#deds">{fmt(lost_pts)} point{"s" * (lost_pts != 1)} deducted in {len(lost)} '
                  f'item{"s" * (len(lost) != 1)}{", each open to dispute" if dispute and dispute.get("token") else ""}</a>' if lost else "")
     parts_ = ([f"Plan {fmt(plan_pts)}"] if sprint > 1 else []) + [f"{LABELS.get(c, c)} {fmt(final(row_, c))}" for c, _l, _m in graded]
-    summary = (f'<div class=smrow><div class=sm><span class=sml>Sprint {sprint} score</span>'
+    note = (row_.get("scott_note") or "").strip()
+    note_html = ('<div class=snote><b>From Professor Murff</b>'
+                 + "".join(f"<p>{e(p.strip())}</p>" for p in re.split(r"\n\s*\n", note) if p.strip())
+                 + '</div>') if note else ""
+    summary = (f'{note_html}<div class=smrow><div class=sm><span class=sml>Sprint {sprint} score</span>'
                f'<span class=smv>{fmt(total)}<small> / {total_max}</small></span><a class=sms href="#score">{" · ".join(parts_)}</a>{lost_line}</div>'
                f'{prof_line}</div>{next_line}'
                f'<figure class=qfig>{svg}<figcaption>{cap}</figcaption>'
@@ -1763,7 +1757,7 @@ details.q.gx>.qb{padding-left:14px}
 details.q.dep>summary .qn{font-style:italic;color:#4a5262}
 .capl{margin-left:10px;color:var(--mute);text-decoration:underline;text-decoration-color:#CCCCCC}
 .qtotal{display:flex;justify-content:space-between;padding:10px 0 2px;font-weight:600}
-.snote{background:#EEF1F5;border-radius:8px;padding:8px 12px;margin:8px 0 0;font-size:14px}.snote p{margin:2px 0 0}
+.snote{background:#EEF1F5;border-left:4px solid #002E5D;border-radius:4px;padding:12px 16px;margin:0 0 16px;font-size:15px;line-height:1.5}.snote b{color:#002E5D}.snote p{margin:6px 0 0}
 ol.nsl{list-style:none;margin:6px 0 10px;padding:0}
 li.ns{display:flex;gap:14px;padding:12px 0;border-bottom:1px solid var(--line)}li.ns:last-child{border-bottom:0}
 .nsn{flex:none;width:26px;height:26px;border-radius:50%;background:#EEF4FB;color:var(--amber);font-weight:600;font-size:13.5px;display:flex;align-items:center;justify-content:center;margin-top:1px}

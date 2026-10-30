@@ -131,7 +131,13 @@ check('<div class=mt id=midterm><h3 class=sub><span>Midterm</span>' in student a
       and "<th>Predict it</th>" in student, "Midterm block in Growth with Know it, Use it, Predict it")
 check(student.index("id=midterm") > student.index("id=grew") and student.index("id=midterm") < student.index("id=appendix"),
       "the Midterm block sits in Growth")
-check("polygon class=sept" in student, "the full September rating as a dashed outline once an exam measured part of it")
+check("class=sept" not in student, "no dashed September outline (Scott, 2026-10-30: the legend does not explain it)")
+_noted = render(r, p, dict(row_, scott_note="First paragraph.\n\nSecond paragraph."), 2, CATS, final, plan_row=plan_row,
+                growth=G, skills_status="", dispute=DIS)
+check("<b>From Professor Murff</b><p>First paragraph.</p><p>Second paragraph.</p>" in _noted
+      and _noted.index("class=snote") < _noted.index("class=smrow") and _noted.index("class=snote") > _noted.index("id=summary"),
+      "Professor Murff's note opens the Summary, one paragraph per blank line")
+check("class=snote" not in student, "no note box without a note")
 check("The gold ring is the" in student and "replaces the center" not in student, "Appendix A explains the midterm ring")
 check(student.count('<form class=dform data-ded="R') == 2 and 'data-api="' in student and "/api/report-dispute" in student,
       "a dispute drawer under each deduction, posting in place")
