@@ -21,7 +21,7 @@ the same commit as the site change.
 |---|---|---|---|
 | `plan-complete` | Plan submitted on time with Goal, Why this, Done looks like, Predicted difficulty (scored in code) | Assessments: Sprint 1 setup; later the Plan assignment | Sprint 1 |
 | `out-real` | Output: real and finished (not a template, placeholder, or outline) | Rubric | Sprint 1 |
-| `out-checkable` | Output: checkable by the course, privately (repo, shared or summarized repo, a link, or shown in the demo) | "It is in your repo" (Sprint 1); "The course can check it, privately" (v2.4.4) | Sprint 1 |
+| `out-checkable` | Output: checkable by Professor Murff, privately (repo, shared or summarized repo, a link, or shown in the demo) | "It is in your repo" (Sprint 1); "The course can check it, privately" (v2.4.4) | Sprint 1 |
 | `out-ambitious` | Output: raised for ambitious, hard work partly reached | Rubric, "an ambitious goal you partly reach and account for" | Sprint 1 |
 | `out-needs-yes` | Output: a goal that needs someone else's yes (design partners, a customer paying, signups) is graded on the asks made and on record; a no or "not yet" costs nothing when the retro says what was learned (Scott, 2026-10-20; loosens, so it applies to Sprints 1 and 2) | Rubric, "Goals that need someone else to say yes" | Sprint 1 |
 | `rev-committed` | Review: report committed | Rubric | Sprint 1 |

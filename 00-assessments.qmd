@@ -229,7 +229,7 @@ for your repo URL instead.
 - **Output.** Something real and finished exists now that did not two weeks ago. It does not
   have to be public, launched, or used by anyone: plenty of valuable work is never shown to
   anyone else.
-- **The course can check it, privately.** It is in your course repo, in another repo shared with
+- **Professor Murff can check it, privately.** It is in your course repo, in another repo shared with
   Professor Murff or summarized by `/sprint-review`, at a link, or shown working in your demo.
   Work nobody can check, anywhere, cannot be graded.
 - **The plan,** submitted on Canvas by Wednesday, committed, and kept current with any changes

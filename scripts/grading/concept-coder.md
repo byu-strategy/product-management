@@ -66,6 +66,12 @@ Record a concept when this sprint's evidence matches its `practice` sentence.
   says what kind of evidence fits; the same content committed elsewhere counts.
 - **Work only in a repo that is not shared** (listed in `facts.repos_named_but_not_shared`) cannot be
   checked and gets no credit and no depth level.
+- **A company or client repo the student cannot share, summarized by `/sprint-review`** (Scott,
+  2026-10-29). The review's commit list for that repo counts for breadth only when a commit message or
+  file name in it names the concept's practice specifically ("add RLS policy for mentors", not "fix
+  bug" or "updates"). Mark every such credit `borderline` and cite the line. From the summary alone,
+  depth on that axis is level 2 at most; a Loom moment showing the work, or a shared file, can support
+  more. Prose in the review describing the work without commit lines does not count.
 
 ## Depth
 For each axis the sprint's work touched, assign one level from `depth-levels.md`, judged from all
