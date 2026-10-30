@@ -4,6 +4,13 @@ This course site is updated during the semester, and every meaningful update is 
 
 New entries appear at the top.
 
+## v2.12.18 (2026-10-30)
+
+Your builder profile now has a midterm ring.
+
+- **Builder profile.** The midterm shows as its own ring on your profile chart. It fills half of the exam part of the three areas it tested (Agentic Workflow, Discovery, Design), at the share of questions you got right. Your September survey rating now counts for the other half on those areas, with a dashed outline showing the full rating. See Your builder profile in Assessments.
+- **Grading rubric.** "Full marks" now reads "full points".
+
 ## v2.12.17 (2026-10-29)
 
 Your course skills now keep themselves up to date.
