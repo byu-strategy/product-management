@@ -4,6 +4,12 @@ This course site is updated during the semester, and every meaningful update is 
 
 New entries appear at the top.
 
+## v2.12.15 (2026-10-29)
+
+The grading rubric now says who checks your work.
+
+- **Grading rubric.** "The course can check it, privately" now reads "Professor Murff can check it, privately." A repo counts once it is shared with Professor Murff (GitHub `sdmurff`).
+
 ## v2.12.14 (2026-10-29)
 
 You can now dispute a point deduction from your sprint report, and Data and APIs has two new security sections.
