@@ -44,6 +44,8 @@ CORE_COLOR = "#DCE6F2"  # the starting core: the lightest step of the same navy 
 NAVY, ROYAL = "#002E5D", "#003DA5"
 # Where each deduction can be disputed: the Strategy app, no sign-in (grade disputes, 2026-10-29).
 DISPUTE_BASE = "https://strategy.byu.edu/app/dispute/"
+# Feedback on the report itself (Scott, 2026-10-29): the same secret link as disputes, so no sign-in.
+FEEDBACK_BASE = "https://strategy.byu.edu/app/report-feedback/"
 # Concepts seen but not counted, grouped by what would let them count. `unreadable` is our limit, not the
 # student's, so it goes to Scott's notes only.
 NOT_YET = {
@@ -1339,6 +1341,15 @@ ones your work has shown say which sprint. Ones marked "measured on the exams" c
                  f'<span class=ccnote role=status aria-live=polite></span>'
                  f'<details class=ccbox><summary>See the prompt</summary>'
                  f'<textarea id=coachp readonly spellcheck=false rows=14>{e(prompt_txt)}</textarea></details></div>')
+    if dispute and dispute.get("token"):
+        fb = f'{FEEDBACK_BASE}{e(dispute["token"])}'
+        next_line += (f'<div class="sm coach rfb"><div class=cchead><span class=cch>How useful was this report?</span>'
+                      f'<span class=rfbw><span class=rfbs role=group aria-label="Rate this report from 1, not useful, to 5, very useful">'
+                      + "".join(f'<a class=rfbn href="{fb}?r={n}" target=_blank rel="noopener noreferrer" '
+                                f'aria-label="{n} of 5">{n}</a>' for n in range(1, 6))
+                      + '</span><span class=rfbh><span>Not useful</span><span>Very useful</span></span></span></div>'
+                      f'<span class=rfbnote>Pick a number, then tell Professor Murff what helped and what to change. '
+                      f'<a href="{fb}" target=_blank rel="noopener noreferrer">Give feedback</a>. No sign-in.</span></div>')
     lost = [d for d in r.get("deductions") or [] if float(d.get("points") or 0) > 0]
     lost_pts = sum(float(d["points"]) for d in lost)
     lost_line = (f'<a class="sms lost" href="#deds">{fmt(lost_pts)} point{"s" * (lost_pts != 1)} deducted in {len(lost)} '
@@ -1624,6 +1635,12 @@ a.bkc{display:inline-block;margin-left:6px;padding:0 6px;border-radius:999px;bac
 a.bkc:hover,a.bkc:focus-visible{background:#DCE6F2;color:#002E5D}
 .apt b{font-weight:400}.apt tr:not(.got) b{color:#7a8291}.apt tr.got b{color:var(--ink)}.apt tr.got .apd{color:var(--amber);font-weight:600}
 .apt tr.ko b,.apt tr.ko .apd{color:var(--mute);font-style:italic}.apd{white-space:nowrap;color:var(--mute);font-size:12.5px;text-align:right}
+.rfbs{display:inline-flex;gap:6px}.rfbn{display:inline-grid;place-items:center;width:2.1em;height:2.1em;border:1px solid var(--line);border-radius:8px;
+ font-weight:600;color:var(--navy);text-decoration:none;background:#fff;transition:border-color .12s,background .12s}
+.rfbn:hover,.rfbn:focus-visible{border-color:#003DA5;background:#F5F7FA;color:#003DA5}
+.rfbw{display:inline-flex;flex-direction:column;gap:3px}
+.rfbh{display:flex;justify-content:space-between;font-size:11.5px;color:var(--mute);white-space:nowrap}
+.rfbnote{display:block;margin-top:6px;font-size:13px;color:var(--mute)}
 .coach{background:#fff;gap:2px;padding-top:10px;padding-bottom:10px}.cch{font-size:15px;font-weight:600;line-height:1.35}
 .cchead{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.ccnote:empty{display:none}
 .ccbtn{display:inline-flex;align-items:center;gap:.4em;padding:.3em .9em .3em .7em;font:600 .86rem/1.4 system-ui,-apple-system,"Segoe UI",sans-serif;
