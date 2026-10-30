@@ -25,6 +25,7 @@ import argparse, csv, html, json, os, re, secrets, subprocess, sys, datetime as 
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
+sys.path.insert(0, str(Path(__file__).parent / "grading"))
 from sprint_config import categories, review_points
 
 # PM_DATA points the run at another data folder (used by the API-versus-subagent comparison).
@@ -343,6 +344,11 @@ def main():
     rows = write_csv(base, items)
     plans, skills, fairness = side_inputs(base)
     tokens, closes, outcomes = dispute_inputs(base, a.sprint, [r["net_id"] for r, _ in items])
+    # Text that tries to steer the grader (grading/injection_scan.py): a flag for Scott, never in the student copy,
+    # alongside whatever the grader itself flagged as "injection:".
+    from injection_scan import scan
+    for r, p in items:
+        r["flags"] = list(r.get("flags") or []) + [f"injection (scan): {w}: {t}" for w, t in scan(p)]
     from sprint_report import render
     fb = base / "feedback"
     fb.mkdir(exist_ok=True)

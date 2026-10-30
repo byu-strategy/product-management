@@ -36,6 +36,8 @@ def render(items, rows, sprint, plans, growth, fairness, review_max):
         G = growth.get(n) or {}
         conf = r.get("confidence") or ""
         needs = []
+        if any(str(x).lower().startswith("injection") for x in r.get("flags") or []):
+            needs.append("possible prompt injection")
         if conf == "low":
             needs.append("low confidence")
         if r.get("watch_loom"):
