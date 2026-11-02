@@ -10,7 +10,7 @@ something). These two mechanics are most of what separates a
 prototype from a product. A prototype loses its data when you refresh. A product keeps it.
 
 This chapter gives you four models: the data model is the structure every screen depends on; a query
-is a few blocks that pick rows; the database decides who sees which rows; and
+names a table, filters its rows, and picks the columns to return; the database decides who sees which rows; and
 every request can fail. It ends with how to protect your own endpoints, how to keep text from users and models from
 being run as code, and the rules for secrets and for other people's data.
 
@@ -19,12 +19,12 @@ being run as code, and the rules for secrets and for other people's data.
 **The model:** tables are the nouns of your product and keys are how they relate. The data
 model is the hardest thing to change later, so it deserves the most thought early.
 
-The building blocks come from E. F. Codd's relational model, which Postgres (the database
+These concepts come from E. F. Codd's relational model, which Postgres (the database
 Supabase runs) and nearly every business database still follow [@codd1970relational]. The examples use a **problem tracker**, an
 app where users log problems they have noticed and the interviews they hold about each one. It is
 the running example for most of this chapter, and Chapters 9 and 9b use it again:
 
-| Block | What it is | Problem-tracker example |
+| Concept | What it is | Problem-tracker example |
 |---|---|---|
 | **Table** | One kind of thing your product keeps track of (a noun) | `problems` |
 | **Row** | One instance of that thing | the problem "Expense tracking is tedious" |
@@ -137,12 +137,12 @@ has, and explain every difference.
 
 ## Asking the Database a Question
 
-**The model:** every read is built from the same few blocks. Choose the columns, choose the
+**The model:** every read is a SQL `SELECT` statement built from the same few clauses. Choose the columns, choose the
 table, filter the rows, sort them, and (when the answer spans two tables) join. You do not need
 to write SQL. You need to predict which rows a described query returns, because that is how you
 catch an agent's query that returns the wrong ones.
 
-| Block | SQL keyword | What it does |
+| Clause | SQL keyword | What it does |
 |---|---|---|
 | Choose columns | `SELECT` | Which facts to return. `*` means all of them |
 | Choose the table | `FROM` | Where to look |
@@ -179,9 +179,9 @@ ORDER BY intensity DESC;
 The filter keeps rows 1 and 2 (row 6 fails the intensity test), the sort puts 8 before 7, and
 the result is two rows: *Group chat scheduling chaos, 8* and *Expense tracking is tedious, 7*.
 
-![The same query, one block at a time. The filter removes four of the six rows; the result is two rows.](images/diagrams/ch08-query-blocks.svg){#fig-query-blocks fig-alt="Four numbered query blocks on the left, each beside the table it produces. 1, FROM problems: start with the whole six-row table. 2, WHERE owner = 'ana' AND intensity >= 5: rows 1 and 2 are highlighted; rows 3, 4 and 5 are struck through with the note not ana, and row 6 is struck through with the note 3 < 5. 3, SELECT title, intensity: the two rows keep only those columns, Expense tracking is tedious 7, then Group chat scheduling chaos 8. 4, ORDER BY intensity DESC: the result table, outlined in blue, lists Group chat scheduling chaos 8 first and Expense tracking is tedious 7 second, labeled Result: 2 rows. A note says the query is written with SELECT first but run in this order: table, filter, columns, sort, then limit." width="100%"}
+![The same query, one clause at a time. The filter removes four of the six rows; the result is two rows.](images/diagrams/ch08-query-blocks.svg){#fig-query-blocks fig-alt="Four numbered query clauses on the left, each beside the table it produces. 1, FROM problems: start with the whole six-row table. 2, WHERE owner = 'ana' AND intensity >= 5: rows 1 and 2 are highlighted; rows 3, 4 and 5 are struck through with the note not ana, and row 6 is struck through with the note 3 < 5. 3, SELECT title, intensity: the two rows keep only those columns, Expense tracking is tedious 7, then Group chat scheduling chaos 8. 4, ORDER BY intensity DESC: the result table, outlined in blue, lists Group chat scheduling chaos 8 first and Expense tracking is tedious 7 second, labeled Result: 2 rows. A note says the query is written with SELECT first but run in this order: table, filter, columns, sort, then limit." width="100%"}
 
-Your app's code says the same thing in the Supabase client's syntax, block for block:
+Your app's code says the same thing in the Supabase client's syntax, clause for clause:
 
 ```javascript
 supabase.from('problems')                      // FROM
@@ -212,7 +212,7 @@ empty interview columns. In the Supabase client the same join is written as a ne
 
 **The other verbs.** Reading is one of four operations, together called **CRUD**: Create
 (`INSERT`), Read (`SELECT`), Update (`UPDATE`), Delete (`DELETE`). Update and delete use the
-same `WHERE` block to pick their rows, which is why an update or delete with a missing or wrong
+same `WHERE` clause to pick their rows, which is why an update or delete with a missing or wrong
 filter can change or erase every row in a table with one line: `DELETE FROM problems` with no
 `WHERE` removes every row.
 
@@ -396,7 +396,7 @@ When the browser writes to Supabase directly (step 3 in Chapter 7), Supabase sen
 kinds of answers: 401 when the token is expired or invalid, and 403 when row-level security
 refuses a signed-in user's insert (the message reads `new row violates row-level security
 policy`). Reads work differently. Row-level security filters a read instead of refusing it, so a
-read the rules block returns 200 with an empty list. To the code, "you may not see these rows"
+read the policies do not allow returns 200 with an empty list. To the code, "you may not see these rows"
 and "there are no rows" look the same.
 
 
@@ -682,7 +682,7 @@ event `profile_updated` that includes the user's new phone number. Then search y
 - **Develop against a disposable copy**: once real people use the app, develop against a second
   Supabase project or a local copy filled with made-up data, and keep production keys out of
   `.env.local`.
-- **Query blocks**: `SELECT` columns, `FROM` a table, `WHERE` filter, `ORDER BY` sort, `LIMIT`,
+- **Query clauses**: `SELECT` columns, `FROM` a table, `WHERE` filter, `ORDER BY` sort, `LIMIT`,
   and `JOIN`. A query that matches nothing returns an empty list, which is not an error.
 - **Join**: one result row for each matching pair across two tables; rows with no match drop
   out unless you use a `LEFT JOIN`.
@@ -694,7 +694,7 @@ event `profile_updated` that includes the user's new phone number. Then search y
   touch, as if an extra `WHERE` were added to every query. In a Supabase app it is the only
   place access can be enforced.
 - **RLS on with no policies**: nobody can read anything through the publishable key, the usual
-  cause of an empty list. A read the rules block returns 200 with an empty list, not an error.
+  cause of an empty list. A read the policies do not allow returns 200 with an empty list, not an error.
 - **Request and response**: a request has a method, an address, headers, and sometimes a body; a
   response has a status code and usually a body.
 - **Status codes**: 2xx means it worked, 4xx means the request was the problem (401 not signed

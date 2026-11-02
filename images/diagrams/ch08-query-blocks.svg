@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 690" role="img" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
-  <title>A query, block by block</title>
-  <desc>The query SELECT title, intensity FROM problems WHERE owner = 'ana' AND intensity >= 5 ORDER BY intensity DESC, shown one block at a time on a six-row problems table. FROM starts with all six rows. WHERE keeps rows 1 and 2; rows 3, 4 and 5 fail because the owner is not Ana, and row 6 fails because its intensity of 3 is below 5. SELECT keeps only the title and intensity columns. ORDER BY intensity DESC puts Group chat scheduling chaos, 8, before Expense tracking is tedious, 7. The result is two rows.</desc>
+  <title>A query, clause by clause</title>
+  <desc>The query SELECT title, intensity FROM problems WHERE owner = 'ana' AND intensity >= 5 ORDER BY intensity DESC, shown one clause at a time on a six-row problems table. FROM starts with all six rows. WHERE keeps rows 1 and 2; rows 3, 4 and 5 fail because the owner is not Ana, and row 6 fails because its intensity of 3 is below 5. SELECT keeps only the title and intensity columns. ORDER BY intensity DESC puts Group chat scheduling chaos, 8, before Expense tracking is tedious, 7. The result is two rows.</desc>
   <defs>
     <linearGradient id="gCard" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#FFFFFF"/><stop offset="100%" stop-color="#F3F6F9"/></linearGradient>
     <linearGradient id="gBlue" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#F0F5FB"/><stop offset="100%" stop-color="#DCE7F4"/></linearGradient>
