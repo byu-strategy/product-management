@@ -9,10 +9,20 @@ other services arrives through an API (Chapter 7: a defined way for one program 
 something). These two mechanics are most of what separates a
 prototype from a product. A prototype loses its data when you refresh. A product keeps it.
 
-This chapter gives you four models: the data model is the structure every screen depends on; a query
-names a table, filters its rows, and picks the columns to return; the database decides who sees which rows; and
-every request can fail. It ends with how to protect your own endpoints, how to keep text from users and models from
-being run as code, and the rules for secrets and for other people's data.
+The chapter covers four topics:
+
+- **The data model**: the tables your product stores and how they relate. Every screen depends on it.
+- **Queries**: how your app asks the database for data, by naming a table, filtering its rows,
+  and picking the columns to return.
+- **Row level security**: rules inside the database that decide which rows each user can see
+  and change.
+- **Requests and their failures**: each time your app asks a server for something (load a list,
+  save a task, call Claude), it sends a message called a request and waits for a reply. The reply
+  can be an error, or it can never arrive, and your app has to handle both.
+
+It ends with how to protect the server code your app exposes to the internet, how to keep text
+typed by users or written by models from being run as code, and the rules for API keys and for
+other people's data.
 
 ## Design the Data Model First {#the-data-model-is-the-skeleton}
 
@@ -249,7 +259,7 @@ Using the two tables above, predict the result of each before opening the answer
 can see (Chapter 7). So the database is the only place access can be enforced. Row level
 security (RLS) enforces access there. Hiding a button enforces nothing.
 
-A **policy** is a rule attached to a table that says which rows a request may touch, based on
+A **policy** is a rule attached to a table that says which rows a query may read or change, based on
 who is asking. The clearest way to picture it: the database silently adds the policy as an
 extra `WHERE` filter to every query. With the policy below, Ana's
 `SELECT * FROM problems` behaves as if it said `WHERE user_id = <Ana's id>`, so she gets only
@@ -269,7 +279,7 @@ ON problems FOR INSERT
 WITH CHECK (auth.uid() = user_id);
 ```
 
-`auth.uid()` is the id of the signed-in user making the request, read from the session token
+`auth.uid()` is the id of the signed-in user running the query, read from the session token
 the database can verify. `USING` filters which existing rows are visible; `WITH CHECK` tests the
 new row being written. Updates and deletes get policies of the same form.
 
@@ -297,9 +307,10 @@ signed in as B. If any attempt succeeds, you have found an authorization hole. F
 policy, then run the drill again. This is also a standard check in the Peer Code Review.
 :::
 
-## Requests Are Contracts That Fail
+## Requests and How They Fail {#requests-are-contracts-that-fail}
 
-**The model:** an API call is a request with a defined input and output, and it can fail for
+**The model:** each time your app asks a server for something, it sends a **request** and gets
+back a **response**. A request has a defined input and output, and it can fail for
 many reasons: network, permission, limits, bad input, a bug on the other side. Good apps expect
 failure and tell the user what happened.
 

@@ -254,7 +254,7 @@ Levels 1 and 2 read the same for every item and are not repeated below.
 - 4: the product calls another system's API (a model counts; its own database is A2) and handles a failed call.
 - 5: chose the integration in a decision record, and it works for real users.
 - Old survey: APIs.
-- Chapters: Ch 8: Requests Are Contracts That Fail. Ch 11: Where the Call Lives.
+- Chapters: Ch 8: Requests and How They Fail. Ch 11: Where the Call Lives.
 
 **A5 Secrets, privacy and security.** Keys out of the code, people's data protected.
 - 3: can explain why a committed key is an incident and what never goes in a prompt.
