@@ -4,6 +4,14 @@ This course site is updated during the semester, and every meaningful update is 
 
 New entries appear at the top.
 
+## v2.12.20 (2026-11-02)
+
+Chapter 8 (Data and APIs) uses plainer wording.
+
+- **Chapter 8 introduction.** The four topics are now a short list, and each one says what it covers. A request is defined where it first appears.
+- **Queries.** The parts of a query are called by their SQL name, clauses (`SELECT`, `FROM`, `WHERE`, `ORDER BY`, `LIMIT`, `JOIN`), in the text, the table, the figure, and Key Concepts.
+- **Section renamed.** "Requests Are Contracts That Fail" is now "Requests and How They Fail". Links to it still work.
+
 ## v2.12.19 (2026-10-30)
 
 Questions about Sprints 1 and 2 now go to Canvas comments.
