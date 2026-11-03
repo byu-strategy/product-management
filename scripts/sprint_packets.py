@@ -178,6 +178,8 @@ def loom(url):
         out |= {"title": d.get("title"), "seconds": round(d.get("duration") or 0),
                 "loom_summary": d.get("description")}
     page = requests.get(out["url"], headers={"User-Agent": "Mozilla/5.0"}, timeout=30).text
+    made = re.search(r'"createdAt":"([^"]+)"', page)
+    out["created_at"] = local(made.group(1)).isoformat() if made else None
     # oEmbed reports the raw recording; a trimmed Loom plays shorter. Viewers see playable_duration.
     pd = re.search(r'"playable_duration":([\d.]+)', page)
     if pd:
@@ -195,6 +197,27 @@ def loom(url):
         out["transcript"] = None
         out["transcript_status"] = st.group(1) if st else "unknown"
     return out
+
+
+def supplied_loom(net_id, cfg, deadline):
+    """A Loom left off the Canvas submission by mistake and sent afterward (Scott, 2026-11-02: Sam Tran
+    pasted his repo link twice in Sprint 3 and disputed the missing demo). A row in
+    grading/sprint-N/loom-overrides.csv (net_id,url,note) supplies it, and it counts only when Loom shows
+    it was recorded by the deadline (the due date, or the Canvas submission if that came later). The
+    submission record is left as it was, so the grading window and lateness do not move.
+    Returns (loom, record), or (None, None) when there is no row."""
+    path = cfg["out"] / "loom-overrides.csv"
+    row = next((r for r in csv.DictReader(open(path)) if r["net_id"] == net_id), None) if path.exists() else None
+    if not row:
+        return None, None
+    lm = loom(row["url"])
+    made = lm and lm.get("created_at") and dt.datetime.fromisoformat(lm["created_at"])
+    ok = bool(made and made <= deadline)
+    record = {"url": row["url"], "note": row.get("note", ""), "recorded": made and made.isoformat(),
+              "deadline": deadline.isoformat(), "accepted": ok}
+    if not ok:
+        print(f"  {net_id}: supplied Loom NOT accepted (recorded {record['recorded']}, deadline {record['deadline']})")
+    return (lm if ok else None), record
 
 
 def grab_frames(video, dest_dir, net_id, n=9, width=1568):
@@ -597,6 +620,12 @@ def build(student, sub, plan_sub, cfg, due):
     f["canvas_days_late"] = -(-int(p["canvas"]["seconds_late"]) // 86400) if sub.get("late") else 0
 
     p["loom"] = loom(loom_links[0]) if loom_links else None
+    if not p["loom"]:
+        at = sub.get("submitted_at")
+        p["loom"], supplied = supplied_loom(net_id, cfg, max(due, local(at)) if at else due)
+        if supplied:
+            f["loom_supplied_later"] = supplied
+            f["demo_is_loom"] = bool(p["loom"])
     if p["loom"]:
         f["loom_seconds"] = p["loom"].get("seconds")
         vid = p["loom"]["url"].rsplit("/", 1)[1]
