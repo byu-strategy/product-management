@@ -200,8 +200,8 @@ def loom(url):
 
 
 def supplied_loom(net_id, cfg, deadline):
-    """A Loom left off the Canvas submission by mistake and sent afterward (Scott, 2026-11-02: Sam Tran
-    pasted his repo link twice in Sprint 3 and disputed the missing demo). A row in
+    """A Loom left off the Canvas submission by mistake and sent afterward (Scott, 2026-11-02: a Sprint 3
+    student pasted a repo link twice and disputed the missing demo). A row in
     grading/sprint-N/loom-overrides.csv (net_id,url,note) supplies it, and it counts only when Loom shows
     it was recorded by the deadline (the due date, or the Canvas submission if that came later). The
     submission record is left as it was, so the grading window and lateness do not move.
