@@ -1,12 +1,15 @@
 #!/usr/bin/env python3
-"""Refresh the MSB 341 roster from Canvas.
+"""Refresh a course roster from Canvas.
 
-    python3 ~/courses/product-management/scripts/canvas_roster.py
+    python3 ~/courses/product-management/scripts/canvas_roster.py                       # MSB 341
+    python3 ~/courses/product-management/scripts/canvas_roster.py --course ai-foundry   # AI Foundry
 
 Writes ~/hubs/courses/_data/product-management/roster-msb341-fall2026.csv, the spine every
 other script joins against: github_roster.py, slack_roster.py, slack_invite.py, nudge.py.
 Run it after any registration wave, and before a nudge send, so a student who added or
-dropped this week is treated correctly.
+dropped this week is treated correctly. The AI Foundry roster (Canvas 37925, MBA 693R-011 and
+STRAT 490R-001 in one shell) goes to _data/ai-foundry/roster-foundry-fall2026.csv in the same
+columns; launchd com.murff.github-roster refreshes it twice a day before matching Foundry repos.
 
 Canvas course 36977 is the cross-listed shell, so this covers MSB 341-002, IS 693R-008 and
 C S 498R-005 in one pull.
@@ -18,21 +21,29 @@ Taking the first given name from sortable_name instead is what sent "Hi Scott" t
 
 Student data goes only to _data and _private, never to git. This file holds no student data.
 """
-import csv, shutil, sys
+import argparse, csv, shutil, sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path.home() / ".claude/skills/canvas-lms/scripts"))
 from canvas_client import CanvasAPI, load_config
 
-COURSE_ID = 36977
-DATA = Path.home() / "hubs/courses/_data/product-management"
-PRIVATE = Path.home() / "courses/product-management/_private"
-OUT = DATA / "roster-msb341-fall2026.csv"
+# course -> (Canvas course id, roster file name). github_roster.py's COURSES uses the same keys.
+COURSES = {
+    "product-management": (36977, "roster-msb341-fall2026.csv"),
+    "ai-foundry": (37925, "roster-foundry-fall2026.csv"),
+}
 COLUMNS = ["sortable_name", "name", "preferred_first", "email", "net_id", "canvas_user_id", "sis_user_id",
            "section", "enrollment_state"]
 
 
 def main():
+    ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
+    ap.add_argument("--course", choices=sorted(COURSES), default="product-management")
+    course = ap.parse_args().course
+    COURSE_ID, name = COURSES[course]
+    DATA = Path.home() / "hubs/courses/_data" / course
+    PRIVATE = Path.home() / "courses" / course / "_private"
+    OUT = DATA / name
     api = CanvasAPI(*[load_config()[k] for k in ("url", "token")], COURSE_ID)
     sections = {s["id"]: s["name"] for s in api.get_all("/sections")}
 
