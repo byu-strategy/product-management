@@ -92,11 +92,25 @@ Before the strategy comes a **product vision**: a description of the better worl
 
 <!-- learn -->
 
-## Strategy is a set of choices
+## What a strategy is
 
-Strategy is a small set of hard choices that fit together. Choosing what to do and choosing what not to do are one decision described from two sides: with limited time and money, choosing one customer or feature means passing on others. Michael Porter stresses the second side, writing that "the essence of strategy is choosing what not to do" [@porter1996strategy]. The emphasis helps when a team is tempted to do everything, because passing on a good idea is the part people avoid.
+A strategy is a response to a specific challenge. Richard Rumelt argues that every good strategy has the same three-part core, which he calls the **kernel** [@rumelt2011good]:
 
-A common check, often credited to Roger Martin, is to state the opposite of your choice. If the opposite sounds ridiculous, you have not made a choice. "We will build what users want" fails, since no team would choose the reverse. "We will serve home cooks with 20 minutes on a weeknight and leave dinner parties to other apps" passes, since another team could reasonably choose the reverse. A list of every good thing you could do rules nothing out, and that makes it a wish list.
+1. **A diagnosis**: what is going on, and what is the hard part?
+2. **A guiding policy**: the overall approach you choose for that hard part. It narrows what you will do without listing every step.
+3. **Coherent actions**: specific steps that reinforce one another and carry out the policy.
+
+Say you are building a study app for nursing students:
+
+- **Diagnosis:** students already have plenty of study tools. They stop using them after the first week because nothing ties the work to their next exam.
+- **Guiding policy:** build everything around the exam calendar, starting with one nursing program.
+- **Coherent actions:** load that program's exam dates, send a short daily set tied to the next exam, and recruit ten students from one class to use it before their next test.
+
+Rumelt also names the signs of a bad strategy: fluff, failing to face the challenge, mistaking goals for strategy, and bad strategic objectives. Two are worth watching for here. "Reach 1,000 users by May" is a goal: it says what you want and nothing about how you will get there. "The best recipes and the easiest app" is fluff: it sounds like a plan and commits you to nothing.
+
+A guiding policy is a choice, so it has to rule something out. Choosing what to do and choosing what not to do are one decision described from two sides: with limited time and money, choosing one customer or feature means passing on others. Michael Porter stresses the second side, writing that "the essence of strategy is choosing what not to do" [@porter1996strategy]. The emphasis helps when a team is tempted to do everything, because passing on a good idea is the part people avoid.
+
+A common check, often credited to Roger Martin, is to state the opposite of your choice. If the opposite sounds ridiculous, you have not made a choice. "We will build what users want" fails, since no team would choose the reverse. "We will start with one nursing program and leave other majors for later" passes, since another team could reasonably choose the reverse. A list of every good thing you could do rules nothing out, and that makes it a wish list.
 
 <!-- learn -->
 
@@ -110,7 +124,7 @@ Roger Martin and A.G. Lafley (*Playing to Win*) [@lafley2013playing] reduce stra
 4. **What capabilities must you have?** The few things you must be great at.
 5. **What management systems are required?** How you keep it running.
 
-For a student product, the first three matter most. Answer "where will you play" and "how will you win" in a sentence each, and you have written down more strategy than most startups do.
+For a student product, the first three matter most. Answer "where will you play" and "how will you win" in a sentence each, and you have written down more strategy than most startups do. Together they state your guiding policy.
 
 One thing has changed about "where will you play." The old advice was to target a large market,
 because the fixed cost of building was high enough that a small one could not repay it. That
@@ -276,15 +290,40 @@ A product can delight and still lose (easily copied), or be defensible and still
 
 <!-- learn -->
 
+## From analysis to strategy: the building blocks
+
+Rumelt describes what a finished strategy contains. Chris Bradley, Angus Dawson, and Antoine Montard of McKinsey describe the work that produces one, as seven building blocks [@bradley2013blocks]. The questions below are adapted for a product, and the last column is this book's mapping to Rumelt's kernel.
+
+| Building block | The question | Rumelt's kernel |
+|---|---|---|
+| **Frame** | What are the right questions, and what decision are we making? | Sets up the diagnosis |
+| **Diagnose** | Where and why could we create value, and what is the hard part? | Diagnosis |
+| **Forecast** | What futures do we need to plan for? | Diagnosis |
+| **Search** | What are the possible ways to win? | Guiding policy |
+| **Choose** | Which way will we take, as one integrated strategy? | Guiding policy |
+| **Commit** | Who does what next, with which resources? | Coherent actions |
+| **Evolve** | What have we learned, and what should change? | Back to the diagnosis |
+
+The authors warn against following this or any framework mechanically. Which blocks need the most time depends on your situation, which is why framing comes first.
+
+Two of their findings apply directly to a small team:
+
+- **Test your story.** Nearly eight in ten executives they surveyed said their companies' processes were geared more to confirming existing hypotheses than to testing new ones. Write down what would show your diagnosis is wrong, and go look for it.
+- **Finish the strategy.** A strategy with no path to action is unfinished. One telecommunications company chose to move from large clients to midmarket ones, which meant salespeople had to start turning down new business from large clients. They understood the reasoning, but their skills, incentives, and habits had not changed, so they went back to their old ways. Turn your strategy into near-term goals you can act on in your next sprint.
+
+<!-- learn -->
+
 ## Putting it to work
 
 Draft a one-page product strategy for your product:
 
 - **Vision** (one paragraph): the better world you are building toward.
+- **The challenge** (one or two sentences): your diagnosis of what is going on and what the hard part is.
 - **Where you play** (one sentence): your specific customer and beachhead.
 - **How you win** (one sentence): your source of advantage.
 - **Your moat** (one sentence): why the win lasts.
-- **What you will NOT do** (a short list): the sacrifices.
+- **What you will NOT do** (a short list): what you are passing on.
+- **Next actions** (two or three): steps for your next sprint that reinforce one another.
 
 Then test it with AI, adversarially. Do not ask "is this a good strategy?", it will flatter you. Ask: "Attack this strategy. Where is the moat weakest? What would a competitor with the same AI tools do to beat it? What am I refusing to sacrifice that I should?" A strategy should survive that attack before competitors make it for real.
 
@@ -360,15 +399,19 @@ Not every product touches all three. The question is directional: for the needs 
   so a stranger who lives it would recognize it.
 - **Product vision** (Marty Cagan): a description of the better world your product creates,
   usually a few years out. Write it first, then let the strategy serve it.
-- **Strategy is a set of choices**: a small set of hard choices that fit together. Choosing what to
-  do and what not to do are one decision, and Michael Porter stresses the second side. A strategy
-  that rules nothing out is a wish list.
+- **The kernel of a good strategy** (Richard Rumelt): a diagnosis of the challenge, a guiding policy
+  for dealing with it, and coherent actions that carry it out. A goal is not a strategy, and neither
+  is fluff.
+- **Choices rule things out**: choosing what to do and what not to do are one decision, and Michael
+  Porter stresses the second side. A strategy that rules nothing out is a wish list.
 - **Where to play and how to win** (Roger Martin and A.G. Lafley, *Playing to Win*): two of five
   linked strategy choices, and the two that matter most for a student product. Because building is
   cheap now, a market too small for a funded team can be worth your time.
 - **Value created and the value stick** (Brandenburger and Stuart; Oberholzer-Gee): value created
   is willingness to pay minus willingness to sell. Price and cost divide it into what the customer
   keeps, what you capture, and what suppliers keep.
+- **Building blocks of strategy** (Bradley, Dawson, and Montard, McKinsey): frame, diagnose,
+  forecast, search, choose, commit, evolve. Which blocks need the most time depends on the situation.
 - **Creating value is necessary, not sufficient** (Thiel, Teece): a product can create value and
   capture almost none of it. How much you can capture is set by industry structure, so assess it
   accurately.

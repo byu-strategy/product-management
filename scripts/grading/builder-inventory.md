@@ -119,7 +119,7 @@ Levels 1 and 2 read the same for every item and are not repeated below.
 - 4: wrote down why this product or idea over at least one other, including who it is for and why it can win.
 - 5: built the chosen idea for real users, and a later decision record says whether the choice held.
 - Old survey: none.
-- Chapters: Ch 3: Vision before strategy; Strategy is a set of choices; Where to play, and how to win; Creating value, and capturing it; DHM.
+- Chapters: Ch 3: Vision before strategy; What a strategy is; Where to play, and how to win; Creating value, and capturing it; DHM.
 
 ## Design
 

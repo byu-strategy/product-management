@@ -1837,14 +1837,20 @@
   },
   {
    "page": "03-what-is-worth-building.html",
-   "anchor": "strategy-is-a-set-of-choices",
-   "section": "Strategy is a set of choices",
+   "anchor": "what-a-strategy-is",
+   "section": "What a strategy is",
    "tagged": false
   },
   {
    "page": "03-what-is-worth-building.html",
    "anchor": "where-to-play-and-how-to-win",
    "section": "Where to play, and how to win",
+   "tagged": false
+  },
+  {
+   "page": "03-what-is-worth-building.html",
+   "anchor": "from-analysis-to-strategy-the-building-blocks",
+   "section": "From analysis to strategy: the building blocks",
    "tagged": false
   },
   {
