@@ -137,6 +137,22 @@ $$
 
 This is exactly the value stick, now derived from that identity. The full height of the stick, willingness to pay down to willingness to sell, is $CS + EP$ plus the normal returns that any firm would require. The interior lines that the strategy chapter draws by hand, price and cost, are where $CS$, $EP$, and the supplier's share meet.
 
+## Who created the value?
+
+The value stick shows how much value a deal creates and how it is divided. It does not show which party created which part. Take the [due-date app](03-what-is-worth-building.qmd#creating-value-and-capturing-it) example: the student would pay \$10, you pay hosting \$3, and the hosting provider would accept \$2. It is tempting to say you created \$7 (\$10 minus \$3) and the provider created \$1 (\$3 minus \$2). Those numbers add up to the \$8 total, but \$3 is a negotiated price. If the provider charges \$4 and nothing else changes, the same reasoning gives \$6 and \$2, with the same app, the same servers, and the same student. A measure of creation should not move when only a price moves.
+
+Brandenburger and Stuart's measure of one party's contribution is its **added value**: the value created with that party present, minus the value created without it. Game theorists call the same quantity marginal contribution [@brandenburger1996; @brandenburger2013invisible]. It depends on who could replace the party:
+
+| Party removed | What remains | Value created without that party | Added value |
+|---|---|---|---|
+| Hosting provider, no other host exists | No app | \$0 | \$8 minus \$0 = \$8 |
+| Hosting provider, the next-best host would accept \$3 | The same app on the other host | \$10 minus \$3 = \$7 | \$8 minus \$7 = \$1 |
+| You, no other app exists | No product | \$0 | \$8 minus \$0 = \$8 |
+
+Added values do not have to sum to the total. In the first and third rows, the provider and you each have an added value of \$8, because each is needed for the deal to exist at all. Together those are twice the \$8 created, so no division of the \$8 can assign each dollar to a single creator.
+
+Added value does link creation to capture. Brandenburger and Stuart show that under certain conditions a firm's added value is an upper bound on what it can capture [@brandenburger1996]. The condition in their later account is that the division of value is in the core of the game, meaning no group of parties can take more than that group brings [@brandenburger2013invisible]. The reasoning is short: if one party took more than it adds, the others would be left with less than they could create without it, and they would make that deal instead. So in this example, if the division is in the core, the provider capturing \$1 means it added at least \$1, and the student capturing \$4 means the student added at least \$4. A party's share sets a minimum on its contribution. The example does not say how much higher the contribution is, because it does not say whether other hosts exist. That is the question the [five forces](03-what-is-worth-building.qmd#the-five-forces-how-wide-is-the-band) ask about suppliers.
+
 ## Where strategy enters
 
 This framework makes the role of strategy precise. Operations and finance decide how efficiently a firm creates value, how low it can push $VC$ and $FC$, how little capital it can tie up. None of that determines whether the firm keeps any of the value it creates. That is set entirely by the economic profit tier, and the economic profit tier is set by market power.
