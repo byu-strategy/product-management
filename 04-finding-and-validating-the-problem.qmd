@@ -311,7 +311,7 @@ The solution is to ask questions that even your mom couldn't lie about, question
 
 | Bad Question | Why It's Bad | Good Question |
 |--------------|--------------|---------------|
-| "Would you use an app that does X?" | Hypothetical, everyone says yes | "Tell me about the last time you tried to do X" |
+| "Would you use an app that does X?" | Hypothetical, and saying yes costs nothing | "Tell me about the last time you tried to do X" |
 | "Do you think this is a good idea?" | Asking for opinions, not facts | "What solutions have you tried? What happened?" |
 | "How much would you pay for this?" | They'll guess to be nice | "What are you currently paying to solve this?" |
 | "Would you recommend this to friends?" | Future promise, not behavior | "Have you ever told anyone about this problem?" |
@@ -774,7 +774,7 @@ build it.
 
 Your **riskiest assumption** is the condition that is both **most uncertain** and **most fatal if
 false** (the impact and uncertainty test from the issue-tree section). Test it before anything
-else, because every hour spent on other parts is wasted if it fails.
+else, because much of the time spent on other parts is wasted if it fails.
 
 A worked example. Idea: a dues tracker for student club treasurers.
 

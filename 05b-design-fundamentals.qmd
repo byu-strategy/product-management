@@ -509,7 +509,7 @@ steps.
 
 **Jakob's law**, Jakob Nielsen's observation that "users spend most of their time on other sites"
 ([Nielsen, 2000](https://www.nngroup.com/articles/end-of-web-design/)), adds the user's history to
-the load: a convention people already know costs them nothing to use. [Interface and
+the load: a convention people already know costs them little to use. [Interface and
 Flow](05-interface-and-flow.qmd#decide-once-design-systems-and-familiar-patterns) covers it.
 
 ::::

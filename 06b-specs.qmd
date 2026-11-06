@@ -206,7 +206,7 @@ A spec-driven workflow with plan mode:
 2. **Research**: Claude explores the codebase, asks clarifying questions, and proposes a plan.
 3. **Review the plan** and send it back until it is right.
 4. **Approve the plan**, which exits plan mode.
-5. **Write the specs**: now that Claude can write files, have it save the agreed plan as `requirements.md`, `design.md`, and `tasks.md`. (It could not write them in step 2, because plan mode is read-only.)
+5. **Write the specs**: now that Claude can write files, have it save the agreed plan as `requirements.md`, `design.md`, and `tasks.md`. (It could not write them in step 2, because plan mode blocks edits.)
 6. **Execute tasks** one at a time, checking each.
 
 The docs add one caution: planning has overhead. If you could describe the change in one sentence, skip the plan and just ask.

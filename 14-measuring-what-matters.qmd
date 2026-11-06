@@ -57,7 +57,7 @@ is broken). For QuizMe: the North Star is quizzes completed per week; an input m
 of new signups who upload their first notes; an operational metric is notes uploaded per day; a
 diagnostic metric is how often quiz generation fails.
 
-**The test for a North Star:** would this number go up if the product got *worse*? Weekly active
+**The test for a North Star:** how easily could this number go up while the product got *worse*? Weekly active
 users fails the test. Send more reminder emails and it rises, even if nobody gets more out of the
 product. A value metric counts the moment the job gets done.
 
@@ -100,8 +100,7 @@ visit, a feature adopted or ignored). Lagging indicators report the result; lead
 show you where to act. If churn is your problem, look for what churned users stopped doing first.
 
 ::: {.callout-tip title="Try it"}
-Write your product's North Star and apply the test: name one way the number could go up while the
-product got worse. If you can, it is an activity metric; find the moment the job gets done and
+Write your product's North Star and apply the test: name the easiest way the number could go up while the product got worse. If something as small as more reminder emails would do it, with no one getting more done, it is an activity metric; find the moment the job gets done and
 count that instead. Then add two guardrails and fill in the success-definition table.
 :::
 
@@ -411,8 +410,7 @@ users with the cohort curve: does the total show the same trend?
 
 ## Cause Versus Coincidence
 
-**The model:** a randomized test shows cause. A before-and-after comparison usually shows the
-season, the campaign, or noise.
+**The model:** a randomized test shows cause. A before-and-after comparison cannot separate your change from the season, a campaign, or noise.
 
 When a number moves right after you change something, two explanations compete: your change
 caused it, or something else happened at the same time. The data alone cannot tell them apart.
@@ -468,9 +466,8 @@ interviews and sessions, so we will try Z and check again."
 
 A model can write the query that splits users into A and B, compute the rates, and list what else
 changed that week for you to rule out. It cannot turn a before-and-after into a causal answer.
-Ask it for "patterns" in eight weeks of signup totals and it will report some, because it always
-produces an answer; with a few dozen users most of them are noise. Asking a model which version
-your users would prefer is a guess about people it has never met.
+Ask it for "patterns" in eight weeks of signup totals and it will usually report some, because it is built to produce an answer; with a few dozen users most of them are noise. Asking a model which version
+your users would prefer gets you a guess, and you cannot tell whether it fits your users until you test it.
 
 ::: {.callout-tip title="Try it"}
 Your signups doubled the week you added a "share with a classmate" button. List three explanations

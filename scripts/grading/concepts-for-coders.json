@@ -461,7 +461,7 @@
     "id": "AS28",
     "name": "Model tiers: capability, cost and speed",
     "item": "S6",
-    "what": "Larger models are more capable and cost more per token and run slower; the smallest fit simple, high-volume, latency-sensitive work. Start with the most capable and move down only when measurement shows the smaller one is good enough.",
+    "what": "Larger models are more capable and cost more per token and run slower; the smallest fit simple, high-volume, latency-sensitive work. Whichever you start from, your eval set decides whether a smaller model is good enough.",
     "practice": "A committed decision record that chooses a model, names an alternative model, and gives the reason.",
     "knowledge_only": false
    },

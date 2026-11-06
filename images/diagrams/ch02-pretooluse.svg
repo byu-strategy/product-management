@@ -28,7 +28,7 @@
 <text x="885.0" y="120" font-size="17" font-weight="700" fill="#002E5D" text-anchor="middle" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">PostToolUse</text>
 <text x="885.0" y="146" font-size="15" font-weight="400" fill="#5A6672" text-anchor="middle">hook</text>
 <text x="885.0" y="172" font-size="15" font-weight="400" fill="#5A6672" text-anchor="middle">can react,</text>
-<text x="885.0" y="190" font-size="15" font-weight="400" fill="#5A6672" text-anchor="middle">cannot undo</text>
+<text x="885.0" y="190" font-size="15" font-weight="400" fill="#5A6672" text-anchor="middle">cannot stop</text>
 <line x1="187" y1="140.0" x2="209" y2="140.0" stroke="#8A939C" stroke-width="1.8" marker-end="url(#ag)"/>
 <line x1="403" y1="140.0" x2="425" y2="140.0" stroke="#8A939C" stroke-width="1.8" marker-end="url(#ag)"/>
 <line x1="593" y1="140.0" x2="622" y2="140.0" stroke="#8A939C" stroke-width="1.8" marker-end="url(#ag)"/>

@@ -35,9 +35,9 @@ argument: start with the simplest workflow that works and add autonomy only when
 
 **Your API key never goes in the browser.** An API key ([Chapter 7](07-anatomy-of-an-application.qmd))
 is the secret that tells Anthropic whose account is calling and who gets the bill. Putting it in
-browser code is the single most common way students leak credentials. Anything sent to the
+browser code is a common way to leak credentials. Anything sent to the
 browser is readable by anyone who opens its developer tools (a built-in panel that shows a page's code),
-and a leaked key can be used until you notice the bill.
+and a leaked key can be used until it is revoked.
 
 In Next.js, that means model calls happen in a route handler (a `route.ts` file under `app/api/`
 that answers requests on the server, Chapter 7). Put
@@ -161,8 +161,7 @@ the prompt and hoping it comes back valid is unreliable, and it fails often enou
 wrapping the JSON in a code fence (the ```` ``` ```` marks around a code block) or adding a
 sentence of preamble.
 
-Use structured outputs instead. You define the shape, the API guarantees the response matches
-it. The example below describes the shape with Zod, a TypeScript library for describing data:
+Use structured outputs instead. You define the shape, and the API holds the response to it. A refusal or a reply cut off by `max_tokens` can still break the shape, so check `stop_reason`. The example below describes the shape with Zod, a TypeScript library for describing data:
 each field gets a name and a type, such as a number from 1 to 5 or one of three fixed words.
 
 ```typescript
@@ -201,7 +200,7 @@ export async function POST(req: Request) {
 
 This is the pattern behind most useful AI features. Classification, extraction, tagging,
 routing, scoring. The model does the judgment; your code gets a typed object back and treats
-it like any other data. The shape is guaranteed; the contents are still the model's judgment,
+it like any other data. The shape is fixed by the schema, apart from those two cases; the contents are still the model's judgment,
 so `urgency: 4` can be wrong in a perfectly valid object.
 
 <!-- learn -->
@@ -290,8 +289,7 @@ same one.
 student asks, "Can I turn in Sprint 3 late?" Retrieval returns the late-work policy, and the
 answer quotes it. Now suppose the late policy was never loaded, but a paragraph about late
 *registration* was. The nearest chunks are about lateness, the model answers from them, and the
-student gets a fluent, cited, wrong answer. **When retrieval fetches the wrong pieces, the
-answer is wrong with confidence.** So you test retrieval on its own: for each test question, did
+student gets a fluent, cited, wrong answer. **When retrieval fetches the wrong pieces, the model can still give a fluent, cited, wrong answer, even when the prompt tells it to say it does not know.** So you test retrieval on its own: for each test question, did
 the right chunk come back at all?
 
 ![RAG has two lanes: prepare the documents once, then retrieve and answer for every question. The red markers are where the course-help bot goes wrong, and each one still produces a fluent answer.](images/diagrams/ch11-rag-failure-points.svg){#fig-rag-failure-points fig-alt="Two lanes of cards with icons. Once, ahead of time: Documents, Chunk, Embed, Store. Every question: Question, Embed, Search, Model, Answer. An arrow from Store down to Search is labeled nearest by meaning. Three red numbered markers show failures: 1 on Documents, never loaded; 2 on Search, wrong chunks; 3 on Answer, answers anyway. A band at the bottom reads: test retrieval on its own, for each test question, did the right chunk come back?" width="100%"}
@@ -393,11 +391,7 @@ the pricing page and see whether the number is one you can afford. This is a pro
 decision, and it belongs in your business model. Tokens are also the unit of speed: the 500
 output tokens are written one at a time, so shorter outputs are faster as well as cheaper.
 
-**On choosing a model.** Start with the most capable model and move down only if measurement
-says you can. Many builders do the opposite and pick the cheapest model that seems to work,
-which usually costs more in the end because the failures are subtle: slightly worse extraction,
-slightly more retries, slightly more support. The smallest, fastest models are right
-for simple, high-volume, latency-sensitive work like classifying one short string. Because the
+**On choosing a model.** Anthropic's guide describes two starting points: a fast, low-cost model for prototypes, tight latency, and simple high-volume work such as classifying one short string, or the most capable model for complex tasks where accuracy outweighs cost ([Choosing the right model](https://platform.claude.com/docs/en/about-claude/models/choosing-a-model)). Either way, measure the choice. A cheaper model's failures can be subtle: slightly worse extraction, slightly more retries, slightly more support. Because the
 frontier is jagged (Chapter 10), a model's reputation tells you little about your task: run your
 eval set on each candidate and choose by the score.
 
@@ -431,8 +425,7 @@ produce different output. Anything that has to be stable, an ID, a price, a perm
 must not come from a model.
 
 **It is confidently wrong.** The failure mode is a plausible answer that happens to be false,
-with no exception thrown: a hallucination. The model has no built-in sense of when it does not
-know. If a wrong answer is expensive, put a human in the path or check the output against
+with no exception thrown: a hallucination. A model's sense of what it knows is unreliable, so you cannot count on it to tell you when it does not know. If a wrong answer is expensive, put a human in the path or check the output against
 something you trust.
 
 **It can be steered by its input.** Anything a user or a document puts in front of the model can
@@ -464,7 +457,7 @@ happens, and name the defense from the list above that limits the damage.
 
 ## Evals: Knowing Whether It Works
 
-Few teams do this, and it matters more than anything else in this chapter.
+This section matters more than any other in this chapter.
 
 You cannot tell whether an AI feature works by trying it a few times. It worked those few
 times. The question is whether it works across the range of inputs real users will send, and
@@ -546,10 +539,9 @@ Words used in this section:
 | Noise | How much the score moves between runs when nothing changed, because model output is sampled |
 
 **Building your own.** Collect twenty to fifty real inputs from your product or your discovery
-interviews; inputs you invent miss the odd cases users actually send. Write the expected answer
+interviews; inputs you invent tend to miss the odd cases users actually send. Write the expected answer
 or pass rule for each. Put them in a JSON file with a script that runs them all and prints the
-score. That is enough to catch real regressions, and it is more evaluation rigor than most
-shipped AI features have. Hamel Husain and Shreya Shankar's free [AI Evals email
+score. That is enough to catch real regressions. Hamel Husain and Shreya Shankar's free [AI Evals email
 course](https://ai.hamel.dev/eval-course) is a place to start when you want more.
 
 If your product has an AI feature, an eval set is part of the product. Put it in your repo
@@ -580,7 +572,7 @@ bigger than the noise? Which test cases changed? Commit the eval, the prompt, an
   files, and each change is tested against an eval.
 - **Stateless API**: each call sees only the messages you send; your app owns the conversation
   history, and every turn costs more as the input grows.
-- **Structured output**: define a schema and the API guarantees the response matches its shape.
+- **Structured output**: define a schema and the API holds the response to its shape, apart from refusals and replies cut off by `max_tokens`.
   The contents are still the model's judgment, so a valid object can hold a wrong value.
 - **Streaming**: the same total wait, with words appearing almost at once. Use it for anything a
   person watches, and give the user a way to start, a live sign of progress, and a Stop that
@@ -592,8 +584,8 @@ bigger than the noise? Which test cases changed? Commit the eval, the prompt, an
   it. Every loop needs a budget, a stop condition, and a point where a human decides.
 - **Cost**: billed per token in and out, with output costing about five times input. Multiply
   tokens per call by calls per user per day by users by price before you ship.
-- **Choosing a model**: start with the most capable model and move down only if your eval score
-  says you can.
+- **Choosing a model**: start from a fast, low-cost model for prototypes and simple high-volume work, or the most capable
+  model for complex tasks where accuracy outweighs cost. Either way, run your eval set on each candidate and choose by the score.
 - **Prompt caching**: mark a repeated prefix, such as a long system prompt, as cached, and
   repeated calls pay a fraction of the price for it.
 - **Where it breaks**: calls are slow and vary, output is not deterministic, answers can be

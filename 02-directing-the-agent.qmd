@@ -418,7 +418,7 @@ Type `/hooks` in Claude Code to see every hook that is set up and where it came 
 **A `PreToolUse` hook runs after the model has written a tool call and before anything happens.**
 It is the last point where an action can be stopped. By the time `PostToolUse` fires, the file
 has changed or the command has run, so a `PostToolUse` hook can react (format the file, report a
-problem to Claude) but cannot undo anything.
+problem to Claude) and can run a script that changes the file back, but it cannot stop what already ran.
 
 ![One tool call, zoomed in on PreToolUse. The hook sees the exact call before anything has run and answers in one of four ways. Only exit 2 or deny stops the action. This is step 3 of the tool call in Chapter 1.](images/diagrams/ch02-pretooluse.svg){#fig-pretooluse fig-alt="One tool call as five steps from left to right. In a region labeled nothing has happened yet: the model asks to commit, git commit; the PreToolUse hook, highlighted, your script decides; the permission rules, deny, ask, allow. In a region labeled already happened: the tool runs, commit is made; the PostToolUse hook, can react, cannot undo. The PreToolUse step expands into a panel. What it sees: the exact command as JSON, tool_name Bash and tool_input with the command git commit, before anything has run. What it can answer: exit 0, continue to permission rules; exit 2 or deny, blocked, reason goes to the model, highlighted; ask, ask you before it runs; allow, skip the prompt, deny rules win. Two notes below: runs in every permission mode, even bypass; sees only the tools its matcher names." width="100%"}
 
@@ -544,7 +544,7 @@ A two-minute drill, in a practice folder with no GitHub connection (`mkdir drill
 
 #### What can be undone
 
-Claude Code saves a **checkpoint** of your files before each prompt you send. `/rewind` (or `Esc` twice when the prompt is empty) opens a menu that restores the code, the conversation, or both to an earlier prompt. A checkpoint records only the changes Claude makes with its own file-editing tool. It does not record what a shell command does, and it has no way to reach anything outside your laptop.
+Claude Code saves a **checkpoint** of your files before each prompt you send. `/rewind` (or `Esc` twice when the prompt is empty) opens a menu that restores the code, the conversation, or both to an earlier prompt. A checkpoint records only the changes Claude makes with its own file-editing tool. A file that only shell commands changed is not tracked, though once Claude has edited a file with its edit tool, `/rewind` also undoes later shell changes to that file. It has no way to reach anything outside your laptop.
 
 So every action an agent takes falls into one of three groups (@fig-blast-radius):
 
@@ -580,13 +580,13 @@ Permission modes, cycled in the terminal with `Shift+Tab` (the status bar shows 
 | **Manual** (config value `default`) | Reads only | Sensitive work; you want to review every action |
 | **Accept edits** | Reads, file edits, and common file commands (`mkdir`, `touch`, `mv`, `cp`, `rm`, `sed`) inside your project | You are iterating on code and reviewing as you go |
 | **Plan** | Reads, plus exploring commands (no edits to your source) | Exploring before changing anything |
-| **Auto** | Most actions, after a second model reviews each one and blocks risky ones | Long tasks where approving every prompt would be tedious |
+| **Auto** | Reads and project file edits, plus other actions a second model reviews and does not block | Long tasks where approving every prompt would be tedious |
 | **Don't ask** (config value `dontAsk`) | Reads in your folders and the tools you pre-approved; anything else is refused, not asked | Scripts and automated runs (`claude -p`) with an exact list of allowed tools |
 | **Bypass permissions** (started with `--dangerously-skip-permissions`) | Everything, with no prompts and no safety checks | Only inside an isolated container or virtual machine |
 
 Recent versions of Claude Code start new terminal and VS Code sessions in Auto; check the status bar. Note that Accept edits and Auto both let Claude run `rm` and `mv` without asking, which are group 2 actions: commit first.
 
-**How auto mode decides.** In Auto, a second model, called the classifier, reviews each action before it runs, in place of you. It blocks actions that go beyond what you asked for, reach systems it does not recognize, or look driven by instructions in content Claude read, such as a web page or a ticket. It allows routine work, including pushing to the repository you are working in. If it blocks the same kind of action again and again, Claude Code goes back to asking you. A boundary you state in the chat ("don't deploy until I say so") counts as a block, but it lives only in the conversation: compacting the conversation can summarize it away. For a boundary that must hold, write an ask or deny rule [@anthropic2026modes].
+**How auto mode decides.** In Auto, your allow, ask, and deny rules are checked first, and reads and file edits in your working directory are approved without review. Everything else goes to a second model, called the classifier, which reviews the action before it runs, in place of you. It blocks actions that go beyond what you asked for, reach systems it does not recognize, or look driven by instructions in content Claude read, such as a web page or a ticket. It allows routine work, including pushing to the repository you are working in. If it blocks actions 3 times in a row or 20 times in total, Claude Code goes back to asking you. A boundary you state in the chat ("don't deploy until I say so") counts as a block, but it lives only in the conversation: compacting the conversation can summarize it away. For a boundary that must hold, write an ask or deny rule [@anthropic2026modes].
 
 **Bypass permissions and `--dangerously-skip-permissions`.** The flag starts a session in bypass permissions mode, and its name states the risk: every permission prompt and every safety check is off, including the classifier. What still protects you is what runs outside the model's choices. Deny rules still block, hooks still run, and the few actions no mode approves on its own still ask. Allow rules no longer matter, since everything is allowed. In an interactive session started this way, plan mode's "no edits while planning" is not enforced. Run it only where the damage is contained: a container or virtual machine with nothing else on it, not your own laptop [@anthropic2026modes].
 
@@ -618,11 +618,9 @@ For each task, name which of the three groups it belongs to, how you would undo 
 
 #### Subagents
 
-Each subagent works in its own, separate context window. It does not see your conversation with
-Claude. Instead, Claude writes it a short task description, the subagent does the work, and only
+A standard subagent works in its own, separate context window. It does not see your conversation with Claude. Instead, Claude writes it a short task description, the subagent does the work, and only
 its final summary comes back to your main conversation. That is its purpose: a subagent can read
-fifty files or a long test log without filling up your main conversation. It also means a
-subagent knows only what it was told.
+fifty files or a long test log without filling up your main conversation. It also means a standard subagent knows only what it was told. A fork is the exception: a subagent that inherits your whole conversation, while its work still stays out of your main window. Fork mode is on by default in Claude Code, and setting `CLAUDE_CODE_FORK_SUBAGENT` to `0` turns it off.
 
 Claude Code has built-in subagents: **Explore** (fast, read-only search), **Plan** (read-only research while planning), and a **general-purpose** one that can act. You can define your own in `.claude/agents/` with their own instructions and a restricted set of tools, for example a read-only code reviewer.
 
@@ -630,7 +628,7 @@ What a subagent gets:
 
 1. **The task description Claude writes for it**, so be specific in what you ask: "Find every place we call the Supabase client and list the file and line" works better than "look into the database code."
 2. **CLAUDE.md**, in most cases. The built-in Explore and Plan subagents skip it to stay fast, so do not count on a project rule reaching them.
-3. **None of your conversation.** If the task depends on something you said, Claude has to put it in the task description.
+3. **None of your conversation, unless it is a fork.** If the task depends on something you said, Claude has to put it in the task description.
 
 Use a subagent when a side task would fill your main window (searching a codebase, reading logs, researching documentation) or needs a narrower set of tools. Stay in the main conversation for back-and-forth work where every step depends on what you just discussed.
 

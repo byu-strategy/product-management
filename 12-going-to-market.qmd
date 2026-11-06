@@ -141,12 +141,11 @@ statement in seconds, and it can rewrite a jargon-heavy sentence in plain words:
 
 > "Explain how QuizMe builds questions in one sentence that a first-year student would understand."
 
-What it cannot do is tell you which headline your customers will respond to. You can ask a model
+What it cannot do is measure which headline your customers will respond to. You can ask a model
 "which of these two resonates more with a stressed student?", and that is a **gut check with a
 model**: a guess based on the text it was trained on. It is not an A/B test. An A/B test shows
 two versions to real people, assigned at random, and counts what they *do*
-(see [Cause Versus Coincidence](14-measuring-what-matters.qmd)). The model has never met your
-customers. The interview quotes are the ground truth; the model only helps you phrase them.
+(see [Cause Versus Coincidence](14-measuring-what-matters.qmd)). The guess may be right, but you cannot tell whether it fits your customers until you test it. The interview quotes are the ground truth; the model only helps you phrase them.
 
 ::: {.callout-tip title="Try it"}
 Pull three quotes from your own interview notes. Fill in Dunford's five blocks, starting with the
@@ -333,7 +332,7 @@ the choice:
 2. **What does it cost, in money and in time to results?** You have little money and a
    two-week sprint.
 3. **Does the product sell itself?** If people can sign up and reach value on their own in
-   minutes, a product-led channel fits. If it needs setup or training, a person has to sell it.
+   minutes, a product-led channel fits. If it needs setup or training, it usually takes a person to sell it.
 
 **Product-led growth (PLG)**: users sign up, try, and get value without talking to anyone. Think
 Notion, Figma, or Slack. It works when time-to-value is short and the "aha moment" happens on
@@ -450,8 +449,7 @@ AI is useful here, within limits:
   behind each theme so you can check. It can draft experiment ideas, write the SQL for a funnel
   or cohort query (Chapter 14 explains both), and check your arithmetic.
 - **It cannot** tell you why signups rose from a list of weekly totals. Paste eight weeks of
-  signup counts into a model and ask for "patterns" and it will find some, because it always
-  produces an answer, and with a few dozen users most week-to-week movement is noise. Whether a
+  signup counts into a model and ask for "patterns" and it will usually find some, because it is built to produce an answer, and with a few dozen users most week-to-week movement is noise. Whether a
   change *caused* a result is a question of how the data was collected, which the model cannot see.
   See [Cause Versus Coincidence](14-measuring-what-matters.qmd).
 

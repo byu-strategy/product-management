@@ -268,8 +268,7 @@ fact, a recent event, a specific citation, a number), the model still produces s
 
 This is a **hallucination**: fluent, confident output that is false. It comes
 from the same mechanism as the fluent, correct output, so the model is working as designed when it
-happens. A model has no built-in sense of when it does not know; its confidence reflects the
-wording and says nothing about whether the facts are right. Human
+happens. A model's sense of what it knows is unreliable, and the confidence in its wording is a poor guide to whether the facts are right. Human
 feedback training helps (models are now often trained to say "I'm not sure"), but it does not
 remove the cause.
 

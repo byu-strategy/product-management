@@ -94,23 +94,25 @@ Before the strategy comes a **product vision**: a description of the better worl
 
 ## What a strategy is
 
-A strategy is a response to a specific challenge. Richard Rumelt argues that every good strategy has the same three-part core, which he calls the **kernel** [@rumelt2011good]:
+A strategy is a response to a specific challenge. Richard Rumelt argues that a good strategy has a three-part core, which he calls the **kernel** [@rumelt2011good; @rumelt2011perils]:
 
-1. **A diagnosis**: what is going on, and what is the hard part?
-2. **A guiding policy**: the overall approach you choose for that hard part. It narrows what you will do without listing every step.
-3. **Coherent actions**: specific steps that reinforce one another and carry out the policy.
+1. **A diagnosis**: what is going on, and which parts of it are critical?
+2. **A guiding policy**: the overall approach you choose for getting past those obstacles. It narrows what you will do without listing every step.
+3. **Coherent actions**: specific steps, coordinated with one another, that carry out the policy.
 
-Say you are building a study app for nursing students:
+Rumelt's example is Nvidia in the mid-1990s, after its first product failed and a rival took the lead in 3-D graphics chips:
 
-- **Diagnosis:** students already have plenty of study tools. They stop using them after the first week because nothing ties the work to their next exam.
-- **Guiding policy:** build everything around the exam calendar, starting with one nursing program.
-- **Coherent actions:** load that program's exam dates, send a short daily set tied to the next exam, and recruit ten students from one class to use it before their next test.
+- **Diagnosis:** "We are losing the performance race."
+- **Guiding policy:** release a faster, better chip three times faster than the industry norm, every 6 months instead of every 18.
+- **Coherent actions:** three development teams on overlapping schedules, heavy investment in simulation to avoid delays, and taking back control of the software drivers.
 
-Rumelt also names the signs of a bad strategy: fluff, failing to face the challenge, mistaking goals for strategy, and bad strategic objectives. Two are worth watching for here. "Reach 1,000 users by May" is a goal: it says what you want and nothing about how you will get there. "The best recipes and the easiest app" is fluff: it sounds like a plan and commits you to nothing.
+At your scale, the same three parts fit in a few sentences.
 
-A guiding policy is a choice, so it has to rule something out. Choosing what to do and choosing what not to do are one decision described from two sides: with limited time and money, choosing one customer or feature means passing on others. Michael Porter stresses the second side, writing that "the essence of strategy is choosing what not to do" [@porter1996strategy]. The emphasis helps when a team is tempted to do everything, because passing on a good idea is the part people avoid.
+Rumelt also names four signs of a bad strategy: failing to face the challenge, mistaking goals for strategy, bad strategic objectives, and fluff. Two are easy to spot on a product. "Reach 1,000 users by May" is a goal: it says what you want and nothing about how you will get there. "AI-powered, customer-centric meal solutions" is fluff: take out the buzzwords and it says you make a cooking app.
 
-A common check, often credited to Roger Martin, is to state the opposite of your choice. If the opposite sounds ridiculous, you have not made a choice. "We will build what users want" fails, since no team would choose the reverse. "We will start with one nursing program and leave other majors for later" passes, since another team could reasonably choose the reverse. A list of every good thing you could do rules nothing out, and that makes it a wish list.
+A guiding policy is a choice, so it has to rule something out. Choosing what to do and choosing what not to do are one decision described from two sides: with limited time and money, choosing one customer or feature means passing on others. Michael Porter's article states both sides: "The essence of strategy is choosing to perform activities differently than rivals do," and later, "The essence of strategy is choosing what not to do" [@porter1996strategy]. The second emphasis helps when a team is tempted to do everything, because passing on a good idea is the part people avoid.
+
+Roger Martin offers a test: state the opposite of your choice [@martin2015wisdom; @martin2024opposite]. If the opposite is stupid on its face, you have not made a strategic choice. "We will build what users want" fails, since no team would choose the reverse. "We will start with one nursing program and leave other majors for later" passes, since another team could reasonably choose the reverse. Items that fail can still matter. Martin calls them operating imperatives: things you must do to avoid falling behind, which will not set you apart. A list of every good thing you could do rules nothing out, and that makes it a wish list.
 
 <!-- learn -->
 
@@ -124,7 +126,7 @@ Roger Martin and A.G. Lafley (*Playing to Win*) [@lafley2013playing] reduce stra
 4. **What capabilities must you have?** The few things you must be great at.
 5. **What management systems are required?** How you keep it running.
 
-For a student product, the first three matter most. Answer "where will you play" and "how will you win" in a sentence each, and you have written down more strategy than most startups do. Together they state your guiding policy.
+For a student product, the first three matter most. Answer "where will you play" and "how will you win" in a sentence each, and you have written down the two choices that matter most at this stage. Together they state your guiding policy.
 
 One thing has changed about "where will you play." The old advice was to target a large market,
 because the fixed cost of building was high enough that a small one could not repay it. That
@@ -385,7 +387,7 @@ The Sprint 2 framework gives you a practical way to check your aim. For the need
 - **Becoming.** Does it help them grow and become more capable, or keep them dependent and stuck?
 - **Connection.** Does it strengthen real relationships, or replace them with weaker substitutes?
 
-Not every product touches all three. The question is directional: for the needs you do touch, are you on the right side of them? A product that expands agency, supports becoming, and deepens connection is aimed well, and it tends to build lasting trust, which cheaper tactics do not.
+Not every product touches all three. The question is directional: for the needs you do touch, are you on the right side of them? A product that expands agency, supports becoming, and deepens connection is aimed well.
 
 <!-- learn -->
 

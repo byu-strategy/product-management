@@ -531,8 +531,7 @@ like the ones above, so each user can insert and count only their own rows.
 The third check matters most for AI features. Each model call costs money, and the route that
 makes it holds your key, so an unprotected route lets anyone spend your budget through your app.
 Use two limits together: a per-user cap in your code, as above, and a monthly spend limit on the
-whole account, set in your model provider's console. The account limit still holds if your code
-has a bug.
+whole account, set in your model provider's console. An enforced limit still holds if your code has a bug, so check yours: some providers only send alerts until you turn on a hard limit.
 
 **Worked example.** A student ships a "summarize my notes" feature. The route sends whatever text
 arrives to the model and never checks who sent it. Someone sees the route's address in the
@@ -603,8 +602,7 @@ database as a value.
 go, including into prompts and logs.
 
 **Secrets.** Anyone holding a secret key can act as your product: spend your money on a model
-API, issue refunds through Stripe, read every row in your database. A leaked key can be used
-until you notice the bill. Keys come in two kinds, and the difference decides where each may live:
+API, issue refunds through Stripe, read every row in your database. A leaked key works until it is revoked. Anthropic turns off a key found in a public GitHub repo, and some other providers do too, but a key leaked any other way, such as in a Slack message or browser code, stays live until someone notices. Keys come in two kinds, and the difference decides where each may live:
 
 | Key | Example | Where it may live | Why |
 |---|---|---|---|
