@@ -4,6 +4,20 @@ This course site is updated during the semester, and every meaningful update is 
 
 New entries appear at the top.
 
+## v2.12.21 (2026-11-05)
+
+Chapter 3's strategy sections are rewritten from the original sources, and claims across the book are stated more carefully.
+
+- **What a strategy is (Chapter 3).** This new section replaces "Strategy is choosing what not to do." It teaches Richard Rumelt's kernel (a diagnosis, a guiding policy, and coherent actions) with Nvidia as the example, the signs of a bad strategy, Roger Martin's opposite test, and Marty Cagan's definition of product strategy. Choosing what to do and choosing what not to do are now described as one decision.
+- **Building blocks of strategy (Chapter 3).** A new section covers McKinsey's seven building blocks and a way to widen your options, from Gans, Scott, and Stern. The one-page strategy exercise adds the challenge, the options you considered, and your next actions. Grading has not changed.
+- **Value stick (Chapter 3).** The value is now credited to customer, firm, and suppliers together, with a new figure and an appendix section, "Who created the value?"
+- **Personas (Chapter 4).** A persona an agent writes before any interviews is now described as a list of guesses to test in interviews. The book used to say it held no information, which overstated the point.
+- **Choosing a channel (Chapter 12).** Brian Balfour's rule is added: design the product to fit the channel, since you do not control the channel's rules.
+- **Claude Code details (Chapter 2).** Corrected to match the current documentation: how auto mode decides, subagents and forks, what a `PostToolUse` hook can do, and what `/rewind` restores.
+- **Models in your product (Chapters 10 and 11).** Choosing a model now gives two starting points and says to measure either one. Structured output lists its exceptions, and a model's sense of what it knows is described as unreliable.
+- **Measuring (Chapter 14).** The North Star test now asks how easily a number could go up while the product got worse.
+- **Fixes and polish.** Leaked API keys are described more accurately, Chapters 3 and 4 now point to the Problem Discovery Framework, and several unsourced generalizations are removed or softened.
+
 ## v2.12.20 (2026-11-02)
 
 Chapter 8 (Data and APIs) uses plainer wording.
