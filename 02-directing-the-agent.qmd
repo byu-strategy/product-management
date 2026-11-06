@@ -622,7 +622,7 @@ A standard subagent works in its own, separate context window. It does not see y
 its final summary comes back to your main conversation. That is its purpose: a subagent can read
 fifty files or a long test log without filling up your main conversation. It also means a standard subagent knows only what it was told. A fork is the exception: a subagent that inherits your whole conversation, while its work still stays out of your main window. Fork mode is on by default in Claude Code, and setting `CLAUDE_CODE_FORK_SUBAGENT` to `0` turns it off.
 
-Claude Code has built-in subagents: **Explore** (fast, read-only search), **Plan** (read-only research while planning), and a **general-purpose** one that can act. You can define your own in `.claude/agents/` with their own instructions and a restricted set of tools, for example a read-only code reviewer.
+Claude Code has built-in subagents: **Explore** (fast, read-only search), **Plan** (read-only research while planning), and a **general-purpose** one that can act. These are standard subagents, and a fork is a separate kind. You can define your own in `.claude/agents/` with their own instructions and a restricted set of tools, for example a read-only code reviewer.
 
 What a subagent gets:
 
