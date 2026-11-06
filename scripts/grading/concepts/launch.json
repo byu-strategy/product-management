@@ -87,7 +87,8 @@
    "knowledge_only": true,
    "practice": "",
    "exam": [
-    "LL-F-26"
+    "LL-F-26",
+    "LL-F-C6"
    ],
    "chapter": "Ch 14: Vanity, leading, and lagging"
   },
@@ -118,7 +119,8 @@
    "knowledge_only": false,
    "practice": "A funnel or activation rate computed from the product's events, committed as a query, a script, or a metrics file with the numbers.",
    "exam": [
-    "LL-F-07"
+    "LL-F-07",
+    "LL-F-C1"
    ],
    "chapter": "Ch 14: Signups Are Not Adoption; The funnel; Onboarding is the activation step"
   },
@@ -133,7 +135,8 @@
    "knowledge_only": false,
    "practice": "A cohort retention table computed from the product's data, committed.",
    "exam": [
-    "LL-F-14"
+    "LL-F-14",
+    "LL-F-C2"
    ],
    "chapter": "Ch 14: Retention Shows Whether It Works; Cohorts; Why totals mislead; Engagement measures count people"
   },
@@ -165,7 +168,8 @@
    "practice": "A committed test plan with a prediction, in an earlier commit than the result, for a test that assigned users to versions at random, and the result recorded.",
    "exam": [
     "LL-F-09",
-    "LL-F-10"
+    "LL-F-10",
+    "LL-F-C3"
    ],
    "chapter": "Ch 14: Why random assignment works"
   },
@@ -276,7 +280,8 @@
    "practice": "A committed break-even or financial model with the variable costs per user stated.",
    "exam": [
     "LL-F-12",
-    "LL-F-38"
+    "LL-F-38",
+    "LL-F-C5"
    ],
    "chapter": "Ch 13: Unit Economics and Break-Even; Turn the canvas into a model and a slide"
   },
@@ -292,7 +297,8 @@
    "practice": "A committed CAC per channel or LTV calculation from recorded spend and retention.",
    "exam": [
     "LL-F-04",
-    "LL-F-06"
+    "LL-F-06",
+    "LL-F-C4"
    ],
    "chapter": "Ch 13: Unit Economics and Break-Even. Ch 14: Money Metrics"
   },

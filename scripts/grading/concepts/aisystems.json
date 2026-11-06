@@ -23,7 +23,8 @@
    "practice": "",
    "exam": [
     "AS-F-03",
-    "AS-F-14"
+    "AS-F-14",
+    "AS-F-C5"
    ],
    "chapter": "Ch 10: Step 1: Text becomes tokens"
   },
@@ -55,7 +56,8 @@
    "practice": "Committed code that stores a conversation or facts about a user in the product's database and sends them with later model calls.",
    "exam": [
     "AS-F-04",
-    "AS-F-09"
+    "AS-F-09",
+    "AS-F-C3"
    ],
    "chapter": "Ch 10: The context window is working memory; Ch 11: The API Remembers Nothing"
   },
@@ -100,7 +102,8 @@
    "knowledge_only": true,
    "practice": "",
    "exam": [
-    "AS-F-01"
+    "AS-F-01",
+    "AS-F-C4"
    ],
    "chapter": "Ch 10: Step 1: Text becomes tokens; Ch 11: What It Costs. Ch 11: The API Remembers Nothing. Ch 10: The context window is working memory"
   },
@@ -131,7 +134,8 @@
    "practice": "Committed code that sets cache_control on a repeated prompt prefix, or stores a model result and reuses it in place of a new call.",
    "exam": [
     "AW-F-28",
-    "AW-F-31"
+    "AW-F-31",
+    "AS-F-C6"
    ],
    "chapter": "Ch 11: What It Costs"
   },
@@ -367,7 +371,8 @@
    "knowledge_only": false,
    "practice": "A committed analysis that checks a model's claims against sources and records which claims were correct, partly correct, and invented.",
    "exam": [
-    "AS-F-10"
+    "AS-F-10",
+    "AS-F-C2"
    ],
    "chapter": "Ch 10: Plausible is not true; Ch 11: Where It Breaks"
   },
@@ -413,7 +418,8 @@
    "knowledge_only": false,
    "practice": "A committed decision record that names a model option and a non-model option for one feature and the reason for the choice.",
    "exam": [
-    "AS-F-16"
+    "AS-F-16",
+    "AS-F-C1"
    ],
    "chapter": "Ch 11: Where It Breaks; Ch 10: The jagged frontier"
   },

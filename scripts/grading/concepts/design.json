@@ -41,7 +41,8 @@
    "exam": [
     "DE-M-08",
     "DE-F-04",
-    "DE-F-19"
+    "DE-F-19",
+    "DE-F-C2"
    ],
    "chapter": "Ch 5: Off the Happy Path"
   },
@@ -145,7 +146,8 @@
    "exam": [
     "DE-F-13",
     "DE-M-17",
-    "DE-F-17"
+    "DE-F-17",
+    "DE-F-C5"
    ],
    "chapter": "Ch 5b: Fitts's law; Hick's law; Cognitive load and Jakob's law; Ch 5: Attention and Hierarchy"
   },
@@ -198,7 +200,8 @@
    "exam": [
     "DE-F-03",
     "DE-F-32",
-    "DE-M-26"
+    "DE-M-26",
+    "DE-F-C3"
    ],
    "chapter": "Ch 5: Words Are Interface"
   },
@@ -318,7 +321,8 @@
    "exam": [
     "DE-M-18",
     "DE-F-11",
-    "DE-F-42"
+    "DE-F-42",
+    "DE-F-C1"
    ],
    "chapter": "Ch 6b: Acceptance Criteria; Kiro's three files and EARS; The Agent Team Kit's spec and build-spec Skills"
   },
@@ -489,7 +493,8 @@
    "exam": [
     "DE-F-07",
     "DE-F-59",
-    "DE-M-37"
+    "DE-M-37",
+    "DE-F-C4"
    ],
    "chapter": "Ch 6: Synthesizing Feedback; The Affinity Mapping Process; Severity Scoring"
   },
@@ -506,7 +511,8 @@
    "exam": [
     "DE-F-08",
     "DE-F-09",
-    "DE-M-10"
+    "DE-M-10",
+    "DE-F-C6"
    ],
    "chapter": "Ch 6: Fix the top issue and retest; Iteration Frameworks; Responding to Feedback Without Overreacting"
   },

@@ -25,7 +25,8 @@
     "DI-M-05",
     "DI-M-06",
     "DI-F-21",
-    "DI-F-22"
+    "DI-F-22",
+    "DI-F-C4"
    ],
    "chapter": "Ch 4: Problem Interviews (The Mom Test); Conducting Effective Interviews"
   },
@@ -44,7 +45,9 @@
     "DI-M-11",
     "DI-M-20",
     "DI-F-23",
-    "DI-F-24"
+    "DI-F-24",
+    "DI-F-C1",
+    "DI-F-C5"
    ],
    "chapter": "Ch 4: The Evidence Ladder: Said, Did, Paid"
   },
@@ -129,7 +132,8 @@
    "practice": "A committed file that names the product's user and its payer and says whether they are the same person.",
    "exam": [
     "DI-F-08",
-    "DI-F-30"
+    "DI-F-30",
+    "DI-F-C2"
    ],
    "chapter": "Ch 4: Who It Is For, and Not For (The user and the payer)"
   },
@@ -245,7 +249,8 @@
    "practice": "A committed file, outside the sprint plan, that names the product's riskiest assumption, the check run on it, and the result.",
    "exam": [
     "DI-F-10",
-    "DI-M-33"
+    "DI-M-33",
+    "DI-F-C6"
    ],
    "chapter": "Ch 4: The Four Risks and the Riskiest Assumption (The riskiest assumption)"
   },
@@ -262,7 +267,8 @@
    "exam": [
     "DI-F-05",
     "DI-F-11",
-    "DI-M-34"
+    "DI-M-34",
+    "DI-F-C3"
    ],
    "chapter": "Ch 4: The Smallest Test"
   },

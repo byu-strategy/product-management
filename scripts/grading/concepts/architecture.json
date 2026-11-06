@@ -103,7 +103,8 @@
    "practice": "A committed configuration for a separate development or staging database, settings that differ by environment, or a seed data file.",
    "exam": [
     "AA-F-21",
-    "AA-F-37"
+    "AA-F-37",
+    "AA-F-C4"
    ],
    "chapter": "Ch 9: Environments: Where Your Code Runs and Which Data It Touches; Which database? The settings decide. Ch 8: Design the Data Model First"
   },
@@ -165,7 +166,8 @@
    "knowledge_only": false,
    "practice": "A committed migration or schema file that adds or changes a table, which the product reads or writes, or one that imports existing data.",
    "exam": [
-    "AA-F-41"
+    "AA-F-41",
+    "AA-F-C2"
    ],
    "chapter": "Ch 8: Design the Data Model First (Migration). Ch 9: Rolling Back a Bad Deploy"
   },
@@ -181,7 +183,8 @@
    "practice": "A committed SQL query or query-builder call with a filter, an ordering or a join, which the product runs.",
    "exam": [
     "AA-F-20",
-    "AA-F-42"
+    "AA-F-42",
+    "AA-F-C1"
    ],
    "chapter": "Ch 8: Asking the Database a Question"
   },
@@ -402,7 +405,8 @@
    "practice": "Protections for data about people (a consent note, a redaction step in code, or access limits) written down in a committed file and applied in the product or the student's research files.",
    "exam": [
     "AA-F-14",
-    "AA-F-18"
+    "AA-F-18",
+    "AA-F-C6"
    ],
    "chapter": "Ch 8: Secrets and Sensitive Data"
   },
@@ -498,7 +502,8 @@
    "practice": "Automated tests committed, with a record that they ran (saved output, a CI log, or a commit message that reports the result).",
    "exam": [
     "AA-F-24",
-    "AA-F-30"
+    "AA-F-30",
+    "AA-F-C3"
    ],
    "chapter": "Ch 9b: Tests: Code That Checks Your Code"
   },
@@ -514,7 +519,8 @@
    "practice": "A recorded rollback or revert of a bad deploy (a revert commit, or a note naming the deployment the site was pointed back to).",
    "exam": [
     "AA-F-23",
-    "AA-F-59"
+    "AA-F-59",
+    "AA-F-C5"
    ],
    "chapter": "Ch 9: Rolling Back a Bad Deploy"
   },

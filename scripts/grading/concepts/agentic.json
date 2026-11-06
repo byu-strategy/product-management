@@ -194,7 +194,8 @@
     "AW-M-26",
     "AW-M-31",
     "AW-F-01",
-    "AW-F-69"
+    "AW-F-69",
+    "AW-F-C3"
    ],
    "chapter": "Ch 2: Advice Versus Enforcement"
   },
@@ -229,7 +230,8 @@
    "exam": [
     "AW-F-03",
     "AW-F-72",
-    "AW-M-34"
+    "AW-M-34",
+    "AW-F-C2"
    ],
    "chapter": "Ch 2: Delegation and Parallel Work"
   },
@@ -353,7 +355,8 @@
    "exam": [
     "AW-M-10",
     "AW-F-02",
-    "AW-F-76"
+    "AW-F-76",
+    "AW-F-C1"
    ],
    "chapter": "Ch 2: Done Means You Saw It Work"
   },
@@ -370,7 +373,8 @@
    "exam": [
     "AW-F-21",
     "AW-F-30",
-    "AW-F-82"
+    "AW-F-82",
+    "AW-F-C5"
    ],
    "chapter": "Ch 11: Prompts Are Product Code"
   },
@@ -404,7 +408,8 @@
    "exam": [
     "AW-F-32",
     "AW-F-78",
-    "AW-F-84"
+    "AW-F-84",
+    "AW-F-C4"
    ],
    "chapter": "Ch 11: Streaming"
   },
@@ -493,7 +498,8 @@
    "exam": [
     "AW-F-08",
     "AW-F-81",
-    "AW-F-89"
+    "AW-F-89",
+    "AW-F-C6"
    ],
    "chapter": "Ch 11: What It Costs; Evals: Knowing Whether It Works"
   }
