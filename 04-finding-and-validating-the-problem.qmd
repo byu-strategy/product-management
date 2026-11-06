@@ -85,7 +85,7 @@ If the map tells you where a belief sits, the next question is how you gather th
 
 Because each tool fails in its own way, **you triangulate**: you treat a belief as validated only when independent sources converge, an interview, plus a behavior in the data, plus a test that passes. The most common mistake is trusting a single source, usually your own logic or one enthusiastic user, and promoting it straight to certainty. That leads to False Confidence.
 
-How much evidence is enough depends on the stakes. A throwaway prototype needs almost none: go build it and learn. Committing the rest of the semester to one product needs a preponderance: real interviews, a customer who lives the problem, some signal they would pay. That is exactly what the conviction checks in the [Problem Discovery Framework](94-problem-discovery-framework.qmd), which you use in Sprint 2, ask you to weigh (see [Evaluating Your Problems](#evaluating-your-problems)). The posture throughout is to hold beliefs as probabilities: "I am maybe sixty percent sure" in place of "this is a great idea," and let each conversation move the number.
+How much evidence is enough depends on the stakes. A throwaway prototype needs almost none: go build it and learn. Committing the rest of the semester to one product needs a preponderance: real interviews, a customer who lives the problem, some signal they would pay. That is exactly what the conviction checks in the [Problem Discovery Framework](94-problem-discovery-framework.qmd) ask you to weigh (see [Evaluating Your Problems](#evaluating-your-problems)). The posture throughout is to hold beliefs as probabilities: "I am maybe sixty percent sure" in place of "this is a great idea," and let each conversation move the number.
 
 ::: {.callout-note title="Thinking in probabilities"}
 This is the Bayesian habit, and it comes with one practical rule: **good evidence is evidence that would look different if you were wrong.** "Tell me about the last time you dealt with this" is strong evidence, because someone who does not really have the problem cannot answer it convincingly. "Would you use an app that does this?" is weak evidence, because people say yes whether the problem is real or not. Seek the evidence that actually moves the number; discount the flattery that does not. That single test is why the Mom Test works, and it is the logic behind the [evidence ladder](#the-evidence-ladder-said-did-paid) later in this chapter.
@@ -246,7 +246,7 @@ Jobs come in three types; the *pain* behind a job comes in five kinds, and namin
 | **Emotional** | stress, anxiety, embarrassment, frustration |
 | **Social** | status, belonging, how others see them |
 
-When you interview, listen across all five. The pains people mention first are usually functional; the ones that actually drive them to pay are often emotional or social. This complements the Self-Determination lens in [Sprint 2](00-assessments.qmd#sprint-2) (autonomy, competence, relatedness): that lens explains *why* a pain matters; these five categories catalog *how* it hurts.
+When you interview, listen across all five. The pains people mention first are usually functional; the ones that actually drive them to pay are often emotional or social. This complements the Self-Determination lens in the [Problem Discovery Framework](94-problem-discovery-framework.qmd#theoretical-foundation) (autonomy, competence, relatedness): that lens explains *why* a pain matters; these five categories catalog *how* it hurts.
 
 *Five pain categories from Nile Hatch, [Expeditionary Innovation](https://ei.nilehatch.com/) [@hatch_expeditionary].*
 
@@ -588,7 +588,7 @@ also the payer. When she is not, write a second, shorter profile for the payer.)
 
 Not every problem is worth solving. Once you have a pile of candidates and some interviews, you
 score them. The course uses one rubric, the one in the [Problem Discovery
-Framework](94-problem-discovery-framework.qmd) you use in Sprint 2. Its parts:
+Framework](94-problem-discovery-framework.qmd). Its parts:
 
 | Factor | Question to ask | What strong looks like |
 |----------|-----------------|---|

@@ -381,7 +381,7 @@ Second, and this connects Aristotle to [the Hooked loop](#hooked-engagement-or-e
 
 ### A directional test
 
-The Sprint 2 framework gives you a practical way to check your aim. For the needs your product touches, ask:
+The [Problem Discovery Framework](94-problem-discovery-framework.qmd#gospel-framework) gives you a practical way to check your aim. For the needs your product touches, ask:
 
 - **Agency.** Does it expand what users can do and choose, or does it quietly narrow them?
 - **Becoming.** Does it help them grow and become more capable, or keep them dependent and stuck?
