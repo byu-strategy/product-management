@@ -154,7 +154,7 @@
    "id": "DI09",
    "name": "Personas",
    "item": "D2",
-   "what": "A fictional but realistic customer that summarizes interview evidence you already have. A persona generated before talking to anyone, by a person or an agent, contains no information and confirms what you already believed.",
+   "what": "A fictional but realistic customer that summarizes interview evidence you already have. A persona generated before talking to anyone, by a person or an agent, is a list of guesses to test in interviews.",
    "used": "Used: worked from a persona someone else wrote (a teammate, the client, or an agent), for example in a spec or prompt (repo or session scan).",
    "made": "Built: wrote personas.md from their own interviews, with each persona's claims citing an interview note. A persona drafted before any interview does not count.",
    "shipped": "Real users describe the problem in their own words in the persona, and it says who was left out and why (D2 level 5).",
@@ -450,7 +450,7 @@
     "DI-F-50",
     "DI-M-27"
    ],
-   "chapter": "Ch 3: Vision before strategy; Strategy is choosing what not to do; Where to play, and how to win; Putting it to work"
+   "chapter": "Ch 3: Vision before strategy; Strategy is a set of choices; Where to play, and how to win; Putting it to work"
   },
   {
    "id": "DI27",

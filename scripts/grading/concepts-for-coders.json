@@ -1113,7 +1113,7 @@
     "id": "DI09",
     "name": "Personas",
     "item": "D2",
-    "what": "A fictional but realistic customer that summarizes interview evidence you already have. A persona generated before talking to anyone, by a person or an agent, contains no information and confirms what you already believed.",
+    "what": "A fictional but realistic customer that summarizes interview evidence you already have. A persona generated before talking to anyone, by a person or an agent, is a list of guesses to test in interviews.",
     "practice": "A personas file written by the student and committed, with each persona's details drawn from named interview notes.",
     "knowledge_only": false
    },

@@ -92,9 +92,11 @@ Before the strategy comes a **product vision**: a description of the better worl
 
 <!-- learn -->
 
-## Strategy is choosing what not to do
+## Strategy is a set of choices
 
-Michael Porter's foundational point: the essence of strategy is choosing what *not* to do [@porter1996strategy]. Strategy is a small set of hard choices that fit together, which you then defend against the constant temptation to do everything. A list of every good thing you could do does not qualify. If your "strategy" contains no sacrifices, it is a wish list.
+Strategy is a small set of hard choices that fit together. Choosing what to do and choosing what not to do are one decision described from two sides: with limited time and money, choosing one customer or feature means passing on others. Michael Porter stresses the second side, writing that "the essence of strategy is choosing what not to do" [@porter1996strategy]. The emphasis helps when a team is tempted to do everything, because passing on a good idea is the part people avoid.
+
+A common check, often credited to Roger Martin, is to state the opposite of your choice. If the opposite sounds ridiculous, you have not made a choice. "We will build what users want" fails, since no team would choose the reverse. "We will serve home cooks with 20 minutes on a weeknight and leave dinner parties to other apps" passes, since another team could reasonably choose the reverse. A list of every good thing you could do rules nothing out, and that makes it a wish list.
 
 <!-- learn -->
 
@@ -358,8 +360,9 @@ Not every product touches all three. The question is directional: for the needs 
   so a stranger who lives it would recognize it.
 - **Product vision** (Marty Cagan): a description of the better world your product creates,
   usually a few years out. Write it first, then let the strategy serve it.
-- **Strategy is choosing what not to do** (Michael Porter): a small set of hard choices that fit
-  together. A strategy with no sacrifices is a wish list.
+- **Strategy is a set of choices**: a small set of hard choices that fit together. Choosing what to
+  do and what not to do are one decision, and Michael Porter stresses the second side. A strategy
+  that rules nothing out is a wish list.
 - **Where to play and how to win** (Roger Martin and A.G. Lafley, *Playing to Win*): two of five
   linked strategy choices, and the two that matter most for a student product. Because building is
   cheap now, a market too small for a funded team can be worth your time.

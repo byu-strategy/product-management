@@ -540,9 +540,11 @@ A worked example, from Dan Olsen:
 
 Note what makes this one useful: the quote and the asthma inhaler come from a real interview, not
 from imagination. A persona is a summary of evidence you already collected. The failure mode, and
-it is the easy one now, is asking an agent to generate a persona before you have talked to anyone.
-That produces a plausible character with no information in it, and it will confirm whatever
-you already believed.
+it is the easy one now, is asking an agent to generate a persona before you have talked to anyone
+and treating it as evidence. A model learned from a lot of real people's writing, so the result may
+sound right, and parts of it may be right. You cannot tell which parts fit your customers until you
+talk to them, and it tends to lean toward what your prompt assumed. Treat it as a list of guesses to
+test in interviews.
 
 #### Persona Template
 
@@ -1131,7 +1133,7 @@ above are your experiments (@fig-opportunity-solution-tree).
 - **The access test**: location, engagement, and reciprocity. If you cannot reach a segment cheaply
   now, find a reachable beachhead or reconsider the problem.
 - **Persona**: a fictional but realistic customer built from interview evidence you already have.
-  A persona generated before you talk to anyone contains no information.
+  A persona generated before you talk to anyone is a list of guesses to test.
 - **Evaluating problems**: score frequency, intensity, willingness to pay, and market size, then
   check your fit (conviction) and addressability. The strongest case is frequent and painful and
   people will pay.

@@ -63,7 +63,7 @@ Every practice ends with the huddle: two or three students show their deploy URL
 ## Practice 3 · Mon, Sep 28 · Discovery
 
 - **Sprint / phase:** Sprint day. Sprint 1 due, Sprint 2 assigned.
-- **Emphasis:** What to build, and whether you should. Strategy is choosing what not to do, and a winning product can still leave users worse off.
+- **Emphasis:** What to build, and whether you should. Strategy is a set of hard choices, and a winning product can still leave users worse off.
 - **Scripture:** Matthew 7:20, "by their fruits ye shall know them." Judge a product by its effect on the people who use it.
 - **Quote:** "The essence of strategy is choosing what not to do." (Michael Porter) Alternate: "Make something people want." (Paul Graham, Y Combinator)
 - **Coach's story:** a time a good outcome hid a bad decision, or a product that worked but should not have shipped.
