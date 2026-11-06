@@ -322,6 +322,8 @@ message or your segment.
 does not repeat; a channel does. Pick one or two that match where your customer already is,
 and give each a fair test before you add another.
 
+Think about the channel while you design the product. Brian Balfour's rule: "Products are built to fit with channels. Channels do not mold to products" [@balfour2017channel]. Google and Facebook set their own rules, so you change what you control. Someone arriving from an ad has little patience, so a product that depends on paid ads needs to show value quickly.
+
 Gabriel Weinberg and Justin Mares's *Traction* lists nineteen channels and makes the point that
 most products grow through one or two of them [@weinberg2015traction]. Three questions narrow
 the choice:
@@ -509,6 +511,8 @@ at the data.
   deliver, they become manipulation.
 - **Channel**: a repeatable path by which strangers become users. Pick one or two where your
   customer already is, and give each a fair test.
+- **Product-channel fit** (Brian Balfour): you do not control a channel's rules, so you design the
+  product to fit the channel.
 - **Product-led vs. sales-led**: product-led growth lets users sign up and reach value alone;
   sales-led growth needs a person to reach out, demo, and close, which fits a complex product or
   a large deal.

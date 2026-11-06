@@ -114,6 +114,8 @@ A guiding policy is a choice, so it has to rule something out. Choosing what to 
 
 Roger Martin offers a test: state the opposite of your choice [@martin2015wisdom; @martin2024opposite]. If the opposite is stupid on its face, you have not made a strategic choice. "We will build what users want" fails, since no team would choose the reverse. "We will start with one nursing program and leave other majors for later" passes, since another team could reasonably choose the reverse. Items that fail can still matter. Martin calls them operating imperatives: things you must do to avoid falling behind, which will not set you apart. A list of every good thing you could do rules nothing out, and that makes it a wish list.
 
+**Product strategy** applies this to a product. Marty Cagan puts it this way: "product strategy helps us decide what problems to solve; product discovery helps us figure out the tactics that can actually solve the problems; and product delivery builds that solution so we can bring it to market" [@cagan2020overview]. He separates prioritizing from focusing: a ranked list of 30 projects is prioritized, and focus means picking the two or three problems that matter most [@cagan2020focus].
+
 <!-- learn -->
 
 ## Where to play, and how to win
@@ -308,6 +310,15 @@ Rumelt describes what a finished strategy contains. Chris Bradley, Angus Dawson,
 
 The authors warn against following this or any framework mechanically. Which blocks need the most time depends on your situation, which is why framing comes first.
 
+Founders often "go with the first practical strategy that comes to mind," and cheap building makes that easier. Joshua Gans, Erin Scott, and Scott Stern offer two questions to widen the search: will you work with existing companies or compete with them, and will you protect your idea or race to market [@gans2018strategy]?
+
+| | Work with existing companies | Compete with them |
+|---|---|---|
+| **Protect the idea** | Intellectual property (Dolby) | Architectural (OpenTable) |
+| **Race to market** | Value chain (Peapod) | Disruption (Netflix) |
+
+Their label "disruption" is broader than Christensen's definition earlier in this chapter. Their test: "If only one viable vision of the future exists, the entrepreneur probably doesn't have much of a business to begin with." When several options could work, they say to choose the one closest to the purpose that brought you to the venture.
+
 Two of their findings apply directly to a small team:
 
 - **Test your story.** Nearly eight in ten executives they surveyed said their companies' processes were geared more to confirming existing hypotheses than to testing new ones. Write down what would show your diagnosis is wrong, and go look for it.
@@ -321,6 +332,7 @@ Draft a one-page product strategy for your product:
 
 - **Vision** (one paragraph): the better world you are building toward.
 - **The challenge** (one or two sentences): your diagnosis of what is going on and what the hard part is.
+- **Options you considered** (one line each): at least two strategies that could work, and why you chose this one.
 - **Where you play** (one sentence): your specific customer and beachhead.
 - **How you win** (one sentence): your source of advantage.
 - **Your moat** (one sentence): why the win lasts.
@@ -412,8 +424,12 @@ Not every product touches all three. The question is directional: for the needs 
 - **Value created and the value stick** (Brandenburger and Stuart; Oberholzer-Gee): value created
   is willingness to pay minus willingness to sell, and the customer, you, and your suppliers create
   it together. Price and cost divide it into what each of the three captures.
+- **Product strategy** (Marty Cagan): decides which problems to solve. Discovery finds the solutions,
+  and delivery builds them. Focus means picking the two or three problems that matter most.
 - **Building blocks of strategy** (Bradley, Dawson, and Montard, McKinsey): frame, diagnose,
   forecast, search, choose, commit, evolve. Which blocks need the most time depends on the situation.
+- **Entrepreneurial strategy compass** (Gans, Scott, and Stern): work with existing companies or
+  compete, protect the idea or race to market. Write down at least two strategies that could work.
 - **Creating value is necessary, not sufficient** (Thiel, Teece): a product can create value and
   capture almost none of it. How much you can capture is set by industry structure, so assess it
   accurately.

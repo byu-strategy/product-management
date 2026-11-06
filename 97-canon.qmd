@@ -32,6 +32,8 @@ What has **not** changed: humans still have jobs to be done, still feel the same
 |---|---|---|---|
 | Strategy is a set of trade-offs, including what *not* to do | Michael Porter [@porter1996strategy] | Product Strategy | Matters more: when anyone can build anything, the choice is the advantage |
 | A good strategy has a kernel: diagnosis, guiding policy, coherent actions | Richard Rumelt, *Good Strategy/Bad Strategy* (2011) [@rumelt2011good] | Product Strategy | Matters more: building is cheap, so naming the real challenge is the hard part |
+| Product strategy decides which problems to solve; focus means picking a few | Marty Cagan, SVPG (2020) [@cagan2020overview; @cagan2020focus] | Product Strategy | Matters more: when features are cheap, the choice of problem is the hard part |
+| The entrepreneurial strategy compass | Gans, Scott & Stern, *HBR* (2018) [@gans2018strategy] | Product Strategy | Matters more: cheap building makes it easy to run with the first strategy you think of |
 | The building blocks of strategy, from framing through commitment | Bradley, Dawson & Montard, *McKinsey Quarterly* (2013) [@bradley2013blocks] | Product Strategy | Durable |
 | Where to play / how to win | Roger Martin & A.G. Lafley, *Playing to Win* (2013) [@lafley2013playing] | Product Strategy | Durable |
 | Moats and durable advantage | Hamilton Helmer, *7 Powers* (2016) [@helmer2016powers] | Product Strategy | More important now: when copying is cheap, a moat is the main source of lasting advantage |
