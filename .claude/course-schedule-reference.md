@@ -289,12 +289,11 @@
 
 | Component | Points | % | Notes |
 |-----------|--------|---|-------|
-| Sprints (5 × 50) | 250 | 50% | Portfolio is submission point |
-| Peer Code Review | 50 | 10% | AI-assisted code analysis of peer's repo |
-| Peer Product Testing | 50 | 10% | Be a real test user for peer's app |
-| Final Product | 100 | 20% | Product + presentation |
-| Quizzes (10 × 5) | 50 | 10% | Reading accountability |
-| **TOTAL** | **500** | **100%** | |
+| Sprints (5 × 50) | 250 | 55.6% | Portfolio is submission point |
+| Peer Product Testing | 50 | 11.1% | Be a real test user for peer's app |
+| Final Product | 100 | 22.2% | Product + presentation |
+| Quizzes (10 × 5) | 50 | 11.1% | Reading accountability |
+| **TOTAL** | **450** | **100%** | |
 
 ---
 

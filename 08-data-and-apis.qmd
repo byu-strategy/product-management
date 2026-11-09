@@ -304,7 +304,7 @@ Create two accounts in your app, A and B. As A, create a record. Sign in as B an
 edit, or delete A's record: through the screens, by changing ids in the address bar, and by
 asking Claude Code to write a short script that queries the table with your publishable key while
 signed in as B. If any attempt succeeds, you have found an authorization hole. Fix it with a
-policy, then run the drill again. This is also a standard check in the Peer Code Review.
+policy, then run the drill again.
 :::
 
 ## Requests and How They Fail {#requests-are-contracts-that-fail}

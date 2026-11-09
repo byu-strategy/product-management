@@ -143,12 +143,12 @@ Covers practices 1 through 6: Agentic Workflow, Discovery, Design. 40 items.
 
 ## Practice 8 · Mon, Nov 2 · Application Architecture
 
-- **Sprint / phase:** Sprint 4 in flight. Peer Code Review assigned.
+- **Sprint / phase:** Sprint 4 in flight.
 - **Emphasis:** Keep what you built healthy. A product you cannot safely change is already dying.
-- **Scripture:** Proverbs 27:17, "iron sharpeneth iron; so a man sharpeneth the countenance of his friend." Next week you read a classmate's code.
+- **Scripture:** Proverbs 27:17, "iron sharpeneth iron; so a man sharpeneth the countenance of his friend."
 - **Quote:** "Always leave the code cleaner than you found it." (the campground rule, after Robert C. Martin)
 - **Coach's story:** a codebase nobody could change, and what it cost.
-- **Season ritual:** huddle. Preview the Peer Code Review.
+- **Season ritual:** huddle.
 - **Film:** a diff that made the code worse while adding a feature, and the small refactor that would have prevented it.
 - **Install:** Supabase database, row-level security, CRUD, APIs; git branches, technical debt, linting, testing, refactoring.
 - **Drill:** refactor one messy part of your product, add a test, review the diff before you commit.
@@ -158,7 +158,7 @@ Covers practices 1 through 6: Agentic Workflow, Discovery, Design. 40 items.
 
 ## Practice 9 · Mon, Nov 9 · AI Systems
 
-- **Sprint / phase:** Sprint day. Sprint 4 due, Peer Code Review due, Sprint 5 assigned.
+- **Sprint / phase:** Sprint day. Sprint 4 due, Sprint 5 assigned.
 - **Emphasis:** A model gives you a likely answer, not a certain one. Use it with the precision the task admits.
 - **Scripture:** Alma 32:21, "faith is not to have a perfect knowledge of things... if ye have faith ye hope for things which are not seen, which are true." Act on well-founded belief without pretending to certainty.
 - **Quote:** "It is the mark of an educated mind to rest satisfied with the degree of precision which the nature of the subject admits." (Aristotle)

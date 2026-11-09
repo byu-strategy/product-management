@@ -78,8 +78,7 @@ week-view:
       start: "2026-11-02"
       axis: App Architecture
       read: [08-data-and-apis, 09-version-control-testing-and-tech-debt, 09b-tests-and-tech-debt]
-      items:
-        - {kind: assigned, text: Peer Code Review assigned, href: "00-assessments.html#peer-code-review"}
+      items: []
     - week: 9
       date: Mon, Nov 9
       start: "2026-11-09"
@@ -87,7 +86,6 @@ week-view:
       read: [10-how-models-work]
       items:
         - {kind: due, text: Sprint 4 due, href: "00-assessments.html#sprint-4"}
-        - {kind: due, text: Peer Code Review due, href: "00-assessments.html#peer-code-review"}
         - {kind: assigned, text: Sprint 5 assigned, href: "00-assessments.html#sprint-5"}
         - {kind: plan, text: "Sprint 5 plan due Wed, Nov 11", href: "00-assessments.html#sprint-5"}
     - week: 10

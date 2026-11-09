@@ -112,13 +112,12 @@ Most of your grade comes from building a real product across the semester, not o
 
 | Component | Points | % of Grade |
 |-----------|--------|------------|
-| Sprints 1 to 5 (5 × 50) | 250 | 50% |
-| Sprint 6, the final build | 100 | 20% |
-| Peer Code Review | 50 | 10% |
-| Peer Product Testing | 50 | 10% |
-| Midterm Exam | 25 | 5% |
-| Final Exam | 25 | 5% |
-| **TOTAL** | **500** | **100%** |
+| Sprints 1 to 5 (5 × 50) | 250 | 55.6% |
+| Sprint 6, the final build | 100 | 22.2% |
+| Peer Product Testing | 50 | 11.1% |
+| Midterm Exam | 25 | 5.6% |
+| Final Exam | 25 | 5.6% |
+| **TOTAL** | **450** | **100%** |
 
 Every assignment and exam is described in detail in the [Assessments section](00-assessments.qmd).
 

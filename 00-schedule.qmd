@@ -39,8 +39,8 @@ Agentic Workflow comes first on purpose. You will ship something in week one tha
 | 6 | Mon, Oct 19 | Design | [Testing the Design](06-testing-the-design.qmd), [Specs](06b-specs.qmd) | |
 | – | Oct 20 to 22 | – | Testing center | **[Midterm Exam](00-assessments.qmd#midterm-exam)** (covers classes 1–6) |
 | 7 | Mon, Oct 26 | App Architecture | [Anatomy of an Application](07-anatomy-of-an-application.qmd) + [The Browser, Developer Tools, and Claude in Chrome](09c-browser-and-developer-tools.qmd) | **Sprint 3 Due**, [Sprint 4 Assigned](00-assessments.qmd#sprint-4) (plan due Wed, Oct 28, 11:59 PM) |
-| 8 | Mon, Nov 2 | App Architecture | [Data and APIs](08-data-and-apis.qmd) + [Version Control, Environments, and Deploys](09-version-control-testing-and-tech-debt.qmd) + [Tests and Tech Debt](09b-tests-and-tech-debt.qmd) | [Peer Code Review Assigned](00-assessments.qmd#peer-code-review) |
-| 9 | Mon, Nov 9 | AI Systems | [How Models Work](10-how-models-work.qmd) | **Sprint 4 Due**, [Peer Code Review Due](00-assessments.qmd#peer-code-review), [Sprint 5 Assigned](00-assessments.qmd#sprint-5) (plan due Wed, Nov 11, 11:59 PM) |
+| 8 | Mon, Nov 2 | App Architecture | [Data and APIs](08-data-and-apis.qmd) + [Version Control, Environments, and Deploys](09-version-control-testing-and-tech-debt.qmd) + [Tests and Tech Debt](09b-tests-and-tech-debt.qmd) | |
+| 9 | Mon, Nov 9 | AI Systems | [How Models Work](10-how-models-work.qmd) | **Sprint 4 Due**, [Sprint 5 Assigned](00-assessments.qmd#sprint-5) (plan due Wed, Nov 11, 11:59 PM) |
 | 10 | Mon, Nov 16 | AI Systems | [Models in Your Product](11-models-in-your-product.qmd) | |
 | 11 | Mon, Nov 23 | Launch and Learn | [Going to Market](12-going-to-market.qmd) + [Business Models](13-business-models.qmd) | **Sprint 5 Due**, [Sprint 6 Assigned](00-assessments.qmd#sprint-6) (plan due Wed, Nov 25, 11:59 PM). Withdraw deadline is Tue, Nov 24. |
 | 12 | Mon, Nov 30 | Launch and Learn | [Measuring What Matters](14-measuring-what-matters.qmd) | [Peer Product Testing Assigned](00-assessments.qmd#peer-product-testing) |
@@ -69,11 +69,10 @@ in [Assessments](00-assessments.qmd#sprints).
 | [5](00-assessments.qmd#sprint-5) | Mon, Nov 9 | Wed, Nov 11 | Mon, Nov 23 | 50 |
 | [6](00-assessments.qmd#sprint-6) | Mon, Nov 23 | Wed, Nov 25 | Thu, Dec 10 | 100 |
 
-## Peer Assignments
+## Peer Assignment
 
 | Assignment | Due | Focus |
 |------------|-----|-------|
-| [Peer Code Review](00-assessments.qmd#peer-code-review) | Mon, Nov 9 | AI-assisted analysis of peer's codebase |
 | [Peer Product Testing](00-assessments.qmd#peer-product-testing) | Mon, Dec 7 | Be a real test user for peer's app |
 
 ## Exams

@@ -7,13 +7,12 @@ editor: visual
 
 | Component | Points | % of Grade |
 |-----------|--------|------------|
-| Sprints 1 to 5 (5 × 50) | 250 | 50% |
-| Sprint 6, the final build | 100 | 20% |
-| Peer Code Review | 50 | 10% |
-| Peer Product Testing | 50 | 10% |
-| Midterm Exam | 25 | 5% |
-| Final Exam | 25 | 5% |
-| **TOTAL** | **500** | **100%** |
+| Sprints 1 to 5 (5 × 50) | 250 | 55.6% |
+| Sprint 6, the final build | 100 | 22.2% |
+| Peer Product Testing | 50 | 11.1% |
+| Midterm Exam | 25 | 5.6% |
+| Final Exam | 25 | 5.6% |
+| **TOTAL** | **450** | **100%** |
 
 ## List of All Assessments
 
@@ -27,9 +26,8 @@ editor: visual
 | Sprint | [Sprint 4](#sprint-4) | 50 | 4, 5 |
 | Sprint | [Sprint 5](#sprint-5) | 50 | 4, 5 |
 | Sprint | [Sprint 6](#sprint-6) | 100 | 2, 4, 5 |
-| Peer | [Peer Code Review](#peer-code-review) | 50 | 4, 5 |
 | Peer | [Peer Product Testing](#peer-product-testing) | 50 | 4 |
-|  | **TOTAL** | **500** |  |
+|  | **TOTAL** | **450** |  |
 
 ::: {style="font-size:0.65em;"}
 **Notes**
@@ -50,7 +48,7 @@ editor: visual
 
 ## Exams {#exams}
 
-Two exams, each worth 25 points (5% of your grade). Both are taken in the **testing center**
+Two exams, each worth 25 points (about 5.6% of your grade). Both are taken in the **testing center**
 on your own schedule within the posted window. Both are closed book, proctored, and
 multiple choice.
 
@@ -59,7 +57,7 @@ intended. These two sittings are the exception. They are the one place your own
 understanding is measured on its own, which is why they exist and why they are worth
 preparing for.
 
-They are also deliberately low stakes. At 5% each, the difference between a rough exam and
+They are also deliberately low stakes. At about 5.6% each, the difference between a rough exam and
 a strong one is about two percent of your course grade. That is enough to make preparing
 worth it and not enough for one bad morning to matter.
 
@@ -590,82 +588,9 @@ the semester rather than the sprint: the problem, a live demo, and what you lear
 
 ---
 
-## Peer Assignments
+## Peer Assignment
 
-Peer assignments teach you to give and receive constructive feedback, a critical professional skill. You'll be randomly paired with different classmates for each assignment.
-
----
-
-### Peer Code Review
-
-**50 points | Assigned: Mon, Nov 2 | Due: Mon, Nov 9**
-
-**Goal:** Apply code analysis skills to a peer's codebase and provide constructive feedback.
-
-**Process:**
-
-1. You'll be assigned a partner (different from your product testing partner)
-2. Your partner shares their GitHub repo with you
-3. You use Claude Code to analyze their codebase
-4. You write a professional code review
-5. You actually run and test their app
-
-**Deliverables:**
-
-**Part 1: AI-Assisted Analysis**
-
-Run the following prompts in Claude Code on your peer's repo and save the outputs:
-
-```markdown
-Prompt 1: "Analyze this project structure. List all directories and their purposes,
-identify frontend vs backend files, and count total lines of code.
-Save as peer-review-structure.md"
-
-Prompt 2: "Trace the main user flow from UI to database.
-What happens when a user performs the core action?
-Save as peer-review-dataflow.md"
-
-Prompt 3: "Identify the architecture pattern, code organization,
-and any potential security concerns or code smells.
-Save as peer-review-architecture.md"
-```
-
-**Part 2: Written Review**
-
-Write a 1-2 page review covering:
-
-- **Architecture observations:** What patterns did you notice? How is the code organized?
-- **Code quality:** What's done well? What could be cleaner?
-- **Security considerations:** Any obvious vulnerabilities?
-- **3 specific suggestions:** Actionable improvements with rationale
-
-**Part 3: Hands-On Testing**
-
-- Sign up and use the app as a real user
-- Document: Did it work? What broke? What was confusing?
-
-**Turn in:**
-
-Make a copy of the [Peer Code Review submission template](https://docs.google.com/document/d/1zJvmAGrGa5NdCZDLVCl6d2tGngZzgUKooLVv-FHfO6c/copy) and fill in each section. All deliverables go in this single document:
-
-- The 3 AI-generated analysis outputs (pasted into the template)
-- Your written review covering architecture, code quality, security, and 3 specific suggestions
-- Notes from your hands-on testing session
-
-Submit the link to your completed Google Doc on Canvas, in the **Peer Code Review** assignment.
-
-**Grading Rubric (50 points)**
-
-| Category | Points |
-|----------|--------|
-| AI analysis files complete and thorough | 15 |
-| Written review professional and constructive | 20 |
-| Testing notes with specific observations | 10 |
-| Tone is helpful, not harsh | 5 |
-
-::: {.callout-tip title="Code Review Mindset"}
-Your goal is to help your peer improve, not to criticize. Frame feedback as "Have you considered..." or "One thing that might help..." Great code reviewers make others want to work with them.
-:::
+The peer assignment teaches you to give and receive constructive feedback, a critical professional skill. You'll be randomly paired with a classmate.
 
 ---
 
@@ -677,7 +602,7 @@ Your goal is to help your peer improve, not to criticize. Frame feedback as "Hav
 
 **Process:**
 
-1. You'll be assigned a different partner than code review
+1. You'll be assigned a partner
 2. You become an actual user of their product
 3. You sign up, use core features, and try to break things
 4. You record the whole thing
