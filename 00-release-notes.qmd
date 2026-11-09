@@ -4,6 +4,13 @@ This course site is updated during the semester, and every meaningful update is 
 
 New entries appear at the top.
 
+## v2.12.22 (2026-11-09)
+
+The Peer Code Review is no longer part of the course.
+
+- **Peer Code Review removed.** The assignment is gone from Assessments, the Schedule, and the Weeks view. It never existed on Canvas, so there is nothing to turn in.
+- **Grading.** The course total is now 450 points instead of 500, and the percentages on the Syllabus and Assessments pages are updated. Point values for every other assignment are the same.
+
 ## v2.12.21 (2026-11-05)
 
 Chapter 3's strategy sections are rewritten from the original sources, and claims across the book are stated more carefully.
