@@ -32,14 +32,18 @@ The spoke (decided 2026-10-14): 0 to 100 per axis, 100 = a full-stack product bu
 import argparse
 import json
 import os
+import sys
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from sprint_config import C, DATA as _COURSE_DATA  # noqa: E402
 
 HERE = Path(__file__).resolve().parent
 # PM_DATA points the run at another data folder (used by the API-versus-subagent comparison).
-DATA = Path(os.environ.get("PM_DATA") or Path.home() / "hubs/courses/_data/product-management")
+DATA = _COURSE_DATA
 GRADING = DATA / "grading"
 PRACTICE = {"AI Systems": 25.0}          # every other axis: 50
-SURVEY = DATA / "baseline-charts-fall2026" / "students.json"
+SURVEY = DATA / C["baseline"]
 LEVELS = {1: "Followed", 2: "Directed", 3: "Decided", 4: "Delivered"}
 BREADTH_SHARE = 0.7
 LEVEL_SHARE = {0: 0.0, 1: 0.0, 2: 0.2, 3: 0.5, 4: 1.0}

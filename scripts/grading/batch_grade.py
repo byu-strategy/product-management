@@ -18,8 +18,11 @@ import argparse, base64, json, re, sys, time
 from pathlib import Path
 import anthropic
 
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from sprint_config import C, DATA as _COURSE_DATA  # noqa: E402
+
 MODEL = "claude-opus-5-5"
-DATA = Path.home() / "hubs/courses/_data/product-management/grading"
+DATA = _COURSE_DATA / "grading"
 G = Path(__file__).resolve().parent
 SHAPE = G.parent / "tests/fixtures/sample-student/result.json"  # a fictional student, for the output shape only
 PRICE = {"in": 4.0, "out": 20.0, "cw": 8.0, "cr": 0.20}  # Opus 5.5 per MTok (2026-10-16); 1h cache writes are 2x input
@@ -42,10 +45,11 @@ def system(kind):
                           "# student-voice.md\n" + text(G / "student-voice.md"),
                           "# depth-levels.md\n" + text(G / "depth-levels.md"),
                           "# concepts-for-coders.json\n" + text(G / "concepts-for-coders.json")])
-    blocks = [{"type": "text", "cache_control": CACHE, "text": "You are working for Professor Scott Murff on MSB 341 "
-               "Product Management at BYU. The files below are your instructions and reference. Follow them exactly.\n\n" + shared}]
+    blocks = [{"type": "text", "cache_control": CACHE, "text": f"You are working for Professor Scott Murff on {C['short']} "
+               "at BYU. The files below are your instructions and reference. Follow them exactly.\n\n" + shared}]
     if kind == "grade":
         blocks.append({"type": "text", "cache_control": CACHE, "text": "# sprint-grader.md\n" + text(G / "sprint-grader.md") +
+                       (f"\n\n# {C['grader_overlay']}\n" + text(G / C["grader_overlay"]) if C["grader_overlay"] else "") +
                        "\n\n# Output shape example for the grade (a fictional student). Use it for the shape only, "
                        "never its scores or content.\n" + text(SHAPE)})
     if kind == "check":

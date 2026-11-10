@@ -26,10 +26,10 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
 sys.path.insert(0, str(Path(__file__).parent / "grading"))
-from sprint_config import categories, review_points
+from sprint_config import C, COURSE, DATA as _DATA, categories, review_points
 
 # PM_DATA points the run at another data folder (used by the API-versus-subagent comparison).
-DATA = Path(os.environ.get("PM_DATA") or Path.home() / "hubs/courses/_data/product-management")
+DATA = _DATA
 CATS = []  # set in main() from sprint_config: Sprint 1 includes the plan, later sprints do not
 KEEP = ["override_plan", "override_shipped", "override_review", "override_demo",
         "approved", "scott_note"]
@@ -76,13 +76,13 @@ def load(sprint):
         r = json.loads(f.read_text())
         pk = base / f"{r['net_id']}.json"
         p = json.loads(pk.read_text()) if pk.exists() else {}
-        if sprint == 1:  # the plan is inside Sprint 1's one assignment; its score is computed, not graded
+        if sprint in C["plan_inside_review"]:  # the plan is inside MSB 341 Sprint 1's one assignment; computed, not graded
             r["scores"]["plan"] = p.get("facts", {}).get("plan_score", 0)
             r["reasons"]["plan"] = r["feedback"]["plan"] = plan_line(p)
             if p.get("facts", {}).get("plan_submitted") and not p["facts"].get("plan_on_time"):
                 r.setdefault("flags", []).insert(0, "late: plan committed after Sep 16, 11:59 PM")
         # Loom only, from Sprint 2 on: any other demo scores 0, set here so no grader can soften it.
-        if sprint >= 2 and not p.get("facts", {}).get("demo_is_loom"):
+        if (sprint >= 2 or COURSE != "msb341") and not p.get("facts", {}).get("demo_is_loom"):
             other = p.get("facts", {}).get("non_loom_video")
             r["scores"]["demo"] = 0
             r["feedback"]["demo"] = (
@@ -91,7 +91,7 @@ def load(sprint):
             r["reasons"]["demo"] = "Not a Loom link (" + (", ".join(other) or "no video") + "): 0 by rule."
             mx = dict((c, m) for c, _l, m in categories(sprint))["demo"]
             r["deductions"] = [d for d in r.get("deductions") or [] if d.get("category") != "demo"] + [{
-                "id": "D1", "category": "demo", "points": mx, "rule_id": "demo-not-loom",
+                "id": "D1", "category": "demo", "points": mx, "rule_id": "demo-not-loom" if COURSE == "msb341" else "f-demo-not-loom",
                 "what": "No Loom demo" if not other else "The demo is not a Loom share link",
                 "fix": "Record the demo in Loom and paste its share link into the Wrap-up on Canvas.",
                 "reason": r["reasons"]["demo"], "excerpt": None, "excerpt_ref": None}]
@@ -129,11 +129,12 @@ def growth_text(G):
 def published_rules(sprint):
     """Rule IDs that can cost points in this sprint, from the table in grading/sprint-grader.md."""
     ok = set()
-    for line in (Path(__file__).parent / "grading/sprint-grader.md").read_text().splitlines():
+    src = C["grader_overlay"] or "sprint-grader.md"  # an overlay replaces the whole rule table
+    for line in (Path(__file__).parent / "grading" / src).read_text().splitlines():
         m = re.match(r"\| `([\w-]+)` \|.*\| Sprint (\d+)( only)? \|\s*$", line)
         if m and (sprint == int(m.group(2)) if m.group(3) else sprint >= int(m.group(2))):
             ok.add(m.group(1))
-    return ok - {"late", "plan-complete"}  # Canvas and code apply these, never a grader
+    return ok - {"late", "plan-complete", "f-plan-complete"}  # Canvas and code apply these, never a grader
 
 
 def check_deductions(r, sprint):
@@ -217,7 +218,7 @@ def validate(base, items, growth=None, sprint=0):
         if soft:
             r.setdefault("flags", []).append("voice check: feedback mentions " + ", ".join(soft) +
                                              "; confirm it refers to the student's own work")
-        if sprint >= 3:  # itemized deductions start with Sprint 3
+        if sprint >= 3 or COURSE != "msb341":  # itemized deductions: MSB 341 from Sprint 3, other courses from the start
             problems += check_deductions(r, sprint)
         if "\u2014" in text:
             problems.append(f"{n}: em dash in student feedback")
@@ -258,6 +259,44 @@ def write_csv(base, items):
         w.writerows(rows)
     path.chmod(0o600)
     return {r["net_id"]: r for r in rows}
+
+
+def app_record(r, p, row, sprint, plan_row, G):
+    """One student's sprint as data, for the app's Sprints tab and Sprint repos screen (the app imports
+    these files; the report HTML stays the one rendered view). `student` is what the student may see
+    once the grade is released; `faculty` is Scott's only, never shown to a student or a leader."""
+    cats = {c: {"label": label, "score": final(row, c), "max": mx, "feedback": (r.get("feedback") or {}).get(c)}
+            for c, label, mx in CATS}
+    ps = str((plan_row or {}).get("score", "")).strip()
+    plan = None if "plan" in cats else {"score": float(ps) if ps else None, "max": 10,
+                                         "fields_missing": (plan_row or {}).get("fields_missing") or ""}
+    total = sum(v["score"] for v in cats.values()) + ((plan or {}).get("score") or 0)
+    total_max = sum(v["max"] for v in cats.values()) + (10 if plan else 0)
+    growth = None
+    if G:
+        added = sum(x.get("points") or 0 for x in G.get("new") or [])
+        growth = {"added": round(added, 2), "practice_total": G.get("practice_total"),
+                  "new": [{k: x.get(k) for k in ("concept", "name", "axis", "points", "when", "did", "ref")} for x in G.get("new") or []],
+                  "depth": [{k: d.get(k) for k in ("axis", "level", "name", "why")} for d in G.get("depth") or []],
+                  "start": (G.get("start") or {}).get("points")}
+    return {
+        "course": COURSE, "sprint": sprint, "net_id": r["net_id"], "name": p.get("name"),
+        "student": {
+            "total": total, "total_max": total_max, "plan": plan, "categories": cats,
+            "deductions": [{k: d.get(k) for k in ("id", "category", "points", "rule_id", "what", "fix")}
+                           for d in r.get("deductions") or []],
+            "next_sprint": r.get("next_sprint"), "not_reviewed": (r.get("not_reviewed") or {}).get("summary"),
+            "difficulty": {k: (r.get("difficulty") or {}).get(k) for k in ("predicted", "student_actual", "assessed", "note")},
+            "loom": (p.get("loom") or {}).get("url"), "repo": p.get("repo"), "growth": growth,
+            "report": f"feedback/{r['net_id']}.html",
+        },
+        "faculty": {
+            "confidence": r.get("confidence"), "flags": r.get("flags") or [], "watch_loom": r.get("watch_loom"),
+            "hours": r.get("hours"), "effort_review": r.get("effort_review"), "axes": r.get("axes"),
+            "reasons": r.get("reasons"), "scott_note": row.get("scott_note") or "", "approved": row.get("approved") or "",
+            "report": f"feedback/{r['net_id']}-scott.html",
+        },
+    }
 
 
 def review_page(base, items, rows, sprint, points, plans, growth, fairness):
@@ -306,7 +345,7 @@ def side_inputs(base):
 def dispute_inputs(base, sprint, net_ids):
     """Each student's dispute link token (kept across rebuilds, so a posted report's link keeps working),
     the window's close date, and the outcomes /resolve-dispute has recorded. Sprint 3 on."""
-    if sprint < 3:
+    if sprint < 3 and COURSE == "msb341":
         return {}, None, {}
     f = base / "dispute-tokens.json"
     tokens = json.loads(f.read_text()) if f.exists() else {}
@@ -364,7 +403,11 @@ def main():
         page.write_text(render(r, p, rows[n], a.sprint, CATS, final, **kw))
         mine = fb / f"{n}-scott.html"
         mine.write_text(render(r, p, rows[n], a.sprint, CATS, final, scott=True, fairness=fairness.get(n, []), **kw))
-        for x in (page, mine):
+        app = base / "app"
+        app.mkdir(exist_ok=True)
+        rec = app / f"{n}.json"
+        rec.write_text(json.dumps(app_record(r, p, rows[n], a.sprint, plans.get(n), growth.get(n)), indent=1))
+        for x in (page, mine, rec):
             x.chmod(0o600)
         if not a.no_pdf:
             pdf = page.with_suffix(".pdf")

@@ -26,12 +26,12 @@ import requests
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 from canvas_due import due  # America/Denver, DST-aware
-from sprint_config import categories
+from sprint_config import C, DATA as _DATA, categories
 
-DATA = Path.home() / "hubs/courses/_data/product-management"
+DATA = _DATA
 APP_ENV = Path.home() / "Documents/strategy-program/website/.env.local"
 COURSES_ENV = Path.home() / "hubs/courses/.env.local"
-COURSE = "msb341"
+COURSE = C["dispute_course"]
 BUCKET = "grade-dispute-evidence"
 FROM = '"Professor Murff" <grading@strategy.byu.edu>'
 CAT_KEY = {"Output": "shipped", "Report and retro": "review", "Demo": "demo", "Plan": "plan"}
@@ -88,7 +88,7 @@ def base(sprint):
 
 
 def roster():
-    return {r["net_id"]: r for r in csv.DictReader(open(DATA / "roster-msb341-fall2026.csv"))}
+    return {r["net_id"]: r for r in csv.DictReader(open(DATA / C["roster"]))}
 
 
 def grades(sprint):

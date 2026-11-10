@@ -22,10 +22,9 @@ import requests, tempfile
 
 sys.path.insert(0, str(Path.home() / ".claude/skills/canvas-lms/scripts"))
 from canvas_client import CanvasAPI, load_config
-from sprint_config import COURSE_ID, PLAN_FIELDS, PLAN_POINTS, SPRINTS
+from sprint_config import C, COURSE, COURSE_ID, DATA, PLAN_FIELDS, PLAN_POINTS, SPRINTS, roster as graded_roster
 
 TZ = ZoneInfo("America/Denver")
-DATA = Path.home() / "hubs/courses/_data/product-management"
 SHIPPED_CHARS = 100_000     # code text per packet, about 25k tokens (written work has its own budget); 40k cut long files off (2026-10-29)
 PER_FILE_CHARS = 20_000     # written work (specs, decisions, discovery, evals, docs); 10k cut specs off at the Definition of done (2026-10-29)
 CODE_FILE_CHARS = 15_000    # code: a whole typical file (6k cut an 8k app.js off; 3k cut off tool loops and error handling)
@@ -651,7 +650,7 @@ def build(student, sub, plan_sub, cfg, due):
     # other repo the student has shared with sdmurff (they own it, or listed or linked it), and
     # check every live link in the README's "Where the work lives" section.
     readme_text = p.get("readme") or ""
-    m = re.search(r"## Where the work lives\n(.*?)(?=\n## |\Z)", readme_text, re.S)
+    m = re.search(rf"## (?:Where the work lives|Work files and links)\n(.*?)(?=\n## |\Z)", readme_text, re.S)
     where = m.group(1) if m else ""
     # The Plan assignment's Canvas link counts too: a plan kept in a team repo names that repo only there.
     plan_links = re.findall(r"https?://github\.com/[^\s<\"]+", (plan_sub or {}).get("body") or "")
@@ -779,7 +778,7 @@ def main():
             api.get_all(f"/assignments/{cfg['review']}/submissions")}
     plan_subs = {str(s["user_id"]): s for s in
                  api.get_all(f"/assignments/{cfg['plan']}/submissions")} if cfg["plan"] else {}
-    roster = list(csv.DictReader(open(DATA / "roster-msb341-fall2026.csv")))
+    roster = graded_roster()
     repos = {r["net_id"]: r for r in csv.DictReader(open(DATA / "github-roster.csv"))}
 
     out = DATA / f"grading/sprint-{a.sprint}"
@@ -789,7 +788,7 @@ def main():
     listing = subprocess.run(["gh", "api", "user/repos?affiliation=collaborator&per_page=100", "--paginate",
                               "--jq", ".[] | [.full_name, .owner.login] | @tsv"], capture_output=True, text=True).stdout
     cfg["shared"] = dict(l.split("\t") for l in listing.splitlines() if "\t" in l)
-    bl = DATA / "baseline-charts-fall2026/students.json"
+    bl = DATA / C["baseline"]
     cfg["baseline"] = {s["net_id"]: s["means"] for s in json.loads(bl.read_text())} if bl.exists() else {}
     for s in roster:
         if a.only and s["net_id"] not in a.only:

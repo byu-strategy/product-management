@@ -25,8 +25,7 @@ import requests
 sys.path.insert(0, str(Path.home() / ".claude/skills/canvas-lms/scripts"))
 from canvas_client import CanvasAPI, load_config
 sys.path.insert(0, str(Path(__file__).parent))
-from sprint_config import COURSE_ID, SPRINTS
-DATA = Path.home() / "hubs/courses/_data/product-management"
+from sprint_config import COURSE_ID, DATA, SPRINTS
 LOG_COLS = ["net_id", "canvas_user_id", "score", "posted_at", "comment_file_id"]
 
 

@@ -31,6 +31,7 @@ ANGLES = [-60, 0, 60, 120, 180, 240]
 import sys
 sys.path.insert(0, str(HERE / "grading"))
 from builder_growth import PRACTICE, BREADTH_SHARE, LEVEL_SHARE, depth_points  # one copy of the weights
+from sprint_config import C, COURSE  # what differs by course: labels, links, rules
 LEVELS = {1: "Followed", 2: "Directed", 3: "Decided", 4: "Delivered"}
 LEVEL_TEXT = {  # from depth-levels.md, in the student's terms
     1: "work on the axis follows a template, a tutorial, or the agent's defaults",
@@ -96,13 +97,13 @@ SKILLS_PASTE = ("Update my course skills from the class template. Clone https://
                 "with the template's copy, and add any that are missing. Do not change any other skill or any other file "
                 "in this repo. Delete the temporary folder, then commit only `.claude/skills` with the message "
                 "\"Update course skills\" and push. Then tell me to start a new Claude Code session so the updated skills load.")
-README_PASTE = ("## Where the work lives\n\n- **Repos:** [owner/repo-name], [shared with sdmurff, or not shared]\n"
+README_PASTE = (f"## {C['where_heading']}\n\n- **Repos:** [owner/repo-name], [shared with sdmurff, or not shared]\n"
                 "- **Live:** [the URL of the app, page, store listing, or file]\n"
                 "- **Docs:** [links to Google Docs, Figma files, decks]")
 TURNIN = """<table class=turnin>
 <tr><th>Deliverable</th><th>Where it lives</th><th>How you turn it in</th><th>When</th><th>Points</th></tr>
-<tr><td><b>Plan</b></td><td><code>sprints/sprint-N-plan.md</code></td><td>Commit it, and paste its GitHub link into <b>Sprint N Plan</b> on Canvas. To change it later, run <code>/sprint-plan</code> again; no resubmitting</td><td>First Wednesday, 11:59 PM</td><td>10</td></tr>
-<tr><td><b>Output</b></td><td>What you finished, in any form: in your course repo, another repo, a link, or your demo</td><td>Nothing separate: list every place it lives under <b>Where the work lives</b> in your README</td><td>{DUE}</td><td>{OUT}</td></tr>
+<tr><td><b>Plan</b></td><td><code>sprints/sprint-N-plan.md</code></td><td>Commit it, and paste its GitHub link into <b>Sprint N Plan</b> on Canvas. To change it later, run <code>/sprint-plan</code> again; no resubmitting</td><td>{PLAN_DUE}</td><td>10</td></tr>
+<tr><td><b>Output</b></td><td>What you finished, in any form: in your course repo, another repo, a link, or your demo</td><td>Nothing separate: list every place it lives under <b>{WHERE}</b> in your README</td><td>{DUE}</td><td>{OUT}</td></tr>
 <tr><td><b>Review</b></td><td><code>sprints/sprint-N-review.md</code>: the <code>/sprint-review</code> report, with your retro at the bottom</td><td>Commit it, and paste its GitHub link into <b>Sprint N Wrap-up</b> on Canvas</td><td>{DUE}</td><td>{REV}</td></tr>
 <tr><td><b>Demo</b></td><td>Loom, {DEMO_LEN}</td><td>Paste the Loom share link into <b>Sprint N Wrap-up</b> on Canvas</td><td>{DUE}</td><td>{DEM}</td></tr>
 </table>"""
@@ -152,6 +153,9 @@ BOOK = "https://byu-strategy.github.io/product-management/"
 
 def demo_length(sprint):
     """The published demo length rule for this sprint (00-assessments.qmd, "Demo length", 2026-10-16)."""
+    if COURSE == "ai-foundry":  # 11-sprints.qmd, "Demo length": from Sprint 2
+        return ("Demo length was not scored this sprint." if sprint == 1 else
+                "A demo up to 3:30 loses no points; each started 30 seconds past 3:30 costs 1 point.")
     if sprint == 1:
         return "A demo up to about two minutes long lost no points."
     if sprint == 2:
@@ -207,7 +211,7 @@ def load_concepts():
 # The Summary card copies one prompt per student. It carries the report's facts, so the
 # sprint-coach skill in the student's repo can go over the report without the report open.
 
-COURSE_RULES = BOOK + "00-assessments.html#sprints"
+COURSE_RULES = C["rules_url"]
 TEMPLATE_REPO = "https://github.com/byu-strategy/builder-template"
 
 
@@ -277,7 +281,7 @@ def coach_gaps(G, k=4):
 def coach_prompt(sprint, total, total_max, score_lines, steps, G):
     """The prompt a student pastes into Claude Code: their voice, plain text, the report's facts."""
     nxt = sprint + 1
-    L = [f"Here is my Sprint {sprint} report from MSB 341 (Product Management). Go over it with me "
+    L = [f"Here is my Sprint {sprint} report from {C['short']}. Go over it with me "
          f"and help me plan Sprint {nxt}.",
          "",
          "First, update my course skills: if .claude/skills/refresh-skills/refresh.py exists, run it with "
@@ -480,7 +484,7 @@ def readme_replay(p):
     readme = p.get("readme") or ""
     if isinstance(readme, dict):
         readme = readme.get("text") or ""
-    m = re.search(r"## Where the work lives\n(.*?)(?=\n## |\Z)", readme, re.S)
+    m = re.search(r"## (?:Where the work lives|Work files and links)\n(.*?)(?=\n## |\Z)", readme, re.S)
     section = m.group(1) if m else ""
     checks = {l["url"].rstrip("/"): l for l in p.get("link_checks") or []}
     drive = {d.get("file_id"): d for d in p.get("drive_files") or []}
@@ -832,6 +836,25 @@ RULE_SRC = {
 }
 QUOTE_EXEMPT = {"rev-s1-template"}   # Sprint 1 only, graded before quotes; no single published sentence
 
+if C["rules_file"]:  # another course's published rules, quoted from its own Sprints page
+    _rules = json.loads((Path(__file__).resolve().parent / "grading" / C["rules_file"]).read_text())
+    RULE_TEXT = {k: v for k, v in _rules.items() if not k.startswith("_")}
+    RULE_SRC = _rules.get("_source") or {}
+    QUOTE_EXEMPT = set()
+if COURSE == "ai-foundry":
+    RUBRIC = {
+        "plan": "The Plan is scored for completion: its GitHub link submitted on Canvas by the Monday deadline, "
+                "with every field filled in, earns 10.",
+        "shipped": "Output is your part of the plan, real, finished, and checkable, as the Sprints page defines it "
+                   "for Build and Learn. It is read against your plan as it stood at the end of the sprint. A goal "
+                   "that needs someone else's yes is graded on the asks you made, and time spent waiting on a client "
+                   "is read against what was in your control.",
+        "review": "Your /sprint-review report and your retro. Full points need the report committed, with your retro "
+                  "answering all six questions and responding to something specific in the report.",
+        "demo": "2 to 3 minutes on Loom showing your work running, with real or clearly labeled sample content, "
+                "viewable by Professor Murff. {LENGTH}",
+    }
+
 
 def rule_sources():
     return RULE_SRC
@@ -902,7 +925,7 @@ def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott
                 rows_.append(f"<tr><td class=k>{e(it['label'])}</td><td>{cells}</td></tr>")
             body = f"<table class=rm>{''.join(rows_)}</table>"
         else:
-            body = '<p>Your README has no "Where the work lives" section.</p>'
+            body = f'<p>Your README has no "{C["where_heading"]}" section.</p>'
         if rr["extra"]:
             body += ('<p class=qm>Found during your sprint, not listed in your README:</p>' +
                      "".join(f'<div>{show_place(k, v)} <span class="st {c}">{e(msg)}</span></div>' for k, v, c, msg in rr["extra"]))
@@ -993,7 +1016,7 @@ def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott
     days_late = f.get("canvas_days_late", 0) or 0
     # The report shows the score that is posted; Canvas applies its own late deduction on top (Scott, 2026-10-16).
     wrap_canvas = review_total * (1 - min(100, 10 * days_late) / 100) if days_late else review_total
-    if sprint == 1:
+    if sprint in C["plan_inside_review"]:
         total, total_max = review_total, review_max
         score_body = kids.replace('class="q kid"', 'class="q"')
         canvas = f"Posted to Canvas: Sprint 1 {fmt(review_total)}/{review_max}."
@@ -1217,7 +1240,7 @@ def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott
     steps = []
     rr = readme_replay(p)
     if p.get("repo") and not rr["has_section"]:
-        steps.append(("counts", 'Add a "Where the work lives" section to your README.',
+        steps.append(("counts", f'Add a "{C["where_heading"]}" section to your README.',
                       "Only what is in your course repo, or listed there, can count toward your sprint. Add it below Context, one line per place.",
                       README_PASTE))
     asked = " ".join(q.get("title", "") + " " + q.get("body", "") for q in f.get("share_requests") or []).lower()
@@ -1265,10 +1288,11 @@ def render(r, p, row_, sprint, cats, final, *, plan_row=None, growth=None, scott
     todo = intro + (f"<ol class=nsl>{lis}</ol>" if lis else "" if has_ded else "<p>Nothing to fix: your repo and README are set.</p>")
     from sprint_config import GRADED
     nn = sprint + 1
-    pts = {c: mx for c, _l, mx in GRADED[nn]} if nn in GRADED else {"shipped": 20, "review": 10, "demo": 10}
+    pts = {c: mx for c, _l, mx in (GRADED[nn] if nn in GRADED else GRADED[sprint])}
     turnin = (TURNIN.replace("{OUT}", str(pts["shipped"])).replace("{REV}", str(pts["review"])).replace("{DEM}", str(pts["demo"]))
-              .replace("{DUE}", "Thursday, December 10, 11:59 PM" if nn == 6 else "The Monday the sprint ends, 11:59 PM")
-              .replace("{DEMO_LEN}", "3 to 4 minutes" if nn == 6 else "2 to 3 minutes"))
+              .replace("{DUE}", "Thursday, December 10, 11:59 PM" if nn == 6 and COURSE == "msb341" else C["wrapup_due_text"])
+              .replace("{DEMO_LEN}", "3 to 4 minutes" if nn == 6 and COURSE == "msb341" else "2 to 3 minutes")
+              .replace("{PLAN_DUE}", C["plan_due_text"]).replace("{WHERE}", C["where_heading"]))
     todo += sub("What you turn in, and how", "the four deliverables", turnin)
     next_n = sprint + 1
 
@@ -1485,7 +1509,7 @@ ones your work has shown say which sprint. Ones marked "measured on the exams" c
 <main>
 <header class=qh><span class=qtitle>Sprint {sprint} Report · {e(full)}</span><span>{e(due_txt)}</span></header>
 <details class=tocm><summary>Contents</summary>{toc}</details>
-<div class=brand><b>MSB 341 Product Management</b><span>BYU Marriott School of Business</span></div>
+<div class=brand><b>{e(C["label"])}</b><span>{e(C["school"])}</span></div>
 {body}
 </main></div>
 <script>

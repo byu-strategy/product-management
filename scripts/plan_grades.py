@@ -29,10 +29,9 @@ from zoneinfo import ZoneInfo
 sys.path.insert(0, str(Path.home() / ".claude/skills/canvas-lms/scripts"))
 sys.path.insert(0, str(Path(__file__).parent))
 from canvas_client import CanvasAPI, load_config
-from sprint_config import COURSE_ID, PLAN_FIELDS, PLAN_POINTS, SPRINTS
+from sprint_config import C, COURSE_ID, DATA, PLAN_FIELDS, PLAN_POINTS, SPRINTS, roster as graded_roster
 
 TZ = ZoneInfo("America/Denver")
-DATA = Path.home() / "hubs/courses/_data/product-management"
 COLS = ["net_id", "name", "preferred_first", "canvas_user_id", "submitted_at", "late",
         "fields_missing", "score", "has_feedback", "how", "note"]
 e = html.escape
@@ -114,7 +113,7 @@ input{{font:inherit;padding:6px 10px;border:1px solid var(--l);border-radius:6px
 .wrap{{padding:0 24px 40px;overflow-x:auto}}table{{border-collapse:collapse;width:100%;background:var(--card);border:1px solid var(--l)}}
 th,td{{padding:8px 10px;border-bottom:1px solid var(--l);text-align:left;vertical-align:top}}
 th{{position:sticky;top:0;background:var(--card);cursor:pointer;font-size:12px;text-transform:uppercase;color:var(--m)}}.n{{text-align:right}}
-</style></head><body><header><h1>Sprint {sprint} plans</h1><p class=m>Completion: all four fields = {PLAN_POINTS}. Late is flagged, not docked.</p></header>
+</style></head><body><header><h1>Sprint {sprint} plans</h1><p class=m>Completion: all {len(PLAN_FIELDS)} fields = {PLAN_POINTS}. Late is flagged, not docked.</p></header>
 <div class=bar><input id=q placeholder="Search" size=30> <span id=c class=m></span></div>
 <div class=wrap><table><thead><tr><th>Student</th><th>Submitted</th><th>Late</th><th>Missing</th><th class=n>Score</th><th>Feedback</th></tr></thead>
 <tbody>{trs}</tbody></table><p id=none class=m hidden>No students match.</p></div>
@@ -141,7 +140,7 @@ def main():
     api = CanvasAPI(cfg["url"], cfg["token"], COURSE_ID)
     asg = api.get(f"/assignments/{aid}")
     subs = {str(s["user_id"]): s for s in api.get_all(f"/assignments/{aid}/submissions")}
-    roster = list(csv.DictReader(open(DATA / "roster-msb341-fall2026.csv")))
+    roster = graded_roster()
     repos = {r["net_id"]: r.get("repo_url", "") for r in csv.DictReader(open(DATA / "github-roster.csv"))}
 
     base = DATA / f"grading/sprint-{a.sprint}/plans"
@@ -153,6 +152,9 @@ def main():
         sub = subs.get(str(s["canvas_user_id"]), {})
         text, how = plan_from_submission(sub.get("body"), a.sprint, sub.get("submitted_at")) if sub.get("submitted_at") else ("", "")
         missing = [k for k in PLAN_FIELDS if not has_field(text, k)] if text else []
+        # AI Foundry Sprint 1 grace (as MSB 341 Sprint 1, Scott 2026-10-20): a plan turned in earns the 10,
+        # since Sprint 1 plans were written on templates from before the fields were settled (Oct 22 to 23).
+        grace = C["data"] == "ai-foundry" and a.sprint == 1
         at = sub.get("submitted_at")
         fb_path = base / "feedback" / f"{s['net_id']}.json"
         fb = json.loads(fb_path.read_text()).get("feedback", "") if fb_path.exists() else ""
@@ -161,7 +163,7 @@ def main():
                "submitted_at": dt.datetime.fromisoformat(at.replace("Z", "+00:00")).astimezone(TZ)
                .strftime("%a %b %-d %-I:%M %p") if at else "",
                "late": "yes" if sub.get("late") else "", "fields_missing": ", ".join(missing),
-               "score": (PLAN_POINTS if not missing else 0) if text else "",
+               "score": (PLAN_POINTS if not missing or grace else 0) if text else "",
                "has_feedback": "yes" if fb else "", "_feedback": fb, "how": how}
         # Scott's hand decisions (plans/overrides.csv: net_id,score,note), e.g. a plan committed on time
         # but never turned in on Canvas. The note is shown to the student in the report's Plan row.
