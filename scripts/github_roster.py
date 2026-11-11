@@ -303,7 +303,18 @@ def canvas_submissions():
 def main():
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("--course", choices=sorted(COURSES), default="product-management")
-    configure(ap.parse_args().course)
+    ap.add_argument("--invites-only", action="store_true",
+                    help="accept pending invitations from any course's students and stop; no roster refresh "
+                         "(launchd com.murff.github-invites runs this every 15 minutes, 2026-11-11)")
+    args = ap.parse_args()
+    configure(args.course)
+    if args.invites_only:
+        try:
+            submitted = {u for u in canvas_submissions().values() if u}
+        except OSError:
+            submitted = set()  # Canvas token unreadable (OneDrive stall): owner and sender checks still apply
+        accept_invites(pm.index(all_students()), submitted)
+        return
     print(f"== {COURSE}  {dt.datetime.now():%Y-%m-%d %H:%M}")
     if not ROSTER.exists():
         sys.exit(f"no roster at {ROSTER}; run canvas_roster.py --course {COURSE} first")
