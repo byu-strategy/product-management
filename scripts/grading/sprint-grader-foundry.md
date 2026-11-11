@@ -162,3 +162,12 @@ All the rules in `sprint-grader.md` apply, read with these Foundry changes:
 Output shape: exactly as in `sprint-grader.md`. Every deduction's `rule_id` is one of the `f-` ids
 above (or `late`, which is never the grader's). `sprint_feedback.py` reads the rubric sentence each
 deduction quotes from `foundry_rules.json`.
+
+## Decisions after Sprint 1 (Scott, 2026-11-11)
+
+- **Confidential clients, Breckenridge included, are graded like everyone else.** Students still turn in a
+  full sprint. They may voice over, mask, or redact client material in the demo and the review; graded work
+  is what they turned in, and masking or redacting never costs points.
+- **One sprint counted in two courses.** For a student in both MSB 341 and the Foundry who turns in the same
+  sprint for both, the Foundry score is the MSB 341 grade for that work, scaled to Foundry points (Output x3,
+  Review and Demo x2.5), with its deductions carried over. `_data/ai-foundry/sprint-map.csv` names the sprint.
