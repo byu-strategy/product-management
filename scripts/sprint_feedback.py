@@ -187,11 +187,14 @@ def validate(base, items, growth=None, sprint=0):
         plain_text = _re.sub(r"(?<!\w)'.*?'(?!\w)|\"[^\"]*\"|\u2018.*?\u2019(?!\w)|\u201c[^\u201d]*\u201d", " ", text)
         # File paths and the student's own terms ("campaign packet" is a carrier filing) are not our words.
         check_text = _re.sub(r"\S*/\S+|\S+\.(?:md|json|js|ts|py|csv|html)\b|\b(?:(?:10DLC )?campaign|teach) packets?\b|What I am (?:working on|building)|How I will know if it works", " ", plain_text, flags=_re.I)
+        # Concept names from the concept list are the course's own terms ("Accessibility baseline (WCAG)").
+        check_text = _re.sub(r"\bAccessibility baseline\b", " ", check_text, flags=_re.I)
+        plain_text_c = _re.sub(r"\bAccessibility baseline\b", " ", plain_text, flags=_re.I)
         # Words a reviewer confirmed name the student's own product (an eval "baseline", a "release
         # packet" builder, an iframe "frame"), listed per student in the result's "voice_ok".
         for w in r.get("voice_ok") or []:
             check_text = _re.sub(rf"\b{_re.escape(w)}s?\b", " ", check_text, flags=_re.I)
-        plain_ok = plain_text
+        plain_ok = plain_text_c
         for w in r.get("voice_ok") or []:
             plain_ok = _re.sub(rf"\b{_re.escape(w)}s?\b", " ", plain_ok, flags=_re.I)
         machine = _re.findall(r"\b(frames?|grader|artificial intelligence|it appears (?:that|to)|appears to be|the video shows|"
