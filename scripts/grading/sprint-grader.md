@@ -149,6 +149,11 @@ goal comfortably hit earns nothing extra.
   `/sprint-review`", and the Confidential company work section tells students they never have to
   share a company repo. Ask to share the repo in `share_requests` if you like; it costs no points.
   Prose in the review with no commit behind it is still a claim, not evidence.
+- **A written record counts where it is written.** When a plan item's deliverable is itself a
+  written record (what broke, findings, a log of stuck points) and the committed `/sprint-review`
+  report holds that record in substance, the item is done, even if the plan named another file
+  that is still empty. Which file holds it is not graded (Scott, 2026-11-11, asisk25 Sprint 4).
+  This covers records only: a build the review merely describes still needs evidence.
 - **Review:** the `/sprint-review` report plus the student's retro. From Sprint 2 the retro is
   the "Your retro" section at the bottom of the review file (`retro_location`), five prompts:
   did you hit the goal, how many hours the student estimates they worked (from Sprint 4; Sprints 2
