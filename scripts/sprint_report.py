@@ -42,8 +42,10 @@ LEVEL_TEXT = {  # from depth-levels.md, in the student's terms
 # Colors follow the Strategy app's tokens (website/src/app/globals.css): navy #002E5D, royal #003DA5 (2026-10-29).
 SPRINT_COLORS = {1: "#A9BFDA", 2: "#7C9CC4", 3: "#5A7FAE", 4: "#3D6596", 5: "#244C7E", 6: "#0F3766"}
 CORE_COLOR = "#DCE6F2"  # the starting core: the lightest step of the same navy ramp
-# The midterm ring (2026-10-29): outside the sprint rings, in a hue off the navy ramp so it reads as an exam.
+# The midterm ring (2026-10-29), in a hue off the navy ramp so it reads as an exam. It stacks in time
+# order (2026-11-11): taken Oct 20, during Sprint 3, so it sits between the Sprint 3 and Sprint 4 rings.
 EXAM_COLOR = {"midterm": "#C9A54C"}
+EXAM_AFTER_SPRINT = {"midterm": 3}
 EXAM_LABEL = {"midterm": "Midterm"}
 NAVY, ROYAL = "#002E5D", "#003DA5"
 # Where each deduction can be disputed: the Strategy app, no sign-in (grade disputes, 2026-10-29).
@@ -560,8 +562,8 @@ def show_place(kind, v):
 
 def profile_svg(G):
     """The builder profile: six spokes, 0 to 100 each (100 is a full-stack product builder). Practice rings
-    stack outward from the center, one per sprint in that sprint's color. Knowledge rings from the
-    exams will stack outside them; none exist yet, so nothing is drawn for them. With no growth
+    stack outward from the center, one per sprint in that sprint's color, with each exam ring in time order
+    among them. With no growth
     file, the empty hexagon."""
     CX, CY, R = 270, 200, 135
 
@@ -583,26 +585,27 @@ def profile_svg(G):
     core = ((G or {}).get("start") or {}).get("points") or {}
     totals = [float(core.get(AXES[i], 0)) for i in range(6)]
     core_vals = list(totals)
-    layers = []
-    for rg in (G or {}).get("rings") or []:
-        pts = rg.get("points") or {}
-        if not any(pts.values()):
-            layers.append((rg["sprint"], None))
+    # Rings stack in time order (Scott, 2026-11-11): an exam sits right after the sprint it fell in
+    # (EXAM_AFTER_SPRINT), so the latest sprint is always the outer edge.
+    seq = sorted([(float(rg["sprint"]), "s", rg) for rg in (G or {}).get("rings") or []]
+                 + [(EXAM_AFTER_SPRINT.get(ex["exam"], 99) + .5, "x", ex) for ex in (G or {}).get("exams") or []],
+                 key=lambda t: t[0])
+    stack = []
+    for _k, kind, item in seq:
+        pts = item.get("points") or {}
+        if kind == "s" and not any(pts.values()):
             continue
         totals = [totals[i] + float(pts.get(AXES[i], 0)) for i in range(6)]
-        layers.append((rg["sprint"], list(totals)))
-    exam_layers = []
-    for ex in (G or {}).get("exams") or []:
-        pts = ex.get("points") or {}
-        totals = [totals[i] + float(pts.get(AXES[i], 0)) for i in range(6)]
-        exam_layers.append((ex, list(totals)))
-    for ex, vals in reversed(exam_layers):
-        per = {a: f'{v["correct"]} of {v["of"]} right, +{fmt(round(float(v["points"]), 1))}' for a, v in (ex.get("axes") or {}).items()}
-        out.append(f'<polygon class=exam data-exam="{e(ex["exam"])}" data-per="{e(json.dumps(per))}" points="{poly(vals)}" '
-                   f'fill="{EXAM_COLOR.get(ex["exam"], ROYAL)}" stroke="#fff" stroke-width=".8" stroke-linejoin="round">'
-                   f'<title>{EXAM_LABEL.get(ex["exam"], ex["exam"])}</title></polygon>')
-    for s, vals in reversed(layers):  # outermost first, so each inner ring sits on top
-        if vals:
+        stack.append((kind, item, list(totals)))
+    for kind, item, vals in reversed(stack):  # outermost first, so each inner ring sits on top
+        if kind == "x":
+            ex = item
+            per = {a: f'{v["correct"]} of {v["of"]} right, +{fmt(round(float(v["points"]), 1))}' for a, v in (ex.get("axes") or {}).items()}
+            out.append(f'<polygon class=exam data-exam="{e(ex["exam"])}" data-per="{e(json.dumps(per))}" points="{poly(vals)}" '
+                       f'fill="{EXAM_COLOR.get(ex["exam"], ROYAL)}" stroke="#fff" stroke-width=".8" stroke-linejoin="round">'
+                       f'<title>{EXAM_LABEL.get(ex["exam"], ex["exam"])}</title></polygon>')
+        else:
+            s = item["sprint"]
             out.append(f'<polygon data-s="{s}" points="{poly(vals)}" fill="{SPRINT_COLORS.get(s, NAVY)}" stroke="#fff" '
                        f'stroke-width=".8" stroke-linejoin="round"><title>Through Sprint {s}</title></polygon>')
     if any(core_vals):  # the survey center sits innermost, on top of the rings
@@ -625,7 +628,7 @@ def profile_svg(G):
             out.append(f'<text x="{lx:.1f}" y="{ly + 10:.1f}" text-anchor="{anchor}" font-size="12.5" font-weight="700" '
                        f'fill="{ROYAL}">{round(totals[i])}</text>')
     out.append("</svg>")
-    return "".join(out), [s for s, v in layers if v] + [ex["exam"] for ex, _v in exam_layers]
+    return "".join(out), [it["sprint"] if k == "s" else it["exam"] for k, it, _v in stack]
 
 
 def commit_strip(days, by_day):
@@ -1343,7 +1346,7 @@ the product, and get it to real users.</p>
 <p>Up to half of each area comes from your sprint work (a quarter on AI Systems), and
 the rest from the exams. The center of the chart is your own rating from the September survey, counted on the part of each
 area's exam points no exam has measured yet. Each ring outside it is one sprint, darker for later sprints. The gold ring is the
-midterm: it tested three areas (Agentic Workflow, Discovery, Design), and each question you got right earns its share of half of
+midterm, placed between Sprint 3 and Sprint 4 because you took it during Sprint 3: it tested three areas (Agentic Workflow, Discovery, Design), and each question you got right earns its share of half of
 those areas' exam points, so on those three areas the September rating now counts for the other half only. The final exam measures the rest, in all six areas.</p>
 <h3 class=sub id=a-earn><span>How sprint work earns points</span></h3>
 <p>Sprint work earns points two ways.</p>
