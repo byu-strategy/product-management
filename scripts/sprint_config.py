@@ -123,6 +123,16 @@ def roster():
     return [r for r in rows if r["net_id"] not in skip]
 
 
+def required_fields(text):
+    """The plan fields a plan must fill. AI Foundry's /sprint-plan skips "My part" for solo work
+    (builder-template sprint-plan/foundry.md: "My part (skip it for Solo)"), so it is not required then."""
+    import re
+    fields = list(PLAN_FIELDS)
+    if "My part" in fields and re.search(r"Teammates\W{0,6}:?\W{0,4}\s*Solo\b", text or "", re.I):
+        fields.remove("My part")
+    return fields
+
+
 def categories(sprint):
     """Every category on the assignment being posted. MSB 341 Sprint 1's plan sits inside its one assignment."""
     cats = GRADED[sprint]

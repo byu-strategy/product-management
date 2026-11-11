@@ -29,7 +29,7 @@ from zoneinfo import ZoneInfo
 sys.path.insert(0, str(Path.home() / ".claude/skills/canvas-lms/scripts"))
 sys.path.insert(0, str(Path(__file__).parent))
 from canvas_client import CanvasAPI, load_config
-from sprint_config import C, COURSE_ID, DATA, PLAN_FIELDS, PLAN_POINTS, SPRINTS, roster as graded_roster
+from sprint_config import C, COURSE_ID, DATA, PLAN_FIELDS, PLAN_POINTS, SPRINTS, required_fields, roster as graded_roster
 
 TZ = ZoneInfo("America/Denver")
 COLS = ["net_id", "name", "preferred_first", "canvas_user_id", "submitted_at", "late",
@@ -151,7 +151,7 @@ def main():
     for s in roster:
         sub = subs.get(str(s["canvas_user_id"]), {})
         text, how = plan_from_submission(sub.get("body"), a.sprint, sub.get("submitted_at")) if sub.get("submitted_at") else ("", "")
-        missing = [k for k in PLAN_FIELDS if not has_field(text, k)] if text else []
+        missing = [k for k in required_fields(text) if not has_field(text, k)] if text else []
         # AI Foundry Sprint 1 grace (as MSB 341 Sprint 1, Scott 2026-10-20): a plan turned in earns the 10,
         # since Sprint 1 plans were written on templates from before the fields were settled (Oct 22 to 23).
         grace = C["data"] == "ai-foundry" and a.sprint == 1

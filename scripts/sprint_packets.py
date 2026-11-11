@@ -22,7 +22,7 @@ import requests, tempfile
 
 sys.path.insert(0, str(Path.home() / ".claude/skills/canvas-lms/scripts"))
 from canvas_client import CanvasAPI, load_config
-from sprint_config import C, COURSE, COURSE_ID, DATA, PLAN_FIELDS, PLAN_POINTS, SPRINTS, roster as graded_roster
+from sprint_config import C, COURSE, COURSE_ID, DATA, PLAN_FIELDS, PLAN_POINTS, SPRINTS, required_fields, roster as graded_roster
 
 TZ = ZoneInfo("America/Denver")
 SHIPPED_CHARS = 100_000     # code text per packet, about 25k tokens (written work has its own budget); 40k cut long files off (2026-10-29)
@@ -620,7 +620,7 @@ def build(student, sub, plan_sub, cfg, due):
         p["plan_submission"] = {"source": f"Canvas ({how})" if how else "Canvas",
                                 "submitted_at": at and local(at).isoformat(), "text": plan_text or None}
         on_time = bool(at) and not plan_sub.get("late")
-    missing = [k for k in PLAN_FIELDS if not has_field(plan_text, k)] if plan_text else list(PLAN_FIELDS)
+    missing = [k for k in required_fields(plan_text) if not has_field(plan_text, k)] if plan_text else list(PLAN_FIELDS)
     f["plan_submitted"] = bool(plan_text)
     f["plan_on_time"] = on_time
     f["plan_fields_missing"] = missing
