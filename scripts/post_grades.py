@@ -25,7 +25,7 @@ import requests
 sys.path.insert(0, str(Path.home() / ".claude/skills/canvas-lms/scripts"))
 from canvas_client import CanvasAPI, load_config
 sys.path.insert(0, str(Path(__file__).parent))
-from sprint_config import COURSE_ID, DATA, SPRINTS
+from sprint_config import COURSE, COURSE_ID, DATA, SPRINTS
 LOG_COLS = ["net_id", "canvas_user_id", "score", "posted_at", "comment_file_id"]
 
 
@@ -33,7 +33,7 @@ def comment_text(row, sprint, note=""):
     return (f"{row['preferred_first'] or row['name']}, your Sprint {sprint} report is attached. Open it in your "
             f"browser: it covers each category, your builder profile, and next steps for Sprint {sprint + 1}. "
             + (f"To dispute a deduction, use its Dispute button in the report. Other questions: reply to this comment."
-               if sprint >= 3 else "Questions about the grade: reply to this comment.") + (f" {note}" if note else ""))
+               if sprint >= 3 or COURSE != "msb341" else "Questions about the grade: reply to this comment.") + (f" {note}" if note else ""))
 
 
 def report_name(sprint):
