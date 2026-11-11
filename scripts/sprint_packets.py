@@ -490,7 +490,9 @@ def build(student, sub, plan_sub, cfg, due):
 
     if repo_url:
         repo = repo_url.replace("https://github.com/", "").strip("/")
-        n = cfg["sprint"]
+        # A student in both courses may turn in one repo's sprint for the other course (Scott, 2026-11-11):
+        # sprint-map.csv (net_id,sprint,file_sprint) says which file number this course's sprint reads.
+        n = cfg.get("file_map", {}).get((net_id, cfg["sprint"]), cfg["sprint"])
         plan_path, review_path = f"sprints/sprint-{n}-plan.md", f"sprints/sprint-{n}-review.md"
         ph, rh = history(repo, plan_path), history(repo, review_path)
         # A student who keeps the sprint in a second repo links its plan or review on Canvas
@@ -796,6 +798,8 @@ def main():
     # Every repo shared with sdmurff, owner by name, and each student's baseline axis scores.
     listing = subprocess.run(["gh", "api", "user/repos?affiliation=collaborator&per_page=100", "--paginate",
                               "--jq", ".[] | [.full_name, .owner.login] | @tsv"], capture_output=True, text=True).stdout
+    sm = DATA / "sprint-map.csv"
+    cfg["file_map"] = {(r["net_id"], int(r["sprint"])): int(r["file_sprint"]) for r in csv.DictReader(open(sm))} if sm.exists() else {}
     cfg["shared"] = dict(l.split("\t") for l in listing.splitlines() if "\t" in l)
     bl = DATA / C["baseline"]
     cfg["baseline"] = {s["net_id"]: s["means"] for s in json.loads(bl.read_text())} if bl.exists() else {}
