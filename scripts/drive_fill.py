@@ -32,7 +32,7 @@ def main():
     base = DATA / f"grading/sprint-{a.sprint}"
     drive = base / "drive"
     drive.mkdir(exist_ok=True)
-    packets = [f for f in sorted(base.glob("*.json")) if not f.name.startswith("_")]
+    packets = [f for f in sorted(base.glob("*.json")) if not f.name.startswith(("_", "special-"))]
 
     if a.list:
         todo = []

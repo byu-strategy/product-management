@@ -538,6 +538,15 @@ def build(student, sub, plan_sub, cfg, due):
         p["next_sprint_plan"] = next_plan[:4000] if next_plan else None
         p["readme"] = readme[:4000]
         start = ph[0][1] if ph else due - dt.timedelta(days=14)
+        # An accommodation in sprint-N/special-windows.json widens the window (sharoon, Sprint 4: all
+        # work since Oct 1, Sprints 2 and 3 excused). Without this the window opened at the plan's first
+        # commit and the excused weeks' work never reached the grader.
+        special = (json.loads(sw.read_text()) if (sw := cfg["out"] / "special-windows.json").exists() else {}).get(net_id)
+        if special:
+            ws = dt.datetime.fromisoformat(special["window_start"])
+            start = min(start, ws if ws.tzinfo else ws.replace(tzinfo=TZ))
+            p["window_start"] = start.isoformat()
+            f["special_window"] = special["why"]
         log = branch_commits(repo, start)
         commits = [{"sha": c["sha"], "when": local(c["commit"]["author"]["date"]).isoformat(),
                     "after_due": local(c["commit"]["author"]["date"]) > due,

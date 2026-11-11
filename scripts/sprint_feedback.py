@@ -166,7 +166,7 @@ def validate(base, items, growth=None, sprint=0):
     """Stop before building anything a student would read if a result is malformed."""
     growth = growth or {}
     problems = []
-    packets = {f.stem for f in base.glob("*.json") if not f.name.startswith(("_", "dispute-"))}  # not the dispute state files
+    packets = {f.stem for f in base.glob("*.json") if not f.name.startswith(("_", "dispute-", "special-"))}  # not the dispute state files
     for r, p in items:
         n = r.get("net_id", "?")
         for c, _, mx in CATS:
@@ -326,8 +326,10 @@ def side_inputs(base):
     plans = {r["net_id"]: r for r in csv.DictReader(open(plans))} if plans.exists() else {}
     roster = DATA / "github-roster.csv"
     # "OLD" or "missing" when either course skill is out of date (sprint-review gained a version
-    # marker on 2026-10-16), so the report's update step fires for either.
-    worst = lambda r: next((v for v in ("missing", "OLD") if v in (r.get("sprint_plan_skill", ""), r.get("sprint_review_skill", ""))), "new")
+    # marker on 2026-10-16), so the report's update step fires for either. A repo without
+    # refresh-skills (self-updating since 2026-10-29) is OLD too: Scott asked every student to update.
+    worst = lambda r: next((v for v in ("missing", "OLD") if v in (r.get("sprint_plan_skill", ""), r.get("sprint_review_skill", ""))),
+                           "OLD" if r.get("self_updating") == "no" else "new")
     skills = ({r["net_id"]: worst(r) for r in csv.DictReader(open(roster))}
               if roster.exists() else {})
     fair = base / "fairness.md"

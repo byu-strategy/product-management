@@ -123,6 +123,10 @@ goal comfortably hit earns nothing extra.
   What the retro and the demo describe earns credit even with nothing committed; checkable
   evidence (a module log, badges, results) earns more. A vague account ("more learning to do")
   earns about half.
+- **An accommodation can widen the window.** When `facts.special_window` is set, `window_start`
+  holds the date Scott set, and every commit from then on counts as this sprint's work, including
+  commits before the plan's first commit. The fact says why. Grade the whole window against the
+  plan; never mention the accommodation in student feedback.
 - **Work can live outside the course repo.** Students on teams and founders often build in a
   company repo. `other_repos` holds every other repo the student shared with Scott (commits and
   files in the window); `repos_named_but_not_shared` lists repos they named but did not share,
@@ -152,7 +156,9 @@ goal comfortably hit earns nothing extra.
   why it differed, and what will you change next sprint. From Sprint 3, "what did the report show
   you" is never required: a retro answering the other four is complete. In Sprint 4 a student who
   had not refreshed their skills may answer the old question 2 instead of hours: that retro is
-  complete too, with no deduction (record `hours_self` as null). The hours answer is never judged
+  complete too, with no deduction (record `hours_self` as null). A student on old skills owes only
+  the other four prompts: never deduct for missing hours when their retro has no hours prompt or
+  is free-form, even if it also skips the old question 2 (Sprint 4 pilot, dspring1, 2026-11-11). The hours answer is never judged
   on the number. In Sprint 1 it was the
   three fields at the end of the plan file. Where the retro sits is not graded: a retro written in
   the plan file, or answering an older set of prompts, is judged on what it answers, and the
