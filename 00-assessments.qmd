@@ -137,7 +137,7 @@ Every sprint has the same four deliverables.
 | **Plan** | What you will do, why, how you will know it is done, and how hard you expect it to be. [`/sprint-plan`](https://github.com/byu-strategy/builder-template/blob/main/.claude/skills/sprint-plan/SKILL.md) helps you write it. | `sprints/sprint-N-plan.md` in your course repo | Commit it, and paste its GitHub link into **Sprint N Plan** on Canvas. To change it later, run `/sprint-plan` again; no resubmitting | First Wednesday, 11:59 PM | 10 |
 | **Output** | What you finished this sprint, in whatever form the work takes: code, research, a design, a model, copy, a deck, an automation | Your course repo, another repo, a link, or your demo | Nothing separate to submit. List every place it lives under **Where the work lives** in your README | On or before the Monday the sprint ends, by 11:59 PM | 20 |
 | **Review** | What [`/sprint-review`](https://github.com/byu-strategy/builder-template/blob/main/.claude/skills/sprint-review/SKILL.md) produces: a report on your sprint, then your answers to its five retro questions | `sprints/sprint-N-review.md` in your course repo | Commit it, and paste its GitHub link into **Sprint N Wrap-up** on Canvas | On or before the Monday the sprint ends, by 11:59 PM | 10 |
-| **Demo** | 2 to 3 minutes on Loom of the work, working | Loom | Paste the Loom share link into **Sprint N Wrap-up** on Canvas. Set the Loom to "Anyone with the link" or share it with scott.murff@byu.edu | On or before the Monday the sprint ends, by 11:59 PM | 10 |
+| **Demo** | About 3 minutes on Loom answering the [three demo questions](#demo-questions) | Loom | Paste the Loom share link into **Sprint N Wrap-up** on Canvas. Set the Loom to "Anyone with the link" or share it with scott.murff@byu.edu | On or before the Monday the sprint ends, by 11:59 PM | 10 |
 
 **Retro**, short for retrospective, is your part of the review: your answers to the five
 questions `/sprint-review` asks after it shows you the report. Did you hit the goal, about how
@@ -212,8 +212,18 @@ nothing leaves your machine except the report.
 Answer in your own words. It saves your answers exactly as you write them at the bottom of
 `sprints/sprint-N-review.md`, then commits and pushes the file.
 
-**3. Record a 2 to 3 minute demo on [Loom](https://www.loom.com).** Show your work, working, with real content, as
-described in [What your demo shows](#what-your-demo-shows). No intro and no reflection: the actual work. Loom only: not Google Drive, YouTube, or an uploaded
+[]{#demo-questions}**3. Record your demo on [Loom](https://www.loom.com). Aim for 3 minutes.**
+
+From Sprint 5, your demo answers three questions, in this order, with your work on screen the whole time.
+A Sprint 5 demo recorded before these questions were posted on Nov 12 is graded under the Sprints 1 to 4 wording.
+
+1. **What was your sprint goal?** Say it in one sentence, with your plan file open.
+2. **What did you finish, and what is the evidence?** Go through the items in your plan's *Done looks like*, in order. For each one you finished, show the evidence that it is done: the feature used live, the page with its sign-up used, the model with one input changed, your notes opened, the asks you sent. [What your demo shows](#what-your-demo-shows) lists what counts as evidence for each kind of work. Use real content, and show work from this sprint.
+3. **What did you not finish?** For each *Done looks like* item you did not finish, show where it stands: how far it got, or the step where it stops. If you finished everything, say so.
+
+Your hours, your difficulty rating, and what you would change go in your written retro, not the demo. The demo is for evidence.
+
+Loom only: not Google Drive, YouTube, or an uploaded
 file. Submit the Loom share link. A demo that is not a Loom scores 0. **Make sure Professor Murff can see your video: in Loom's Share settings, set it to "Anyone with the
 link" or share it with scott.murff@byu.edu.** A video he cannot open is not graded until it is shared.
 
@@ -235,7 +245,7 @@ for your repo URL instead.
   noted.
 - **The review,** committed: the `/sprint-review` report with your answers to its five retro
   questions at the bottom.
-- **The Loom demo, 2 to 3 minutes.**
+- **The Loom demo, about 3 minutes,** answering the three demo questions.
 
 ### What output means for different work
 
@@ -325,11 +335,11 @@ the first category; the Wrap-up assignment is the other three.
 | **Plan** | 10 | 10 | Its GitHub link submitted on Canvas by Wednesday, 11:59 PM, with Goal, Why this, Done looks like, and Predicted difficulty all filled in. Graded for completion. |
 | **Output** | 20 | 50 | Real, finished, and checkable by the course; it does not have to be public or used by anyone. Read against your plan as it stands at the end, and weighed by how hard the work was for you. A goal that needs someone else's yes is graded on the asks you made. |
 | **Review** | 10 | 20 | Report committed, with your retro answering all five questions. Each question left unanswered costs 1 point. An empty retro earns at most half. Your hours estimate is never graded on the number. |
-| **Demo** | 10 | 20 | 2 to 3 minutes on Loom of your work, working, as described in [What your demo shows](#what-your-demo-shows), with real content. A demo that is not a Loom scores 0. Set it to "Anyone with the link" or share it with scott.murff@byu.edu. Length rules below. |
+| **Demo** | 10 | 20 | Sprints 1 to 4: 2 to 3 minutes on Loom of your work, working, as described in [What your demo shows](#what-your-demo-shows), with real content. A demo that is not a Loom scores 0. Set it to "Anyone with the link" or share it with scott.murff@byu.edu. From Sprint 5: about 3 minutes answering the three demo questions, with evidence of each item you finished. From Sprint 5, leaving out question 1 or 3 costs 1 point each. Length rules below. |
 
-**Demo length.** Aim for 2 to 3 minutes. A demo up to 3:30 loses no points. From Sprint 3, each started
+**Demo length.** Aim for 3 minutes. A demo up to 3:30 loses no points. From Sprint 3, each started
 30 seconds past 3:30 costs 1 point (3:31 to 4:00 is minus 1, 4:01 to 4:30 minus 2, 4:31 to 5:00 minus 3).
-Sprint 6 aims for 3 to 4 minutes, and the same scale starts past 4:30.
+Sprint 6 aims for 4 minutes, and the same scale starts past 4:30.
 
 The plan is graded for completion, and your predicted difficulty is not graded. Aim high.
 From Sprint 2 on, output is weighed by how hard the work actually was for you, judged from
@@ -583,8 +593,13 @@ The standard sprint.
 **100 points (Plan 10, Wrap-up 90) | Assigned: Mon, Nov 23 | Plan due: Wed, Nov 25 | Due: Thu, Dec 10**
 
 The standard sprint, worth double, with a higher bar. By Dec 10 what you have built should be
-as good as you can make it. The demo runs 3 to 4 minutes instead of 2 to 3 and covers
-the semester rather than the sprint: the problem, a live demo, and what you learned.
+as good as you can make it. The demo runs about 4 minutes and covers the semester rather than the sprint. It answers four
+questions, in this order:
+
+1. **What problem does your product solve, and for whom?** One or two sentences.
+2. **What does it do today?** Show it working, start to finish, with real content.
+3. **What did you build this semester?** Show the parts you are proudest of, and say which sprint each came from.
+4. **What did you learn?** One or two things, in a sentence each.
 
 ---
 
