@@ -314,8 +314,15 @@ def load_growth(sprint, net_ids, growth_dir=None):
     """Builder profile growth per student, or nothing when builder_growth.py has not run for them."""
     d = Path(growth_dir) if growth_dir else DATA / f"grading/sprint-{sprint}/concepts"
     out = {}
+    # A sprint counted in two courses shows the other course's profile for that work (Scott, 2026-11-11):
+    # sprint-map.csv (net_id,sprint,file_sprint) names the MSB 341 sprint whose growth file to read.
+    sm = DATA / "sprint-map.csv"
+    other = {r["net_id"]: int(r["file_sprint"]) for r in csv.DictReader(open(sm)) if int(r["sprint"]) == sprint} \
+        if sm.exists() and COURSE != "msb341" else {}
     for n in net_ids:
         f = d / f"growth-{n}.json"
+        if n in other:
+            f = DATA.parent / "product-management" / f"grading/sprint-{other[n]}/concepts/growth-{n}.json"
         if f.exists():
             G = json.loads(f.read_text())
             if "rings" in G and "new" in G:  # the 0-to-100 shape; an older pilot file is ignored
