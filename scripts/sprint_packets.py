@@ -135,6 +135,11 @@ def branch_commits(repo, since):
                 seen[c["oid"]] = {"sha": c["oid"], "branch": ref["name"],
                                   "author": {"login": (a.get("user") or {}).get("login")} if a.get("user") else None,
                                   "commit": {"author": {"date": a.get("date"), "name": a.get("name")}, "message": c["message"]}}
+    # The default branch always, in full: in a repo with many branches the branch query can leave it out or
+    # cut its history short (2026-11-12: a repo with 100+ branches lost 13 commits made on main in one day).
+    for c in gh_list(f"repos/{repo}/commits?since={iso}&per_page=100") or []:
+        if c["sha"] not in seen and ((c.get("commit") or {}).get("author") or {}).get("date", "") >= iso[:10]:
+            seen[c["sha"]] = c | {"branch": "default"}
     return sorted(seen.values(), key=lambda c: c["commit"]["author"]["date"] or "", reverse=True)
 
 
