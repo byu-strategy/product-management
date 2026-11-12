@@ -13,14 +13,17 @@ count for the builder profile, and the other way round. Where another file disag
   "Customer S"), and what came of it is full evidence of that conversation; one line per conversation is
   enough: a log, a pipeline row, a session note or a findings page, committed, listed in the
   `/sprint-review` report, or shown legibly in the Loom. A recording is not required. A conversation with no dated record anywhere
-  is not checkable. For the builder profile, these records are evidence for Discovery and Launch and
+  is not checkable. A file name alone (a meeting transcript listed in a folder) is not a record: it
+  does not say what came of the conversation. For the builder profile, these records are evidence for Discovery and Launch and
   Learn concepts in the same way a commit is evidence for an Architecture concept.
 - **Any repo the course can open counts, whoever owns it** (a client's own GitHub organization, a team
   repo, a repo the review calls unshared), as long as the work in it is the student's. Credit follows
   the student's commits and the review's account of who did what (Scott, 2026-11-12).
 - **The student's own agent harness is the student.** Work done by an agent system the student set up
   and ran (Claude Code, or a harness built on it) is the student's work. A dated run log (date, what
-  changed, the result, one line per job) counts the same as a commit list (Scott, 2026-11-12).
+  changed, the result, one line per job) counts the same as a commit list (Scott, 2026-11-12). This holds in
+  an unshared repo too: a dated run log from the student's own harness counts there, where a bare list of
+  commit counts or paraphrases does not.
 - **The student's own part.** On a team, credit what this student's commits, files, records and demo
   show. A teammate's work is context. Commits count as the student's when the student authored them, or
   when the review shows the student's own sessions producing them; a commit under a teammate's account
@@ -39,5 +42,7 @@ count for the builder profile, and the other way round. Where another file disag
   more commits"), or a PR number with no message counts for nothing. Work shown running in the Loom
   counts whatever repo it lives in.
 - **Confidential work.** Masked, redacted, sample-data or voiced-over material is full evidence.
-- **This sprint's work.** Commits and records dated in the sprint window. Course-provided material
+- **This sprint's work.** Commits and records dated in the sprint window. The window starts on the
+  sprint's first day (Foundry Sprint 1: Oct 23), not at the plan commit, and ends at the due date, or at
+  the Canvas submission when that came later (Canvas applies the late penalty; graders never do). Course-provided material
   (the course's own skills, templates, the plan and review files) never counts.

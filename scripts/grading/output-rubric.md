@@ -1,4 +1,4 @@
-# Output rubric: Amount and Quality (shared, draft v8, 2026-11-12)
+# Output rubric: Amount and Quality (shared, v8.2, 2026-11-12)
 
 DRAFT. One Output rubric for every course on the sprint model (MSB 341 and AI Foundry). Evidence rules
 are shared with the concept coder: read `evidence-rules.md` in this folder first.
@@ -68,6 +68,8 @@ is full evidence). Two more:
 - **Waiting for access** (a client or partner repo, data, an account): what the student could not do
   without access is not expected of them, so the wait is not held against them, but the wait is not
   progress either. Amount counts what they did meanwhile: other work, preparation, asks on record.
+  When the wait is on record (the ask and its date), judge Amount against the time access existed, the
+  same way as a late start.
 - **Never comment on a client's or partner's process** (how they review, merge, or approve work). The
   course does not know it, so it is never part of Amount, Quality, or the feedback.
 - **No privacy commentary.** Students own the records on their screens and may show them as they are or
@@ -96,6 +98,9 @@ student's own, or not on record, earns nothing. Never raise or lower Amount for 
 One scale for both courses: the Foundry is MSB 341 x 3, each MSB point owning three Foundry points (10 is
 29 to 30, 9 is 26 to 28, 8 is 23 to 25, 7 is 20 to 22, 6 is 17 to 19, 5 is 14 to 16, 4 is 11 to 13, 3 is
 8 to 10, 2 is 5 to 7, 1 is 2 to 4, 0 is 0 to 1).
+
+"Running" includes a staging or test site. For Learn, a course's completion screen counts as its
+certificate when the course gives none.
 
 Score at the top of a rung when the work is close to the next rung up. A prototype is real progress when
 the design is the deliverable; sample data counts for less only when the work's value depends on real
