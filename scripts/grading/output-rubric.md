@@ -1,4 +1,4 @@
-# Output rubric: Amount and Quality (shared, draft v7, 2026-11-12)
+# Output rubric: Amount and Quality (shared, draft v8, 2026-11-12)
 
 DRAFT. One Output rubric for every course on the sprint model (MSB 341 and AI Foundry). Evidence rules
 are shared with the concept coder: read `evidence-rules.md` in this folder first.
@@ -11,14 +11,21 @@ logged hours, it invites inflated self-reports, and it split the "whose work is 
 Slow kinds of work are protected by "judged against two weeks of the same kind" and "asks on record
 count; a no costs nothing". The MSB 341 copy, `output-rubric-msb341-test.md`, uses the same wording.
 
+v8 (merged with the MSB 341 session, strat-d8, 2026-11-12): one scale for both courses (Foundry = MSB 341
+x 3, each MSB point owning three Foundry points), MSB 341 Sprint 6, course-specific lines for Judgment and
+privacy, rule ids per course, a published records line, authorship in `evidence-rules.md`, and worked
+examples per course.
+
 ## Points by course
 
-| Category | MSB 341 | AI Foundry |
-|---|---|---|
-| Plan | 10 | 10 |
-| Output: Amount + Quality | 20 (10 + 10) | 60 (30 + 30) |
-| Review | 10 | 25 |
-| Demo | 10 | 25 |
+| Category | MSB 341 | MSB 341 Sprint 6 | AI Foundry |
+|---|---|---|---|
+| Plan | 10 | 10 | 10 |
+| Output: Amount + Quality | 20 (10 + 10) | 50 (25 + 25) | 60 (30 + 30) |
+| Review | 10 | 20 | 25 |
+| Demo | 10 | 20 | 25 |
+
+MSB 341 Sprint 6 doubles the sprint; its Output bands are the 0-10 bands x 2.5, rounded to whole points.
 
 **Plan.** Completion only: the GitHub link on Canvas by the deadline, every field filled in. In the
 Foundry, "My part" is not required for solo work.
@@ -30,7 +37,7 @@ Foundry, "My part" is not required for solo work.
 | **Amount** | 10 | 30 | How far the work moved this sprint | Hours, how good it is |
 | **Quality** | 10 | 30 | How good the work is, the same bar for every student | Hours, how much there is, starting level |
 
-Whether it was the right work is not Output (it is Judgment, on the Consultant side). Hours are not
+Whether it was the right work is not Output (in the Foundry it is Judgment, on the Consultant side; MSB 341 does not grade it). Hours are not
 Output either: see "Hours: a cross-check, never a score" below.
 
 Published sentence:
@@ -39,6 +46,12 @@ Published sentence:
 > two weeks of that kind of work looks like. Quality is how well the work was done, judged on the work
 > itself. Your plan says what you are aiming at; changing it when you learn something costs nothing.
 > Your sprint review records your hours to help us plan the course; they never affect your grade.
+
+Published with it, on both Sprints pages (pending Scott):
+
+> **Keep a dated record.** For every call, interview, test with a user, or ask, write down who (a name
+> or a label such as Customer A), when, what you asked or showed, and what they said or did, in your repo
+> or your sprint review. A conversation with no record cannot be counted.
 
 ## What to judge from
 
@@ -57,8 +70,10 @@ is full evidence). Two more:
   progress either. Amount counts what they did meanwhile: other work, preparation, asks on record.
 - **Never comment on a client's or partner's process** (how they review, merge, or approve work). The
   course does not know it, so it is never part of Amount, Quality, or the feedback.
-- **No privacy commentary.** What appears on a student's screen is shared under the program's
-  agreements; never flag or mention it.
+- **Privacy never affects a score.** Foundry: what appears on a student's screen is shared under the
+  program's agreements; never flag or mention it. MSB 341 (pending Scott): the Assessments page asks
+  students to keep real names, emails and phone numbers off screen; flag a lapse for Scott in `flags`,
+  never in student feedback.
 
 ## Amount (MSB 341 0 to 10, Foundry 0 to 30)
 
@@ -75,10 +90,14 @@ student's own, or not on record, earns nothing. Never raise or lower Amount for 
 |---|---|---|
 | 10 | 29 to 30 | Several substantial pieces carried far: running, used, sent, or delivered |
 | 8 to 9 | 23 to 28 | A solid sprint: at least one substantial piece carried well along, with smaller pieces around it |
-| 7 | 18 to 22 | One piece carried well along, little else |
-| 5 to 6 | 12 to 17 | Several pieces started and partway done, or one small piece done |
-| 1 to 4 | 5 to 11 | Early progress only: setup, an outline, a plan, a template filled in |
-| 0 | 0 | No progress that is the student's own and on record |
+| 7 | 20 to 22 | One piece carried well along, little else |
+| 5 to 6 | 14 to 19 | Several pieces started and partway done, or one small piece done |
+| 1 to 4 | 2 to 13 | Early progress only: setup, an outline, a plan, a template filled in |
+| 0 | 0 to 1 | No progress that is the student's own and on record |
+
+One scale for both courses: the Foundry is MSB 341 x 3, each MSB point owning three Foundry points (10 is
+29 to 30, 9 is 26 to 28, 8 is 23 to 25, 7 is 20 to 22, 6 is 17 to 19, 5 is 14 to 16, 4 is 11 to 13, 3 is
+8 to 10, 2 is 5 to 7, 1 is 2 to 4, 0 is 0 to 1).
 
 Score at the top of a rung when the work is close to the next rung up. A prototype is real progress when
 the design is the deliverable; sample data counts for less only when the work's value depends on real
@@ -115,10 +134,10 @@ depth level, not the grade). Judge how good, never how long it took. Four questi
 | MSB 341 | Foundry | Anchor |
 |---|---|---|
 | 10 | 29 to 30 | Excellent: works and is correct, holds up well beyond the easy path, clearly fit for its person, well made |
-| 9 | 23 to 28 | Strong: works and holds up with real content; fit for its person; a few gaps a reviewer would point out |
-| 7 to 8 | 18 to 22 | Sound: works on the main path with real content; rough beyond it, or unclear in places |
-| 5 to 6 | 12 to 17 | Uneven: partly works or partly correct; notable gaps in how it holds up or how clear it is |
-| 1 to 4 | 5 to 11 | It does not hold up: breaks, wrong, placeholder content, or did not run |
+| 9 | 26 to 28 | Strong: works and holds up with real content; fit for its person; a few gaps a reviewer would point out |
+| 7 to 8 | 20 to 25 | Sound: works on the main path with real content; rough beyond it, or unclear in places |
+| 5 to 6 | 14 to 19 | Uneven: partly works or partly correct; notable gaps in how it holds up or how clear it is |
+| 1 to 4 | 2 to 13 | It does not hold up: breaks, wrong, placeholder content, or did not run |
 
 Score at the top of a rung when the work is close to the next one. With several pieces, weight Quality
 toward the pieces that carry most of the progress. When something outside the student's control blocks
@@ -146,22 +165,29 @@ The Output total; Amount and Quality each with one sentence on what the score re
 thing that would raise it; one Dispute button per part.
 
 In the result: `scores.shipped` = Amount + Quality; `output_parts` = {`amount`, `quality`}, each
-{`score`, `reason`, `raise`}; one `deductions` item per part below its maximum (`O1` Amount
-`f-out-amount`, `O2` Quality `f-out-quality`), `points` = the shortfall, `what` = its `reason`, `fix` =
+{`score`, `reason`, `raise`}; one `deductions` item per part below its maximum (`O1` Amount,
+`O2` Quality; rule ids `out-amount` and `out-quality` in MSB 341, `f-out-amount` and `f-out-quality` in
+the Foundry), `points` = the shortfall, `what` = its `reason`, `fix` =
 its `raise`. There is no Time item.
 
 ## Where a Foundry Wrap-up lands (Review and Demo earned)
 
-| Sprint | Output of 60 | Wrap-up of 110 |
-|---|---|---|
-| Excellent | 58 to 60 | 98 to 100% |
-| Solid: substantial work that holds up | 46 to 56 | 87 to 96% |
-| One piece carried well along, sound | 36 to 44 | 78 to 85% |
-| Early progress only | 10 to 22 | 55 to 65% |
+Derived from the v8 bands (Output = Amount + Quality, each 0 to 30; Wrap-up = Output + 50).
 
-## Worked examples (MSB 341, Sprints 3 and 4; no names; Amount and Quality on 10, Foundry x3)
+| Sprint | Amount | Quality | Output of 60 | Wrap-up of 110 |
+|---|---|---|---|---|
+| Excellent | 29 to 30 | 29 to 30 | 58 to 60 | 98 to 100% |
+| Solid, strong work | 23 to 28 | 26 to 28 | 49 to 56 | 90 to 96% |
+| Solid, sound work | 23 to 28 | 20 to 25 | 43 to 53 | 85 to 94% |
+| One piece carried well along, sound | 20 to 22 | 20 to 25 | 40 to 47 | 82 to 88% |
+| Partway, uneven | 14 to 19 | 14 to 19 | 28 to 38 | 71 to 80% |
+| Early progress only | 2 to 13 | 2 to 19 | 4 to 32 | 49 to 75% |
 
-Do not test on any student these describe.
+## Worked examples
+
+Each course tests only on students not described in its own list.
+
+### MSB 341 (Sprints 3 and 4; Amount and Quality on 10)
 
 - Application Architecture, solid (Amount 9, Quality 9): customers reschedule their own booking from a
   keyed link in the confirmation email; an admin page approves or declines each request; live.
@@ -181,3 +207,22 @@ Do not test on any student these describe.
   answer, including yes answers from two decision-makers.
 - Launch and Learn, thin (Amount 4, Quality 4): a new font, an audit script with no results, one social
   post; the planned pages not built.
+
+### AI Foundry (Amount and Quality on 30; invented, for calibration)
+
+- Client deliverable, solid (Amount 26, Quality 27): a pricing analysis for a regional clinic group, built
+  on two years of their visit data, with three options costed and the decision it asks the owner to make;
+  presented to the owner and sent with the data appendix.
+- Client feature, waiting on the client (Amount 20, Quality 23): an intake form and its routing rules
+  built and tested on 40 sample forms; the client's API key, requested in writing on day 3 and again on
+  day 8, never came, so live routing could not run; meanwhile a test plan and a fallback for scanned forms.
+- Agent harness, solid (Amount 27, Quality 22): an agent harness the student set up ran 14 dated jobs on
+  their own product (each logged with what changed and the result), 11 landed in production; three
+  stuck jobs are written up with why.
+- Learn, solid (Amount 23, Quality 23): two Claude courses with certificates, and an MCP server from the
+  second used on the team's client repo for a week, with the queries it answered.
+- Learn, thin (Amount 8, Quality 8): one course certificate; the skill it teaches was written but never
+  committed or run.
+- Selling for the Foundry, solid (Amount 24, Quality 26): nine asks to prospective clients, each with
+  date, role and answer; two agreed to scoping calls, held and written up.
+

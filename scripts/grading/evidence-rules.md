@@ -6,7 +6,8 @@ count for the builder profile, and the other way round. Where another file disag
 
 - **The work itself.** Repo diffs and their dates; commits in the course repo, client repos
   (`ai-foundry-byu` for the Foundry) and any other repo the student shared; files; links that opened;
-  Google files fetched; what is on screen in the Loom frames and transcript.
+  Google files fetched; what is on screen in the Loom frames and transcript. A dated record shown legibly in
+  the Loom counts as on record.
 - **Written records of non-code work.** Calls, meetings, interviews, user tests, sales asks and
   outreach leave records, not diffs. A dated record of who (a name or a masked label such as
   "Customer S"), when, what was asked or tested, and what they said or did is full evidence of that
@@ -21,8 +22,11 @@ count for the builder profile, and the other way round. Where another file disag
   and ran (Claude Code, or a harness built on it) is the student's work. A dated run log (date, what
   changed, the result, one line per job) counts the same as a commit list (Scott, 2026-11-12).
 - **The student's own part.** On a team, credit what this student's commits, files, records and demo
-  show. A teammate's work is context. Repo authorship can mislead (a teammate may commit under another
-  account): rely on the review's account of who did what, checked against the commits.
+  show. A teammate's work is context. Commits count as the student's when the student authored them, or
+  when the review shows the student's own sessions producing them; a commit under a teammate's account
+  counts when the review says it is the student's and the sessions back it up. Commits by the student's
+  own agent or agent harness are the student's; by a teammate's agent, the teammate's. Repo authorship
+  alone can mislead; neither the account name nor the review's word alone settles it.
 - **Using a tool is practice; configuring it belongs to whoever did.** When the student's own sessions
   used a skill, subagent, hook, permission mode or MCP server on their own work (the review's
   "Builder tools you used" list), that counts as using the concept, even if a teammate set it up. The
