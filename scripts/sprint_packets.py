@@ -697,8 +697,11 @@ def build(student, sub, plan_sub, cfg, due):
     # A repo the student names that is not shared with sdmurff may still be public: read it if so.
     shared_lower = {r.lower() for r in cfg["shared"]}
     for r in sorted(named - shared_lower - {course}):
-        info = gh(f"repos/{r}")
-        if info and not info.get("private"):
+        info = gh(f"repos/{r}")  # follows a renamed or transferred repo to its current name
+        if info and info["full_name"].lower() in shared_lower and info["full_name"].lower() != course:
+            others.append(next(x for x in cfg["shared"] if x.lower() == info["full_name"].lower()))
+            named.add(info["full_name"].lower())  # shared under its new name (2026-11-12: ck22coding -> cK1NG22)
+        elif info and not info.get("private"):
             others.append(info["full_name"])
     start = min(dt.datetime.fromisoformat(p["plan"]["first_commit"]), due - dt.timedelta(days=14)) \
         if (p.get("plan") or {}).get("first_commit") else due - dt.timedelta(days=14)
