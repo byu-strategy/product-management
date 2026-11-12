@@ -9,8 +9,9 @@ calls honestly: an unmarked weak credit is the one that slips through. Record on
 lets a reader verify.
 
 ## Read first
-1. The **Evidence rules** below apply to everything you record (they replace the old rules in
-   `builder-inventory.md`, which is kept only for its item headings).
+1. `evidence-rules.md`, shared with the grader, then the **Evidence rules** below. Both apply to
+   everything you record (they replace the old rules in `builder-inventory.md`, which is kept only for
+   its item headings). Where they differ, `evidence-rules.md` wins.
 2. `depth-levels.md`: the four levels and one example per axis.
 3. The six concept lists, in one file: `concepts-for-coders.json` (written from `concepts/*.json` by `builder_concepts.py`; read it once, in one call). For each concept, the `practice` field says what in a
    packet shows it in the student's own work. Concepts with `"knowledge_only": true` are never
@@ -23,9 +24,9 @@ lets a reader verify.
 
 ## Evidence rules
 - **Checkable.** Evidence is something a reader can open: a commit or file in a shared repo, a shared
-  Google file, a live link, or a moment in the Loom. A sentence in the retro or README, or work
-  described only in the `/sprint-review` report, does not count by itself; the retro can explain
-  evidence that is there.
+  Google file, a live link, a moment in the Loom, or a dated written record of a conversation (see
+  `evidence-rules.md`). A sentence in the retro or README, or prose in the `/sprint-review` report with
+  no commit or record behind it, does not count by itself; the retro can explain evidence that is there.
 - **What counts as a record.** A committed file or a commit message that names the result. The parts
   may be in different files. "Before the code" means an earlier commit, not the same commit.
 - **Real users** (one rule, for breadth and depth): people who do not build the product, using it for its
@@ -40,6 +41,8 @@ lets a reader verify.
   (sprint-plan, sprint-review, sprint-coach, learn, eli5) never count as the student's own skills.
   Subagents count when the student wrote one (`.claude/agents/`) or named one in their instructions;
   a built-in search agent Claude Code started on its own does not.
+  A tool a teammate set up counts as the student using it when the student's own sessions used it on
+  their own work; writing or configuring it is credited to whoever committed it.
 
 ## Breadth
 Record a concept when this sprint's evidence matches its `practice` sentence.
@@ -69,7 +72,8 @@ Record a concept when this sprint's evidence matches its `practice` sentence.
 - **A repo that is not shared, summarized by `/sprint-review`** (Scott, 2026-10-29): a company or
   client repo, or the student's own. The rubric counts work "in another repo shared with Professor
   Murff or summarized by `/sprint-review`" and does not ask why a repo is unshared, so this is the
-  exception to the line above. The review's commit list for that repo counts for breadth only when a commit message or
+  exception to the line above. The review's commit list for that repo counts for breadth only when the commits are listed one by
+  one with their messages (a paraphrase, a count, or a PR number alone counts for nothing) and a commit message or
   file name in it names the concept's practice specifically ("add RLS policy for mentors", not "fix
   bug" or "updates"). Mark every such credit `borderline` and cite the line. From the summary alone,
   depth on that axis is level 2 at most; a Loom moment showing the work, or a shared file, can support

@@ -74,7 +74,13 @@ check("f-demo-length" not in published_rules(1) and "f-demo-length" in published
 site = subprocess.run(["git", "-C", str(Path.home() / "courses/ai-foundry"), "show", "9d4d7ba:students/11-sprints.qmd"],
                       capture_output=True, text=True).stdout
 site = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", site).replace("**", "").replace("`", "")
+import json as _j
+_pending = set(_j.loads((HERE.parent / "grading" / C["rules_file"]).read_text()).get("_pending", []))
+if _pending:
+    print("pending publication (quote not yet on the Sprints page):", ", ".join(sorted(_pending)))
 for k, q in RULE_TEXT.items():
+    if k in _pending:
+        continue
     check(" ".join(q.split()).lower() in " ".join(site.split()).lower(), f"rule {k} quotes the Sprints page word for word")
 
 if fails:

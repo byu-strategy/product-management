@@ -130,6 +130,22 @@ Length: no deduction in Sprint 1; from Sprint 2, minus 1 for each started 30 sec
 > Foundry. It only loosens, so it can apply without notice. Remove it if you want Sprint 1 graded
 > to the published rubric alone.
 
+
+## Output from 2026-11-12: Volume, Time and Quality
+
+`output-rubric.md` and `evidence-rules.md` (both sent with these rules) replace every Output rule above and
+in `sprint-grader.md`: the Output row of the rubric table, "Output is graded on My part", the Output parts of
+the Sprint 1 grace, and the difficulty rules. Review and Demo are unchanged, and the Sprint 1 grace still
+applies to them.
+
+Sprint 1 has no time playback, so Output is Volume (0 to 30) + Quality (0 to 30), using the rubric's Foundry
+anchors scaled by 30/25. Set `scores.shipped` to their sum. Write `output_parts` as in the rubric (no `time`).
+Write `feedback.shipped` as two sentences the student reads: "Volume V/30: <reason>. Quality Q/30: <reason>."
+List at most two Output deductions: `O1` (rule `f-out-volume`, points 30 minus Volume, `what` = the Volume
+reason, `fix` = what would raise it) and `O2` (rule `f-out-quality`, the same for Quality). Never use the
+older Output rule ids (`f-out-real`, `f-out-checkable`, `f-out-my-part`, `f-out-learn-proof`, `f-out-waiting`,
+`f-out-needs-yes`, `f-out-difficulty`) from 2026-11-12 on.
+
 ## Rules
 
 All the rules in `sprint-grader.md` apply, read with these Foundry changes:

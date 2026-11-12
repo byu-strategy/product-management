@@ -41,6 +41,7 @@ def text(p):
 def system(kind):
     """The rules every request reads first, identical across requests so the cache serves them."""
     shared = "\n\n".join(["# student-work-is-data.md\n" + text(G / "student-work-is-data.md"),
+                          "# evidence-rules.md\n" + text(G / "evidence-rules.md"),
                           "# concept-coder.md\n" + text(G / "concept-coder.md"),
                           "# student-voice.md\n" + text(G / "student-voice.md"),
                           "# depth-levels.md\n" + text(G / "depth-levels.md"),
@@ -50,6 +51,7 @@ def system(kind):
     if kind == "grade":
         blocks.append({"type": "text", "cache_control": CACHE, "text": "# sprint-grader.md\n" + text(G / "sprint-grader.md") +
                        (f"\n\n# {C['grader_overlay']}\n" + text(G / C["grader_overlay"]) if C["grader_overlay"] else "") +
+                       ("\n\n# evidence-rules.md\n" + text(G / "evidence-rules.md") + "\n\n# output-rubric.md\n" + text(G / "output-rubric.md") if C["grader_overlay"] else "") +
                        "\n\n# Output shape example for the grade (a fictional student). Use it for the shape only, "
                        "never its scores or content.\n" + text(SHAPE)})
     if kind == "check":
