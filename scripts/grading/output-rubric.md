@@ -1,4 +1,4 @@
-# Output rubric: Amount and Quality (shared, v8.2, 2026-11-12)
+# Output rubric: Amount and Quality (shared, v8.3, 2026-11-12)
 
 DRAFT. One Output rubric for every course on the sprint model (MSB 341 and AI Foundry). Evidence rules
 are shared with the concept coder: read `evidence-rules.md` in this folder first.
@@ -154,6 +154,20 @@ is usable, consistent and accessible; research has a sound method, quoted eviden
 outreach and selling are well targeted, with a clear specific ask and follow-up; go-to-market has a clear
 message for a defined audience and tracking that records correctly; a client deliverable answers the
 client's actual question, clearly, backed by evidence; Learn means the thing built works on real work.
+
+## Never counted against a student (Scott's rulings, 2026-11-11 to 12)
+
+Neither Amount nor Quality, nor any reason, raise, or deduction, may rest on:
+
+- **The plan's items as a checklist.** Never tally done items against the plan; judge the work done.
+- **Work on a project the student was moved off,** or a pivot. Judge the work they did.
+- **Teaching or onboarding a teammate away from the repo.** It counts neither way.
+- **A client's or partner's process** (reviews, pull requests, merges, approvals, tickets).
+- **A wait for access or a client,** beyond the waiting rule above.
+- **Privacy.**
+- **In Quality:** a missing or planned piece, work not yet used by anyone, work not yet shared or
+  checkable, or how much there is. Those are Amount questions (or no question at all). Quality judges
+  only the work that is there: does it work, hold up, fit its person, and is it well made.
 
 ## Hours: a cross-check, never a score
 
