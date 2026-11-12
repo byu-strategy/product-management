@@ -7,7 +7,10 @@ count for the builder profile, and the other way round. Where another file disag
 - **The work itself.** Repo diffs and their dates; commits in the course repo, client repos
   (`ai-foundry-byu` for the Foundry) and any other repo the student shared; files; links that opened;
   Google files fetched; what is on screen in the Loom frames and transcript. A dated record shown legibly in
-  the Loom counts as on record.
+  the Loom counts as on record, and a document shown in the Loom counts as of the Loom's recording date.
+- **A run is not output.** The session scan shows that something ran. A run whose results are not kept
+  (committed, saved, or shown on screen) earns no Amount; the scan is evidence of practice for the builder
+  profile only.
 - **Written records of non-code work.** Calls, meetings, interviews, user tests, sales asks and
   outreach leave records, not diffs. A short dated note of when, with whom (a name or a label such as
   "Customer S"), and what came of it is full evidence of that conversation; one line per conversation is
