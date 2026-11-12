@@ -47,11 +47,11 @@ Published sentence:
 > itself. Your plan says what you are aiming at; changing it when you learn something costs nothing.
 > Your sprint review records your hours to help us plan the course; they never affect your grade.
 
-Published with it, on both Sprints pages (pending Scott):
+Published with it, on both Sprints pages:
 
-> **Keep a dated record.** For every call, interview, test with a user, or ask, write down who (a name
-> or a label such as Customer A), when, what you asked or showed, and what they said or did, in your repo
-> or your sprint review. A conversation with no record cannot be counted.
+> **Keep a short record.** For each call, interview, test with a user, or ask, note the date, who (a name
+> or a label such as Customer A), and what came of it. One line is enough, in your repo or your sprint
+> review. A conversation with no record cannot be counted.
 
 ## What to judge from
 
@@ -70,10 +70,8 @@ is full evidence). Two more:
   progress either. Amount counts what they did meanwhile: other work, preparation, asks on record.
 - **Never comment on a client's or partner's process** (how they review, merge, or approve work). The
   course does not know it, so it is never part of Amount, Quality, or the feedback.
-- **Privacy never affects a score.** Foundry: what appears on a student's screen is shared under the
-  program's agreements; never flag or mention it. MSB 341 (pending Scott): the Assessments page asks
-  students to keep real names, emails and phone numbers off screen; flag a lapse for Scott in `flags`,
-  never in student feedback.
+- **No privacy commentary.** Students own the records on their screens and may show them as they are or
+  redact them; never flag or mention it, and it never affects a score.
 
 ## Amount (MSB 341 0 to 10, Foundry 0 to 30)
 
@@ -114,7 +112,7 @@ A solid sprint, by kind:
 | Model or eval work | An eval set with expected answers, scored runs comparing changes, what the results showed |
 | Interface or design | Designed and built or prototyped, checked with a person or against stated design rules |
 | Go-to-market | A page or campaign live, first results read against a target |
-| Cold outreach | A targeted list, a dozen or more asks recorded (who, when, what was asked, the answer), follow-ups, a pipeline |
+| Cold outreach | A targeted list, a dozen or more asks on record (date, who, the answer), follow-ups, a pipeline |
 | Selling to a business | Three to five conversations with people who decide or hold the budget, each recorded and followed up, with the ask made |
 | Research or discovery | Five or more interviews or user tests written up, or a full analysis, with conclusions and what they change |
 | Client deliverable (Foundry) | A deliverable the client can act on, with the decision it asks for |

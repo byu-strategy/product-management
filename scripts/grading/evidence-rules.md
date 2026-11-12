@@ -9,10 +9,10 @@ count for the builder profile, and the other way round. Where another file disag
   Google files fetched; what is on screen in the Loom frames and transcript. A dated record shown legibly in
   the Loom counts as on record.
 - **Written records of non-code work.** Calls, meetings, interviews, user tests, sales asks and
-  outreach leave records, not diffs. A dated record of who (a name or a masked label such as
-  "Customer S"), when, what was asked or tested, and what they said or did is full evidence of that
-  conversation: a log, a pipeline table, a session note or a findings page, committed or listed in the
-  `/sprint-review` report. A recording is not required. A conversation with no dated record anywhere
+  outreach leave records, not diffs. A short dated note of when, with whom (a name or a label such as
+  "Customer S"), and what came of it is full evidence of that conversation; one line per conversation is
+  enough: a log, a pipeline row, a session note or a findings page, committed, listed in the
+  `/sprint-review` report, or shown legibly in the Loom. A recording is not required. A conversation with no dated record anywhere
   is not checkable. For the builder profile, these records are evidence for Discovery and Launch and
   Learn concepts in the same way a commit is evidence for an Architecture concept.
 - **Any repo the course can open counts, whoever owns it** (a client's own GitHub organization, a team
