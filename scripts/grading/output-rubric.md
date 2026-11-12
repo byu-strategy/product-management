@@ -1,18 +1,22 @@
-# Sprint rubric: Output as Volume, Time and Quality (shared, draft v5, 2026-11-12)
+# Output rubric: Amount and Quality (shared, draft v7, 2026-11-12)
 
-DRAFT for Scott's approval. One rubric for every course on the sprint model (MSB 341 and AI Foundry).
-v5 follows the v4 calibration test (6 Foundry students, 2 blind runs, 5 of 6 within 1 point) and
-Scott's decisions of 2026-11-12 (published page: remove "weighed by how hard the work was for you" when this goes on): Output has three parts (Volume, Time, Quality); Volume is progress,
-with nothing excluded by kind; Quality is the quality of the work itself, the same bar for every
-student (2026-11-12); "was it the right work"
-belongs to the Consultant feedback, not Output; each part measures one thing only.
+DRAFT. One Output rubric for every course on the sprint model (MSB 341 and AI Foundry). Evidence rules
+are shared with the concept coder: read `evidence-rules.md` in this folder first.
 
-## The sprint
+v7 (Scott, 2026-11-12): Time is out of the grade. Output is Amount and Quality only. Hours are still
+collected (the `/sprint-review` time playback, the retro estimate, `sprint_records`), but only as a
+cross-check for Scott, never a score and never mentioned to the student. Reasons: time could rarely be
+measured (in an MSB 341 test, 1 of 6 students had session time), it scored efficient agent work below
+logged hours, it invites inflated self-reports, and it split the "whose work is this" call from progress.
+Slow kinds of work are protected by "judged against two weeks of the same kind" and "asks on record
+count; a no costs nothing". The MSB 341 copy, `output-rubric-msb341-test.md`, uses the same wording.
+
+## Points by course
 
 | Category | MSB 341 | AI Foundry |
 |---|---|---|
 | Plan | 10 | 10 |
-| Output: Volume + Time + Quality | 20 (8 + 4 + 8) | 60 (25 + 10 + 25) |
+| Output: Amount + Quality | 20 (10 + 10) | 60 (30 + 30) |
 | Review | 10 | 25 |
 | Demo | 10 | 25 |
 
@@ -21,69 +25,58 @@ Foundry, "My part" is not required for solo work.
 
 ## Output
 
-Published sentence (each course's rubric, Output row):
+| Part | MSB 341 | Foundry | Measures | Never includes |
+|---|---|---|---|---|
+| **Amount** | 10 | 30 | How far the work moved this sprint | Hours, how good it is |
+| **Quality** | 10 | 30 | How good the work is, the same bar for every student | Hours, how much there is, starting level |
 
-> **Output: Volume, Time and Quality.** Volume is how much progress you made this sprint, judged
-> against what two weeks of that kind of work looks like. Everything you moved forward counts, from an
-> outline or a first plan to work in use, even if it is rough. Time is the hours you put into it: your
-> sprint review estimates them from your sessions, and you add what it could not see. Quality is how
-> well the work was done, judged on the work itself. Your plan says what you are aiming at;
-> changing it when you learn something costs nothing.
+Whether it was the right work is not Output (it is Judgment, on the Consultant side). Hours are not
+Output either: see "Hours: a cross-check, never a score" below.
 
-### Each part measures one thing
+Published sentence:
 
-| Part | Measures | Never includes |
-|---|---|---|
-| Volume | How far the work moved this sprint | Hours, difficulty, how good it is |
-| Time | Hours put in | How much came out, difficulty |
-| Quality | How well the work was done, the same bar for every student | Hours, how much there is, the student's starting level |
+> **Output: Amount and Quality.** Amount is how much progress you made this sprint, judged against what
+> two weeks of that kind of work looks like. Quality is how well the work was done, judged on the work
+> itself. Your plan says what you are aiming at; changing it when you learn something costs nothing.
+> Your sprint review records your hours to help us plan the course; they never affect your grade.
 
-Whether it was the right work for the client or user is Judgment on the Consultant side (colleague
-and client feedback), never Output.
+## What to judge from
 
-### What the grader judges from (all three parts)
+Everything in `evidence-rules.md` (the work itself; dated written records of non-code work; the
+student's own part; using a tool is practice, configuring it belongs to whoever did; checkable work
+only; unshared repos only through commits listed one by one with their messages; confidential material
+is full evidence). Two more:
 
-`evidence-rules.md` (shared with the concept coder, so the grade and the builder profile count the
-same work): the work itself; dated written records of non-code work; the student's own part; using a
-tool is practice, configuring it belongs to whoever did; checkable work only; unshared repos only
-through commits listed one by one with their messages; confidential material is full evidence. Two
-more for the grade:
+- **The plan is context, never a checklist.** A pivot costs nothing: judge the work done before and
+  after the change.
+- **A late start.** When the student had less than the full two weeks of calendar time, judge Amount
+  against the time they had, and flag it.
 
-- **The plan is context, never a checklist.** It says what the student aimed at, who the work is for,
-  and which part is theirs. A pivot costs nothing: judge the work done before and after the change.
-- **A late start.** When the plan's first commit or the enrollment date shows the student had less
-  than the full two weeks, judge Volume and Time against the time they had, and flag it for Scott.
+## Amount (MSB 341 0 to 10, Foundry 0 to 30)
 
-### Volume (MSB 341 0 to 8, Foundry 0 to 25)
-
-How much progress, judged against what a capable student does in two weeks of steady work **of the
-same kind** in this course. Everything the student moved forward counts, from an outline or a first
-plan to work in use, even if rough. For each piece, estimate how far it moved (an outline might be 10
-to 20% of a write-up; a working feature with rough edges might be 70% of it) and add the pieces up.
-Nothing has to be done to count.
-
-Agents speed up building far more than talking to people: a feature can be built in an afternoon,
-while each customer conversation takes days to arrange. Never measure a selling or research sprint
-against a building sprint's volume. A sprint that mixes kinds adds up, each part against its own kind.
-A documented dead end (what was tried, what happened, what it showed) is progress: count the write-up
-here, and the hours it took in Time only.
-
-Earns nothing: work that is not the student's own (an untouched course template, a teammate's
-commits), and progress with no file, record or demo behind it.
+How much progress, against what a capable student does in two weeks of steady work **of the same kind**
+in this course. Everything moved forward counts, from an outline or a first plan to work in use, even if
+rough. For each piece, estimate how far it moved (an outline might be 10 to 20% of a write-up; a working
+feature with rough edges might be 70% of it) and add the pieces up. Nothing has to be done to count.
+Agents speed up building far more than talking to people: never measure a selling or research sprint
+against a building sprint. A sprint that mixes kinds adds up, each part against its own kind. A
+documented dead end (what was tried, what happened, what it showed) is progress. Work that is not the
+student's own, or not on record, earns nothing. Never raise or lower Amount for the hours it took.
 
 | MSB 341 | Foundry | Anchor |
 |---|---|---|
-| 8 | 24 to 25 | Several substantial pieces carried far: running, used, sent, or delivered |
-| 7 | 19 to 23 | A solid sprint: at least one substantial piece carried well along, with smaller pieces around it |
-| 6 | 15 to 18 | One piece carried well along, little else |
-| 4 to 5 | 10 to 14 | Several pieces started and partway done, or one small piece done |
-| 2 to 3 | 4 to 9 | Early progress only: setup, an outline, a plan, a template filled in |
+| 10 | 29 to 30 | Several substantial pieces carried far: running, used, sent, or delivered |
+| 8 to 9 | 23 to 28 | A solid sprint: at least one substantial piece carried well along, with smaller pieces around it |
+| 7 | 18 to 22 | One piece carried well along, little else |
+| 5 to 6 | 12 to 17 | Several pieces started and partway done, or one small piece done |
+| 1 to 4 | 5 to 11 | Early progress only: setup, an outline, a plan, a template filled in |
 | 0 | 0 | No progress that is the student's own and on record |
 
-Score at the top of a rung when the work is close to the next rung up; the rungs are wide on purpose (Scott, 2026-11-12).
-
-A prototype is real progress on design when the design is the deliverable; work that runs on sample
-data counts for less only when its value depends on real data (a dashboard meant for real contacts).
+Score at the top of a rung when the work is close to the next rung up. A prototype is real progress when
+the design is the deliverable; sample data counts for less only when the work's value depends on real
+data. Goals that need someone's yes: the asks on record count, and a no costs nothing. Waiting on a
+client (Foundry): the record of what was waited on, when it was asked for, and what was done meanwhile
+is progress.
 
 A solid sprint, by kind:
 
@@ -92,133 +85,91 @@ A solid sprint, by kind:
 | Feature or app | Built from data to screen, running, main error and empty cases handled |
 | Agent or automation | Runs start to finish on real inputs, with checks that it does the right thing |
 | Model or eval work | An eval set with expected answers, scored runs comparing changes, what the results showed |
-| Interface or design | Screens designed and built or prototyped, checked with a person or against stated design rules |
+| Interface or design | Designed and built or prototyped, checked with a person or against stated design rules |
 | Go-to-market | A page or campaign live, first results read against a target |
 | Cold outreach | A targeted list, a dozen or more asks recorded (who, when, what was asked, the answer), follow-ups, a pipeline |
 | Selling to a business | Three to five conversations with people who decide or hold the budget, each recorded and followed up, with the ask made |
 | Research or discovery | Five or more interviews or user tests written up, or a full analysis, with conclusions and what they change |
 | Client deliverable (Foundry) | A deliverable the client can act on, with the decision it asks for |
-| Learn | A Claude course with its certificate, and the thing it teaches built and used on real work; or chapters with /learn logs and the practice exam. A Learn-only sprint covers two weeks of learning |
+| Learn | A Claude course with its certificate and the thing it teaches used on real work, or chapters with /learn logs and the practice exam |
 
-Goals that need someone else's yes (a buyer paying, a partner signing, users joining): Volume counts
-the asks made and on record and the work done to make them; a no or "not yet" costs nothing. Waiting on
-a client (Foundry): the record of what was waited on, when it was asked for, and what was done
-meanwhile is progress.
-
-### Time (MSB 341 0 to 4, Foundry 0 to 10)
-
-Hours of work outside class put into the sprint, against what the course expects: a 3-credit course is
-about 9 hours a week, about 3 of them in class, so about 6 a week outside, or about 12 per sprint
-(Scott, 2026-11-12). Capped there; no bonus beyond it. Class time is not counted here.
-
-**Evidence.** `/sprint-review` shows the student the hours it estimated from their included Claude
-Code sessions, day by day, says how many sessions were excluded and what it cannot see (meetings,
-calls, design tools, reading, other apps), and asks them to add what is missing, each with a date,
-what they did, and about how long. The review records both.
-
-- The session estimate counts in full.
-- An addition counts when something corroborates it: a dated record (meeting note, email, call log),
-  a file or link from that day (a Figma file, a doc), or work that the time plausibly produced.
-- An addition with nothing behind it is not counted and is shown to Scott; a large uncorroborated
-  total is flagged. Neither lowers Volume or Quality.
-- Never adjust Time for difficulty or for how much came out.
-
-| MSB 341 | Foundry | Corroborated hours outside class, against about 12 |
-|---|---|---|
-| 4 | 9 to 10 | About 11 or more |
-| 3 | 7 to 8 | About 8 to 10 |
-| 2 | 4 to 6 | About 5 to 7 |
-| 1 | 1 to 3 | About 2 to 4 |
-| 0 | 0 | Under about 2 |
-
-Sprint 1 (Foundry) and any sprint before the playback is live: there is no correction step, so score
-Output on Volume and Quality only and scale them to fill the category (Foundry: Volume 30, Quality 30;
-MSB 341: 10 and 10).
-
-### Quality (MSB 341 0 to 8, Foundry 0 to 25)
+## Quality (MSB 341 0 to 10, Foundry 0 to 30)
 
 How good the work is, judged on the work itself, with the same bar for every student. Never adjust for
-the student's starting level, and never for how much of the thinking was theirs (that is the builder
-profile's depth level, not the grade). Judge how good, never how long it took. Four questions:
+starting level, and never for how much of the thinking was the student's (that is the builder profile's
+depth level, not the grade). Judge how good, never how long it took. Four questions:
 
 1. **Does it work, and is it correct?** It runs, the numbers are right, the conclusion follows from the evidence.
-2. **Does it hold up?** Real content, the cases beyond the easy path, errors handled; it would survive someone else using it.
+2. **Does it hold up?** Real content, the cases beyond the easy path, errors handled.
 3. **Is it fit for the person it is for?** It does what they need, and it is clear to use or read.
 4. **Is it well made?** Organized, consistent, sourced, easy for the next person to pick up.
 
 | MSB 341 | Foundry | Anchor |
 |---|---|---|
-| 8 | 24 to 25 | Excellent: works and is correct, holds up well beyond the easy path, clearly fit for its person, well made. Little a careful reviewer would change |
-| 7 | 19 to 23 | Strong: works and holds up with real content; fit for its person; a few gaps a reviewer would point out |
-| 6 | 15 to 18 | Sound: works on the main path with real content; rough beyond it, or unclear in places |
-| 4 to 5 | 10 to 14 | Uneven: partly works or partly correct; notable gaps in how it holds up or how clear it is |
-| 2 to 3 | 4 to 9 | It does not hold up: breaks, wrong, placeholder content, or did not run |
+| 10 | 29 to 30 | Excellent: works and is correct, holds up well beyond the easy path, clearly fit for its person, well made |
+| 9 | 23 to 28 | Strong: works and holds up with real content; fit for its person; a few gaps a reviewer would point out |
+| 7 to 8 | 18 to 22 | Sound: works on the main path with real content; rough beyond it, or unclear in places |
+| 5 to 6 | 12 to 17 | Uneven: partly works or partly correct; notable gaps in how it holds up or how clear it is |
+| 1 to 4 | 5 to 11 | It does not hold up: breaks, wrong, placeholder content, or did not run |
 
-Score at the top of a rung when the work is close to the next rung up; the rungs are wide on purpose (Scott, 2026-11-12).
+Score at the top of a rung when the work is close to the next one. With several pieces, weight Quality
+toward the pieces that carry most of the progress. When something outside the student's control blocks
+the work (an access token, an approval), judge what runs up to the block, with the block named and on
+record. A missing piece is Amount, never Quality.
 
-**When something outside the student's control blocks the work** (a client's access token, an API key the
-client has not issued, an approval that has not come), judge Quality on what runs up to the block, with the
-block named. A main path that stops at a missing client credential is not "partly works": judge the parts
-that run (requests refused correctly, errors handled, tests passing) as they are, and say in `reason` what
-was blocked and by whom. The block must be on record (an ask, an email, a note in the review); a block the
-student only mentions is not.
+What quality means, by kind: a feature has correct behavior, error and empty states, real data, access
+rules right, tests where it matters; an agent has correct outputs on real inputs, measured, with sensible
+failure handling; evals have right expected answers and conclusions that follow from the scores; design
+is usable, consistent and accessible; research has a sound method, quoted evidence and stated limits;
+outreach and selling are well targeted, with a clear specific ask and follow-up; go-to-market has a clear
+message for a defined audience and tracking that records correctly; a client deliverable answers the
+client's actual question, clearly, backed by evidence; Learn means the thing built works on real work.
 
-With several pieces of work, judge Quality across them, weighted toward the pieces that carry the most
-of the sprint's Volume.
+## Hours: a cross-check, never a score
 
-What quality means, by kind:
+Read the review's "Active session time" (or the time playback, once it exists) and the retro's hours
+estimate, and compare them with Amount. Record what you found in `hours_crosscheck` and flag a mismatch
+for Scott (for example, 50 hours reported with little on record, or a large amount of work in one short
+session). Never move Amount or Quality for hours, and never mention hours to the student.
 
-| Kind | Quality means |
-|---|---|
-| Feature or app | Correct behavior, error and empty states, real data, access rules right, tests where it matters |
-| Agent or automation | Correct outputs on real inputs, measured (an eval or a spot-check), sensible failure handling |
-| Model or eval work | Expected answers that are right, runs scored the same way each time, conclusions that follow from the scores |
-| Interface or design | Usable, consistent, accessible, works on the screens it targets |
-| Research | A sound method, evidence quoted, conclusions that follow from it, limits stated |
-| Outreach and selling | Well targeted, a clear specific ask, a professional message, follow-up on replies |
-| Go-to-market | A clear message for a defined audience, tracking that records correctly, results read honestly |
-| Client deliverable (Foundry) | Answers the client's actual question, clear, backed by evidence, with the decision it asks for |
-| Learn | The thing built with it works on real work |
+## What the student sees, and the result fields
 
-### What the student sees
+The Output total; Amount and Quality each with one sentence on what the score rests on and one concrete
+thing that would raise it; one Dispute button per part.
 
-The Output total; Volume and Quality each with one sentence on what the score rests on and one concrete
-thing that would raise it; Time with the session estimate, what the student added, and what counted.
-One Dispute button per part.
-
-In the result: `scores.shipped` = the sum; `output_parts` = {`volume`, `time`, `quality`}, each
-{`score`, `reason`, `raise`}; one `deductions` item per part below its maximum (`O1` Volume
-`f-out-volume`, `O2` Time `f-out-time`, `O3` Quality `f-out-quality`), `points` = the shortfall,
-`what` = its `reason`, `fix` = its `raise`.
-
-## Review
-
-MSB 341 (10): the report committed, with the retro answering its questions; each unanswered question
-costs 1; an empty retro earns at most half. AI Foundry (25): the report committed, with the retro
-answering all six questions and responding to something specific in the report; minus 3 per unanswered
-question, minus 5 for no specific response, at most half for an empty retro. The time playback replaces
-the hours question in both courses.
-
-## Demo
-
-Aim for 3 minutes on Loom (MSB 341 Sprint 6: 4 minutes), answering three questions in order:
-
-1. **What was your sprint goal?** One sentence, with the plan on screen.
-2. **What did you make progress on? Open the work itself:** the feature in use, the agent running, the
-   page live with its results, the asks and replies, the model with one input changed, the notes and
-   what you concluded, the deliverable and the decision it asks for.
-3. **What is not done yet?** Show where each piece stands.
-
-Graded on whether the work is accounted for on screen with real or labeled sample content. Hours,
-difficulty and reflection go in the written retro, not the demo. Length, computed in code: under 1:30
-minus 1, under 0:30 minus 2, over 4:00 minus 1, over 4:30 minus 2 (Sprint 6: a minute later on the
-long side). Loom only, viewable by Professor Murff.
+In the result: `scores.shipped` = Amount + Quality; `output_parts` = {`amount`, `quality`}, each
+{`score`, `reason`, `raise`}; one `deductions` item per part below its maximum (`O1` Amount
+`f-out-amount`, `O2` Quality `f-out-quality`), `points` = the shortfall, `what` = its `reason`, `fix` =
+its `raise`. There is no Time item.
 
 ## Where a Foundry Wrap-up lands (Review and Demo earned)
 
-| Sprint | Wrap-up of 110 |
-|---|---|
-| Excellent, full time | 98 to 100% |
-| Solid, real decisions, full time | 88 to 96% |
-| One piece carried well along | 78 to 87% |
-| Early progress only | 65 to 78% |
+| Sprint | Output of 60 | Wrap-up of 110 |
+|---|---|---|
+| Excellent | 58 to 60 | 98 to 100% |
+| Solid: substantial work that holds up | 46 to 56 | 87 to 96% |
+| One piece carried well along, sound | 36 to 44 | 78 to 85% |
+| Early progress only | 10 to 22 | 55 to 65% |
+
+## Worked examples (MSB 341, Sprints 3 and 4; no names; Amount and Quality on 10, Foundry x3)
+
+Do not test on any student these describe.
+
+- Application Architecture, solid (Amount 9, Quality 9): customers reschedule their own booking from a
+  keyed link in the confirmation email; an admin page approves or declines each request; live.
+- Application Architecture, thin (Amount 5, Quality 6): a three-tab dashboard and follow-up tracker
+  run, but only on sample data; none of the planned real contacts loaded, no outreach logged.
+- Agentic Workflow, solid (Amount 9, Quality 9): a contact-qualifying command run on 25 real contacts,
+  spot-checked by hand, revised six times until it matched the student's own judgment.
+- AI Systems, solid (Amount 9, Quality 10): 18 real receipt photos labeled by hand, a scoring script,
+  three scored runs comparing prompt changes, and a findings note.
+- Design, solid amount (Amount 9, Quality 9): seven drawing-tool improvements the owner asked for, each
+  merged and live.
+- Discovery, solid (Amount 9, Quality 9): ten prototype test sessions with travelers, each written up,
+  a findings note on which price held up, the prototype updated.
+- Launch and Learn, solid go-to-market (Amount 9, Quality 9): a waitlist page live, 38 visitors, 10
+  sign-ups and 2 price clicks read against targets set before launch.
+- Launch and Learn, solid selling (Amount 9, Quality 9): a pipeline of nine asks with date, role and
+  answer, including yes answers from two decision-makers.
+- Launch and Learn, thin (Amount 4, Quality 4): a new font, an audit script with no results, one social
+  post; the planned pages not built.
