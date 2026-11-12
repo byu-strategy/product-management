@@ -539,7 +539,10 @@ def build(student, sub, plan_sub, cfg, due):
         next_plan = file_at(repo, f"sprints/sprint-{n + 1}-plan.md")
         p["next_sprint_plan"] = next_plan[:4000] if next_plan else None
         p["readme"] = readme[:4000]
-        start = ph[0][1] if ph else due - dt.timedelta(days=14)
+        # Read from the sprint start (two weeks before the due date) or the first plan commit, whichever is
+        # earlier: a plan committed late must not hide the sprint's earlier commits (2026-11-12: a Nov 5 plan
+        # dropped 32 Oct 28 to Nov 5 commits in a student's deploy repo).
+        start = min(ph[0][1], due - dt.timedelta(days=14)) if ph else due - dt.timedelta(days=14)
         # An accommodation in sprint-N/special-windows.json widens the window (sharoon, Sprint 4: all
         # work since Oct 1, Sprints 2 and 3 excused). Without this the window opened at the plan's first
         # commit and the excused weeks' work never reached the grader.
@@ -697,8 +700,8 @@ def build(student, sub, plan_sub, cfg, due):
         info = gh(f"repos/{r}")
         if info and not info.get("private"):
             others.append(info["full_name"])
-    start = dt.datetime.fromisoformat(p["plan"]["first_commit"]) if (p.get("plan") or {}).get("first_commit") \
-        else due - dt.timedelta(days=14)
+    start = min(dt.datetime.fromisoformat(p["plan"]["first_commit"]), due - dt.timedelta(days=14)) \
+        if (p.get("plan") or {}).get("first_commit") else due - dt.timedelta(days=14)
     p["other_repos"] = []
     for r in others[:4]:
         log = branch_commits(r, start)
