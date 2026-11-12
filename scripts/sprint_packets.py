@@ -696,11 +696,12 @@ def build(student, sub, plan_sub, cfg, due):
     others = [r for r in cfg["shared"] if r.lower() != course and (r in mine or r.lower() in named)]
     # A repo the student names that is not shared with sdmurff may still be public: read it if so.
     shared_lower = {r.lower() for r in cfg["shared"]}
+    renamed = set()
     for r in sorted(named - shared_lower - {course}):
         info = gh(f"repos/{r}")  # follows a renamed or transferred repo to its current name
         if info and info["full_name"].lower() in shared_lower and info["full_name"].lower() != course:
             others.append(next(x for x in cfg["shared"] if x.lower() == info["full_name"].lower()))
-            named.add(info["full_name"].lower())  # shared under its new name (2026-11-12: ck22coding -> cK1NG22)
+            renamed.add(r)  # shared under its new name (2026-11-12: ck22coding -> cK1NG22)
         elif info and not info.get("private"):
             others.append(info["full_name"])
     start = min(dt.datetime.fromisoformat(p["plan"]["first_commit"]), due - dt.timedelta(days=14)) \
@@ -719,7 +720,7 @@ def build(student, sub, plan_sub, cfg, due):
                                  "commits": [{k: v for k, v in c.items() if k != "sha"} | {"sha": c["sha"][:7]} for c in cs],
                                  "files": shipped(r, cs, budget=20_000, cutoff=p.get("window_end") and
                                                   dt.datetime.fromisoformat(p["window_end"])) if cs else []})
-    unshared = sorted(r for r in named - shared_lower - {course} - {o.lower() for o in others} if not path_or_branch(r, text))
+    unshared = sorted(r for r in named - shared_lower - {course} - {o.lower() for o in others} - renamed if not path_or_branch(r, text))
     # A private repo named without its owner ("`elders-quorum-web`, private GitHub repo") still needs a share line.
     for b in private_bare_repos(text):
         if not any(b == u.split("/")[-1] for u in set(unshared) | shared_lower | {o.lower() for o in others} | {course}):
