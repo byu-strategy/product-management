@@ -30,13 +30,13 @@
   "f-demo-unopenable": "Sprints page, The demo (Loom only)",
   "f-demo-length": "Sprints page, Grading rubric (Demo length)",
   "late": "Sprints page, Grading rubric (Late work)",
-  "f-out-volume": "Sprints page, Grading rubric (to be published)",
-  "f-out-quality": "Sprints page, Grading rubric (to be published)"
+  "f-out-quality": "Sprints page, Grading rubric (to be published)",
+  "f-out-amount": "Sprints page, Grading rubric (to be published)"
  },
- "f-out-volume": "Volume is how much progress you made this sprint, judged against what two weeks of that kind of work looks like.",
  "f-out-quality": "Quality is how well the work was done, judged on the work itself.",
  "_pending": [
-  "f-out-volume",
+  "f-out-amount",
   "f-out-quality"
- ]
+ ],
+ "f-out-amount": "Amount is how much progress you made this sprint, judged against what two weeks of that kind of work looks like."
 }

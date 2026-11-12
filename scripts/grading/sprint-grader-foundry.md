@@ -28,7 +28,7 @@ packet. Anything else you notice may appear in feedback as a suggestion, never a
 | `f-out-difficulty` | Output weighed by how hard the work was for the student | Sprints page, "Grading rubric" ("from Sprint 2 on") | Sprint 2 |
 | `f-rev-committed` | Review: report committed (`sprints/sprint-N-review.md`) | Sprints page, "What you turn in"; "Grading rubric" | Sprint 1 |
 | `f-rev-retro` | Review: retro answers all six questions and responds to something specific in the report | Sprints page, "The review"; "Grading rubric" | Sprint 2 |
-| `f-out-volume` | Output, Volume: how much progress, against two weeks of that kind of work (`output-rubric.md`) | Sprints page, Output row (PENDING: publish before release) | Sprint 1 |
+| `f-out-amount` | Output, Amount: how much progress, against two weeks of that kind of work (`output-rubric.md`) | Sprints page, Output row (PENDING: publish before release) | Sprint 1 |
 | `f-out-quality` | Output, Quality: how good the work is, judged on the work itself (`output-rubric.md`) | Sprints page, Output row (PENDING: publish before release) | Sprint 1 |
 | `f-demo-working` | Demo: 2 to 3 minutes on Loom showing the work running, with real or clearly labeled sample content, where "running" follows the "Your demo shows" table | Sprints page, "The demo"; "Grading rubric" | Sprint 1 |
 | `f-demo-not-loom` | Demo: not a Loom scores 0 (set in code) | Sprints page, "Loom only" | Sprint 1 |
@@ -133,19 +133,18 @@ Length: no deduction in Sprint 1; from Sprint 2, minus 1 for each started 30 sec
 > to the published rubric alone.
 
 
-## Output from 2026-11-12: Volume, Time and Quality
+## Output from 2026-11-12: Amount and Quality
 
 `output-rubric.md` and `evidence-rules.md` (both sent with these rules) replace every Output rule above and
 in `sprint-grader.md`: the Output row of the rubric table, "Output is graded on My part", the Output parts of
 the Sprint 1 grace, and the difficulty rules. Review and Demo are unchanged, and the Sprint 1 grace still
 applies to them.
 
-Sprint 1 has no time playback, so Output is Volume (0 to 30) + Quality (0 to 30), using the rubric's Foundry
-anchors scaled by 30/25. Set `scores.shipped` to their sum. Write `output_parts` as in the rubric (no `time`).
-Write `feedback.shipped` as two sentences the student reads: "Volume V/30: <reason>. Quality Q/30: <reason>."
-List at most two Output deductions: `O1` (rule `f-out-volume`, points 30 minus Volume, `what` = the Volume
+Output is Amount (0 to 30) + Quality (0 to 30), using the rubric's Foundry anchors (v7: no Time). Set `scores.shipped` to their sum. Write `output_parts` as in the rubric: `amount` and `quality`.
+Write `feedback.shipped` as two sentences the student reads: "Amount A/30: <reason>. Quality Q/30: <reason>."
+List at most two Output deductions: `O1` (rule `f-out-amount`, points 30 minus Amount, `what` = the Amount
 reason, `fix` = what would raise it) and `O2` (rule `f-out-quality`, the same for Quality). Never use the
-older Output rule ids (`f-out-real`, `f-out-checkable`, `f-out-my-part`, `f-out-learn-proof`, `f-out-waiting`,
+older Output rule ids (`f-out-volume`, `f-out-real`, `f-out-checkable`, `f-out-my-part`, `f-out-learn-proof`, `f-out-waiting`,
 `f-out-needs-yes`, `f-out-difficulty`) from 2026-11-12 on.
 
 ## Rules

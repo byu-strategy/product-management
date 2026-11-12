@@ -49,8 +49,16 @@ is full evidence). Two more:
 
 - **The plan is context, never a checklist.** A pivot costs nothing: judge the work done before and
   after the change.
-- **A late start.** When the student had less than the full two weeks of calendar time, judge Amount
-  against the time they had, and flag it.
+- **A late start** is judged by the enrollment date (Canvas or the class roll), never the date a repo
+  was created. When the student enrolled after the sprint began, judge Amount against the time they
+  had, and flag it.
+- **Waiting for access** (a client or partner repo, data, an account): what the student could not do
+  without access is not expected of them, so the wait is not held against them, but the wait is not
+  progress either. Amount counts what they did meanwhile: other work, preparation, asks on record.
+- **Never comment on a client's or partner's process** (how they review, merge, or approve work). The
+  course does not know it, so it is never part of Amount, Quality, or the feedback.
+- **No privacy commentary.** What appears on a student's screen is shared under the program's
+  agreements; never flag or mention it.
 
 ## Amount (MSB 341 0 to 10, Foundry 0 to 30)
 

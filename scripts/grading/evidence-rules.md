@@ -14,6 +14,12 @@ count for the builder profile, and the other way round. Where another file disag
   `/sprint-review` report. A recording is not required. A conversation with no dated record anywhere
   is not checkable. For the builder profile, these records are evidence for Discovery and Launch and
   Learn concepts in the same way a commit is evidence for an Architecture concept.
+- **Any repo the course can open counts, whoever owns it** (a client's own GitHub organization, a team
+  repo, a repo the review calls unshared), as long as the work in it is the student's. Credit follows
+  the student's commits and the review's account of who did what (Scott, 2026-11-12).
+- **The student's own agent harness is the student.** Work done by an agent system the student set up
+  and ran (Claude Code, or a harness built on it) is the student's work. A dated run log (date, what
+  changed, the result, one line per job) counts the same as a commit list (Scott, 2026-11-12).
 - **The student's own part.** On a team, credit what this student's commits, files, records and demo
   show. A teammate's work is context. Repo authorship can mislead (a teammate may commit under another
   account): rely on the review's account of who did what, checked against the commits.
