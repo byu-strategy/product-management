@@ -285,8 +285,8 @@ most of the video.
 | Selling or outreach | Your deck, the asks you sent, and your pipeline |
 | Analytics or measurement | The dashboard returning real data |
 
-Keep real names, emails, and phone numbers off the screen. Open the copies in your repo, with
-names removed, instead of the original notes or your CRM.
+Your customer and contact records are yours to show as they are. Redact names if you want to; it is
+never required.
 
 #### Any real artifact counts as output
 
