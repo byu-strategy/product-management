@@ -28,6 +28,8 @@ packet. Anything else you notice may appear in feedback as a suggestion, never a
 | `f-out-difficulty` | Output weighed by how hard the work was for the student | Sprints page, "Grading rubric" ("from Sprint 2 on") | Sprint 2 |
 | `f-rev-committed` | Review: report committed (`sprints/sprint-N-review.md`) | Sprints page, "What you turn in"; "Grading rubric" | Sprint 1 |
 | `f-rev-retro` | Review: retro answers all six questions and responds to something specific in the report | Sprints page, "The review"; "Grading rubric" | Sprint 2 |
+| `f-out-volume` | Output, Volume: how much progress, against two weeks of that kind of work (`output-rubric.md`) | Sprints page, Output row (PENDING: publish before release) | Sprint 1 |
+| `f-out-quality` | Output, Quality: how good the work is, judged on the work itself (`output-rubric.md`) | Sprints page, Output row (PENDING: publish before release) | Sprint 1 |
 | `f-demo-working` | Demo: 2 to 3 minutes on Loom showing the work running, with real or clearly labeled sample content, where "running" follows the "Your demo shows" table | Sprints page, "The demo"; "Grading rubric" | Sprint 1 |
 | `f-demo-not-loom` | Demo: not a Loom scores 0 (set in code) | Sprints page, "Loom only" | Sprint 1 |
 | `f-demo-unopenable` | Demo: a Loom Professor Murff cannot open is not graded until shared ("Anyone with the link" or scott.murff@byu.edu) | Sprints page, "Loom only" | Sprint 1 |
