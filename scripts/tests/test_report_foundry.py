@@ -65,7 +65,8 @@ check("/60" in student and "/25" in student, "Foundry maxima shown")
 check("Instructor notes" in text(scott) and "Instructor notes" not in st, "instructor notes in Scott's copy only")
 for sec in ('id=summary', 'id=score', 'id=grew', 'id=next', 'id=questions', 'id=appendix', 'id=concepts'):
     check(sec in student, f"section missing: {sec}")
-check("Rubric: &ldquo;" in student and "To earn it next time:" in student, "rubric quote and fix under each deduction")
+check("Earn it next time:" in student and "Rubric: &ldquo;" not in student and "Rubric: &ldquo;" in scott,
+      "fix under each deduction; rubric quote only in Scott's note (2026-11-12)")
 check({"f-out-checkable", "f-rev-committed", "f-demo-working"} <= published_rules(1), "Foundry rules are published from Sprint 1")
 check("f-rev-retro" not in published_rules(1) and "f-rev-retro" in published_rules(2), "retro amounts from Sprint 2 only")
 check("f-demo-length" not in published_rules(1) and "f-demo-length" in published_rules(2), "demo length from Sprint 2 only")

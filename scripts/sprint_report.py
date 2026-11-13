@@ -750,14 +750,15 @@ def deductions_block(r, sprint, cats, dispute, outcomes, scott):
         inst = ""
         if scott:
             inst = (f'<div class=inote><b>Reason</b> <span class=instag>instructor only</span> <code>{e(str(d.get("rule_id", "")))}</code>'
+                    f'<p class=rule>Rubric: &ldquo;{e(RULE_TEXT.get(d.get("rule_id"), ""))}&rdquo;' + (f' ({e(src)})' if src else "") + '</p>'
                     f'<p>{e(d.get("reason") or "")}</p>'
                     + (f'<p class=qm>{e(d.get("excerpt_ref") or "")}</p><pre class=dex>{e(d["excerpt"])}</pre>' if d.get("excerpt") else "")
                     + "</div>")
         rows_ += (f'<div class=ded id=ded-{e(did)}><div class=dh><span class=dp>&minus;{fmt(float(d["points"]))}</span>'
-                  f'<span class=dt>{e(d.get("what", ""))}<span class=dcat>{CAT_OF.get(d.get("category"), "")}</span></span>{action}</div>'
-                  f'<div class=dx><p class=rule>Rubric: &ldquo;{e(RULE_TEXT.get(d.get("rule_id"), ""))}&rdquo;'
-                  + (f' <span>({e(src)})</span>' if src else "") + '</p>'
-                  + (f'<p class=fix><b>To earn it next time:</b> {e(d["fix"])}</p>' if d.get("fix") else "")
+                  f'<span class=dt>{e(d.get("what", ""))}</span>{action}</div>'
+                  # Scott, 2026-11-12: no rubric quote or category label in the student's row; the quote stays in his note.
+                  f'<div class=dx>'
+                  + (f'<p class=fix><b>Earn it next time:</b> {e(d["fix"])}</p>' if d.get("fix") else "")
                   + f'</div>{dispute_form(did) if dispute and dispute.get("token") and not scott and not st else ""}{inst}</div>')
     n = len(ds)
     note = (f'<p class=dwin>{window_text(dispute)}</p>'
@@ -1879,7 +1880,7 @@ h3.sub small,.ncx h3 small{font-size:13px;font-weight:400;color:var(--mute)}
 .ded{border:1px solid var(--line);border-radius:10px;margin:0 0 8px;padding:12px 14px}
 .ded .dh{display:grid;grid-template-columns:38px 1fr auto;gap:10px;align-items:baseline}
 .ded .dp{font-weight:700;color:#B3321C;font-variant-numeric:tabular-nums;font-size:15px}
-.ded .dt{font-weight:600}.ded .dcat{display:block;font-weight:400;font-size:12.5px;color:var(--mute);margin-top:1px}
+.ded .dt{font-weight:600}
 .dbtn{font-size:12.5px;border:1px solid #CCCCCC;background:#fff;border-radius:6px;padding:3px 10px;color:var(--navy);white-space:nowrap}
 .dbtn:hover,.dbtn:focus-visible{border-color:var(--royal);color:var(--royal)}
 .dst{font-size:12px;color:var(--mute);white-space:nowrap}.dst.ok{color:#44693D}

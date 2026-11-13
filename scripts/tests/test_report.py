@@ -151,7 +151,8 @@ check("Point deductions" in student and student.count("class=ded ") == 2, "two i
 check(student.count('href="https://strategy.byu.edu/app/dispute/TEST_TOKEN_abc#R') == 2, "a Dispute link per deduction")
 check("class=ihours" in scott and "class=ihours" not in student and "about 10 to 14 hours" not in student,
       "hours only in Scott's copy")
-check("To earn it next time:" in student and "Rubric: &ldquo;" in student, "rubric quote and fix under each deduction")
+check("Earn it next time:" in student and "Rubric: &ldquo;" not in student and "class=dcat" not in student and "Rubric: &ldquo;" in scott,
+      "fix under each deduction; rubric quote only in Scott's note (2026-11-12)")
 
 # Every rule quote is the published sentence, word for word (links, bold and code marks removed)
 import re as _re
