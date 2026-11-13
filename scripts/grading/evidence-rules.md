@@ -41,8 +41,7 @@ count for the builder profile, and the other way round. Where another file disag
   prose in the review with no commit, record or Loom moment behind it, is a claim, not evidence.
 - **Unshared repos, exactly.** A repo the student did not share counts only through the
   `/sprint-review` report's list of that repo's commits, and only for commits listed one by one with
-  their message (or SHA and message). A paraphrase ("built out the dashboard"), a count ("about 70
-  more commits"), or a PR number with no message counts for nothing. Work shown running in the Loom
+  their message (or SHA and message). A pull request listed with its number and its title or a one-line description of what it did counts like a commit listed with its message (Scott, 2026-11-12). A paraphrase ("built out the dashboard"), a paraphrase of several PRs, a range ("#13 to #37"), a count ("about 70 more commits"), or a bare number counts for nothing. Work shown running in the Loom
   counts whatever repo it lives in.
 - **Confidential work.** Masked, redacted, sample-data or voiced-over material is full evidence.
 - **This sprint's work.** Commits and records dated in the sprint window. The window starts on the
