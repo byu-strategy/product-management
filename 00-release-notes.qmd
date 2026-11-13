@@ -4,6 +4,16 @@ This course site is updated during the semester, and every meaningful update is 
 
 New entries appear at the top.
 
+## v2.13.0 (2026-11-12)
+
+Output is now scored in two parts, Amount and Quality, and every demo answers three questions.
+
+- **Output: Amount and Quality (from Sprint 4).** Output is two equal parts. Amount is how much progress you made this sprint, judged against what two weeks of that kind of work looks like. Quality is how well the work was done, judged on the work itself. Changing your plan when you learn something costs nothing, and your hours never affect your grade. Sprint 4 grades use these two parts.
+- **Keep a short record.** For each call, interview, test with a user, or ask, note the date, who, and what came of it. One line is enough, in your repo or your sprint review.
+- **Demo questions (from Sprint 5).** Your demo answers three questions in order: what your sprint goal was, what you finished and the evidence for each item, and what you did not finish and where it stands. Aim for 3 minutes. Your hours, difficulty and reflection stay in your written retro. The demo length rule is unchanged.
+- **Sprint 6 demo.** About 4 minutes, answering four questions about your product and what you built this semester.
+- **Customer records in your demo.** Your customer and contact records are yours to show as they are. Redacting names is optional.
+
 ## v2.12.22 (2026-11-09)
 
 The Peer Code Review is no longer part of the course.
