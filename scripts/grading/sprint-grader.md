@@ -31,7 +31,6 @@ the same commit as the site change.
 | `rev-s1-template` | Review: Sprint 1 retro answers its template (did you hit the goal, what happened, what changes next sprint) | Assessments, Sprint 1 retro fields | Sprint 1 only |
 | `rev-five-questions` | Review: retro answers all five `/sprint-review` questions | Assessments (v2.4.0 to v2.4.2, Sep 30) | Sprint 2 |
 | `demo-working` | Demo: the work, working, with real content, where "working" depends on the kind of work (Scott, 2026-10-20: the "What your demo shows" table loosens "working" for non-product sprints, so it applies to Sprints 1 and 2) | Rubric; Assessments, "What your demo shows" | Sprint 1 |
-| `demo-questions` | Demo: the three demo questions (goal; evidence of each finished Done item; where each unfinished item stands). Leaving out question 1 or 3, minus 1 each; question 2's evidence is graded under `demo-working`. A Sprint 5 demo recorded before Nov 12 is graded under the Sprints 1 to 4 wording (Scott, 2026-11-11: posted before any Sprint 5 demo was due) | Assessments, step 3 and Grading rubric | Sprint 5 |
 | `demo-length` | Demo: length. Sprint 1: more than about two minutes, at most minus 1. Sprint 2: waived, no length deduction (Scott, 2026-10-17). Sprints 3 to 5: minus 1 for each started 30 seconds past 3:30. Sprint 6: the same, past 4:30 | Rubric, "Demo length" (published 2026-10-16; Sprint 3 scale published 2026-10-17, v2.12.3, before any Sprint 3 demo was due) | Sprint 1 |
 | `demo-not-loom` | Demo: not a Loom scores 0 (set in code) | Assessments and Wrap-up pages (v2.3.1, Sep 30) | Sprint 2 |
 | `demo-unopenable` | Demo: a Loom the course cannot open is not graded until shared, either with scott.murff@byu.edu or "Anyone with the link" (Scott, 2026-10-20; loosens the Sprint 2 practice, so it applies to Sprint 2) | Assessments page, step 3 | Sprint 2 |
@@ -247,8 +246,8 @@ at its maximum has no deduction.
      (b) take the finished *Done looks like* items with evidence for each (the order is asked, never graded), and (c) show
      where each unfinished item stands, or say everything is finished. Cite frame times. A store
      listing, a status page, or a sign-up screen is not evidence that a feature works: question 2
-     needs the finished item itself, used or opened. Missing (a) or (c): `demo-questions`, minus 1
-     each. Evidence missing for finished items in (b): `demo-working`. A sentence spoken about the
+     needs the finished item itself, used or opened. Missing (a) or (c) costs nothing (Scott, 2026-11-12:
+     the questions are the structure, not a points rule); mention it in feedback. Evidence missing for finished items in (b): `demo-working`. A sentence spoken about the
      goal counts for (a) even if the plan is not on screen. From Sprint 5 (demos recorded on or
      after Nov 12), the matches_plan check above becomes part of (b): finished items with no evidence on screen cost
      Demo points under `demo-working`.
