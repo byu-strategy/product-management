@@ -258,7 +258,16 @@ def frames(vid, dest_dir, net_id):
     if not url:
         return None
     with tempfile.NamedTemporaryFile(suffix=".mp4") as mp4:
-        mp4.write(requests.get(url, timeout=300).content)
+        # A dropped connection mid-download crashed a whole class rebuild (2026-11-12): retry, then give up
+        # on frames for this student only.
+        for attempt in range(3):
+            try:
+                body = requests.get(url, timeout=300).content
+                break
+            except requests.exceptions.RequestException:
+                if attempt == 2:
+                    return None
+        mp4.write(body)
         mp4.flush()
         return grab_frames(mp4.name, dest_dir, net_id)
 
