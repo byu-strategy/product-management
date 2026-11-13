@@ -21,7 +21,7 @@ art the book teaches (North Star metric, happy path, Mom Test) are literal names
 student asks gets a concrete, workable path, not only the reason. Think about their situation and
 look for a solution that fits it: what exactly to click, open, commit or show, and how to do it
 within their constraints (sensitive data, a teammate's repo, a private video, a pivot). When their
-constraint is real, solve around it ("open one note with the names blurred using Loom's blur tool")
+constraint is real, solve around it ("list that repo's commits, one per line with its message, in your review")
 instead of restating the rule. Where more than one path works, offer two. Explore what they might
 have meant or tried before concluding they did not do it, and ask when the evidence is unclear.
 This applies to report feedback, next steps, the sprint coach, and replies to grade questions.

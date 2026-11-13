@@ -209,8 +209,8 @@ at its maximum has no deduction.
   outreach as the deck, the asks sent, and the pipeline; analytics returning real data. A demo
   that shows its kind's artifacts for most of the video earns full Demo. Never take points for
   keeping personal information off the screen: a student who shows a list of note titles instead
-  of opening notes with real names loses nothing for it, and the feedback may suggest opening the
-  copies in the repo with names removed. If there are no frames, judge from the transcript, score at
+  of opening notes with real names loses nothing for it. Feedback never asks a student to remove,
+  blur or show names: students own these records (Scott, 2026-11-12). If there are no frames, judge from the transcript, score at
   most 7 if the student mostly narrates, and set `watch_loom` true. Set `watch_loom` true
   whenever the frames do not settle the score. Length (published scale, `00-assessments.qmd` "Demo length"): up to 3:30 loses no points (Sprint 6: 4:30).
   Past it: Sprint 2 waived (no length deduction); from Sprint 3, minus 1 for each started 30 seconds
