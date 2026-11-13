@@ -120,7 +120,9 @@ def record(r, row, sprint, ro):
     return {
         "canvas_user_id": str((row or {}).get("canvas_user_id") or ro.get("canvas_user_id") or "") or None,
         "repo": (row or {}).get("repo") or None,
-        "plan_score": plan_score(sprint, r["net_id"]) if sprint > 1 else sc("plan"), "plan_max": 10 if sprint > 1 else None,
+        # The Plan is its own assignment except in MSB 341 Sprint 1 (C["plan_inside_review"]).
+        "plan_score": sc("plan") if sprint in C["plan_inside_review"] else plan_score(sprint, r["net_id"]),
+        "plan_max": None if sprint in C["plan_inside_review"] else 10,
         "output_score": sc("shipped"), "output_max": mx.get("shipped"),
         "retro_score": sc("review"), "retro_max": mx.get("review"),
         "demo_score": sc("demo"), "demo_max": mx.get("demo"),
