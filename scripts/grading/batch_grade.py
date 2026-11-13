@@ -51,7 +51,8 @@ def system(kind):
     if kind == "grade":
         blocks.append({"type": "text", "cache_control": CACHE, "text": "# sprint-grader.md\n" + text(G / "sprint-grader.md") +
                        (f"\n\n# {C['grader_overlay']}\n" + text(G / C["grader_overlay"]) if C["grader_overlay"] else "") +
-                       ("\n\n# evidence-rules.md\n" + text(G / "evidence-rules.md") + "\n\n# output-rubric.md\n" + text(G / "output-rubric.md") if C["grader_overlay"] else "") +
+                       # Both courses grade Output by output-rubric.md (MSB 341 from Sprint 4, Scott 2026-11-12).
+                       "\n\n# evidence-rules.md\n" + text(G / "evidence-rules.md") + "\n\n# output-rubric.md\n" + text(G / "output-rubric.md") +
                        "\n\n# Output shape example for the grade (a fictional student). Use it for the shape only, "
                        "never its scores or content.\n" + text(SHAPE)})
     if kind == "check":

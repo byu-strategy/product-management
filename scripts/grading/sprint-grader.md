@@ -24,6 +24,8 @@ the same commit as the site change.
 | `out-checkable` | Output: checkable by Professor Murff, privately (repo, shared or summarized repo, a link, or shown in the demo) | "It is in your repo" (Sprint 1); "The course can check it, privately" (v2.4.4) | Sprint 1 |
 | `out-ambitious` | Output: raised for ambitious, hard work partly reached | Rubric, "an ambitious goal you partly reach and account for" | Sprint 1 |
 | `out-needs-yes` | Output: a goal that needs someone else's yes (design partners, a customer paying, signups) is graded on the asks made and on record; a no or "not yet" costs nothing when the retro says what was learned (Scott, 2026-10-20; loosens, so it applies to Sprints 1 and 2) | Rubric, "Goals that need someone else to say yes" | Sprint 1 |
+| `out-amount` | Output, Amount: how much progress, against what two weeks of that kind of work looks like (`output-rubric.md`) | Assessments, Grading rubric, Output row | Sprint 4 |
+| `out-quality` | Output, Quality: how well the work was done, judged on the work itself (`output-rubric.md`) | Assessments, Grading rubric, Output row | Sprint 4 |
 | `rev-committed` | Review: report committed | Rubric | Sprint 1 |
 | `rev-retro` | Review: retro answers its prompts. Each prompt left unanswered, minus 1; empty retro, at most half. From Sprint 3 there is no requirement to respond to something specific in the report, and "What did the report show you?" is not a required prompt (Scott, 2026-10-29: question 2 became the hours estimate; loosens, applied to Sprint 3; Sprints 1 and 2 stay as posted). Sprints 1 and 2: no specific response anywhere, minus 2 | Rubric | Sprint 1 |
 | `rev-s1-template` | Review: Sprint 1 retro answers its template (did you hit the goal, what happened, what changes next sprint) | Assessments, Sprint 1 retro fields | Sprint 1 only |
@@ -84,6 +86,26 @@ work.
 Difficulty is not a score of its own; it moves Output only as set out under Difficulty below.
 Great work on an ambitious goal earns full points even when the student missed it a little; a safe
 goal comfortably hit earns nothing extra.
+
+
+## Output from Sprint 4: Amount and Quality (Scott, 2026-11-12)
+
+From Sprint 4 on, `output-rubric.md` and `evidence-rules.md` (both sent with these rules) replace every
+Output rule in this file: the Output row of the rubric table, the Output parts of "Rules", "Difficulty"
+(difficulty no longer weighs Output; keep filling `difficulty` and `effort_review` for Scott's notes), and
+the rule ids `out-real`, `out-checkable`, `out-ambitious` and `out-needs-yes`, which are never used from
+Sprint 4 on. Review and Demo are unchanged. Use the MSB 341 column of the rubric and its MSB 341 worked
+examples; where a line differs by course, apply the MSB 341 version. Scott applied this to Sprint 4 on
+2026-11-12, after it closed: the published Output row's meaning (real, finished, checkable work, judged on
+how much and how good) did not change, only the detail of how it is scored.
+
+Output is Amount (0 to 10) + Quality (0 to 10); Sprint 6 is Amount (0 to 25) + Quality (0 to 25), the 0 to 10
+bands times 2.5. Set `scores.shipped` to their sum. Write `output_parts` as in the rubric:
+`{"amount": {"score", "reason", "raise"}, "quality": {"score", "reason", "raise"}}`, and `hours_crosscheck`.
+Write `feedback.shipped` as two sentences the student reads: "Amount A/10: <reason>. Quality Q/10: <reason>."
+List at most two Output deductions: `O1` (rule `out-amount`, points = the Amount maximum minus Amount, `what`
+= the Amount reason, `fix` = what would raise it) and `O2` (rule `out-quality`, the same for Quality). A part
+at its maximum has no deduction.
 
 ## Rules
 
