@@ -401,7 +401,9 @@ def shipped(repo, commits, budget=SHIPPED_CHARS, image_dir=None, net_id=None, ma
     done after the sprint never shows up as this sprint's. A file touched only after the cutoff is
     listed with `after_window` and no text."""
     files, first, last = {}, {}, {}
-    for c in commits:
+    # Backstop: file lists for at most the 300 newest commits (each is one API call); the commit list itself
+    # stays whole. A busy team repo rarely passes 300 in two weeks.
+    for c in commits[-300:]:
         inside = cutoff is None or dt.datetime.fromisoformat(c["when"]) <= cutoff
         for f in (gh(f"repos/{repo}/commits/{c['sha']}") or {}).get("files", []):
             name = f["filename"]
@@ -701,7 +703,7 @@ def build(student, sub, plan_sub, cfg, due):
     others = [r for r in cfg["shared"] if r.lower() != course and (r in mine or r.lower() in named)]
     # A repo the student names that is not shared with sdmurff may still be public: read it if so.
     shared_lower = {r.lower() for r in cfg["shared"]}
-    renamed = set()
+    renamed, public_named = set(), set()
     for r in sorted(named - shared_lower - {course}):
         info = gh(f"repos/{r}")  # follows a renamed or transferred repo to its current name
         if info and info["full_name"].lower() in shared_lower and info["full_name"].lower() != course:
@@ -709,11 +711,18 @@ def build(student, sub, plan_sub, cfg, due):
             renamed.add(r)  # shared under its new name (2026-11-12: ck22coding -> cK1NG22)
         elif info and not info.get("private"):
             others.append(info["full_name"])
+            public_named.add(info["full_name"])
     start = min(dt.datetime.fromisoformat(p["plan"]["first_commit"]), due - dt.timedelta(days=14)) \
         if (p.get("plan") or {}).get("first_commit") else due - dt.timedelta(days=14)
     p["other_repos"] = []
+    me = (student.get("github_username") or "").lower()
     for r in others[:4]:
         log = branch_commits(r, start)
+        # A public project the student only names (an open-source repo they contributed to) holds everyone's
+        # commits: keep the student's own. 2026-11-12: NousResearch/hermes-agent stalled a rebuild for hours
+        # once the default branch was read in full, fetching every contributor's commits one by one.
+        if r in public_named:
+            log = [c for c in log if ((c.get("author") or {}).get("login") or "").lower() == me]
         # A busy team repo can hold hundreds of commits: messages shrink so the list stays about 60k characters.
         cap = max(160, min(1500, 60_000 // max(1, len(log))))
         cs = [{"sha": c["sha"], "when": local(c["commit"]["author"]["date"]).isoformat(),
