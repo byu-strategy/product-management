@@ -68,7 +68,7 @@ COURSES = {
         "baseline": "baseline-charts-fall2026/students.json",
         "midterm": True,
         "dispute_course": "msb341",
-        "not_graded": None,
+        "not_graded": "not-graded.txt",  # auditors, from the AIM class roll (Scott, 2026-11-13)
     },
     "ai-foundry": {
         "label": "AI Foundry",
