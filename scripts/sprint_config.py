@@ -92,7 +92,7 @@ COURSES = {
         "rules_url": "https://byu-strategy.github.io/ai-foundry/students/11-sprints.html#grading-rubric",
         "where_heading": "Work files and links",
         "plan_due_text": "The Monday after the sprint starts, 11:59 PM",
-        "wrapup_due_text": "The Friday the sprint ends, 8:00 AM",
+        "wrapup_due_text": "The Saturday the sprint ends, 11:59 PM",
         "baseline": "baseline-charts-fall2026/students.json",
         "midterm": False,
         "dispute_course": "ai-foundry",

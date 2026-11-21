@@ -60,7 +60,7 @@ check("<b>AI Foundry</b>" in student and "MSB 341" not in st, "brand and course 
 check("ai-foundry/students/11-sprints.html" in student, "the coach prompt points at the Foundry's Sprints page")
 check("from AI Foundry." in student, "the coach prompt names the course")
 check("Work files and links" in student, "the deliverables table uses the Foundry README heading")
-check("The Monday after the sprint starts, 11:59 PM" in student and "8:00 AM" in student, "Foundry due times")
+check("The Monday after the sprint starts, 11:59 PM" in student and "11:59 PM" in student, "Foundry due times")
 check("/60" in student and "/25" in student, "Foundry maxima shown")
 check("Instructor notes" in text(scott) and "Instructor notes" not in st, "instructor notes in Scott's copy only")
 for sec in ('id=summary', 'id=score', 'id=grew', 'id=next', 'id=questions', 'id=appendix', 'id=concepts'):
