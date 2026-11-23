@@ -610,7 +610,7 @@ questions, in this order:
 
 ## Peer Assignment
 
-The peer assignment teaches you to give and receive constructive feedback, a critical professional skill. You'll be randomly paired with a classmate.
+The peer assignment teaches you to give and receive constructive feedback, a critical professional skill. You'll be assigned a classmate at random.
 
 ---
 
@@ -620,18 +620,32 @@ The peer assignment teaches you to give and receive constructive feedback, a cri
 
 **Goal:** Be a real test user for a peer's product and provide actionable UX feedback.
 
+**Who tests whom:** assignments are random and run one way. You test one classmate's product,
+and a different classmate tests yours.
+
 **Process:**
 
-1. You'll be assigned a partner
+1. You'll be assigned a classmate's product to test
 2. You become an actual user of their product
 3. You sign up, use core features, and try to break things
 4. You record the whole thing
 
 **Deliverable:** A 5-minute Loom video of you using your peer's product. That's it.
 
+**As a builder: give your tester access by Wed, Dec 2.** How you do it is up to you. Two ways work:
+
+- **A URL** to your deployed product. A test account is not required; set up whatever a new
+  user would need.
+- **A live Zoom session**, if your product is not online. Share your screen and give your tester
+  remote control, so they use the product themselves while they record.
+
+A broken product still counts. If sign-up fails or a page errors out, your tester records what
+happens, and that is useful feedback. Know that the session is recorded and the video is shared
+with you.
+
 **How to record your test session:**
 
-1. **Start Loom, share your screen, and open their app URL**
+1. **Start Loom, share your screen, and open their app URL** (or join their Zoom session and take remote control)
 2. **Think out loud the entire time:** narrate what you see, what you expect, where you're confused, what works
 3. **Try to complete the core task:** sign up, use the main feature, see if your data persists
 4. **Try to break things:** what happens with bad input? Edge cases? Unexpected flows?
