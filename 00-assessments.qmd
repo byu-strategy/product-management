@@ -632,7 +632,7 @@ and a different classmate tests yours.
 
 **Deliverable:** A 5-minute Loom video of you using your peer's product. That's it.
 
-**As a builder: give your tester access by Wed, Dec 2.** How you do it is up to you. Two ways work:
+**As a builder: give your tester access by Wed, Dec 2.** First, turn in your product's URL (or the word "Zoom") on the ungraded **Product URL** assignment in Canvas by Mon, Nov 30, 12:00 PM. On Nov 30 you get an email naming whose product you test and who tests yours. How you give access is up to you. Two ways work:
 
 - **A URL** to your deployed product. A test account is not required; set up whatever a new
   user would need.
