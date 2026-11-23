@@ -4,6 +4,15 @@ This course site is updated during the semester, and every meaningful update is 
 
 New entries appear at the top.
 
+## v2.13.1 (2026-11-23)
+
+Peer Product Testing now says how your tester gets into your product.
+
+- **Turn in your product URL.** Paste your product's URL, or type "Zoom" if it is not online, on the ungraded Product URL assignment in Canvas by Mon, Nov 30, 12:00 PM.
+- **Who tests whom.** Assignments are random and run one way: you test one classmate's product, and a different classmate tests yours. An email on Nov 30 names both.
+- **Give access by Wed, Dec 2.** Use a URL, or a live Zoom session where you share your screen and give your tester remote control. A test account is not required.
+- **A broken product still counts.** Your tester records what happens, and the video is shared with you.
+
 ## v2.13.0 (2026-11-12)
 
 Output is now scored in two parts, Amount and Quality, and every demo answers three questions.
